@@ -11,19 +11,19 @@ Procedure DistributeTabSectExpensesByQuantity() Export
 	DistributionBaseQuantity = Inventory.Total("Quantity");
 	TotalExpenses = Expenses.Total("Total");
 	
-	//elmi start
+	//( elmi #11
 	If  Not IncludeVATInPrice Then
 	      TotalVatAmount = Expenses.Итог("VATAmount");
 	      TotalExpenses = TotalExpenses - TotalVatAmount ;
 	EndIf;		  
-    //elmi end
+    //) elmi
 	
 	
 	For Each StringInventory IN Inventory Do
 		
-		StringInventory.AmountExpenses = ?(DistributionBaseQuantity <> 0, Round((TotalExpenses - SrcAmount) * StringInventory.Quantity / DistributionBaseQuantity, 2, 1),0);  //elmi
+		StringInventory.AmountExpenses = ?(DistributionBaseQuantity <> 0, Round((TotalExpenses - SrcAmount) * StringInventory.Quantity / DistributionBaseQuantity, 2, 1),0); 
 		DistributionBaseQuantity = DistributionBaseQuantity - StringInventory.Quantity;
-		SrcAmount = SrcAmount + StringInventory.AmountExpenses;         //elmi
+		SrcAmount = SrcAmount + StringInventory.AmountExpenses; 
 		
 	EndDo;
 	
@@ -37,19 +37,19 @@ Procedure DistributeTabSectExpensesByAmount() Export
 	ReserveAmount = Inventory.Total("Total");
 	TotalExpenses = Expenses.Total("Total");
 	
-	//elmi start
+	//( elmi #11
 	If  Not IncludeVATInPrice Then
 	      TotalVatAmount = Expenses.Итог("VATAmount");
 	      TotalExpenses = TotalExpenses - TotalVatAmount ;
 	EndIf;		  
-    //elmi end
+    //) elmi
 	
 	
 	For Each StringInventory IN Inventory Do
 		
-		StringInventory.AmountExpenses = ?(ReserveAmount <> 0, Round((TotalExpenses - SrcAmount) * StringInventory.Total / ReserveAmount, 2, 1),0);  // elmi   
+		StringInventory.AmountExpenses = ?(ReserveAmount <> 0, Round((TotalExpenses - SrcAmount) * StringInventory.Total / ReserveAmount, 2, 1),0);     
 		ReserveAmount = ReserveAmount - StringInventory.Total;
-		SrcAmount = SrcAmount + StringInventory.AmountExpenses;      //elmi
+		SrcAmount = SrcAmount + StringInventory.AmountExpenses; 
 		
 	EndDo;
 	
@@ -1233,7 +1233,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	EndIf;
 	
 	
-	//elmi start
+	//( elmi #11
 	//If IncludeExpensesInCostPrice
 	//	AND Inventory.Total("AmountExpenses") <> Expenses.Total("Total") Then 
 	If  IncludeExpensesInCostPrice Then
@@ -1251,7 +1251,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		);
 		EndIf;
 	EndIf;
-	//elmi end
+	//) elmi
 
 	OrderReceptionInHeader = PurchaseOrderPosition = Enums.AttributePositionOnForm.InHeader;
 	

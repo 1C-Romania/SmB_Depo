@@ -9,7 +9,7 @@
 Procedure GenerateTableManagerial(DocumentRefAgentReport, StructureAdditionalProperties)
 	
 		
-	//elmi start
+	//( elmi #11
     Query = New Query;
 	Query.TempTablesManager = StructureAdditionalProperties.ForPosting.StructureTemporaryTables.TempTablesManager;
 	Query.Text =
@@ -38,7 +38,7 @@ Procedure GenerateTableManagerial(DocumentRefAgentReport, StructureAdditionalPro
 		  BrokerageVATAmount    = Selection.BrokerageVATAmount;
 	      BrokerageVATAmountCur = Selection.BrokerageVATAmountCur;
 	EndDo;
-    //elmi end
+    //) elmi
 	
 	
 	Query = New Query;
@@ -60,10 +60,12 @@ Procedure GenerateTableManagerial(DocumentRefAgentReport, StructureAdditionalPro
 	|		WHEN TableManagerial.GLAccountCustomerSettlements.Currency
 	|			THEN CASE
 	|					WHEN TableManagerial.KeepBackComissionFee
+	//( elmi #11
 	//|						THEN TableManagerial.AmountCur - TableManagerial.BrokerageAmountCur
-	|						THEN TableManagerial.AmountCur - TableManagerial.VATAmountCur - (TableManagerial.BrokerageAmountCur - TableManagerial.BrokerageVATAmountCur)  //elmi
+	|						THEN TableManagerial.AmountCur - TableManagerial.VATAmountCur - (TableManagerial.BrokerageAmountCur - TableManagerial.BrokerageVATAmountCur)  
 	//|					ELSE TableManagerial.AmountCur
-	|					ELSE TableManagerial.AmountCur  - TableManagerial.VATAmountCur  // elmi
+	|					ELSE TableManagerial.AmountCur  - TableManagerial.VATAmountCur 
+	//) elmi
 	|				END
 	|		ELSE 0
 	|	END AS AmountCurDr,
@@ -72,10 +74,12 @@ Procedure GenerateTableManagerial(DocumentRefAgentReport, StructureAdditionalPro
 	|	0 AS AmountCurCr,
 	|	CASE
 	|		WHEN TableManagerial.KeepBackComissionFee
+	//( elmi #11
 	//|			THEN TableManagerial.Amount - TableManagerial.BrokerageAmount
-	|			THEN TableManagerial.Amount - TableManagerial.VATAmount - (TableManagerial.BrokerageAmount - TableManagerial.BrokerageVATAmount)  //elmi
+	|			THEN TableManagerial.Amount - TableManagerial.VATAmount - (TableManagerial.BrokerageAmount - TableManagerial.BrokerageVATAmount)  
 	//|		ELSE TableManagerial.Amount
-	|		ELSE TableManagerial.Amount - TableManagerial.VATAmount    //elmi
+	|		ELSE TableManagerial.Amount - TableManagerial.VATAmount 
+	//) elmi
 	|	END AS Amount,
 	|	&IncomeReflection AS Content
 	|FROM
@@ -254,7 +258,7 @@ Procedure GenerateTableManagerial(DocumentRefAgentReport, StructureAdditionalPro
 	|		(SUM(TableExchangeRateDifferencesAccountsReceivable.AmountOfExchangeDifferences) >= 0.005
 	|			OR SUM(TableExchangeRateDifferencesAccountsReceivable.AmountOfExchangeDifferences) <= -0.005)) AS TableManagerial
 	|
-	//elmi start
+	//( elmi #11
 	|
 	|UNION ALL
 	|
@@ -291,7 +295,7 @@ Procedure GenerateTableManagerial(DocumentRefAgentReport, StructureAdditionalPro
 	|FROM
 	|	TemporaryTableInventory AS TableManagerial
 	|		WHERE   &VATAmountCur > 0
-	//elmi end
+	//) elmi
 	|
 	|ORDER BY
 	|	Order,
@@ -302,14 +306,14 @@ Procedure GenerateTableManagerial(DocumentRefAgentReport, StructureAdditionalPro
 	Query.SetParameter("IncomeReflection", NStr("en = 'Sales revenue'"));
 	Query.SetParameter("PositiveExchangeDifferenceGLAccount", ChartsOfAccounts.Managerial.OtherIncome);
 	Query.SetParameter("NegativeExchangeDifferenceAccountOfAccounting", ChartsOfAccounts.Managerial.OtherExpenses);
-	//elmi start
+	//( elmi #11
 	Query.SetParameter("VAT", NStr("en=' VAT '"));
 	Query.SetParameter("TextVAT",  ChartsOfAccounts.Managerial.Taxes);
 	Query.SetParameter("VATAmount", VATAmount);
 	Query.SetParameter("VATAmountCur", VATAmountCur);
 	Query.SetParameter("BrokerageVATAmount", BrokerageVATAmount);
 	Query.SetParameter("BrokerageVATAmountCur", BrokerageVATAmountCur);
-	//elmi end
+	//) elmi
 
 	QueryResult = Query.Execute();
 	Selection = QueryResult.Select();
@@ -700,8 +704,10 @@ Procedure GenerateTableInventoryTransferred(DocumentRefAgentReport, StructureAdd
 	|	TableInventoryTransferred.Batch AS Batch,
 	|	TableInventoryTransferred.ReceptionTransmissionType AS ReceptionTransmissionType,
 	|	SUM(TableInventoryTransferred.Quantity) AS Quantity,
+	//( elmi #11
 	//|	SUM(TableInventoryTransferred.SettlementsAmountTakenPassed) AS SettlementsAmount
-	|	SUM(TableInventoryTransferred.SettlementsAmountTakenPassed - TableInventoryTransferred.CostVAT) AS SettlementsAmount        //elmi
+	|	SUM(TableInventoryTransferred.SettlementsAmountTakenPassed - TableInventoryTransferred.CostVAT) AS SettlementsAmount        
+	//) elmi
 	|FROM
 	|	TemporaryTableInventory AS TableInventoryTransferred
 	|
@@ -746,18 +752,20 @@ Procedure GenerateTableIncomeAndExpenses(DocumentRefAgentReport, StructureAdditi
 	|	&IncomeReflection AS ContentOfAccountingRecord,
 	|	SUM(CASE
 	|			WHEN TableIncomeAndExpenses.KeepBackComissionFee
+	//( elmi #11
 	//|				THEN TableIncomeAndExpenses.Amount - TableIncomeAndExpenses.BrokerageAmount
-	|				THEN (TableIncomeAndExpenses.Amount - TableIncomeAndExpenses.VATAmount) - (TableIncomeAndExpenses.BrokerageAmount - TableIncomeAndExpenses.BrokerageVATAmount)    //elmi
+	|				THEN (TableIncomeAndExpenses.Amount - TableIncomeAndExpenses.VATAmount) - (TableIncomeAndExpenses.BrokerageAmount - TableIncomeAndExpenses.BrokerageVATAmount) 
 	//|			ELSE TableIncomeAndExpenses.Amount
-	|			ELSE TableIncomeAndExpenses.Amount - TableIncomeAndExpenses.VATAmount     //elmi
+	|			ELSE TableIncomeAndExpenses.Amount - TableIncomeAndExpenses.VATAmount    
 	|		END) AS AmountIncome,
 	|	0 AS AmountExpense,
 	|	SUM(CASE
 	|			WHEN TableIncomeAndExpenses.KeepBackComissionFee
 	//|				THEN TableIncomeAndExpenses.Amount - TableIncomeAndExpenses.BrokerageAmount
-	|				THEN (TableIncomeAndExpenses.Amount - TableIncomeAndExpenses.BrokerageAmount) - (TableIncomeAndExpenses.VATAmount - TableIncomeAndExpenses.BrokerageVATAmount)    //elmi
+	|				THEN (TableIncomeAndExpenses.Amount - TableIncomeAndExpenses.BrokerageAmount) - (TableIncomeAndExpenses.VATAmount - TableIncomeAndExpenses.BrokerageVATAmount)  
 	//|			ELSE TableIncomeAndExpenses.Amount
-	|			ELSE TableIncomeAndExpenses.Amount - TableIncomeAndExpenses.VATAmount     //elmi
+	|			ELSE TableIncomeAndExpenses.Amount - TableIncomeAndExpenses.VATAmount     
+	//) elmi
 	|		END) AS Amount
 	|FROM
 	|	TemporaryTableInventory AS TableIncomeAndExpenses
@@ -1104,10 +1112,12 @@ Procedure GenerateTableIncomeAndExpensesRetained(DocumentRefAgentReport, Structu
 	|	DocumentTable.BusinessActivitySales AS BusinessActivity,
 	|	CASE
 	|		WHEN DocumentTable.KeepBackComissionFee
+	//( elmi #11
 	//|			THEN DocumentTable.Amount - DocumentTable.BrokerageAmount
-	|			THEN (DocumentTable.Amount - DocumentTable.VATAmount) - (DocumentTable.BrokerageAmount - DocumentTable.BrokerageVATAmount)    //elmi
+	|			THEN (DocumentTable.Amount - DocumentTable.VATAmount) - (DocumentTable.BrokerageAmount - DocumentTable.BrokerageVATAmount)    
 	//|		ELSE DocumentTable.Amount
-	|			ELSE DocumentTable.Amount -  DocumentTable.VATAmount      //elmi
+	|			ELSE DocumentTable.Amount -  DocumentTable.VATAmount      
+	//) elmi
 	|	END AS AmountIncome
 	|FROM
 	|	TemporaryTableInventory AS DocumentTable
@@ -1416,7 +1426,7 @@ Procedure InitializeDocumentData(DocumentRefAgentReport, StructureAdditionalProp
 	|					ELSE AgentReportInventory.BrokerageAmount + AgentReportInventory.BrokerageVATAmount
 	|				END
 	|		END AS NUMBER(15, 2)) AS BrokerageAmountCur,
-	//elmi start
+	//( elmi #11
 	 |	CAST(CASE
 	|			    WHEN AgentReportInventory.Ref.IncludeVATInPrice
 	|				THEN 0
@@ -1426,7 +1436,7 @@ Procedure InitializeDocumentData(DocumentRefAgentReport, StructureAdditionalProp
 	|					  ELSE AgentReportInventory.BrokerageVATAmount
 	|				      END
 	|		        END AS NUMBER(15, 2))КАК BrokerageVATAmountCur,
-	//elmi end
+	//) elmi
 	|	AgentReportInventory.CustomerOrder AS CustomerOrder,
 	|	CAST(CASE
 	|			WHEN AgentReportInventory.Ref.AmountIncludesVAT

@@ -48,7 +48,7 @@ EndProcedure // GenerateTableInventory()
 //
 Procedure GenerateTableAccountsPayable(DocumentRefAdditionalCosts, StructureAdditionalProperties)
 	
-	//elmi start
+	//( elmi #11
     Query = New Query;
 	Query.TempTablesManager = StructureAdditionalProperties.ForPosting.StructureTemporaryTables.TempTablesManager;
 	Query.Text =
@@ -70,7 +70,7 @@ Procedure GenerateTableAccountsPayable(DocumentRefAdditionalCosts, StructureAddi
 		  AmountWithVAT    = Selection.AmountWithVAT;
 	      AmountWithVATCur = Selection.AmountWithVATCur;
 	EndDo;
-    //elmi end
+    //) elmi
 	
 	
 	
@@ -85,9 +85,10 @@ Procedure GenerateTableAccountsPayable(DocumentRefAdditionalCosts, StructureAddi
 	Query.SetParameter("AdvanceCredit", NStr("en='Setoff of advance payment'"));
 	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference'"));
 	
-	Query.SetParameter("AmountWithVAT", AmountWithVAT);         // elmi
-	Query.SetParameter("AmountWithVATCur", AmountWithVATCur);   // elmi
-
+	//( elmi #11
+	Query.SetParameter("AmountWithVAT", AmountWithVAT);         
+	Query.SetParameter("AmountWithVATCur", AmountWithVATCur);   
+	//) elmi
 	
 	Query.Text =
 	"SELECT
@@ -112,7 +113,7 @@ Procedure GenerateTableAccountsPayable(DocumentRefAdditionalCosts, StructureAddi
 	|	END AS Order,
 	|	DocumentTable.SettlementsCurrency AS Currency,
 	|	VALUE(Enum.SettlementsTypes.Debt) AS SettlementsType,
-	//elmi start
+	//( elmi #11
 	//|	SUM(DocumentTable.AmountExpense) AS Amount,
 	//|	SUM(DocumentTable.AmountExpensesCur) AS AmountCur,
 	//|	SUM(DocumentTable.AmountExpense) AS AmountForBalance,
@@ -121,7 +122,7 @@ Procedure GenerateTableAccountsPayable(DocumentRefAdditionalCosts, StructureAddi
 	|	&AmountWithVATCur AS AmountCur,
 	|	&AmountWithVAT AS AmountForBalance,
 	|	&AmountWithVATCur AS AmountCurForBalance,
-    // elmi end
+    //) elmi
 	|	CAST(&AppearenceOfLiabilityToVendor AS String(100)) AS ContentOfAccountingRecord
 	|INTO TemporaryTableAccountsPayable
 	|FROM
@@ -481,8 +482,10 @@ Procedure GenerateTableIncomeAndExpensesRetained(DocumentRefAdditionalCosts, Str
 	|		ELSE UNDEFINED
 	|	END AS Document,
 	|	DocumentTable.BusinessActivity AS BusinessActivity,
+	//( elmi #11
 	//|	DocumentTable.Amount AS AmountExpense
-	|	DocumentTable.Amount - DocumentTable.VATAmount AS AmountExpense  //elmi
+	|	DocumentTable.Amount - DocumentTable.VATAmount AS AmountExpense  
+	//) elmi
 	|FROM
 	|	TemporaryTableExpenses AS DocumentTable
 	|WHERE
@@ -658,7 +661,7 @@ EndProcedure // GenerateTableIncomeAndExpensesCashMethod()
 //
 Procedure GenerateTableManagerial(DocumentRefAdditionalCosts, StructureAdditionalProperties)
 	
-	//elmi start
+	//( elmi #11
     Query = New Query;
 	Query.TempTablesManager = StructureAdditionalProperties.ForPosting.StructureTemporaryTables.TempTablesManager;
 	Query.Text =
@@ -680,7 +683,7 @@ Procedure GenerateTableManagerial(DocumentRefAdditionalCosts, StructureAdditiona
 		  VATExpenses    = Selection.VATExpenses;
 	      VATExpensesCur = Selection.VATExpensesCur;
 	EndDo;
-	//elmi end
+	//) elmi
 
 	
 	Query = New Query;
@@ -891,7 +894,7 @@ Procedure GenerateTableManagerial(DocumentRefAdditionalCosts, StructureAdditiona
 	|	HAVING
 	|		(SUM(TableOfExchangeRateDifferencesAccountsPayable.AmountOfExchangeDifferences) >= 0.005
 	|			OR SUM(TableOfExchangeRateDifferencesAccountsPayable.AmountOfExchangeDifferences) <= -0.005)) AS TableManagerial
-	// elmi start
+	//( elmi #11
 	|		
 	|		UNION ALL
 	|		
@@ -920,7 +923,7 @@ Procedure GenerateTableManagerial(DocumentRefAdditionalCosts, StructureAdditiona
 	|FROM
 	|	TemporaryTableInventory AS TableManagerial
 	|		WHERE &VATExpenses  > 0
-	// elmi end
+	//) elmi
 	|
 	|ORDER BY
 	|	Order,
@@ -931,12 +934,12 @@ Procedure GenerateTableManagerial(DocumentRefAdditionalCosts, StructureAdditiona
 	Query.SetParameter("ExchangeDifference", NStr("en = 'Exchange rate difference'"));
 	Query.SetParameter("PositiveExchangeDifferenceGLAccount", ChartsOfAccounts.Managerial.OtherIncome);
 	Query.SetParameter("NegativeExchangeDifferenceAccountOfAccounting", ChartsOfAccounts.Managerial.OtherExpenses);
-	//elmi start
+	//( elmi #11
 	Query.SetParameter("VAT", NStr("en=' VAT '"));
 	Query.SetParameter("TextVAT",  ChartsOfAccounts.Managerial.Taxes);
 	Query.SetParameter("VATExpenses", VATExpenses);
 	Query.SetParameter("VATExpensesCur", VATExpensesCur);
-	//elmi end
+	//) elmi
 
 	
 	QueryResult = Query.Execute();
@@ -1065,7 +1068,7 @@ Procedure InitializeDocumentData(DocumentRefAdditionalCosts, StructureAdditional
 	|				THEN AdditionalCostsExpenses.Total * RegCurrencyRates.ExchangeRate * ManagCurrencyRates.Multiplicity / (ManagCurrencyRates.ExchangeRate * RegCurrencyRates.Multiplicity)
 	|			ELSE AdditionalCostsExpenses.Total * AdditionalCostsExpenses.Ref.ExchangeRate * ManagCurrencyRates.Multiplicity / (ManagCurrencyRates.ExchangeRate * AdditionalCostsExpenses.Ref.Multiplicity)
 	|		END AS NUMBER(15, 2)) AS Amount ,
-	// elmi start
+	//( elmi #11
 	|	CAST(CASE
 	|			WHEN AdditionalCostsExpenses.Ref.DocumentCurrency = ConstantNationalCurrency.Value
 	|				THEN AdditionalCostsExpenses.VATAmount * RegCurrencyRates.ExchangeRate * AdditionalCostsExpenses.Ref.Multiplicity / (AdditionalCostsExpenses.Ref.ExchangeRate * RegCurrencyRates.Multiplicity)
@@ -1076,7 +1079,7 @@ Procedure InitializeDocumentData(DocumentRefAdditionalCosts, StructureAdditional
 	|				THEN AdditionalCostsExpenses.Total * RegCurrencyRates.ExchangeRate * AdditionalCostsExpenses.Ref.Multiplicity / (AdditionalCostsExpenses.Ref.ExchangeRate * RegCurrencyRates.Multiplicity)
 	|			ELSE AdditionalCostsExpenses.Total
 	|		END AS NUMBER(15, 2)) AS AmountCur
-	//elmi end
+	//) elmi
 	|INTO TemporaryTableExpenses
 	|FROM
 	|	Document.AdditionalCosts.Expenses AS AdditionalCostsExpenses

@@ -24,8 +24,10 @@ Procedure GenerateTableInventory(DocumentRefExpenseReport, StructureAdditionalPr
 	|	DocumentTable.Batch AS Batch,
 	|	DocumentTable.CustomerOrder AS CustomerOrder,
 	|	DocumentTable.Quantity AS Quantity,
+	//( elmi #11
 	//|	DocumentTable.Amount AS Amount,
-	|	DocumentTable.Amount - DocumentTable.VATAmount AS Amount,     //elmi
+	|	DocumentTable.Amount - DocumentTable.VATAmount AS Amount,     
+	//) elmi
 	|	TRUE AS FixedCost,
 	|	&InventoryReceipt AS ContentOfAccountingRecord
 	|FROM
@@ -46,8 +48,10 @@ Procedure GenerateTableInventory(DocumentRefExpenseReport, StructureAdditionalPr
 	|	DocumentTable.Batch,
 	|	DocumentTable.CustomerOrder,
 	|	0,
+	//( elmi #11
 	//|	DocumentTable.Amount,
-	|	DocumentTable.Amount - DocumentTable.VATAmount,           //elmi
+	|	DocumentTable.Amount - DocumentTable.VATAmount,           
+	//) elmi
 	|	TRUE,
 	|	&OtherExpenses
 	|FROM
@@ -741,11 +745,12 @@ Procedure GenerateTableIncomeAndExpenses(DocumentRefExpenseReport, StructureAddi
 	|	DocumentTable.GLAccount,
 	|	&OtherExpenses,
 	|	0,
+	//( elmi #11
 	//|	DocumentTable.Amount,
 	//|	DocumentTable.Amount
-	|	DocumentTable.Amount - DocumentTable.VATAmount,  // elmi
-	|	DocumentTable.Amount - DocumentTable.VATAmount   //elmi
-
+	|	DocumentTable.Amount - DocumentTable.VATAmount,  
+	|	DocumentTable.Amount - DocumentTable.VATAmount   
+	//) elmi
 	|FROM
 	|	TemporaryTableExpenses AS DocumentTable
 	|WHERE
@@ -1192,7 +1197,7 @@ EndProcedure // GeneratePurchasingTable()
 //
 Procedure GenerateTableManagerial(DocumentRefExpenseReport, StructureAdditionalProperties)
 	
-	//elmi start
+	//( elmi #11
     Query = New Query;
 	Query.TempTablesManager = StructureAdditionalProperties.ForPosting.StructureTemporaryTables.TempTablesManager;
 	Query.Text =
@@ -1236,7 +1241,7 @@ Procedure GenerateTableManagerial(DocumentRefExpenseReport, StructureAdditionalP
 		  VATExpenses    = Selection.VATExpenses;
 	      VATExpensesCur = Selection.VATExpensesCur;
 	EndDo;
-	//elmi end
+	//) elmi
 
 	Query = New Query;
 	Query.TempTablesManager = StructureAdditionalProperties.ForPosting.StructureTemporaryTables.TempTablesManager;
@@ -1260,10 +1265,10 @@ Procedure GenerateTableManagerial(DocumentRefExpenseReport, StructureAdditionalP
 	|	END AS CurrencyDr,
 	|	CASE
 	|		WHEN DocumentTable.GLAccount.Currency
-	//elmi start
+	//( elmi #11
 	//|			THEN DocumentTable.AmountCur
 	|			THEN DocumentTable.AmountCur - DocumentTable.VATAmountCur
-	// elmi end
+	//) elmi
 	|		ELSE 0
 	|	END AS AmountCurDr,
 	|	DocumentTable.AdvanceHoldersGLAccount AS AccountCr,
@@ -1274,16 +1279,16 @@ Procedure GenerateTableManagerial(DocumentRefExpenseReport, StructureAdditionalP
 	|	END AS CurrencyCr,
 	|	CASE
 	|		WHEN DocumentTable.AdvanceHoldersGLAccount.Currency
-	//elmi start
+	//( elmi #11
 	//|			THEN DocumentTable.AmountCur
 	|			THEN DocumentTable.AmountCur - DocumentTable.VATAmountCur
-	//elmi end
+	//) elmi
 	|		ELSE 0
 	|	END AS AmountCurCr,
-	//elmi start
+	//( elmi #11
 	//|	DocumentTable.Amount AS Amount,
 	|	DocumentTable.Amount - DocumentTable.VATAmount AS Amount,
-	//elmi end
+	//) elmi
 	|	CAST(&OtherExpenses AS String(100)) AS Content
 	|FROM
 	|	TemporaryTableExpenses AS DocumentTable
@@ -1304,10 +1309,10 @@ Procedure GenerateTableManagerial(DocumentRefExpenseReport, StructureAdditionalP
 	|	END,
 	|	CASE
 	|		WHEN DocumentTable.GLAccount.Currency
-	//elmi start
+	//( elmi #11
 	//|			THEN DocumentTable.AmountCur 
 	|			THEN DocumentTable.AmountCur  -  DocumentTable.VATAmountCur
-	//elmi end
+	//) elmi
 	|		ELSE 0
 	|	END,
 	|	DocumentTable.AdvanceHoldersGLAccount,
@@ -1318,16 +1323,16 @@ Procedure GenerateTableManagerial(DocumentRefExpenseReport, StructureAdditionalP
 	|	END,
 	|	CASE
 	|		WHEN DocumentTable.AdvanceHoldersGLAccount.Currency
-	//elmi start
+	//( elmi #11
 	//|			THEN DocumentTable.AmountCur 
 	|			THEN DocumentTable.AmountCur  -  DocumentTable.VATAmountCur
-	//elmi end
+	//) elmi
     |		ELSE 0
 	|	END,
-	//elmi start
+	//( elmi #11
 	//|	DocumentTable.Amount,
 	|	DocumentTable.Amount - DocumentTable.VATAmount,
-	//elmi end
+	//) elmi
 	|	CAST(&InventoryReceipt AS String(100))
 	|FROM
 	|	TemporaryTableInventory AS DocumentTable
@@ -1557,7 +1562,7 @@ Procedure GenerateTableManagerial(DocumentRefExpenseReport, StructureAdditionalP
 	|	LineNumber";
 	
 	
-	//elmi start
+	//( elmi #11
 	Query.SetParameter("TextVATInventory", NStr("en=' VAT goods'"));
 	Query.SetParameter("TextVATExpenses", NStr("en=' VAT expenses'"));
 	Query.SetParameter("TextVAT",  ChartsOfAccounts.Managerial.Taxes);
@@ -1565,7 +1570,7 @@ Procedure GenerateTableManagerial(DocumentRefExpenseReport, StructureAdditionalP
 	Query.SetParameter("VATInventory", VATInventory);
 	Query.SetParameter("VATExpensesCur", VATExpensesCur);
 	Query.SetParameter("VATInventoryCur", VATInventoryCur);
-	//elmi end
+	//) elmi
 
 	
 	QueryResult = Query.Execute();

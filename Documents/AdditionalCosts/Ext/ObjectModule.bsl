@@ -17,12 +17,12 @@ Procedure DistributeTabSectExpensesByQuantity( ) Export
 		Return;
 	EndIf;
 	
-	//elmi start
+	//( elmi #11
     If Not IncludeVATInPrice Тогда
 	     VATAmountExpenses = Expenses.Total("VATAmount");
 	     TotalExpenses     = TotalExpenses - VATAmountExpenses ;
 	EndIf;	 
-	//elmi end
+	//) elmi
 	
 	For Each StringInventory IN Inventory Do
 		
@@ -48,12 +48,12 @@ Procedure DistributeTabSectExpensesByAmount( ) Export
 		Return;
 	EndIf;
 	
-	//elmi start
+	//( elmi #11
     If Not IncludeVATInPrice Тогда
 	     VATAmountExpenses = Expenses.Total("VATAmount");
 	     TotalExpenses     = TotalExpenses - VATAmountExpenses ;
 	EndIf;	 
-	//elmi end
+	//) elmi
 
 	
 	For Each StringInventory IN Inventory Do
@@ -377,16 +377,15 @@ EndProcedure // FillingProcessor()
 //
 Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	
-	//elmi start
+	//( elmi #11
 	VATExpenses = 0;
 	If NOT ThisObject.IncludeVATInPrice Тогда	
 		VATExpenses = Expenses.Total("VATAmount");
 	EndIf;	 
-	//elmi end
-	
 	
 	//If Inventory.Total("AmountExpense") <> Expenses.Total("Total") Then
-	If Inventory.Total("AmountExpense") <> Expenses.Total("Total") - VATExpenses Then      // elmi
+	If Inventory.Total("AmountExpense") <> Expenses.Total("Total") - VATExpenses Then  
+	//) elmi	
 		
 		MessageText = NStr("en = 'Amount of services is not equal to the distributed amount by inventories!'");
 		SmallBusinessServer.ShowMessageAboutError(

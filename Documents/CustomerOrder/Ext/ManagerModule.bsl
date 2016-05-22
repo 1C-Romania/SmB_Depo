@@ -435,11 +435,13 @@ Procedure GenerateTableIncomeAndExpenses(DocumentRefCustomerOrder, StructureAddi
 	|	TableIncomeAndExpenses.CustomerOrder AS CustomerOrder,
 	|	TableIncomeAndExpenses.AccountStatementSales AS GLAccount,
 	|	CAST(&IncomeReflection AS String(100)) AS ContentOfAccountingRecord,
+	//( elmi #11
 	//|	SUM(TableIncomeAndExpenses.Amount) AS AmountIncome,
-	|	SUM(TableIncomeAndExpenses.Amount - TableIncomeAndExpenses.VATAmount) AS AmountIncome,        //elmi 
+	|	SUM(TableIncomeAndExpenses.Amount - TableIncomeAndExpenses.VATAmount) AS AmountIncome,         
 	|	0 AS AmountExpense,
 	//|	SUM(TableIncomeAndExpenses.Amount) AS Amount
-	|	SUM(TableIncomeAndExpenses.Amount - TableIncomeAndExpenses.VATAmount) AS Amount             //elmi 
+	|	SUM(TableIncomeAndExpenses.Amount - TableIncomeAndExpenses.VATAmount) AS Amount              
+	//) elmi
 	|FROM
 	|	TemporaryTableWorks AS TableIncomeAndExpenses
 	|WHERE
@@ -467,11 +469,13 @@ Procedure GenerateTableIncomeAndExpenses(DocumentRefCustomerOrder, StructureAddi
 	|	TableIncomeAndExpenses.CustomerOrder,
 	|	TableIncomeAndExpenses.AccountStatementSales,
 	|	CAST(&IncomeReflection AS String(100)),
+	//( elmi #11
 	//|	SUM(TableIncomeAndExpenses.Amount),
-	|	SUM(TableIncomeAndExpenses.Amount  - TableIncomeAndExpenses.VATAmount),        //elmi
+	|	SUM(TableIncomeAndExpenses.Amount  - TableIncomeAndExpenses.VATAmount),        
 	|	0,
 	//|	SUM(TableIncomeAndExpenses.Amount)
-	|	SUM(TableIncomeAndExpenses.Amount  - TableIncomeAndExpenses.VATAmount)         //elmi
+	|	SUM(TableIncomeAndExpenses.Amount  - TableIncomeAndExpenses.VATAmount)         
+	//) elmi
 	|FROM
 	|	TemporaryTableProducts AS TableIncomeAndExpenses
 	|WHERE
@@ -591,8 +595,10 @@ Procedure GenerateTableIncomeAndExpensesRetained(DocumentRefCustomerOrder, Struc
 	|		ELSE UNDEFINED
 	|	END AS Document,
 	|	DocumentTable.BusinessActivitySales AS BusinessActivity,
+	//( elmi #11
 	//|	DocumentTable.Amount AS AmountIncome
-	|	DocumentTable.Amount - DocumentTable.VATAmount AS AmountIncome        //elmi
+	|	DocumentTable.Amount - DocumentTable.VATAmount AS AmountIncome        
+	//) elmi
 	|FROM
 	|	TemporaryTableWorks AS DocumentTable
 	|WHERE
@@ -613,8 +619,10 @@ Procedure GenerateTableIncomeAndExpensesRetained(DocumentRefCustomerOrder, Struc
 	|		ELSE UNDEFINED
 	|	END,
 	|	DocumentTable.BusinessActivitySales,
+	//( elmi #11
 	//|	DocumentTable.Amount
-	|	DocumentTable.Amount - DocumentTable.VATAmount                   //elmi
+	|	DocumentTable.Amount - DocumentTable.VATAmount                   
+	//) elmi
 	|FROM
 	|	TemporaryTableProducts AS DocumentTable
 	|WHERE
@@ -3309,7 +3317,7 @@ EndProcedure // GenerateTableInventory()
 //
 Procedure GenerateTableManagerial(DocumentRefCustomerOrder, StructureAdditionalProperties)
 	
-	//elmi start
+	//( elmi #11
     Query = New Query;
 	Query.TempTablesManager = StructureAdditionalProperties.ForPosting.StructureTemporaryTables.TempTablesManager;
 	Query.Text =
@@ -3353,7 +3361,7 @@ Procedure GenerateTableManagerial(DocumentRefCustomerOrder, StructureAdditionalP
 		  VATWorks        = Selection.VATWorks;
 	      VATWorksCur     = Selection.VATWorksCur;
 	EndDo;
-	//elmi end
+	//) elmi
 
 	Query = New Query;
 	Query.TempTablesManager = StructureAdditionalProperties.ForPosting.StructureTemporaryTables.TempTablesManager;
@@ -3372,8 +3380,10 @@ Procedure GenerateTableManagerial(DocumentRefCustomerOrder, StructureAdditionalP
 	|	END AS CurrencyDr,
 	|	CASE
 	|		WHEN TableManagerial.GLAccountCustomerSettlements.Currency
+	//( elmi #11
 	//|			THEN TableManagerial.AmountCur
-	|			THEN TableManagerial.AmountCur -TableManagerial.VATAmountCur          //elmi
+	|			THEN TableManagerial.AmountCur -TableManagerial.VATAmountCur          
+	//) elmi
 	|		ELSE 0
 	|	END AS AmountCurDr,
 	|	TableManagerial.AccountStatementSales AS AccountCr,
@@ -3384,12 +3394,14 @@ Procedure GenerateTableManagerial(DocumentRefCustomerOrder, StructureAdditionalP
 	|	END AS CurrencyCr,
 	|	CASE
 	|		WHEN TableManagerial.AccountStatementSales.Currency
+	//( elmi #11
 	//|			THEN TableManagerial.AmountCur
-	|			THEN TableManagerial.AmountCur -TableManagerial.VATAmountCur          //elmi
+	|			THEN TableManagerial.AmountCur -TableManagerial.VATAmountCur          
 	|		ELSE 0
 	|	END AS AmountCurCr,
 	//|	TableManagerial.Amount AS Amount,
-	|	TableManagerial.Amount - TableManagerial.VATAmount  AS Amount,               //elmi
+	|	TableManagerial.Amount - TableManagerial.VATAmount  AS Amount,               
+	//) elmi
     |	&IncomeReflection AS Content
 	|FROM
 	|	TemporaryTableWorks AS TableManagerial
@@ -3413,8 +3425,10 @@ Procedure GenerateTableManagerial(DocumentRefCustomerOrder, StructureAdditionalP
 	|	END,
 	|	CASE
 	|		WHEN TableManagerial.GLAccountCustomerSettlements.Currency
+	//( elmi #11
 	//|			THEN TableManagerial.AmountCur
-	|			THEN TableManagerial.AmountCur - TableManagerial.VATAmountCur          //elmi
+	|			THEN TableManagerial.AmountCur - TableManagerial.VATAmountCur          
+	//) elmi
 	|		ELSE 0
 	|	END,
 	|	CASE
@@ -3429,12 +3443,14 @@ Procedure GenerateTableManagerial(DocumentRefCustomerOrder, StructureAdditionalP
 	|	END,
 	|	CASE
 	|		WHEN TableManagerial.ProductsOnCommission
+	//( elmi #11
 	//|			THEN TableManagerial.Amount
-	|	THEN TableManagerial.Amount -TableManagerial.VATAmount                       //elmi
+	|	THEN TableManagerial.Amount -TableManagerial.VATAmount                       
 	|		ELSE 0
 	|	END,
 	//|	TableManagerial.Amount,
-	|	TableManagerial.Amount -TableManagerial.VATAmount,                       //elmi
+	|	TableManagerial.Amount -TableManagerial.VATAmount,                       
+	//) elmi
 	|	&IncomeReflection
 	|FROM
 	|	TemporaryTableProducts AS TableManagerial
@@ -3617,7 +3633,7 @@ Procedure GenerateTableManagerial(DocumentRefCustomerOrder, StructureAdditionalP
 	|
 	|UNION ALL
 	|
-	//|elmi start
+	//( elmi #11
 	| SELECT TOP 1
 	|	5 AS Ordering,
 	|	TableManagerial.LineNumber AS LineNumber,
@@ -3676,7 +3692,7 @@ Procedure GenerateTableManagerial(DocumentRefCustomerOrder, StructureAdditionalP
 	|	TableManagerial.OrderStatus = VALUE(Enum.OrderStatuses.Completed)
 	|	AND &VATInventory <> 0
 	|
-	//|elmi end
+	//) elmi
 	|
 	|ORDER BY
 	|	Ordering,
@@ -3688,7 +3704,7 @@ Procedure GenerateTableManagerial(DocumentRefCustomerOrder, StructureAdditionalP
 	Query.SetParameter("PositiveExchangeDifferenceGLAccount", ChartsOfAccounts.Managerial.OtherIncome);
 	Query.SetParameter("NegativeExchangeDifferenceAccountOfAccounting", ChartsOfAccounts.Managerial.OtherExpenses);
 	Query.SetParameter("AccountingCurrency", Constants.AccountingCurrency.Get());
-	//elmi start
+	//( elmi #11
 	Query.SetParameter("VAT", NStr("en=' VAT '"));
 	Query.SetParameter("TextVAT",  ChartsOfAccounts.Managerial.Taxes);
 	Query.SetParameter("VATWorksCur", VATWorksCur);
@@ -3696,7 +3712,7 @@ Procedure GenerateTableManagerial(DocumentRefCustomerOrder, StructureAdditionalP
 	Query.SetParameter("VATInventoryCur", VATInventoryCur);
 	Query.SetParameter("VATInventory", VATInventory);
 
-	//elmi end
+	//) elmi
 	
 	QueryResult = Query.Execute();
 	Selection = QueryResult.Select();

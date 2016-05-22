@@ -958,7 +958,9 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	Counterparty = SmallBusinessServer.GetCompany(Object.Company);
 	
 	// Temporarily.
-	//Object.IncludeVATInPrice = True;   //elmi
+	//( elmi
+	//Object.IncludeVATInPrice = True; 
+	//) elmi
 	
 	If Not ValueIsFilled(Object.Ref) Then
 		GetChoiceListOfPaymentCardKinds();

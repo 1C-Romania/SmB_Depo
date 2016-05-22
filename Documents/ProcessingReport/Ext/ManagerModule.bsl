@@ -5,7 +5,7 @@
 //
 Procedure GenerateTableManagerial(DocumentRefReportAboutRecycling, StructureAdditionalProperties)
 		
-	//elmi start
+	//( elmi #11
     Query = New Query;
 	Query.TempTablesManager = StructureAdditionalProperties.ForPosting.StructureTemporaryTables.TempTablesManager;
 	Query.Text =
@@ -27,7 +27,7 @@ Procedure GenerateTableManagerial(DocumentRefReportAboutRecycling, StructureAddi
 		  VATExpenses    = Selection.VATExpenses;
 	      VATExpensesCur = Selection.VATExpensesCur;
 	EndDo;
-	//elmi end
+	//) elmi
 
 	Query = New Query;
 	Query.TempTablesManager = StructureAdditionalProperties.ForPosting.StructureTemporaryTables.TempTablesManager;
@@ -46,8 +46,10 @@ Procedure GenerateTableManagerial(DocumentRefReportAboutRecycling, StructureAddi
 	|	END AS CurrencyDr,
 	|	CASE
 	|		WHEN TableManagerial.GLAccountCustomerSettlements.Currency
-  //|			THEN TableManagerial.AmountCur
-	|			THEN TableManagerial.AmountCur - TableManagerial.VATAmountCur      //elmi
+	//( elmi #11
+    //|			THEN TableManagerial.AmountCur
+	|			THEN TableManagerial.AmountCur - TableManagerial.VATAmountCur     
+	//) elmi
 	|		ELSE 0
 	|	END AS AmountCurDr,
 	|	TableManagerial.AccountStatementSales AS AccountCr,
@@ -58,12 +60,14 @@ Procedure GenerateTableManagerial(DocumentRefReportAboutRecycling, StructureAddi
 	|	END AS CurrencyCr,
 	|	CASE
 	|		WHEN TableManagerial.AccountStatementSales.Currency
+	//( elmi #11
 	//|			THEN TableManagerial.AmountCur
-	|			THEN TableManagerial.AmountCur - TableManagerial.VATAmountCur      //elmi
+	|			THEN TableManagerial.AmountCur - TableManagerial.VATAmountCur      
 	|		ELSE 0
 	|	END AS AmountCurCr,
 	//|	TableManagerial.Amount AS Amount,
-	|	TableManagerial.Amount  - TableManagerial.VATAmount AS Amount,             //elmi
+	|	TableManagerial.Amount  - TableManagerial.VATAmount AS Amount,             
+	//) elmi
 	|	&IncomeReflection AS Content
 	|FROM
 	|	TemporaryTableProduction AS TableManagerial
@@ -282,12 +286,12 @@ Procedure GenerateTableManagerial(DocumentRefReportAboutRecycling, StructureAddi
 	Query.SetParameter("IncomeReflection", NStr("en = 'Sales revenue'"));
 	Query.SetParameter("PositiveExchangeDifferenceGLAccount", ChartsOfAccounts.Managerial.OtherIncome);
 	Query.SetParameter("NegativeExchangeDifferenceAccountOfAccounting", ChartsOfAccounts.Managerial.OtherExpenses);
-	//elmi start
+	//( elmi #11
 	Query.SetParameter("VAT", NStr("en=' VAT '"));
 	Query.SetParameter("TextVAT",  ChartsOfAccounts.Managerial.Taxes);
 	Query.SetParameter("VATExpenses", VATExpenses);
 	Query.SetParameter("VATExpensesCur", VATExpensesCur);
-	//elmi end
+	//) elmi
 
 	QueryResult = Query.Execute();
 	Selection = QueryResult.Select();
@@ -960,7 +964,7 @@ Procedure GenerateTableInventoryReceived(DocumentRefReportAboutRecycling, Struct
 	|	VALUE(Enum.ProductsReceiptTransferTypes.ReceiptToProcessing),
 	|	SUM(TableInventoryReceived.Quantity),
 	//|	SUM(TableInventoryReceived.SettlementsAmountTakenPassed),
-	|	SUM(TableInventoryReceived.SettlementsAmountTakenPassed - TableInventoryReceived.VATAmount),  //elmi
+	|	SUM(TableInventoryReceived.SettlementsAmountTakenPassed - TableInventoryReceived.VATAmount),
 	|	0
 	|FROM
 	|	TemporaryTableInventory AS TableInventoryReceived
@@ -1007,11 +1011,13 @@ Procedure GenerateTableIncomeAndExpenses(DocumentRefReportAboutRecycling, Struct
 	|	TableIncomeAndExpenses.CustomerOrder AS CustomerOrder,
 	|	TableIncomeAndExpenses.AccountStatementSales AS GLAccount,
 	|	CAST(&IncomeReflection AS String(100)) AS ContentOfAccountingRecord,
+	//( elmi #11
 	//|	SUM(TableIncomeAndExpenses.Amount) AS AmountIncome,
-	|	SUM(TableIncomeAndExpenses.Amount - TableIncomeAndExpenses.VATAmount) AS AmountIncome,   //elmi
+	|	SUM(TableIncomeAndExpenses.Amount - TableIncomeAndExpenses.VATAmount) AS AmountIncome,   
 	|	0 AS AmountExpense,
 	//|	SUM(TableIncomeAndExpenses.Amount) AS Amount
-	|	SUM(TableIncomeAndExpenses.Amount - TableIncomeAndExpenses.VATAmount) AS Amount          //elmi
+	|	SUM(TableIncomeAndExpenses.Amount - TableIncomeAndExpenses.VATAmount) AS Amount          
+	//) elmi
 	|FROM
 	|	TemporaryTableProduction AS TableIncomeAndExpenses
 	|WHERE
@@ -1376,8 +1382,10 @@ Procedure GenerateTableIncomeAndExpensesRetained(DocumentRefReportAboutRecycling
 	|		ELSE UNDEFINED
 	|	END AS Document,
 	|	DocumentTable.BusinessActivitySales AS BusinessActivity,
+	//( elmi #11
 	//|	DocumentTable.Amount AS AmountIncome
-	|	DocumentTable.Amount - DocumentTable.VATAmount AS AmountIncome        //elmi
+	|	DocumentTable.Amount - DocumentTable.VATAmount AS AmountIncome        
+	//) elmi
 	|FROM
 	|	TemporaryTableProduction AS DocumentTable
 	|WHERE

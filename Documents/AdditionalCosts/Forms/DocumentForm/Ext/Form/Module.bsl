@@ -890,7 +890,9 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	RepetitionNationalCurrency = StructureByCurrency.Multiplicity;
 	
 	// Temporarily.
-	//Object.IncludeVATInPrice = True;     //elmi
+	//( elmi #11
+	//Object.IncludeVATInPrice = True;  
+	//) elmi
 	
 	If Not ValueIsFilled(Object.Ref)
 		AND Not ValueIsFilled(Parameters.Basis)

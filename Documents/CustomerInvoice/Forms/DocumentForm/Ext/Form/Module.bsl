@@ -1794,7 +1794,9 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 	
 	// Temporarily.
-	//Object.IncludeVATInPrice = True;  //elmi
+	//( elmi #11
+	//Object.IncludeVATInPrice = True;  
+	//) elmi
 	
 	// Generate price and currency label.
 	CurrencyTransactionsAccounting = GetFunctionalOption("CurrencyTransactionsAccounting");

@@ -695,7 +695,9 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 	
 	// Temporarily.
-	//Object.IncludeVATInPrice = True;      //elmi
+	//( elmi #11
+	//Object.IncludeVATInPrice = True;      
+	//) elmi
 	
 	CashCRType = Catalogs.CashRegisters.GetCashRegisterAttributes(Object.CashCR).CashCRType;
 	Items.GroupCashCRSession.Visible = CashCRType = Enums.CashCRTypes.FiscalRegister;

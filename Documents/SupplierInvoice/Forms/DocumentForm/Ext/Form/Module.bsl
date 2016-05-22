@@ -1679,7 +1679,9 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		EndIf;
 	EndIf;
 	
-	//Object.IncludeVATInPrice = True;          //elmi
+	//( elmi #11
+	//Object.IncludeVATInPrice = True;
+	//) elmi
 	
 	GetOperationKindsStructure();
 	

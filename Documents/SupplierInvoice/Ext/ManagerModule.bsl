@@ -94,12 +94,12 @@ Procedure GenerateTableInventory(DocumentRefPurchaseInvoice, StructureAdditional
 	|				THEN -1 * TableInventory.Cost
 	|			WHEN TableInventory.OperationKind = VALUE(Enum.OperationKindsSupplierInvoice.ReceiptFromVendor)
 	|					AND TableInventory.IncludeExpensesInCostPrice
-	// elmi start
+	//( elmi #11
 	//| 			THEN TableInventory.Amount + TableInventory.AmountExpenses
 	//|			ELSE TableInventory.Amount
-	| 			THEN TableInventory.Amount + TableInventory.AmountExpenses - TableInventory.VATAmount  //elmi
-	|			ELSE TableInventory.Amount - TableInventory.VATAmount                                  //elmi
-	// elmi end
+	| 			THEN TableInventory.Amount + TableInventory.AmountExpenses - TableInventory.VATAmount  
+	|			ELSE TableInventory.Amount - TableInventory.VATAmount                                  
+	//) elmi
 	|		END) AS Amount,
 	|	SUM(CASE
 	|			WHEN TableInventory.OperationKind = VALUE(Enum.OperationKindsSupplierInvoice.ReturnFromCustomer)
@@ -310,10 +310,10 @@ Procedure GenerateTableCustomerInvoices(DocumentRefPurchaseInvoice, StructureAdd
 	|	TableInventory.Batch AS Batch,
 	|	TableInventory.Order AS CustomerOrder,
 	|	0 AS Quantity,
-	//elmi start
+	//( elmi #11
 	//|	SUM(TableInventory.Amount) AS Amount,
 	|	SUM(TableInventory.Amount - TableInventory.VATAmount ) КАК Amount,
-	//elmi end
+	//) elmi
 	|	TRUE AS FixedCost,
 	|	&OtherExpenses AS ContentOfAccountingRecord
 	|FROM
@@ -639,12 +639,12 @@ Procedure GenerateTableIncomeAndExpenses(DocumentRefPurchaseInvoice, StructureAd
 	|	TableIncomeAndExpenses.GLAccount AS GLAccount,
 	|	CAST(&OtherExpenses AS String(100)) AS ContentOfAccountingRecord,
 	|	0 AS AmountIncome,
-	// elmi start
+	//( elmi #11
 	//|	SUM(TableIncomeAndExpenses.Amount) AS AmountExpenses,
 	//|	SUM(TableIncomeAndExpenses.Amount) AS Amount
-	|	SUM(TableIncomeAndExpenses.Amount-TableIncomeAndExpenses.VATAmount) AS AmountExpense,
+	|	SUM(TableIncomeAndExpenses.Amount-TableIncomeAndExpenses.VATAmount) AS AmountExpenses,
 	|	SUM(TableIncomeAndExpenses.Amount-TableIncomeAndExpenses.VATAmount) AS Amount
-	// elmi end
+	//) elmi
 	|FROM
 	|	TemporaryTableExpenses AS TableIncomeAndExpenses
 	|WHERE
@@ -681,14 +681,14 @@ Procedure GenerateTableIncomeAndExpenses(DocumentRefPurchaseInvoice, StructureAd
 	|	TableIncomeAndExpenses.Order,
 	|	TableIncomeAndExpenses.AccountStatementSales,
 	|	CAST(&IncomeReflection AS String(100)),
-	// elmi start
+	//( elmi #11
 	//|	-SUM(TableIncomeAndExpenses.Amount),
 	//|	0,
 	//|	-SUM(TableIncomeAndExpenses.Amount)
 	|	-SUM(TableIncomeAndExpenses.Amount-TableIncomeAndExpenses.VATAmount),
 	|	0,
 	|	-SUM(TableIncomeAndExpenses.Amount-TableIncomeAndExpenses.VATAmount)
-	// elmi end
+	//) elmi
 	|FROM
 	|	TemporaryTableInventory AS TableIncomeAndExpenses
 	|WHERE
@@ -1098,12 +1098,12 @@ Procedure GenerateTableInventoryReceived(DocumentRefPurchaseInvoice, StructureAd
 	|		ELSE VALUE(Enum.ProductsReceiptTransferTypes.SafeCustody)
 	|	END AS ReceptionTransmissionType,
 	|	SUM(TableInventoryReceived.Quantity) AS Quantity,
-	//elmi start
+	//( elmi #11
 	//|	SUM(TableInventoryReceived.SettlementsAmountTakenPassed) AS SettlementsAmount,
 	//|	SUM(TableInventoryReceived.SettlementsAmountTakenPassed) AS Amount,
 	|	SUM(TableInventoryReceived.SettlementsAmountTakenPassed - TableInventoryReceived.VATAmount) AS SettlementsAmount,
 	|	SUM(TableInventoryReceived.SettlementsAmountTakenPassed - TableInventoryReceived.VATAmount) AS Amount,
-	// elmi end
+	//) elmi
 	|	0 AS SalesAmount,
 	|	&AdmAccountingCurrency AS Currency,
 	|	SUM(TableInventoryReceived.SettlementsAmountTakenPassed) AS AmountCur,
@@ -1150,12 +1150,12 @@ Procedure GenerateTableInventoryReceived(DocumentRefPurchaseInvoice, StructureAd
 	|	VALUE(Enum.ProductsReceiptTransferTypes.ReportToPrincipal),
 	|	-SUM(TableInventoryReceived.Quantity),
 	|	0,
-	//elmi start
+	//( elmi #11
 	//|	-SUM(TableInventoryReceived.Amount),
 	//|	-SUM(TableInventoryReceived.Amount),
 	|	-SUM(TableInventoryReceived.Amount - TableInventoryReceived.VATAmount),
 	|	-SUM(TableInventoryReceived.Amount - TableInventoryReceived.VATAmount),
-	//elmi end
+	//) elmi
 	|	&AdmAccountingCurrency,
 	|	SUM(TableInventoryReceived.Amount),
 	|	CAST(&InventoryIncomeReturn AS String(100))
@@ -1210,10 +1210,10 @@ Procedure GenerateTableInventoryTransferred(DocumentRefPurchaseInvoice, Structur
 	|		ELSE VALUE(Enum.ProductsReceiptTransferTypes.SafeCustody)
 	|	END AS ReceptionTransmissionType,
 	|	-SUM(TableInventoryTransferred.Quantity) AS Quantity,
-	//elmi start
+	//( elmi #11
 	//|	-SUM(TableInventoryTransferred.SettlementsAmountTakenPassed) AS SettlementsAmount
 	|	-SUM(TableInventoryTransferred.SettlementsAmountTakenPassed - TableInventoryTransferred.VatAmount) КАК СуммаРасчетов
-	//elmi end
+	//) elmi
 	|FROM
 	|	TemporaryTableInventory AS TableInventoryTransferred
 	|WHERE
@@ -1722,7 +1722,7 @@ Procedure GenerateTableAccountsPayable(DocumentRefPurchaseInvoice, StructureAddi
 	|	END AS Order,
 	|	DocumentTable.SettlementsCurrency AS Currency,
 	|	VALUE(Enum.SettlementsTypes.Debt) AS SettlementsType,
-	//elmi start
+	//( elmi #11
 	//|	SUM(CASE
 	//|			WHEN DocumentTable.IncludeExpensesInCostPrice
 	//|				THEN DocumentTable.Amount + DocumentTable.AmountExpenses
@@ -1747,7 +1747,7 @@ Procedure GenerateTableAccountsPayable(DocumentRefPurchaseInvoice, StructureAddi
 	|	SUM(DocumentTable.AmountCur) AS AmountCur,
 	|	SUM(DocumentTable.Amount) AS AmountForBalance,
 	|	SUM(DocumentTable.AmountCur) AS AmountCurForBalance,
-    //elmi end
+    //) elmi
 	|	CAST(&AppearenceOfLiabilityToVendor AS String(100)) AS ContentOfAccountingRecord
 	|INTO TemporaryTableAccountsPayable
 	|FROM
@@ -1807,7 +1807,9 @@ Procedure GenerateTableAccountsPayable(DocumentRefPurchaseInvoice, StructureAddi
 	|	TemporaryTableExpenses AS DocumentTable
 	|WHERE
 	|	DocumentTable.OperationKind = VALUE(Enum.OperationKindsSupplierInvoice.ReceiptFromVendor)
-	//|	AND Not DocumentTable.IncludeExpensesInCostPrice   // elmi
+	//( elmi #11
+	//|	AND Not DocumentTable.IncludeExpensesInCostPrice 
+	//) elmi
 	|
 	|GROUP BY
 	|	DocumentTable.Period,
@@ -2252,10 +2254,10 @@ Procedure GenerateTableIncomeAndExpensesRetained(DocumentRefPurchaseInvoice, Str
 	|		ELSE UNDEFINED
 	|	END AS Document,
 	|	DocumentTable.BusinessActivitySales AS BusinessActivity,
-	//elmi start
+	//( elmi #11
 	//|	DocumentTable.Amount AS AmountExpenses
-	|	DocumentTable.Amount - DocumentTable.VATAmount AS AmountExpense
-	//elmi end
+	|	DocumentTable.Amount - DocumentTable.VATAmount AS AmountExpenses
+	//) elmi
 	|FROM
 	|	TemporaryTableInventory AS DocumentTable
 	|WHERE
@@ -2275,10 +2277,10 @@ Procedure GenerateTableIncomeAndExpensesRetained(DocumentRefPurchaseInvoice, Str
 	|		ELSE UNDEFINED
 	|	END,
 	|	DocumentTable.BusinessActivity,
-	//elmi start
+	//( elmi #11
 	//|	DocumentTable.Amount
 	|	DocumentTable.Amount - DocumentTable.VATAmount
-	//elmi end
+	//) elmi
 	|FROM
 	|	TemporaryTableExpenses AS DocumentTable
 	|WHERE
@@ -2364,7 +2366,7 @@ Procedure GenerateTableIncomeAndExpensesRetained(DocumentRefPurchaseInvoice, Str
 	|	Table.Document AS Document,
 	|	&Item AS Item,
 	|	Table.BusinessActivity AS BusinessActivity,
-	|	Table.AmountExpense AS AmountExpense
+	|	Table.AmountExpenses AS AmountExpenses
 	|INTO TemporaryTablePrepaidIncomeAndExpensesRetained
 	|FROM
 	|	&Table AS Table";
@@ -2398,7 +2400,7 @@ Procedure GenerateTableIncomeAndExpensesUndistributed(DocumentRefPurchaseInvoice
 	|		ELSE UNDEFINED
 	|	END AS Document,
 	|	DocumentTable.Item AS Item,
-	|	DocumentTable.Amount AS AmountExpense
+	|	DocumentTable.Amount AS AmountExpenses
 	|FROM
 	|	TemporaryTablePrepayment AS DocumentTable
 	|WHERE
@@ -2430,7 +2432,7 @@ Procedure GenerateTableIncomeAndExpensesCashMethod(DocumentRefPurchaseInvoice, S
 	|	DocumentTable.Company AS Company,
 	|	UNDEFINED AS BusinessActivity,
 	|	DocumentTable.Item AS Item,
-	|	-DocumentTable.Amount AS AmountExpense
+	|	-DocumentTable.Amount AS AmountExpenses
 	|FROM
 	|	TemporaryTablePrepayment AS DocumentTable
 	|WHERE
@@ -2444,8 +2446,7 @@ Procedure GenerateTableIncomeAndExpensesCashMethod(DocumentRefPurchaseInvoice, S
 	|	Table.Company,
 	|	Table.BusinessActivity,
 	|	Table.Item,
-	//|	Table.AmountExpenses
-	|	Table.AmountExpense     // elmi
+	|	Table.AmountExpenses
 	|FROM
 	|	TemporaryTablePrepaidIncomeAndExpensesRetained AS Table";
 	
@@ -2574,7 +2575,7 @@ EndProcedure // GenerateTableIncomeAndExpenses()
 //
 Procedure GenerateTableManagerial(DocumentRefPurchaseInvoice, StructureAdditionalProperties)
 	
-	//elmi start
+	//( elmi #11
     Query = New Query;
 	Query.TempTablesManager = StructureAdditionalProperties.ForPosting.StructureTemporaryTables.TempTablesManager;
 	Query.Text =
@@ -2618,7 +2619,7 @@ Procedure GenerateTableManagerial(DocumentRefPurchaseInvoice, StructureAdditiona
 		  VATExpenses    = Selection.VATExpenses;
 	      VATExpensesCur = Selection.VATExpensesCur;
 	EndDo;
-	//elmi end
+	//) elmi
 	
 	Query = New Query;
 	Query.TempTablesManager = StructureAdditionalProperties.ForPosting.StructureTemporaryTables.TempTablesManager;
@@ -2637,10 +2638,10 @@ Procedure GenerateTableManagerial(DocumentRefPurchaseInvoice, StructureAdditiona
 	|	END AS CurrencyDr,
 	|	CASE
 	|		WHEN TableManagerial.GLAccount.Currency
-	//elmi start
+	//( elmi #11
 	//|			THEN TableManagerial.AmountCur
 	|			THEN TableManagerial.AmountCur - TableManagerial.VATAmountCur
-	// elmi end
+	//) elmi
 	|		ELSE 0
 	|	END AS AmountCurDr,
 	|	TableManagerial.GLAccountVendorSettlements AS AccountCr,
@@ -2651,16 +2652,16 @@ Procedure GenerateTableManagerial(DocumentRefPurchaseInvoice, StructureAdditiona
 	|	END AS CurrencyCr,
 	|	CASE
 	|		WHEN TableManagerial.GLAccountVendorSettlements.Currency
-	//elmi start
+	//( elmi #11
 	//|			THEN TableManagerial.AmountCur
 	|			THEN TableManagerial.AmountCur - TableManagerial.VATAmountCur
-	//elmi end
+	//) elmi
 	|		ELSE 0
 	|	END AS AmountCurCr,
-	//elmi start
+	//( elmi #11
 	//|	TableManagerial.Amount AS Amount,
 	|	TableManagerial.Amount - TableManagerial.VATAmount AS Amount,
-	//elmi end
+	//) elmi
 	|	&InventoryReceipt AS Content
 	|FROM
 	|	TemporaryTableInventory AS TableManagerial
@@ -2684,10 +2685,10 @@ Procedure GenerateTableManagerial(DocumentRefPurchaseInvoice, StructureAdditiona
 	|	END,
 	|	CASE
 	|		WHEN TableManagerial.GLAccount.Currency
-	//elmi start
+	//( elmi #11
 	//|			THEN TableManagerial.AmountCur + TableManagerial.AmountExpensesCur
 	|			THEN TableManagerial.AmountCur + TableManagerial.AmountExpensesCur -  TableManagerial.VATAmountCur
-	//elmi end
+	//) elmi
 
 	|		ELSE 0
 	|	END,
@@ -2699,16 +2700,16 @@ Procedure GenerateTableManagerial(DocumentRefPurchaseInvoice, StructureAdditiona
 	|	END,
 	|	CASE
 	|		WHEN TableManagerial.GLAccountVendorSettlements.Currency
-	//elmi start
+	//( elmi #11
 	//|			THEN TableManagerial.AmountCur + TableManagerial.AmountExpensesCur
 	|			THEN TableManagerial.AmountCur + TableManagerial.AmountExpensesCur -  TableManagerial.VATAmountCur
-	//elmi end
+	//) elmi
 	|		ELSE 0
 	|	END,
-	//elmi start
+	//( elmi #11
 	//|	TableManagerial.Amount + TableManagerial.AmountExpenses,
 	|	TableManagerial.Amount + TableManagerial.AmountExpenses - TableManagerial.VATAmount,
-	//elmi end
+	//) elmi
 	|	&InventoryReceipt
 	|FROM
 	|	TemporaryTableInventory AS TableManagerial
@@ -2732,10 +2733,10 @@ Procedure GenerateTableManagerial(DocumentRefPurchaseInvoice, StructureAdditiona
 	|	END,
 	|	CASE
 	|		WHEN TableManagerial.GLAccount.Currency
-	//elmi start
+	//( elmi #11
 	//|			THEN TableManagerial.AmountCur
 	|			THEN TableManagerial.AmountCur  -  TableManagerial.VATAmountCur
-	//elmi end
+	//) elmi
 	|		ELSE 0
 	|	END,
 	|	TableManagerial.GLAccountVendorSettlements,
@@ -2746,16 +2747,16 @@ Procedure GenerateTableManagerial(DocumentRefPurchaseInvoice, StructureAdditiona
 	|	END,
 	|	CASE
 	|		WHEN TableManagerial.GLAccountVendorSettlements.Currency
-	//elmi start
+	//( elmi #11
 	//|			THEN TableManagerial.AmountCur
 	|			THEN TableManagerial.AmountCur  -  TableManagerial.VATAmountCur
-	//elmi end
+	//) elmi
 	|		ELSE 0
 	|	END,
-	 //elmi start
+	//( elmi #11
 	//|	TableManagerial.Amount,
 	|	TableManagerial.Amount - TableManagerial.VATAmount,
-	//elmi end
+	//) elmi
 	|	&OtherExpenses
 	|FROM
 	|	TemporaryTableExpenses AS TableManagerial
@@ -2779,19 +2780,19 @@ Procedure GenerateTableManagerial(DocumentRefPurchaseInvoice, StructureAdditiona
 	|	END,
 	|	CASE
 	|		WHEN TableManagerial.GLAccountCustomerSettlements.Currency
-	//elmi start
+	//( elmi #11
 	//|			THEN -TableManagerial.AmountCur
 	|			THEN - (TableManagerial.AmountCur - TableManagerial.VATAmountCur)
-	//elmi end
+	//) elmi
 	|		ELSE 0
 	|	END,
 	|	TableManagerial.AccountStatementSales,
 	|	UNDEFINED,
 	|	0,
-	//elmi start
+	//( elmi #11
 	//|	-TableManagerial.Amount,
 	|	-TableManagerial.Amount - TableManagerial.VATAmount ,
-	//elmi end
+	//) elmi
 	|	&IncomeReversal
 	|FROM
 	|	TemporaryTableInventory AS TableManagerial
@@ -3104,7 +3105,7 @@ Procedure GenerateTableManagerial(DocumentRefPurchaseInvoice, StructureAdditiona
 	|FROM
 	|	TemporaryTableRetailAmountAccounting AS TableManagerial
 	|
-	//////////elmi start
+	//( elmi #11
 	|
 	|UNION ALL
 	|
@@ -3220,7 +3221,7 @@ Procedure GenerateTableManagerial(DocumentRefPurchaseInvoice, StructureAdditiona
 	|WHERE
 	|	TableManagerial.OperationKind = VALUE(Enum.OperationKindsSupplierInvoice.ReturnFromCustomer)
 	|	AND  (NOT TableManagerial.IncludeExpensesInCostPrice) AND  &VATInventory  > 0
-	//////////elmi end
+	//) elmi
 	|
 	|ORDER BY
 	|	Ordering,
@@ -3237,16 +3238,16 @@ Procedure GenerateTableManagerial(DocumentRefPurchaseInvoice, StructureAdditiona
 	Query.SetParameter("NegativeExchangeDifferenceAccountOfAccounting", ChartsOfAccounts.Managerial.OtherExpenses);
 	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference'"));
 	Query.SetParameter("OperationKind", DocumentRefPurchaseInvoice.OperationKind);
-	//elmi start
-	Query.SetParameter("PreVATInventory", NStr("en=' VAT goods '"));
-	Query.SetParameter("PreVATExpenses", NStr("en=' VAT expenses '"));
-	Query.SetParameter("PreVAT", NStr("en=' VAT '"));
+	//( elmi #11
+	Query.SetParameter("PreVATInventory", NStr("en='pre VAT goods'"));
+	Query.SetParameter("PreVATExpenses", NStr("en='pre VAT expenses'"));
+	Query.SetParameter("PreVAT", NStr("en=' pre VAT'"));
 	Query.SetParameter("TextVATExpenses",  ChartsOfAccounts.Managerial.Taxes);
 	Query.SetParameter("VATExpenses", VATExpenses);
 	Query.SetParameter("VATInventory", VATInventory);
 	Query.SetParameter("VATExpensesCur", VATExpensesCur);
 	Query.SetParameter("VATInventoryCur", VATInventoryCur);
-	//elmi end
+	//) elmi
 	
 	
 	
@@ -3612,7 +3613,7 @@ Procedure InitializeDocumentData(DocumentRefPurchaseInvoice, StructureAdditional
 	|					ELSE PurchaseInvoiceExpenses.VATAmount * PurchaseInvoiceExpenses.Ref.ExchangeRate * ManagCurrencyRates.Multiplicity / (ManagCurrencyRates.ExchangeRate * PurchaseInvoiceExpenses.Ref.Multiplicity)
 	|				END
 	|		END AS NUMBER(15, 2)) AS VATAmount,
-	// elmi - start
+	//( elmi #11
 	|	CAST(CASE
 	|			WHEN PurchaseInvoiceExpenses.Ref.IncludeVATInPrice
 	|				THEN 0
@@ -3622,7 +3623,7 @@ Procedure InitializeDocumentData(DocumentRefPurchaseInvoice, StructureAdditional
 	|					ELSE PurchaseInvoiceExpenses.VATAmount
 	|				END
 	|		END AS NUMBER(15, 2)) AS VATAmountCur,
-	// elmi - end
+	//) elmi
 	|	CAST(CASE
 	|			WHEN PurchaseInvoiceExpenses.Ref.DocumentCurrency = &CurrencyNational
 	|				THEN PurchaseInvoiceExpenses.VATAmount * RegCurrencyRates.ExchangeRate * ManagCurrencyRates.Multiplicity / (ManagCurrencyRates.ExchangeRate * RegCurrencyRates.Multiplicity)

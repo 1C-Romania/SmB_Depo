@@ -466,11 +466,13 @@ Procedure GenerateTableIncomeAndExpenses(DocumentRefReportOnRetailSales, Structu
 	|	TableIncomeAndExpenses.CustomerOrder AS CustomerOrder,
 	|	TableIncomeAndExpenses.GLAccountRevenueFromSales AS GLAccount,
 	|	CAST(&IncomeReflection AS String(100)) AS ContentOfAccountingRecord,
+	//( elmi #11
 	//|	SUM(TableIncomeAndExpenses.Amount) AS AmountIncome,
-	|	SUM(TableIncomeAndExpenses.Amount - TableIncomeAndExpenses.VATAmount) AS AmountIncome,         //elmi
+	|	SUM(TableIncomeAndExpenses.Amount - TableIncomeAndExpenses.VATAmount) AS AmountIncome,         
 	|	0 AS AmountExpense,
 	//|	SUM(TableIncomeAndExpenses.Amount) AS Amount
-	|	SUM(TableIncomeAndExpenses.Amount - TableIncomeAndExpenses.VATAmount) AS Amount               //elmi
+	|	SUM(TableIncomeAndExpenses.Amount - TableIncomeAndExpenses.VATAmount) AS Amount               
+	//) elmi
 	|FROM
 	|	TemporaryTableInventory AS TableIncomeAndExpenses
 	|WHERE
@@ -557,8 +559,10 @@ Procedure GenerateTableIncomeAndExpensesCashMethod(DocumentRefReportOnRetailSale
 	|	DocumentTable.Company AS Company,
 	|	DocumentTable.BusinessActivity AS BusinessActivity,
 	|	DocumentTable.Item AS Item,
+	//( elmi #11
 	//|	DocumentTable.Amount AS AmountIncome
-	|	DocumentTable.Amount - DocumentTable.VATAmount AS AmountIncome        //elmi
+	|	DocumentTable.Amount - DocumentTable.VATAmount AS AmountIncome
+	//) elmi
 	|FROM
 	|	TemporaryTableInventory AS DocumentTable
 	|WHERE
@@ -683,7 +687,7 @@ EndProcedure // GenerateTableCashAssetsInCashRegisters()
 //
 Procedure GenerateTableManagerial(DocumentRefReportOnRetailSales, StructureAdditionalProperties)
 	
-	//elmi start
+	//( elmi #11
     Query = New Query;
 	Query.TempTablesManager = StructureAdditionalProperties.ForPosting.StructureTemporaryTables.TempTablesManager;
 	Query.Text =
@@ -705,7 +709,7 @@ Procedure GenerateTableManagerial(DocumentRefReportOnRetailSales, StructureAddit
 		  VATInventory    = Selection.VATInventory;
 	      VATInventoryCur = Selection.VATInventoryCur;
 	EndDo;
-    //elmi end
+    //) elmi
 	
 	
 	Query = New Query;
@@ -725,8 +729,10 @@ Procedure GenerateTableManagerial(DocumentRefReportOnRetailSales, StructureAddit
 	|	END AS CurrencyDr,
 	|	CASE
 	|		WHEN TableManagerial.CashCRGLAccount.Currency
+	//( elmi #11
 	//|			THEN TableManagerial.AmountCur
-	|			THEN TableManagerial.AmountCur - TableManagerial.VATAmountCur                     //elmi
+	|			THEN TableManagerial.AmountCur - TableManagerial.VATAmountCur
+	//) elmi
 	|		ELSE 0
 	|	END AS AmountCurDr,
 	|	CASE
@@ -741,12 +747,16 @@ Procedure GenerateTableManagerial(DocumentRefReportOnRetailSales, StructureAddit
 	|	END AS CurrencyCr,
 	|	CASE
 	|		WHEN TableManagerial.ProductsOnCommission
+	//( elmi #11
 	//|			THEN TableManagerial.Amount
-	|			THEN TableManagerial.Amount - TableManagerial.VATAmount                          //elmi
+	|			THEN TableManagerial.Amount - TableManagerial.VATAmount                          
+	//) elmi
 	|		ELSE 0
 	|	END AS AmountCurCr,
+	//( elmi #11
 	//|	TableManagerial.Amount AS Amount,
-	|	TableManagerial.Amount - TableManagerial.VATAmount   AS Amount,                          //elmi
+	|	TableManagerial.Amount - TableManagerial.VATAmount   AS Amount,                          
+	//) elmi
 	|	&IncomeReflection AS Content
 	|FROM
 	|	TemporaryTableInventory AS TableManagerial
@@ -834,7 +844,7 @@ Procedure GenerateTableManagerial(DocumentRefReportOnRetailSales, StructureAddit
 	|WHERE
 	|	&CompletePosting
 	|
-	//elmi start
+	//( elmi #11
 	|UNION ALL
 	|
 	|SELECT TOP 1
@@ -864,7 +874,7 @@ Procedure GenerateTableManagerial(DocumentRefReportOnRetailSales, StructureAddit
 	|WHERE
 	|	&CompletePosting  AND &VATInventory > 0
 	|
-    //elmi end
+    //) elmi
 	|
 	|ORDER BY
 	|	Order,
@@ -877,12 +887,12 @@ Procedure GenerateTableManagerial(DocumentRefReportOnRetailSales, StructureAddit
 	Query.SetParameter("PositiveExchangeDifferenceGLAccount", ChartsOfAccounts.Managerial.OtherIncome);
 	Query.SetParameter("NegativeExchangeDifferenceAccountOfAccounting", ChartsOfAccounts.Managerial.OtherExpenses);
 	Query.SetParameter("CompletePosting", StructureAdditionalProperties.ForPosting.CompletePosting);
-	//elmi start
+	//( elmi #11
 	Query.SetParameter("VAT", NStr("en=' VAT '"));
 	Query.SetParameter("TextVAT",  ChartsOfAccounts.Managerial.Taxes);
 	Query.SetParameter("VATInventoryCur", VATInventoryCur);
 	Query.SetParameter("VATInventory", VATInventory);
-	//elmi end
+	//) elmi
 	
 	QueryResult = Query.Execute();
 	Selection = QueryResult.Select();

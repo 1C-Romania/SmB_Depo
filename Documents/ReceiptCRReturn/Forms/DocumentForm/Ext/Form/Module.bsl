@@ -399,7 +399,9 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	Counterparty = SmallBusinessServer.GetCompany(Object.Company);
 	
 	// Temporarily.
-	//Object.IncludeVATInPrice = True;     //elmi
+	//( elmi #11
+	//Object.IncludeVATInPrice = True;  
+	//) elmi
 	
 	CashCRUseWithoutEquipmentConnection = Object.CashCR.UseWithoutEquipmentConnection;
 	

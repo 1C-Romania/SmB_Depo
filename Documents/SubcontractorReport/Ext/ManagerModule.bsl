@@ -8,7 +8,7 @@
 //
 Procedure GenerateTableManagerial(DocumentRefSubcontractorReport, StructureAdditionalProperties)
 	
-	//elmi start
+	//( elmi #11
     Query = New Query;
 	Query.TempTablesManager = StructureAdditionalProperties.ForPosting.StructureTemporaryTables.TempTablesManager;
 	Query.Text =
@@ -30,7 +30,7 @@ Procedure GenerateTableManagerial(DocumentRefSubcontractorReport, StructureAddit
 		  VATExpenses    = Selection.VATExpenses;
 	      VATExpensesCur = Selection.VATExpensesCur;
 	EndDo;
-	//elmi end
+	//) elmi
 
 	Query = New Query;
 	Query.TempTablesManager = StructureAdditionalProperties.ForPosting.StructureTemporaryTables.TempTablesManager;
@@ -240,12 +240,12 @@ Procedure GenerateTableManagerial(DocumentRefSubcontractorReport, StructureAddit
 	|WHERE &VATExpenses <> 0
 	|";
 
-	//elmi start
+	//( elmi #11
 	Query.SetParameter("VAT", NStr("en=' VAT '"));
 	Query.SetParameter("TextVAT",  ChartsOfAccounts.Managerial.Taxes);
 	Query.SetParameter("VATExpenses", VATExpenses);
 	Query.SetParameter("VATExpensesCur", VATExpensesCur);
-	//elmi end
+	//) elmi
 
 	
 	
@@ -395,7 +395,7 @@ EndProcedure // GenerateTableInventoryInventory()
 //
 Procedure DataInitializationByService(DocumentRefSubcontractorReport, StructureAdditionalProperties, ServicesAmount) Export
 
-	//elmi start
+	//( elmi #11
     Query = New Query;
 	Query.TempTablesManager = StructureAdditionalProperties.ForPosting.StructureTemporaryTables.TempTablesManager;
 	Query.Text =
@@ -417,7 +417,7 @@ Procedure DataInitializationByService(DocumentRefSubcontractorReport, StructureA
 		  VATExpenses    = Selection.VATExpenses;
 	      VATExpensesCur = Selection.VATExpensesCur;
 	EndDo;
-	//elmi end
+	//) elmi
 	
 	
 	Query = New Query;
@@ -459,13 +459,17 @@ Procedure DataInitializationByService(DocumentRefSubcontractorReport, StructureA
 	|	0 AS Quantity,
 	|	CAST(CASE
 	|			WHEN SubcontractorReport.DocumentCurrency = ConstantNationalCurrency.Value
-	|				THEN SubcontractorReport.Total * RegCurrencyRates.ExchangeRate * ManagCurrencyRates.Multiplicity / (ManagCurrencyRates.ExchangeRate * RegCurrencyRates.Multiplicity)   - &VATExpenses  //elmi
-	|			ELSE SubcontractorReport.Total * SubcontractorReport.ExchangeRate * ManagCurrencyRates.Multiplicity / (ManagCurrencyRates.ExchangeRate * SubcontractorReport.Multiplicity) - &VATExpenses  //elmi
+	//( elmi #11
+	|				THEN SubcontractorReport.Total * RegCurrencyRates.ExchangeRate * ManagCurrencyRates.Multiplicity / (ManagCurrencyRates.ExchangeRate * RegCurrencyRates.Multiplicity)   - &VATExpenses 
+	|			ELSE SubcontractorReport.Total * SubcontractorReport.ExchangeRate * ManagCurrencyRates.Multiplicity / (ManagCurrencyRates.ExchangeRate * SubcontractorReport.Multiplicity) - &VATExpenses 
+	//) elmi
 	|		END AS NUMBER(15, 2)) AS Amount,
 	|	CAST(CASE
 	|			WHEN SubcontractorReport.DocumentCurrency = ConstantNationalCurrency.Value
-	|				THEN SubcontractorReport.Total * RegCurrencyRates.ExchangeRate * SubcontractorReport.Ref.Multiplicity / (SubcontractorReport.Ref.ExchangeRate * RegCurrencyRates.Multiplicity) - &VATExpensesCur  //elmi
-	|			ELSE SubcontractorReport.Total - &VATExpensesCur  //elmi
+	//( elmi #11
+	|				THEN SubcontractorReport.Total * RegCurrencyRates.ExchangeRate * SubcontractorReport.Ref.Multiplicity / (SubcontractorReport.Ref.ExchangeRate * RegCurrencyRates.Multiplicity) - &VATExpensesCur 
+	|			ELSE SubcontractorReport.Total - &VATExpensesCur  
+	//) elmi
 	|		END AS NUMBER(15, 2)) AS AmountCur,
 	|	CASE
 	|		WHEN SubcontractorReport.StructuralUnit.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Division)
@@ -484,8 +488,10 @@ Procedure DataInitializationByService(DocumentRefSubcontractorReport, StructureA
 	|		WHEN SubcontractorReport.Counterparty.GLAccountVendorSettlements.Currency
 	|			THEN CAST(CASE
 	|						WHEN SubcontractorReport.DocumentCurrency = ConstantNationalCurrency.Value
-	|							THEN SubcontractorReport.Total * RegCurrencyRates.ExchangeRate * SubcontractorReport.Ref.Multiplicity / (SubcontractorReport.Ref.ExchangeRate * RegCurrencyRates.Multiplicity) - &VATExpensesCur  //elmi
-	|						ELSE SubcontractorReport.Total - &VATExpensesCur  //elmi
+	//( elmi #11
+	|							THEN SubcontractorReport.Total * RegCurrencyRates.ExchangeRate * SubcontractorReport.Ref.Multiplicity / (SubcontractorReport.Ref.ExchangeRate * RegCurrencyRates.Multiplicity) - &VATExpensesCur 
+	|						ELSE SubcontractorReport.Total - &VATExpensesCur 
+	//) elmi
 	|					END AS NUMBER(15, 2))
 	|		ELSE 0
 	|	END AS AmountCurCr,
@@ -521,10 +527,10 @@ Procedure DataInitializationByService(DocumentRefSubcontractorReport, StructureA
 	Query.SetParameter("UseCharacteristics", StructureAdditionalProperties.AccountingPolicy.UseCharacteristics);
 	Query.SetParameter("UseBatches", StructureAdditionalProperties.AccountingPolicy.UseBatches);
 	Query.SetParameter("ReflectionCostsOnProcessing", NStr("en = 'Reflection of the processing costs'"));
-    //elmi start
+    //( elmi #11
 	Query.SetParameter("VATExpenses", VATExpenses);
 	Query.SetParameter("VATExpensesCur", VATExpensesCur);
-	//elmi end
+	//) elmi
 
 	Result = Query.Execute();
 	
@@ -960,7 +966,7 @@ Procedure DataInitializationByInventory(DocumentRefSubcontractorReport, Structur
 	|				THEN ProcesserReportInventory.Total * RegCurrencyRates.ExchangeRate * ManagCurrencyRates.Multiplicity / (ManagCurrencyRates.ExchangeRate * RegCurrencyRates.Multiplicity)
 	|			ELSE ProcesserReportInventory.Total * ProcesserReportInventory.Ref.ExchangeRate * ManagCurrencyRates.Multiplicity / (ManagCurrencyRates.ExchangeRate * ProcesserReportInventory.Ref.Multiplicity)
 	|		END AS NUMBER(15, 2)) AS SettlementsAmount,
-	//elmi start
+	//( elmi #11
 	|	CAST(CASE 
 	|            WHEN ProcesserReportInventory.Ref.IncludeVATInPrice
 	|			 THEN 0   
@@ -970,7 +976,7 @@ Procedure DataInitializationByInventory(DocumentRefSubcontractorReport, Structur
 	|			      ELSE ProcesserReportInventory.VATAmount * ProcesserReportInventory.Ref.ExchangeRate * ManagCurrencyRates.Multiplicity / (ManagCurrencyRates.ExchangeRate * ProcesserReportInventory.Ref.Multiplicity)
 	|            END
 	|		END AS NUMBER(15, 2)) AS VATAmount,
-	//elmi end
+	//) elmi
 	|	ProcesserReportInventory.Total AS SettlementsAmountTransferred,
 	|	&InventoryDistribution AS ContentOfAccountingRecord
 	|INTO TemporaryTableInventory
@@ -1075,8 +1081,10 @@ Procedure DataInitializationByInventory(DocumentRefSubcontractorReport, Structur
 	|	END AS Order,
 	|	VALUE(Enum.ProductsReceiptTransferTypes.TransferToProcessing) AS ReceptionTransmissionType,
 	|	SUM(TableInventoryTransferred.Quantity) AS Quantity,
+	//( elmi #11
 	//|	SUM(TableInventoryTransferred.SettlementsAmountTransferred) AS SettlementsAmount
-	|	SUM(TableInventoryTransferred.SettlementsAmountTransferred - TableInventoryTransferred.VATAmount) AS SettlementsAmount     //elmi
+	|	SUM(TableInventoryTransferred.SettlementsAmountTransferred - TableInventoryTransferred.VATAmount) AS SettlementsAmount
+	//) elmi
 	|FROM
 	|	TemporaryTableInventory AS TableInventoryTransferred
 	|
@@ -1736,8 +1744,10 @@ Procedure GenerateTableIncomeAndExpensesRetained(DocumentRefSubcontractorReport,
 	|		ELSE UNDEFINED
 	|	END AS Document,
 	|	DocumentTable.BusinessActivity AS BusinessActivity,
+	//( elmi #11
 	//|	DocumentTable.Amount AS AmountExpense
-	|	DocumentTable.Amount - DocumentTable.VATAmount AS AmountExpense    //elmi
+	|	DocumentTable.Amount - DocumentTable.VATAmount AS AmountExpense    
+	//) elmi
 	|FROM
 	|	TemporaryTableForCalculationOfReserves AS DocumentTable
 	|WHERE
@@ -2338,7 +2348,9 @@ Procedure InitializeDocumentData(DocumentRefSubcontractorReport, StructureAdditi
 	DataInitializationByInventory(DocumentRefSubcontractorReport, StructureAdditionalProperties, AssemblyAmount);	
 	
 	// Accounts payable.
-	DataInitializationAccountsPayable(DocumentRefSubcontractorReport, StructureAdditionalProperties);  //elmi
+	//( elmi #11
+	DataInitializationAccountsPayable(DocumentRefSubcontractorReport, StructureAdditionalProperties); 
+	//) elmi
 	
 	
 	// Services.
@@ -2356,7 +2368,9 @@ Procedure InitializeDocumentData(DocumentRefSubcontractorReport, StructureAdditi
 	GenerateTableInventoryForWarehouses(DocumentRefSubcontractorReport, StructureAdditionalProperties);
 	
 	// Accounts payable.
-	//DataInitializationAccountsPayable(DocumentRefSubcontractorReport, StructureAdditionalProperties);    //elmi
+	//( elmi #11
+	//DataInitializationAccountsPayable(DocumentRefSubcontractorReport, StructureAdditionalProperties);    
+	//) elmi
 	
 	GenerateTableManagerial(DocumentRefSubcontractorReport, StructureAdditionalProperties);
 	

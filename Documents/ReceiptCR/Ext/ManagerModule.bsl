@@ -178,11 +178,13 @@ Procedure GenerateTableIncomeAndExpenses(DocumentRefReceiptCR, StructureAddition
 	|	TableIncomeAndExpenses.CustomerOrder AS CustomerOrder,
 	|	TableIncomeAndExpenses.GLAccountRevenueFromSales AS GLAccount,
 	|	CAST(&IncomeReflection AS String(100)) AS ContentOfAccountingRecord,
+	//( elmi
 	//|	SUM(TableIncomeAndExpenses.Amount) AS AmountIncome,
-	|	SUM(TableIncomeAndExpenses.Amount - TableIncomeAndExpenses.VATAmount) AS AmountIncome,         //elmi
+	|	SUM(TableIncomeAndExpenses.Amount - TableIncomeAndExpenses.VATAmount) AS AmountIncome,         
 	|	0 AS AmountExpense,
 	//|	SUM(TableIncomeAndExpenses.Amount) AS Amount
-	|	SUM(TableIncomeAndExpenses.Amount - TableIncomeAndExpenses.VATAmount) AS Amount               //elmi
+	|	SUM(TableIncomeAndExpenses.Amount - TableIncomeAndExpenses.VATAmount) AS Amount               
+	//) elmi
 	|FROM
 	|	TemporaryTableInventory AS TableIncomeAndExpenses
 	|WHERE
@@ -308,7 +310,7 @@ EndProcedure // GenerateTableSales()
 //
 Procedure GenerateTableManagerial(DocumentRefReceiptCR, StructureAdditionalProperties)
 	
-	//elmi start
+	//( elmi
     Query = New Query;
 	Query.TempTablesManager = StructureAdditionalProperties.ForPosting.StructureTemporaryTables.TempTablesManager;
 	Query.Text =
@@ -331,7 +333,7 @@ Procedure GenerateTableManagerial(DocumentRefReceiptCR, StructureAdditionalPrope
 	      VATInventoryCur = Selection.VATInventoryCur;
 	EndDo;
 
-	//elmi end
+	//) elmi
 	
 	Query = New Query;
 	Query.TempTablesManager = StructureAdditionalProperties.ForPosting.StructureTemporaryTables.TempTablesManager;
@@ -350,8 +352,10 @@ Procedure GenerateTableManagerial(DocumentRefReceiptCR, StructureAdditionalPrope
 	|	END AS CurrencyDr,
 	|	CASE
 	|		WHEN TableManagerial.CashCRGLAccount.Currency
+	//( elmi
 	//|			THEN TableManagerial.AmountCur
-	|			THEN TableManagerial.AmountCur - TableManagerial.VATAmountCur                     //elmi
+	|			THEN TableManagerial.AmountCur - TableManagerial.VATAmountCur                     
+	//) elmi
 	|		ELSE 0
 	|	END AS AmountCurDr,
 	|	CASE
@@ -366,13 +370,15 @@ Procedure GenerateTableManagerial(DocumentRefReceiptCR, StructureAdditionalPrope
 	|	END AS CurrencyCr,
 	|	CASE
 	|		WHEN TableManagerial.ProductsOnCommission
+	//( elmi
 	//|			THEN TableManagerial.Amount
-	|			THEN TableManagerial.Amount - TableManagerial.VATAmount                          //elmi
+	|			THEN TableManagerial.Amount - TableManagerial.VATAmount                          
     |	    ELSE 0
 	|	END AS AmountCurCr,
 	//|	TableManagerial.Amount AS Amount,
-	|	TableManagerial.Amount - TableManagerial.VATAmount   AS Amount,                          //elmi
- 	|	&IncomeReflection AS Content
+	|	TableManagerial.Amount - TableManagerial.VATAmount   AS Amount,                          
+ 	//) elmi
+	|	&IncomeReflection AS Content
 	|FROM
 	|	TemporaryTableInventory AS TableManagerial
 	|WHERE
@@ -461,7 +467,7 @@ Procedure GenerateTableManagerial(DocumentRefReceiptCR, StructureAdditionalPrope
 	|	&CheckIssued
 	|	AND (NOT &Archival)
 	|
-	//elmi start
+	//( elmi
 	|UNION ALL
 	|
 	|SELECT TOP 1
@@ -492,7 +498,7 @@ Procedure GenerateTableManagerial(DocumentRefReceiptCR, StructureAdditionalPrope
 	|	&CheckIssued
 	|	AND (NOT &Archival) AND &VATInventory > 0
 	|
-    //elmi end
+    //) elmi
 	|
 	|ORDER BY
 	|	Order,
@@ -506,12 +512,12 @@ Procedure GenerateTableManagerial(DocumentRefReceiptCR, StructureAdditionalPrope
 	Query.SetParameter("CheckIssued", StructureAdditionalProperties.ForPosting.CheckIssued);
 	Query.SetParameter("Archival", StructureAdditionalProperties.ForPosting.Archival);
 	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference'"));
-	//elmi start
+	//( elmi
 	Query.SetParameter("VAT", NStr("en=' VAT '"));
 	Query.SetParameter("TextVAT",  ChartsOfAccounts.Managerial.Taxes);
 	Query.SetParameter("VATInventoryCur", VATInventoryCur);
 	Query.SetParameter("VATInventory", VATInventory);
-	//elmi end
+	//) elmi
 	
 
 	QueryResult = Query.Execute();
