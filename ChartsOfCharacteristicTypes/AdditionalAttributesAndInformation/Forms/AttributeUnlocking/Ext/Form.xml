@@ -1,0 +1,324 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<CommandBarLocation>None</CommandBarLocation>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<Pages name="UserDialogs" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>User dialogs</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>User dialogs</v8:content>
+				</v8:item>
+			</ToolTip>
+			<PagesRepresentation>None</PagesRepresentation>
+			<ExtendedTooltip name="UserDialogsExtendedTooltip" id="28"/>
+			<ChildItems>
+				<Page name="ObjectIsNotUsed" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Object is not used</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Object is not used</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ObjectIsNotUsedExtendedTooltip" id="29"/>
+					<ChildItems>
+						<Pages name="Explanations" id="12">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Explanations</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Explanations</v8:content>
+								</v8:item>
+							</ToolTip>
+							<PagesRepresentation>None</PagesRepresentation>
+							<ExtendedTooltip name="ExplanationExtendedTooltip" id="30"/>
+							<ChildItems>
+								<Page name="AdditionalAttributesExplanation" id="22">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Additional attribute explanation</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Additional attribute explanation</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="DescriptionOfAdditionalAttributeExtendedTooltip" id="31"/>
+									<ChildItems>
+										<LabelDecoration name="TextExplanationsOfAdditionalAttribute" id="23">
+											<Height>4</Height>
+											<SkipOnInput>false</SkipOnInput>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Additional attribute is not used in the application documents.
+
+Additional attribute value type can be modified.</v8:content>
+												</v8:item>
+											</Title>
+											<VerticalAlign>Top</VerticalAlign>
+											<ContextMenu name="TextExplanationsOfAdditionalAttributeContextMenu" id="24"/>
+											<ExtendedTooltip name="TextExplanationsOfAdditionalAttributeExtendedTooltip" id="32"/>
+										</LabelDecoration>
+									</ChildItems>
+								</Page>
+								<Page name="AdditionalInformationExplanation" id="25">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Additional information explanation</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Additional information explanation</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="DescriptionOfAdditionalInformationExtendedTooltip" id="33"/>
+									<ChildItems>
+										<LabelDecoration name="TextExplanationsOfAdditionalInformation" id="26">
+											<Height>4</Height>
+											<SkipOnInput>false</SkipOnInput>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Additional information is not used in the infobase.
+
+Additional information value type can be modified.</v8:content>
+												</v8:item>
+											</Title>
+											<VerticalAlign>Top</VerticalAlign>
+											<ContextMenu name="TextExplanationsOfAdditionalInformationContextMenu" id="27"/>
+											<ExtendedTooltip name="TextExplanationsOfAdditionalInformationExtendedTooltip" id="34"/>
+										</LabelDecoration>
+									</ChildItems>
+								</Page>
+							</ChildItems>
+						</Pages>
+						<CommandBar name="DetailsButtons" id="13">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Details buttons</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Details buttons</v8:content>
+								</v8:item>
+							</ToolTip>
+							<HorizontalLocation>Right</HorizontalLocation>
+							<ExtendedTooltip name="ButtonsExplanationExtendedTooltip" id="35"/>
+							<ChildItems>
+								<Button name="OK" id="16">
+									<Type>CommandBarButton</Type>
+									<DefaultButton>true</DefaultButton>
+									<SkipOnInput>false</SkipOnInput>
+									<CommandName>Form.Command.AllowEdit</CommandName>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>OK</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="OKExtendedTooltip" id="36"/>
+								</Button>
+							</ChildItems>
+						</CommandBar>
+					</ChildItems>
+				</Page>
+				<Page name="ObjectIsUsed" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Object is used</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Object is used</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ObjectIsUsedExtendedTooltip" id="37"/>
+					<ChildItems>
+						<Pages name="Warnings" id="17">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Warnings</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Warnings</v8:content>
+								</v8:item>
+							</ToolTip>
+							<PagesRepresentation>None</PagesRepresentation>
+							<ExtendedTooltip name="WarningsExtendedTooltip" id="38"/>
+							<ChildItems>
+								<Page name="AdditionalAttributeWarning" id="18">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Additional attributes warning</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Additional attributes warning</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="WarningOfAdditionalAttributeExtendedTooltip" id="39"/>
+									<ChildItems>
+										<LabelDecoration name="WarningTextOfAdditionalAttribute" id="6">
+											<Height>4</Height>
+											<SkipOnInput>false</SkipOnInput>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Warning! Additional attribute is already used in the infobase.
+
+Changing value type of additional attribute can
+lead to loss of earlier established values of its current type.</v8:content>
+												</v8:item>
+											</Title>
+											<VerticalAlign>Top</VerticalAlign>
+											<ContextMenu name="TextOfWarningOfAdditionalAttributeContextMenu" id="7"/>
+											<ExtendedTooltip name="TextOfWarningOfAdditionalAttributeExtendedTooltip" id="40"/>
+										</LabelDecoration>
+									</ChildItems>
+								</Page>
+								<Page name="AdditionalInformationWarning" id="19">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Additional information warning</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Additional information warning</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="WarningAdditionalInformationExtendedTooltip" id="41"/>
+									<ChildItems>
+										<LabelDecoration name="WarningTextAdditionalInformation" id="20">
+											<Height>4</Height>
+											<SkipOnInput>false</SkipOnInput>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Warning! Additional information is already used in the infobase.
+
+Changing value type of additional information can
+lead to loss of earlier established values of its current type.</v8:content>
+												</v8:item>
+											</Title>
+											<VerticalAlign>Top</VerticalAlign>
+											<ContextMenu name="TextOfWarningAdditionalInformationContextMenu" id="21"/>
+											<ExtendedTooltip name="TextOfWarningAdditionalInformationExtendedTooltip" id="42"/>
+										</LabelDecoration>
+									</ChildItems>
+								</Page>
+							</ChildItems>
+						</Pages>
+						<CommandBar name="ButtonsToPrevent" id="8">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Warning buttons</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Warning buttons</v8:content>
+								</v8:item>
+							</ToolTip>
+							<HorizontalLocation>Right</HorizontalLocation>
+							<ExtendedTooltip name="WarningButtonsExtendedTooltip" id="43"/>
+							<ChildItems>
+								<Button name="AllowEdit" id="9">
+									<Type>CommandBarButton</Type>
+									<SkipOnInput>false</SkipOnInput>
+									<CommandName>Form.Command.AllowEdit</CommandName>
+									<ExtendedTooltip name="AllowEditingExtendedTooltip" id="44"/>
+								</Button>
+								<Button name="Cancel" id="11">
+									<Type>CommandBarButton</Type>
+									<SkipOnInput>false</SkipOnInput>
+									<CommandName>Form.StandardCommand.Cancel</CommandName>
+									<ExtendedTooltip name="CancelExtendedTooltip" id="45"/>
+								</Button>
+							</ChildItems>
+						</CommandBar>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+	</ChildItems>
+	<Attributes/>
+	<Commands>
+		<Command name="AllowEdit" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Allow edit</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Allow edit</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>AllowEdit</Action>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="Ref">
+			<Type>
+				<v8:Type>cfg:ChartOfCharacteristicTypesRef.AdditionalAttributesAndInformation</v8:Type>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

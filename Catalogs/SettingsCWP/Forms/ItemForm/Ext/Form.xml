@@ -1,0 +1,576 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="FormCommandBar" id="-1"/>
+	<Events>
+		<Event name="AfterWrite">AfterWrite</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="Code" id="1">
+			<DataPath>Object.Code</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<ContextMenu name="CodeContextMenu" id="2"/>
+			<ExtendedTooltip name="CodeExtendedTooltip" id="3"/>
+		</InputField>
+		<InputField name="Description" id="4">
+			<DataPath>Object.Description</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<ContextMenu name="DescriptionContextMenu" id="5"/>
+			<ExtendedTooltip name="DescriptionExtendedTooltip" id="6"/>
+		</InputField>
+		<InputField name="Workplace" id="7">
+			<DataPath>Object.Workplace</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<ContextMenu name="WorkplaceContextMenu" id="8"/>
+			<ExtendedTooltip name="WorkplaceExtendedTooltip" id="9"/>
+		</InputField>
+		<Pages name="QuickSaleAndButtons" id="50">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Quick sale and buttons</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Quick sale and buttons</v8:content>
+				</v8:item>
+			</ToolTip>
+			<ExtendedTooltip name="QuickSaleAndButtonsExtendedTooltip" id="51"/>
+			<ChildItems>
+				<Page name="PageQuickSale" id="52">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Quick sale</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Page quick sale</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="PageQuickSaleExtendedTooltip" id="53"/>
+					<ChildItems>
+						<Table name="QuickSale" id="10">
+							<Representation>List</Representation>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>Object.QuickSale</DataPath>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="QuickSaleContextMenu" id="11"/>
+							<AutoCommandBar name="QuickSaleCommandBar" id="12">
+								<ChildItems>
+									<Popup name="PopupFill" id="117">
+										<Title>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Fill</v8:content>
+											</v8:item>
+										</Title>
+										<ToolTip>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Popup fill</v8:content>
+											</v8:item>
+										</ToolTip>
+										<ExtendedTooltip name="PopupFillExtendedTooltip" id="118"/>
+										<ChildItems>
+											<Button name="FillFromProductsAndServicesGroup" id="119">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.FillFromProductsAndServicesGroup</CommandName>
+												<ExtendedTooltip name="FillFromProductsAndServicesGroupExtendedTooltip" id="120"/>
+											</Button>
+											<ButtonGroup name="FormGroupCopy" id="121">
+												<Title>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Form group copy</v8:content>
+													</v8:item>
+												</Title>
+												<ToolTip>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Form group copy</v8:content>
+													</v8:item>
+												</ToolTip>
+												<ExtendedTooltip name="FormGroupCopyExtendedTooltip" id="122"/>
+												<ChildItems>
+													<Button name="FormCopyAllProductsFromAnotherWorkplace" id="123">
+														<Type>CommandBarButton</Type>
+														<CommandName>Form.Command.CopyAllProductsFromAnotherWorkplace</CommandName>
+														<ExtendedTooltip name="FormCopyAllProductsFromAnotherWorkplaceExtendedTooltip" id="124"/>
+													</Button>
+													<Button name="FormCopyAllToAnotherWorkplace" id="125">
+														<Type>CommandBarButton</Type>
+														<CommandName>Form.Command.CopyAllToAnotherWorkplace</CommandName>
+														<ExtendedTooltip name="FormCopyAllToAnotherWorkplaceExtendedTooltip" id="126"/>
+													</Button>
+												</ChildItems>
+											</ButtonGroup>
+										</ChildItems>
+									</Popup>
+								</ChildItems>
+							</AutoCommandBar>
+							<ExtendedTooltip name="QuickSaleExtendedTooltip" id="13"/>
+							<SearchStringAddition name="QuickSaleSearchString" id="14">
+								<AdditionSource>
+									<Item>QuickSale</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="QuickSaleSearchStringContextMenu" id="17"/>
+								<ExtendedTooltip name="QuickSaleSearchStringExtendedTooltip" id="18"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="QuickSaleViewStatus" id="19">
+								<AdditionSource>
+									<Item>QuickSale</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="QuickSaleViewStatusContextMenu" id="22"/>
+								<ExtendedTooltip name="QuickSaleViewStatusExtendedTooltip" id="23"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="QuickSaleSearchControl" id="24">
+								<AdditionSource>
+									<Item>QuickSale</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="QuickSaleSearchControlContextMenu" id="27"/>
+								<ExtendedTooltip name="QuickSaleSearchControlExtendedTooltip" id="28"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<LabelField name="QuickSaleLineNumber" id="29">
+									<DataPath>Object.QuickSale.LineNumber</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>4</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="QuickSaleLineNumberContextMenu" id="30"/>
+									<ExtendedTooltip name="QuickSaleLineNumberExtendedTooltip" id="31"/>
+								</LabelField>
+								<InputField name="QuickSaleProductsAndServices" id="32">
+									<DataPath>Object.QuickSale.ProductsAndServices</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="QuickSaleProductsAndServicesContextMenu" id="33"/>
+									<ExtendedTooltip name="QuickSaleProductsAndServicesExtendedTooltip" id="34"/>
+								</InputField>
+								<InputField name="QuickSaleCharacteristic" id="35">
+									<DataPath>Object.QuickSale.Characteristic</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="QuickSaleCharacteristicContextMenu" id="36"/>
+									<ExtendedTooltip name="QuickSaleCharacteristicExtendedTooltip" id="37"/>
+								</InputField>
+								<InputField name="QuickSaleShortcut" id="38">
+									<DataPath>Object.QuickSale.Shortcut</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ChoiceButton>true</ChoiceButton>
+									<TextEdit>false</TextEdit>
+									<ContextMenu name="QuickSaleShortcutContextMenu" id="39"/>
+									<ExtendedTooltip name="QuickSaleShortcutExtendedTooltip" id="40"/>
+									<Events>
+										<Event name="StartChoice">QuickSaleShortcutStartChoice</Event>
+										<Event name="Clearing">QuickSaleShortcutClearing</Event>
+									</Events>
+								</InputField>
+								<CheckBoxField name="QuickSaleDisabled" id="47">
+									<DataPath>Object.QuickSale.Disabled</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Off.</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="QuickSaleDisabledContextMenu" id="48"/>
+									<ExtendedTooltip name="QuickSaleDisabledExtendedTooltip" id="49"/>
+								</CheckBoxField>
+								<InputField name="QuickSaleTitle" id="41">
+									<DataPath>Object.QuickSale.Title</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="QuickSaleTitleContextMenu" id="42"/>
+									<ExtendedTooltip name="QuickSaleTitleExtendedTooltip" id="43"/>
+								</InputField>
+								<InputField name="QuickSaleSortingField" id="44">
+									<DataPath>Object.QuickSale.SortingField</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="QuickSaleSortingFieldContextMenu" id="45"/>
+									<ExtendedTooltip name="QuickSaleSortingFieldExtendedTooltip" id="46"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="PageButtonsAndMenuCommands" id="54">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Menu buttons and commands</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Page menu buttons and commands</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="PageMenuButtonsAndCommandsExtendedTooltip" id="55"/>
+					<ChildItems>
+						<Table name="LowerBarButtons" id="56">
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>Object.LowerBarButtons</DataPath>
+							<CommandSet>
+								<ExcludedCommand>Copy</ExcludedCommand>
+								<ExcludedCommand>Add</ExcludedCommand>
+							</CommandSet>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="LowerBarButtonsContextMenu" id="57"/>
+							<AutoCommandBar name="LowerBarButtonsCommandBar" id="58">
+								<ChildItems>
+									<Button name="LowerBarButtonsFill" id="105">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.FillDefault</CommandName>
+										<ExtendedTooltip name="LowerBarButtonsFillExtendedTooltip" id="106"/>
+									</Button>
+								</ChildItems>
+							</AutoCommandBar>
+							<ExtendedTooltip name="LowerBarButtonsExtendedTooltip" id="59"/>
+							<SearchStringAddition name="LowerBarButtonsSearchString" id="60">
+								<AdditionSource>
+									<Item>LowerBarButtons</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="LowerBarButtonsSearchStringContextMenu" id="63"/>
+								<ExtendedTooltip name="LowerBarButtonsSearchStringExtendedTooltip" id="64"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="LowerBarButtonsViewStatus" id="65">
+								<AdditionSource>
+									<Item>LowerBarButtons</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="LowerBarButtonsViewStatusContextMenu" id="68"/>
+								<ExtendedTooltip name="LowerBarButtonsViewStatusExtendedTooltip" id="69"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="LowerBarButtonsSearchControl" id="70">
+								<AdditionSource>
+									<Item>LowerBarButtons</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="LowerBarButtonsSearchControlContextMenu" id="73"/>
+								<ExtendedTooltip name="LowerBarButtonsSearchControlExtendedTooltip" id="74"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<LabelField name="LowerBarButtonsLineNumber" id="75">
+									<DataPath>Object.LowerBarButtons.LineNumber</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>4</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="LowerBarButtonsLineNumberContextMenu" id="76"/>
+									<ExtendedTooltip name="LowerBarButtonsLineNumberExtendedTooltip" id="77"/>
+								</LabelField>
+								<InputField name="LowerBarButtonsButtonTitle" id="81">
+									<DataPath>Object.LowerBarButtons.ButtonTitle</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>30</Width>
+									<ContextMenu name="LowerBarButtonsButtonTitleContextMenu" id="82"/>
+									<ExtendedTooltip name="LowerBarButtonsButtonTitleExtendedTooltip" id="83"/>
+								</InputField>
+								<InputField name="LowerBarButtonsShortcut" id="127">
+									<DataPath>Object.LowerBarButtons.Shortcut</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>16</Width>
+									<ChoiceButton>true</ChoiceButton>
+									<TextEdit>false</TextEdit>
+									<ContextMenu name="LowerBarButtonsShortcutContextMenu" id="128"/>
+									<ExtendedTooltip name="LowerBarButtonsShortcutExtendedTooltip" id="129"/>
+									<Events>
+										<Event name="StartChoice">LowerBarButtonsShortcutStartChoice</Event>
+										<Event name="Clearing">LowerBarButtonsShortcutClearing</Event>
+									</Events>
+								</InputField>
+								<InputField name="LowerBarButtonsButtonName" id="111">
+									<DataPath>Object.LowerBarButtons.ButtonName</DataPath>
+									<Visible>false</Visible>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="LowerBarButtonsButtonNameContextMenu" id="112"/>
+									<ExtendedTooltip name="LowerBarButtonsButtonNameExtendedTooltip" id="113"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="AdvancedPage" id="130">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Additionally</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Advanced page</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="AdvancedPageExtendedTooltip" id="131"/>
+					<ChildItems>
+						<CheckBoxField name="DontShowOnOpenCashdeskChoiceForm" id="132">
+							<DataPath>Object.DontShowOnOpenCashdeskChoiceForm</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Do not show cashdesk selection form for CR but open CWP at once when opening CWP</v8:content>
+								</v8:item>
+							</Title>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="DontShowOnOpenCashdeskChoiceFormContextMenu" id="133"/>
+							<ExtendedTooltip name="DontShowOnOpenCashdeskChoiceFormExtendedTooltip" id="134"/>
+						</CheckBoxField>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Type>
+				<v8:Type>cfg:CatalogObject.SettingsCWP</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+			<Columns>
+				<AdditionalColumns table="Object.LowerBarButtons">
+					<Column name="ShortcutPreviousValue" id="1">
+						<Title>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Key combination previous value</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:string</v8:Type>
+							<v8:StringQualifiers>
+								<v8:Length>0</v8:Length>
+								<v8:AllowedLength>Variable</v8:AllowedLength>
+							</v8:StringQualifiers>
+						</Type>
+					</Column>
+				</AdditionalColumns>
+			</Columns>
+		</Attribute>
+		<Attribute name="TableLowerBarButtonsActions" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Lower bar buttons action table</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="ButtonName" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Button name</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>100</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ButtonTitle" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Button title</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>50</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ButtonProcedure" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Button procedure</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>100</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Key" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Key</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>11</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Alt" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Alt</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Ctrl" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Ctrl</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Shift" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Shift</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ButtonPresentation" id="8">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Button presentation</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>50</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Default" id="9">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>By default</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="CommandName" id="10">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Command name</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>100</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="FillDefault" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Fill in by default</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Fill in by default</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Fill</Action>
+		</Command>
+		<Command name="FillFromProductsAndServicesGroup" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Fill from product and services group</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Fill from product and services group</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>FillFromProductsAndServicesGroup</Action>
+		</Command>
+		<Command name="CopyAllToAnotherWorkplace" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Copy all products into settings of another work place</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Copy all to another work place</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>CopyAllToAnotherWorkplace</Action>
+		</Command>
+		<Command name="CopyAllProductsFromAnotherWorkplace" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Copy all products from settings of another work place</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Copy all products from another work place</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>CopyAllProductsFromAnotherWorkplace</Action>
+		</Command>
+	</Commands>
+</Form>

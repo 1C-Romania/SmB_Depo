@@ -1,0 +1,317 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Title>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Set the application update using the Internet</v8:content>
+		</v8:item>
+	</Title>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<CommandBarLocation>Bottom</CommandBarLocation>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<CommandSet>
+		<ExcludedCommand>No</ExcludedCommand>
+		<ExcludedCommand>CustomizeForm</ExcludedCommand>
+		<ExcludedCommand>SaveValues</ExcludedCommand>
+		<ExcludedCommand>Abort</ExcludedCommand>
+		<ExcludedCommand>Retry</ExcludedCommand>
+		<ExcludedCommand>Yes</ExcludedCommand>
+		<ExcludedCommand>RestoreValues</ExcludedCommand>
+		<ExcludedCommand>Ignore</ExcludedCommand>
+	</CommandSet>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<HorizontalAlign>Right</HorizontalAlign>
+		<ChildItems>
+			<Button name="OK" id="1">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<SkipOnInput>false</SkipOnInput>
+				<CommandName>Form.Command.CommandOK</CommandName>
+				<Title>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>OK</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="OKExtendedTooltip" id="11"/>
+			</Button>
+			<Button name="FormCancel" id="9">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.Cancel</CommandName>
+				<ExtendedTooltip name="FormCancelExtendedTooltip" id="12"/>
+			</Button>
+			<Button name="FormHelp" id="10">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.Help</CommandName>
+				<ExtendedTooltip name="FormHelpExtendedTooltip" id="13"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+		<Event name="OnClose">OnClose</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="AutomaticallyUpdateGroup" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Automatic check of updates</v8:content>
+				</v8:item>
+			</Title>
+			<HorizontalStretch>true</HorizontalStretch>
+			<VerticalStretch>false</VerticalStretch>
+			<Group>Horizontal</Group>
+			<Representation>NormalSeparation</Representation>
+			<ExtendedTooltip name="AutomaticallyUpdateGroupExtendedTooltip" id="17"/>
+			<ChildItems>
+				<RadioButtonField name="CheckUpdateExistsOnStart" id="2">
+					<DataPath>Object.CheckUpdateExistsOnStart</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Automatically check for available updates in internet</v8:content>
+						</v8:item>
+					</Title>
+					<TitleLocation>None</TitleLocation>
+					<RadioButtonType>Auto</RadioButtonType>
+					<ColumnsCount>1</ColumnsCount>
+					<ChoiceList>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Disabled</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:decimal">0</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>On application start</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:decimal">2</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>According to preset schedule:</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:decimal">1</Value>
+							</xr:Value>
+						</xr:Item>
+					</ChoiceList>
+					<ContextMenu name="CheckUpdateExistsOnStartContextMenu" id="3"/>
+					<ExtendedTooltip name="CheckUpdateExistsOnStartExtendedTooltip" id="14"/>
+					<Events>
+						<Event name="OnChange">CheckUpdateExistsOnStartOnChange</Event>
+					</Events>
+				</RadioButtonField>
+				<UsualGroup name="Group3" id="35">
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ExtendedTooltip name="Group3ExtendedTooltip" id="36"/>
+					<ChildItems>
+						<LabelDecoration name="Decoration1" id="37">
+							<VerticalStretch>true</VerticalStretch>
+							<ContextMenu name="Decoration1ContextMenu" id="38"/>
+							<ExtendedTooltip name="Decoration1ExtendedTooltip" id="39"/>
+						</LabelDecoration>
+						<LabelDecoration name="LabelOpenSchedule" id="7">
+							<VerticalStretch>false</VerticalStretch>
+							<SkipOnInput>false</SkipOnInput>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Not defined</v8:content>
+								</v8:item>
+							</Title>
+							<Hyperlink>true</Hyperlink>
+							<VerticalAlign>Center</VerticalAlign>
+							<ContextMenu name="LabelOpenScheduleContextMenu" id="8"/>
+							<ExtendedTooltip name="LabelOpenScheduleExtendedTooltip" id="15"/>
+							<Events>
+								<Event name="Click">LabelOpenScheduleClick</Event>
+							</Events>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="AccessGroupToUserSite" id="18">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Access to user site</v8:content>
+				</v8:item>
+			</Title>
+			<HorizontalStretch>true</HorizontalStretch>
+			<VerticalStretch>false</VerticalStretch>
+			<Group>Horizontal</Group>
+			<Collapsed>true</Collapsed>
+			<Representation>NormalSeparation</Representation>
+			<ExtendedTooltip name="AccessGroupToUserSiteExtendedTooltip" id="19"/>
+			<ChildItems>
+				<UsualGroup name="Group1" id="26">
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="Group1ExtendedTooltip" id="27"/>
+					<ChildItems>
+						<InputField name="UpdateServerUserCode" id="20">
+							<DataPath>Object.UpdateServerUserCode</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>User code</v8:content>
+								</v8:item>
+							</Title>
+							<Width>15</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="UpdateServerUserCodeContextMenu" id="21"/>
+							<ExtendedTooltip name="UpdateServerUserCodeExtendedTooltip" id="22"/>
+						</InputField>
+						<InputField name="UpdatesServerPassword" id="23">
+							<DataPath>Object.UpdatesServerPassword</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Password</v8:content>
+								</v8:item>
+							</Title>
+							<Width>15</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<PasswordMode>true</PasswordMode>
+							<ContextMenu name="UpdatesServerPasswordContextMenu" id="24"/>
+							<ExtendedTooltip name="UpdatesServerPasswordExtendedTooltip" id="25"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="Group2" id="28">
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="Group2ExtendedTooltip" id="29"/>
+					<ChildItems>
+						<Button name="GetUserCodeAndPassword" id="33">
+							<Type>Hyperlink</Type>
+							<CommandName>Form.Command.GetUserCodeAndPassword</CommandName>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>How to get the user ID and password?</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="GetUserCodeAndPasswordExtendedTooltip" id="34"/>
+						</Button>
+						<CheckBoxField name="SaveUpdatesServerPassword" id="30">
+							<DataPath>Object.SaveUpdatesServerPassword</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Remember password</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="SaveUpdatesServerPasswordContextMenu" id="31"/>
+							<ExtendedTooltip name="SaveUpdatesServerPasswordExtendedTooltip" id="32"/>
+						</CheckBoxField>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.ConfigurationUpdate</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<UseAlways>
+				<Field>Object.UseScheduleForUpdateCheck</Field>
+				<Field>Object.UpdateSource</Field>
+				<Field>Object.UpdateResult</Field>
+				<Field>Object.UpdateMode</Field>
+				<Field>Object.UpdateFileName</Field>
+				<Field>Object.UpdateDateTime</Field>
+				<Field>Object.TechnicalErrorInfo</Field>
+				<Field>Object.SendReportToEMail</Field>
+				<Field>Object.SecondStart</Field>
+				<Field>Object.SchedulerTaskCode</Field>
+				<Field>Object.RestoreInfobase</Field>
+				<Field>Object.NeedUpdateFile</Field>
+				<Field>Object.InfobaseBackupDirectoryName</Field>
+				<Field>Object.EmailAddress</Field>
+				<Field>Object.CreateBackup</Field>
+				<Field>Object.AvailableUpdates</Field>
+			</UseAlways>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="CommandOK" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Command OK</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Command OK</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>CommandOK</Action>
+		</Command>
+		<Command name="GetUserCodeAndPassword" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Get user ID and password</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Get user ID and password</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>GetUserCodeAndPassword</Action>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="CheckUpdateExistsOnStart">
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+			<KeyParameter>true</KeyParameter>
+		</Parameter>
+		<Parameter name="ScheduleOfUpdateExistsCheck">
+			<Type/>
+			<KeyParameter>true</KeyParameter>
+		</Parameter>
+	</Parameters>
+</Form>

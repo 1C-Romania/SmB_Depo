@@ -1,0 +1,692 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Title>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Reference information</v8:content>
+		</v8:item>
+	</Title>
+	<AutoTitle>false</AutoTitle>
+	<CommandBarLocation>None</CommandBarLocation>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="FormCommandBar" id="-1"/>
+	<Events>
+		<Event name="NotificationProcessing">NotificationProcessing</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="Header" id="165">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Header</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Header</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="HeaderExtendedTooltip" id="166"/>
+			<ChildItems>
+				<UsualGroup name="GroupHeader1" id="144">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group header1</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group header1</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="GroupHeader1ExtendedTooltip" id="145"/>
+					<ChildItems>
+						<UsualGroup name="Enterprise" id="1">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Enterprise</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Enterprise</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Width>25</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Group>Vertical</Group>
+							<Representation>NormalSeparation</Representation>
+							<ExtendedTooltip name="CounterpartyExtendedTooltip" id="93"/>
+							<ChildItems>
+								<LabelDecoration name="LabelCompany" id="2">
+									<Width>9</Width>
+									<HorizontalStretch>true</HorizontalStretch>
+									<TextColor>style:FormTextColor</TextColor>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Companies</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<ContextMenu name="LabelCompaniesContextMenu" id="3"/>
+									<ExtendedTooltip name="LabelCompaniesExtendedTooltip" id="94"/>
+									<Events>
+										<Event name="Click">LabelCompaniesClick</Event>
+									</Events>
+								</LabelDecoration>
+								<LabelDecoration name="LabelWarehouses" id="4">
+									<HorizontalStretch>true</HorizontalStretch>
+									<TextColor>style:FormTextColor</TextColor>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Warehouses</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<ContextMenu name="LabelWarehousesContextMenu" id="5"/>
+									<ExtendedTooltip name="LabelWarehousesExtendedTooltip" id="95"/>
+									<Events>
+										<Event name="Click">LableWarehousesClick</Event>
+									</Events>
+								</LabelDecoration>
+								<LabelDecoration name="LabelDepartments" id="6">
+									<HorizontalStretch>true</HorizontalStretch>
+									<TextColor>style:FormTextColor</TextColor>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Divisions</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<ContextMenu name="LabelDivisionsContextMenu" id="7"/>
+									<ExtendedTooltip name="LabelDivisionsExtendedTooltip" id="96"/>
+									<Events>
+										<Event name="Click">LabelDivisionClick</Event>
+									</Events>
+								</LabelDecoration>
+								<Button name="CatalogKeyResourcesOpenList" id="69">
+									<Type>Hyperlink</Type>
+									<CommandName>Catalog.KeyResources.StandardCommand.OpenList</CommandName>
+									<TextColor>style:FormTextColor</TextColor>
+									<ExtendedTooltip name="CatalogKeyResourcesOpenListExtendedTooltip" id="97"/>
+								</Button>
+								<LabelDecoration name="LabelBusinessActivities" id="84">
+									<HorizontalStretch>true</HorizontalStretch>
+									<TextColor>style:FormTextColor</TextColor>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Business activities</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<ContextMenu name="LabelBusinessActivitiesContextMenu" id="85"/>
+									<ExtendedTooltip name="LabelBusinessActivitiesExtendedTooltip" id="98"/>
+									<Events>
+										<Event name="Click">LableBusinessActivitiesClick</Event>
+									</Events>
+								</LabelDecoration>
+								<Button name="CatalogPettyCashesOpenList" id="45">
+									<Type>Hyperlink</Type>
+									<CommandName>Catalog.PettyCashes.StandardCommand.OpenList</CommandName>
+									<TextColor>style:FormTextColor</TextColor>
+									<ExtendedTooltip name="CatalogPettyCashesOpenListExtendedTooltip" id="99"/>
+								</Button>
+								<LabelDecoration name="LabelBankAccountsOfCompanies" id="10">
+									<HorizontalStretch>true</HorizontalStretch>
+									<TextColor>style:FormTextColor</TextColor>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Company bank accounts</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<ContextMenu name="LabelBankAccountsOfCompaniesContextMenu" id="11"/>
+									<ExtendedTooltip name="LabelBankAccountsOfCompaniesExtendedTooltip" id="100"/>
+									<Events>
+										<Event name="Click">LabelCompaniesBankAccountsClick</Event>
+									</Events>
+								</LabelDecoration>
+								<Button name="CatalogCalendarsOpenList" id="48">
+									<Type>Hyperlink</Type>
+									<CommandName>Catalog.Calendars.StandardCommand.OpenList</CommandName>
+									<TextColor>style:FormTextColor</TextColor>
+									<ExtendedTooltip name="CatalogCalendarsOpenListExtendedTooltip" id="101"/>
+								</Button>
+								<LabelDecoration name="Decoration6" id="175">
+									<ContextMenu name="Decoration6ContextMenu" id="176"/>
+									<ExtendedTooltip name="Decoration6ExtendedTooltip" id="177"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="HeaderGroup2" id="146">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group header2</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group header2</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="GroupHeader2ExtendedTooltip" id="147"/>
+					<ChildItems>
+						<UsualGroup name="Counterparties" id="19">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Counterparties</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Counterparties</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Width>25</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Group>Vertical</Group>
+							<Representation>NormalSeparation</Representation>
+							<ExtendedTooltip name="CounterpartyExtendedTooltip" id="103"/>
+							<ChildItems>
+								<Button name="CatalogCounterpartiesOpenList" id="49">
+									<Type>Hyperlink</Type>
+									<CommandName>Catalog.Counterparties.StandardCommand.OpenList</CommandName>
+									<TextColor>style:FormTextColor</TextColor>
+									<ExtendedTooltip name="CatalogCounterpartiesOpenListExtendedTooltip" id="104"/>
+								</Button>
+								<Button name="CatalogContactPersonsRolesOpenList" id="52">
+									<Type>Hyperlink</Type>
+									<CommandName>Catalog.ContactPersonsRoles.StandardCommand.OpenList</CommandName>
+									<TextColor>style:FormTextColor</TextColor>
+									<ExtendedTooltip name="CatalogRolesContactPersonsListOpenExtendedTooltip" id="105"/>
+								</Button>
+								<Button name="CatalogContractFormsOpenContractFormsList" id="135">
+									<Type>Hyperlink</Type>
+									<CommandName>Catalog.ContractForms.Command.OpenContractFormsList</CommandName>
+									<TextColor>style:FormTextColor</TextColor>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Contract forms</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="CatalogContractFormsOpenContractFormsListExtendedTooltip" id="136"/>
+								</Button>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="Retail" id="86">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Retail</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Retail</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Width>25</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Group>Vertical</Group>
+							<Representation>NormalSeparation</Representation>
+							<ExtendedTooltip name="RetailExtendedTooltip" id="106"/>
+							<ChildItems>
+								<Button name="CatalogCashCROpenList" id="46">
+									<Type>Hyperlink</Type>
+									<CommandName>Catalog.CashRegisters.StandardCommand.OpenList</CommandName>
+									<TextColor>style:FormTextColor</TextColor>
+									<ExtendedTooltip name="CatalogCashCROpenListExtendedTooltip" id="107"/>
+								</Button>
+								<Button name="CatalogPOSTerminalsOpenList" id="47">
+									<Type>Hyperlink</Type>
+									<CommandName>Catalog.POSTerminals.StandardCommand.OpenList</CommandName>
+									<TextColor>style:FormTextColor</TextColor>
+									<ExtendedTooltip name="CatalogPOSTerminalsOpenListExtendedTooltip" id="108"/>
+								</Button>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="HeaderGroup3" id="148">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group header3</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group header3</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="GroupHeader3ExtendedTooltip" id="149"/>
+					<ChildItems>
+						<UsualGroup name="ProductsAndServices" id="27">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Products and services</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Products and services</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Width>25</Width>
+							<Group>Vertical</Group>
+							<Representation>NormalSeparation</Representation>
+							<ExtendedTooltip name="ProductsAndServicesExtendedTooltip" id="110"/>
+							<ChildItems>
+								<Button name="CatalogProductsAndServicesOpenList" id="50">
+									<Type>Hyperlink</Type>
+									<CommandName>Catalog.ProductsAndServices.StandardCommand.OpenList</CommandName>
+									<TextColor>style:FormTextColor</TextColor>
+									<ExtendedTooltip name="CatalogProductsAndServicesOpenListExtendedTooltip" id="111"/>
+								</Button>
+								<Button name="CatalogProductsAndServicesCategoriesOpenList" id="51">
+									<Type>Hyperlink</Type>
+									<CommandName>Catalog.ProductsAndServicesCategories.StandardCommand.OpenList</CommandName>
+									<TextColor>style:FormTextColor</TextColor>
+									<ExtendedTooltip name="CatalogProductsAndServicesCategoriesOpenListExtendedTooltip" id="112"/>
+								</Button>
+								<Button name="CatalogUOMClassifierOpenList" id="53">
+									<Type>Hyperlink</Type>
+									<CommandName>Catalog.UOMClassifier.StandardCommand.OpenList</CommandName>
+									<TextColor>style:FormTextColor</TextColor>
+									<ExtendedTooltip name="CatalogClassificationOfUOMmentOpenListExtendedTooltip" id="113"/>
+								</Button>
+								<Button name="CatalogLabelsAndTagsTemplatesOpenList" id="54">
+									<Type>Hyperlink</Type>
+									<CommandName>Catalog.LabelsAndTagsTemplates.StandardCommand.OpenList</CommandName>
+									<TextColor>style:FormTextColor</TextColor>
+									<ExtendedTooltip name="CatalogTemplatesForLabelsAndPriceTagsOpenListExtendedTooltip" id="114"/>
+								</Button>
+								<Button name="CatalogCCDNumbersOpenList" id="55">
+									<Type>Hyperlink</Type>
+									<CommandName>Catalog.CCDNumbers.StandardCommand.OpenList</CommandName>
+									<TextColor>style:FormTextColor</TextColor>
+									<ExtendedTooltip name="CatalogNumberCCDOpenListExtendedTooltip" id="115"/>
+								</Button>
+								<LabelDecoration name="Decoration3" id="156">
+									<ContextMenu name="Decoration3ContextMenu" id="157"/>
+									<ExtendedTooltip name="Decoration3ExtendedTooltip" id="158"/>
+								</LabelDecoration>
+								<LabelDecoration name="Decoration4" id="159">
+									<ContextMenu name="Decoration4ContextMenu" id="160"/>
+									<ExtendedTooltip name="Decoration4ExtendedTooltip" id="161"/>
+								</LabelDecoration>
+								<LabelDecoration name="Decoration5" id="162">
+									<ContextMenu name="Decoration5ContextMenu" id="163"/>
+									<ExtendedTooltip name="Decoration5ExtendedTooltip" id="164"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="Footer" id="167">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Footer</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Footer</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="FooterExtendedTooltip" id="168"/>
+			<ChildItems>
+				<UsualGroup name="GroupFooter1" id="169">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group footer 1</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group footer 1</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="GroupFooter1ExtendedTooltip" id="170"/>
+					<ChildItems>
+						<UsualGroup name="Employees" id="60">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Employees</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Employees</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Width>25</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Group>Vertical</Group>
+							<Representation>NormalSeparation</Representation>
+							<ExtendedTooltip name="EmployeesExtendedTooltip" id="121"/>
+							<ChildItems>
+								<Button name="CatalogEmployeesOpenList" id="67">
+									<Type>Hyperlink</Type>
+									<CommandName>Catalog.Employees.StandardCommand.OpenList</CommandName>
+									<TextColor>style:FormTextColor</TextColor>
+									<ExtendedTooltip name="CatalogStaffOpenListExtendedTooltip" id="122"/>
+								</Button>
+								<Button name="CatalogCrewsOpenList" id="68">
+									<Type>Hyperlink</Type>
+									<CommandName>Catalog.Crews.StandardCommand.OpenList</CommandName>
+									<TextColor>style:FormTextColor</TextColor>
+									<ExtendedTooltip name="CatalogCrewsOpenListExtendedTooltip" id="123"/>
+								</Button>
+								<LabelDecoration name="Decoration2" id="153">
+									<Height>2</Height>
+									<ContextMenu name="Decoration2ContextMenu" id="154"/>
+									<ExtendedTooltip name="Decoration2ExtendedTooltip" id="155"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="Individuals" id="66">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Individuals</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Individuals</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Width>25</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Group>Vertical</Group>
+							<Representation>NormalSeparation</Representation>
+							<ExtendedTooltip name="IndividualsExtendedTooltip" id="124"/>
+							<ChildItems>
+								<Button name="CatalogIndividualsOpenList" id="70">
+									<Type>Hyperlink</Type>
+									<CommandName>Catalog.Individuals.StandardCommand.OpenList</CommandName>
+									<TextColor>style:FormTextColor</TextColor>
+									<ExtendedTooltip name="CatalogIndividualsOpenListExtendedTooltip" id="125"/>
+								</Button>
+								<Button name="CatalogIndividualsDocumentsKindsOpenList" id="71">
+									<Type>Hyperlink</Type>
+									<CommandName>Catalog.IndividualsDocumentsKinds.StandardCommand.OpenList</CommandName>
+									<TextColor>style:FormTextColor</TextColor>
+									<ExtendedTooltip name="CatalogDocumentKindsOfIndividualsOpenListExtendedTooltip" id="126"/>
+								</Button>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="GroupFooter2" id="171">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group footer 2</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group footer 2</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="GroupFooter2ExtendedTooltip" id="172"/>
+					<ChildItems>
+						<UsualGroup name="BaseClassifiers" id="77">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Base classifiers</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Base classifiers</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Width>25</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Group>Vertical</Group>
+							<Representation>NormalSeparation</Representation>
+							<ExtendedTooltip name="BaseClassifiersExtendedTooltip" id="131"/>
+							<ChildItems>
+								<Button name="CommonCommandOpenCurrencies" id="80">
+									<Type>Hyperlink</Type>
+									<CommandName>Catalog.Currencies.StandardCommand.OpenList</CommandName>
+									<TextColor>style:FormTextColor</TextColor>
+									<ExtendedTooltip name="CommonCommandOpenCurrenciesExtendedTooltip" id="132"/>
+								</Button>
+								<Button name="CatalogBanksOpenList" id="81">
+									<Type>Hyperlink</Type>
+									<CommandName>Catalog.Banks.StandardCommand.OpenList</CommandName>
+									<TextColor>style:FormTextColor</TextColor>
+									<ExtendedTooltip name="CatalogBanksOpenListExtendedTooltip" id="133"/>
+								</Button>
+								<Button name="CatalogWorldCountriesOpenList" id="82">
+									<Type>Hyperlink</Type>
+									<CommandName>Catalog.WorldCountries.StandardCommand.OpenList</CommandName>
+									<TextColor>style:FormTextColor</TextColor>
+									<ExtendedTooltip name="CatalogWorldCountriesOpenListExtendedTooltip" id="134"/>
+								</Button>
+								<Button name="CatalogAlcoholicProductsKindsOpenList" id="178">
+									<Type>Hyperlink</Type>
+									<CommandName>Catalog.AlcoholicProductsKinds.StandardCommand.OpenList</CommandName>
+									<TextColor>style:FormTextColor</TextColor>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Kinds of alcoholic products</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="CatalogAlcoholicProductsKindsOpenListExtendedTooltip" id="179"/>
+								</Button>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="Taxes" id="73">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Taxes</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Taxes</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Width>25</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Group>Vertical</Group>
+							<Representation>NormalSeparation</Representation>
+							<ExtendedTooltip name="TaxesExtendedTooltip" id="128"/>
+							<ChildItems>
+								<Button name="CatalogTaxTypesOpenList" id="78">
+									<Type>Hyperlink</Type>
+									<CommandName>Catalog.TaxTypes.StandardCommand.OpenList</CommandName>
+									<TextColor>style:FormTextColor</TextColor>
+									<ExtendedTooltip name="CatalogTypesOfTaxesOpenListExtendedTooltip" id="129"/>
+								</Button>
+								<Button name="CatalogVATRatesOpenList" id="79">
+									<Type>Hyperlink</Type>
+									<CommandName>Catalog.VATRates.StandardCommand.OpenList</CommandName>
+									<TextColor>style:FormTextColor</TextColor>
+									<ExtendedTooltip name="CatalogRatesVATOpenListExtendedTooltip" id="130"/>
+								</Button>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="GroupFooter3" id="173">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group footer 3</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group footer 3</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="GroupFooter3ExtendedTooltip" id="174"/>
+					<ChildItems>
+						<UsualGroup name="PriceLists" id="44">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Price lists</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Price lists</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Width>25</Width>
+							<Group>Vertical</Group>
+							<Representation>NormalSeparation</Representation>
+							<ExtendedTooltip name="PriceListsExtendedTooltip" id="116"/>
+							<ChildItems>
+								<Button name="DataProcessorPriceListOpenPriceList" id="56">
+									<Type>Hyperlink</Type>
+									<CommandName>DataProcessor.PriceList.Command.OpenPriceList</CommandName>
+									<TextColor>style:FormTextColor</TextColor>
+									<ExtendedTooltip name="DataProcessorPriceListOpenPriceListExtendedTooltip" id="117"/>
+								</Button>
+								<Button name="CatalogMarkupAndDiscountKindsOpenList" id="57">
+									<Type>Hyperlink</Type>
+									<CommandName>Catalog.MarkupAndDiscountKinds.StandardCommand.OpenList</CommandName>
+									<TextColor>style:FormTextColor</TextColor>
+									<ExtendedTooltip name="CatalogKindsOfDiscountMarginsOpenListExtendedTooltip" id="118"/>
+								</Button>
+								<Button name="CatalogPriceGroupsOpenList" id="58">
+									<Type>Hyperlink</Type>
+									<CommandName>Catalog.PriceGroups.StandardCommand.OpenList</CommandName>
+									<TextColor>style:FormTextColor</TextColor>
+									<ExtendedTooltip name="CatalogPriceGroupsOpenListExtendedTooltip" id="119"/>
+								</Button>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="FOMultipleCompaniesAccounting" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>FO Multiple companies</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="FOAccountingBySeveralWarehouses" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>FOAccounting by several warehouses</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="FOAccountingBySeveralDivisions" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>FO Accounting by multiple divisions</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="FOAccountingBySeveralBusinessActivities" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>FO Accounting by several business activities</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+</Form>

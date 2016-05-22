@@ -1,0 +1,364 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Title>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Object dependency %1</v8:content>
+		</v8:item>
+	</Title>
+	<AutoTitle>false</AutoTitle>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="Group1" id="7">
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="Group1ExtendedTooltip" id="8"/>
+			<ChildItems>
+				<PictureDecoration name="DecorationQuestion" id="1">
+					<Width>4</Width>
+					<Height>2</Height>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Decoration question</v8:content>
+						</v8:item>
+					</Title>
+					<Picture>
+						<xr:Ref>CommonPicture.Question32</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</Picture>
+					<ContextMenu name="DecorationQuestionContextMenu" id="2"/>
+					<ExtendedTooltip name="DecorationQuestionExtendedTooltip" id="3"/>
+				</PictureDecoration>
+				<UsualGroup name="Group2" id="9">
+					<ReadOnly>true</ReadOnly>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="Group2ExtendedTooltip" id="10"/>
+					<ChildItems>
+						<Pages name="GroupPagesHeader" id="61">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group pages header</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group pages header</v8:content>
+								</v8:item>
+							</ToolTip>
+							<HorizontalStretch>true</HorizontalStretch>
+							<PagesRepresentation>None</PagesRepresentation>
+							<ExtendedTooltip name="GroupPagesHeaderExtendedTooltip" id="62"/>
+							<ChildItems>
+								<Page name="GroupPageHeaderAdd" id="63">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group page header add</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group page header add</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="GroupPageHeaderAddExtendedTooltip" id="64"/>
+									<ChildItems>
+										<LabelDecoration name="DecorationTitleHeaderAdd" id="4">
+											<Height>3</Height>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>You allowed access to %1 %2 using automatic REST service.
+If you want this application to operate with this object through automatic REST service you should allow access through automatic REST service to the following objects:</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="DecorationTitleAddHeaderContextMenu" id="5"/>
+											<ExtendedTooltip name="DecorationTitleHeaderAddExtendedTooltip" id="6"/>
+										</LabelDecoration>
+									</ChildItems>
+								</Page>
+								<Page name="GroupHeaderPageDelete" id="65">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group header page delete</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group header page delete</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="GroupHeaderPageDeleteExtendedTooltip" id="66"/>
+									<ChildItems>
+										<LabelDecoration name="DecorationTitleHeaderDelete" id="67">
+											<Height>3</Height>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>You denied access to %1 %2 using automatic REST service.
+You must allow to use this object using standard REST service for the application to interract through automatic REST service with the following objects:</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="DecorationTitleDeleteHeaderContextMenu" id="68"/>
+											<ExtendedTooltip name="DecorationTitleHeaderDeleteExtendedTooltip" id="69"/>
+										</LabelDecoration>
+									</ChildItems>
+								</Page>
+							</ChildItems>
+						</Pages>
+						<Table name="MetadataObjects" id="11">
+							<Representation>Tree</Representation>
+							<CommandBarLocation>None</CommandBarLocation>
+							<ReadOnly>true</ReadOnly>
+							<ChangeRowSet>false</ChangeRowSet>
+							<ChangeRowOrder>false</ChangeRowOrder>
+							<SelectionMode>SingleRow</SelectionMode>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<InitialListView>Beginning</InitialListView>
+							<InitialTreeView>ExpandAllLevels</InitialTreeView>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>MetadataObjects</DataPath>
+							<ContextMenu name="MetadataObjectsContextMenu" id="12"/>
+							<AutoCommandBar name="MetadataObjectsCommandBar" id="13"/>
+							<ExtendedTooltip name="MetadataObjectsExtendedTooltip" id="14"/>
+							<SearchStringAddition name="MetadataObjectsSearchString" id="15">
+								<AdditionSource>
+									<Item>MetadataObjects</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="MetadataObjectsSearchStringContextMenu" id="18"/>
+								<ExtendedTooltip name="MetadataObjectsForSearchStringExtendedTooltip" id="19"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="MetadataObjectsViewStatus" id="20">
+								<AdditionSource>
+									<Item>MetadataObjects</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="MetadataObjectsViewStatusContextMenu" id="23"/>
+								<ExtendedTooltip name="MetadataObjectsViewStatusExtendedTooltip" id="24"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="MetadataObjectsSearchManagement" id="25">
+								<AdditionSource>
+									<Item>MetadataObjects</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="MetadataObjectsSearchManagementContextMenu" id="28"/>
+								<ExtendedTooltip name="MetadataObjectsSearchManagementExtendedTooltip" id="29"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<ColumnGroup name="MetadataObjectsGroup" id="57">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Metadata objects group</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Metadata objects group</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>InCell</Group>
+									<ExtendedTooltip name="MetadataObjectsGroupExtendedTooltip" id="58"/>
+									<ChildItems>
+										<PictureField name="MetadataObjectsPicture" id="36">
+											<DataPath>MetadataObjects.Picture</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Object</v8:content>
+												</v8:item>
+											</Title>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="MetadataObjectsPictureContextMenu" id="37"/>
+											<ExtendedTooltip name="MetadataObjectsPictureExtendedTooltip" id="38"/>
+										</PictureField>
+										<InputField name="MetadataObjectsPresentation" id="33">
+											<DataPath>MetadataObjects.Presentation</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="MetadataObjectsPresentationContextMenu" id="34"/>
+											<ExtendedTooltip name="MetadataObjectsPresentationExtendedTooltip" id="35"/>
+										</InputField>
+									</ChildItems>
+								</ColumnGroup>
+							</ChildItems>
+						</Table>
+						<Pages name="GroupPagesFooter" id="70">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group pages footer</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group pages footer</v8:content>
+								</v8:item>
+							</ToolTip>
+							<HorizontalStretch>true</HorizontalStretch>
+							<PagesRepresentation>None</PagesRepresentation>
+							<ExtendedTooltip name="GroupPagesFooterExtendedTooltip" id="71"/>
+							<ChildItems>
+								<Page name="GroupPageFooterAdd" id="72">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group page footer add</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group page footer add</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="GroupPageFooterAddExtendedTooltip" id="73"/>
+									<ChildItems>
+										<LabelDecoration name="DecorationQuestionTextAdd" id="48">
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Allow access to these objects through automatic REST service?</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="DecorationQuestionTextAddContextMenu" id="49"/>
+											<ExtendedTooltip name="DecorationQuestionTextAddExtendedTooltip" id="50"/>
+										</LabelDecoration>
+									</ChildItems>
+								</Page>
+								<Page name="GroupFooterPageDelete" id="74">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group footer page delete</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group footer page delete</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="GroupPageFooterDeleteExtendedTooltip" id="75"/>
+									<ChildItems>
+										<LabelDecoration name="DecorationTextQuestionDelete" id="76">
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Deny access to these objects through automatic REST service?</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="DecorationTextQuestionDeleteContextMenu" id="77"/>
+											<ExtendedTooltip name="DecorationTextQuestionDeleteExtendedTooltip" id="78"/>
+										</LabelDecoration>
+									</ChildItems>
+								</Page>
+							</ChildItems>
+						</Pages>
+						<CommandBar name="Group3" id="51">
+							<HorizontalLocation>Right</HorizontalLocation>
+							<ExtendedTooltip name="Group3ExtendedTooltip" id="52"/>
+							<ChildItems>
+								<Button name="Yes" id="53">
+									<Type>CommandBarButton</Type>
+									<CommandName>Form.StandardCommand.Yes</CommandName>
+									<ExtendedTooltip name="YesExtendedTooltip" id="54"/>
+								</Button>
+								<Button name="No" id="55">
+									<Type>CommandBarButton</Type>
+									<CommandName>Form.StandardCommand.No</CommandName>
+									<ExtendedTooltip name="NoExtendedTooltip" id="56"/>
+								</Button>
+							</ChildItems>
+						</CommandBar>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.StandardODataInterfaceSetup</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="MetadataObjects" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Metadata objects</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTree</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+			<Columns>
+				<Column name="Presentation" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Presentation</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Picture" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Picture</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>v8ui:Picture</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+	</Attributes>
+	<Parameters>
+		<Parameter name="FullObjectName">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="ObjectDependencies">
+			<Type/>
+		</Parameter>
+		<Parameter name="Insert">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

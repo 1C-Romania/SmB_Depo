@@ -1,0 +1,12 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"></meta><link rel="stylesheet" type="text/css" href="V8help://service_book/service_style"></link><meta name="GENERATOR" content="MSHTML 11.00.9600.18321"></meta></head><body>
+<p>It enables you to restore data from backup.</p>
+<p>To open it, in the Administration - Support and service - Backup and recovery section, run the Recovery from backup command. </p>
+<p>You can restore data from a previously created backup at any given time. You should take into account that all the data in the restored infobase will have relevance at time of backup creation. Data entered to the application after backup creation will not be present in the restored IB.</p>
+<h3>Data recovery</h3>
+<ul><li>Using button <img src="StdPicture.Select"></img><strong>Select </strong>specify<strong> path to the file</strong> <strong>with backup</strong>, from which infobase will be restored (required field). 
+</li><li>In this assistant on data restoring you can use only .zip files containing one file - file of 1cv8.cd infobase. It's a good idea to use archives <a href="DataProcessor.InfobaseBackup.Form.DataBackup/Help">created by the backup creation assistant. </a>
+</li><li>The application reports a warning stating that there are other users who are currently working with the infobase. Click the hyperlink to <strong>View all active sessions. </strong>
+</li><li>Click<strong> Restore data</strong>. If there are active sessions, <a href="DataProcessor.UserWorkBlocking/Help">they will be</a> disconnected from the infobase. Then application will perform data recovery.</li></ul><h3>Database login in case of data recovery failure</h3>
+<ul><li><font size="1">Important: To log on to the infobase if data is not recovered, run 1C:Enterprise with the following parameters:<strong> ENTERPRISE /F &lt;path to infobase&gt; / CAllowUsersWork /UC Backup.</strong></font></li></ul><h3 style="MARGIN: 11.35pt 0cm 8.5pt">See also:</h3>
+<ul><li>
+<div style="MARGIN: 11.35pt 0cm 8.5pt"><a href="v8help://frame/form_common">Working with forms</a></div></li></ul></body></html>

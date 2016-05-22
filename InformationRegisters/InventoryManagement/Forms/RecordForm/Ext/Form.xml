@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="FormCommandBar" id="-1"/>
+	<Events>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="Company" id="10">
+			<DataPath>Record.Company</DataPath>
+			<SkipOnInput>true</SkipOnInput>
+			<ContextMenu name="CounterpartyContextMenu" id="11"/>
+			<ExtendedTooltip name="CompanyExtendedTooltip" id="12"/>
+		</InputField>
+		<InputField name="ProductsAndServices" id="1">
+			<DataPath>Record.ProductsAndServices</DataPath>
+			<SkipOnInput>true</SkipOnInput>
+			<ContextMenu name="ProductsAndServicesContextMenu" id="2"/>
+			<ExtendedTooltip name="ProductsAndServicesExtendedTooltip" id="13"/>
+		</InputField>
+		<InputField name="Characteristic" id="3">
+			<DataPath>Record.Characteristic</DataPath>
+			<SkipOnInput>true</SkipOnInput>
+			<ContextMenu name="CharacteristicContextMenu" id="4"/>
+			<ExtendedTooltip name="CharacteristicExtendedTooltip" id="14"/>
+		</InputField>
+		<UsualGroup name="InventoryLevel" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Inventory level</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Inventory level</v8:content>
+				</v8:item>
+			</ToolTip>
+			<HorizontalStretch>true</HorizontalStretch>
+			<Group>Vertical</Group>
+			<ExtendedTooltip name="InventoryLevelExtendedTooltip" id="15"/>
+			<ChildItems>
+				<InputField name="InventoryMinimumLevel" id="5">
+					<DataPath>Record.InventoryMinimumLevel</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Minimum</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="InventoryMinimumLevelContextMenu" id="6"/>
+					<ExtendedTooltip name="InventoryMinimumLevelExtendedTooltip" id="16"/>
+				</InputField>
+				<InputField name="InventoryMaximumLevel" id="7">
+					<DataPath>Record.InventoryMaximumLevel</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Maximum</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="MaximumInventoryLevelContextMenu" id="8"/>
+					<ExtendedTooltip name="InventoryMaximumLevelExtendedTooltip" id="17"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Record" id="1">
+			<Type>
+				<v8:Type>cfg:InformationRegisterRecordManager.InventoryManagement</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+	</Attributes>
+</Form>

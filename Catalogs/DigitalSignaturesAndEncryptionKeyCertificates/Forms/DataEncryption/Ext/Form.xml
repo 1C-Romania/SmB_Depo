@@ -1,0 +1,737 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Title>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Data encryption</v8:content>
+		</v8:item>
+	</Title>
+	<Width>55</Width>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<CommandBarLocation>Bottom</CommandBarLocation>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<HorizontalAlign>Right</HorizontalAlign>
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="FormEncrypt" id="307">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.Encrypt</CommandName>
+				<ExtendedTooltip name="FormEncryptExtendedTooltip" id="308"/>
+			</Button>
+			<Button name="FormClose" id="303">
+				<Type>CommandBarButton</Type>
+				<Representation>Text</Representation>
+				<CommandName>Form.StandardCommand.Close</CommandName>
+				<Title>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Cancel</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="FormCloseExtendedTooltip" id="304"/>
+			</Button>
+			<Button name="FormHelp" id="448">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.Help</CommandName>
+				<ExtendedTooltip name="FormHelpExtendedTooltip" id="449"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="NotificationProcessing">NotificationProcessing</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="GroupDataPresentation" id="455">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Data presentation group</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Representation>NormalSeparation</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="GroupDataPresentationExtendedTooltip" id="456"/>
+			<ChildItems>
+				<LabelField name="DataPresentation" id="18">
+					<DataPath>DataPresentation</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Data</v8:content>
+						</v8:item>
+					</Title>
+					<Hiperlink>true</Hiperlink>
+					<ContextMenu name="DataPresentationContextMenu" id="19"/>
+					<ExtendedTooltip name="DataPresentationExtendedTooltip" id="20"/>
+					<Events>
+						<Event name="Click">DataPresentationClick</Event>
+					</Events>
+				</LabelField>
+			</ChildItems>
+		</UsualGroup>
+		<Pages name="EncryptionVariants" id="494">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Encryption variants</v8:content>
+				</v8:item>
+			</Title>
+			<PagesRepresentation>None</PagesRepresentation>
+			<ExtendedTooltip name="EncryptionVariantsExtendedTooltip" id="495"/>
+			<ChildItems>
+				<Page name="PickFromCatalog" id="496">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Select from the catalog</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="SelectFromCatalogExtendedTooltip" id="497"/>
+					<ChildItems>
+						<UsualGroup name="GroupPersonalCertificate" id="450">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group personal certificate</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupPersonalCertificateExtendedTooltip" id="451"/>
+							<ChildItems>
+								<InputField name="Certificate" id="452">
+									<DataPath>Certificate</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Personal Certificate</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Personal certificate allows user to decrypt data that is encrypted by him.</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ToolTipRepresentation>Button</ToolTipRepresentation>
+									<DropListButton>true</DropListButton>
+									<ChoiceButtonRepresentation>ShowInDropList</ChoiceButtonRepresentation>
+									<OpenButton>true</OpenButton>
+									<CreateButton>false</CreateButton>
+									<QuickChoice>false</QuickChoice>
+									<ChoiceHistoryOnInput>DontUse</ChoiceHistoryOnInput>
+									<ContextMenu name="CertificateContextMenu" id="453"/>
+									<ExtendedTooltip name="CertificateExtendedTooltip" id="454"/>
+									<Events>
+										<Event name="OnChange">CertificateOnChange</Event>
+										<Event name="AutoComplete">CertificateAutoPick</Event>
+										<Event name="StartChoice">CertificateStartChoice</Event>
+										<Event name="Opening">CertificateOpen</Event>
+										<Event name="TextEditEnd">CertificateTextEntryEnd</Event>
+										<Event name="ChoiceProcessing">CertificateChoiceProcessing</Event>
+									</Events>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="GroupEncryptionCertificates" id="489">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Certificates of users who are allowed to decrypt data besides you</v8:content>
+								</v8:item>
+							</Title>
+							<TitleFont ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ExtendedTooltip name="GroupEncryptionCertificatesExtendedTooltip" id="490"/>
+							<ChildItems>
+								<Table name="EncryptionCertificates" id="457">
+									<Representation>List</Representation>
+									<CommandBarLocation>Top</CommandBarLocation>
+									<DefaultItem>true</DefaultItem>
+									<HeightInTableRows>4</HeightInTableRows>
+									<RowSelectionMode>Row</RowSelectionMode>
+									<Header>false</Header>
+									<AutoInsertNewRow>true</AutoInsertNewRow>
+									<EnableStartDrag>true</EnableStartDrag>
+									<EnableDrag>true</EnableDrag>
+									<DataPath>EncryptionCertificates</DataPath>
+									<CommandSet>
+										<ExcludedCommand>Copy</ExcludedCommand>
+										<ExcludedCommand>CopyToClipboard</ExcludedCommand>
+										<ExcludedCommand>Change</ExcludedCommand>
+									</CommandSet>
+									<SearchStringLocation>None</SearchStringLocation>
+									<ViewStatusLocation>None</ViewStatusLocation>
+									<SearchControlLocation>None</SearchControlLocation>
+									<RowFilter xsi:nil="true"/>
+									<ContextMenu name="CertificatesEncryptionContextMenu" id="458">
+										<ChildItems>
+											<Button name="CertificatesEncryptionContextMenuOpenCertificate" id="479">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.OpenCertificate</CommandName>
+												<ExtendedTooltip name="CertificatesEncryptionContextMenuOpenCertificateExtendedTooltip" id="480"/>
+											</Button>
+										</ChildItems>
+									</ContextMenu>
+									<AutoCommandBar name="CertificatesEncryptionCommandBar" id="459">
+										<Autofill>false</Autofill>
+										<ChildItems>
+											<Button name="EncryptionCertificatesSelect" id="481">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.Pick</CommandName>
+												<ExtendedTooltip name="EncryptionCertificatesSelectExtendedTooltip" id="482"/>
+											</Button>
+											<Button name="EncryptionCertificatesAdd" id="483">
+												<Type>CommandBarButton</Type>
+												<OnlyInAllActions>false</OnlyInAllActions>
+												<CommandName>Form.Item.EncryptionCertificates.StandardCommand.Add</CommandName>
+												<ExtendedTooltip name="EncryptionCertificatesAddExtendedTooltip" id="484"/>
+											</Button>
+											<Button name="EncryptionCertificatesDelete" id="485">
+												<Type>CommandBarButton</Type>
+												<OnlyInAllActions>true</OnlyInAllActions>
+												<CommandName>Form.Item.EncryptionCertificates.StandardCommand.Delete</CommandName>
+												<ExtendedTooltip name="EncryptionCertificatesDeleteExtendedTooltip" id="486"/>
+											</Button>
+											<ButtonGroup name="CertificatesCommandBar" id="487">
+												<Title>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Certificates command bar</v8:content>
+													</v8:item>
+												</Title>
+												<CommandSource>Item.EncryptionCertificates</CommandSource>
+												<ExtendedTooltip name="CertificatesCommandBarExtendedTooltip" id="488"/>
+											</ButtonGroup>
+										</ChildItems>
+									</AutoCommandBar>
+									<ExtendedTooltip name="EncryptionCertificatesExtendedTooltip" id="460"/>
+									<SearchStringAddition name="EncryptionCertificatesSearchString" id="461">
+										<AdditionSource>
+											<Item>EncryptionCertificates</Item>
+											<Type>SearchStringRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="EncryptionCertificatesSearchStringContextMenu" id="464"/>
+										<ExtendedTooltip name="EncryptionCertificatesSearchStringExtendedTooltip" id="465"/>
+									</SearchStringAddition>
+									<ViewStatusAddition name="EncryptionCertificatesViewStatus" id="466">
+										<AdditionSource>
+											<Item>EncryptionCertificates</Item>
+											<Type>ViewStatusRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="EncryptionCertificatesViewStatusContextMenu" id="469"/>
+										<ExtendedTooltip name="EncryptionCertificatesViewStatusExtendedTooltip" id="470"/>
+									</ViewStatusAddition>
+									<SearchControlAddition name="EncryptionCertificatesSearchControl" id="471">
+										<AdditionSource>
+											<Item>EncryptionCertificates</Item>
+											<Type>SearchControl</Type>
+										</AdditionSource>
+										<ContextMenu name="EncryptionCertificatesSearchControlContextMenu" id="474"/>
+										<ExtendedTooltip name="EncryptionCertificatesSearchControlExtendedTooltip" id="475"/>
+									</SearchControlAddition>
+									<Events>
+										<Event name="ChoiceProcessing">EncryptionCertificatesChoiceProcessing</Event>
+									</Events>
+									<ChildItems>
+										<InputField name="EncryptionCertificatesCertificate" id="491">
+											<DataPath>EncryptionCertificates.Certificate</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="EncryptionCertificatesCertificateContextMenu" id="492"/>
+											<ExtendedTooltip name="EncryptionCertificatesCertificateExtendedTooltip" id="493"/>
+										</InputField>
+									</ChildItems>
+								</Table>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="SpecifiedCertificatesSet" id="498">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Specified certificates set</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="SpecifiedCertificatesSetExtendedTooltip" id="499"/>
+					<ChildItems>
+						<UsualGroup name="GroupSpecifiedCertificatesSet" id="522">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Certificates of users that are allowed to decrypt data</v8:content>
+								</v8:item>
+							</Title>
+							<TitleFont ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+							<Group>Vertical</Group>
+							<ExtendedTooltip name="GroupSpecifiedCertificatesSetExtendedTooltip" id="523"/>
+							<ChildItems>
+								<Table name="CertificatesSet" id="500">
+									<Representation>List</Representation>
+									<CommandBarLocation>None</CommandBarLocation>
+									<ReadOnly>true</ReadOnly>
+									<ChangeRowSet>false</ChangeRowSet>
+									<ChangeRowOrder>false</ChangeRowOrder>
+									<HeightInTableRows>4</HeightInTableRows>
+									<RowSelectionMode>Row</RowSelectionMode>
+									<Header>false</Header>
+									<AutoInsertNewRow>true</AutoInsertNewRow>
+									<EnableStartDrag>true</EnableStartDrag>
+									<EnableDrag>true</EnableDrag>
+									<DataPath>CertificatesSet</DataPath>
+									<CommandSet>
+										<ExcludedCommand>Copy</ExcludedCommand>
+										<ExcludedCommand>SortListAsc</ExcludedCommand>
+										<ExcludedCommand>MoveUp</ExcludedCommand>
+										<ExcludedCommand>SortListDesc</ExcludedCommand>
+										<ExcludedCommand>Delete</ExcludedCommand>
+										<ExcludedCommand>EndEdit</ExcludedCommand>
+										<ExcludedCommand>Add</ExcludedCommand>
+										<ExcludedCommand>Change</ExcludedCommand>
+										<ExcludedCommand>MoveDown</ExcludedCommand>
+									</CommandSet>
+									<SearchStringLocation>None</SearchStringLocation>
+									<ViewStatusLocation>None</ViewStatusLocation>
+									<SearchControlLocation>None</SearchControlLocation>
+									<RowFilter xsi:nil="true"/>
+									<ContextMenu name="CertificatesSetContextMenu" id="501">
+										<ChildItems>
+											<Button name="CertificatesSetContextMenuOpenCertificate" id="524">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.OpenCertificate</CommandName>
+												<ExtendedTooltip name="CertificatesSetContextMenuOpenCertificateExtendedTooltip" id="525"/>
+											</Button>
+										</ChildItems>
+									</ContextMenu>
+									<AutoCommandBar name="CertificatesSetCommandBar" id="502"/>
+									<ExtendedTooltip name="CertificatesSetExtendedTooltip" id="503"/>
+									<SearchStringAddition name="CertificatesSetSearchString" id="504">
+										<AdditionSource>
+											<Item>CertificatesSet</Item>
+											<Type>SearchStringRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="CertificatesSetSearchStringContextMenu" id="507"/>
+										<ExtendedTooltip name="CertificatesSetSearchStringExtendedTooltip" id="508"/>
+									</SearchStringAddition>
+									<ViewStatusAddition name="CertificatesSetViewStatus" id="509">
+										<AdditionSource>
+											<Item>CertificatesSet</Item>
+											<Type>ViewStatusRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="CertificatesSetViewStatusContextMenu" id="512"/>
+										<ExtendedTooltip name="CertificatesSetViewStatusExtendedTooltip" id="513"/>
+									</ViewStatusAddition>
+									<SearchControlAddition name="CertificatesSetSearchControl" id="514">
+										<AdditionSource>
+											<Item>CertificatesSet</Item>
+											<Type>SearchControl</Type>
+										</AdditionSource>
+										<ContextMenu name="CertificatesSetSearchControlContextMenu" id="517"/>
+										<ExtendedTooltip name="CertificatesSetSearchControlExtendedTooltip" id="518"/>
+									</SearchControlAddition>
+									<ChildItems>
+										<InputField name="CertificatesSetPresentation" id="519">
+											<DataPath>CertificatesSet.Presentation</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="CertificatesSetPresentationContextMenu" id="520"/>
+											<ExtendedTooltip name="CertificatesSetPresentationExtendedTooltip" id="521"/>
+										</InputField>
+									</ChildItems>
+								</Table>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="DataPresentation" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Data presentation</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Certificate" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Certificate</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.DigitalSignaturesAndEncryptionKeyCertificates</v8:Type>
+			</Type>
+			<FillCheck>ShowError</FillCheck>
+		</Attribute>
+		<Attribute name="CertificateThumbprint" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Certificate thumbprint</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="CertificateChoiceList" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Select certificate list</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="FilterCertificates" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Certificates filter</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="CertificateApplication" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Certificate application</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.DigitalSignatureAndEncryptionApplications</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="NotifyAboutExpiration" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Notify on expiration</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="CertificateValidUntil" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>The certificate is valid through</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>DateTime</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="CertificateAtServerErrorDescription" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Certificate on server error description</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="CryptoManagerAtServerErrorDescription" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Cryptography manager on server error description</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="PrintsFilter" id="17">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Filter of thumbprints</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="EncryptionCertificates" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Encryption certificates</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Certificate" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Certificate</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.DigitalSignaturesAndEncryptionKeyCertificates</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="CertificateEnhancedProtectionPrivateKey" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Certificate enhanced protection of the private key</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="WithoutConfirmation" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Without confirmation</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="PerformAtServer" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Perform on server</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="CertificateAddress" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Certificate address</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="CertificatesSet" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Certificates set</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Presentation" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Presentation</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Imprint" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Imprint</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Ref" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Ref</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="DataAddress" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Dates Address</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="CertificatesPropertiesAddress" id="18">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Address of certificates properties</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="SpecifiedCertificatesSet" id="20">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Set of certificates is specified</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="Encrypt" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Encrypt</v8:content>
+				</v8:item>
+			</Title>
+			<Action>Encrypt</Action>
+		</Command>
+		<Command name="OpenCertificate" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Open certificate</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Open certificate</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>OpenCertificate</Action>
+		</Command>
+		<Command name="Pick" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Pick</v8:content>
+				</v8:item>
+			</Title>
+			<Action>Pick</Action>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="Operation">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="DataTitle">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="DataPresentation">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="OpenDataList">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="CertificateThumbprintsAtClient">
+			<Type/>
+		</Parameter>
+		<Parameter name="WithoutConfirmation">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="PerformAtServer">
+			<Type/>
+		</Parameter>
+		<Parameter name="ChangeSet">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

@@ -1,0 +1,492 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<MetaDataObject xmlns="http://v8.1c.ru/8.3/MDClasses" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:cmi="http://v8.1c.ru/8.2/managed-application/cmi" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xpr="http://v8.1c.ru/8.3/xcf/predef" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<DocumentJournal uuid="039500ac-495c-41de-804e-913e07d19852">
+		<InternalInfo>
+			<xr:GeneratedType name="DocumentJournalSelection.PurchaseDocuments" category="Selection">
+				<xr:TypeId>27a677ed-0abf-4083-a3d1-97a5119a7604</xr:TypeId>
+				<xr:ValueId>f8a29cb6-62dd-40d8-90d2-9e590d78260c</xr:ValueId>
+			</xr:GeneratedType>
+			<xr:GeneratedType name="DocumentJournalList.PurchaseDocuments" category="List">
+				<xr:TypeId>ce4a512d-141b-4a39-8850-15784b705a2d</xr:TypeId>
+				<xr:ValueId>5aa8eb9c-1548-42db-9a2f-40851ca24bd2</xr:ValueId>
+			</xr:GeneratedType>
+			<xr:GeneratedType name="DocumentJournalManager.PurchaseDocuments" category="Manager">
+				<xr:TypeId>bb626176-263e-4e49-b451-0cf76ec822f5</xr:TypeId>
+				<xr:ValueId>608df4af-7a52-4f7b-a0eb-bd9f08d1c631</xr:ValueId>
+			</xr:GeneratedType>
+		</InternalInfo>
+		<Properties>
+			<Name>PurchaseDocuments</Name>
+			<Synonym>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Purchase documents</v8:content>
+				</v8:item>
+			</Synonym>
+			<Comment/>
+			<DefaultForm>DocumentJournal.PurchaseDocuments.Form.ListForm</DefaultForm>
+			<AuxiliaryForm/>
+			<UseStandardCommands>true</UseStandardCommands>
+			<RegisteredDocuments>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoice</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.PurchaseOrder</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.AdditionalCosts</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoiceNote</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoiceForPayment</xr:Item>
+			</RegisteredDocuments>
+			<IncludeHelpInContents>true</IncludeHelpInContents>
+			<StandardAttributes>
+				<xr:StandardAttribute name="Type">
+					<xr:LinkByType/>
+					<xr:FillChecking>DontCheck</xr:FillChecking>
+					<xr:MultiLine>false</xr:MultiLine>
+					<xr:FillFromFillingValue>false</xr:FillFromFillingValue>
+					<xr:CreateOnInput>Auto</xr:CreateOnInput>
+					<xr:MaxValue xsi:nil="true"/>
+					<xr:ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Document type</v8:content>
+						</v8:item>
+					</xr:ToolTip>
+					<xr:ExtendedEdit>false</xr:ExtendedEdit>
+					<xr:Format/>
+					<xr:ChoiceForm/>
+					<xr:QuickChoice>Auto</xr:QuickChoice>
+					<xr:ChoiceHistoryOnInput>Auto</xr:ChoiceHistoryOnInput>
+					<xr:EditFormat/>
+					<xr:PasswordMode>false</xr:PasswordMode>
+					<xr:MarkNegatives>false</xr:MarkNegatives>
+					<xr:MinValue xsi:nil="true"/>
+					<xr:Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Type</v8:content>
+						</v8:item>
+					</xr:Synonym>
+					<xr:Comment/>
+					<xr:FullTextSearch>Use</xr:FullTextSearch>
+					<xr:ChoiceParameterLinks/>
+					<xr:FillValue xsi:nil="true"/>
+					<xr:Mask/>
+					<xr:ChoiceParameters/>
+				</xr:StandardAttribute>
+				<xr:StandardAttribute name="Ref">
+					<xr:LinkByType/>
+					<xr:FillChecking>DontCheck</xr:FillChecking>
+					<xr:MultiLine>false</xr:MultiLine>
+					<xr:FillFromFillingValue>false</xr:FillFromFillingValue>
+					<xr:CreateOnInput>Auto</xr:CreateOnInput>
+					<xr:MaxValue xsi:nil="true"/>
+					<xr:ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Document deletion mark</v8:content>
+						</v8:item>
+					</xr:ToolTip>
+					<xr:ExtendedEdit>false</xr:ExtendedEdit>
+					<xr:Format/>
+					<xr:ChoiceForm/>
+					<xr:QuickChoice>Auto</xr:QuickChoice>
+					<xr:ChoiceHistoryOnInput>Auto</xr:ChoiceHistoryOnInput>
+					<xr:EditFormat/>
+					<xr:PasswordMode>false</xr:PasswordMode>
+					<xr:MarkNegatives>false</xr:MarkNegatives>
+					<xr:MinValue xsi:nil="true"/>
+					<xr:Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Ref</v8:content>
+						</v8:item>
+					</xr:Synonym>
+					<xr:Comment/>
+					<xr:FullTextSearch>Use</xr:FullTextSearch>
+					<xr:ChoiceParameterLinks/>
+					<xr:FillValue xsi:nil="true"/>
+					<xr:Mask/>
+					<xr:ChoiceParameters/>
+				</xr:StandardAttribute>
+				<xr:StandardAttribute name="Date">
+					<xr:LinkByType/>
+					<xr:FillChecking>DontCheck</xr:FillChecking>
+					<xr:MultiLine>false</xr:MultiLine>
+					<xr:FillFromFillingValue>false</xr:FillFromFillingValue>
+					<xr:CreateOnInput>Auto</xr:CreateOnInput>
+					<xr:MaxValue xsi:nil="true"/>
+					<xr:ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Document date</v8:content>
+						</v8:item>
+					</xr:ToolTip>
+					<xr:ExtendedEdit>false</xr:ExtendedEdit>
+					<xr:Format/>
+					<xr:ChoiceForm/>
+					<xr:QuickChoice>Auto</xr:QuickChoice>
+					<xr:ChoiceHistoryOnInput>Auto</xr:ChoiceHistoryOnInput>
+					<xr:EditFormat/>
+					<xr:PasswordMode>false</xr:PasswordMode>
+					<xr:MarkNegatives>false</xr:MarkNegatives>
+					<xr:MinValue xsi:nil="true"/>
+					<xr:Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Date</v8:content>
+						</v8:item>
+					</xr:Synonym>
+					<xr:Comment/>
+					<xr:FullTextSearch>Use</xr:FullTextSearch>
+					<xr:ChoiceParameterLinks/>
+					<xr:FillValue xsi:nil="true"/>
+					<xr:Mask/>
+					<xr:ChoiceParameters/>
+				</xr:StandardAttribute>
+				<xr:StandardAttribute name="Posted">
+					<xr:LinkByType/>
+					<xr:FillChecking>DontCheck</xr:FillChecking>
+					<xr:MultiLine>false</xr:MultiLine>
+					<xr:FillFromFillingValue>false</xr:FillFromFillingValue>
+					<xr:CreateOnInput>Auto</xr:CreateOnInput>
+					<xr:MaxValue xsi:nil="true"/>
+					<xr:ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Document posting flag</v8:content>
+						</v8:item>
+					</xr:ToolTip>
+					<xr:ExtendedEdit>false</xr:ExtendedEdit>
+					<xr:Format/>
+					<xr:ChoiceForm/>
+					<xr:QuickChoice>Auto</xr:QuickChoice>
+					<xr:ChoiceHistoryOnInput>Auto</xr:ChoiceHistoryOnInput>
+					<xr:EditFormat/>
+					<xr:PasswordMode>false</xr:PasswordMode>
+					<xr:MarkNegatives>false</xr:MarkNegatives>
+					<xr:MinValue xsi:nil="true"/>
+					<xr:Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Posted</v8:content>
+						</v8:item>
+					</xr:Synonym>
+					<xr:Comment/>
+					<xr:FullTextSearch>Use</xr:FullTextSearch>
+					<xr:ChoiceParameterLinks/>
+					<xr:FillValue xsi:nil="true"/>
+					<xr:Mask/>
+					<xr:ChoiceParameters/>
+				</xr:StandardAttribute>
+				<xr:StandardAttribute name="DeletionMark">
+					<xr:LinkByType/>
+					<xr:FillChecking>DontCheck</xr:FillChecking>
+					<xr:MultiLine>false</xr:MultiLine>
+					<xr:FillFromFillingValue>false</xr:FillFromFillingValue>
+					<xr:CreateOnInput>Auto</xr:CreateOnInput>
+					<xr:MaxValue xsi:nil="true"/>
+					<xr:ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Deletion mark</v8:content>
+						</v8:item>
+					</xr:ToolTip>
+					<xr:ExtendedEdit>false</xr:ExtendedEdit>
+					<xr:Format/>
+					<xr:ChoiceForm/>
+					<xr:QuickChoice>Auto</xr:QuickChoice>
+					<xr:ChoiceHistoryOnInput>Auto</xr:ChoiceHistoryOnInput>
+					<xr:EditFormat/>
+					<xr:PasswordMode>false</xr:PasswordMode>
+					<xr:MarkNegatives>false</xr:MarkNegatives>
+					<xr:MinValue xsi:nil="true"/>
+					<xr:Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>DeletionMark</v8:content>
+						</v8:item>
+					</xr:Synonym>
+					<xr:Comment/>
+					<xr:FullTextSearch>Use</xr:FullTextSearch>
+					<xr:ChoiceParameterLinks/>
+					<xr:FillValue xsi:nil="true"/>
+					<xr:Mask/>
+					<xr:ChoiceParameters/>
+				</xr:StandardAttribute>
+				<xr:StandardAttribute name="Number">
+					<xr:LinkByType/>
+					<xr:FillChecking>DontCheck</xr:FillChecking>
+					<xr:MultiLine>false</xr:MultiLine>
+					<xr:FillFromFillingValue>false</xr:FillFromFillingValue>
+					<xr:CreateOnInput>Auto</xr:CreateOnInput>
+					<xr:MaxValue xsi:nil="true"/>
+					<xr:ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Document No.</v8:content>
+						</v8:item>
+					</xr:ToolTip>
+					<xr:ExtendedEdit>false</xr:ExtendedEdit>
+					<xr:Format/>
+					<xr:ChoiceForm/>
+					<xr:QuickChoice>Auto</xr:QuickChoice>
+					<xr:ChoiceHistoryOnInput>Auto</xr:ChoiceHistoryOnInput>
+					<xr:EditFormat/>
+					<xr:PasswordMode>false</xr:PasswordMode>
+					<xr:MarkNegatives>false</xr:MarkNegatives>
+					<xr:MinValue xsi:nil="true"/>
+					<xr:Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Number</v8:content>
+						</v8:item>
+					</xr:Synonym>
+					<xr:Comment/>
+					<xr:FullTextSearch>Use</xr:FullTextSearch>
+					<xr:ChoiceParameterLinks/>
+					<xr:FillValue xsi:nil="true"/>
+					<xr:Mask/>
+					<xr:ChoiceParameters/>
+				</xr:StandardAttribute>
+			</StandardAttributes>
+			<ListPresentation/>
+			<ExtendedListPresentation/>
+			<Explanation/>
+		</Properties>
+		<ChildObjects>
+			<Column uuid="323cdd10-901c-4e37-930c-c40695e9e1a1">
+				<Properties>
+					<Name>Company</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Company</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+					<Indexing>DontIndex</Indexing>
+					<References>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.PurchaseOrder.Attribute.Company</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoiceNote.Attribute.Company</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoice.Attribute.Company</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.AdditionalCosts.Attribute.Company</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoiceForPayment.Attribute.Company</xr:Item>
+					</References>
+				</Properties>
+			</Column>
+			<Column uuid="ac386ab7-ccf6-4cb2-af87-5ff4e9230560">
+				<Properties>
+					<Name>OperationKind</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Operation</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+					<Indexing>DontIndex</Indexing>
+					<References>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.PurchaseOrder.Attribute.OperationKind</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoiceNote.Attribute.OperationKind</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoice.Attribute.OperationKind</xr:Item>
+					</References>
+				</Properties>
+			</Column>
+			<Column uuid="26788fcf-5a3d-453b-aab6-a4b053335e78">
+				<Properties>
+					<Name>Counterparty</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Counterparty</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+					<Indexing>DontIndex</Indexing>
+					<References>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.PurchaseOrder.Attribute.Counterparty</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoiceNote.Attribute.Counterparty</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoice.Attribute.Counterparty</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.AdditionalCosts.Attribute.Counterparty</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoiceForPayment.Attribute.Counterparty</xr:Item>
+					</References>
+				</Properties>
+			</Column>
+			<Column uuid="811373a4-18c7-4274-ac55-7de0acdf2137">
+				<Properties>
+					<Name>Contract</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Contract</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+					<Indexing>DontIndex</Indexing>
+					<References>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.PurchaseOrder.Attribute.Contract</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoiceNote.Attribute.Contract</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoice.Attribute.Contract</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.AdditionalCosts.Attribute.Contract</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoiceForPayment.Attribute.Contract</xr:Item>
+					</References>
+				</Properties>
+			</Column>
+			<Column uuid="f9996ee3-c7f1-4b38-8c8a-d33491973b9c">
+				<Properties>
+					<Name>PurchaseOrder</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Purchase order</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+					<Indexing>DontIndex</Indexing>
+					<References>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoice.Attribute.Order</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.AdditionalCosts.Attribute.PurchaseOrder</xr:Item>
+					</References>
+				</Properties>
+			</Column>
+			<Column uuid="4675907b-ddf8-462c-a817-44d42ff72dd1">
+				<Properties>
+					<Name>Amount</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Amount</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+					<Indexing>DontIndex</Indexing>
+					<References>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.PurchaseOrder.Attribute.DocumentAmount</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoiceNote.Attribute.DocumentAmount</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoice.Attribute.DocumentAmount</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.AdditionalCosts.Attribute.DocumentAmount</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoiceForPayment.Attribute.DocumentAmount</xr:Item>
+					</References>
+				</Properties>
+			</Column>
+			<Column uuid="f89d360a-df99-4d09-a690-cd36324d1963">
+				<Properties>
+					<Name>Currency</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Currency</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+					<Indexing>DontIndex</Indexing>
+					<References>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.PurchaseOrder.Attribute.DocumentCurrency</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoiceNote.Attribute.DocumentCurrency</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoice.Attribute.DocumentCurrency</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.AdditionalCosts.Attribute.DocumentCurrency</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoiceForPayment.Attribute.DocumentCurrency</xr:Item>
+					</References>
+				</Properties>
+			</Column>
+			<Column uuid="85f1a8d5-2df0-4300-9574-a4414f339ed0">
+				<Properties>
+					<Name>Responsible</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Responsible</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+					<Indexing>DontIndex</Indexing>
+					<References>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.AdditionalCosts.Attribute.Responsible</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.PurchaseOrder.Attribute.Responsible</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoice.Attribute.Responsible</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoiceForPayment.Attribute.Responsible</xr:Item>
+					</References>
+				</Properties>
+			</Column>
+			<Column uuid="a1b98556-d402-4839-b1a4-1ea058964e25">
+				<Properties>
+					<Name>IncomingDocumentNumber</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>In. Doc. No</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+					<Indexing>DontIndex</Indexing>
+					<References>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.AdditionalCosts.Attribute.IncomingDocumentNumber</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.PurchaseOrder.Attribute.IncomingDocumentNumber</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoice.Attribute.IncomingDocumentNumber</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoiceForPayment.Attribute.IncomingDocumentNumber</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoiceNote.Attribute.PaymentAccountingDocumentNumber</xr:Item>
+					</References>
+				</Properties>
+			</Column>
+			<Column uuid="8e7e37c3-9995-432f-a81d-a1f6b8083d26">
+				<Properties>
+					<Name>IncomingDocumentDate</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Date of incoming document</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+					<Indexing>DontIndex</Indexing>
+					<References>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.AdditionalCosts.Attribute.IncomingDocumentDate</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.PurchaseOrder.Attribute.IncomingDocumentDate</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoice.Attribute.IncomingDocumentDate</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoiceForPayment.Attribute.IncomingDocumentDate</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoiceNote.Attribute.PaymentAccountingDocumentDate</xr:Item>
+					</References>
+				</Properties>
+			</Column>
+			<Column uuid="58c0e0cd-ae6b-46c1-8f3c-97644284697d">
+				<Properties>
+					<Name>Comment</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Comment</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+					<Indexing>DontIndex</Indexing>
+					<References>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.PurchaseOrder.Attribute.Comment</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoiceNote.Attribute.Comment</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoice.Attribute.Comment</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.AdditionalCosts.Attribute.Comment</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoiceForPayment.Attribute.Comment</xr:Item>
+					</References>
+				</Properties>
+			</Column>
+			<Column uuid="ba369f25-99ba-43a5-aec0-22af82927c93">
+				<Properties>
+					<Name>Author</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Author</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+					<Indexing>DontIndex</Indexing>
+					<References>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.AdditionalCosts.Attribute.Author</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.PurchaseOrder.Attribute.Author</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoice.Attribute.Author</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoiceForPayment.Attribute.Author</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoiceNote.Attribute.Author</xr:Item>
+					</References>
+				</Properties>
+			</Column>
+			<Form>ListForm</Form>
+		</ChildObjects>
+	</DocumentJournal>
+</MetaDataObject>

@@ -1,0 +1,727 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Title>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Spreadsheet document (Creation)</v8:content>
+		</v8:item>
+	</Title>
+	<Width>100</Width>
+	<Height>20</Height>
+	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
+	<AutoTitle>false</AutoTitle>
+	<CommandBarLocation>None</CommandBarLocation>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="FormCommandBar" id="-1"/>
+	<Events>
+		<Event name="NotificationProcessing">NotificationProcessing</Event>
+		<Event name="OnOpen">OnOpen</Event>
+		<Event name="BeforeClose">BeforeClose</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<CommandBar name="CommandBar" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Command bar</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Command bar</v8:content>
+				</v8:item>
+			</ToolTip>
+			<ExtendedTooltip name="CommandBarExtendedTooltip" id="94"/>
+			<ChildItems>
+				<ButtonGroup name="DocumentAction" id="31">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Operations with document</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Operations with document</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="DocumentActionExtendedTooltip" id="95"/>
+					<ChildItems>
+						<Button name="WriteAndClose" id="51">
+							<Type>CommandBarButton</Type>
+							<DefaultButton>true</DefaultButton>
+							<CommandName>Form.Command.WriteAndClose</CommandName>
+							<ExtendedTooltip name="WriteAndCloseExtendedTooltip" id="96"/>
+						</Button>
+						<Button name="Write" id="52">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Command.Write</CommandName>
+							<ExtendedTooltip name="WriteExtendedTooltip" id="97"/>
+						</Button>
+						<Button name="Edit" id="84">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Command.Edit</CommandName>
+							<ExtendedTooltip name="EditingExtendedTooltip" id="98"/>
+						</Button>
+						<Button name="EditInExternalApplication" id="145">
+							<Type>CommandBarButton</Type>
+							<OnlyInAllActions>false</OnlyInAllActions>
+							<CommandName>Form.Command.EditInExternalApplication</CommandName>
+							<ExtendedTooltip name="EditInExternalApplicationExtendedTooltip" id="146"/>
+						</Button>
+					</ChildItems>
+				</ButtonGroup>
+				<ButtonGroup name="AllActions" id="83">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>All actions</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>All actions</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="AllActionsExtendedTooltip" id="134"/>
+					<ChildItems>
+						<ButtonGroup name="ActionsWithGroups" id="34">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Actions with groups</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Actions with groups</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ExtendedTooltip name="ActionsWithGroupsExtendedTooltip" id="135"/>
+							<ChildItems>
+								<Button name="ShowGroups" id="35">
+									<Type>CommandBarButton</Type>
+									<CommandName>Form.Item.SpreadsheetDocument.StandardCommand.ShowGroups</CommandName>
+									<ExtendedTooltip name="ShowGroupsExtendedTooltip" id="136"/>
+								</Button>
+								<Button name="CollapseAllGroups" id="36">
+									<Type>CommandBarButton</Type>
+									<CommandName>Form.Item.SpreadsheetDocument.StandardCommand.CollapseAllGroups</CommandName>
+									<ExtendedTooltip name="CollapseAllGroupsExtendedTooltip" id="137"/>
+								</Button>
+								<Button name="ExpandAllGroups" id="37">
+									<Type>CommandBarButton</Type>
+									<CommandName>Form.Item.SpreadsheetDocument.StandardCommand.ExpandAllGroups</CommandName>
+									<ExtendedTooltip name="ExpandAllGroupsExtendedTooltip" id="138"/>
+								</Button>
+							</ChildItems>
+						</ButtonGroup>
+						<Button name="ChangeForm" id="6">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
+							<ExtendedTooltip name="ChangeFormExtendedTooltip" id="139"/>
+						</Button>
+					</ChildItems>
+				</ButtonGroup>
+				<ButtonGroup name="EditingCommands" id="85">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Edit command</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Edit command</v8:content>
+						</v8:item>
+					</ToolTip>
+					<CommandSource>Item.SpreadsheetDocument</CommandSource>
+					<ExtendedTooltip name="EditingCommandsExtendedTooltip" id="99"/>
+					<ChildItems>
+						<ButtonGroup name="FormattingText" id="53">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Text formatting</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Text formatting</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ExtendedTooltip name="TextFormattingExtendedTooltip" id="100"/>
+							<ChildItems>
+								<ButtonGroup name="Font" id="57">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Font</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Font</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="FontExtendedTooltip" id="101"/>
+									<ChildItems>
+										<Button name="SpreadsheetDocumentFont" id="219">
+											<Type>CommandBarButton</Type>
+											<OnlyInAllActions>true</OnlyInAllActions>
+											<CommandName>Form.Item.SpreadsheetDocument.StandardCommand.Font</CommandName>
+											<ExtendedTooltip name="SpreadsheetDocumentFontExtendedTooltip" id="220"/>
+										</Button>
+										<Button name="IncreaseFontSize" id="55">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.IncreaseFontSize</CommandName>
+											<ExtendedTooltip name="IncreaseFontSizeExtendedTooltip" id="103"/>
+										</Button>
+										<Button name="DecreaseFontSize" id="56">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.DecreaseFontSize</CommandName>
+											<ExtendedTooltip name="DecreaseFontSizeExtendedTooltip" id="104"/>
+										</Button>
+									</ChildItems>
+								</ButtonGroup>
+								<ButtonGroup name="FontStyle" id="58">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>FontStyle</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>FontStyle</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="MarkExtendedTooltip" id="105"/>
+									<ChildItems>
+										<Button name="SpreadsheetDocumentBold" id="221">
+											<Type>CommandBarButton</Type>
+											<OnlyInAllActions>true</OnlyInAllActions>
+											<CommandName>Form.Item.SpreadsheetDocument.StandardCommand.Bold</CommandName>
+											<ExtendedTooltip name="SpreadsheetDocumentBoldExtendedTooltip" id="222"/>
+										</Button>
+										<Button name="SpreadsheetDocumentItalic" id="223">
+											<Type>CommandBarButton</Type>
+											<OnlyInAllActions>true</OnlyInAllActions>
+											<CommandName>Form.Item.SpreadsheetDocument.StandardCommand.Italic</CommandName>
+											<ExtendedTooltip name="SpreadsheetDocumentItalicExtendedTooltip" id="224"/>
+										</Button>
+										<Button name="SpreadsheetDocumentUnderline" id="225">
+											<Type>CommandBarButton</Type>
+											<OnlyInAllActions>true</OnlyInAllActions>
+											<CommandName>Form.Item.SpreadsheetDocument.StandardCommand.Underline</CommandName>
+											<ExtendedTooltip name="SpreadsheetDocumentUnderlineExtendedTooltip" id="226"/>
+										</Button>
+										<Button name="Strikeout" id="86">
+											<Type>CommandBarButton</Type>
+											<OnlyInAllActions>false</OnlyInAllActions>
+											<CommandName>Form.Command.Strikeout</CommandName>
+											<ExtendedTooltip name="StrikeoutExtendedTooltip" id="109"/>
+										</Button>
+									</ChildItems>
+								</ButtonGroup>
+								<ButtonGroup name="Align" id="65">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Align</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Align</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="AlignmentExtendedTooltip" id="113"/>
+									<ChildItems>
+										<Button name="SpreadsheetDocumentAlignLeft" id="233">
+											<Type>CommandBarButton</Type>
+											<OnlyInAllActions>true</OnlyInAllActions>
+											<CommandName>Form.Item.SpreadsheetDocument.StandardCommand.AlignLeft</CommandName>
+											<ExtendedTooltip name="SpreadsheetDocumentAlignLeftExtendedTooltip" id="234"/>
+										</Button>
+										<Button name="SpreadsheetDocumentAlignCenter" id="235">
+											<Type>CommandBarButton</Type>
+											<OnlyInAllActions>true</OnlyInAllActions>
+											<CommandName>Form.Item.SpreadsheetDocument.StandardCommand.AlignCenter</CommandName>
+											<ExtendedTooltip name="SpreadsheetDocumentAlignCenterExtendedTooltip" id="236"/>
+										</Button>
+										<Button name="SpreadsheetDocumentAlignRight" id="237">
+											<Type>CommandBarButton</Type>
+											<OnlyInAllActions>true</OnlyInAllActions>
+											<CommandName>Form.Item.SpreadsheetDocument.StandardCommand.AlignRight</CommandName>
+											<ExtendedTooltip name="SpreadsheetDocumentAlignRightExtendedTooltip" id="238"/>
+										</Button>
+										<Button name="SpreadsheetDocumentJustify" id="239">
+											<Type>CommandBarButton</Type>
+											<OnlyInAllActions>true</OnlyInAllActions>
+											<CommandName>Form.Item.SpreadsheetDocument.StandardCommand.AlignJustify</CommandName>
+											<ExtendedTooltip name="SpreadsheetDocumentJustifyExtendedTooltip" id="240"/>
+										</Button>
+									</ChildItems>
+								</ButtonGroup>
+								<ButtonGroup name="Color" id="62">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Color</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Color</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="ColorExtendedTooltip" id="110"/>
+									<ChildItems>
+										<Button name="SpreadsheetDocumentBackgroundColor" id="227">
+											<Type>CommandBarButton</Type>
+											<OnlyInAllActions>true</OnlyInAllActions>
+											<CommandName>Form.Item.SpreadsheetDocument.StandardCommand.BackColor</CommandName>
+											<ExtendedTooltip name="SpreadsheetDocumentBackgroundColorExtendedTooltip" id="228"/>
+										</Button>
+										<Button name="SpreadsheetDocumentTextColor" id="229">
+											<Type>CommandBarButton</Type>
+											<OnlyInAllActions>true</OnlyInAllActions>
+											<CommandName>Form.Item.SpreadsheetDocument.StandardCommand.TextColor</CommandName>
+											<ExtendedTooltip name="SpreadsheetDocumentTextColorExtendedTooltip" id="230"/>
+										</Button>
+										<Button name="SpreadsheetDocumentBorderColor" id="231">
+											<Type>CommandBarButton</Type>
+											<OnlyInAllActions>true</OnlyInAllActions>
+											<CommandName>Form.Item.SpreadsheetDocument.StandardCommand.BorderColor</CommandName>
+											<ExtendedTooltip name="SpreadsheetDocumentBorderColorExtendedTooltip" id="232"/>
+										</Button>
+									</ChildItems>
+								</ButtonGroup>
+							</ChildItems>
+						</ButtonGroup>
+						<Popup name="Boundaries" id="70">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Boundaries</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Boundaries</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Picture>
+								<xr:Ref>CommonPicture.BorderOutSide</xr:Ref>
+								<xr:LoadTransparent>true</xr:LoadTransparent>
+							</Picture>
+							<Representation>Picture</Representation>
+							<ExtendedTooltip name="BordersExtendedTooltip" id="118"/>
+							<ChildItems>
+								<Button name="SpreadsheetDocumentLeftBorder" id="241">
+									<Type>CommandBarButton</Type>
+									<OnlyInAllActions>true</OnlyInAllActions>
+									<CommandName>Form.Item.SpreadsheetDocument.StandardCommand.BorderLeft</CommandName>
+									<ExtendedTooltip name="SpreadsheetDocumentLeftBorderExtendedTooltip" id="242"/>
+								</Button>
+								<Button name="SpreadsheetDocumentTopBorder" id="243">
+									<Type>CommandBarButton</Type>
+									<OnlyInAllActions>true</OnlyInAllActions>
+									<CommandName>Form.Item.SpreadsheetDocument.StandardCommand.BorderTop</CommandName>
+									<ExtendedTooltip name="SpreadsheetDocumentTopBorderExtendedTooltip" id="244"/>
+								</Button>
+								<Button name="SpreadsheetDocumentRightBorder" id="245">
+									<Type>CommandBarButton</Type>
+									<OnlyInAllActions>true</OnlyInAllActions>
+									<CommandName>Form.Item.SpreadsheetDocument.StandardCommand.BorderRight</CommandName>
+									<ExtendedTooltip name="SpreadsheetDocumentRightBorderExtendedTooltip" id="246"/>
+								</Button>
+								<Button name="SpreadsheetDocumentBottomBorder" id="247">
+									<Type>CommandBarButton</Type>
+									<OnlyInAllActions>true</OnlyInAllActions>
+									<CommandName>Form.Item.SpreadsheetDocument.StandardCommand.BorderBottom</CommandName>
+									<ExtendedTooltip name="SpreadsheetDocumentBottomBorderExtendedTooltip" id="248"/>
+								</Button>
+								<Button name="SpreadsheetDocumentBorderEverywhere" id="249">
+									<Type>CommandBarButton</Type>
+									<OnlyInAllActions>true</OnlyInAllActions>
+									<CommandName>Form.Item.SpreadsheetDocument.StandardCommand.BorderAll</CommandName>
+									<ExtendedTooltip name="SpreadsheetDocumentBorderEverywhereExtendedTooltip" id="250"/>
+								</Button>
+								<Button name="SpreadsheetDocumentBorderOutSide" id="251">
+									<Type>CommandBarButton</Type>
+									<OnlyInAllActions>true</OnlyInAllActions>
+									<CommandName>Form.Item.SpreadsheetDocument.StandardCommand.BorderOutline</CommandName>
+									<ExtendedTooltip name="SpreadsheetDocumentBorderOutSideExtendedTooltip" id="252"/>
+								</Button>
+								<Button name="SpreadsheetDocumentInsideBorder" id="253">
+									<Type>CommandBarButton</Type>
+									<OnlyInAllActions>true</OnlyInAllActions>
+									<CommandName>Form.Item.SpreadsheetDocument.StandardCommand.BorderInside</CommandName>
+									<ExtendedTooltip name="SpreadsheetDocumentInsideBorderExtendedTooltip" id="254"/>
+								</Button>
+								<Button name="SpreadsheetDocumentThickBorderAround" id="255">
+									<Type>CommandBarButton</Type>
+									<OnlyInAllActions>true</OnlyInAllActions>
+									<CommandName>Form.Item.SpreadsheetDocument.StandardCommand.ThickBorderOutline</CommandName>
+									<ExtendedTooltip name="SpreadsheetDocumentThickBorderAroundExtendedTooltip" id="256"/>
+								</Button>
+								<Button name="SpreadsheetDocumentThickTopBorder" id="257">
+									<Type>CommandBarButton</Type>
+									<OnlyInAllActions>true</OnlyInAllActions>
+									<CommandName>Form.Item.SpreadsheetDocument.StandardCommand.ThickBorderTop</CommandName>
+									<ExtendedTooltip name="SpreadsheetDocumentThickTopBorderExtendedTooltip" id="258"/>
+								</Button>
+								<Button name="SpreadsheetDocumentThickBottomBorder" id="259">
+									<Type>CommandBarButton</Type>
+									<OnlyInAllActions>true</OnlyInAllActions>
+									<CommandName>Form.Item.SpreadsheetDocument.StandardCommand.ThickBorderBottom</CommandName>
+									<ExtendedTooltip name="SpreadsheetDocumentThickBottomBorderExtendedTooltip" id="260"/>
+								</Button>
+								<Button name="SpreadsheetDocumentNumberBorder" id="261">
+									<Type>CommandBarButton</Type>
+									<OnlyInAllActions>true</OnlyInAllActions>
+									<CommandName>Form.Item.SpreadsheetDocument.StandardCommand.BorderNone</CommandName>
+									<ExtendedTooltip name="SpreadsheetDocumentNumberBorderExtendedTooltip" id="262"/>
+								</Button>
+							</ChildItems>
+						</Popup>
+						<ButtonGroup name="CellsAction" id="50">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Cells actions</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Cells actions</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ExtendedTooltip name="CellsActionExtendedTooltip" id="130"/>
+							<ChildItems>
+								<Button name="SpreadsheetDocumentCombine" id="263">
+									<Type>CommandBarButton</Type>
+									<Representation>Picture</Representation>
+									<OnlyInAllActions>true</OnlyInAllActions>
+									<CommandName>Form.Item.SpreadsheetDocument.StandardCommand.Merge</CommandName>
+									<ExtendedTooltip name="SpreadsheetDocumentCombineExtendedTooltip" id="264"/>
+								</Button>
+							</ChildItems>
+						</ButtonGroup>
+					</ChildItems>
+				</ButtonGroup>
+				<Button name="Help" id="7">
+					<Type>CommandBarButton</Type>
+					<CommandName>Form.StandardCommand.Help</CommandName>
+					<ExtendedTooltip name="HelpExtendedTooltip" id="140"/>
+				</Button>
+			</ChildItems>
+		</CommandBar>
+		<UsualGroup name="Warning" id="91">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Warning</v8:content>
+				</v8:item>
+			</Title>
+			<HorizontalStretch>true</HorizontalStretch>
+			<Group>Horizontal</Group>
+			<Representation>NormalSeparation</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="WarningExtendedTooltip" id="141"/>
+			<ChildItems>
+				<PictureDecoration name="WarningPicture" id="92">
+					<Width>2</Width>
+					<Height>1</Height>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Warning picture</v8:content>
+						</v8:item>
+					</Title>
+					<Picture>
+						<xr:Ref>CommonPicture.Warning</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</Picture>
+					<ContextMenu name="WarningPictureContextMenu" id="93"/>
+					<ExtendedTooltip name="WarningPictureExtendedTooltip" id="142"/>
+				</PictureDecoration>
+				<LabelDecoration name="WarningText" id="89">
+					<TextColor>style:ExplanationText</TextColor>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Modification of the area names as well as the template parameters may lead to the print form efficiency loss.</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="WarningTextContextMenu" id="90"/>
+					<ExtendedTooltip name="WarningTextExtendedTooltip" id="143"/>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+		<SpreadSheetDocumentField name="SpreadsheetDocument" id="1">
+			<DataPath>SpreadsheetDocument</DataPath>
+			<TitleLocation>None</TitleLocation>
+			<ShowGrid>true</ShowGrid>
+			<ShowHeaders>true</ShowHeaders>
+			<Edit>true</Edit>
+			<ContextMenu name="SpreadsheetDocumentContextMenu" id="2"/>
+			<ExtendedTooltip name="SpreadsheetDocumentExtendedTooltip" id="144"/>
+			<Events>
+				<Event name="OnActivateArea">SpreadsheetDocumentOnActivateArea</Event>
+			</Events>
+		</SpreadSheetDocumentField>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="SpreadsheetDocument" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Spreadsheet document</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type xmlns:mxl="http://v8.1c.ru/8.2/data/spreadsheet">mxl:SpreadsheetDocument</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="DocumentName" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Document name</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="EditProhibited" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Editing is prohibited</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Recorded" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Recorded</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="WriteAndClose" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Save and close</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Save and close</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>WriteAndClose</Action>
+		</Command>
+		<Command name="Edit" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Edit</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Edit</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.SpreadsheetReadOnly</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Edit</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="IncreaseFontSize" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Increase the font size</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Increase the font size</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.IncreaseFont</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>IncreaseFontSize</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="DecreaseFontSize" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Decrease the font size</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Decrease the font size</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.DecreaseFont</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>DecreaseFontSize</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="Write" id="31">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Write</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Write</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.SaveFile</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Write</Action>
+		</Command>
+		<Command name="Strikeout" id="32">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Strikeout</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Strikeout</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Strikeout</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="EditInExternalApplication" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Edit in external application...</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Edit in external application</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>EditInExternalApplication</Action>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="SpreadsheetDocument">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:Type xmlns:mxl="http://v8.1c.ru/8.2/data/spreadsheet">mxl:SpreadsheetDocument</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="PathToFile">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<KeyParameter>true</KeyParameter>
+		</Parameter>
+		<Parameter name="WindowOpeningMode">
+			<Type/>
+		</Parameter>
+		<Parameter name="Edit">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="MetadataObjectTemplateName">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<KeyParameter>true</KeyParameter>
+		</Parameter>
+		<Parameter name="DocumentName">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

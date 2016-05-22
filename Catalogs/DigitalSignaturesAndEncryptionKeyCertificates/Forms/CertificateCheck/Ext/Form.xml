@@ -1,0 +1,1167 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<CommandBarLocation>Bottom</CommandBarLocation>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<HorizontalAlign>Right</HorizontalAlign>
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="FormCheck" id="9">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.Validate</CommandName>
+				<ToolTipRepresentation>None</ToolTipRepresentation>
+				<ExtendedTooltip name="FormCheckExtendedTooltip" id="10"/>
+			</Button>
+			<Button name="FormClose" id="11">
+				<Type>CommandBarButton</Type>
+				<Representation>Text</Representation>
+				<CommandName>Form.StandardCommand.Close</CommandName>
+				<ToolTipRepresentation>None</ToolTipRepresentation>
+				<ExtendedTooltip name="FormCloseExtendedTooltip" id="12"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="NotificationProcessing">NotificationProcessing</Event>
+		<Event name="OnOpen">OnOpen</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="GroupCheckOnComputerOnServer" id="24">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group check on computer on server</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="GroupCheckOnComputerOnServerExtendedTooltip" id="25"/>
+			<ChildItems>
+				<PictureDecoration name="OnClientPicture" id="26">
+					<Width>3</Width>
+					<Height>2</Height>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>On client picture</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Result of the certificate check on computer.</v8:content>
+						</v8:item>
+					</ToolTip>
+					<PictureSize>Proportionally</PictureSize>
+					<Picture>
+						<xr:Ref>CommonPicture.ComputerClient</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</Picture>
+					<ContextMenu name="OnClientPictureContextMenu" id="27"/>
+					<ExtendedTooltip name="OnClientPictureExtendedTooltip" id="28"/>
+				</PictureDecoration>
+				<PictureDecoration name="OnServerPicture" id="29">
+					<Width>3</Width>
+					<Height>2</Height>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>On server picture</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Result of the certificate check on server.</v8:content>
+						</v8:item>
+					</ToolTip>
+					<PictureSize>Proportionally</PictureSize>
+					<Picture>
+						<xr:Ref>CommonPicture.ComputerServer</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</Picture>
+					<ContextMenu name="OnServerPictureContextMenu" id="30"/>
+					<ExtendedTooltip name="OnServerPictureExtendedTooltip" id="31"/>
+				</PictureDecoration>
+				<LabelDecoration name="ChecksListLabel" id="144">
+					<Height>2</Height>
+					<Font ref="style:NormalTextFont" height="11" kind="StyleItem"/>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Checks that will be performed</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ListChecksLabelContextMenu" id="145"/>
+					<ExtendedTooltip name="ChecksListLabelExtendedTooltip" id="146"/>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="GroupCommonChecks" id="149">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Common checks</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="GroupCommonChecksExtendedTooltip" id="150"/>
+			<ChildItems>
+				<UsualGroup name="GroupLegalCertificate" id="1">
+					<Visible>false</Visible>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group legal certificate</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="GroupLegalCertificateExtendedTooltip" id="2"/>
+					<ChildItems>
+						<PictureDecoration name="LegalCertificateOnClientPicture" id="32">
+							<Width>3</Width>
+							<Height>1</Height>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Legal certificate on client picture</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Check was not performed.</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Hyperlink>true</Hyperlink>
+							<PictureSize>AutoSize</PictureSize>
+							<ContextMenu name="LegalCertificateOnClientPictureContextMenu" id="33"/>
+							<ExtendedTooltip name="LegalCertificateOnClientPictureExtendedTooltip" id="34"/>
+							<Events>
+								<Event name="Click">PictureClick</Event>
+							</Events>
+						</PictureDecoration>
+						<PictureDecoration name="LegalCertificateOnServerPicture" id="3">
+							<Width>3</Width>
+							<Height>1</Height>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Legal certificate on server picture</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Check was not performed.</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Hyperlink>true</Hyperlink>
+							<PictureSize>AutoSize</PictureSize>
+							<ContextMenu name="LegalCertificateOnServerPictureContextMenu" id="4"/>
+							<ExtendedTooltip name="LegalCertificateOnServerPictureExtendedTooltip" id="5"/>
+							<Events>
+								<Event name="Click">PictureClick</Event>
+							</Events>
+						</PictureDecoration>
+						<LabelDecoration name="LegalCertificateLabel" id="6">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Compliance with Russian Federation laws</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<ContextMenu name="LegalCertificateLabelContextMenu" id="7"/>
+							<ExtendedTooltip name="LegalCertificateLabelExtendedTooltip" id="8">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Shows compliance with federal law of Russian Federation dated 6 April 2011 No 63-FL "About digital signature".
+It is recommended to use qualified signature key certificates (QSKC) according to 63-FL.</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="GroupCertificateExistence" id="38">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group certificate existence</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="GroupCertificateExistenceExtendedTooltip" id="39"/>
+					<ChildItems>
+						<PictureDecoration name="CertificateExistenceOnClientPicture" id="40">
+							<Width>3</Width>
+							<Height>1</Height>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Certificate existence on client picture</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Check was not performed.</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Hyperlink>true</Hyperlink>
+							<PictureSize>AutoSize</PictureSize>
+							<ContextMenu name="CertificateExistenceOnClientPictureContextMenu" id="41"/>
+							<ExtendedTooltip name="CertificateExistenceOnClientPictureExtendedTooltip" id="42"/>
+							<Events>
+								<Event name="Click">PictureClick</Event>
+							</Events>
+						</PictureDecoration>
+						<PictureDecoration name="CertificateExistenceOnServerPicture" id="43">
+							<Width>3</Width>
+							<Height>1</Height>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Certificate existence on server picture</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Check was not performed.</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Hyperlink>true</Hyperlink>
+							<PictureSize>AutoSize</PictureSize>
+							<ContextMenu name="CertificateExistenceOnServerPictureContextMenu" id="44"/>
+							<ExtendedTooltip name="CertificateExistenceOnServerPictureExtendedTooltip" id="45"/>
+							<Events>
+								<Event name="Click">PictureClick</Event>
+							</Events>
+						</PictureDecoration>
+						<LabelDecoration name="CertificateExistenceLabel" id="46">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Certificate existence in personal list</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<ContextMenu name="CertificateExistenceLabelContextMenu" id="47"/>
+							<ExtendedTooltip name="CertificateExistenceLabelExtendedTooltip" id="48">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Shows if the certificate is set in personal
+list (personal storage) on computer. Certificate shall be set
+in personal list on computer and assigned with private key for signing and details.</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="GroupCertificateData" id="49">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group certificate data</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="GroupCertificateDataExtendedTooltip" id="50"/>
+					<ChildItems>
+						<PictureDecoration name="CertificateDataOnClientPicture" id="51">
+							<Width>3</Width>
+							<Height>1</Height>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Data certificate on client picture</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Check was not performed.</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Hyperlink>true</Hyperlink>
+							<PictureSize>AutoSize</PictureSize>
+							<ContextMenu name="CertificateDataOnClientPictureContextMenu" id="52"/>
+							<ExtendedTooltip name="CertificateDataOnClientPictureExtendedTooltip" id="53"/>
+							<Events>
+								<Event name="Click">PictureClick</Event>
+							</Events>
+						</PictureDecoration>
+						<PictureDecoration name="CertificateDataOnServerPicture" id="54">
+							<Width>3</Width>
+							<Height>1</Height>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Data certificate on server picture</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Check was not performed.</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Hyperlink>true</Hyperlink>
+							<PictureSize>AutoSize</PictureSize>
+							<ContextMenu name="CertificateDataOnServerPictureContextMenu" id="55"/>
+							<ExtendedTooltip name="CertificateDataOnServerPictureExtendedTooltip" id="56"/>
+							<Events>
+								<Event name="Click">PictureClick</Event>
+							</Events>
+						</PictureDecoration>
+						<LabelDecoration name="CertificateDataLabel" id="57">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Certificate data correctness</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<ContextMenu name="CertificateDataLabelContextMenu" id="58"/>
+							<ExtendedTooltip name="CertificateDataLabelExtendedTooltip" id="59">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Shows the result of
+certificate data check using digital signature and encryption application.
+
+Certificate data exported from certificate file or in
+other way can be incorrect for various reasons, but the
+most frequent are the following
+ones: - the certificate is expired; - Certificate is in revoked list.
+</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="GroupApplicationExistenceCertificate" id="16">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group application certificate existence</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="GroupCertificateApplicationExistenceExtendedTooltip" id="17"/>
+					<ChildItems>
+						<PictureDecoration name="ApplicationExistenceOnClientPicture" id="18">
+							<Width>3</Width>
+							<Height>1</Height>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Application existence on client picture</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Check was not performed.</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Hyperlink>true</Hyperlink>
+							<PictureSize>AutoSize</PictureSize>
+							<ContextMenu name="ApplicationExistenceOnClientPictureContextMenu" id="19"/>
+							<ExtendedTooltip name="ApplicationExistenceOnClientPictureExtendedTooltip" id="20"/>
+							<Events>
+								<Event name="Click">PictureClick</Event>
+							</Events>
+						</PictureDecoration>
+						<PictureDecoration name="ApplicationExistenceOnServerPicture" id="35">
+							<Width>3</Width>
+							<Height>1</Height>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Application existence on server picture</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Check was not performed.</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Hyperlink>true</Hyperlink>
+							<PictureSize>AutoSize</PictureSize>
+							<ContextMenu name="ApplicationExistenceOnServerPictureContextMenu" id="36"/>
+							<ExtendedTooltip name="ApplicationExistenceOnServerPictureExtendedTooltip" id="37"/>
+							<Events>
+								<Event name="Click">PictureClick</Event>
+							</Events>
+						</PictureDecoration>
+						<LabelDecoration name="ApplicationExistenceLabel" id="21">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Existence of application for signing and encryption</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<ContextMenu name="ApplicationExistenceLabelContextMenu" id="22"/>
+							<ExtendedTooltip name="ApplicationExistenceLabelExtendedTooltip" id="23">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Shows if there is
+a application on computer specified in
+certificate for private key, that allows to sign and decrypt data.</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="GroupOperationsChecks" id="127">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Operations checks</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="GroupOperationsChecksExtendedTooltip" id="128"/>
+			<ChildItems>
+				<UsualGroup name="GroupDataSigning" id="85">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group data signing</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="GroupDataSigningExtendedTooltip" id="86"/>
+					<ChildItems>
+						<PictureDecoration name="SigningOnClientPicture" id="87">
+							<Width>3</Width>
+							<Height>1</Height>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Signing on client picture</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Check was not performed.</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Hyperlink>true</Hyperlink>
+							<PictureSize>AutoSize</PictureSize>
+							<ContextMenu name="SigningOnClientPictureContextMenu" id="88"/>
+							<ExtendedTooltip name="SigningOnClientPictureExtendedTooltip" id="89"/>
+							<Events>
+								<Event name="Click">PictureClick</Event>
+							</Events>
+						</PictureDecoration>
+						<PictureDecoration name="SigningOnServerPicture" id="90">
+							<Width>3</Width>
+							<Height>1</Height>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Signing on server picture</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Check was not performed.</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Hyperlink>true</Hyperlink>
+							<PictureSize>AutoSize</PictureSize>
+							<ContextMenu name="SigningOnServerPictureContextMenu" id="91"/>
+							<ExtendedTooltip name="SigningOnServerPictureExtendedTooltip" id="92"/>
+							<Events>
+								<Event name="Click">PictureClick</Event>
+							</Events>
+						</PictureDecoration>
+						<LabelDecoration name="SigningLabel" id="93">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Data signing</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<ContextMenu name="SigningLabelContextMenu" id="94"/>
+							<ExtendedTooltip name="SigningLabelExtendedTooltip" id="95">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Shows the opportunity to sign data
+with private certificatekey using digital signature and encryption application.
+Required password.</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="GroupDataSignatureCheck" id="96">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group check of data signature</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="GroupDataSignatureCheckExtendedTooltip" id="97"/>
+					<ChildItems>
+						<PictureDecoration name="SignatureCheckOnClientPicture" id="98">
+							<Width>3</Width>
+							<Height>1</Height>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Check of signature on client picture</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Check was not performed.</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Hyperlink>true</Hyperlink>
+							<PictureSize>AutoSize</PictureSize>
+							<ContextMenu name="SignatureCheckOnClientPictureContextMenu" id="99"/>
+							<ExtendedTooltip name="SignatureCheckOnClientPictureExtendedTooltip" id="100"/>
+							<Events>
+								<Event name="Click">PictureClick</Event>
+							</Events>
+						</PictureDecoration>
+						<PictureDecoration name="SignatureCheckOnServerPicture" id="101">
+							<Width>3</Width>
+							<Height>1</Height>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Check of signature on server picture</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Check was not performed.</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Hyperlink>true</Hyperlink>
+							<PictureSize>AutoSize</PictureSize>
+							<ContextMenu name="SignatureCheckOnServerPictureContextMenu" id="102"/>
+							<ExtendedTooltip name="SignatureCheckOnServerPictureExtendedTooltip" id="103"/>
+							<Events>
+								<Event name="Click">PictureClick</Event>
+							</Events>
+						</PictureDecoration>
+						<LabelDecoration name="SignatureCheckLabel" id="104">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Check of created signature</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<ContextMenu name="SignatureCheckLabelContextMenu" id="105"/>
+							<ExtendedTooltip name="SignatureCheckLabelExtendedTooltip" id="106">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Shows the opportunity to check available signature
+with public certificate key using digital signature and encryption application.
+</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="GroupDataEncryption" id="60">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Data encryption group</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="GroupDataEncryptionExtendedTooltip" id="61"/>
+					<ChildItems>
+						<PictureDecoration name="EncryptionOnClientPicture" id="62">
+							<Width>3</Width>
+							<Height>1</Height>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Encryption on client picture</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Check was not performed.</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Hyperlink>true</Hyperlink>
+							<PictureSize>AutoSize</PictureSize>
+							<ContextMenu name="EncryptionOnClientPictureContextMenu" id="63"/>
+							<ExtendedTooltip name="EncryptionOnClientPictureExtendedTooltip" id="64"/>
+							<Events>
+								<Event name="Click">PictureClick</Event>
+							</Events>
+						</PictureDecoration>
+						<PictureDecoration name="EncryptionOnServerPicture" id="65">
+							<Width>3</Width>
+							<Height>1</Height>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Encryption on server picture</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Check was not performed.</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Hyperlink>true</Hyperlink>
+							<PictureSize>AutoSize</PictureSize>
+							<ContextMenu name="EncryptionOnServerPictureContextMenu" id="66"/>
+							<ExtendedTooltip name="EncryptionOnServerPictureExtendedTooltip" id="67"/>
+							<Events>
+								<Event name="Click">PictureClick</Event>
+							</Events>
+						</PictureDecoration>
+						<LabelDecoration name="EncryptionLabel" id="68">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Data encryption</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<ContextMenu name="EncryptionLabelContextMenu" id="69"/>
+							<ExtendedTooltip name="EncryptionLabelExtendedTooltip" id="70">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Shows the opportunity to encrypt data
+by public certificate key using digital signature and encryption application.
+</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="GroupDatadetails" id="71">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group data details</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="GroupDatadetailsExtendedTooltip" id="72"/>
+					<ChildItems>
+						<PictureDecoration name="detailsOnClientPicture" id="73">
+							<Width>3</Width>
+							<Height>1</Height>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>details on client picture</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Check was not performed.</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Hyperlink>true</Hyperlink>
+							<PictureSize>AutoSize</PictureSize>
+							<ContextMenu name="detailsOnClientPictureContextMenu" id="74"/>
+							<ExtendedTooltip name="detailsOnClientPictureExtendedTooltip" id="75"/>
+							<Events>
+								<Event name="Click">PictureClick</Event>
+							</Events>
+						</PictureDecoration>
+						<PictureDecoration name="detailsOnServerPicture" id="76">
+							<Width>3</Width>
+							<Height>1</Height>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>details on server picture</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Check was not performed.</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Hyperlink>true</Hyperlink>
+							<PictureSize>AutoSize</PictureSize>
+							<ContextMenu name="detailsOnServerPictureContextMenu" id="77"/>
+							<ExtendedTooltip name="detailsOnServerPictureExtendedTooltip" id="78"/>
+							<Events>
+								<Event name="Click">PictureClick</Event>
+							</Events>
+						</PictureDecoration>
+						<LabelDecoration name="detailsLabel" id="79">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Decrypting data</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<ContextMenu name="detailsLabelContextMenu" id="80"/>
+							<ExtendedTooltip name="detailsLabelExtendedTooltip" id="81">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Shows the opportunity to decrypt data
+with private certificate key using digital signature and encryption application.
+Required password.</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="GroupAdditionalChecks" id="147">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Additional checks</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="GroupAdditionalChecksExtendedTooltip" id="148"/>
+		</UsualGroup>
+		<UsualGroup name="GroupPasswordEntry" id="142">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Enter password of the closed certificate key</v8:content>
+				</v8:item>
+			</Title>
+			<TitleFont ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ExtendedTooltip name="GroupPasswordEntryExtendedTooltip" id="143"/>
+			<ChildItems>
+				<UsualGroup name="GroupFieldsHeaders" id="129">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group fields headers</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="GroupFieldsHeadersExtendedTooltip" id="130"/>
+					<ChildItems>
+						<LabelDecoration name="PasswordTitle" id="134">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Password:</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="PasswordHeaderContextMenu" id="135"/>
+							<ExtendedTooltip name="PasswordTitleExtendedTooltip" id="136"/>
+						</LabelDecoration>
+						<LabelDecoration name="VerticalIndent" id="137">
+							<ContextMenu name="VerticalIndentContextMenu" id="138"/>
+							<ExtendedTooltip name="VerticalIndentExtendedTooltip" id="139"/>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="GroupFields" id="140">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Field group</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="GroupFieldsExtendedTooltip" id="141"/>
+					<ChildItems>
+						<InputField name="Password" id="107">
+							<DataPath>Password</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Wrap>false</Wrap>
+							<PasswordMode>true</PasswordMode>
+							<ContextMenu name="PasswordContextMenu" id="108"/>
+							<ExtendedTooltip name="PasswordExtendedTooltip" id="109"/>
+							<Events>
+								<Event name="OnChange">PasswordOnChange</Event>
+							</Events>
+						</InputField>
+						<Pages name="Pages" id="110">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Pages</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Pages</v8:content>
+								</v8:item>
+							</ToolTip>
+							<PagesRepresentation>None</PagesRepresentation>
+							<ExtendedTooltip name="PagesExtendedTooltip" id="111"/>
+							<ChildItems>
+								<Page name="PagePasswordRemembering" id="112">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Page password remembering</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="PagePasswordRememberingExtendedTooltip" id="113"/>
+									<ChildItems>
+										<CheckBoxField name="RememberPassword" id="114">
+											<DataPath>RememberPassword</DataPath>
+											<TitleLocation>Right</TitleLocation>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Remember password certificate before the application is closed . When check box is cleared, the password is erased from memory in case it was previously remembered.</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ToolTipRepresentation>Button</ToolTipRepresentation>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="RememberPasswordContextMenu" id="115"/>
+											<ExtendedTooltip name="RememberPasswordExtendedTooltip" id="116"/>
+											<Events>
+												<Event name="OnChange">RememberPasswordOnChange</Event>
+											</Events>
+										</CheckBoxField>
+									</ChildItems>
+								</Page>
+								<Page name="PageExplanationEnhancedPassword" id="117">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Page explanation of enhanced password</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="PageExplanationEnhancedPasswordExtendedTooltip" id="118"/>
+									<ChildItems>
+										<LabelDecoration name="ExplanationEnhancedPassword" id="119">
+											<TextColor>style:ExplanationText</TextColor>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>To start the password entry click Check.
+</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Password is requested by digital signature software, not by 1C:Enterprise, as private key enhanced protection is specified for the selected certificate.</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ToolTipRepresentation>Button</ToolTipRepresentation>
+											<ContextMenu name="ExplanationEnhancedPasswordContextMenu" id="120"/>
+											<ExtendedTooltip name="ExplanationEnhancedPasswordExtendedTooltip" id="121"/>
+										</LabelDecoration>
+									</ChildItems>
+								</Page>
+								<Page name="PageExplanationSetPassword" id="122">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Page explanation of set password</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="PageExplanationSetPasswordExtendedTooltip" id="123"/>
+									<ChildItems>
+										<LabelDecoration name="ExplanationSetPassword" id="124">
+											<TextColor>style:ExplanationText</TextColor>
+											<ToolTipRepresentation>Button</ToolTipRepresentation>
+											<ContextMenu name="ExplanationSetPasswordContextMenu" id="125"/>
+											<ExtendedTooltip name="ExplanationSetPasswordExtendedTooltip" id="126">
+												<Events>
+													<Event name="URLProcessing">ExplanationSetPasswordExtendedTooltipNavigationRefDataProcessor</Event>
+												</Events>
+											</ExtendedTooltip>
+											<Events>
+												<Event name="Click">ExplanationSetPasswordClick</Event>
+											</Events>
+										</LabelDecoration>
+									</ChildItems>
+								</Page>
+							</ChildItems>
+						</Pages>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<PictureDecoration name="IndentDecoration" id="82">
+			<Height>2</Height>
+			<PictureSize>Stretch</PictureSize>
+			<ContextMenu name="IndentDecorationContextMenu" id="83"/>
+			<ExtendedTooltip name="DecorationIndentExtendedTooltip" id="84"/>
+		</PictureDecoration>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Password" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Password</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Certificate" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Certificate</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.DigitalSignaturesAndEncryptionKeyCertificates</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="CertificateAddress" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Certificate address</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Application" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Application</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.DigitalSignatureAndEncryptionApplications</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="RememberPassword" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Remember password</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Imprint" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Imprint</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="CertificateEnhancedProtectionPrivateKey" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Certificate enhanced protection of the private key</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="AdditionalChecks" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Additional checks</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="OperationsOnServer" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Operations on the server</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="CheckOnSelection" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Check during selection</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ChecksOnClient" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Checks on the client</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="ChecksOnServer" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Checks on the server</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="PasswordAccepted" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Password is accepted</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="FirstCheckName" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Name of first check</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="Validate" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Validate</v8:content>
+				</v8:item>
+			</Title>
+			<Action>Validate</Action>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="Certificate">
+			<Type>
+				<v8:Type>cfg:CatalogRef.DigitalSignaturesAndEncryptionKeyCertificates</v8:Type>
+			</Type>
+			<KeyParameter>true</KeyParameter>
+		</Parameter>
+		<Parameter name="FormTitle">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="CheckOnSelection">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="AdditionalChecksParameters">
+			<Type/>
+		</Parameter>
+	</Parameters>
+</Form>

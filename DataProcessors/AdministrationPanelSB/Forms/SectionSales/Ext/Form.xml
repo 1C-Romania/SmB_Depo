@@ -1,0 +1,1176 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Title>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Sales</v8:content>
+		</v8:item>
+	</Title>
+	<Width>84</Width>
+	<AutoTitle>false</AutoTitle>
+	<Customizable>false</Customizable>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="NotificationProcessing">NotificationProcessing</Event>
+		<Event name="OnOpen">OnOpen</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+		<Event name="OnClose">OnClose</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="GroupTitle" id="92">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content> </v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content> </v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="GroupHeaderExtendedTooltip" id="230"/>
+			<ChildItems>
+				<LabelDecoration name="SectionDescription" id="93">
+					<Width>70</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<VerticalStretch>false</VerticalStretch>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Use this section to customize accounting of company retail sales, POS terminals, customer order states, receipt and transfer of goods for commission.</v8:content>
+						</v8:item>
+					</Title>
+					<VerticalAlign>Top</VerticalAlign>
+					<ContextMenu name="SectionDescriptionContextMenu" id="94"/>
+					<ExtendedTooltip name="SectionDescriptionExtendedTooltip" id="231"/>
+				</LabelDecoration>
+				<LabelDecoration name="IndentDecoration" id="95">
+					<HorizontalStretch>true</HorizontalStretch>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content> </v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content> </v8:content>
+						</v8:item>
+					</ToolTip>
+					<ContextMenu name="IndentDecorationContextMenu" id="96"/>
+					<ExtendedTooltip name="IndentDecorationExtendedTooltip" id="232"/>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="WEBApplication" id="303">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>WEB Application</v8:content>
+				</v8:item>
+			</Title>
+			<TitleTextColor>style:FormTextColor</TitleTextColor>
+			<TitleFont ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Adoption of changes in the web client</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Width>82</Width>
+			<HorizontalStretch>false</HorizontalStretch>
+			<VerticalStretch>false</VerticalStretch>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ChildItemsWidth>Equal</ChildItemsWidth>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="WEBApplicationExtendedTooltip" id="304"/>
+			<ChildItems>
+				<Button name="UpdateSystemParameters" id="305">
+					<Type>UsualButton</Type>
+					<CommandName>Form.Command.UpdateSystemParameters</CommandName>
+					<TextColor>style:FormTextColor</TextColor>
+					<Font ref="sys:DefaultGUIFont" kind="WindowsFont"/>
+					<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+					<ExtendedTooltip name="RefreshSystemParametersExtendedTooltip" id="306">
+						<Title formatted="false">
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>In order the changes to take an effect it is necessary to update the system parameters or to restart the application.</v8:content>
+							</v8:item>
+						</Title>
+					</ExtendedTooltip>
+				</Button>
+				<LabelDecoration name="DecorationProportion3" id="307">
+					<ContextMenu name="DecorationProportion3ContextMenu" id="308"/>
+					<ExtendedTooltip name="DecorationProportion3ExtendedTooltip" id="309"/>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="SettingsRetail" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Retail</v8:content>
+				</v8:item>
+			</Title>
+			<TitleTextColor>style:TitleColorSettingsGroup</TitleTextColor>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Retail</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Width>82</Width>
+			<HorizontalStretch>false</HorizontalStretch>
+			<Group>Vertical</Group>
+			<Representation>NormalSeparation</Representation>
+			<ExtendedTooltip name="SettingsRetailExtendedTooltip" id="241"/>
+			<ChildItems>
+				<UsualGroup name="Group9" id="310">
+					<Group>Horizontal</Group>
+					<ChildItemsWidth>Equal</ChildItemsWidth>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="Group9ExtendedTooltip" id="311"/>
+					<ChildItems>
+						<CheckBoxField name="FunctionalOptionAccountingRetail" id="107">
+							<DataPath>ConstantsSet.FunctionalOptionAccountingRetail</DataPath>
+							<TitleLocation>Right</TitleLocation>
+							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<VerticalAlign>Center</VerticalAlign>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="FunctionalOptionAccountingRetailContextMenu" id="108"/>
+							<ExtendedTooltip name="FunctionalOptionAccountingRetailExtendedTooltip" id="243">
+								<Height>3</Height>
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Enable this option to track sales in retail. If you enable this option, corresponding functions are added to the "Sales" section.</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+							<Events>
+								<Event name="OnChange">FunctionalOptionAccountingRetailOnChange</Event>
+							</Events>
+						</CheckBoxField>
+						<LabelDecoration name="Decoration1" id="312">
+							<ContextMenu name="Decoration1ContextMenu" id="313"/>
+							<ExtendedTooltip name="Decoration1ExtendedTooltip" id="314"/>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="Group1" id="99">
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ChildItemsWidth>Equal</ChildItemsWidth>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="Group1ExtendedTooltip" id="242"/>
+					<ChildItems>
+						<UsualGroup name="GroupArchiveCRReceiptsOnCloseCashCRSession" id="113">
+							<EnableContentChange>true</EnableContentChange>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group archive retail receipts on cash session closing</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group archive retail receipts on cash session closing</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ArchiveCRReceiptsOnCloseCashCRSessionExtendedTooltip" id="246">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>When closing a cash register shift, all transactions formed by CR receipts will be moved to the retail sales report. For more information, see the option help. </v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+							<ChildItems>
+								<CheckBoxField name="ArchiveCRReceiptsOnCloseCashCRSession" id="114">
+									<DataPath>ConstantsSet.ArchiveCRReceiptsOnCloseCashCRSession</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Archive cash register receipts</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>Right</TitleLocation>
+									<ToolTipRepresentation>Button</ToolTipRepresentation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="ArchiveCRReceiptsOnCloseCashCRSessionContextMenu" id="115"/>
+									<ExtendedTooltip name="ArchiveCRReceiptsOnCloseCashCRSessionExtendedTooltip" id="247">
+										<Title formatted="true">
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>&lt;b&gt;"Archive CR receipts when closing the cash session"&lt;/&gt;. 
+
+When this option is enabled, all transactions generated by CR receipts will be transferred to the retail sales report when closing the cash shift. This option allows to significantly reduce the amount of data processed at a large number of retail sales per day.
+</v8:content>
+											</v8:item>
+										</Title>
+									</ExtendedTooltip>
+									<Events>
+										<Event name="OnChange">ArchiveCRReceiptsOnCloseCashCRSessionOnChange</Event>
+									</Events>
+								</CheckBoxField>
+							</ChildItems>
+						</UsualGroup>
+						<Button name="CatalogCashRegisters" id="128">
+							<Type>Hyperlink</Type>
+							<CommandName>Form.Command.CatalogCashRegisters</CommandName>
+							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<ExtendedTooltip name="CatalogCashRegistersExtendedTooltip" id="259">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Go to the Cash registers catalog.</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+						</Button>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="SettingAccountingRetailSalesDetails" id="111">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Setting retail sales accounting details</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Setting retail sales accounting details</v8:content>
+						</v8:item>
+					</ToolTip>
+					<HorizontalStretch>true</HorizontalStretch>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ChildItemsWidth>Equal</ChildItemsWidth>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="SettingAccountingRetailSalesDescriptionExtendedTooltip" id="245"/>
+					<ChildItems>
+						<UsualGroup name="GroupDeleteNoPenetratedChecksOnCloseCashRegisterShifts" id="118">
+							<EnableContentChange>true</EnableContentChange>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group delete unissued receipts on cash session closing</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group delete unissued receipts on cash session closing</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupDeleteNotPunchedChecksOnCloseCashRegisterShiftsExtendedTooltip" id="250">
+								<Height>3</Height>
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>All receipts that are not issued by the fiscal register will be deleted when closing the cash register shift. For more information, see the option help. </v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+							<ChildItems>
+								<CheckBoxField name="DeleteUnissuedReceiptsOnCloseCashCRSession" id="119">
+									<DataPath>ConstantsSet.DeleteUnissuedReceiptsOnCloseCashCRSession</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Delete non-issued CR receipts</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>Right</TitleLocation>
+									<ToolTipRepresentation>Button</ToolTipRepresentation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="DeleteNotPunchedChecksOnCloseCashChangeContextMenu" id="120"/>
+									<ExtendedTooltip name="DeleteNeprobityeChecksOnCloseCashChangeExtendedTooltip" id="251">
+										<Title formatted="true">
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>&lt;b&gt;"Delete unissued CR receipts when closing the cash session"&lt;/&gt;. 
+
+When this option is enabled, all receipts unissued by fiscal register will be deleted when closing the cash shift. Use this option to significantly reduce amount of data if there are lots of non-issued receipts per day.
+
+</v8:content>
+											</v8:item>
+										</Title>
+									</ExtendedTooltip>
+									<Events>
+										<Event name="OnChange">DeleteUnpinnedChecksOnCloseCashRegisterShiftsOnChange</Event>
+									</Events>
+								</CheckBoxField>
+							</ChildItems>
+						</UsualGroup>
+						<Button name="CatalogPOSTerminals" id="129">
+							<Type>Hyperlink</Type>
+							<CommandName>Form.Command.CatalogPOSTerminals</CommandName>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Catalog "POS terminals"</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<ExtendedTooltip name="CatalogPOSTerminalsExtendedTooltip" id="261">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Go to the POS terminals catalog.</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+						</Button>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="Group2" id="100">
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ChildItemsWidth>Equal</ChildItemsWidth>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="Group2ExtendedTooltip" id="257"/>
+					<ChildItems>
+						<CheckBoxField name="ControlBalancesDuringCreationCRReceipts" id="124">
+							<DataPath>ConstantsSet.ControlBalancesDuringCreationCRReceipts</DataPath>
+							<TitleLocation>Right</TitleLocation>
+							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ControlBalancesDuringCreationCRReceiptsContextMenu" id="125"/>
+							<ExtendedTooltip name="ControlBalancesDuringCreationCRReceiptsExtendedTooltip" id="255">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Enable this option to track balances when issuing CR receipts.</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+							<Events>
+								<Event name="OnChange">ControlBalancesDuringCreationCRReceiptsOnChange</Event>
+							</Events>
+						</CheckBoxField>
+						<CheckBoxField name="EnterInformationForDeclarationsOnAlcoholicProducts" id="342">
+							<DataPath>ConstantsSet.EnterInformationForDeclarationsOnAlcoholicProducts</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Alcoholic products</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>Right</TitleLocation>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>
+ </v8:content>
+								</v8:item>
+							</ToolTip>
+							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="EnterInformationForDeclarationsOnAlcoholicProductsContextMenu" id="343"/>
+							<ExtendedTooltip name="EnterInformationForDeclarationsOnAlcoholicProductsExtendedTooltip" id="344">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Information necessary for filling out an accounting journal of alcoholic product retail sales.</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+							<Events>
+								<Event name="OnChange">EnterInformationForDeclarationsOnAlcoholicProductsOnChange</Event>
+							</Events>
+						</CheckBoxField>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="SettingsSalesDiscountsMarkups" id="318">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Discounts, markups</v8:content>
+				</v8:item>
+			</Title>
+			<TitleTextColor>style:TitleColorSettingsGroup</TitleTextColor>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Other</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Width>82</Width>
+			<HorizontalStretch>false</HorizontalStretch>
+			<Group>Vertical</Group>
+			<Representation>NormalSeparation</Representation>
+			<ExtendedTooltip name="SettingsSalesDiscountsMarkupsExtendedTooltip" id="319"/>
+			<ChildItems>
+				<UsualGroup name="Group7" id="320">
+					<HorizontalStretch>false</HorizontalStretch>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ChildItemsWidth>Equal</ChildItemsWidth>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="Group7ExtendedTooltip" id="321"/>
+					<ChildItems>
+						<UsualGroup name="SettingsUseDiscountsMarkups" id="322">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Settings use discounts markups</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Settings use discounts markups</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="SettingsUseDiscountsMarkupsExtendedTooltip" id="323">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Enables this option to specify discounts and markups to generate sales documents. For more information, see the option help. </v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+							<ChildItems>
+								<CheckBoxField name="FunctionalOptionUseDiscountsMarkups" id="324">
+									<DataPath>ConstantsSet.FunctionalOptionUseDiscountsMarkups</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Use discounts and markups</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>Right</TitleLocation>
+									<ToolTipRepresentation>Button</ToolTipRepresentation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="FunctionalOptionUseDiscountsMarkupsContextMenu" id="325"/>
+									<ExtendedTooltip name="FunctionalOptionUseDiscountsMarkupsExtendedTooltip" id="326">
+										<Title formatted="true">
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>&lt;b&gt; "Use discounts and markups in sales documents"&lt;/&gt;.
+
+Option defines the ability to use discounts and markups during the sales documents generation.
+
+&lt;b&gt;&lt;color #ff0000&gt;IMPORTANT! &lt;/&gt;&lt;/&gt;Key
+parameter. You can not disable this option if there is accounting data in the system.</v8:content>
+											</v8:item>
+										</Title>
+									</ExtendedTooltip>
+									<Events>
+										<Event name="OnChange">FunctionalOptionUseDiscountsMarkupsOnChange</Event>
+									</Events>
+								</CheckBoxField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="SettingsUseDiscountCards" id="327">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Settings use discounts markups</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Settings use discounts markups</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="SettingsUseDiscountCardsExtendedTooltip" id="328">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Use this option to use discount cards when generating sales documents in wholesale and retail. To use this option, allow to use discounts and markups. For more information, see the option help.</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+							<ChildItems>
+								<CheckBoxField name="FunctionalOptionUseDiscountCards" id="329">
+									<DataPath>ConstantsSet.FunctionalOptionUseDiscountCards</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Use discount cards</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>Right</TitleLocation>
+									<ToolTipRepresentation>Button</ToolTipRepresentation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="FunctionalOptionUseDiscountCardsContextMenu" id="330"/>
+									<ExtendedTooltip name="FunctionalOptionUseDiscountCardsExtendedTooltip" id="331">
+										<Title formatted="true">
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>&lt;b&gt;"Use discount cards&lt;/&gt;&lt;b&gt;"&lt;/&gt;&lt;b&gt;.&lt;/&gt;
+
+Option defines the ability to use discount cards during sales documents generation.
+
+&lt;b&gt;&lt;color #ff0000&gt;IMPORTANT! &lt;/&gt;&lt;/&gt;Key
+parameter. You can not disable this option if there is accounting data in the system.</v8:content>
+											</v8:item>
+										</Title>
+									</ExtendedTooltip>
+									<Events>
+										<Event name="OnChange">FunctionalOptionFunctionalOptionUseDiscountCardsOnChange</Event>
+									</Events>
+								</CheckBoxField>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="Group10" id="332">
+					<HorizontalStretch>false</HorizontalStretch>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ChildItemsWidth>Equal</ChildItemsWidth>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="Group10ExtendedTooltip" id="333"/>
+					<ChildItems>
+						<UsualGroup name="SettingsUseAutomaticDiscounts" id="334">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Settings use automatic discounts</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Settings use automatic discounts</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="SettingsUseAutomaticDiscountsExtendedTooltip" id="335">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Enable this option to use automatic discounts and markups when generating sales documents. For more information, see the option help. </v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+							<ChildItems>
+								<CheckBoxField name="FunctionalOptionUseAutomaticDiscounts" id="336">
+									<DataPath>ConstantsSet.FunctionalOptionUseAutomaticDiscountsMarkups</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Use automatic discounts and markups</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>Right</TitleLocation>
+									<ToolTipRepresentation>Button</ToolTipRepresentation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="FunctionalOptionUseAutomaticDiscountsContextMenu" id="337"/>
+									<ExtendedTooltip name="FunctionalOptionUseAutomaticDiscountsExtendedTooltip" id="338">
+										<Title formatted="true">
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>&lt;b&gt;"Use automatic discounts and markups in sales documents"&lt;/&gt;.
+
+Option determines the ability to use automatic discounts and markups during the sales documents generation.
+
+&lt;b&gt;&lt;color #ff0000&gt;IMPORTANT! &lt;/&gt;&lt;/&gt;Key
+parameter. You can not disable this option if there is accounting data in the system.</v8:content>
+											</v8:item>
+										</Title>
+									</ExtendedTooltip>
+									<Events>
+										<Event name="OnChange">FunctionalOptionUseDiscountsMarkupsOnChange</Event>
+									</Events>
+								</CheckBoxField>
+							</ChildItems>
+						</UsualGroup>
+						<LabelDecoration name="Decoration3" id="339">
+							<ContextMenu name="Decoration3ContextMenu" id="340"/>
+							<ExtendedTooltip name="Decoration3ExtendedTooltip" id="341"/>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="CustomerOrdersSettings" id="140">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Customer orders</v8:content>
+				</v8:item>
+			</Title>
+			<TitleTextColor>style:TitleColorSettingsGroup</TitleTextColor>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Customer orders</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Width>82</Width>
+			<HorizontalStretch>false</HorizontalStretch>
+			<Group>Vertical</Group>
+			<Representation>NormalSeparation</Representation>
+			<ExtendedTooltip name="CustomerOrdersSettingsExtendedTooltip" id="263"/>
+			<ChildItems>
+				<UsualGroup name="Group3" id="157">
+					<HorizontalStretch>false</HorizontalStretch>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ChildItemsWidth>Equal</ChildItemsWidth>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="Group3ExtendedTooltip" id="264"/>
+					<ChildItems>
+						<CheckBoxField name="UseCustomerOrderStates" id="141">
+							<DataPath>ConstantsSet.UseCustomerOrderStates</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Several customer order states</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>Right</TitleLocation>
+							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="CustomerOrdersStatusUsingContextMenu" id="142"/>
+							<ExtendedTooltip name="UseOfCustomerOrdersExtendedTooltip" id="265">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Enable this option to use several states of customer orders (three or more). If this option is disabled, order states are edited in the attributes below.</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+							<Events>
+								<Event name="OnChange">UseCustomerOrderStatesOnChange</Event>
+							</Events>
+						</CheckBoxField>
+						<Button name="CatalogCustomerOrderStates" id="156">
+							<Type>Hyperlink</Type>
+							<CommandName>Form.Command.CatalogCustomerOrderStates</CommandName>
+							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<ExtendedTooltip name="CatalogCustomerOrderStatusExtendedTooltip" id="275">
+								<Height>5</Height>
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Go to the customer order states catalog. Use the catalog to create arbitrary number of states of definite kinds. To go to the catalog, enable the "Several customer order states" option.</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+						</Button>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="CustomerOrdersDefaultStatusSetting" id="162">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Customer order states setup by default</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Customer order states setup by default</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ChildItemsWidth>Equal</ChildItemsWidth>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="SettingDefaultCustomerOrdersStatusExtendedTooltip" id="267"/>
+					<ChildItems>
+						<UsualGroup name="Stages" id="167">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Stages</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Stages</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="StagesExtendedTooltip" id="268"/>
+							<ChildItems>
+								<InputField name="InProcessStatus" id="168">
+									<DataPath>ConstantsSet.CustomerOrdersInProgressStatus</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>"In process" state</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>Left</TitleLocation>
+									<ContextMenu name="InProcessStatusContextMenu" id="169"/>
+									<ExtendedTooltip name="StateAtWorkExtendedTooltip" id="270"/>
+									<Events>
+										<Event name="OnChange">InProcessStatusOnChange</Event>
+									</Events>
+								</InputField>
+								<InputField name="CompletedStatus" id="171">
+									<DataPath>ConstantsSet.CustomerOrdersCompletedStatus</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>"Completed" state</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>Left</TitleLocation>
+									<ContextMenu name="CompletedStatusContextMenu" id="172"/>
+									<ExtendedTooltip name="StateCompletedExtendedTooltip" id="273"/>
+									<Events>
+										<Event name="OnChange">CompletedStatusOnChange</Event>
+									</Events>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<LabelDecoration name="Decoration2" id="315">
+							<ContextMenu name="Decoration2ContextMenu" id="316"/>
+							<ExtendedTooltip name="Decoration2ExtendedTooltip" id="317"/>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="SettingsOfCommission" id="175">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Commission business</v8:content>
+				</v8:item>
+			</Title>
+			<TitleTextColor>style:TitleColorSettingsGroup</TitleTextColor>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Commission business</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Width>82</Width>
+			<HorizontalStretch>false</HorizontalStretch>
+			<Group>Horizontal</Group>
+			<Representation>NormalSeparation</Representation>
+			<ChildItemsWidth>Equal</ChildItemsWidth>
+			<ExtendedTooltip name="CommissionSettingsExtendedTooltip" id="277"/>
+			<ChildItems>
+				<UsualGroup name="SettingsUseTransmissionToCommission" id="181">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Settings use transfer for commission</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Settings use transfer for commission</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="SettingsUseTransferToCommissionExtendedTooltip" id="279">
+						<Title formatted="false">
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Enable this option to keep track of own product transfer for commission to the third party. For more information, see the option help. </v8:content>
+							</v8:item>
+						</Title>
+					</ExtendedTooltip>
+					<ChildItems>
+						<CheckBoxField name="FunctionalOptionTransferGoodsOnCommission" id="182">
+							<DataPath>ConstantsSet.FunctionalOptionTransferGoodsOnCommission</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Use transfer of goods to commission</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>Right</TitleLocation>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="FunctionalOptionTransferGoodsOnCommissionContextMenu" id="183"/>
+							<ExtendedTooltip name="FunctionalOptionTransferGoodsOnCommissionExtendedTooltip" id="280">
+								<Title formatted="true">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>&lt;b "Use products transfer for commission"&lt;/&gt;. 
+
+Option allows to transfer own products for commission by third-party counterparty.
+
+&lt;b&gt;&lt;color #ff0000&gt;IMPORTANT! &lt;/&gt;&lt;/&gt;Key
+parameter. You can not disable this option if there is accounting data in the system.</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+							<Events>
+								<Event name="OnChange">FunctionalOptionTransferGoodsOnCommissionOnChange</Event>
+							</Events>
+						</CheckBoxField>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="SettingsUseReceptionForCommission" id="180">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Settings use receipt for commission</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Settings use receipt for commission</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="SettingsUseReceptionForCommissionExtendedTooltip" id="284">
+						<Height>5</Height>
+						<Title formatted="false">
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Enable this option to keep accounts of goods receipt for commission from a third party. To use this option, allow to use products and services batches (see section Purchases). For more information, see the option help. </v8:content>
+							</v8:item>
+						</Title>
+					</ExtendedTooltip>
+					<ChildItems>
+						<CheckBoxField name="FunctionalOptionReceiveGoodsOnCommission" id="186">
+							<DataPath>ConstantsSet.FunctionalOptionReceiveGoodsOnCommission</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Use goods receipt for commission</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>Right</TitleLocation>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="FunctionalProductsOnCommissionReceptionOptionContextMenu" id="187"/>
+							<ExtendedTooltip name="FunctionalOptionReceiveGoodsOnCommissionExtendedTooltip" id="285">
+								<Title formatted="true">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>&lt;b&gt; "Use the products reception for commission"&lt;/&gt;. 
+
+Using this option allows to receive products for commission from third-party counterparty.
+
+&lt;b&gt;&lt;color #ff0000&gt;IMPORTANT! &lt;/&gt;&lt;/&gt;
+To ditinguish between own inventory and inventory taken for comission, an additional "Products and services batches" accounting section is used. That's why to use this option it is nessesary to enable "Inventory accounting by batches" option in accounting settings in "Purchase" section.
+
+&lt;b&gt;&lt;color #ff0000&gt;IMPORTANT! &lt;/&gt;&lt;/&gt;Key
+parameter. You can not disable this option if there is accounting data in the system.</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+							<Events>
+								<Event name="OnChange">FunctionalOptionReceiveGoodsOnCommissionOnChange</Event>
+							</Events>
+						</CheckBoxField>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="SettingsSaleOther" id="194">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Other</v8:content>
+				</v8:item>
+			</Title>
+			<TitleTextColor>style:TitleColorSettingsGroup</TitleTextColor>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Other</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Width>82</Width>
+			<HorizontalStretch>false</HorizontalStretch>
+			<Group>Vertical</Group>
+			<Representation>NormalSeparation</Representation>
+			<ExtendedTooltip name="SettingsSaleOtherExtendedTooltip" id="288"/>
+			<ChildItems>
+				<UsualGroup name="Group8" id="215">
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ChildItemsWidth>Equal</ChildItemsWidth>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="Group8ExtendedTooltip" id="298"/>
+					<ChildItems>
+						<UsualGroup name="SettingsSaleOtherProjectManagement" id="209">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Settings sales other project management</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Settings sales other project management</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="SettingsSaleOtheAccountingrProjectManagementExtendedTooltip" id="294">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Keep data about projects and combine customer orders in projects. For more information, see the option help. </v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+							<ChildItems>
+								<CheckBoxField name="FunctionalOptionAccountingByProjects" id="210">
+									<DataPath>ConstantsSet.FunctionalOptionAccountingByProjects</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Accounting by projects</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>Right</TitleLocation>
+									<TitleHeight>1</TitleHeight>
+									<ToolTipRepresentation>Button</ToolTipRepresentation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="FunctionalOptionAccountingByProjectsContextMenu" id="211"/>
+									<ExtendedTooltip name="FunctionalOptionAccountingByProjectsExtendedTooltip" id="295">
+										<Title formatted="true">
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>&lt;b&gt; "Keep information about projects and combine customers orders in projects"&lt;/&gt;. 
+
+Option determines the ability to keep the projects list and to specify projects in customer orders allowing to combine several orders in one project.
+When specifying a project in the customer order, the document in fact becomes a specification to the contract with the customer, and defines the list of the supplied items under the contract (the list of goods, products, work, services), price, cost, and terms of delivery. Thus, taking into account the cost, income and expenses in terms of customer orders, you can get the aggregated data on costs, income and expenses, and data on the entire project.
+
+&lt;b&gt;&lt;color #008000&gt;EXAMPLE. &lt;/&gt;&lt;/&gt;
+For example the company "Breeze" won the tender for the design and mounting of ventilation and air conditioning system for a showroom in one of supermarkets. Two contracts have been concluded with the customer: contractor agreement for the airconditioning system design and mounting and equipment supply contract. It is important for a company to consider the costs, income and expenses both in terms of orders and business activities, and also in terms of a specific project in general. To do this, a new "Showroom" project was launched in the application and two orders were created: one is for the supply of equipment, second is to perform the work. Considering the costs, income and expenses for these orders, we can get data on the entire "Showroom" project also. </v8:content>
+											</v8:item>
+										</Title>
+									</ExtendedTooltip>
+									<Events>
+										<Event name="OnChange">FunctionalOptionAccountingByProjectsOnChange</Event>
+									</Events>
+								</CheckBoxField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="SettingsCustomerPaymentDueDate" id="201">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Settings payment period of the customer</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Settings payment period of the customer</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="SettingsBuyersPaymentTermExtendedTooltip" id="299">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Parameter determines the period of delay of payment from the customer by default. To be specified in days. For more information, see the option help. </v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+							<ChildItems>
+								<InputField name="CustomerPaymentDueDate" id="202">
+									<DataPath>ConstantsSet.CustomerPaymentDueDate</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content> Receipt of payment from customer (in days)</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>Right</TitleLocation>
+									<ToolTipRepresentation>Button</ToolTipRepresentation>
+									<Width>6</Width>
+									<SpinButton>true</SpinButton>
+									<ContextMenu name="BuyersPaymentTermContextMenu" id="203"/>
+									<ExtendedTooltip name="BuyersPaymentTermExtendedTooltip" id="300">
+										<Title formatted="true">
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>&lt;b&gt; "Customer payment incoming due date (by default)"&lt;/&gt;. 
+
+Parameter determines the term of customer payment delay by default, in days.
+It is used for automated insertion of counterparty into the agreement and to determine the payment date during payments planning.
+</v8:content>
+											</v8:item>
+										</Title>
+									</ExtendedTooltip>
+									<Events>
+										<Event name="OnChange">CustomerPaymentDueDateOnChange</Event>
+									</Events>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="ConstantsSet" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Constants set</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:ConstantsSet</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<UseAlways>
+				<Field>ConstantsSet.VendorPaymentDueDate</Field>
+				<Field>ConstantsSet.UseCustomerOrderStates</Field>
+				<Field>ConstantsSet.SubsidiaryCompany</Field>
+				<Field>ConstantsSet.SMSProvider.Ref</Field>
+				<Field>ConstantsSet.ProductsAndServicesSKUInContent</Field>
+				<Field>ConstantsSet.PriceListShowFullDescr.Ref</Field>
+				<Field>ConstantsSet.PriceListShowCode.Ref</Field>
+				<Field>ConstantsSet.PostponeEditProhibitionDate.Ref</Field>
+				<Field>ConstantsSet.OffsetAdvancesDebtsAutomatically.Ref</Field>
+				<Field>ConstantsSet.NationalCurrency</Field>
+				<Field>ConstantsSet.InfobaseUsageMode.Ref</Field>
+				<Field>ConstantsSet.FunctionalOptionUseBudgeting</Field>
+				<Field>ConstantsSet.FunctionalOptionUseBatches</Field>
+				<Field>ConstantsSet.FunctionalOptionAccountingRetail</Field>
+				<Field>ConstantsSet.FunctionalOptionAccountingCashMethodIncomeAndExpenses</Field>
+				<Field>ConstantsSet.FunctionalOptionAccountingByProjects</Field>
+				<Field>ConstantsSet.FunctionalOptionAccountingByCells</Field>
+				<Field>ConstantsSet.FunctionalCurrencyTransactionsAccounting</Field>
+				<Field>ConstantsSet.ExchangeRateDifferencesCalculationFrequency.Ref</Field>
+				<Field>ConstantsSet.DiscountsMarkupsSharedUsageOptions.Ref</Field>
+				<Field>ConstantsSet.DeleteEnterInformationForDeclarationsOnAlcoholicProducts</Field>
+				<Field>ConstantsSet.DeleteCryptographyContext.Ref</Field>
+				<Field>ConstantsSet.DeleteContractControllingOnPosting.Ref</Field>
+				<Field>ConstantsSet.CustomerOrdersInProgressStatus</Field>
+				<Field>ConstantsSet.CustomerOrdersCompletedStatus</Field>
+				<Field>ConstantsSet.ControlBalancesOnPosting</Field>
+				<Field>ConstantsSet.AuthorizationContext.Ref</Field>
+				<Field>ConstantsSet.ActivityKind.Ref</Field>
+				<Field>ConstantsSet.AccountingCurrency</Field>
+				<Field>ConstantsSet.AccountingBySubsidiaryCompany</Field>
+			</UseAlways>
+		</Attribute>
+		<Attribute name="RunMode" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Work mode</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="CatalogCashRegisters" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Cash registers catalog</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Open Cash registers catalog</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>CatalogCashRegisters</Action>
+		</Command>
+		<Command name="CatalogCustomerOrderStates" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Customer order states catalog</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Open catalog "Customer order state"</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>CatalogCustomerOrderStates</Action>
+		</Command>
+		<Command name="CatalogPOSTerminals" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Catalog "POS terminals"</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Open catalog "POS Terminals"</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>CatalogPOSTerminals</Action>
+		</Command>
+		<Command name="UpdateSystemParameters" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Update system parameters</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Update system parameters</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>UpdateSystemParameters</Action>
+		</Command>
+	</Commands>
+</Form>

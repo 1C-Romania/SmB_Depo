@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<CommandInterface xmlns="http://v8.1c.ru/8.3/xcf/extrnprops" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<CommandsPlacement>
+		<Command name="Document.Event.StandardCommand.OpenList">
+			<CommandGroup>NavigationPanelSeeAlso</CommandGroup>
+			<Placement>Auto</Placement>
+		</Command>
+		<Command name="Document.PowerOfAttorney.StandardCommand.OpenList">
+			<CommandGroup>NavigationPanelSeeAlso</CommandGroup>
+			<Placement>Auto</Placement>
+		</Command>
+		<Command name="Catalog.CCDNumbers.StandardCommand.OpenList">
+			<CommandGroup>NavigationPanelSeeAlso</CommandGroup>
+			<Placement>Auto</Placement>
+		</Command>
+	</CommandsPlacement>
+	<CommandsOrder>
+		<Command name="DataProcessor.EmployeeCalendar.Command.OpenEmployeeCalendar">
+			<CommandGroup>NavigationPanelSeeAlso</CommandGroup>
+		</Command>
+		<Command name="Document.Event.StandardCommand.OpenList">
+			<CommandGroup>NavigationPanelSeeAlso</CommandGroup>
+		</Command>
+		<Command name="Document.PowerOfAttorney.StandardCommand.OpenList">
+			<CommandGroup>NavigationPanelSeeAlso</CommandGroup>
+		</Command>
+		<Command name="Catalog.CCDNumbers.StandardCommand.OpenList">
+			<CommandGroup>NavigationPanelSeeAlso</CommandGroup>
+		</Command>
+		<Command name="CommonCommand.ReportsPanel_InventoryAndPurchasing">
+			<CommandGroup>ActionsPanelReports</CommandGroup>
+		</Command>
+		<Command name="0:86c7cd8b-368e-4915-851c-d028e5d0ffcb">
+			<CommandGroup>ActionsPanelReports</CommandGroup>
+		</Command>
+		<Command name="0:0d50a6cc-db1a-4bff-b65a-72bc2f35f3da">
+			<CommandGroup>ActionsPanelReports</CommandGroup>
+		</Command>
+		<Command name="CommonCommand.AdditionalReportsInventoryAndPurchases">
+			<CommandGroup>ActionsPanelReports</CommandGroup>
+		</Command>
+	</CommandsOrder>
+	<SubsystemsOrder>
+		<Subsystem>Subsystem.InventoryAndPurchasing.Subsystem.Purchases</Subsystem>
+		<Subsystem>Subsystem.InventoryAndPurchasing.Subsystem.Processing</Subsystem>
+		<Subsystem>Subsystem.InventoryAndPurchasing.Subsystem.Prices</Subsystem>
+		<Subsystem>Subsystem.InventoryAndPurchasing.Subsystem.Planning</Subsystem>
+		<Subsystem>Subsystem.InventoryAndPurchasing.Subsystem.InventoryAndWarehouse</Subsystem>
+		<Subsystem>Subsystem.InventoryAndPurchasing.Subsystem.InventoryProcess</Subsystem>
+		<Subsystem>Subsystem.InventoryAndPurchasing.Subsystem.ReferenceInformation</Subsystem>
+		<Subsystem>Subsystem.InventoryAndPurchasing.Subsystem.MutualSettlements</Subsystem>
+		<Subsystem>Subsystem.InventoryAndPurchasing.Subsystem.Analysis</Subsystem>
+	</SubsystemsOrder>
+	<GroupsOrder>
+		<Group>NavigationPanelImportant</Group>
+		<Group>NavigationPanelSeeAlso</Group>
+		<Group>ActionsPanelReports</Group>
+	</GroupsOrder>
+</CommandInterface>

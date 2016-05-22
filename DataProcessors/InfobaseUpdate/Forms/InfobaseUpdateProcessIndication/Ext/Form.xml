@@ -1,0 +1,391 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Title>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Application version update</v8:content>
+		</v8:item>
+	</Title>
+	<WindowOpeningMode>LockWholeInterface</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<CommandSet>
+		<ExcludedCommand>No</ExcludedCommand>
+		<ExcludedCommand>CustomizeForm</ExcludedCommand>
+		<ExcludedCommand>SaveValues</ExcludedCommand>
+		<ExcludedCommand>Close</ExcludedCommand>
+		<ExcludedCommand>Help</ExcludedCommand>
+		<ExcludedCommand>Abort</ExcludedCommand>
+		<ExcludedCommand>Retry</ExcludedCommand>
+		<ExcludedCommand>Yes</ExcludedCommand>
+		<ExcludedCommand>Cancel</ExcludedCommand>
+		<ExcludedCommand>RestoreValues</ExcludedCommand>
+		<ExcludedCommand>Ignore</ExcludedCommand>
+		<ExcludedCommand>OK</ExcludedCommand>
+	</CommandSet>
+	<AutoCommandBar name="FormCommandBar" id="-1"/>
+	<Events>
+		<Event name="OnOpen">OnOpen</Event>
+		<Event name="BeforeClose">BeforeClose</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<Pages name="RunMode" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Start mode</v8:content>
+				</v8:item>
+			</Title>
+			<PagesRepresentation>None</PagesRepresentation>
+			<ExtendedTooltip name="RunModeExtendedTooltip" id="12"/>
+			<ChildItems>
+				<Page name="ApplicationVersionUpdate" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Application version update</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTipRepresentation>None</ToolTipRepresentation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ApplicationVersionUpdateExtendedTooltip" id="13"/>
+					<ChildItems>
+						<LabelDecoration name="MessageTextUpdatedConfiguration" id="1">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Update from %1 to %2 version is in progress</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="MessageTextUpdatedConfigurationContextMenu" id="2"/>
+							<ExtendedTooltip name="MessageTextUpdatedConfigurationExtendedTooltip" id="14"/>
+						</LabelDecoration>
+						<LabelDecoration name="ExplanationText" id="3">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>It can take a long time (from one minute till some hours depending on the data volume).
+Please wait...</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="TextExplanationsContextMenu" id="4"/>
+							<ExtendedTooltip name="TextExplanationExtendedTooltip" id="15"/>
+						</LabelDecoration>
+					</ChildItems>
+				</Page>
+				<Page name="InitialFilling" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Initial filling</v8:content>
+						</v8:item>
+					</Title>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="InitialFillingExtendedTooltip" id="16"/>
+					<ChildItems>
+						<LabelDecoration name="TextPreparingToLaunch" id="8">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>The application is getting prepared to be started.</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="TextPreparationToLaunchContextMenu" id="9"/>
+							<ExtendedTooltip name="TextPreparationToLaunchExtendedTooltip" id="17"/>
+						</LabelDecoration>
+						<LabelDecoration name="TextExplanationsPreparationForLaunch" id="10">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Please wait...</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="TextExplanationsPreparationToLaunchContextMenu" id="11"/>
+							<ExtendedTooltip name="TextExplanationsPreparationToLaunchExtendedTooltip" id="18"/>
+						</LabelDecoration>
+					</ChildItems>
+				</Page>
+				<Page name="TransitionFromAnotherApplication" id="30">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Transition from another application</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTipRepresentation>None</ToolTipRepresentation>
+					<ExtendedTooltip name="UpdateFromAnotherApplicationsExtendedTooltip" id="31"/>
+					<ChildItems>
+						<LabelDecoration name="MessageTextTransitionFromAnotherApplication" id="32">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Update to %1 is in progress</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="MessageTextTransitionFromAnotherApplicationContextMenu" id="33"/>
+							<ExtendedTooltip name="MessageTextTransitionFromAnotherApplicationExtendedTooltip" id="34"/>
+						</LabelDecoration>
+						<LabelDecoration name="ExplanationTextTransitionFromAnotherApplication" id="35">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>It can take a long time (from one minute till some hours depending on the data volume).
+Please wait...</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ExplanationTextTransitionFromAnotherApplicationContextMenu" id="36"/>
+							<ExtendedTooltip name="ExplanationTextTransitionFromAnotherApplicationExtendedTooltip" id="37"/>
+						</LabelDecoration>
+					</ChildItems>
+				</Page>
+				<Page name="ApplicationWorkParametersUpdate" id="38">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Update application parameters</v8:content>
+						</v8:item>
+					</Title>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ApplicationWorkParametersUpdateExtendedTooltip" id="39"/>
+					<ChildItems>
+						<LabelDecoration name="TextPreparingToLaunch2" id="40">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>The application is getting prepared to be started.</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="TextPreparingToLaunch2ContextMenu" id="41"/>
+							<ExtendedTooltip name="TextPreparingToLaunch2ExtendedTooltip" id="42"/>
+						</LabelDecoration>
+						<LabelDecoration name="TextExplanationsPreparationForLaunch2" id="43">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Please wait...</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="TextExplanationsPreparationForLaunch2ContextMenu" id="44"/>
+							<ExtendedTooltip name="TextExplanationsPreparationForLaunch2ExtendedTooltip" id="45"/>
+						</LabelDecoration>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+		<ProgressBarField name="PerformanceProgress" id="24">
+			<DataPath>PerformanceProgress</DataPath>
+			<TitleLocation>None</TitleLocation>
+			<ShowPercent>true</ShowPercent>
+			<ContextMenu name="PerformanceProgressContextMenu" id="25"/>
+			<ExtendedTooltip name="PerformanceProgressExtendedTooltip" id="26"/>
+		</ProgressBarField>
+		<LabelDecoration name="TechnicalInformation" id="27">
+			<Title formatted="false">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Update progress technical information</v8:content>
+				</v8:item>
+			</Title>
+			<Hyperlink>true</Hyperlink>
+			<ContextMenu name="TechnicalInformationContextMenu" id="28"/>
+			<ExtendedTooltip name="TechnicalInformationExtendedTooltip" id="29"/>
+			<Events>
+				<Event name="Click">TechnicalInformationClick</Event>
+			</Events>
+		</LabelDecoration>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.InfobaseUpdate</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="NewLaunchParameter" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>New launch parameter</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="UUID" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Unique identifier</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:UUID</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="UpdateBeginTime" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Update begin time</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>DateTime</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="BackgroundJobStorageAddress" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Background job storage address</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="BackgroundJobID" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Background job ID</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="HandlerParameters" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Handler parameters</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="PerformanceProgress" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Performance progress</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="IBBlock" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Blocking IB</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="IBVersionUpdateIsExecuted" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Infobase version update is in progress</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ProgressStepLength" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Progress step length</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="BeginStepProgress" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Progress step begin</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ExclusiveModeIsInstalled" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Exclusive mode is enabled</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="OnlyApplicationWorkParametersUpdate" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Only application work parameters update</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ExchangePlanName" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Exchange plan name</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Parameters>
+		<Parameter name="ClientApplicationsOnStart">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

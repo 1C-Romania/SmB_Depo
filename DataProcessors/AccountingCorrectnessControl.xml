@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<MetaDataObject xmlns="http://v8.1c.ru/8.3/MDClasses" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:cmi="http://v8.1c.ru/8.2/managed-application/cmi" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xpr="http://v8.1c.ru/8.3/xcf/predef" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<DataProcessor uuid="01dc8c03-344b-4b7b-9f53-517885e79487">
+		<InternalInfo>
+			<xr:GeneratedType name="DataProcessorObject.AccountingCorrectnessControl" category="Object">
+				<xr:TypeId>ea6a95e9-0d57-40af-aa38-958c7ddae41a</xr:TypeId>
+				<xr:ValueId>800d948b-df53-45ae-9495-7c3c12080baf</xr:ValueId>
+			</xr:GeneratedType>
+			<xr:GeneratedType name="DataProcessorManager.AccountingCorrectnessControl" category="Manager">
+				<xr:TypeId>abdaf28d-8646-4f76-8455-4921b4d47fb7</xr:TypeId>
+				<xr:ValueId>3760b864-dda2-4a52-bc70-29d948e6e4f5</xr:ValueId>
+			</xr:GeneratedType>
+		</InternalInfo>
+		<Properties>
+			<Name>AccountingCorrectnessControl</Name>
+			<Synonym>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Control accounting correctness</v8:content>
+				</v8:item>
+			</Synonym>
+			<Comment/>
+			<UseStandardCommands>true</UseStandardCommands>
+			<DefaultForm>DataProcessor.AccountingCorrectnessControl.Form.Form</DefaultForm>
+			<AuxiliaryForm/>
+			<IncludeHelpInContents>false</IncludeHelpInContents>
+			<ExtendedPresentation/>
+			<Explanation/>
+		</Properties>
+		<ChildObjects>
+			<Form>Form</Form>
+			<Form>ReportForm</Form>
+			<Form>DetailedDescriptionForm</Form>
+			<Template>TemplateOutput</Template>
+			<Template>WriteOffsInconsistenciesToSpecifications</Template>
+			<Template>SuggestedProductionSpecifications</Template>
+			<Template>PurchasePricesAnalysis</Template>
+			<Template>ExchangeDifferences</Template>
+			<Template>DetailedDescriptionHTML</Template>
+			<Template>CompaniesContractsControlRules</Template>
+			<Template>CashFlowItems</Template>
+		</ChildObjects>
+	</DataProcessor>
+</MetaDataObject>

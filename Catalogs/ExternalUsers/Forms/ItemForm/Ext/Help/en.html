@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html xmlns:o=""><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"></meta><link rel="stylesheet" type="text/css" href="v8help://service_book/service_style"></link><meta name="GENERATOR" content="MSHTML 11.00.9600.18321"></meta></head><body>
+<p>External user properties.</p>
+<p>To <a href="#1">enter or edit</a> the external user data, you need administrator rights or the rights of a person responsible for the <a href="Catalog.ExternalUsers/Help">external user</a> list.</p>
+<p>Only the administrator can allow to <a href="#2">log on to the application</a>. </p>
+<p>The person responsible for the external user list can maintain the <strong>External Users</strong> list to a limited extent, configure the external user before the application entry is allowed by the administrator. The responsible person can use the <strong>External access</strong> command, edit the <b>External users</b> and <b>External user</b> <b>groups </b>lists. The responsible user also edits the access rights for the external users. </p>
+<p>In other cases a user can only view his personal data and change the <b>Password </b>(depending on the administrator settings), interface language, and contact information. </p>
+<p>In a distributed infobase you configures the application logon for each infobase of the application.</p>
+<h3>Recommendations for logon password creation</h3>
+<p>A good password shall:</p>
+<ul><li>be illegible 
+</li><li>have over eight characters 
+</li><li>include the following: 
+<ul><li>upppercase latin letters 
+</li><li>lowercase latin letters 
+</li><li>numbers 
+</li><li>symbols (highlight, brackets etc.) </li></ul></li></ul><p>The password shall not repeat the user name, consist of numbers only, contain legible words, or repeating character groups. </p>
+<ul><li>Good password examples:<br>“nj7{jhjibq*Gfhjkm, <br>F5”njnGhkmNj;t{HI. 
+</li><li>Bad password examples: <br>Ivanov, <br>qwerty, <br>12345678, <br>123123123.</li></ul><h3><a name="#1">Adding an external user</a> (if permitted)</h3>
+<p>If the user responsible for the list adds an external user and fills in the user name, the administrator will receive the recommendation to check the logon settings. When logon is allowed, the recommendation is closed, and the responsible user can not edit the logon settings, but disable the login permission. To view all such external users prepared by the responsible user, you can filter the list with <b>Prepared </b>field.</p>
+<ul><li>An external user is linked to a certain application object (eg., counterparty, employee, etc.) specified in the <b>Object </b>field. When using the <b>External access </b>button (recommended) the <b>Object </b>field is filled in automatically. 
+</li><li>When adding an external user from the <a href="Catalog.ExternalUsers/Help">external user list</a> using the <b>Create </b>command you should fill in the <b>Object </b>field manually. To do this, click <strong>Select,</strong> select the application list, and then select the required object from this list to which the external user is linked. The <b>Object</b> field will be displayed in various lists of the application as the external user's full name. 
+</li><li>By default, the <strong>Invalid</strong> check box is cleared for all external users. Sometimes an external user does not use the application any more, and you can not deleted the user because this user referenced from other application objects. IN such case it is recommended to select the <b>Invalid </b>check box. Such external user can not be selected or seen in the external user list. 
+</li><li>Enter general data of the external user on the <b>Main</b> tab: 
+<ul><li><strong>Name (for logon)</strong> - the short name used to log on to the application 
+</li><li><strong>1C:Company</strong> a<strong>uthentication </strong>-  the check box is selected by default and the password field is active 
+</li><li><strong>Password </strong>- enter your password to log on to the application. To protect your data, always fill in this field 
+</li><li><strong>Password confirmation</strong> - enter your password again to ensure its correctness. 
+</li><li><strong>User can not change the password </strong>- if necessary, prevent the external user from changing the password 
+</li><li><strong>Authentication with OpenID</strong> - select the check box to allow the external user to use a single OpenID-protocol account. Meanwhile, you can clear the <b>Authentication of 1C:Company </b>check box</li></ul></li><li>On the <b>Comment </b>tab, enter additional information about the external user<strong>.</strong></li></ul><h3>Adding an external user to groups</h3>
+<ul><li>If user groups are enabled in the application, you may include your external user to one or more <a href="Catalog.ExternalUsersGroups/Help">groups</a>. 
+</li><li>Click <strong>Groups</strong> on the navigation panel, and then select one or more <a href="CommonForm.UserGroups/Help">groups</a> using the check boxes. 
+</li><li>To cancel your selection, click <strong>Exclude from all groups</strong>. </li></ul><h3>External user access rights</h3>
+<ul><li>Access rights can also be configured by the user responsible for the external user list. However, some access rights (administrative rights) are not available for him. Depending on the application access rights are set up with one of the following options: 
+<ul><li>Click <strong>Access rights</strong> on the navigation panel to include your external user to one or more <a href="CommonForm.AccessRights/Help">access groups</a>. Select them from the <a href="Catalog.AccessGroups/Help">list</a>. 
+</li><li>In the <strong>Allowed actions (roles)</strong> list you can assign one or more roles to your external user. All together they constitute his <a href="CommonForm.AccessRightsSimplified/Help">personal access settings</a>. Roles may correspons with the user's various job duties (or activity kinds) or less important functions. Select relevant roles using check boxes.</li></ul></li></ul><h3><a name="#2">Allowing application log on (only for the administrator)</a></h3>
+<ul><li>For an external user to log in to the application the administrator selects the <strong>Application log In Is Allowed</strong> check box. Be sure the necessary properties are specified: name (login), password and other authentication parameters. </li></ul><h3>Managing external user settings</h3>
+<ul><li>The application remembers the <a href="DataProcessor.UserSettings.Form.UserSettings/Help">settings</a> of each user when he works. To view, copy or delete external user settings (you have to delete such settings when incorrect settings prevent normal functioning of the application), click <strong>Settings</strong> on the navigation panel.</li></ul><h3>Application warning</h3>
+<ul><li>If the properties of an external user differ from the properties of an <a href="Catalog.Users.Form.IBUsers/Help">infobase user</a>, the application gives a warning showing such properties. You are invited to record the data to eliminate the differences.</li></ul><h3>See also</h3>
+<ul><li><a href="v8help://frame/form_common">Workng with forms</a></li></ul></body></html>

@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<MetaDataObject xmlns="http://v8.1c.ru/8.3/MDClasses" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:cmi="http://v8.1c.ru/8.2/managed-application/cmi" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xpr="http://v8.1c.ru/8.3/xcf/predef" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<FunctionalOption uuid="62337427-f483-411f-8288-93e5a11f4156">
+		<Properties>
+			<Name>UseSubsystemPayroll</Name>
+			<Synonym>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Use Payroll subsystem</v8:content>
+				</v8:item>
+			</Synonym>
+			<Comment/>
+			<Location>Constant.FunctionalOptionUseSubsystemPayroll</Location>
+			<PrivilegedGetMode>true</PrivilegedGetMode>
+			<Content>
+				<xr:Object>Catalog.Positions</xr:Object>
+				<xr:Object>Catalog.WorkingHoursKinds</xr:Object>
+				<xr:Object>Catalog.AccrualAndDeductionKinds</xr:Object>
+				<xr:Object>Catalog.CalculationsParameters</xr:Object>
+				<xr:Object>Document.EmployeeOccupationChange</xr:Object>
+				<xr:Object>Document.Payroll</xr:Object>
+				<xr:Object>Document.PayrollSheet</xr:Object>
+				<xr:Object>Document.EmploymentContract</xr:Object>
+				<xr:Object>Document.Timesheet</xr:Object>
+				<xr:Object>Document.Dismissal</xr:Object>
+				<xr:Object>DocumentJournal.PayrollDocuments</xr:Object>
+				<xr:Object>DocumentJournal.HRMDocuments</xr:Object>
+				<xr:Object>Report.AccrualsAndDeductions</xr:Object>
+				<xr:Object>Report.WorkedTime</xr:Object>
+				<xr:Object>Report.PaySheet</xr:Object>
+				<xr:Object>Report.PayrollSheets</xr:Object>
+				<xr:Object>Report.PayrollPayments</xr:Object>
+				<xr:Object>Report.EmployeesLists</xr:Object>
+				<xr:Object>Report.StaffList</xr:Object>
+				<xr:Object>InformationRegister.AccrualsAndDeductionsPlan</xr:Object>
+				<xr:Object>InformationRegister.Employees</xr:Object>
+				<xr:Object>AccumulationRegister.Timesheet</xr:Object>
+				<xr:Object>Subsystem.PayrollAndHumanResources.Subsystem.HumanResources</xr:Object>
+				<xr:Object>Subsystem.PayrollAndHumanResources.Subsystem.Salary</xr:Object>
+				<xr:Object>Catalog.Employees.Attribute.SettlementsHumanResourcesGLAccount</xr:Object>
+				<xr:Object>Document.CustomerOrder.Attribute.UsePerformerSalaries</xr:Object>
+				<xr:Object>Document.CustomerOrder.TabularSection.Performers</xr:Object>
+				<xr:Object>Subsystem.PayrollAndHumanResources</xr:Object>
+				<xr:Object>Subsystem.PayrollAndHumanResources.Subsystem.Analysis</xr:Object>
+			</Content>
+		</Properties>
+	</FunctionalOption>
+</MetaDataObject>

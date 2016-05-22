@@ -1,0 +1,66 @@
+﻿SELECT
+	ProductsAndServicesTable.ProductsAndServices AS ProductsAndServices,
+	ProductsAndServicesTable.Characteristic AS Characteristic
+INTO ProductsAndServicesTable
+FROM
+	&ProductsAndServicesTable AS ProductsAndServicesTable
+;
+
+////////////////////////////////////////////////////////////////////////////////
+SELECT
+	ProductsAndServicesPricesSliceLast.ProductsAndServices AS ProductsAndServices,
+	ProductsAndServicesPricesSliceLast.Characteristic AS Characteristic
+INTO ProductsAndServicesDescriptionWithPrice
+FROM
+	InformationRegister.ProductsAndServicesPrices.SliceLast(
+			&ToDate,
+			PriceKind = &PriceKind
+				AND Actuality) AS ProductsAndServicesPricesSliceLast
+WHERE
+	&CharacteristicCondition
+;
+
+////////////////////////////////////////////////////////////////////////////////
+SELECT
+	ProductsAndServices.Ref AS ProductsAndServices,
+	VALUE(Catalog.ProductsAndServicesCharacteristics.EmptyRef) AS Characteristic,
+	ProductsAndServices.MeasurementUnit AS MeasurementUnit
+INTO ProductsAndServicesDescriptionOfAllPositions
+FROM
+	Catalog.ProductsAndServices AS ProductsAndServices
+WHERE
+	ProductsAndServices.ProductsAndServicesType IN (VALUE(Enum.ProductsAndServicesTypes.InventoryItem), VALUE(Enum.ProductsAndServicesTypes.Service), VALUE(Enum.ProductsAndServicesTypes.Work))
+
+UNION ALL
+
+SELECT
+	ProductsAndServicesCharacteristics.Owner,
+	ProductsAndServicesCharacteristics.Ref,
+	ProductsAndServicesCharacteristics.Owner.MeasurementUnit
+FROM
+	Catalog.ProductsAndServicesCharacteristics AS ProductsAndServicesCharacteristics
+WHERE
+	ProductsAndServicesCharacteristics.Owner.ProductsAndServicesType IN (VALUE(Enum.ProductsAndServicesTypes.InventoryItem), VALUE(Enum.ProductsAndServicesTypes.Service), VALUE(Enum.ProductsAndServicesTypes.Work))
+;
+
+////////////////////////////////////////////////////////////////////////////////
+SELECT
+	ProductsAndServicesDescriptionOfAllPositions.ProductsAndServices AS ProductsAndServices,
+	ProductsAndServicesDescriptionOfAllPositions.Characteristic AS Characteristic,
+	ProductsAndServicesDescriptionOfAllPositions.MeasurementUnit AS MeasurementUnit,
+	0 AS Price
+FROM
+	ProductsAndServicesDescriptionOfAllPositions AS ProductsAndServicesDescriptionOfAllPositions
+WHERE
+	Not (ProductsAndServicesDescriptionOfAllPositions.ProductsAndServices, ProductsAndServicesDescriptionOfAllPositions.Characteristic) In
+				(SELECT
+					ProductsAndServicesDescriptionWithPrice.ProductsAndServices,
+					ProductsAndServicesDescriptionWithPrice.Characteristic
+				FROM
+					ProductsAndServicesDescriptionWithPrice AS ProductsAndServicesDescriptionWithPrice)
+	AND Not (ProductsAndServices, Characteristic) In
+						(SELECT
+							ProductsAndServicesTable.ProductsAndServices,
+							ProductsAndServicesTable.Characteristic
+						FROM
+							ProductsAndServicesTable AS ProductsAndServicesTable)

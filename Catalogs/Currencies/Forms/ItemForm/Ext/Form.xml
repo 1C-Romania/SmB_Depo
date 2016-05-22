@@ -1,0 +1,981 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<CommandBarLocation>Top</CommandBarLocation>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="FormCommandBar" id="-1"/>
+	<Events>
+		<Event name="OnReadAtServer">OnReadAtServer</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+		<Event name="BeforeWriteAtServer">BeforeWriteAtServer</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="DescriptionFull" id="4">
+			<DataPath>Object.DescriptionFull</DataPath>
+			<FooterHorizontalAlign>Left</FooterHorizontalAlign>
+			<HorizontalStretch>true</HorizontalStretch>
+			<Wrap>false</Wrap>
+			<BorderColor>style:BorderColor</BorderColor>
+			<ContextMenu name="FullNameContextMenu" id="23"/>
+			<ExtendedTooltip name="FullNameExtendedTooltip" id="72"/>
+		</InputField>
+		<Pages name="Pages" id="47">
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Pages</v8:content>
+				</v8:item>
+			</ToolTip>
+			<ExtendedTooltip name="PagesExtendedTooltip" id="73"/>
+			<ChildItems>
+				<Page name="MainInfoGroup" id="48">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Basic information</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Basic information</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="MainInfoGroupExtendedTooltip" id="74"/>
+					<ChildItems>
+						<InputField name="Code" id="2">
+							<DataPath>Object.Code</DataPath>
+							<FooterHorizontalAlign>Left</FooterHorizontalAlign>
+							<Width>3</Width>
+							<Wrap>false</Wrap>
+							<BorderColor>style:BorderColor</BorderColor>
+							<ContextMenu name="CodeContextMenu" id="24"/>
+							<ExtendedTooltip name="CodeExtendedTooltip" id="75"/>
+						</InputField>
+						<InputField name="Description" id="3">
+							<DataPath>Object.Description</DataPath>
+							<FooterHorizontalAlign>Left</FooterHorizontalAlign>
+							<Wrap>false</Wrap>
+							<BorderColor>style:BorderColor</BorderColor>
+							<ContextMenu name="DescriptionContextMenu" id="22"/>
+							<ExtendedTooltip name="DescriptionExtendedTooltip" id="76"/>
+						</InputField>
+						<UsualGroup name="GroupSetRateMethod" id="106">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group method to set a rate</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group method to set a rate</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupSetRateMethodExtendedTooltip" id="107"/>
+							<ChildItems>
+								<UsualGroup name="GroupSetRateMethodLeftColumn" id="104">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group method to set a rateleft column</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group method to set a rateleft column</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupSetRateMethodLeftColumnExtendedTooltip" id="105"/>
+									<ChildItems>
+										<RadioButtonField name="ExchangeRateCurrencies" id="101">
+											<DataPath>Object.SetRateMethod</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Exchange rate</v8:content>
+												</v8:item>
+											</Title>
+											<RadioButtonType>Auto</RadioButtonType>
+											<ColumnsCount>1</ColumnsCount>
+											<ChoiceList>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation>
+															<v8:item>
+																<v8:lang>en</v8:lang>
+																<v8:content>entered manually</v8:content>
+															</v8:item>
+														</Presentation>
+														<Value xsi:type="xr:DesignTimeRef">Enum.CurrencyRateSetMethods.EnumValue.ManualInput</Value>
+													</xr:Value>
+												</xr:Item>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation>
+															<v8:item>
+																<v8:lang>en</v8:lang>
+																<v8:content>exported from the Internet</v8:content>
+															</v8:item>
+														</Presentation>
+														<Value xsi:type="xr:DesignTimeRef">Enum.CurrencyRateSetMethods.EnumValue.ExportFromInternet</Value>
+													</xr:Value>
+												</xr:Item>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation>
+															<v8:item>
+																<v8:lang>en</v8:lang>
+																<v8:content>associated with the rate of another currency:</v8:content>
+															</v8:item>
+														</Presentation>
+														<Value xsi:type="xr:DesignTimeRef">Enum.CurrencyRateSetMethods.EnumValue.MarkupOnExchangeRateOfOtherCurrencies</Value>
+													</xr:Value>
+												</xr:Item>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation>
+															<v8:item>
+																<v8:lang>en</v8:lang>
+																<v8:content>calculated by using the formula:</v8:content>
+															</v8:item>
+														</Presentation>
+														<Value xsi:type="xr:DesignTimeRef">Enum.CurrencyRateSetMethods.EnumValue.CalculationByFormula</Value>
+													</xr:Value>
+												</xr:Item>
+											</ChoiceList>
+											<ContextMenu name="CurrencyRateContextMenu" id="102"/>
+											<ExtendedTooltip name="CurrencyRateExtendedTooltip" id="103"/>
+											<Events>
+												<Event name="OnChange">CurrencyRateOnChange</Event>
+											</Events>
+										</RadioButtonField>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="GroupSetRateMethodRightColumn" id="108">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group method to set a rateright column</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group method to set a rateright column</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupSetRateMethodRightColumnExtendedTooltip" id="109"/>
+									<ChildItems>
+										<LabelDecoration name="Indent1" id="110">
+											<ContextMenu name="Indent1ContextMenu" id="111"/>
+											<ExtendedTooltip name="Indent1ExtendedTooltip" id="112"/>
+										</LabelDecoration>
+										<LabelDecoration name="Indent2" id="113">
+											<ContextMenu name="Indent2ContextMenu" id="114"/>
+											<ExtendedTooltip name="Indent2ExtendedTooltip" id="115"/>
+										</LabelDecoration>
+										<LabelDecoration name="Indent3" id="116">
+											<ContextMenu name="Indent3ContextMenu" id="117"/>
+											<ExtendedTooltip name="Indent3ExtendedTooltip" id="118"/>
+										</LabelDecoration>
+										<UsualGroup name="GroupMarkupOnRateOtherCurrency" id="119">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group markup on rate of other currency</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Factor which is applied to the exchage rate of the main currency to calculate the exchange rate of the current currency.</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ToolTipRepresentation>Button</ToolTipRepresentation>
+											<Group>Horizontal</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="GroupMarkupOnOtherCurrencyRateExtendedTooltip" id="120"/>
+											<ChildItems>
+												<InputField name="MainCurrency" id="5">
+													<DataPath>Object.MainCurrency</DataPath>
+													<TitleLocation>None</TitleLocation>
+													<FooterHorizontalAlign>Left</FooterHorizontalAlign>
+													<Width>15</Width>
+													<HorizontalStretch>false</HorizontalStretch>
+													<Wrap>false</Wrap>
+													<ChooseType>false</ChooseType>
+													<TypeDomainEnabled>false</TypeDomainEnabled>
+													<AvailableTypes>
+														<v8:Type>cfg:CatalogRef.Currencies</v8:Type>
+													</AvailableTypes>
+													<BorderColor>style:BorderColor</BorderColor>
+													<ContextMenu name="MainCurrencyContextMenu" id="35"/>
+													<ExtendedTooltip name="MainCurrencyExtendedTooltip" id="81"/>
+													<Events>
+														<Event name="StartChoice">MainCurrencyStartChoice</Event>
+													</Events>
+												</InputField>
+												<InputField name="Markup" id="6">
+													<DataPath>Object.Markup</DataPath>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Factor which is applied to the selected currency rate for calculating the rate of the current currency</v8:content>
+														</v8:item>
+													</ToolTip>
+													<FooterHorizontalAlign>Left</FooterHorizontalAlign>
+													<Width>7</Width>
+													<Wrap>false</Wrap>
+													<ChoiceButton>false</ChoiceButton>
+													<SpinButton>true</SpinButton>
+													<MinValue xsi:type="xs:decimal">-99</MinValue>
+													<MaxValue xsi:type="xs:decimal">100</MaxValue>
+													<BorderColor>style:BorderColor</BorderColor>
+													<ContextMenu name="MarginContextMenu" id="36"/>
+													<ExtendedTooltip name="MarginExtendedTooltip" id="82"/>
+												</InputField>
+												<LabelDecoration name="Decoration1" id="126">
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>%</v8:content>
+														</v8:item>
+													</Title>
+													<ContextMenu name="Decoration1ContextMenu" id="127"/>
+													<ExtendedTooltip name="Decoration1ExtendedTooltip" id="128"/>
+												</LabelDecoration>
+											</ChildItems>
+										</UsualGroup>
+										<UsualGroup name="GroupRateCalculationFormula" id="124">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group rate calculation formula</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group rate calculation formula</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Vertical</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="GroupRateCalculationMethodExtendedTooltip" id="125"/>
+											<ChildItems>
+												<InputField name="RateCalculationFormula" id="121">
+													<DataPath>Object.RateCalculationFormula</DataPath>
+													<TitleLocation>None</TitleLocation>
+													<ToolTipRepresentation>Button</ToolTipRepresentation>
+													<Width>33</Width>
+													<HorizontalStretch>false</HorizontalStretch>
+													<ContextMenu name="RateCalculationFormulaContextMenu" id="122"/>
+													<ExtendedTooltip name="RateCalculationFormulaExtendedTooltip" id="123"/>
+												</InputField>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="TotalInWordsGroup" id="37">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Currency writing parameters</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group amount in words</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="TotalInWordsGroupExtendedTooltip" id="83"/>
+					<ChildItems>
+						<UsualGroup name="DeclinationWholeParts" id="9">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Integer part</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Declination of the whole part</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Format>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Integer part in word in home language parameters</v8:content>
+								</v8:item>
+							</Format>
+							<ExtendedTooltip name="DeclinationWholePartExtendedTooltip" id="84"/>
+							<ChildItems>
+								<InputField name="InWordsField4HomeLanguage" id="13">
+									<DataPath>InWordsField4HomeLanguage</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Gender</v8:content>
+										</v8:item>
+									</Title>
+									<FooterHorizontalAlign>Left</FooterHorizontalAlign>
+									<Width>10</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<Wrap>false</Wrap>
+									<ListChoiceMode>true</ListChoiceMode>
+									<ChooseType>false</ChooseType>
+									<TextEdit>false</TextEdit>
+									<ChoiceList>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Male</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:string">Male</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Female</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:string">Female</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Neuter</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:string">Neuter</Value>
+											</xr:Value>
+										</xr:Item>
+									</ChoiceList>
+									<BorderColor>style:BorderColor</BorderColor>
+									<ContextMenu name="InWordsField4HomeLanguageContextMenu" id="25"/>
+									<ExtendedTooltip name="InWordsField4HomeLanguageExtendedTooltip" id="85"/>
+									<Events>
+										<Event name="OnChange">InWordsField4InEnglishOnChange</Event>
+										<Event name="AutoComplete">InWordsField4InEnglishAutoComplete</Event>
+										<Event name="TextEditEnd">InWordsField4InEnglishTextEditEnd</Event>
+									</Events>
+								</InputField>
+								<InputField name="InWordsField1HomeLanguage" id="10">
+									<DataPath>InWordsField1HomeLanguage</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>one</v8:content>
+										</v8:item>
+									</Title>
+									<FooterHorizontalAlign>Left</FooterHorizontalAlign>
+									<Width>10</Width>
+									<Wrap>false</Wrap>
+									<BorderColor>style:BorderColor</BorderColor>
+									<ContextMenu name="InWordsField1HomeLanguageContextMenu" id="26"/>
+									<ExtendedTooltip name="InWordsField1HomeLanguageExtendedTooltip" id="86"/>
+									<Events>
+										<Event name="OnChange">InWordsField1InEnglishOnChange</Event>
+									</Events>
+								</InputField>
+								<InputField name="InWordsField2HomeLanguage" id="11">
+									<DataPath>InWordsField2HomeLanguage</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Two</v8:content>
+										</v8:item>
+									</Title>
+									<FooterHorizontalAlign>Left</FooterHorizontalAlign>
+									<Width>10</Width>
+									<Wrap>false</Wrap>
+									<BorderColor>style:BorderColor</BorderColor>
+									<ContextMenu name="InWordsField2HomeLanguageContextMenu" id="27"/>
+									<ExtendedTooltip name="InWordsField2HomeLanguageExtendedTooltip" id="87"/>
+									<Events>
+										<Event name="OnChange">InWordsField2InEnglishOnChange</Event>
+									</Events>
+								</InputField>
+								<InputField name="InWordsField3HomeLanguage" id="12">
+									<DataPath>InWordsField3HomeLanguage</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>five</v8:content>
+										</v8:item>
+									</Title>
+									<FooterHorizontalAlign>Left</FooterHorizontalAlign>
+									<Width>10</Width>
+									<Wrap>false</Wrap>
+									<BorderColor>style:BorderColor</BorderColor>
+									<ContextMenu name="InWordsField3HomeLanguageContextMenu" id="28"/>
+									<ExtendedTooltip name="InWordsField3HomeLanguageExtendedTooltip" id="88"/>
+									<Events>
+										<Event name="OnChange">InWordsField3InEnglishOnChange</Event>
+									</Events>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="FractionalPartParametersGroup" id="55">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Fraction</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group fraction Settings</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<ExtendedTooltip name="FractionalPartParametersGroupExtendedTooltip" id="89"/>
+							<ChildItems>
+								<UsualGroup name="DeclinationFractionalParts" id="14">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Fraction</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Declination of fractional part</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<Format>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Fractional part in words rules for home language</v8:content>
+										</v8:item>
+									</Format>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="DeclinationFractionalPartExtendedTooltip" id="90"/>
+									<ChildItems>
+										<InputField name="InWordsField8HomeLanguage" id="18">
+											<DataPath>InWordsField8HomeLanguage</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Gender</v8:content>
+												</v8:item>
+											</Title>
+											<FooterHorizontalAlign>Left</FooterHorizontalAlign>
+											<Width>10</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<Wrap>false</Wrap>
+											<ListChoiceMode>true</ListChoiceMode>
+											<ChooseType>false</ChooseType>
+											<TextEdit>false</TextEdit>
+											<ChoiceList>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation>
+															<v8:item>
+																<v8:lang>en</v8:lang>
+																<v8:content>Male</v8:content>
+															</v8:item>
+														</Presentation>
+														<Value xsi:type="xs:string">Male</Value>
+													</xr:Value>
+												</xr:Item>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation>
+															<v8:item>
+																<v8:lang>en</v8:lang>
+																<v8:content>Female</v8:content>
+															</v8:item>
+														</Presentation>
+														<Value xsi:type="xs:string">Female</Value>
+													</xr:Value>
+												</xr:Item>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation>
+															<v8:item>
+																<v8:lang>en</v8:lang>
+																<v8:content>Neuter</v8:content>
+															</v8:item>
+														</Presentation>
+														<Value xsi:type="xs:string">Neuter</Value>
+													</xr:Value>
+												</xr:Item>
+											</ChoiceList>
+											<BorderColor>style:BorderColor</BorderColor>
+											<ContextMenu name="InWordsField8HomeLanguageContextMenu" id="29"/>
+											<ExtendedTooltip name="InWordsField8HomeLanguageExtendedTooltip" id="91"/>
+											<Events>
+												<Event name="OnChange">InWordsField8InEnglishOnChange</Event>
+												<Event name="AutoComplete">InWordsField8InEnglishAutoComplete</Event>
+												<Event name="TextEditEnd">InWordsField8InEnglishTextEditEnd</Event>
+											</Events>
+										</InputField>
+										<InputField name="InWordsField5HomeLanguage" id="17">
+											<DataPath>InWordsField5HomeLanguage</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>one</v8:content>
+												</v8:item>
+											</Title>
+											<FooterHorizontalAlign>Left</FooterHorizontalAlign>
+											<Width>10</Width>
+											<Wrap>false</Wrap>
+											<BorderColor>style:BorderColor</BorderColor>
+											<ContextMenu name="InWordsField5HomeLanguageContextMenu" id="30"/>
+											<ExtendedTooltip name="InWordsField5HomeLanguageExtendedTooltip" id="92"/>
+											<Events>
+												<Event name="OnChange">InWordsField5InEnglishOnChange</Event>
+											</Events>
+										</InputField>
+										<InputField name="InWordsField6HomeLanguage" id="16">
+											<DataPath>InWordsField6HomeLanguage</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Two</v8:content>
+												</v8:item>
+											</Title>
+											<FooterHorizontalAlign>Left</FooterHorizontalAlign>
+											<Width>10</Width>
+											<Wrap>false</Wrap>
+											<BorderColor>style:BorderColor</BorderColor>
+											<ContextMenu name="InWordsField6HomeLanguageContextMenu" id="31"/>
+											<ExtendedTooltip name="InWordsField6HomeLanguageExtendedTooltip" id="93"/>
+											<Events>
+												<Event name="OnChange">InWordsField6InEnglishOnChange</Event>
+											</Events>
+										</InputField>
+										<InputField name="InWordsField7HomeLanguage" id="15">
+											<DataPath>InWordsField7HomeLanguage</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>five</v8:content>
+												</v8:item>
+											</Title>
+											<FooterHorizontalAlign>Left</FooterHorizontalAlign>
+											<Width>10</Width>
+											<Wrap>false</Wrap>
+											<BorderColor>style:BorderColor</BorderColor>
+											<ContextMenu name="InWordsField7HomeLanguageContextMenu" id="32"/>
+											<ExtendedTooltip name="InWordsField7HomeLanguageExtendedTooltip" id="94"/>
+											<Events>
+												<Event name="OnChange">InWordsField7InEnglishOnChange</Event>
+											</Events>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="FractionDigitsCountGroup" id="56">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group number of digits of fraction part</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group number of digits of fraction part</v8:content>
+										</v8:item>
+									</ToolTip>
+									<HorizontalStretch>true</HorizontalStretch>
+									<Group>Vertical</Group>
+									<Representation>NormalSeparation</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="FractionDigitsCountGroupExtendedTooltip" id="95"/>
+									<ChildItems>
+										<InputField name="FractionalPartLength" id="20">
+											<DataPath>FractionalPartLength</DataPath>
+											<FooterHorizontalAlign>Left</FooterHorizontalAlign>
+											<Width>15</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<Wrap>false</Wrap>
+											<ListChoiceMode>true</ListChoiceMode>
+											<ChooseType>false</ChooseType>
+											<TypeDomainEnabled>false</TypeDomainEnabled>
+											<TextEdit>false</TextEdit>
+											<ChoiceList>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation>
+															<v8:item>
+																<v8:lang>en</v8:lang>
+																<v8:content>2 character</v8:content>
+															</v8:item>
+														</Presentation>
+														<Value xsi:type="xs:string">2 character</Value>
+													</xr:Value>
+												</xr:Item>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation>
+															<v8:item>
+																<v8:lang>en</v8:lang>
+																<v8:content>1 character</v8:content>
+															</v8:item>
+														</Presentation>
+														<Value xsi:type="xs:string">1 character</Value>
+													</xr:Value>
+												</xr:Item>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation>
+															<v8:item>
+																<v8:lang>en</v8:lang>
+																<v8:content>3 character</v8:content>
+															</v8:item>
+														</Presentation>
+														<Value xsi:type="xs:string">3 character</Value>
+													</xr:Value>
+												</xr:Item>
+											</ChoiceList>
+											<BorderColor>style:BorderColor</BorderColor>
+											<ContextMenu name="FractionalPartLengthContextMenu" id="33"/>
+											<ExtendedTooltip name="FractionalPartLengthExtendedTooltip" id="96"/>
+											<Events>
+												<Event name="OnChange">FractionLengthOnChange</Event>
+												<Event name="AutoComplete">FractionLengthAutoComplete</Event>
+												<Event name="TextEditEnd">FractionLengthTextEditEnd</Event>
+											</Events>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="InWordsSampleGroup" id="61">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Amount wording example</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group in words sample</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<ExtendedTooltip name="InWordsSampleGroupExtendedTooltip" id="97"/>
+									<ChildItems>
+										<InputField name="AmountNumber" id="59">
+											<DataPath>AmountNumber</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Amount</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="AmountNumberContextMenu" id="60"/>
+											<ExtendedTooltip name="AmountNumberExtendedTooltip" id="98"/>
+											<Events>
+												<Event name="OnChange">AmountNumberOnChange</Event>
+											</Events>
+										</InputField>
+										<InputField name="AmountInWords" id="62">
+											<DataPath>AmountInWords</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<TextEdit>false</TextEdit>
+											<ContextMenu name="TotalInWordsContextMenu" id="63"/>
+											<ExtendedTooltip name="TotalInWordsExtendedTooltip" id="99"/>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+		<LabelField name="ManualEditText" id="68">
+			<DataPath>ManualEditText</DataPath>
+			<Visible>false</Visible>
+			<TitleLocation>None</TitleLocation>
+			<ContextMenu name="ManualEditTextContextMenu" id="69"/>
+			<ExtendedTooltip name="ManualEditTextExtendedTooltip" id="100"/>
+		</LabelField>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Type>
+				<v8:Type>cfg:CatalogObject.Currencies</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="InWordsField1HomeLanguage" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>In words field1 in english</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>25</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="InWordsField2HomeLanguage" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>In words field2 in english</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>25</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="InWordsField3HomeLanguage" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>In words field3 in english</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>25</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="InWordsField4HomeLanguage" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>In words field4 in english</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="InWordsField5HomeLanguage" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>In words field5 in english</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>25</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="InWordsField6HomeLanguage" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>In words field6 in english</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>25</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="InWordsField7HomeLanguage" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>In words field7 in english</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>25</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="InWordsField8HomeLanguage" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>In words field8 in english</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>25</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="FractionalPartLength" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Number of decimal digits</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="DependentCurrencyRate" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Dependent currency rate</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="AmountNumber" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Amount number</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="AmountInWords" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Amount in words</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ManualEditText" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Manual edit text</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<FunctionalOptions>
+				<Item>FunctionalOption.StandardSubsystemsSaaS</Item>
+			</FunctionalOptions>
+		</Attribute>
+		<Attribute name="ManualChanging" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Manual edit</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+	</Attributes>
+</Form>

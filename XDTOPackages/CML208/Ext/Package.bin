@@ -1,0 +1,797 @@
+﻿<package xmlns="http://v8.1c.ru/8.1/xdto" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="urn:1C.ru:commerceml_2">
+	<property xmlns:d2p1="urn:1C.ru:commerceml_2" name="Document" type="d2p1:Document"/>
+	<property xmlns:d2p1="urn:1C.ru:commerceml_2" name="OffersPackageChanges" type="d2p1:OffersPackageChanges"/>
+	<property xmlns:d2p1="urn:1C.ru:commerceml_2" name="Directory" type="d2p1:Directory"/>
+	<property xmlns:d2p1="urn:1C.ru:commerceml_2" name="Classifier" type="d2p1:Classifier"/>
+	<property name="BusinessInformation">
+		<typeDef xmlns:d3p1="urn:1C.ru:commerceml_2" xsi:type="ObjectType" base="d3p1:BusinessInformation"/>
+	</property>
+	<property xmlns:d2p1="urn:1C.ru:commerceml_2" name="OffersPackage" type="d2p1:OffersPackage"/>
+	<valueType name="AddressType" base="xs:string" variety="Atomic">
+		<enumeration>Postal index</enumeration>
+		<enumeration>Country</enumeration>
+		<enumeration>Region</enumeration>
+		<enumeration>District</enumeration>
+		<enumeration>Settlement</enumeration>
+		<enumeration>City</enumeration>
+		<enumeration>Street</enumeration>
+		<enumeration>Building</enumeration>
+		<enumeration>Section</enumeration>
+		<enumeration>Apartment</enumeration>
+	</valueType>
+	<valueType name="SKUType" base="xs:string" variety="Atomic" maxLength="255"/>
+	<valueType name="BIKType" base="xs:string" variety="Atomic" length="9"/>
+	<valueType name="CurrencyType" base="xs:string" variety="Atomic" length="3"/>
+	<valueType name="ActivityKindType" base="xs:string" variety="Atomic" maxLength="255"/>
+	<valueType name="TimeType" base="xs:time" variety="Atomic"/>
+	<valueType name="DateTimeType" base="xs:dateTime" variety="Atomic"/>
+	<valueType name="DateType" base="xs:date" variety="Atomic"/>
+	<valueType name="EGRPOType" base="xs:string" variety="Atomic"/>
+	<valueType name="UnitType" base="xs:string" variety="Atomic" minLength="3" maxLength="4"/>
+	<valueType name="ValueType" base="xs:string" variety="Atomic" maxLength="1000"/>
+	<valueType name="TINType" base="xs:string" variety="Atomic" minLength="10" maxLength="12"/>
+	<valueType name="Identifier80" base="xs:string" variety="Atomic" maxLength="80"/>
+	<valueType name="IdentifierGlobalType" base="xs:string" variety="Atomic" maxLength="40"/>
+	<valueType name="IdentifierType" base="xs:string" variety="Atomic" maxLength="20"/>
+	<valueType name="FileNameType" base="xs:string" variety="Atomic" maxLength="255"/>
+	<valueType name="KPPType" base="xs:string" variety="Atomic" length="9"/>
+	<valueType name="QuantityType" base="xs:decimal" variety="Atomic"/>
+	<valueType name="CommentType" base="xs:string" variety="Atomic" maxLength="3000"/>
+	<valueType name="ContactType" base="xs:string" variety="Atomic" maxLength="100">
+		<enumeration>Phone internal</enumeration>
+		<enumeration>Work phone</enumeration>
+		<enumeration>Phone mobile</enumeration>
+		<enumeration>Phone home</enumeration>
+		<enumeration>Pager</enumeration>
+		<enumeration>Fax</enumeration>
+		<enumeration>Mail</enumeration>
+		<enumeration>ICQ</enumeration>
+		<enumeration>WebSite</enumeration>
+		<enumeration>Coordinates on the map</enumeration>
+		<enumeration>Other</enumeration>
+	</valueType>
+	<valueType name="RatioType" base="xs:string" variety="Atomic" maxLength="255"/>
+	<valueType name="NameType" base="xs:string" variety="Atomic" maxLength="255"/>
+	<valueType name="NumberType" base="xs:string" variety="Atomic" maxLength="255"/>
+	<valueType name="OKVEDType" base="xs:string" variety="Atomic"/>
+	<valueType name="OKDPType" base="xs:string" variety="Atomic"/>
+	<valueType name="OKOPFType" base="xs:string" variety="Atomic"/>
+	<valueType name="OKPOType" base="xs:string" variety="Atomic"/>
+	<valueType name="OKFSType" base="xs:string" variety="Atomic"/>
+	<valueType name="AppealType" base="xs:string" variety="Atomic" maxLength="255"/>
+	<valueType name="PropertiesNecessityType" base="xs:string" variety="Atomic">
+		<enumeration>For directory</enumeration>
+		<enumeration>For document</enumeration>
+		<enumeration>For proposals</enumeration>
+	</valueType>
+	<valueType name="SwitchType" base="xs:boolean" variety="Atomic"/>
+	<valueType name="GenderType" base="xs:string" variety="Atomic" maxLength="255">
+		<enumeration>M</enumeration>
+		<enumeration>F</enumeration>
+	</valueType>
+	<valueType name="RoleType" base="xs:string" variety="Atomic">
+		<enumeration>Seller</enumeration>
+		<enumeration>Customer</enumeration>
+		<enumeration>Payer</enumeration>
+		<enumeration>Recipient</enumeration>
+		<enumeration>Consignor</enumeration>
+		<enumeration>Agent</enumeration>
+		<enumeration>Licensor</enumeration>
+		<enumeration>Licensee</enumeration>
+	</valueType>
+	<valueType name="SWIFTType" base="xs:string" variety="Atomic"/>
+	<valueType name="StatusType" base="xs:string" variety="Atomic">
+		<enumeration>New</enumeration>
+		<enumeration>Changed</enumeration>
+		<enumeration>Removed</enumeration>
+	</valueType>
+	<valueType name="Row3" base="xs:string" variety="Atomic" maxLength="3"/>
+	<valueType name="RowType" base="xs:string" variety="Atomic" maxLength="255"/>
+	<valueType name="AmountType" base="xs:decimal" variety="Atomic" totalDigits="18" fractionDigits="2"/>
+	<valueType name="AccountNumberType" base="xs:string" variety="Atomic" length="20">
+		<pattern>[0-9]{5}[0-9ABCEHKMPTX][0-9]{14}</pattern>
+	</valueType>
+	<valueType name="ValuesTypeType" base="xs:string" variety="Atomic">
+		<enumeration>String</enumeration>
+		<enumeration>Number</enumeration>
+		<enumeration>Time</enumeration>
+		<enumeration>Catalog</enumeration>
+	</valueType>
+	<valueType name="BusinessTransactionType" base="xs:string" variety="Atomic">
+		<enumeration>Product order</enumeration>
+		<enumeration>Invoice for payment</enumeration>
+		<enumeration>Goods issue</enumeration>
+		<enumeration>Customer invoice note</enumeration>
+		<enumeration>Goods return</enumeration>
+		<enumeration>Product transfer to the commission</enumeration>
+		<enumeration>Commission goods return</enumeration>
+		<enumeration>Report on the commission goods sales</enumeration>
+		<enumeration>Report on the commission goods depreciation</enumeration>
+		<enumeration>Cash payment</enumeration>
+		<enumeration>Cash return</enumeration>
+		<enumeration>Non cash payment</enumeration>
+		<enumeration>Non cash return</enumeration>
+		<enumeration>Revaluation of products</enumeration>
+		<enumeration>Transfer of rights</enumeration>
+		<enumeration>Other</enumeration>
+	</valueType>
+	<valueType name="BarcodeType" base="xs:string" variety="Atomic" minLength="8" maxLength="14"/>
+	<objectType name="Address">
+		<property name="Presentation">
+			<typeDef xmlns:d4p1="urn:1C.ru:commerceml_2" xsi:type="ValueType" base="d4p1:NameType" variety="Atomic"/>
+		</property>
+		<property name="Comment" lowerBound="0">
+			<typeDef xmlns:d4p1="urn:1C.ru:commerceml_2" xsi:type="ValueType" base="d4p1:CommentType" variety="Atomic"/>
+		</property>
+		<property name="AddressField" lowerBound="0" upperBound="10">
+			<typeDef xsi:type="ObjectType">
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="Type" type="d5p1:AddressType"/>
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="Value" type="d5p1:RowType"/>
+			</typeDef>
+		</property>
+	</objectType>
+	<objectType name="Bank" ordered="false" sequenced="true">
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="AccountCorrespondent" type="d3p1:AccountNumberType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Description" type="d3p1:NameType" lowerBound="0"/>
+		<property name="Address" lowerBound="0">
+			<typeDef xmlns:d4p1="urn:1C.ru:commerceml_2" xsi:type="ObjectType" base="d4p1:Address"/>
+		</property>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Contacts" type="d3p1:ContactInformation" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="BIN" type="d3p1:BIKType" lowerBound="0"/>
+		<property name="SWIFT" type="xs:string" lowerBound="0"/>
+	</objectType>
+	<objectType name="Group">
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="ID" type="d3p1:IdentifierGlobalType"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Description" type="d3p1:CommentType"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Definition" type="d3p1:CommentType" lowerBound="0"/>
+		<property name="Properties" lowerBound="0">
+			<typeDef xsi:type="ObjectType">
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="Property" type="d5p1:Property" upperBound="-1"/>
+			</typeDef>
+		</property>
+		<property name="Groups" lowerBound="0">
+			<typeDef xsi:type="ObjectType">
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="Group" type="d5p1:Group" upperBound="-1"/>
+			</typeDef>
+		</property>
+	</objectType>
+	<objectType name="Document">
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="ID" type="d3p1:IdentifierGlobalType"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Number" type="d3p1:NumberType"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Date" type="d3p1:DateType"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="BusinessTransaction" type="d3p1:BusinessTransactionType"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Role" type="d3p1:RoleType"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Currency" type="d3p1:CurrencyType"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="ExchangeRate" type="d3p1:RatioType"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Amount" type="d3p1:AmountType"/>
+		<property name="Counterparties">
+			<typeDef xsi:type="ObjectType">
+				<property name="Counterparty" upperBound="-1">
+					<typeDef xmlns:d6p1="urn:1C.ru:commerceml_2" xsi:type="ObjectType" base="d6p1:Counterparty">
+						<property name="Role" type="d6p1:RoleType"/>
+						<property name="BankAccount" type="d6p1:BankAccount" lowerBound="0"/>
+						<property name="Warehouse" type="d6p1:Warehouse" lowerBound="0"/>
+					</typeDef>
+				</property>
+			</typeDef>
+		</property>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Time" type="d3p1:TimeType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="PaymentDueDate" type="d3p1:DateType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Comment" type="d3p1:CommentType" lowerBound="0"/>
+		<property name="Taxes" lowerBound="0">
+			<typeDef xsi:type="ObjectType">
+				<property name="Tax" upperBound="-1">
+					<typeDef xmlns:d6p1="urn:1C.ru:commerceml_2" xsi:type="ObjectType" base="d6p1:Tax">
+						<property name="Amount" type="d6p1:AmountType"/>
+						<property name="Rate" type="d6p1:RatioType" lowerBound="0"/>
+					</typeDef>
+				</property>
+			</typeDef>
+		</property>
+		<property name="Discounts" lowerBound="0">
+			<typeDef xsi:type="ObjectType">
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="Discount" type="d5p1:Discount" upperBound="-1"/>
+			</typeDef>
+		</property>
+		<property name="AdditExpenses" lowerBound="0">
+			<typeDef xsi:type="ObjectType">
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="AdditExpense" type="d5p1:AdditExpense" upperBound="-1"/>
+			</typeDef>
+		</property>
+		<property name="Warehouses" lowerBound="0">
+			<typeDef xsi:type="ObjectType">
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="Warehouse" type="d5p1:Warehouse" upperBound="-1"/>
+			</typeDef>
+		</property>
+		<property name="Products" lowerBound="0">
+			<typeDef xsi:type="ObjectType">
+				<property name="Product" upperBound="-1">
+					<typeDef xmlns:d6p1="urn:1C.ru:commerceml_2" xsi:type="ObjectType" base="d6p1:Product">
+						<property name="DirectoryId" type="d6p1:IdentifierGlobalType" lowerBound="0"/>
+						<property name="ClassifierIdentifier" type="d6p1:IdentifierGlobalType" lowerBound="0"/>
+						<property name="PriceForUnit" type="d6p1:AmountType" lowerBound="0"/>
+						<property name="Quantity" type="d6p1:QuantityType" lowerBound="0"/>
+						<property name="Amount" type="d6p1:AmountType" lowerBound="0"/>
+						<property name="Unit" type="d6p1:UnitType" lowerBound="0"/>
+						<property name="Factor" type="d6p1:RatioType" lowerBound="0"/>
+						<property name="AdditionalInformation" lowerBound="0">
+							<typeDef xsi:type="ObjectType">
+								<property name="AttributeValue" type="d6p1:AttributeValue" upperBound="-1"/>
+							</typeDef>
+						</property>
+						<property name="CountryOfOrigin" type="d6p1:RowType" lowerBound="0"/>
+						<property name="CCD" type="d6p1:RowType" lowerBound="0"/>
+						<property name="Taxes" lowerBound="0">
+							<typeDef xsi:type="ObjectType">
+								<property name="Tax" upperBound="-1">
+									<typeDef xsi:type="ObjectType" base="d6p1:Tax">
+										<property name="Amount" type="d6p1:AmountType"/>
+										<property name="Rate" type="d6p1:RatioType" lowerBound="0"/>
+									</typeDef>
+								</property>
+							</typeDef>
+						</property>
+						<property name="Discounts" lowerBound="0">
+							<typeDef xsi:type="ObjectType">
+								<property name="Discount" upperBound="-1">
+									<typeDef xsi:type="ObjectType" base="d6p1:Discount"/>
+								</property>
+							</typeDef>
+						</property>
+						<property name="AdditExpenses" lowerBound="0">
+							<typeDef xsi:type="ObjectType">
+								<property name="AdditExpense" type="d6p1:AdditExpense" upperBound="-1"/>
+							</typeDef>
+						</property>
+						<property name="AdditionalAttributeValues" lowerBound="0">
+							<typeDef xsi:type="ObjectType">
+								<property name="AttributeValue" type="d6p1:AttributeValue" upperBound="-1"/>
+							</typeDef>
+						</property>
+						<property name="Warehouses" lowerBound="0">
+							<typeDef xsi:type="ObjectType">
+								<property name="Warehouse" upperBound="-1">
+									<typeDef xsi:type="ObjectType" base="d6p1:Warehouse">
+										<property name="Quantity" type="d6p1:QuantityType" lowerBound="0"/>
+									</typeDef>
+								</property>
+							</typeDef>
+						</property>
+					</typeDef>
+				</property>
+			</typeDef>
+		</property>
+		<property name="AttributeValues" lowerBound="0">
+			<typeDef xsi:type="ObjectType">
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="AttributeValue" type="d5p1:AttributeValue" upperBound="-1"/>
+			</typeDef>
+		</property>
+		<property name="Signatories" lowerBound="0">
+			<typeDef xsi:type="ObjectType">
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="Signer" type="d5p1:Signer" upperBound="-1"/>
+			</typeDef>
+		</property>
+	</objectType>
+	<objectType name="AdditExpense">
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Description" type="d3p1:NameType"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Amount" type="d3p1:AmountType"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Percent" type="d3p1:RatioType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="IncludedInAmount" type="d3p1:SwitchType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Comment" type="d3p1:CommentType" lowerBound="0"/>
+	</objectType>
+	<objectType name="AttributeValue">
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Description" type="d3p1:NameType"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Value" type="d3p1:ValueType" upperBound="-1"/>
+	</objectType>
+	<objectType name="PropertyValues">
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="ID" type="d3p1:IdentifierGlobalType"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Description" type="d3p1:NameType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Value" type="d3p1:ValueType" upperBound="-1"/>
+	</objectType>
+	<objectType name="OffersPackageChanges">
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="ContainsChangesOnly" type="d3p1:SwitchType" lowerBound="0" form="Attribute"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="ID" type="d3p1:IdentifierGlobalType"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="DirectoryId" type="d3p1:IdentifierGlobalType" lowerBound="0"/>
+		<property name="Offers" lowerBound="0">
+			<typeDef xsi:type="ObjectType">
+				<property name="Offer" upperBound="-1">
+					<typeDef xsi:type="ObjectType">
+						<property xmlns:d7p1="urn:1C.ru:commerceml_2" name="ID" type="d7p1:Identifier80" lowerBound="0"/>
+						<property xmlns:d7p1="urn:1C.ru:commerceml_2" name="Barcode" type="d7p1:BarcodeType" lowerBound="0"/>
+						<property xmlns:d7p1="urn:1C.ru:commerceml_2" name="SKU" type="d7p1:SKUType" lowerBound="0"/>
+						<property xmlns:d7p1="urn:1C.ru:commerceml_2" name="IDCharacteristics" type="d7p1:IdentifierGlobalType" lowerBound="0"/>
+						<property xmlns:d7p1="urn:1C.ru:commerceml_2" name="CodeMeasurementUnits" type="d7p1:UnitType" lowerBound="0"/>
+						<property xmlns:d7p1="urn:1C.ru:commerceml_2" name="Warehouses" type="d7p1:BalanceByWarehouses" lowerBound="0" upperBound="-1"/>
+						<property name="Prices" lowerBound="0">
+							<typeDef xsi:type="ObjectType">
+								<property xmlns:d9p1="urn:1C.ru:commerceml_2" name="Price" type="d9p1:Price" upperBound="-1"/>
+							</typeDef>
+						</property>
+						<property xmlns:d7p1="urn:1C.ru:commerceml_2" name="Quantity" type="d7p1:QuantityType" lowerBound="0"/>
+					</typeDef>
+				</property>
+			</typeDef>
+		</property>
+	</objectType>
+	<objectType name="Directory">
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="ContainsChangesOnly" type="d3p1:SwitchType" lowerBound="0" form="Attribute"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="ID" type="d3p1:IdentifierGlobalType"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="ClassifierIdentifier" type="d3p1:IdentifierGlobalType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Description" type="d3p1:NameType"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Owner" type="d3p1:Counterparty"/>
+		<property name="Products">
+			<typeDef xsi:type="ObjectType">
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="Product" type="d5p1:Product" upperBound="-1"/>
+			</typeDef>
+		</property>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Definition" type="d3p1:CommentType" lowerBound="0"/>
+		<property name="Signatories" lowerBound="0">
+			<typeDef xsi:type="ObjectType">
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="Signer" type="d5p1:Signer" upperBound="-1"/>
+			</typeDef>
+		</property>
+	</objectType>
+	<objectType name="Classifier">
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="ID" type="d3p1:IdentifierGlobalType"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Description" type="d3p1:NameType"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Owner" type="d3p1:Counterparty"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Definition" type="d3p1:CommentType" lowerBound="0"/>
+		<property name="Groups" lowerBound="0">
+			<typeDef xsi:type="ObjectType">
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="Group" type="d5p1:Group" upperBound="-1"/>
+			</typeDef>
+		</property>
+		<property name="Properties" lowerBound="0">
+			<typeDef xsi:type="ObjectType">
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="Property" type="d5p1:Property" upperBound="-1"/>
+			</typeDef>
+		</property>
+		<property name="PriceTypes" lowerBound="0">
+			<typeDef xsi:type="ObjectType">
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="PriceType" type="d5p1:PriceType" upperBound="-1"/>
+			</typeDef>
+		</property>
+		<property name="Signatories" lowerBound="0">
+			<typeDef xsi:type="ObjectType">
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="Signer" type="d5p1:Signer" upperBound="-1"/>
+			</typeDef>
+		</property>
+	</objectType>
+	<objectType name="BusinessInformation" ordered="false" sequenced="true">
+		<property name="SchemaVersion" lowerBound="1" form="Attribute">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="5"/>
+		</property>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="GeneratingDate" type="d3p1:DateTimeType" lowerBound="1" form="Attribute"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" ref="d3p1:Classifier" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" ref="d3p1:Directory" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" ref="d3p1:OffersPackage" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" ref="d3p1:Document" lowerBound="0" upperBound="-1"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" ref="d3p1:OffersPackageChanges" lowerBound="0" upperBound="-1"/>
+	</objectType>
+	<objectType name="ContactInformation">
+		<property name="Contact" upperBound="-1">
+			<typeDef xsi:type="ObjectType">
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="Type" type="d5p1:ContactType"/>
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="Value" type="d5p1:RowType"/>
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="Comment" type="d5p1:CommentType" lowerBound="0"/>
+			</typeDef>
+		</property>
+	</objectType>
+	<objectType name="Counterparty" ordered="false" sequenced="true">
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="ID" type="d3p1:IdentifierGlobalType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Description" type="d3p1:NameType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="OfficialName" type="d3p1:NameType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="LegalAddress" type="d3p1:Address" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="TIN" type="d3p1:TINType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="KPP" type="d3p1:KPPType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="DefaultActivityKind" type="d3p1:NameType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="EGRPO" type="d3p1:EGRPOType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="OKVED" type="d3p1:OKVEDType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="RCEAP" type="d3p1:OKDPType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="RCOLF" type="d3p1:OKOPFType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="OKFS" type="d3p1:OKFSType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="OKPO" type="d3p1:OKPOType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="RegistrationDate" type="d3p1:DateType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Head" type="d3p1:Head" lowerBound="0"/>
+		<property name="BankAccounts" lowerBound="0">
+			<typeDef xsi:type="ObjectType">
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="BankAccount" type="d5p1:BankAccount" upperBound="-1"/>
+			</typeDef>
+		</property>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="FullDescr" type="d3p1:NameType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Appeal" type="d3p1:AppealType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Surname" type="d3p1:RowType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Name" type="d3p1:RowType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Patronymic" type="d3p1:RowType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="BirthDate" type="d3p1:DateType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="BirthPlace" type="d3p1:Address" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Gender" type="d3p1:GenderType" lowerBound="0"/>
+		<property name="IdentityCard" lowerBound="0">
+			<typeDef xsi:type="ObjectType">
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="DocumentKind" type="d5p1:RowType"/>
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="Series" type="d5p1:RowType" lowerBound="0"/>
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="Number" type="d5p1:NumberType"/>
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="IssueDate" type="d5p1:DateType"/>
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="WhoIssued" type="d5p1:NameType"/>
+			</typeDef>
+		</property>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="RegistrationAddress" type="d3p1:Address" lowerBound="0"/>
+		<property name="Company" lowerBound="0">
+			<typeDef xsi:type="ObjectType">
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="OfficialName" type="d5p1:NameType"/>
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="LegalAddress" type="d5p1:Address" lowerBound="0"/>
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="TIN" type="d5p1:TINType" lowerBound="0"/>
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="KPP" type="d5p1:KPPType" lowerBound="0"/>
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="DefaultActivityKind" type="d5p1:NameType" lowerBound="0"/>
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="EGRPO" type="d5p1:EGRPOType" lowerBound="0"/>
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="OKVED" type="d5p1:OKVEDType" lowerBound="0"/>
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="RCEAP" type="d5p1:OKDPType" lowerBound="0"/>
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="RCOLF" type="d5p1:OKOPFType" lowerBound="0"/>
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="OKFS" type="d5p1:OKFSType" lowerBound="0"/>
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="OKPO" type="d5p1:OKPOType" lowerBound="0"/>
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="RegistrationDate" type="d5p1:DateType" lowerBound="0"/>
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="Head" type="d5p1:Head" lowerBound="0"/>
+				<property name="BankAccounts" lowerBound="0">
+					<typeDef xsi:type="ObjectType">
+						<property xmlns:d7p1="urn:1C.ru:commerceml_2" name="BankAccount" type="d7p1:BankAccount" upperBound="-1"/>
+					</typeDef>
+				</property>
+			</typeDef>
+		</property>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Position" type="d3p1:RowType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Comment" type="d3p1:CommentType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Address" type="d3p1:Address" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Contacts" type="d3p1:ContactInformation" lowerBound="0"/>
+		<property name="Representatives" lowerBound="0">
+			<typeDef xsi:type="ObjectType">
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="Representative" type="d5p1:Representative" upperBound="-1"/>
+			</typeDef>
+		</property>
+	</objectType>
+	<objectType name="Tax">
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Description" type="d3p1:NameType"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="IncludedInAmount" type="d3p1:SwitchType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Excise" type="d3p1:SwitchType" lowerBound="0"/>
+	</objectType>
+	<objectType name="BalanceByWarehouses">
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="WarehouseId" type="d3p1:IdentifierGlobalType" lowerBound="1" form="Attribute"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="QuantityInStock" type="d3p1:QuantityType" lowerBound="0" form="Attribute"/>
+	</objectType>
+	<objectType name="OffersPackage">
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="ContainsChangesOnly" type="d3p1:SwitchType" lowerBound="0" form="Attribute"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="ID" type="d3p1:IdentifierGlobalType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Description" type="d3p1:NameType"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="DirectoryId" type="d3p1:IdentifierGlobalType"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="ClassifierIdentifier" type="d3p1:IdentifierGlobalType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="ValidFrom" type="d3p1:DateType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="ValidUntil" type="d3p1:DateType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Definition" type="d3p1:CommentType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Owner" type="d3p1:Counterparty"/>
+		<property name="PriceTypes">
+			<typeDef xsi:type="ObjectType">
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="ClassifierIdentifier" type="d5p1:IdentifierGlobalType" lowerBound="0"/>
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="PriceType" type="d5p1:PriceType" upperBound="-1"/>
+			</typeDef>
+		</property>
+		<property name="Warehouses" lowerBound="0">
+			<typeDef xsi:type="ObjectType">
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="Warehouse" type="d5p1:Warehouse" upperBound="-1"/>
+			</typeDef>
+		</property>
+		<property name="PropertyValues" lowerBound="0">
+			<typeDef xsi:type="ObjectType">
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="PropertyValues" type="d5p1:PropertyValues" upperBound="-1"/>
+			</typeDef>
+		</property>
+		<property name="Offers">
+			<typeDef xsi:type="ObjectType">
+				<property name="Offer" upperBound="-1">
+					<typeDef xmlns:d6p1="urn:1C.ru:commerceml_2" xsi:type="ObjectType" base="d6p1:Product">
+						<property name="Prices">
+							<typeDef xsi:type="ObjectType">
+								<property name="Price" type="d6p1:Price" upperBound="-1"/>
+							</typeDef>
+						</property>
+						<property name="Quantity" type="d6p1:QuantityType" lowerBound="0"/>
+						<property name="Warehouse" type="d6p1:BalanceByWarehouses" lowerBound="0" upperBound="-1"/>
+					</typeDef>
+				</property>
+			</typeDef>
+		</property>
+		<property name="Signatories" lowerBound="0">
+			<typeDef xsi:type="ObjectType">
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="Signer" type="d5p1:Signer" upperBound="-1"/>
+			</typeDef>
+		</property>
+	</objectType>
+	<objectType name="Signer">
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Surname" type="d3p1:RowType"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Name" type="d3p1:RowType"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Patronymic" type="d3p1:RowType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Appeal" type="d3p1:AppealType" lowerBound="0"/>
+		<property name="IdentityCard" lowerBound="0">
+			<typeDef xsi:type="ObjectType">
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="DocumentKind" type="d5p1:RowType"/>
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="Series" type="d5p1:RowType" lowerBound="0"/>
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="Number" type="d5p1:NumberType"/>
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="IssueDate" type="d5p1:DateType"/>
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="WhoIssued" type="d5p1:NameType"/>
+			</typeDef>
+		</property>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="RegistrationAddress" type="d3p1:Address" lowerBound="0"/>
+		<property name="Workplace" lowerBound="0">
+			<typeDef xsi:type="ObjectType">
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="OfficialName" type="d5p1:NameType"/>
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="LegalAddress" type="d5p1:Address" lowerBound="0"/>
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="TIN" type="d5p1:TINType" lowerBound="0"/>
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="KPP" type="d5p1:KPPType" lowerBound="0"/>
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="DefaultActivityKind" type="d5p1:NameType" lowerBound="0"/>
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="EGRPO" type="d5p1:EGRPOType" lowerBound="0"/>
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="OKVED" type="d5p1:OKVEDType" lowerBound="0"/>
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="RCEAP" type="d5p1:OKDPType" lowerBound="0"/>
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="RCOLF" type="d5p1:OKOPFType" lowerBound="0"/>
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="OKFS" type="d5p1:OKFSType" lowerBound="0"/>
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="OKPO" type="d5p1:OKPOType" lowerBound="0"/>
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="RegistrationDate" type="d5p1:DateType" lowerBound="0"/>
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="Head" type="d5p1:Head" lowerBound="0"/>
+				<property name="BankAccounts" lowerBound="0">
+					<typeDef xsi:type="ObjectType">
+						<property xmlns:d7p1="urn:1C.ru:commerceml_2" name="BankAccount" type="d7p1:BankAccount" upperBound="-1"/>
+					</typeDef>
+				</property>
+			</typeDef>
+		</property>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Position" type="d3p1:RowType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Comment" type="d3p1:CommentType" lowerBound="0"/>
+	</objectType>
+	<objectType name="Representative" ordered="false" sequenced="true">
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="ID" type="d3p1:IdentifierGlobalType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Description" type="d3p1:NameType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="OfficialName" type="d3p1:NameType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="LegalAddress" type="d3p1:Address" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="TIN" type="d3p1:TINType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="KPP" type="d3p1:KPPType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="DefaultActivityKind" type="d3p1:NameType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="EGRPO" type="d3p1:EGRPOType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="OKVED" type="d3p1:OKVEDType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="RCEAP" type="d3p1:OKDPType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="RCOLF" type="d3p1:OKOPFType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="OKFS" type="d3p1:OKFSType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="OKPO" type="d3p1:OKPOType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="RegistrationDate" type="d3p1:DateType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Head" type="d3p1:Head" lowerBound="0"/>
+		<property name="BankAccounts" lowerBound="0">
+			<typeDef xsi:type="ObjectType">
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="BankAccount" type="d5p1:BankAccount" upperBound="-1"/>
+			</typeDef>
+		</property>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="FullDescr" type="d3p1:NameType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Appeal" type="d3p1:AppealType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Surname" type="d3p1:RowType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Name" type="d3p1:RowType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Patronymic" type="d3p1:RowType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="BirthDate" type="d3p1:DateType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="BirthPlace" type="d3p1:Address" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Gender" type="d3p1:GenderType" lowerBound="0"/>
+		<property name="IdentityCard" lowerBound="0">
+			<typeDef xsi:type="ObjectType">
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="DocumentKind" type="d5p1:RowType"/>
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="Series" type="d5p1:RowType" lowerBound="0"/>
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="Number" type="d5p1:NumberType"/>
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="IssueDate" type="d5p1:DateType"/>
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="WhoIssued" type="d5p1:NameType"/>
+			</typeDef>
+		</property>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="RegistrationAddress" type="d3p1:Address" lowerBound="0"/>
+		<property name="Company" lowerBound="0">
+			<typeDef xsi:type="ObjectType">
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="OfficialName" type="d5p1:NameType"/>
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="LegalAddress" type="d5p1:Address" lowerBound="0"/>
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="TIN" type="d5p1:TINType" lowerBound="0"/>
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="KPP" type="d5p1:KPPType" lowerBound="0"/>
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="DefaultActivityKind" type="d5p1:NameType" lowerBound="0"/>
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="EGRPO" type="d5p1:EGRPOType" lowerBound="0"/>
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="OKVED" type="d5p1:OKVEDType" lowerBound="0"/>
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="RCEAP" type="d5p1:OKDPType" lowerBound="0"/>
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="RCOLF" type="d5p1:OKOPFType" lowerBound="0"/>
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="OKFS" type="d5p1:OKFSType" lowerBound="0"/>
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="OKPO" type="d5p1:OKPOType" lowerBound="0"/>
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="RegistrationDate" type="d5p1:DateType" lowerBound="0"/>
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="Head" type="d5p1:Head" lowerBound="0"/>
+				<property name="BankAccounts" lowerBound="0">
+					<typeDef xsi:type="ObjectType">
+						<property xmlns:d7p1="urn:1C.ru:commerceml_2" name="BankAccount" type="d7p1:BankAccount" upperBound="-1"/>
+					</typeDef>
+				</property>
+			</typeDef>
+		</property>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Position" type="d3p1:RowType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Comment" type="d3p1:CommentType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Address" type="d3p1:Address" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Contacts" type="d3p1:ContactInformation" lowerBound="0"/>
+		<property name="Relation" type="xs:string"/>
+	</objectType>
+	<objectType name="BankAccount">
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="AccountNo" type="d3p1:AccountNumberType"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Bank" type="d3p1:Bank"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="CorrespondentBank" type="d3p1:Bank" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Comment" type="d3p1:CommentType" lowerBound="0"/>
+	</objectType>
+	<objectType name="Head">
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Surname" type="d3p1:RowType"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Name" type="d3p1:RowType"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Patronymic" type="d3p1:RowType" lowerBound="0"/>
+		<property name="IdentityCard" lowerBound="0">
+			<typeDef xsi:type="ObjectType">
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="DocumentKind" type="d5p1:RowType"/>
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="Series" type="d5p1:RowType" lowerBound="0"/>
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="Number" type="d5p1:NumberType"/>
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="IssueDate" type="d5p1:DateType"/>
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="WhoIssued" type="d5p1:NameType"/>
+			</typeDef>
+		</property>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="RegistrationAdress" type="d3p1:Address" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Position" type="d3p1:RowType"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Contacts" type="d3p1:ContactInformation" lowerBound="0"/>
+	</objectType>
+	<objectType name="Property" ordered="false" sequenced="true">
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="ID" type="d3p1:IdentifierGlobalType"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Description" type="d3p1:NameType"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Definition" type="d3p1:CommentType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Required" type="d3p1:PropertiesNecessityType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Multiple" type="d3p1:SwitchType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="ValuesType" type="d3p1:ValuesTypeType" lowerBound="0"/>
+		<property name="ValueVariants" lowerBound="0">
+			<typeDef xsi:type="ObjectType">
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="Value" type="d5p1:ValueType" lowerBound="0" upperBound="-1"/>
+				<property name="Catalog" lowerBound="0" upperBound="-1">
+					<typeDef xsi:type="ObjectType">
+						<property xmlns:d7p1="urn:1C.ru:commerceml_2" name="ValueIdentifier" type="d7p1:IdentifierGlobalType" lowerBound="0"/>
+						<property xmlns:d7p1="urn:1C.ru:commerceml_2" name="Value" type="d7p1:ValueType"/>
+					</typeDef>
+				</property>
+			</typeDef>
+		</property>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="ForGoods" type="d3p1:SwitchType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="ForProposals" type="d3p1:SwitchType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="ForDocuments" type="d3p1:SwitchType" lowerBound="0"/>
+	</objectType>
+	<objectType name="Discount">
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Description" type="d3p1:NameType"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Amount" type="d3p1:AmountType"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Percent" type="d3p1:RatioType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="IncludedInAmount" type="d3p1:SwitchType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Comment" type="d3p1:CommentType" lowerBound="0"/>
+	</objectType>
+	<objectType name="Warehouse">
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="ID" type="d3p1:IdentifierGlobalType"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Description" type="d3p1:NameType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Comment" type="d3p1:CommentType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Address" type="d3p1:Address" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Contacts" type="d3p1:ContactInformation" lowerBound="0"/>
+	</objectType>
+	<objectType name="PriceType">
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="ID" type="d3p1:IdentifierGlobalType"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Description" type="d3p1:NameType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Currency" type="d3p1:CurrencyType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Definition" type="d3p1:CommentType" lowerBound="0"/>
+		<property name="Tax" lowerBound="0" upperBound="-1">
+			<typeDef xmlns:d4p1="urn:1C.ru:commerceml_2" xsi:type="ObjectType" base="d4p1:Tax"/>
+		</property>
+	</objectType>
+	<objectType name="Product">
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Status" type="d3p1:StatusType" lowerBound="0" form="Attribute"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="ID" type="d3p1:Identifier80" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Barcode" type="d3p1:BarcodeType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="SKU" type="d3p1:SKUType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Description" type="d3p1:NameType"/>
+		<property name="BaseUnit">
+			<typeDef xsi:type="ObjectType" mixed="true" sequenced="true">
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="Code" type="d5p1:UnitType" lowerBound="0" form="Attribute"/>
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="DescriptionFull" type="d5p1:RowType" lowerBound="0" form="Attribute"/>
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="InternationalAbbreviation" type="d5p1:Row3" lowerBound="0" form="Attribute"/>
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="ShortDescription" type="d5p1:RowType" lowerBound="0" form="Attribute"/>
+				<property name="Recalculation" lowerBound="0" upperBound="-1">
+					<typeDef xsi:type="ObjectType">
+						<property xmlns:d7p1="urn:1C.ru:commerceml_2" name="Unit" type="d7p1:UnitType" lowerBound="0"/>
+						<property xmlns:d7p1="urn:1C.ru:commerceml_2" name="Factor" type="d7p1:RatioType" lowerBound="0"/>
+						<property name="AdditionalInformation" lowerBound="0">
+							<typeDef xsi:type="ObjectType">
+								<property xmlns:d9p1="urn:1C.ru:commerceml_2" name="AttributeValue" type="d9p1:AttributeValue" upperBound="-1"/>
+							</typeDef>
+						</property>
+					</typeDef>
+				</property>
+			</typeDef>
+		</property>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="ProductIdOfCounterparty" type="d3p1:IdentifierGlobalType" lowerBound="0"/>
+		<property name="Groups" lowerBound="0">
+			<typeDef xsi:type="ObjectType">
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="ID" type="d5p1:IdentifierGlobalType" upperBound="-1"/>
+			</typeDef>
+		</property>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Definition" type="d3p1:CommentType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Picture" type="d3p1:FileNameType" lowerBound="0" upperBound="-1"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Country" type="d3p1:RowType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="TradingMark" type="d3p1:RowType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="TradeMarkOwner" type="d3p1:Counterparty" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Manufacturer" type="d3p1:Counterparty" lowerBound="0"/>
+		<property name="PropertyValues" lowerBound="0">
+			<typeDef xsi:type="ObjectType">
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="PropertyValues" type="d5p1:PropertyValues" upperBound="-1"/>
+			</typeDef>
+		</property>
+		<property name="TaxesRates" lowerBound="0">
+			<typeDef xsi:type="ObjectType">
+				<property name="TaxRate" upperBound="-1">
+					<typeDef xsi:type="ObjectType">
+						<property xmlns:d7p1="urn:1C.ru:commerceml_2" name="Description" type="d7p1:RowType"/>
+						<property xmlns:d7p1="urn:1C.ru:commerceml_2" name="Rate" type="d7p1:RatioType"/>
+					</typeDef>
+				</property>
+			</typeDef>
+		</property>
+		<property name="ExciseDuties" lowerBound="0">
+			<typeDef xsi:type="ObjectType">
+				<property name="Excise" upperBound="-1">
+					<typeDef xsi:type="ObjectType">
+						<property xmlns:d7p1="urn:1C.ru:commerceml_2" name="Description" type="d7p1:NameType"/>
+						<property xmlns:d7p1="urn:1C.ru:commerceml_2" name="AmountPerUnit" type="d7p1:AmountType"/>
+						<property xmlns:d7p1="urn:1C.ru:commerceml_2" name="Currency" type="d7p1:CurrencyType"/>
+					</typeDef>
+				</property>
+			</typeDef>
+		</property>
+		<property name="Accessories" lowerBound="0">
+			<typeDef xsi:type="ObjectType">
+				<property name="Accessory" upperBound="-1">
+					<typeDef xmlns:d6p1="urn:1C.ru:commerceml_2" xsi:type="ObjectType" base="d6p1:Product">
+						<property name="DirectoryId" type="d6p1:IdentifierGlobalType" lowerBound="0"/>
+						<property name="ClassifierIdentifier" type="d6p1:IdentifierGlobalType" lowerBound="0"/>
+						<property name="Quantity" type="d6p1:QuantityType"/>
+					</typeDef>
+				</property>
+			</typeDef>
+		</property>
+		<property name="Analogs" lowerBound="0">
+			<typeDef xsi:type="ObjectType">
+				<property name="Analog" upperBound="-1">
+					<typeDef xmlns:d6p1="urn:1C.ru:commerceml_2" xsi:type="ObjectType" base="d6p1:Product">
+						<property name="DirectoryId" type="d6p1:IdentifierGlobalType" lowerBound="0"/>
+						<property name="ClassifierIdentifier" type="d6p1:IdentifierGlobalType" lowerBound="0"/>
+					</typeDef>
+				</property>
+			</typeDef>
+		</property>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="ProductCharacteristics" type="d3p1:ProductCharacteristics" lowerBound="0"/>
+		<property name="AttributeValues" lowerBound="0">
+			<typeDef xsi:type="ObjectType">
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="AttributeValue" type="d5p1:AttributeValue" upperBound="-1"/>
+			</typeDef>
+		</property>
+	</objectType>
+	<objectType name="ProductCharacteristics">
+		<property name="ProductCharacteristic" upperBound="-1">
+			<typeDef xsi:type="ObjectType">
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="ID" type="d5p1:IdentifierGlobalType" lowerBound="0"/>
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="Description" type="d5p1:NameType"/>
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="Value" type="d5p1:ValueType"/>
+			</typeDef>
+		</property>
+	</objectType>
+	<objectType name="Price">
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Presentation" type="d3p1:NameType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="PriceTypeIdentifier" type="d3p1:IdentifierGlobalType"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="PriceForUnit" type="d3p1:AmountType"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Currency" type="d3p1:CurrencyType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Unit" type="d3p1:UnitType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="Factor" type="d3p1:RatioType" lowerBound="0"/>
+		<property name="AdditionalInformation" lowerBound="0">
+			<typeDef xsi:type="ObjectType">
+				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="AttributeValue" type="d5p1:AttributeValue" upperBound="-1"/>
+			</typeDef>
+		</property>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="MinQuantity" type="d3p1:QuantityType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="DirectoryId" type="d3p1:IdentifierGlobalType" lowerBound="0"/>
+	</objectType>
+</package>

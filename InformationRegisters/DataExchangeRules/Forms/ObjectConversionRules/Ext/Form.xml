@@ -1,0 +1,618 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Title>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Data conversion rules</v8:content>
+		</v8:item>
+	</Title>
+	<Width>77</Width>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<CommandSet>
+		<ExcludedCommand>Reread</ExcludedCommand>
+		<ExcludedCommand>WriteAndClose</ExcludedCommand>
+		<ExcludedCommand>Copy</ExcludedCommand>
+		<ExcludedCommand>Delete</ExcludedCommand>
+	</CommandSet>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<ChildItems>
+			<Button name="FormWriteAndClose" id="82">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.WriteAndClose</CommandName>
+				<ExtendedTooltip name="FormWriteAndCloseExtendedTooltip" id="83"/>
+			</Button>
+			<Button name="FormWrite" id="84">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.Write</CommandName>
+				<ExtendedTooltip name="FormWriteExtendedTooltip" id="85"/>
+			</Button>
+			<Button name="FormReread" id="50">
+				<Type>CommandBarButton</Type>
+				<OnlyInAllActions>false</OnlyInAllActions>
+				<CommandName>0:1f317795-c420-4a30-b594-c492abc55f7a</CommandName>
+				<ExtendedTooltip name="FormRereadExtendedTooltip" id="52"/>
+			</Button>
+			<Button name="FormDelete" id="86">
+				<Type>CommandBarButton</Type>
+				<CommandName>0:c32d43de-b820-49d0-bf7a-d70829f48f40</CommandName>
+				<ExtendedTooltip name="FormDeleteExtendedTooltip" id="87"/>
+			</Button>
+			<Button name="SaveRulesInFile" id="20">
+				<Type>CommandBarButton</Type>
+				<SkipOnInput>true</SkipOnInput>
+				<CommandName>Form.Command.SaveConversionRulesFile</CommandName>
+				<ExtendedTooltip name="SaveRulesInFileExtendedTooltip" id="62"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="AfterWrite">AfterWrite</Event>
+		<Event name="BeforeWrite">BeforeWrite</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ExchangePlanGroup" id="26">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Plan exchange group</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Plan exchange group</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ExchangePlanGroupExtendedTooltip" id="53"/>
+			<ChildItems>
+				<InputField name="ExchangePlanName" id="1">
+					<DataPath>Record.ExchangePlanName</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Synchronization with application</v8:content>
+						</v8:item>
+					</Title>
+					<ListChoiceMode>true</ListChoiceMode>
+					<ContextMenu name="ExchangePlanNameContextMenu" id="2"/>
+					<ExtendedTooltip name="ExchangePlanNameExtendedTooltip" id="54"/>
+					<Events>
+						<Event name="OnChange">ExchangePlanNameOnChange</Event>
+					</Events>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="MainGroup" id="25">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Conversion rules for the application % 1:</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group main</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ExtendedTooltip name="MainGroupExtendedTooltip" id="55"/>
+			<ChildItems>
+				<RadioButtonField name="RulesSource" id="29">
+					<DataPath>RulesSource</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<RadioButtonType>Auto</RadioButtonType>
+					<ColumnsCount>1</ColumnsCount>
+					<ChoiceList>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Use standard rules</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:string">StandardFromConfiguration</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Import from file on computer:</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:string">ExportedFromTheFile</Value>
+							</xr:Value>
+						</xr:Item>
+					</ChoiceList>
+					<ContextMenu name="RuleSourceContextMenu" id="30"/>
+					<ExtendedTooltip name="RuleSourceExtendedTooltip" id="56"/>
+					<Events>
+						<Event name="OnChange">RulesSourceOnChange</Event>
+					</Events>
+				</RadioButtonField>
+				<UsualGroup name="RuleSourcesGroup" id="15">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group rule sources</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="RuleSourcesGroupExtendedTooltip" id="57"/>
+					<ChildItems>
+						<Pages name="SourceConfigurationTemplate" id="16">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Source configuration template</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Source configuration template</v8:content>
+								</v8:item>
+							</ToolTip>
+							<PagesRepresentation>None</PagesRepresentation>
+							<ExtendedTooltip name="SourceConfigurationTemplateExtendedTooltip" id="58"/>
+							<ChildItems>
+								<Page name="MultipleModelsPage" id="95">
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Multiple templates page</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="MultipleModelsPageExtendedTooltip" id="96"/>
+									<ChildItems>
+										<InputField name="RulesTemplateName" id="7">
+											<DataPath>Record.RulesTemplateName</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Standard Rules</v8:content>
+												</v8:item>
+											</Title>
+											<TitleLocation>None</TitleLocation>
+											<ListChoiceMode>true</ListChoiceMode>
+											<TextEdit>false</TextEdit>
+											<ChoiceListButton>false</ChoiceListButton>
+											<ContextMenu name="RulesTemplateNameContextMenu" id="8"/>
+											<ExtendedTooltip name="RulesTemplateNameExtendedTooltip" id="59"/>
+											<Events>
+												<Event name="OnChange">RulesTemplateNameOnChange</Event>
+											</Events>
+										</InputField>
+									</ChildItems>
+								</Page>
+								<Page name="PageOneTemplate" id="97">
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Page one template</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="PageOneModelExtendedTooltip" id="98"/>
+									<ChildItems>
+										<LabelDecoration name="EmptyDecoration" id="99">
+											<ContextMenu name="EmptyDecorationContextMenu" id="100"/>
+											<ExtendedTooltip name="EmptyDecorationExtendedTooltip" id="101"/>
+										</LabelDecoration>
+									</ChildItems>
+								</Page>
+							</ChildItems>
+						</Pages>
+						<UsualGroup name="SourceFile" id="17">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Source file</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Source file</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="SourceFileExtendedTooltip" id="63"/>
+							<ChildItems>
+								<InputField name="RulesFilename" id="5">
+									<DataPath>Record.RulesFilename</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<TitleLocation>None</TitleLocation>
+									<Height>1</Height>
+									<ContextMenu name="RuleFileNameContextMenu" id="6"/>
+									<ExtendedTooltip name="RuleFileNameExtendedTooltip" id="64"/>
+								</InputField>
+								<Button name="ImportStandardRules" id="19">
+									<Type>UsualButton</Type>
+									<SkipOnInput>true</SkipOnInput>
+									<Height>1</Height>
+									<CommandName>Form.Command.ImportRules</CommandName>
+									<ExtendedTooltip name="ImportStandardRulesExtendedTooltip" id="61"/>
+								</Button>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<InputField name="RulesInformation" id="11">
+			<DataPath>RulesInformation</DataPath>
+			<ReadOnly>true</ReadOnly>
+			<Height>6</Height>
+			<MultiLine>true</MultiLine>
+			<ContextMenu name="RuleInfoContextMenu" id="12"/>
+			<ExtendedTooltip name="RuleInfoExtendedTooltip" id="79"/>
+		</InputField>
+		<UsualGroup name="DebuggingGroup" id="31">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Debugging mode setting</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Debugging group</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Behavior>Collapsible</Behavior>
+			<Collapsed>true</Collapsed>
+			<Representation>None</Representation>
+			<ExtendedTooltip name="DebuggingGroupExtendedTooltip" id="68"/>
+			<ChildItems>
+				<CheckBoxField name="EnableDebugMode" id="88">
+					<DataPath>Record.DebugMode</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Enable the debug mode</v8:content>
+						</v8:item>
+					</Title>
+					<TitleLocation>Right</TitleLocation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="EnableDebugModeContextMenu" id="89"/>
+					<ExtendedTooltip name="EnableDebugModeExtendedTooltip" id="90"/>
+					<Events>
+						<Event name="OnChange">EnableDebugModeOnChange</Event>
+					</Events>
+				</CheckBoxField>
+				<UsualGroup name="Group1" id="104">
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="Group1ExtendedTooltip" id="105"/>
+					<ChildItems>
+						<LabelDecoration name="Decoration1" id="106">
+							<Width>1</Width>
+							<ContextMenu name="Decoration1ContextMenu" id="107"/>
+							<ExtendedTooltip name="Decoration1ExtendedTooltip" id="108"/>
+						</LabelDecoration>
+						<UsualGroup name="GroupSettingDebug" id="102">
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupSettingDebugExtendedTooltip" id="103"/>
+							<ChildItems>
+								<UsualGroup name="GroupExportDebugging" id="38">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Exporting debugging group</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Exporting debugging group</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupDebuggingExportsExtendedTooltip" id="69"/>
+									<ChildItems>
+										<CheckBoxField name="EnableDebuggingExportings" id="32">
+											<DataPath>Record.ExportDebuggingMode</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Connect external processing to debug the export</v8:content>
+												</v8:item>
+											</Title>
+											<TitleLocation>Right</TitleLocation>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="EnableDebuggingExportingsContextMenu" id="33"/>
+											<ExtendedTooltip name="EnableDebuggingExportsExtendedTooltip" id="70"/>
+											<Events>
+												<Event name="OnChange">EnableDebuggingExportingsOnChange</Event>
+											</Events>
+										</CheckBoxField>
+										<InputField name="ExternalDataProcessorForExportDebugging" id="40">
+											<DataPath>Record.DataProcessorFileNameForExportDebugging</DataPath>
+											<Enabled>false</Enabled>
+											<TitleLocation>None</TitleLocation>
+											<ChoiceButton>true</ChoiceButton>
+											<ContextMenu name="ExternalDataProcessorForDebuggingExportingsContextMenu" id="41"/>
+											<ExtendedTooltip name="ExternalDataProcessorForImportDebuggingsExtendedTooltip" id="71"/>
+											<Events>
+												<Event name="StartChoice">ExternalDataProcessorForExportDebuggingBeginChoice</Event>
+											</Events>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="ExportDebuggingGroup" id="39">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Export debugging group</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Export debugging group</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupDebuggingExportExtendedTooltip" id="72"/>
+									<ChildItems>
+										<CheckBoxField name="EnableImportDebugging" id="34">
+											<DataPath>Record.ImportDebuggingMode</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Connect external processing to debug the export</v8:content>
+												</v8:item>
+											</Title>
+											<TitleLocation>Right</TitleLocation>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="EnableDebugContextMenuExport" id="35"/>
+											<ExtendedTooltip name="EnableDebuggingExportExtendedTooltip" id="73"/>
+											<Events>
+												<Event name="OnChange">EnableImportDebuggingOnChange</Event>
+											</Events>
+										</CheckBoxField>
+										<InputField name="ExternalDataProcessorForImportDebugging" id="36">
+											<DataPath>Record.DataProcessorFileNameForImportDebugging</DataPath>
+											<Enabled>false</Enabled>
+											<TitleLocation>None</TitleLocation>
+											<ChoiceButton>true</ChoiceButton>
+											<ContextMenu name="ExternalDataProcessorForDebuggingAndImportingContextMenu" id="37"/>
+											<ExtendedTooltip name="ExternalDataProcessorForImportDebuggingExtendedTooltip" id="74"/>
+											<Events>
+												<Event name="StartChoice">ExternalProcessingForExportDebuggingBeginChoice</Event>
+											</Events>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="GroupProtocol" id="42">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group protocol</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group protocol</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupProtocolExtendedTooltip" id="75"/>
+									<ChildItems>
+										<CheckBoxField name="EnableLoggingOfExchangeData" id="43">
+											<DataPath>Record.DataExchangeLoggingMode</DataPath>
+											<TitleLocation>Right</TitleLocation>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="EnableLoggingOfExchangeDataContextMenu" id="44"/>
+											<ExtendedTooltip name="EnableLoggingOfExchangeDataExtendedTooltip" id="76"/>
+											<Events>
+												<Event name="OnChange">EnableDataExchangeLoggingOnChange</Event>
+											</Events>
+										</CheckBoxField>
+										<InputField name="ProtocolExchangeFile" id="45">
+											<DataPath>Record.ExchangeProtocolFileName</DataPath>
+											<Enabled>false</Enabled>
+											<TitleLocation>None</TitleLocation>
+											<ChoiceButton>true</ChoiceButton>
+											<OpenButton>true</OpenButton>
+											<ContextMenu name="FileExchangeProtocolContextMenu" id="46"/>
+											<ExtendedTooltip name="FileExchangeProtocolExtendedTooltip" id="77"/>
+											<Events>
+												<Event name="StartChoice">ProtocolExchangeFileBeginChoice</Event>
+												<Event name="Opening">ProtocolExchangeFileOpen</Event>
+											</Events>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+								<CheckBoxField name="DoNotStopOnError" id="47">
+									<DataPath>Record.DoNotStopOnError</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Do not stop the data exchange execution if the error occurs</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>Right</TitleLocation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="DoNotStopOnErrorContextMenu" id="48"/>
+									<ExtendedTooltip name="DoNotStopOnMistakeExtendedTooltip" id="78"/>
+								</CheckBoxField>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="GroupAdditional" id="18">
+			<UserVisible>
+				<xr:Common>false</xr:Common>
+			</UserVisible>
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Additionally</v8:content>
+				</v8:item>
+			</Title>
+			<HorizontalStretch>true</HorizontalStretch>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ChildItemsWidth>LeftWidest</ChildItemsWidth>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="GroupAdditionalExtendedTooltip" id="80"/>
+			<ChildItems>
+				<CheckBoxField name="UseSelectiveObjectsRegistrationFilter" id="13">
+					<DataPath>Record.UseSelectiveObjectsRegistrationFilter</DataPath>
+					<TitleLocation>Right</TitleLocation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="UseSelectiveObjectChangeRecordFilterContextMenu" id="14"/>
+					<ExtendedTooltip name="UseSelectiveObjectChangeRecordFilterExtendedTooltip" id="81"/>
+				</CheckBoxField>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Record" id="1">
+			<Type>
+				<v8:Type>cfg:InformationRegisterRecordManager.DataExchangeRules</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="RulesInformation" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Rule details</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="RulesSource" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Rules source</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="DataExchangeRuleImportingEventLogMonitorMessageText" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Event log event import of rules for the data exchange</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ImportRules" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Import</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Import rules</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.OpenFile</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ImportRules</Action>
+			<Representation>TextPicture</Representation>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="SaveConversionRulesFile" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Save conversion rules file</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Save conversion rules file on computer</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>UnloadRules</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="WriteAndClose" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Save and close</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Save and close</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.WriteAndClose</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>WriteAndClose</Action>
+			<Representation>Text</Representation>
+		</Command>
+	</Commands>
+</Form>

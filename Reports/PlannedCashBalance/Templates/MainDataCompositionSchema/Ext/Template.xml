@@ -1,0 +1,783 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>DataSource1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>DataSet1</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>BankAccountPettyCash</dataPath>
+			<field>BankAccountPettyCash</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Bank account or petty cash</v8:content>
+				</v8:item>
+			</title>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+			<inputParameters>
+				<dcscor:item>
+					<dcscor:parameter>ChoiceParameterLinks</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:ChoiceParameterLinks">
+						<dcscor:item>
+							<dcscor:choiceParameter>Filter.Owner</dcscor:choiceParameter>
+							<dcscor:value>Company</dcscor:value>
+							<dcscor:mode xmlns:d8p1="http://v8.1c.ru/8.1/data/enterprise" xsi:type="d8p1:LinkedValueChangeMode">Clear</dcscor:mode>
+						</dcscor:item>
+					</dcscor:value>
+				</dcscor:item>
+				<dcscor:item>
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>TypeLink</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:TypeLink">
+						<dcscor:field>Company</dcscor:field>
+					</dcscor:value>
+				</dcscor:item>
+			</inputParameters>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Currency</dataPath>
+			<field>Currency</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Company</dataPath>
+			<field>Company</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>CashAssetsType</dataPath>
+			<field>CashAssetsType</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Period</dataPath>
+			<field>Period</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>PaymentConfirmationStatus</dataPath>
+			<field>PaymentConfirmationStatus</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Item</dataPath>
+			<field>Item</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>InvoiceForPayment</dataPath>
+			<field>InvoiceForPayment</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Recorder</dataPath>
+			<field>Recorder</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>PaidByDocument</dataPath>
+			<field>PaidByDocument</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>AmountByDocument</dataPath>
+			<field>AmountByDocument</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Order</dataPath>
+			<field>Order</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>1</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>CurrencyTotals</dataPath>
+			<field>CurrencyTotals</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>AmountReceiptPlan</dataPath>
+			<field>AmountReceiptPlan</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>AmountConsumptionPlan</dataPath>
+			<field>AmountConsumptionPlan</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>AmountPlannedInUSD</dataPath>
+			<field>AmountPlannedInUSD</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>AmountPlannedInSpecifiedCurrency</dataPath>
+			<field>AmountPlannedInSpecifiedCurrency</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>AmountPlanned</dataPath>
+			<field>AmountPlanned</field>
+		</field>
+		<dataSource>DataSource1</dataSource>
+		<query>SELECT ALLOWED
+	BEGINOFPERIOD(PaymentCalendarPlan.Period, Day) AS Period,
+	PaymentCalendarPlan.Recorder AS Recorder,
+	PaymentCalendarPlan.Currency,
+	PaymentCalendarPlan.Item,
+	PaymentCalendarPlan.CashAssetsType,
+	PaymentCalendarPlan.BankAccountPettyCash,
+	PaymentCalendarPlan.InvoiceForPayment,
+	PaymentCalendarPlan.PaymentConfirmationStatus,
+	PaymentCalendarPlan.AmountTurnover AS AmountByDocument,
+	ISNULL(PaymentCalendarPay.PaymentAmountTurnover, 0) AS PaidByDocument,
+	PaymentCalendarPlan.AmountTurnover - ISNULL(PaymentCalendarPay.PaymentAmountTurnover, 0) AS AmountPlanned,
+	3 AS Order,
+	CAST((PaymentCalendarPlan.AmountTurnover - ISNULL(PaymentCalendarPay.PaymentAmountTurnover, 0)) * CurrencyRatesSliceLast.ExchangeRate / CurrencyRatesSliceLast.Multiplicity AS NUMBER(15, 2)) AS AmountPlannedInUSD,
+	CAST((PaymentCalendarPlan.AmountTurnover - ISNULL(PaymentCalendarPay.PaymentAmountTurnover, 0)) * CurrencyRatesSliceLast.ExchangeRate / CurrencyRatesSliceLast.Multiplicity / ExchangeRateOfCurrencies.ExchangeRate * ExchangeRateOfCurrencies.Multiplicity AS NUMBER(15, 2)) AS AmountPlannedInSpecifiedCurrency,
+	&amp;CurrencyTotals,
+	CASE
+		WHEN PaymentCalendarPlan.AmountTurnover - ISNULL(PaymentCalendarPay.PaymentAmountTurnover, 0) &gt; 0
+			THEN PaymentCalendarPlan.AmountTurnover - ISNULL(PaymentCalendarPay.PaymentAmountTurnover, 0)
+		ELSE 0
+	END AS AmountReceiptPlan,
+	CASE
+		WHEN PaymentCalendarPlan.AmountTurnover - ISNULL(PaymentCalendarPay.PaymentAmountTurnover, 0) &lt; 0
+			THEN PaymentCalendarPlan.AmountTurnover - ISNULL(PaymentCalendarPay.PaymentAmountTurnover, 0)
+		ELSE 0
+	END AS AmountConsumptionPlan
+	FROM
+	AccumulationRegister.PaymentCalendar.Turnovers({(&amp;CurrentDate)}, , Record, ) AS PaymentCalendarPlan
+		LEFT JOIN AccumulationRegister.PaymentCalendar.Turnovers(, {(&amp;CurrentDate)}, Record, ) AS PaymentCalendarPay
+		ON PaymentCalendarPlan.Company = PaymentCalendarPay.Company
+			AND PaymentCalendarPlan.Currency = PaymentCalendarPay.Currency
+			AND PaymentCalendarPlan.CashAssetsType = PaymentCalendarPay.CashAssetsType
+			AND PaymentCalendarPlan.BankAccountPettyCash = PaymentCalendarPay.BankAccountPettyCash
+			AND PaymentCalendarPlan.InvoiceForPayment = PaymentCalendarPay.InvoiceForPayment
+			AND PaymentCalendarPlan.Recorder.Counterparty = PaymentCalendarPay.Recorder.Counterparty
+			AND (CASE
+				WHEN (PaymentCalendarPay.InvoiceForPayment = UNDEFINED
+						OR PaymentCalendarPay.InvoiceForPayment = VALUE(Document.InvoiceForPayment.EmptyRef)
+						OR PaymentCalendarPay.InvoiceForPayment = VALUE(Document.SupplierInvoiceForPayment.EmptyRef)
+						OR PaymentCalendarPay.InvoiceForPayment = VALUE(Document.CustomerOrder.EmptyRef)
+						OR PaymentCalendarPay.InvoiceForPayment = VALUE(Document.PurchaseOrder.EmptyRef))
+						AND PaymentCalendarPay.Item &lt;&gt; VALUE(Catalog.CashFlowItems.EmptyRef)
+						AND PaymentCalendarPay.Item = PaymentCalendarPlan.Item
+					THEN TRUE
+				WHEN PaymentCalendarPay.InvoiceForPayment &lt;&gt; UNDEFINED
+						AND PaymentCalendarPay.InvoiceForPayment &lt;&gt; VALUE(Document.InvoiceForPayment.EmptyRef)
+						AND PaymentCalendarPay.InvoiceForPayment &lt;&gt; VALUE(Document.SupplierInvoiceForPayment.EmptyRef)
+						AND PaymentCalendarPay.InvoiceForPayment &lt;&gt; VALUE(Document.CustomerOrder.EmptyRef)
+						AND PaymentCalendarPay.InvoiceForPayment &lt;&gt; VALUE(Document.PurchaseOrder.EmptyRef)
+						AND PaymentCalendarPlan.InvoiceForPayment = PaymentCalendarPay.InvoiceForPayment
+					THEN TRUE
+				ELSE FALSE
+			END)
+		LEFT JOIN InformationRegister.CurrencyRates.SliceLast({(&amp;CurrentDate)}, ) AS CurrencyRatesSliceLast
+		ON PaymentCalendarPlan.Currency = CurrencyRatesSliceLast.Currency
+		LEFT JOIN InformationRegister.CurrencyRates.SliceLast({(&amp;CurrentDate)}, Currency = &amp;CurrencyTotals) AS ExchangeRateOfCurrencies
+		ON (ExchangeRateOfCurrencies.Currency = &amp;CurrencyTotals)
+
+	UNION ALL
+
+	SELECT
+	BEGINOFPERIOD(&amp;CurrentDate, Day),
+	"Balance on current date",
+	CashAssetsBalances.Currency,
+	NULL,
+	CashAssetsBalances.CashAssetsType,
+	CashAssetsBalances.BankAccountPettyCash,
+	NULL,
+	VALUE(Enum.PaymentApprovalStatuses.Approved),
+	NULL,
+	NULL,
+	CashAssetsBalances.AmountCurBalance,
+	1,
+	CAST(CashAssetsBalances.AmountCurBalance * CurrencyRatesSliceLast.ExchangeRate / CurrencyRatesSliceLast.Multiplicity AS NUMBER(15, 2)),
+	CAST(CashAssetsBalances.AmountCurBalance * CurrencyRatesSliceLast.ExchangeRate / CurrencyRatesSliceLast.Multiplicity / ExchangeRateOfCurrencies.ExchangeRate * ExchangeRateOfCurrencies.Multiplicity AS NUMBER(15, 2)),
+	&amp;CurrencyTotals,
+	CASE
+		WHEN CashAssetsBalances.AmountCurBalance &gt; 0
+			THEN CashAssetsBalances.AmountCurBalance
+		ELSE 0
+	END,
+	CASE
+		WHEN CashAssetsBalances.AmountCurBalance &lt; 0
+			THEN CashAssetsBalances.AmountCurBalance
+		ELSE 0
+	END
+	FROM
+	AccumulationRegister.CashAssets.Balance({(&amp;CurrentDate)}, ) AS CashAssetsBalances
+		LEFT JOIN InformationRegister.CurrencyRates.SliceLast({(&amp;CurrentDate)}, ) AS CurrencyRatesSliceLast
+		ON CashAssetsBalances.Currency = CurrencyRatesSliceLast.Currency
+		LEFT JOIN InformationRegister.CurrencyRates.SliceLast({(&amp;CurrentDate)}, Currency = &amp;CurrencyTotals) AS ExchangeRateOfCurrencies
+		ON (ExchangeRateOfCurrencies.Currency = &amp;CurrencyTotals)
+
+	UNION ALL
+
+	SELECT
+	BEGINOFPERIOD(&amp;CurrentDate, Day),
+	Arrear.Recorder,
+	Arrear.Currency,
+	NULL,
+	Arrear.CashAssetsType,
+	Arrear.BankAccountPettyCash,
+	Arrear.PlanningEssence,
+	Arrear.PaymentConfirmationStatus,
+	Arrear.AmountByDocument,
+	Arrear.AmountPaid,
+	Arrear.AmountBalance,
+	2,
+	CAST(ISNULL(Arrear.AmountBalance, 0) * CurrencyRatesSliceLast.ExchangeRate / CurrencyRatesSliceLast.Multiplicity AS NUMBER(15, 2)),
+	CAST(ISNULL(Arrear.AmountBalance, 0) * CurrencyRatesSliceLast.ExchangeRate / CurrencyRatesSliceLast.Multiplicity / ExchangeRateOfCurrencies.ExchangeRate * ExchangeRateOfCurrencies.Multiplicity AS NUMBER(15, 2)),
+	&amp;CurrencyTotals,
+	CASE
+		WHEN Arrear.AmountBalance &gt; 0
+			THEN Arrear.AmountBalance
+		ELSE 0
+	END,
+	CASE
+		WHEN Arrear.AmountBalance &lt; 0
+			THEN Arrear.AmountBalance
+		ELSE 0
+	END
+	FROM
+	(SELECT
+		PaymentCalendarTurnovers.CashAssetsType AS CashAssetsType,
+		PaymentCalendarTurnovers.BankAccountPettyCash AS BankAccountPettyCash,
+		PaymentCalendarTurnovers.PaymentConfirmationStatus AS PaymentConfirmationStatus,
+		CASE
+			WHEN (PaymentCalendarTurnovers.InvoiceForPayment = UNDEFINED
+					OR PaymentCalendarTurnovers.InvoiceForPayment = VALUE(Document.InvoiceForPayment.EmptyRef)
+					OR PaymentCalendarTurnovers.InvoiceForPayment = VALUE(Document.SupplierInvoiceForPayment.EmptyRef)
+					OR PaymentCalendarTurnovers.InvoiceForPayment = VALUE(Document.CustomerOrder.EmptyRef)
+					OR PaymentCalendarTurnovers.InvoiceForPayment = VALUE(Document.PurchaseOrder.EmptyRef))
+					AND Not PaymentCalendarTurnovers.Item = VALUE(Catalog.CashFlowItems.EmptyRef)
+				THEN PaymentCalendarTurnovers.Item
+			ELSE PaymentCalendarTurnovers.InvoiceForPayment
+		END AS PlanningEssence,
+		SUM(PaymentCalendarTurnovers.AmountTurnover - PaymentCalendarTurnovers.PaymentAmountTurnover) AS AmountBalance,
+		MAX(CASE
+				WHEN PaymentCalendarTurnovers.AmountTurnover = 0
+						OR PaymentCalendarTurnovers.AmountTurnover = NULL
+					THEN DATETIME(1, 1, 1)
+				ELSE PaymentCalendarTurnovers.SecondPeriod
+			END) AS Period,
+		SUM(PaymentCalendarTurnovers.AmountTurnover) AS AmountByDocument,
+		SUM(PaymentCalendarTurnovers.PaymentAmountTurnover) AS AmountPaid,
+		PaymentCalendarTurnovers.Currency AS Currency,
+		CASE
+			WHEN Not PaymentCalendarTurnovers.AmountTurnover = 0
+				THEN PaymentCalendarTurnovers.Recorder
+			ELSE UNDEFINED
+		END AS Recorder
+	FROM
+		AccumulationRegister.PaymentCalendar.Turnovers(, , Auto, ) AS PaymentCalendarTurnovers
+	
+	GROUP BY
+		PaymentCalendarTurnovers.CashAssetsType,
+		PaymentCalendarTurnovers.BankAccountPettyCash,
+		PaymentCalendarTurnovers.PaymentConfirmationStatus,
+		CASE
+			WHEN (PaymentCalendarTurnovers.InvoiceForPayment = UNDEFINED
+					OR PaymentCalendarTurnovers.InvoiceForPayment = VALUE(Document.InvoiceForPayment.EmptyRef)
+					OR PaymentCalendarTurnovers.InvoiceForPayment = VALUE(Document.SupplierInvoiceForPayment.EmptyRef)
+					OR PaymentCalendarTurnovers.InvoiceForPayment = VALUE(Document.CustomerOrder.EmptyRef)
+					OR PaymentCalendarTurnovers.InvoiceForPayment = VALUE(Document.PurchaseOrder.EmptyRef))
+					AND Not PaymentCalendarTurnovers.Item = VALUE(Catalog.CashFlowItems.EmptyRef)
+				THEN PaymentCalendarTurnovers.Item
+			ELSE PaymentCalendarTurnovers.InvoiceForPayment
+		END,
+		PaymentCalendarTurnovers.Currency,
+		CASE
+			WHEN Not PaymentCalendarTurnovers.AmountTurnover = 0
+				THEN PaymentCalendarTurnovers.Recorder
+			ELSE UNDEFINED
+		END) AS Arrear
+		LEFT JOIN InformationRegister.CurrencyRates.SliceLast AS CurrencyRatesSliceLast
+		ON Arrear.Currency = CurrencyRatesSliceLast.Currency,
+	InformationRegister.CurrencyRates.SliceLast({(&amp;CurrentDate)}, Currency = &amp;CurrencyTotals) AS ExchangeRateOfCurrencies
+	WHERE
+	Arrear.Period &lt; &amp;CurrentDate
+	AND Not Arrear.Period = DATETIME(1, 1, 1)
+
+	ORDER BY
+	Period,
+	Order,
+		Recorder</query>
+	</dataSet>
+	<calculatedField>
+		<dataPath>PlannedBalance</dataPath>
+		<expression>IsNULL(EvalExpression("SUM(AmountPlanned)", "Period", "Group", "First", "Previous"), 0) + IsNULL(EvalExpression("SUM(AmountPlanned)", "Recorder", , "First", "Current"), 0)</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Planned balance</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:decimal</v8:Type>
+			<v8:NumberQualifiers>
+				<v8:Digits>15</v8:Digits>
+				<v8:FractionDigits>2</v8:FractionDigits>
+				<v8:AllowedSign>Any</v8:AllowedSign>
+			</v8:NumberQualifiers>
+		</valueType>
+	</calculatedField>
+	<calculatedField>
+		<dataPath>PlannedBalanceInSpecifiedCurrency</dataPath>
+		<expression>IsNULL(EvalExpression("SUM(AmountPlannedInSpecifiedCurrency)", "Period", "Group", "First", "Previous"), 0) 
++ IsNULL(EvalExpression("SUM(AmountPlannedInSpecifiedCurrency)", "Recorder", , "First", "Current" ), 0)</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Planned balance in specified currency</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:decimal</v8:Type>
+			<v8:NumberQualifiers>
+				<v8:Digits>15</v8:Digits>
+				<v8:FractionDigits>2</v8:FractionDigits>
+				<v8:AllowedSign>Any</v8:AllowedSign>
+			</v8:NumberQualifiers>
+		</valueType>
+	</calculatedField>
+	<totalField>
+		<dataPath>AmountConsumptionPlan</dataPath>
+		<expression>SUM(AmountExpensePlan)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>AmountReceiptPlan</dataPath>
+		<expression>SUM(AmountReceiptPlan)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>AmountPlannedInSpecifiedCurrency</dataPath>
+		<expression>SUM(AmountPlannedInSpecifiedCurrency)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>AmountPlannedInUSD</dataPath>
+		<expression>SUM(AmountPlannedInUSD)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>AmountPlanned</dataPath>
+		<expression>SUM(AmountPlanned)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>PlannedBalanceInSpecifiedCurrency</dataPath>
+		<expression>Max(PlannedBalanceInSpecifiedCurrency)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>PlannedBalance</dataPath>
+		<expression>Max(PlannedBalance)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>PaidByDocument</dataPath>
+		<expression>SUM(PaidByDocument)</expression>
+	</totalField>
+	<parameter>
+		<name>BeginOfPeriod</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Begin of period</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<parameter>
+		<name>CurrentDate</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Current date</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>CurrentDate()</expression>
+		<availableAsField>false</availableAsField>
+		<denyIncompleteValues>true</denyIncompleteValues>
+	</parameter>
+	<parameter>
+		<name>EndOfPeriod</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>End of period</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>false</useRestriction>
+		<denyIncompleteValues>true</denyIncompleteValues>
+	</parameter>
+	<parameter>
+		<name>Period</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Period</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>CurrencyTotals</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Currency of the totals</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef.Currencies</v8:Type>
+		</valueType>
+		<value xsi:type="dcscor:DesignTimeValue">Catalog.Currencies.EmptyRef</value>
+		<useRestriction>true</useRestriction>
+		<availableAsField>false</availableAsField>
+		<denyIncompleteValues>true</denyIncompleteValues>
+	</parameter>
+	<parameter>
+		<name>TitleOutput</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Output title</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:boolean</v8:Type>
+		</valueType>
+		<value xsi:type="xs:boolean">false</value>
+		<useRestriction>false</useRestriction>
+		<availableAsField>false</availableAsField>
+		<use>Always</use>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>Default</dcsset:name>
+		<dcsset:presentation xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Planned cash balance</v8:content>
+			</v8:item>
+		</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Period</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Recorder</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Currency</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>AmountByDocument</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>AmountPlanned</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>PlannedBalance</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>AmountPlannedInSpecifiedCurrency</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>PlannedBalanceInSpecifiedCurrency</dcsset:field>
+				</dcsset:item>
+			</dcsset:selection>
+			<dcsset:filter>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">BankAccountPettyCash</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:userSettingID>bf3be764-0746-4e45-9dba-56db79a01b73</dcsset:userSettingID>
+					<dcsset:userSettingPresentation xsi:type="xs:string">Bank account or petty cash</dcsset:userSettingPresentation>
+				</dcsset:item>
+			</dcsset:filter>
+			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>BeginOfPeriod</dcscor:parameter>
+					<dcscor:value xsi:type="xs:dateTime">0001-01-01T00:00:00</dcscor:value>
+					<dcsset:userSettingID>6623afe0-697b-4ab0-839d-1e14bd6a5dd4</dcsset:userSettingID>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>CurrentDate</dcscor:parameter>
+					<dcscor:value xsi:type="xs:dateTime">0001-01-01T00:00:00</dcscor:value>
+					<dcsset:viewMode>Inaccessible</dcsset:viewMode>
+					<dcsset:userSettingID>a43eec30-40e7-486c-88f8-6cf5121c5e90</dcsset:userSettingID>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>EndOfPeriod</dcscor:parameter>
+					<dcscor:value xsi:type="xs:dateTime">0001-01-01T00:00:00</dcscor:value>
+					<dcsset:userSettingID>8e4d2020-45db-4e4e-9f0a-fe05c81f0cdb</dcsset:userSettingID>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>Period</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:DesignTimeValue">Catalog.Currencies.EmptyRef</dcscor:value>
+					<dcsset:userSettingID>303aa5e8-348b-4162-bbac-7848b7f8111f</dcsset:userSettingID>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>CurrencyTotals</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:DesignTimeValue">Catalog.Currencies.EmptyRef</dcscor:value>
+					<dcsset:viewMode>Inaccessible</dcsset:viewMode>
+					<dcsset:userSettingID>c0cad70c-5252-4222-8bce-54772e38a5cd</dcsset:userSettingID>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>TitleOutput</dcscor:parameter>
+					<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+					<dcsset:viewMode>Normal</dcsset:viewMode>
+					<dcsset:userSettingID>5876ea11-8516-490f-9216-337507a7da57</dcsset:userSettingID>
+				</dcscor:item>
+			</dcsset:dataParameters>
+			<dcsset:outputParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>HorizontalOverallPlacement</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">None</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>VerticalOverallPlacement</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">End</dcscor:value>
+				</dcscor:item>
+			</dcsset:outputParameters>
+			<dcsset:item xsi:type="dcsset:StructureItemTable">
+				<dcsset:column>
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>CurrencyTotals</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>CurrencyTotals</dcsset:field>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>AmountPlannedInSpecifiedCurrency</dcsset:field>
+							<dcsset:lwsTitle>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Amount</v8:content>
+								</v8:item>
+							</dcsset:lwsTitle>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>PlannedBalanceInSpecifiedCurrency</dcsset:field>
+							<dcsset:lwsTitle>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Total</v8:content>
+								</v8:item>
+							</dcsset:lwsTitle>
+						</dcsset:item>
+					</dcsset:selection>
+					<dcsset:item>
+						<dcsset:use>false</dcsset:use>
+						<dcsset:groupItems>
+							<dcsset:item xsi:type="dcsset:GroupItemField">
+								<dcsset:field>Currency</dcsset:field>
+								<dcsset:groupType>Items</dcsset:groupType>
+								<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+								<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+								<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+							</dcsset:item>
+						</dcsset:groupItems>
+						<dcsset:order>
+							<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+						</dcsset:order>
+						<dcsset:selection>
+							<dcsset:item xsi:type="dcsset:SelectedItemField">
+								<dcsset:field>Currency</dcsset:field>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:SelectedItemField">
+								<dcsset:field>AmountReceiptPlan</dcsset:field>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:SelectedItemField">
+								<dcsset:field>AmountConsumptionPlan</dcsset:field>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:SelectedItemField">
+								<dcsset:field>PlannedBalance</dcsset:field>
+							</dcsset:item>
+						</dcsset:selection>
+						<dcsset:userSettingID>d732ed05-71d8-46f5-bf80-ba41633766f2</dcsset:userSettingID>
+						<dcsset:userSettingPresentation xsi:type="v8:LocalStringType">
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Show by currencies</v8:content>
+							</v8:item>
+						</dcsset:userSettingPresentation>
+					</dcsset:item>
+				</dcsset:column>
+				<dcsset:row>
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>Period</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+					<dcsset:item>
+						<dcsset:groupItems>
+							<dcsset:item xsi:type="dcsset:GroupItemField">
+								<dcsset:field>Recorder</dcsset:field>
+								<dcsset:groupType>Items</dcsset:groupType>
+								<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+								<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+								<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:GroupItemField">
+								<dcsset:field>Currency</dcsset:field>
+								<dcsset:groupType>Items</dcsset:groupType>
+								<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+								<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+								<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:GroupItemField">
+								<dcsset:field>AmountByDocument</dcsset:field>
+								<dcsset:groupType>Items</dcsset:groupType>
+								<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+								<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+								<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+							</dcsset:item>
+						</dcsset:groupItems>
+						<dcsset:selection>
+							<dcsset:item xsi:type="dcsset:SelectedItemField">
+								<dcsset:field>Recorder</dcsset:field>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:SelectedItemField">
+								<dcsset:field>Currency</dcsset:field>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:SelectedItemField">
+								<dcsset:field>AmountByDocument</dcsset:field>
+							</dcsset:item>
+						</dcsset:selection>
+						<dcsset:conditionalAppearance>
+							<dcsset:item>
+								<dcsset:use>false</dcsset:use>
+								<dcsset:selection>
+									<dcsset:item>
+										<dcsset:field>Recorder</dcsset:field>
+									</dcsset:item>
+									<dcsset:item>
+										<dcsset:field>Currency</dcsset:field>
+									</dcsset:item>
+								</dcsset:selection>
+								<dcsset:filter>
+									<dcsset:item xsi:type="dcsset:FilterItemComparison">
+										<dcsset:left xsi:type="dcscor:Field">Period</dcsset:left>
+										<dcsset:comparisonType>Less</dcsset:comparisonType>
+										<dcsset:right xsi:type="dcscor:Field">DataParameters.CurrentDate</dcsset:right>
+										<dcsset:presentation xsi:type="v8:LocalStringType">
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Select overdue</v8:content>
+											</v8:item>
+										</dcsset:presentation>
+									</dcsset:item>
+								</dcsset:filter>
+								<dcsset:appearance>
+									<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+										<dcscor:parameter>TextColor</dcscor:parameter>
+										<dcscor:value xsi:type="v8ui:Color">style:ScheduledTime</dcscor:value>
+									</dcscor:item>
+									<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+										<dcscor:use>false</dcscor:use>
+										<dcscor:parameter>Font</dcscor:parameter>
+										<dcscor:value xsi:type="v8ui:Font" ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+									</dcscor:item>
+								</dcsset:appearance>
+								<dcsset:presentation xsi:type="v8:LocalStringType">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Select overdue</v8:content>
+									</v8:item>
+								</dcsset:presentation>
+								<dcsset:userSettingID>2c8de659-f16d-4513-9288-7728ca914cf2</dcsset:userSettingID>
+							</dcsset:item>
+						</dcsset:conditionalAppearance>
+						<dcsset:userSettingID>a8107604-a279-4932-b03e-229c2cb22410</dcsset:userSettingID>
+						<dcsset:userSettingPresentation xsi:type="v8:LocalStringType">
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Show registers</v8:content>
+							</v8:item>
+						</dcsset:userSettingPresentation>
+					</dcsset:item>
+				</dcsset:row>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

@@ -1,0 +1,1286 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Title>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Export electronic documents to send to FTS</v8:content>
+		</v8:item>
+	</Title>
+	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
+	<AutoTitle>false</AutoTitle>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="NotificationProcessing">NotificationProcessing</Event>
+		<Event name="BeforeClose">BeforeClose</Event>
+		<Event name="OnLoadDataFromSettingsAtServer">OnLoadDataFromSettingsAtServer</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="GroupAvailableDocuments" id="26">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Available documents that are digitally signed</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Available documents list</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>StrongSeparation</Representation>
+			<ExtendedTooltip name="AvailableDocumentsGroupExtendedTooltip" id="128"/>
+			<ChildItems>
+				<UsualGroup name="GroupQuickFilters" id="43">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Fast filters group</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Fast filters group</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="GroupFastFiltersExtendedTooltip" id="129"/>
+					<ChildItems>
+						<UsualGroup name="GroupTitleFilter" id="44">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Filter title group</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Filter title group</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupTitleFilterExtendedTooltip" id="130"/>
+							<ChildItems>
+								<LabelDecoration name="TitleFilter" id="45">
+									<VerticalStretch>false</VerticalStretch>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Quick filters:</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="TitleFilterContextMenu" id="46"/>
+									<ExtendedTooltip name="TitleFilterExtendedTooltip" id="131"/>
+								</LabelDecoration>
+								<CommandBar name="FilterCommands" id="47">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Filter commands</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Filter commands</v8:content>
+										</v8:item>
+									</ToolTip>
+									<HorizontalLocation>Right</HorizontalLocation>
+									<ExtendedTooltip name="FilterCommandsExtendedTooltip" id="132"/>
+									<ChildItems>
+										<Button name="UnsetFilter" id="48">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.UnsetFilter</CommandName>
+											<ExtendedTooltip name="UnsetFilterExtendedTooltip" id="133"/>
+										</Button>
+									</ChildItems>
+								</CommandBar>
+							</ChildItems>
+						</UsualGroup>
+						<Table name="QuickFilters" id="34">
+							<Representation>List</Representation>
+							<ChangeRowSet>false</ChangeRowSet>
+							<ChangeRowOrder>false</ChangeRowOrder>
+							<Header>false</Header>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>QuickFilters</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Quick filters</v8:content>
+								</v8:item>
+							</Title>
+							<CommandSet>
+								<ExcludedCommand>Copy</ExcludedCommand>
+								<ExcludedCommand>SortListAsc</ExcludedCommand>
+								<ExcludedCommand>MoveUp</ExcludedCommand>
+								<ExcludedCommand>CancelSearch</ExcludedCommand>
+								<ExcludedCommand>OutputList</ExcludedCommand>
+								<ExcludedCommand>SelectAll</ExcludedCommand>
+								<ExcludedCommand>SortListDesc</ExcludedCommand>
+								<ExcludedCommand>CopyToClipboard</ExcludedCommand>
+								<ExcludedCommand>Delete</ExcludedCommand>
+								<ExcludedCommand>EndEdit</ExcludedCommand>
+								<ExcludedCommand>Add</ExcludedCommand>
+								<ExcludedCommand>Change</ExcludedCommand>
+								<ExcludedCommand>Find</ExcludedCommand>
+								<ExcludedCommand>MoveDown</ExcludedCommand>
+							</CommandSet>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="QuickFiltersContextMenu" id="35"/>
+							<AutoCommandBar name="QuickFiltersCommandBar" id="36"/>
+							<ExtendedTooltip name="FastFiltersExtendedTooltip" id="134"/>
+							<SearchStringAddition name="QuickFiltersSearchString" id="180">
+								<AdditionSource>
+									<Item>QuickFilters</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="QuickFiltersSearchStringContextMenu" id="181"/>
+								<ExtendedTooltip name="QuickFiltersSearchStringExtendedTooltip" id="182"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="QuickFiltersViewStatus" id="183">
+								<AdditionSource>
+									<Item>QuickFilters</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="QuickFiltersViewStatusContextMenu" id="184"/>
+								<ExtendedTooltip name="QuickFiltersViewStatusExtendedTooltip" id="185"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="QuickFiltersSearchManagement" id="186">
+								<AdditionSource>
+									<Item>QuickFilters</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="QuickFiltersSearchManagementContextMenu" id="187"/>
+								<ExtendedTooltip name="QuickFiltersSearchManagementExtendedTooltip" id="188"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="OnEditEnd">QuickFiltersOnEditEnd</Event>
+								<Event name="OnStartEdit">QuickFiltersOnStartEdit</Event>
+							</Events>
+							<ChildItems>
+								<InputField name="QuickFiltersParameterPresentation" id="41">
+									<DataPath>QuickFilters.ParameterPresentation</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="QuickFiltersParameterPresentationContextMenu" id="42"/>
+									<ExtendedTooltip name="QuickFiltersParameterPresentationExtendedTooltip" id="135"/>
+								</InputField>
+								<InputField name="QuickFiltersValue" id="39">
+									<DataPath>QuickFilters.Value</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ClearButton>true</ClearButton>
+									<OpenButton>false</OpenButton>
+									<ChooseType>false</ChooseType>
+									<ContextMenu name="QuickFiltersValueContextMenu" id="40"/>
+									<ExtendedTooltip name="QuickFiltersValueExtendedTooltip" id="136"/>
+									<Events>
+										<Event name="OnChange">QuickFiltersValueOnChange</Event>
+										<Event name="StartChoice">QuickFiltersValueStartChoice</Event>
+										<Event name="Clearing">QuickFiltersValueClearing</Event>
+									</Events>
+								</InputField>
+								<InputField name="QuickFiltersParameter" id="37">
+									<DataPath>QuickFilters.Parameter</DataPath>
+									<Visible>false</Visible>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="QuickFiltersParameterContextMenu" id="38"/>
+									<ExtendedTooltip name="QuickFiltersParameterExtendedTooltip" id="137"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</UsualGroup>
+				<Table name="AvailableDocuments" id="70">
+					<UseAlternationRowColor>true</UseAlternationRowColor>
+					<EnableStartDrag>true</EnableStartDrag>
+					<DataPath>AvailableDocuments</DataPath>
+					<RowPictureDataPath>AvailableDocuments.DefaultPicture</RowPictureDataPath>
+					<CommandSet>
+						<ExcludedCommand>Copy</ExcludedCommand>
+						<ExcludedCommand>Create</ExcludedCommand>
+						<ExcludedCommand>CopyToClipboard</ExcludedCommand>
+						<ExcludedCommand>Choose</ExcludedCommand>
+						<ExcludedCommand>SetDeletionMark</ExcludedCommand>
+						<ExcludedCommand>Change</ExcludedCommand>
+						<ExcludedCommand>Delete</ExcludedCommand>
+					</CommandSet>
+					<SearchStringLocation>None</SearchStringLocation>
+					<ViewStatusLocation>None</ViewStatusLocation>
+					<SearchControlLocation>None</SearchControlLocation>
+					<AutoRefresh>false</AutoRefresh>
+					<AutoRefreshPeriod>60</AutoRefreshPeriod>
+					<Period>
+						<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+						<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+						<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+					</Period>
+					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+					<RestoreCurrentRow>false</RestoreCurrentRow>
+					<TopLevelParent xsi:nil="true"/>
+					<ShowRoot>true</ShowRoot>
+					<AllowRootChoice>false</AllowRootChoice>
+					<UpdateOnDataChange>Auto</UpdateOnDataChange>
+					<ContextMenu name="AvailableDocumentsContextMenu" id="71">
+						<ChildItems>
+							<Button name="AvailableDocumentsContextMenuOpenDocumentFormAvailableList" id="114">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.OpenDocumentFormAvailableList</CommandName>
+								<ExtendedTooltip name="AvailableDocumentsContextMenuOpenDocumentFormAvailableListExtendedTooltip" id="138"/>
+							</Button>
+						</ChildItems>
+					</ContextMenu>
+					<AutoCommandBar name="AvailableDocumentsCommandBar" id="72">
+						<Autofill>false</Autofill>
+						<ChildItems>
+							<Button name="AvailableDocumentsSelect" id="93">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.Select</CommandName>
+								<ExtendedTooltip name="AvailableDocumentsSelectExtendedTooltip" id="139"/>
+							</Button>
+							<Button name="AvailableDocumentsOpenED" id="95">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.OpenDocumentFormAvailableList</CommandName>
+								<ExtendedTooltip name="AvailableDocumentsOpenEDExtendedTooltip" id="140"/>
+							</Button>
+							<ButtonGroup name="AvailableDocumentsStandardCommandsGroup" id="120">
+								<Title>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Available documents standard commands group</v8:content>
+									</v8:item>
+								</Title>
+								<ToolTip>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Available documents standard commands group</v8:content>
+									</v8:item>
+								</ToolTip>
+								<CommandSource>Item.AvailableDocuments</CommandSource>
+								<ExtendedTooltip name="AvailableDocumentsStandardCommandsGroupExtendedTooltip" id="141"/>
+							</ButtonGroup>
+							<Button name="AvailableDocumentsButtonChangeForm" id="122">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
+								<ExtendedTooltip name="AvailableDocumentsButtonChangeFormExtendedTooltip" id="142"/>
+							</Button>
+							<Button name="AvailableDocumentsButtonHelp" id="121">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.StandardCommand.Help</CommandName>
+								<ExtendedTooltip name="AvailableDocumentsButtonHelpExtendedTooltip" id="143"/>
+							</Button>
+						</ChildItems>
+					</AutoCommandBar>
+					<ExtendedTooltip name="AvailableDocumentsExtendedTooltip" id="144"/>
+					<SearchStringAddition name="AvailableDocumentsSearchString" id="189">
+						<AdditionSource>
+							<Item>AvailableDocuments</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="AvailableDocumentsSearchStringContextMenu" id="190"/>
+						<ExtendedTooltip name="AvailableDocumentsSearchStringExtendedTooltip" id="191"/>
+					</SearchStringAddition>
+					<ViewStatusAddition name="AvailableDocumentsViewStatus" id="192">
+						<AdditionSource>
+							<Item>AvailableDocuments</Item>
+							<Type>ViewStatusRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="AvailableDocumentsViewStatusContextMenu" id="193"/>
+						<ExtendedTooltip name="AvailableDocumentsViewStatusExtendedTooltip" id="194"/>
+					</ViewStatusAddition>
+					<SearchControlAddition name="AvailableDocumentsSearchManagement" id="195">
+						<AdditionSource>
+							<Item>AvailableDocuments</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<ContextMenu name="AvailableDocumentsSearchManagementContextMenu" id="196"/>
+						<ExtendedTooltip name="AvailableDocumentsSearchManagementExtendedTooltip" id="197"/>
+					</SearchControlAddition>
+					<Events>
+						<Event name="Selection">AvailableDocumentsSelection</Event>
+					</Events>
+					<ChildItems>
+						<LabelField name="AvailableDocumentsDocumentIB" id="77">
+							<DataPath>AvailableDocuments.Document</DataPath>
+							<ContextMenu name="AvailableDocumentsDocumentIBContextMenu" id="78"/>
+							<ExtendedTooltip name="AvailableDocumentsDocumentIBExtendedTooltip" id="145"/>
+						</LabelField>
+						<LabelField name="AvailableDocumentsElectronicDocument" id="89">
+							<DataPath>AvailableDocuments.ElectronicDocument</DataPath>
+							<Visible>false</Visible>
+							<ContextMenu name="AvailableDocumentsElectronicDocumentContextMenu" id="90"/>
+							<ExtendedTooltip name="AvailableDocumentsElectronicDocumentExtendedTooltip" id="146"/>
+						</LabelField>
+						<LabelField name="AvailableDocumentsDocumentNumber" id="85">
+							<DataPath>AvailableDocuments.DocumentNumber</DataPath>
+							<ContextMenu name="AvailableDocumentsDocumentNumberContextMenu" id="86"/>
+							<ExtendedTooltip name="AvailableDocumentsDocumentNumberExtendedTooltip" id="147"/>
+						</LabelField>
+						<LabelField name="AvailableDocumentsDocumentDate" id="75">
+							<DataPath>AvailableDocuments.DocumentDate</DataPath>
+							<ContextMenu name="AvailableDocumentsDocumentsDateContextMenu" id="76"/>
+							<ExtendedTooltip name="AvailableDocumentsDocumentDateExtendedTooltip" id="148"/>
+						</LabelField>
+						<LabelField name="DocumentAmount" id="96">
+							<DataPath>AvailableDocuments.DocumentAmount</DataPath>
+							<ContextMenu name="DocumentAmountContextMenu" id="97"/>
+							<ExtendedTooltip name="DocumentAmountExtendedTooltip" id="149"/>
+						</LabelField>
+						<LabelField name="AvailableDocumentsCompany" id="87">
+							<DataPath>AvailableDocuments.Company</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Company</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="AvailableDocumentsCompanyContextMenu" id="88"/>
+							<ExtendedTooltip name="AvailableDocumentsCompanyExtendedTooltip" id="150"/>
+						</LabelField>
+						<LabelField name="AvailableDocumentsCounterparty" id="81">
+							<DataPath>AvailableDocuments.Counterparty</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Counterparty</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="AvailableDocumentsCounterpartyContextMenu" id="82"/>
+							<ExtendedTooltip name="AvailableDocumentsCounterpartyExtendedTooltip" id="151"/>
+						</LabelField>
+						<LabelField name="AvailableDocumentsEDKind" id="73">
+							<DataPath>AvailableDocuments.EDKind</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>EDKind</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="AvailableDocumentsEDTypeContextMenu" id="74"/>
+							<ExtendedTooltip name="AvailableDocumentsEDTypeExtendedTooltip" id="152"/>
+						</LabelField>
+						<ColumnGroup name="" id="106">
+							<Visible>false</Visible>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Contract</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Basis document</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<ShowInHeader>true</ShowInHeader>
+							<HeaderHorizontalAlign>Center</HeaderHorizontalAlign>
+							<ExtendedTooltip name="ExtendedTooltip" id="153"/>
+							<ChildItems>
+								<LabelField name="BasisDocumentNumber" id="102">
+									<DataPath>AvailableDocuments.BasisDocumentNumber</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Number</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Contracts' number</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ContextMenu name="BasisDocumentNumberContextMenu" id="103"/>
+									<ExtendedTooltip name="BasisDocumentNumberExtendedTooltip" id="154"/>
+								</LabelField>
+								<LabelField name="BasisDocumentDate" id="104">
+									<DataPath>AvailableDocuments.BasisDocumentDate</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Date</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Contract date</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ContextMenu name="BasisDocumentDateContextMenu" id="105"/>
+									<ExtendedTooltip name="BasisDocumentDateExtendedTooltip" id="155"/>
+								</LabelField>
+							</ChildItems>
+						</ColumnGroup>
+						<LabelField name="AvailableDocumentsEDDirection" id="83">
+							<DataPath>AvailableDocuments.EDDirection</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>ED direction</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="AvailableDocumentsEDDirectionContextMenu" id="84"/>
+							<ExtendedTooltip name="AvailableDocumentsEDDirectionExtendedTooltip" id="156"/>
+						</LabelField>
+						<CheckBoxField name="AvailableDocumentsDSExist" id="79">
+							<DataPath>AvailableDocuments.DSExist</DataPath>
+							<Visible>false</Visible>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="AvailableDocumentsDSExistContextMenu" id="80"/>
+							<ExtendedTooltip name="AvailableDocumentsDSExistExtendedTooltip" id="157"/>
+						</CheckBoxField>
+						<LabelField name="EDVersionState" id="123">
+							<DataPath>AvailableDocuments.EDVersionState</DataPath>
+							<Visible>false</Visible>
+							<ContextMenu name="EDVersionStateContextMenu" id="124"/>
+							<ExtendedTooltip name="EDVersionStateExtendedTooltip" id="158"/>
+						</LabelField>
+					</ChildItems>
+				</Table>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="GroupSelectedDocuments" id="49">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Selected documents</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>List of the documents selected for export in file</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Representation>StrongSeparation</Representation>
+			<ExtendedTooltip name="SelectedDocumentsGroupExtendedTooltip" id="159"/>
+			<ChildItems>
+				<Table name="SelectedDocumentsTable" id="50">
+					<Representation>List</Representation>
+					<EnableStartDrag>true</EnableStartDrag>
+					<EnableDrag>true</EnableDrag>
+					<DataPath>SelectedDocumentsTable</DataPath>
+					<CommandSet>
+						<ExcludedCommand>Copy</ExcludedCommand>
+						<ExcludedCommand>SelectAll</ExcludedCommand>
+						<ExcludedCommand>CopyToClipboard</ExcludedCommand>
+						<ExcludedCommand>EndEdit</ExcludedCommand>
+						<ExcludedCommand>Add</ExcludedCommand>
+						<ExcludedCommand>Change</ExcludedCommand>
+					</CommandSet>
+					<SearchStringLocation>None</SearchStringLocation>
+					<ViewStatusLocation>None</ViewStatusLocation>
+					<SearchControlLocation>None</SearchControlLocation>
+					<RowFilter xsi:nil="true"/>
+					<ContextMenu name="SelectedDocumentsTableContextMenu" id="51">
+						<ChildItems>
+							<Button name="SelectedDocumentsTableContextMenuOpenDocumentFormSelectedList" id="116">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.OpenDocumentFormSelectedList</CommandName>
+								<ExtendedTooltip name="SelectedDocumentsTableContextMenuOpenDocumentFormSelectedListExtendedTooltip" id="160"/>
+							</Button>
+						</ChildItems>
+					</ContextMenu>
+					<AutoCommandBar name="SelectedDocumentsTableCommandBar" id="52">
+						<Autofill>false</Autofill>
+						<ChildItems>
+							<Button name="SelectedDocumentsTableExportToFile" id="94">
+								<Type>CommandBarButton</Type>
+								<DefaultButton>true</DefaultButton>
+								<CommandName>Form.Command.ExportToFile</CommandName>
+								<ExtendedTooltip name="SelectedDocumentsTableExportToFileExtendedTooltip" id="161"/>
+							</Button>
+							<Button name="SelectedDocumentsTableExportToArray" id="127">
+								<Type>CommandBarButton</Type>
+								<Visible>false</Visible>
+								<CommandName>Form.Command.ExportToArray</CommandName>
+								<ExtendedTooltip name="SelectedDocumentsTableExportToArrayExtendedTooltip" id="162"/>
+							</Button>
+							<Button name="SelectedDocumentsTableOpenDocumentFormSelectedList" id="126">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.OpenDocumentFormSelectedList</CommandName>
+								<ExtendedTooltip name="SelectedDocumentsTableOpenDocumentFormSelectedListExtendedTooltip" id="163"/>
+							</Button>
+							<ButtonGroup name="SelectedDocumentsTableStandardCommandsGroup" id="119">
+								<Title>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Selected documents table standard commands group</v8:content>
+									</v8:item>
+								</Title>
+								<ToolTip>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Selected documents table standard commands group</v8:content>
+									</v8:item>
+								</ToolTip>
+								<CommandSource>Item.SelectedDocumentsTable</CommandSource>
+								<ExtendedTooltip name="SelectedDocumentsTableStandardCommandsGroupExtendedTooltip" id="164"/>
+							</ButtonGroup>
+							<Button name="SelectedDocumentsTableButton1" id="125">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Item.SelectedDocumentsTable.StandardCommand.Delete</CommandName>
+								<ExtendedTooltip name="SelectedDocumentsTableButton1ExtendedTooltip" id="165"/>
+							</Button>
+						</ChildItems>
+					</AutoCommandBar>
+					<ExtendedTooltip name="SelectedDocumentsTableExtendedTooltip" id="166"/>
+					<SearchStringAddition name="SelectedDocumentsTableSearchString" id="198">
+						<AdditionSource>
+							<Item>SelectedDocumentsTable</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="SelectedDocumentsTableSearchStringContextMenu" id="199"/>
+						<ExtendedTooltip name="SelectedDocumentsTableSearchStringExtendedTooltip" id="200"/>
+					</SearchStringAddition>
+					<ViewStatusAddition name="SelectedDocumentsTableViewStatus" id="201">
+						<AdditionSource>
+							<Item>SelectedDocumentsTable</Item>
+							<Type>ViewStatusRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="SelectedDocumentsTableViewStatusContextMenu" id="202"/>
+						<ExtendedTooltip name="SelectedDocumentsTableViewStatusExtendedTooltip" id="203"/>
+					</ViewStatusAddition>
+					<SearchControlAddition name="SelectedDocumentsTableSearchManagement" id="204">
+						<AdditionSource>
+							<Item>SelectedDocumentsTable</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<ContextMenu name="SelectedDocumentsTableSearchManagementContextMenu" id="205"/>
+						<ExtendedTooltip name="SelectedDocumentsTableSearchManagementExtendedTooltip" id="206"/>
+					</SearchControlAddition>
+					<Events>
+						<Event name="Selection">SelectedDocumentsTableSelection</Event>
+						<Event name="BeforeAddRow">SelectedDocumentsTableBeforeAdding</Event>
+						<Event name="Drag">SelectedDocumentsTableDrag</Event>
+					</Events>
+					<ChildItems>
+						<InputField name="SelectedDocumentsTableDocumentIB" id="55">
+							<DataPath>SelectedDocumentsTable.Document</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="SelectedDocumentsTableIBDocumentContextMenu" id="56"/>
+							<ExtendedTooltip name="SelectedDocumentsTableDocumentIBExtendedTooltip" id="167"/>
+						</InputField>
+						<InputField name="SelectedDocumentsTableElectronicDocument" id="57">
+							<DataPath>SelectedDocumentsTable.ElectronicDocument</DataPath>
+							<Visible>false</Visible>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="SelectedDocumentsTableElectronicDocumentContextMenu" id="58"/>
+							<ExtendedTooltip name="SelectedDocumentsTableElectronicDocumentExtendedTooltip" id="168"/>
+						</InputField>
+						<InputField name="SelectedDocumentsTableDocumentNumber" id="61">
+							<DataPath>SelectedDocumentsTable.DocumentNumber</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="SelectedDocumentsTableDocumentNumberContextMenu" id="62"/>
+							<ExtendedTooltip name="SelectedDocumentsTableDocumentNumberExtendedTooltip" id="169"/>
+						</InputField>
+						<InputField name="SelectedDocumentsTableDocumentDate" id="63">
+							<DataPath>SelectedDocumentsTable.DocumentDate</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="SelectedDocumentsTableDocumentDateContextMenu" id="64"/>
+							<ExtendedTooltip name="SelectedDocumentsTableDocumentDateExtendedTooltip" id="170"/>
+						</InputField>
+						<InputField name="SelectedDocumentsTableDocumentAmount" id="98">
+							<DataPath>SelectedDocumentsTable.DocumentAmount</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="SelectedDocumentsTableDocumentAmountxContextMenu" id="99"/>
+							<ExtendedTooltip name="SelectedDocumentsTableDocumentAmountExtendedTooltip" id="171"/>
+						</InputField>
+						<InputField name="SelectedDocumentsTableCompany" id="67">
+							<DataPath>SelectedDocumentsTable.Company</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="SelectedDocumentsTableCompanyContextMenu" id="68"/>
+							<ExtendedTooltip name="SelectedDocumentsTableCompanyExtendedTooltip" id="172"/>
+						</InputField>
+						<InputField name="SelectedDocumentsTableCounterparty" id="65">
+							<DataPath>SelectedDocumentsTable.Counterparty</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="SelectedDocumentsTableCounterpartyContextMenu" id="66"/>
+							<ExtendedTooltip name="SelectedDocumentsTableCounterpartyExtendedTooltip" id="173"/>
+						</InputField>
+						<InputField name="SelectedDocumentsTableEDKind" id="59">
+							<DataPath>SelectedDocumentsTable.EDKind</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="SelectedDocumentsTableEDTypeContextMenu" id="60"/>
+							<ExtendedTooltip name="SelectedDocumentsTableEDTypeExtendedTooltip" id="174"/>
+						</InputField>
+						<ColumnGroup name="BasisDocumentSelectedDocuments" id="107">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Contract</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Basis document of selected documents</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<ShowInHeader>true</ShowInHeader>
+							<HeaderHorizontalAlign>Center</HeaderHorizontalAlign>
+							<ExtendedTooltip name="DocumentSelectedBasisDocumentExtendedTooltip" id="175"/>
+							<ChildItems>
+								<InputField name="SelectedDocumentsTableBasisDocumentNumber" id="110">
+									<DataPath>SelectedDocumentsTable.BasisDocumentNumber</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="SelectedDocumentsTableBasisDocumentNumberContextMenu" id="111"/>
+									<ExtendedTooltip name="SelectedDocumentsTableBasisDocumentNumberExtendedTooltip" id="176"/>
+									<Events>
+										<Event name="OnChange">SelectedDocumentsTableBasisDocumentNumberOnChange</Event>
+									</Events>
+								</InputField>
+								<InputField name="SelectedDocumentsTableBasisDocumentDate" id="108">
+									<DataPath>SelectedDocumentsTable.BasisDocumentDate</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="SelectedDocumentsTableBasisDocumentDateContextMenu" id="109"/>
+									<ExtendedTooltip name="SelectedDocumentsTableBasisDocumentDateExtendedTooltip" id="177"/>
+									<Events>
+										<Event name="OnChange">SelectedDocumentsTableBasisDocumentDateOnChange</Event>
+									</Events>
+								</InputField>
+							</ChildItems>
+						</ColumnGroup>
+						<InputField name="SelectedDocumentsTableEDDirection" id="100">
+							<DataPath>SelectedDocumentsTable.EDDirection</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="SelectedDocumentsTableEDDirectionContextMenu" id="101"/>
+							<ExtendedTooltip name="SelectedDocumentsTableEDDirectionExtendedTooltip" id="178"/>
+						</InputField>
+						<CheckBoxField name="SelectedDocumentsTableRequiredFillBasisDocument" id="112">
+							<DataPath>SelectedDocumentsTable.RequiredFillBasisDocument</DataPath>
+							<Visible>false</Visible>
+							<EditMode>EnterOnInput</EditMode>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="SelectedDocumentsTableRequiredFillBasisDocumentContextMenu" id="113"/>
+							<ExtendedTooltip name="SelectedDocumentsTableRequiredFillBasisDocumentExtendedTooltip" id="179"/>
+						</CheckBoxField>
+					</ChildItems>
+				</Table>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.ElectronicDocuments</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="QuickFilters" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Quick filters</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Save>
+				<Field>QuickFilters</Field>
+			</Save>
+			<Columns>
+				<Column name="Parameter" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Parameter</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Value" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Value</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:EnumRef.EDDirections</v8:Type>
+						<v8:Type>cfg:EnumRef.EDKinds</v8:Type>
+						<v8:Type>cfg:EnumRef.EDVersionsStates</v8:Type>
+						<v8:Type>xs:boolean</v8:Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:Type>cfg:CatalogRef.Users</v8:Type>
+						<v8:Type>cfg:CatalogRef.Companies</v8:Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:Type>cfg:CatalogRef.Counterparties</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+						<v8:DateQualifiers>
+							<v8:DateFractions>Date</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+				<Column name="ParameterPresentation" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Parameter presentation</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Type" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Type</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="SelectedDocumentsTable" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Table of documents</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Document" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Document</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:TypeSet>cfg:DocumentRef</v8:TypeSet>
+					</Type>
+				</Column>
+				<Column name="ElectronicDocument" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Electronic document</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.EDAttachedFiles</v8:Type>
+					</Type>
+				</Column>
+				<Column name="EDKind" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Document kind</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:EnumRef.EDKinds</v8:Type>
+					</Type>
+				</Column>
+				<Column name="DocumentNumber" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Document No.</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="DocumentDate" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Document date</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>Date</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+				<Column name="Counterparty" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Counterparty</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.Counterparties</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Company" id="8">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Company</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.Companies</v8:Type>
+					</Type>
+				</Column>
+				<Column name="DocumentAmount" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Document amount</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>17</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="EDDirection" id="9">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>ED direction</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:EnumRef.EDDirections</v8:Type>
+					</Type>
+				</Column>
+				<Column name="BasisDocumentNumber" id="10">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Number</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>11</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="BasisDocumentDate" id="11">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Date</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>Date</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+				<Column name="RequiredFillBasisDocument" id="12">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Required to fill Basis-document</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="AvailableDocuments" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Available documents</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<UseAlways>
+				<Field>AvailableDocuments.ElectronicDocument</Field>
+				<Field>AvailableDocuments.EDVersionState</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>SELECT
+	EDStates.ObjectReference AS Document,
+	ISNULL(EDAttachedFilesOwners.Ref, EDAttachedFiles.Ref) AS ElectronicDocument,
+	ISNULL(EDAttachedFilesOwners.SenderDocumentDate, EDAttachedFiles.SenderDocumentDate) AS DocumentDate,
+	ISNULL(EDAttachedFilesOwners.SenderDocumentNumber, EDAttachedFiles.SenderDocumentNumber) AS DocumentNumber,
+	ISNULL(EDAttachedFilesOwners.Counterparty, EDAttachedFiles.Counterparty) AS Counterparty,
+	ISNULL(EDAttachedFilesOwners.Company, EDAttachedFiles.Company) AS Company,
+	ISNULL(EDAttachedFilesOwners.EDKind, EDAttachedFiles.EDKind) AS EDKind,
+	ISNULL(EDAttachedFilesOwners.EDDirection, EDAttachedFiles.EDDirection) AS EDDirection,
+	ISNULL(EDAttachedFilesOwners.DigitallySigned, EDAttachedFiles.DigitallySigned) AS DSExist,
+	ISNULL(EDAttachedFilesOwners.DocumentAmount, EDAttachedFiles.DocumentAmount) AS DocumentAmount,
+	CAST("" AS String(11)) AS BasisDocumentNumber,
+	DateTime(1, 1, 1) AS BasisDocumentDate,
+	EDStates.EDVersionState
+FROM
+	InformationRegister.EDStates AS EDStates
+		INNER JOIN Catalog.EDAttachedFiles AS EDAttachedFiles
+			LEFT JOIN Catalog.EDAttachedFiles AS EDAttachedFilesOwners
+			ON EDAttachedFiles.ElectronicDocumentOwner = EDAttachedFilesOwners.Ref
+		ON EDStates.ElectronicDocument = EDAttachedFiles.Ref
+WHERE
+	(EDAttachedFiles.EDKind IN (&amp;EDKindsList)
+			OR EDAttachedFilesOwners.EDKind IN (&amp;EDKindsList))
+	AND (EDAttachedFiles.DigitallySigned
+			OR EDAttachedFilesOwners.DigitallySigned)</QueryText>
+				<MainTable>Catalog.EDAttachedFiles</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemField">
+							<dcsset:field>Document</dcsset:field>
+							<dcsset:orderType>Asc</dcsset:orderType>
+						</dcsset:item>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="EnteredNumber" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Number entered</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="NotExportedDocumentsExist" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>There are documents that are not exported</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Multiselect" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Multiple choice</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="VersionCall" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Version call</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>2</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<ConditionalAppearance>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>SelectedDocumentsTableBasisDocumentNumber</dcsset:field>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:field>SelectedDocumentsTableBasisDocumentDate</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemGroup">
+						<dcsset:groupType>AndGroup</dcsset:groupType>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">SelectedDocumentsTable.EDKind</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="dcscor:DesignTimeValue">Enum.EDKinds.ActPerformer</dcsset:right>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:FilterItemGroup">
+							<dcsset:groupType>OrGroup</dcsset:groupType>
+							<dcsset:item xsi:type="dcsset:FilterItemComparison">
+								<dcsset:left xsi:type="dcscor:Field">SelectedDocumentsTable.BasisDocumentNumber</dcsset:left>
+								<dcsset:comparisonType>NotFilled</dcsset:comparisonType>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:FilterItemComparison">
+								<dcsset:left xsi:type="dcscor:Field">SelectedDocumentsTable.BasisDocumentDate</dcsset:left>
+								<dcsset:comparisonType>NotFilled</dcsset:comparisonType>
+							</dcsset:item>
+						</dcsset:item>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>MarkIncomplete</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>SelectedDocumentsTableBasisDocumentNumber</dcsset:field>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:field>SelectedDocumentsTableBasisDocumentDate</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">SelectedDocumentsTable.EDKind</dcsset:left>
+						<dcsset:comparisonType>NotEqual</dcsset:comparisonType>
+						<dcsset:right xsi:type="dcscor:DesignTimeValue">Enum.EDKinds.ActPerformer</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>TextColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:InaccessibleDataColor</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Font</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Font" ref="sys:DefaultGUIFont" bold="false" italic="true" underline="false" strikeout="false" kind="WindowsFont"/>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Text</dcscor:parameter>
+						<dcscor:value xsi:type="xs:string">&lt;Not needed&gt;</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>SelectedDocumentsTableBasisDocumentNumber</dcsset:field>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:field>SelectedDocumentsTableBasisDocumentDate</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">SelectedDocumentsTable.EDKind</dcsset:left>
+						<dcsset:comparisonType>NotEqual</dcsset:comparisonType>
+						<dcsset:right xsi:type="dcscor:DesignTimeValue">Enum.EDKinds.ActPerformer</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:use>false</dcscor:use>
+						<dcscor:parameter>MarkIncomplete</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:use>false</dcscor:use>
+						<dcscor:parameter>Enabled</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ReadOnly</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+		</ConditionalAppearance>
+	</Attributes>
+	<Commands>
+		<Command name="Select" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Select</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Move to the list of selected</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.ChooseValue</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Select</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="UnsetFilter" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Remove filter</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Remove filters</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Stop</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>UnsetFilter</Action>
+		</Command>
+		<Command name="ExportToFile" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Export in file</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Export in file to send to FTS</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ExportToFile</Action>
+		</Command>
+		<Command name="OpenDocumentFormAvailableList" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Open document</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Open document from available list</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Magnifier</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>OpenDocumentFormAvailableList</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="OpenDocumentFormSelectedList" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Open document</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Open document from available list</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Magnifier</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>OpenDocumentFormSelectedList</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="ExportToArray" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Export</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Export in array</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ExportToArray</Action>
+		</Command>
+	</Commands>
+</Form>

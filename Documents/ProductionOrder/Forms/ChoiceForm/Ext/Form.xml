@@ -1,0 +1,445 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<ChildItems>
+			<Button name="FormCommonCommandDependencies" id="82">
+				<Type>CommandBarButton</Type>
+				<CommandName>CommonCommand.Dependencies</CommandName>
+				<DataPath>Items.List.CurrentData.Ref</DataPath>
+				<ExtendedTooltip name="FormCommonCommandDependenciesExtendedTooltip" id="83"/>
+			</Button>
+			<Button name="FormChangeForm" id="78">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
+				<ExtendedTooltip name="FormChangeFormExtendedTooltip" id="79"/>
+			</Button>
+			<Button name="FormHelp" id="80">
+				<Type>CommandBarButton</Type>
+				<OnlyInAllActions>false</OnlyInAllActions>
+				<CommandName>Form.StandardCommand.Help</CommandName>
+				<ExtendedTooltip name="FormHelpExtendedTooltip" id="81"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="NotificationProcessing">NotificationProcessing</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<Table name="List" id="1">
+			<Representation>List</Representation>
+			<CommandBarLocation>None</CommandBarLocation>
+			<SkipOnInput>false</SkipOnInput>
+			<DefaultItem>true</DefaultItem>
+			<ChoiceMode>true</ChoiceMode>
+			<UseAlternationRowColor>true</UseAlternationRowColor>
+			<EnableStartDrag>true</EnableStartDrag>
+			<DataPath>List</DataPath>
+			<RowPictureDataPath>List.DefaultPicture</RowPictureDataPath>
+			<SearchStringLocation>CommandBar</SearchStringLocation>
+			<ViewStatusLocation>Top</ViewStatusLocation>
+			<SearchControlLocation>CommandBar</SearchControlLocation>
+			<AutoRefresh>false</AutoRefresh>
+			<AutoRefreshPeriod>60</AutoRefreshPeriod>
+			<Period>
+				<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+				<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+				<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+			</Period>
+			<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+			<RestoreCurrentRow>false</RestoreCurrentRow>
+			<TopLevelParent xsi:nil="true"/>
+			<ShowRoot>false</ShowRoot>
+			<AllowRootChoice>false</AllowRootChoice>
+			<UpdateOnDataChange>Auto</UpdateOnDataChange>
+			<ContextMenu name="ListContextMenu" id="2"/>
+			<AutoCommandBar name="ListCommandBar" id="3"/>
+			<ExtendedTooltip name="ListExtendedTooltip" id="52"/>
+			<SearchStringAddition name="SearchStringList" id="69">
+				<AdditionSource>
+					<Item>List</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ListSearchStringContextMenu" id="70"/>
+				<ExtendedTooltip name="ListSearchStringExtendedTooltip" id="71"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ListViewStatus" id="72">
+				<AdditionSource>
+					<Item>List</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ListViewStatusContextMenu" id="73"/>
+				<ExtendedTooltip name="ListViewStatusExtendedTooltip" id="74"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ListSearchControl" id="75">
+				<AdditionSource>
+					<Item>List</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ListSearchControlContextMenu" id="76"/>
+				<ExtendedTooltip name="ListSearchControlExtendedTooltip" id="77"/>
+			</SearchControlAddition>
+			<ChildItems>
+				<LabelField name="Date" id="4">
+					<DataPath>List.Date</DataPath>
+					<DefaultItem>true</DefaultItem>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Date</v8:content>
+						</v8:item>
+					</Title>
+					<Width>10</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<Format>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>DLF=D</v8:content>
+						</v8:item>
+					</Format>
+					<ContextMenu name="DateContextMenu" id="5"/>
+					<ExtendedTooltip name="DateExtendedTooltip" id="54"/>
+				</LabelField>
+				<LabelField name="Number" id="6">
+					<DataPath>List.Number</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Number</v8:content>
+						</v8:item>
+					</Title>
+					<Width>11</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="NumberContextMenu" id="7"/>
+					<ExtendedTooltip name="NumberExtendedTooltip" id="55"/>
+				</LabelField>
+				<LabelField name="OrderState" id="40">
+					<DataPath>List.OrderState</DataPath>
+					<Width>12</Width>
+					<ContextMenu name="OrderStateContextMenu" id="41"/>
+					<ExtendedTooltip name="OrderStateExtendedTooltip" id="56"/>
+				</LabelField>
+				<LabelField name="OrderStatus" id="46">
+					<DataPath>List.OrderStatus</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>State</v8:content>
+						</v8:item>
+					</Title>
+					<Width>12</Width>
+					<ContextMenu name="OrderStatusContextMenu" id="47"/>
+					<ExtendedTooltip name="OrderStatusExtendedTooltip" id="57"/>
+				</LabelField>
+				<LabelField name="StructuralUnit" id="18">
+					<DataPath>List.StructuralUnit</DataPath>
+					<Width>20</Width>
+					<ContextMenu name="StructuralUnitContextMenu" id="19"/>
+					<ExtendedTooltip name="StructuralUnitExtendedTooltip" id="61"/>
+				</LabelField>
+				<LabelField name="ProductsAndServicesList" id="48">
+					<DataPath>List.ProductsAndServicesList</DataPath>
+					<Width>20</Width>
+					<Height>2</Height>
+					<ContextMenu name="ProductsAndServicesListContextMenu" id="49"/>
+					<ExtendedTooltip name="ProductsAndServicesListExtendedTooltip" id="60"/>
+				</LabelField>
+				<LabelField name="Start" id="14">
+					<DataPath>List.Start</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Start</v8:content>
+						</v8:item>
+					</Title>
+					<Width>10</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="StartContextMenu" id="15"/>
+					<ExtendedTooltip name="StartExtendedTooltip" id="62"/>
+				</LabelField>
+				<LabelField name="Finish" id="16">
+					<DataPath>List.Finish</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Finish</v8:content>
+						</v8:item>
+					</Title>
+					<Width>10</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="FinishContextMenu" id="17"/>
+					<ExtendedTooltip name="FinishExtendedTooltip" id="63"/>
+				</LabelField>
+				<LabelField name="OperationKind" id="50">
+					<DataPath>List.OperationKind</DataPath>
+					<Width>12</Width>
+					<ContextMenu name="OperationTypeContextMenu" id="51"/>
+					<ExtendedTooltip name="OperationTypeExtendedTooltip" id="59"/>
+				</LabelField>
+				<LabelField name="Company" id="8">
+					<DataPath>List.Company</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Company</v8:content>
+						</v8:item>
+					</Title>
+					<Width>20</Width>
+					<ContextMenu name="CounterpartyContextMenu" id="9"/>
+					<ExtendedTooltip name="CounterpartyExtendedTooltip" id="58"/>
+				</LabelField>
+				<CheckBoxField name="Closed" id="38">
+					<DataPath>List.Closed</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<HeaderPicture>
+						<xr:Ref>CommonPicture.LockFile</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</HeaderPicture>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="CloseContextMenu" id="39"/>
+					<ExtendedTooltip name="ClosedExtendedTooltip" id="53"/>
+				</CheckBoxField>
+				<LabelField name="BasisDocument" id="36">
+					<DataPath>List.BasisDocument</DataPath>
+					<ContextMenu name="BasisDocumentContextMenu" id="37"/>
+					<ExtendedTooltip name="BasisDocumentExtendedTooltip" id="65"/>
+				</LabelField>
+				<LabelField name="CustomerOrder" id="12">
+					<DataPath>1/30</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<ContextMenu name="CustomerOrderContextMenu" id="13"/>
+					<ExtendedTooltip name="CustomerOrderExtendedTooltip" id="64"/>
+				</LabelField>
+				<LabelField name="Responsible" id="44">
+					<DataPath>List.Responsible</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<ContextMenu name="ResponsibleContextMenu" id="45"/>
+					<ExtendedTooltip name="ResponsibleExtendedTooltip" id="66"/>
+				</LabelField>
+				<LabelField name="Comment" id="34">
+					<DataPath>List.Comment</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Comment</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="CommentContextMenu" id="35"/>
+					<ExtendedTooltip name="CommentExtendedTooltip" id="67"/>
+				</LabelField>
+				<LabelField name="Author" id="42">
+					<DataPath>List.Author</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<ContextMenu name="AuthorContextMenu" id="43"/>
+					<ExtendedTooltip name="AuthorExtendedTooltip" id="68"/>
+				</LabelField>
+				<LabelField name="Ref" id="84">
+					<DataPath>List.Ref</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<ContextMenu name="RefContextMenu" id="85"/>
+					<ExtendedTooltip name="RefExtendedTooltip" id="86"/>
+				</LabelField>
+			</ChildItems>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="List" id="1">
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<UseAlways>
+				<Field>List.Ref</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>SELECT
+	DocumentProductionOrder.Ref,
+	DocumentProductionOrder.DataVersion,
+	DocumentProductionOrder.DeletionMark,
+	DocumentProductionOrder.Number,
+	DocumentProductionOrder.Date,
+	DocumentProductionOrder.Posted,
+	DocumentProductionOrder.OperationKind,
+	DocumentProductionOrder.Company,
+	DocumentProductionOrder.CustomerOrder,
+	DocumentProductionOrder.Start,
+	DocumentProductionOrder.Finish,
+	DocumentProductionOrder.StructuralUnit,
+	DocumentProductionOrder.Comment,
+	DocumentProductionOrder.StructuralUnitReserve,
+	DocumentProductionOrder.BasisDocument,
+	DocumentProductionOrder.OrderState,
+	CASE
+		WHEN (DocumentProductionOrder.OrderState.OrderStatus = VALUE(Enum.OrderStatuses.Open)
+				OR DocumentProductionOrder.OrderState.OrderStatus = VALUE(Enum.OrderStatuses.InProcess))
+				AND (NOT DocumentProductionOrder.Closed)
+			THEN "In process"
+		ELSE CASE
+				WHEN DocumentProductionOrder.OrderState.OrderStatus = VALUE(Enum.OrderStatuses.Completed)
+					THEN "Completed"
+				ELSE "Canceled"
+			END
+	END AS OrderStatus,
+	DocumentProductionOrder.Closed,
+	DocumentProductionOrder.Responsible,
+	DocumentProductionOrder.Author,
+	DocumentProductionOrder.ProductsAndServicesList,
+	DocumentProductionOrder.ResourcesList,
+	DocumentProductionOrder.Inventory.(
+		Ref,
+		LineNumber,
+		ProductsAndServices,
+		Characteristic,
+		Quantity,
+		MeasurementUnit,
+		Specification,
+		Reserve
+	),
+	DocumentProductionOrder.EnterpriseResources.(
+		Ref,
+		LineNumber,
+		EnterpriseResource,
+		Capacity,
+		Duration,
+		Start,
+		Finish
+	),
+	DocumentProductionOrder.PointInTime
+	FROM
+		Document.ProductionOrder AS DocumentProductionOrder</QueryText>
+				<MainTable>Document.ProductionOrder</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:item>
+							<dcsset:selection/>
+							<dcsset:filter>
+								<dcsset:item xsi:type="dcsset:FilterItemComparison">
+									<dcsset:left xsi:type="dcscor:Field">Closed</dcsset:left>
+									<dcsset:comparisonType>Equal</dcsset:comparisonType>
+									<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+								</dcsset:item>
+							</dcsset:filter>
+							<dcsset:appearance>
+								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+									<dcscor:use>false</dcscor:use>
+									<dcscor:parameter>BackColor</dcscor:parameter>
+									<dcscor:value xsi:type="v8ui:Color">style:OrderIsClosed</dcscor:value>
+								</dcscor:item>
+								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+									<dcscor:parameter>Font</dcscor:parameter>
+									<dcscor:value xsi:type="v8ui:Font" ref="sys:DefaultGUIFont" bold="false" italic="false" underline="false" strikeout="true" kind="WindowsFont"/>
+								</dcscor:item>
+							</dcsset:appearance>
+							<dcsset:presentation xsi:type="xs:string">Order is closed</dcsset:presentation>
+						</dcsset:item>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+	</Attributes>
+	<CommandInterface>
+		<CommandBar>
+			<Item>
+				<Command>0:c1814037-f23d-4e8c-ad6e-db644a22bb1d</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormCommandBarCreateBasedOn</CommandGroup>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+			<Item>
+				<Command>0</Command>
+				<Type>Auto</Type>
+				<CommandGroup>CommandGroup.Print</CommandGroup>
+				<Index>1</Index>
+			</Item>
+			<Item>
+				<Command>0:c42f200f-3765-425c-9acc-8936d97f587f</Command>
+				<Type>Auto</Type>
+				<CommandGroup>CommandGroup.Print</CommandGroup>
+			</Item>
+			<Item>
+				<Command>CommonCommand.ObjectFilling</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormCommandBarImportant</CommandGroup>
+				<Index>2</Index>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+			<Item>
+				<Command>CommonCommand.ObjectReports</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormCommandBarImportant</CommandGroup>
+				<Index>6</Index>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+			<Item>
+				<Command>CommonCommand.CreatingLinkedObjects</Command>
+				<Type>Auto</Type>
+				<Index>1</Index>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+			<Item>
+				<Command>CommonCommand.ObjectAdditionalPrintForms</Command>
+				<Type>Auto</Type>
+				<CommandGroup>CommandGroup.Print</CommandGroup>
+				<Index>2</Index>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+			<Item>
+				<Command>CommonCommand.AdditionalInformationCommandBar</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormCommandBarImportant</CommandGroup>
+				<Index>1</Index>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+			<Item>
+				<Command>CommonCommand.ChangesHistory</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormCommandBarImportant</CommandGroup>
+				<Index>3</Index>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+			<Item>
+				<Command>CommonCommand.ReportByMovements</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormCommandBarImportant</CommandGroup>
+				<Index>4</Index>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+			<Item>
+				<Command>CommonCommand.Remind</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormCommandBarImportant</CommandGroup>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+		</CommandBar>
+	</CommandInterface>
+</Form>

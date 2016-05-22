@@ -1,0 +1,432 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Width>38</Width>
+	<Height>5</Height>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<CommandBarLocation>None</CommandBarLocation>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<HorizontalAlign>Right</HorizontalAlign>
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<Pages name="Pages" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Pages</v8:content>
+				</v8:item>
+			</Title>
+			<VerticalStretch>true</VerticalStretch>
+			<PagesRepresentation>None</PagesRepresentation>
+			<ExtendedTooltip name="PagesExtendedTooltip" id="14"/>
+			<ChildItems>
+				<Page name="PageMethodAddCertificate" id="21">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Page method of Add certificate</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="PageMethodAddCertificateExtendedTooltip" id="22"/>
+					<ChildItems>
+						<RadioButtonField name="MethodAddCertificate1" id="23">
+							<DataPath>MethodAddCertificate</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<RadioButtonType>Auto</RadioButtonType>
+							<ColumnsCount>1</ColumnsCount>
+							<ChoiceList>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Request for certificate issue</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:string">RequestForCertificateIssue</Value>
+									</xr:Value>
+								</xr:Item>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>From installed on computer</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:string">FromInstalledOnComputer</Value>
+									</xr:Value>
+								</xr:Item>
+							</ChoiceList>
+							<ContextMenu name="MethodAddCertificate1ContextMenu" id="24"/>
+							<ExtendedTooltip name="MethodAddCertificate1ExtendedTooltip" id="25"/>
+							<Events>
+								<Event name="OnChange">MethodAddCertificateOnChange</Event>
+							</Events>
+						</RadioButtonField>
+					</ChildItems>
+				</Page>
+				<Page name="PageMethodAddCertificateWithoutEncryption" id="42">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Page method of Add certificate without encryption</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="PageMethodAddCertificateWithoutEncryptionExtendedTooltip" id="43"/>
+					<ChildItems>
+						<RadioButtonField name="MethodAddCertificate2" id="44">
+							<DataPath>MethodAddCertificate</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<RadioButtonType>Auto</RadioButtonType>
+							<ColumnsCount>1</ColumnsCount>
+							<ChoiceList>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Request for certificate issue</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:string">RequestForCertificateIssue</Value>
+									</xr:Value>
+								</xr:Item>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>From installed on computer</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:string">ForSigningEncryptionAndDecryption</Value>
+									</xr:Value>
+								</xr:Item>
+							</ChoiceList>
+							<ContextMenu name="MethodAddCertificate2ContextMenu" id="45"/>
+							<ExtendedTooltip name="MethodAddCertificate2ExtendedTooltip" id="46"/>
+						</RadioButtonField>
+					</ChildItems>
+				</Page>
+				<Page name="PurposePage" id="15">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Page purpose</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Horizontal</Group>
+					<ExtendedTooltip name="PagePurposeExtendedTooltip" id="16"/>
+					<ChildItems>
+						<RadioButtonField name="Purpose" id="1">
+							<DataPath>Purpose</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Add new certificate</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>None</TitleLocation>
+							<RadioButtonType>Auto</RadioButtonType>
+							<ChoiceList>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>For signing and encryption</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:string">ForSigningEncryptionAndDecryption</Value>
+									</xr:Value>
+								</xr:Item>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>For encryption only</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:string">ForEncryptionOnly</Value>
+									</xr:Value>
+								</xr:Item>
+							</ChoiceList>
+							<ContextMenu name="PrescriptionContextMENU" id="2"/>
+							<ExtendedTooltip name="PurposeExtendedTooltip" id="3"/>
+							<Events>
+								<Event name="OnChange">PurposeOnChange</Event>
+							</Events>
+						</RadioButtonField>
+						<UsualGroup name="VerticalGroup1" id="35">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Vertical group 1</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="VerticalGroup1ExtendedTooltip" id="36"/>
+							<ChildItems>
+								<LabelDecoration name="VerticalIndent1" id="37">
+									<ContextMenu name="VerticalIndent1ContextMenu" id="38"/>
+									<ExtendedTooltip name="VerticalIndent1ExtendedTooltip" id="39"/>
+								</LabelDecoration>
+								<Button name="AddFromFile1" id="40">
+									<Type>Hyperlink</Type>
+									<CommandName>Form.Command.AddFromFile</CommandName>
+									<ExtendedTooltip name="AddFromFile1ExtendedTooltip" id="41"/>
+								</Button>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="PagePurposeWithoutDigitalSignature" id="17">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Page purpose without digital signature</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Horizontal</Group>
+					<ExtendedTooltip name="PagePurposeWithoutDigitalSignatureExtendedTooltip" id="18"/>
+					<ChildItems>
+						<RadioButtonField name="PurposeWithoutDigitalSignature" id="10">
+							<DataPath>Purpose</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Add new certificate</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>None</TitleLocation>
+							<RadioButtonType>Auto</RadioButtonType>
+							<ChoiceList>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>For encryption and decryption</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:string">ForEncryptionAndDecryption</Value>
+									</xr:Value>
+								</xr:Item>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>For encryption only</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:string">ForEncryptionOnly</Value>
+									</xr:Value>
+								</xr:Item>
+							</ChoiceList>
+							<ContextMenu name="PurposeWithoutDigitalSignatureContextMenu" id="11"/>
+							<ExtendedTooltip name="PurposeWithoutDigitalSignatureExtendedTooltip" id="12"/>
+							<Events>
+								<Event name="OnChange">PurposeOnChange</Event>
+							</Events>
+						</RadioButtonField>
+						<UsualGroup name="VerticalGroup2" id="33">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Vertical group 2</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="VerticalGroup2ExtendedTooltip" id="34"/>
+							<ChildItems>
+								<LabelDecoration name="VerticalIndent2" id="30">
+									<ContextMenu name="VerticalIndent2ContextMenu" id="31"/>
+									<ExtendedTooltip name="VerticalIndent2ExtendedTooltip" id="32"/>
+								</LabelDecoration>
+								<Button name="AddFromFile2" id="19">
+									<Type>Hyperlink</Type>
+									<CommandName>Form.Command.AddFromFile</CommandName>
+									<ExtendedTooltip name="AddFromFile2ExtendedTooltip" id="20"/>
+								</Button>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+		<UsualGroup name="Commands" id="47">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Commands</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Commands</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>NormalSeparation</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="CommandsExtendedTooltip" id="48"/>
+			<ChildItems>
+				<CommandBar name="CommandBack" id="49">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Command back</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="BackCommandExtendedTooltip" id="50"/>
+					<ChildItems>
+						<Button name="FormBack" id="28">
+							<Type>CommandBarButton</Type>
+							<Visible>false</Visible>
+							<CommandName>Form.Command.Back</CommandName>
+							<ExtendedTooltip name="FormBackExtendedTooltip" id="29"/>
+						</Button>
+					</ChildItems>
+				</CommandBar>
+				<LabelDecoration name="HorizontalIndent" id="53">
+					<HorizontalStretch>true</HorizontalStretch>
+					<ContextMenu name="HorizontalIndentContexMenu" id="54"/>
+					<ExtendedTooltip name="HorizontalIndentExtendedTooltip" id="55"/>
+				</LabelDecoration>
+				<CommandBar name="BasicCommands" id="51">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Basic commands</v8:content>
+						</v8:item>
+					</Title>
+					<HorizontalLocation>Right</HorizontalLocation>
+					<ExtendedTooltip name="BasicCommandsExtendedTooltip" id="52"/>
+					<ChildItems>
+						<Button name="FormAdd" id="4">
+							<Type>CommandBarButton</Type>
+							<DefaultButton>true</DefaultButton>
+							<CommandName>Form.Command.Add</CommandName>
+							<ExtendedTooltip name="FormAddExtendedTooltip" id="5"/>
+						</Button>
+						<Button name="FormNext" id="26">
+							<Type>CommandBarButton</Type>
+							<Visible>false</Visible>
+							<CommandName>Form.Command.Next</CommandName>
+							<ExtendedTooltip name="FormNextExtendedTooltip" id="27"/>
+						</Button>
+						<Button name="FormCancel" id="6">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.StandardCommand.Cancel</CommandName>
+							<ExtendedTooltip name="CancelFormExtendedTooltip" id="7"/>
+						</Button>
+					</ChildItems>
+				</CommandBar>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Purpose" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Purpose</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="MethodAddCertificate" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Method of Add certificate</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="Add" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Add</v8:content>
+				</v8:item>
+			</Title>
+			<Action>Add</Action>
+		</Command>
+		<Command name="AddFromFile" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Add from file</v8:content>
+				</v8:item>
+			</Title>
+			<Action>AddFromFile</Action>
+		</Command>
+		<Command name="Back" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>&lt; Back</v8:content>
+				</v8:item>
+			</Title>
+			<Action>Back</Action>
+		</Command>
+		<Command name="Next" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Next &gt;</v8:content>
+				</v8:item>
+			</Title>
+			<Action>Next</Action>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="HideApplication">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

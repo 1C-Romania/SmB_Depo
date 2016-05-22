@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<ChildItems>
+			<ButtonGroup name="GroupGlobalCommands" id="59">
+				<Title>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Global commands group</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTip>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Global commands group</v8:content>
+					</v8:item>
+				</ToolTip>
+				<CommandSource>FormCommandPanelGlobalCommands</CommandSource>
+				<ExtendedTooltip name="GroupGlobalCommandsExtendedTooltip" id="60"/>
+				<ChildItems>
+					<Button name="CommonCommandObjectReports" id="61">
+						<Type>CommandBarButton</Type>
+						<CommandName>CommonCommand.ObjectReports</CommandName>
+						<DataPath>Object.Ref</DataPath>
+						<ExtendedTooltip name="CommonCommandObjectReportsExtendedTooltip" id="62"/>
+					</Button>
+					<Button name="CommonCommandChangesHistory" id="63">
+						<Type>CommandBarButton</Type>
+						<OnlyInAllActions>false</OnlyInAllActions>
+						<CommandName>CommonCommand.ChangesHistory</CommandName>
+						<DataPath>Object.Ref</DataPath>
+						<ExtendedTooltip name="CommonCommandChangesHistoryExtendedTooltip" id="64"/>
+					</Button>
+				</ChildItems>
+			</ButtonGroup>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="Header" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Header</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="HeaderExtendedTooltip" id="45"/>
+			<ChildItems>
+				<InputField name="Description" id="5">
+					<DataPath>Object.Description</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<Wrap>false</Wrap>
+					<ContextMenu name="DescriptionContextMenu" id="6"/>
+					<ExtendedTooltip name="DescriptionExtendedTooltip" id="48"/>
+				</InputField>
+				<InputField name="Code" id="3">
+					<DataPath>Object.Code</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<SkipOnInput>true</SkipOnInput>
+					<EditMode>EnterOnInput</EditMode>
+					<Wrap>false</Wrap>
+					<ContextMenu name="CodeContextMenu" id="4"/>
+					<ExtendedTooltip name="CodeExtendedTooltip" id="47"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<InputField name="Parent" id="7">
+			<DataPath>Object.Parent</DataPath>
+			<SkipOnInput>true</SkipOnInput>
+			<EditMode>EnterOnInput</EditMode>
+			<Wrap>false</Wrap>
+			<ContextMenu name="ParentContextMenu" id="8"/>
+			<ExtendedTooltip name="ParentExtendedTooltip" id="46"/>
+		</InputField>
+		<InputField name="Counterparty" id="37">
+			<DataPath>Object.Counterparty</DataPath>
+			<Wrap>false</Wrap>
+			<ContextMenu name="CounterpartyContextMenu" id="38"/>
+			<ExtendedTooltip name="CounterpartyExtendedTooltip" id="49"/>
+			<Events>
+				<Event name="OnChange">CounterpartyOnChange</Event>
+			</Events>
+		</InputField>
+		<InputField name="Contract" id="39">
+			<DataPath>Object.Contract</DataPath>
+			<Wrap>false</Wrap>
+			<ContextMenu name="ContractContextMenu" id="40"/>
+			<ExtendedTooltip name="ContractExtendedTooltip" id="50"/>
+		</InputField>
+		<InputField name="Comment" id="18">
+			<DataPath>Object.Comment</DataPath>
+			<TitleLocation>None</TitleLocation>
+			<EditMode>EnterOnInput</EditMode>
+			<Height>3</Height>
+			<MultiLine>true</MultiLine>
+			<InputHint>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Comment</v8:content>
+				</v8:item>
+			</InputHint>
+			<ContextMenu name="CommentContextMenu" id="19"/>
+			<ExtendedTooltip name="CommentExtendedTooltip" id="53"/>
+		</InputField>
+		<UsualGroup name="PeriodGroup" id="54">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group period</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group period</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="PeriodGroupExtendedTooltip" id="55"/>
+			<ChildItems>
+				<LabelDecoration name="PeriodIndent" id="56">
+					<HorizontalStretch>true</HorizontalStretch>
+					<ContextMenu name="PeriodIndentContextMenu" id="57"/>
+					<ExtendedTooltip name="PeriodIndentExtendedTooltip" id="58"/>
+				</LabelDecoration>
+				<InputField name="StartDate" id="41">
+					<DataPath>Object.StartDate</DataPath>
+					<Wrap>false</Wrap>
+					<ContextMenu name="StartDateContextMenu" id="42"/>
+					<ExtendedTooltip name="StartDateExtendedTooltip" id="51"/>
+				</InputField>
+				<InputField name="EndDate" id="43">
+					<DataPath>Object.EndDate</DataPath>
+					<Wrap>false</Wrap>
+					<ContextMenu name="EndDateContextMenu" id="44"/>
+					<ExtendedTooltip name="EndDateExtendedTooltip" id="52"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Type>
+				<v8:Type>cfg:CatalogObject.Projects</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+	</Attributes>
+</Form>

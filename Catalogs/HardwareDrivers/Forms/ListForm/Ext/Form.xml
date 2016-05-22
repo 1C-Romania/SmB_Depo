@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<Table name="List" id="3">
+			<Representation>List</Representation>
+			<UseAlternationRowColor>true</UseAlternationRowColor>
+			<InitialTreeView>ExpandTopLevel</InitialTreeView>
+			<EnableStartDrag>true</EnableStartDrag>
+			<DataPath>List</DataPath>
+			<RowPictureDataPath>List.DefaultPicture</RowPictureDataPath>
+			<CommandSet>
+				<ExcludedCommand>ListSettings</ExcludedCommand>
+				<ExcludedCommand>LoadDynamicListSettings</ExcludedCommand>
+				<ExcludedCommand>DynamicListStandardSettings</ExcludedCommand>
+				<ExcludedCommand>CancelSearch</ExcludedCommand>
+				<ExcludedCommand>CopyToClipboard</ExcludedCommand>
+				<ExcludedCommand>SaveDynamicListSettings</ExcludedCommand>
+				<ExcludedCommand>Find</ExcludedCommand>
+				<ExcludedCommand>Delete</ExcludedCommand>
+			</CommandSet>
+			<SearchStringLocation>None</SearchStringLocation>
+			<ViewStatusLocation>None</ViewStatusLocation>
+			<SearchControlLocation>None</SearchControlLocation>
+			<AutoRefresh>false</AutoRefresh>
+			<AutoRefreshPeriod>60</AutoRefreshPeriod>
+			<Period>
+				<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+				<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+				<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+			</Period>
+			<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+			<RestoreCurrentRow>false</RestoreCurrentRow>
+			<TopLevelParent xsi:nil="true"/>
+			<ShowRoot>true</ShowRoot>
+			<AllowRootChoice>false</AllowRootChoice>
+			<UpdateOnDataChange>Auto</UpdateOnDataChange>
+			<UserSettingsGroup>1:02023637-7868-4a5f-8576-835a76e0c9ba</UserSettingsGroup>
+			<ContextMenu name="ListContextMenu" id="4">
+				<Autofill>false</Autofill>
+				<ChildItems>
+					<Button name="ListContextMenuCreate" id="27">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.List.StandardCommand.Create</CommandName>
+						<ExtendedTooltip name="ListContextMenuCreateExtendedTooltip" id="28"/>
+					</Button>
+					<Button name="ListContextMenuCopy" id="29">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.List.StandardCommand.Copy</CommandName>
+						<ExtendedTooltip name="ListContextMenuCopyExtendedTooltip" id="30"/>
+					</Button>
+					<Button name="ListContextMenuChange" id="31">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.List.StandardCommand.Change</CommandName>
+						<ExtendedTooltip name="ListContextMenuChangeExtendedTooltip" id="32"/>
+					</Button>
+					<Button name="ListContextMenuSetDeletionMark" id="33">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.List.StandardCommand.SetDeletionMark</CommandName>
+						<ExtendedTooltip name="ListContextMenuSetDeletionMarkExtendedTooltip" id="34"/>
+					</Button>
+					<Button name="ListContextMenuOutputList" id="35">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.List.StandardCommand.OutputList</CommandName>
+						<ExtendedTooltip name="ListContextMenuDisplayListExtendedTooltip" id="36"/>
+					</Button>
+					<Button name="ListContextMenuUpdate" id="37">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.List.StandardCommand.Refresh</CommandName>
+						<ExtendedTooltip name="ListContextMenuUpdateExtendedTooltip" id="38"/>
+					</Button>
+				</ChildItems>
+			</ContextMenu>
+			<AutoCommandBar name="ListCommandBar" id="5">
+				<Autofill>false</Autofill>
+				<ChildItems>
+					<Button name="ListCreate" id="13">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.List.StandardCommand.Create</CommandName>
+						<ExtendedTooltip name="ListCreateExtendedTooltip" id="14"/>
+					</Button>
+					<Button name="ListCopy" id="15">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.List.StandardCommand.Copy</CommandName>
+						<ExtendedTooltip name="ListCopyExtendedTooltip" id="16"/>
+					</Button>
+					<Button name="ListChange" id="21">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.List.StandardCommand.Change</CommandName>
+						<ExtendedTooltip name="ListChangeExtendedTooltip" id="22"/>
+					</Button>
+					<Button name="ListSetDeletionMark" id="19">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.List.StandardCommand.SetDeletionMark</CommandName>
+						<ExtendedTooltip name="ListSetDeletionMarkExtendedTooltip" id="20"/>
+					</Button>
+					<Button name="ListOutputList" id="23">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.List.StandardCommand.OutputList</CommandName>
+						<ExtendedTooltip name="ListPutListExtendedTooltip" id="24"/>
+					</Button>
+					<Button name="ListRefresh" id="25">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.List.StandardCommand.Refresh</CommandName>
+						<ExtendedTooltip name="ListUpdateExtendedTooltip" id="26"/>
+					</Button>
+					<Button name="AddNewDriverFromFile" id="44">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.AddNewDriverFromFile</CommandName>
+						<ExtendedTooltip name="AddNewDriverFromFileExtendedTooltip" id="45"/>
+					</Button>
+				</ChildItems>
+			</AutoCommandBar>
+			<ExtendedTooltip name="ListExtendedTooltip" id="6"/>
+			<SearchStringAddition name="SearchStringList" id="46">
+				<AdditionSource>
+					<Item>List</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ListSearchStringContextMenu" id="47"/>
+				<ExtendedTooltip name="ListSearchStringExtendedTooltip" id="48"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ListViewStatus" id="49">
+				<AdditionSource>
+					<Item>List</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ListViewStatusContextMenu" id="50"/>
+				<ExtendedTooltip name="ListViewStatusExtendedTooltip" id="51"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ListSearchControl" id="52">
+				<AdditionSource>
+					<Item>List</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ListSearchControlContextMenu" id="53"/>
+				<ExtendedTooltip name="ListSearchControlExtendedTooltip" id="54"/>
+			</SearchControlAddition>
+			<ChildItems>
+				<LabelField name="Description" id="7">
+					<DataPath>List.Description</DataPath>
+					<ContextMenu name="DescriptionContextMenu" id="8"/>
+					<ExtendedTooltip name="DescriptionExtendedTooltip" id="9"/>
+				</LabelField>
+			</ChildItems>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="List" id="1">
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>SELECT
+	CatalogHardwareDrivers.Ref,
+	CatalogHardwareDrivers.DeletionMark,
+	CatalogHardwareDrivers.Description,
+	CatalogHardwareDrivers.EquipmentType,
+	CatalogHardwareDrivers.Predefined,
+	CatalogHardwareDrivers.PredefinedDataName,
+	CASE WHEN CatalogHardwareDrivers.Predefined 
+	THEN "%Predefined%" 
+	ELSE "%Attachable%" END AS TypeDriver
+FROM
+	Catalog.HardwareDrivers AS CatalogHardwareDrivers</QueryText>
+				<MainTable>Catalog.HardwareDrivers</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemField">
+							<dcsset:field>Predefined</dcsset:field>
+							<dcsset:orderType>Asc</dcsset:orderType>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:OrderItemField">
+							<dcsset:field>Description</dcsset:field>
+							<dcsset:orderType>Asc</dcsset:orderType>
+						</dcsset:item>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="GroupEquipmentType" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group by hardware type</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="AddNewDriverFromFile" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Add new driver from the file</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Add new driver from the file</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>AddNewDriverFromFile</Action>
+		</Command>
+	</Commands>
+</Form>

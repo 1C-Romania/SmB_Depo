@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<MetaDataObject xmlns="http://v8.1c.ru/8.3/MDClasses" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:cmi="http://v8.1c.ru/8.2/managed-application/cmi" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xpr="http://v8.1c.ru/8.3/xcf/predef" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Subsystem uuid="4bd401b9-7e40-4847-85df-ab45fba08d40">
+		<Properties>
+			<Name>DataExportImport</Name>
+			<Synonym>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Data export import</v8:content>
+				</v8:item>
+			</Synonym>
+			<Comment/>
+			<IncludeHelpInContents>true</IncludeHelpInContents>
+			<IncludeInCommandInterface>false</IncludeInCommandInterface>
+			<Explanation/>
+			<Picture/>
+			<Content>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.ValueStorageDataExportImport</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">XDTOPackage.DataDump_1_0_2_1</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.DataExportImport</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.DataExportImportService</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.DataExportImportContainerManager</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.DataExportImportServiceEvents</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">XDTOPackage.DataArtefacts_ValueStorages_1_0_0_1</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.DataExportImportSequencesLimits</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.JointlySeparatedDataExportImport</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.UndividedDataExportImport</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.PredefinedDataExportImport</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.InfobaseUsersExportImport</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.DataExportImportOverridable</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.DataExportImportInfobaseDataReadingStream</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.DataExportImportInfobaseDataWritingStream</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.DataExportImportLinkReplacementStream</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.DataExportImportLinkMatchingDictionaryDependencyGraph</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.ValueStorageDataExportImportReUse</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.ExportImportUndividedDataReUse</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.PredefinedDataExportImportReUse</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.JointlySeparatedDataExportImportReUse</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.DataExportImportInfobaseDataExportManager</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.DataExportImportRecreatedLinksWritingStream</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.DataExportImportMappedLinksWritingStream</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.DataExportImportInfobaseDataImportManager</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.DataExportImportLinkRecreationManager</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.DataExportImportRefsMappingManager</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.UndividedPredefinedDataExportImport</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.DataExportImportDataExportHandlersManager</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.DataExportImportDataImportHandlersManager</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.DataExportImportTotalsControl</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.DataExportImportUserSettingsExportManager</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.DataExportImportUserSettingsImportManager</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.ExportImportUserWorkFavorites</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">XDTOPackage.DataArtefacts_UserWorkFavorites_1_0_0_1</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.ExportImportStandardInterfaceStructureOData</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.ExportImportExchangePlanNodes</xr:Item>
+			</Content>
+		</Properties>
+		<ChildObjects/>
+	</Subsystem>
+</MetaDataObject>

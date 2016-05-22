@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"></meta><link rel="stylesheet" type="text/css" href="v8help://service_book/service_style"></link><meta name="GENERATOR" content="MSHTML 11.00.9600.18321"></meta></head><body>
+<p>Adjusting parameters for use of means of digital signing or encryption (cryptography). </p>
+<p>It is opened by the <strong>Digital signature and encryption settings </strong>command in the <strong>Administration - General settings </strong>section.</p>
+<p>To use digital signatures and encryption, you have to set a dedicated external application (encryption provider).</p>
+<p>In the <strong>Administration - General settings </strong>section, select the <strong>Electronic signature </strong>checkbox to be able to sign data, and the <strong>Encryption</strong> checkbox to be able to use encryption. Upon that the corresponding application commands become available.</p>
+<p>The digital signature is an electronic document attribute with which you can make sure that no changes occurred in the document since you signed it. To put a signature, you should have a digital signature key certificate. You can obtain the certificate in a certification center. For example, it could be the certification center of 1C Company <a href="http://v8.1c.ru/learn/">http://v8.1c.ru/learn/</a>. Only a certification center may provide a legal (qualified) certificate.</p>
+<p>In a distributed infobase, most of the settings can be changed only in the master node. </p>
+<h4>Certificates</h4>
+<ul><li>The application displays all certificates used for data signing and encrypiton, as well as requests for new certificates 
+</li><li>You may filter certificates in the <strong>Display </strong>field to see only your certificates. By default the application displays all certificates 
+</li><li>You can filter certificate requests by their status in the <strong>Request status </strong>field ("Any", "Not finished", "Finished", "Sent", "Declined", "Completed - certificate not provided", "Completed") 
+</li><li>You can <strong>Add</strong> a <a href="Catalog.DigitalSignaturesAndEncryptionKeyCertificates.Form.ItemForm/Help">certificate</a> from the list of certificates <strong>Set on computer</strong>. Or you can do the same during data signing or encryption 
+</li><li>You can also use <strong>Add</strong> to prepare a <a href="Catalog.DigitalSignaturesAndEncryptionKeyCertificates.Form.RequestForNewQualifiedCertificateIssue/Help">Certificate request</a> 
+</li><li>You can display a certificate or certificate request if you double-click it. Or you can do the same through the <strong>Change</strong> command on the shortcut menu that appears on right-clicking or on the <strong>More</strong> menu</li></ul><h4>Applications</h4>
+<ul><li>It contains the list of <font style="BACKGROUND-COLOR: #ffff00">applications </font>to be used in the infobase (including all nodes of the distributed infobase) 
+</li><li>These applications do not have to be installed on all computers. Moreover if more than one application are installed on a single computer, they may conflict with each other 
+</li><li>After the start, the list already includes two entries of the most popular applications in Russia - ViPNet CSP and CryptoPro CSP (KpиптoПpo CSP). 
+</li><li>You can add entries of other applications (ready settings are supplied for Microsoft Enhanced CSP, ViPNet CSP, CryptoPro CSP (KpиптoПpo CSP), LISSI CSP (ЛИCCИ CSP), Signal-KOM CSP (Cигнал-KOМ CSP)) 
+</li><li>If you need to use a application other than the known ones, you should specify its name, type and algorithms as required by the related provider instructions 
+</li><li>The <strong>Verification result</strong> column shows whether a application is installed on the computer or not , and if it is installed, it shows then whether correctly or not <span lang="RU">
+<li>Linux: <strong>Application path (&lt;Application name corresponding to the selected string in the list&gt;)</strong> is the field which you have to complete if your computer operates under Linux</li></span> 
+</li><li>On the bottom there is a link to <a href="http://1c-dn.com/1c_enterprise/cryptography/">Digital signature and encryption software instructions</a>. If you have any questions, use this link to go to the corresponding section of 1C:ITS 
+</li><li><strong>Verify signatures and certificates on server</strong> - this checkbox is visible for back-end bases only. If you select this checkbox, then digital signatures and certificates will be verified on the server and you will not need to install the application on every computer where such operations are required 
+<ul><li>In the application entry you can go to the <strong>Application paths on Linux servers</strong> list where you need to indicate paths for the computers on which the 1C:Enterprise server operates under Linux</li></ul></li></ul><h4>Additionally</h4>
+<ul><li>Specify the <strong>Encrypted attachment file name suffixes </strong>when sending by email, running the <strong>Save as</strong> command and exporting a folder (by default the name suffix is <strong>.p7m</strong>) 
+</li><li>
+<div>Specify the <strong>print full name attachment file name suffix </strong>(by default the name suffix is <strong>.p7s</strong>)</div>
+</li><li>
+<div>Using the <strong>When saving data </strong><strong>with digital signature to</strong><strong> file </strong>radio button, specify application actions when the <strong>Save with digital signature </strong>command is run: </div>
+<ul><li>
+<div><strong>Save all signatures </strong>- all signatures are saved </div>
+</li><li>
+<div><strong>Ask</strong> - the signatures to be saved are selected from the <a href="CommonForm.SaveTogetherWithElectronicprint full name/Help">list</a></div></li></ul></li></ul><h4>See also</h4>
+<ul><li><a href="v8help://frame/form_common">Working with forms</a></li></ul></body></html>

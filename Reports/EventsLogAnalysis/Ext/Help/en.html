@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"></meta><link rel="stylesheet" type="text/css" href="v8help://service_book/service_style"></link><meta name="GENERATOR" content="MSHTML 11.00.9600.18321"></meta></head><body>
+<p style="MARGIN: 0cm 0cm 6pt">With the <strong>Event log analysis </strong>report, you can track the application operation according to the data of the <a href="DataProcessor.EventLogMonitor/Help">registration log</a>. The report displays statistical information about the application functioning, operational errors and warnings, number of <a href="DataProcessor.ActiveUsers/Help">active users</a> in different time periods, and duration of sheduled jobs. </p>
+<p style="MARGIN: 0cm 0cm 6pt">To open the report, click <strong>Administrator reports </strong>in the <strong>Administration - Support and service </strong>section.</p>
+<p style="MARGIN: 0cm 0cm 6pt">Statistical information is designed only for diagnosing monitoring of the application functions and the server load. Do not use it to evaluate your personnel efficiency, calculate payroll, etc. </p>
+<h3 style="MARGIN: 0cm 0cm 6pt">Report variants</h3>
+<ul><li>
+<div style="MARGIN: 0cm 0cm 6pt"><a href="#Ap">User activity analysis</a></div>
+</li><li>
+<div style="MARGIN: 0cm 0cm 6pt"><a href="#B">User activity</a></div>
+</li><li>
+<div style="MARGIN: 0cm 0cm 6pt"><a href="#C">Tracking registration log</a></div>
+</li><li>
+<div style="MARGIN: 0cm 0cm 6pt"><a href="#D">Scheduled job duration</a></div></li></ul><h3 style="MARGIN: 0cm 0cm 6pt"><a name="#Ap">User activity analysis</a></h3>
+<ul><li>
+<div style="MARGIN: 0cm 0cm 6pt">Displays statistics of user activity (working hours, number of connections, number of added/edited documents/catalogs, number of operational errors and warnings, maximum number of simultaneously working users). For a better convenience, some information is displayed as charts.</div>
+</li><li>
+<div style="MARGIN: 0cm 0cm 6pt"><strong>Settings</strong>:</div>
+<ul><li>
+<div style="MARGIN: 0cm 0cm 6pt">Select <strong>Users </strong>from the list (you can select all <a href="Catalog.Users/Help">users</a> or users groups).</div>
+</li><li>
+<div style="MARGIN: 0cm 0cm 6pt">Specify <strong>Period</strong>.</div></li></ul></li><li>
+<p style="MARGIN: 0cm 0cm 6pt"><strong>Advanced settings</strong>: Click <strong>Settings </strong>in the <strong>More </strong>menu. To use the advanced settings:</p>
+<ul><li>
+<div style="MARGIN: 0cm 0cm 6pt">Use the check boxes to enable or disable display of a number of added/edited documents/catalogs.</div>
+</li><li>
+<div style="MARGIN: 0cm 0cm 6pt"> Select the chart type from the relevant list.</div></li></ul></li></ul><h3 style="MARGIN: 0cm 0cm 6pt"><a name="#B">User</a> activity</h3>
+<ul><li>
+<div style="MARGIN: 0cm 0cm 6pt">Displays detailed statistics concerning activity of a <a href="Catalog.Users.Form.ItemForm/Help">user</a> (a list of created/edited documents/catalogs/business processes/tasks). For a better convenience, some statistical information is displayed as charts. You can use it as a transcription of a <a href="#Ap">user activity analysis</a> report variant for a specific user.</div>
+</li><li>
+<div style="MARGIN: 0cm 0cm 6pt"><strong>Settings</strong>: </div>
+<ul><li>
+<div style="MARGIN: 0cm 0cm 6pt">Select <strong>User </strong>from the list.</div>
+</li><li>
+<div style="MARGIN: 0cm 0cm 6pt">Specify <strong>Period</strong>.</div></li></ul></li><li>
+<p style="MARGIN: 0cm 0cm 6pt"><strong>Advanced settings</strong>: Click <strong>Settings </strong>in the <strong>More </strong>menu. To use the advanced settings:</p>
+<ul><li>
+<div style="MARGIN: 0cm 0cm 6pt">Use the check boxes: select <strong>Yes </strong>to <strong>Display </strong>the data about your business processes, tasks, catalogs, and documents, or <strong>No </strong>to go on without it. By default, the report displays data about catalogs and documents.</div></li></ul></li></ul><h3 style="MARGIN: 0cm 0cm 6pt">Tracking registration log </h3>
+<ul><li>
+<div style="MARGIN: 0cm 0cm 6pt">It is a list of critical entries (about errors and warnings) in the registration log. Use it to track issues during the application operation. Use the report for prompt troubleshooting of frequent issues without reading the registration log.</div>
+</li><li>
+<div style="MARGIN: 0cm 0cm 6pt"><strong>Settings</strong>: Specify <strong>Period</strong>.</div></li></ul><h3 style="MARGIN: 0cm 0cm 6pt"><a name="#D">Sheduled job duration</a> </h3>
+<ul><li>
+<div style="MARGIN: 0cm 0cm 6pt">You can see the execution time and working duration of the <a href="DataProcessor.ScheduledAndBackgroundJobs/Help">scheduled job</a> sessions on a specified day. Analyze the server workload related to scheduled jobs, find peak load intervals and relieve them.</div>
+</li><li>
+<div style="MARGIN: 0cm 0cm 6pt">Double-click a name of the <a href="DataProcessor.ScheduledAndBackgroundJobs.Form.ScheduledJob/Help">scheduled job</a> in the report to view the <strong>Scheduled job data </strong>report and find the <a href="Report.EventsLogAnalysis.Form.InfoAboutScheduledJob/Help">statistic</a> data of the selected scheduled job.</div>
+</li><li>
+<div style="MARGIN: 0cm 0cm 6pt"><strong>Settings</strong>: </div>
+<ul><li>
+<div style="MARGIN: 0cm 0cm 6pt">Select <strong>Day </strong>to get a report on a part of this day.</div>
+</li><li>
+<div style="MARGIN: 0cm 0cm 6pt">Specify <strong>Period start </strong>- time of the day when the scheduled job monitoring period starts.</div></li></ul></li><li>
+<p style="MARGIN: 0cm 0cm 6pt"><strong>Advanced settings</strong>: Click <strong>Settings </strong>in the <strong>More </strong>menu. To use the advanced settings:</p>
+<ul><li>
+<div style="MARGIN: 0cm 0cm 6pt">Specify <strong>Period end </strong>- time of the day when you want to have the results of the scheduled job monitoring.</div>
+</li><li>
+<div style="MARGIN: 0cm 0cm 6pt">Select <strong>Yes</strong> to <strong>Display background jobs</strong>; clear the check box or select <strong>No</strong> to go on without it.</div>
+</li><li>
+<div style="MARGIN: 0cm 0cm 6pt">Specify the <strong>Minimum scheduled job session duration(in sec)</strong>; by default, it is 1.</div>
+</li><li>
+<div style="MARGIN: 0cm 0cm 6pt">Specify the <strong>Minimum quantity of simultaneously working scheduled jobs for period; </strong>by default, it is 2.</div>
+</li><li>
+<div style="MARGIN: 0cm 0cm 6pt">Select the check box to <strong>Hide scheduled jobs.</strong></div></li></ul></li></ul><h3 style="MARGIN: 0cm 0cm 6pt">See also: </h3>
+<ul><li>
+<div style="MARGIN: 0cm 0cm 6pt"><a href="v8help://mngui/reportFormMain">Customizing report</a></div></li></ul></body></html>

@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<MetaDataObject xmlns="http://v8.1c.ru/8.3/MDClasses" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:cmi="http://v8.1c.ru/8.2/managed-application/cmi" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xpr="http://v8.1c.ru/8.3/xcf/predef" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<EventSubscription uuid="38ac9a13-665a-4201-b5cc-687fe4a01130">
+		<Properties>
+			<Name>UndividedRecordSetsControlOnWrite</Name>
+			<Synonym>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Control of the undivided record sets when writing</v8:content>
+				</v8:item>
+			</Synonym>
+			<Comment/>
+			<Source>
+				<v8:Type>cfg:InformationRegisterRecordSet.BusinessCalendarData</v8:Type>
+				<v8:Type>cfg:InformationRegisterRecordSet.RecipientSubscriptions</v8:Type>
+				<v8:Type>cfg:InformationRegisterRecordSet.AdditionalAddressInformation</v8:Type>
+				<v8:Type>cfg:InformationRegisterRecordSet.DeleteDataAreas</v8:Type>
+				<v8:Type>cfg:InformationRegisterRecordSet.DeleteDataAreasSessionsBlockings</v8:Type>
+				<v8:Type>cfg:InformationRegisterRecordSet.DataExchangeRules</v8:Type>
+				<v8:Type>cfg:InformationRegisterRecordSet.PermissionQueriesOnUseExternalResources</v8:Type>
+				<v8:Type>cfg:InformationRegisterRecordSet.ExternalResourcesUsingPermissions</v8:Type>
+				<v8:Type>cfg:InformationRegisterRecordSet.DeleteWorldCountries</v8:Type>
+				<v8:Type>cfg:InformationRegisterRecordSet.SubsystemVersions</v8:Type>
+				<v8:Type>cfg:InformationRegisterRecordSet.AddressInformationChangingReasons</v8:Type>
+				<v8:Type>cfg:InformationRegisterRecordSet.DataExchangeMessages</v8:Type>
+				<v8:Type>cfg:InformationRegisterRecordSet.DeleteAddressClassifier</v8:Type>
+				<v8:Type>cfg:InformationRegisterRecordSet.ExternalModulesConnectionModes</v8:Type>
+				<v8:Type>cfg:InformationRegisterRecordSet.AddressObjectsLandmarks</v8:Type>
+				<v8:Type>cfg:InformationRegisterRecordSet.AddressInformationReductionsLevels</v8:Type>
+				<v8:Type>cfg:InformationRegisterRecordSet.HousesBuildingsConstructions</v8:Type>
+				<v8:Type>cfg:InformationRegisterRecordSet.AddressObjectsHistory</v8:Type>
+				<v8:Type>cfg:InformationRegisterRecordSet.DeleteAreasForBackup</v8:Type>
+				<v8:Type>cfg:InformationRegisterRecordSet.DeleteDataAreasActivityRating</v8:Type>
+				<v8:Type>cfg:InformationRegisterRecordSet.AccessRightsCorrelation</v8:Type>
+				<v8:Type>cfg:InformationRegisterRecordSet.SenderSettings</v8:Type>
+				<v8:Type>cfg:InformationRegisterRecordSet.InformationPackagesOnLaunch</v8:Type>
+				<v8:Type>cfg:InformationRegisterRecordSet.DemandDataProcessorSuppliedDataAreas</v8:Type>
+				<v8:Type>cfg:InformationRegisterRecordSet.ServiceAddressData</v8:Type>
+				<v8:Type>cfg:InformationRegisterRecordSet.DeleteJobQueue</v8:Type>
+				<v8:Type>cfg:InformationRegisterRecordSet.DeleteTimeMeasurements</v8:Type>
+				<v8:Type>cfg:InformationRegisterRecordSet.RolesRights</v8:Type>
+				<v8:Type>cfg:InformationRegisterRecordSet.DeleteVersionSubsystems</v8:Type>
+				<v8:Type>cfg:InformationRegisterRecordSet.DeleteTextExtractionQueue</v8:Type>
+				<v8:Type>cfg:InformationRegisterRecordSet.AddressInformationExportedVersions</v8:Type>
+				<v8:Type>cfg:InformationRegisterRecordSet.AddressObjects</v8:Type>
+				<v8:Type>cfg:InformationRegisterRecordSet.SuppliedDataForDataProcessors</v8:Type>
+			</Source>
+			<Event>OnWrite</Event>
+			<Handler>CommonModule.SaaSOperations.UndividedRecordSetsControlOnWrite</Handler>
+		</Properties>
+	</EventSubscription>
+</MetaDataObject>

@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"></meta><link rel="stylesheet" type="text/css" href="v8help://service_book/service_style"></link><meta name="GENERATOR" content="MSHTML 11.00.9600.18321"></meta></head><body>
+<p>Registration of <a href="Catalog.AdditionalReportsAndDataProcessors/Help"><font color="#000080">additional reports and processors</font></a>.</p>
+<p>Some data in the additional record card or the processor card are provided by default. The developer specifies it in the external processor file or the report file. You can not change this data (the commands list and additional information). Each additional processor can represent one or more commands placed in the application objects windows or in the application sections.</p>
+<p>There are two types of additional reports and processors: </p>
+<ul><li><a href="#A"><font color="#000080">Assigned</font></a> - designed for one or more specific documents or lists. The list of available assignations is predefined by the developer and included in the additional report or processor. When registering, you can select assignations from the list. 
+</li><li><a href="#B"><font color="#000080">Global or common</font></a> - contain commands only from the command interface sections. The command does not depend on specific application objects. The list of the sections available for commands placement is predefined by the developer and included in the additional report/processor file. It can not be edited.</li></ul><p>The additional reports/processors may be numerous, according to the assignation and settings. The required commands are placed on a special tab. The required <strong>Additional information </strong>tab includes information about the additional report/processor. Other tabs may have different content and names. The additional tabs may also contain special commands. When registering an additional report/processor, specify the following main parameters on the tab:</p>
+<ul><li>
+<div><strong>Name</strong>- stated by the developer and entered automatically; it can be changed when necessary.</div>
+</li><li>
+<div><strong>Operation mode </strong>- the <a href="#1"><font color="#000080">mode of connection of</font></a> additional reports/processors; it can be either <strong>Secure </strong>or <strong>Insecure</strong>.</div>
+</li><li>
+<div>
+<p>Use the <strong>Publication</strong> checkbox to make the processor/report availabe/unavailable - adjust the usage of the additional processors/reports. You can make a processor/report available to all, or for the administrator only, or disabled. The attribute can have one of the following values:</p>
+<ul><li>
+<div><strong>In use </strong>- the processor can be used. The processor commands are available to all the users with the "Using additional reports/processors" role.</div>
+</li><li>
+<div>
+<div><strong>Debugging mode </strong>- the processor is available only from the "Adding/editing additional processors" or "Full rights" roles (highlighted with red in the list). Other users do not see these commands. This mode is useful if your additional report/processor is to be checked.</div></div>
+</li><li>
+<div><strong>Disabled </strong>- the processor is unavailable, inactive in the list. This option is useful when you suspend using a processor, but do not want to delete it. All the settings are saved and when you go to another mode, it works like before. </div></li></ul></div>
+</li><li><strong>Comment </strong>- enter a detailed description. 
+</li><li>
+<div><strong>Responsible user </strong>- select the user that will monitor and update the additional report/processor. By default, it is "Administrator".</div></li></ul><h3>Additional information</h3>
+<ul><li>You can see the following additional data entered by the developer: 
+<ul><li><strong>Kind</strong> - there are several kinds of additional reports/processors: 
+<ul><li><strong>Additional report</strong> 
+</li><li><strong>Report</strong> 
+</li><li><strong>Completing object</strong> 
+</li><li><strong>Print form</strong> 
+</li><li><strong>Creating linked objects</strong></li></ul></li><li><strong>File name</strong> 
+</li><li><strong>Version</strong> 
+</li><li><strong>Object name</strong> 
+</li><li><strong>Description </strong>- detailed information about the report/processor.</li></ul></li><li><strong>Group </strong>- add the additional processor/report in one of the group. Select a necessary group from the list. Using groups, you can easily find required additional reports/processors in a list.</li></ul><h3>Exporting from file</h3>
+<ul><li>Use <strong>Export from file</strong> command to update the processor in the internal storage. Kind of the new processor must be the same as the current processor kind. Specify the path to the file, and then click <strong>Open</strong>.</li></ul><h3>Importing to file</h3>
+<ul><li>Use the <strong>Import to file</strong> command to import the additional report/processor from the storage to a file on the computer disk. Specify the folder on the computer, and then click <strong>Save</strong>. The file is named automatically, but you can rename it. </li></ul><h3><a name="#1">Operation</a> mode</h3>
+<ul><li>Normally, most processors are executed in the safe mode. It guarantees that they do not contain any insecure application code being executed on the server. 
+</li><li>Still, some processors may require execution in unsafe mode. Export such processors only from reliable sources (suppliers) and check them before export. 
+</li><li>For more information on the safe mode, see 1C:Enterprise documentation.</li></ul><h3>More about registration of assigned additional processors/reports</h3>
+<ul><li>For additional processors/reports intended for the application lists/documents, you can select objects with access of the commands of the report/processor. 
+<ul><li><strong>Purpose </strong>-  to select application objects, click the link seen as <strong>Undefined </strong>(if no objects are selected) or a list of the selected objects. Select the checkboxes to select the necessary objects. 
+</li><li><strong>Show </strong>- the reports/processors commands are available from: 
+<ul><li>List of selected objects if the <strong>In lists </strong>check box is selected. 
+</li><li>List of the object if the <strong>In forms of catalog/document items </strong>check box is selected. You can select both check boxes at once.</li></ul></li></ul></li><li>
+<div>On the <strong>Commands</strong> tab, the commands list is by default completed from the developer's list. These commands are available in the assignation list/document when adding the additional report/processor.</div></li></ul><h3>More about registration of global (common) additional reports/processors</h3>
+<ul><li>For the processors/reports invoked from the command interface (not attached to configuration objects), specify the interface sections where the processors commands will be available through the <strong>Additional reports</strong> and <strong>Additional processors</strong> commands. 
+<ul><li><strong>Placement</strong>- to select sections, click the link seen as <strong>Undefined </strong>(if no sections are selected) or a list of the selected sections. Select the check boxes to select the necessary sections. Click <strong>OK </strong>to confirm.</li></ul></li><li>The list of commands and their settings can be located on a separate <strong>Commands </strong>tab. The tab shows: 
+<ul><li><strong>Name </strong>- a full name of the command. 
+</li><li>In the <strong>Quick access </strong>column,<strong> </strong>click<img></img> or press <strong>F4</strong> and select users with default access to the command. By default, the value is "No". Add the user to the list. Click <strong>OK </strong>to confirm your choice and return to the cofiguration procedure. 
+</li><li>In the <strong>Schedule </strong>column, for each command of global reports/processors executed in the server context, click<img></img> and define the schedule for the <a href="DataProcessor.ScheduledAndBackgroundJobs.Form.ScheduledJob/Help"><font color="#000080">scheduled job</font></a> of this command. You can not use a schedule for the commands started with <strong>Opening form</strong>.</li></ul></li></ul><h3>See also:</h3>
+<ul><li><a href="v8help://1cv8/ExtRepotrs"><font color="#000080">External reports and processors</font></a></li></ul></body></html>

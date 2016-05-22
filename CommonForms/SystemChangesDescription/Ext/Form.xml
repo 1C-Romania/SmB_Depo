@@ -1,0 +1,405 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Title>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>What's new in a configuration</v8:content>
+		</v8:item>
+	</Title>
+	<AutoTitle>false</AutoTitle>
+	<CommandBarLocation>None</CommandBarLocation>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<HorizontalAlign>Right</HorizontalAlign>
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnOpen">OnOpen</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="PostponedUpdate" id="24">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Postponed update</v8:content>
+				</v8:item>
+			</Title>
+			<HorizontalStretch>true</HorizontalStretch>
+			<Group>Vertical</Group>
+			<Representation>NormalSeparation</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="PostponedUpdateExtendedTooltip" id="28"/>
+			<ChildItems>
+				<Button name="PostponedUpdateData" id="25">
+					<Type>Hyperlink</Type>
+					<CommandName>Form.Command.PostponedUpdateData</CommandName>
+					<Picture>
+						<xr:Ref>CommonPicture.Warning</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</Picture>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Additional data processing procedures are being performed</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="PostponedUpdateDataExtendedTooltip" id="29"/>
+				</Button>
+				<LabelDecoration name="PostponedUpdateDataExplanation" id="26">
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>The work in the application is temporarily limited because the update to the new version is not completed.</v8:content>
+						</v8:item>
+					</Title>
+					<HorizontalAlign>Right</HorizontalAlign>
+					<ContextMenu name="DeferredDataRefreshExplanationContextMenu" id="27"/>
+					<ExtendedTooltip name="DeferredDataRefreshExplanationExtendedTooltip" id="30"/>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="GroupDisabledScheduledJobs" id="53">
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="GroupDisabledScheduledJobsExtendedTooltip" id="54"/>
+			<ChildItems>
+				<PictureDecoration name="PictureDisabledScheduledJobs" id="58">
+					<Width>2</Width>
+					<Height>1</Height>
+					<Picture>
+						<xr:Ref>CommonPicture.Information</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</Picture>
+					<ContextMenu name="PictureDisabledScheduledJobsContextMenu" id="59"/>
+					<ExtendedTooltip name="PictureDisabledScheduledJobsExtendedTooltip" id="60"/>
+				</PictureDecoration>
+				<LabelDecoration name="DisabledScheduledJobs" id="55">
+					<Title formatted="true">
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>During updating sheduled jobs performance was blocked.
+To unlock it is required to &lt;link restart&gt;restart&lt;/&gt; the application.</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="DisabledScheduledJobsContextMenu" id="56"/>
+					<ExtendedTooltip name="DisabledScheduledJobsExtendedTooltip" id="57"/>
+					<Events>
+						<Event name="URLProcessing">DisabledScheduledJobsNavigationRefsDataProcessor</Event>
+					</Events>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+		<CommandBar name="CommandBarOfList" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>List command bar</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>List command bar</v8:content>
+				</v8:item>
+			</ToolTip>
+			<CommandSource>Item.SystemChangesDescription</CommandSource>
+			<ExtendedTooltip name="ListCommandBarExtendedTooltip" id="31"/>
+			<ChildItems>
+				<Button name="Find" id="14">
+					<Type>CommandBarButton</Type>
+					<Representation>PictureAndText</Representation>
+					<OnlyInAllActions>true</OnlyInAllActions>
+					<CommandName>Form.Item.SystemChangesDescription.StandardCommand.Find</CommandName>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Find...</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="FindExtendedTooltip" id="32"/>
+				</Button>
+				<Button name="ExpandAllGroups" id="21">
+					<Type>CommandBarButton</Type>
+					<Representation>Picture</Representation>
+					<OnlyInAllActions>true</OnlyInAllActions>
+					<CommandName>Form.Item.SystemChangesDescription.StandardCommand.ExpandAllGroups</CommandName>
+					<ExtendedTooltip name="ExpandAllGroupsExtendedTooltip" id="35"/>
+				</Button>
+				<Button name="SystemChangesDescriptionMinimizeAllGroups" id="45">
+					<Type>CommandBarButton</Type>
+					<CommandName>Form.Item.SystemChangesDescription.StandardCommand.CollapseAllGroups</CommandName>
+					<ExtendedTooltip name="SystemChangesDescriptionMinimizeAllGroupsExtendedTooltip" id="46"/>
+				</Button>
+				<ButtonGroup name="SystemChangesDescriptionGroup" id="51">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Update details group</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Update details group</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="SystemChangesDescriptionGroupExtendedTooltip" id="52"/>
+					<ChildItems>
+						<Button name="Save" id="7">
+							<Type>CommandBarButton</Type>
+							<Representation>PictureAndText</Representation>
+							<OnlyInAllActions>true</OnlyInAllActions>
+							<CommandName>Form.Item.SystemChangesDescription.StandardCommand.Save</CommandName>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Save as...</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="SaveExtendedTooltip" id="34"/>
+						</Button>
+						<Button name="Print" id="15">
+							<Type>CommandBarButton</Type>
+							<OnlyInAllActions>true</OnlyInAllActions>
+							<CommandName>Form.Item.SystemChangesDescription.StandardCommand.Print</CommandName>
+							<ExtendedTooltip name="PrintExtendedTooltip" id="36"/>
+						</Button>
+						<Button name="SystemChangesDescriptionPreview" id="47">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Item.SystemChangesDescription.StandardCommand.Preview</CommandName>
+							<ExtendedTooltip name="SystemChangesDescriptionPreviewExtendedTooltip" id="48"/>
+						</Button>
+						<Button name="SystemChangesDescriptionPageParameters" id="49">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Item.SystemChangesDescription.StandardCommand.PageSetup</CommandName>
+							<ExtendedTooltip name="SystemChangesDescriptionPageParametersExtendedTooltip" id="50"/>
+						</Button>
+					</ChildItems>
+				</ButtonGroup>
+				<Button name="ChangeForm" id="19">
+					<Type>CommandBarButton</Type>
+					<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
+					<ExtendedTooltip name="ChangeFormExtendedTooltip" id="33"/>
+				</Button>
+				<Button name="Help" id="4">
+					<Type>CommandBarButton</Type>
+					<SkipOnInput>false</SkipOnInput>
+					<CommandName>Form.StandardCommand.Help</CommandName>
+					<ExtendedTooltip name="HelpExtendedTooltip" id="37"/>
+				</Button>
+			</ChildItems>
+		</CommandBar>
+		<SpreadSheetDocumentField name="SystemChangesDescription" id="1">
+			<DataPath>SystemChangesDescription</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Updates description</v8:content>
+				</v8:item>
+			</Title>
+			<TitleLocation>None</TitleLocation>
+			<Width>80</Width>
+			<Height>20</Height>
+			<SelectionShowMode>WhenActive</SelectionShowMode>
+			<ContextMenu name="UpdateDescriptionContextMenu" id="2"/>
+			<ExtendedTooltip name="UpdateDescriptionExtendedTooltip" id="38"/>
+			<Events>
+				<Event name="Selection">UpdatesDescriptionFullSelection</Event>
+			</Events>
+		</SpreadSheetDocumentField>
+		<UsualGroup name="Group" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group</v8:content>
+				</v8:item>
+			</ToolTip>
+			<HorizontalStretch>true</HorizontalStretch>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="GroupExtendedTooltip" id="39"/>
+			<ChildItems>
+				<LabelDecoration name="AddressFormsInApplication" id="11">
+					<HorizontalStretch>true</HorizontalStretch>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Change details can be also opened from the "Information" bar on the table. </v8:content>
+						</v8:item>
+					</Title>
+					<VerticalAlign>Top</VerticalAlign>
+					<ContextMenu name="AddressFormsInApplicationContextMenu" id="12"/>
+					<ExtendedTooltip name="AddressFormsInApplicationExtendedTooltip" id="40"/>
+				</LabelDecoration>
+				<UsualGroup name="GroupTechnicalInformationAndClose" id="23">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group technical information and close</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group technical information and close</v8:content>
+						</v8:item>
+					</ToolTip>
+					<VerticalStretch>false</VerticalStretch>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="GroupTechnicalInformationAndCloseExtendedTooltip" id="41"/>
+					<ChildItems>
+						<LabelDecoration name="TechnicalInformationOnResultsOfUpdate" id="8">
+							<HorizontalStretch>true</HorizontalStretch>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Technical information about the update results</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<Hyperlink>true</Hyperlink>
+							<HorizontalAlign>Right</HorizontalAlign>
+							<ContextMenu name="TechnicalInformationAboutUpdateResultsContextMenu" id="9"/>
+							<ExtendedTooltip name="TechnicalInformationAboutUpdateResultsExtendedTooltip" id="42">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Technical information from the log to contact the technical support.</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+							<Events>
+								<Event name="Click">ShowAdditionalInformationOnResultsOfUpdateClick</Event>
+							</Events>
+						</LabelDecoration>
+						<CommandBar name="FormCommandBar" id="22">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Command bar of the form</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Command bar of the form</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Width>5</Width>
+							<HorizontalLocation>Right</HorizontalLocation>
+							<ExtendedTooltip name="FormCommandBarExtendedTooltip" id="43"/>
+							<ChildItems>
+								<Button name="Close" id="3">
+									<Type>CommandBarButton</Type>
+									<Representation>Text</Representation>
+									<DefaultButton>true</DefaultButton>
+									<SkipOnInput>false</SkipOnInput>
+									<DefaultItem>true</DefaultItem>
+									<CommandName>Form.StandardCommand.Close</CommandName>
+									<ExtendedTooltip name="CloseExtendedTooltip" id="44"/>
+								</Button>
+							</ChildItems>
+						</CommandBar>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="SystemChangesDescription" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Updates description</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type xmlns:mxl="http://v8.1c.ru/8.2/data/spreadsheet">mxl:SpreadsheetDocument</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="UpdateBeginTime" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Update begin time</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>DateTime</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="UpdateEndTime" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Update ending time</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>DateTime</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ClientServerBase" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Client server database</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="PostponedUpdateData" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Additional data processing procedures are being performed</v8:content>
+				</v8:item>
+			</Title>
+			<Action>PostponedUpdateData</Action>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="UpdateBeginTime">
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>DateTime</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="UpdateEndTime">
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>DateTime</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="ShowOnlyChanges">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

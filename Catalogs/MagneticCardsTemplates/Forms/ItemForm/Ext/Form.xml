@@ -1,0 +1,1185 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<ChildItems>
+			<Button name="CheckTemplate" id="108">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.CheckTemplate</CommandName>
+				<ExtendedTooltip name="ValidateTemplateExtendedTooltip" id="124"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="NotificationProcessing">NotificationProcessing</Event>
+		<Event name="OnOpen">OnOpen</Event>
+		<Event name="ExternalEvent">ExternalEvent</Event>
+		<Event name="BeforeWrite">BeforeWrite</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+		<Event name="OnClose">OnClose</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="Description" id="3">
+			<DataPath>Object.Description</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Template name</v8:content>
+				</v8:item>
+			</Title>
+			<EditMode>EnterOnInput</EditMode>
+			<ContextMenu name="DescriptionContextMenu" id="4"/>
+			<ExtendedTooltip name="DescriptionExtendedTooltip" id="125"/>
+		</InputField>
+		<UsualGroup name="TracksGroup" id="32">
+			<EnableContentChange>true</EnableContentChange>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Track group</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ChildItemsWidth>Equal</ChildItemsWidth>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="TracksGroupExtendedTooltip" id="126"/>
+			<ChildItems>
+				<UsualGroup name="Group1" id="29">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Track 1</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Vertical</Group>
+					<Representation>StrongSeparation</Representation>
+					<ChildItemsWidth>Equal</ChildItemsWidth>
+					<ExtendedTooltip name="Group1ExtendedTooltip" id="127"/>
+					<ChildItems>
+						<CheckBoxField name="TrackAvailability1" id="102">
+							<DataPath>Object.TrackAvailability1</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Used</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="TrackAvailability1ContextMenu" id="103"/>
+							<ExtendedTooltip name="TrackAvailability1ExtendedTooltip" id="128"/>
+							<Events>
+								<Event name="OnChange">TrackAvailability1OnChange</Event>
+							</Events>
+						</CheckBoxField>
+						<UsualGroup name="Group10" id="221">
+							<EnableContentChange>true</EnableContentChange>
+							<HorizontalStretch>true</HorizontalStretch>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="Group10ExtendedTooltip" id="222"/>
+							<ChildItems>
+								<UsualGroup name="Group11" id="219">
+									<EnableContentChange>true</EnableContentChange>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ChildItemsWidth>Equal</ChildItemsWidth>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="Group11ExtendedTooltip" id="220"/>
+									<ChildItems>
+										<InputField name="Prefix1" id="5">
+											<DataPath>Object.Prefix1</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>4</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ContextMenu name="Prefix1ContextMenu" id="6"/>
+											<ExtendedTooltip name="Prefix1ExtendedTooltip" id="129"/>
+										</InputField>
+										<InputField name="Suffix1" id="9">
+											<DataPath>Object.Suffix1</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>4</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ContextMenu name="Suffix1ContextMenu" id="10"/>
+											<ExtendedTooltip name="Suffix1ExtendedTooltip" id="131"/>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="Group12" id="201">
+									<EnableContentChange>true</EnableContentChange>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ChildItemsWidth>Equal</ChildItemsWidth>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="Group12ExtendedTooltip" id="202"/>
+									<ChildItems>
+										<InputField name="CodeLength1" id="7">
+											<DataPath>Object.CodeLength1</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="CodeLenght1ContextMenu" id="8"/>
+											<ExtendedTooltip name="CodeLenght1ExtendedTooltip" id="130"/>
+										</InputField>
+										<InputField name="BlocksDelimiter1" id="33">
+											<DataPath>Object.BlocksDelimiter1</DataPath>
+											<ContextMenu name="BlocksDelimiter1ContextMenu" id="34"/>
+											<ExtendedTooltip name="BlocksDelimiter1ExtendedTooltip" id="133"/>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+						<Table name="TrackFields1" id="39">
+							<Representation>List</Representation>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>Object.TrackFields1</DataPath>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="TrackFields1ContextMenu" id="40"/>
+							<AutoCommandBar name="TrackFields1CommandBar" id="41"/>
+							<ExtendedTooltip name="TrackFields1ExtendedTooltip" id="134"/>
+							<SearchStringAddition name="TrackFields1SearchString" id="231">
+								<AdditionSource>
+									<Item>TrackFields1</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="TrackFields1SearchStringContextMenu" id="232"/>
+								<ExtendedTooltip name="TrackFields1SearchStringExtendedTooltip" id="233"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="TrackFields1ViewStatus" id="234">
+								<AdditionSource>
+									<Item>TrackFields1</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="TrackFields1ViewStatusContextMenu" id="235"/>
+								<ExtendedTooltip name="TrackFields1ViewStatusExtendedTooltip" id="236"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="TrackFields1SearchControl" id="237">
+								<AdditionSource>
+									<Item>TrackFields1</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="TrackFields1SearchControlContextMenu" id="238"/>
+								<ExtendedTooltip name="TrackFields1SearchControlExtendedTooltip" id="239"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<LabelField name="TrackFields1LineNumber" id="42">
+									<DataPath>Object.TrackFields1.LineNumber</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>No.</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<FixingInTable>Left</FixingInTable>
+									<Width>1</Width>
+									<ContextMenu name="TrackFields1LineNumberContextMenu" id="43"/>
+									<ExtendedTooltip name="TrackFields1LineNumberExtendedTooltip" id="135"/>
+								</LabelField>
+								<ColumnGroup name="TrackFields1Group1" id="207">
+									<ExtendedTooltip name="TrackFields1Group1ExtendedTooltip" id="208"/>
+									<ChildItems>
+										<InputField name="TrackFields1Field" id="44">
+											<DataPath>Object.TrackFields1.Field</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>9</Width>
+											<HorizontalStretch>true</HorizontalStretch>
+											<AutoChoiceIncomplete>true</AutoChoiceIncomplete>
+											<QuickChoice>true</QuickChoice>
+											<AutoMarkIncomplete>true</AutoMarkIncomplete>
+											<ContextMenu name="TrackFields1FieldContextMenu" id="45"/>
+											<ExtendedTooltip name="TrackFields1FieldExtendedTooltip" id="136"/>
+										</InputField>
+										<InputField name="TrackFields1BlockNumber" id="46">
+											<DataPath>Object.TrackFields1.BlockNumber</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>9</Width>
+											<HorizontalStretch>true</HorizontalStretch>
+											<MinValue xsi:type="xs:decimal">1</MinValue>
+											<ContextMenu name="TrackFields1BlockNumberContextMenu" id="47"/>
+											<ExtendedTooltip name="TrackFields1BlockNumberExtendedTooltip" id="137"/>
+										</InputField>
+									</ChildItems>
+								</ColumnGroup>
+								<ColumnGroup name="TrackFields1Group2" id="209">
+									<ExtendedTooltip name="TrackFields1Group2ExtendedTooltip" id="210"/>
+									<ChildItems>
+										<InputField name="TrackFields1FirstFieldSymbolNumber" id="48">
+											<DataPath>Object.TrackFields1.FirstFieldSymbolNumber</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>9</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<MinValue xsi:type="xs:decimal">1</MinValue>
+											<ContextMenu name="TrackFields1FirstFieldSymbolNumberContextMenu" id="49"/>
+											<ExtendedTooltip name="TrackFields1FirstFieldSymbolNumberExtendedTooltip" id="138"/>
+										</InputField>
+										<InputField name="TrackFields1FieldLenght" id="50">
+											<DataPath>Object.TrackFields1.FieldLenght</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>9</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ContextMenu name="TrackFields1FieldLenghtContextMenu" id="51"/>
+											<ExtendedTooltip name="TrackFields1FieldLenghtExtendedTooltip" id="139"/>
+										</InputField>
+									</ChildItems>
+								</ColumnGroup>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="Group2" id="30">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Track 2</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Vertical</Group>
+					<Representation>StrongSeparation</Representation>
+					<ChildItemsWidth>Equal</ChildItemsWidth>
+					<ExtendedTooltip name="Group2ExtendedTooltip" id="140"/>
+					<ChildItems>
+						<CheckBoxField name="TrackAvailability2" id="104">
+							<DataPath>Object.TrackAvailability2</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Used</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="TrackAvailability2ContextMenu" id="105"/>
+							<ExtendedTooltip name="TrackAvailability2ExtendedTooltip" id="141"/>
+							<Events>
+								<Event name="OnChange">TrackAvailability2OnChange</Event>
+							</Events>
+						</CheckBoxField>
+						<UsualGroup name="Group20" id="203">
+							<EnableContentChange>true</EnableContentChange>
+							<HorizontalStretch>true</HorizontalStretch>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="Group20ExtendedTooltip" id="204"/>
+							<ChildItems>
+								<UsualGroup name="Group21" id="223">
+									<EnableContentChange>true</EnableContentChange>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ChildItemsWidth>Equal</ChildItemsWidth>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="Group21ExtendedTooltip" id="224"/>
+									<ChildItems>
+										<InputField name="Prefix2" id="13">
+											<DataPath>Object.Prefix2</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>4</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ContextMenu name="Prefix2ContextMenu" id="14"/>
+											<ExtendedTooltip name="Prefix2ExtendedTooltip" id="142"/>
+										</InputField>
+										<InputField name="Suffix2" id="17">
+											<DataPath>Object.Suffix2</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>4</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ContextMenu name="Suffix2ContextMenu" id="18"/>
+											<ExtendedTooltip name="Suffix2ExtendedTooltip" id="144"/>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="Group22" id="225">
+									<EnableContentChange>true</EnableContentChange>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ChildItemsWidth>Equal</ChildItemsWidth>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="Group22ExtendedTooltip" id="226"/>
+									<ChildItems>
+										<InputField name="CodeLength2" id="15">
+											<DataPath>Object.CodeLength2</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="CodeLenght2ContextMenu" id="16"/>
+											<ExtendedTooltip name="CodeLenght2ExtendedTooltip" id="143"/>
+										</InputField>
+										<InputField name="BlocksDelimiter2" id="35">
+											<DataPath>Object.BlocksDelimiter2</DataPath>
+											<ContextMenu name="BlocksDelimiter2ContextMenu" id="36"/>
+											<ExtendedTooltip name="BlocksDelimiter2ExtendedTooltip" id="146"/>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+						<Table name="TrackFields2" id="52">
+							<Representation>List</Representation>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>Object.TrackFields2</DataPath>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="TrackFields2ContextMenu" id="53"/>
+							<AutoCommandBar name="TrackFields2CommandBar" id="54"/>
+							<ExtendedTooltip name="TrackFields2ExtendedTooltip" id="147"/>
+							<SearchStringAddition name="TrackFields2SearchString" id="240">
+								<AdditionSource>
+									<Item>TrackFields2</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="TrackFields2SearchStringContextMenu" id="241"/>
+								<ExtendedTooltip name="TrackFields2SearchStringExtendedTooltip" id="242"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="TrackFields2ViewStatus" id="243">
+								<AdditionSource>
+									<Item>TrackFields2</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="TrackFields2ViewStatusContextMenu" id="244"/>
+								<ExtendedTooltip name="TrackFields2ViewStatusExtendedTooltip" id="245"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="TrackFields2SearchControl" id="246">
+								<AdditionSource>
+									<Item>TrackFields2</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="TrackFields2SearchControlContextMenu" id="247"/>
+								<ExtendedTooltip name="TrackFields2SearchControlExtendedTooltip" id="248"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<LabelField name="TrackFields2LineNumber" id="55">
+									<DataPath>Object.TrackFields2.LineNumber</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>No.</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<FixingInTable>Left</FixingInTable>
+									<Width>1</Width>
+									<ContextMenu name="TrackFields2LineNumberContextMenu" id="56"/>
+									<ExtendedTooltip name="TrackFields2LineNumberExtendedTooltip" id="148"/>
+								</LabelField>
+								<ColumnGroup name="TrackFields2Group1" id="211">
+									<ExtendedTooltip name="TrackFields2Group1ExtendedTooltip" id="212"/>
+									<ChildItems>
+										<InputField name="TrackFields2Field" id="57">
+											<DataPath>Object.TrackFields2.Field</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>9</Width>
+											<HorizontalStretch>true</HorizontalStretch>
+											<AutoChoiceIncomplete>true</AutoChoiceIncomplete>
+											<QuickChoice>true</QuickChoice>
+											<AutoMarkIncomplete>true</AutoMarkIncomplete>
+											<ContextMenu name="TrackFields2FieldContextMenu" id="58"/>
+											<ExtendedTooltip name="TrackFields2FieldExtendedTooltip" id="149"/>
+										</InputField>
+										<InputField name="TrackFields2BlockNumber" id="59">
+											<DataPath>Object.TrackFields2.BlockNumber</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>9</Width>
+											<HorizontalStretch>true</HorizontalStretch>
+											<MinValue xsi:type="xs:decimal">1</MinValue>
+											<ContextMenu name="TrackFields2BlockNumberContextMenu" id="60"/>
+											<ExtendedTooltip name="TrackFields2BlockNumberExtendedTooltip" id="150"/>
+										</InputField>
+									</ChildItems>
+								</ColumnGroup>
+								<ColumnGroup name="TrackFields2Group2" id="213">
+									<ExtendedTooltip name="TrackFields2Group2ExtendedTooltip" id="214"/>
+									<ChildItems>
+										<InputField name="TrackFields2FirstFieldSymbolNumber" id="61">
+											<DataPath>Object.TrackFields2.FirstFieldSymbolNumber</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>9</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<MinValue xsi:type="xs:decimal">1</MinValue>
+											<ContextMenu name="TrackFields2FirstFieldSymbolNumberContextMenu" id="62"/>
+											<ExtendedTooltip name="TrackFields2FirstFieldSymbolNumberExtendedTooltip" id="151"/>
+										</InputField>
+										<InputField name="TrackFields2FieldLenght" id="63">
+											<DataPath>Object.TrackFields2.FieldLenght</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>9</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ContextMenu name="TrackFields2FieldLenghtContextMenu" id="64"/>
+											<ExtendedTooltip name="TrackFields2FieldLenghtExtendedTooltip" id="152"/>
+										</InputField>
+									</ChildItems>
+								</ColumnGroup>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="Group3" id="31">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Track 3</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Vertical</Group>
+					<Representation>StrongSeparation</Representation>
+					<ChildItemsWidth>Equal</ChildItemsWidth>
+					<ExtendedTooltip name="Group3ExtendedTooltip" id="153"/>
+					<ChildItems>
+						<CheckBoxField name="TrackAvailability3" id="106">
+							<DataPath>Object.TrackAvailability3</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Used</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="TrackAvailability3ContextMenu" id="107"/>
+							<ExtendedTooltip name="TrackAvailability3ExtendedTooltip" id="154"/>
+							<Events>
+								<Event name="OnChange">TrackAvailability3OnChange</Event>
+							</Events>
+						</CheckBoxField>
+						<UsualGroup name="Group30" id="205">
+							<EnableContentChange>true</EnableContentChange>
+							<HorizontalStretch>true</HorizontalStretch>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="Group30ExtendedTooltip" id="206"/>
+							<ChildItems>
+								<UsualGroup name="Group31" id="227">
+									<EnableContentChange>true</EnableContentChange>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ChildItemsWidth>Equal</ChildItemsWidth>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="Group31ExtendedTooltip" id="228"/>
+									<ChildItems>
+										<InputField name="Prefix3" id="21">
+											<DataPath>Object.Prefix3</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>4</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ContextMenu name="Prefix3ContextMenu" id="22"/>
+											<ExtendedTooltip name="Prefix3ExtendedTooltip" id="155"/>
+										</InputField>
+										<InputField name="Suffix3" id="25">
+											<DataPath>Object.Suffix3</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>4</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ContextMenu name="Suffix3ContextMenu" id="26"/>
+											<ExtendedTooltip name="Suffix3ExtendedTooltip" id="157"/>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="Group32" id="229">
+									<EnableContentChange>true</EnableContentChange>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ChildItemsWidth>Equal</ChildItemsWidth>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="Group32ExtendedTooltip" id="230"/>
+									<ChildItems>
+										<InputField name="CodeLength3" id="23">
+											<DataPath>Object.CodeLength3</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="CodeLenght3ContextMenu" id="24"/>
+											<ExtendedTooltip name="CodeLenght3ExtendedTooltip" id="156"/>
+										</InputField>
+										<InputField name="BlocksDelimiter3" id="37">
+											<DataPath>Object.BlocksDelimiter3</DataPath>
+											<ContextMenu name="BlocksDelimiter3ContextMenu" id="38"/>
+											<ExtendedTooltip name="BlocksDelimiter3ExtendedTooltip" id="158"/>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+						<Table name="TrackFields3" id="65">
+							<Representation>List</Representation>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>Object.TrackFields3</DataPath>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="TrackFields3ContextMenu" id="66"/>
+							<AutoCommandBar name="TrackFields3CommandBar" id="67"/>
+							<ExtendedTooltip name="TrackFields3ExtendedTooltip" id="160"/>
+							<SearchStringAddition name="TrackFields3SearchString" id="249">
+								<AdditionSource>
+									<Item>TrackFields3</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="TrackFields3SearchStringContextMenu" id="250"/>
+								<ExtendedTooltip name="TrackFields3SearchStringExtendedTooltip" id="251"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="TrackFields3ViewStatus" id="252">
+								<AdditionSource>
+									<Item>TrackFields3</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="TrackFields3ViewStatusContextMenu" id="253"/>
+								<ExtendedTooltip name="TrackFields3ViewStatusExtendedTooltip" id="254"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="TrackFields3SearchControl" id="255">
+								<AdditionSource>
+									<Item>TrackFields3</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="TrackFields3SearchControlContextMenu" id="256"/>
+								<ExtendedTooltip name="TrackFields3SearchControlExtendedTooltip" id="257"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<LabelField name="TrackFields3LineNumber" id="68">
+									<DataPath>Object.TrackFields3.LineNumber</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>No.</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<FixingInTable>Left</FixingInTable>
+									<Width>1</Width>
+									<ContextMenu name="TrackFields3LineNumberContextMenu" id="69"/>
+									<ExtendedTooltip name="TrackFields3LineNumberExtendedTooltip" id="161"/>
+								</LabelField>
+								<ColumnGroup name="TrackFields3Group1" id="215">
+									<ExtendedTooltip name="TrackFields3Group1ExtendedTooltip" id="216"/>
+									<ChildItems>
+										<InputField name="TrackFields3Field" id="70">
+											<DataPath>Object.TrackFields3.Field</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>9</Width>
+											<HorizontalStretch>true</HorizontalStretch>
+											<AutoChoiceIncomplete>true</AutoChoiceIncomplete>
+											<QuickChoice>true</QuickChoice>
+											<AutoMarkIncomplete>true</AutoMarkIncomplete>
+											<ContextMenu name="TrackFields3FieldContextMenu" id="71"/>
+											<ExtendedTooltip name="TrackFields3FieldExtendedTooltip" id="162"/>
+										</InputField>
+										<InputField name="TrackFields3BlockNumber" id="72">
+											<DataPath>Object.TrackFields3.BlockNumber</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>9</Width>
+											<HorizontalStretch>true</HorizontalStretch>
+											<MinValue xsi:type="xs:decimal">1</MinValue>
+											<ContextMenu name="TrackFields3BlockNumberContextMenu" id="73"/>
+											<ExtendedTooltip name="TrackFields3BlockNumberExtendedTooltip" id="163"/>
+										</InputField>
+									</ChildItems>
+								</ColumnGroup>
+								<ColumnGroup name="TrackFields3Group2" id="217">
+									<ExtendedTooltip name="TrackFields3Group2ExtendedTooltip" id="218"/>
+									<ChildItems>
+										<InputField name="TrackFields3FirstFieldSymbolNumber" id="74">
+											<DataPath>Object.TrackFields3.FirstFieldSymbolNumber</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>9</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<MinValue xsi:type="xs:decimal">1</MinValue>
+											<ContextMenu name="TrackFields3FirstFieldSymbolNumberContextMenu" id="75"/>
+											<ExtendedTooltip name="TrackFields3FirstFieldSymbolNumberExtendedTooltip" id="164"/>
+										</InputField>
+										<InputField name="TrackFields3FieldLenght" id="76">
+											<DataPath>Object.TrackFields3.FieldLenght</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>9</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ContextMenu name="TrackFields3FieldLenghtContextMenu" id="77"/>
+											<ExtendedTooltip name="TrackFields3FieldLenghtExtendedTooltip" id="165"/>
+										</InputField>
+									</ChildItems>
+								</ColumnGroup>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="TestGroup" id="78">
+			<EnableContentChange>true</EnableContentChange>
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Reading test</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Read the card using magnetic cards reader</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Representation>StrongSeparation</Representation>
+			<ExtendedTooltip name="TestGroupExtendedTooltip" id="166"/>
+			<ChildItems>
+				<UsualGroup name="TracksGroup1" id="88">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Track group1</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="TracksGroup1ExtendedTooltip" id="167"/>
+					<ChildItems>
+						<InputField name="Track1" id="79">
+							<DataPath>Track1</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<ContextMenu name="Track1ContextMenu" id="80">
+								<ChildItems>
+									<ButtonGroup name="Track1ContextMenuGroup" id="113">
+										<ExtendedTooltip name="Track1ContextMenuGroupExtendedTooltip" id="168"/>
+										<ChildItems>
+											<Button name="Track1TakePrefix1" id="109">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.GetPrefix1</CommandName>
+												<Title>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Take prefix</v8:content>
+													</v8:item>
+												</Title>
+												<ExtendedTooltip name="Path1TakePrefix1ExtendedTooltip" id="169"/>
+											</Button>
+											<Button name="Track1TakeSuffix1" id="110">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.GetSuffix1</CommandName>
+												<Title>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Take suffix</v8:content>
+													</v8:item>
+												</Title>
+												<ExtendedTooltip name="Path1TakeSuffix1ExtendedTooltip" id="170"/>
+											</Button>
+											<Button name="Track1TakeSeparator1" id="111">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.GetDelimiter1</CommandName>
+												<Title>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Get delimeter</v8:content>
+													</v8:item>
+												</Title>
+												<ExtendedTooltip name="Track1TakeSeparator1ExtendedTooltip" id="171"/>
+											</Button>
+											<Button name="Path1TakeField1" id="112">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.GetField1</CommandName>
+												<Title>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Add field</v8:content>
+													</v8:item>
+												</Title>
+												<ExtendedTooltip name="Path1TakeField1ExtendedTooltip" id="172"/>
+											</Button>
+										</ChildItems>
+									</ButtonGroup>
+								</ChildItems>
+							</ContextMenu>
+							<ExtendedTooltip name="Track1ExtendedTooltip" id="173"/>
+						</InputField>
+						<Button name="GetPrefix1" id="85">
+							<Type>UsualButton</Type>
+							<CommandName>Form.Command.GetPrefix1</CommandName>
+							<ExtendedTooltip name="TakePrefix1ExtendedTooltip" id="174"/>
+						</Button>
+						<Button name="GetSuffix1" id="91">
+							<Type>UsualButton</Type>
+							<CommandName>Form.Command.GetSuffix1</CommandName>
+							<ExtendedTooltip name="TakeSuffix1ExtendedTooltip" id="175"/>
+						</Button>
+						<Button name="GetDelimiter1" id="94">
+							<Type>UsualButton</Type>
+							<CommandName>Form.Command.GetDelimiter1</CommandName>
+							<ExtendedTooltip name="TakeSeparator1ExtendedTooltip" id="176"/>
+						</Button>
+						<Button name="GetField1" id="95">
+							<Type>UsualButton</Type>
+							<CommandName>Form.Command.GetField1</CommandName>
+							<ExtendedTooltip name="TakeField1ExtendedTooltip" id="177"/>
+						</Button>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="TracksGroup2" id="89">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Track group 2</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="TracksGroup2ExtendedTooltip" id="178"/>
+					<ChildItems>
+						<InputField name="Track2" id="81">
+							<DataPath>Track2</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<ContextMenu name="Track2ContextMenu" id="82">
+								<ChildItems>
+									<ButtonGroup name="Track2ContextMenuGroup" id="114">
+										<ExtendedTooltip name="Track2ContextMenuGroupExtendedTooltip" id="179"/>
+										<ChildItems>
+											<Button name="Track2TakePrefix2" id="118">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.GetPrefix2</CommandName>
+												<Title>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Take prefix</v8:content>
+													</v8:item>
+												</Title>
+												<ExtendedTooltip name="Path2TakePrefix2ExtendedTooltip" id="180"/>
+											</Button>
+											<Button name="Track2TakeSuffix2" id="117">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.GetSuffix2</CommandName>
+												<Title>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Take suffix</v8:content>
+													</v8:item>
+												</Title>
+												<ExtendedTooltip name="Path2TakeSuffix2ExtendedTooltip" id="181"/>
+											</Button>
+											<Button name="Track2TakeSeparator2" id="116">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.GetDelimiter2</CommandName>
+												<Title>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Get delimeter</v8:content>
+													</v8:item>
+												</Title>
+												<ExtendedTooltip name="Track2TakeSeparator2ExtendedTooltip" id="182"/>
+											</Button>
+											<Button name="Lane2GetField2" id="115">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.GetField2</CommandName>
+												<Title>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Add field</v8:content>
+													</v8:item>
+												</Title>
+												<ExtendedTooltip name="Path2TakeField2ExtendedTooltip" id="183"/>
+											</Button>
+										</ChildItems>
+									</ButtonGroup>
+								</ChildItems>
+							</ContextMenu>
+							<ExtendedTooltip name="Track2ExtendedTooltip" id="184"/>
+						</InputField>
+						<Button name="GetPrefix2" id="86">
+							<Type>UsualButton</Type>
+							<CommandName>Form.Command.GetPrefix2</CommandName>
+							<ExtendedTooltip name="TakePrefix2ExtendedTooltip" id="185"/>
+						</Button>
+						<Button name="GetSuffix2" id="92">
+							<Type>UsualButton</Type>
+							<CommandName>Form.Command.GetSuffix2</CommandName>
+							<ExtendedTooltip name="TakeSuffix2ExtendedTooltip" id="186"/>
+						</Button>
+						<Button name="GetDelimiter2" id="96">
+							<Type>UsualButton</Type>
+							<CommandName>Form.Command.GetDelimiter2</CommandName>
+							<ExtendedTooltip name="TakeSeparator2ExtendedTooltip" id="187"/>
+						</Button>
+						<Button name="GetField2" id="97">
+							<Type>UsualButton</Type>
+							<CommandName>Form.Command.GetField2</CommandName>
+							<ExtendedTooltip name="TakeField2ExtendedTooltip" id="188"/>
+						</Button>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="TracksGroup3" id="90">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Track group3</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="TracksGroup3ExtendedTooltip" id="189"/>
+					<ChildItems>
+						<InputField name="Track3" id="83">
+							<DataPath>Track3</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<ContextMenu name="Track3ContextMenu" id="84">
+								<ChildItems>
+									<ButtonGroup name="Track3ContextMenuGroup" id="119">
+										<ExtendedTooltip name="Track3ContextMenuGroupExtendedTooltip" id="190"/>
+										<ChildItems>
+											<Button name="Track3TakePrefix3" id="123">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.GetPrefix3</CommandName>
+												<Title>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Take prefix</v8:content>
+													</v8:item>
+												</Title>
+												<ExtendedTooltip name="Path3TakePrefix3ExtendedTooltip" id="191"/>
+											</Button>
+											<Button name="Track3TakeSuffix3" id="122">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.GetSuffix3</CommandName>
+												<Title>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Take suffix</v8:content>
+													</v8:item>
+												</Title>
+												<ExtendedTooltip name="Path3TakeSuffix3ExtendedTooltip" id="192"/>
+											</Button>
+											<Button name="Track3TakeSeparator3" id="121">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.GetDelimiter3</CommandName>
+												<Title>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Get delimeter</v8:content>
+													</v8:item>
+												</Title>
+												<ExtendedTooltip name="Track3TakeSeparator3ExtendedTooltip" id="193"/>
+											</Button>
+											<Button name="Path3TakeField3" id="120">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.GetField3</CommandName>
+												<Title>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Add field</v8:content>
+													</v8:item>
+												</Title>
+												<ExtendedTooltip name="Path3TakeField3ExtendedTooltip" id="194"/>
+											</Button>
+										</ChildItems>
+									</ButtonGroup>
+								</ChildItems>
+							</ContextMenu>
+							<ExtendedTooltip name="Track3ExtendedTooltip" id="195"/>
+						</InputField>
+						<Button name="GetPrefix3" id="87">
+							<Type>UsualButton</Type>
+							<CommandName>Form.Command.GetPrefix3</CommandName>
+							<ExtendedTooltip name="TakePrefix3ExtendedTooltip" id="196"/>
+						</Button>
+						<Button name="GetSuffix3" id="93">
+							<Type>UsualButton</Type>
+							<CommandName>Form.Command.GetSuffix3</CommandName>
+							<ExtendedTooltip name="TakeSuffix3ExtendedTooltip" id="197"/>
+						</Button>
+						<Button name="GetDelimiter3" id="98">
+							<Type>UsualButton</Type>
+							<CommandName>Form.Command.GetDelimiter3</CommandName>
+							<ExtendedTooltip name="TakeSeparator3ExtendedTooltip" id="198"/>
+						</Button>
+						<Button name="GetField3" id="99">
+							<Type>UsualButton</Type>
+							<CommandName>Form.Command.GetField3</CommandName>
+							<ExtendedTooltip name="TakeField3ExtendedTooltip" id="199"/>
+						</Button>
+					</ChildItems>
+				</UsualGroup>
+				<LabelDecoration name="CommentDecoration" id="100">
+					<TextColor>#9F6500</TextColor>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>1. Read the magnetic card data by the reader.
+2. Use mouse to select the part of the code.
+3. Click the button corresponding to the function of the selected code.
+4. Repeat this operation for all code items of each track.
+5. Click Check Template to make sure that the settings are correct.</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="CommentDecorationContextMenu" id="101"/>
+					<ExtendedTooltip name="CommentDecorationExtendedTooltip" id="200"/>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Type>
+				<v8:Type>cfg:CatalogObject.MagneticCardsTemplates</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="Track1" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Track1</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Track2" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Track2</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Track3" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Track3</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="GetPrefix1" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Prefix</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Get prefix from the first track</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>GetPrefix1</Action>
+		</Command>
+		<Command name="GetSuffix1" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Suffix</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Get suffix from the first track</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>GetSuffix1</Action>
+		</Command>
+		<Command name="GetDelimiter1" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Delimiter</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Get first track delimiter</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>GetDelimiter1</Action>
+		</Command>
+		<Command name="GetField1" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Add field</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Add the first track field. Prefix, suffix and separator must be already specified.</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>GetField1</Action>
+		</Command>
+		<Command name="GetPrefix2" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Prefix</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Get prefix from the second track</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>GetPrefix2</Action>
+		</Command>
+		<Command name="GetPrefix3" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Prefix</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Get prefix from the third track</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>GetPrefix3</Action>
+		</Command>
+		<Command name="GetSuffix2" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Suffix</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Get suffix from the second track</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>GetSuffix2</Action>
+		</Command>
+		<Command name="GetSuffix3" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Suffix</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Get suffix from the third track</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>GetSuffix3</Action>
+		</Command>
+		<Command name="GetDelimiter2" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Delimiter</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Get second track delimiter</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>GetDelimiter2</Action>
+		</Command>
+		<Command name="GetDelimiter3" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Delimiter</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Get third track delimiter</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>GetDelimiter3</Action>
+		</Command>
+		<Command name="GetField2" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Add field</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Add the second track field. Prefix, suffix and separator must be already specified.</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>GetField2</Action>
+		</Command>
+		<Command name="GetField3" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Add field</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Add the third track field. Prefix, suffix and separator must be already specified.</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>GetField3</Action>
+		</Command>
+		<Command name="CheckTemplate" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Check template</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Check template</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.PeripheralsMagneticCardReader16</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+				<xr:TransparentPixel x="2" y="2"/>
+			</Picture>
+			<Action>CheckTemplateCommand</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+	</Commands>
+</Form>

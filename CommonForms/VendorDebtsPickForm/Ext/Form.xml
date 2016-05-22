@@ -1,0 +1,912 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Width>82</Width>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<CommandBarLocation>Bottom</CommandBarLocation>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<HorizontalAlign>Right</HorizontalAlign>
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="OK" id="102">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<SkipOnInput>false</SkipOnInput>
+				<CommandName>Form.Command.OK</CommandName>
+				<ExtendedTooltip name="OKExtendedTooltip" id="150"/>
+			</Button>
+			<Button name="Cancel" id="103">
+				<Type>CommandBarButton</Type>
+				<SkipOnInput>false</SkipOnInput>
+				<CommandName>Form.StandardCommand.Cancel</CommandName>
+				<ExtendedTooltip name="CancelExtendedTooltip" id="151"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnOpen">OnOpen</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="Header" id="24">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Header</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Header</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="HeaderExtendedTooltip" id="153"/>
+			<ChildItems>
+				<LabelField name="Company" id="21">
+					<DataPath>SubsidiaryCompany</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<ContextMenu name="CounterpartyContextMenu" id="22"/>
+					<ExtendedTooltip name="CounterpartyExtendedTooltip" id="154"/>
+				</LabelField>
+				<LabelField name="Counterparty" id="18">
+					<DataPath>Counterparty</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<ContextMenu name="CounterpartyContextMenu" id="19"/>
+					<ExtendedTooltip name="CounterpartyExtendedTooltip" id="155"/>
+				</LabelField>
+				<CommandBar name="HeaderCommandPanel" id="123">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Header command bar</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Header command bar</v8:content>
+						</v8:item>
+					</ToolTip>
+					<HorizontalLocation>Right</HorizontalLocation>
+					<ExtendedTooltip name="CommandPanelHeaderExtendedTooltip" id="156"/>
+					<ChildItems>
+						<Button name="Refresh" id="124">
+							<Type>CommandBarButton</Type>
+							<Representation>Picture</Representation>
+							<SkipOnInput>false</SkipOnInput>
+							<CommandName>Form.Command.Refresh</CommandName>
+							<ExtendedTooltip name="RefreshExtendedTooltip" id="157"/>
+						</Button>
+						<Button name="AskAmount" id="125">
+							<Type>CommandBarButton</Type>
+							<SkipOnInput>false</SkipOnInput>
+							<CommandName>Form.Command.AskAmount</CommandName>
+							<ExtendedTooltip name="AskAmountExtendedTooltip" id="158"/>
+						</Button>
+						<Button name="ChangeForm" id="200">
+							<Type>CommandBarButton</Type>
+							<OnlyInAllActions>false</OnlyInAllActions>
+							<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
+							<ExtendedTooltip name="ChangeFormExtendedTooltip" id="201"/>
+						</Button>
+						<Button name="Help" id="104">
+							<Type>CommandBarButton</Type>
+							<SkipOnInput>false</SkipOnInput>
+							<OnlyInAllActions>false</OnlyInAllActions>
+							<CommandName>Form.StandardCommand.Help</CommandName>
+							<ExtendedTooltip name="HelpExtendedTooltip" id="152"/>
+						</Button>
+					</ChildItems>
+				</CommandBar>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="Debts" id="121">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Debts</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Debts</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<ExtendedTooltip name="DebtsExtendedTooltip" id="159"/>
+			<ChildItems>
+				<Table name="DebtsList" id="70">
+					<Representation>List</Representation>
+					<CommandBarLocation>None</CommandBarLocation>
+					<SkipOnInput>false</SkipOnInput>
+					<HeightInTableRows>4</HeightInTableRows>
+					<ChoiceMode>true</ChoiceMode>
+					<UseAlternationRowColor>true</UseAlternationRowColor>
+					<AutoInsertNewRow>true</AutoInsertNewRow>
+					<EnableStartDrag>true</EnableStartDrag>
+					<EnableDrag>true</EnableDrag>
+					<DataPath>DebtsList</DataPath>
+					<SearchStringLocation>None</SearchStringLocation>
+					<ViewStatusLocation>None</ViewStatusLocation>
+					<SearchControlLocation>None</SearchControlLocation>
+					<RowFilter xsi:nil="true"/>
+					<ContextMenu name="DebtsListContextMenu" id="71"/>
+					<AutoCommandBar name="DebtsListCommandPanel" id="72"/>
+					<ExtendedTooltip name="DebtsListExtendedTooltip" id="160"/>
+					<SearchStringAddition name="DebtsListSearchString" id="182">
+						<AdditionSource>
+							<Item>DebtsList</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="DebtsListSearchStringContextMenu" id="183"/>
+						<ExtendedTooltip name="DebtsListSearchStringExtendedTooltip" id="184"/>
+					</SearchStringAddition>
+					<ViewStatusAddition name="DebtsListViewStatus" id="185">
+						<AdditionSource>
+							<Item>DebtsList</Item>
+							<Type>ViewStatusRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="DebtsListViewStatusContextMenu" id="186"/>
+						<ExtendedTooltip name="DebtsListViewStatusExtendedTooltip" id="187"/>
+					</ViewStatusAddition>
+					<SearchControlAddition name="DebtsListSearchControl" id="188">
+						<AdditionSource>
+							<Item>DebtsList</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<ContextMenu name="DebtsListSearchControlContextMenu" id="189"/>
+						<ExtendedTooltip name="DebtsListSearchControlExtendedTooltip" id="190"/>
+					</SearchControlAddition>
+					<Events>
+						<Event name="ValueChoice">DebtsListValueChoice</Event>
+						<Event name="DragStart">DebtsListDragStart</Event>
+					</Events>
+					<ChildItems>
+						<PictureField name="DebtsListPicture" id="146">
+							<DataPath>DebtsList.Picture</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>1</Width>
+							<ValuesPicture>
+								<xr:Ref>CommonPicture.ForPayment</xr:Ref>
+								<xr:LoadTransparent>true</xr:LoadTransparent>
+							</ValuesPicture>
+							<ContextMenu name="DebtsListPictureContextMenu" id="147"/>
+							<ExtendedTooltip name="DebtsListPictureExtendedTooltip" id="161"/>
+						</PictureField>
+						<InputField name="DebtsListContract" id="134">
+							<DataPath>DebtsList.Contract</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>20</Width>
+							<ContextMenu name="DebtsListContractContextMenu" id="135"/>
+							<ExtendedTooltip name="DebtsListContractExtendedTooltip" id="162"/>
+						</InputField>
+						<InputField name="DebtsListDocument" id="136">
+							<DataPath>DebtsList.Document</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>20</Width>
+							<ContextMenu name="DebtsListDocumentContextMenu" id="137"/>
+							<ExtendedTooltip name="DebtsListDocumentExtendedTooltip" id="163"/>
+						</InputField>
+						<InputField name="DebtsListOrder" id="138">
+							<DataPath>DebtsList.Order</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>20</Width>
+							<ContextMenu name="DebtsListOrderContextMenu" id="139"/>
+							<ExtendedTooltip name="DebtsListOrderExtendedTooltip" id="164"/>
+						</InputField>
+						<InputField name="DebtsSettlementsSummList" id="140">
+							<DataPath>DebtsList.SettlementsAmount</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>13</Width>
+							<ContextMenu name="DebtsSettlementsSummListContextMenu" id="141"/>
+							<ExtendedTooltip name="DebtsSettlementsSummListExtendedTooltip" id="165"/>
+						</InputField>
+						<InputField name="DebtsLictRate" id="142">
+							<DataPath>DebtsList.ExchangeRate</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>6</Width>
+							<ContextMenu name="DebtRateListContextMenu" id="143"/>
+							<ExtendedTooltip name="ListOfDebtRateExtendedTooltip" id="166"/>
+						</InputField>
+						<InputField name="DebtsListMultiplicity" id="144">
+							<DataPath>DebtsList.Multiplicity</DataPath>
+							<UserVisible>
+								<xr:Common>false</xr:Common>
+							</UserVisible>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>9</Width>
+							<ContextMenu name="DebtsListMultiplicityContextMenu" id="145"/>
+							<ExtendedTooltip name="DebtsListMultiplicityExtendedTooltip" id="167"/>
+						</InputField>
+					</ChildItems>
+				</Table>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="Selected" id="122">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Filtered debts</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Selected</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<ExtendedTooltip name="FilteredExtendedTooltip" id="168"/>
+			<ChildItems>
+				<Table name="FilteredDebts" id="91">
+					<Representation>List</Representation>
+					<SkipOnInput>false</SkipOnInput>
+					<HeightInTableRows>4</HeightInTableRows>
+					<AutoInsertNewRow>true</AutoInsertNewRow>
+					<EnableDrag>true</EnableDrag>
+					<DataPath>FilteredDebts</DataPath>
+					<CommandSet>
+						<ExcludedCommand>Copy</ExcludedCommand>
+						<ExcludedCommand>Add</ExcludedCommand>
+					</CommandSet>
+					<SearchStringLocation>None</SearchStringLocation>
+					<ViewStatusLocation>None</ViewStatusLocation>
+					<SearchControlLocation>None</SearchControlLocation>
+					<RowFilter xsi:nil="true"/>
+					<ContextMenu name="SelectedDebtContextMenu" id="92"/>
+					<AutoCommandBar name="SelectedDebtsCommandBar" id="93">
+						<ChildItems>
+							<Button name="FilteredDebtsAutoFill" id="133">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.FillAutomatically</CommandName>
+								<ExtendedTooltip name="SelectedDebtsFillAutomaticallyExtendedTooltip" id="169"/>
+							</Button>
+						</ChildItems>
+					</AutoCommandBar>
+					<ExtendedTooltip name="SelectedDebtsExtendedTooltip" id="170"/>
+					<SearchStringAddition name="FilteredDebtsSearchString" id="191">
+						<AdditionSource>
+							<Item>FilteredDebts</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="FilteredDebtsSearchStringContextMenu" id="192"/>
+						<ExtendedTooltip name="FilteredDebtsSearchStringExtendedTooltip" id="193"/>
+					</SearchStringAddition>
+					<ViewStatusAddition name="FilteredDebtsViewStatus" id="194">
+						<AdditionSource>
+							<Item>FilteredDebts</Item>
+							<Type>ViewStatusRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="FilteredDebtstViewStatusEContextMenu" id="195"/>
+						<ExtendedTooltip name="FilteredDebtsViewStatusExtendedTooltip" id="196"/>
+					</ViewStatusAddition>
+					<SearchControlAddition name="FilteredDebtstSearchControl" id="197">
+						<AdditionSource>
+							<Item>FilteredDebts</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<ContextMenu name="FilteredDebtsSearchControlContextMenu" id="198"/>
+						<ExtendedTooltip name="FilteredDebtsSearchControlExtendedTooltip" id="199"/>
+					</SearchControlAddition>
+					<Events>
+						<Event name="DragCheck">FilteredDebtsDragCheck</Event>
+						<Event name="BeforeAddRow">FilteredDebtsBeforeAddingStart</Event>
+						<Event name="Drag">FilteredDebtsDrag</Event>
+						<Event name="OnStartEdit">FilteredDebtsOnStartEdit</Event>
+						<Event name="OnChange">FilteredDebtsOnChange</Event>
+					</Events>
+					<ChildItems>
+						<PictureField name="FilteredDebtsPicture" id="148">
+							<DataPath>FilteredDebts.Picture</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>1</Width>
+							<ValuesPicture>
+								<xr:Ref>CommonPicture.ForPayment</xr:Ref>
+								<xr:LoadTransparent>true</xr:LoadTransparent>
+							</ValuesPicture>
+							<ContextMenu name="FilteredDebtsPictureContextMenu" id="149"/>
+							<ExtendedTooltip name="FilteredDebtsPictureExtendedTooltip" id="171"/>
+						</PictureField>
+						<InputField name="FilteredDebtsContract" id="107">
+							<DataPath>FilteredDebts.Contract</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<Width>20</Width>
+							<Wrap>false</Wrap>
+							<ChoiceParameterLinks>
+								<xr:Link>
+									<xr:Name>Filter.Owner</xr:Name>
+									<xr:DataPath xsi:type="xs:string">Counterparty</xr:DataPath>
+									<xr:ValueChange>Clear</xr:ValueChange>
+								</xr:Link>
+							</ChoiceParameterLinks>
+							<ContextMenu name="FilteredDebtsContractContextMenu" id="108"/>
+							<ExtendedTooltip name="FilteredDebtsContractExtendedTooltip" id="172"/>
+						</InputField>
+						<InputField name="FilteredDebtsDocument" id="96">
+							<DataPath>FilteredDebts.Document</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<Width>20</Width>
+							<Wrap>false</Wrap>
+							<ChoiceParameterLinks>
+								<xr:Link>
+									<xr:Name>Filter.Counterparty</xr:Name>
+									<xr:DataPath xsi:type="xs:string">Counterparty</xr:DataPath>
+									<xr:ValueChange>Clear</xr:ValueChange>
+								</xr:Link>
+							</ChoiceParameterLinks>
+							<ContextMenu name="FliteredDebtsDocumentContextMenu" id="97"/>
+							<ExtendedTooltip name="FilteredDebtsDocumentExtendedTooltip" id="173"/>
+						</InputField>
+						<InputField name="FilteredDebtsOrder" id="98">
+							<DataPath>FilteredDebts.Order</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<Width>20</Width>
+							<Wrap>false</Wrap>
+							<ChoiceParameterLinks>
+								<xr:Link>
+									<xr:Name>Filter.Counterparty</xr:Name>
+									<xr:DataPath xsi:type="xs:string">Counterparty</xr:DataPath>
+									<xr:ValueChange>Clear</xr:ValueChange>
+								</xr:Link>
+							</ChoiceParameterLinks>
+							<ContextMenu name="FilteredDebtsOrderContextMenu" id="99"/>
+							<ExtendedTooltip name="FilteredDebtsOrderExtendedTooltip" id="174"/>
+						</InputField>
+						<InputField name="FilteredDebtsSettlementsSumm" id="100">
+							<DataPath>FilteredDebts.SettlementsAmount</DataPath>
+							<Width>13</Width>
+							<Wrap>false</Wrap>
+							<ContextMenu name="FilteredDebtsSettlementsSummContextMenu" id="101"/>
+							<ExtendedTooltip name="FilteredDebtsSettlementsSummExtendedTooltip" id="175"/>
+						</InputField>
+						<InputField name="SelectedDebtsExchangeRate" id="109">
+							<DataPath>FilteredDebts.ExchangeRate</DataPath>
+							<Width>6</Width>
+							<Wrap>false</Wrap>
+							<ContextMenu name="SelectedDebtsExchangeRateContextMenu" id="110"/>
+							<ExtendedTooltip name="SelectedDebtsExchangeRateExtendedTooltip" id="176"/>
+						</InputField>
+						<InputField name="FilteredDebtsRatio" id="111">
+							<DataPath>FilteredDebts.Multiplicity</DataPath>
+							<UserVisible>
+								<xr:Common>false</xr:Common>
+							</UserVisible>
+							<Width>9</Width>
+							<Wrap>false</Wrap>
+							<ContextMenu name="FilteredDebtsRatioContextMenu" id="112"/>
+							<ExtendedTooltip name="FilteredDebtsRatioExtendedTooltip" id="177"/>
+						</InputField>
+					</ChildItems>
+				</Table>
+				<UsualGroup name="Totals" id="126">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Totals</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Totals</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="TotalsExtendedTooltip" id="178"/>
+					<ChildItems>
+						<LabelDecoration name="Decoration1" id="127">
+							<HorizontalStretch>true</HorizontalStretch>
+							<ContextMenu name="Decoration1ContextMenu" id="128"/>
+							<ExtendedTooltip name="Decoration1ExtendedTooltip" id="179"/>
+						</LabelDecoration>
+						<UsualGroup name="AmountCurrency" id="202">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Amount currency</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Amount currency</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<BackColor>style:TotalsGroupBackground</BackColor>
+							<ExtendedTooltip name="AmountCurrencyExtendedTooltip" id="203"/>
+							<ChildItems>
+								<InputField name="AmountTotal" id="129">
+									<DataPath>AmountTotal</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Total</v8:content>
+										</v8:item>
+									</Title>
+									<HorizontalAlign>Right</HorizontalAlign>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="TotalAmountContextMenu" id="130"/>
+									<ExtendedTooltip name="TotalAmountExtendedTooltip" id="180"/>
+								</InputField>
+								<LabelField name="IncomeAndExpensesForecast" id="131">
+									<DataPath>IncomeAndExpensesForecast</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<Width>4</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="AccountingCurrencyContextMenu" id="132"/>
+									<ExtendedTooltip name="AccountingCurrencyExtendedTooltip" id="181"/>
+								</LabelField>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Counterparty" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Counterparty</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Counterparties</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="SubsidiaryCompany" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Company</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Companies</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Period" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Period</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>DateTime</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="FilteredDebts" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Filtered debts</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Document" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Document</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:DocumentRef.CustomerInvoice</v8:Type>
+						<v8:Type>cfg:DocumentRef.SupplierInvoice</v8:Type>
+						<v8:Type>cfg:DocumentRef.SubcontractorReport</v8:Type>
+						<v8:Type>cfg:DocumentRef.ReportToPrincipal</v8:Type>
+						<v8:Type>cfg:DocumentRef.Netting</v8:Type>
+						<v8:Type>cfg:DocumentRef.AdditionalCosts</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Order" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Order</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:DocumentRef.CustomerOrder</v8:Type>
+						<v8:Type>cfg:DocumentRef.PurchaseOrder</v8:Type>
+					</Type>
+				</Column>
+				<Column name="SettlementsAmount" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Amount of settlements</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="Contract" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Contract</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.CounterpartyContracts</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ExchangeRate" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Exchange rate</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>4</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+					<FunctionalOptions>
+						<Item>FunctionalOption.CurrencyTransactionsAccounting</Item>
+					</FunctionalOptions>
+				</Column>
+				<Column name="Multiplicity" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Multiplicity</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+					<FunctionalOptions>
+						<Item>FunctionalOption.CurrencyTransactionsAccounting</Item>
+					</FunctionalOptions>
+				</Column>
+				<Column name="AdvanceFlag" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Advance flag</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Picture" id="8">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Picture</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="AddressPaymentDetailsInStorage" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Address payment details in storage</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="AskAmount" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Request the amount</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="AmountTotal" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Settlements amount (total)</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>15</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="IncomeAndExpensesForecast" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Accounting currency</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Currencies</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Ref" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Ref</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DocumentRef.PaymentExpense</v8:Type>
+				<v8:Type>cfg:DocumentRef.CashPayment</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="DocumentAmount" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Document amount</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>15</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="CashCurrency" id="12">
+			<Type>
+				<v8:Type>cfg:CatalogRef.Currencies</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="DebtsList" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>List of debts</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Contract" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Contract</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.CounterpartyContracts</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Document" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Document</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:DocumentRef.CustomerInvoice</v8:Type>
+						<v8:Type>cfg:DocumentRef.SupplierInvoice</v8:Type>
+						<v8:Type>cfg:DocumentRef.SubcontractorReport</v8:Type>
+						<v8:Type>cfg:DocumentRef.ReportToPrincipal</v8:Type>
+						<v8:Type>cfg:DocumentRef.Netting</v8:Type>
+						<v8:Type>cfg:DocumentRef.AdditionalCosts</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Order" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Order</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:DocumentRef.CustomerOrder</v8:Type>
+						<v8:Type>cfg:DocumentRef.PurchaseOrder</v8:Type>
+					</Type>
+				</Column>
+				<Column name="SettlementsAmount" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Amount of settlements</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="ExchangeRate" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Exchange rate</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>4</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+					<FunctionalOptions>
+						<Item>FunctionalOption.CurrencyTransactionsAccounting</Item>
+					</FunctionalOptions>
+				</Column>
+				<Column name="Multiplicity" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Multiplicity</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+					<FunctionalOptions>
+						<Item>FunctionalOption.CurrencyTransactionsAccounting</Item>
+					</FunctionalOptions>
+				</Column>
+				<Column name="Picture" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Picture</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="OperationKind" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Transaction kind</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.OperationKindsPaymentExpense</v8:Type>
+				<v8:Type>cfg:EnumRef.OperationKindsPaymentReceipt</v8:Type>
+				<v8:Type>cfg:EnumRef.OperationKindsCashReceipt</v8:Type>
+				<v8:Type>cfg:EnumRef.OperationKindsCashPayment</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="OK" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>OK</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>OK</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>OKExecute</Action>
+		</Command>
+		<Command name="Refresh" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Refresh</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Refresh</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Refresh</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Refresh</Action>
+		</Command>
+		<Command name="AskAmount" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Request the amount</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Request the amount</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>AskAmount</Action>
+		</Command>
+		<Command name="FillAutomatically" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Fill</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>AutoFill</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>FillAutomatically</Action>
+		</Command>
+	</Commands>
+</Form>

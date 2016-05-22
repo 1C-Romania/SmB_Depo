@@ -1,0 +1,1163 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Title>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Pick by documents</v8:content>
+		</v8:item>
+	</Title>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<CommandBarLocation>None</CommandBarLocation>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<CommandSet>
+		<ExcludedCommand>No</ExcludedCommand>
+		<ExcludedCommand>SaveValues</ExcludedCommand>
+		<ExcludedCommand>Abort</ExcludedCommand>
+		<ExcludedCommand>Retry</ExcludedCommand>
+		<ExcludedCommand>Yes</ExcludedCommand>
+		<ExcludedCommand>RestoreValues</ExcludedCommand>
+		<ExcludedCommand>Ignore</ExcludedCommand>
+	</CommandSet>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<HorizontalAlign>Right</HorizontalAlign>
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="ChoiceProcessing">ChoiceProcessing</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="FilterGroupByProductsAndServices" id="53">
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group filter by ProductsAndServices</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="FilterGroupOnProductsAndServicesExtendedTooltip" id="98"/>
+			<ChildItems>
+				<UsualGroup name="DocumentsListAttributesGroup" id="54">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>1. Filtered documents</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Attribute group list of documents</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<ExtendedTooltip name="AttributesGroupDocumentsListExtendedTooltip" id="99"/>
+					<ChildItems>
+						<Table name="FilteredDocuments" id="56">
+							<Representation>List</Representation>
+							<HeightInTableRows>5</HeightInTableRows>
+							<Header>false</Header>
+							<HorizontalLines>false</HorizontalLines>
+							<VerticalLines>false</VerticalLines>
+							<UseAlternationRowColor>true</UseAlternationRowColor>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>FilteredDocuments</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Filtered documents</v8:content>
+								</v8:item>
+							</Title>
+							<CommandSet>
+								<ExcludedCommand>Copy</ExcludedCommand>
+								<ExcludedCommand>CopyToClipboard</ExcludedCommand>
+								<ExcludedCommand>EndEdit</ExcludedCommand>
+								<ExcludedCommand>Change</ExcludedCommand>
+							</CommandSet>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="FilteredDocumentsContextMenu" id="57"/>
+							<AutoCommandBar name="FilteredDocumentsCommandBar" id="58">
+								<ChildItems>
+									<Button name="FilteredDocumentsDocumentsMultiplePickup" id="91">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.DocumentsMultiplePick</CommandName>
+										<ExtendedTooltip name="FilteredDocumentsMultiLinePickupDocumentsExtendedTooltip" id="100"/>
+									</Button>
+								</ChildItems>
+							</AutoCommandBar>
+							<ExtendedTooltip name="FilteredDocumentsExtendedTooltip" id="101"/>
+							<SearchStringAddition name="FilteredDocumentsSearchString" id="138">
+								<AdditionSource>
+									<Item>FilteredDocuments</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="FilteredDocumentsSearchStringContextMenu" id="139"/>
+								<ExtendedTooltip name="FilteredDocumentsSearchStringExtendedTooltip" id="140"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="FilteredDocumentsViewStatus" id="141">
+								<AdditionSource>
+									<Item>FilteredDocuments</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="FilteredDocumentsViewStatusContextMenu" id="142"/>
+								<ExtendedTooltip name="FilteredDocumentsViewStatusExtendedTooltip" id="143"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="FilteredDocumentsSearchManagement" id="144">
+								<AdditionSource>
+									<Item>FilteredDocuments</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="FilteredDocumentsSearchManagementContextMenu" id="145"/>
+								<ExtendedTooltip name="FilteredDocumentsSearchManagementExtendedTooltip" id="146"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="BeforeAddRow">DocumentsListBeforeAddRow</Event>
+								<Event name="OnActivateRow">FilteredDocumentsOnActivateRow</Event>
+								<Event name="ChoiceProcessing">FilteredDocumentsChoiceProcessing</Event>
+							</Events>
+							<ChildItems>
+								<CheckBoxField name="FilteredDocumentsMark" id="92">
+									<DataPath>FilteredDocuments.Check</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="FilteredDocumentsMarkContextMenu" id="93"/>
+									<ExtendedTooltip name="FilteredDocumentsMarkExtendedTooltip" id="102"/>
+								</CheckBoxField>
+								<InputField name="FilteredDocumentsReceiptDocument" id="94">
+									<DataPath>FilteredDocuments.ReceiptDocument</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="FilteredDocumentsReceiptDocumentContextMenu" id="95"/>
+									<ExtendedTooltip name="FilteredDocumentsDocumentIncomeExtendedTooltip" id="103"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+						<UsualGroup name="Switches" id="79">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Switches</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Switches</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="SwitchesExtendedTooltip" id="104"/>
+							<ChildItems>
+								<CheckBoxField name="ShowProductsAndServicesForCurrentDocumentOnly" id="77">
+									<DataPath>ShowProductsAndServicesForCurrentDocumentOnly</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Show inventory, selected from the current document</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>Right</TitleLocation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="ShowProductsAndServicesOnlyForCurrentDocumentContextMenu" id="78"/>
+									<ExtendedTooltip name="ShowProductsAndServicesOnlyForCurrentDocumentExtendedTooltip" id="105"/>
+									<Events>
+										<Event name="OnChange">ShowProductsAndServicesForCurrentDocumentOnlyOnChange</Event>
+									</Events>
+								</CheckBoxField>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="FilterByProductsAndServices" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>2. Filter ProductsAndServices</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Filter by products and services</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<ExtendedTooltip name="FilterByProductsAndServicesExtendedTooltip" id="106"/>
+					<ChildItems>
+						<Table name="FilteredProductsAndServices" id="44">
+							<Representation>List</Representation>
+							<HeightInTableRows>5</HeightInTableRows>
+							<Header>false</Header>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>FilteredProductsAndServices</DataPath>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="SelectedProductsAndServicesContextMenu" id="45"/>
+							<AutoCommandBar name="SelectedProductsAndServicesCommandPanel" id="46"/>
+							<ExtendedTooltip name="SelectedProductsAndServicesExtendedTooltip" id="107"/>
+							<SearchStringAddition name="FilteredProductsAndServicesSearchString" id="147">
+								<AdditionSource>
+									<Item>FilteredProductsAndServices</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="FilteredProductsAndServicesSearchStringContextMenu" id="148"/>
+								<ExtendedTooltip name="FilteredProductsAndServicesSearchStringExtendedTooltip" id="149"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="FilteredProductsAndServicesViewStatus" id="150">
+								<AdditionSource>
+									<Item>FilteredProductsAndServices</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="FilteredProductsAndServicesViewStatusContextMenu" id="151"/>
+								<ExtendedTooltip name="FilteredProductsAndServicesViewStatusExtendedTooltip" id="152"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="FilteredProductsAndServicesSearchManagement" id="153">
+								<AdditionSource>
+									<Item>FilteredProductsAndServices</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="FilteredProductsAndServicesSearchManagementContextMenu" id="154"/>
+								<ExtendedTooltip name="FilteredProductsAndServicesSearchManagementExtendedTooltip" id="155"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<InputField name="ProductsAndServicesFilterProductsAndServices" id="49">
+									<DataPath>FilteredProductsAndServices.ProductsAndServices</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ChoiceParameters>
+										<app:item name="Filter.ProductsAndServicesType">
+											<app:value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.ProductsAndServicesTypes.EnumValue.InventoryItem</Value>
+											</app:value>
+										</app:item>
+									</ChoiceParameters>
+									<ContextMenu name="FilterProductsAndServicesProductsAndServicesContextMenu" id="50"/>
+									<ExtendedTooltip name="ProductsAndServicesFilterProductsAndServicesExtendedTooltip" id="108"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+						<CheckBoxField name="FillOnlyToSpecifiedProductsAndServices" id="69">
+							<DataPath>FillOnlyToSpecifiedProductsAndServices</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Use filter by specified ProductsAndServices</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="FillOnlyAtIndicatedProductsAndServicesContextMenu" id="70"/>
+							<ExtendedTooltip name="FillOnlyToSpecifiedProductsAndServicesExtendedTooltip" id="109"/>
+						</CheckBoxField>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="GroupSelectedProductsAndServices" id="55">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>3. Selected products and services for the document</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Filtered ProductsAndServices group</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<ExtendedTooltip name="GroupSelectedProductsAndServicesExtendedTooltip" id="110"/>
+			<ChildItems>
+				<Table name="FilteredInventory" id="7">
+					<Representation>List</Representation>
+					<CommandBarLocation>Top</CommandBarLocation>
+					<UseAlternationRowColor>true</UseAlternationRowColor>
+					<AutoInsertNewRow>true</AutoInsertNewRow>
+					<EnableStartDrag>true</EnableStartDrag>
+					<EnableDrag>true</EnableDrag>
+					<DataPath>FilteredInventory</DataPath>
+					<CommandSet>
+						<ExcludedCommand>Copy</ExcludedCommand>
+						<ExcludedCommand>CopyToClipboard</ExcludedCommand>
+						<ExcludedCommand>EndEdit</ExcludedCommand>
+						<ExcludedCommand>Add</ExcludedCommand>
+						<ExcludedCommand>Change</ExcludedCommand>
+					</CommandSet>
+					<SearchStringLocation>None</SearchStringLocation>
+					<ViewStatusLocation>None</ViewStatusLocation>
+					<SearchControlLocation>None</SearchControlLocation>
+					<RowFilter xsi:nil="true"/>
+					<ContextMenu name="FilteredInventoryContextMenu" id="8"/>
+					<AutoCommandBar name="FilteredInventoryCommandPanel" id="9">
+						<ChildItems>
+							<Button name="FilteredInventorySelectAllPositions" id="84">
+								<Type>CommandBarButton</Type>
+								<Representation>Picture</Representation>
+								<CommandName>Form.Command.MarkAllPositions</CommandName>
+								<Picture>
+									<xr:Ref>StdPicture.CheckAll</xr:Ref>
+									<xr:LoadTransparent>true</xr:LoadTransparent>
+								</Picture>
+								<ExtendedTooltip name="InventorySelectAllFilteredEntriesExtendedTooltip" id="111"/>
+							</Button>
+							<Button name="FilteredInventoryItemsUncheckAll" id="85">
+								<Type>CommandBarButton</Type>
+								<Representation>Picture</Representation>
+								<CommandName>Form.Command.UnmarkAllPositions</CommandName>
+								<Picture>
+									<xr:Ref>StdPicture.UncheckAll</xr:Ref>
+									<xr:LoadTransparent>true</xr:LoadTransparent>
+								</Picture>
+								<ExtendedTooltip name="FilteredInventoryItemsUncheckAllExtendedTooltip" id="112"/>
+							</Button>
+							<Button name="ClearFilteredInventory" id="66">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.ClearFilteredInventory</CommandName>
+								<Title>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Clear</v8:content>
+									</v8:item>
+								</Title>
+								<ExtendedTooltip name="ClearFilteredInventoryExtendedTooltip" id="113"/>
+							</Button>
+							<Popup name="FilteredInventoryFill" id="65">
+								<Title>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Fill</v8:content>
+									</v8:item>
+								</Title>
+								<ToolTip>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Filtered inventory fill</v8:content>
+									</v8:item>
+								</ToolTip>
+								<ExtendedTooltip name="FilteredInventoryFillExtendedTooltip" id="114"/>
+								<ChildItems>
+									<Button name="FillInMarkedDocuments" id="63">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.FillByFilteredDocuments</CommandName>
+										<Title>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>By all documents</v8:content>
+											</v8:item>
+										</Title>
+										<ExtendedTooltip name="FillCheckedDocumentsExtendedTooltip" id="115"/>
+									</Button>
+									<Button name="FillByCurrentDocument" id="64">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.FillByCurrentDocument</CommandName>
+										<Title>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>By current document</v8:content>
+											</v8:item>
+										</Title>
+										<ExtendedTooltip name="FillInCurrentDocumentExtendedTooltip" id="116"/>
+									</Button>
+								</ChildItems>
+							</Popup>
+						</ChildItems>
+					</AutoCommandBar>
+					<ExtendedTooltip name="FilteredInventoryExtendedTooltip" id="117"/>
+					<SearchStringAddition name="FilteredInventorySearchString" id="156">
+						<AdditionSource>
+							<Item>FilteredInventory</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="FilteredInventorySearchStringContextMenu" id="157"/>
+						<ExtendedTooltip name="FilteredInventorySearchStringExtendedTooltip" id="158"/>
+					</SearchStringAddition>
+					<ViewStatusAddition name="FilteredInventoryViewStatus" id="159">
+						<AdditionSource>
+							<Item>FilteredInventory</Item>
+							<Type>ViewStatusRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="FilteredInventoryViewStatusContextMenu" id="160"/>
+						<ExtendedTooltip name="FilteredInventoryViewStatusExtendedTooltip" id="161"/>
+					</ViewStatusAddition>
+					<SearchControlAddition name="FilteredInventorySearchControl" id="162">
+						<AdditionSource>
+							<Item>FilteredInventory</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<ContextMenu name="FilteredInventorySearchControlContextMenu" id="163"/>
+						<ExtendedTooltip name="FilteredInventorySearchControlExtendedTooltip" id="164"/>
+					</SearchControlAddition>
+					<Events>
+						<Event name="Selection">FilteredInventorySelection</Event>
+					</Events>
+					<ChildItems>
+						<CheckBoxField name="FilteredInventoryMark" id="82">
+							<DataPath>FilteredInventory.Check</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>...</v8:content>
+								</v8:item>
+							</Title>
+							<EditMode>EnterOnInput</EditMode>
+							<FixingInTable>Left</FixingInTable>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="FilteredInventoryMarkContextMenu" id="83"/>
+							<ExtendedTooltip name="FilteredInventoryMarkExtendedTooltip" id="118"/>
+						</CheckBoxField>
+						<InputField name="FilteredSupplierInvoiceDocument" id="67">
+							<DataPath>FilteredInventory.ReceiptDocument</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<FixingInTable>Left</FixingInTable>
+							<Width>17</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="FilteredInventoryDocumentIncomeContextMenu" id="68"/>
+							<ExtendedTooltip name="FilteredInventoryDocumentIncomeExtendedTooltip" id="119"/>
+						</InputField>
+						<InputField name="FilteredInventoryProductsAndServices" id="10">
+							<DataPath>FilteredInventory.ProductsAndServices</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<FixingInTable>Left</FixingInTable>
+							<Width>24</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="FilteredInventoryProductsAndServicesContextMenu" id="11"/>
+							<ExtendedTooltip name="FilteredInventoryProductsAndServicesExtendedTooltip" id="120"/>
+						</InputField>
+						<InputField name="FilteredInventoryCharacteristic" id="12">
+							<DataPath>FilteredInventory.Characteristic</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="FilteredInventoryCharacteristicContextMenu" id="13"/>
+							<ExtendedTooltip name="FilteredInventoryCharacteristicExtendedTooltip" id="121"/>
+						</InputField>
+						<InputField name="FilteredInventoryBatch" id="18">
+							<DataPath>FilteredInventory.Batch</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="FilteredInventoryBatchContextMenu" id="19"/>
+							<ExtendedTooltip name="FilteredInventoryBatchExtendedTooltip" id="122"/>
+						</InputField>
+						<InputField name="FilteredInventoryQuantity" id="14">
+							<DataPath>FilteredInventory.Quantity</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="FilteredInventoryQuantityContextMenu" id="15"/>
+							<ExtendedTooltip name="FilteredInventoryQuantityExtendedTooltip" id="123"/>
+							<Events>
+								<Event name="OnChange">FilteredInventoryCountOnChange</Event>
+							</Events>
+						</InputField>
+						<InputField name="FilteredInventoryMeasurementUnit" id="16">
+							<DataPath>FilteredInventory.MeasurementUnit</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<DropListButton>true</DropListButton>
+							<ChoiceButton>false</ChoiceButton>
+							<OpenButton>false</OpenButton>
+							<ChooseType>false</ChooseType>
+							<ContextMenu name="FilteredInventoryMeasurementUnitContextMenu" id="17"/>
+							<ExtendedTooltip name="FilteredInventoryMeasurementUnitExtendedTooltip" id="124"/>
+						</InputField>
+						<InputField name="FilteredInventoryPrice" id="20">
+							<DataPath>FilteredInventory.Price</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="FilteredInventoryPriceContextMenu" id="21"/>
+							<ExtendedTooltip name="FilteredInventoryPriceExtendedTooltip" id="125"/>
+							<Events>
+								<Event name="OnChange">FilteredInventoryPriceOnChange</Event>
+							</Events>
+						</InputField>
+						<InputField name="FilteredInventoryAmount" id="28">
+							<DataPath>FilteredInventory.Amount</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="FilteredInventoryAmountContextMenu" id="29"/>
+							<ExtendedTooltip name="FilteredInventoryAmountExtendedTooltip" id="126"/>
+							<Events>
+								<Event name="OnChange">FilteredInventoryAmountOnChange</Event>
+							</Events>
+						</InputField>
+						<InputField name="FilteredInventoryVATRate" id="22">
+							<DataPath>FilteredInventory.VATRate</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="FilteredInventoryVATRateContextMenu" id="23"/>
+							<ExtendedTooltip name="FilteredInventoryVATRateExtendedTooltip" id="127"/>
+							<Events>
+								<Event name="OnChange">FilteredInventoryVATRateOnChange</Event>
+							</Events>
+						</InputField>
+						<InputField name="FilteredInventoryVATAmount" id="24">
+							<DataPath>FilteredInventory.VATAmount</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="FilteredInventoryVATAmountContextMenu" id="25"/>
+							<ExtendedTooltip name="FilteredInventoryVATAmountExtendedTooltip" id="128"/>
+							<Events>
+								<Event name="OnChange">FilteredInventoryVATAmountOnChange</Event>
+							</Events>
+						</InputField>
+						<InputField name="FilteredInventoryAmountTotal" id="26">
+							<DataPath>FilteredInventory.Total</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="FilteredInventoryAmountTotalContextMenu" id="27"/>
+							<ExtendedTooltip name="FilteredInventoryAmountTotalExtendedTooltip" id="129"/>
+						</InputField>
+						<InputField name="FilteredInventoryCustomerOrder" id="96">
+							<DataPath>FilteredInventory.CustomerOrder</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="FilteredInventoryCustomersOrderContextMenu" id="97"/>
+							<ExtendedTooltip name="FilteredInventoryCustomersOrderExtendedTooltip" id="130"/>
+						</InputField>
+					</ChildItems>
+				</Table>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="Footer" id="89">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Footer</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Footer</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="FooterExtendedTooltip" id="131"/>
+			<ChildItems>
+				<CheckBoxField name="AddNewPositionsIntoTableFooter" id="87">
+					<DataPath>AddNewPositionsIntoTableFooter</DataPath>
+					<TitleLocation>Right</TitleLocation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="AddNewPositionsIntoTableFooterContextMenu" id="88"/>
+					<ExtendedTooltip name="AddNewPositionsIntoTableFooterExtendedTooltip" id="132"/>
+				</CheckBoxField>
+				<CommandBar name="ButtonGroupTieRight" id="71">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group of buttons right binding</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group of buttons right binding</v8:content>
+						</v8:item>
+					</ToolTip>
+					<HorizontalLocation>Right</HorizontalLocation>
+					<ExtendedTooltip name="ButtonGroupTieRightExtendedTooltip" id="133"/>
+					<ChildItems>
+						<ButtonGroup name="Buttons" id="81">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Buttons</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Buttons</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ExtendedTooltip name="ButtonsExtendedTooltip" id="134"/>
+							<ChildItems>
+								<Button name="OK" id="72">
+									<Type>CommandBarButton</Type>
+									<Representation>PictureAndText</Representation>
+									<DefaultButton>true</DefaultButton>
+									<CommandName>Form.Command.OK</CommandName>
+									<ExtendedTooltip name="OKExtendedTooltip" id="135"/>
+								</Button>
+								<Button name="Cancel" id="90">
+									<Type>CommandBarButton</Type>
+									<CommandName>Form.StandardCommand.Cancel</CommandName>
+									<ExtendedTooltip name="CancelExtendedTooltip" id="136"/>
+								</Button>
+								<Button name="Help" id="74">
+									<Type>CommandBarButton</Type>
+									<CommandName>Form.StandardCommand.Help</CommandName>
+									<ExtendedTooltip name="HelpExtendedTooltip" id="137"/>
+								</Button>
+							</ChildItems>
+						</ButtonGroup>
+					</ChildItems>
+				</CommandBar>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="FilteredInventory" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Filtered inventory</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="ProductsAndServices" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Products and services</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.ProductsAndServices</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Characteristic" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Characteristic</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.ProductsAndServicesCharacteristics</v8:Type>
+					</Type>
+					<FunctionalOptions>
+						<Item>FunctionalOption.UseCharacteristics</Item>
+					</FunctionalOptions>
+				</Column>
+				<Column name="Quantity" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Quantity</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>3</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="MeasurementUnit" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>UOM</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.UOMClassifier</v8:Type>
+						<v8:Type>cfg:CatalogRef.UOM</v8:Type>
+					</Type>
+					<FunctionalOptions>
+						<Item>FunctionalOption.AccountingInVariousUOM</Item>
+					</FunctionalOptions>
+				</Column>
+				<Column name="Batch" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Batch</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.ProductsAndServicesBatches</v8:Type>
+					</Type>
+					<FunctionalOptions>
+						<Item>FunctionalOption.UseBatches</Item>
+					</FunctionalOptions>
+				</Column>
+				<Column name="Price" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Price</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="VATRate" id="8">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>VAT rate</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.VATRates</v8:Type>
+					</Type>
+				</Column>
+				<Column name="VATAmount" id="9">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>VAT amount</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="Total" id="10">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Total</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="Amount" id="11">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Amount</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="ReceiptDocument" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Receipt document</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:DocumentRef.SupplierInvoice</v8:Type>
+						<v8:Type>cfg:DocumentRef.FixedAssetsDepreciation</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Check" id="12">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Shows whether it is required to move the current item to the document for selection</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="CustomerOrder" id="13">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Customer order</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:DocumentRef.CustomerOrder</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Factor" id="14">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Factor</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>3</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="FilteredProductsAndServices" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Filtered ProductsAndServices</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="ProductsAndServices" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Products and services</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.ProductsAndServices</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="FilteredDocuments" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Filtered documents</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Check" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Check</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ReceiptDocument" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Receipt document</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:DocumentRef.SupplierInvoice</v8:Type>
+						<v8:Type>cfg:DocumentRef.FixedAssetsDepreciation</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="AmountIncludesVAT" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Amount includes VAT</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="FillOnlyToSpecifiedProductsAndServices" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Fill only by specified ProductsAndServices</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="VATTaxation" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>VAT taxation</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.VATTaxationTypes</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="UsingVAT" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>VAT is used</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="DocumentOrganization" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Document company</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Companies</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ProductsAndServicesType" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Products and services type</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="CharacteristicsUsed" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Characteristics used</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="BatchesUsed" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Batches used</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ActivateDocumentForCurrentProductsAndServices" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Activate document for current products and services</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ShowProductsAndServicesForCurrentDocumentOnly" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Show products and services for the current document only</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="AddNewPositionsIntoTableFooter" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Add new positions into table footer</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Counterparty" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Counterparty</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Counterparties</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="AccountingBySubsidiaryCompany" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Consolidate multiple companies</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="OwnerFormUUID" id="17">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Unique identifier of the owner form</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:UUID</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="CostsDocument" id="18">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Costs document</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DocumentRef.AdditionalCosts</v8:Type>
+			</Type>
+		</Attribute>
+		<ConditionalAppearance>
+			<dcsset:item>
+				<dcsset:selection/>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">FilteredInventory.ProductsAndServices</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="dcscor:DesignTimeValue">Catalog.ProductsAndServices.EmptyRef</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>BackColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">#FF00FF</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+		</ConditionalAppearance>
+	</Attributes>
+	<Commands>
+		<Command name="FillByFilteredDocuments" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Fill by filtered documents</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Fill by filtered documents</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>FillByFilteredDocuments</Action>
+		</Command>
+		<Command name="FillByCurrentDocument" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Fill by current document</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Fill by current document</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>FillByCurrentDocument</Action>
+		</Command>
+		<Command name="ClearFilteredInventory" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Clear filtered inventory</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Clear filtered inventory</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ClearFilteredInventory</Action>
+		</Command>
+		<Command name="OK" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>OK</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>OK</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>OK</Action>
+		</Command>
+		<Command name="MarkAllPositions" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Mark all positions</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Mark all positions</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>MarkAllPositions</Action>
+		</Command>
+		<Command name="UnmarkAllPositions" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Unmark all positions</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Unmark all positions</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>UnmarkAllPositions</Action>
+		</Command>
+		<Command name="DocumentsMultiplePick" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Pick</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Documents multiple Pick</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>DocumentsMultiplePick</Action>
+		</Command>
+	</Commands>
+</Form>

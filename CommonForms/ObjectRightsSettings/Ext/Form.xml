@@ -1,0 +1,489 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Title>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Access rights</v8:content>
+		</v8:item>
+	</Title>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<CommandSet>
+		<ExcludedCommand>No</ExcludedCommand>
+		<ExcludedCommand>SaveValues</ExcludedCommand>
+		<ExcludedCommand>Abort</ExcludedCommand>
+		<ExcludedCommand>Retry</ExcludedCommand>
+		<ExcludedCommand>Yes</ExcludedCommand>
+		<ExcludedCommand>Cancel</ExcludedCommand>
+		<ExcludedCommand>RestoreValues</ExcludedCommand>
+		<ExcludedCommand>Ignore</ExcludedCommand>
+		<ExcludedCommand>OK</ExcludedCommand>
+	</CommandSet>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="FormWriteAndClose" id="12">
+				<Type>CommandBarButton</Type>
+				<Representation>Text</Representation>
+				<DefaultButton>true</DefaultButton>
+				<SkipOnInput>false</SkipOnInput>
+				<CommandName>Form.Command.WriteAndClose</CommandName>
+				<ExtendedTooltip name="FormWriteAndCloseExtendedTooltip" id="42"/>
+			</Button>
+			<Button name="FormWrite" id="21">
+				<Type>CommandBarButton</Type>
+				<SkipOnInput>false</SkipOnInput>
+				<CommandName>Form.Command.Write</CommandName>
+				<ExtendedTooltip name="FormWriteExtendedTooltip" id="43"/>
+			</Button>
+			<Button name="FormAdd" id="31">
+				<Type>CommandBarButton</Type>
+				<SkipOnInput>false</SkipOnInput>
+				<CommandName>Form.Item.RightGroups.StandardCommand.Add</CommandName>
+				<ExtendedTooltip name="FormAddExtendedTooltip" id="44"/>
+			</Button>
+			<Button name="FormDelete" id="33">
+				<Type>CommandBarButton</Type>
+				<SkipOnInput>false</SkipOnInput>
+				<CommandName>Form.Item.RightGroups.StandardCommand.Delete</CommandName>
+				<ExtendedTooltip name="FormDeleteExtendedTooltip" id="45"/>
+			</Button>
+			<Button name="FormMoveUp" id="37">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Item.RightGroups.StandardCommand.MoveUp</CommandName>
+				<ExtendedTooltip name="FormMoveUpExtendedTooltip" id="46"/>
+			</Button>
+			<Button name="FormMoveDown" id="38">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Item.RightGroups.StandardCommand.MoveDown</CommandName>
+				<ExtendedTooltip name="FormMoveDownExtendedTooltip" id="47"/>
+			</Button>
+			<Button name="FormHelp" id="30">
+				<Type>CommandBarButton</Type>
+				<Visible>false</Visible>
+				<SkipOnInput>false</SkipOnInput>
+				<CommandName>Form.StandardCommand.Help</CommandName>
+				<ExtendedTooltip name="FormHelpExtendedTooltip" id="48"/>
+			</Button>
+			<Button name="FormChangeForm" id="36">
+				<Type>CommandBarButton</Type>
+				<SkipOnInput>false</SkipOnInput>
+				<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
+				<ExtendedTooltip name="FormChangeFormExtendedTooltip" id="49"/>
+			</Button>
+			<Button name="FormOutputList" id="59">
+				<Type>CommandBarButton</Type>
+				<OnlyInAllActions>false</OnlyInAllActions>
+				<CommandName>Form.Item.RightGroups.StandardCommand.OutputList</CommandName>
+				<ExtendedTooltip name="FormShowListExtendedTooltip" id="60"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="BeforeClose">BeforeClose</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<Table name="RightGroups" id="1">
+			<Representation>List</Representation>
+			<CommandBarLocation>None</CommandBarLocation>
+			<SkipOnInput>false</SkipOnInput>
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<EnableStartDrag>true</EnableStartDrag>
+			<EnableDrag>true</EnableDrag>
+			<DataPath>RightGroups</DataPath>
+			<RowPictureDataPath>RightGroups.PictureNumber</RowPictureDataPath>
+			<RowsPicture>
+				<xr:Ref>CommonPicture.UserStates</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</RowsPicture>
+			<SearchStringLocation>None</SearchStringLocation>
+			<ViewStatusLocation>None</ViewStatusLocation>
+			<SearchControlLocation>None</SearchControlLocation>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="RightGroupsContextMenu" id="2">
+				<Autofill>false</Autofill>
+				<ChildItems>
+					<Button name="RightGroupsAddContextMenu" id="23">
+						<Type>CommandBarButton</Type>
+						<SkipOnInput>false</SkipOnInput>
+						<CommandName>Form.Item.RightGroups.StandardCommand.Add</CommandName>
+						<ExtendedTooltip name="RightGroupsAddContextMenuExtendedTooltip" id="50"/>
+					</Button>
+					<Button name="RightGroupsCopyContextMenu" id="24">
+						<Type>CommandBarButton</Type>
+						<SkipOnInput>false</SkipOnInput>
+						<CommandName>Form.Item.RightGroups.StandardCommand.Copy</CommandName>
+						<ExtendedTooltip name="RightGroupsCopyContextMenuExtendedTooltip" id="51"/>
+					</Button>
+					<Button name="RightGroupsDeleteContextMenu" id="25">
+						<Type>CommandBarButton</Type>
+						<SkipOnInput>false</SkipOnInput>
+						<CommandName>Form.Item.RightGroups.StandardCommand.Delete</CommandName>
+						<ExtendedTooltip name="RightGroupsDeleteContextMenuExtendedTooltip" id="52"/>
+					</Button>
+					<Button name="RightGroupsContextMenuRemoveRightSet" id="39">
+						<Type>CommandBarButton</Type>
+						<Enabled>false</Enabled>
+						<CommandName>Form.Command.RemoveRIghtInstallation</CommandName>
+						<ExtendedTooltip name="RightGroupsContextMenuRemoveRightSetExtendedTooltip" id="53"/>
+					</Button>
+					<Button name="RightGroupsContextMenuSetRightProhibition" id="40">
+						<Type>CommandBarButton</Type>
+						<Enabled>false</Enabled>
+						<CommandName>Form.Command.SetRightProhibition</CommandName>
+						<ExtendedTooltip name="RightGroupsContextMenuSetRightProhibitionExtendedTooltip" id="54"/>
+					</Button>
+					<Button name="RightGroupsContextMenuSetRightResolution" id="41">
+						<Type>CommandBarButton</Type>
+						<Enabled>false</Enabled>
+						<CommandName>Form.Command.SetRightResolution</CommandName>
+						<ExtendedTooltip name="RightGroupsContextMenuSetRightResolutionExtendedTooltip" id="55"/>
+					</Button>
+				</ChildItems>
+			</ContextMenu>
+			<AutoCommandBar name="RightGroupsCommandPanel" id="3"/>
+			<ExtendedTooltip name="RightGroupsExtendedTooltip" id="56"/>
+			<SearchStringAddition name="RightGroupsSearchString" id="61">
+				<AdditionSource>
+					<Item>RightGroups</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="RightGroupsSearchStringContextMenu" id="62"/>
+				<ExtendedTooltip name="RightGroupsSearchStringExtendedTooltip" id="63"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="RightGroupsViewStatus" id="64">
+				<AdditionSource>
+					<Item>RightGroups</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="RightGroupsViewStatusContextMenu" id="65"/>
+				<ExtendedTooltip name="RightGroupsViewStatusExtendedTooltip" id="66"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="RightGroupsSearchManagement" id="67">
+				<AdditionSource>
+					<Item>RightGroups</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="RightGroupsSearchManagementContextMenu" id="68"/>
+				<ExtendedTooltip name="RightGroupsSearchManagementExtendedTooltip" id="69"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="Selection">RightGroupsChoice</Event>
+				<Event name="BeforeDeleteRow">RightGroupsBeforeDeleteRow</Event>
+				<Event name="OnActivateRow">RightGroupsOnActivatingRow</Event>
+				<Event name="OnActivateField">RightGroupsOnActivateField</Event>
+				<Event name="BeforeRowChange">RightGroupsBeforeRowChange</Event>
+				<Event name="OnStartEdit">RightGroupsOnStartEdit</Event>
+				<Event name="OnChange">RightGroupsOnChange</Event>
+			</Events>
+			<ChildItems>
+				<InputField name="RightGroupsUser" id="19">
+					<DataPath>RightGroups.User</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<HeaderHorizontalAlign>Center</HeaderHorizontalAlign>
+					<Width>35</Width>
+					<AutoMarkIncomplete>true</AutoMarkIncomplete>
+					<ContextMenu name="RightGroupsUserContextMenu" id="20"/>
+					<ExtendedTooltip name="RightGroupsUserExtendedTooltip" id="57"/>
+					<Events>
+						<Event name="OnChange">RightGroupsUserOnChange</Event>
+						<Event name="AutoComplete">RightGroupsUserAutoCompleteText</Event>
+						<Event name="StartChoice">RightGroupsUserStartChoice</Event>
+						<Event name="Clearing">RightGroupsUserClearing</Event>
+						<Event name="TextEditEnd">RightGroupsUserTextEntryEnd</Event>
+					</Events>
+				</InputField>
+			</ChildItems>
+		</Table>
+		<CheckBoxField name="InheritParentsRights" id="15">
+			<DataPath>InheritParentsRights</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Inherit rights from the upstream folders</v8:content>
+				</v8:item>
+			</Title>
+			<TitleLocation>Right</TitleLocation>
+			<CheckBoxType>Auto</CheckBoxType>
+			<ContextMenu name="InheritParentRightsContextMenu" id="16"/>
+			<ExtendedTooltip name="InheritParentRightsExtendedTooltip" id="58"/>
+			<Events>
+				<Event name="OnChange">InheritParentsRightsOnChange</Event>
+			</Events>
+		</CheckBoxField>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="RightGroups" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Groups of rights</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+			<Columns>
+				<Column name="User" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>User</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.ExternalUsers</v8:Type>
+						<v8:Type>cfg:CatalogRef.ExternalUsersGroups</v8:Type>
+						<v8:Type>cfg:CatalogRef.UsersGroups</v8:Type>
+						<v8:Type>cfg:CatalogRef.Users</v8:Type>
+					</Type>
+				</Column>
+				<Column name="SettingOwner" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Setting owner</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:TypeSet>cfg:AnyRef</v8:TypeSet>
+					</Type>
+				</Column>
+				<Column name="ParentSettings" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Parent settings</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="InheritanceAllowed" id="4">
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="PictureNumber" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Picture no</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="DirectDependencesOfRights" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Direct dependences of rights</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="InverseDependencesOfRights" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Inverse dependences of rights</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="PossibleRights" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Possible rights</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="InheritParentsRights" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Inherit rights of the parents</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ExternalUserOrGroup" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>External user or group</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="UseExternalUsers" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Use external users</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ListOfUserTypes" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>List of user types</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="AddedAttributes" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Added attributes</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="ParentFilled" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Parent is filled in</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="WriteAndClose" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Save and close</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Save and close</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.WriteAndClose</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>WriteAndClose</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="Write" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Write</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Write</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Write</Action>
+		</Command>
+		<Command name="Reread" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Reread</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Reread</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Reread</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Reread</Action>
+		</Command>
+		<Command name="SetRightResolution" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Set "Yes" right resolution</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Set right resolution</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>SetRightResolution</Action>
+		</Command>
+		<Command name="SetRightProhibition" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Set "no" right prohibition</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Set right prohibition</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>SetRightProhibition</Action>
+		</Command>
+		<Command name="RemoveRIghtInstallation" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Remove " " right installation</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Remove right installation</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>RemoveRIghtInstallation</Action>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="ObjectReference">
+			<Type/>
+			<KeyParameter>true</KeyParameter>
+		</Parameter>
+	</Parameters>
+</Form>

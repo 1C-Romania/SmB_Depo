@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="FormCommandBar" id="-1"/>
+	<Events>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="Owner" id="4">
+			<DataPath>Object.Owner</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<ContextMenu name="OwnerContextMenu" id="5"/>
+			<ExtendedTooltip name="OwnerExtendedTooltip" id="6"/>
+		</InputField>
+		<InputField name="Description" id="1">
+			<DataPath>Object.Description</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<ContextMenu name="DescriptionContextMenu" id="2"/>
+			<ExtendedTooltip name="DescriptionExtendedTooltip" id="3"/>
+		</InputField>
+		<InputField name="LicenseKind" id="7">
+			<DataPath>Object.LicenseKind</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<ContextMenu name="LicenseTypeContextMenu" id="8"/>
+			<ExtendedTooltip name="LicenseTypeExtendedTooltip" id="9"/>
+		</InputField>
+		<InputField name="StartDate" id="10">
+			<DataPath>Object.StartDate</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<ContextMenu name="StartDateContextMenu" id="11"/>
+			<ExtendedTooltip name="StartDateExtendedTooltip" id="12"/>
+		</InputField>
+		<InputField name="EndDate" id="13">
+			<DataPath>Object.EndDate</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<ContextMenu name="EndDateContextMenu" id="14"/>
+			<ExtendedTooltip name="EndDateExtendedTooltip" id="15"/>
+		</InputField>
+		<InputField name="IssuedBy" id="16">
+			<DataPath>Object.IssuedBy</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<ContextMenu name="IssuedByContextMenu" id="17"/>
+			<ExtendedTooltip name="IssuedByExtendedTooltip" id="18"/>
+		</InputField>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Type>
+				<v8:Type>cfg:CatalogObject.DeleteAlcoholVendorsLicenses</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+	</Attributes>
+</Form>

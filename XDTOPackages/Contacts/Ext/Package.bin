@@ -1,0 +1,44 @@
+﻿<package xmlns="http://v8.1c.ru/8.1/xdto" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://api-invoice.taxcom.ru/contacts">
+	<property xmlns:d2p1="http://api-invoice.taxcom.ru/contacts" name="Contacts" type="d2p1:Contacts"/>
+	<objectType name="Contacts" ordered="false" sequenced="true">
+		<property name="Asof" type="xs:dateTime" lowerBound="0" form="Attribute"/>
+		<property name="Contact" lowerBound="0" upperBound="-1">
+			<typeDef xsi:type="ObjectType" ordered="false" sequenced="true">
+				<property name="State" lowerBound="0">
+					<typeDef xsi:type="ObjectType">
+						<property name="Code" lowerBound="1" form="Attribute">
+							<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic">
+								<enumeration>Sent</enumeration>
+								<enumeration>Incoming</enumeration>
+								<enumeration>Accepted</enumeration>
+								<enumeration>Rejected</enumeration>
+								<enumeration>Error</enumeration>
+							</typeDef>
+						</property>
+						<property name="ErrorCode" type="xs:string" lowerBound="0" form="Attribute"/>
+						<property name="Changed" type="xs:dateTime" lowerBound="1" form="Attribute"/>
+						<property name="__content" type="xs:string" form="Text"/>
+					</typeDef>
+				</property>
+				<property name="Name" type="xs:string" lowerBound="0"/>
+				<property name="Inn" type="xs:string"/>
+				<property name="Kpp" type="xs:string" lowerBound="0"/>
+				<property name="Email" type="xs:string"/>
+				<property name="Login" type="xs:string" lowerBound="0"/>
+				<property name="EDXClientId" type="xs:string" lowerBound="0"/>
+				<property name="ExternalContactId" type="xs:string" lowerBound="0"/>
+				<property name="Comment" type="xs:string" lowerBound="0"/>
+				<property name="Agreements" lowerBound="0">
+					<typeDef xsi:type="ObjectType" ordered="false" sequenced="true">
+						<property name="Agreement" lowerBound="0" upperBound="-1">
+							<typeDef xsi:type="ObjectType">
+								<property name="Number" type="xs:string" lowerBound="1" form="Attribute"/>
+								<property name="Date" type="xs:dateTime" lowerBound="1" form="Attribute"/>
+							</typeDef>
+						</property>
+					</typeDef>
+				</property>
+			</typeDef>
+		</property>
+	</objectType>
+</package>

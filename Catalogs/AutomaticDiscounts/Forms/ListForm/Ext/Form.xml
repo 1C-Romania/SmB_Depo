@@ -1,0 +1,360 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnOpen">OnOpen</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="GroupCommonVariantOfSharedUseOfDiscounts" id="40">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group common variant of shared usage of discounts</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group common variant of shared usage of discounts</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="GroupCommonVariantOfSharedUseOfDiscountsExtendedTooltip" id="41"/>
+			<ChildItems>
+				<RadioButtonField name="SharedUsageVariantOfDiscounts" id="37">
+					<DataPath>SharedUsageVariantOfDiscounts</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<RadioButtonType>Tumbler</RadioButtonType>
+					<ChoiceList>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation/>
+								<Value xsi:type="xr:DesignTimeRef">Enum.DiscountsMarkupsSharedUsageOptions.EnumValue.Addition</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation/>
+								<Value xsi:type="xr:DesignTimeRef">Enum.DiscountsMarkupsSharedUsageOptions.EnumValue.Max</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation/>
+								<Value xsi:type="xr:DesignTimeRef">Enum.DiscountsMarkupsSharedUsageOptions.EnumValue.Minimum</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Successive usage</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xr:DesignTimeRef">Enum.DiscountsMarkupsSharedUsageOptions.EnumValue.Multiplication</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation/>
+								<Value xsi:type="xr:DesignTimeRef">Enum.DiscountsMarkupsSharedUsageOptions.EnumValue.Exclusion</Value>
+							</xr:Value>
+						</xr:Item>
+					</ChoiceList>
+					<ContextMenu name="SharedUsageVariantOfDiscountsContextMenu" id="38"/>
+					<ExtendedTooltip name="SharedUsageVariantOfDiscountsExtendedTooltip" id="39"/>
+					<Events>
+						<Event name="OnChange">SharedUsageVariantOfDiscountsOnChange</Event>
+					</Events>
+				</RadioButtonField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ListSettingsComposerUserSettings" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>User settings group</v8:content>
+				</v8:item>
+			</Title>
+			<VerticalStretch>false</VerticalStretch>
+			<Group>Vertical</Group>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ListSettingsComposerUserSettingsExtendedTooltip" id="2"/>
+		</UsualGroup>
+		<Table name="List" id="3">
+			<Representation>Tree</Representation>
+			<DefaultItem>true</DefaultItem>
+			<UseAlternationRowColor>true</UseAlternationRowColor>
+			<InitialTreeView>ExpandTopLevel</InitialTreeView>
+			<EnableStartDrag>true</EnableStartDrag>
+			<EnableDrag>true</EnableDrag>
+			<DataPath>List</DataPath>
+			<RowPictureDataPath>List.Picture</RowPictureDataPath>
+			<RowsPicture>
+				<xr:Ref>CommonPicture.DiscountMarkupState</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</RowsPicture>
+			<CommandSet>
+				<ExcludedCommand>CreateFolder</ExcludedCommand>
+			</CommandSet>
+			<SearchStringLocation>CommandBar</SearchStringLocation>
+			<ViewStatusLocation>Top</ViewStatusLocation>
+			<SearchControlLocation>CommandBar</SearchControlLocation>
+			<AutoRefresh>false</AutoRefresh>
+			<AutoRefreshPeriod>60</AutoRefreshPeriod>
+			<Period>
+				<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+				<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+				<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+			</Period>
+			<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+			<RestoreCurrentRow>false</RestoreCurrentRow>
+			<TopLevelParent xsi:nil="true"/>
+			<ShowRoot>true</ShowRoot>
+			<AllowRootChoice>false</AllowRootChoice>
+			<UpdateOnDataChange>Auto</UpdateOnDataChange>
+			<UserSettingsGroup>ListSettingsComposerUserSettings</UserSettingsGroup>
+			<ContextMenu name="ListContextMenu" id="4"/>
+			<AutoCommandBar name="ListCommandBar" id="5">
+				<ChildItems>
+					<Button name="ListCreateFolderOfSharedUse" id="52">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.CreateFolderSharedUse</CommandName>
+						<ExtendedTooltip name="ListCreateFolderOfSharedUseExtendedTooltip" id="53"/>
+					</Button>
+					<Button name="ListHelp" id="57">
+						<Type>CommandBarButton</Type>
+						<OnlyInAllActions>false</OnlyInAllActions>
+						<CommandName>Form.StandardCommand.Help</CommandName>
+						<ExtendedTooltip name="ListHelpExtendedTooltip" id="58"/>
+					</Button>
+				</ChildItems>
+			</AutoCommandBar>
+			<ExtendedTooltip name="ListExtendedTooltip" id="6"/>
+			<SearchStringAddition name="SearchStringList" id="7">
+				<AdditionSource>
+					<Item>List</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ListSearchStringContextMenu" id="10"/>
+				<ExtendedTooltip name="ListSearchStringExtendedTooltip" id="11"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ListViewStatus" id="12">
+				<AdditionSource>
+					<Item>List</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ListViewStatusContextMenu" id="15"/>
+				<ExtendedTooltip name="ListViewStatusExtendedTooltip" id="16"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ListSearchControl" id="17">
+				<AdditionSource>
+					<Item>List</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ListSearchControlContextMenu" id="20"/>
+				<ExtendedTooltip name="ListSearchControlExtendedTooltip" id="21"/>
+			</SearchControlAddition>
+			<ChildItems>
+				<LabelField name="Description" id="22">
+					<DataPath>List.Description</DataPath>
+					<DefaultItem>true</DefaultItem>
+					<ContextMenu name="DescriptionContextMenu" id="23"/>
+					<ExtendedTooltip name="DescriptionExtendedTooltip" id="24"/>
+				</LabelField>
+				<CheckBoxField name="Acts" id="49">
+					<DataPath>List.Acts</DataPath>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="OperatesContextMenu" id="50"/>
+					<ExtendedTooltip name="OperatesExtendedTooltip" id="51"/>
+				</CheckBoxField>
+				<LabelField name="AdditionalOrderingAttribute" id="46">
+					<DataPath>List.AdditionalOrderingAttribute</DataPath>
+					<ContextMenu name="AdditionalOrderingAttributeContextMenu" id="47"/>
+					<ExtendedTooltip name="AdditionalOrderingAttributeExtendedTooltip" id="48"/>
+				</LabelField>
+				<LabelField name="AssignmentArea" id="31">
+					<DataPath>List.AssignmentArea</DataPath>
+					<ContextMenu name="AssignmentAreaContextMenu" id="32"/>
+					<ExtendedTooltip name="AssignmentAreaExtendedTooltip" id="33"/>
+				</LabelField>
+				<LabelField name="Code" id="25">
+					<DataPath>List.Code</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<ContextMenu name="CodeContextMenu" id="26"/>
+					<ExtendedTooltip name="CodeExtendedTooltip" id="27"/>
+				</LabelField>
+				<LabelField name="Ref" id="54">
+					<DataPath>List.Ref</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<ContextMenu name="RefContextMenu" id="55"/>
+					<ExtendedTooltip name="RefExtendedTooltip" id="56"/>
+				</LabelField>
+			</ChildItems>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="List" id="1">
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<UseAlways>
+				<Field>List.Ref</Field>
+				<Field>List.ColorYellow</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>SELECT
+	CatalogAutomaticDiscounts.Description,
+	CASE
+		WHEN CatalogAutomaticDiscounts.IsFolder
+			THEN CASE
+					WHEN CatalogAutomaticDiscounts.SharedUsageVariant = VALUE(Enum.DiscountsMarkupsSharedUsageOptions.Max)
+						THEN 8
+					WHEN CatalogAutomaticDiscounts.SharedUsageVariant = VALUE(Enum.DiscountsMarkupsSharedUsageOptions.Minimum)
+						THEN 16
+					WHEN CatalogAutomaticDiscounts.SharedUsageVariant = VALUE(Enum.DiscountsMarkupsSharedUsageOptions.Addition)
+						THEN 0
+					WHEN CatalogAutomaticDiscounts.SharedUsageVariant = VALUE(Enum.DiscountsMarkupsSharedUsageOptions.Multiplication)
+						THEN 4
+					WHEN CatalogAutomaticDiscounts.SharedUsageVariant = VALUE(Enum.DiscountsMarkupsSharedUsageOptions.Exclusion)
+						THEN 12
+				END + CASE
+					WHEN CatalogAutomaticDiscounts.DeletionMark
+						THEN 3
+					ELSE 0
+				END
+		ELSE CASE
+				WHEN CatalogAutomaticDiscounts.AssignmentMethod = VALUE(Enum.DiscountsMarkupsProvidingWays.Percent)
+					THEN CASE
+							WHEN CatalogAutomaticDiscounts.DiscountMarkupValue &lt; 0
+								THEN 32
+							ELSE 28
+						END
+				WHEN CatalogAutomaticDiscounts.AssignmentMethod = VALUE(Enum.DiscountsMarkupsProvidingWays.Amount)
+					THEN CASE
+							WHEN CatalogAutomaticDiscounts.DiscountMarkupValue &lt; 0
+								THEN 40
+							ELSE 44
+						END
+			END + CASE
+				WHEN CatalogAutomaticDiscounts.DeletionMark
+					THEN 3
+				ELSE 0
+			END
+	END AS Picture,
+	CatalogAutomaticDiscounts.AdditionalOrderingAttribute AS AdditionalOrderingAttribute,
+	CatalogAutomaticDiscounts.DeletionMark,
+	CatalogAutomaticDiscounts.Acts,
+	CatalogAutomaticDiscounts.Ref,
+	CatalogAutomaticDiscounts.Parent,
+	CatalogAutomaticDiscounts.AssignmentMethod,
+	CatalogAutomaticDiscounts.Purpose,
+	CatalogAutomaticDiscounts.AssignmentArea,
+	CatalogAutomaticDiscounts.Code,
+	CatalogAutomaticDiscounts.ThereAreFoldersToBeClarifiedByProductsAndServices,
+	CASE
+		WHEN CatalogAutomaticDiscounts.Parent.SharedUsageVariant = VALUE(Enum.DiscountsMarkupsSharedUsageOptions.Exclusion)
+				OR CatalogAutomaticDiscounts.Parent.SharedUsageVariant = VALUE(Enum.DiscountsMarkupsSharedUsageOptions.Multiplication)
+				OR CatalogAutomaticDiscounts.Parent = VALUE(Catalog.AutomaticDiscounts.EmptyRef)
+					AND (DiscountsMarkupsSharedUsageOptions.Value = VALUE(Enum.DiscountsMarkupsSharedUsageOptions.Exclusion)
+						OR DiscountsMarkupsSharedUsageOptions.Value = VALUE(Enum.DiscountsMarkupsSharedUsageOptions.Multiplication))
+			THEN TRUE
+		ELSE FALSE
+	END AS ColorYellow
+	FROM
+	Catalog.AutomaticDiscounts AS CatalogAutomaticDiscounts,
+		Constant.DiscountsMarkupsSharedUsageOptions AS DiscountsMarkupsSharedUsageOptions</QueryText>
+				<MainTable>Catalog.AutomaticDiscounts</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="SharedUsageVariantOfDiscounts" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Variant of discount shared use</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.DiscountsMarkupsSharedUsageOptions</v8:Type>
+			</Type>
+		</Attribute>
+		<ConditionalAppearance>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>AdditionalOrderingAttribute</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">List.ColorYellow</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>BackColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">#FFFF00</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+		</ConditionalAppearance>
+	</Attributes>
+	<Commands>
+		<Command name="CreateFolderSharedUse" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Create group of shared use</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Create group of shared use</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>CreateFolderSharedUse</Action>
+		</Command>
+	</Commands>
+</Form>

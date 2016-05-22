@@ -1,0 +1,267 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Width>60</Width>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="BeforeClose">BeforeClose</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="Counterparty" id="14">
+			<DataPath>Counterparty</DataPath>
+			<Enabled>false</Enabled>
+			<ContextMenu name="CounterpartyContextMenu" id="15"/>
+			<ExtendedTooltip name="CounterpartyExtendedTooltip" id="16"/>
+		</InputField>
+		<Table name="CounterpartyContracts" id="1">
+			<Representation>List</Representation>
+			<EnableStartDrag>true</EnableStartDrag>
+			<EnableDrag>true</EnableDrag>
+			<DataPath>CounterpartyContracts</DataPath>
+			<SearchStringLocation>None</SearchStringLocation>
+			<ViewStatusLocation>None</ViewStatusLocation>
+			<SearchControlLocation>None</SearchControlLocation>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="CounterpartyContractsContextMenu" id="2"/>
+			<AutoCommandBar name="CounterpartyContractsCommandBar" id="3">
+				<ChildItems>
+					<Button name="CounterpartyContractsSelectCheckBoxes" id="28">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.CheckAll</CommandName>
+						<ExtendedTooltip name="CounterpartyContractsSelectCheckBoxesExtendedTooltip" id="29"/>
+					</Button>
+					<Button name="CounterpartyContractsClearCheckBoxes" id="30">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.UncheckAll</CommandName>
+						<ExtendedTooltip name="CounterpartyContractsClearCheckBoxesExtendedTooltip" id="31"/>
+					</Button>
+				</ChildItems>
+			</AutoCommandBar>
+			<ExtendedTooltip name="CounterpartyContractsExtendedTooltip" id="4"/>
+			<SearchStringAddition name="CounterpartyContractsSearchString" id="32">
+				<AdditionSource>
+					<Item>CounterpartyContracts</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="CounterpartyContractsSearchStringContextMenu" id="33"/>
+				<ExtendedTooltip name="CounterpartyContractsSearchStringExtendedTooltip" id="34"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="CounterpartyContractsViewStatus" id="35">
+				<AdditionSource>
+					<Item>CounterpartyContracts</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="CounterpartyContractsViewStatusContextMenu" id="36"/>
+				<ExtendedTooltip name="CounterpartyContractsViewStatusExtendedTooltip" id="37"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ContractsCounterpartySearchManagement" id="38">
+				<AdditionSource>
+					<Item>CounterpartyContracts</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="CounterpartyContractsSearchManagementContextMenu" id="39"/>
+				<ExtendedTooltip name="ContractsCounterpartySearchManagementExtendedTooltip" id="40"/>
+			</SearchControlAddition>
+			<ChildItems>
+				<CheckBoxField name="TableChooseInstruments" id="5">
+					<DataPath>CounterpartyContracts.Select</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ContractsTableChooseContextMenu" id="6"/>
+					<ExtendedTooltip name="ContractsTableChooseExtendedTooltip" id="7"/>
+				</CheckBoxField>
+				<InputField name="TableContractsContract" id="8">
+					<DataPath>CounterpartyContracts.Contract</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ChoiceParameterLinks>
+						<xr:Link>
+							<xr:Name>Filter.Owner</xr:Name>
+							<xr:DataPath xsi:type="xs:string">Counterparty</xr:DataPath>
+							<xr:ValueChange>Clear</xr:ValueChange>
+						</xr:Link>
+					</ChoiceParameterLinks>
+					<ContextMenu name="ContractsTableContractContextMenu" id="9"/>
+					<ExtendedTooltip name="ContractsTableContractExtendedTooltip" id="10"/>
+				</InputField>
+				<InputField name="ContractsTableContractSettlementsCurrency" id="11">
+					<DataPath>CounterpartyContracts.Contract.SettlementsCurrency</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Currency</v8:content>
+						</v8:item>
+					</Title>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ContractsTableContractSettlementsCurrencyContextMenu" id="12"/>
+					<ExtendedTooltip name="ContractsTableContractSettlementsCurrencyExtendedTooltip" id="13"/>
+				</InputField>
+			</ChildItems>
+		</Table>
+		<UsualGroup name="Group2" id="17">
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="Group2ExtendedTooltip" id="18"/>
+			<ChildItems>
+				<LabelDecoration name="Decoration1" id="19">
+					<HorizontalStretch>true</HorizontalStretch>
+					<ContextMenu name="Decoration1ContextMenu" id="20"/>
+					<ExtendedTooltip name="Decoration1ExtendedTooltip" id="21"/>
+				</LabelDecoration>
+				<CommandBar name="Group1" id="22">
+					<HorizontalStretch>false</HorizontalStretch>
+					<HorizontalLocation>Right</HorizontalLocation>
+					<ExtendedTooltip name="Group1ExtendedTooltip" id="23"/>
+					<ChildItems>
+						<Button name="FormOK" id="24">
+							<Type>CommandBarButton</Type>
+							<DefaultButton>true</DefaultButton>
+							<CommandName>Form.Command.OK</CommandName>
+							<ExtendedTooltip name="FormOKExtendedTooltip" id="25"/>
+						</Button>
+						<Button name="FormCancel" id="26">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Command.Cancel</CommandName>
+							<ExtendedTooltip name="CancelFormExtendedTooltip" id="27"/>
+						</Button>
+					</ChildItems>
+				</CommandBar>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="CounterpartyContracts" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Counterparty's Contracts</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Select" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Select</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Contract" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Contract</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.CounterpartyContracts</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="Counterparty" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Counterparty</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Counterparties</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="CheckContractsFilling" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Check contracts filling</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="OK" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>OK</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>OK</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>OK</Action>
+		</Command>
+		<Command name="Cancel" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Cancel</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Cancel</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Cancel</Action>
+		</Command>
+		<Command name="CheckAll" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Select all check boxes</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Select all check boxes</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.CheckAll</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>CheckAll</Action>
+			<Representation>Picture</Representation>
+		</Command>
+		<Command name="UncheckAll" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Clear all check boxes</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Clear all check boxes</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.UncheckAll</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>UncheckAll</Action>
+			<Representation>Picture</Representation>
+		</Command>
+	</Commands>
+</Form>

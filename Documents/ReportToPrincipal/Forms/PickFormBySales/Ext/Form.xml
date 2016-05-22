@@ -1,0 +1,749 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Width>80</Width>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<CommandBarLocation>Bottom</CommandBarLocation>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<HorizontalAlign>Right</HorizontalAlign>
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="MoveIntoDocument" id="125">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<SkipOnInput>false</SkipOnInput>
+				<CommandName>Form.Command.MoveIntoDocument</CommandName>
+				<ExtendedTooltip name="MoveToDocumentExtendedTooltip" id="206"/>
+			</Button>
+			<Button name="Close" id="184">
+				<Type>CommandBarButton</Type>
+				<Representation>Text</Representation>
+				<SkipOnInput>false</SkipOnInput>
+				<CommandName>Form.StandardCommand.Close</CommandName>
+				<Title>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Cancel</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="CloseExtendedTooltip" id="207"/>
+			</Button>
+			<Button name="ChangeForm" id="186">
+				<Type>CommandBarButton</Type>
+				<Representation>Picture</Representation>
+				<SkipOnInput>false</SkipOnInput>
+				<OnlyInAllActions>true</OnlyInAllActions>
+				<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
+				<ExtendedTooltip name="ChangeFormExtendedTooltip" id="209"/>
+			</Button>
+			<Button name="Help" id="185">
+				<Type>CommandBarButton</Type>
+				<SkipOnInput>false</SkipOnInput>
+				<CommandName>Form.StandardCommand.Help</CommandName>
+				<ExtendedTooltip name="HelpExtendedTooltip" id="208"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="QuickFilters" id="102">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Quick filters</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Quick filters</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="FastFiltersExtendedTooltip" id="210"/>
+			<ChildItems>
+				<UsualGroup name="ForPeriod" id="204">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>For period</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>For period</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ExtendedTooltip name="ForPeriodExtendedTooltip" id="211"/>
+					<ChildItems>
+						<InputField name="FilterStartDate" id="200">
+							<DataPath>FilterStartDate</DataPath>
+							<SkipOnInput>true</SkipOnInput>
+							<Width>10</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="FilterStartDateContextMenu" id="201"/>
+							<ExtendedTooltip name="FilterStartDateExtendedTooltip" id="212"/>
+							<Events>
+								<Event name="OnChange">FilterBeginningDateOnChange</Event>
+							</Events>
+						</InputField>
+						<InputField name="FilterEndDate" id="202">
+							<DataPath>FilterEndDate</DataPath>
+							<SkipOnInput>true</SkipOnInput>
+							<Width>10</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="FilterEndDateContextMenu" id="203"/>
+							<ExtendedTooltip name="FilterEndDateExtendedTooltip" id="213"/>
+							<Events>
+								<Event name="OnChange">FilterEndingDateOnChange</Event>
+							</Events>
+						</InputField>
+						<Button name="SetInterval" id="205">
+							<Type>UsualButton</Type>
+							<CommandName>Form.Command.SetInterval</CommandName>
+							<ExtendedTooltip name="SetIntervalExtendedTooltip" id="214"/>
+						</Button>
+					</ChildItems>
+				</UsualGroup>
+				<InputField name="FilterCompany" id="146">
+					<DataPath>FilterCompany</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<TitleLocation>Top</TitleLocation>
+					<ContextMenu name="FilterCompanyContextMenu" id="147"/>
+					<ExtendedTooltip name="FilterCompanyExtendedTooltip" id="215"/>
+				</InputField>
+				<InputField name="FilterCounterparty" id="68">
+					<DataPath>FilterCounterparty</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<TitleLocation>Top</TitleLocation>
+					<ContextMenu name="FilterCounterpartyContextMenu" id="69"/>
+					<ExtendedTooltip name="FilterCounterpartyExtendedTooltip" id="216"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="InventoryPickup" id="17">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Inventory pickup</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Inventory pickup</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="InventoryPickupExtendedTooltip" id="217"/>
+			<ChildItems>
+				<Table name="InventoryTable" id="8">
+					<Representation>List</Representation>
+					<SkipOnInput>false</SkipOnInput>
+					<ChangeRowSet>false</ChangeRowSet>
+					<ChangeRowOrder>false</ChangeRowOrder>
+					<UseAlternationRowColor>true</UseAlternationRowColor>
+					<AutoInsertNewRow>true</AutoInsertNewRow>
+					<InitialTreeView>ExpandAllLevels</InitialTreeView>
+					<EnableStartDrag>true</EnableStartDrag>
+					<EnableDrag>true</EnableDrag>
+					<DataPath>InventoryTable</DataPath>
+					<SearchStringLocation>None</SearchStringLocation>
+					<ViewStatusLocation>None</ViewStatusLocation>
+					<SearchControlLocation>None</SearchControlLocation>
+					<RowFilter xsi:nil="true"/>
+					<ContextMenu name="InventoryTableContextMenu" id="9"/>
+					<AutoCommandBar name="InventoryTableCommandBar" id="10">
+						<Autofill>false</Autofill>
+						<ChildItems>
+							<Button name="InventoryTableChoose" id="148">
+								<Type>CommandBarButton</Type>
+								<SkipOnInput>false</SkipOnInput>
+								<CommandName>Form.Command.ChooseLines</CommandName>
+								<ExtendedTooltip name="InventoryTableChooseExtendedTooltip" id="218"/>
+							</Button>
+							<Button name="InventoryTableExclude" id="149">
+								<Type>CommandBarButton</Type>
+								<SkipOnInput>false</SkipOnInput>
+								<CommandName>Form.Command.ExcludeRows</CommandName>
+								<ExtendedTooltip name="InventoryTableExcludeExtendedTooltip" id="219"/>
+							</Button>
+							<Button name="InventoryTableChooseSelected" id="150">
+								<Type>CommandBarButton</Type>
+								<SkipOnInput>false</SkipOnInput>
+								<CommandName>Form.Command.ChooseHighlightedLines</CommandName>
+								<ExtendedTooltip name="InventoryTableChooseSelectedExtendedTooltip" id="220"/>
+							</Button>
+							<Button name="InventoryTableExcludeSelected" id="151">
+								<Type>CommandBarButton</Type>
+								<SkipOnInput>false</SkipOnInput>
+								<CommandName>Form.Command.ExcludeSelectedRows</CommandName>
+								<ExtendedTooltip name="InventoryTableExcludeSelectedExtendedTooltip" id="221"/>
+							</Button>
+						</ChildItems>
+					</AutoCommandBar>
+					<ExtendedTooltip name="InventoryTableExtendedTooltip" id="224"/>
+					<SearchStringAddition name="InventoryTableSearchString" id="236">
+						<AdditionSource>
+							<Item>InventoryTable</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="InventoryTableSearchStringContextMenu" id="237"/>
+						<ExtendedTooltip name="InventoryTableSearchStringExtendedTooltip" id="238"/>
+					</SearchStringAddition>
+					<ViewStatusAddition name="InventoryTableViewStatus" id="239">
+						<AdditionSource>
+							<Item>InventoryTable</Item>
+							<Type>ViewStatusRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="InventoryTableViewStatusContextMenu" id="240"/>
+						<ExtendedTooltip name="InventoryTableViewStatusExtendedTooltip" id="241"/>
+					</ViewStatusAddition>
+					<SearchControlAddition name="InventoryTableSearchControl" id="242">
+						<AdditionSource>
+							<Item>InventoryTable</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<ContextMenu name="InventoryTableSearchControlContextMenu" id="243"/>
+						<ExtendedTooltip name="InventoryTableSearchControlExtendedTooltip" id="244"/>
+					</SearchControlAddition>
+					<Events>
+						<Event name="Selection">InventoryTableChoice</Event>
+					</Events>
+					<ChildItems>
+						<CheckBoxField name="InventoryTableSelected" id="134">
+							<DataPath>InventoryTable.Selected</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<EditMode>EnterOnInput</EditMode>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="InventoryTableSelectedContextMenu" id="135"/>
+							<ExtendedTooltip name="InventoryTableSelectedExtendedTooltip" id="225"/>
+						</CheckBoxField>
+						<ColumnGroup name="ProductsAndServices" id="193">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Products and services</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Products and services</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>InCell</Group>
+							<ExtendedTooltip name="ProductsAndServicesExtendedTooltip" id="226"/>
+							<ChildItems>
+								<InputField name="InventoryTableProductsAndServices" id="169">
+									<DataPath>InventoryTable.ProductsAndServices</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>10</Width>
+									<ContextMenu name="InventoryTableProductsAndServicesContextMenu" id="170"/>
+									<ExtendedTooltip name="InventoryTableProductsAndServicesExtendedTooltip" id="227"/>
+								</InputField>
+								<InputField name="InventoryTableCharacteristic" id="171">
+									<DataPath>InventoryTable.Characteristic</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<TitleLocation>None</TitleLocation>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>10</Width>
+									<ContextMenu name="InventoryTableCharacteristicContextMenu" id="172"/>
+									<ExtendedTooltip name="InventoryTableCharacteristicExtendedTooltip" id="228"/>
+								</InputField>
+								<InputField name="InventoryTableBatch" id="187">
+									<DataPath>InventoryTable.Batch</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<TitleLocation>None</TitleLocation>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>10</Width>
+									<ContextMenu name="InventoryTableBatchContextMenu" id="188"/>
+									<ExtendedTooltip name="InventoryTableBatchExtendedTooltip" id="229"/>
+								</InputField>
+							</ChildItems>
+						</ColumnGroup>
+						<InputField name="InventoryTableQuantity" id="189">
+							<DataPath>InventoryTable.Quantity</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>10</Width>
+							<ContextMenu name="InventoryTableQuantityContextMenu" id="190"/>
+							<ExtendedTooltip name="InventoryTableQuantityExtendedTooltip" id="230"/>
+							<Events>
+								<Event name="OnChange">InventoryTableQuantityOnChange</Event>
+							</Events>
+						</InputField>
+						<InputField name="InventoryTableBalance" id="175">
+							<DataPath>InventoryTable.Balance</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>10</Width>
+							<MarkNegatives>true</MarkNegatives>
+							<ContextMenu name="InventoryTableBalanceContextMenu" id="176"/>
+							<ExtendedTooltip name="InventoryTableBalanceExtendedTooltip" id="231"/>
+						</InputField>
+						<InputField name="InventoryTablePrice" id="194">
+							<DataPath>InventoryTable.Price</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>10</Width>
+							<ContextMenu name="InventoryTablePriceContextMenu" id="195"/>
+							<ExtendedTooltip name="InventoryTablePriceExtendedTooltip" id="232"/>
+						</InputField>
+						<InputField name="InventoryTableAmount" id="196">
+							<DataPath>InventoryTable.Amount</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>10</Width>
+							<ContextMenu name="InventoryTableAmountContextMenu" id="197"/>
+							<ExtendedTooltip name="InventoryTableAmountExtendedTooltip" id="233"/>
+						</InputField>
+						<InputField name="InventoryTableCustomerOrder" id="191">
+							<DataPath>InventoryTable.CustomerOrder</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<CellHyperlink>true</CellHyperlink>
+							<Width>20</Width>
+							<TextColor>style:ExplanationText</TextColor>
+							<ContextMenu name="InventoryTableCustomerOrderContextMenu" id="192"/>
+							<ExtendedTooltip name="InventoryTableCustomerOrderExtendedTooltip" id="234"/>
+						</InputField>
+						<InputField name="InventoryTableCustomer" id="198">
+							<DataPath>InventoryTable.Customer</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>20</Width>
+							<ContextMenu name="InventoryTableCustomerContextMenu" id="199"/>
+							<ExtendedTooltip name="InventoryTableCustomerExtendedTooltip" id="235"/>
+						</InputField>
+					</ChildItems>
+				</Table>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="InventoryTable" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Inventory table</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Selected" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Selected</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ProductsAndServices" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Products and services</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.ProductsAndServices</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Characteristic" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Characteristic</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.ProductsAndServicesCharacteristics</v8:Type>
+					</Type>
+					<FunctionalOptions>
+						<Item>FunctionalOption.UseCharacteristics</Item>
+					</FunctionalOptions>
+				</Column>
+				<Column name="Quantity" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Quantity</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>3</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="Balance" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Sold</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>3</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="Batch" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Batch</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.ProductsAndServicesBatches</v8:Type>
+					</Type>
+					<FunctionalOptions>
+						<Item>FunctionalOption.UseBatches</Item>
+					</FunctionalOptions>
+				</Column>
+				<Column name="CustomerOrder" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Customer order</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:DocumentRef.CustomerOrder</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Price" id="8">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Price</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="Amount" id="9">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Amount</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="ReceiptPrice" id="10">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Receipt Price</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="PurchaseOrder" id="11">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Purchase order</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:DocumentRef.PurchaseOrder</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Customer" id="12">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Customer</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.Counterparties</v8:Type>
+					</Type>
+				</Column>
+				<Column name="DateOfSale" id="13">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Date of sale</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>Date</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="FilterCompany" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Company</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Companies</v8:Type>
+			</Type>
+			<FunctionalOptions>
+				<Item>FunctionalOption.MultipleCompaniesAccounting</Item>
+			</FunctionalOptions>
+		</Attribute>
+		<Attribute name="FilterCounterparty" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Batch owner</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Counterparties</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="SelectionContract" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Contract</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.CounterpartyContracts</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="DocumentCurrency" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Currency</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Currencies</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="CurrentDocument" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Current document</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DocumentRef.ReportToPrincipal</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="CounterpartyPriceKind" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Counterparty price kind</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.CounterpartyPriceKind</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="FilterStartDate" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>From</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="FilterEndDate" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>to</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Company" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Company</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Companies</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="MoveIntoDocument" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Move into document</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Add new rows to the document</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>MoveIntoDocumentExecute</Action>
+		</Command>
+		<Command name="ChooseLines" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Select rows</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Select rows</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.CheckAll</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ChooseStringsExecute</Action>
+			<Representation>Picture</Representation>
+		</Command>
+		<Command name="ExcludeRows" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Exclude strings</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Exclude strings</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.UncheckAll</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ExcludeStringsExecute</Action>
+		</Command>
+		<Command name="ChooseHighlightedLines" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Select Highlighted</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Select highlighted rows</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ChooseHighlightedLines</Action>
+		</Command>
+		<Command name="ExcludeSelectedRows" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Exclude selected</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Exclude selected strings</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ExcludeSelectedRows</Action>
+		</Command>
+		<Command name="SetInterval" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Set date interval</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Set date interval</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Use>
+				<xr:Common>true</xr:Common>
+				<xr:Value name="Role.ChangeCurrentExternalUser">false</xr:Value>
+				<xr:Value name="Role.BasicRights">false</xr:Value>
+				<xr:Value name="Role.RunAutomation">false</xr:Value>
+				<xr:Value name="Role.RunWebClient">false</xr:Value>
+				<xr:Value name="Role.RunExternalConnection">false</xr:Value>
+				<xr:Value name="Role.RunThickClient">false</xr:Value>
+				<xr:Value name="Role.RunThinClient">false</xr:Value>
+			</Use>
+			<Picture>
+				<xr:Ref>0</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>SetInterval</Action>
+			<Representation>Picture</Representation>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+	</Commands>
+</Form>

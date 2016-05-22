@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Title>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Attention</v8:content>
+		</v8:item>
+	</Title>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<CommandBarLocation>None</CommandBarLocation>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="FormCommandBar" id="-1"/>
+	<Events>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="TextGroup" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Text group</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Text group</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>NormalSeparation</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="TextGroupExtendedTooltip" id="13"/>
+			<ChildItems>
+				<PictureDecoration name="Decoration1" id="3">
+					<Width>5</Width>
+					<Height>2</Height>
+					<Picture>
+						<xr:Ref>CommonPicture.Information32</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</Picture>
+					<ContextMenu name="Decoration1ContextMenu" id="4"/>
+					<ExtendedTooltip name="Decoration1ExtendedTooltip" id="14"/>
+				</PictureDecoration>
+				<LabelField name="QuestionText" id="6">
+					<DataPath>QuestionText</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<Height>2</Height>
+					<ContextMenu name="QuestionTextContextMenu" id="7"/>
+					<ExtendedTooltip name="QuestionTextExtendedTooltip" id="15"/>
+				</LabelField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ButtonGroup" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Button group</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Button group</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ButtonGroupExtendedTooltip" id="16"/>
+			<ChildItems>
+				<Button name="SaveAndEndEditing" id="8">
+					<Type>UsualButton</Type>
+					<SkipOnInput>false</SkipOnInput>
+					<Width>40</Width>
+					<Height>1</Height>
+					<CommandName>Form.Command.SaveAndEndEditing</CommandName>
+					<ExtendedTooltip name="SaveAndFinishEditingExtendedTooltip" id="17"/>
+				</Button>
+				<Button name="SaveChanges" id="9">
+					<Type>UsualButton</Type>
+					<SkipOnInput>false</SkipOnInput>
+					<Width>40</Width>
+					<Height>1</Height>
+					<CommandName>Form.Command.SaveChanges</CommandName>
+					<ExtendedTooltip name="SaveChangesExtendedTooltip" id="18"/>
+				</Button>
+				<Button name="DontSave" id="5">
+					<Type>UsualButton</Type>
+					<SkipOnInput>false</SkipOnInput>
+					<Width>40</Width>
+					<Height>1</Height>
+					<CommandName>Form.Command.DontSave</CommandName>
+					<ExtendedTooltip name="DontSaveExtendedTooltip" id="19"/>
+				</Button>
+				<LabelDecoration name="EmptyDecoration" id="11">
+					<ContextMenu name="EmptyDecorationContextMenu" id="12"/>
+					<ExtendedTooltip name="EmptyDecorationExtendedTooltip" id="20"/>
+				</LabelDecoration>
+				<Button name="GoBack" id="10">
+					<Type>UsualButton</Type>
+					<SkipOnInput>false</SkipOnInput>
+					<Width>40</Width>
+					<Height>1</Height>
+					<CommandName>Form.Command.GoBack</CommandName>
+					<ExtendedTooltip name="ReturnExtendedTooltip" id="21"/>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="QuestionText" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Question text</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="SaveAndEndEditing" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Save and finish editing</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Save and finish editing</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>SaveAndEndEditing</Action>
+		</Command>
+		<Command name="SaveChanges" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Save, leave locked</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Save changes</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>SaveChanges</Action>
+		</Command>
+		<Command name="DontSave" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Do not save</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Do not save</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>DontSave</Action>
+		</Command>
+		<Command name="GoBack" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Cancel</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Back to editor</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>GoBack</Action>
+		</Command>
+	</Commands>
+</Form>

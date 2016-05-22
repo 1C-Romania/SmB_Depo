@@ -1,0 +1,13 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"></meta><link rel="stylesheet" type="text/css" href="v8help://service_book/service_style"></link><meta name="GENERATOR" content="MSHTML 11.00.9600.18321"></meta></head><body>
+<h1>Client bank</h1>
+<p>Use the <strong>Client bank</strong> data processor to transfer payment orders to the bank and receive bank statements using direct connection to the bank service or via a special client-bank application.</p>
+<h3>Customizing client-bank exchange</h3>
+<p>You can customize your client-bank exchange from the data processor form for each <a href="Catalog.BankAccounts/Help">bank account</a> of the enterprise organizations. If the organization has multiple bank accounts, you will have to define more settings. When you select a bank account, the relevant setting is used automatically. To maintain direct exchange with the bank, create an <strong>EDF setting</strong> for your bank and switch it to <strong>Active.</strong></p>
+<h3>Supported scenarios</h3>
+<p>Use the <strong>Client-bank </strong>data processor to:</p>
+<ul><li>Send payment orders generated in the infobase to the bank via electronic communication channels. 
+</li><li>Import information about transactions with the organization bank accounts.</li></ul><p>According to the configured client-bank variant, you can directly contact the bank to send payment orders and receive bank statements without using external applications or use a client-bank application. If the bank in a selected account supports direct exchange, you will use direct exchange. If direct exchange is not selected or the account is not specified, you will use a client-bank application.</p>
+<p>The data exchange between the configuration and the client-bank application uses an intermediary data storage, an exchange file of the certain format.</p>
+<p>To send payment documents prepared in the configuration, you need to export them to the exchange file. The client-bank application reads and processes this file. The result is transferred to the bank via telecommunication channel.</p>
+<p>To receive bank statements, the client-bank application initiates data receipt from the bank and generates an exchange file. After that, this file is read and processed.</p>
+<p>Required condition for interaction with a client-bank application: the bank application must support the <strong>1C:Enterprise - Client-bank </strong>exchange standard.</p></body></html>

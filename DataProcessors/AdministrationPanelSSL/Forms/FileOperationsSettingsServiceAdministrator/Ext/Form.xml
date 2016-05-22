@@ -1,0 +1,315 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Width>84</Width>
+	<Customizable>false</Customizable>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<CommandSet>
+		<ExcludedCommand>No</ExcludedCommand>
+		<ExcludedCommand>SaveValues</ExcludedCommand>
+		<ExcludedCommand>WriteAndClose</ExcludedCommand>
+		<ExcludedCommand>Abort</ExcludedCommand>
+		<ExcludedCommand>Retry</ExcludedCommand>
+		<ExcludedCommand>Yes</ExcludedCommand>
+		<ExcludedCommand>Cancel</ExcludedCommand>
+		<ExcludedCommand>RestoreValues</ExcludedCommand>
+		<ExcludedCommand>Ignore</ExcludedCommand>
+		<ExcludedCommand>OK</ExcludedCommand>
+		<ExcludedCommand>Write</ExcludedCommand>
+	</CommandSet>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+		<Event name="OnClose">OnClose</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="GroupTitle" id="2015">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content> </v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content> </v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="GroupHeaderExtendedTooltip" id="2044"/>
+			<ChildItems>
+				<LabelDecoration name="SectionDescription" id="2016">
+					<Width>70</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<VerticalStretch>false</VerticalStretch>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Use this section to customize parameters of import, storage and processing of files. Restrictions that are applied for all data areas and have priority over settings of application administrators.</v8:content>
+						</v8:item>
+					</Title>
+					<VerticalAlign>Top</VerticalAlign>
+					<ContextMenu name="SectionDescriptionContextMenu" id="2017"/>
+					<ExtendedTooltip name="SectionDescriptionExtendedTooltip" id="2045"/>
+				</LabelDecoration>
+				<LabelDecoration name="Decoration1" id="2042">
+					<HorizontalStretch>true</HorizontalStretch>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content> </v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content> </v8:content>
+						</v8:item>
+					</ToolTip>
+					<ContextMenu name="Decoration1ContextMenu" id="2043"/>
+					<ExtendedTooltip name="Decoration1ExtendedTooltip" id="2046"/>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="CommonParametersForAllDataAreas" id="2022">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>File characteristics management for all data areas</v8:content>
+				</v8:item>
+			</Title>
+			<TitleTextColor>style:TitleColorSettingsGroup</TitleTextColor>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Common parameters for all data areas</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Width>82</Width>
+			<HorizontalStretch>false</HorizontalStretch>
+			<Group>Vertical</Group>
+			<Representation>NormalSeparation</Representation>
+			<ExtendedTooltip name="CommonParametersForAllDataAreasExtendedTooltip" id="2083"/>
+			<ChildItems>
+				<UsualGroup name="GroupMaximumFileSize" id="2033">
+					<Width>82</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ChildItemsWidth>Equal</ChildItemsWidth>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="GroupMaxSizeFileExtendedTooltip" id="2085"/>
+					<ChildItems>
+						<UsualGroup name="GroupSize1" id="2034">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group size</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group size</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupSize1ExtendedTooltip" id="2086">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Import restriction for files exceeding the size limit.</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+							<ChildItems>
+								<InputField name="MaximumFileSize" id="2035">
+									<DataPath>MaximumFileSize</DataPath>
+									<ToolTipRepresentation>ShowRight</ToolTipRepresentation>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>8</Width>
+									<Wrap>false</Wrap>
+									<SpinButton>true</SpinButton>
+									<ContextMenu name="MaxFileSizeContextMenu" id="2036"/>
+									<ExtendedTooltip name="MaxFileSizeExtendedTooltip" id="2087">
+										<Title formatted="false">
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Mbyte</v8:content>
+											</v8:item>
+										</Title>
+									</ExtendedTooltip>
+									<Events>
+										<Event name="OnChange">MaximumFileSizeOnChange</Event>
+									</Events>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<LabelDecoration name="Decoration2" id="2098">
+							<ContextMenu name="Decoration2ContextMenu" id="2099"/>
+							<ExtendedTooltip name="Decoration2ExtendedTooltip" id="2100"/>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ListExtensionFilesOpenDocumentGroup" id="2029">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content> </v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content> </v8:content>
+						</v8:item>
+					</ToolTip>
+					<Width>86</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ChildItemsWidth>Equal</ChildItemsWidth>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ListExtensionFilesOpenDocumentGroupExtendedTooltip" id="2093"/>
+					<ChildItems>
+						<InputField name="FileExtensionListOpenDocument" id="2024">
+							<DataPath>ConstantsSet.FileExtensionListOpenDocument</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>ODF files extension</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>None</TitleLocation>
+							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<InputHint>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Open Document file extensions</v8:content>
+								</v8:item>
+							</InputHint>
+							<ContextMenu name="FileExtensionListOpenDocumentContextMenu" id="2025"/>
+							<ExtendedTooltip name="FileExtensionListOpenDocumentExtendedTooltip" id="2094">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Extensions of open file documents for desktop applications.
+Are specified through the "space".</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+							<Events>
+								<Event name="OnChange">FileExtensionsListOpenDocumentOnChange</Event>
+							</Events>
+						</InputField>
+						<InputField name="ProhibitedExtensionsList" id="2013">
+							<DataPath>ConstantsSet.ProhibitedExtensionsList</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Extensions prohibited for the import</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>None</TitleLocation>
+							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<HorizontalStretch>true</HorizontalStretch>
+							<InputHint>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Extensions prohibited for the import</v8:content>
+								</v8:item>
+							</InputHint>
+							<ContextMenu name="ProhibitedFileExtensionListContextMenu" id="2014"/>
+							<ExtendedTooltip name="ProhibitedFileExtensionListExtendedTooltip" id="2091">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>File extensions which import to the application folders you want to restrict (to be specified with "space").</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+							<Events>
+								<Event name="OnChange">ProhibitedExtensionsListOnChange</Event>
+							</Events>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="ConstantsSet" id="1">
+			<Type>
+				<v8:Type>cfg:ConstantsSet</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<UseAlways>
+				<Field>ConstantsSet.SMSProvider.Ref</Field>
+				<Field>ConstantsSet.ProhibitedExtensionsList</Field>
+				<Field>ConstantsSet.PriceListShowFullDescr.Ref</Field>
+				<Field>ConstantsSet.PriceListShowCode.Ref</Field>
+				<Field>ConstantsSet.PostponeEditProhibitionDate.Ref</Field>
+				<Field>ConstantsSet.OffsetAdvancesDebtsAutomatically.Ref</Field>
+				<Field>ConstantsSet.MaximumFileSize</Field>
+				<Field>ConstantsSet.InfobaseUsageMode.Ref</Field>
+				<Field>ConstantsSet.FileExtensionListOpenDocument</Field>
+				<Field>ConstantsSet.ExchangeRateDifferencesCalculationFrequency.Ref</Field>
+				<Field>ConstantsSet.DiscountsMarkupsSharedUsageOptions.Ref</Field>
+				<Field>ConstantsSet.DeleteCryptographyContext.Ref</Field>
+				<Field>ConstantsSet.DeleteContractControllingOnPosting.Ref</Field>
+				<Field>ConstantsSet.AuthorizationContext.Ref</Field>
+				<Field>ConstantsSet.ActivityKind.Ref</Field>
+			</UseAlways>
+		</Attribute>
+		<Attribute name="MaxDataAreaFileSize" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Maximum file size</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+			<FillCheck>ShowError</FillCheck>
+		</Attribute>
+		<Attribute name="RunMode" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Work mode</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="MaximumFileSize" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Maximum file size</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+			<FillCheck>ShowError</FillCheck>
+		</Attribute>
+	</Attributes>
+</Form>

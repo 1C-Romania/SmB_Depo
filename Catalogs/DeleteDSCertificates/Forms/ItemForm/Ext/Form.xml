@@ -1,0 +1,597 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<ButtonGroup name="FormGroupStandardCommands" id="65">
+				<CommandSource>Form</CommandSource>
+				<ExtendedTooltip name="FormFolderStandardCommandsExtendedTooltip" id="94"/>
+				<ChildItems>
+					<Button name="FormCatalogDSCertificatesSaveCertificateToFile" id="76">
+						<Type>CommandBarButton</Type>
+						<OnlyInAllActions>false</OnlyInAllActions>
+						<CommandName>0:63386b75-0cd0-4ae7-87c6-c5ea20c96cd9</CommandName>
+						<DataPath>Object.Ref</DataPath>
+						<ExtendedTooltip name="FormCatalogDSCertificatesSaveCertificateToFileExtendedTooltip" id="95"/>
+					</Button>
+				</ChildItems>
+			</ButtonGroup>
+			<Button name="CertificateTestForm" id="75">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.CertificateSettingsTest</CommandName>
+				<ExtendedTooltip name="FormTestCertificateExtendedTooltip" id="96"/>
+			</Button>
+			<ButtonGroup name="FormGroupRevoked" id="64">
+				<ExtendedTooltip name="FormFolderRevokedExtendedTooltip" id="97"/>
+				<ChildItems>
+					<Button name="FormWithdrawedButton" id="63">
+						<Type>CommandBarButton</Type>
+						<Representation>PictureAndText</Representation>
+						<OnlyInAllActions>false</OnlyInAllActions>
+						<CommandName>Form.Command.CertificateRevoked</CommandName>
+						<ExtendedTooltip name="ButtonWithdrawnFormExtendedTooltip" id="98"/>
+					</Button>
+				</ChildItems>
+			</ButtonGroup>
+			<Button name="FormHelp" id="74">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.Help</CommandName>
+				<ExtendedTooltip name="FormHelpExtendedTooltip" id="99"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="AfterWrite">AfterWrite</Event>
+		<Event name="OnReadAtServer">OnReadAtServer</Event>
+		<Event name="BeforeWrite">BeforeWrite</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="HeaderGroup" id="60">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group header</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group header</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="HeaderGroupExtendedTooltip" id="100"/>
+			<ChildItems>
+				<InputField name="Description" id="1">
+					<DataPath>Object.Description</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="DescriptionContextMenu" id="2"/>
+					<ExtendedTooltip name="DescriptionExtendedTooltip" id="101"/>
+				</InputField>
+				<InputField name="Company" id="6">
+					<DataPath>Object.Company</DataPath>
+					<ContextMenu name="CounterpartyContextMenu" id="7"/>
+					<ExtendedTooltip name="CounterpartyExtendedTooltip" id="102"/>
+				</InputField>
+				<UsualGroup name="FolderSNP" id="81">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>To whom issued</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>SNP group</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Horizontal</Group>
+					<Representation>StrongSeparation</Representation>
+					<ExtendedTooltip name="FolderSNPExtendedTooltip" id="103"/>
+					<ChildItems>
+						<InputField name="Surname" id="82">
+							<DataPath>Object.Surname</DataPath>
+							<ContextMenu name="SurnameContextMenu" id="83"/>
+							<ExtendedTooltip name="LastNameExtendedTooltip" id="104"/>
+							<Events>
+								<Event name="OnChange">SurnameOnChange</Event>
+							</Events>
+						</InputField>
+						<InputField name="Name" id="84">
+							<DataPath>Object.Name</DataPath>
+							<ContextMenu name="NameContextMenu" id="85"/>
+							<ExtendedTooltip name="NameExtendedTooltip" id="105"/>
+							<Events>
+								<Event name="OnChange">NameOnChange</Event>
+							</Events>
+						</InputField>
+						<InputField name="Patronymic" id="86">
+							<DataPath>Object.Patronymic</DataPath>
+							<ContextMenu name="PatronymicContextMenu" id="87"/>
+							<ExtendedTooltip name="PatronymicExtendedTooltip" id="106"/>
+							<Events>
+								<Event name="OnChange">PatronymicOnChange</Event>
+							</Events>
+						</InputField>
+						<InputField name="PositionByCertificate" id="88">
+							<DataPath>Object.PositionByCertificate</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Position</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="PostCertificateContextMenu" id="89"/>
+							<ExtendedTooltip name="PostCertificateExtendedTooltip" id="107"/>
+							<Events>
+								<Event name="OnChange">PostCertificateOnChange</Event>
+							</Events>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<InputField name="Purpose" id="3">
+					<DataPath>Object.Purpose</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<MultiLine>true</MultiLine>
+					<OpenButton>true</OpenButton>
+					<ContextMenu name="PrescriptionContextMENU" id="4"/>
+					<ExtendedTooltip name="PurposeExtendedTooltip" id="108"/>
+					<Events>
+						<Event name="Opening">AppointmentOpening</Event>
+					</Events>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<Pages name="DocumentsKindsAndPerformers" id="37">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Document kinds and performers</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Document kinds and performers</v8:content>
+				</v8:item>
+			</ToolTip>
+			<ExtendedTooltip name="DocumentTypesAndPerformersExtendedTooltip" id="109"/>
+			<ChildItems>
+				<Page name="GroupDocumentsKinds" id="32">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Document kinds</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Documents kinds group</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="FolderDocumentTypesExtendedTooltip" id="110"/>
+					<ChildItems>
+						<Table name="DocumentKinds" id="21">
+							<Representation>List</Representation>
+							<ChangeRowSet>false</ChangeRowSet>
+							<HorizontalLines>false</HorizontalLines>
+							<VerticalLines>false</VerticalLines>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>Object.DocumentKinds</DataPath>
+							<CommandSet>
+								<ExcludedCommand>Copy</ExcludedCommand>
+								<ExcludedCommand>SortListAsc</ExcludedCommand>
+								<ExcludedCommand>CancelSearch</ExcludedCommand>
+								<ExcludedCommand>OutputList</ExcludedCommand>
+								<ExcludedCommand>SelectAll</ExcludedCommand>
+								<ExcludedCommand>SortListDesc</ExcludedCommand>
+								<ExcludedCommand>CopyToClipboard</ExcludedCommand>
+								<ExcludedCommand>Delete</ExcludedCommand>
+								<ExcludedCommand>EndEdit</ExcludedCommand>
+								<ExcludedCommand>Add</ExcludedCommand>
+								<ExcludedCommand>Change</ExcludedCommand>
+								<ExcludedCommand>Find</ExcludedCommand>
+							</CommandSet>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="TypesOfDocumentContextMenu" id="22"/>
+							<AutoCommandBar name="TypesOfDocumentsCommandBar" id="23">
+								<Autofill>false</Autofill>
+								<ChildItems>
+									<ButtonGroup name="TypesOfDocumentSelection" id="79">
+										<Title>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Document selection types</v8:content>
+											</v8:item>
+										</Title>
+										<ToolTip>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Document selection types</v8:content>
+											</v8:item>
+										</ToolTip>
+										<ExtendedTooltip name="TypesOfDocumentSelectionExtendedTooltip" id="111"/>
+										<ChildItems>
+											<Button name="SelectAll" id="30">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.SelectAll</CommandName>
+												<Picture>
+													<xr:Ref>StdPicture.CheckAll</xr:Ref>
+													<xr:LoadTransparent>true</xr:LoadTransparent>
+												</Picture>
+												<ExtendedTooltip name="SelectAllExtendedTooltip" id="112"/>
+											</Button>
+											<Button name="UncheckAll" id="31">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.UncheckAll</CommandName>
+												<Picture>
+													<xr:Ref>StdPicture.UncheckAll</xr:Ref>
+													<xr:LoadTransparent>true</xr:LoadTransparent>
+												</Picture>
+												<ExtendedTooltip name="UncheckAllExtendedTooltip" id="113"/>
+											</Button>
+										</ChildItems>
+									</ButtonGroup>
+									<ButtonGroup name="TypesOfDocumentStandard" id="80">
+										<Visible>false</Visible>
+										<Title>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Types of documents standard</v8:content>
+											</v8:item>
+										</Title>
+										<ToolTip>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Types of documents standard</v8:content>
+											</v8:item>
+										</ToolTip>
+										<CommandSource>Item.DocumentKinds</CommandSource>
+										<ExtendedTooltip name="TypesOfDocumentStandardExtendedTooltip" id="114"/>
+									</ButtonGroup>
+								</ChildItems>
+							</AutoCommandBar>
+							<ExtendedTooltip name="TypesOfDocumentsExtendedTooltip" id="115"/>
+							<SearchStringAddition name="DocumentKindsOfSearchString" id="130">
+								<AdditionSource>
+									<Item>DocumentKinds</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="DocumentKindsSearchStringContextMenu" id="131"/>
+								<ExtendedTooltip name="DocumentKindsSearchStringExtendedTooltip" id="132"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="DocumentKindsViewStatus" id="133">
+								<AdditionSource>
+									<Item>DocumentKinds</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="DocumentKindsViewStatusContextMenu" id="134"/>
+								<ExtendedTooltip name="DocumentKindsViewStatusExtendedTooltip" id="135"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="DocumentKindsSearchManagement" id="136">
+								<AdditionSource>
+									<Item>DocumentKinds</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="DocumentKindsSearchManagementContextMenu" id="137"/>
+								<ExtendedTooltip name="DocumentKindsSearchManagementExtendedTooltip" id="138"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<CheckBoxField name="UseToSign" id="28">
+									<DataPath>Object.DocumentKinds.UseToSign</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ShowInHeader>false</ShowInHeader>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="UseToSignContextMenu" id="29"/>
+									<ExtendedTooltip name="UseForSignatureExtendedTooltip" id="116"/>
+								</CheckBoxField>
+								<InputField name="DocumentKind" id="26">
+									<DataPath>Object.DocumentKinds.DocumentKind</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="DocumentTypeContextMenu" id="27"/>
+									<ExtendedTooltip name="DocumentTypeExtendedTooltip" id="117"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="GroupPerformers" id="50">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Performers content</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Performers</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="GroupPerformersExtendedTooltip" id="118"/>
+					<ChildItems>
+						<CheckBoxField name="CheckPerformersContent" id="58">
+							<DataPath>Object.CheckPerformersContent</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Verify performers</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="CheckPerformersContentContextMenu" id="59"/>
+							<ExtendedTooltip name="CheckPerformersContentExtendedTooltip" id="119"/>
+							<Events>
+								<Event name="OnChange">CheckPerformersContentOnChange</Event>
+							</Events>
+						</CheckBoxField>
+						<Table name="PerformersContent" id="51">
+							<ChangeRowOrder>false</ChangeRowOrder>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>Object.PerformersContent</DataPath>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="PerformersContentContextMenu" id="52"/>
+							<AutoCommandBar name="PerformersContentCommandBar" id="53"/>
+							<ExtendedTooltip name="PerformersContentExtendedTooltip" id="120"/>
+							<SearchStringAddition name="PerformersContentSearchString" id="139">
+								<AdditionSource>
+									<Item>PerformersContent</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="PerformersContentSearchStringContextMenu" id="140"/>
+								<ExtendedTooltip name="PerformersContentSearchStringExtendedTooltip" id="141"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="PerformersContentViewStatus" id="142">
+								<AdditionSource>
+									<Item>PerformersContent</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="PerformersContentViewStatusContextMenu" id="143"/>
+								<ExtendedTooltip name="PerformersContentViewStatusExtendedTooltip" id="144"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="PerformersContentSearchManagement" id="145">
+								<AdditionSource>
+									<Item>PerformersContent</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="PerformersContentSearchManagementContextMenu" id="146"/>
+								<ExtendedTooltip name="PerformersContentSearchManagementExtendedTooltip" id="147"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<LabelField name="LineNumber" id="54">
+									<DataPath>Object.PerformersContent.LineNumber</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="LineNumberContextMenu" id="55"/>
+									<ExtendedTooltip name="LineNumberExtendedTooltip" id="121"/>
+								</LabelField>
+								<InputField name="Performer" id="56">
+									<DataPath>Object.PerformersContent.Performer</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="PerformerContextMenu" id="57"/>
+									<ExtendedTooltip name="PerformerExtendedTooltip" id="122"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+		<UsualGroup name="HorizontalGroup" id="20">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group horizontal</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group horizontal</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="HorizontalGroupExtendedTooltip" id="123"/>
+			<ChildItems>
+				<UsualGroup name="GroupLeft" id="77">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group on the left</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group on the left</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="GroupLeftExtendedTooltip" id="124"/>
+					<ChildItems>
+						<CheckBoxField name="RestrictAccessToCertificate" id="67">
+							<DataPath>Object.RestrictAccessToCertificate</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>The certificate is available to user:</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="RestrictAccessToCertificateContextMenu" id="68"/>
+							<ExtendedTooltip name="RestrictAccessToCertificateExtendedTooltip" id="125"/>
+							<Events>
+								<Event name="OnChange">RestrictAccessToCertificateOnChange</Event>
+							</Events>
+						</CheckBoxField>
+						<CheckBoxField name="RememberCertificatePassword" id="90">
+							<DataPath>Object.RememberCertificatePassword</DataPath>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="RememberCertificatePasswordContextMenu" id="91"/>
+							<ExtendedTooltip name="RememberCertificatePasswordExtendedTooltip" id="126"/>
+							<Events>
+								<Event name="OnChange">RememberCertificatePasswordOnChange</Event>
+							</Events>
+						</CheckBoxField>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="FolderRight" id="78">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group right</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group right</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="FolderRightExtendedTooltip" id="127"/>
+					<ChildItems>
+						<InputField name="User" id="92">
+							<DataPath>Object.User</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<ContextMenu name="UserContextMenu" id="93"/>
+							<ExtendedTooltip name="UserExtendedTooltip" id="128"/>
+						</InputField>
+						<Button name="ButtonPassword" id="73">
+							<Type>Hyperlink</Type>
+							<CommandName>Form.Command.CommandSetPassword</CommandName>
+							<ExtendedTooltip name="ButtonPasswordExtendedTooltip" id="129"/>
+						</Button>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Type>
+				<v8:Type>cfg:CatalogObject.DeleteDSCertificates</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="SelectAll" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Select all</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Select all</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>SelectAll</Action>
+		</Command>
+		<Command name="UncheckAll" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Uncheck all</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Uncheck all</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>UncheckAll</Action>
+		</Command>
+		<Command name="CertificateRevoked" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Certificate revoked</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Certificate revoked</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>CertificateRevoked</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="CommandSetPassword" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Save password</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Enter new password</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>CommandSetPassword</Action>
+		</Command>
+		<Command name="CertificateSettingsTest" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Certificate settings test</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Certificate settings test</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.Information</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>CertificateSettingsTest</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+	</Commands>
+	<CommandInterface>
+		<CommandBar>
+			<Item>
+				<Command>0:63386b75-0cd0-4ae7-87c6-c5ea20c96cd9</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormCommandBarImportant</CommandGroup>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+		</CommandBar>
+	</CommandInterface>
+</Form>

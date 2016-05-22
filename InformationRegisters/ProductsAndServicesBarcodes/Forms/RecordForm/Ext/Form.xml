@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<ChildItems>
+			<Button name="FormNewBarcode" id="10">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.NewBarcode</CommandName>
+				<ExtendedTooltip name="FormNewBarcodeExtendedTooltip" id="13"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="NotificationProcessing">NotificationProcessing</Event>
+		<Event name="OnOpen">OnOpen</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+		<Event name="OnClose">OnClose</Event>
+		<Event name="FillCheckProcessingAtServer">FillCheckProcessingAtServer</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="Barcode" id="1">
+			<DataPath>Record.Barcode</DataPath>
+			<Wrap>false</Wrap>
+			<ContextMenu name="BarCodeContextMenu" id="2"/>
+			<ExtendedTooltip name="BarcodeExtendedTooltip" id="14"/>
+		</InputField>
+		<InputField name="ProductsAndServices" id="3">
+			<DataPath>Record.ProductsAndServices</DataPath>
+			<Wrap>false</Wrap>
+			<ContextMenu name="ProductsAndServicesContextMenu" id="4"/>
+			<ExtendedTooltip name="ProductsAndServicesExtendedTooltip" id="15"/>
+		</InputField>
+		<UsualGroup name="CharacteristicAndBatch" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Characteristic and batch</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Characteristic and batch</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="CharacteristicAndBatchExtendedTooltip" id="16"/>
+			<ChildItems>
+				<InputField name="Characteristic" id="5">
+					<DataPath>Record.Characteristic</DataPath>
+					<Width>12</Width>
+					<Wrap>false</Wrap>
+					<ContextMenu name="CharacteristicContextMenu" id="6"/>
+					<ExtendedTooltip name="CharacteristicExtendedTooltip" id="17"/>
+				</InputField>
+				<InputField name="Batch" id="7">
+					<DataPath>Record.Batch</DataPath>
+					<TitleHeight>1</TitleHeight>
+					<Width>7</Width>
+					<Wrap>false</Wrap>
+					<ContextMenu name="BatchContextMenu" id="8"/>
+					<ExtendedTooltip name="BatchExtendedTooltip" id="18"/>
+				</InputField>
+				<InputField name="MeasurementUnit" id="11">
+					<DataPath>Record.MeasurementUnit</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>UOM</v8:content>
+						</v8:item>
+					</Title>
+					<Width>3</Width>
+					<DropListButton>true</DropListButton>
+					<ChoiceButton>false</ChoiceButton>
+					<ClearButton>true</ClearButton>
+					<OpenButton>false</OpenButton>
+					<ChooseType>false</ChooseType>
+					<ChoiceListButton>false</ChoiceListButton>
+					<ContextMenu name="MeasurementUnitContextMenu" id="12"/>
+					<ExtendedTooltip name="MeasurementUnitExtendedTooltip" id="19"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Record" id="1">
+			<Type>
+				<v8:Type>cfg:InformationRegisterRecordManager.ProductsAndServicesBarcodes</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="UsePeripherals" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Use peripherals</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="UseExchangeWithPeripheralsOffline" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Use peripherals Offline</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="SupportedPeripheralTypes" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Supported peripherals types</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="NewBarcode" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Generate  barcode</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>New barcode</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>NewBarcode</Action>
+		</Command>
+	</Commands>
+</Form>

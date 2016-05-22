@@ -1,0 +1,419 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Width>90</Width>
+	<Group>Horizontal</Group>
+	<ChildItemsWidth>LeftNarrow</ChildItemsWidth>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="HierarchyGroup" id="104">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group hierarchy</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group hierarchy</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="HierarchyGroupExtendedTooltip" id="105"/>
+			<ChildItems>
+				<UsualGroup name="Group1" id="106">
+					<Group>Horizontal</Group>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="Group1ExtendedTooltip" id="107"/>
+					<ChildItems>
+						<LabelDecoration name="Decoration1" id="108">
+							<Width>1</Width>
+							<ContextMenu name="Decoration1ContextMenu" id="109"/>
+							<ExtendedTooltip name="Decoration1ExtendedTooltip" id="110"/>
+						</LabelDecoration>
+						<InputField name="Company" id="31">
+							<DataPath>Company</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<Width>29</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Wrap>false</Wrap>
+							<OpenButton>false</OpenButton>
+							<InputHint>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Company</v8:content>
+								</v8:item>
+							</InputHint>
+							<ContextMenu name="CounterpartyContextMenu" id="32"/>
+							<ExtendedTooltip name="CounterpartyExtendedTooltip" id="33"/>
+							<Events>
+								<Event name="OnChange">CompanyOnChange</Event>
+							</Events>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<Table name="Divisions" id="22">
+					<CommandBarLocation>None</CommandBarLocation>
+					<SkipOnInput>false</SkipOnInput>
+					<Width>38</Width>
+					<UseAlternationRowColor>true</UseAlternationRowColor>
+					<EnableStartDrag>true</EnableStartDrag>
+					<DataPath>Divisions</DataPath>
+					<RowPictureDataPath>Divisions.DefaultPicture</RowPictureDataPath>
+					<SearchStringLocation>None</SearchStringLocation>
+					<ViewStatusLocation>None</ViewStatusLocation>
+					<SearchControlLocation>None</SearchControlLocation>
+					<AutoRefresh>false</AutoRefresh>
+					<AutoRefreshPeriod>60</AutoRefreshPeriod>
+					<Period>
+						<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+						<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+						<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+					</Period>
+					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+					<RestoreCurrentRow>false</RestoreCurrentRow>
+					<TopLevelParent xsi:nil="true"/>
+					<ShowRoot>false</ShowRoot>
+					<AllowRootChoice>false</AllowRootChoice>
+					<UpdateOnDataChange>Auto</UpdateOnDataChange>
+					<ContextMenu name="DivisionsContextMenu" id="23"/>
+					<AutoCommandBar name="DivisionsCommandBar" id="24">
+						<Autofill>false</Autofill>
+					</AutoCommandBar>
+					<ExtendedTooltip name="DivisionsExtendedTooltip" id="35"/>
+					<SearchStringAddition name="DivisionsSearchString" id="45">
+						<AdditionSource>
+							<Item>Divisions</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="DivisionsSearchStringContextMenu" id="46"/>
+						<ExtendedTooltip name="DivisionsSearchStringExtendedTooltip" id="47"/>
+					</SearchStringAddition>
+					<ViewStatusAddition name="DivisionsViewStatus" id="48">
+						<AdditionSource>
+							<Item>Divisions</Item>
+							<Type>ViewStatusRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="DivisionsViewStatusContextMenu" id="49"/>
+						<ExtendedTooltip name="DivisionsViewStatusExtendedTooltip" id="50"/>
+					</ViewStatusAddition>
+					<SearchControlAddition name="DivisionsSearchManagement" id="51">
+						<AdditionSource>
+							<Item>Divisions</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<ContextMenu name="DivisionsSearchManagementContextMenu" id="52"/>
+						<ExtendedTooltip name="DivisionsSearchManagementExtendedTooltip" id="53"/>
+					</SearchControlAddition>
+					<Events>
+						<Event name="OnActivateRow">DivisionsOnActivateRow</Event>
+					</Events>
+					<ChildItems>
+						<LabelField name="Description" id="25">
+							<DataPath>Divisions.Ref</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Division</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="DescriptionContextMenu" id="26"/>
+							<ExtendedTooltip name="DescriptionExtendedTooltip" id="36"/>
+						</LabelField>
+						<LabelField name="Code" id="27">
+							<DataPath>Divisions.Code</DataPath>
+							<UserVisible>
+								<xr:Common>false</xr:Common>
+							</UserVisible>
+							<ContextMenu name="CodeContextMenu" id="28"/>
+							<ExtendedTooltip name="CodeExtendedTooltip" id="37"/>
+						</LabelField>
+					</ChildItems>
+				</Table>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="GroupTable" id="29">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Table group</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ChildItemsWidth>LeftNarrowest</ChildItemsWidth>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="GroupTablesExtendedTooltip" id="34"/>
+			<ChildItems>
+				<Table name="List" id="1">
+					<Representation>List</Representation>
+					<SkipOnInput>false</SkipOnInput>
+					<DefaultItem>true</DefaultItem>
+					<UseAlternationRowColor>true</UseAlternationRowColor>
+					<EnableStartDrag>true</EnableStartDrag>
+					<DataPath>List</DataPath>
+					<RowPictureDataPath>List.DefaultPicture</RowPictureDataPath>
+					<SearchStringLocation>CommandBar</SearchStringLocation>
+					<ViewStatusLocation>Top</ViewStatusLocation>
+					<SearchControlLocation>CommandBar</SearchControlLocation>
+					<AutoRefresh>false</AutoRefresh>
+					<AutoRefreshPeriod>60</AutoRefreshPeriod>
+					<Period>
+						<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+						<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+						<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+					</Period>
+					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+					<RestoreCurrentRow>false</RestoreCurrentRow>
+					<TopLevelParent xsi:nil="true"/>
+					<ShowRoot>false</ShowRoot>
+					<AllowRootChoice>false</AllowRootChoice>
+					<UpdateOnDataChange>Auto</UpdateOnDataChange>
+					<ContextMenu name="ListContextMenu" id="2"/>
+					<AutoCommandBar name="ListCommandBar" id="3">
+						<ChildItems>
+							<Button name="ListChangeForm" id="111">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
+								<ExtendedTooltip name="ListChangeFormExtendedTooltip" id="112"/>
+							</Button>
+							<Button name="ListHelp" id="113">
+								<Type>CommandBarButton</Type>
+								<OnlyInAllActions>false</OnlyInAllActions>
+								<CommandName>Form.StandardCommand.Help</CommandName>
+								<ExtendedTooltip name="ListHelpExtendedTooltip" id="114"/>
+							</Button>
+						</ChildItems>
+					</AutoCommandBar>
+					<ExtendedTooltip name="ListExtendedTooltip" id="38"/>
+					<SearchStringAddition name="SearchStringList" id="54">
+						<AdditionSource>
+							<Item>List</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="ListSearchStringContextMenu" id="55"/>
+						<ExtendedTooltip name="ListSearchStringExtendedTooltip" id="56"/>
+					</SearchStringAddition>
+					<ViewStatusAddition name="ListViewStatus" id="57">
+						<AdditionSource>
+							<Item>List</Item>
+							<Type>ViewStatusRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="ListViewStatusContextMenu" id="58"/>
+						<ExtendedTooltip name="ListViewStatusExtendedTooltip" id="59"/>
+					</ViewStatusAddition>
+					<SearchControlAddition name="ListSearchControl" id="60">
+						<AdditionSource>
+							<Item>List</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<ContextMenu name="ListSearchControlContextMenu" id="61"/>
+						<ExtendedTooltip name="ListSearchControlExtendedTooltip" id="62"/>
+					</SearchControlAddition>
+					<ChildItems>
+						<LabelField name="Position" id="10">
+							<DataPath>List.Position</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Position</v8:content>
+								</v8:item>
+							</Title>
+							<Width>20</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="AppointmentContextMenu" id="11"/>
+							<ExtendedTooltip name="PositionExtendedTooltip" id="39"/>
+						</LabelField>
+						<LabelField name="NumberOfRates" id="12">
+							<DataPath>List.NumberOfRates</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Rates</v8:content>
+								</v8:item>
+							</Title>
+							<Width>8</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="CountOfRatesContextMenu" id="13"/>
+							<ExtendedTooltip name="CountOfRatesExtendedTooltip" id="40"/>
+						</LabelField>
+						<LabelField name="Period" id="63">
+							<DataPath>List.Period</DataPath>
+							<Width>10</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="PeriodContextMenu" id="64"/>
+							<ExtendedTooltip name="PeriodExtendedTooltip" id="65"/>
+						</LabelField>
+						<LabelField name="AccrualDeductionKind" id="18">
+							<DataPath>List.AccrualDeductionKind</DataPath>
+							<UserVisible>
+								<xr:Common>false</xr:Common>
+							</UserVisible>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Accrual Type</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="AccrualsDeductionsTypeContextMenu" id="19"/>
+							<ExtendedTooltip name="AccrualsDeductionsTypeExtendedTooltip" id="41"/>
+						</LabelField>
+						<LabelField name="MinimumTariffRate" id="14">
+							<DataPath>List.MinimumTariffRate</DataPath>
+							<UserVisible>
+								<xr:Common>false</xr:Common>
+							</UserVisible>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Minimum Tariff Rate</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="MinimalTarifRateContextMenu" id="15"/>
+							<ExtendedTooltip name="MinimalTarifRateExtendedTooltip" id="42"/>
+						</LabelField>
+						<LabelField name="MaximumTariffRate" id="16">
+							<DataPath>List.MaximumTariffRate</DataPath>
+							<UserVisible>
+								<xr:Common>false</xr:Common>
+							</UserVisible>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Max. Tariff rate</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="MaximalTarifRateContextMenu" id="17"/>
+							<ExtendedTooltip name="MaximalTarifRateExtendedTooltip" id="43"/>
+						</LabelField>
+						<LabelField name="TariffRateCurrency" id="20">
+							<DataPath>List.TariffRateCurrency</DataPath>
+							<UserVisible>
+								<xr:Common>false</xr:Common>
+							</UserVisible>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Currency</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="TarifRateCurrencyContextMenu" id="21"/>
+							<ExtendedTooltip name="TarifRateCurrencyExtendedTooltip" id="44"/>
+						</LabelField>
+					</ChildItems>
+				</Table>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="List" id="1">
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>false</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<MainTable>InformationRegister.StaffList</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="Company" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Company</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Companies</v8:Type>
+			</Type>
+			<FillCheck>ShowError</FillCheck>
+			<FunctionalOptions>
+				<Item>FunctionalOption.MultipleCompaniesAccounting</Item>
+			</FunctionalOptions>
+		</Attribute>
+		<Attribute name="Divisions" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Divisions</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>false</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<MainTable>Catalog.StructuralUnits</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">StructuralUnitType</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="dcscor:DesignTimeValue">Enum.StructuralUnitsTypes.Division</dcsset:right>
+						</dcsset:item>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="AccountingBySeveralDivisions" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Accounting by multiple divisions</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="MainDivision" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Main division</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.StructuralUnits</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+</Form>

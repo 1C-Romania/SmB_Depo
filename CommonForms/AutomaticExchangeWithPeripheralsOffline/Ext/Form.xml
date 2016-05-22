@@ -1,0 +1,567 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Width>86</Width>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="BeforeClose">BeforeClose</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="Header" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Header</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Header</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="HeaderExtendedTooltip" id="43"/>
+			<ChildItems>
+				<LabelDecoration name="LabelExchangeEvery" id="17">
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Exchange every</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="LabelExchangeOverEveryContextMenu" id="18"/>
+					<ExtendedTooltip name="LabelExchangeEveryExtendedTooltip" id="44"/>
+				</LabelDecoration>
+				<InputField name="ExchangePeriodicity" id="1">
+					<DataPath>ExchangePeriodicity</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<Width>5</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<SpinButton>true</SpinButton>
+					<MinValue xsi:type="xs:decimal">1</MinValue>
+					<ContextMenu name="TimeSharingContextMenu" id="2"/>
+					<ExtendedTooltip name="ExchangePeriodicityExtendedTooltip" id="45"/>
+				</InputField>
+				<LabelDecoration name="LabelMinutes" id="19">
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>min.</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="MinutesTitleContextMenu" id="20"/>
+					<ExtendedTooltip name="LabelMinutesExtendedTooltip" id="46"/>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+		<Table name="Equipment" id="8">
+			<Representation>List</Representation>
+			<ChangeRowSet>false</ChangeRowSet>
+			<ChangeRowOrder>false</ChangeRowOrder>
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<EnableStartDrag>true</EnableStartDrag>
+			<EnableDrag>true</EnableDrag>
+			<DataPath>Equipment</DataPath>
+			<SearchStringLocation>None</SearchStringLocation>
+			<ViewStatusLocation>None</ViewStatusLocation>
+			<SearchControlLocation>None</SearchControlLocation>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="EquipmentContextMenu" id="9">
+				<Autofill>false</Autofill>
+				<ChildItems>
+					<Button name="EquipmentContextMenuCheckAll" id="39">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.CheckAll</CommandName>
+						<ExtendedTooltip name="EquipmentContextMenuEnableCheckBoxesExtendedTooltip" id="47"/>
+					</Button>
+					<Button name="EquipmentContextMenuUncheckAll" id="40">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.UncheckAll</CommandName>
+						<ExtendedTooltip name="EquipmentContextMenuDisableCheckBoxesExtendedTooltip" id="48"/>
+					</Button>
+					<Button name="EquipmentContextMenuExportNow" id="42">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.ExecuteNow</CommandName>
+						<ExtendedTooltip name="EquipmentContextMenuExportNowExtendedTooltip" id="49"/>
+					</Button>
+				</ChildItems>
+			</ContextMenu>
+			<AutoCommandBar name="EquipmentCommandPanel" id="10">
+				<Autofill>false</Autofill>
+				<ChildItems>
+					<Button name="EquipmentCheckAll" id="37">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.CheckAll</CommandName>
+						<ExtendedTooltip name="EquipmentSelectCheckBoxesExtendedTooltip" id="50"/>
+					</Button>
+					<Button name="EquipmentUncheckAll" id="38">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.UncheckAll</CommandName>
+						<ExtendedTooltip name="EquipmentClearCheckBoxesExtendedTooltip" id="51"/>
+					</Button>
+					<Button name="Start" id="4">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.Start</CommandName>
+						<ExtendedTooltip name="StartExtendedTooltip" id="52"/>
+					</Button>
+					<Button name="Complete" id="5">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.Complete</CommandName>
+						<ExtendedTooltip name="CompleteExtendedTooltip" id="53"/>
+					</Button>
+					<Button name="EquipmentExecuteNow" id="41">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.ExecuteNow</CommandName>
+						<ExtendedTooltip name="EquipmentPerformNowExtendedTooltip" id="54"/>
+					</Button>
+				</ChildItems>
+			</AutoCommandBar>
+			<ExtendedTooltip name="EquipmentExtendedTooltip" id="55"/>
+			<SearchStringAddition name="EquipmentSearchString" id="56">
+				<AdditionSource>
+					<Item>Equipment</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="EquipmentSearchStringContextMenu" id="57"/>
+				<ExtendedTooltip name="EquipmentSearchStringExtendedTooltip" id="58"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="EquipmentViewStatus" id="59">
+				<AdditionSource>
+					<Item>Equipment</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="EquipmentViewStatusContextMenu" id="60"/>
+				<ExtendedTooltip name="EquipmentViewStatusExtendedTooltip" id="61"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="EquipmentSearchControl" id="62">
+				<AdditionSource>
+					<Item>Equipment</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="EquipmentSearchControlContextMenu" id="63"/>
+				<ExtendedTooltip name="EquipmentSearchControlExtendedTooltip" id="64"/>
+			</SearchControlAddition>
+			<ChildItems>
+				<CheckBoxField name="EquipmentExecuteExchange" id="13">
+					<DataPath>Equipment.ExecuteExchange</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<EditMode>EnterOnInput</EditMode>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="EquipmentExecuteExchangeContextMenu" id="14"/>
+					<ExtendedTooltip name="EquipmentExecuteExchangeExtendedTooltip" id="65"/>
+				</CheckBoxField>
+				<InputField name="EquipmentDevice" id="11">
+					<DataPath>Equipment.Device</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="EquipmentDeviceContextMenu" id="12"/>
+					<ExtendedTooltip name="EquipmentDeviceExtendedTooltip" id="66"/>
+				</InputField>
+				<ColumnGroup name="EquipmentExport" id="25">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Export</v8:content>
+						</v8:item>
+					</Title>
+					<Group>InCell</Group>
+					<ShowInHeader>true</ShowInHeader>
+					<ExtendedTooltip name="EquipmentExportingExtendedTooltip" id="67"/>
+					<ChildItems>
+						<PictureField name="EquipmentExportPicture" id="23">
+							<DataPath>Equipment.ExportingPictureIndex</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<TitleLocation>None</TitleLocation>
+							<EditMode>EnterOnInput</EditMode>
+							<ValuesPicture>
+								<xr:Ref>StdPicture.Stop</xr:Ref>
+								<xr:LoadTransparent>true</xr:LoadTransparent>
+							</ValuesPicture>
+							<ContextMenu name="EquipmentPictureExportingContextMenu" id="24"/>
+							<ExtendedTooltip name="EquipmentExportingPictureExtendedTooltip" id="68"/>
+						</PictureField>
+						<InputField name="EquipmentExportStatus" id="21">
+							<DataPath>Equipment.ExportStatus</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Status</v8:content>
+								</v8:item>
+							</Title>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="EquipmentExportStatusContextMenu" id="22"/>
+							<ExtendedTooltip name="EquipmentExportingStatusExtendedTooltip" id="69"/>
+						</InputField>
+						<InputField name="EquipmentExportEndDate" id="33">
+							<DataPath>Equipment.ExportEndDate</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Completion date</v8:content>
+								</v8:item>
+							</Title>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>8</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="EquipmentCompletionDateOfExportContextMenuContextMenu" id="34"/>
+							<ExtendedTooltip name="EquipmentExportingCompletionDateExtendedTooltip" id="70"/>
+						</InputField>
+					</ChildItems>
+				</ColumnGroup>
+				<ColumnGroup name="EquipmentImport" id="26">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Import</v8:content>
+						</v8:item>
+					</Title>
+					<Group>InCell</Group>
+					<ShowInHeader>true</ShowInHeader>
+					<ExtendedTooltip name="EquipmentImportingExtendedTooltip" id="71"/>
+					<ChildItems>
+						<PictureField name="EquipmentPictureImporting" id="29">
+							<DataPath>Equipment.ImportingPictureIndex</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<TitleLocation>None</TitleLocation>
+							<EditMode>EnterOnInput</EditMode>
+							<ValuesPicture>
+								<xr:Ref>StdPicture.Stop</xr:Ref>
+								<xr:LoadTransparent>true</xr:LoadTransparent>
+							</ValuesPicture>
+							<ContextMenu name="EquipmentPictureImportingsContextMenu" id="30"/>
+							<ExtendedTooltip name="EquipmentImportingPictureExtendedTooltip" id="72"/>
+						</PictureField>
+						<InputField name="EquipmentImportStatus" id="27">
+							<DataPath>Equipment.ImportStatus</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="EquipmentImportStatusContextMenu" id="28"/>
+							<ExtendedTooltip name="EquipmentImportingStatusExtendedTooltip" id="73"/>
+						</InputField>
+						<InputField name="EquipmentImportEndDate" id="35">
+							<DataPath>Equipment.ImportEndDate</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Completion date</v8:content>
+								</v8:item>
+							</Title>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>8</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="EquipmentImportEndDateContextMenu" id="36"/>
+							<ExtendedTooltip name="EquipmentImportEndDateExtendedTooltip" id="74"/>
+						</InputField>
+					</ChildItems>
+				</ColumnGroup>
+			</ChildItems>
+		</Table>
+		<LabelField name="Status" id="31">
+			<DataPath>Status</DataPath>
+			<TitleLocation>None</TitleLocation>
+			<TextColor>style:ExplanationText</TextColor>
+			<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+			<ContextMenu name="StateContextMenu" id="32"/>
+			<ExtendedTooltip name="StatusExtendedTooltip" id="75"/>
+		</LabelField>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="ExchangePeriodicity" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Exchange periodicity</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+			<Save>
+				<Field>ExchangePeriodicity</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="Equipment" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Equipment</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Device" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Device</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.Peripherals</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ExecuteExchange" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Execute exchange</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ExportStatus" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Export status</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="EquipmentType" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Peripheral type</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:EnumRef.PeripheralTypes</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ExportingPictureIndex" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Export picture index</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="ImportingPictureIndex" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Import picture index</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="ImportStatus" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Import status</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ExportEndDate" id="8">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Export end date</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>DateTime</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+				<Column name="ImportEndDate" id="9">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Export end date</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>DateTime</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="Status" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Status</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ExchangeInProgress" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Exchange is in progress</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="Start" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Start</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Start</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.GenerateReport</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Start</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="Complete" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Exit</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Exit</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Stop</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Complete</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="UncheckAll" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Clear all check boxes</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Clear all check boxes</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.UncheckAll</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>UncheckAll</Action>
+		</Command>
+		<Command name="CheckAll" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Select all check boxes</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Select all check boxes</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.CheckAll</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>CheckAll</Action>
+		</Command>
+		<Command name="ExecuteNow" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Run now</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Run now</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.DataSynchronizationInteractiveExecution</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ExecuteNow</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="Workplace">
+			<Type>
+				<v8:Type>cfg:CatalogRef.Workplaces</v8:Type>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

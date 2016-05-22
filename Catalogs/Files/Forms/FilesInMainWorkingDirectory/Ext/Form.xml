@@ -1,0 +1,553 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Width>85</Width>
+	<Height>10</Height>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<CommandBarLocation>None</CommandBarLocation>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="FormCommandBar" id="-1"/>
+	<Events>
+		<Event name="OnOpen">OnOpen</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<CommandBar name="CommandBar" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Command bar</v8:content>
+				</v8:item>
+			</Title>
+			<CommandSource>Form</CommandSource>
+			<ExtendedTooltip name="CommandBarExtendedTooltip" id="29"/>
+			<ChildItems>
+				<Button name="FormOpenCard" id="26">
+					<Type>CommandBarButton</Type>
+					<Representation>Picture</Representation>
+					<OnlyInAllActions>false</OnlyInAllActions>
+					<CommandName>Form.Command.OpenCard</CommandName>
+					<ExtendedTooltip name="FormOpenCardExtendedTooltip" id="34"/>
+				</Button>
+				<Button name="FormDeleteFromLocalFileCache" id="12">
+					<Type>CommandBarButton</Type>
+					<Representation>Text</Representation>
+					<SkipOnInput>false</SkipOnInput>
+					<CommandName>Form.Command.DeleteFromFilesLocalCache</CommandName>
+					<TextColor>style:ButtonTextColor</TextColor>
+					<BackColor>style:ButtonBackColor</BackColor>
+					<BorderColor>style:BorderColor</BorderColor>
+					<ExtendedTooltip name="FormDeleteFromLocalFileCacheExtendedTooltip" id="30"/>
+				</Button>
+				<Button name="FormEndEdit" id="25">
+					<Type>CommandBarButton</Type>
+					<Representation>Text</Representation>
+					<SkipOnInput>false</SkipOnInput>
+					<CommandName>Form.Command.EndEdit</CommandName>
+					<ExtendedTooltip name="FormFinishEditingExtendedTooltip" id="31"/>
+				</Button>
+				<Button name="FormCancelSearch" id="56">
+					<Type>CommandBarButton</Type>
+					<CommandName>Form.Item.List.StandardCommand.CancelSearch</CommandName>
+					<ExtendedTooltip name="FormCancelSearchExtendedTooltip" id="57"/>
+				</Button>
+				<Button name="FormFind" id="54">
+					<Type>CommandBarButton</Type>
+					<CommandName>Form.Item.List.StandardCommand.Find</CommandName>
+					<ExtendedTooltip name="FormSearchExtendedTooltip" id="55"/>
+				</Button>
+				<Button name="FormRelease" id="13">
+					<Type>CommandBarButton</Type>
+					<Representation>Text</Representation>
+					<SkipOnInput>false</SkipOnInput>
+					<CommandName>Form.Command.Release</CommandName>
+					<TextColor>style:ButtonTextColor</TextColor>
+					<BackColor>style:ButtonBackColor</BackColor>
+					<BorderColor>style:BorderColor</BorderColor>
+					<ExtendedTooltip name="FormReleaseExtendedTooltip" id="32"/>
+				</Button>
+				<Button name="FormOpenFileDirectory" id="20">
+					<Type>CommandBarButton</Type>
+					<SkipOnInput>false</SkipOnInput>
+					<CommandName>Form.Command.OpenFileDirectory</CommandName>
+					<ExtendedTooltip name="FormOpenFileDirectoryExtendedTooltip" id="33"/>
+				</Button>
+				<Button name="FormOutputList" id="58">
+					<Type>CommandBarButton</Type>
+					<CommandName>Form.Item.List.StandardCommand.OutputList</CommandName>
+					<ExtendedTooltip name="FormShowListExtendedTooltip" id="59"/>
+				</Button>
+			</ChildItems>
+		</CommandBar>
+		<Table name="List" id="2">
+			<Representation>List</Representation>
+			<CommandBarLocation>None</CommandBarLocation>
+			<SkipOnInput>false</SkipOnInput>
+			<Width>80</Width>
+			<HeightInTableRows>11</HeightInTableRows>
+			<RowSelectionMode>Row</RowSelectionMode>
+			<DataPath>List</DataPath>
+			<BorderColor>style:BorderColor</BorderColor>
+			<CommandSet>
+				<ExcludedCommand>Copy</ExcludedCommand>
+				<ExcludedCommand>SortListAsc</ExcludedCommand>
+				<ExcludedCommand>MoveUp</ExcludedCommand>
+				<ExcludedCommand>SortListDesc</ExcludedCommand>
+				<ExcludedCommand>EndEdit</ExcludedCommand>
+				<ExcludedCommand>Add</ExcludedCommand>
+				<ExcludedCommand>MoveDown</ExcludedCommand>
+			</CommandSet>
+			<SearchStringLocation>None</SearchStringLocation>
+			<ViewStatusLocation>None</ViewStatusLocation>
+			<SearchControlLocation>None</SearchControlLocation>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="ListContextMenu" id="3">
+				<Autofill>false</Autofill>
+				<ChildItems>
+					<Button name="ListContextMenuOpenCard" id="27">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.OpenCard</CommandName>
+						<ExtendedTooltip name="ListContextMenuOpenCardExtendedTooltip" id="39"/>
+					</Button>
+					<Button name="ListContextMenuDeleteFromLocalFileCache" id="21">
+						<Type>CommandBarButton</Type>
+						<SkipOnInput>false</SkipOnInput>
+						<CommandName>Form.Command.DeleteFromFilesLocalCache</CommandName>
+						<ExtendedTooltip name="ListContextMenuDeleteFromLocalFileCacheExtendedTooltip" id="35"/>
+					</Button>
+					<Button name="ListContextMenuEndEditing" id="24">
+						<Type>CommandBarButton</Type>
+						<SkipOnInput>false</SkipOnInput>
+						<CommandName>Form.Command.EndEdit</CommandName>
+						<ExtendedTooltip name="ListContextMenuFinishEditingExtendedTooltip" id="36"/>
+					</Button>
+					<Button name="ListContextMenuFind" id="71">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.List.StandardCommand.Find</CommandName>
+						<ExtendedTooltip name="ListContextMenuFindExtendedTooltip" id="72"/>
+					</Button>
+					<Button name="ListContextMenuCancelSearch" id="73">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.List.StandardCommand.CancelSearch</CommandName>
+						<ExtendedTooltip name="ListContextMenuCancelSearchExtendedTooltip" id="74"/>
+					</Button>
+					<Button name="ListContextMenuExtend" id="22">
+						<Type>CommandBarButton</Type>
+						<SkipOnInput>false</SkipOnInput>
+						<CommandName>Form.Command.Release</CommandName>
+						<ExtendedTooltip name="ListContextMenuReleaseExtendedTooltip" id="37"/>
+					</Button>
+					<Button name="ListContextMenuOpenFileCatalog" id="23">
+						<Type>CommandBarButton</Type>
+						<SkipOnInput>false</SkipOnInput>
+						<CommandName>Form.Command.OpenFileDirectory</CommandName>
+						<ExtendedTooltip name="ListContextMenuOpenFileCatalogExtendedTooltip" id="38"/>
+					</Button>
+					<Button name="ListContextMenuSelectAll" id="28">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.List.StandardCommand.SelectAll</CommandName>
+						<ExtendedTooltip name="ListContextMenuSelectAllExtendedTooltip" id="40"/>
+					</Button>
+					<Button name="ListContextMenuCopyToClipboard" id="60">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.List.StandardCommand.CopyToClipboard</CommandName>
+						<ExtendedTooltip name="ListContextMenuCopyToClipboardExtendedTooltip" id="61"/>
+					</Button>
+				</ChildItems>
+			</ContextMenu>
+			<AutoCommandBar name="ListCommandBar" id="16"/>
+			<ExtendedTooltip name="ListExtendedTooltip" id="41"/>
+			<SearchStringAddition name="SearchStringList" id="62">
+				<AdditionSource>
+					<Item>List</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ListSearchStringContextMenu" id="63"/>
+				<ExtendedTooltip name="ListSearchStringExtendedTooltip" id="64"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ListViewStatus" id="65">
+				<AdditionSource>
+					<Item>List</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ListViewStatusContextMenu" id="66"/>
+				<ExtendedTooltip name="ListViewStatusExtendedTooltip" id="67"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ListSearchControl" id="68">
+				<AdditionSource>
+					<Item>List</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ListSearchControlContextMenu" id="69"/>
+				<ExtendedTooltip name="ListSearchControlExtendedTooltip" id="70"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="BeforeDeleteRow">ListBeforeDelete</Event>
+				<Event name="OnActivateRow">ListOnActivateRow</Event>
+				<Event name="BeforeRowChange">ListBeforeRowChange</Event>
+			</Events>
+			<ChildItems>
+				<CheckBoxField name="ListToEdit" id="17">
+					<DataPath>List.ToEdit</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<TitleLocation>None</TitleLocation>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>File is not available for editing</v8:content>
+						</v8:item>
+					</ToolTip>
+					<HeaderPicture>
+						<xr:Ref>CommonPicture.EditFile</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</HeaderPicture>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ListToEditContextMenu" id="18"/>
+					<ExtendedTooltip name="ListToEditExtendedTooltip" id="47"/>
+				</CheckBoxField>
+				<ColumnGroup name="ListGroupNameAndPicture" id="19">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>List group name and picture</v8:content>
+						</v8:item>
+					</Title>
+					<Group>InCell</Group>
+					<ExtendedTooltip name="ListGroupNameAndPictureExtendedTooltip" id="42"/>
+					<ChildItems>
+						<PictureField name="ListPictureIndex" id="4">
+							<DataPath>List.PictureIndex</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<FooterHorizontalAlign>Left</FooterHorizontalAlign>
+							<Width>2</Width>
+							<Height>1</Height>
+							<ValuesPicture>
+								<xr:Ref>CommonPicture.FileIconCollection</xr:Ref>
+								<xr:LoadTransparent>true</xr:LoadTransparent>
+								<xr:TransparentPixel x="10" y="10"/>
+							</ValuesPicture>
+							<Border width="1">
+								<v8ui:style xsi:type="v8ui:ControlBorderType">WithoutBorder</v8ui:style>
+							</Border>
+							<ContextMenu name="ListPictureIndexContextMenu" id="5"/>
+							<ExtendedTooltip name="ListPictureIndexExtendedTooltip" id="43"/>
+						</PictureField>
+						<InputField name="ListFileName" id="6">
+							<DataPath>List.FileName</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>File</v8:content>
+								</v8:item>
+							</Title>
+							<AutoCellHeight>true</AutoCellHeight>
+							<FooterHorizontalAlign>Left</FooterHorizontalAlign>
+							<Width>40</Width>
+							<Wrap>false</Wrap>
+							<TextEdit>false</TextEdit>
+							<BorderColor>style:BorderColor</BorderColor>
+							<ContextMenu name="ListFileNameContextMenu" id="7"/>
+							<ExtendedTooltip name="ListFileNameExtendedTooltip" id="44"/>
+						</InputField>
+					</ChildItems>
+				</ColumnGroup>
+				<InputField name="ListSize" id="8">
+					<DataPath>List.Size</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Size (KB)</v8:content>
+						</v8:item>
+					</Title>
+					<HorizontalAlign>Right</HorizontalAlign>
+					<FooterHorizontalAlign>Left</FooterHorizontalAlign>
+					<Width>12</Width>
+					<Wrap>false</Wrap>
+					<BorderColor>style:BorderColor</BorderColor>
+					<ContextMenu name="ListSizeContextMenu" id="9"/>
+					<ExtendedTooltip name="ListSizeExtendedTooltip" id="45"/>
+				</InputField>
+				<InputField name="ListModificationDate" id="10">
+					<DataPath>List.ChangeDate</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Date of change</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>File modification date (local time)</v8:content>
+						</v8:item>
+					</ToolTip>
+					<FooterHorizontalAlign>Left</FooterHorizontalAlign>
+					<Width>15</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<Wrap>false</Wrap>
+					<BorderColor>style:BorderColor</BorderColor>
+					<ContextMenu name="ListChangeDateContextMenu" id="11"/>
+					<ExtendedTooltip name="ListModificationDateExtendedTooltip" id="46"/>
+				</InputField>
+				<InputField name="ListFile" id="48">
+					<DataPath>List.File</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Ref (File)</v8:content>
+						</v8:item>
+					</Title>
+					<EditMode>EnterOnInput</EditMode>
+					<Width>1</Width>
+					<ContextMenu name="ListFileContextMenu" id="49"/>
+					<ExtendedTooltip name="ListFileExtendedTooltip" id="50"/>
+				</InputField>
+				<InputField name="ListVersion" id="51">
+					<DataPath>List.Version</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Ref (Version)</v8:content>
+						</v8:item>
+					</Title>
+					<EditMode>EnterOnInput</EditMode>
+					<Width>1</Width>
+					<ContextMenu name="ListVersionContextMenu" id="52"/>
+					<ExtendedTooltip name="ListVersionExtendedTooltip" id="53"/>
+				</InputField>
+			</ChildItems>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="List" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>List</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="FileName" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>File name</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Size" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>File size</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>0</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="ChangeDate" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Date of change</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>DateTime</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+				<Column name="PictureIndex" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Picture index</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="Version" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Version</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.FileVersions</v8:Type>
+					</Type>
+				</Column>
+				<Column name="IsEditing" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Edited by</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.Users</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ToEdit" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>For editing</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="File" id="8">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>File</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.Files</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ListOfFileValuesInRegister" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>List of file values in register</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="DeleteFromFilesLocalCache" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Delete</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Delete from files local cache</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Delete</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>DeleteFromFilesLocalCache</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="Release" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Cancel editing</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Release</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.ReleaseFile</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ReleaseExecute</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="OpenFileDirectory" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Open file directory</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Open file directory</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>OpenFileDirectoryExecute</Action>
+		</Command>
+		<Command name="EndEdit" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Stop editing</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Stop editing</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.EndEditFile</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>EndEdit</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="OpenCard" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Open card</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Open file card</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Change</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>OpenCard</Action>
+		</Command>
+	</Commands>
+</Form>

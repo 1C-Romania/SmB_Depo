@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="FormCommandBar" id="-1"/>
+	<Events>
+		<Event name="OnReadAtServer">OnReadAtServer</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<Pages name="PagesActivityDiscontinued" id="21">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Pages activities discontinued</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Pages activities discontinued</v8:content>
+				</v8:item>
+			</ToolTip>
+			<PagesRepresentation>None</PagesRepresentation>
+			<ExtendedTooltip name="PagesActivityDiscontinuedExtendedTooltip" id="24"/>
+			<ChildItems>
+				<Page name="PageLabelActivityDiscontinued" id="22">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Page label activities discontinued</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Page label activities discontinued</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="PageLabelActivityDiscontinuedExtendedTooltip" id="25"/>
+					<ChildItems>
+						<LabelDecoration name="LabelActivitiesOfTheBankDiscontinued" id="19">
+							<TextColor>style:OverdueDataColor</TextColor>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Bank activities are discontinued</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="LabelActivitiesOfBankDiscontinuedContextMenu" id="20"/>
+							<ExtendedTooltip name="LabelActivitiesOfBankDiscontinuedExtendedTooltip" id="26"/>
+						</LabelDecoration>
+					</ChildItems>
+				</Page>
+				<Page name="PageCheckboxActivityDiscontinued" id="23">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Page check box activities discontinued</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Page check box activities discontinued</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="PageCheckboxActivityDiscontinuedExtendedTooltip" id="27"/>
+					<ChildItems>
+						<CheckBoxField name="ActivityDiscontinued" id="17">
+							<DataPath>Object.ActivityDiscontinued</DataPath>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ActivityDiscontinuedContextMenu" id="18"/>
+							<ExtendedTooltip name="ActivityDiscontinuedExtendedTooltip" id="28"/>
+						</CheckBoxField>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+		<InputField name="Description" id="3">
+			<DataPath>Object.Description</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<Width>42</Width>
+			<HorizontalStretch>false</HorizontalStretch>
+			<ContextMenu name="DescriptionContextMenu" id="4"/>
+			<ExtendedTooltip name="DescriptionExtendedTooltip" id="29"/>
+		</InputField>
+		<UsualGroup name="CorrAccountBINGroup" id="15">
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Corr account BIN group</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="CorrAccountBINGroupExtendedTooltip" id="30"/>
+			<ChildItems>
+				<InputField name="CorrAccount" id="7">
+					<DataPath>Object.CorrAccount</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<Width>24</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="CorrAccountContextMenu" id="8"/>
+					<ExtendedTooltip name="CorrAccountExtendedTooltip" id="31"/>
+				</InputField>
+				<InputField name="Code" id="1">
+					<DataPath>Object.Code</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<Width>12</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="CodeContextMenu" id="2"/>
+					<ExtendedTooltip name="CodeExtendedTooltip" id="32"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="CityGroup" id="16">
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>City group</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="CityGroupExtendedTooltip" id="33"/>
+			<ChildItems>
+				<InputField name="City" id="9">
+					<DataPath>Object.City</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<Width>15</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="CityContextMenu" id="10"/>
+					<ExtendedTooltip name="CityExtendedTooltip" id="34"/>
+				</InputField>
+				<InputField name="Parent" id="5">
+					<DataPath>Object.Parent</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<Width>15</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="ParentContextMenu" id="6"/>
+					<ExtendedTooltip name="ParentExtendedTooltip" id="35"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<InputField name="Address" id="11">
+			<DataPath>Object.Address</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<Width>42</Width>
+			<HorizontalStretch>false</HorizontalStretch>
+			<ContextMenu name="AddressContextMenu" id="12"/>
+			<ExtendedTooltip name="AddressExtendedTooltip" id="36"/>
+		</InputField>
+		<InputField name="PhoneNumbers" id="13">
+			<DataPath>Object.PhoneNumbers</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<Width>42</Width>
+			<HorizontalStretch>false</HorizontalStretch>
+			<ContextMenu name="PhonesContextMenu" id="14"/>
+			<ExtendedTooltip name="PhonesExtendedTooltip" id="37"/>
+		</InputField>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Type>
+				<v8:Type>cfg:CatalogObject.RFBankClassifier</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+	</Attributes>
+</Form>

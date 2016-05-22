@@ -1,0 +1,1147 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Title>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>EDF settings</v8:content>
+		</v8:item>
+	</Title>
+	<AutoTitle>false</AutoTitle>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="NotificationProcessing">NotificationProcessing</Event>
+		<Event name="OnOpen">OnOpen</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="GroupPages" id="26">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group pages</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group pages</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="PagesGroupExtendedTooltip" id="159"/>
+			<ChildItems>
+				<Pages name="AgreementsGroup" id="28">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Agreement group</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Agreement group</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="AgreementsGroupExtendedTooltip" id="160"/>
+					<ChildItems>
+						<Page name="SettingsGroup" id="53">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>With counterparties</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group agreements through the EDF operator</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ExtendedTooltip name="SettingsGroupExtendedTooltip" id="161"/>
+							<ChildItems>
+								<UsualGroup name="GroupQuickFilters" id="118">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Quick filters</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Quick filters</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupFastFiltersExtendedTooltip" id="162"/>
+									<ChildItems>
+										<InputField name="Counterparty" id="119">
+											<DataPath>Counterparty</DataPath>
+											<TitleLocation>Top</TitleLocation>
+											<ClearButton>true</ClearButton>
+											<OpenButton>false</OpenButton>
+											<QuickChoice>true</QuickChoice>
+											<ContextMenu name="CounterpartyContextMenu" id="120"/>
+											<ExtendedTooltip name="CounterpartyExtendedTooltip" id="163"/>
+											<Events>
+												<Event name="OnChange">CounterpartyOnChange</Event>
+											</Events>
+										</InputField>
+										<InputField name="ConnectionStatus" id="147">
+											<DataPath>ConnectionStatus</DataPath>
+											<TitleLocation>Top</TitleLocation>
+											<ClearButton>true</ClearButton>
+											<OpenButton>false</OpenButton>
+											<QuickChoice>true</QuickChoice>
+											<ContextMenu name="ConnectionStatusContextMenu" id="148"/>
+											<ExtendedTooltip name="ConnectionStatusExtendedTooltip" id="164"/>
+											<Events>
+												<Event name="OnChange">StatusOnChange</Event>
+											</Events>
+										</InputField>
+										<InputField name="Company" id="121">
+											<DataPath>Company</DataPath>
+											<TitleLocation>Top</TitleLocation>
+											<ClearButton>true</ClearButton>
+											<OpenButton>false</OpenButton>
+											<QuickChoice>true</QuickChoice>
+											<ContextMenu name="CounterpartyContextMenu" id="122"/>
+											<ExtendedTooltip name="CounterpartyExtendedTooltip" id="165"/>
+											<Events>
+												<Event name="OnChange">CompanyOnChange</Event>
+											</Events>
+										</InputField>
+										<InputField name="AgreementState" id="123">
+											<DataPath>AgreementState</DataPath>
+											<TitleLocation>Top</TitleLocation>
+											<ClearButton>true</ClearButton>
+											<OpenButton>false</OpenButton>
+											<QuickChoice>true</QuickChoice>
+											<ContextMenu name="AgreementStateContextMenu" id="124"/>
+											<ExtendedTooltip name="AgreementStateExtendedTooltip" id="166"/>
+											<Events>
+												<Event name="OnChange">AgreementStateOnChange</Event>
+											</Events>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+								<Table name="AgreementsWithCounterpartiesList" id="1">
+									<Representation>List</Representation>
+									<UseAlternationRowColor>true</UseAlternationRowColor>
+									<InitialTreeView>ExpandTopLevel</InitialTreeView>
+									<EnableStartDrag>true</EnableStartDrag>
+									<DataPath>AgreementsWithCounterpartiesList</DataPath>
+									<RowPictureDataPath>AgreementsWithCounterpartiesList.DefaultPicture</RowPictureDataPath>
+									<CommandSet>
+										<ExcludedCommand>Copy</ExcludedCommand>
+										<ExcludedCommand>Create</ExcludedCommand>
+										<ExcludedCommand>Choose</ExcludedCommand>
+									</CommandSet>
+									<SearchStringLocation>None</SearchStringLocation>
+									<ViewStatusLocation>None</ViewStatusLocation>
+									<SearchControlLocation>None</SearchControlLocation>
+									<AutoRefresh>false</AutoRefresh>
+									<AutoRefreshPeriod>60</AutoRefreshPeriod>
+									<Period>
+										<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+										<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+										<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+									</Period>
+									<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+									<RestoreCurrentRow>false</RestoreCurrentRow>
+									<TopLevelParent xsi:nil="true"/>
+									<ShowRoot>true</ShowRoot>
+									<AllowRootChoice>false</AllowRootChoice>
+									<UpdateOnDataChange>Auto</UpdateOnDataChange>
+									<ContextMenu name="AgreementsWithCounterpartiesListContextMenu" id="2"/>
+									<AutoCommandBar name="AgreementsWithCounterpartiesListCommandBar" id="3">
+										<Autofill>false</Autofill>
+										<ChildItems>
+											<Button name="AgreementsWithCounterpartiesListCreateListItemSettingsWithCounterparties" id="211">
+												<Type>CommandBarButton</Type>
+												<Representation>PictureAndText</Representation>
+												<CommandName>Form.Command.CreateListItemSettingsWithContractors</CommandName>
+												<ExtendedTooltip name="AgreementsWithCounterpartiesListCreateListItemSettingsWithCounterpartiesExtendedTooltip" id="212"/>
+											</Button>
+											<Button name="ListHelp" id="69">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.StandardCommand.Help</CommandName>
+												<ExtendedTooltip name="HelpListExtendedTooltip" id="167"/>
+											</Button>
+											<ButtonGroup name="AgreementsWithCounterpartiesListGroup1" id="140">
+												<CommandSource>Item.AgreementsWithCounterpartiesList</CommandSource>
+												<ExtendedTooltip name="AgreementsWithCounterpartiesListGroup1ExtendedTooltip" id="168"/>
+											</ButtonGroup>
+										</ChildItems>
+									</AutoCommandBar>
+									<ExtendedTooltip name="AgreementsWithCounterpartiesListExtendedTooltip" id="169"/>
+									<SearchStringAddition name="AgreementsWithCounterpartiesListSearchString" id="230">
+										<AdditionSource>
+											<Item>AgreementsWithCounterpartiesList</Item>
+											<Type>SearchStringRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="AgreementsWithCounterpartiesListSearchStringContextMenu" id="231"/>
+										<ExtendedTooltip name="AgreementsWithCounterpartiesListSearchStringExtendedTooltip" id="232"/>
+									</SearchStringAddition>
+									<ViewStatusAddition name="AgreementsWithCounterpartiesListStatusView" id="233">
+										<AdditionSource>
+											<Item>AgreementsWithCounterpartiesList</Item>
+											<Type>ViewStatusRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="AgreementsWithCounterpartiesListStatusViewContextMenu" id="234"/>
+										<ExtendedTooltip name="AgreementsWithCounterpartiesListViewStatusExtendedTooltip" id="235"/>
+									</ViewStatusAddition>
+									<SearchControlAddition name="AgreementsWithCounterpartiesListSearchManagement" id="236">
+										<AdditionSource>
+											<Item>AgreementsWithCounterpartiesList</Item>
+											<Type>SearchControl</Type>
+										</AdditionSource>
+										<ContextMenu name="AgreementsWithCounterpartiesListSearchManagementContextMenu" id="237"/>
+										<ExtendedTooltip name="AgreementsWithCounterpartiesListSearchManagementExtendedTooltip" id="238"/>
+									</SearchControlAddition>
+									<ChildItems>
+										<LabelField name="AgreementsWithCounterpartiesListConnectionStatus" id="141">
+											<DataPath>AgreementsWithCounterpartiesList.ConnectionStatus</DataPath>
+											<ContextMenu name="AgreementsWithCounterpartiesListConnectionStatusContextMenu" id="142"/>
+											<ExtendedTooltip name="AgreementsWithCounterpartiesListConnectionStatusExtendedTooltip" id="174"/>
+										</LabelField>
+										<LabelField name="AgreementsWithCounterpartiesListCounterparty" id="8">
+											<DataPath>AgreementsWithCounterpartiesList.Counterparty</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Counterparty</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="AgreementsWithCounterpartiesListCounterpartyContextMenu" id="9"/>
+											<ExtendedTooltip name="AgreementsWithCounterpartiesListCounterpartyExtendedTooltip" id="170"/>
+										</LabelField>
+										<InputField name="CounterpartyContract" id="157">
+											<DataPath>AgreementsWithCounterpartiesList.CounterpartyContract</DataPath>
+											<ContextMenu name="CounterpartyAgreementContextMenu" id="158"/>
+											<ExtendedTooltip name="CounterpartyAgreementExtendedTooltip" id="173"/>
+										</InputField>
+										<LabelField name="EDExchangeMethod" id="225">
+											<DataPath>AgreementsWithCounterpartiesList.EDExchangeMethod</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Exchange method</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="EDExchangeVariantContextMenu" id="226"/>
+											<ExtendedTooltip name="EDExchangeMethodExtendedTooltip" id="227"/>
+										</LabelField>
+										<LabelField name="AgreementsWithCounterpartiesListCompany" id="16">
+											<DataPath>AgreementsWithCounterpartiesList.Company</DataPath>
+											<ContextMenu name="AgreementsWithCounterpartiesListCompanyContextMenu" id="17"/>
+											<ExtendedTooltip name="AgreementsWithCounterpartiesListCompanyExtendedTooltip" id="175"/>
+										</LabelField>
+										<LabelField name="AgreementsWithCounterpartiesListAgreementState" id="143">
+											<DataPath>AgreementsWithCounterpartiesList.AgreementState</DataPath>
+											<ContextMenu name="AgreementsWithCounterpartiesListAgreementStateContextMenu" id="144"/>
+											<ExtendedTooltip name="AgreementsWithCounterpartiesListAgreementStateExtendedTooltip" id="176"/>
+										</LabelField>
+										<LabelField name="AgreementsWithCounterpartiesListComment" id="151">
+											<DataPath>AgreementsWithCounterpartiesList.Comment</DataPath>
+											<ContextMenu name="AgreementsWithCounterpartiesListCommentContextMenu" id="152"/>
+											<ExtendedTooltip name="AgreementsWithCounterpartiesListCommentExtendedTooltip" id="177"/>
+										</LabelField>
+									</ChildItems>
+								</Table>
+								<UsualGroup name="FooterGroup" id="213">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group footer</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group footer</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="FooterGroupExtendedTooltip" id="214"/>
+									<ChildItems>
+										<UsualGroup name="SupportContactGroup" id="215">
+											<Group>Horizontal</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="SupportContactsGroupExtendedTooltip" id="216"/>
+											<ChildItems>
+												<InputField name="ServiceSupportPhoneNumber" id="266">
+													<DataPath>ServiceSupportPhoneNumber</DataPath>
+													<ReadOnly>true</ReadOnly>
+													<SkipOnInput>true</SkipOnInput>
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Support service</v8:content>
+														</v8:item>
+													</Title>
+													<HorizontalAlign>Right</HorizontalAlign>
+													<Width>12</Width>
+													<HorizontalStretch>false</HorizontalStretch>
+													<TextColor>#373737</TextColor>
+													<BackColor>style:FormBackColor</BackColor>
+													<BorderColor>style:FormBackColor</BorderColor>
+													<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+													<ContextMenu name="ServiceSupportPhoneNumberContextMenu" id="267"/>
+													<ExtendedTooltip name="ServiceSupportPhoneNumberExtendedTooltip" id="268"/>
+												</InputField>
+												<InputField name="ServiceSupportEmailAddress" id="217">
+													<DataPath>ServiceSupportEmailAddress</DataPath>
+													<ReadOnly>true</ReadOnly>
+													<SkipOnInput>true</SkipOnInput>
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>EDF users support</v8:content>
+														</v8:item>
+													</Title>
+													<TitleLocation>None</TitleLocation>
+													<Width>8</Width>
+													<HorizontalStretch>false</HorizontalStretch>
+													<TextColor>#373737</TextColor>
+													<BackColor>style:FormBackColor</BackColor>
+													<BorderColor>style:FormBackColor</BorderColor>
+													<Font ref="sys:DefaultGUIFont" bold="true" kind="WindowsFont"/>
+													<ContextMenu name="ServiceSupportEmailAddressContextMenu" id="218"/>
+													<ExtendedTooltip name="ServiceSupportEmailAddressExtendedTooltip" id="219"/>
+												</InputField>
+												<Button name="Button1CBuhphone" id="269">
+													<Type>Hyperlink</Type>
+													<CommandName>Form.Command.OpenLinkTo1CBuhphoneItem</CommandName>
+													<ExtendedTooltip name="Button1CBuhphoneExtendedTooltip" id="270"/>
+												</Button>
+											</ChildItems>
+										</UsualGroup>
+										<LabelDecoration name="DecorationFooter" id="220">
+											<HorizontalStretch>true</HorizontalStretch>
+											<ContextMenu name="DecorationFooterContextMenu" id="221"/>
+											<ExtendedTooltip name="DecorationFooterExtendedTooltip" id="222"/>
+										</LabelDecoration>
+										<Button name="DataProcessorCurrentWorksOnEDFOpen" id="223">
+											<Type>Hyperlink</Type>
+											<CommandName>DataProcessor.ElectronicDocuments.Command.OpenCurrentWorksEDF</CommandName>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Current EDF tasks</v8:content>
+												</v8:item>
+											</Title>
+											<ExtendedTooltip name="DataProcessorCurrentWorksOnEDFOpenExtendedTooltip" id="224"/>
+										</Button>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</Page>
+						<Page name="GroupAgreementsWithBanksList" id="74">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>With banks</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Agreements with banks</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ExtendedTooltip name="GroupAgreementsWithBanksListExtendedTooltip" id="187"/>
+							<ChildItems>
+								<Table name="AgreementsWithBanksList" id="75">
+									<UseAlternationRowColor>true</UseAlternationRowColor>
+									<EnableStartDrag>true</EnableStartDrag>
+									<DataPath>AgreementsWithBanksList</DataPath>
+									<RowPictureDataPath>AgreementsWithBanksList.DefaultPicture</RowPictureDataPath>
+									<SearchStringLocation>None</SearchStringLocation>
+									<ViewStatusLocation>None</ViewStatusLocation>
+									<SearchControlLocation>None</SearchControlLocation>
+									<AutoRefresh>false</AutoRefresh>
+									<AutoRefreshPeriod>60</AutoRefreshPeriod>
+									<Period>
+										<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+										<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+										<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+									</Period>
+									<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+									<RestoreCurrentRow>false</RestoreCurrentRow>
+									<TopLevelParent xsi:nil="true"/>
+									<ShowRoot>true</ShowRoot>
+									<AllowRootChoice>false</AllowRootChoice>
+									<UpdateOnDataChange>Auto</UpdateOnDataChange>
+									<ContextMenu name="AgreementsWithBanksListContextMenu" id="76"/>
+									<AutoCommandBar name="AgreementsWithBanksListCommandBar" id="77">
+										<ChildItems>
+											<Button name="AgreementsWithBanksListHelp" id="114">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.StandardCommand.Help</CommandName>
+												<ExtendedTooltip name="AgreementsWithBanksListHelpExtendedTooltip" id="188"/>
+											</Button>
+											<Button name="AgreementsWithBanksListLoadSettings" id="228">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.LoadSettings</CommandName>
+												<ExtendedTooltip name="AgreementsWithBanksListLoadSettingsExtendedTooltip" id="229"/>
+											</Button>
+										</ChildItems>
+									</AutoCommandBar>
+									<ExtendedTooltip name="AgreementsWithBanksListExtendedTooltip" id="189"/>
+									<SearchStringAddition name="AgreementsWithBanksListSearchString" id="239">
+										<AdditionSource>
+											<Item>AgreementsWithBanksList</Item>
+											<Type>SearchStringRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="AgreementsWithBanksListSearchStringContextMenu" id="240"/>
+										<ExtendedTooltip name="AgreementsWithBanksListSearchStringExtendedTooltip" id="241"/>
+									</SearchStringAddition>
+									<ViewStatusAddition name="AgreementsWithBanksListStateView" id="242">
+										<AdditionSource>
+											<Item>AgreementsWithBanksList</Item>
+											<Type>ViewStatusRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="AgreementsWithBanksListStateViewContextMenu" id="243"/>
+										<ExtendedTooltip name="AgreementsWithBanksListStateViewExtendedTooltip" id="244"/>
+									</ViewStatusAddition>
+									<SearchControlAddition name="AgreementsWithBanksListSearchManagement" id="245">
+										<AdditionSource>
+											<Item>AgreementsWithBanksList</Item>
+											<Type>SearchControl</Type>
+										</AdditionSource>
+										<ContextMenu name="AgreementsWithBanksListSearchManagementContextMenu" id="246"/>
+										<ExtendedTooltip name="AgreementsWithBanksListSearchManagementExtendedTooltip" id="247"/>
+									</SearchControlAddition>
+									<Events>
+										<Event name="BeforeAddRow">AgreementsWithBanksListBeforeAddRow</Event>
+									</Events>
+									<ChildItems>
+										<LabelField name="AgreementsWithBanksListName" id="80">
+											<DataPath>AgreementsWithBanksList.Description</DataPath>
+											<ContextMenu name="AgreementsWithBanksListNameContextMenu" id="81"/>
+											<ExtendedTooltip name="AgreementsWithBanksListNameExtendedTooltip" id="191"/>
+										</LabelField>
+										<LabelField name="AgreementsWithBanksListCompany" id="82">
+											<DataPath>AgreementsWithBanksList.Company</DataPath>
+											<ContextMenu name="AgreementsWithBanksListCompanyContextMenu" id="83"/>
+											<ExtendedTooltip name="AgreementsWithBanksListCompanyExtendedTooltip" id="192"/>
+										</LabelField>
+										<LabelField name="AgreementsWithBanksListCounterparty" id="84">
+											<DataPath>AgreementsWithBanksList.Bank</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Bank</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="AgreementsWithBanksListCompanyContextMenu" id="85"/>
+											<ExtendedTooltip name="AgreementsWithBanksListCompanyExtendedTooltip" id="193"/>
+										</LabelField>
+										<LabelField name="AgreementsWithBanksListState" id="86">
+											<DataPath>AgreementsWithBanksList.State</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Current state</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="AgreementsWithBanksListStateContextMenu" id="87"/>
+											<ExtendedTooltip name="AgreementsWithBanksListExtendedTooltip" id="194"/>
+										</LabelField>
+									</ChildItems>
+								</Table>
+							</ChildItems>
+						</Page>
+						<Page name="GroupAgreementsBetweenCompanies" id="30">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Between companies</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group agreements between the companies</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ExtendedTooltip name="GroupAgreementsBetweenCompaniesExtendedTooltip" id="196"/>
+							<ChildItems>
+								<Table name="ListIntercompany" id="31">
+									<UseAlternationRowColor>true</UseAlternationRowColor>
+									<EnableStartDrag>true</EnableStartDrag>
+									<DataPath>ListAgreementsBetweenCompanies</DataPath>
+									<RowPictureDataPath>ListAgreementsBetweenCompanies.DefaultPicture</RowPictureDataPath>
+									<SearchStringLocation>None</SearchStringLocation>
+									<ViewStatusLocation>None</ViewStatusLocation>
+									<SearchControlLocation>None</SearchControlLocation>
+									<AutoRefresh>false</AutoRefresh>
+									<AutoRefreshPeriod>60</AutoRefreshPeriod>
+									<Period>
+										<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+										<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+										<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+									</Period>
+									<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+									<RestoreCurrentRow>false</RestoreCurrentRow>
+									<TopLevelParent xsi:nil="true"/>
+									<ShowRoot>true</ShowRoot>
+									<AllowRootChoice>false</AllowRootChoice>
+									<UpdateOnDataChange>Auto</UpdateOnDataChange>
+									<ContextMenu name="ListIntercompanyContextMenu" id="32"/>
+									<AutoCommandBar name="ListIntercompanyCommandBar" id="33">
+										<ChildItems>
+											<ButtonGroup name="GlobalCommandsButtonsGroupExchangeIntercompany" id="73">
+												<EnableContentChange>true</EnableContentChange>
+												<Title>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Group of global command button for the exchange with the companies</v8:content>
+													</v8:item>
+												</Title>
+												<ToolTip>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Global commands button group direct exchange</v8:content>
+													</v8:item>
+												</ToolTip>
+												<CommandSource>FormCommandPanelGlobalCommands</CommandSource>
+												<ExtendedTooltip name="GroupOfButtonsGlobalCommandsExchangeInterkampaniExtendedTooltip" id="197"/>
+											</ButtonGroup>
+											<Button name="ListIntercompanyHelp" id="71">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.StandardCommand.Help</CommandName>
+												<ExtendedTooltip name="ListIntercompanyHelpExtendedTooltip" id="198"/>
+											</Button>
+										</ChildItems>
+									</AutoCommandBar>
+									<ExtendedTooltip name="ListIntercompanyExtendedTooltip" id="199"/>
+									<SearchStringAddition name="ListIntercompanySearchString" id="248">
+										<AdditionSource>
+											<Item>ListIntercompany</Item>
+											<Type>SearchStringRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="ListIntercompanySearchStringContextMenu" id="249"/>
+										<ExtendedTooltip name="ListIntercompanySearchStringExtendedTooltip" id="250"/>
+									</SearchStringAddition>
+									<ViewStatusAddition name="ListIntercompanyStatusView" id="251">
+										<AdditionSource>
+											<Item>ListIntercompany</Item>
+											<Type>ViewStatusRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="ListIntercompanyStatusViewContextMenu" id="252"/>
+										<ExtendedTooltip name="ListIntercompanyStatusViewExtendedTooltip" id="253"/>
+									</ViewStatusAddition>
+									<SearchControlAddition name="ListIntercompanySearchControl" id="254">
+										<AdditionSource>
+											<Item>ListIntercompany</Item>
+											<Type>SearchControl</Type>
+										</AdditionSource>
+										<ContextMenu name="ListIntercompanySearchControlContextMenu" id="255"/>
+										<ExtendedTooltip name="ListIntercompanySearchControlExtendedTooltip" id="256"/>
+									</SearchControlAddition>
+									<Events>
+										<Event name="BeforeAddRow">IntercompanyListBeforeAddRow</Event>
+									</Events>
+									<ChildItems>
+										<LabelField name="ListAgreementsBetweenCompaniesNumber" id="40">
+											<DataPath>ListAgreementsBetweenCompanies.Ref</DataPath>
+											<ContextMenu name="ListOfAgreementsBetweenCompaniesNumberContextMenu" id="41"/>
+											<ExtendedTooltip name="ListOfAgreementsBetweenCompaniesNumberExtendedTooltip" id="200"/>
+										</LabelField>
+										<LabelField name="ListAgreementsBetweenCompaniesName" id="34">
+											<DataPath>ListAgreementsBetweenCompanies.Description</DataPath>
+											<ContextMenu name="ListOfAgreementsBetweenCompaniesNameContextMenu" id="35"/>
+											<ExtendedTooltip name="ListOfAgreementsBetweenCompaniesNameExtendedTooltip" id="201"/>
+										</LabelField>
+										<LabelField name="ListAgreementsBetweenCompaniesCompany" id="42">
+											<DataPath>ListAgreementsBetweenCompanies.Company</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Company-sender</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="ListOfAgreementsBetweenCompaniesOrganizationContextMenu" id="43"/>
+											<ExtendedTooltip name="ListOfAgreementsBetweenCompaniesOrganizationExtendedTooltip" id="202"/>
+										</LabelField>
+										<LabelField name="ListAgreementsBetweenCompaniesCompany" id="38">
+											<DataPath>ListAgreementsBetweenCompanies.Counterparty</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Company-recipient</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="ListOfAgreementsBetweenCompaniesCounterpartyContextMenu" id="39"/>
+											<ExtendedTooltip name="ListOfAgreementsBetweenCompaniesCounterpartyExtendedTooltip" id="203"/>
+										</LabelField>
+										<LabelField name="ListAgreementsBetweenCompaniesStatus" id="48">
+											<DataPath>ListAgreementsBetweenCompanies.Status</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Current state</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="ListOfAgreementsBetweenCompaniesStateContextMenu" id="49"/>
+											<ExtendedTooltip name="ListOfAgreementsBetweenCompaniesStateExtendedTooltip" id="204"/>
+										</LabelField>
+										<LabelField name="ListAgreementsBetweenCompaniesValidityPeriod" id="50">
+											<DataPath>ListAgreementsBetweenCompanies.Counterparty</DataPath>
+											<ContextMenu name="ListOfAgreementsBetweenCompaniesTimeOfActionContextMenu" id="51"/>
+											<ExtendedTooltip name="ListOfAgreementsBetweenCompaniesTimeOfActionExtendedTooltip" id="205"/>
+										</LabelField>
+									</ChildItems>
+								</Table>
+							</ChildItems>
+						</Page>
+						<Page name="GroupAllAgreements" id="90">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>All settings</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Agreements with banks</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ExtendedTooltip name="GroupAllAgreementsExtendedTooltip" id="206"/>
+							<ChildItems>
+								<Table name="AgreementsList" id="91">
+									<ChangeRowSet>false</ChangeRowSet>
+									<ChangeRowOrder>false</ChangeRowOrder>
+									<UseAlternationRowColor>true</UseAlternationRowColor>
+									<EnableStartDrag>true</EnableStartDrag>
+									<DataPath>AgreementsList</DataPath>
+									<RowPictureDataPath>AgreementsList.DefaultPicture</RowPictureDataPath>
+									<SearchStringLocation>None</SearchStringLocation>
+									<ViewStatusLocation>None</ViewStatusLocation>
+									<SearchControlLocation>None</SearchControlLocation>
+									<AutoRefresh>false</AutoRefresh>
+									<AutoRefreshPeriod>60</AutoRefreshPeriod>
+									<Period>
+										<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+										<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+										<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+									</Period>
+									<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+									<RestoreCurrentRow>false</RestoreCurrentRow>
+									<TopLevelParent xsi:nil="true"/>
+									<ShowRoot>true</ShowRoot>
+									<AllowRootChoice>false</AllowRootChoice>
+									<UpdateOnDataChange>Auto</UpdateOnDataChange>
+									<ContextMenu name="AgreementsListContextMenu" id="92"/>
+									<AutoCommandBar name="AgreementsListCommandPanel" id="93">
+										<ChildItems>
+											<Button name="AgreementsListHelp" id="115">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.StandardCommand.Help</CommandName>
+												<ExtendedTooltip name="AgreementsListHelpExtendedTooltip" id="207"/>
+											</Button>
+										</ChildItems>
+									</AutoCommandBar>
+									<ExtendedTooltip name="AgreementsListExtendedTooltip" id="208"/>
+									<SearchStringAddition name="AgreementsListSearchString" id="257">
+										<AdditionSource>
+											<Item>AgreementsList</Item>
+											<Type>SearchStringRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="AgreementsListSearchStringContextMenu" id="258"/>
+										<ExtendedTooltip name="AgreementsListSearchStringExtendedTooltip" id="259"/>
+									</SearchStringAddition>
+									<ViewStatusAddition name="AgreementsListStatusView" id="260">
+										<AdditionSource>
+											<Item>AgreementsList</Item>
+											<Type>ViewStatusRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="AgreementsListStatusViewContextMenu" id="261"/>
+										<ExtendedTooltip name="AgreementsListStatusViewExtendedTooltip" id="262"/>
+									</ViewStatusAddition>
+									<SearchControlAddition name="AgreementsListSearchManagement" id="263">
+										<AdditionSource>
+											<Item>AgreementsList</Item>
+											<Type>SearchControl</Type>
+										</AdditionSource>
+										<ContextMenu name="AgreementsListSearchManagementContextMenu" id="264"/>
+										<ExtendedTooltip name="AgreementsListSearchManagementExtendedTooltip" id="265"/>
+									</SearchControlAddition>
+									<ChildItems>
+										<LabelField name="AgreementsListCompany" id="102">
+											<DataPath>AgreementsList.Company</DataPath>
+											<ContextMenu name="AgreementsListCompanyContextMenu" id="103"/>
+											<ExtendedTooltip name="AgreementsListCompanyExtendedTooltip" id="209"/>
+										</LabelField>
+										<LabelField name="AgreementsListCounterparty" id="98">
+											<DataPath>AgreementsList.Counterparty</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Counterparty/Bank</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="AgreementsListCounterpartyContextMenu" id="99"/>
+											<ExtendedTooltip name="AgreementsListCounterpartyExtendedTooltip" id="210"/>
+										</LabelField>
+									</ChildItems>
+								</Table>
+							</ChildItems>
+						</Page>
+					</ChildItems>
+				</Pages>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="AgreementsWithCounterpartiesList" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>List of agreements with the counterparties</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<UseAlways>
+				<Field>AgreementsWithCounterpartiesList.Partner</Field>
+				<Field>AgreementsWithCounterpartiesList.EDFProfileSettings</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>SELECT
+	Agreement.Ref,
+	Agreement.Counterparty,
+	"Partner" AS Partner,
+	Agreement.CounterpartyContract,
+	CASE
+		WHEN Agreement.AgreementSetupExtendedMode
+			THEN "Extended mode"
+		ELSE Agreement.EDExchangeMethod
+	END AS EDExchangeMethod,
+	Agreement.Company,
+	CASE
+		WHEN Agreement.DeletionMark
+			THEN VALUE(Enum.EDExchangeMemberStatuses.EmptyRef)
+		ELSE Agreement.ConnectionStatus
+	END AS ConnectionStatus,
+	CASE
+		WHEN Agreement.DeletionMark
+			THEN VALUE(Enum.EDAgreementStates.EmptyRef)
+		ELSE Agreement.AgreementState
+	END AS AgreementState,
+	CAST(Agreement.Comment AS String(100)) AS Comment,
+	Agreement.EDFProfileSettings
+FROM
+	Catalog.EDUsageAgreements AS Agreement
+WHERE
+	Not Agreement.IsIntercompany
+	AND Agreement.EDExchangeMethod &lt;&gt; VALUE(Enum.EDExchangeMethods.QuickExchange)
+		AND Agreement.EDExchangeMethod &lt;&gt; VALUE(Enum.EDExchangeMethods.ThroughBankWebSource)</QueryText>
+				<MainTable>Catalog.EDUsageAgreements</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemField">
+							<dcsset:field>Company</dcsset:field>
+							<dcsset:orderType>Asc</dcsset:orderType>
+						</dcsset:item>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:item>
+							<dcsset:selection/>
+							<dcsset:filter>
+								<dcsset:item xsi:type="dcsset:FilterItemComparison">
+									<dcsset:left xsi:type="dcscor:Field">AgreementState</dcsset:left>
+									<dcsset:comparisonType>Equal</dcsset:comparisonType>
+									<dcsset:right xsi:type="dcscor:DesignTimeValue">Enum.EDAgreementStates.Closed</dcsset:right>
+								</dcsset:item>
+							</dcsset:filter>
+							<dcsset:appearance>
+								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+									<dcscor:parameter>TextColor</dcscor:parameter>
+									<dcscor:value xsi:type="v8ui:Color">#C0C0C0</dcscor:value>
+								</dcscor:item>
+							</dcsset:appearance>
+						</dcsset:item>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="ListAgreementsBetweenCompanies" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Agreements list between the companies</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<FunctionalOptions>
+				<Item>FunctionalOption.UseEDExchangeBetweenCompanies</Item>
+			</FunctionalOptions>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>SELECT
+	Agreement.Ref,
+	Agreement.Description,
+	Agreement.Counterparty,
+	Agreement.Company,
+	CASE
+		WHEN Agreement.DeletionMark
+			THEN VALUE(Enum.EDAgreementStates.EmptyRef)
+		WHEN Agreement.AgreementStatus = VALUE(Enum.EDAgreementsStatuses.Closed)
+			THEN VALUE(Enum.EDAgreementStates.Closed)
+		WHEN Agreement.AgreementStatus = VALUE(Enum.EDAgreementsStatuses.Acts)
+			THEN VALUE(Enum.EDAgreementStates.Acts)
+		WHEN Agreement.AgreementStatus = VALUE(Enum.EDAgreementsStatuses.NotAgreed)
+			THEN VALUE(Enum.EDAgreementStates.CoordinationExpected)
+	END AS Status
+FROM
+	Catalog.EDUsageAgreements AS Agreement
+WHERE
+		Agreement.IsIntercompany</QueryText>
+				<MainTable>Catalog.EDUsageAgreements</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="AgreementsWithBanksList" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>List of agreements with banks</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<FunctionalOptions>
+				<Item>FunctionalOption.UseEDExchangeWithBanks</Item>
+			</FunctionalOptions>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>SELECT
+	Agreement.Ref,
+	Agreement.Description,
+	Agreement.Counterparty AS Bank,
+	Agreement.Company,
+	CASE
+		WHEN Agreement.DeletionMark
+			THEN VALUE(Enum.EDAgreementStates.EmptyRef)
+		WHEN Agreement.AgreementStatus = VALUE(Enum.EDAgreementsStatuses.Closed)
+			THEN VALUE(Enum.EDAgreementStates.Closed)
+		WHEN Agreement.AgreementStatus = VALUE(Enum.EDAgreementsStatuses.Acts)
+			THEN VALUE(Enum.EDAgreementStates.Acts)
+		WHEN Agreement.AgreementStatus = VALUE(Enum.EDAgreementsStatuses.NotAgreed)
+			THEN VALUE(Enum.EDAgreementStates.CoordinationExpected)
+	END AS State
+FROM
+	Catalog.EDUsageAgreements AS Agreement
+WHERE
+		Agreement.EDExchangeMethod = VALUE(Enum.EDExchangeMethods.ThroughBankWebSource)</QueryText>
+				<MainTable>Catalog.EDUsageAgreements</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="AgreementsList" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Agreements list</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>SELECT
+	Agreement.Ref,
+	Agreement.Counterparty,
+	Agreement.Company,
+	Agreement.AgreementState
+FROM
+	Catalog.EDUsageAgreements AS Agreement,
+	Constant.UseEDExchangeWithBanks AS UseEDExchangeWithBanks,
+	Constant.UseEDExchangeBetweenCompanies AS UseEDExchangeBetweenCompanies
+WHERE
+	CASE
+			WHEN UseEDExchangeWithBanks.Value = FALSE
+				THEN Not Agreement.EDExchangeMethod = VALUE(Enum.EDExchangeMethods.ThroughBankWebSource)
+			ELSE TRUE
+		END
+	AND CASE
+			WHEN UseEDExchangeBetweenCompanies.Value = FALSE
+				THEN Not Agreement.IsIntercompany
+			ELSE TRUE
+		END</QueryText>
+				<MainTable>Catalog.EDUsageAgreements</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="Counterparty" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Counterparty</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Counterparties</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Company" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Company</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Companies</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ConnectionStatus" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Connection status</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.EDExchangeMemberStatuses</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="AgreementState" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Agreement state</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.EDAgreementStates</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="EDFProfileSettings" id="9">
+			<Type>
+				<v8:Type>cfg:CatalogRef.EDFProfileSettings</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ServiceSupportEmailAddress" id="10">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>20</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ServiceSupportPhoneNumber" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Service support phone number</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>20</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="CreateListItemSettingsWithContractors" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Create</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Create a setup with counterparty</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.CreateListItem</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>CreateListItemSettingsWithContractors</Action>
+		</Command>
+		<Command name="LoadSettings" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Create new (import from settings file)</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Import settings</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.DataCompositionNewTable</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>LoadSettings</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="OpenLinkTo1CBuhphoneItem" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>1CBuhphone</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Open an item on 1C Buhphone service at ITS</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>OpenLinkTo1CBuhphoneItem</Action>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="Counterparty">
+			<Type>
+				<v8:Type>cfg:CatalogRef.Counterparties</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="Company">
+			<Type>
+				<v8:Type>cfg:CatalogRef.Companies</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="Bank">
+			<Type>
+				<v8:TypeSet>cfg:CatalogRef</v8:TypeSet>
+			</Type>
+			<KeyParameter>true</KeyParameter>
+		</Parameter>
+		<Parameter name="EDFProfileSettings">
+			<Type>
+				<v8:Type>cfg:CatalogRef.EDFProfileSettings</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="Partner">
+			<Type/>
+		</Parameter>
+		<Parameter name="SettingsEDFWithCounterparties">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+	</Parameters>
+	<CommandInterface>
+		<CommandBar>
+			<Item>
+				<Command>Catalog.EDUsageAgreements.Command.SendCatalogByAgreement</Command>
+				<Type>Auto</Type>
+				<CommandGroup>CommandGroup.ED</CommandGroup>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+			<Item>
+				<Command>Form.StandardCommand.CustomizeForm</Command>
+				<Type>Added</Type>
+				<CommandGroup>FormCommandBarImportant</CommandGroup>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+			<Item>
+				<Command>DataProcessor.ElectronicDocuments.Command.ResendED</Command>
+				<Type>Auto</Type>
+				<CommandGroup>CommandGroup.ED</CommandGroup>
+				<Index>1</Index>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+			<Item>
+				<Command>0:f23cbc33-9c7c-4f54-97b7-53b9231a1c6d</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormCommandBarImportant</CommandGroup>
+				<Index>1</Index>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+		</CommandBar>
+	</CommandInterface>
+</Form>

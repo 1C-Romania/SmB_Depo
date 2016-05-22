@@ -1,0 +1,1839 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Title>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Electronic document exchange with the bank</v8:content>
+		</v8:item>
+	</Title>
+	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
+	<AutoTitle>false</AutoTitle>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="NotificationProcessing">NotificationProcessing</Event>
+		<Event name="OnOpen">OnOpen</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="EDAgreement" id="3">
+			<DataPath>Object.EDAgreement</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>EDF setup</v8:content>
+				</v8:item>
+			</Title>
+			<HorizontalStretch>false</HorizontalStretch>
+			<ChoiceParameters>
+				<app:item name="Filter.EDExchangeMethod">
+					<app:value xsi:type="FormChoiceListDesTimeValue">
+						<Presentation/>
+						<Value xsi:type="xr:DesignTimeRef">Enum.EDExchangeMethods.EnumValue.ThroughBankWebSource</Value>
+					</app:value>
+				</app:item>
+				<app:item name="Filter.AgreementStatus">
+					<app:value xsi:type="FormChoiceListDesTimeValue">
+						<Presentation/>
+						<Value xsi:type="xr:DesignTimeRef">Enum.EDAgreementsStatuses.EnumValue.Acts</Value>
+					</app:value>
+				</app:item>
+			</ChoiceParameters>
+			<ContextMenu name="EDAgreementContextMenu" id="4"/>
+			<ExtendedTooltip name="AgreementEDExtendedTooltip" id="213"/>
+			<Events>
+				<Event name="OnChange">EDAgreementOnChange</Event>
+			</Events>
+		</InputField>
+		<LabelField name="Company" id="5">
+			<DataPath>Object.Company</DataPath>
+			<ReadOnly>true</ReadOnly>
+			<ContextMenu name="CounterpartyContextMenu" id="6"/>
+			<ExtendedTooltip name="CounterpartyExtendedTooltip" id="214"/>
+		</LabelField>
+		<LabelField name="Bank" id="7">
+			<DataPath>Object.Bank</DataPath>
+			<ContextMenu name="BankContextMenu" id="8"/>
+			<ExtendedTooltip name="BankExtendedTooltip" id="215"/>
+		</LabelField>
+		<UsualGroup name="SynchronizationGroup" id="311">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Synchronization group</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Synchronization group</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="SynchronizationGroupExtendedTooltip" id="312"/>
+			<ChildItems>
+				<Button name="RunExchangeWithBank" id="313">
+					<Type>UsualButton</Type>
+					<DefaultButton>true</DefaultButton>
+					<CommandName>DataProcessor.ElectronicDocumentsExchangeWithBank.Command.RunExchangeWithBank</CommandName>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Synchronize with bank</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="RunExchangeWithBankExtendedTooltip" id="314"/>
+				</Button>
+				<LabelDecoration name="DecorationPeriodPresentation" id="318">
+					<Visible>false</Visible>
+					<TextColor>style:ExplanationText</TextColor>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Now</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="DecorationPeriodPresentationContextMenu" id="319"/>
+					<ExtendedTooltip name="DecorationPeriodPresentationExtendedTooltip" id="320"/>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+		<Pages name="PagesKindsOfBankingSystems" id="81">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Pages banking system types</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Pages banking system types</v8:content>
+				</v8:item>
+			</ToolTip>
+			<ExtendedTooltip name="PagesKindsOfBankingSystemsExtendedTooltip" id="216"/>
+			<ChildItems>
+				<Page name="TypicalPage" id="82">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Typical page</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Typical page</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="TypicalPageExtendedTooltip" id="217"/>
+					<ChildItems>
+						<UsualGroup name="ParametersGroupQuery" id="62">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Query statement parameters</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Query parameters group</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Representation>StrongSeparation</Representation>
+							<ExtendedTooltip name="ParametersGroupQueryExtendedTooltip" id="218"/>
+							<ChildItems>
+								<UsualGroup name="GroupQuery" id="64">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Query group</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Query group</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupQueryExtendedTooltip" id="219"/>
+									<ChildItems>
+										<InputField name="Period" id="58">
+											<DataPath>Period</DataPath>
+											<HorizontalStretch>false</HorizontalStretch>
+											<AutoMarkIncomplete>true</AutoMarkIncomplete>
+											<ContextMenu name="PeriodContextMenu" id="59"/>
+											<ExtendedTooltip name="PeriodExtendedTooltip" id="220"/>
+											<Events>
+												<Event name="OnChange">PeriodOnChange</Event>
+											</Events>
+										</InputField>
+										<Button name="RequestStatement" id="63">
+											<Type>UsualButton</Type>
+											<Representation>PictureAndText</Representation>
+											<CommandName>Form.Command.RequestStatement</CommandName>
+											<Picture>
+												<xr:Ref>CommonPicture.IncomingEmail</xr:Ref>
+												<xr:LoadTransparent>true</xr:LoadTransparent>
+											</Picture>
+											<ExtendedTooltip name="QueryUnpackExtendedTooltip" id="221"/>
+										</Button>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="BankStatements" id="44">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Bank account statements</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Bank account statements</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<ExtendedTooltip name="BankStatementsExtendedTooltip" id="222"/>
+							<ChildItems>
+								<Table name="Statements" id="45">
+									<SelectionMode>SingleRow</SelectionMode>
+									<UseAlternationRowColor>true</UseAlternationRowColor>
+									<AutoInsertNewRow>true</AutoInsertNewRow>
+									<EnableStartDrag>true</EnableStartDrag>
+									<EnableDrag>true</EnableDrag>
+									<DataPath>BankStatements</DataPath>
+									<RowPictureDataPath>BankStatements.DefaultPicture</RowPictureDataPath>
+									<CommandSet>
+										<ExcludedCommand>Copy</ExcludedCommand>
+										<ExcludedCommand>CopyToClipboard</ExcludedCommand>
+										<ExcludedCommand>Change</ExcludedCommand>
+									</CommandSet>
+									<SearchStringLocation>None</SearchStringLocation>
+									<ViewStatusLocation>None</ViewStatusLocation>
+									<SearchControlLocation>None</SearchControlLocation>
+									<AutoRefresh>false</AutoRefresh>
+									<AutoRefreshPeriod>60</AutoRefreshPeriod>
+									<Period>
+										<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+										<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+										<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+									</Period>
+									<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+									<RestoreCurrentRow>false</RestoreCurrentRow>
+									<TopLevelParent xsi:nil="true"/>
+									<ShowRoot>true</ShowRoot>
+									<AllowRootChoice>false</AllowRootChoice>
+									<UpdateOnDataChange>Auto</UpdateOnDataChange>
+									<ContextMenu name="AccountstatementsContextMenu" id="46"/>
+									<AutoCommandBar name="AccountstatementsCommandBar" id="47">
+										<Autofill>false</Autofill>
+										<ChildItems>
+											<Button name="StatementsDataProcessorElectronicDocumentsExchangeWithBankRead" id="78">
+												<Type>CommandBarButton</Type>
+												<CommandName>DataProcessor.ElectronicDocumentsExchangeWithBank.Command.Analyze</CommandName>
+												<DataPath>Items.Statements.CurrentData.BankStatement</DataPath>
+												<ExtendedTooltip name="StatementsDataProcessorElectronicDocumentsExchangeWithBankReadExtendedTooltip" id="223"/>
+											</Button>
+											<Button name="ExtractsFind" id="65">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Item.Statements.StandardCommand.Find</CommandName>
+												<ExtendedTooltip name="AccountstatementsFindExtendedTooltip" id="224"/>
+											</Button>
+											<Button name="AccountstatementsCancelSearch" id="66">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Item.Statements.StandardCommand.CancelSearch</CommandName>
+												<ExtendedTooltip name="AccountStatementsCancelSearchExtendedTooltip" id="225"/>
+											</Button>
+											<ButtonGroup name="FormCommandsGroup" id="79">
+												<Title>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Form command group</v8:content>
+													</v8:item>
+												</Title>
+												<ToolTip>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Form command group</v8:content>
+													</v8:item>
+												</ToolTip>
+												<CommandSource>Form</CommandSource>
+												<ExtendedTooltip name="FormCommandsGroupExtendedTooltip" id="226"/>
+											</ButtonGroup>
+											<Button name="Help" id="80">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.StandardCommand.Help</CommandName>
+												<ExtendedTooltip name="HelpExtendedTooltip" id="227"/>
+											</Button>
+										</ChildItems>
+									</AutoCommandBar>
+									<ExtendedTooltip name="StatementsExtendedTooltip" id="228"/>
+									<SearchStringAddition name="StatementsSearchString" id="321">
+										<AdditionSource>
+											<Item>Statements</Item>
+											<Type>SearchStringRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="StatementsSearchStringContextMenu" id="322"/>
+										<ExtendedTooltip name="StatementsSearchStringExtendedTooltip" id="323"/>
+									</SearchStringAddition>
+									<ViewStatusAddition name="StatementsViewStatus" id="324">
+										<AdditionSource>
+											<Item>Statements</Item>
+											<Type>ViewStatusRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="StatementsViewStatusContextMenu" id="325"/>
+										<ExtendedTooltip name="StatementsViewStatusExtendedTooltip" id="326"/>
+									</ViewStatusAddition>
+									<SearchControlAddition name="StatementsSearchManagement" id="327">
+										<AdditionSource>
+											<Item>Statements</Item>
+											<Type>SearchControl</Type>
+										</AdditionSource>
+										<ContextMenu name="StatementsSearchManagementContextMenu" id="328"/>
+										<ExtendedTooltip name="StatementsSearchManagementExtendedTooltip" id="329"/>
+									</SearchControlAddition>
+									<Events>
+										<Event name="ChoiceProcessing">StatementsChoiceProcessing</Event>
+									</Events>
+									<ChildItems>
+										<LabelField name="ExtractsSendingDate" id="71">
+											<DataPath>BankStatements.SendingDate</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Query sending date</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="AccountStatementsSendingDateContextMenu" id="72"/>
+											<ExtendedTooltip name="AccountstatementsSendingDateExtendedTooltip" id="229"/>
+										</LabelField>
+										<LabelField name="BankStatementsStatement" id="69">
+											<DataPath>BankStatements.BankStatement</DataPath>
+											<ContextMenu name="BankStatementsStatementContextMenu" id="70"/>
+											<ExtendedTooltip name="BankStatementsStatementExtendedTooltip" id="230"/>
+										</LabelField>
+									</ChildItems>
+								</Table>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="SberBankPage" id="83">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Sberbank Page</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Sberbank Page</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="SberBankPageExtendedTooltip" id="231"/>
+					<ChildItems>
+						<Pages name="PagesSendGet" id="154">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Pages sending receiving</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Pages sending receiving</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ExtendedTooltip name="PagesSendGetExtendedTooltip" id="232"/>
+							<ChildItems>
+								<Page name="SberbankSend" id="155">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>sending</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Sberbank send</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="SberbankSendExtendedTooltip" id="233"/>
+									<ChildItems>
+										<UsualGroup name="GroupPaymentOrdersToSend" id="103">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Payment orders to be sent</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group payment orders to be sent</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Vertical</Group>
+											<Representation>StrongSeparation</Representation>
+											<ExtendedTooltip name="GroupPaymentOrdersToSendExtendedTooltip" id="234"/>
+											<ChildItems>
+												<Table name="PaymentOrdersToSend" id="104">
+													<Representation>List</Representation>
+													<ChangeRowSet>false</ChangeRowSet>
+													<ChangeRowOrder>false</ChangeRowOrder>
+													<AutoInsertNewRow>true</AutoInsertNewRow>
+													<EnableStartDrag>true</EnableStartDrag>
+													<EnableDrag>true</EnableDrag>
+													<DataPath>PaymentOrdersToSend</DataPath>
+													<CommandSet>
+														<ExcludedCommand>Copy</ExcludedCommand>
+														<ExcludedCommand>MoveUp</ExcludedCommand>
+														<ExcludedCommand>Delete</ExcludedCommand>
+														<ExcludedCommand>EndEdit</ExcludedCommand>
+														<ExcludedCommand>Add</ExcludedCommand>
+														<ExcludedCommand>Change</ExcludedCommand>
+														<ExcludedCommand>MoveDown</ExcludedCommand>
+													</CommandSet>
+													<SearchStringLocation>None</SearchStringLocation>
+													<ViewStatusLocation>None</ViewStatusLocation>
+													<SearchControlLocation>None</SearchControlLocation>
+													<RowFilter xsi:nil="true"/>
+													<ContextMenu name="PaymentOrdersToSendContextMenu" id="105"/>
+													<AutoCommandBar name="PaymentOrdersToSendCommandBar" id="106">
+														<ChildItems>
+															<ButtonGroup name="CommandsGroupFlags" id="123">
+																<Title>
+																	<v8:item>
+																		<v8:lang>en</v8:lang>
+																		<v8:content>Commands group flags</v8:content>
+																	</v8:item>
+																</Title>
+																<ToolTip>
+																	<v8:item>
+																		<v8:lang>en</v8:lang>
+																		<v8:content>Commands group flags</v8:content>
+																	</v8:item>
+																</ToolTip>
+																<ExtendedTooltip name="CommandGroupFlagsExtendedTooltip" id="235"/>
+																<ChildItems>
+																	<Button name="PaymentOrdersToSendSendMarked" id="126">
+																		<Type>CommandBarButton</Type>
+																		<CommandName>Form.Command.SendMarked</CommandName>
+																		<ExtendedTooltip name="PaymentOrdersToSendSendMarkedExtendedTooltip" id="236"/>
+																	</Button>
+																	<Button name="CancelSelected" id="124">
+																		<Type>CommandBarButton</Type>
+																		<Representation>PictureAndText</Representation>
+																		<CommandName>Form.Command.CancelSelected</CommandName>
+																		<ExtendedTooltip name="MarkSelectedExtendedTooltip" id="237"/>
+																	</Button>
+																	<Button name="UncheckSelectionFromAllRows" id="125">
+																		<Type>CommandBarButton</Type>
+																		<CommandName>Form.Command.UncheckSelectionFromAllRows</CommandName>
+																		<ExtendedTooltip name="UnmarkAllRowsExtendedTooltip" id="238"/>
+																	</Button>
+																</ChildItems>
+															</ButtonGroup>
+															<Button name="PaymentOrdersToSendRefresh" id="129">
+																<Type>CommandBarButton</Type>
+																<CommandName>Form.Command.Refresh</CommandName>
+																<ExtendedTooltip name="PaymentOrdersToSendRefreshExtendedTooltip" id="239"/>
+															</Button>
+															<Button name="PaymentOrdersToSendButton1" id="127">
+																<Type>CommandBarButton</Type>
+																<CommandName>Form.Item.PaymentOrdersToSend.StandardCommand.Find</CommandName>
+																<ExtendedTooltip name="PaymentOrdersToSendButton1ExtendedTooltip" id="240"/>
+															</Button>
+															<Button name="PaymentOrdersToSendButton2" id="128">
+																<Type>CommandBarButton</Type>
+																<CommandName>Form.Item.PaymentOrdersToSend.StandardCommand.CancelSearch</CommandName>
+																<ExtendedTooltip name="PaymentOrdersToSendButton2ExtendedTooltip" id="241"/>
+															</Button>
+															<Button name="PaymentOrdersToSendTestLinks" id="186">
+																<Type>CommandBarButton</Type>
+																<Representation>PictureAndText</Representation>
+																<CommandName>Form.Command.ConnectionTest</CommandName>
+																<Picture>
+																	<xr:Ref>CommonPicture.Information</xr:Ref>
+																	<xr:LoadTransparent>true</xr:LoadTransparent>
+																</Picture>
+																<ExtendedTooltip name="PaymentOrdersToSendConnectionTestExtendedTooltip" id="242"/>
+															</Button>
+														</ChildItems>
+													</AutoCommandBar>
+													<ExtendedTooltip name="PaymentOrdersToSendExtendedTooltip" id="243"/>
+													<SearchStringAddition name="PaymentOrdersToSendSearchString" id="330">
+														<AdditionSource>
+															<Item>PaymentOrdersToSend</Item>
+															<Type>SearchStringRepresentation</Type>
+														</AdditionSource>
+														<ContextMenu name="PaymentOrdersToSendSearchStringContextMenu" id="331"/>
+														<ExtendedTooltip name="PaymentOrdersToSendSearchStringExtendedTooltip" id="332"/>
+													</SearchStringAddition>
+													<ViewStatusAddition name="PaymentOrdersToSendViewStatus" id="333">
+														<AdditionSource>
+															<Item>PaymentOrdersToSend</Item>
+															<Type>ViewStatusRepresentation</Type>
+														</AdditionSource>
+														<ContextMenu name="PaymentOrdersToSendViewStatusContextMenu" id="334"/>
+														<ExtendedTooltip name="PaymentOrdersToSendViewStatusExtendedTooltip" id="335"/>
+													</ViewStatusAddition>
+													<SearchControlAddition name="PaymentOrdersToSendSearchManagement" id="336">
+														<AdditionSource>
+															<Item>PaymentOrdersToSend</Item>
+															<Type>SearchControl</Type>
+														</AdditionSource>
+														<ContextMenu name="PaymentOrdersToSendSearchManagementContextMenu" id="337"/>
+														<ExtendedTooltip name="PaymentOrdersToSendSearchManagementExtendedTooltip" id="338"/>
+													</SearchControlAddition>
+													<ChildItems>
+														<CheckBoxField name="PaymentOrdersToSendExporting" id="121">
+															<DataPath>PaymentOrdersToSend.Exporting</DataPath>
+															<TitleLocation>None</TitleLocation>
+															<EditMode>EnterOnInput</EditMode>
+															<CheckBoxType>Auto</CheckBoxType>
+															<ContextMenu name="PaymentOrdersToSendExportContextMenu" id="122"/>
+															<ExtendedTooltip name="PaymentOrdersToSendExportingExtendedTooltip" id="244"/>
+														</CheckBoxField>
+														<InputField name="PaymentOrdersForShipmentDate" id="107">
+															<DataPath>PaymentOrdersToSend.Date</DataPath>
+															<ReadOnly>true</ReadOnly>
+															<EditMode>EnterOnInput</EditMode>
+															<ContextMenu name="PaymentOrdersForShipmentDateContextMenu" id="108"/>
+															<ExtendedTooltip name="PaymentOrdersForShipmentDateExtendedTooltip" id="245"/>
+														</InputField>
+														<InputField name="PaymentOrdersForShipmentRecipient" id="109">
+															<DataPath>PaymentOrdersToSend.Recipient</DataPath>
+															<ReadOnly>true</ReadOnly>
+															<EditMode>EnterOnInput</EditMode>
+															<ContextMenu name="PaymentOrdersForShipmentRecipientContextMenu" id="110"/>
+															<ExtendedTooltip name="PaymentOrdersToSendRecipientExtendedTooltip" id="246"/>
+														</InputField>
+														<InputField name="PaymentOrdersToSendDocumentAmount" id="111">
+															<DataPath>PaymentOrdersToSend.DocumentAmount</DataPath>
+															<ReadOnly>true</ReadOnly>
+															<EditMode>EnterOnInput</EditMode>
+															<ContextMenu name="PaymentOrdersToSendDocumentSumContextMenu" id="112"/>
+															<ExtendedTooltip name="PaymentOrdersToSendDocumentSumExtendedTooltip" id="247"/>
+														</InputField>
+														<InputField name="PaymentOrdersSentToAccountOfOrganization" id="113">
+															<DataPath>PaymentOrdersToSend.CompanyAccount</DataPath>
+															<ReadOnly>true</ReadOnly>
+															<EditMode>EnterOnInput</EditMode>
+															<ContextMenu name="PaymentOrdersToSendAccountOrganizationContextMenu" id="114"/>
+															<ExtendedTooltip name="PaymentOrdersToSendAccountCompaniesExtendedTooltip" id="248"/>
+														</InputField>
+														<InputField name="PaymentOrdersToSendToRecipientsAccount" id="115">
+															<DataPath>PaymentOrdersToSend.RecipientAccount</DataPath>
+															<ReadOnly>true</ReadOnly>
+															<EditMode>EnterOnInput</EditMode>
+															<ContextMenu name="PaymentOrdersToSendToRecipientsAccountContextMenu" id="116"/>
+															<ExtendedTooltip name="PaymentOrdersToSendRecipientsAccountExtendedTooltip" id="249"/>
+														</InputField>
+														<InputField name="PaymentOrdersToSendPaymentDestination" id="117">
+															<DataPath>PaymentOrdersToSend.PaymentDestination</DataPath>
+															<ReadOnly>true</ReadOnly>
+															<EditMode>EnterOnInput</EditMode>
+															<ContextMenu name="PaymentOrdersToSendPaymentDestinationContextMenu" id="118"/>
+															<ExtendedTooltip name="PaymentOrdersToSendPaymentDestinationExtendedTooltip" id="250"/>
+														</InputField>
+														<InputField name="PaymentOrdersToSendElectronicDocument" id="119">
+															<DataPath>PaymentOrdersToSend.ElectronicDocument</DataPath>
+															<ReadOnly>true</ReadOnly>
+															<EditMode>EnterOnInput</EditMode>
+															<ContextMenu name="PaymentOrdersToSendElectronicDocumentContextMenu" id="120"/>
+															<ExtendedTooltip name="PaymentOrdersToSendElectronicDocumentExtendedTooltip" id="251"/>
+														</InputField>
+													</ChildItems>
+												</Table>
+											</ChildItems>
+										</UsualGroup>
+										<UsualGroup name="GroupPaymentOrdersProcessing" id="130">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Payment orders being processed by the bank</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group payment orders to be processed</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Vertical</Group>
+											<Representation>StrongSeparation</Representation>
+											<ExtendedTooltip name="GroupPaymentOrdersProcessingExtendedTooltip" id="252"/>
+											<ChildItems>
+												<Table name="PaymentOrdersInProcessing" id="131">
+													<ChangeRowSet>false</ChangeRowSet>
+													<ChangeRowOrder>false</ChangeRowOrder>
+													<UseAlternationRowColor>true</UseAlternationRowColor>
+													<EnableStartDrag>true</EnableStartDrag>
+													<DataPath>PaymentOrdersInProcessing</DataPath>
+													<RowPictureDataPath>PaymentOrdersInProcessing.DefaultPicture</RowPictureDataPath>
+													<CommandSet>
+														<ExcludedCommand>Copy</ExcludedCommand>
+														<ExcludedCommand>Create</ExcludedCommand>
+														<ExcludedCommand>SetDeletionMark</ExcludedCommand>
+														<ExcludedCommand>Change</ExcludedCommand>
+														<ExcludedCommand>Delete</ExcludedCommand>
+													</CommandSet>
+													<SearchStringLocation>None</SearchStringLocation>
+													<ViewStatusLocation>None</ViewStatusLocation>
+													<SearchControlLocation>None</SearchControlLocation>
+													<AutoRefresh>false</AutoRefresh>
+													<AutoRefreshPeriod>60</AutoRefreshPeriod>
+													<Period>
+														<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+														<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+														<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+													</Period>
+													<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+													<RestoreCurrentRow>false</RestoreCurrentRow>
+													<TopLevelParent xsi:nil="true"/>
+													<ShowRoot>true</ShowRoot>
+													<AllowRootChoice>false</AllowRootChoice>
+													<UpdateOnDataChange>Auto</UpdateOnDataChange>
+													<ContextMenu name="PaymentOrdersInProcessingContextMenu" id="132"/>
+													<AutoCommandBar name="PaymentOrdersInProcessingCommandBar" id="133">
+														<Autofill>false</Autofill>
+														<ChildItems>
+															<Button name="PaymentOrdersInProcessingGetStatuses" id="152">
+																<Type>CommandBarButton</Type>
+																<CommandName>Form.Command.GetStatuses</CommandName>
+																<Picture>
+																	<xr:Ref>CommonPicture.OutgoingEmail</xr:Ref>
+																	<xr:LoadTransparent>true</xr:LoadTransparent>
+																</Picture>
+																<Title>
+																	<v8:item>
+																		<v8:lang>en</v8:lang>
+																		<v8:content>Request statuses</v8:content>
+																	</v8:item>
+																</Title>
+																<ExtendedTooltip name="PaymentOrdersInProcessingStatusesGetExtendedTooltip" id="253"/>
+															</Button>
+															<Button name="PaymentOrdersInProcessingRefresh" id="153">
+																<Type>CommandBarButton</Type>
+																<OnlyInAllActions>true</OnlyInAllActions>
+																<CommandName>Form.Item.PaymentOrdersInProcessing.StandardCommand.Refresh</CommandName>
+																<ExtendedTooltip name="PaymentOrdersInProcessingRefreshExtendedTooltip" id="254"/>
+															</Button>
+															<ButtonGroup name="PaymentOrdersInProcessingCommandGroup" id="209">
+																<Title>
+																	<v8:item>
+																		<v8:lang>en</v8:lang>
+																		<v8:content>Payment orders in processing command group</v8:content>
+																	</v8:item>
+																</Title>
+																<ToolTip>
+																	<v8:item>
+																		<v8:lang>en</v8:lang>
+																		<v8:content>Payment orders in processing command group</v8:content>
+																	</v8:item>
+																</ToolTip>
+																<CommandSource>Item.PaymentOrdersInProcessing</CommandSource>
+																<ExtendedTooltip name="PaymentOrdersInProcessingCommandGroupExtendedTooltip" id="255"/>
+															</ButtonGroup>
+														</ChildItems>
+													</AutoCommandBar>
+													<ExtendedTooltip name="PaymentOrdersInProcessingExtendedTooltip" id="256"/>
+													<SearchStringAddition name="PaymentOrdersInProcessingSearchString" id="339">
+														<AdditionSource>
+															<Item>PaymentOrdersInProcessing</Item>
+															<Type>SearchStringRepresentation</Type>
+														</AdditionSource>
+														<ContextMenu name="PaymentOrdersInProcessingSearchStringContextMenu" id="340"/>
+														<ExtendedTooltip name="PaymentOrdersInProcessingSearchStringExtendedTooltip" id="341"/>
+													</SearchStringAddition>
+													<ViewStatusAddition name="PaymentOrdersInProcessingViewStatus" id="342">
+														<AdditionSource>
+															<Item>PaymentOrdersInProcessing</Item>
+															<Type>ViewStatusRepresentation</Type>
+														</AdditionSource>
+														<ContextMenu name="PaymentOrdersInProcessingViewStatusContextMenu" id="343"/>
+														<ExtendedTooltip name="PaymentOrdersInProcessingViewStatusExtendedTooltip" id="344"/>
+													</ViewStatusAddition>
+													<SearchControlAddition name="PaymentOrdersInProcessingSearchManagement" id="345">
+														<AdditionSource>
+															<Item>PaymentOrdersInProcessing</Item>
+															<Type>SearchControl</Type>
+														</AdditionSource>
+														<ContextMenu name="PaymentOrdersInProcessingSearchManagementContextMenu" id="346"/>
+														<ExtendedTooltip name="PaymentOrdersInProcessingSearchManagementExtendedTooltip" id="347"/>
+													</SearchControlAddition>
+													<ChildItems>
+														<LabelField name="PaymentOrdersInProcessingDate" id="134">
+															<DataPath>5/1</DataPath>
+															<ContextMenu name="PaymentOrdersInProcessingDateContextMenu" id="135"/>
+															<ExtendedTooltip name="PaymentOrdersInProcessingDateExtendedTooltip" id="257"/>
+														</LabelField>
+														<LabelField name="PaymentOrdersInProcessingEDStatus" id="142">
+															<DataPath>5/5</DataPath>
+															<ContextMenu name="PaymentOrdersInProcessingEDStatusContextMenu" id="143"/>
+															<ExtendedTooltip name="PaymentOrdersInProcessingEDStatusExtendedTooltip" id="258"/>
+														</LabelField>
+														<LabelField name="PaymentOrdersInProcessingRecipient" id="140">
+															<DataPath>5/4</DataPath>
+															<ContextMenu name="PaymentOrdersInProcessingRecipientContextMenu" id="141"/>
+															<ExtendedTooltip name="PaymentOrdersInProcessingRecipientExtendedTooltip" id="259"/>
+														</LabelField>
+														<LabelField name="PaymentOrdersInProcessingDocumentSum" id="144">
+															<DataPath>5/6</DataPath>
+															<ContextMenu name="PaymentOrdersInProcessingDocumentSumContextMenu" id="145"/>
+															<ExtendedTooltip name="PaymentOrdersInProcessingDocumentSumExtendedTooltip" id="260"/>
+														</LabelField>
+														<LabelField name="PaymentOrdersInProcessingPaymentDestination" id="136">
+															<DataPath>5/2</DataPath>
+															<ContextMenu name="PaymentOrdersInProcessingPaymentDestinationContextMenu" id="137"/>
+															<ExtendedTooltip name="PaymentOrdersInProcessingPaymentDestinationExtendedTooltip" id="261"/>
+														</LabelField>
+														<LabelField name="PaymentOrdersInProcessingNumber" id="138">
+															<DataPath>5/3</DataPath>
+															<ContextMenu name="PaymentOrdersInProcessingNumberContextMenu" id="139"/>
+															<ExtendedTooltip name="PaymentOrdersInProcessingNumberExtendedTooltip" id="262"/>
+														</LabelField>
+														<LabelField name="PaymentOrdersInProcessingCompanyAccount" id="146">
+															<DataPath>5/7</DataPath>
+															<ContextMenu name="PaymentOrdersInProcessingCompanyAccountContextMenu" id="147"/>
+															<ExtendedTooltip name="PaymentOrdersInProcessingCompanyAccountExtendedTooltip" id="263"/>
+														</LabelField>
+														<LabelField name="PaymentOrdersInProcessingRecipientsAccount" id="148">
+															<DataPath>5/8</DataPath>
+															<ContextMenu name="PaymentOrdersInProcessingRecipientsAccountContextMenu" id="149"/>
+															<ExtendedTooltip name="PaymentOrdersInProcessingRecipientsAccountExtendedTooltip" id="264"/>
+														</LabelField>
+														<LabelField name="PaymentOrdersInProcessingElectronicDocument" id="150">
+															<DataPath>5/9</DataPath>
+															<ContextMenu name="PaymentOrdersInProcessingElectronicDocumentContextMenu" id="151"/>
+															<ExtendedTooltip name="PaymentOrdersInProcessingElectronicDocumentExtendedTooltip" id="265"/>
+														</LabelField>
+													</ChildItems>
+												</Table>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</Page>
+								<Page name="SberbankGet" id="156">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Get</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Sberbank get</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="SberbankGetExtendedTooltip" id="266"/>
+									<ChildItems>
+										<UsualGroup name="GroupBankStatements" id="157">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Bank statements</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Bank statements group</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Vertical</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="GroupBankStatementsExtendedTooltip" id="267"/>
+											<ChildItems>
+												<UsualGroup name="CommandGroup" id="183">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Command group</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Command group</v8:content>
+														</v8:item>
+													</ToolTip>
+													<Group>Horizontal</Group>
+													<Representation>None</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="CommandGroupExtendedTooltip" id="268"/>
+													<ChildItems>
+														<UsualGroup name="QueryParametersGroupSberbank" id="175">
+															<Title>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Query statement sending</v8:content>
+																</v8:item>
+															</Title>
+															<ToolTip>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Query parameters group</v8:content>
+																</v8:item>
+															</ToolTip>
+															<Group>Vertical</Group>
+															<Representation>StrongSeparation</Representation>
+															<ExtendedTooltip name="ParametersGroupQuerySberbankExtendedTooltip" id="269"/>
+														</UsualGroup>
+														<UsualGroup name="GroupStatementReceiving" id="184">
+															<Title>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Get ready account statements</v8:content>
+																</v8:item>
+															</Title>
+															<ToolTip>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Statement receiving group</v8:content>
+																</v8:item>
+															</ToolTip>
+															<Width>21</Width>
+															<Group>Vertical</Group>
+															<Representation>StrongSeparation</Representation>
+															<ExtendedTooltip name="GroupGetAccountstatementsExtendedTooltip" id="270"/>
+														</UsualGroup>
+													</ChildItems>
+												</UsualGroup>
+												<UsualGroup name="GroupQuerySberbank" id="176">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Query group</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Query group</v8:content>
+														</v8:item>
+													</ToolTip>
+													<Group>Horizontal</Group>
+													<Representation>None</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="GroupQuerySberbankExtendedTooltip" id="271"/>
+													<ChildItems>
+														<InputField name="PeriodSberbank" id="177">
+															<DataPath>Period</DataPath>
+															<Title>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Request a statement for the period</v8:content>
+																</v8:item>
+															</Title>
+															<Width>18</Width>
+															<HorizontalStretch>false</HorizontalStretch>
+															<AutoMarkIncomplete>true</AutoMarkIncomplete>
+															<ContextMenu name="PeriodSberbankContextMenu" id="178"/>
+															<ExtendedTooltip name="PeriodSberbankExtendedTooltip" id="272"/>
+															<Events>
+																<Event name="OnChange">PeriodOnChange</Event>
+															</Events>
+														</InputField>
+														<Button name="QueryExtractSberbank" id="181">
+															<Type>UsualButton</Type>
+															<Representation>PictureAndText</Representation>
+															<CommandName>Form.Command.QueryExtractSberbank</CommandName>
+															<Picture>
+																<xr:Ref>CommonPicture.OutgoingEmail</xr:Ref>
+																<xr:LoadTransparent>true</xr:LoadTransparent>
+															</Picture>
+															<Title>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Send query</v8:content>
+																</v8:item>
+															</Title>
+															<ExtendedTooltip name="RequestSberbankStatementExtendedTooltip" id="273"/>
+														</Button>
+													</ChildItems>
+												</UsualGroup>
+											</ChildItems>
+										</UsualGroup>
+										<Table name="BankStatementSberbank" id="195">
+											<ReadOnly>true</ReadOnly>
+											<UseAlternationRowColor>true</UseAlternationRowColor>
+											<EnableStartDrag>true</EnableStartDrag>
+											<DataPath>BankStatementSberbank</DataPath>
+											<RowPictureDataPath>BankStatementSberbank.DefaultPicture</RowPictureDataPath>
+											<CommandSet>
+												<ExcludedCommand>Copy</ExcludedCommand>
+												<ExcludedCommand>Create</ExcludedCommand>
+												<ExcludedCommand>Refresh</ExcludedCommand>
+												<ExcludedCommand>CopyToClipboard</ExcludedCommand>
+												<ExcludedCommand>Choose</ExcludedCommand>
+												<ExcludedCommand>SetDeletionMark</ExcludedCommand>
+												<ExcludedCommand>Change</ExcludedCommand>
+												<ExcludedCommand>Delete</ExcludedCommand>
+											</CommandSet>
+											<SearchStringLocation>None</SearchStringLocation>
+											<ViewStatusLocation>None</ViewStatusLocation>
+											<SearchControlLocation>None</SearchControlLocation>
+											<AutoRefresh>false</AutoRefresh>
+											<AutoRefreshPeriod>60</AutoRefreshPeriod>
+											<Period>
+												<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+												<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+												<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+											</Period>
+											<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+											<RestoreCurrentRow>false</RestoreCurrentRow>
+											<TopLevelParent xsi:nil="true"/>
+											<ShowRoot>true</ShowRoot>
+											<AllowRootChoice>false</AllowRootChoice>
+											<UpdateOnDataChange>Auto</UpdateOnDataChange>
+											<ContextMenu name="BankStatementSberbankContextMenu" id="196"/>
+											<AutoCommandBar name="BankStatementSberbankCommandBar" id="197">
+												<Autofill>false</Autofill>
+												<ChildItems>
+													<Button name="GetStatement" id="185">
+														<Type>CommandBarButton</Type>
+														<Representation>PictureAndText</Representation>
+														<CommandName>Form.Command.GetStatement</CommandName>
+														<Picture>
+															<xr:Ref>StdPicture.Refresh</xr:Ref>
+															<xr:LoadTransparent>true</xr:LoadTransparent>
+														</Picture>
+														<Title>
+															<v8:item>
+																<v8:lang>en</v8:lang>
+																<v8:content>Refresh</v8:content>
+															</v8:item>
+														</Title>
+														<ExtendedTooltip name="GetUnpackExtendedTooltip" id="274"/>
+													</Button>
+													<Button name="BankStatementSberbankProcessingElectronicDocumentsExchangeWithBankAnalyze" id="370">
+														<Type>CommandBarButton</Type>
+														<CommandName>DataProcessor.ElectronicDocumentsExchangeWithBank.Command.Analyze</CommandName>
+														<DataPath>Items.BankStatementSberbank.CurrentData.ElectronicDocument</DataPath>
+														<ExtendedTooltip name="BankStatementSberbankProcessingElectronicDocumentsExchangeWithBankAnalyzeExtendedTooltip" id="371"/>
+													</Button>
+													<Button name="BankStatementSberbankChoosePeriod" id="208">
+														<Type>CommandBarButton</Type>
+														<CommandName>Form.Command.SelectPeriod</CommandName>
+														<ExtendedTooltip name="BankStatementSberbankChoosePeriodExtendedTooltip" id="275"/>
+													</Button>
+													<ButtonGroup name="BankStatementSberbankCommandGroup" id="210">
+														<Title>
+															<v8:item>
+																<v8:lang>en</v8:lang>
+																<v8:content>Bank statement sberbank command group</v8:content>
+															</v8:item>
+														</Title>
+														<ToolTip>
+															<v8:item>
+																<v8:lang>en</v8:lang>
+																<v8:content>Bank statement sberbank command group</v8:content>
+															</v8:item>
+														</ToolTip>
+														<CommandSource>Item.BankStatementSberbank</CommandSource>
+														<ExtendedTooltip name="BankStatementSberbankCommandGroupExtendedTooltip" id="276"/>
+													</ButtonGroup>
+												</ChildItems>
+											</AutoCommandBar>
+											<ExtendedTooltip name="BankStatementSberbankExtendedTooltip" id="277"/>
+											<SearchStringAddition name="BankStatementSberbankSearchString" id="348">
+												<AdditionSource>
+													<Item>BankStatementSberbank</Item>
+													<Type>SearchStringRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="BankStatementSberbankSearchStringContextMenu" id="349"/>
+												<ExtendedTooltip name="BankStatementSberbankSearchStringExtendedTooltip" id="350"/>
+											</SearchStringAddition>
+											<ViewStatusAddition name="BankStatementSberbankViewStatus" id="351">
+												<AdditionSource>
+													<Item>BankStatementSberbank</Item>
+													<Type>ViewStatusRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="BankStatementSberbankViewStatusContextMenu" id="352"/>
+												<ExtendedTooltip name="BankStatementSberbankViewStatusExtendedTooltip" id="353"/>
+											</ViewStatusAddition>
+											<SearchControlAddition name="BankStatementSberbankSearchManagement" id="354">
+												<AdditionSource>
+													<Item>BankStatementSberbank</Item>
+													<Type>SearchControl</Type>
+												</AdditionSource>
+												<ContextMenu name="BankStatementSberbankSearchManagementContextMenu" id="355"/>
+												<ExtendedTooltip name="BankStatementSberbankSearchManagementExtendedTooltip" id="356"/>
+											</SearchControlAddition>
+											<ChildItems>
+												<LabelField name="BankStatementSberbankDate" id="204">
+													<DataPath>BankStatementSberbank.CreationDate</DataPath>
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Date</v8:content>
+														</v8:item>
+													</Title>
+													<ContextMenu name="BankStatementSberbankDateContextMenu" id="205"/>
+													<ExtendedTooltip name="BankStatementSberbankDateExtendedTooltip" id="278"/>
+												</LabelField>
+												<LabelField name="BankStatementSberbankElectronicDocument" id="202">
+													<DataPath>BankStatementSberbank.ElectronicDocument</DataPath>
+													<ContextMenu name="BankStatementSberbankElectronicDocumentContextMenu" id="203"/>
+													<ExtendedTooltip name="BankStatementSberbankElectronicDocumentExtendedTooltip" id="279"/>
+												</LabelField>
+												<LabelField name="BankStatementSberbankState" id="206">
+													<DataPath>BankStatementSberbank.Status</DataPath>
+													<ContextMenu name="BankStatementSberbankStatusContextMenu" id="207"/>
+													<ExtendedTooltip name="BankStatementSberbankStateExtendedTooltip" id="280"/>
+												</LabelField>
+											</ChildItems>
+										</Table>
+									</ChildItems>
+								</Page>
+								<Page name="Error" id="187">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Error</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Error</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="ErrorExtendedTooltip" id="281"/>
+									<ChildItems>
+										<UsualGroup name="GroupCommentOpenElectronicDocumentsExchangeSettings" id="190">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group comment open the electronic documents exchange settings</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group comment open the electronic documents exchange settings</v8:content>
+												</v8:item>
+											</ToolTip>
+											<HorizontalStretch>false</HorizontalStretch>
+											<Group>Horizontal</Group>
+											<Representation>StrongSeparation</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="GroupCommentOpenExchangeOfElectronicDocumentsSettingsExtendedTooltip" id="282"/>
+											<ChildItems>
+												<PictureDecoration name="DecorationMessage" id="191">
+													<Width>2</Width>
+													<Height>1</Height>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Decoration message</v8:content>
+														</v8:item>
+													</Title>
+													<Picture>
+														<xr:Ref>CommonPicture.Information02</xr:Ref>
+														<xr:LoadTransparent>true</xr:LoadTransparent>
+													</Picture>
+													<ContextMenu name="DecorationMessageContextMenu" id="192"/>
+													<ExtendedTooltip name="DecorationMessageExtendedTooltip" id="283"/>
+												</PictureDecoration>
+												<LabelDecoration name="Comment" id="193">
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Remote service of "Sberbank Online" through a web-client is not possible.</v8:content>
+														</v8:item>
+													</Title>
+													<ContextMenu name="CommentContextMenu" id="194"/>
+													<ExtendedTooltip name="CommentExtendedTooltip" id="284"/>
+												</LabelDecoration>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</Page>
+							</ChildItems>
+						</Pages>
+					</ChildItems>
+				</Page>
+				<Page name="PageAsynchronousExchange" id="285">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Page asynchronous exchange</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Page asynchronous exchange</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="PageAsynchronousExchangeExtendedTooltip" id="286"/>
+					<ChildItems>
+						<UsualGroup name="QueryParameters" id="287">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Query statement parameters</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Query parameters group</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Representation>StrongSeparation</Representation>
+							<ExtendedTooltip name="QueryParametersExtendedTooltip" id="288"/>
+							<ChildItems>
+								<UsualGroup name="GroupQueryAsynchronously" id="289">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Query group</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Query group</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupQueryAsynchronouslyExtendedTooltip" id="290"/>
+									<ChildItems>
+										<InputField name="PeriodAsynchronously" id="291">
+											<DataPath>Period</DataPath>
+											<HorizontalStretch>false</HorizontalStretch>
+											<AutoMarkIncomplete>true</AutoMarkIncomplete>
+											<ContextMenu name="PeriodAsynchronouslyContextMenu" id="292"/>
+											<ExtendedTooltip name="PeriodAsynchronouslyExtendedTooltip" id="293"/>
+											<Events>
+												<Event name="OnChange">PeriodOnChange</Event>
+											</Events>
+										</InputField>
+										<Button name="RequestStatementAsynchronously" id="294">
+											<Type>UsualButton</Type>
+											<Representation>PictureAndText</Representation>
+											<CommandName>Form.Command.RequestStatement</CommandName>
+											<Picture>
+												<xr:Ref>CommonPicture.IncomingEmail</xr:Ref>
+												<xr:LoadTransparent>true</xr:LoadTransparent>
+											</Picture>
+											<ExtendedTooltip name="RequestStatementAsynchronouslyExtendedTooltip" id="295"/>
+										</Button>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+						<Table name="BankStatementsAsynchronousExchange" id="296">
+							<UseAlternationRowColor>true</UseAlternationRowColor>
+							<EnableStartDrag>true</EnableStartDrag>
+							<DataPath>BankStatementsAsynchronousExchange</DataPath>
+							<RowPictureDataPath>BankStatementsAsynchronousExchange.DefaultPicture</RowPictureDataPath>
+							<CommandSet>
+								<ExcludedCommand>Copy</ExcludedCommand>
+								<ExcludedCommand>Create</ExcludedCommand>
+								<ExcludedCommand>CopyToClipboard</ExcludedCommand>
+								<ExcludedCommand>Choose</ExcludedCommand>
+								<ExcludedCommand>SetDeletionMark</ExcludedCommand>
+								<ExcludedCommand>Change</ExcludedCommand>
+								<ExcludedCommand>Delete</ExcludedCommand>
+							</CommandSet>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<AutoRefresh>false</AutoRefresh>
+							<AutoRefreshPeriod>60</AutoRefreshPeriod>
+							<Period>
+								<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+								<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+								<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+							</Period>
+							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+							<RestoreCurrentRow>false</RestoreCurrentRow>
+							<TopLevelParent xsi:nil="true"/>
+							<ShowRoot>true</ShowRoot>
+							<AllowRootChoice>false</AllowRootChoice>
+							<UpdateOnDataChange>Auto</UpdateOnDataChange>
+							<ContextMenu name="BankStatementsAsynchronousExchangeContextMenu" id="297"/>
+							<AutoCommandBar name="BankStatementsAsynchronousExchangeCommandBar" id="298">
+								<Autofill>false</Autofill>
+								<ChildItems>
+									<Button name="BankStatementsAsynchronousExchangeProcessingElectronicDocumentsExchangeWithBankAnalyze" id="366">
+										<Type>CommandBarButton</Type>
+										<CommandName>DataProcessor.ElectronicDocumentsExchangeWithBank.Command.Analyze</CommandName>
+										<DataPath>Items.BankStatementsAsynchronousExchange.CurrentData.ElectronicDocument</DataPath>
+										<ExtendedTooltip name="BankStatementsAsynchronousExchangeProcessingElectronicDocumentsExchangeWithBankAnalyzeExtendedTooltip" id="367"/>
+									</Button>
+									<Button name="DeleteReceivedPackages" id="309">
+										<Type>CommandBarButton</Type>
+										<OnlyInAllActions>false</OnlyInAllActions>
+										<CommandName>11:409b9a53-7f7e-4178-86c1-33176c7c7a7a</CommandName>
+										<ExtendedTooltip name="DeleteReceivedPackagesExtendedTooltip" id="310"/>
+									</Button>
+									<ButtonGroup name="BankStatementsAsynchronousExchangeGroup1" id="368">
+										<CommandSource>Item.BankStatementsAsynchronousExchange</CommandSource>
+										<ExtendedTooltip name="BankStatementsAsynchronousExchangeGroup1ExtendedTooltip" id="369"/>
+									</ButtonGroup>
+								</ChildItems>
+							</AutoCommandBar>
+							<ExtendedTooltip name="BankStatementsAsynchronousExchangeExtendedTooltip" id="299"/>
+							<SearchStringAddition name="BankStatementsAsynchronousExchangeSearchString" id="357">
+								<AdditionSource>
+									<Item>BankStatementsAsynchronousExchange</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="BankStatementsAsynchronousExchangeSearchStringContextMenu" id="358"/>
+								<ExtendedTooltip name="BankStatementsAsynchronousExchangeSearchStringExtendedTooltip" id="359"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="BankStatementsAsynchronousExchangeViewStatus" id="360">
+								<AdditionSource>
+									<Item>BankStatementsAsynchronousExchange</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="BankStatementsAsynchronousExchangeViewStatusContextMenu" id="361"/>
+								<ExtendedTooltip name="BankStatementsAsynchronousExchangeViewStatusExtendedTooltip" id="362"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="BankStatementsAsynchronousExchangeSearchManagement" id="363">
+								<AdditionSource>
+									<Item>BankStatementsAsynchronousExchange</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="BankStatementsAsynchronousExchangeSearchManagementContextMenu" id="364"/>
+								<ExtendedTooltip name="BankStatementsAsynchronousExchangeSearchManagementExtendedTooltip" id="365"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="ChoiceProcessing">BankStatementsAsynchronousExchangeChoiceProcessing</Event>
+							</Events>
+							<ChildItems>
+								<LabelField name="BankStatementsAsynchronousExchangeCreationDate" id="300">
+									<DataPath>BankStatementsAsynchronousExchange.CreationDate</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Date</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="BankStatementsAsynchronousExchangeCreationDateContextMenu" id="301"/>
+									<ExtendedTooltip name="BankStatementsAsynchronousExchangeCreationDateExtendedTooltip" id="302"/>
+								</LabelField>
+								<LabelField name="BankStatementsAsynchronousExchangeElectronicDocument" id="303">
+									<DataPath>BankStatementsAsynchronousExchange.ElectronicDocument</DataPath>
+									<ContextMenu name="BankStatementsAsynchronousExchangeElectronicDocumentContextMenu" id="304"/>
+									<ExtendedTooltip name="BankStatementsAsynchronousExchangeElectronicDocumentExtendedTooltip" id="305"/>
+								</LabelField>
+								<LabelField name="BankStatementsAsynchronousExchangeStatus" id="306">
+									<DataPath>BankStatementsAsynchronousExchange.Status</DataPath>
+									<ContextMenu name="BankStatementsAsynchronousExchangeStatusContextMenu" id="307"/>
+									<ExtendedTooltip name="BankStatementsAsynchronousExchangeStatusExtendedTooltip" id="308"/>
+								</LabelField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.ElectronicDocumentsExchangeWithBank</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<Save>
+				<Field>Object.EDAgreement</Field>
+				<Field>Object.BankAccount</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="Period" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Period</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:StandardPeriod</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+			<Save>
+				<Field>Period</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="BankStatements" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Bank statements</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<UseAlways>
+				<Field>BankStatements.EDAgreement</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>SELECT
+	EDAttachedFiles.CreationDate AS SendingDate,
+	EDAttachedFiles.Ref AS BankStatement,
+	EDAttachedFiles.EDAgreement
+FROM
+	Catalog.EDAttachedFiles AS EDAttachedFiles
+WHERE
+	EDAttachedFiles.EDKind = VALUE(Enum.EDKinds.BankStatement)
+	AND Not EDAttachedFiles.DeletionMark</QueryText>
+				<MainTable>Catalog.EDAttachedFiles</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemField">
+							<dcsset:field>SendingDate</dcsset:field>
+							<dcsset:orderType>Desc</dcsset:orderType>
+						</dcsset:item>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="PaymentOrdersToSend" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Payment orders to be sent</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Date" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Date</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>Date</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+				<Column name="Recipient" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Recipient</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:TypeSet>cfg:CatalogRef</v8:TypeSet>
+					</Type>
+				</Column>
+				<Column name="DocumentAmount" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Document amount</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="CompanyAccount" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Company's account</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:TypeSet>cfg:CatalogRef</v8:TypeSet>
+					</Type>
+				</Column>
+				<Column name="RecipientAccount" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Payee account</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:TypeSet>cfg:CatalogRef</v8:TypeSet>
+					</Type>
+				</Column>
+				<Column name="PaymentDestination" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Description of payment purpose</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ElectronicDocument" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Electronic document</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.EDAttachedFiles</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Exporting" id="8">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Exporting</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="PaymentOrdersInProcessing" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Payment orders in processing</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<UseAlways>
+				<Field>5/10</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>SELECT
+	EDStates.ObjectReference.Counterparty AS Recipient,
+	EDStates.ObjectReference.Number AS Number,
+	EDStates.ObjectReference.Date AS Date,
+	EDStates.ObjectReference.CounterpartyAccount AS RecipientAccount,
+	EDStates.ObjectReference.CompanyAccount AS CompanyAccount,
+	EDAttachedFiles.DocumentAmount AS DocumentAmount,
+	EDAttachedFiles.AdditionalInformation AS PaymentDestination,
+	EDAttachedFiles.Ref AS ElectronicDocument,
+	EDAttachedFiles.EDStatus AS EDStatus,
+	EDAttachedFiles.EDAgreement
+FROM
+	InformationRegister.EDStates AS EDStates
+		LEFT JOIN Catalog.EDAttachedFiles AS EDAttachedFiles
+		ON EDStates.ElectronicDocument = EDAttachedFiles.Ref
+WHERE
+	(EDStates.EDVersionState = VALUE(Enum.EDVersionsStates.ExpectedPerformance)
+			OR EDStates.EDVersionState = VALUE(Enum.EDVersionsStates.NotificationAboutReceivingExpected))
+	AND EDAttachedFiles.EDKind = VALUE(Enum.EDKinds.PaymentOrder)</QueryText>
+				<MainTable>Catalog.EDAttachedFiles</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="BankStatementSberbank" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Bank statement sberbank</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<UseAlways>
+				<Field>BankStatementSberbank.EDAgreement</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>SELECT
+	EDAttachedFiles.Ref AS ElectronicDocument,
+	EDAttachedFiles.EDStatus AS Status,
+	EDAttachedFiles.CreationDate,
+	EDAttachedFiles.EDAgreement
+FROM
+	Catalog.EDAttachedFiles AS EDAttachedFiles
+WHERE
+	(EDAttachedFiles.EDKind = VALUE(Enum.EDKinds.QueryStatement)
+			OR EDAttachedFiles.EDKind = VALUE(Enum.EDKinds.BankStatement))</QueryText>
+				<MainTable>Catalog.EDAttachedFiles</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemField">
+							<dcsset:field>CreationDate</dcsset:field>
+							<dcsset:orderType>Desc</dcsset:orderType>
+						</dcsset:item>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="FilterPeriod" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Period of filter</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:StandardPeriod</v8:Type>
+			</Type>
+			<Save>
+				<Field>FilterPeriod</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="BankApplication" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Bank application</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.BankApplications</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="BankStatementsAsynchronousExchange" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Bank statement sberbank</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<UseAlways>
+				<Field>BankStatementsAsynchronousExchange.EDAgreement</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>SELECT
+	EDAttachedFiles.Ref AS ElectronicDocument,
+	EDAttachedFiles.EDStatus AS Status,
+	EDAttachedFiles.CreationDate,
+	EDAttachedFiles.EDAgreement
+FROM
+	Catalog.EDAttachedFiles AS EDAttachedFiles
+WHERE
+	(EDAttachedFiles.EDKind = VALUE(Enum.EDKinds.QueryStatement)
+			OR EDAttachedFiles.EDKind = VALUE(Enum.EDKinds.BankStatement))
+	AND Not EDAttachedFiles.EDStatus = VALUE(Enum.EDStatuses.Processed)</QueryText>
+				<MainTable>Catalog.EDAttachedFiles</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemField">
+							<dcsset:field>CreationDate</dcsset:field>
+							<dcsset:orderType>Desc</dcsset:orderType>
+						</dcsset:item>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<ConditionalAppearance>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>BankAccount</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Object.BankAccount</dcsset:left>
+						<dcsset:comparisonType>NotFilled</dcsset:comparisonType>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>TextColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:FileLockedByAnotherUser</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Text</dcscor:parameter>
+						<dcscor:value xsi:type="xs:string">By all accounts</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+		</ConditionalAppearance>
+	</Attributes>
+	<Commands>
+		<Command name="RequestStatement" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Request statement</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Request statement</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>RequestStatement</Action>
+		</Command>
+		<Command name="CancelSelected" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Mark selected</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Mark selected rows</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.CheckAll</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>CancelSelected</Action>
+		</Command>
+		<Command name="UncheckSelectionFromAllRows" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Uncheck all rows</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Uncheck all rows</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.UncheckAll</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>UncheckSelectionFromAllRows</Action>
+		</Command>
+		<Command name="SendMarked" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Send marked</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Send marked</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.OutgoingEmail</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>SendMarked</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="Refresh" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Refresh</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Refresh</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Refresh</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Refresh</Action>
+		</Command>
+		<Command name="GetStatuses" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Get statuses</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Get statuses</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.Information</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>GetStatuses</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="GetStatement" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Get statement</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Get statement</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>GetStatement</Action>
+		</Command>
+		<Command name="ConnectionTest" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Connection test</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Connection test</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ConnectionTest</Action>
+		</Command>
+		<Command name="QueryExtractSberbank" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Request statement</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Request Sberbank statement</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>QueryExtractSberbank</Action>
+		</Command>
+		<Command name="SelectPeriod" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Select period</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Select period</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>0</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>SelectPeriod</Action>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="OpenPage">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

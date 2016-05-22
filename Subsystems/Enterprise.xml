@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<MetaDataObject xmlns="http://v8.1c.ru/8.3/MDClasses" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:cmi="http://v8.1c.ru/8.2/managed-application/cmi" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xpr="http://v8.1c.ru/8.3/xcf/predef" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Subsystem uuid="550e1107-68d9-4ecf-aea1-775da83fff72">
+		<Properties>
+			<Name>Enterprise</Name>
+			<Synonym>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Enterprise</v8:content>
+				</v8:item>
+			</Synonym>
+			<Comment/>
+			<IncludeHelpInContents>true</IncludeHelpInContents>
+			<IncludeInCommandInterface>true</IncludeInCommandInterface>
+			<Explanation/>
+			<Picture>
+				<xr:Ref>CommonPicture.SectionEnterprise</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Content>
+				<xr:Item xsi:type="xr:MDObjectRef">ChartOfAccounts.Managerial</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Catalog.TaxTypes</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Catalog.VATRates</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonCommand.OpenEnteringOpeningBalances</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Catalog.CashRegisters</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Catalog.POSTerminals</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Catalog.ProductsAndServicesCategories</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Catalog.UOMClassifier</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Catalog.PettyCashes</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.EnterOpeningBalance</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Catalog.Calendars</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Catalog.BusinessActivities</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Catalog.Companies</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Catalog.Employees</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Catalog.StructuralUnits</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Catalog.Individuals</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Catalog.ContactPersonsRoles</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Catalog.WorldCountries</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.DeleteAddressClassifier</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonCommand.ReportsPanel_Enterprise</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Report.UFP</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Report.FixedAssets</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Report.FixedAssetsOutput</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Report.TurnoverBalanceSheet</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Report.TaxesSettlements</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonCommand.AdditionalInformationProcessorsEnterprise</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonCommand.AdditionalReportsEnterprise</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Catalog.AlcoholicProductsKinds</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Catalog.AlcoholicProductsVendorLicenses</xr:Item>
+			</Content>
+		</Properties>
+		<ChildObjects>
+			<Subsystem>FinancialTransactions</Subsystem>
+			<Subsystem>Planning</Subsystem>
+			<Subsystem>FixedAssets</Subsystem>
+			<Subsystem>ElectronicDocuments</Subsystem>
+			<Subsystem>ReferenceInformation</Subsystem>
+		</ChildObjects>
+	</Subsystem>
+</MetaDataObject>

@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<CommandSet>
+		<ExcludedCommand>SetDeletionMark</ExcludedCommand>
+		<ExcludedCommand>Delete</ExcludedCommand>
+	</CommandSet>
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<ChildItems>
+			<Button name="FormSetDeletionMark" id="53">
+				<Type>CommandBarButton</Type>
+				<OnlyInAllActions>false</OnlyInAllActions>
+				<CommandName>Form.Command.SetDeletionMark</CommandName>
+				<ExtendedTooltip name="FormSetDeletionMarkExtendedTooltip" id="54"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="AfterWrite">AfterWrite</Event>
+		<Event name="AfterWriteAtServer">AfterWriteAtServer</Event>
+		<Event name="OnOpen">OnOpen</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+		<Event name="FillCheckProcessingAtServer">FillCheckProcessingAtServer</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="Description" id="50">
+			<DataPath>Object.Description</DataPath>
+			<DropListButton>true</DropListButton>
+			<ContextMenu name="DescriptionContextMenu" id="51"/>
+			<ExtendedTooltip name="DescriptionExtendedTooltip" id="52"/>
+			<Events>
+				<Event name="OnChange">DescriptionOnChange</Event>
+				<Event name="ChoiceProcessing">DescriptionChoiceProcessing</Event>
+			</Events>
+		</InputField>
+		<InputField name="ApplicationName" id="1">
+			<DataPath>Object.ApplicationName</DataPath>
+			<Width>50</Width>
+			<ChoiceListButton>true</ChoiceListButton>
+			<BackColor>style:ManagingFieldBackgroundColor</BackColor>
+			<ContextMenu name="ApplicationNameContextMenu" id="2"/>
+			<ExtendedTooltip name="ApplicationNameExtendedTooltip" id="3"/>
+			<Events>
+				<Event name="OnChange">ApplicationNameOnChange</Event>
+			</Events>
+		</InputField>
+		<InputField name="ApplicationType" id="4">
+			<DataPath>Object.ApplicationType</DataPath>
+			<BackColor>style:ManagingFieldBackgroundColor</BackColor>
+			<ContextMenu name="ApplicationTypeContextMenu" id="5"/>
+			<ExtendedTooltip name="ApplicationTypeExtendedTooltip" id="6"/>
+			<Events>
+				<Event name="OnChange">ApplicationTypeOnChange</Event>
+			</Events>
+		</InputField>
+		<InputField name="SignAlgorithm" id="7">
+			<DataPath>Object.SignAlgorithm</DataPath>
+			<DropListButton>true</DropListButton>
+			<ContextMenu name="SignAlgorithmContextMenu" id="8"/>
+			<ExtendedTooltip name="SigningAlgorithmExtendedTooltip" id="9"/>
+		</InputField>
+		<InputField name="HashAlgorithm" id="10">
+			<DataPath>Object.HashAlgorithm</DataPath>
+			<DropListButton>true</DropListButton>
+			<ContextMenu name="HashAlgorithmContextMenu" id="11"/>
+			<ExtendedTooltip name="HashAlgorithmExtendedTooltip" id="12"/>
+		</InputField>
+		<InputField name="EncryptionAlgorithm" id="13">
+			<DataPath>Object.EncryptionAlgorithm</DataPath>
+			<DropListButton>true</DropListButton>
+			<ContextMenu name="EncryptAlgorithmContextMenu" id="14"/>
+			<ExtendedTooltip name="EncryptAlgorithmExtendedTooltip" id="15"/>
+		</InputField>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Type>
+				<v8:Type>cfg:CatalogObject.DigitalSignatureAndEncryptionApplications</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ListsOfAlgorithmsIsSuccessfullyCompleted" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Algorithm lists have been successfulle filled</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="IsSubordinatedNode" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>It is a subordinated node</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<View>
+				<xr:Common>false</xr:Common>
+			</View>
+			<Edit>
+				<xr:Common>false</xr:Common>
+			</Edit>
+		</Attribute>
+		<Attribute name="SuppliedSigningAlgorithms" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Supplied signing algorithms</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="SuppliedHashingAlgorithms" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Supplied hashing algorithms</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="SuppliedEncryptionAlgorithms" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Supplied encryption algorithms</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="SetDeletionMark" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Mark for deletion / Clear mark</v8:content>
+				</v8:item>
+			</Title>
+			<Picture>
+				<xr:Ref>StdPicture.MarkToDelete</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>SetDeletionMark</Action>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="SuppliedSettingsID">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

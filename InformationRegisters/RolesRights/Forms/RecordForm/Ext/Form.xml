@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<CommandSet>
+		<ExcludedCommand>Copy</ExcludedCommand>
+	</CommandSet>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<ChildItems>
+			<Button name="FormEnableEditingAbility" id="31">
+				<Type>CommandBarButton</Type>
+				<OnlyInAllActions>false</OnlyInAllActions>
+				<CommandName>Form.Command.EnableEditingAbility</CommandName>
+				<ExtendedTooltip name="FormEnableEditExtendedTooltip" id="32"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="MetadataObject" id="3">
+			<DataPath>Record.MetadataObject</DataPath>
+			<ContextMenu name="MetadataObjectContextMenu" id="4"/>
+			<ExtendedTooltip name="MetadataObjectExtendedTooltip" id="33"/>
+		</InputField>
+		<InputField name="Role" id="1">
+			<DataPath>Record.Role</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Role</v8:content>
+				</v8:item>
+			</Title>
+			<ContextMenu name="RoleContextMenu" id="2"/>
+			<ExtendedTooltip name="RoleExtendedTooltip" id="34"/>
+		</InputField>
+		<UsualGroup name="UserApplicationActions" id="25">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Application user actions</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Application user actions</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Width>60</Width>
+			<Group>Horizontal</Group>
+			<ExtendedTooltip name="ProgremActionsOfUserExtendedTooltip" id="35"/>
+			<ChildItems>
+				<UsualGroup name="VerticalGroup1" id="29">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Vertical group1</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="VerticalGroup1ExtendedTooltip" id="36"/>
+					<ChildItems>
+						<CheckBoxField name="Read" id="27">
+							<DataPath>Read</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<TitleLocation>Right</TitleLocation>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Read right is always enabled when there is a register record.</v8:content>
+								</v8:item>
+							</ToolTip>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ReadingContextMenu" id="28"/>
+							<ExtendedTooltip name="ReadExtendedTooltip" id="37"/>
+						</CheckBoxField>
+						<CheckBoxField name="Insert" id="5">
+							<DataPath>Record.Insert</DataPath>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="AddContextMenu" id="6"/>
+							<ExtendedTooltip name="AddingExtendedTooltip" id="38"/>
+						</CheckBoxField>
+						<CheckBoxField name="Update" id="7">
+							<DataPath>Record.Update</DataPath>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ContextMenuChange" id="8"/>
+							<ExtendedTooltip name="UpdateExtendedTooltip" id="39"/>
+						</CheckBoxField>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="VerticalGroup2" id="30">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content> </v8:content>
+						</v8:item>
+					</Title>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="VerticalGroup2ExtendedTooltip" id="41"/>
+					<ChildItems>
+						<CheckBoxField name="ReadingNotLimited" id="11">
+							<DataPath>Record.ReadingNotLimited</DataPath>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="NotLimitedReadingContextMenu" id="12"/>
+							<ExtendedTooltip name="NotLimitedReadingExtendedTooltip" id="42"/>
+						</CheckBoxField>
+						<CheckBoxField name="AddingNotLimited" id="13">
+							<DataPath>Record.AddingNotLimited</DataPath>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="AddingNotLimitedContextMenu" id="14"/>
+							<ExtendedTooltip name="AddingNotLimitedExtendedTooltip" id="43"/>
+						</CheckBoxField>
+						<CheckBoxField name="ChangingNotLimited" id="15">
+							<DataPath>Record.ChangingNotLimited</DataPath>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ChangingNotLimitedContextMenu" id="16"/>
+							<ExtendedTooltip name="ChangingNotLimitedExtendedTooltip" id="44"/>
+						</CheckBoxField>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="InteractiveUserActions" id="26">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Interactive user actions (main)</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Interactive user actions (main)</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Width>60</Width>
+			<Group>Vertical</Group>
+			<ExtendedTooltip name="InteractiveUserActionsExtendedTooltip" id="46"/>
+			<ChildItems>
+				<CheckBoxField name="view" id="19">
+					<DataPath>Record.view</DataPath>
+					<TitleLocation>Right</TitleLocation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ViewContextMenu" id="20"/>
+					<ExtendedTooltip name="ViewExtendedTooltip" id="47"/>
+				</CheckBoxField>
+				<CheckBoxField name="InteractiveInsert" id="21">
+					<DataPath>Record.InteractiveInsert</DataPath>
+					<TitleLocation>Right</TitleLocation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="InteractiveInsertContextMenu" id="22"/>
+					<ExtendedTooltip name="InteractiveInsertExtendedTooltip" id="48"/>
+				</CheckBoxField>
+				<CheckBoxField name="Edit" id="23">
+					<DataPath>Record.Edit</DataPath>
+					<TitleLocation>Right</TitleLocation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="EditContextMenu" id="24"/>
+					<ExtendedTooltip name="EditingExtendedTooltip" id="49"/>
+				</CheckBoxField>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Record" id="1">
+			<Type>
+				<v8:Type>cfg:InformationRegisterRecordManager.RolesRights</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="Read" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Read</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="EnableEditingAbility" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Enable editing</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Enable editing for error search only (requires advanced knowledge of the mechanism work)</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>EnableEditingAbility</Action>
+		</Command>
+	</Commands>
+</Form>

@@ -1,0 +1,1247 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<AutoTime>CurrentOrLast</AutoTime>
+	<UsePostingMode>Auto</UsePostingMode>
+	<RepostOnWrite>true</RepostOnWrite>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<ButtonGroup name="ImportantCommandsGroup" id="91">
+				<Title>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Important commands group</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTip>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Important commands group</v8:content>
+					</v8:item>
+				</ToolTip>
+				<ExtendedTooltip name="ImportantCommandsGroupExtendedTooltip" id="92"/>
+				<ChildItems>
+					<Button name="FormSendMessaging" id="93">
+						<Type>CommandBarButton</Type>
+						<Representation>PictureAndText</Representation>
+						<DefaultButton>true</DefaultButton>
+						<CommandName>Form.Command.SendMailing</CommandName>
+						<Picture>
+							<xr:Ref>CommonPicture.SendByEmail</xr:Ref>
+							<xr:LoadTransparent>true</xr:LoadTransparent>
+						</Picture>
+						<ExtendedTooltip name="FormSendMailingExtendedTooltip" id="94"/>
+					</Button>
+					<Button name="FormWrite" id="95">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.StandardCommand.Write</CommandName>
+						<ExtendedTooltip name="FormWriteExtendedTooltip" id="96"/>
+					</Button>
+					<Button name="FormCommonCommandRemind" id="191">
+						<Type>CommandBarButton</Type>
+						<CommandName>CommonCommand.Remind</CommandName>
+						<DataPath>Object.Ref</DataPath>
+						<ExtendedTooltip name="FormCommonCommandRemindExtendedTooltip" id="192"/>
+					</Button>
+				</ChildItems>
+			</ButtonGroup>
+			<ButtonGroup name="GroupGlobalCommands" id="97">
+				<Title>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Global commands group</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTip>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Global commands group</v8:content>
+					</v8:item>
+				</ToolTip>
+				<CommandSource>FormCommandPanelGlobalCommands</CommandSource>
+				<ExtendedTooltip name="GroupGlobalCommandsExtendedTooltip" id="98"/>
+			</ButtonGroup>
+			<Button name="FormChangeForm" id="99">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
+				<ExtendedTooltip name="FormChangeFormExtendedTooltip" id="100"/>
+			</Button>
+			<Button name="FormHelp" id="101">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.Help</CommandName>
+				<ExtendedTooltip name="FormHelpExtendedTooltip" id="102"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnReadAtServer">OnReadAtServer</Event>
+		<Event name="BeforeWriteAtServer">BeforeWriteAtServer</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+		<Event name="OnWriteAtServer">OnWriteAtServer</Event>
+		<Event name="FillCheckProcessingAtServer">FillCheckProcessingAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="GroupSendingMethodCreateEvents" id="177">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group sending method create events</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group sending method create events</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="GroupSendingMethodCreateEventsExtendedTooltip" id="178"/>
+			<ChildItems>
+				<RadioButtonField name="SendingMethod" id="7">
+					<DataPath>Object.SendingMethod</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<RadioButtonType>Tumbler</RadioButtonType>
+					<ChoiceList>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Email</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xr:DesignTimeRef">Enum.ConnectionChannelTypes.EnumValue.Email</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation/>
+								<Value xsi:type="xr:DesignTimeRef">Enum.ConnectionChannelTypes.EnumValue.SMS</Value>
+							</xr:Value>
+						</xr:Item>
+					</ChoiceList>
+					<ContextMenu name="SendingMethodContextMenu" id="8"/>
+					<ExtendedTooltip name="SendingMethodExtendedTooltip" id="9"/>
+					<Events>
+						<Event name="OnChange">SendingMethodOnChange</Event>
+					</Events>
+				</RadioButtonField>
+				<CheckBoxField name="CreateEvents" id="188">
+					<DataPath>Object.CreateEvents</DataPath>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="CreateEventsContextMenu" id="189"/>
+					<ExtendedTooltip name="CreateEventsExtendedTooltip" id="190"/>
+				</CheckBoxField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="GroupSubject" id="195">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group subject</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group subject</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="GroupSubjectExtendedTooltip" id="196"/>
+			<ChildItems>
+				<InputField name="Subject" id="13">
+					<DataPath>Object.Subject</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ChoiceButton>true</ChoiceButton>
+					<ContextMenu name="SubjectContextMenu" id="14"/>
+					<ExtendedTooltip name="SubjectExtendedTooltip" id="15"/>
+					<Events>
+						<Event name="AutoComplete">SubjectAutoSelection</Event>
+						<Event name="StartChoice">SubjectStartChoice</Event>
+						<Event name="ChoiceProcessing">SubjectChoiceProcessing</Event>
+					</Events>
+				</InputField>
+				<Button name="FillContentBySubject" id="193">
+					<Type>UsualButton</Type>
+					<CommandName>Form.Command.FillContentBySubject</CommandName>
+					<ExtendedTooltip name="FillContentBySubjectExtendedTooltip" id="194"/>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
+		<Pages name="Pages" id="59">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Pages</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Pages</v8:content>
+				</v8:item>
+			</ToolTip>
+			<ExtendedTooltip name="PagesExtendedTooltip" id="60"/>
+			<ChildItems>
+				<Page name="ContentGroup" id="63">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Content</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Content group</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="GroupContentExtendedTooltip" id="64"/>
+					<ChildItems>
+						<CommandBar name="CommandBarContent" id="103">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Command bar content</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Command bar content</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ExtendedTooltip name="CommandBarContentExtendedTooltip" id="104"/>
+							<ChildItems>
+								<Popup name="InsertParameter" id="107">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Insert parameter</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Insert parameter</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="InsertParameterExtendedTooltip" id="108"/>
+									<ChildItems>
+										<Button name="ParameterTime" id="113">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.ParameterTime</CommandName>
+											<ExtendedTooltip name="ParameterTimeExtendedTooltip" id="114"/>
+										</Button>
+										<Button name="ParameterDate" id="109">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.ParameterDate</CommandName>
+											<ExtendedTooltip name="ParameterDateExtendedTooltip" id="110"/>
+										</Button>
+										<Popup name="ParametersRecipientName" id="115">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Recipient name</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Parameters recipient name</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ExtendedTooltip name="ParametersRecipientNameExtendedTooltip" id="116"/>
+											<ChildItems>
+												<Button name="ParameterRecipientDescriptionFull" id="111">
+													<Type>CommandBarButton</Type>
+													<CommandName>Form.Command.ParameterRecipientNameNominativeCase</CommandName>
+													<ExtendedTooltip name="ParameterRecipientDescriptionFullExtendedTooltip" id="112"/>
+												</Button>
+												<Button name="ParameterRecipientNameGenitiveCase" id="117">
+													<Type>CommandBarButton</Type>
+													<CommandName>Form.Command.ParameterRecipientNameGenitiveCase</CommandName>
+													<ExtendedTooltip name="ParameterRecipientNameGenitiveCaseExtendedTooltip" id="118"/>
+												</Button>
+												<Button name="ParameterRecipientNameDativeCase" id="119">
+													<Type>CommandBarButton</Type>
+													<CommandName>Form.Command.ParameterRecipientNameDativeCase</CommandName>
+													<ExtendedTooltip name="ParameterRecipientNameDativeCaseExtendedTooltip" id="120"/>
+												</Button>
+												<Button name="ParameterRecipientNameAccusativeCase" id="121">
+													<Type>CommandBarButton</Type>
+													<CommandName>Form.Command.ParameterRecipientNameAccusativeCase</CommandName>
+													<ExtendedTooltip name="ParameterRecipientNameAccusativeCaseExtendedTooltip" id="122"/>
+												</Button>
+												<Button name="ParameterRecipientNameAblativeCase" id="123">
+													<Type>CommandBarButton</Type>
+													<CommandName>Form.Command.ParameterRecipientNameAblativeCase</CommandName>
+													<ExtendedTooltip name="ParameterRecipientNameAblativeCaseExtendedTooltip" id="124"/>
+												</Button>
+												<Button name="ParameterRecipientNamePrepositionalCase" id="125">
+													<Type>CommandBarButton</Type>
+													<CommandName>Form.Command.ParameterRecipientNamePrepositionalCase</CommandName>
+													<ExtendedTooltip name="ParameterRecipientNamePrepositionalCaseExtendedTooltip" id="126"/>
+												</Button>
+											</ChildItems>
+										</Popup>
+									</ChildItems>
+								</Popup>
+								<ButtonGroup name="FormattedDocumentStandardCommands" id="78">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Formatted document standard commands</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Formatted document standard commands</v8:content>
+										</v8:item>
+									</ToolTip>
+									<CommandSource>Item.FormattedDocument</CommandSource>
+									<ExtendedTooltip name="FormattedDocumentStandardCommandsExtendedTooltip" id="79"/>
+								</ButtonGroup>
+							</ChildItems>
+						</CommandBar>
+						<Pages name="ContentKind" id="69">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Content kind</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Content kind</v8:content>
+								</v8:item>
+							</ToolTip>
+							<PagesRepresentation>None</PagesRepresentation>
+							<ExtendedTooltip name="ContentKindExtendedTooltip" id="70"/>
+							<ChildItems>
+								<Page name="ForEmail" id="71">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>For Email</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>For email</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="ForEmailExtendedTooltip" id="72"/>
+									<ChildItems>
+										<FormattedDocumentField name="FormattedDocument" id="75">
+											<DataPath>FormattedDocument</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Email text</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ContextMenu name="RichDocumentContextMenu" id="76"/>
+											<ExtendedTooltip name="FormattedDocumentExtendedTooltip" id="77"/>
+										</FormattedDocumentField>
+									</ChildItems>
+								</Page>
+								<Page name="ForSMS" id="73">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>For SMS</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>For SMS</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="ForSMSExtendedTooltip" id="74"/>
+									<ChildItems>
+										<InputField name="Content" id="16">
+											<DataPath>Object.Content</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>SMS text</v8:content>
+												</v8:item>
+											</ToolTip>
+											<EditMode>EnterOnInput</EditMode>
+											<MultiLine>true</MultiLine>
+											<ExtendedEdit>true</ExtendedEdit>
+											<EditTextUpdate>OnValueChange</EditTextUpdate>
+											<ContextMenu name="ContentContextMenu" id="17"/>
+											<ExtendedTooltip name="ContentExtendedTooltip" id="18"/>
+										</InputField>
+									</ChildItems>
+								</Page>
+							</ChildItems>
+						</Pages>
+					</ChildItems>
+				</Page>
+				<Page name="AttachmentsGroup" id="127">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Attachments</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group attachments</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="GroupAttachmentsExtendedTooltip" id="128"/>
+					<ChildItems>
+						<Table name="Attachments" id="129">
+							<Representation>List</Representation>
+							<CommandBarLocation>Top</CommandBarLocation>
+							<Header>false</Header>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>Attachments</DataPath>
+							<RowPictureDataPath>Attachments.PictureIndex</RowPictureDataPath>
+							<RowsPicture>
+								<xr:Ref>CommonPicture.FileIconCollection</xr:Ref>
+								<xr:LoadTransparent>true</xr:LoadTransparent>
+							</RowsPicture>
+							<CommandSet>
+								<ExcludedCommand>Copy</ExcludedCommand>
+								<ExcludedCommand>SortListAsc</ExcludedCommand>
+								<ExcludedCommand>SelectAll</ExcludedCommand>
+								<ExcludedCommand>SortListDesc</ExcludedCommand>
+								<ExcludedCommand>CopyToClipboard</ExcludedCommand>
+								<ExcludedCommand>EndEdit</ExcludedCommand>
+								<ExcludedCommand>Change</ExcludedCommand>
+							</CommandSet>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="AttachmentsContextMenu" id="130">
+								<ChildItems>
+									<ButtonGroup name="GroupAddDeleteFile" id="151">
+										<Title>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Group add delete file</v8:content>
+											</v8:item>
+										</Title>
+										<ToolTip>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Group add delete file</v8:content>
+											</v8:item>
+										</ToolTip>
+										<ExtendedTooltip name="GroupAddDeleteFileExtendedTooltip" id="152"/>
+										<ChildItems>
+											<Button name="AttachmentsContextMenuAdd" id="153">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Item.Attachments.StandardCommand.Add</CommandName>
+												<Title>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Add file</v8:content>
+													</v8:item>
+												</Title>
+												<ExtendedTooltip name="AttachmentsAddContextMenuExtendedTooltip" id="154"/>
+											</Button>
+											<Button name="AttachmentsContextMenuDelete" id="155">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Item.Attachments.StandardCommand.Delete</CommandName>
+												<Title>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Delete file</v8:content>
+													</v8:item>
+												</Title>
+												<ExtendedTooltip name="AttachmentsDeleteExtendedContextMenuToolTip" id="156"/>
+											</Button>
+										</ChildItems>
+									</ButtonGroup>
+									<ButtonGroup name="GroupOpenFile" id="157">
+										<Title>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Group open file</v8:content>
+											</v8:item>
+										</Title>
+										<ToolTip>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Group open file</v8:content>
+											</v8:item>
+										</ToolTip>
+										<ExtendedTooltip name="GroupOpenFileExtendedTooltip" id="158"/>
+										<ChildItems>
+											<Button name="AttachmentsContextMenuOpenFile" id="159">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.OpenFile</CommandName>
+												<Picture>
+													<xr:Ref>StdPicture.Magnifier</xr:Ref>
+													<xr:LoadTransparent>true</xr:LoadTransparent>
+												</Picture>
+												<ExtendedTooltip name="AttachmentsOpenFileContextMenuExtendedTooltip" id="160"/>
+											</Button>
+										</ChildItems>
+									</ButtonGroup>
+									<ButtonGroup name="GroupMoveUpDown" id="161">
+										<Title>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Group move up down</v8:content>
+											</v8:item>
+										</Title>
+										<ToolTip>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Group move up down</v8:content>
+											</v8:item>
+										</ToolTip>
+										<ExtendedTooltip name="GroupMoveUpDownExtendedTooltip" id="162"/>
+										<ChildItems>
+											<Button name="AttachmentsContextMenuMoveUp" id="163">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Item.Attachments.StandardCommand.MoveUp</CommandName>
+												<ExtendedTooltip name="AttachmentsContextMenuMoveUpExtendedTooltip" id="164"/>
+											</Button>
+											<Button name="AttachmentsContextMenuMoveDown" id="165">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Item.Attachments.StandardCommand.MoveDown</CommandName>
+												<ExtendedTooltip name="AttachmentsContextMenuMoveDownExtendedTooltip" id="166"/>
+											</Button>
+										</ChildItems>
+									</ButtonGroup>
+									<Button name="AttachmentsContextMenuOutputList" id="167">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Item.Attachments.StandardCommand.OutputList</CommandName>
+										<ExtendedTooltip name="AttachmentsContextMenuOutputListExtendedTooltip" id="168"/>
+									</Button>
+								</ChildItems>
+							</ContextMenu>
+							<AutoCommandBar name="AttachmentsCommandBar" id="131"/>
+							<ExtendedTooltip name="AttachmentsExtendedTooltip" id="132"/>
+							<SearchStringAddition name="AttachmentsSearchString" id="133">
+								<AdditionSource>
+									<Item>Attachments</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="AttachmentsSearchStringContextMenu" id="136"/>
+								<ExtendedTooltip name="AttachmentsSearchStringExtendedTooltip" id="137"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="AttachmentsViewState" id="138">
+								<AdditionSource>
+									<Item>Attachments</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="AttachmentsViewStatusContextMenu" id="141"/>
+								<ExtendedTooltip name="AttachmentsViewStatusExtendedTooltip" id="142"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="AttachmentsSearchControl" id="143">
+								<AdditionSource>
+									<Item>Attachments</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="AttachmentsSearchControlContextMenu" id="146"/>
+								<ExtendedTooltip name="AttachmentsSearchControlExtendedTooltip" id="147"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="DragCheck">AttachmentsDragCheck</Event>
+								<Event name="Selection">AttachmentsSelection</Event>
+								<Event name="BeforeAddRow">AttachmentsBeforeAdd</Event>
+								<Event name="Drag">AttachmentsDrag</Event>
+							</Events>
+							<ChildItems>
+								<InputField name="AttachmentsPresentation" id="169">
+									<DataPath>Attachments.Presentation</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Attachments</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="AttachmentsPresentationContextMenu" id="170"/>
+									<ExtendedTooltip name="AttachmentsPresentationExtendedTooltip" id="171"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="GroupRecipients" id="61">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Recipients</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group recipients</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="GroupRecipientsExtendedTooltip" id="62"/>
+					<ChildItems>
+						<Table name="Recipients" id="34">
+							<Representation>List</Representation>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<AutoAddIncomplete>false</AutoAddIncomplete>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>Object.Recipients</DataPath>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="RecipientsContextMenu" id="35"/>
+							<AutoCommandBar name="RecipientCommandPanel" id="36">
+								<ChildItems>
+									<Button name="RecipientsPickContacts" id="80">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.PickContacts</CommandName>
+										<ExtendedTooltip name="RecipientsPickContactsExtendedTooltip" id="81"/>
+									</Button>
+									<Button name="RecipientsDeleteBlank" id="210">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.DeleteBlank</CommandName>
+										<ExtendedTooltip name="RecipientsDeleteBlankExtendedTooltip" id="211"/>
+									</Button>
+									<Button name="RecipientsRefreshDeliveryStatuses" id="208">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.RefreshDeliveryStatuses</CommandName>
+										<ExtendedTooltip name="RecipientsRefreshDeliveryStatusesExtendedTooltip" id="209"/>
+									</Button>
+								</ChildItems>
+							</AutoCommandBar>
+							<ExtendedTooltip name="RecipientsExtendedTooltip" id="37"/>
+							<SearchStringAddition name="RecipientsSearchString" id="38">
+								<AdditionSource>
+									<Item>Recipients</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="RecipientsSearchStringContextMenu" id="41"/>
+								<ExtendedTooltip name="RecipientsSearchStringExtendedTooltip" id="42"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="RecipientsViewStatus" id="43">
+								<AdditionSource>
+									<Item>Recipients</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="RecipientsViewStatusContextMenu" id="46"/>
+								<ExtendedTooltip name="RecipientsViewStatusExtendedTooltip" id="47"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="RecipientsSearchManagement" id="48">
+								<AdditionSource>
+									<Item>Recipients</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="RecipientsSearchManagementContextMenu" id="51"/>
+								<ExtendedTooltip name="RecipientsSearchManagementExtendedTooltip" id="52"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<LabelField name="RecipientsLineNumber" id="53">
+									<DataPath>Object.Recipients.LineNumber</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="RecipientsLineNumberContextMenu" id="54"/>
+									<ExtendedTooltip name="RecipientsLineNumberExtendedTooltip" id="55"/>
+								</LabelField>
+								<InputField name="ContactRecipients" id="56">
+									<DataPath>Object.Recipients.Contact</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ChoiceButton>true</ChoiceButton>
+									<OpenButton>true</OpenButton>
+									<ChoiceHistoryOnInput>DontUse</ChoiceHistoryOnInput>
+									<ContextMenu name="RecipientsContactContextMenu" id="57"/>
+									<ExtendedTooltip name="ContactRecipientsExtendedTooltip" id="58"/>
+									<Events>
+										<Event name="AutoComplete">ContactRecipientsAutoPick</Event>
+										<Event name="StartChoice">RecipientsContactStartChoice</Event>
+										<Event name="Opening">ContactRecipientsOpen</Event>
+										<Event name="ChoiceProcessing">RecipientsContactChoiceProcessing</Event>
+									</Events>
+								</InputField>
+								<InputField name="RecipientsHowToContact" id="82">
+									<DataPath>Object.Recipients.HowToContact</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="RecipientsHowToContactContextMenu" id="83"/>
+									<ExtendedTooltip name="RecipientsHowToContactExtendedTooltip" id="84"/>
+								</InputField>
+								<InputField name="RecipientsDeliveryStatus" id="205">
+									<DataPath>Object.Recipients.DeliveryStatus</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>20</Width>
+									<ContextMenu name="RecipientsDeliveryStatusContextMenu" id="206"/>
+									<ExtendedTooltip name="RecipientsDeliveryStatusExtendedTooltip" id="207"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="GroupAdditional" id="67">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Additionally</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group additional</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="GroupAdditionalExtendedTooltip" id="68"/>
+					<ChildItems>
+						<InputField name="Comment" id="25">
+							<DataPath>Object.Comment</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<EditMode>EnterOnInput</EditMode>
+							<MultiLine>true</MultiLine>
+							<InputHint>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Comment</v8:content>
+								</v8:item>
+							</InputHint>
+							<ContextMenu name="CommentContextMenu" id="26"/>
+							<ExtendedTooltip name="CommentExtendedTooltip" id="27"/>
+							<Events>
+								<Event name="OnChange">CommentOnChange</Event>
+							</Events>
+						</InputField>
+						<UsualGroup name="GroupAuthorCreationDate" id="172">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group author creation date</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group author creation date</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupAuthorCreationDateExtendedTooltip" id="173"/>
+							<ChildItems>
+								<LabelField name="Author" id="31">
+									<DataPath>Object.Author</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<TextColor>#993300</TextColor>
+									<ContextMenu name="AuthorContextMenu" id="32"/>
+									<ExtendedTooltip name="AuthorExtendedTooltip" id="33"/>
+								</LabelField>
+								<InputField name="Date" id="174">
+									<DataPath>Object.Date</DataPath>
+									<SkipOnInput>true</SkipOnInput>
+									<ContextMenu name="DateContextMenu" id="175"/>
+									<ExtendedTooltip name="DateExtendedTooltip" id="176"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+		<UsualGroup name="Footer" id="85">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Footer</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Footer</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ChildItemsWidth>LeftWide</ChildItemsWidth>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="FooterExtendedTooltip" id="86"/>
+			<ChildItems>
+				<UsualGroup name="FooterLeft" id="87">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Footer left</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Footer left</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="FooterLeftExtendedTooltip" id="88"/>
+					<ChildItems>
+						<UsualGroup name="GroupInformationSMS" id="200">
+							<Visible>false</Visible>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group SMS information</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group SMS information</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupInformationSMSExtendedTooltip" id="201"/>
+							<ChildItems>
+								<InputField name="SMSSenderName" id="197">
+									<DataPath>Object.SMSSenderName</DataPath>
+									<ContextMenu name="SMSSenderNameContextMenu" id="198"/>
+									<ExtendedTooltip name="SMSSenderNameExtendedTooltip" id="199"/>
+								</InputField>
+								<LabelField name="SMSProvider" id="202">
+									<DataPath>SMSProvider</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>SMS provider which will perform the mailing</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Width>6</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="SMSProviderContextMenu" id="203"/>
+									<ExtendedTooltip name="SMSProviderExtendedTooltip" id="204"/>
+								</LabelField>
+							</ChildItems>
+						</UsualGroup>
+						<InputField name="UserAccount" id="10">
+							<DataPath>Object.UserAccount</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="AccountContextMenu" id="11"/>
+							<ExtendedTooltip name="UserAccountExtendedTooltip" id="12"/>
+						</InputField>
+						<InputField name="Responsible" id="28">
+							<DataPath>Object.Responsible</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="ResponsibleContextMenu" id="29"/>
+							<ExtendedTooltip name="ResponsibleExtendedTooltip" id="30"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="FooterRight" id="89">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Footer right</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Footer right</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="FooterRightExtendedTooltip" id="90"/>
+					<ChildItems>
+						<InputField name="State" id="22">
+							<DataPath>Object.State</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="StateContextMenu" id="23"/>
+							<ExtendedTooltip name="StatusExtendedTooltip" id="24"/>
+						</InputField>
+						<InputField name="DateMailings" id="179">
+							<DataPath>Object.DateMailings</DataPath>
+							<ContextMenu name="DateMailingsContextMenu" id="180"/>
+							<ExtendedTooltip name="DateMailingsExtendedTooltip" id="181"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Type>
+				<v8:Type>cfg:DocumentObject.BulkMail</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+			<UseAlways>
+				<Field>Object.RegisterRecords</Field>
+			</UseAlways>
+		</Attribute>
+		<Attribute name="FormattedDocument" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Formatted document</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type xmlns:fd="http://v8.1c.ru/8.2/data/formatted-document">fd:FormattedDocument</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="Attachments" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Attachments</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+			<Columns>
+				<Column name="Presentation" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Presentation</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="AddressInTemporaryStorage" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Address in temp storage</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="PictureIndex" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Picture index</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>2</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="Ref" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Ref</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.BulkMailAttachedFiles</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="AvailableRightSettingsSMS" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Available SMS settings right</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="SMSSettingsComplete" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>SMS settings complete</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="SMSProvider" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>SMS provider</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.SMSProviders</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="PickContacts" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Pick contacts</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Pick contacts</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>PickContacts</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="SendMailing" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Send messages</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Send messages</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>SendMailing</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="ParameterTime" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Time</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Parameter time</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ParameterTime</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="ParameterDate" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Date</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Parameter time</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ParameterDate</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="ParameterRecipientNameNominativeCase" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Subjective case (who?)</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Parameter time</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ParameterRecipientNameNominativeCase</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="ParameterRecipientNameGenitiveCase" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Genitive case (whom?)</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Parameter time</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ParameterRecipientNameGenitiveCase</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="ParameterRecipientNameDativeCase" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Dative case (to whom?)</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Parameter time</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ParameterRecipientNameDativeCase</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="ParameterRecipientNameAccusativeCase" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Accusative case (whom?)</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Parameter time</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ParameterRecipientNameAccusativeCase</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="ParameterRecipientNameAblativeCase" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Ablative case (by whom?)</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Parameter time</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ParameterRecipientNameAblativeCase</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="ParameterRecipientNamePrepositionalCase" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Prepositional case (about whom?)</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Parameter time</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ParameterRecipientNamePrepositionalCase</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="OpenFile" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Open file</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Open file</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>OpenFile</Action>
+		</Command>
+		<Command name="FillContentBySubject" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Fill in the content by topic</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Fill in the content by topic</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.FillByBasis</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>FillContentBySubject</Action>
+			<Representation>Picture</Representation>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="RefreshDeliveryStatuses" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Refresh delivery statuses</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Refresh delivery statuses</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>RefreshDeliveryStatuses</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="DeleteBlank" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Delete blank</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Delete blank</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>DeleteBlank</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+	</Commands>
+</Form>

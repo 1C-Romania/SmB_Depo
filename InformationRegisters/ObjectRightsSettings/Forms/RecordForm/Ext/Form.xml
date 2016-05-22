@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<CommandSet>
+		<ExcludedCommand>Copy</ExcludedCommand>
+	</CommandSet>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<ChildItems>
+			<Button name="FormEnableEditingAbility" id="29">
+				<Type>CommandBarButton</Type>
+				<OnlyInAllActions>false</OnlyInAllActions>
+				<CommandName>Form.Command.EnableEditingAbility</CommandName>
+				<ExtendedTooltip name="FormEnableEditExtendedTooltip" id="35"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="Object" id="1">
+			<DataPath>Record.Object</DataPath>
+			<ContextMenu name="ContextMenuObject" id="2"/>
+			<ExtendedTooltip name="ObjectExtendedTooltip" id="36"/>
+		</InputField>
+		<InputField name="User" id="3">
+			<DataPath>Record.User</DataPath>
+			<ContextMenu name="UserContextMenu" id="4"/>
+			<ExtendedTooltip name="UserExtendedTooltip" id="37"/>
+		</InputField>
+		<InputField name="Right" id="5">
+			<DataPath>Record.Right</DataPath>
+			<ContextMenu name="RightContextMenu" id="6"/>
+			<ExtendedTooltip name="RightExtendedTooltip" id="38"/>
+		</InputField>
+		<UsualGroup name="RightsProperties" id="30">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Rights properties</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Rights properties</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="PropertiesRightsExtendedTooltip" id="39"/>
+			<ChildItems>
+				<CheckBoxField name="RightDenied" id="9">
+					<DataPath>Record.RightDenied</DataPath>
+					<TitleLocation>Right</TitleLocation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="RightProhibitedContextMenu" id="10"/>
+					<ExtendedTooltip name="RightDeniedExtendedTooltip" id="40"/>
+				</CheckBoxField>
+				<CheckBoxField name="InheritanceAllowed" id="11">
+					<DataPath>Record.InheritanceAllowed</DataPath>
+					<TitleLocation>Right</TitleLocation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="InheritanceAllowedContextMenu" id="12"/>
+					<ExtendedTooltip name="InheritanceAllowedExtendedTooltip" id="41"/>
+				</CheckBoxField>
+			</ChildItems>
+		</UsualGroup>
+		<InputField name="SetupOrder" id="62">
+			<DataPath>Record.SetupOrder</DataPath>
+			<ContextMenu name="SetupOrderContextMenu" id="63"/>
+			<ExtendedTooltip name="SetupOrderExtendedTooltip" id="64"/>
+		</InputField>
+		<UsualGroup name="AuxiliaryData" id="31">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Auxiliary data</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Auxiliary data</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<ExtendedTooltip name="AuxiliaryDataExtendedTooltip" id="42"/>
+			<ChildItems>
+				<InputField name="Table" id="7">
+					<DataPath>Record.Table</DataPath>
+					<AutoMarkIncomplete>false</AutoMarkIncomplete>
+					<ContextMenu name="TableContextMenu" id="8"/>
+					<ExtendedTooltip name="TableExtendedTooltip" id="43"/>
+				</InputField>
+				<UsualGroup name="HorizontalGroup" id="34">
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="HorizontalGroupExtendedTooltip" id="44"/>
+					<ChildItems>
+						<UsualGroup name="VerticalGroup3" id="54">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content> </v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content> </v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="VerticalGroup3ExtendedTooltip" id="55"/>
+							<ChildItems>
+								<InputField name="RightPermissionLevel" id="56">
+									<DataPath>Record.RightPermissionLevel</DataPath>
+									<ContextMenu name="RightPermissionLevelContextMenu" id="57"/>
+									<ExtendedTooltip name="RightPermissionLevelExtendedTooltip" id="58"/>
+								</InputField>
+								<InputField name="RightDeniedLevel" id="59">
+									<DataPath>Record.RightDeniedLevel</DataPath>
+									<ContextMenu name="RightDeniedLevelContextMenu" id="60"/>
+									<ExtendedTooltip name="RightDeniedLevelExtendedTooltip" id="61"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="VerticalGroup1" id="32">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content> </v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content> </v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="VerticalGroup1ExtendedTooltip" id="45"/>
+							<ChildItems>
+								<InputField name="ReadingPermissionLevel" id="13">
+									<DataPath>Record.ReadingPermissionLevel</DataPath>
+									<ContextMenu name="ReadingPermissionLevelContextMenu" id="14"/>
+									<ExtendedTooltip name="ReadingPermissionLevelExtendedTooltip" id="46"/>
+								</InputField>
+								<InputField name="ReadingDeniedLevel" id="21">
+									<DataPath>Record.ReadingDeniedLevel</DataPath>
+									<ContextMenu name="ReadingDeniedLevelContextMenu" id="22"/>
+									<ExtendedTooltip name="ReadingDeniedLevelExtendedTooltip" id="48"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="VerticalGroup2" id="33">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content> </v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content> </v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="VerticalGroup2ExtendedTooltip" id="50"/>
+							<ChildItems>
+								<InputField name="ChangePermissionLevel" id="15">
+									<DataPath>Record.ChangePermissionLevel</DataPath>
+									<ContextMenu name="ChangePermissionLevelContextMenu" id="16"/>
+									<ExtendedTooltip name="ChangePermissionLevelExtendedTooltip" id="51"/>
+								</InputField>
+								<InputField name="ChangeDeniedLevel" id="23">
+									<DataPath>Record.ChangeDeniedLevel</DataPath>
+									<ContextMenu name="ChangeDeniedLevelContextMenu" id="24"/>
+									<ExtendedTooltip name="ChangeDeniedLevelExtendedTooltip" id="53"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Record" id="1">
+			<Type>
+				<v8:Type>cfg:InformationRegisterRecordManager.ObjectRightsSettings</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="EnableEditingAbility" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Enable editing</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Enable editing for error search only (requires advanced knowledge of the mechanism work)</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>EnableEditingAbility</Action>
+		</Command>
+	</Commands>
+</Form>

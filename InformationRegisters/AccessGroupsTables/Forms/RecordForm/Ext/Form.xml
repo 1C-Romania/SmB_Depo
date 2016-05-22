@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<CommandSet>
+		<ExcludedCommand>Copy</ExcludedCommand>
+	</CommandSet>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<ChildItems>
+			<Button name="FormEnableEditingAbility" id="19">
+				<Type>CommandBarButton</Type>
+				<OnlyInAllActions>false</OnlyInAllActions>
+				<CommandName>Form.Command.EnableEditingAbility</CommandName>
+				<ExtendedTooltip name="FormEnableEditExtendedTooltip" id="22"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="Table" id="1">
+			<DataPath>Record.Table</DataPath>
+			<ContextMenu name="TableContextMenu" id="2"/>
+			<ExtendedTooltip name="TableExtendedTooltip" id="23"/>
+		</InputField>
+		<InputField name="AccessGroup" id="5">
+			<DataPath>Record.AccessGroup</DataPath>
+			<ContextMenu name="AccessGroupContextMenu" id="6"/>
+			<ExtendedTooltip name="AccessGroupExtendedTooltip" id="24"/>
+		</InputField>
+		<CheckBoxField name="Read" id="20">
+			<DataPath>Read</DataPath>
+			<ReadOnly>true</ReadOnly>
+			<TitleLocation>Right</TitleLocation>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Flag set as True shows the availability of a right to add in a specified table for a specified user within the specified access group</v8:content>
+				</v8:item>
+			</ToolTip>
+			<CheckBoxType>Auto</CheckBoxType>
+			<ContextMenu name="ReadingContextMenu" id="21"/>
+			<ExtendedTooltip name="ReadExtendedTooltip" id="25"/>
+		</CheckBoxField>
+		<CheckBoxField name="Update" id="9">
+			<DataPath>Record.Update</DataPath>
+			<TitleLocation>Right</TitleLocation>
+			<CheckBoxType>Auto</CheckBoxType>
+			<ContextMenu name="ContextMenuChange" id="10"/>
+			<ExtendedTooltip name="UpdateExtendedTooltip" id="27"/>
+		</CheckBoxField>
+		<InputField name="TableType" id="13">
+			<DataPath>Record.TableType</DataPath>
+			<ContextMenu name="TableTypeContextMenu" id="14"/>
+			<ExtendedTooltip name="TableTypeExtendedTooltip" id="29"/>
+		</InputField>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Record" id="1">
+			<Type>
+				<v8:Type>cfg:InformationRegisterRecordManager.AccessGroupsTables</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="Read" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Read</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="EnableEditingAbility" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Enable editing</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Enable editing for error search only (requires advanced knowledge of the mechanism work)</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>EnableEditingAbility</Action>
+		</Command>
+	</Commands>
+</Form>

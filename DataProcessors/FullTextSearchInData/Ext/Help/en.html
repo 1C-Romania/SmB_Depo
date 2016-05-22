@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"></meta><link rel="stylesheet" type="text/css" href="v8help://service_book/service_style"></link><meta name="GENERATOR" content="MSHTML 11.00.9600.18321"></meta></head><body>
+<p>Full-text data search finds any information both in the card fields and the attached files.</p>
+<p>Start full-text search right from your <strong>Desktop</strong>.<strong> </strong></p>
+<p>You can use such search options as:</p>
+<li>Transliteration (to write Russian words with Latin letters according to the Russian standard GOST). 
+</li><li>Replacement support (to write Russian words with English keyboard layout). 
+</li><li>Fuzzy search (when some letters in the resulting words may be different). 
+<p><strong></strong> </p>
+<p>To start search in the application, enter a word or its first letters. Click <strong>Search</strong>.<strong> </strong>You can enter one or more words to search. Do not use search operator such as <strong>AND, OR, </strong>and <strong>NOT </strong>in the search line. You can insert a navigation link to the data in the search line. IN this case the required form will be opened without data search. To find a navigation link to any infobase object, use the <img src="StdPicture.GetURL"></img> command in the title of each 1C:Enterprise 8 window.</p>
+<h3>Index update</h3>
+<p>In the file infobase variant, the full-text index is not updated automatically and, therefore, requires periodical manual update. If a full-text search index is not relevant (i.e. some data is not yet indexed), you can use the <strong>Update index</strong> button in the file infobase variant.</p>
+<h3>Examples</h3>
+<p></p>
+<table cellpadding="8" width="100%" border="0"><tbody><tr><td valign="top"><strong>Search example</strong></td>
+<td valign="top"><strong>Result</strong></td></tr><tr><td valign="top">"Invoice 00016433"</td>
+<td valign="top">An "Invoice" document with number "00016433"</td></tr><tr><td valign="top">"PO 120000"</td>
+<td valign="top">Payment orders for amounts of 120000 and 120000,50</td></tr><tr><td valign="top">"Smith Purolator"</td>
+<td valign="top">All documents by Smith for the "Purolator" counterparty</td></tr><tr><td valign="top">"Invoice Purolator"</td>
+<td valign="top">All "Invoice" documents for the "Purolator" counterparty</td></tr><tr><td valign="top">"Purolator 07.05"</td>
+<td valign="top">All documents of the "Purolator" counterparty issued on July 05 </td></tr><tr><td valign="top">"Shoes"</td>
+<td valign="top">All entries of "shoes" product stated in order:<br>• White shoes (Product)<br>• Black shoes (Product)<br>• Receipt of goods and services # 00086822<br>• Sale of goods and services # 00016422</td></tr></tbody></table><h3>Tips:</h3>
+<blockquote style="MARGIN-RIGHT: 0px" dir="ltr">
+<ul><li>If too much data has been found, make your query more precise by adding additional conditions (date, amount, counterparty name) 
+</li><li>If too little data has been found, simplify the query by excluding some of the words 
+</li><li>For precise search use: </li></ul><blockquote style="MARGIN-RIGHT: 0px" dir="ltr">
+<ul><li>Quotes - to find an exact phrase, for example: "mini cooper". 
+</li><li>OR - to find one of two words, for example "Purolator OR Fedex" - all occurrences of Purolator and Fedex companies will be found. 
+</li><li>Brackets - to group expressions, e.g. search "Smith (Purolator OR Fedex)" will find all documents issued by Smith to Purolator and Fedex companies.</li></ul></blockquote>
+<ul><li>To include synonyms, use "!"; e.g. search "!number" will find all documents with the word "number" or "quantity". 
+</li><li>To start "fuzzy" search, use "#"; e.g. "Fedex#3" will find all documents containing words which differ from word "Fedex" for one or two letters. 
+</li><li>To search by the beginning of the word, use "*"; e.g. "Fed*" will find all documents, containing words that start from "Fed" - "Federal", "Fedex", etc.</li></ul></blockquote>
+<h3>See also</h3>
+</li><li><a href="v8help://1cv8/QueryLanguageFullTextSearchInData">Full description of search expression format</a> 
+<p></p></li></body></html>

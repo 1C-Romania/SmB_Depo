@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Width>80</Width>
+	<AutoTitle>false</AutoTitle>
+	<Group>Horizontal</Group>
+	<ScalingMode>Normal</ScalingMode>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<Table name="DoublesList" id="1">
+			<Width>70</Width>
+			<Height>5</Height>
+			<UseAlternationRowColor>true</UseAlternationRowColor>
+			<EnableStartDrag>true</EnableStartDrag>
+			<EnableDrag>true</EnableDrag>
+			<DataPath>DoublesList</DataPath>
+			<RowPictureDataPath>DoublesList.ItemsState</RowPictureDataPath>
+			<RowsPicture>
+				<xr:Ref>CommonPicture.ElementsIcons</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</RowsPicture>
+			<SearchStringLocation>None</SearchStringLocation>
+			<ViewStatusLocation>None</ViewStatusLocation>
+			<SearchControlLocation>None</SearchControlLocation>
+			<AutoRefresh>false</AutoRefresh>
+			<AutoRefreshPeriod>60</AutoRefreshPeriod>
+			<Period>
+				<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+				<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+				<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+			</Period>
+			<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+			<RestoreCurrentRow>false</RestoreCurrentRow>
+			<TopLevelParent xsi:nil="true"/>
+			<ShowRoot>false</ShowRoot>
+			<AllowRootChoice>false</AllowRootChoice>
+			<UpdateOnDataChange>Auto</UpdateOnDataChange>
+			<ContextMenu name="DoublesListContextMenu" id="2"/>
+			<AutoCommandBar name="DoublesListCommandBar" id="3">
+				<Autofill>false</Autofill>
+			</AutoCommandBar>
+			<ExtendedTooltip name="DoublesListExtendedTooltip" id="4"/>
+			<SearchStringAddition name="DoublesListSearchString" id="39">
+				<AdditionSource>
+					<Item>DoublesList</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="DoublesListSearchStringContextMenu" id="40"/>
+				<ExtendedTooltip name="DoublesListSearchStringExtendedTooltip" id="41"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="DoublesListViewStatus" id="42">
+				<AdditionSource>
+					<Item>DoublesList</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="DoublesListViewStatusContextMenu" id="43"/>
+				<ExtendedTooltip name="DoublesListViewStatusExtendedTooltip" id="44"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="DoublesListSearchControl" id="45">
+				<AdditionSource>
+					<Item>DoublesList</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="DoublesListSearchControlContextMenu" id="46"/>
+				<ExtendedTooltip name="DoublesListSearchControlExtendedTooltip" id="47"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="Selection">DuplicatesListSelection</Event>
+				<Event name="OnActivateRow">DoublesListOnActivateRow</Event>
+			</Events>
+			<ChildItems>
+				<LabelField name="ListRef" id="5">
+					<DataPath>DoublesList.Ref</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Description</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ReferenceListContextMenu" id="6"/>
+					<ExtendedTooltip name="ListRefExtendedTooltip" id="7"/>
+				</LabelField>
+				<LabelField name="ListOfTIN" id="8">
+					<DataPath>DoublesList.TIN</DataPath>
+					<Width>14</Width>
+					<HorizontalStretch>true</HorizontalStretch>
+					<ContextMenu name="ListOfTINContextMenu" id="9"/>
+					<ExtendedTooltip name="ListOfTINExtendedTooltip" id="10"/>
+				</LabelField>
+				<LabelField name="ListKPP" id="11">
+					<DataPath>DoublesList.KPP</DataPath>
+					<Width>10</Width>
+					<ContextMenu name="ListKPPContextMenu" id="12"/>
+					<ExtendedTooltip name="ListKPPExtendedTooltip" id="13"/>
+				</LabelField>
+				<LabelField name="DoublesCodeList" id="32">
+					<DataPath>DoublesList.Code</DataPath>
+					<ContextMenu name="DoublesListCodeContextMenu" id="33"/>
+					<ExtendedTooltip name="DoublesCodeListExtendedTooltip" id="34"/>
+				</LabelField>
+			</ChildItems>
+		</Table>
+		<UsualGroup name="GroupRelatedDocuments" id="37">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Related documents</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Filter group all Associated documents</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<ExtendedTooltip name="GroupRelatedDocumentsExtendedTooltip" id="38"/>
+			<ChildItems>
+				<Button name="OpenDocumentsOnCounterparty" id="35">
+					<Type>Hyperlink</Type>
+					<CommandName>Form.Command.OpenDocumentsOnCounterparty</CommandName>
+					<ExtendedTooltip name="OpenDocumentsOnCounterpartyExtendedTooltip" id="36"/>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="DoublesList" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Duplicates list</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<UseAlways>
+				<Field>DoublesList.Ref</Field>
+				<Field>DoublesList.ItemsState</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>false</DynamicDataRead>
+				<QueryText>SELECT
+	Counterparties.Ref,
+	Counterparties.TIN,
+	Counterparties.KPP,
+	CASE
+		WHEN Counterparties.DeletionMark
+			THEN 4
+		WHEN Counterparties.Predefined
+			THEN 5
+		ELSE 3
+	END AS ItemsState,
+	Counterparties.Code
+FROM
+	Catalog.Counterparties AS Counterparties
+WHERE
+	Counterparties.TIN = &amp;TIN
+		AND Counterparties.KPP = &amp;KPP</QueryText>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="OpenDocumentsOnCounterparty" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Documents related to counterparty (0)</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Open documents related to counterparty</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>OpenDocumentsOnCounterparty</Action>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="TIN">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>12</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="KPP">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>9</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="ThisIsLegalEntity">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<MetaDataObject xmlns="http://v8.1c.ru/8.3/MDClasses" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:cmi="http://v8.1c.ru/8.2/managed-application/cmi" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xpr="http://v8.1c.ru/8.3/xcf/predef" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<FunctionalOption uuid="97ebdad9-4d60-472c-8721-b777c9de3e7f">
+		<Properties>
+			<Name>AccountingBySeveralBusinessActivities</Name>
+			<Synonym>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Accounting by several business areas</v8:content>
+				</v8:item>
+			</Synonym>
+			<Comment>Accounting by several business areas in one infobase</Comment>
+			<Location>Constant.FunctionalOptionAccountingByMultipleBusinessActivities</Location>
+			<PrivilegedGetMode>true</PrivilegedGetMode>
+			<Content>
+				<xr:Object>Catalog.ProductsAndServices.Attribute.BusinessActivity</xr:Object>
+				<xr:Object>Document.ExpenseReport.TabularSection.Expenses.Attribute.BusinessActivity</xr:Object>
+				<xr:Object>Document.Budget.TabularSection.Incomings.Attribute.BusinessActivity</xr:Object>
+				<xr:Object>Document.Budget.TabularSection.Expenses.Attribute.BusinessActivity</xr:Object>
+				<xr:Object>Document.EnterOpeningBalance.TabularSection.FixedAssets.Attribute.BusinessActivity</xr:Object>
+				<xr:Object>Document.FixedAssetsModernization.TabularSection.FixedAssets.Attribute.BusinessActivity</xr:Object>
+				<xr:Object>Document.Payroll.TabularSection.AccrualsDeductions.Attribute.BusinessActivity</xr:Object>
+				<xr:Object>Document.InventoryTransfer.Attribute.BusinessActivity</xr:Object>
+				<xr:Object>Document.CashReceipt.Attribute.BusinessActivity</xr:Object>
+				<xr:Object>Document.FixedAssetsEnter.TabularSection.FixedAssets.Attribute.BusinessActivity</xr:Object>
+				<xr:Object>Document.SupplierInvoice.TabularSection.Expenses.Attribute.BusinessActivity</xr:Object>
+				<xr:Object>Document.OtherExpenses.TabularSection.Expenses.Attribute.BusinessActivity</xr:Object>
+				<xr:Object>InformationRegister.FixedAssetsParameters.Resource.BusinessActivity</xr:Object>
+				<xr:Object>Document.PaymentExpense.Attribute.BusinessActivity</xr:Object>
+				<xr:Object>Document.CashPayment.Attribute.BusinessActivity</xr:Object>
+				<xr:Object>Document.TaxAccrual.TabularSection.Taxes.Attribute.BusinessActivity</xr:Object>
+			</Content>
+		</Properties>
+	</FunctionalOption>
+</MetaDataObject>

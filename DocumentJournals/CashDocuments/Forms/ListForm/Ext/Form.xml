@@ -1,0 +1,946 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
+	<CommandBarLocation>None</CommandBarLocation>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="FormCommandBar" id="-1"/>
+	<Events>
+		<Event name="NotificationProcessing">NotificationProcessing</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+		<Event name="BeforeLoadDataFromSettingsAtServer">BeforeLoadDataFromSettingsAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="Filters" id="30">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Filters</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Filters</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="FiltersExtendedTooltip" id="383"/>
+			<ChildItems>
+				<InputField name="PettyCash" id="37">
+					<DataPath>PettyCash</DataPath>
+					<SkipOnInput>true</SkipOnInput>
+					<TitleLocation>None</TitleLocation>
+					<Wrap>false</Wrap>
+					<OpenButton>false</OpenButton>
+					<InputHint>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Petty cash</v8:content>
+						</v8:item>
+					</InputHint>
+					<ContextMenu name="TicketBoxContextMenu" id="38"/>
+					<ExtendedTooltip name="PettyCashExtendedTooltip" id="384"/>
+					<Events>
+						<Event name="OnChange">PettyCashOnChange</Event>
+					</Events>
+				</InputField>
+				<InputField name="Counterparty" id="39">
+					<DataPath>Counterparty</DataPath>
+					<SkipOnInput>true</SkipOnInput>
+					<TitleLocation>None</TitleLocation>
+					<Wrap>false</Wrap>
+					<OpenButton>false</OpenButton>
+					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+					<InputHint>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Counterparty</v8:content>
+						</v8:item>
+					</InputHint>
+					<ContextMenu name="CounterpartyContextMenu" id="40"/>
+					<ExtendedTooltip name="CounterpartyExtendedTooltip" id="385"/>
+					<Events>
+						<Event name="OnChange">CounterpartyOnChange</Event>
+					</Events>
+				</InputField>
+				<InputField name="Company" id="33">
+					<DataPath>Company</DataPath>
+					<SkipOnInput>true</SkipOnInput>
+					<TitleLocation>None</TitleLocation>
+					<Wrap>false</Wrap>
+					<OpenButton>false</OpenButton>
+					<InputHint>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Company</v8:content>
+						</v8:item>
+					</InputHint>
+					<ContextMenu name="CompanyContextMenu" id="34"/>
+					<ExtendedTooltip name="CompanyExtendedTooltip" id="386"/>
+					<Events>
+						<Event name="OnChange">CompanyOnChange</Event>
+					</Events>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<CommandBar name="CommandBar" id="434">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Command bar</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Command bar</v8:content>
+				</v8:item>
+			</ToolTip>
+			<CommandSource>Form</CommandSource>
+			<ExtendedTooltip name="CommandBarExtendedTooltip" id="435"/>
+			<ChildItems>
+				<Button name="FormChangeForm" id="496">
+					<Type>CommandBarButton</Type>
+					<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
+					<ExtendedTooltip name="FormChangeFormExtendedTooltip" id="497"/>
+				</Button>
+				<Button name="FormHelp" id="475">
+					<Type>CommandBarButton</Type>
+					<OnlyInAllActions>false</OnlyInAllActions>
+					<CommandName>Form.StandardCommand.Help</CommandName>
+					<ExtendedTooltip name="FormHelpExtendedTooltip" id="476"/>
+				</Button>
+			</ChildItems>
+		</CommandBar>
+		<UsualGroup name="PettyCashState" id="370">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Petty cash, state</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Petty cash state</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="PettyCashStateExtendedTooltip" id="387"/>
+			<ChildItems>
+				<Table name="CashDocuments" id="109">
+					<Representation>List</Representation>
+					<SkipOnInput>false</SkipOnInput>
+					<Width>60</Width>
+					<UseAlternationRowColor>true</UseAlternationRowColor>
+					<EnableStartDrag>true</EnableStartDrag>
+					<DataPath>CashDocuments</DataPath>
+					<RowPictureDataPath>CashDocuments.DefaultPicture</RowPictureDataPath>
+					<CommandSet>
+						<ExcludedCommand>CopyToClipboard</ExcludedCommand>
+					</CommandSet>
+					<SearchStringLocation>CommandBar</SearchStringLocation>
+					<ViewStatusLocation>Top</ViewStatusLocation>
+					<SearchControlLocation>CommandBar</SearchControlLocation>
+					<AutoRefresh>false</AutoRefresh>
+					<AutoRefreshPeriod>60</AutoRefreshPeriod>
+					<Period>
+						<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+						<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+						<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+					</Period>
+					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+					<RestoreCurrentRow>false</RestoreCurrentRow>
+					<TopLevelParent xsi:nil="true"/>
+					<ShowRoot>false</ShowRoot>
+					<AllowRootChoice>false</AllowRootChoice>
+					<UpdateOnDataChange>Auto</UpdateOnDataChange>
+					<ContextMenu name="CashDocumentsContextMenu" id="110"/>
+					<AutoCommandBar name="CashDocumentsCommandBar" id="111">
+						<Autofill>false</Autofill>
+					</AutoCommandBar>
+					<ExtendedTooltip name="CashDocumentsExtendedTooltip" id="391"/>
+					<SearchStringAddition name="CashDocumentsSearchBar" id="425">
+						<AdditionSource>
+							<Item>CashDocuments</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="CashDocumentsSearchBarContextMenu" id="426"/>
+						<ExtendedTooltip name="CashDocumentsSearchStringExtendedTooltip" id="427"/>
+					</SearchStringAddition>
+					<ViewStatusAddition name="CashDocumentsViewStatus" id="428">
+						<AdditionSource>
+							<Item>CashDocuments</Item>
+							<Type>ViewStatusRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="CashDocumentsStatusViewContextMenu" id="429"/>
+						<ExtendedTooltip name="CashDocumentsViewStatusExtendedTooltip" id="430"/>
+					</ViewStatusAddition>
+					<SearchControlAddition name="CashDocumentsSearchManagement" id="431">
+						<AdditionSource>
+							<Item>CashDocuments</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<ContextMenu name="CashDocumentsSearchManagementContextMenu" id="432"/>
+						<ExtendedTooltip name="CashDocumentsSearchManagementExtendedTooltip" id="433"/>
+					</SearchControlAddition>
+					<Events>
+						<Event name="OnActivateRow">CashDocumentsOnActivateRow</Event>
+					</Events>
+					<ChildItems>
+						<LabelField name="ListDate" id="112">
+							<DataPath>CashDocuments.Date</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Date</v8:content>
+								</v8:item>
+							</Title>
+							<Width>10</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Format>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>DLF=D</v8:content>
+								</v8:item>
+							</Format>
+							<ContextMenu name="DateListContextMenu" id="113"/>
+							<ExtendedTooltip name="ListDateExtendedTooltip" id="392"/>
+						</LabelField>
+						<LabelField name="ListNumber" id="118">
+							<DataPath>CashDocuments.Number</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Number</v8:content>
+								</v8:item>
+							</Title>
+							<Width>11</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="NumberListContextMenu" id="119"/>
+							<ExtendedTooltip name="ListNumberExtendedTooltip" id="396"/>
+						</LabelField>
+						<ColumnGroup name="Amount" id="477">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Amount</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Amount</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Width>10</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Group>InCell</Group>
+							<ExtendedTooltip name="AmountExtendedTooltip" id="478"/>
+							<ChildItems>
+								<LabelField name="AmountReceipt" id="479">
+									<DataPath>CashDocuments.AmountReceipt</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Amount</v8:content>
+										</v8:item>
+									</Title>
+									<Width>10</Width>
+									<Format>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>NFD=2</v8:content>
+										</v8:item>
+									</Format>
+									<TextColor>style:AmountReceivedColor</TextColor>
+									<ContextMenu name="AmountReceiptContextMenu" id="480"/>
+									<ExtendedTooltip name="AmountReceiptExtendedTooltip" id="481"/>
+								</LabelField>
+								<LabelField name="AmountExpense" id="482">
+									<DataPath>CashDocuments.AmountExpense</DataPath>
+									<ShowInHeader>false</ShowInHeader>
+									<Width>1</Width>
+									<MarkNegatives>true</MarkNegatives>
+									<Format>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>NFD=2</v8:content>
+										</v8:item>
+									</Format>
+									<TextColor>style:NegativeTextColor</TextColor>
+									<ContextMenu name="AmountExpenseContextMenu" id="483"/>
+									<ExtendedTooltip name="AmountExpenseExtendedTooltip" id="484"/>
+								</LabelField>
+								<LabelField name="Currency" id="485">
+									<DataPath>CashDocuments.Currency</DataPath>
+									<ShowInHeader>false</ShowInHeader>
+									<Width>1</Width>
+									<ContextMenu name="CurrencyContextMenu" id="486"/>
+									<ExtendedTooltip name="CurrencyExtendedTooltip" id="487"/>
+								</LabelField>
+							</ChildItems>
+						</ColumnGroup>
+						<ColumnGroup name="ListCounterpartyAdvanceHolder" id="132">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>From / To</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>List counterparty advance holder</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>InCell</Group>
+							<ExtendedTooltip name="ListCounterpartyAdvanceHolderExtendedTooltip" id="402"/>
+							<ChildItems>
+								<LabelField name="CashDocumentsCounterparty" id="133">
+									<DataPath>CashDocuments.Counterparty</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>From / To</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="CashDocumentsCounterpartyContextMenu" id="134"/>
+									<ExtendedTooltip name="CashDocumentsCounterpartyExtendedTooltip" id="403"/>
+								</LabelField>
+								<LabelField name="CashDocumentsAdvanceHolder" id="135">
+									<DataPath>CashDocuments.AdvanceHolder</DataPath>
+									<UserVisible>
+										<xr:Common>false</xr:Common>
+									</UserVisible>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>AdvanceHolder</v8:content>
+										</v8:item>
+									</Title>
+									<ShowInHeader>false</ShowInHeader>
+									<Width>1</Width>
+									<ContextMenu name="CashDocumentsAdvanceHolderContextMenu" id="136"/>
+									<ExtendedTooltip name="CashDocumentsAdvanceHolderExtendedTooltip" id="404"/>
+								</LabelField>
+								<LabelField name="CashCR" id="339">
+									<DataPath>CashDocuments.CashCR</DataPath>
+									<ShowInHeader>false</ShowInHeader>
+									<Width>1</Width>
+									<ContextMenu name="CashCRContextMenu" id="340"/>
+									<ExtendedTooltip name="CashCRExtendedTooltip" id="405"/>
+								</LabelField>
+								<LabelField name="StructuralUnit" id="341">
+									<DataPath>CashDocuments.StructuralUnit</DataPath>
+									<ShowInHeader>false</ShowInHeader>
+									<Width>1</Width>
+									<ContextMenu name="StructuralUnitContextMenu" id="342"/>
+									<ExtendedTooltip name="StructuralUnitExtendedTooltip" id="406"/>
+								</LabelField>
+								<LabelField name="Correspondence" id="490">
+									<DataPath>CashDocuments.Correspondence</DataPath>
+									<ShowInHeader>false</ShowInHeader>
+									<Width>1</Width>
+									<ContextMenu name="CorrespondenceContextMenu" id="491"/>
+									<ExtendedTooltip name="CorrespondenceExtendedTooltip" id="492"/>
+								</LabelField>
+							</ChildItems>
+						</ColumnGroup>
+						<LabelField name="TypeList" id="120">
+							<DataPath>CashDocuments.Type</DataPath>
+							<UserVisible>
+								<xr:Common>false</xr:Common>
+							</UserVisible>
+							<DefaultItem>true</DefaultItem>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Type</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="TypeListContextMenu" id="121"/>
+							<ExtendedTooltip name="ListTypeExtendedTooltip" id="397"/>
+						</LabelField>
+						<LabelField name="ListCompanies" id="122">
+							<DataPath>CashDocuments.CompanyForFiltering</DataPath>
+							<UserVisible>
+								<xr:Common>false</xr:Common>
+							</UserVisible>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Company</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ListCompanyContextMenu" id="123"/>
+							<ExtendedTooltip name="ListCompanyExtendedTooltip" id="398"/>
+						</LabelField>
+						<LabelField name="PettyCashList" id="126">
+							<DataPath>CashDocuments.PettyCash</DataPath>
+							<UserVisible>
+								<xr:Common>false</xr:Common>
+							</UserVisible>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Petty cash</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="PettyCashContextMenu" id="127"/>
+							<ExtendedTooltip name="ListPettyCashExtendedTooltip" id="399"/>
+						</LabelField>
+						<LabelField name="OperationKindsList" id="128">
+							<DataPath>CashDocuments.OperationKind</DataPath>
+							<UserVisible>
+								<xr:Common>false</xr:Common>
+							</UserVisible>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Transaction kind</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ListOperationTypeContextMenu" id="129"/>
+							<ExtendedTooltip name="OperationKindsListExtendedTooltip" id="400"/>
+						</LabelField>
+						<LabelField name="ItemList" id="130">
+							<DataPath>CashDocuments.Item</DataPath>
+							<UserVisible>
+								<xr:Common>false</xr:Common>
+							</UserVisible>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Item</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ItemListContextMenu" id="131"/>
+							<ExtendedTooltip name="ListItemExtendedTooltip" id="401"/>
+						</LabelField>
+						<LabelField name="CommentList" id="137">
+							<DataPath>CashDocuments.Comment</DataPath>
+							<UserVisible>
+								<xr:Common>false</xr:Common>
+							</UserVisible>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Comment</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="CommentListContextMenu" id="138"/>
+							<ExtendedTooltip name="ListCommentExtendedTooltip" id="407"/>
+						</LabelField>
+						<LabelField name="ListAuthor" id="493">
+							<DataPath>CashDocuments.Author</DataPath>
+							<UserVisible>
+								<xr:Common>false</xr:Common>
+							</UserVisible>
+							<ContextMenu name="AuthorListContextMenu" id="494"/>
+							<ExtendedTooltip name="ListAuthorExtendedTooltip" id="495"/>
+						</LabelField>
+					</ChildItems>
+				</Table>
+				<UsualGroup name="State" id="448">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Additional information</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Bank statements additional information</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Width>23</Width>
+					<VerticalStretch>true</VerticalStretch>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="StatusExtendedTooltip" id="449"/>
+					<ChildItems>
+						<LabelDecoration name="DecorationSplitter" id="450">
+							<Width>1</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Font ref="sys:DefaultGUIFont" height="1" kind="WindowsFont"/>
+							<ContextMenu name="DecorationSplitterContextMenu" id="451"/>
+							<ExtendedTooltip name="DecorationSeparatorExtendedTooltip" id="452"/>
+						</LabelDecoration>
+						<UsualGroup name="Information" id="453">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Information</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Information</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="InformationExtendedTooltip" id="454"/>
+							<ChildItems>
+								<UsualGroup name="PettyCashStatus" id="455">
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Petty cash status</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="PettyCashStatusExtendedTooltip" id="456"/>
+									<ChildItems>
+										<LabelField name="Date" id="498">
+											<DataPath>Date</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<TextColor>style:ReportsVariantsGroupColor</TextColor>
+											<ContextMenu name="DateContextMenu" id="499"/>
+											<ExtendedTooltip name="DateExtendedTooltip" id="500"/>
+										</LabelField>
+										<LabelField name="PettyCashTotals" id="457">
+											<DataPath>Items.CashDocuments.CurrentData.PettyCash</DataPath>
+											<TitleTextColor>style:MinorInscriptionText</TitleTextColor>
+											<TitleLocation>None</TitleLocation>
+											<Font ref="style:LargeTextFont" height="11" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+											<ContextMenu name="TotalsPettyCashContextMenu" id="458"/>
+											<ExtendedTooltip name="CashTotalsExtendedTooltip" id="459"/>
+										</LabelField>
+										<InputField name="InformationAmountCurOpeningBalance" id="460">
+											<DataPath>InformationAmountCurOpeningBalance</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Start of Day</v8:content>
+												</v8:item>
+											</Title>
+											<TitleLocation>None</TitleLocation>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Start of Day</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ToolTipRepresentation>ShowTop</ToolTipRepresentation>
+											<HorizontalStretch>true</HorizontalStretch>
+											<ChoiceButton>false</ChoiceButton>
+											<EditFormat>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>NFD=2</v8:content>
+												</v8:item>
+											</EditFormat>
+											<TextColor>style:MinorInscriptionText</TextColor>
+											<BackColor>style:FormBackColor</BackColor>
+											<BorderColor>style:FormBackColor</BorderColor>
+											<Font ref="style:LargeTextFont" height="13" kind="StyleItem"/>
+											<ContextMenu name="InformationAmountCurOpeningBalanceContextMenu" id="461"/>
+											<ExtendedTooltip name="InformationAmountCurOpeningBalanceExtendedTooltip" id="462">
+												<HorizontalStretch>true</HorizontalStretch>
+												<TextColor>style:MinorInscriptionText</TextColor>
+												<Title formatted="true">
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>&lt;i&gt;Beginning of the day:&lt;/&gt;</v8:content>
+													</v8:item>
+												</Title>
+												<VerticalAlign>Bottom</VerticalAlign>
+												<Border width="1">
+													<v8ui:style xsi:type="v8ui:ControlBorderType">Overline</v8ui:style>
+												</Border>
+											</ExtendedTooltip>
+										</InputField>
+										<InputField name="InformationAmountCurReceipt" id="463">
+											<DataPath>InformationAmountCurReceipt</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Debited</v8:content>
+												</v8:item>
+											</Title>
+											<TitleLocation>None</TitleLocation>
+											<ToolTipRepresentation>ShowTop</ToolTipRepresentation>
+											<HorizontalStretch>true</HorizontalStretch>
+											<ChoiceButton>false</ChoiceButton>
+											<EditFormat>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>NFD=2</v8:content>
+												</v8:item>
+											</EditFormat>
+											<TextColor>style:AmountReceivedColor</TextColor>
+											<BackColor>style:FormBackColor</BackColor>
+											<BorderColor>style:FormBackColor</BorderColor>
+											<Font ref="style:LargeTextFont" height="13" kind="StyleItem"/>
+											<ContextMenu name="InformationAmountCurReceiptContextMenu" id="464"/>
+											<ExtendedTooltip name="InformationAmountCurReceiptExtendedTooltip" id="465">
+												<HorizontalStretch>true</HorizontalStretch>
+												<TextColor>style:MinorInscriptionText</TextColor>
+												<Title formatted="true">
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>&lt;i&gt;Debited:&lt;/&gt;</v8:content>
+													</v8:item>
+												</Title>
+												<VerticalAlign>Bottom</VerticalAlign>
+												<Border width="1">
+													<v8ui:style xsi:type="v8ui:ControlBorderType">Overline</v8ui:style>
+												</Border>
+											</ExtendedTooltip>
+										</InputField>
+										<InputField name="InformationAmountCurExpense" id="466">
+											<DataPath>InformationAmountCurExpense</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Written off</v8:content>
+												</v8:item>
+											</Title>
+											<TitleLocation>None</TitleLocation>
+											<ToolTipRepresentation>ShowTop</ToolTipRepresentation>
+											<HorizontalStretch>true</HorizontalStretch>
+											<ChoiceButton>false</ChoiceButton>
+											<EditFormat>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>NFD=2</v8:content>
+												</v8:item>
+											</EditFormat>
+											<TextColor>style:NegativeTextColor</TextColor>
+											<BackColor>style:FormBackColor</BackColor>
+											<BorderColor>style:FormBackColor</BorderColor>
+											<Font ref="style:LargeTextFont" height="13" kind="StyleItem"/>
+											<ContextMenu name="InformationAmountCurExpenditureContextMenu" id="467"/>
+											<ExtendedTooltip name="InformationAmountCurExpenditureExtendedTooltip" id="468">
+												<HorizontalStretch>true</HorizontalStretch>
+												<TextColor>style:MinorInscriptionText</TextColor>
+												<Title formatted="true">
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>&lt;i&gt;WrittenOff:&lt;/&gt;</v8:content>
+													</v8:item>
+												</Title>
+												<VerticalAlign>Bottom</VerticalAlign>
+												<Border width="1">
+													<v8ui:style xsi:type="v8ui:ControlBorderType">Overline</v8ui:style>
+												</Border>
+											</ExtendedTooltip>
+										</InputField>
+										<InputField name="InformationAmountCurClosingBalance" id="469">
+											<DataPath>InformationAmountCurClosingBalance</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>End of day</v8:content>
+												</v8:item>
+											</Title>
+											<TitleLocation>None</TitleLocation>
+											<ToolTipRepresentation>ShowTop</ToolTipRepresentation>
+											<HorizontalStretch>true</HorizontalStretch>
+											<ChoiceButton>false</ChoiceButton>
+											<EditFormat>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>NFD=2</v8:content>
+												</v8:item>
+											</EditFormat>
+											<BackColor>style:FormBackColor</BackColor>
+											<BorderColor>style:FormBackColor</BorderColor>
+											<Font ref="style:LargeTextFont" height="13" kind="StyleItem"/>
+											<ContextMenu name="InformationAmountCurClosingBalanceContextMenu" id="470"/>
+											<ExtendedTooltip name="InformationAmountCurClosingBalanceExtendedTooltip" id="471">
+												<HorizontalStretch>true</HorizontalStretch>
+												<TextColor>style:MinorInscriptionText</TextColor>
+												<Title formatted="true">
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>&lt;i&gt;End of the d&lt;/&gt;&lt;i&gt;ay:&lt;/&gt;</v8:content>
+													</v8:item>
+												</Title>
+												<VerticalAlign>Bottom</VerticalAlign>
+												<Border width="1">
+													<v8ui:style xsi:type="v8ui:ControlBorderType">Overline</v8ui:style>
+												</Border>
+											</ExtendedTooltip>
+										</InputField>
+										<LabelDecoration name="DecorationSplitter2" id="472">
+											<HorizontalStretch>true</HorizontalStretch>
+											<Border width="1">
+												<v8ui:style xsi:type="v8ui:ControlBorderType">Overline</v8ui:style>
+											</Border>
+											<ContextMenu name="DecorationSplitter2ContextMenu" id="473"/>
+											<ExtendedTooltip name="DecorationSplitter2ExtendedTooltip" id="474"/>
+										</LabelDecoration>
+									</ChildItems>
+								</UsualGroup>
+								<Button name="StatementGoTo" id="488">
+									<Type>Hyperlink</Type>
+									<CommandName>Form.Command.StatementGoTo</CommandName>
+									<ExtendedTooltip name="SheetNavigateExtendedTooltip" id="489"/>
+								</Button>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="CashDocuments" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Cash documents</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<UseAlways>
+				<Field>CashDocuments.DateDay</Field>
+				<Field>CashDocuments.Currency</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>SELECT
+	DocumentJournalCashDocuments.Ref,
+	DocumentJournalCashDocuments.Date,
+	DocumentJournalCashDocuments.DeletionMark,
+	DocumentJournalCashDocuments.Number,
+	DocumentJournalCashDocuments.Posted,
+	DocumentJournalCashDocuments.Company AS CompanyForFiltering,
+	DocumentJournalCashDocuments.OperationKind,
+	DocumentJournalCashDocuments.PettyCash,
+	DocumentJournalCashDocuments.Item,
+	DocumentJournalCashDocuments.Counterparty,
+	DocumentJournalCashDocuments.AdvanceHolder,
+	DocumentJournalCashDocuments.AmountReceipt,
+	-DocumentJournalCashDocuments.AmountExpense AS AmountExpense,
+	DocumentJournalCashDocuments.Currency,
+	DocumentJournalCashDocuments.Comment,
+	DocumentJournalCashDocuments.Type,
+	ENDOFPERIOD(DocumentJournalCashDocuments.Date, Day) AS DateDay,
+	DocumentJournalCashDocuments.CashCR,
+	DocumentJournalCashDocuments.StructuralUnit,
+	DocumentJournalCashDocuments.Correspondence,
+	DocumentJournalCashDocuments.Author
+FROM
+	DocumentJournal.CashDocuments AS DocumentJournalCashDocuments</QueryText>
+				<MainTable>DocumentJournal.CashDocuments</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="Company" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Company</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Companies</v8:Type>
+			</Type>
+			<Save>
+				<Field>Company</Field>
+			</Save>
+			<FunctionalOptions>
+				<Item>FunctionalOption.MultipleCompaniesAccounting</Item>
+			</FunctionalOptions>
+		</Attribute>
+		<Attribute name="Counterparty" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Counterparty</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Counterparties</v8:Type>
+			</Type>
+			<Save>
+				<Field>Counterparty</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="PettyCash" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Petty cash</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.PettyCashes</v8:Type>
+			</Type>
+			<Save>
+				<Field>PettyCash</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="InformationAmountCurClosingBalance" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Information amount cur receipt</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>15</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="InformationAmountCurOpeningBalance" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Information amount cur initial balance</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>15</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="InformationAmountCurReceipt" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Information amount cur receipt</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>15</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="InformationAmountCurExpense" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Information amount cur receipt</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>15</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Date" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Date</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<ConditionalAppearance>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>PlannedReceipts</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">PlannedReceipts.ThisIsCashInflowPlan</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:decimal">0</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>TextColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:InaccessibleDataColor</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>PlannedExpenses</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">PlannedExpenditures.ThisIsCashOutflowPlan</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:decimal">0</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>TextColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:InaccessibleDataColor</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+		</ConditionalAppearance>
+	</Attributes>
+	<Commands>
+		<Command name="StatementGoTo" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Go to statement</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Statement go to</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>StatementGoTo</Action>
+		</Command>
+	</Commands>
+</Form>

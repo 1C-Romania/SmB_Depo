@@ -1,0 +1,468 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Title>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Selected objects</v8:content>
+		</v8:item>
+	</Title>
+	<AutoTitle>false</AutoTitle>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<ButtonGroup name="ListAddDelete" id="102">
+				<Title>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>List add delete</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTip>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>List add delete</v8:content>
+					</v8:item>
+				</ToolTip>
+				<ExtendedTooltip name="ListAddDeleteExtendedTooltip" id="103"/>
+				<ChildItems>
+					<Button name="ListPick" id="22">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.List.StandardCommand.Pickup</CommandName>
+						<ExtendedTooltip name="ListPickExtendedTooltip" id="23"/>
+					</Button>
+					<Button name="ListAdd" id="10">
+						<Type>CommandBarButton</Type>
+						<OnlyInAllActions>false</OnlyInAllActions>
+						<CommandName>Form.Item.List.StandardCommand.Add</CommandName>
+						<ExtendedTooltip name="ListAddExtendedTooltip" id="11"/>
+					</Button>
+					<Button name="ListInsertFromClipboard" id="33">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.InsertFromClipboard</CommandName>
+						<ExtendedTooltip name="ListInsertFromClipboardExtendedTooltip" id="34"/>
+					</Button>
+					<Button name="ListDelete" id="60">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.List.StandardCommand.Delete</CommandName>
+						<ExtendedTooltip name="ListDeleteExtendedTooltip" id="61"/>
+					</Button>
+				</ChildItems>
+			</ButtonGroup>
+			<ButtonGroup name="ListEnableDisableCheckBoxes" id="43">
+				<Title>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>List enable disable check boxes</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTip>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>List enable disable check boxes</v8:content>
+					</v8:item>
+				</ToolTip>
+				<ExtendedTooltip name="ListEnableDisableCheckBoxesExtendedTooltip" id="44"/>
+				<ChildItems>
+					<Button name="ListCheckAll" id="18">
+						<Type>CommandBarButton</Type>
+						<OnlyInAllActions>true</OnlyInAllActions>
+						<CommandName>Form.Item.List.StandardCommand.CheckAll</CommandName>
+						<ExtendedTooltip name="ListCheckAllExtendedTooltip" id="19"/>
+					</Button>
+					<Button name="ListUncheckAll" id="20">
+						<Type>CommandBarButton</Type>
+						<OnlyInAllActions>true</OnlyInAllActions>
+						<CommandName>Form.Item.List.StandardCommand.UncheckAll</CommandName>
+						<ExtendedTooltip name="ListUncheckAllExtendedTooltip" id="21"/>
+					</Button>
+				</ChildItems>
+			</ButtonGroup>
+			<ButtonGroup name="ListSorting" id="54">
+				<Title>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>List sorting</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTip>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>List sorting</v8:content>
+					</v8:item>
+				</ToolTip>
+				<ExtendedTooltip name="ListSortingExtendedTooltip" id="55"/>
+				<ChildItems>
+					<Button name="ListSortInAscendingOrder" id="56">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.List.StandardCommand.SortListAsc</CommandName>
+						<ExtendedTooltip name="ListSortInAscendingOrderExtendedTooltip" id="57"/>
+					</Button>
+					<Button name="ListSortInDescendingOrder" id="58">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.List.StandardCommand.SortListDesc</CommandName>
+						<ExtendedTooltip name="ListSortInDescendingOrderExtendedTooltip" id="59"/>
+					</Button>
+				</ChildItems>
+			</ButtonGroup>
+			<ButtonGroup name="ListTransfer" id="8">
+				<Title>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>List transfer</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTip>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>List transfer</v8:content>
+					</v8:item>
+				</ToolTip>
+				<ExtendedTooltip name="ListTransferExtendedTooltip" id="9"/>
+				<ChildItems>
+					<Button name="ListMoveUp" id="64">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.List.StandardCommand.MoveUp</CommandName>
+						<ExtendedTooltip name="ListMoveUpExtendedTooltip" id="65"/>
+					</Button>
+					<Button name="ListMoveDown" id="66">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.List.StandardCommand.MoveDown</CommandName>
+						<ExtendedTooltip name="ListMoveDownExtendedTooltip" id="67"/>
+					</Button>
+				</ChildItems>
+			</ButtonGroup>
+			<Button name="FormChangeForm" id="70">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
+				<ExtendedTooltip name="FormChangeFormExtendedTooltip" id="71"/>
+			</Button>
+			<Button name="FormHelp" id="72">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.Help</CommandName>
+				<ExtendedTooltip name="FormHelpExtendedTooltip" id="73"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnOpen">OnOpen</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<Table name="List" id="1">
+			<Representation>List</Representation>
+			<CommandBarLocation>None</CommandBarLocation>
+			<Header>false</Header>
+			<HorizontalLines>false</HorizontalLines>
+			<VerticalLines>false</VerticalLines>
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<DataPath>List</DataPath>
+			<RowPictureDataPath>List.Picture</RowPictureDataPath>
+			<CommandSet>
+				<ExcludedCommand>Copy</ExcludedCommand>
+				<ExcludedCommand>EndEdit</ExcludedCommand>
+				<ExcludedCommand>Change</ExcludedCommand>
+			</CommandSet>
+			<SearchStringLocation>None</SearchStringLocation>
+			<ViewStatusLocation>None</ViewStatusLocation>
+			<SearchControlLocation>None</SearchControlLocation>
+			<ContextMenu name="ListContextMenu" id="2">
+				<Autofill>false</Autofill>
+				<ChildItems>
+					<ButtonGroup name="ListAddDeleteMenu" id="104">
+						<Title>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>List add delete menu</v8:content>
+							</v8:item>
+						</Title>
+						<ToolTip>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>List add delete menu</v8:content>
+							</v8:item>
+						</ToolTip>
+						<ExtendedTooltip name="ListAddDeleteMenuExtendedTooltip" id="105"/>
+						<ChildItems>
+							<Button name="ListPickMenu" id="74">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Item.List.StandardCommand.Pickup</CommandName>
+								<ExtendedTooltip name="ListPickMenuExtendedTooltip" id="75"/>
+							</Button>
+							<Button name="ListAddMenu" id="86">
+								<Type>CommandBarButton</Type>
+								<OnlyInAllActions>false</OnlyInAllActions>
+								<CommandName>Form.Item.List.StandardCommand.Add</CommandName>
+								<ExtendedTooltip name="ListAddMenuExtendedTooltip" id="87"/>
+							</Button>
+							<Button name="ListInsertFromClipboardMenu" id="76">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.InsertFromClipboard</CommandName>
+								<ExtendedTooltip name="ListInsertFromClipboardMenuExtendedTooltip" id="77"/>
+							</Button>
+							<Button name="ListDeleteMenu" id="88">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Item.List.StandardCommand.Delete</CommandName>
+								<ExtendedTooltip name="ListDeleteMenuExtendedTooltip" id="89"/>
+							</Button>
+						</ChildItems>
+					</ButtonGroup>
+					<ButtonGroup name="ListEnableDisableCheckBoxesMenu" id="78">
+						<Title>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>List enable disable check boxes menu</v8:content>
+							</v8:item>
+						</Title>
+						<ToolTip>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>List enable disable check boxes menu</v8:content>
+							</v8:item>
+						</ToolTip>
+						<ExtendedTooltip name="ListEnableDisableCheckBoxesMenuExtendedTooltip" id="79"/>
+						<ChildItems>
+							<Button name="ListCheckAllMenu" id="80">
+								<Type>CommandBarButton</Type>
+								<OnlyInAllActions>true</OnlyInAllActions>
+								<CommandName>Form.Item.List.StandardCommand.CheckAll</CommandName>
+								<ExtendedTooltip name="ListCheckAllMenuExtendedTooltip" id="81"/>
+							</Button>
+							<Button name="ListUncheckAllMenu" id="82">
+								<Type>CommandBarButton</Type>
+								<OnlyInAllActions>true</OnlyInAllActions>
+								<CommandName>Form.Item.List.StandardCommand.UncheckAll</CommandName>
+								<ExtendedTooltip name="ListUncheckAllMenuExtendedTooltip" id="83"/>
+							</Button>
+						</ChildItems>
+					</ButtonGroup>
+					<ButtonGroup name="ListSortingMenu" id="90">
+						<Title>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>List sorting menu</v8:content>
+							</v8:item>
+						</Title>
+						<ToolTip>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>List sorting menu</v8:content>
+							</v8:item>
+						</ToolTip>
+						<ExtendedTooltip name="ListSortingMenuExtendedTooltip" id="91"/>
+						<ChildItems>
+							<Button name="ListSortInAscendingOrderMenu" id="92">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Item.List.StandardCommand.SortListAsc</CommandName>
+								<ExtendedTooltip name="ListSortInAscendingOrderMenuExtendedTooltip" id="93"/>
+							</Button>
+							<Button name="ListSortInDescendingOrderMenu" id="94">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Item.List.StandardCommand.SortListDesc</CommandName>
+								<ExtendedTooltip name="ListSortInDescendingOrderMenuExtendedTooltip" id="95"/>
+							</Button>
+						</ChildItems>
+					</ButtonGroup>
+					<ButtonGroup name="ListTransferMenu" id="96">
+						<Title>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>List transfer menu</v8:content>
+							</v8:item>
+						</Title>
+						<ToolTip>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>List transfer menu</v8:content>
+							</v8:item>
+						</ToolTip>
+						<ExtendedTooltip name="ListTransferMenuExtendedTooltip" id="97"/>
+						<ChildItems>
+							<Button name="ListMoveUpMenu" id="98">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Item.List.StandardCommand.MoveUp</CommandName>
+								<ExtendedTooltip name="ListMoveUpMenuExtendedTooltip" id="99"/>
+							</Button>
+							<Button name="ListMoveDownMenu" id="100">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Item.List.StandardCommand.MoveDown</CommandName>
+								<ExtendedTooltip name="ListMoveDownMenuExtendedTooltip" id="101"/>
+							</Button>
+						</ChildItems>
+					</ButtonGroup>
+				</ChildItems>
+			</ContextMenu>
+			<AutoCommandBar name="ListCommandBar" id="3">
+				<Autofill>false</Autofill>
+			</AutoCommandBar>
+			<ExtendedTooltip name="ListExtendedTooltip" id="4"/>
+			<SearchStringAddition name="SearchStringList" id="45">
+				<AdditionSource>
+					<Item>List</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ListSearchStringContextMenu" id="46"/>
+				<ExtendedTooltip name="ListSearchStringExtendedTooltip" id="47"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ListViewStatus" id="48">
+				<AdditionSource>
+					<Item>List</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ListViewStatusContextMenu" id="49"/>
+				<ExtendedTooltip name="ListViewStatusExtendedTooltip" id="50"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ListSearchControl" id="51">
+				<AdditionSource>
+					<Item>List</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ListSearchControlContextMenu" id="52"/>
+				<ExtendedTooltip name="ListSearchControlExtendedTooltip" id="53"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="BeforeAddRow">ListBeforeAddRow</Event>
+				<Event name="BeforeDeleteRow">ListBeforeDelete</Event>
+				<Event name="BeforeEditEnd">ListBeforeEditingCompletion</Event>
+				<Event name="ChoiceProcessing">ListChoiceProcessing</Event>
+				<Event name="BeforeRowChange">ListBeforeRowChange</Event>
+			</Events>
+			<ChildItems>
+				<ColumnGroup name="Columns" id="37">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Columns</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Columns</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>InCell</Group>
+					<ExtendedTooltip name="ColumnsExtendedTooltip" id="38"/>
+					<ChildItems>
+						<CheckBoxField name="ListMark" id="12">
+							<DataPath>List.Check</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ListMarkContextMenu" id="13"/>
+							<ExtendedTooltip name="ListMarkExtendedTooltip" id="14"/>
+						</CheckBoxField>
+						<InputField name="ListValue" id="30">
+							<DataPath>List.Value</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="ListValueContextMenu" id="31"/>
+							<ExtendedTooltip name="ListValueExtendedTooltip" id="32"/>
+						</InputField>
+					</ChildItems>
+				</ColumnGroup>
+			</ChildItems>
+		</Table>
+		<CommandBar name="LowerCommandBar" id="24">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Lower command bar</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Lower command bar</v8:content>
+				</v8:item>
+			</ToolTip>
+			<HorizontalLocation>Right</HorizontalLocation>
+			<ExtendedTooltip name="LowerCommandBarExtendedTooltip" id="25"/>
+			<ChildItems>
+				<Button name="CommandOK" id="26">
+					<Type>CommandBarButton</Type>
+					<DefaultButton>true</DefaultButton>
+					<CommandName>Form.Command.FinishEdit</CommandName>
+					<ExtendedTooltip name="CommandOKExtendedTooltip" id="27"/>
+				</Button>
+				<Button name="FormCancel" id="28">
+					<Type>CommandBarButton</Type>
+					<CommandName>Form.StandardCommand.Cancel</CommandName>
+					<ExtendedTooltip name="CancelFormExtendedTooltip" id="29"/>
+				</Button>
+			</ChildItems>
+		</CommandBar>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="List" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>List</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="LimitChoiceWithSpecifiedValues" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Limit choice with specified values</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="FieldPresentation" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Field presentation</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="FinishEdit" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>OK</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Exit</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>FinishEdit</Action>
+		</Command>
+		<Command name="InsertFromClipboard" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert from clipboard...</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert from clipboard</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.FillForm</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>InsertFromClipboard</Action>
+		</Command>
+	</Commands>
+</Form>

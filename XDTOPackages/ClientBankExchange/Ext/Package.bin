@@ -1,0 +1,241 @@
+﻿<package xmlns="http://v8.1c.ru/8.1/xdto" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="urn:1C.ru:ClientBankExchange">
+	<property xmlns:d2p1="urn:1C.ru:ClientBankExchange" name="ClientBankExchange" type="d2p1:ClientBankExchange"/>
+	<valueType name="SchemaVersion" base="xs:string" variety="Atomic">
+		<enumeration>1.05</enumeration>
+		<enumeration>1.06</enumeration>
+		<enumeration>1.07</enumeration>
+	</valueType>
+	<valueType name="DocumentKind" base="xs:string" variety="Atomic" maxLength="30"/>
+	<valueType name="DateTypeFTS" base="xs:string" variety="Atomic">
+		<pattern>(((0[1-9]{1}|[1-2]{1}[0-9]{1})\.(0[1-9]{1}|1[0-2]{1}))|((30)\.(01|0[3-9]{1}|1[0-2]{1}))|((31)\.(01|03|05|07|08|10|12)))\.(18[0-9]{2}|19[0-9]{2}|20[0-9]{2})</pattern>
+	</valueType>
+	<valueType name="PaymentIdType" base="xs:string" variety="Atomic" maxLength="64"/>
+	<valueType name="AccountNumberType" base="xs:string" variety="Atomic" length="20">
+		<pattern>[0-9]{20}</pattern>
+	</valueType>
+	<valueType name="EnumTypeZero" base="xs:string" variety="Atomic">
+		<enumeration>0</enumeration>
+	</valueType>
+	<valueType name="AmountType" base="xs:decimal" variety="Atomic" totalDigits="18" fractionDigits="2"/>
+	<objectType name="ClientBankExchange">
+		<property xmlns:d3p1="urn:1C.ru:ClientBankExchange" name="FormatVersion" type="d3p1:SchemaVersion"/>
+		<property name="Sender">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="160"/>
+		</property>
+		<property name="Recipient">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="160"/>
+		</property>
+		<property name="CreationDate" type="xs:date" lowerBound="0"/>
+		<property name="CreationTime" type="xs:time" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:ClientBankExchange" name="FilterConditions" type="d3p1:FilterConditions" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:ClientBankExchange" name="SectionBankAcc" type="d3p1:SectionBankAcc" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:ClientBankExchange" name="PaymentDocumentSection" type="d3p1:PaymentDocument" lowerBound="0" upperBound="-1"/>
+	</objectType>
+	<objectType name="AdditionalAttributes">
+		<property name="AcceptanceTerm" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:decimal" variety="Atomic" totalDigits="3"/>
+		</property>
+		<property name="LetterOfCreditType" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="1" maxLength="50"/>
+		</property>
+		<property name="PaymentDueDate" type="xs:date" lowerBound="0"/>
+		<property name="PaymentCondition" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="1" maxLength="260"/>
+		</property>
+		<property name="PaymentByRepr" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="1" maxLength="170"/>
+		</property>
+		<property name="AdditionalConditions" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="1" maxLength="170"/>
+		</property>
+		<property xmlns:d3p1="urn:1C.ru:ClientBankExchange" name="NumberVendorAccount" type="d3p1:AccountNumberType" lowerBound="0"/>
+		<property name="DocSendingDate" type="xs:date" lowerBound="0"/>
+	</objectType>
+	<objectType name="STATEMENT">
+		<property name="StatementDate" type="xs:date" lowerBound="0"/>
+		<property name="StatementTime" type="xs:time" lowerBound="0"/>
+		<property name="StatementContent" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="3000"/>
+		</property>
+	</objectType>
+	<objectType name="PaymentsToBudget">
+		<property name="AuthorStatus">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" length="2"/>
+		</property>
+		<property name="KBKIndicator">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" length="20"/>
+		</property>
+		<property name="OKATO">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="1" maxLength="11"/>
+		</property>
+		<property name="BasisIndicator">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="1" maxLength="2"/>
+		</property>
+		<property name="PeriodIndicator">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="1" maxLength="10"/>
+		</property>
+		<property name="NumberIndicator">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="1" maxLength="15"/>
+		</property>
+		<property name="DateIndicator">
+			<typeDef xmlns:d4p1="urn:1C.ru:ClientBankExchange" xsi:type="ValueType" variety="Union" memberTypes="d4p1:DateTypeFTS d4p1:EnumTypeZero"/>
+		</property>
+		<property name="TypeIndicator">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="1" maxLength="2"/>
+		</property>
+	</objectType>
+	<objectType name="PaymentDocument">
+		<property name="DocumentId" lowerBound="0" form="Attribute">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic">
+				<pattern>[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}</pattern>
+			</typeDef>
+		</property>
+		<property xmlns:d3p1="urn:1C.ru:ClientBankExchange" name="SectionDocument" type="d3p1:DocumentKind"/>
+		<property name="Number">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="6"/>
+		</property>
+		<property name="Date" type="xs:date"/>
+		<property xmlns:d3p1="urn:1C.ru:ClientBankExchange" name="Amount" type="d3p1:AmountType"/>
+		<property xmlns:d3p1="urn:1C.ru:ClientBankExchange" name="STATEMENT" type="d3p1:STATEMENT" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:ClientBankExchange" name="PayerAttributes" type="d3p1:PayerAttributes"/>
+		<property xmlns:d3p1="urn:1C.ru:ClientBankExchange" name="RecipientAttributes" type="d3p1:RecipientAttributes"/>
+		<property xmlns:d3p1="urn:1C.ru:ClientBankExchange" name="PaymentAttributes" type="d3p1:PaymentAttributes" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:ClientBankExchange" name="PaymentsToBudget" type="d3p1:PaymentsToBudget" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:ClientBankExchange" name="AdditionalAttributes" type="d3p1:AdditionalAttributes" lowerBound="0"/>
+	</objectType>
+	<objectType name="TransferBalancesBankAccs">
+		<property xmlns:d3p1="urn:1C.ru:ClientBankExchange" name="BankAcc" type="d3p1:AccountNumberType"/>
+		<property xmlns:d3p1="urn:1C.ru:ClientBankExchange" name="OpeningBalance" type="d3p1:AmountType"/>
+		<property xmlns:d3p1="urn:1C.ru:ClientBankExchange" name="DebitedTotal" type="d3p1:AmountType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:ClientBankExchange" name="CreditedTotal" type="d3p1:AmountType" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:ClientBankExchange" name="ClosingBalance" type="d3p1:AmountType" lowerBound="0"/>
+	</objectType>
+	<objectType name="PaymentAttributes">
+		<property name="PaymentKind" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="15"/>
+		</property>
+		<property name="PayKind" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="2"/>
+		</property>
+		<property name="OrderOfPriority" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" length="1"/>
+		</property>
+		<property name="Code" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="25"/>
+		</property>
+		<property name="PaymentDestination" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="210"/>
+		</property>
+		<property name="PaymentDestination1" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="35"/>
+		</property>
+		<property name="PaymentDestination2" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="35"/>
+		</property>
+		<property name="PaymentDestination3" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="35"/>
+		</property>
+		<property name="PaymentDestination4" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="35"/>
+		</property>
+		<property name="PaymentDestination5" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="35"/>
+		</property>
+		<property name="PaymentDestination6" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="35"/>
+		</property>
+	</objectType>
+	<objectType name="PayerAttributes">
+		<property xmlns:d3p1="urn:1C.ru:ClientBankExchange" name="PayerAccount" type="d3p1:AccountNumberType"/>
+		<property name="DateCredited" lowerBound="0">
+			<typeDef xsi:type="ObjectType">
+				<property xmlns:d5p1="urn:1C.ru:ClientBankExchange" name="PaymentId" type="d5p1:PaymentIdType" lowerBound="0" form="Attribute"/>
+				<property name="__content" type="xs:date" form="Text"/>
+			</typeDef>
+		</property>
+		<property name="Payer" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="160"/>
+		</property>
+		<property name="PayerTIN" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="12"/>
+		</property>
+		<property name="PayerKPP" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="9"/>
+		</property>
+		<property name="Payer1" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="160"/>
+		</property>
+		<property xmlns:d3p1="urn:1C.ru:ClientBankExchange" name="Payer2" type="d3p1:AccountNumberType" lowerBound="0"/>
+		<property name="Payer3" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="160"/>
+		</property>
+		<property name="Payer4" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="1" maxLength="30"/>
+		</property>
+		<property xmlns:d3p1="urn:1C.ru:ClientBankExchange" name="PayerBankAcc" type="d3p1:AccountNumberType" lowerBound="0"/>
+		<property name="PayerBank1" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="160"/>
+		</property>
+		<property name="PayerBank2" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="1" maxLength="30"/>
+		</property>
+		<property name="PayerBIC" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" length="9">
+				<pattern>[0-9]{9}</pattern>
+			</typeDef>
+		</property>
+		<property xmlns:d3p1="urn:1C.ru:ClientBankExchange" name="PayerBalancedAccount" type="d3p1:AccountNumberType" lowerBound="0"/>
+	</objectType>
+	<objectType name="RecipientAttributes">
+		<property xmlns:d3p1="urn:1C.ru:ClientBankExchange" name="PayeeAccount" type="d3p1:AccountNumberType"/>
+		<property name="Date_Received" lowerBound="0">
+			<typeDef xsi:type="ObjectType">
+				<property xmlns:d5p1="urn:1C.ru:ClientBankExchange" name="PaymentId" type="d5p1:PaymentIdType" lowerBound="0" form="Attribute"/>
+				<property name="__content" type="xs:date" form="Text"/>
+			</typeDef>
+		</property>
+		<property name="Recipient" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="160"/>
+		</property>
+		<property name="PayeeTIN" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="12"/>
+		</property>
+		<property name="PayeeKPP" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="9"/>
+		</property>
+		<property name="Payee1" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="160"/>
+		</property>
+		<property xmlns:d3p1="urn:1C.ru:ClientBankExchange" name="Payee2" type="d3p1:AccountNumberType" lowerBound="0"/>
+		<property name="Payee3" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="160"/>
+		</property>
+		<property name="Payee4" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="1" maxLength="30"/>
+		</property>
+		<property xmlns:d3p1="urn:1C.ru:ClientBankExchange" name="PayeeBankAcc" type="d3p1:AccountNumberType" lowerBound="0"/>
+		<property name="PayeeBank1" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="160"/>
+		</property>
+		<property name="PayeeBank2" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="1" maxLength="30"/>
+		</property>
+		<property name="PayeeBIK" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" length="9">
+				<pattern>[0-9]{9}</pattern>
+			</typeDef>
+		</property>
+		<property xmlns:d3p1="urn:1C.ru:ClientBankExchange" name="PayeeBalancedAccount" type="d3p1:AccountNumberType" lowerBound="0"/>
+	</objectType>
+	<objectType name="SectionBankAcc">
+		<property name="StartDate" type="xs:date" lowerBound="0"/>
+		<property name="EndDate" type="xs:date" lowerBound="0"/>
+		<property xmlns:d3p1="urn:1C.ru:ClientBankExchange" name="BankAccs" type="d3p1:TransferBalancesBankAccs" lowerBound="0" upperBound="-1"/>
+	</objectType>
+	<objectType name="FilterConditions">
+		<property name="StartDate" type="xs:date"/>
+		<property name="EndDate" type="xs:date"/>
+		<property xmlns:d3p1="urn:1C.ru:ClientBankExchange" name="BankAcc" type="d3p1:AccountNumberType" upperBound="-1"/>
+		<property xmlns:d3p1="urn:1C.ru:ClientBankExchange" name="Document" type="d3p1:DocumentKind" lowerBound="0" upperBound="-1"/>
+	</objectType>
+</package>

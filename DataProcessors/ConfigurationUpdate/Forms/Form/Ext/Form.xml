@@ -1,0 +1,2544 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<CommandBarLocation>None</CommandBarLocation>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<CommandSet>
+		<ExcludedCommand>No</ExcludedCommand>
+		<ExcludedCommand>CustomizeForm</ExcludedCommand>
+		<ExcludedCommand>SaveValues</ExcludedCommand>
+		<ExcludedCommand>Abort</ExcludedCommand>
+		<ExcludedCommand>Retry</ExcludedCommand>
+		<ExcludedCommand>Yes</ExcludedCommand>
+		<ExcludedCommand>Cancel</ExcludedCommand>
+		<ExcludedCommand>RestoreValues</ExcludedCommand>
+		<ExcludedCommand>Ignore</ExcludedCommand>
+		<ExcludedCommand>OK</ExcludedCommand>
+	</CommandSet>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<HorizontalAlign>Right</HorizontalAlign>
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="ChoiceProcessing">ChoiceProcessing</Event>
+		<Event name="NotificationProcessing">NotificationProcessing</Event>
+		<Event name="OnOpen">OnOpen</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+		<Event name="OnClose">OnClose</Event>
+	</Events>
+	<ChildItems>
+		<Pages name="AssistantPages" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Assistant pages</v8:content>
+				</v8:item>
+			</Title>
+			<PagesRepresentation>None</PagesRepresentation>
+			<ExtendedTooltip name="AssistantPagesExtendedTooltip" id="657"/>
+			<ChildItems>
+				<Page name="Welcome" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Welcome</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="WelcomeToExtendedTooltip" id="658"/>
+					<ChildItems>
+						<UsualGroup name="WelcomeGroup" id="1020">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Update source selection</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<Representation>NormalSeparation</Representation>
+							<ExtendedTooltip name="WelcomeGroupExtendedTooltip" id="1021"/>
+							<ChildItems>
+								<RadioButtonField name="UpdateSource" id="1012">
+									<DataPath>Object.UpdateSource</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<RadioButtonType>Auto</RadioButtonType>
+									<ColumnsCount>1</ColumnsCount>
+									<ChoiceList>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Automatic search of update in Internet (recommended) Update from the user support site of 1C:Enterprise 8</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:decimal">0</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Local or
+network directory Updating from the delivery file in a local or network directory</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:decimal">2</Value>
+											</xr:Value>
+										</xr:Item>
+									</ChoiceList>
+									<ContextMenu name="UpdateSourceContextMenu" id="1013"/>
+									<ExtendedTooltip name="UpdateSourceExtendedTooltip" id="1014"/>
+									<Events>
+										<Event name="OnChange">UpdateSourceOnChange</Event>
+									</Events>
+								</RadioButtonField>
+								<LabelDecoration name="IndentThree" id="361">
+									<VerticalStretch>true</VerticalStretch>
+									<SkipOnInput>false</SkipOnInput>
+									<ContextMenu name="MarginThreeContextMenu" id="362"/>
+									<ExtendedTooltip name="IndentThreeExtendedTooltip" id="688"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="InternetConnection" id="22">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Connection to the Internet</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="ConnectionToInternetExtendedTooltip" id="693"/>
+					<ChildItems>
+						<UsualGroup name="InternetConnectionGroup" id="1022">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Failed to connect to Internet</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<Representation>NormalSeparation</Representation>
+							<ExtendedTooltip name="InternetConnectionGroupExtendedTooltip" id="1023"/>
+							<ChildItems>
+								<UsualGroup name="Group3" id="29">
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="Group3ExtendedTooltip" id="695"/>
+									<ChildItems>
+										<PictureDecoration name="PictureDecoration" id="25">
+											<Width>6</Width>
+											<Height>2</Height>
+											<SkipOnInput>false</SkipOnInput>
+											<Picture>
+												<xr:Ref>CommonPicture.Warning32</xr:Ref>
+												<xr:LoadTransparent>true</xr:LoadTransparent>
+												<xr:TransparentPixel x="30" y="6"/>
+											</Picture>
+											<ContextMenu name="DecorationPictureContextMenu" id="26"/>
+											<ExtendedTooltip name="DecorationPictureExtendedTooltip" id="696"/>
+										</PictureDecoration>
+										<UsualGroup name="LabelVerticalGroupEL2" id="572">
+											<VerticalStretch>false</VerticalStretch>
+											<Group>Vertical</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="VerticalLabelsGroupRL2ExtendedTooltip" id="697"/>
+											<ChildItems>
+												<LabelDecoration name="Decoration6" id="27">
+													<SkipOnInput>false</SkipOnInput>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Failed to connect to the Internet to get the information on update.
+Possible reasons: • There is no connection to the Internet; • Website is malfunctioning; • The firewall or other middleware (antiviruses, etc.) block the attempts of the application to connect to Internet; • Connection to Internet is established through troxy server, but its parameters are not configured in the application.</v8:content>
+														</v8:item>
+													</Title>
+													<ContextMenu name="Decoration6ContextMenu" id="28"/>
+													<ExtendedTooltip name="Decoration6ExtendedTooltip" id="698"/>
+												</LabelDecoration>
+												<UsualGroup name="Group4" id="622">
+													<Group>Horizontal</Group>
+													<Representation>None</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="Group4ExtendedTooltip" id="699"/>
+													<ChildItems>
+														<LabelDecoration name="Decoration7" id="30">
+															<Height>1</Height>
+															<SkipOnInput>false</SkipOnInput>
+															<Title formatted="false">
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>See technical details in the event log.</v8:content>
+																</v8:item>
+															</Title>
+															<ContextMenu name="Decoration7ContextMenu" id="31"/>
+															<ExtendedTooltip name="Decoration7ExtendedTooltip" id="700"/>
+														</LabelDecoration>
+														<LabelDecoration name="LabelNavigateToEventLogMonitor" id="503">
+															<SkipOnInput>false</SkipOnInput>
+															<Title formatted="false">
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Go to event log</v8:content>
+																</v8:item>
+															</Title>
+															<Hyperlink>true</Hyperlink>
+															<ContextMenu name="LabelNavigateToEventLogMonitorContextMenu" id="504"/>
+															<ExtendedTooltip name="NavigateToEventLogMonitorLabelExtendedTooltip" id="701"/>
+															<Events>
+																<Event name="Click">LabelGoToEventLogMonitorClick</Event>
+															</Events>
+														</LabelDecoration>
+													</ChildItems>
+												</UsualGroup>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="GroupCustomizeProxyServerParameters" id="611">
+									<Group>Vertical</Group>
+									<Representation>NormalSeparation</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupCustomizeProxyServerParametersExtendedTooltip" id="702"/>
+									<ChildItems>
+										<Button name="ConfigureProxyServerParameters" id="620">
+											<Type>UsualButton</Type>
+											<CommandName>Form.Command.ConfigureProxyServerParameters</CommandName>
+											<ExtendedTooltip name="CustomizeProxyServerParametersExtendedTooltip" id="703"/>
+										</Button>
+									</ChildItems>
+								</UsualGroup>
+								<LabelDecoration name="MarginNine" id="383">
+									<VerticalStretch>true</VerticalStretch>
+									<SkipOnInput>false</SkipOnInput>
+									<ContextMenu name="IndentNineContextMenu" id="384"/>
+									<ExtendedTooltip name="IndentNineExtendedTooltip" id="704"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="ConnectionToSite" id="41">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Connection to site</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="ConnectionToSiteExtendedTooltip" id="706"/>
+					<ChildItems>
+						<UsualGroup name="ConnectionToSiteGroup" id="1024">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Connection to user site</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<Representation>NormalSeparation</Representation>
+							<ExtendedTooltip name="ConnectionToSiteGroupExtendedTooltip" id="1025"/>
+							<ChildItems>
+								<UsualGroup name="GroupAccessOnUserSite" id="46">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Access to user site</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>For receiving application update from the user site enter user code and password</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupAccessToCustomSiteExtendedTooltip" id="709"/>
+									<ChildItems>
+										<UsualGroup name="Group2" id="373">
+											<Group>Vertical</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="Group2ExtendedTooltip" id="710"/>
+											<ChildItems>
+												<InputField name="UpdateServerUserCode" id="47">
+													<DataPath>Object.UpdateServerUserCode</DataPath>
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>User code</v8:content>
+														</v8:item>
+													</Title>
+													<HorizontalStretch>false</HorizontalStretch>
+													<ContextMenu name="UpdateServerUserCodeContextMenu" id="48"/>
+													<ExtendedTooltip name="UpdateServerUserCodeExtendedTooltip" id="711"/>
+												</InputField>
+												<InputField name="UpdatesServerPassword" id="49">
+													<DataPath>Object.UpdatesServerPassword</DataPath>
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Password</v8:content>
+														</v8:item>
+													</Title>
+													<HorizontalStretch>false</HorizontalStretch>
+													<PasswordMode>true</PasswordMode>
+													<ContextMenu name="UpdatesServerPasswordContextMenu" id="50"/>
+													<ExtendedTooltip name="UpdatesServerPasswordExtendedTooltip" id="712"/>
+												</InputField>
+											</ChildItems>
+										</UsualGroup>
+										<UsualGroup name="Group5" id="374">
+											<Group>Vertical</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="Group5ExtendedTooltip" id="713"/>
+											<ChildItems>
+												<LabelDecoration name="LabelInformationAboutObtainingAccess" id="375">
+													<HorizontalStretch>true</HorizontalStretch>
+													<SkipOnInput>false</SkipOnInput>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>How to get the user ID and password?</v8:content>
+														</v8:item>
+													</Title>
+													<Hyperlink>true</Hyperlink>
+													<ContextMenu name="LabelInformationAboutGettingAccessContextMenu" id="376"/>
+													<ExtendedTooltip name="LabelInformationAboutGettingAccessExtendedTooltip" id="714"/>
+													<Events>
+														<Event name="Click">LabelInformationAboutObtainingAccessClick</Event>
+													</Events>
+												</LabelDecoration>
+												<CheckBoxField name="SaveUpdatesServerPassword" id="377">
+													<DataPath>Object.SaveUpdatesServerPassword</DataPath>
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>&amp;Remember password</v8:content>
+														</v8:item>
+													</Title>
+													<TitleLocation>Right</TitleLocation>
+													<CheckBoxType>Auto</CheckBoxType>
+													<ContextMenu name="SaveUpdatesServerPasswordContextMenu" id="378"/>
+													<ExtendedTooltip name="SaveUpdatesServerPasswordExtendedTooltip" id="715"/>
+												</CheckBoxField>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="PanelErrorConnection" id="67">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Connection error bar</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Horizontal</Group>
+									<Representation>NormalSeparation</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="PanelErrorConnectionExtendedTooltip" id="717"/>
+									<ChildItems>
+										<PictureDecoration name="DecorationPicture1" id="52">
+											<Width>6</Width>
+											<Height>2</Height>
+											<SkipOnInput>false</SkipOnInput>
+											<Picture>
+												<xr:Ref>CommonPicture.Warning32</xr:Ref>
+												<xr:LoadTransparent>true</xr:LoadTransparent>
+												<xr:TransparentPixel x="30" y="6"/>
+											</Picture>
+											<ContextMenu name="PictureDecoration1ContextMenu" id="53"/>
+											<ExtendedTooltip name="PictureDecoration1ExtendedTooltip" id="718"/>
+										</PictureDecoration>
+										<Pages name="AccessGroupOnSite" id="68">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group access to site</v8:content>
+												</v8:item>
+											</Title>
+											<PagesRepresentation>None</PagesRepresentation>
+											<ExtendedTooltip name="AccessGroupOnSiteExtendedTooltip" id="719"/>
+											<ChildItems>
+												<Page name="PROF" id="69">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>PROF</v8:content>
+														</v8:item>
+													</Title>
+													<ExtendedTooltip name="PROFExtendedTooltip" id="720"/>
+													<ChildItems>
+														<LabelDecoration name="Decoration11" id="54">
+															<SkipOnInput>false</SkipOnInput>
+															<Title formatted="false">
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Failed to connect to the user site with specified user ID and password. 
+Please, make sure that: • the subscription to the Information and Technological Support (ITS) is valid • user ID and password are correct</v8:content>
+																</v8:item>
+															</Title>
+															<ContextMenu name="Decoration11ContextMenu" id="55"/>
+															<ExtendedTooltip name="Decoration11ExtendedTooltip" id="721"/>
+														</LabelDecoration>
+														<LabelDecoration name="LabelHowToSubscribeToITS" id="59">
+															<SkipOnInput>false</SkipOnInput>
+															<Title formatted="false">
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>How to subscribe to ITS?</v8:content>
+																</v8:item>
+															</Title>
+															<Hyperlink>true</Hyperlink>
+															<ContextMenu name="LabelAsArrangeSubscriptionSupportDiscContextMenu" id="60"/>
+															<ExtendedTooltip name="LabelHowToPerformTTISubscriptionExtendedTooltip" id="722"/>
+															<Events>
+																<Event name="Click">LabelHowToSubscribeForITSClick</Event>
+															</Events>
+														</LabelDecoration>
+													</ChildItems>
+												</Page>
+												<Page name="Basic" id="70">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Basic</v8:content>
+														</v8:item>
+													</Title>
+													<ExtendedTooltip name="BaseExtendedTooltip" id="723"/>
+													<ChildItems>
+														<LabelDecoration name="Decoration15" id="71">
+															<SkipOnInput>false</SkipOnInput>
+															<Title formatted="false">
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Failed to connect to the user site with specified user ID and password.
+Please make sure that the user code and a password have been specified correctly.</v8:content>
+																</v8:item>
+															</Title>
+															<ContextMenu name="Decoration15ContextMenu" id="72"/>
+															<ExtendedTooltip name="Decoration15ExtendedTooltip" id="724"/>
+														</LabelDecoration>
+														<LabelDecoration name="LabelMoreAboutTTI" id="73">
+															<Height>3</Height>
+															<SkipOnInput>false</SkipOnInput>
+															<Title formatted="true">
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Application version update can also be received
+within the information and technological maintenance (&lt;link ITM&gt;1C:ITM&lt;/&gt;) including access
+to technological, methodical and consulting materials (on DVD or in the Internet), and also service and consulting services.</v8:content>
+																</v8:item>
+															</Title>
+															<ContextMenu name="LabelMoreAboutTTIContextMenu" id="74"/>
+															<ExtendedTooltip name="LabelMoreAboutITSExtendedTooltip" id="725"/>
+															<Events>
+																<Event name="URLProcessing">LabelMoreAboutTTINavigationRefDataProcessor</Event>
+															</Events>
+														</LabelDecoration>
+													</ChildItems>
+												</Page>
+												<Page name="LegalityCheckError" id="1015">
+													<ExtendedTooltip name="LegalityCheckErrorExtendedTooltip" id="1016"/>
+													<ChildItems>
+														<LabelDecoration name="LegalityCheckErrorText" id="1017">
+															<Title formatted="false">
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Update receiving legality check error.</v8:content>
+																</v8:item>
+															</Title>
+															<ContextMenu name="TextLegalityCheckErrorContextMenu" id="1018"/>
+															<ExtendedTooltip name="LegalityCheckErrorTextExtendedTooltip" id="1019"/>
+														</LabelDecoration>
+													</ChildItems>
+												</Page>
+											</ChildItems>
+										</Pages>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="PanelEventLogMonitor" id="544">
+									<VerticalStretch>false</VerticalStretch>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="PanelEventLogMonitorExtendedTooltip" id="727"/>
+									<ChildItems>
+										<LabelField name="TechnicalErrorInfo" id="379">
+											<DataPath>Object.TechnicalErrorInfo</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<TitleLocation>None</TitleLocation>
+											<ContextMenu name="TechnicalErrorInfoContextMenu" id="380"/>
+											<ExtendedTooltip name="TechnicalErrorInfoExtendedTooltip" id="728"/>
+										</LabelField>
+										<UsualGroup name="Group6" id="623">
+											<Group>Horizontal</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="Group6ExtendedTooltip" id="729"/>
+											<ChildItems>
+												<LabelDecoration name="LabelInfoRJ" id="550">
+													<SkipOnInput>false</SkipOnInput>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>See technical details in the event log.</v8:content>
+														</v8:item>
+													</Title>
+													<ContextMenu name="LabelInfoRLContextMenu" id="551"/>
+													<ExtendedTooltip name="LabelInfoELExtendedTooltip" id="730"/>
+												</LabelDecoration>
+												<LabelDecoration name="LabelOpenToEventLogMonitor1" id="547">
+													<SkipOnInput>false</SkipOnInput>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Go to event log</v8:content>
+														</v8:item>
+													</Title>
+													<Hyperlink>true</Hyperlink>
+													<VerticalAlign>Center</VerticalAlign>
+													<ContextMenu name="LabelOpenEventLogMonitor1ContextMenu" id="548"/>
+													<ExtendedTooltip name="LabelOpenEventLogMonitor1ExtendedTooltip" id="731"/>
+													<Events>
+														<Event name="Click">LabelOpenEventLogMonitorClick</Event>
+													</Events>
+												</LabelDecoration>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</UsualGroup>
+								<LabelDecoration name="Decoration66" id="385">
+									<VerticalStretch>true</VerticalStretch>
+									<SkipOnInput>false</SkipOnInput>
+									<ContextMenu name="Decoration66ContextMenu" id="386"/>
+									<ExtendedTooltip name="Decoration66ExtendedTooltip" id="732"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="UpdateFile" id="283">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Update File</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="UpdateFileExtendedTooltip" id="745"/>
+					<ChildItems>
+						<UsualGroup name="UpdateFileGroup" id="1026">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Update delivery file selection</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<Representation>NormalSeparation</Representation>
+							<ExtendedTooltip name="UpdateFileGroupExtendedTooltip" id="1027"/>
+							<ChildItems>
+								<RadioButtonField name="RadioButtonUpdateFileRequired" id="286">
+									<DataPath>Object.NeedUpdateFile</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<RadioButtonType>Auto</RadioButtonType>
+									<ColumnsCount>1</ColumnsCount>
+									<ChoiceList>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>The update file is not required as it has already been loaded to the main configuration</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:decimal">0</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Select update file:</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:decimal">1</Value>
+											</xr:Value>
+										</xr:Item>
+									</ChoiceList>
+									<ContextMenu name="RadioButtonUpdateFileRequiredContextMenu" id="287"/>
+									<ExtendedTooltip name="RadioButtonUpdateFileRequiredExtendedTooltip" id="747"/>
+									<Events>
+										<Event name="OnChange">RadioButtonNeedUpdateFileOnChange</Event>
+									</Events>
+								</RadioButtonField>
+								<UsualGroup name="Indent" id="393">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Indent</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Vertical</Group>
+									<Representation>NormalSeparation</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="IndentExtendedTooltip" id="748"/>
+									<ChildItems>
+										<InputField name="FieldUpdateFile" id="296">
+											<DataPath>Object.UpdateFileName</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<ChoiceButton>true</ChoiceButton>
+											<ContextMenu name="FieldUpdateFileContextMenu" id="297"/>
+											<ExtendedTooltip name="FieldUpdateFileExtendedTooltip" id="749"/>
+											<Events>
+												<Event name="StartChoice">FieldUpdateFileStartChoice</Event>
+											</Events>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="PanelUpdateFromMainConfiguration" id="288">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Update from main configuration bar</v8:content>
+										</v8:item>
+									</Title>
+									<VerticalStretch>false</VerticalStretch>
+									<Group>Horizontal</Group>
+									<Representation>NormalSeparation</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="PanelRefreshIsEnabledFromMainConfigurationExtendedTooltip" id="750"/>
+									<ChildItems>
+										<PictureDecoration name="Picture5" id="289">
+											<Width>5</Width>
+											<Height>2</Height>
+											<SkipOnInput>false</SkipOnInput>
+											<Picture>
+												<xr:Ref>CommonPicture.Information32</xr:Ref>
+												<xr:LoadTransparent>true</xr:LoadTransparent>
+												<xr:TransparentPixel x="30" y="2"/>
+											</Picture>
+											<ContextMenu name="Picture5ContextMenu" id="290"/>
+											<ExtendedTooltip name="Picture5ExtendedTooltip" id="751"/>
+										</PictureDecoration>
+										<Pages name="PagesConfigurationChangedInscriptions" id="477">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Label of modified configuration pages</v8:content>
+												</v8:item>
+											</Title>
+											<VerticalStretch>true</VerticalStretch>
+											<PagesRepresentation>None</PagesRepresentation>
+											<ExtendedTooltip name="PagesConfigurationChangedInscriptionsExtendedTooltip" id="752"/>
+											<ChildItems>
+												<Page name="HasChanges" id="478">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Are changes</v8:content>
+														</v8:item>
+													</Title>
+													<VerticalStretch>true</VerticalStretch>
+													<ExtendedTooltip name="HasChangesExtendedTooltip" id="753"/>
+													<ChildItems>
+														<LabelDecoration name="InscriptionConfigurationChanged" id="291">
+															<VerticalStretch>true</VerticalStretch>
+															<SkipOnInput>false</SkipOnInput>
+															<Title formatted="false">
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Main configuration doesn't differ from information database configuration.
+It is recommended to update from the main configuration.</v8:content>
+																</v8:item>
+															</Title>
+															<VerticalAlign>Center</VerticalAlign>
+															<ContextMenu name="LabelConfigurationChangedContextMenu" id="292"/>
+															<ExtendedTooltip name="LabelConfigurationChangedExtendedTooltip" id="754"/>
+														</LabelDecoration>
+													</ChildItems>
+												</Page>
+												<Page name="NoneChanges" id="479">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>No changes</v8:content>
+														</v8:item>
+													</Title>
+													<VerticalStretch>true</VerticalStretch>
+													<ExtendedTooltip name="NoneChangesExtendedTooltip" id="755"/>
+													<ChildItems>
+														<LabelDecoration name="LabelNoneChanges" id="480">
+															<VerticalStretch>true</VerticalStretch>
+															<SkipOnInput>false</SkipOnInput>
+															<Title formatted="false">
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Update is not required, as database configuration doesn't differ from the main configuration</v8:content>
+																</v8:item>
+															</Title>
+															<VerticalAlign>Center</VerticalAlign>
+															<ContextMenu name="LabelNoChangesContextMenu" id="481"/>
+															<ExtendedTooltip name="LabelNoneChangesExtendedTooltip" id="756"/>
+														</LabelDecoration>
+													</ChildItems>
+												</Page>
+											</ChildItems>
+										</Pages>
+									</ChildItems>
+								</UsualGroup>
+								<LabelDecoration name="LabelIndent" id="394">
+									<VerticalStretch>true</VerticalStretch>
+									<SkipOnInput>false</SkipOnInput>
+									<ContextMenu name="LabelIndentContextMenu" id="395"/>
+									<ExtendedTooltip name="LabelIndentExtendedTooltip" id="757"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="AvailableUpdate" id="81">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Available update</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="AffordableRefreshEnabledExtendedTooltip" id="759"/>
+					<ChildItems>
+						<UsualGroup name="InformationAboutAvailableUpdates" id="82">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>The new application version is available</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<Representation>NormalSeparation</Representation>
+							<ExtendedTooltip name="InformationAboutAvailableUpdateExtendedTooltip" id="761"/>
+							<ChildItems>
+								<UsualGroup name="GroupVersionNumber" id="83">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group version number</v8:content>
+										</v8:item>
+									</Title>
+									<HorizontalStretch>true</HorizontalStretch>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupVersionNumberExtendedTooltip" id="762"/>
+									<ChildItems>
+										<PictureDecoration name="PictureDecoration2" id="84">
+											<Width>5</Width>
+											<Height>2</Height>
+											<SkipOnInput>false</SkipOnInput>
+											<Picture>
+												<xr:Ref>CommonPicture.Information32</xr:Ref>
+												<xr:LoadTransparent>true</xr:LoadTransparent>
+												<xr:TransparentPixel x="30" y="2"/>
+											</Picture>
+											<ContextMenu name="PictureDecoration2ContextMenu" id="85"/>
+											<ExtendedTooltip name="PictureDecoration2ExtendedTooltip" id="763"/>
+										</PictureDecoration>
+										<UsualGroup name="Group9" id="644">
+											<Group>Vertical</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="Group9ExtendedTooltip" id="764"/>
+											<ChildItems>
+												<UsualGroup name="Group1" id="1059">
+													<Group>Horizontal</Group>
+													<Representation>None</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="Group1ExtendedTooltip" id="1060"/>
+													<ChildItems>
+														<LabelDecoration name="Decoration3" id="1061">
+															<Title formatted="false">
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Version:</v8:content>
+																</v8:item>
+															</Title>
+															<ContextMenu name="Decoration3ContextMenu" id="1062"/>
+															<ExtendedTooltip name="Decoration3ExtendedTooltip" id="1063"/>
+														</LabelDecoration>
+														<LabelDecoration name="LabelAvailableUpdate" id="86">
+															<SkipOnInput>false</SkipOnInput>
+															<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+															<Title formatted="false">
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>&lt;Version No&gt;</v8:content>
+																</v8:item>
+															</Title>
+															<VerticalAlign>Center</VerticalAlign>
+															<ContextMenu name="LabelAffordableRefreshEnabledContextMenu" id="87"/>
+															<ExtendedTooltip name="LabelAffordableRefreshEnabledExtendedTooltip" id="766"/>
+														</LabelDecoration>
+													</ChildItems>
+												</UsualGroup>
+												<UsualGroup name="Group11" id="95">
+													<Group>Horizontal</Group>
+													<Representation>None</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="Group11ExtendedTooltip" id="768"/>
+													<ChildItems>
+														<LabelDecoration name="Decoration19" id="91">
+															<SkipOnInput>false</SkipOnInput>
+															<Title formatted="false">
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Update size:</v8:content>
+																</v8:item>
+															</Title>
+															<ContextMenu name="Decoration19ContextMenu" id="92"/>
+															<ExtendedTooltip name="Decoration19ExtendedTooltip" id="769"/>
+														</LabelDecoration>
+														<LabelDecoration name="LabelSizeUpdates" id="93">
+															<SkipOnInput>false</SkipOnInput>
+															<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+															<Title formatted="false">
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>&lt;Mbyte&gt;</v8:content>
+																</v8:item>
+															</Title>
+															<ContextMenu name="LabelSizeUpdateContextMenu" id="94"/>
+															<ExtendedTooltip name="LabelSizeUpdateExtendedTooltip" id="770"/>
+														</LabelDecoration>
+													</ChildItems>
+												</UsualGroup>
+												<UsualGroup name="Group8" id="1064">
+													<Group>Horizontal</Group>
+													<Representation>None</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="Group8ExtendedTooltip" id="1065"/>
+													<ChildItems>
+														<Button name="NewInVersion" id="1055">
+															<Type>Hyperlink</Type>
+															<CommandName>Form.Command.NewInVersion</CommandName>
+															<ExtendedTooltip name="NewInVersionExtendedTooltip" id="1056"/>
+														</Button>
+													</ChildItems>
+												</UsualGroup>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</UsualGroup>
+								<LabelDecoration name="IndentTen1" id="1074">
+									<Height>2</Height>
+									<VerticalStretch>false</VerticalStretch>
+									<SkipOnInput>false</SkipOnInput>
+									<ContextMenu name="IndentTen1ContextMenu" id="1075"/>
+									<ExtendedTooltip name="IndentTen1ExtendedTooltip" id="1076"/>
+								</LabelDecoration>
+								<UsualGroup name="GroupAdditionalInformation" id="641">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group additional information</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group additional information</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="AdditionalInformationGroupExtendedTooltip" id="771"/>
+									<ChildItems>
+										<PictureDecoration name="PictureDecoration21" id="104">
+											<Width>5</Width>
+											<Height>2</Height>
+											<SkipOnInput>false</SkipOnInput>
+											<Picture>
+												<xr:Ref>CommonPicture.Warning32</xr:Ref>
+												<xr:LoadTransparent>true</xr:LoadTransparent>
+												<xr:TransparentPixel x="30" y="6"/>
+											</Picture>
+											<ContextMenu name="PictureDecoration21ContextMenu" id="105"/>
+											<ExtendedTooltip name="PictureDecoration21ExtendedTooltip" id="784"/>
+										</PictureDecoration>
+										<UsualGroup name="Group10" id="1069">
+											<Group>Vertical</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="Group10ExtendedTooltip" id="1070"/>
+											<ChildItems>
+												<LabelDecoration name="DecorationUpdateOrder" id="1071">
+													<Title formatted="true">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>For continuation it is necessary to examine with information about &lt;link UpdateOrder&gt;by update order&lt;/&gt;.</v8:content>
+														</v8:item>
+													</Title>
+													<ContextMenu name="DecorationUpdateOrderContextMenu" id="1072"/>
+													<ExtendedTooltip name="DecorationUpdateOrderExtendedTooltip" id="1073"/>
+													<Events>
+														<Event name="URLProcessing">DecorationUpdateOrderNavigationRefDataProcessor</Event>
+													</Events>
+												</LabelDecoration>
+												<LabelDecoration name="DecorationUpdatePlatform" id="642">
+													<Title formatted="true">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>For updating on this version the 1C:Enterprise
+platform not lower than the &lt;b&gt;8 version is required.3.5.1068&lt;/&gt;. It is necessary &lt;link UpdatePlatform&gt; go
+to on new platform version&lt;/&gt;, then it will be possible to establish this update.</v8:content>
+														</v8:item>
+													</Title>
+													<ContextMenu name="DecorationUpdatePlatformContextMenu" id="643"/>
+													<ExtendedTooltip name="DecorationUpdatePlatformExtendedTooltip" id="774"/>
+													<Events>
+														<Event name="URLProcessing">DecorationUpdatePlatformNavigationRefDataProcessor</Event>
+													</Events>
+												</LabelDecoration>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+						<LabelDecoration name="IndentTen" id="371">
+							<VerticalStretch>true</VerticalStretch>
+							<SkipOnInput>false</SkipOnInput>
+							<ContextMenu name="IndentTenContextMenu" id="372"/>
+							<ExtendedTooltip name="MarginTenExtendedTooltip" id="788"/>
+						</LabelDecoration>
+					</ChildItems>
+				</Page>
+				<Page name="UpdatesNotDetected" id="115">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Updates are not found</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="UpdateNotFoundExtendedTooltip" id="797"/>
+					<ChildItems>
+						<UsualGroup name="GroupUpdateIsNotDetected" id="1030">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Update is not required</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<Representation>NormalSeparation</Representation>
+							<ExtendedTooltip name="GroupUpdateIsNotDetectedExtendedTooltip" id="1031"/>
+							<ChildItems>
+								<UsualGroup name="GroupSearchResultUpdate" id="120">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Update search result</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupSearchResultUpdateExtendedTooltip" id="799"/>
+									<ChildItems>
+										<Pages name="PanelInformationAboutUpdate" id="124">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Panel update information</v8:content>
+												</v8:item>
+											</Title>
+											<PagesRepresentation>None</PagesRepresentation>
+											<ExtendedTooltip name="PanelInformationAboutUpdatingExtendedTooltip" id="800"/>
+											<ChildItems>
+												<Page name="RefreshEnabledNotNeeded" id="125">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Update is not required</v8:content>
+														</v8:item>
+													</Title>
+													<VerticalStretch>false</VerticalStretch>
+													<Group>Horizontal</Group>
+													<ExtendedTooltip name="RefreshNotNeededExtendedTooltip" id="801"/>
+													<ChildItems>
+														<UsualGroup name="HorizontalGroup12" id="586">
+															<VerticalStretch>false</VerticalStretch>
+															<Group>Horizontal</Group>
+															<Representation>None</Representation>
+															<ShowTitle>false</ShowTitle>
+															<ExtendedTooltip name="HorizontalGroup12ExtendedTooltip" id="802"/>
+															<ChildItems>
+																<PictureDecoration name="Picture26" id="121">
+																	<Width>6</Width>
+																	<Height>2</Height>
+																	<VerticalStretch>false</VerticalStretch>
+																	<SkipOnInput>false</SkipOnInput>
+																	<Picture>
+																		<xr:Ref>CommonPicture.Information32</xr:Ref>
+																		<xr:LoadTransparent>true</xr:LoadTransparent>
+																		<xr:TransparentPixel x="30" y="2"/>
+																	</Picture>
+																	<ContextMenu name="Picture26ContextMenu" id="122"/>
+																	<ExtendedTooltip name="Picture26ExtendedTooltip" id="803"/>
+																</PictureDecoration>
+																<LabelDecoration name="LabelYouHaveLastVersion" id="126">
+																	<VerticalStretch>true</VerticalStretch>
+																	<SkipOnInput>false</SkipOnInput>
+																	<Title formatted="false">
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Last application version is installed.</v8:content>
+																		</v8:item>
+																	</Title>
+																	<VerticalAlign>Center</VerticalAlign>
+																	<ContextMenu name="LabelYouHaveLastVersionContextMenu" id="127"/>
+																	<ExtendedTooltip name="LabelYouHaveLastVersionExtendedTooltip" id="804"/>
+																</LabelDecoration>
+															</ChildItems>
+														</UsualGroup>
+													</ChildItems>
+												</Page>
+												<Page name="RefreshEnabledIsNotFound" id="128">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Update not detected</v8:content>
+														</v8:item>
+													</Title>
+													<VerticalStretch>false</VerticalStretch>
+													<Group>Horizontal</Group>
+													<ExtendedTooltip name="RefreshEnabledIsNotFoundExtendedTooltip" id="805"/>
+													<ChildItems>
+														<PictureDecoration name="Picture24" id="588">
+															<Width>6</Width>
+															<Height>2</Height>
+															<SkipOnInput>false</SkipOnInput>
+															<Picture>
+																<xr:Ref>CommonPicture.Information32</xr:Ref>
+																<xr:LoadTransparent>true</xr:LoadTransparent>
+															</Picture>
+															<ContextMenu name="Picture24ContextMenu" id="589"/>
+															<ExtendedTooltip name="Picture24ExtendedTooltip" id="807"/>
+														</PictureDecoration>
+														<LabelDecoration name="RefreshEnabledLabelNotFound" id="129">
+															<Height>2</Height>
+															<SkipOnInput>false</SkipOnInput>
+															<Title formatted="false">
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Update is not found for this application version. </v8:content>
+																</v8:item>
+															</Title>
+															<VerticalAlign>Center</VerticalAlign>
+															<ContextMenu name="LabelRefreshEnabledNoContextMenu" id="130"/>
+															<ExtendedTooltip name="RefreshEnabledLabelNotFoundExtendedTooltip" id="809"/>
+														</LabelDecoration>
+													</ChildItems>
+												</Page>
+												<Page name="OptionChangesModeOn" id="131">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Option to make changes is enabled</v8:content>
+														</v8:item>
+													</Title>
+													<VerticalStretch>false</VerticalStretch>
+													<Group>Horizontal</Group>
+													<ExtendedTooltip name="ChangesEnabledExtendedTooltip" id="812"/>
+													<ChildItems>
+														<PictureDecoration name="Picture14" id="595">
+															<Width>6</Width>
+															<Height>2</Height>
+															<SkipOnInput>false</SkipOnInput>
+															<Picture>
+																<xr:Ref>CommonPicture.Warning32</xr:Ref>
+																<xr:LoadTransparent>true</xr:LoadTransparent>
+															</Picture>
+															<ContextMenu name="Picture14ContextMenu" id="596"/>
+															<ExtendedTooltip name="Picture14ExtendedTooltip" id="814"/>
+														</PictureDecoration>
+														<LabelDecoration name="LabelChangesOptionIsEnabled" id="132">
+															<VerticalStretch>true</VerticalStretch>
+															<SkipOnInput>false</SkipOnInput>
+															<Title formatted="false">
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>The configuration with the enabled option to make changes in metadata can not be updated automatically. Use the standard
+Designer tools (menu "Configuration" - "Support" - "Update configuration").</v8:content>
+																</v8:item>
+															</Title>
+															<VerticalAlign>Center</VerticalAlign>
+															<ContextMenu name="LabelEnabledPossibilityChangeToContextMenu" id="133"/>
+															<ExtendedTooltip name="LabelChangesEnabledExtendedTooltip" id="815"/>
+														</LabelDecoration>
+													</ChildItems>
+												</Page>
+												<Page name="UpdatePerformedAtMainNode" id="614">
+													<VerticalStretch>false</VerticalStretch>
+													<ExtendedTooltip name="UpdateProducedInMainNodeExtendedTooltip" id="816"/>
+													<ChildItems>
+														<UsualGroup name="HorizontalGroup13" id="615">
+															<VerticalStretch>false</VerticalStretch>
+															<Group>Horizontal</Group>
+															<Representation>None</Representation>
+															<ShowTitle>false</ShowTitle>
+															<ExtendedTooltip name="HorizontalGroup13ExtendedTooltip" id="817"/>
+															<ChildItems>
+																<PictureDecoration name="Picture27" id="616">
+																	<Width>6</Width>
+																	<Height>2</Height>
+																	<VerticalStretch>false</VerticalStretch>
+																	<SkipOnInput>false</SkipOnInput>
+																	<Picture>
+																		<xr:Ref>CommonPicture.Information32</xr:Ref>
+																		<xr:LoadTransparent>true</xr:LoadTransparent>
+																		<xr:TransparentPixel x="30" y="2"/>
+																	</Picture>
+																	<ContextMenu name="Picture27ContextMenu" id="617"/>
+																	<ExtendedTooltip name="Picture27ExtendedTooltip" id="818"/>
+																</PictureDecoration>
+																<LabelDecoration name="LabelConfigurationUpdateInProgressWhenDataExchangeWithHost" id="618">
+																	<VerticalStretch>true</VerticalStretch>
+																	<SkipOnInput>false</SkipOnInput>
+																	<Title formatted="false">
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Application update is performed at the data synchronization with "%1".</v8:content>
+																		</v8:item>
+																	</Title>
+																	<VerticalAlign>Center</VerticalAlign>
+																	<ContextMenu name="LabelConfigurationUpdateInProgressWhenDataExchangeWithHostContextMenu" id="619"/>
+																	<ExtendedTooltip name="LabelConfigurationUpdateInProgressWhenDataExchangeWithHostExtendedTooltip" id="819"/>
+																</LabelDecoration>
+															</ChildItems>
+														</UsualGroup>
+													</ChildItems>
+												</Page>
+											</ChildItems>
+										</Pages>
+										<UsualGroup name="GroupCurrentVersion" id="136">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group current version</v8:content>
+												</v8:item>
+											</Title>
+											<VerticalStretch>false</VerticalStretch>
+											<Group>Horizontal</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="GroupCurrentVersionExtendedTooltip" id="820"/>
+											<ChildItems>
+												<LabelDecoration name="Decoration30" id="134">
+													<SkipOnInput>false</SkipOnInput>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Current application version:</v8:content>
+														</v8:item>
+													</Title>
+													<ContextMenu name="Decoration30ContextMenu" id="135"/>
+													<ExtendedTooltip name="Decoration30ExtendedTooltip" id="821"/>
+												</LabelDecoration>
+												<LabelDecoration name="LabelVersionCurrentConfiguration" id="137">
+													<SkipOnInput>false</SkipOnInput>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>&lt;Version of current configuration&gt;</v8:content>
+														</v8:item>
+													</Title>
+													<ContextMenu name="LabelVersionCurrentConfigurationContextMenu" id="138"/>
+													<ExtendedTooltip name="LabelVersionCurrentConfigurationExtendedTooltip" id="822"/>
+												</LabelDecoration>
+												<LabelDecoration name="InscriptionVersionForUpdate" id="507">
+													<SkipOnInput>false</SkipOnInput>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>&lt;New version is available&gt;</v8:content>
+														</v8:item>
+													</Title>
+													<ContextMenu name="LabelVersionForUpdateContextMenu" id="508"/>
+													<ExtendedTooltip name="LabelVersionForUpdateExtendedTooltip" id="823"/>
+												</LabelDecoration>
+											</ChildItems>
+										</UsualGroup>
+										<LabelDecoration name="LabelDetailsCurrentConfiguration" id="139">
+											<VerticalStretch>false</VerticalStretch>
+											<SkipOnInput>false</SkipOnInput>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>&lt;Description of cerrent configuration&gt;</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="LabelDetailsCurrentConfigurationContextMenu" id="140"/>
+											<ExtendedTooltip name="LabelDetailsCurrentConfigurationExtendedTooltip" id="824"/>
+										</LabelDecoration>
+									</ChildItems>
+								</UsualGroup>
+								<LabelDecoration name="Indent7" id="387">
+									<VerticalStretch>true</VerticalStretch>
+									<SkipOnInput>false</SkipOnInput>
+									<ContextMenu name="Indent7ContextMenu" id="388"/>
+									<ExtendedTooltip name="IndentSevenExtendedTooltip" id="828"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="LongOperation" id="143">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Long operation</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="LongOperationExtendedTooltip" id="830"/>
+					<ChildItems>
+						<UsualGroup name="LongOperationGroup" id="1032">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Please wait...</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<Representation>NormalSeparation</Representation>
+							<ExtendedTooltip name="LongOperationGroupExtendedTooltip" id="1033"/>
+							<ChildItems>
+								<UsualGroup name="GroupAnimation" id="1077">
+									<VerticalStretch>false</VerticalStretch>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupAnimationExtendedTooltip" id="1078"/>
+									<ChildItems>
+										<PictureDecoration name="PictureDecoration33" id="147">
+											<Width>6</Width>
+											<Height>3</Height>
+											<SkipOnInput>false</SkipOnInput>
+											<Picture>
+												<xr:Ref>CommonPicture.LongOperation48</xr:Ref>
+												<xr:LoadTransparent>true</xr:LoadTransparent>
+											</Picture>
+											<ContextMenu name="PictureDecoration33ContextMenu" id="148"/>
+											<ExtendedTooltip name="PictureDecoration33ExtendedTooltip" id="835"/>
+										</PictureDecoration>
+										<LabelDecoration name="Decoration34" id="149">
+											<HorizontalStretch>true</HorizontalStretch>
+											<VerticalStretch>true</VerticalStretch>
+											<SkipOnInput>false</SkipOnInput>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>It may take from several seconds to several hours to update the application depending on the update size, Internet connection speed and the computer performance.</v8:content>
+												</v8:item>
+											</Title>
+											<VerticalAlign>Center</VerticalAlign>
+											<TitleHeight>2</TitleHeight>
+											<ContextMenu name="Decoration34ContextMenu" id="150"/>
+											<ExtendedTooltip name="Decoration34ExtendedTooltip" id="836"/>
+										</LabelDecoration>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="GroupProgress" id="610">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group progress</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Vertical</Group>
+									<Representation>NormalSeparation</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupProgressExtendedTooltip" id="840"/>
+									<ChildItems>
+										<LabelDecoration name="LabelProgres" id="158">
+											<SkipOnInput>false</SkipOnInput>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Obtaining update files is running: 1 from 1...</v8:content>
+												</v8:item>
+											</Title>
+											<VerticalAlign>Top</VerticalAlign>
+											<ContextMenu name="LabelProgressContextMenu" id="159"/>
+											<ExtendedTooltip name="LabelProgressExtendedTooltip" id="841"/>
+										</LabelDecoration>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="CaseUpdateFile" id="160">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Update mode file selection</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="CaseUpdateFileExtendedTooltip" id="842"/>
+					<ChildItems>
+						<UsualGroup name="UpdateModeSelectionFileGroup" id="1034">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Setting update</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<Representation>NormalSeparation</Representation>
+							<ExtendedTooltip name="UpdateModeSelectionFileGroupExtendedTooltip" id="1035"/>
+							<ChildItems>
+								<Pages name="PagesUpdateMethodFile" id="1042">
+									<PagesRepresentation>None</PagesRepresentation>
+									<ExtendedTooltip name="PagesUpdateMethodFileExtendedTooltip" id="1043"/>
+									<ChildItems>
+										<Page name="PageUpdateSwitchFile" id="1044">
+											<ExtendedTooltip name="PageUpdateSwitchFileExtendedTooltip" id="1045"/>
+											<ChildItems>
+												<UsualGroup name="UpdateOrderFile" id="1053">
+													<Group>Horizontal</Group>
+													<Representation>None</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="UpdateOrderFileExtendedTooltip" id="1054"/>
+													<ChildItems>
+														<PictureDecoration name="Decoration8" id="534">
+															<Width>5</Width>
+															<Height>2</Height>
+															<SkipOnInput>false</SkipOnInput>
+															<Picture>
+																<xr:Ref>CommonPicture.Warning32</xr:Ref>
+																<xr:LoadTransparent>true</xr:LoadTransparent>
+															</Picture>
+															<ContextMenu name="Decoration8ContextMenu" id="535"/>
+															<ExtendedTooltip name="Decoration8ExtendedTooltip" id="848"/>
+														</PictureDecoration>
+														<LabelDecoration name="LabelUpdateOrderFile" id="169">
+															<Height>2</Height>
+															<SkipOnInput>false</SkipOnInput>
+															<Title formatted="true">
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>For continuation it is necessary to examine with &lt;link UpdateOrder&gt;by update order&lt;/&gt;.</v8:content>
+																</v8:item>
+															</Title>
+															<ContextMenu name="LabelUpdateOrderFileContextMenu" id="170"/>
+															<ExtendedTooltip name="LabelUpdateOrderFileExtendedTooltip" id="850"/>
+															<Events>
+																<Event name="URLProcessing">LabelUpdateOrderFileNavigationRefDataProcessor</Event>
+															</Events>
+														</LabelDecoration>
+													</ChildItems>
+												</UsualGroup>
+												<RadioButtonField name="SwitchFileUpdates" id="612">
+													<DataPath>Object.UpdateMode</DataPath>
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Select application update installation method</v8:content>
+														</v8:item>
+													</Title>
+													<RadioButtonType>Auto</RadioButtonType>
+													<ColumnsCount>1</ColumnsCount>
+													<ChoiceList>
+														<xr:Item>
+															<xr:Presentation/>
+															<xr:CheckState>0</xr:CheckState>
+															<xr:Value xsi:type="FormChoiceListDesTimeValue">
+																<Presentation>
+																	<v8:item>
+																		<v8:lang>en</v8:lang>
+																		<v8:content>Install the update right now (you will have to restart)</v8:content>
+																	</v8:item>
+																</Presentation>
+																<Value xsi:type="xs:decimal">0</Value>
+															</xr:Value>
+														</xr:Item>
+														<xr:Item>
+															<xr:Presentation/>
+															<xr:CheckState>0</xr:CheckState>
+															<xr:Value xsi:type="FormChoiceListDesTimeValue">
+																<Presentation>
+																	<v8:item>
+																		<v8:lang>en</v8:lang>
+																		<v8:content>Remind me on exit</v8:content>
+																	</v8:item>
+																</Presentation>
+																<Value xsi:type="xs:decimal">1</Value>
+															</xr:Value>
+														</xr:Item>
+													</ChoiceList>
+													<ContextMenu name="RadioButtonUpdateFileContextMenu" id="613"/>
+													<ExtendedTooltip name="RadioButtonUpdateFileExtendedTooltip" id="853"/>
+													<Events>
+														<Event name="OnChange">RadioButtonUpdatesOnChange</Event>
+													</Events>
+												</RadioButtonField>
+												<LabelDecoration name="LabelUpdateProcessCanTakeMuchTime" id="177">
+													<SkipOnInput>false</SkipOnInput>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Process of updating can take a long time. Do not power off the computer till the process completion.</v8:content>
+														</v8:item>
+													</Title>
+													<ContextMenu name="LabelUpdateProcessCanLockManyEndTimeContextMenu" id="178"/>
+													<ExtendedTooltip name="LabelUpdateProcessCanLockManyTimeExtendedTooltip" id="866"/>
+												</LabelDecoration>
+											</ChildItems>
+										</Page>
+										<Page name="PageReceivedUpdateFromFileApplications" id="1046">
+											<ExtendedTooltip name="PageReceivedUpdateFromFileApplicationExtendedTooltip" id="1047"/>
+											<ChildItems>
+												<LabelDecoration name="LabelReceivedUpdateFromApplicationFile" id="652">
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Update from the Internet application is received. Application restart
+will be required for installation. Process of updating can take a long time.
+Do not power off the computer until the installation process is completed.</v8:content>
+														</v8:item>
+													</Title>
+													<ContextMenu name="ReceivedLabelRefreshEnabledApplicationsFileFromContextMenu" id="653"/>
+													<ExtendedTooltip name="LabelReceivedRefreshFromApplicationFileExtendedTooltip" id="852"/>
+												</LabelDecoration>
+											</ChildItems>
+										</Page>
+									</ChildItems>
+								</Pages>
+								<UsualGroup name="GroupConnections" id="179">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Compounds group</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Horizontal</Group>
+									<Representation>NormalSeparation</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupConnectionsExtendedTooltip" id="854"/>
+									<ChildItems>
+										<PictureDecoration name="Picture1" id="180">
+											<Width>5</Width>
+											<Height>2</Height>
+											<SkipOnInput>false</SkipOnInput>
+											<Picture>
+												<xr:Ref>CommonPicture.Warning32</xr:Ref>
+												<xr:LoadTransparent>true</xr:LoadTransparent>
+												<xr:TransparentPixel x="30" y="6"/>
+											</Picture>
+											<ContextMenu name="Picture1ContextMenu" id="181"/>
+											<ExtendedTooltip name="Picture1ExtendedTooltip" id="855"/>
+										</PictureDecoration>
+										<Pages name="PanelActiveUsers" id="187">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Active users bar</v8:content>
+												</v8:item>
+											</Title>
+											<HorizontalStretch>false</HorizontalStretch>
+											<PagesRepresentation>None</PagesRepresentation>
+											<ExtendedTooltip name="PanelActiveUsersExtendedTooltip" id="856"/>
+											<ChildItems>
+												<Page name="ActiveUsers" id="188">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Active users</v8:content>
+														</v8:item>
+													</Title>
+													<ExtendedTooltip name="ActiveUsersExtendedTooltip" id="857"/>
+													<ChildItems>
+														<LabelDecoration name="Inscription43" id="183">
+															<SkipOnInput>false</SkipOnInput>
+															<Title formatted="false">
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Other users are working with the application. To continue it is necessary to terminate their sessions.</v8:content>
+																</v8:item>
+															</Title>
+															<ContextMenu name="Label43ContextMenu" id="184"/>
+															<ExtendedTooltip name="Label43ExtendedTooltip" id="858"/>
+														</LabelDecoration>
+														<LabelDecoration name="LabelActionsList" id="185">
+															<HorizontalStretch>true</HorizontalStretch>
+															<SkipOnInput>false</SkipOnInput>
+															<Title formatted="false">
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>View list of active users</v8:content>
+																</v8:item>
+															</Title>
+															<Hyperlink>true</Hyperlink>
+															<ContextMenu name="LabelListActionsContextMenu" id="186"/>
+															<ExtendedTooltip name="LabelListActionsExtendedTooltip" id="859"/>
+															<Events>
+																<Event name="Click">LabelActionListClick</Event>
+															</Events>
+														</LabelDecoration>
+													</ChildItems>
+												</Page>
+												<Page name="ActiveConnection" id="189">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Active connections</v8:content>
+														</v8:item>
+													</Title>
+													<ExtendedTooltip name="ActiveConnectionExtendedTooltip" id="860"/>
+													<ChildItems>
+														<LabelDecoration name="Label42" id="190">
+															<SkipOnInput>false</SkipOnInput>
+															<Title formatted="false">
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>External applications are working with the application. To continue it is necessary to terminate their sessions.</v8:content>
+																</v8:item>
+															</Title>
+															<ContextMenu name="Inscription42ContextMenu" id="191"/>
+															<ExtendedTooltip name="Label42ExtendedTooltip" id="861"/>
+														</LabelDecoration>
+														<LabelDecoration name="LabelListActions1" id="192">
+															<HorizontalStretch>true</HorizontalStretch>
+															<SkipOnInput>false</SkipOnInput>
+															<Title formatted="false">
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>View list of active connections</v8:content>
+																</v8:item>
+															</Title>
+															<Hyperlink>true</Hyperlink>
+															<ContextMenu name="LabelActionsList1ContextMenu" id="193"/>
+															<ExtendedTooltip name="LabelListActions1ExtendedTooltip" id="862"/>
+															<Events>
+																<Event name="Click">LabelActionList1Click</Event>
+															</Events>
+														</LabelDecoration>
+													</ChildItems>
+												</Page>
+												<Page name="ConnectionConfigurator" id="194">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Configurator connection</v8:content>
+														</v8:item>
+													</Title>
+													<ExtendedTooltip name="ConnectionBuilderExtendedTooltip" id="863"/>
+													<ChildItems>
+														<LabelDecoration name="Label45" id="195">
+															<SkipOnInput>false</SkipOnInput>
+															<Title formatted="false">
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Designer is opened. Exit the Designer to continue.</v8:content>
+																</v8:item>
+															</Title>
+															<VerticalAlign>Top</VerticalAlign>
+															<ContextMenu name="Label45ContextMenu" id="196"/>
+															<ExtendedTooltip name="Label45ExtendedTooltip" id="864"/>
+														</LabelDecoration>
+														<LabelDecoration name="LabelListActions3" id="197">
+															<HorizontalStretch>true</HorizontalStretch>
+															<SkipOnInput>false</SkipOnInput>
+															<Title formatted="false">
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>View list of active users</v8:content>
+																</v8:item>
+															</Title>
+															<Hyperlink>true</Hyperlink>
+															<VerticalAlign>Top</VerticalAlign>
+															<ContextMenu name="LabelActionsListContextMenu" id="198"/>
+															<ExtendedTooltip name="LabelListActions3ExtendedTooltip" id="865"/>
+															<Events>
+																<Event name="Click">LabelActionList3Click</Event>
+															</Events>
+														</LabelDecoration>
+													</ChildItems>
+												</Page>
+											</ChildItems>
+										</Pages>
+									</ChildItems>
+								</UsualGroup>
+								<LabelDecoration name="LabelIndent3" id="400">
+									<VerticalStretch>true</VerticalStretch>
+									<SkipOnInput>false</SkipOnInput>
+									<ContextMenu name="LabelIndent3ContextMenu" id="401"/>
+									<ExtendedTooltip name="LabelIndent3ExtendedTooltip" id="867"/>
+								</LabelDecoration>
+								<UsualGroup name="BackupGroup" id="204">
+									<Group>Horizontal</Group>
+									<Representation>NormalSeparation</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupBackupCopyExtendedTooltip" id="868"/>
+									<ChildItems>
+										<LabelDecoration name="Label46" id="202">
+											<SkipOnInput>false</SkipOnInput>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Backup:</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="Inscription46ContextMenu" id="203"/>
+											<ExtendedTooltip name="Label46ExtendedTooltip" id="869"/>
+										</LabelDecoration>
+										<LabelDecoration name="LabelBackupFile" id="205">
+											<SkipOnInput>false</SkipOnInput>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Create temporary IB backup copy and roll back in case of emergency.</v8:content>
+												</v8:item>
+											</Title>
+											<Hyperlink>true</Hyperlink>
+											<VerticalAlign>Bottom</VerticalAlign>
+											<ContextMenu name="LabelBackupCopyFileContextMenu" id="206"/>
+											<ExtendedTooltip name="LabelBackupFileExtendedTooltip" id="870"/>
+											<Events>
+												<Event name="Click">LabelBackupCopyClick</Event>
+											</Events>
+										</LabelDecoration>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="UpdateModeChoiceServer" id="209">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Server update mode selection</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="CaseUpdateServerModeExtendedTooltip" id="880"/>
+					<ChildItems>
+						<UsualGroup name="UpdateModeSelectionServerGroup" id="1036">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Setting update</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<Representation>NormalSeparation</Representation>
+							<ExtendedTooltip name="UpdateModeSelectionServerGroupExtendedTooltip" id="1037"/>
+							<ChildItems>
+								<UsualGroup name="UpdateOrderServer" id="346">
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="UpdateOrderServerExtendedTooltip" id="885"/>
+									<ChildItems>
+										<PictureDecoration name="Decoration1" id="505">
+											<Width>4</Width>
+											<Height>2</Height>
+											<SkipOnInput>false</SkipOnInput>
+											<Picture>
+												<xr:Ref>CommonPicture.Warning32</xr:Ref>
+												<xr:LoadTransparent>true</xr:LoadTransparent>
+											</Picture>
+											<ContextMenu name="Decoration1ContextMenu" id="506"/>
+											<ExtendedTooltip name="Decoration1ExtendedTooltip" id="886"/>
+										</PictureDecoration>
+										<LabelDecoration name="LabelOrderUpdateServer" id="348">
+											<Height>2</Height>
+											<SkipOnInput>false</SkipOnInput>
+											<Title formatted="true">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>For continuation it is necessary to examine with &lt;link UpdateOrder&gt;by update order&lt;/&gt;.</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="LabelOrderUpdateServerContextMenu" id="349"/>
+											<ExtendedTooltip name="LabelOrderUpdateServerExtendedTooltip" id="888"/>
+											<Events>
+												<Event name="URLProcessing">LabelUpdateOrderServerNavigationRefDataProcessor</Event>
+											</Events>
+										</LabelDecoration>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="IndentFour" id="458">
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="IndentFourExtendedTooltip" id="890"/>
+									<ChildItems>
+										<RadioButtonField name="RadioButtonUpdateServer" id="214">
+											<DataPath>Object.UpdateMode</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Select application update installation method</v8:content>
+												</v8:item>
+											</Title>
+											<RadioButtonType>Auto</RadioButtonType>
+											<ColumnsCount>1</ColumnsCount>
+											<ChoiceList>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation>
+															<v8:item>
+																<v8:lang>en</v8:lang>
+																<v8:content>Install the update right now (you will have to restart)</v8:content>
+															</v8:item>
+														</Presentation>
+														<Value xsi:type="xs:decimal">0</Value>
+													</xr:Value>
+												</xr:Item>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation>
+															<v8:item>
+																<v8:lang>en</v8:lang>
+																<v8:content>Remind me on exit</v8:content>
+															</v8:item>
+														</Presentation>
+														<Value xsi:type="xs:decimal">1</Value>
+													</xr:Value>
+												</xr:Item>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation>
+															<v8:item>
+																<v8:lang>en</v8:lang>
+																<v8:content>Schedule the update installation for the specified time</v8:content>
+															</v8:item>
+														</Presentation>
+														<Value xsi:type="xs:decimal">2</Value>
+													</xr:Value>
+												</xr:Item>
+											</ChoiceList>
+											<ContextMenu name="RadioButtonUpdateServerContextMenu" id="215"/>
+											<ExtendedTooltip name="RadioButtonUpdateServerExtendedTooltip" id="891"/>
+											<Events>
+												<Event name="OnChange">RadioButtonUpdatesOnChange</Event>
+											</Events>
+										</RadioButtonField>
+										<UsualGroup name="UpdateDateGroup" id="1048">
+											<Group>Vertical</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="GroupUpdateDateExtendedTooltip" id="1049"/>
+											<ChildItems>
+												<LabelDecoration name="Decoration2" id="1050">
+													<Height>3</Height>
+													<ContextMenu name="Decoration2ContextMenu" id="1051"/>
+													<ExtendedTooltip name="Decoration2ExtendedTooltip" id="1052"/>
+												</LabelDecoration>
+												<InputField name="FieldUpdateDateTime" id="242">
+													<DataPath>Object.UpdateDateTime</DataPath>
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Date and time</v8:content>
+														</v8:item>
+													</Title>
+													<TitleLocation>None</TitleLocation>
+													<ContextMenu name="FieldUpdateDateEndTimeContextMenu" id="243"/>
+													<ExtendedTooltip name="FieldUpdateDateTimeExtendedTooltip" id="894"/>
+												</InputField>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</UsualGroup>
+								<Pages name="PagesInformationReboot1" id="216">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Page of information reload</v8:content>
+										</v8:item>
+									</Title>
+									<PagesRepresentation>None</PagesRepresentation>
+									<ExtendedTooltip name="PagesInformationReboot1ExtendedTooltip" id="892"/>
+									<ChildItems>
+										<Page name="ScheduledRebootPage" id="239">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Page of scheduled reboot</v8:content>
+												</v8:item>
+											</Title>
+											<ExtendedTooltip name="PageScheduledRebootExtendedTooltip" id="893"/>
+											<ChildItems>
+												<LabelDecoration name="Inscription51" id="240">
+													<VerticalStretch>false</VerticalStretch>
+													<SkipOnInput>false</SkipOnInput>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>The update will be installed from this computer in the backgroung mode.
+Computer must be powered on at the time and date specified.</v8:content>
+														</v8:item>
+													</Title>
+													<VerticalAlign>Top</VerticalAlign>
+													<TitleHeight>2</TitleHeight>
+													<ContextMenu name="Label51ContextMenu" id="241"/>
+													<ExtendedTooltip name="Label51ExtendedTooltip" id="895"/>
+												</LabelDecoration>
+												<UsualGroup name="PanelMail" id="248">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Panel mail</v8:content>
+														</v8:item>
+													</Title>
+													<VerticalStretch>false</VerticalStretch>
+													<Group>Horizontal</Group>
+													<Representation>None</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="PanelMailExtendedTooltip" id="896"/>
+													<ChildItems>
+														<CheckBoxField name="SendReportToEMail" id="244">
+															<DataPath>Object.SendReportToEMail</DataPath>
+															<Title>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Send report to email:</v8:content>
+																</v8:item>
+															</Title>
+															<TitleLocation>Right</TitleLocation>
+															<CheckBoxType>Auto</CheckBoxType>
+															<ContextMenu name="SendReportByEmailContextMenu" id="245"/>
+															<ExtendedTooltip name="SendReportByEmailExtendedTooltip" id="897"/>
+															<Events>
+																<Event name="OnChange">SendReportToEMailOnChange</Event>
+															</Events>
+														</CheckBoxField>
+														<InputField name="EmailAddress" id="246">
+															<DataPath>Object.EmailAddress</DataPath>
+															<TitleLocation>None</TitleLocation>
+															<Width>30</Width>
+															<HorizontalStretch>false</HorizontalStretch>
+															<ContextMenu name="EmailAddressContextMenu" id="247"/>
+															<ExtendedTooltip name="EmailAddressExtendedTooltip" id="898"/>
+														</InputField>
+													</ChildItems>
+												</UsualGroup>
+											</ChildItems>
+										</Page>
+										<Page name="PageRebootNow1" id="217">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Reboot now page</v8:content>
+												</v8:item>
+											</Title>
+											<ExtendedTooltip name="PageRebootNow1ExtendedTooltip" id="899"/>
+											<ChildItems>
+												<LabelDecoration name="LabelBePreInstalledServerUpdate" id="218">
+													<VerticalStretch>false</VerticalStretch>
+													<SkipOnInput>false</SkipOnInput>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Process of updating can take a long time. Do not power off the computer till the process completion.</v8:content>
+														</v8:item>
+													</Title>
+													<VerticalAlign>Top</VerticalAlign>
+													<ContextMenu name="LabelWillBePreInstalledServerUpdateContextMenu" id="219"/>
+													<ExtendedTooltip name="LabelWillSetEnabledServerRefreshExtendedTooltip" id="900"/>
+												</LabelDecoration>
+												<UsualGroup name="ConnectionsGroup1" id="220">
+													<VerticalStretch>false</VerticalStretch>
+													<Group>Horizontal</Group>
+													<Representation>None</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="Group1ConnectionsExtendedTooltip" id="901"/>
+													<ChildItems>
+														<PictureDecoration name="Picture2" id="221">
+															<Width>5</Width>
+															<Height>2</Height>
+															<SkipOnInput>false</SkipOnInput>
+															<Picture>
+																<xr:Ref>CommonPicture.Warning32</xr:Ref>
+																<xr:LoadTransparent>true</xr:LoadTransparent>
+																<xr:TransparentPixel x="30" y="6"/>
+															</Picture>
+															<ContextMenu name="Picture2ContextMenu" id="222"/>
+															<ExtendedTooltip name="Picture2ExtendedTooltip" id="902"/>
+														</PictureDecoration>
+														<Pages name="PanelActiveUsers1" id="223">
+															<PagesRepresentation>None</PagesRepresentation>
+															<ExtendedTooltip name="PanelActiveUsers1ExtendedTooltip" id="903"/>
+															<ChildItems>
+																<Page name="ActiveUsers1" id="224">
+																	<Title>
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Active users</v8:content>
+																		</v8:item>
+																	</Title>
+																	<ExtendedTooltip name="ActiveUsers1ExtendedTooltip" id="904"/>
+																	<ChildItems>
+																		<LabelDecoration name="Label48" id="225">
+																			<SkipOnInput>false</SkipOnInput>
+																			<Title formatted="false">
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Other users are working with the application. Their work will be completed automatically.</v8:content>
+																				</v8:item>
+																			</Title>
+																			<VerticalAlign>Top</VerticalAlign>
+																			<ContextMenu name="Label48ContextMenu" id="226"/>
+																			<ExtendedTooltip name="Label48ExtendedTooltip" id="905"/>
+																		</LabelDecoration>
+																		<LabelDecoration name="InscriptionActionsList2" id="227">
+																			<Width>30</Width>
+																			<SkipOnInput>false</SkipOnInput>
+																			<Title formatted="false">
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>View list of active users</v8:content>
+																				</v8:item>
+																			</Title>
+																			<Hyperlink>true</Hyperlink>
+																			<ContextMenu name="LabelListActions2ContextMenu" id="228"/>
+																			<ExtendedTooltip name="LabelListActions2ExtendedTooltip" id="906"/>
+																			<Events>
+																				<Event name="Click">LabelActionListClick</Event>
+																			</Events>
+																		</LabelDecoration>
+																	</ChildItems>
+																</Page>
+																<Page name="ActiveConnection1" id="229">
+																	<Title>
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Active connections</v8:content>
+																		</v8:item>
+																	</Title>
+																	<ExtendedTooltip name="ActiveConnection1ExtendedTooltip" id="907"/>
+																	<ChildItems>
+																		<LabelDecoration name="Label49" id="230">
+																			<VerticalStretch>false</VerticalStretch>
+																			<SkipOnInput>false</SkipOnInput>
+																			<Title formatted="false">
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Other users and external applications are working with infobase.
+Their work will be completed automatically.</v8:content>
+																				</v8:item>
+																			</Title>
+																			<ContextMenu name="Inscription49ContextMenu" id="231"/>
+																			<ExtendedTooltip name="Label49ExtendedTooltip" id="908"/>
+																		</LabelDecoration>
+																		<LabelDecoration name="LabelActionsList4" id="232">
+																			<HorizontalStretch>false</HorizontalStretch>
+																			<VerticalStretch>false</VerticalStretch>
+																			<SkipOnInput>false</SkipOnInput>
+																			<Title formatted="false">
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>View list of active connections</v8:content>
+																				</v8:item>
+																			</Title>
+																			<Hyperlink>true</Hyperlink>
+																			<ContextMenu name="LabelListActions4ContextMenu" id="233"/>
+																			<ExtendedTooltip name="LabelListActions4ExtendedTooltip" id="909"/>
+																			<Events>
+																				<Event name="Click">LabelActionList1Click</Event>
+																			</Events>
+																		</LabelDecoration>
+																	</ChildItems>
+																</Page>
+															</ChildItems>
+														</Pages>
+													</ChildItems>
+												</UsualGroup>
+											</ChildItems>
+										</Page>
+									</ChildItems>
+								</Pages>
+								<LabelDecoration name="LabelIndent2" id="398">
+									<VerticalStretch>true</VerticalStretch>
+									<SkipOnInput>false</SkipOnInput>
+									<ContextMenu name="LabelIndent2ContextMenu" id="399"/>
+									<ExtendedTooltip name="LabelIndent2ExtendedTooltip" id="910"/>
+								</LabelDecoration>
+								<UsualGroup name="BackupGroupServer" id="539">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Server backup copy group</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Horizontal</Group>
+									<Representation>NormalSeparation</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupBackupCopyServerExtendedTooltip" id="911"/>
+									<ChildItems>
+										<PictureDecoration name="Decoration13" id="540">
+											<Width>2</Width>
+											<Height>1</Height>
+											<SkipOnInput>false</SkipOnInput>
+											<Picture>
+												<xr:Ref>CommonPicture.Information</xr:Ref>
+												<xr:LoadTransparent>true</xr:LoadTransparent>
+											</Picture>
+											<ContextMenu name="Decoration13ContextMenu" id="541"/>
+											<ExtendedTooltip name="Decoration13ExtendedTooltip" id="912"/>
+										</PictureDecoration>
+										<LabelDecoration name="LabelBackupCopyServer" id="537">
+											<SkipOnInput>false</SkipOnInput>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Prior to installation of the update it is recommended to back up the infobase.</v8:content>
+												</v8:item>
+											</Title>
+											<VerticalAlign>Center</VerticalAlign>
+											<ContextMenu name="LabelBackupCopyServerContextMenu" id="538"/>
+											<ExtendedTooltip name="LabelBackupCopyServerExtendedTooltip" id="913"/>
+										</LabelDecoration>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="SuccessfulRefresh" id="256">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Successful update</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="SuccessfulRefreshExtendedTooltip" id="921"/>
+					<ChildItems>
+						<UsualGroup name="GroupSuccessfulRefresh" id="1038">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Update has been successfully completed</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<Representation>NormalSeparation</Representation>
+							<ExtendedTooltip name="SuccessfulUpdateGroupExtendedTooltip" id="1039"/>
+							<ChildItems>
+								<LabelDecoration name="Decoration46" id="259">
+									<SkipOnInput>false</SkipOnInput>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Installation of the new application version is successfully completed.
+Click Done to finish the update.</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="Decoration46ContextMenu" id="260"/>
+									<ExtendedTooltip name="Decoration46ExtendedTooltip" id="923"/>
+								</LabelDecoration>
+								<LabelDecoration name="Decoration4" id="1085">
+									<Height>2</Height>
+									<ContextMenu name="Decoration4ContextMenu" id="1086"/>
+									<ExtendedTooltip name="Decoration4ExtendedTooltip" id="1087"/>
+								</LabelDecoration>
+								<CheckBoxField name="ShowNewInVersion" id="1082">
+									<DataPath>ShowNewInVersion</DataPath>
+									<TitleLocation>Right</TitleLocation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="ShowNewInVersionContextMenu" id="1083"/>
+									<ExtendedTooltip name="ShowNewInVersionExtendedTooltip" id="1084"/>
+								</CheckBoxField>
+								<CheckBoxField name="GetToKnowAdditionalInstructions" id="1079">
+									<DataPath>GetToKnowAdditionalInstructions</DataPath>
+									<TitleLocation>Right</TitleLocation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="GetToKnowAdditionalInstructionsContextMenu" id="1080"/>
+									<ExtendedTooltip name="GetToKnowAdditionalInstructionsExtendedTooltip" id="1081"/>
+								</CheckBoxField>
+								<LabelDecoration name="Indent45" id="389">
+									<VerticalStretch>true</VerticalStretch>
+									<SkipOnInput>false</SkipOnInput>
+									<ContextMenu name="Indent45ContextMenu" id="390"/>
+									<ExtendedTooltip name="Margin45ExtendedTooltip" id="930"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="FailureRefresh" id="271">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Failed update</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="FailureUpdateEnabledExtendedTooltip" id="932"/>
+					<ChildItems>
+						<UsualGroup name="FailureUpdateGroup" id="1040">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Failed to install the update</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<ExtendedTooltip name="FailureUpdateGroupExtendedTooltip" id="1041"/>
+							<ChildItems>
+								<LabelDecoration name="Label54" id="274">
+									<SkipOnInput>false</SkipOnInput>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>During application update there were errors. Errors data have been saved to the event log.</v8:content>
+										</v8:item>
+									</Title>
+									<VerticalAlign>Top</VerticalAlign>
+									<TitleHeight>2</TitleHeight>
+									<ContextMenu name="Inscription54ContextMenu" id="275"/>
+									<ExtendedTooltip name="Label54ExtendedTooltip" id="934"/>
+								</LabelDecoration>
+								<LabelDecoration name="LabelOpenEventLogMonitor" id="279">
+									<Width>21</Width>
+									<SkipOnInput>false</SkipOnInput>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Event log</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<VerticalAlign>Top</VerticalAlign>
+									<ContextMenu name="LabelOpenEventLogMonitorContextMenu" id="280"/>
+									<ExtendedTooltip name="LabelOpenEventLogMonitorExtendedTooltip" id="935"/>
+									<Events>
+										<Event name="Click">LabelOpenEventLogMonitorClick</Event>
+									</Events>
+								</LabelDecoration>
+								<LabelDecoration name="IndentFailureRefresh" id="391">
+									<VerticalStretch>true</VerticalStretch>
+									<SkipOnInput>false</SkipOnInput>
+									<ContextMenu name="IndentFailureUpdateContextMenu" id="392"/>
+									<ExtendedTooltip name="IndentFailureUpdateExtendedTooltip" id="936"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+		<UsualGroup name="CommandBar" id="1003">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Command bar</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="CommandBarExtendedTooltip" id="1004"/>
+			<ChildItems>
+				<CommandBar name="CommandBarLeft" id="1005">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Command bar left</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Command bar left</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="CommandBarLeftExtendedTooltip" id="1006"/>
+					<ChildItems>
+						<Button name="ButtonBack" id="19">
+							<Type>CommandBarButton</Type>
+							<SkipOnInput>false</SkipOnInput>
+							<CommandName>Form.Command.Back</CommandName>
+							<ExtendedTooltip name="ButtonBackExtendedTooltip" id="654"/>
+						</Button>
+					</ChildItems>
+				</CommandBar>
+				<LabelDecoration name="CommandBarIndent" id="1007">
+					<HorizontalStretch>true</HorizontalStretch>
+					<ContextMenu name="CommandBarIndentContextMenu" id="1008"/>
+					<ExtendedTooltip name="CommandBarIndentExtendedTooltip" id="1009"/>
+				</LabelDecoration>
+				<CommandBar name="CommandBarRight" id="1010">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Command bar on the right</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Command bar on the right</v8:content>
+						</v8:item>
+					</ToolTip>
+					<HorizontalLocation>Right</HorizontalLocation>
+					<CommandSource>Form</CommandSource>
+					<ExtendedTooltip name="CommandBarRightExtendedTooltip" id="1011"/>
+					<ChildItems>
+						<Button name="ButtonNext" id="20">
+							<Type>CommandBarButton</Type>
+							<DefaultButton>true</DefaultButton>
+							<SkipOnInput>false</SkipOnInput>
+							<CommandName>Form.Command.Next</CommandName>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Next &gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="ButtonNextExtendedTooltip" id="655"/>
+						</Button>
+						<Button name="CloseButton" id="364">
+							<Type>CommandBarButton</Type>
+							<Representation>Text</Representation>
+							<SkipOnInput>false</SkipOnInput>
+							<CommandName>Form.StandardCommand.Close</CommandName>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Cancel</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="CloseButtonExtendedTooltip" id="656"/>
+						</Button>
+					</ChildItems>
+				</CommandBar>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.ConfigurationUpdate</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<Save>
+				<Field>Object.UpdatesServerPassword</Field>
+				<Field>Object.UpdateSource</Field>
+				<Field>Object.UpdateServerUserCode</Field>
+				<Field>Object.UpdateMode</Field>
+				<Field>Object.UpdateFileName</Field>
+				<Field>Object.UpdateDateTime</Field>
+				<Field>Object.SendReportToEMail</Field>
+				<Field>Object.SecondStart</Field>
+				<Field>Object.SchedulerTaskCode</Field>
+				<Field>Object.SaveUpdatesServerPassword</Field>
+				<Field>Object.NeedUpdateFile</Field>
+				<Field>Object.InfobaseBackupDirectoryName</Field>
+				<Field>Object.EmailAddress</Field>
+				<Field>Object.CreateBackup</Field>
+				<Field>Object.CheckUpdateExistsOnStart</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="FileNameOrderUpdate" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>File name update order</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="UpdateDateTimeIsSet" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>The date and time of update have been set</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ExecuteUpdate" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Run update</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="FileListForObtaining" id="20">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>File list for obtaining</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="RestorationOfPreLaunch" id="22">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Recovery of results of the previous start</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ResultGetFiles" id="24">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Files getting result</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="AvailableUpdate" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Available update</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="FileNameInformationAboutUpdate" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>File name information about update</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="LastConfigurationVersion" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Version of the last configuration</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="DetectedConnectionError" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Detected connection error</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ClearAvailableUpdates" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Clear available updates</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ConfigurationChanged" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Configuration changed</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="AvailableUpdateForNextEdition" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Update is available for next version</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="AuthenticationParameters" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Authentication parameters</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="ShowNewInVersion" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Show new in version</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="GetToKnowAdditionalInstructions" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Study information about update order</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ThereAreActiveSessions" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>There are active sessions</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="Back" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>&lt; Back</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Back</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ButtonBackClick</Action>
+		</Command>
+		<Command name="Next" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Next &gt;</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Next</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ButtonNextClick</Action>
+		</Command>
+		<Command name="ConfigureProxyServerParameters" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Configure the proxy server parameters</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Configure the proxy server parameters</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ConfigureProxyServerParameters</Action>
+		</Command>
+		<Command name="NewInVersion" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>New in version</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>New in version</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>NewInVersion</Action>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="CompletingOfWorkSystem">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<KeyParameter>true</KeyParameter>
+		</Parameter>
+		<Parameter name="ExecuteUpdate">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<KeyParameter>true</KeyParameter>
+		</Parameter>
+		<Parameter name="ConfigurationUpdateReceived">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

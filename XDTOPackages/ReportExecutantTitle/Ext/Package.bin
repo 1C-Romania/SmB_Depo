@@ -1,0 +1,330 @@
+﻿<package xmlns="http://v8.1c.ru/8.1/xdto" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="IAKTPRM">
+	<property name="File">
+		<typeDef xmlns:d3p1="IAKTPRM" xsi:type="ObjectType" base="d3p1:File"/>
+	</property>
+	<valueType name="SSRFType" base="xs:string" variety="Atomic" length="2">
+		<pattern>[0-9]{2}</pattern>
+	</valueType>
+	<valueType name="BIKType" base="xs:string" variety="Atomic" length="9">
+		<pattern>[0-9]{9}</pattern>
+	</valueType>
+	<valueType name="TimeType" base="xs:string" variety="Atomic" length="8">
+		<pattern>([0-1]{1}[0-9]{1}|2[0-3]{1})\.([0-5]{1}[0-9]{1})\.([0-5]{1}[0-9]{1})</pattern>
+	</valueType>
+	<valueType name="DateType" base="xs:string" variety="Atomic" length="10">
+		<pattern>(((0[1-9]{1}|[1-2]{1}[0-9]{1})\.(0[1-9]{1}|1[0-2]{1}))|((30)\.(01|0[3-9]{1}|1[0-2]{1}))|((31)\.(01|03|05|07|08|10|12)))\.(18[0-9]{2}|19[0-9]{2}|20[0-9]{2})</pattern>
+	</valueType>
+	<valueType name="TININDType" base="xs:string" variety="Atomic" length="12">
+		<pattern>([0-9]{1}[1-9]{1}|[1-9]{1}[0-9]{1})[0-9]{10}</pattern>
+	</valueType>
+	<valueType name="TINLEType" base="xs:string" variety="Atomic" length="10">
+		<pattern>([0-9]{1}[1-9]{1}|[1-9]{1}[0-9]{1})[0-9]{8}</pattern>
+	</valueType>
+	<valueType name="CTDType" base="xs:string" variety="Atomic" length="7">
+		<pattern>[0-9]{7}</pattern>
+	</valueType>
+	<valueType name="KPPType" base="xs:string" variety="Atomic" length="9">
+		<pattern>([0-9]{1}[1-9]{1}|[1-9]{1}[0-9]{1})([0-9]{2})([0-9A-F]{2})([0-9]{3})</pattern>
+	</valueType>
+	<valueType name="OKEIType" base="xs:string" variety="Atomic" length="3">
+		<pattern>[0-9]{3}</pattern>
+	</valueType>
+	<valueType name="OKOPFType" base="xs:string" variety="Atomic" length="2">
+		<pattern>[0-9]{2}</pattern>
+	</valueType>
+	<valueType name="OKSMType" base="xs:string" variety="Atomic" length="3">
+		<pattern>[0-9]{3}</pattern>
+	</valueType>
+	<objectType name="AddrForeignType">
+		<property xmlns:d3p1="IAKTPRM" name="StrCode" type="d3p1:OKSMType" lowerBound="0" form="Attribute"/>
+		<property name="AdrText" lowerBound="0" form="Attribute">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="1" maxLength="255"/>
+		</property>
+	</objectType>
+	<objectType name="AddrRF1Type">
+		<property name="IndexOf" lowerBound="0" form="Attribute">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" length="6">
+				<pattern>[0-9]{6}</pattern>
+			</typeDef>
+		</property>
+		<property name="CodeState" lowerBound="0" form="Attribute">
+			<typeDef xmlns:d4p1="IAKTPRM" xsi:type="ValueType" base="d4p1:SSRFType" variety="Atomic"/>
+		</property>
+		<property name="District" lowerBound="0" form="Attribute">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="1" maxLength="50"/>
+		</property>
+		<property name="City" lowerBound="0" form="Attribute">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="1" maxLength="50"/>
+		</property>
+		<property name="Settlement" lowerBound="0" form="Attribute">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="1" maxLength="50"/>
+		</property>
+		<property name="Street" lowerBound="0" form="Attribute">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="1" maxLength="50"/>
+		</property>
+		<property name="Building" lowerBound="0" form="Attribute">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="1" maxLength="20"/>
+		</property>
+		<property name="Section" lowerBound="0" form="Attribute">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="1" maxLength="20"/>
+		</property>
+		<property name="Qart" lowerBound="0" form="Attribute">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="1" maxLength="20"/>
+		</property>
+	</objectType>
+	<objectType name="AddressType">
+		<property xmlns:d3p1="IAKTPRM" name="AdrRF" type="d3p1:AddrRF1Type" lowerBound="0"/>
+		<property name="AdrText" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="1" maxLength="255"/>
+		</property>
+		<property xmlns:d3p1="IAKTPRM" name="AddrFRN" type="d3p1:AddrForeignType" lowerBound="0"/>
+	</objectType>
+	<objectType name="PowerOfAttorneyType">
+		<property name="NumPowerOfAttorn" lowerBound="0" form="Attribute">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="1" maxLength="255"/>
+		</property>
+		<property xmlns:d3p1="IAKTPRM" name="DateGiven" type="d3p1:DateType" lowerBound="0" form="Attribute"/>
+		<property name="WhoIssued" lowerBound="0">
+			<typeDef xsi:type="ObjectType">
+				<property name="EntDescWhoIssued" lowerBound="0" form="Attribute">
+					<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="1" maxLength="1000"/>
+				</property>
+				<property name="PositWho" lowerBound="0" form="Attribute">
+					<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="0" maxLength="128"/>
+				</property>
+				<property name="AdditInfWho" lowerBound="0" form="Attribute">
+					<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="0" maxLength="1000"/>
+				</property>
+				<property xmlns:d5p1="IAKTPRM" name="Initials" type="d5p1:NameAndSurnameOfType" lowerBound="0"/>
+			</typeDef>
+		</property>
+		<property name="ToWhomIssued" lowerBound="0">
+			<typeDef xsi:type="ObjectType">
+				<property name="Posit" lowerBound="0" form="Attribute">
+					<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="0" maxLength="128"/>
+				</property>
+				<property name="AdditInfoToWhom" lowerBound="0" form="Attribute">
+					<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="0" maxLength="1000"/>
+				</property>
+				<property xmlns:d5p1="IAKTPRM" name="Initials" type="d5p1:NameAndSurnameOfType"/>
+			</typeDef>
+		</property>
+	</objectType>
+	<objectType name="RespPersonType">
+		<property name="Position" lowerBound="0" form="Attribute">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="1" maxLength="128"/>
+		</property>
+		<property xmlns:d3p1="IAKTPRM" name="Initials" type="d3p1:NameAndSurnameOfType" lowerBound="0"/>
+	</objectType>
+	<objectType name="ContactType">
+		<property name="Phone" lowerBound="0" form="Attribute">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="1" maxLength="20"/>
+		</property>
+		<property name="Fax" lowerBound="0" form="Attribute">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="1" maxLength="20"/>
+		</property>
+	</objectType>
+	<objectType name="ParticipantType">
+		<property name="OKPO" lowerBound="0" form="Attribute">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="1" maxLength="10"/>
+		</property>
+		<property name="IdPr" lowerBound="0">
+			<typeDef xsi:type="ObjectType">
+				<property name="PrLP" lowerBound="0">
+					<typeDef xsi:type="ObjectType">
+						<property name="DescEnt" lowerBound="1" form="Attribute">
+							<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="1" maxLength="1000"/>
+						</property>
+						<property xmlns:d7p1="IAKTPRM" name="TINLP" type="d7p1:TINLEType" lowerBound="0" form="Attribute"/>
+						<property xmlns:d7p1="IAKTPRM" name="KPP" type="d7p1:KPPType" lowerBound="0" form="Attribute"/>
+						<property xmlns:d7p1="IAKTPRM" name="RCOLF" type="d7p1:OKOPFType" lowerBound="0" form="Attribute"/>
+					</typeDef>
+				</property>
+				<property name="PrPP" lowerBound="0">
+					<typeDef xsi:type="ObjectType">
+						<property xmlns:d7p1="IAKTPRM" name="TINInd" type="d7p1:TININDType" lowerBound="0" form="Attribute"/>
+						<property xmlns:d7p1="IAKTPRM" name="NameAndSurnameIP" type="d7p1:NameAndSurnameOfType" lowerBound="0"/>
+					</typeDef>
+				</property>
+			</typeDef>
+		</property>
+		<property xmlns:d3p1="IAKTPRM" name="Address" type="d3p1:AddressType" lowerBound="0"/>
+		<property xmlns:d3p1="IAKTPRM" name="Contact" type="d3p1:ContactType" lowerBound="0"/>
+		<property name="BankAttr" lowerBound="0">
+			<typeDef xsi:type="ObjectType">
+				<property name="AccountNo" lowerBound="0" form="Attribute">
+					<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="1" maxLength="20"/>
+				</property>
+				<property name="PrBank" lowerBound="0">
+					<typeDef xsi:type="ObjectType">
+						<property name="DescBank" lowerBound="0" form="Attribute">
+							<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="1" maxLength="1000"/>
+						</property>
+						<property xmlns:d7p1="IAKTPRM" name="BIN" type="d7p1:BIKType" lowerBound="0" form="Attribute"/>
+					</typeDef>
+				</property>
+			</typeDef>
+		</property>
+	</objectType>
+	<objectType name="NameAndSurnameOfType">
+		<property name="Surname" lowerBound="1" form="Attribute">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="1" maxLength="60"/>
+		</property>
+		<property name="Name" lowerBound="1" form="Attribute">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="1" maxLength="60"/>
+		</property>
+		<property name="Patronymic" lowerBound="0" form="Attribute">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="1" maxLength="60"/>
+		</property>
+	</objectType>
+	<objectType name="File">
+		<property name="IdFile" lowerBound="1" form="Attribute">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="1" maxLength="200"/>
+		</property>
+		<property name="VersProg" lowerBound="0" form="Attribute">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="1" maxLength="40"/>
+		</property>
+		<property name="VersForm" lowerBound="1" form="Attribute">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="1" maxLength="5"/>
+		</property>
+		<property name="PrAcDocFlow">
+			<typeDef xsi:type="ObjectType">
+				<property name="IdSen" lowerBound="1" form="Attribute">
+					<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="4" maxLength="46"/>
+				</property>
+				<property name="IdCust" lowerBound="1" form="Attribute">
+					<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="4" maxLength="46"/>
+				</property>
+				<property name="PrSEDSend" lowerBound="0">
+					<typeDef xsi:type="ObjectType">
+						<property name="DescEnt" lowerBound="1" form="Attribute">
+							<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="1" maxLength="1000"/>
+						</property>
+						<property xmlns:d7p1="IAKTPRM" name="TINLP" type="d7p1:TINLEType" lowerBound="1" form="Attribute"/>
+						<property name="IdEDF" lowerBound="1" form="Attribute">
+							<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" length="3"/>
+						</property>
+					</typeDef>
+				</property>
+			</typeDef>
+		</property>
+		<property name="Document">
+			<typeDef xsi:type="ObjectType">
+				<property name="CTD" lowerBound="1" form="Attribute">
+					<typeDef xmlns:d6p1="IAKTPRM" xsi:type="ValueType" base="d6p1:CTDType" variety="Atomic">
+						<enumeration>1175006</enumeration>
+					</typeDef>
+				</property>
+				<property xmlns:d5p1="IAKTPRM" name="DocDate" type="d5p1:DateType" lowerBound="1" form="Attribute"/>
+				<property xmlns:d5p1="IAKTPRM" name="TempDoc" type="d5p1:TimeType" lowerBound="1" form="Attribute"/>
+				<property name="PrActI">
+					<typeDef xsi:type="ObjectType">
+						<property name="DescFirstDock" lowerBound="1" form="Attribute">
+							<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="1" maxLength="100">
+								<enumeration>Act of work completion (services rendered)</enumeration>
+							</typeDef>
+						</property>
+						<property name="NumCertificate" lowerBound="0" form="Attribute">
+							<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="1" maxLength="256"/>
+						</property>
+						<property xmlns:d7p1="IAKTPRM" name="DateCertificate" type="d7p1:DateType" lowerBound="1" form="Attribute"/>
+						<property name="Title">
+							<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="1" maxLength="2000"/>
+						</property>
+						<property xmlns:d7p1="IAKTPRM" name="Performer" type="d7p1:ParticipantType"/>
+						<property name="WorksDescr" upperBound="-1">
+							<typeDef xsi:type="ObjectType">
+								<property xmlns:d9p1="IAKTPRM" name="WorkBeg" type="d9p1:DateType" lowerBound="0" form="Attribute"/>
+								<property xmlns:d9p1="IAKTPRM" name="WorkEnd" type="d9p1:DateType" lowerBound="0" form="Attribute"/>
+								<property name="AmountNoVATTot" lowerBound="0" form="Attribute">
+									<typeDef xsi:type="ValueType" base="xs:decimal" variety="Atomic" totalDigits="17" fractionDigits="2"/>
+								</property>
+								<property name="AmountVATTot" lowerBound="0" form="Attribute">
+									<typeDef xsi:type="ValueType" base="xs:decimal" variety="Atomic" totalDigits="17" fractionDigits="2"/>
+								</property>
+								<property name="AmountCtVATTot" lowerBound="1" form="Attribute">
+									<typeDef xsi:type="ValueType" base="xs:decimal" variety="Atomic" totalDigits="17" fractionDigits="2"/>
+								</property>
+								<property name="Work" upperBound="-1">
+									<typeDef xsi:type="ObjectType">
+										<property name="Number" lowerBound="1" form="Attribute">
+											<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="1" maxLength="50"/>
+										</property>
+										<property name="WorksDesc" lowerBound="0" form="Attribute">
+											<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="1" maxLength="1000"/>
+										</property>
+										<property name="DescUnOfMeas" lowerBound="1" form="Attribute">
+											<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="1" maxLength="1000"/>
+										</property>
+										<property xmlns:d11p1="IAKTPRM" name="OKEI" type="d11p1:OKEIType" lowerBound="0" form="Attribute"/>
+										<property name="Price" lowerBound="0" form="Attribute">
+											<typeDef xsi:type="ValueType" base="xs:decimal" variety="Atomic" totalDigits="17" fractionDigits="2"/>
+										</property>
+										<property name="Quantity" lowerBound="0" form="Attribute">
+											<typeDef xsi:type="ValueType" base="xs:decimal" variety="Atomic" totalDigits="14" fractionDigits="2"/>
+										</property>
+										<property name="AmountNoVAT" lowerBound="0" form="Attribute">
+											<typeDef xsi:type="ValueType" base="xs:decimal" variety="Atomic" totalDigits="17" fractionDigits="2"/>
+										</property>
+										<property name="AmountVAT" lowerBound="0" form="Attribute">
+											<typeDef xsi:type="ValueType" base="xs:decimal" variety="Atomic" totalDigits="17" fractionDigits="2"/>
+										</property>
+										<property name="AmountCtVAT" lowerBound="0" form="Attribute">
+											<typeDef xsi:type="ValueType" base="xs:decimal" variety="Atomic" totalDigits="17" fractionDigits="2"/>
+										</property>
+										<property name="InfFullStr" lowerBound="0" form="Attribute">
+											<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="0" maxLength="2000"/>
+										</property>
+										<property name="Definition" lowerBound="0">
+											<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="1" maxLength="10000"/>
+										</property>
+									</typeDef>
+								</property>
+							</typeDef>
+						</property>
+						<property name="Delivered" lowerBound="0">
+							<typeDef xsi:type="ObjectType">
+								<property xmlns:d9p1="IAKTPRM" name="ComplDate" type="d9p1:DateType" lowerBound="0" form="Attribute"/>
+								<property xmlns:d9p1="IAKTPRM" name="ExecutSignature" type="d9p1:RespPersonType" lowerBound="0"/>
+								<property xmlns:d9p1="IAKTPRM" name="ExecPowOfAtt" type="d9p1:PowerOfAttorneyType" lowerBound="0"/>
+							</typeDef>
+						</property>
+						<property name="InfFul" lowerBound="0">
+							<typeDef xsi:type="ObjectType">
+								<property name="TextInf" lowerBound="0" form="Attribute">
+									<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="0" maxLength="2000"/>
+								</property>
+								<property name="IdFileInfFul" lowerBound="0" form="Attribute">
+									<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" length="36"/>
+								</property>
+							</typeDef>
+						</property>
+						<property xmlns:d7p1="IAKTPRM" name="Customer" type="d7p1:ParticipantType" lowerBound="0"/>
+					</typeDef>
+				</property>
+				<property name="Signer">
+					<typeDef xsi:type="ObjectType" ordered="false" sequenced="true">
+						<property name="CO" lowerBound="0">
+							<typeDef xsi:type="ObjectType">
+								<property xmlns:d9p1="IAKTPRM" name="TINInd" type="d9p1:TININDType" lowerBound="1" form="Attribute"/>
+								<property name="PrFedRegSN" lowerBound="0" form="Attribute">
+									<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="100"/>
+								</property>
+								<property xmlns:d9p1="IAKTPRM" name="Initials" type="d9p1:NameAndSurnameOfType"/>
+							</typeDef>
+						</property>
+						<property name="LegalEntity" lowerBound="0">
+							<typeDef xsi:type="ObjectType">
+								<property xmlns:d9p1="IAKTPRM" name="TINLP" type="d9p1:TINLEType" lowerBound="1" form="Attribute"/>
+								<property name="Posit" lowerBound="1" form="Attribute">
+									<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="0" maxLength="128"/>
+								</property>
+								<property xmlns:d9p1="IAKTPRM" name="Initials" type="d9p1:NameAndSurnameOfType"/>
+							</typeDef>
+						</property>
+					</typeDef>
+				</property>
+			</typeDef>
+		</property>
+	</objectType>
+</package>

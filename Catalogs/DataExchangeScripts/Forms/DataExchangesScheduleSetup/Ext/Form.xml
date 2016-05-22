@@ -1,0 +1,549 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<AutoTitle>false</AutoTitle>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<CommandSet>
+		<ExcludedCommand>SetDeletionMark</ExcludedCommand>
+		<ExcludedCommand>Copy</ExcludedCommand>
+		<ExcludedCommand>Delete</ExcludedCommand>
+		<ExcludedCommand>Create</ExcludedCommand>
+		<ExcludedCommand>Change</ExcludedCommand>
+		<ExcludedCommand>CancelSearch</ExcludedCommand>
+		<ExcludedCommand>Find</ExcludedCommand>
+	</CommandSet>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<ChildItems>
+			<Popup name="EnableDisableExportImport" id="28">
+				<Title>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Enable/Disable</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTip>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Enable or disable data import and export</v8:content>
+					</v8:item>
+				</ToolTip>
+				<ExtendedTooltip name="EnableDisableExportImportExtendedTooltip" id="36"/>
+				<ChildItems>
+					<Button name="FormEnableDisableExportImport" id="31">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.EnableDisableImportDump</CommandName>
+						<Title>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Importing and exporting</v8:content>
+							</v8:item>
+						</Title>
+						<ExtendedTooltip name="FormEnableDisableExportImportExtendedTooltip" id="37"/>
+					</Button>
+					<Button name="FormEnableDisableImport" id="29">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.EnableDisableImport</CommandName>
+						<Title>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Import</v8:content>
+							</v8:item>
+						</Title>
+						<ExtendedTooltip name="FormEnableDisableImportExtendedTooltip" id="38"/>
+					</Button>
+					<Button name="FormEnableDisableExport1" id="30">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.EnableDisableDump</CommandName>
+						<Title>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Export</v8:content>
+							</v8:item>
+						</Title>
+						<ExtendedTooltip name="FormEnableDisableExport1ExtendedTooltip" id="39"/>
+					</Button>
+				</ChildItems>
+			</Popup>
+			<Button name="Create" id="13">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.CreateDataExchangeScenario</CommandName>
+				<ExtendedTooltip name="CreateExtendedTooltip" id="40"/>
+			</Button>
+			<Button name="ChangeScriptOfDataExchange" id="14">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.ChangeScriptOfDataExchange</CommandName>
+				<ExtendedTooltip name="EditDataExchangeScenarioExtendedTooltip" id="41"/>
+			</Button>
+			<ButtonGroup name="ButtonGroup" id="17">
+				<Title>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Button group</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTip>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Button group</v8:content>
+					</v8:item>
+				</ToolTip>
+				<ExtendedTooltip name="ButtonGroupExtendedTooltip" id="42"/>
+				<ChildItems>
+					<Button name="FormEnableDisableScheduledJob" id="15">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.EnableDisableScheduledJob</CommandName>
+						<ExtendedTooltip name="FormEnableDisableScheduledJobExtendedTooltip" id="43"/>
+					</Button>
+				</ChildItems>
+			</ButtonGroup>
+			<Button name="FormExecuteScenario" id="32">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.RunScript</CommandName>
+				<ExtendedTooltip name="FormExecuteScenarioExtendedTooltip" id="44"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="NotificationProcessing">NotificationProcessing</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<Table name="List" id="1">
+			<Representation>List</Representation>
+			<CommandBarLocation>None</CommandBarLocation>
+			<DefaultItem>true</DefaultItem>
+			<RowSelectionMode>Row</RowSelectionMode>
+			<VerticalLines>false</VerticalLines>
+			<UseAlternationRowColor>true</UseAlternationRowColor>
+			<InitialTreeView>ExpandTopLevel</InitialTreeView>
+			<EnableStartDrag>true</EnableStartDrag>
+			<DataPath>List</DataPath>
+			<RowPictureDataPath>List.DefaultPicture</RowPictureDataPath>
+			<SearchStringLocation>None</SearchStringLocation>
+			<ViewStatusLocation>None</ViewStatusLocation>
+			<SearchControlLocation>None</SearchControlLocation>
+			<AutoRefresh>false</AutoRefresh>
+			<AutoRefreshPeriod>60</AutoRefreshPeriod>
+			<Period>
+				<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+				<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+				<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+			</Period>
+			<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+			<RestoreCurrentRow>false</RestoreCurrentRow>
+			<TopLevelParent xsi:nil="true"/>
+			<ShowRoot>true</ShowRoot>
+			<AllowRootChoice>false</AllowRootChoice>
+			<UpdateOnDataChange>Auto</UpdateOnDataChange>
+			<ContextMenu name="ListContextMenu" id="2">
+				<ChildItems>
+					<ButtonGroup name="EnableDataExportImportButtonGroup" id="25">
+						<Title>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Button group of regulation of data load dump</v8:content>
+							</v8:item>
+						</Title>
+						<ToolTip>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Button group of regulation of data load dump</v8:content>
+							</v8:item>
+						</ToolTip>
+						<ExtendedTooltip name="EnableDataExportImportButtonGroupExtendedTooltip" id="45"/>
+						<ChildItems>
+							<Button name="ListContextMenuEnableDisableImport" id="27">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.EnableDisableImport</CommandName>
+								<ExtendedTooltip name="ListContextMenuEnableDisableImportExtendedTooltip" id="46"/>
+							</Button>
+							<Button name="FormEnableDisableExport" id="26">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.EnableDisableDump</CommandName>
+								<ExtendedTooltip name="FormEnableDisableExportExtendedTooltip" id="47"/>
+							</Button>
+						</ChildItems>
+					</ButtonGroup>
+					<ButtonGroup name="ListContextMenuButtonGroup" id="18">
+						<Title>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>List context menu button group</v8:content>
+							</v8:item>
+						</Title>
+						<ToolTip>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>List context menu button group</v8:content>
+							</v8:item>
+						</ToolTip>
+						<ExtendedTooltip name="ListContextMenuButtonGroupExtendedTooltip" id="48"/>
+						<ChildItems>
+							<Button name="ListContextMenuEnableDisableScheduledJob" id="16">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.EnableDisableScheduledJob</CommandName>
+								<ExtendedTooltip name="ListContextMenuEnableDisableScheduledJobExtendedTooltip" id="49"/>
+							</Button>
+							<Button name="ListContextMenuOpenDataExchangeScenario" id="19">
+								<Type>CommandBarButton</Type>
+								<CommandName>0</CommandName>
+								<ExtendedTooltip name="ListContextMenuOpenDataExchangeScenarioExtendedTooltip" id="50"/>
+							</Button>
+						</ChildItems>
+					</ButtonGroup>
+					<Button name="ListContextMenuExecuteScenario" id="33">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.RunScript</CommandName>
+						<ExtendedTooltip name="ListContextMenuExecuteScenarioExtendedTooltip" id="51"/>
+					</Button>
+				</ChildItems>
+			</ContextMenu>
+			<AutoCommandBar name="ListCommandBar" id="3">
+				<Autofill>false</Autofill>
+			</AutoCommandBar>
+			<ExtendedTooltip name="ListExtendedTooltip" id="52"/>
+			<SearchStringAddition name="ListSearchString" id="57">
+				<AdditionSource>
+					<Item>List</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ListSearchStringContextMenu" id="58"/>
+				<ExtendedTooltip name="ListSearchStringExtendedTooltip" id="59"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ListViewStatus" id="60">
+				<AdditionSource>
+					<Item>List</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ListViewStatusContextMenu" id="61"/>
+				<ExtendedTooltip name="ListViewStatusExtendedTooltip" id="62"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ListSearchControl" id="63">
+				<AdditionSource>
+					<Item>List</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ListSearchControlContextMenu" id="64"/>
+				<ExtendedTooltip name="ListSearchControlExtendedTooltip" id="65"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="Selection">ListSelection</Event>
+			</Events>
+			<ChildItems>
+				<CheckBoxField name="UseImportFlag" id="23">
+					<DataPath>List.UseImportFlag</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Data is being received</v8:content>
+						</v8:item>
+					</Title>
+					<TitleLocation>None</TitleLocation>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Import</v8:content>
+						</v8:item>
+					</ToolTip>
+					<HeaderPicture>
+						<xr:Ref>StdPicture.MoveLeft</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</HeaderPicture>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="UseImportFlagContextMenu" id="24"/>
+					<ExtendedTooltip name="UseImportFlagExtendedTooltip" id="53"/>
+				</CheckBoxField>
+				<CheckBoxField name="UseExportFlag" id="21">
+					<DataPath>List.UseExportFlag</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Data sending is in progress</v8:content>
+						</v8:item>
+					</Title>
+					<TitleLocation>None</TitleLocation>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Export</v8:content>
+						</v8:item>
+					</ToolTip>
+					<HeaderPicture>
+						<xr:Ref>StdPicture.MoveRight</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</HeaderPicture>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="UseExportFlagContextMenu" id="22"/>
+					<ExtendedTooltip name="UseExportFlagExtendedTooltip" id="54"/>
+				</CheckBoxField>
+				<LabelField name="Description" id="4">
+					<DataPath>List.Description</DataPath>
+					<ContextMenu name="DescriptionContextMenu" id="5"/>
+					<ExtendedTooltip name="DescriptionExtendedTooltip" id="55"/>
+				</LabelField>
+			</ChildItems>
+		</Table>
+		<InputField name="Comment" id="34">
+			<DataPath>Items.List.CurrentData.Comment</DataPath>
+			<ReadOnly>true</ReadOnly>
+			<AutoCellHeight>true</AutoCellHeight>
+			<ShowInHeader>false</ShowInHeader>
+			<TextColor>style:ExplanationText</TextColor>
+			<ContextMenu name="CommentContextMenu" id="35"/>
+			<ExtendedTooltip name="CommentExtendedTooltip" id="56"/>
+		</InputField>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="List" id="1">
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<UseAlways>
+				<Field>List.UseScheduledJob</Field>
+				<Field>List.UseImportFlag</Field>
+				<Field>List.UseExportFlag</Field>
+				<Field>List.UsageFlag</Field>
+				<Field>List.Ref</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>SELECT
+	DataExchangeScripts.Ref,
+	DataExchangeScripts.UseScheduledJob,
+	DataExchangeScripts.Description,
+	ISNULL(NestedSelect.UsageFlag, FALSE) AS UsageFlag,
+	ISNULL(NestedSelect.UseImportFlag, FALSE) AS UseImportFlag,
+	ISNULL(NestedSelect.UseExportFlag, FALSE) AS UseExportFlag,
+	DataExchangeScripts.Comment
+FROM
+	Catalog.DataExchangeScripts AS DataExchangeScripts
+		LEFT JOIN (SELECT
+			DataExchangeScenarioExchangeSettings.Ref AS Ref,
+			DataExchangeScenarioExchangeSettings.Ref.UseScheduledJob AS UseScheduledJob,
+			DataExchangeScenarioExchangeSettings.Ref.Description AS Description,
+			MAX(CASE
+					WHEN DataExchangeScenarioExchangeSettings.InfobaseNode = &amp;InfobaseNode
+						THEN TRUE
+					ELSE FALSE
+				END) AS UsageFlag,
+			MAX(CASE
+					WHEN DataExchangeScenarioExchangeSettings.InfobaseNode = &amp;InfobaseNode
+							AND DataExchangeScenarioExchangeSettings.RunningAction = VALUE(Enum.ActionsAtExchange.DataImport)
+						THEN TRUE
+					ELSE FALSE
+				END) AS UseImportFlag,
+			MAX(CASE
+					WHEN DataExchangeScenarioExchangeSettings.InfobaseNode = &amp;InfobaseNode
+							AND DataExchangeScenarioExchangeSettings.RunningAction = VALUE(Enum.ActionsAtExchange.DataExport)
+						THEN TRUE
+					ELSE FALSE
+				END) AS UseExportFlag
+		FROM
+			Catalog.DataExchangeScripts.ExchangeSettings AS DataExchangeScenarioExchangeSettings
+		WHERE
+			Not DataExchangeScenarioExchangeSettings.Ref.DeletionMark
+		
+		GROUP BY
+			DataExchangeScenarioExchangeSettings.Ref,
+			DataExchangeScenarioExchangeSettings.Ref.UseScheduledJob,
+			DataExchangeScenarioExchangeSettings.Ref.Description) AS NestedSelect
+		ON (NestedSelect.Ref = DataExchangeScripts.Ref)
+WHERE
+	Not DataExchangeScripts.DeletionMark
+</QueryText>
+				<MainTable>Catalog.DataExchangeScripts</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemField">
+							<dcsset:field>Description</dcsset:field>
+							<dcsset:orderType>Asc</dcsset:orderType>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:OrderItemField">
+							<dcsset:field>UsageFlag</dcsset:field>
+							<dcsset:orderType>Asc</dcsset:orderType>
+						</dcsset:item>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:item>
+							<dcsset:selection/>
+							<dcsset:filter>
+								<dcsset:item xsi:type="dcsset:FilterItemComparison">
+									<dcsset:left xsi:type="dcscor:Field">UseScheduledJob</dcsset:left>
+									<dcsset:comparisonType>Equal</dcsset:comparisonType>
+									<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+								</dcsset:item>
+							</dcsset:filter>
+							<dcsset:appearance>
+								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+									<dcscor:parameter>Font</dcscor:parameter>
+									<dcscor:value xsi:type="v8ui:Font" ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+								</dcscor:item>
+							</dcsset:appearance>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:selection/>
+							<dcsset:filter>
+								<dcsset:item xsi:type="dcsset:FilterItemComparison">
+									<dcsset:left xsi:type="dcscor:Field">UsageFlag</dcsset:left>
+									<dcsset:comparisonType>Equal</dcsset:comparisonType>
+									<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+								</dcsset:item>
+							</dcsset:filter>
+							<dcsset:appearance>
+								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+									<dcscor:parameter>BackColor</dcscor:parameter>
+									<dcscor:value xsi:type="v8ui:Color">web:Azure</dcscor:value>
+								</dcscor:item>
+							</dcsset:appearance>
+						</dcsset:item>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="CreateDataExchangeScenario" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Add</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Create new synchronization schedule</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.CreateListItem</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Create</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="ChangeScriptOfDataExchange" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Change</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Change the synchronization schedule</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Change</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ChangeScriptOfDataExchange</Action>
+		</Command>
+		<Command name="EnableDisableScheduledJob" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Enable / disable schedule</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Enable/disable data synchronization schedule</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.ScheduledJob</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>EnableDisableScheduledJob</Action>
+		</Command>
+		<Command name="EnableDisableDump" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Enable/disable the data sending</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Enable/disable the data sending to another data base</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>EnableDisableDump</Action>
+		</Command>
+		<Command name="EnableDisableImport" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Enable/disable the data receiving</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Enable/disable data receipt from another data base</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>EnableDisableImport</Action>
+		</Command>
+		<Command name="EnableDisableImportDump" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Enable or disable data receipt and sending</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Enable or disable data receipt and sending</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>EnableDisableImportDump</Action>
+		</Command>
+		<Command name="RunScript" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Run exchange</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Perform data synchronization by script</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.DataSynchronizationPerforming</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+				<xr:TransparentPixel x="7" y="5"/>
+			</Picture>
+			<Action>RunScript</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="InfobaseNode">
+			<Type>
+				<v8:TypeSet>cfg:ExchangePlanRef</v8:TypeSet>
+			</Type>
+			<KeyParameter>true</KeyParameter>
+		</Parameter>
+	</Parameters>
+</Form>

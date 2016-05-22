@@ -1,0 +1,984 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="FormCommandBar" id="-1"/>
+	<Events>
+		<Event name="NotificationProcessing">NotificationProcessing</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="PurposeAndAdditionalOrderingAttribute" id="192">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Purpose and additional ordering attribute</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Purpose and additional ordering attribute</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="PurposeAndAdditionalOrderingAttributeExtendedTooltip" id="193"/>
+			<ChildItems>
+				<RadioButtonField name="Purpose" id="10">
+					<DataPath>Object.Purpose</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<EditMode>EnterOnInput</EditMode>
+					<RadioButtonType>Tumbler</RadioButtonType>
+					<ChoiceList>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation/>
+								<Value xsi:type="xr:DesignTimeRef">Enum.AssignAutomaticDiscounts.EnumValue.Wholesale</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation/>
+								<Value xsi:type="xr:DesignTimeRef">Enum.AssignAutomaticDiscounts.EnumValue.Retail</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation/>
+								<Value xsi:type="xr:DesignTimeRef">Enum.AssignAutomaticDiscounts.EnumValue.Everywhere</Value>
+							</xr:Value>
+						</xr:Item>
+					</ChoiceList>
+					<ContextMenu name="PrescriptionContextMENU" id="11"/>
+					<ExtendedTooltip name="PurposeExtendedTooltip" id="12"/>
+					<Events>
+						<Event name="OnChange">PurposeOnChange</Event>
+					</Events>
+				</RadioButtonField>
+				<LabelDecoration name="DecorationSplitter" id="299">
+					<HorizontalStretch>true</HorizontalStretch>
+					<ContextMenu name="DecorationSplitterContextMenu" id="300"/>
+					<ExtendedTooltip name="DecorationSeparatorExtendedTooltip" id="301"/>
+				</LabelDecoration>
+				<InputField name="AdditionalOrderingAttribute" id="34">
+					<DataPath>Object.AdditionalOrderingAttribute</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<SpinButton>true</SpinButton>
+					<ContextMenu name="AdditionalOrderingAttributeContextMenu" id="35"/>
+					<ExtendedTooltip name="AdditionalOrderingAttributeExtendedTooltip" id="36"/>
+				</InputField>
+				<InputField name="Code" id="1">
+					<DataPath>Object.Code</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="CodeContextMenu" id="2"/>
+					<ExtendedTooltip name="CodeExtendedTooltip" id="3"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="MainAttributes" id="196">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Main attributes</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Main attributes</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="MainAttributesExtendedTooltip" id="197"/>
+			<ChildItems>
+				<InputField name="AssignmentMethod" id="7">
+					<DataPath>Object.AssignmentMethod</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<Width>12</Width>
+					<ContextMenu name="AssignmentMethodContextMenu" id="8"/>
+					<ExtendedTooltip name="AssignmentMethodExtendedTooltip" id="9"/>
+					<Events>
+						<Event name="OnChange">AssignmentMethodOnChange</Event>
+					</Events>
+				</InputField>
+				<InputField name="AssignmentArea" id="13">
+					<DataPath>Object.AssignmentArea</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<Width>10</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="AssignmentAreaContextMenu" id="14"/>
+					<ExtendedTooltip name="AssignmentAreaExtendedTooltip" id="15"/>
+					<Events>
+						<Event name="OnChange">AssignmentAreaOnChange</Event>
+					</Events>
+				</InputField>
+				<InputField name="DiscountMarkupValue" id="16">
+					<DataPath>Object.DiscountMarkupValue</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Discount</v8:content>
+						</v8:item>
+					</Title>
+					<EditMode>EnterOnInput</EditMode>
+					<HorizontalStretch>true</HorizontalStretch>
+					<ContextMenu name="DiscountMarkupValueContextMenu" id="17"/>
+					<ExtendedTooltip name="DiscountMarkupValueExtendedTooltip" id="18"/>
+					<Events>
+						<Event name="OnChange">DiscountMarkupValueOnChange</Event>
+					</Events>
+				</InputField>
+				<InputField name="AssignmentCurrency" id="288">
+					<DataPath>Object.AssignmentCurrency</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<Width>6</Width>
+					<HorizontalStretch>true</HorizontalStretch>
+					<OpenButton>false</OpenButton>
+					<ContextMenu name="AssignmentCurrencyContextMenu" id="289"/>
+					<ExtendedTooltip name="AssignmentCurrencyExtendedTooltip" id="290"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<Pages name="Pages" id="37">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Pages</v8:content>
+				</v8:item>
+			</Title>
+			<ExtendedTooltip name="PagesExtendedTooltip" id="38"/>
+			<ChildItems>
+				<Page name="GroupConditionsOfAssignment" id="165">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Assignment conditions</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="GroupAssignmentConditionsExtendedTooltip" id="166"/>
+					<ChildItems>
+						<LabelDecoration name="DecorationHelpConditions" id="371">
+							<HorizontalStretch>true</HorizontalStretch>
+							<TextColor>style:ExplanationText</TextColor>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Fill in the list if the discount to be assigned is subject to some conditions.
+For example, the document sum is &gt; 3000, or a single product amount is &gt; = 10.
+If the conditions list is not filled in, the discount (margin) is assigned without conditions verification.</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="DecorationToolTipConditionsContextMenu" id="372"/>
+							<ExtendedTooltip name="DecorationToolTipConditionsExtendedTooltip" id="373"/>
+						</LabelDecoration>
+						<Table name="ConditionsOfAssignment" id="233">
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>Object.ConditionsOfAssignment</DataPath>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="AssignmentConditionsContextMenu" id="234"/>
+							<AutoCommandBar name="AssignmentConditionsCommandBar" id="235"/>
+							<ExtendedTooltip name="AssignmentConditionsExtendedTooltip" id="236"/>
+							<SearchStringAddition name="AssignmentConditionsSearchString" id="237">
+								<AdditionSource>
+									<Item>ConditionsOfAssignment</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="AssignmentConditionsSearchStringContextMenu" id="240"/>
+								<ExtendedTooltip name="AssignmentConditionsSearchStringExtendedTooltip" id="241"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="AssignmentConditionsStatusView" id="242">
+								<AdditionSource>
+									<Item>ConditionsOfAssignment</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="AssignmentConditionsStatusViewContextMenu" id="245"/>
+								<ExtendedTooltip name="AssignmentConditionsStatusViewExtendedTooltip" id="246"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="AssignmentConditionsSearchControl" id="247">
+								<AdditionSource>
+									<Item>ConditionsOfAssignment</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="AssignmentConditionsSearchControlContextMenu" id="250"/>
+								<ExtendedTooltip name="AssignmentConditionsSearchControlExtendedTooltip" id="251"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="OnChange">AssignmentConditionsOnChange</Event>
+							</Events>
+							<ChildItems>
+								<LabelField name="AssignmentConditionsLineNumber" id="252">
+									<DataPath>Object.ConditionsOfAssignment.LineNumber</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>3</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="AssignmentConditionsLineNumberContextMenu" id="253"/>
+									<ExtendedTooltip name="AssignmentConditionsLineNumberExtendedTooltip" id="254"/>
+								</LabelField>
+								<InputField name="AssignmentConditionsDiscountAssignmentConditions" id="255">
+									<DataPath>Object.ConditionsOfAssignment.AssignmentCondition</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="AssignmentConditionsDiscountAssignmentConditionsContextMenu" id="256"/>
+									<ExtendedTooltip name="AssignmentConditionsDiscountAssignmentConditionExtendedTooltip" id="257"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="GroupClarificationsRestrictionsAndSchedule" id="304">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Clarification and limits</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group clarifications restrictions and schedule</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="GroupClarificationsRestrictionsAndScheduleExtendedTooltip" id="305"/>
+					<ChildItems>
+						<Pages name="PagesClarificationsAndRestrictions" id="306">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Clarifications and restrictions pages</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Clarifications and restrictions pages</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ExtendedTooltip name="PagesClarificationsAndRestrictionsExtendedTooltip" id="307"/>
+							<ChildItems>
+								<Page name="Clarification" id="229">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Clarification</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Clarification</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="ExtendedClarificationToolTip" id="230"/>
+									<ChildItems>
+										<LabelDecoration name="DecorationHelpClarification" id="362">
+											<HorizontalStretch>true</HorizontalStretch>
+											<TextColor>style:ExplanationText</TextColor>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>
+</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="DecorationToolTipClarificationContextMenu" id="363"/>
+											<ExtendedTooltip name="DecorationToolTipExtendedClarificationToolTip" id="364"/>
+										</LabelDecoration>
+										<RadioButtonField name="RestrictionByProductsAndServicesVariant" id="22">
+											<DataPath>Object.RestrictionByProductsAndServicesVariant</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<EditMode>EnterOnInput</EditMode>
+											<RadioButtonType>Tumbler</RadioButtonType>
+											<ChoiceList>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation>
+															<v8:item>
+																<v8:lang>en</v8:lang>
+																<v8:content>By products and services</v8:content>
+															</v8:item>
+														</Presentation>
+														<Value xsi:type="xr:DesignTimeRef">Enum.DiscountRestrictionVariantsByProductsAndServices.EnumValue.ByProductsAndServices</Value>
+													</xr:Value>
+												</xr:Item>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation>
+															<v8:item>
+																<v8:lang>en</v8:lang>
+																<v8:content>By products and services categories</v8:content>
+															</v8:item>
+														</Presentation>
+														<Value xsi:type="xr:DesignTimeRef">Enum.DiscountRestrictionVariantsByProductsAndServices.EnumValue.ByProductsAndServicesCategories</Value>
+													</xr:Value>
+												</xr:Item>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation>
+															<v8:item>
+																<v8:lang>en</v8:lang>
+																<v8:content>By products and services price groups</v8:content>
+															</v8:item>
+														</Presentation>
+														<Value xsi:type="xr:DesignTimeRef">Enum.DiscountRestrictionVariantsByProductsAndServices.EnumValue.ByPriceGroups</Value>
+													</xr:Value>
+												</xr:Item>
+											</ChoiceList>
+											<ContextMenu name="RestrictionByProductsAndServicesVariantContextMenu" id="23"/>
+											<ExtendedTooltip name="RestrictionByProductsAndServicesVariantExtendedTooltip" id="24"/>
+											<Events>
+												<Event name="OnChange">RestrictionByProductsAndServicesVariantOnChange</Event>
+											</Events>
+										</RadioButtonField>
+										<UsualGroup name="GroupProductsAndServicesGroupsPriceGroups" id="135">
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group products and services groups price groups</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Vertical</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="GroupProductsAndServicesGroupsPriceGroupsExtendedTooltip" id="136"/>
+											<ChildItems>
+												<Table name="ProductsAndServicesGroupsPriceGroups" id="260">
+													<AutoInsertNewRow>true</AutoInsertNewRow>
+													<EnableStartDrag>true</EnableStartDrag>
+													<EnableDrag>true</EnableDrag>
+													<DataPath>Object.ProductsAndServicesGroupsPriceGroups</DataPath>
+													<RowFilter xsi:nil="true"/>
+													<ContextMenu name="ProductsAndServicesGroupsPriceGroupsContextMenu" id="261"/>
+													<AutoCommandBar name="ProductsAndServicesGroupsPriceGroupsCommandBar" id="262"/>
+													<ExtendedTooltip name="ProductsAndServicesGroupsPriceGroupsExtendedTooltip" id="263"/>
+													<SearchStringAddition name="ProductsAndServicesGroupsPriceGroupsSearchString" id="264">
+														<AdditionSource>
+															<Item>ProductsAndServicesGroupsPriceGroups</Item>
+															<Type>SearchStringRepresentation</Type>
+														</AdditionSource>
+														<ContextMenu name="ProductsAndServicesGroupsPriceGroupsSearchStringContextMenu" id="267"/>
+														<ExtendedTooltip name="ProductsAndServicesGroupsPriceGroupsSearchStringExtendedTooltip" id="268"/>
+													</SearchStringAddition>
+													<ViewStatusAddition name="ProductsAndServicesGroupsPriceGroupsStatusView" id="269">
+														<AdditionSource>
+															<Item>ProductsAndServicesGroupsPriceGroups</Item>
+															<Type>ViewStatusRepresentation</Type>
+														</AdditionSource>
+														<ContextMenu name="ProductsAndServicesGroupsPriceGroupsStatusViewContextMenu" id="272"/>
+														<ExtendedTooltip name="ProductsAndServicesGroupsPriceGroupsStatusViewExtendedTooltip" id="273"/>
+													</ViewStatusAddition>
+													<SearchControlAddition name="ProductsAndServicesGroupsPriceGroupsSearchControl" id="274">
+														<AdditionSource>
+															<Item>ProductsAndServicesGroupsPriceGroups</Item>
+															<Type>SearchControl</Type>
+														</AdditionSource>
+														<ContextMenu name="ProductsAndServicesPriceGroupsGroupsSearchControlContextMenu" id="277"/>
+														<ExtendedTooltip name="ProductsAndServicesPriceGroupsSearchControlExtendedTooltip" id="278"/>
+													</SearchControlAddition>
+													<Events>
+														<Event name="OnChange">ProductsAndServicesGroupsPriceGroupsOnChange</Event>
+													</Events>
+													<ChildItems>
+														<LabelField name="ProductsAndServicesGroupsPriceGroupsLineNumber" id="279">
+															<DataPath>Object.ProductsAndServicesGroupsPriceGroups.LineNumber</DataPath>
+															<EditMode>EnterOnInput</EditMode>
+															<Width>4</Width>
+															<HorizontalStretch>false</HorizontalStretch>
+															<ContextMenu name="ProductsAndServicesGroupsPriceGroupsLineNumberContextMenu" id="280"/>
+															<ExtendedTooltip name="ProductsAndServicesGroupsPriceGroupsLineNumberExtendedTooltip" id="281"/>
+														</LabelField>
+														<InputField name="ProductsAndServicesGroupsPriceGroupsClarificationValue" id="282">
+															<DataPath>Object.ProductsAndServicesGroupsPriceGroups.ValueClarification</DataPath>
+															<EditMode>EnterOnInput</EditMode>
+															<ChooseType>false</ChooseType>
+															<ContextMenu name="ProductsAndServicesGroupsPriceGroupsClarificationValueContextMenu" id="283"/>
+															<ExtendedTooltip name="ProductsAndServicesGroupsPriceGroupsClarificationValueExtendedTooltip" id="284"/>
+														</InputField>
+														<InputField name="ProductsAndServicesGroupsPriceGroupsCharacteristic" id="374">
+															<DataPath>Object.ProductsAndServicesGroupsPriceGroups.Characteristic</DataPath>
+															<EditMode>EnterOnInput</EditMode>
+															<ContextMenu name="ProductsAndServicesGroupsPriceGroupsCharacteristicContextMenu" id="375"/>
+															<ExtendedTooltip name="ProductsAndServicesGroupsPriceGroupsCharacteristicExtendedTooltip" id="376"/>
+														</InputField>
+														<InputField name="ProductsAndServicesGroupsPriceGroupsDiscountMarkupValue" id="285">
+															<DataPath>Object.ProductsAndServicesGroupsPriceGroups.DiscountMarkupValue</DataPath>
+															<Title>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Discount</v8:content>
+																</v8:item>
+															</Title>
+															<EditMode>EnterOnInput</EditMode>
+															<ContextMenu name="ProductsAndServicesGroupsPriceGroupsDiscountMarkupValueContextMenu" id="286"/>
+															<ExtendedTooltip name="ProductsAndServicesGroupsPriceGroupsDiscountMarkupValueExtendedTooltip" id="287"/>
+															<Events>
+																<Event name="OnChange">ProductsAndServicesGroupsPriceGroupsDiscountMarkupValueOnChange</Event>
+															</Events>
+														</InputField>
+													</ChildItems>
+												</Table>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</Page>
+								<Page name="GroupDiscountRecipients" id="200">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Discount recipients</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group discount recipients</v8:content>
+										</v8:item>
+									</ToolTip>
+									<HorizontalStretch>true</HorizontalStretch>
+									<ExtendedTooltip name="GroupDiscountRecipientsExtendedTooltip" id="201"/>
+									<ChildItems>
+										<LabelDecoration name="DecorationHelpRecipients" id="365">
+											<HorizontalStretch>true</HorizontalStretch>
+											<TextColor>style:ExplanationText</TextColor>
+											<ContextMenu name="DecorationToolTipRecipientsContextMenu" id="366"/>
+											<ExtendedTooltip name="DecorationToolTipRecipientsExtendedTooltip" id="367"/>
+										</LabelDecoration>
+										<Pages name="GroupsWarehousesAndCounterparties" id="320">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group warehouses and counterparties</v8:content>
+												</v8:item>
+											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
+											<ExtendedTooltip name="GroupsWarehousesAndCounterpartiesExtendedTooltip" id="321"/>
+											<ChildItems>
+												<Page name="GroupCounterparties" id="324">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Counterparties</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Group counterparties</v8:content>
+														</v8:item>
+													</ToolTip>
+													<HorizontalStretch>true</HorizontalStretch>
+													<ExtendedTooltip name="GroupCounterpartiesExtendedTooltip" id="325"/>
+													<ChildItems>
+														<Table name="DiscountRecipients" id="202">
+															<AutoInsertNewRow>true</AutoInsertNewRow>
+															<EnableStartDrag>true</EnableStartDrag>
+															<EnableDrag>true</EnableDrag>
+															<DataPath>Object.DiscountRecipientsCounterparties</DataPath>
+															<RowFilter xsi:nil="true"/>
+															<ContextMenu name="DiscountRecipientsContextMenu" id="203"/>
+															<AutoCommandBar name="DiscountRecipientsCommandBar" id="204"/>
+															<ExtendedTooltip name="DiscountRecipientsExtendedTooltip" id="205"/>
+															<SearchStringAddition name="DiscountRecipientsSearchString" id="206">
+																<AdditionSource>
+																	<Item>DiscountRecipients</Item>
+																	<Type>SearchStringRepresentation</Type>
+																</AdditionSource>
+																<ContextMenu name="DiscountRecipientsSearchStringContextMenu" id="209"/>
+																<ExtendedTooltip name="DiscountRecipientsSearchStringExtendedTooltip" id="210"/>
+															</SearchStringAddition>
+															<ViewStatusAddition name="DiscountRecipientsStatusView" id="211">
+																<AdditionSource>
+																	<Item>DiscountRecipients</Item>
+																	<Type>ViewStatusRepresentation</Type>
+																</AdditionSource>
+																<ContextMenu name="DiscountRecipientsStatusViewContextMenu" id="214"/>
+																<ExtendedTooltip name="DiscountRecipientsStatusViewExtendedTooltip" id="215"/>
+															</ViewStatusAddition>
+															<SearchControlAddition name="DiscountRecipientsSearchControl" id="216">
+																<AdditionSource>
+																	<Item>DiscountRecipients</Item>
+																	<Type>SearchControl</Type>
+																</AdditionSource>
+																<ContextMenu name="DiscountRecipientsSearchControlContextMenu" id="219"/>
+																<ExtendedTooltip name="DiscountRecipientsSearchControlExtendedTooltip" id="220"/>
+															</SearchControlAddition>
+															<Events>
+																<Event name="OnChange">DiscountRecipientsOnChange</Event>
+															</Events>
+															<ChildItems>
+																<LabelField name="DiscountRecipientsLineNumber" id="221">
+																	<DataPath>Object.DiscountRecipientsCounterparties.LineNumber</DataPath>
+																	<EditMode>EnterOnInput</EditMode>
+																	<Width>4</Width>
+																	<HorizontalStretch>false</HorizontalStretch>
+																	<ContextMenu name="DiscountRecipientsLineNumberContextMenu" id="222"/>
+																	<ExtendedTooltip name="DiscountRecipientsLineNumberExtendedTooltip" id="223"/>
+																</LabelField>
+																<InputField name="DiscountRecipientsRecipient" id="224">
+																	<DataPath>Object.DiscountRecipientsCounterparties.Recipient</DataPath>
+																	<EditMode>EnterOnInput</EditMode>
+																	<ChooseType>false</ChooseType>
+																	<ChoiceParameters>
+																		<app:item name="Filter.StructuralUnitType">
+																			<app:value xsi:type="FormChoiceListDesTimeValue">
+																				<Presentation/>
+																				<Value xsi:type="xr:DesignTimeRef">Enum.StructuralUnitsTypes.EnumValue.Warehouse</Value>
+																			</app:value>
+																		</app:item>
+																		<app:item name="Filter.StructuralUnit1Type">
+																			<app:value xsi:type="FormChoiceListDesTimeValue">
+																				<Presentation/>
+																				<Value xsi:type="xr:DesignTimeRef">Enum.StructuralUnitsTypes.EnumValue.Retail</Value>
+																			</app:value>
+																		</app:item>
+																		<app:item name="Filter.StructuralUnit2Type">
+																			<app:value xsi:type="FormChoiceListDesTimeValue">
+																				<Presentation/>
+																				<Value xsi:type="xr:DesignTimeRef">Enum.StructuralUnitsTypes.EnumValue.RetailAccrualAccounting</Value>
+																			</app:value>
+																		</app:item>
+																	</ChoiceParameters>
+																	<ContextMenu name="DiscountRecipientsRecipientContextMenu" id="225"/>
+																	<ExtendedTooltip name="DiscountRecipientsRecipientExtendedTooltip" id="226"/>
+																</InputField>
+															</ChildItems>
+														</Table>
+													</ChildItems>
+												</Page>
+												<Page name="WarehouseGroups" id="322">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Warehouses</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Group warehouses</v8:content>
+														</v8:item>
+													</ToolTip>
+													<HorizontalStretch>true</HorizontalStretch>
+													<ExtendedTooltip name="WarehouseGroupsExtendedTooltip" id="323"/>
+													<ChildItems>
+														<Table name="DiscountRecipientsWarehouses" id="326">
+															<AutoInsertNewRow>true</AutoInsertNewRow>
+															<EnableStartDrag>true</EnableStartDrag>
+															<EnableDrag>true</EnableDrag>
+															<DataPath>Object.DiscountRecipientsWarehouses</DataPath>
+															<RowFilter xsi:nil="true"/>
+															<ContextMenu name="DiscountRecipientsWarehousesContextMenu" id="327"/>
+															<AutoCommandBar name="DiscountRecipientsWarehousesCommandBar" id="328"/>
+															<ExtendedTooltip name="DiscountRecipientsWarehousesExtendedTooltip" id="329"/>
+															<SearchStringAddition name="DiscountRecipientsWarehousesSearchString" id="330">
+																<AdditionSource>
+																	<Item>DiscountRecipientsWarehouses</Item>
+																	<Type>SearchStringRepresentation</Type>
+																</AdditionSource>
+																<ContextMenu name="DiscountRecipientsWarehousesSearchStringContextMenu" id="333"/>
+																<ExtendedTooltip name="DiscountRecipientsWarehousesSearchStringExtendedTooltip" id="334"/>
+															</SearchStringAddition>
+															<ViewStatusAddition name="DiscountRecipientsWarehousesStatusView" id="335">
+																<AdditionSource>
+																	<Item>DiscountRecipientsWarehouses</Item>
+																	<Type>ViewStatusRepresentation</Type>
+																</AdditionSource>
+																<ContextMenu name="DiscountRecipientsWarehousesStatusViewContextMenu" id="338"/>
+																<ExtendedTooltip name="DiscountRecipientsWarehousesStatusViewExtendedTooltip" id="339"/>
+															</ViewStatusAddition>
+															<SearchControlAddition name="DiscountRecipientsWarehousesSearchManagement" id="340">
+																<AdditionSource>
+																	<Item>DiscountRecipientsWarehouses</Item>
+																	<Type>SearchControl</Type>
+																</AdditionSource>
+																<ContextMenu name="DiscountRecipientsWarehousesSearchManagementContextMenu" id="343"/>
+																<ExtendedTooltip name="DiscountRecipientsWarehousesSearchControlExtendedTooltip" id="344"/>
+															</SearchControlAddition>
+															<Events>
+																<Event name="OnChange">DiscountRecipientsWarehousesOnChange</Event>
+															</Events>
+															<ChildItems>
+																<LabelField name="DiscountRecipientsWarehousesLineNumber" id="345">
+																	<DataPath>Object.DiscountRecipientsWarehouses.LineNumber</DataPath>
+																	<EditMode>EnterOnInput</EditMode>
+																	<Width>4</Width>
+																	<HorizontalStretch>false</HorizontalStretch>
+																	<ContextMenu name="DiscountRecipientsWarehousesLineNumberContextMenu" id="346"/>
+																	<ExtendedTooltip name="DiscountRecipientsWarehousesLineNumberExtendedTooltip" id="347"/>
+																</LabelField>
+																<InputField name="DiscountRecipientsWarehousesRecipient" id="348">
+																	<DataPath>Object.DiscountRecipientsWarehouses.Recipient</DataPath>
+																	<EditMode>EnterOnInput</EditMode>
+																	<ContextMenu name="DiscountRecipientsWarehousesRecipientContextMenu" id="349"/>
+																	<ExtendedTooltip name="DiscountRecipientsWarehousesRecipientExtendedTooltip" id="350"/>
+																</InputField>
+															</ChildItems>
+														</Table>
+													</ChildItems>
+												</Page>
+											</ChildItems>
+										</Pages>
+									</ChildItems>
+								</Page>
+								<Page name="GroupTimeByDaysOfWeek" id="39">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Schedule</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="GroupTimeByDaysOfWeekExtendedTooltip" id="40"/>
+									<ChildItems>
+										<LabelDecoration name="DecorationHelpSchedule" id="368">
+											<HorizontalStretch>true</HorizontalStretch>
+											<VerticalStretch>false</VerticalStretch>
+											<TextColor>style:ExplanationText</TextColor>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Fill in the schedule to restrict the discount assignment to certain days of the weeek or certain time periods only. If the list is not filled out, the discount will be granted disregading the day of the week and time.</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="DecorationScheduleHelpContextMenu" id="369"/>
+											<ExtendedTooltip name="DecorationToolTipScheduleExtendedTooltip" id="370"/>
+										</LabelDecoration>
+										<Table name="TimeByDaysOfWeek" id="41">
+											<Representation>List</Representation>
+											<AutoInsertNewRow>true</AutoInsertNewRow>
+											<EnableStartDrag>true</EnableStartDrag>
+											<EnableDrag>true</EnableDrag>
+											<DataPath>Object.TimeByDaysOfWeek</DataPath>
+											<RowFilter xsi:nil="true"/>
+											<ContextMenu name="TimeByDaysOfWeekContextMenu" id="42"/>
+											<AutoCommandBar name="TimeByDaysOfWeekCommandBar" id="43"/>
+											<ExtendedTooltip name="TimeByDaysOfWeekExtendedTooltip" id="44"/>
+											<SearchStringAddition name="TimeByDaysOfWeekSearchString" id="45">
+												<AdditionSource>
+													<Item>TimeByDaysOfWeek</Item>
+													<Type>SearchStringRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="TimeByDaysOfWeekSearchStringContextMenu" id="48"/>
+												<ExtendedTooltip name="TimeByDaysOfWeekSearchStringExtendedTooltip" id="49"/>
+											</SearchStringAddition>
+											<ViewStatusAddition name="TimeByDaysOfWeekStatusView" id="50">
+												<AdditionSource>
+													<Item>TimeByDaysOfWeek</Item>
+													<Type>ViewStatusRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="TimeByDaysOfWeekStatusViewContextMenu" id="53"/>
+												<ExtendedTooltip name="TimeByDaysOfWeekStatusViewExtendedTooltip" id="54"/>
+											</ViewStatusAddition>
+											<SearchControlAddition name="TimeByDaysOfWeekSearchManagement" id="55">
+												<AdditionSource>
+													<Item>TimeByDaysOfWeek</Item>
+													<Type>SearchControl</Type>
+												</AdditionSource>
+												<ContextMenu name="TimeByDaysOfWeekSearchControlContextMenu" id="58"/>
+												<ExtendedTooltip name="TimeByDaysOfWeekSearchManagementExtendedTooltip" id="59"/>
+											</SearchControlAddition>
+											<Events>
+												<Event name="OnStartEdit">TimeByDaysOfWeekOnStartEdit</Event>
+												<Event name="OnChange">TimeByDaysOfWeekOnChange</Event>
+											</Events>
+											<ChildItems>
+												<LabelField name="TimeByDaysOfWeekLineNumber" id="60">
+													<DataPath>Object.TimeByDaysOfWeek.LineNumber</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<Width>3</Width>
+													<HorizontalStretch>false</HorizontalStretch>
+													<ContextMenu name="TimeByDaysOfWeekLineNumberContextMenu" id="61"/>
+													<ExtendedTooltip name="TimeByDaysOfWeekLineNumberExtendedTooltip" id="62"/>
+												</LabelField>
+												<CheckBoxField name="TimeByDaysOfWeekSelected" id="63">
+													<DataPath>Object.TimeByDaysOfWeek.Selected</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<CheckBoxType>Auto</CheckBoxType>
+													<ContextMenu name="TimeByDaysOfWeekSelectedContextMenu" id="64"/>
+													<ExtendedTooltip name="TimeByDaysOfWeekSelectedExtendedTooltip" id="65"/>
+												</CheckBoxField>
+												<InputField name="TimeByDaysOfWeekWeekDay" id="66">
+													<DataPath>Object.TimeByDaysOfWeek.WeekDay</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="TimeByDaysOfWeekWeekDayContextMenu" id="67"/>
+													<ExtendedTooltip name="TimeByDaysOfWeekWeekDayExtendedTooltip" id="68"/>
+												</InputField>
+												<InputField name="TimeByDaysOfWeekBeginTime" id="69">
+													<DataPath>Object.TimeByDaysOfWeek.BeginTime</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="TimeByDaysOfWeekStartEndTimeContextMenu" id="70"/>
+													<ExtendedTooltip name="TimeByDaysOfWeekStartTimeExtendedTooltip" id="71"/>
+												</InputField>
+												<InputField name="TimeByDaysOfWeekEndTime" id="72">
+													<DataPath>Object.TimeByDaysOfWeek.EndTime</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="TimeByDaysOfWeekEndingEndTimeContextMenu" id="73"/>
+													<ExtendedTooltip name="TimeByDaysOfWeekEndTimeExtendedTooltip" id="74"/>
+												</InputField>
+											</ChildItems>
+										</Table>
+									</ChildItems>
+								</Page>
+							</ChildItems>
+						</Pages>
+					</ChildItems>
+				</Page>
+				<Page name="GroupAdditional" id="291">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Additionally</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group additional</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="GroupAdditionalExtendedTooltip" id="292"/>
+					<ChildItems>
+						<UsualGroup name="GroupJointApplication" id="357">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Bunch joint application</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Bunch joint application</v8:content>
+								</v8:item>
+							</ToolTip>
+							<HorizontalStretch>true</HorizontalStretch>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupSharedUsageExtendedTooltip" id="358"/>
+							<ChildItems>
+								<InputField name="Parent" id="296">
+									<DataPath>Object.Parent</DataPath>
+									<ContextMenu name="ParentContextMenu" id="297"/>
+									<ExtendedTooltip name="ParentExtendedTooltip" id="298"/>
+									<Events>
+										<Event name="OnChange">ParentOnChange</Event>
+									</Events>
+								</InputField>
+								<LabelDecoration name="DecorationParentSharedUsageVariant" id="359">
+									<TextColor>style:RelatedInformationTextColor</TextColor>
+									<HorizontalAlign>Right</HorizontalAlign>
+									<ContextMenu name="DecorationParentSharedUsageVariantContextMenu" id="360"/>
+									<ExtendedTooltip name="DecorationParentSharedUsageVariantExtendedTooltip" id="361"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+						<InputField name="Comment" id="293">
+							<DataPath>Object.Comment</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<MultiLine>true</MultiLine>
+							<InputHint>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Comment</v8:content>
+								</v8:item>
+							</InputHint>
+							<ContextMenu name="CommentContextMenu" id="294"/>
+							<ExtendedTooltip name="CommentExtendedTooltip" id="295"/>
+							<Events>
+								<Event name="OnChange">CommentOnChange</Event>
+							</Events>
+						</InputField>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+		<UsualGroup name="GroupDescriptionAndFlagActs" id="302">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group description and the flag acts</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group description and the flag acts</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="GroupDescriptionAndFlagActsExtendedTooltip" id="303"/>
+			<ChildItems>
+				<InputField name="Description" id="4">
+					<DataPath>Object.Description</DataPath>
+					<TitleLocation>Left</TitleLocation>
+					<EditMode>EnterOnInput</EditMode>
+					<DropListButton>true</DropListButton>
+					<ContextMenu name="DescriptionContextMenu" id="5"/>
+					<ExtendedTooltip name="DescriptionExtendedTooltip" id="6"/>
+					<Events>
+						<Event name="OnChange">DescriptionOnChange</Event>
+					</Events>
+				</InputField>
+				<CheckBoxField name="Acts" id="31">
+					<DataPath>Object.Acts</DataPath>
+					<TitleLocation>Left</TitleLocation>
+					<EditMode>EnterOnInput</EditMode>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="OperatesContextMenu" id="32"/>
+					<ExtendedTooltip name="OperatesExtendedTooltip" id="33"/>
+				</CheckBoxField>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Type>
+				<v8:Type>cfg:CatalogObject.AutomaticDiscounts</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="UsedAutoDescription" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Auto description is used</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="DescriptionChangedByUser" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Description is changed by user</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="RestrictionByProductsAndServicesVariantBeforeChange" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Restriction variant by products and services before change</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.DiscountRestrictionVariantsByProductsAndServices</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="AssignmentMethodAmount" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Assignment method amount</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.DiscountsMarkupsProvidingWays</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="AssignmentMethodPercent" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Assignment method percent</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.DiscountsMarkupsProvidingWays</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="RestrictionByProductsAndServicesVariant" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Restriction by products and services option</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.DiscountRestrictionVariantsByProductsAndServices</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="RestrictionVariantByProductsAndServicesGroups" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Restriction variant by products and services groups</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.DiscountRestrictionVariantsByProductsAndServices</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="VariantRestrictionByPriceGroups" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Restriction variant by price groups</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.DiscountRestrictionVariantsByProductsAndServices</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="PurposeRetail" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Purpose Retail</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.AssignAutomaticDiscounts</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="PurposeWholesale" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Purpose wholesale</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.AssignAutomaticDiscounts</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="AreaInDocument" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Area in document</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.DiscountMarkupRestrictionAreasVariants</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+</Form>

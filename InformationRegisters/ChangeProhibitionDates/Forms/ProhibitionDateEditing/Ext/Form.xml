@@ -1,0 +1,623 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<CommandBarLocation>Bottom</CommandBarLocation>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<CommandSet>
+		<ExcludedCommand>CustomizeForm</ExcludedCommand>
+		<ExcludedCommand>Help</ExcludedCommand>
+	</CommandSet>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<HorizontalAlign>Right</HorizontalAlign>
+		<ChildItems>
+			<Button name="FormOK" id="29">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.OK</CommandName>
+				<ExtendedTooltip name="FormOKExtendedTooltip" id="44"/>
+			</Button>
+			<Button name="FormClose" id="30">
+				<Type>CommandBarButton</Type>
+				<Representation>Text</Representation>
+				<CommandName>Form.StandardCommand.Close</CommandName>
+				<Title>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Cancel</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="FormCloseExtendedTooltip" id="45"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+		<Event name="OnClose">OnClose</Event>
+	</Events>
+	<ChildItems>
+		<LabelField name="UserPresentation" id="31">
+			<DataPath>UserPresentation</DataPath>
+			<ReadOnly>true</ReadOnly>
+			<ContextMenu name="UserPresentationContextMenu" id="32"/>
+			<ExtendedTooltip name="UserPresentationExtendedTooltip" id="46"/>
+		</LabelField>
+		<LabelField name="SectionPresentation" id="35">
+			<DataPath>SectionPresentation</DataPath>
+			<ReadOnly>true</ReadOnly>
+			<ContextMenu name="SectionPresentationContextMenu" id="36"/>
+			<ExtendedTooltip name="SectionPresentationExtendedTooltip" id="47"/>
+		</LabelField>
+		<LabelField name="ObjectPresentation" id="33">
+			<DataPath>ObjectPresentation</DataPath>
+			<ReadOnly>true</ReadOnly>
+			<ContextMenu name="ObjectPresentationContextMenu" id="34"/>
+			<ExtendedTooltip name="ObjectPresentationExtendedTooltip" id="48"/>
+		</LabelField>
+		<LabelDecoration name="Indent" id="42">
+			<ContextMenu name="IndentContextMenu" id="43"/>
+			<ExtendedTooltip name="IndentExtendedTooltip" id="49"/>
+		</LabelDecoration>
+		<UsualGroup name="ProhibitionDateWithDescription" id="19">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Prohibition date with description</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Prohibition date with description</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ProhibitionDateWithDescriptionExtendedTooltip" id="50"/>
+			<ChildItems>
+				<InputField name="ProhibitionDateDescription" id="20">
+					<DataPath>ProhibitionDateDescription</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Prohibition date</v8:content>
+						</v8:item>
+					</Title>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ListChoiceMode>true</ListChoiceMode>
+					<TextEdit>false</TextEdit>
+					<ChoiceList>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>(Default)</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:string"/>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Arbitrary date</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:string">Custom</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Last year end</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:string">LastYearEnd</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>End of the last quarter</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:string">LastQuarterEnd</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>End of the last month</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:string">LastMonthEnd</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>End of the last week</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:string">LastWeekEnd</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Previous day</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:string">PreviousDay</Value>
+							</xr:Value>
+						</xr:Item>
+					</ChoiceList>
+					<BackColor>style:ManagingFieldBackgroundColor</BackColor>
+					<ContextMenu name="DetailsProhibitionDatesContextMenu" id="21"/>
+					<ExtendedTooltip name="DetailsProhibitionDatesExtendedTooltip" id="51"/>
+					<Events>
+						<Event name="OnChange">ProhibitionDateDescriptionOnChange</Event>
+					</Events>
+				</InputField>
+				<Pages name="Custom" id="22">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Arbitrary date</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Arbitrary date</v8:content>
+						</v8:item>
+					</ToolTip>
+					<PagesRepresentation>None</PagesRepresentation>
+					<ExtendedTooltip name="CustomDateToolTip" id="52"/>
+					<ChildItems>
+						<Page name="ArbitraryDateIsUsed" id="23">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Custom date used</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Custom date used</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ExtendedTooltip name="CustomDateInUseExtendedTooltip" id="53"/>
+							<ChildItems>
+								<InputField name="ProhibitionDate" id="24">
+									<DataPath>ProhibitionDate</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content> </v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>None</TitleLocation>
+									<ClearButton>true</ClearButton>
+									<ContextMenu name="ProhibitionDateContextMenu" id="25"/>
+									<ExtendedTooltip name="ProhibitionDateExtendedTooltip" id="54"/>
+									<Events>
+										<Event name="OnChange">ProhibitionDateOnChange</Event>
+									</Events>
+								</InputField>
+							</ChildItems>
+						</Page>
+						<Page name="ArbitraryDateIsNotUsed" id="26">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Custom date not used</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Custom date not used</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ExtendedTooltip name="CustomDateNotUsedExtendedTooltip" id="55"/>
+							<ChildItems>
+								<LabelDecoration name="EmptyTitleForPageRepresentation1" id="27">
+									<ContextMenu name="EmptyLabelForDisplayPages1ContextMenu" id="28"/>
+									<ExtendedTooltip name="EmptyLabelForDisplayPages1ExtendedTooltip" id="56"/>
+								</LabelDecoration>
+							</ChildItems>
+						</Page>
+					</ChildItems>
+				</Pages>
+			</ChildItems>
+		</UsualGroup>
+		<Pages name="AutomaticalDateProperties" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Automatical date properties</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Automatical date properties</v8:content>
+				</v8:item>
+			</ToolTip>
+			<PagesRepresentation>None</PagesRepresentation>
+			<ExtendedTooltip name="PropertiesOfAutomaticDatesExtendedTooltip" id="57"/>
+			<ChildItems>
+				<Page name="AutomaticalDateUsed" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Automatical date used</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Automatical date used</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="CustomDateInUseExtendedTooltip" id="58"/>
+					<ChildItems>
+						<CheckBoxField name="AllowDataChangingToProhibitionDate" id="3">
+							<DataPath>AllowDataChangingToProhibitionDate</DataPath>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="AllowDataChangeBeforeProhibitionDatesContextMenu" id="4"/>
+							<ExtendedTooltip name="AllowDataChangeBeforeProhibitionDatesExtendedTooltip" id="59"/>
+							<Events>
+								<Event name="OnChange">AllowDataChangingToProhibitionDateOnChange</Event>
+							</Events>
+						</CheckBoxField>
+						<Pages name="PropertyPermissionDaysCountChanges" id="5">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Property permission days count changes</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Property permission days count changes</v8:content>
+								</v8:item>
+							</ToolTip>
+							<PagesRepresentation>None</PagesRepresentation>
+							<ExtendedTooltip name="PropertyCountDaysPermissionsChangesExtendedTooltip" id="60"/>
+							<ChildItems>
+								<Page name="DataChangingBeforeProhibitionDateIsAllowed" id="6">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Data changing to prohibition date allowed</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Data changing to prohibition date allowed</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<ExtendedTooltip name="UpdateDataToProhibitionDateAllowedExtendedTooltip" id="61"/>
+									<ChildItems>
+										<LabelDecoration name="PermissionDaysCountTitle" id="7">
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>During</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="NumberOfPermissionDaysHeaderContextMenu" id="8"/>
+											<ExtendedTooltip name="NumberOfPermissionDaysHeaderExtendedTooltip" id="62"/>
+										</LabelDecoration>
+										<InputField name="PermissionDaysCount" id="9">
+											<DataPath>PermissionDaysCount</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>  days after prohibition date</v8:content>
+												</v8:item>
+											</Title>
+											<TitleLocation>Right</TitleLocation>
+											<ContextMenu name="PermissionCountOfDaysContextMenu" id="10"/>
+											<ExtendedTooltip name="PermissionCountOfDaysExtendedTooltip" id="63"/>
+											<Events>
+												<Event name="OnChange">PermissionDaysCountOnChange</Event>
+												<Event name="AutoComplete">PermissionDaysCountAutoCompleteText</Event>
+											</Events>
+										</InputField>
+									</ChildItems>
+								</Page>
+								<Page name="DataChangingBeforeProhibitionDateIsNotAllowed" id="11">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Data changing to prohibition date not allowed</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Data changing to prohibition date not allowed</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="DataChangeToProhibitionDateNotAllowedExtendedTooltip" id="64"/>
+									<ChildItems>
+										<LabelDecoration name="EmptyTitleForPageRepresentation2" id="12">
+											<ContextMenu name="EmptyLabelFor2PagesDisplayContextMenu" id="13"/>
+											<ExtendedTooltip name="EmptyLabelForDisplayPages2ExtendedTooltip" id="65"/>
+										</LabelDecoration>
+									</ChildItems>
+								</Page>
+							</ChildItems>
+						</Pages>
+						<LabelDecoration name="AutomaticalDateExplanation" id="14">
+							<TextColor>#000080</TextColor>
+							<ContextMenu name="DescriptionOfAutomaticDateContextMenu" id="15"/>
+							<ExtendedTooltip name="DescriptionOfAutomaticDateExtendedTooltip" id="66"/>
+						</LabelDecoration>
+					</ChildItems>
+				</Page>
+				<Page name="AutomaticalDateNotUsed" id="16">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Automatical date not used</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Automatical date not used</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="CustomDateNotUsedExtendedTooltip" id="67"/>
+					<ChildItems>
+						<LabelDecoration name="EmptyTitleForPageRepresentation3" id="17">
+							<ContextMenu name="EmptyLabelForDisplayPages3ContextMenu" id="18"/>
+							<ExtendedTooltip name="EmptyLabelForDisplayPages3ExtendedTooltip" id="68"/>
+						</LabelDecoration>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="AllowDataChangingToProhibitionDate" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Allow data changing to prohibition date</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ProhibitionDateDescription" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Prohibition date description</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="PermissionDaysCount" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Permission days count</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>2</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ProhibitionDate" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Prohibition date</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="CurrentDateAtServer" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Current date at server</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ObjectPresentation" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Object</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="UserPresentation" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>User</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="SectionPresentation" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Section</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ReturnValue" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Returns</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="OK" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>OK</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>OK</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>OK</Action>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="ProhibitionDateDescription">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="UserPresentation">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="SectionPresentation">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="ObjectPresentation">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="PermissionDaysCount">
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>2</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="ProhibitionDate">
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="AllowByDefault">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

@@ -1,0 +1,57 @@
+﻿#Region HeaderFormItemsEventsHandlers
+
+&AtClient
+Procedure ListBeforeAddRow(Item, Cancel, Copy, Parent, Group)
+	
+	// Check whether the group is being copied.
+	If Copy AND Group Then
+		Cancel = True;
+		
+		ShowMessageBox(, NStr("en='Adding of the new groups in the catalog has been completed.'"));
+	EndIf;
+	
+EndProcedure
+
+#EndRegion
+
+#Region FormCommandsHandlers
+
+&AtClient
+Procedure MoveItemUp()
+	
+	If Not ThereIsOptionItemMove(Items.List.CurrentData.Ref, "Up") Then
+		CommonUseClientServer.MessageToUser(NStr("en = 'Move this contact information type is n''t provided'"));
+		Return;
+	EndIf;
+	
+	ItemOrderSetupClient.MoveItemUpExecute(List, Items.List);
+	
+EndProcedure
+
+&AtClient
+Procedure MoveItemDown()
+	
+	If Not ThereIsOptionItemMove(Items.List.CurrentData.Ref, "Down") Then
+		CommonUseClientServer.MessageToUser(NStr("en = 'Move this contact information type is not provided'"));
+		Return;
+	EndIf;
+	
+	ItemOrderSetupClient.MoveItemDownExecute(List, Items.List);
+	
+EndProcedure
+
+#EndRegion
+
+#Region ServiceProceduresAndFunctions
+
+&AtServer
+Function ThereIsOptionItemMove(CurrentItem, Direction)
+	
+	NearbyItem = ItemOrderSetupService.NearbyItem(CurrentItem, List, Direction);
+	
+	Return NearbyItem = Undefined Or Not (CurrentItem.DisableEditByUser Or NearbyItem.DisableEditByUser);
+	
+EndFunction
+
+#EndRegion
+

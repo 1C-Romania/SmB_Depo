@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<MetaDataObject xmlns="http://v8.1c.ru/8.3/MDClasses" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:cmi="http://v8.1c.ru/8.2/managed-application/cmi" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xpr="http://v8.1c.ru/8.3/xcf/predef" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<FunctionalOption uuid="60b37d99-7111-4583-8621-a068d9bf15e2">
+		<Properties>
+			<Name>AccountingByCells</Name>
+			<Synonym>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Accounting by cells</v8:content>
+				</v8:item>
+			</Synonym>
+			<Comment/>
+			<Location>Constant.FunctionalOptionAccountingByCells</Location>
+			<PrivilegedGetMode>true</PrivilegedGetMode>
+			<Content>
+				<xr:Object>Document.CustomerInvoice.Attribute.Cell</xr:Object>
+				<xr:Object>Document.SupplierInvoice.Attribute.Cell</xr:Object>
+				<xr:Object>Document.InventoryReconciliation.Attribute.Cell</xr:Object>
+				<xr:Object>Document.InventoryWriteOff.Attribute.Cell</xr:Object>
+				<xr:Object>Document.InventoryReceipt.Attribute.Cell</xr:Object>
+				<xr:Object>Document.InventoryTransfer.Attribute.Cell</xr:Object>
+				<xr:Object>Document.InventoryTransfer.Attribute.CellPayee</xr:Object>
+				<xr:Object>Document.TransferBetweenCells</xr:Object>
+				<xr:Object>Document.InventoryAssembly.Attribute.Cell</xr:Object>
+				<xr:Object>Document.GoodsExpense.Attribute.Cell</xr:Object>
+				<xr:Object>Document.GoodsReceipt.Attribute.Cell</xr:Object>
+				<xr:Object>Document.EnterOpeningBalance.TabularSection.Inventory.Attribute.Cell</xr:Object>
+				<xr:Object>Document.EnterOpeningBalance.TabularSection.InventoryReceived.Attribute.Cell</xr:Object>
+				<xr:Object>Document.ExpenseReport.TabularSection.Inventory.Attribute.Cell</xr:Object>
+				<xr:Object>Document.ProcessingReport.Attribute.Cell</xr:Object>
+				<xr:Object>Document.SubcontractorReport.Attribute.Cell</xr:Object>
+				<xr:Object>Document.FixedAssetsEnter.Attribute.Cell</xr:Object>
+				<xr:Object>Document.CostAllocation.Attribute.Cell</xr:Object>
+				<xr:Object>AccumulationRegister.InventoryInWarehouses.Dimension.Cell</xr:Object>
+				<xr:Object>Document.InventoryAssembly.Attribute.ProductsCell</xr:Object>
+				<xr:Object>Document.InventoryAssembly.Attribute.DisposalsCell</xr:Object>
+				<xr:Object>Document.InventoryAssembly.Attribute.CellInventory</xr:Object>
+				<xr:Object>Document.CustomerOrder.Attribute.Cell</xr:Object>
+				<xr:Object>Catalog.ProductsAndServices.Attribute.Cell</xr:Object>
+				<xr:Object>Catalog.Cells</xr:Object>
+			</Content>
+		</Properties>
+	</FunctionalOption>
+</MetaDataObject>

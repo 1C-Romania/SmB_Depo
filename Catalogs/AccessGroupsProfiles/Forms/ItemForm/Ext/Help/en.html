@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"></meta><link rel="stylesheet" type="text/css" href="V8help://service_book/service_style"></link><meta name="GENERATOR" content="MSHTML 11.00.9600.18321"></meta></head><body>
+<p>Description of access groups profile properties.</p>
+<p>In the application there are predefined <a href="Catalog.AccessGroupsProfiles.Form.ListForm/Help">profiles for access groups</a>. IN some cases predefined <a href="Catalog.AccessGroupsProfiles.Form.ListForm/Help">access groups profiles</a> are not enough to configure required settings for the user access permission. IN such cases the administrator has an option to add new profiles of access groups.</p>
+<p>As a rule, access groups profile combines several roles and also contains description of access kinds. IN terms of access kinds the administrator can customize the rights using <a href="Catalog.AccessGroupsProfiles/Help">access groups</a>. Therefore, a profile is a certain template based on which the administrator manages <a href="Catalog.AccessGroupsProfiles.Form.ListForm/Help">access groups.</a> </p>
+<p>One or several access groups can be related to one profile. For example, based on the <strong>Accountant </strong>profile <strong>Head Office Accountants</strong> and <strong>Company Division Accountants in N-city </strong>access groups that differ from each other by permitted companies: "Head office" and "Company Division in N-city" can be configured.</p>
+<h3>Entering the access groups profile</h3>
+<ul><li>Enter<strong> </strong>the <strong>Name</strong> of profile. 
+</li><li>If necessary, it is possible to move access groups profile to the folder by filling<strong> </strong>in the <strong>Group</strong> <strong>(folder)</strong> field. Access group profiles can be grouped based on various features. Select the required folder from the <a href="Catalog.AccessGroupsProfiles.Form.ListForm/Help">list. </a>
+</li><li>Select <a href="blank#1">Permitted actions (roles)</a> on the relevant tab. 
+</li><li>Specify <a href="blank#4">Access Restrictions</a> on the relevant tab. 
+</li><li>At the <strong>Note</strong> tab<strong> </strong>you can specify an additional information of access groups profile. Predefined access profiles also have a <strong>Description </strong>tab with detailed description of this profile and its purpose.</li></ul><h3><a name="#1">Permitted actions (roles)</a></h3>
+<ul><li>When adding a new profile for the access groups, first it is necessary to define the content of the roles based on the needs of the target group of users on the <strong>Allowed actions (roles) </strong>tab. 
+</li><li>Role specifies a set of actions over the application objects that the <a href="Catalog.Users.Form.ItemForm/Help">user</a> can perform. Roles may correspond either to various work-related duties (or activity kinds) of the application <a href="Catalog.Users/Help">users</a> or to<strong> </strong>small-scale functions. For example, the <strong>Accountant</strong> role provides an access to the functional block necessary to perform position duties of an accountant, and to add an option to view files it is possible to appoint the <strong>Read files</strong> role. As a rule, roles either authorize view or provide an option to edit various data in the application. 
+</li><li>Using check boxes select one or several roles. 
+<ul><li>Using <img src="StdPicture.CheckAll"></img> button you can select all roles in the list 
+</li><li>Using <img src="StdPicture.UncheckAll"></img>button you can cancel selection of all roles </li></ul></li><li>It is possible to display <strong>Only selected roles</strong> using the corresponding button.<strong> </strong>
+</li><li>Using <strong>By subsystems</strong> button it<strong> </strong>is possible to display the list of roles: 
+<ul><li>alphabetically 
+</li><li>groupped by subsystems</li></ul></li></ul><h3><a name="#4">Access restrictions</a></h3>
+<ul><li>On <strong>Access restrictions</strong> tab you need to define the content of access types that shall be specified in the profile. 
+</li><li>Access kind is meant to be a rule authorizing access to the application data. Using the kinds you can set boundaries more precisely for the data area which is permitted for the participants of various access groups to work with. 
+</li><li>In the simplest case if no access kind is specified in the profile, data access permission is specified only by the roles. For example if the profile contains the role for reading  <strong>Goods Receipt </strong>documents, then participants of access groups get an option to view all the documents. But if a <strong>Company</strong> access kind is added to the profile in addition to this roles, then you can permit the users to work with documents of specific companies; or vice versa, hide from the users the documents of some companies. 
+</li><li>Therefore if the list of the roles in the profile answers the question "what must be available and what must not be available" (what functions and application data), then access kinds specify the way they shall be available (by what permitted and prohibited values). 
+</li><li>It is recommended to define the content of access kinds in the profile taking into consideration the flexibility of access permission settings. 
+</li><li>Specify the <strong>Access kinds</strong>. 
+<ul><li>Click <strong>Add</strong>, select from the list one of the access kinds. 
+</li><li>You can <strong>delete</strong> unnecessary records using the corresponding command of <strong>More</strong> menu or shortcut menu by clicking the right button of the mouse. </li></ul></li><li>You can select one of four <strong>Access values </strong>for each access kind specified in the profile: 
+<ul><li><strong>All prohibited, exceptions are indicated in access groups </strong>- it is applied when access to all data shall be denied by default, but permissions can be set for individual objects in access groups. 
+</li><li><strong>All permitted, exceptions are specified in access groups </strong>- similar to previous version, but all data are permitted by default, and exceptions - deny can be set for individual objects in access groups . 
+</li><li><strong>All prohibited, exceptions are specified in the profile </strong>- it is used when an option to configure an access kind is not provided in access groups; i.e. all settings shall be completed directly in the profile and can not be changed in access groups. Such access kinds are hidden in access groups. 
+<ul><li>In this case you can enter exceptions. 
+</li><li>Click <strong>Add</strong>, select values from the relevant lists. 
+</li><li>You can <strong>delete</strong> excess values using the corresponding command of <strong>More</strong> menu or shortcut menu clicking right button of the mouse.</li></ul></li><li><strong>Permit all, exceptions are specified in the profile </strong>- similar to previous version.</li></ul></li></ul><h3>Viewing unused access kinds</h3>
+<ul><li>
+<div>Using <strong>More</strong> - <strong>Display unused access kinds</strong> command you can view those access kinds that are not used at this moment (for example, this option is disabled in the application).</div></li></ul><h3>Viewing Access groups</h3>
+<ul><li>For quick switch to the list of access groups created based on this profile, you can use the <strong>Access groups</strong> command of navigation panel.</li></ul><h3>See also</h3>
+<ul><li><a href="v8help://frame/form_common">Working with forms</a></li></ul><h3></h3>
+<ul></ul><ul></ul></body></html>

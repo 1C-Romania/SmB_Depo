@@ -1,0 +1,4902 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Width>100</Width>
+	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
+	<AutoTitle>false</AutoTitle>
+	<CommandBarLocation>None</CommandBarLocation>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoTime>CurrentOrLast</AutoTime>
+	<UsePostingMode>Auto</UsePostingMode>
+	<RepostOnWrite>true</RepostOnWrite>
+	<AutoCommandBar name="FormCommandBar" id="-1"/>
+	<Events>
+		<Event name="AfterWrite">AfterWrite</Event>
+		<Event name="OnSaveDataInSettingsAtServer">OnSaveDataInSettingsAtServer</Event>
+		<Event name="AfterWriteAtServer">AfterWriteAtServer</Event>
+		<Event name="NotificationProcessing">NotificationProcessing</Event>
+		<Event name="OnReadAtServer">OnReadAtServer</Event>
+		<Event name="OnOpen">OnOpen</Event>
+		<Event name="BeforeWrite">BeforeWrite</Event>
+		<Event name="BeforeWriteAtServer">BeforeWriteAtServer</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+		<Event name="OnClose">OnClose</Event>
+		<Event name="BeforeLoadDataFromSettingsAtServer">BeforeImportDataFromSettingsAtServer</Event>
+	</Events>
+	<ChildItems>
+		<Pages name="GroupSalesAndReturn" id="897">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group sales and return</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group sales and return</v8:content>
+				</v8:item>
+			</ToolTip>
+			<ExtendedTooltip name="GroupSalesAndReturnExtendedTooltip" id="898"/>
+			<Events>
+				<Event name="OnCurrentPageChange">GroupSalesAndReturnOnCurrentPageChange</Event>
+			</Events>
+			<ChildItems>
+				<Page name="GroupSale" id="899">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Sale</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group sale</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Width>100</Width>
+					<BackColor>style:FormBackColor</BackColor>
+					<ExtendedTooltip name="GroupSaleExtendedTooltip" id="900"/>
+					<ChildItems>
+						<UsualGroup name="CommandBarReceiptCR" id="65">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Command bar CR receipt</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Command bar CR receipt</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ToolTipRepresentation>None</ToolTipRepresentation>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="CommandBarReceiptCRExtendedTooltip" id="66"/>
+							<ChildItems>
+								<InputField name="ProductsAndServicesSearchValue" id="487">
+									<DataPath>ProductsAndServicesSearchValue</DataPath>
+									<SkipOnInput>false</SkipOnInput>
+									<TitleLocation>None</TitleLocation>
+									<ToolTipRepresentation>None</ToolTipRepresentation>
+									<Shortcut>Alt+F</Shortcut>
+									<HorizontalStretch>true</HorizontalStretch>
+									<DropListButton>false</DropListButton>
+									<ChoiceButton>false</ChoiceButton>
+									<OpenButton>false</OpenButton>
+									<CreateButton>false</CreateButton>
+									<ChoiceParameters>
+										<app:item name="Filter.ProductsAndServicesType">
+											<app:value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="v8:FixedArray">
+													<v8:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation/>
+														<Value xsi:type="xr:DesignTimeRef">Enum.ProductsAndServicesTypes.EnumValue.InventoryItem</Value>
+													</v8:Value>
+													<v8:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation/>
+														<Value xsi:type="xr:DesignTimeRef">Enum.ProductsAndServicesTypes.EnumValue.Service</Value>
+													</v8:Value>
+												</Value>
+											</app:value>
+										</app:item>
+									</ChoiceParameters>
+									<InputHint>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Enter name, code or SKU (Alt+F)</v8:content>
+										</v8:item>
+									</InputHint>
+									<ContextMenu name="ProductsAndServicesSearchValueContextMenu" id="488"/>
+									<ExtendedTooltip name="ProductsAndServicesSearchValueExtendedTooltip" id="489"/>
+									<Events>
+										<Event name="OnChange">ProductsAndServicesSearchValueOnChange</Event>
+									</Events>
+								</InputField>
+								<Button name="InventoryPick" id="477">
+									<Type>UsualButton</Type>
+									<Width>7</Width>
+									<CommandName>Form.Command.Pick</CommandName>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Pick</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="InventoryPickExtendedTooltip" id="478"/>
+								</Button>
+								<Button name="SearchByBarcode" id="1462">
+									<Type>UsualButton</Type>
+									<Width>3</Width>
+									<CommandName>Form.Command.SearchByBarcode</CommandName>
+									<ExtendedTooltip name="SearchByBarcodeExtendedTooltip" id="1463"/>
+								</Button>
+								<Button name="InventoryImportDataFromDCT" id="397">
+									<Type>UsualButton</Type>
+									<Representation>Picture</Representation>
+									<OnlyInAllActions>false</OnlyInAllActions>
+									<Width>3</Width>
+									<CommandName>Form.Command.ImportDataFromDCT</CommandName>
+									<ExtendedTooltip name="InventoryImportDataFromDCTExtendedTooltip" id="398"/>
+								</Button>
+								<Button name="InventoryWeight" id="399">
+									<Type>UsualButton</Type>
+									<OnlyInAllActions>false</OnlyInAllActions>
+									<Width>3</Width>
+									<CommandName>Form.Command.GetWeight</CommandName>
+									<ExtendedTooltip name="InventoryWeightExtendedTooltip" id="400"/>
+								</Button>
+								<Button name="InventoryCalculateDiscountsMarkups" id="412">
+									<Type>UsualButton</Type>
+									<Width>7</Width>
+									<CommandName>Form.Command.CalculateDiscountsMarkups</CommandName>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>% Auth</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="InventoryCalculateDiscountsMarkupsExtendedTooltip" id="413"/>
+								</Button>
+								<Button name="ReadDiscountCard" id="1813">
+									<Type>UsualButton</Type>
+									<Width>3</Width>
+									<CommandName>Form.Command.ReadDiscountCard</CommandName>
+									<ExtendedTooltip name="ReadDiscountCardExtendedTooltip" id="1814"/>
+								</Button>
+								<Button name="IncreaseQuantity" id="1547">
+									<Type>UsualButton</Type>
+									<Width>3</Width>
+									<CommandName>Form.Command.IncreaseQuantity</CommandName>
+									<ExtendedTooltip name="BoostQuantityExtendedTooltip" id="1548"/>
+								</Button>
+								<Button name="ReduceQuantity" id="1549">
+									<Type>UsualButton</Type>
+									<Width>3</Width>
+									<CommandName>Form.Command.ReduceQuantity</CommandName>
+									<Picture>
+										<xr:Ref>CommonPicture.Minus</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ExtendedTooltip name="ReduceQuantityExtendedTooltip" id="1550"/>
+								</Button>
+								<Button name="ChangeQuantityUsingCalculator" id="1551">
+									<Type>UsualButton</Type>
+									<Width>3</Width>
+									<CommandName>Form.Command.ChangeQuantityUsingCalculator</CommandName>
+									<ExtendedTooltip name="ChangeQuantityUsingCalculatorExtendedTooltip" id="1552"/>
+								</Button>
+								<Button name="Delete" id="1553">
+									<Type>UsualButton</Type>
+									<Representation>Picture</Representation>
+									<CommandName>Form.Item.Inventory.StandardCommand.Delete</CommandName>
+									<ExtendedTooltip name="DeleteExtendedTooltip" id="1554"/>
+								</Button>
+								<Button name="Add" id="1555">
+									<Type>UsualButton</Type>
+									<Representation>Picture</Representation>
+									<OnlyInAllActions>false</OnlyInAllActions>
+									<CommandName>Form.Item.Inventory.StandardCommand.Add</CommandName>
+									<ExtendedTooltip name="AddExtendedTooltip" id="1556"/>
+								</Button>
+								<Button name="Copy" id="1557">
+									<Type>UsualButton</Type>
+									<Representation>Picture</Representation>
+									<OnlyInAllActions>false</OnlyInAllActions>
+									<CommandName>Form.Item.Inventory.StandardCommand.Copy</CommandName>
+									<ExtendedTooltip name="CopyExtendedTooltip" id="1558"/>
+								</Button>
+								<Button name="OpenProductsAndServicesCard" id="1559">
+									<Type>UsualButton</Type>
+									<Representation>Picture</Representation>
+									<CommandName>Form.Command.OpenProductsAndServicesCard</CommandName>
+									<ExtendedTooltip name="OpenProductsAndServicesCardExtendedTooltip" id="1560"/>
+								</Button>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="GroupInventoryAndSidePanel" id="1918">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Inventory and side panel</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group inventory and side panel</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupInventoryAndSidePanelExtendedTooltip" id="1919"/>
+							<ChildItems>
+								<UsualGroup name="GroupInventory" id="242">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group inventory</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group inventory</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Width>60</Width>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<BackColor>#FFFFFF</BackColor>
+									<ExtendedTooltip name="GroupInventoryExtendedTooltip" id="243"/>
+									<ChildItems>
+										<UsualGroup name="GroupTabularSectionAndFooter" id="1722">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group tabular section and footer</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group tabular section and footer</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Vertical</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="GroupTabularSectionAndFooterExtendedTooltip" id="1723"/>
+											<ChildItems>
+												<UsualGroup name="GroupTabularSectionInventory" id="722">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Group tabular section inventory</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Group tabular section inventory</v8:content>
+														</v8:item>
+													</ToolTip>
+													<Group>Vertical</Group>
+													<Representation>None</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="GroupTabularSectionInventoryExtendedTooltip" id="723"/>
+													<ChildItems>
+														<Table name="Inventory" id="1464">
+															<Representation>List</Representation>
+															<CommandBarLocation>None</CommandBarLocation>
+															<SkipOnInput>true</SkipOnInput>
+															<UseAlternationRowColor>true</UseAlternationRowColor>
+															<AutoInsertNewRow>true</AutoInsertNewRow>
+															<AutoAddIncomplete>false</AutoAddIncomplete>
+															<EnableStartDrag>true</EnableStartDrag>
+															<EnableDrag>true</EnableDrag>
+															<DataPath>Object.Inventory</DataPath>
+															<ToolTipRepresentation>None</ToolTipRepresentation>
+															<SearchStringLocation>None</SearchStringLocation>
+															<ViewStatusLocation>None</ViewStatusLocation>
+															<SearchControlLocation>None</SearchControlLocation>
+															<RowFilter xsi:nil="true"/>
+															<ContextMenu name="InventoryContextMenu" id="1465">
+																<ChildItems>
+																	<Button name="InventoryContextMenuClearTSInventory" id="1862">
+																		<Type>CommandBarButton</Type>
+																		<CommandName>Form.Command.ClearTSInventory</CommandName>
+																		<ExtendedTooltip name="InventoryContextMenuClearTCInventoryExtendedTooltip" id="1863"/>
+																	</Button>
+																</ChildItems>
+															</ContextMenu>
+															<AutoCommandBar name="InventoryCommandPanel" id="1466"/>
+															<ExtendedTooltip name="InventoryExtendedTooltip" id="1467"/>
+															<SearchStringAddition name="InventorySearchString" id="1468">
+																<AdditionSource>
+																	<Item>Inventory</Item>
+																	<Type>SearchStringRepresentation</Type>
+																</AdditionSource>
+																<ContextMenu name="InventorySearchStringContextMenu" id="1471"/>
+																<ExtendedTooltip name="InventorySearchStringExtendedTooltip" id="1472"/>
+															</SearchStringAddition>
+															<ViewStatusAddition name="InventoryViewStatus" id="1473">
+																<AdditionSource>
+																	<Item>Inventory</Item>
+																	<Type>ViewStatusRepresentation</Type>
+																</AdditionSource>
+																<ContextMenu name="InventoryViewStatusContextMenu" id="1476"/>
+																<ExtendedTooltip name="InventoryViewStatusExtendedTooltip" id="1477"/>
+															</ViewStatusAddition>
+															<SearchControlAddition name="InventorySearchManagement" id="1478">
+																<AdditionSource>
+																	<Item>Inventory</Item>
+																	<Type>SearchControl</Type>
+																</AdditionSource>
+																<ContextMenu name="InventorySearchManagementContextMenu" id="1481"/>
+																<ExtendedTooltip name="InventorySearchControlExtendedTooltip" id="1482"/>
+															</SearchControlAddition>
+															<Events>
+																<Event name="OnEditEnd">InventoryOnEditEnd</Event>
+																<Event name="Selection">InventorySelection</Event>
+																<Event name="OnStartEdit">InventoryOnStartEdit</Event>
+																<Event name="AfterDeleteRow">InventoryAfterDeleteRow</Event>
+																<Event name="OnChange">InventoryOnChange</Event>
+															</Events>
+															<ChildItems>
+																<LabelField name="LineNumber" id="1483">
+																	<DataPath>Object.Inventory.LineNumber</DataPath>
+																	<EditMode>EnterOnInput</EditMode>
+																	<FixingInTable>Left</FixingInTable>
+																	<Width>4</Width>
+																	<HorizontalStretch>false</HorizontalStretch>
+																	<ContextMenu name="LineNumberContextMenu" id="1484"/>
+																	<ExtendedTooltip name="LineNumberExtendedTooltip" id="1485"/>
+																</LabelField>
+																<ColumnGroup name="DocumentReceiptCRInventoryGroup3" id="1486">
+																	<Group>Horizontal</Group>
+																	<ExtendedTooltip name="DocumentReceiptCRInventoryGroup3ExtendedTooltip" id="1487"/>
+																	<ChildItems>
+																		<ColumnGroup name="ProductsAndServicesGroup" id="1488">
+																			<Title>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Group ProductsAndServices</v8:content>
+																				</v8:item>
+																			</Title>
+																			<ToolTip>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Group ProductsAndServices</v8:content>
+																				</v8:item>
+																			</ToolTip>
+																			<ExtendedTooltip name="GroupProductsAndServicesExtendedTooltip" id="1489"/>
+																			<ChildItems>
+																				<InputField name="InventoryProductsAndServices" id="1490">
+																					<DataPath>Object.Inventory.ProductsAndServices</DataPath>
+																					<ToolTipRepresentation>None</ToolTipRepresentation>
+																					<EditMode>EnterOnInput</EditMode>
+																					<FixingInTable>Left</FixingInTable>
+																					<Width>15</Width>
+																					<HorizontalStretch>false</HorizontalStretch>
+																					<InputHint>
+																						<v8:item>
+																							<v8:lang>en</v8:lang>
+																							<v8:content>Products and services</v8:content>
+																						</v8:item>
+																					</InputHint>
+																					<ContextMenu name="InventoryProductsAndServicesContextMenu" id="1491"/>
+																					<ExtendedTooltip name="InventoryProductsAndServicesExtendedTooltip" id="1492"/>
+																					<Events>
+																						<Event name="OnChange">InventoryProductsAndServicesOnChange</Event>
+																					</Events>
+																				</InputField>
+																			</ChildItems>
+																		</ColumnGroup>
+																		<ColumnGroup name="AttributesGroup" id="1493">
+																			<Title>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Attribute group</v8:content>
+																				</v8:item>
+																			</Title>
+																			<ToolTip>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Attribute group</v8:content>
+																				</v8:item>
+																			</ToolTip>
+																			<Group>Horizontal</Group>
+																			<ExtendedTooltip name="AttributesGroupExtendedTooltip" id="1494"/>
+																			<ChildItems>
+																				<ColumnGroup name="GroupCharacteristicAndBatch" id="1495">
+																					<Title>
+																						<v8:item>
+																							<v8:lang>en</v8:lang>
+																							<v8:content>Group characteristic and batch</v8:content>
+																						</v8:item>
+																					</Title>
+																					<ToolTip>
+																						<v8:item>
+																							<v8:lang>en</v8:lang>
+																							<v8:content>Group characteristic and batch</v8:content>
+																						</v8:item>
+																					</ToolTip>
+																					<ExtendedTooltip name="GroupCharacteristicAndBatchExtendedTooltip" id="1496"/>
+																					<ChildItems>
+																						<InputField name="InventoryCharacteristic" id="1497">
+																							<DataPath>Object.Inventory.Characteristic</DataPath>
+																							<ToolTipRepresentation>None</ToolTipRepresentation>
+																							<EditMode>EnterOnInput</EditMode>
+																							<Width>16</Width>
+																							<InputHint>
+																								<v8:item>
+																									<v8:lang>en</v8:lang>
+																									<v8:content>Characteristic</v8:content>
+																								</v8:item>
+																							</InputHint>
+																							<ContextMenu name="InventoryCharacteristicContextMenu" id="1498"/>
+																							<ExtendedTooltip name="InventoryCharacteristicExtendedTooltip" id="1499"/>
+																							<Events>
+																								<Event name="OnChange">InventoryCharacteristicOnChange</Event>
+																							</Events>
+																						</InputField>
+																						<InputField name="InventoryBatch" id="1500">
+																							<DataPath>Object.Inventory.Batch</DataPath>
+																							<ToolTipRepresentation>None</ToolTipRepresentation>
+																							<EditMode>EnterOnInput</EditMode>
+																							<Width>16</Width>
+																							<InputHint>
+																								<v8:item>
+																									<v8:lang>en</v8:lang>
+																									<v8:content>Batch</v8:content>
+																								</v8:item>
+																							</InputHint>
+																							<ContextMenu name="InventoryBatchContextMenu" id="1501"/>
+																							<ExtendedTooltip name="InventoryBatchExtendedTooltip" id="1502"/>
+																							<Events>
+																								<Event name="OnChange">DocumentReceiptCRInventoryBatchOnChange</Event>
+																							</Events>
+																						</InputField>
+																					</ChildItems>
+																				</ColumnGroup>
+																				<ColumnGroup name="GroupQuantityAndMeasurementUnit" id="1503">
+																					<Title>
+																						<v8:item>
+																							<v8:lang>en</v8:lang>
+																							<v8:content>Group quantity and measurement unit</v8:content>
+																						</v8:item>
+																					</Title>
+																					<ToolTip>
+																						<v8:item>
+																							<v8:lang>en</v8:lang>
+																							<v8:content>Group quantity and measurement unit</v8:content>
+																						</v8:item>
+																					</ToolTip>
+																					<ExtendedTooltip name="GroupCountAndMeasurementUnitExtendedTooltip" id="1504"/>
+																					<ChildItems>
+																						<InputField name="InventoryQuantity" id="1505">
+																							<DataPath>Object.Inventory.Quantity</DataPath>
+																							<ToolTipRepresentation>None</ToolTipRepresentation>
+																							<EditMode>EnterOnInput</EditMode>
+																							<Width>10</Width>
+																							<Format>
+																								<v8:item>
+																									<v8:lang>en</v8:lang>
+																									<v8:content>NLZ=</v8:content>
+																								</v8:item>
+																							</Format>
+																							<EditFormat>
+																								<v8:item>
+																									<v8:lang>en</v8:lang>
+																									<v8:content>NLZ=</v8:content>
+																								</v8:item>
+																							</EditFormat>
+																							<ContextMenu name="InventoryQuantityContextMenu" id="1506"/>
+																							<ExtendedTooltip name="InventoryQuantityExtendedTooltip" id="1507"/>
+																							<Events>
+																								<Event name="OnChange">InventoryQuantityOnChange</Event>
+																							</Events>
+																						</InputField>
+																						<InputField name="InventoryMeasurementUnit" id="1508">
+																							<DataPath>Object.Inventory.MeasurementUnit</DataPath>
+																							<ToolTipRepresentation>None</ToolTipRepresentation>
+																							<EditMode>EnterOnInput</EditMode>
+																							<Width>5</Width>
+																							<HorizontalStretch>false</HorizontalStretch>
+																							<ChoiceButton>false</ChoiceButton>
+																							<OpenButton>false</OpenButton>
+																							<ChooseType>false</ChooseType>
+																							<ChoiceListHeight>1</ChoiceListHeight>
+																							<ContextMenu name="InventoryMeasurementUnitContextMenu" id="1509"/>
+																							<ExtendedTooltip name="InventoryUnitMeasurementExtendedTooltip" id="1510"/>
+																							<Events>
+																								<Event name="OnChange">InventoryMeasurementUnitOnChange</Event>
+																								<Event name="ChoiceProcessing">InventoryMeasurementUnitChoiceProcessing</Event>
+																							</Events>
+																						</InputField>
+																					</ChildItems>
+																				</ColumnGroup>
+																				<ColumnGroup name="GroupDiscountsPercent" id="1511">
+																					<Title>
+																						<v8:item>
+																							<v8:lang>en</v8:lang>
+																							<v8:content>Group discounts percent</v8:content>
+																						</v8:item>
+																					</Title>
+																					<ToolTip>
+																						<v8:item>
+																							<v8:lang>en</v8:lang>
+																							<v8:content>Group discounts percent</v8:content>
+																						</v8:item>
+																					</ToolTip>
+																					<ExtendedTooltip name="GroupDiscountsPercentExtendedTooltip" id="1512"/>
+																					<ChildItems>
+																						<InputField name="InventoryDiscountPercentMargin" id="1513">
+																							<DataPath>Object.Inventory.DiscountMarkupPercent</DataPath>
+																							<Title>
+																								<v8:item>
+																									<v8:lang>en</v8:lang>
+																									<v8:content>Discount, %</v8:content>
+																								</v8:item>
+																							</Title>
+																							<ToolTipRepresentation>None</ToolTipRepresentation>
+																							<EditMode>EnterOnInput</EditMode>
+																							<Width>9</Width>
+																							<HorizontalStretch>false</HorizontalStretch>
+																							<ContextMenu name="InventoryDiscountPercentMarginContextMenu" id="1514"/>
+																							<ExtendedTooltip name="InventoryDiscountMarkupPercentExtendedTooltip" id="1515"/>
+																							<Events>
+																								<Event name="OnChange">InventoryDiscountMarkupPercentOnChange</Event>
+																							</Events>
+																						</InputField>
+																						<InputField name="InventoryAmountDiscountsMarkups" id="1984">
+																							<DataPath>Object.Inventory.AmountDiscountsMarkups</DataPath>
+																							<Title>
+																								<v8:item>
+																									<v8:lang>en</v8:lang>
+																									<v8:content>Discount</v8:content>
+																								</v8:item>
+																							</Title>
+																							<EditMode>EnterOnInput</EditMode>
+																							<Width>9</Width>
+																							<ContextMenu name="InventoryAmountDiscountsMarkupsContextMenu" id="1985"/>
+																							<ExtendedTooltip name="InventoryAmountDiscountsMarkupsExtendedTooltip" id="1986"/>
+																							<Events>
+																								<Event name="OnChange">InventoryAmountDiscountsMarkupsOnChange</Event>
+																							</Events>
+																						</InputField>
+																					</ChildItems>
+																				</ColumnGroup>
+																				<ColumnGroup name="GroupsDiscountsAmounts" id="1982">
+																					<Title>
+																						<v8:item>
+																							<v8:lang>en</v8:lang>
+																							<v8:content>Groups discounts amounts</v8:content>
+																						</v8:item>
+																					</Title>
+																					<ToolTip>
+																						<v8:item>
+																							<v8:lang>en</v8:lang>
+																							<v8:content>Groups discounts amounts</v8:content>
+																						</v8:item>
+																					</ToolTip>
+																					<ExtendedTooltip name="GroupsDiscountsAmountsExtendedTooltip" id="1983"/>
+																					<ChildItems>
+																						<InputField name="InventoryAutomaticDiscountPercent" id="1516">
+																							<DataPath>Object.Inventory.AutomaticDiscountsPercent</DataPath>
+																							<ReadOnly>true</ReadOnly>
+																							<Title>
+																								<v8:item>
+																									<v8:lang>en</v8:lang>
+																									<v8:content>% Auto</v8:content>
+																								</v8:item>
+																							</Title>
+																							<EditMode>EnterOnInput</EditMode>
+																							<ContextMenu name="InventoryAutomaticDiscountPercentContextMenu" id="1517"/>
+																							<ExtendedTooltip name="InventoryAutomaticDiscountPercentExtendedTooltip" id="1518"/>
+																						</InputField>
+																						<InputField name="InventoryAutomaticDiscountAmount" id="1987">
+																							<DataPath>Object.Inventory.AutomaticDiscountAmount</DataPath>
+																							<ReadOnly>true</ReadOnly>
+																							<Title>
+																								<v8:item>
+																									<v8:lang>en</v8:lang>
+																									<v8:content>Auth.</v8:content>
+																								</v8:item>
+																							</Title>
+																							<EditMode>EnterOnInput</EditMode>
+																							<Width>9</Width>
+																							<ContextMenu name="InventoryAutomaticDiscountAmountContextMenu" id="1988"/>
+																							<ExtendedTooltip name="InventoryAutomaticDiscountAmountExtendedTooltip" id="1989"/>
+																						</InputField>
+																					</ChildItems>
+																				</ColumnGroup>
+																				<ColumnGroup name="GroupPriceAndAmount" id="1519">
+																					<Title>
+																						<v8:item>
+																							<v8:lang>en</v8:lang>
+																							<v8:content>Group price and amount</v8:content>
+																						</v8:item>
+																					</Title>
+																					<ToolTip>
+																						<v8:item>
+																							<v8:lang>en</v8:lang>
+																							<v8:content>Group price and amount</v8:content>
+																						</v8:item>
+																					</ToolTip>
+																					<ExtendedTooltip name="GroupPriceAndAmountExtendedTooltip" id="1520"/>
+																					<ChildItems>
+																						<InputField name="InventoryPrice" id="1521">
+																							<DataPath>Object.Inventory.Price</DataPath>
+																							<ToolTipRepresentation>None</ToolTipRepresentation>
+																							<EditMode>EnterOnInput</EditMode>
+																							<HeaderHorizontalAlign>Right</HeaderHorizontalAlign>
+																							<Width>11</Width>
+																							<ContextMenu name="InventoryPriceContextMenu" id="1522"/>
+																							<ExtendedTooltip name="InventoryPriceExtendedTooltip" id="1523"/>
+																							<Events>
+																								<Event name="OnChange">InventoryPriceOnChange</Event>
+																							</Events>
+																						</InputField>
+																						<InputField name="InventoryAmount" id="1524">
+																							<DataPath>Object.Inventory.Amount</DataPath>
+																							<ToolTipRepresentation>None</ToolTipRepresentation>
+																							<EditMode>EnterOnInput</EditMode>
+																							<HeaderHorizontalAlign>Right</HeaderHorizontalAlign>
+																							<Width>11</Width>
+																							<ContextMenu name="InventoryAmountContextMenu" id="1525"/>
+																							<ExtendedTooltip name="InventoryAmountExtendedTooltip" id="1526"/>
+																							<Events>
+																								<Event name="OnChange">InventoryAmountOnChange</Event>
+																							</Events>
+																						</InputField>
+																					</ChildItems>
+																				</ColumnGroup>
+																				<ColumnGroup name="GroupVAT" id="1527">
+																					<Title>
+																						<v8:item>
+																							<v8:lang>en</v8:lang>
+																							<v8:content>Group VAT</v8:content>
+																						</v8:item>
+																					</Title>
+																					<ToolTip>
+																						<v8:item>
+																							<v8:lang>en</v8:lang>
+																							<v8:content>Group VAT</v8:content>
+																						</v8:item>
+																					</ToolTip>
+																					<ExtendedTooltip name="GroupVATExtendedTooltip" id="1528"/>
+																					<ChildItems>
+																						<InputField name="InventoryVATRate" id="1537">
+																							<DataPath>Object.Inventory.VATRate</DataPath>
+																							<ReadOnly>true</ReadOnly>
+																							<ToolTipRepresentation>None</ToolTipRepresentation>
+																							<EditMode>EnterOnInput</EditMode>
+																							<HeaderHorizontalAlign>Right</HeaderHorizontalAlign>
+																							<Width>13</Width>
+																							<ContextMenu name="InventoryVATRateContextMenu" id="1538"/>
+																							<ExtendedTooltip name="InventoryVATRateExtendedTooltip" id="1539"/>
+																							<Events>
+																								<Event name="OnChange">InventoryVATRateOnChange</Event>
+																							</Events>
+																						</InputField>
+																						<InputField name="InventoryVATAmount" id="1529">
+																							<DataPath>Object.Inventory.VATAmount</DataPath>
+																							<ReadOnly>true</ReadOnly>
+																							<ToolTipRepresentation>None</ToolTipRepresentation>
+																							<EditMode>EnterOnInput</EditMode>
+																							<HeaderHorizontalAlign>Right</HeaderHorizontalAlign>
+																							<Width>11</Width>
+																							<ContextMenu name="InventoryVATAmountContextMenu" id="1530"/>
+																							<ExtendedTooltip name="InventoryVATAmountExtendedTooltip" id="1531"/>
+																							<Events>
+																								<Event name="OnChange">InventoryVATAmountOnChange</Event>
+																							</Events>
+																						</InputField>
+																					</ChildItems>
+																				</ColumnGroup>
+																				<ColumnGroup name="TotalGroup" id="1535">
+																					<Title>
+																						<v8:item>
+																							<v8:lang>en</v8:lang>
+																							<v8:content>Group total</v8:content>
+																						</v8:item>
+																					</Title>
+																					<ToolTip>
+																						<v8:item>
+																							<v8:lang>en</v8:lang>
+																							<v8:content>Group total</v8:content>
+																						</v8:item>
+																					</ToolTip>
+																					<ExtendedTooltip name="GroupTotalExtendedTooltip" id="1536"/>
+																					<ChildItems>
+																						<InputField name="InventoryAmountTotal" id="1532">
+																							<DataPath>Object.Inventory.Total</DataPath>
+																							<ReadOnly>true</ReadOnly>
+																							<ToolTipRepresentation>None</ToolTipRepresentation>
+																							<EditMode>EnterOnInput</EditMode>
+																							<HeaderHorizontalAlign>Right</HeaderHorizontalAlign>
+																							<Width>11</Width>
+																							<ContextMenu name="InventoryAmountTotalContextMenu" id="1533"/>
+																							<ExtendedTooltip name="InventoryTotalExtendedTooltip" id="1534"/>
+																						</InputField>
+																					</ChildItems>
+																				</ColumnGroup>
+																			</ChildItems>
+																		</ColumnGroup>
+																	</ChildItems>
+																</ColumnGroup>
+															</ChildItems>
+														</Table>
+													</ChildItems>
+												</UsualGroup>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="GroupCommandBarAndSidePanel" id="1920">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Command bar and side bar</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group command bar and side panel</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupCommandBarAndSidePanelExtendedTooltip" id="1921"/>
+									<ChildItems>
+										<UsualGroup name="GroupControlPanel" id="1540">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group control panel</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group control panel</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Width>1</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<Group>Vertical</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="GroupControlPanelExtendedTooltip" id="1541"/>
+											<ChildItems>
+												<LabelDecoration name="DecorationDelimiter_1" id="1561">
+													<VerticalStretch>true</VerticalStretch>
+													<ContextMenu name="DecorationDelimiter_1ContextMenu" id="1562"/>
+													<ExtendedTooltip name="DecorationDelimiter_1ExtendedTooltip" id="1563"/>
+												</LabelDecoration>
+												<PictureDecoration name="ExpandGroupbySalesSidePanel" id="1544">
+													<Width>1</Width>
+													<Height>2</Height>
+													<TextColor>style:ReportsVariantsGroupColor</TextColor>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>&gt;&gt;</v8:content>
+														</v8:item>
+													</Title>
+													<Hyperlink>true</Hyperlink>
+													<Picture>
+														<xr:Ref>CommonPicture.CWP_MinimizeAdditionalPanel</xr:Ref>
+														<xr:LoadTransparent>true</xr:LoadTransparent>
+													</Picture>
+													<ContextMenu name="ExpandGroupbySalesSidePanelContextMenu" id="1545"/>
+													<ExtendedTooltip name="ExpandSalesSidePanelGroupbyExtendedTooltip" id="1546"/>
+													<Events>
+														<Event name="Click">GroupbyExpandSalesSidePanelClick</Event>
+													</Events>
+												</PictureDecoration>
+												<LabelDecoration name="DecorationDelimiter_4" id="1915">
+													<VerticalStretch>true</VerticalStretch>
+													<ContextMenu name="DecorationDelimiter_4ContextMenu" id="1916"/>
+													<ExtendedTooltip name="DecorationDelimiter_3ExtendedTooltip" id="1917"/>
+												</LabelDecoration>
+											</ChildItems>
+										</UsualGroup>
+										<UsualGroup name="SidePanelSales" id="1564">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Side sales panel</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Side sales panel</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Width>33</Width>
+											<Group>Vertical</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<BackColor>style:CashierWorkplaceAdditionalPanelColor</BackColor>
+											<ExtendedTooltip name="SidePanelSalesExtendedTooltip" id="1565"/>
+											<ChildItems>
+												<Pages name="CatalogPagesAndQuickProducts" id="1787">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Journal and quick products</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Journal pages and quick products</v8:content>
+														</v8:item>
+													</ToolTip>
+													<PagesRepresentation>None</PagesRepresentation>
+													<ExtendedTooltip name="JournalPagesAndQuickProductsExtendedTooltip" id="1788"/>
+													<ChildItems>
+														<Page name="Journal" id="1566">
+															<Title>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Journal</v8:content>
+																</v8:item>
+															</Title>
+															<ToolTip>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Journal</v8:content>
+																</v8:item>
+															</ToolTip>
+															<BackColor>style:CashierWorkplaceAdditionalPanelColor</BackColor>
+															<ExtendedTooltip name="JournalExtendedTooltip" id="1567"/>
+															<ChildItems>
+																<CommandBar name="GroupPopupMore" id="1576">
+																	<Title>
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Group submenu more</v8:content>
+																		</v8:item>
+																	</Title>
+																	<ToolTip>
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Group submenu more</v8:content>
+																		</v8:item>
+																	</ToolTip>
+																	<HorizontalStretch>true</HorizontalStretch>
+																	<VerticalStretch>false</VerticalStretch>
+																	<ExtendedTooltip name="GroupPopupMoreExtendedTooltip" id="1577"/>
+																	<ChildItems>
+																		<Button name="AppliedDiscounts" id="1913">
+																			<Type>CommandBarButton</Type>
+																			<OnlyInAllActions>false</OnlyInAllActions>
+																			<CommandName>Form.Command.AppliedDiscounts</CommandName>
+																			<ExtendedTooltip name="AppliedDiscountsExtendedTooltip" id="1914"/>
+																		</Button>
+																		<ButtonGroup name="GroupCashIntroductionWithdrawal" id="1588">
+																			<Title>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Group introduction withdrawal</v8:content>
+																				</v8:item>
+																			</Title>
+																			<ToolTip>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Group introduction withdrawal</v8:content>
+																				</v8:item>
+																			</ToolTip>
+																			<ExtendedTooltip name="GroupCashIntroductionWithdrawalExtendedTooltip" id="1589"/>
+																			<ChildItems>
+																				<Button name="CashDeposition" id="1590">
+																					<Type>CommandBarButton</Type>
+																					<SkipOnInput>true</SkipOnInput>
+																					<OnlyInAllActions>false</OnlyInAllActions>
+																					<Width>3</Width>
+																					<CommandName>Form.Command.CashDeposition</CommandName>
+																					<ExtendedTooltip name="DepositionExtendedTooltip" id="1591"/>
+																				</Button>
+																				<Button name="Withdrawal" id="1592">
+																					<Type>CommandBarButton</Type>
+																					<SkipOnInput>true</SkipOnInput>
+																					<OnlyInAllActions>false</OnlyInAllActions>
+																					<Width>3</Width>
+																					<CommandName>Form.Command.Withdrawal</CommandName>
+																					<ExtendedTooltip name="CashWithdrawalExtendedTooltip" id="1593"/>
+																				</Button>
+																			</ChildItems>
+																		</ButtonGroup>
+																		<ButtonGroup name="GroupXZReports" id="1594">
+																			<Title>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Group XZ Reports</v8:content>
+																				</v8:item>
+																			</Title>
+																			<ToolTip>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Group XZReports</v8:content>
+																				</v8:item>
+																			</ToolTip>
+																			<ExtendedTooltip name="GroupXZReportsExtendedTooltip" id="1595"/>
+																			<ChildItems>
+																				<Button name="ReportPrintingWithoutBlankingAllActions" id="1596">
+																					<Type>CommandBarButton</Type>
+																					<Representation>Picture</Representation>
+																					<SkipOnInput>true</SkipOnInput>
+																					<OnlyInAllActions>true</OnlyInAllActions>
+																					<Width>3</Width>
+																					<CommandName>Form.Command.ReportPrintingWithoutBlanking</CommandName>
+																					<ToolTipRepresentation>None</ToolTipRepresentation>
+																					<ExtendedTooltip name="ReportPrintingWithoutBlankingAllActionsExtendedTooltip" id="1597"/>
+																				</Button>
+																				<Button name="DisableZReport_2" id="1598">
+																					<Type>CommandBarButton</Type>
+																					<Representation>Picture</Representation>
+																					<SkipOnInput>true</SkipOnInput>
+																					<OnlyInAllActions>true</OnlyInAllActions>
+																					<CommandName>Form.Command.CloseChange</CommandName>
+																					<ToolTipRepresentation>None</ToolTipRepresentation>
+																					<ExtendedTooltip name="ClearZReport_2ExtendedTooltip" id="1599"/>
+																				</Button>
+																			</ChildItems>
+																		</ButtonGroup>
+																		<ButtonGroup name="GroupReservation" id="1962">
+																			<Title>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Group reservation</v8:content>
+																				</v8:item>
+																			</Title>
+																			<ToolTip>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Group reservation</v8:content>
+																				</v8:item>
+																			</ToolTip>
+																			<ExtendedTooltip name="GroupReservationExtendedTooltip" id="1963"/>
+																			<ChildItems>
+																				<Button name="RemoveReservation" id="1960">
+																					<Type>CommandBarButton</Type>
+																					<OnlyInAllActions>false</OnlyInAllActions>
+																					<CommandName>Form.Command.RemoveReservation</CommandName>
+																					<ExtendedTooltip name="RemoveReservationExtendedTooltip" id="1961"/>
+																				</Button>
+																			</ChildItems>
+																		</ButtonGroup>
+																		<ButtonGroup name="GroupPrintingCommand" id="1600">
+																			<Title>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Group print commands</v8:content>
+																				</v8:item>
+																			</Title>
+																			<ToolTip>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Group print commands</v8:content>
+																				</v8:item>
+																			</ToolTip>
+																			<ExtendedTooltip name="GroupCommandsPrintExtendedTooltip" id="1601"/>
+																			<ChildItems>
+																				<Button name="PrintSalesReceipt" id="1899">
+																					<Type>CommandBarButton</Type>
+																					<OnlyInAllActions>false</OnlyInAllActions>
+																					<CommandName>Form.Command.PrintSalesReceipt</CommandName>
+																					<ExtendedTooltip name="PrintSalesReceiptExtendedTooltip" id="1900"/>
+																				</Button>
+																			</ChildItems>
+																		</ButtonGroup>
+																		<Button name="PrintCopyOnFiscalRegistrar" id="1604">
+																			<Type>CommandBarButton</Type>
+																			<OnlyInAllActions>false</OnlyInAllActions>
+																			<CommandName>Form.Command.PrintCopyOnFiscalRegistrar</CommandName>
+																			<ExtendedTooltip name="PrintCopyOnFiscalRegistrarExtendedTooltip" id="1605"/>
+																		</Button>
+																		<Button name="ReceiptCancellation" id="1586">
+																			<Type>CommandBarButton</Type>
+																			<OnlyInAllActions>false</OnlyInAllActions>
+																			<CommandName>Form.Command.ReceiptCancellation</CommandName>
+																			<Title>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Cancel last receipt</v8:content>
+																				</v8:item>
+																			</Title>
+																			<ExtendedTooltip name="ReceiptCancellationExtendedTooltip" id="1587"/>
+																		</Button>
+																		<ButtonGroup name="GroupCreateBasedOn" id="1578">
+																			<Title>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Group create based on</v8:content>
+																				</v8:item>
+																			</Title>
+																			<ToolTip>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Group create based on</v8:content>
+																				</v8:item>
+																			</ToolTip>
+																			<ExtendedTooltip name="CreateGroupBasedOnExtendedTooltip" id="1579"/>
+																			<ChildItems>
+																				<Popup name="CreateBasedOn" id="1580">
+																					<Title>
+																						<v8:item>
+																							<v8:lang>en</v8:lang>
+																							<v8:content>Create on the basis</v8:content>
+																						</v8:item>
+																					</Title>
+																					<ToolTip>
+																						<v8:item>
+																							<v8:lang>en</v8:lang>
+																							<v8:content>Create on the basis</v8:content>
+																						</v8:item>
+																					</ToolTip>
+																					<ExtendedTooltip name="CreateBasedOnExtendedTooltip" id="1581"/>
+																					<ChildItems>
+																						<Button name="CreateReturnReceiptCR" id="1582">
+																							<Type>CommandBarButton</Type>
+																							<Representation>PictureAndText</Representation>
+																							<SkipOnInput>true</SkipOnInput>
+																							<OnlyInAllActions>false</OnlyInAllActions>
+																							<Width>9</Width>
+																							<CommandName>Form.Command.ListCreateReceiptCRForReturn</CommandName>
+																							<Title>
+																								<v8:item>
+																									<v8:lang>en</v8:lang>
+																									<v8:content>CR receipt for return (for current shift)</v8:content>
+																								</v8:item>
+																							</Title>
+																							<ToolTipRepresentation>None</ToolTipRepresentation>
+																							<ExtendedTooltip name="CreateReturnReceiptCRExtendedTooltip" id="1583"/>
+																						</Button>
+																						<Button name="CreateSupplierInvoiceBasedOnReceiptCR" id="1584">
+																							<Type>CommandBarButton</Type>
+																							<OnlyInAllActions>false</OnlyInAllActions>
+																							<CommandName>Form.Command.CreateSupplierInvoiceListForReturn</CommandName>
+																							<ExtendedTooltip name="CreateSupplierInvoiceBasedOnReceiptCRExtendedTooltip" id="1585"/>
+																						</Button>
+																					</ChildItems>
+																				</Popup>
+																			</ChildItems>
+																		</ButtonGroup>
+																		<ButtonGroup name="GroupAdditional" id="1618">
+																			<Title>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Group additional</v8:content>
+																				</v8:item>
+																			</Title>
+																			<ToolTip>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Group additional</v8:content>
+																				</v8:item>
+																			</ToolTip>
+																			<ExtendedTooltip name="GroupAdditionalExtendedTooltip" id="1619"/>
+																			<ChildItems>
+																				<Button name="Refresh" id="1785">
+																					<Type>CommandBarButton</Type>
+																					<OnlyInAllActions>false</OnlyInAllActions>
+																					<CommandName>Form.Item.List.StandardCommand.Refresh</CommandName>
+																					<ExtendedTooltip name="RefreshExtendedTooltip" id="1786"/>
+																				</Button>
+																				<Button name="QuickProductsSettings_2" id="1620">
+																					<Type>CommandBarButton</Type>
+																					<OnlyInAllActions>false</OnlyInAllActions>
+																					<CommandName>Form.Command.QuickProductsSettings</CommandName>
+																					<ExtendedTooltip name="QuickProductsSetting_2ExtendedTooltip" id="1621"/>
+																				</Button>
+																				<Button name="ChangeForm" id="1622">
+																					<Type>CommandBarButton</Type>
+																					<OnlyInAllActions>false</OnlyInAllActions>
+																					<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
+																					<ExtendedTooltip name="ChangeFormExtendedTooltip" id="1623"/>
+																				</Button>
+																				<Button name="OutputList" id="1968">
+																					<Type>CommandBarButton</Type>
+																					<CommandName>Form.Item.List.StandardCommand.OutputList</CommandName>
+																					<ExtendedTooltip name="ActivateListExtendedTooltip" id="1969"/>
+																				</Button>
+																				<Button name="Help" id="1901">
+																					<Type>CommandBarButton</Type>
+																					<OnlyInAllActions>false</OnlyInAllActions>
+																					<CommandName>Form.StandardCommand.Help</CommandName>
+																					<ExtendedTooltip name="HelpExtendedTooltip" id="1902"/>
+																				</Button>
+																			</ChildItems>
+																		</ButtonGroup>
+																	</ChildItems>
+																</CommandBar>
+																<LabelField name="BalanceInCashier" id="1660">
+																	<DataPath>BalanceInCashierRow</DataPath>
+																	<SkipOnInput>true</SkipOnInput>
+																	<Title>
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>In petty cash</v8:content>
+																		</v8:item>
+																	</Title>
+																	<TitleFont ref="style:NormalTextFont" height="12" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+																	<ToolTipRepresentation>None</ToolTipRepresentation>
+																	<HorizontalStretch>true</HorizontalStretch>
+																	<Format>
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>ND=15; NFD=2; NZ=</v8:content>
+																		</v8:item>
+																	</Format>
+																	<Font ref="style:NormalTextFont" height="12" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+																	<ContextMenu name="BalanceInCashierContextMenu" id="1661"/>
+																	<ExtendedTooltip name="BalanceInCashierExtendedTooltip" id="1662"/>
+																</LabelField>
+																<InputField name="MagazinePeriodKind" id="1770">
+																	<DataPath>MagazinePeriodKind</DataPath>
+																	<TitleLocation>None</TitleLocation>
+																	<HorizontalAlign>Center</HorizontalAlign>
+																	<DropListButton>true</DropListButton>
+																	<ChoiceButton>false</ChoiceButton>
+																	<ClearButton>false</ClearButton>
+																	<TextEdit>false</TextEdit>
+																	<ContextMenu name="JournalPeriodTypeContextMenu" id="1771"/>
+																	<ExtendedTooltip name="JournalPeriodKindExtendedTooltip" id="1772"/>
+																	<Events>
+																		<Event name="ChoiceProcessing">JournalPeriodKindChoiceProcessing</Event>
+																	</Events>
+																</InputField>
+																<Table name="List" id="1627">
+																	<Representation>List</Representation>
+																	<TitleHeight>1</TitleHeight>
+																	<CommandBarLocation>Top</CommandBarLocation>
+																	<SkipOnInput>true</SkipOnInput>
+																	<UseAlternationRowColor>true</UseAlternationRowColor>
+																	<InitialTreeView>ExpandTopLevel</InitialTreeView>
+																	<EnableStartDrag>true</EnableStartDrag>
+																	<DataPath>List</DataPath>
+																	<ToolTipRepresentation>None</ToolTipRepresentation>
+																	<SearchStringLocation>None</SearchStringLocation>
+																	<ViewStatusLocation>None</ViewStatusLocation>
+																	<AutoRefresh>true</AutoRefresh>
+																	<AutoRefreshPeriod>60</AutoRefreshPeriod>
+																	<Period>
+																		<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+																		<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+																		<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+																	</Period>
+																	<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+																	<RestoreCurrentRow>false</RestoreCurrentRow>
+																	<TopLevelParent xsi:nil="true"/>
+																	<ShowRoot>true</ShowRoot>
+																	<AllowRootChoice>false</AllowRootChoice>
+																	<UpdateOnDataChange>Auto</UpdateOnDataChange>
+																	<ContextMenu name="ListContextMenu" id="1628">
+																		<ChildItems>
+																			<Button name="ListContextMenuUpdate" id="1966">
+																				<Type>CommandBarButton</Type>
+																				<CommandName>Form.Item.List.StandardCommand.Refresh</CommandName>
+																				<ExtendedTooltip name="ListContextMenuUpdateExtendedTooltip" id="1967"/>
+																			</Button>
+																			<Button name="ListContextMenuQuickProductsSettings" id="1964">
+																				<Type>CommandBarButton</Type>
+																				<CommandName>Form.Command.QuickProductsSettings</CommandName>
+																				<ExtendedTooltip name="ListContextMenuQuickProductsSettingsExtendedTooltip" id="1965"/>
+																			</Button>
+																			<Button name="ListContextMenuChangeForm" id="1892">
+																				<Type>CommandBarButton</Type>
+																				<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
+																				<ExtendedTooltip name="ListContextMenuChangeFormExtendedTooltip" id="1893"/>
+																			</Button>
+																			<Button name="ListContextMenuOutputList" id="1894">
+																				<Type>CommandBarButton</Type>
+																				<CommandName>Form.Item.List.StandardCommand.OutputList</CommandName>
+																				<ExtendedTooltip name="ListContextMenuDisplayListExtendedTooltip" id="1895"/>
+																			</Button>
+																			<Button name="ListContextMenuHelp" id="1907">
+																				<Type>CommandBarButton</Type>
+																				<CommandName>Form.StandardCommand.Help</CommandName>
+																				<ExtendedTooltip name="ListContextMenuHelpExtendedTooltip" id="1908"/>
+																			</Button>
+																		</ChildItems>
+																	</ContextMenu>
+																	<AutoCommandBar name="ListCommandBar" id="1629">
+																		<Autofill>false</Autofill>
+																	</AutoCommandBar>
+																	<ExtendedTooltip name="ListExtendedTooltip" id="1630"/>
+																	<SearchStringAddition name="SearchStringList" id="1631">
+																		<AdditionSource>
+																			<Item>List</Item>
+																			<Type>SearchStringRepresentation</Type>
+																		</AdditionSource>
+																		<ContextMenu name="ListSearchStringContextMenu" id="1634"/>
+																		<ExtendedTooltip name="ListSearchStringExtendedTooltip" id="1635"/>
+																	</SearchStringAddition>
+																	<ViewStatusAddition name="ListViewStatus" id="1636">
+																		<AdditionSource>
+																			<Item>List</Item>
+																			<Type>ViewStatusRepresentation</Type>
+																		</AdditionSource>
+																		<HorizontalStretch>false</HorizontalStretch>
+																		<HorizontalLocation>Center</HorizontalLocation>
+																		<ContextMenu name="ListViewStatusContextMenu" id="1639"/>
+																		<ExtendedTooltip name="ListViewStatusExtendedTooltip" id="1640"/>
+																	</ViewStatusAddition>
+																	<SearchControlAddition name="ListSearchControl" id="1641">
+																		<AdditionSource>
+																			<Item>List</Item>
+																			<Type>SearchControl</Type>
+																		</AdditionSource>
+																		<ContextMenu name="ListSearchControlContextMenu" id="1644"/>
+																		<ExtendedTooltip name="ListSearchControlExtendedTooltip" id="1645"/>
+																	</SearchControlAddition>
+																	<Events>
+																		<Event name="ValueChoice">ValueChoiceList</Event>
+																	</Events>
+																	<ChildItems>
+																		<LabelField name="ReceiptNumber" id="1646">
+																			<DataPath>List.ReceiptNumber</DataPath>
+																			<Title>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>receipt number</v8:content>
+																				</v8:item>
+																			</Title>
+																			<ToolTipRepresentation>None</ToolTipRepresentation>
+																			<HorizontalAlign>Left</HorizontalAlign>
+																			<Width>15</Width>
+																			<HorizontalStretch>true</HorizontalStretch>
+																			<Format>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>ND=4; NZ=0; NLZ=; NG=</v8:content>
+																				</v8:item>
+																			</Format>
+																			<ContextMenu name="ReceiptNumberContextMenu" id="1647"/>
+																			<ExtendedTooltip name="ReceiptNumberExtendedTooltip" id="1648"/>
+																		</LabelField>
+																		<LabelField name="Amount" id="1649">
+																			<DataPath>List.Amount</DataPath>
+																			<ToolTipRepresentation>None</ToolTipRepresentation>
+																			<HeaderHorizontalAlign>Right</HeaderHorizontalAlign>
+																			<Width>12</Width>
+																			<HorizontalStretch>true</HorizontalStretch>
+																			<ContextMenu name="SumContextMenu" id="1650"/>
+																			<ExtendedTooltip name="AmountExtendedTooltip" id="1651"/>
+																		</LabelField>
+																		<LabelField name="Date" id="1652">
+																			<DataPath>List.Date</DataPath>
+																			<ContextMenu name="DateContextMenu" id="1653"/>
+																			<ExtendedTooltip name="DateExtendedTooltip" id="1654"/>
+																		</LabelField>
+																		<LabelField name="Ref" id="1655">
+																			<DataPath>List.Ref</DataPath>
+																			<UserVisible>
+																				<xr:Common>false</xr:Common>
+																			</UserVisible>
+																			<ContextMenu name="RefContextMenu" id="1656"/>
+																			<ExtendedTooltip name="RefExtendedTooltip" id="1657"/>
+																		</LabelField>
+																	</ChildItems>
+																</Table>
+															</ChildItems>
+														</Page>
+														<Page name="QuickSale" id="1666">
+															<Title>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Quick sale</v8:content>
+																</v8:item>
+															</Title>
+															<ToolTip>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Quick sale</v8:content>
+																</v8:item>
+															</ToolTip>
+															<BackColor>style:CashierWorkplaceAdditionalPanelColor</BackColor>
+															<ExtendedTooltip name="QuickSaleExtendedTooltip" id="1667"/>
+															<ChildItems>
+																<UsualGroup name="ButtonsGroupFastProducts" id="1679">
+																	<Title>
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Buttons group quick products</v8:content>
+																		</v8:item>
+																	</Title>
+																	<ToolTip>
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Buttons group quick products</v8:content>
+																		</v8:item>
+																	</ToolTip>
+																	<Height>12</Height>
+																	<VerticalStretch>false</VerticalStretch>
+																	<Group>Vertical</Group>
+																	<Representation>None</Representation>
+																	<ShowTitle>false</ShowTitle>
+																	<BackColor>style:CashierWorkplaceAdditionalPanelColor</BackColor>
+																	<ExtendedTooltip name="GroupButtonsQuickProductsExtendedTooltip" id="1680"/>
+																</UsualGroup>
+															</ChildItems>
+														</Page>
+														<Page name="MainAttributes" id="1819">
+															<Title>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Main attributes</v8:content>
+																</v8:item>
+															</Title>
+															<ToolTip>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Main attributes</v8:content>
+																</v8:item>
+															</ToolTip>
+															<BackColor>style:CashierWorkplaceAdditionalPanelColor</BackColor>
+															<ExtendedTooltip name="MainAttributesExtendedTooltip" id="1820"/>
+															<ChildItems>
+																<InputField name="CashCR" id="1896">
+																	<DataPath>CashCR</DataPath>
+																	<TitleLocation>Top</TitleLocation>
+																	<AutoMarkIncomplete>true</AutoMarkIncomplete>
+																	<ChoiceParameters>
+																		<app:item name="Filter.CashCRType">
+																			<app:value xsi:type="FormChoiceListDesTimeValue">
+																				<Presentation/>
+																				<Value xsi:type="xr:DesignTimeRef">Enum.CashCRTypes.EnumValue.FiscalRegister</Value>
+																			</app:value>
+																		</app:item>
+																	</ChoiceParameters>
+																	<ContextMenu name="CashCRContextMenu" id="1897"/>
+																	<ExtendedTooltip name="CashCRExtendedTooltip" id="1898"/>
+																	<Events>
+																		<Event name="OnChange">CashCROnChange</Event>
+																	</Events>
+																</InputField>
+																<InputField name="POSTerminal" id="1856">
+																	<DataPath>Object.POSTerminal</DataPath>
+																	<TitleLocation>Top</TitleLocation>
+																	<ContextMenu name="POSTerminalContextMenu" id="1857"/>
+																	<ExtendedTooltip name="POSTerminalExtendedTooltip" id="1858"/>
+																	<Events>
+																		<Event name="OnChange">POSTerminalOnChange</Event>
+																	</Events>
+																</InputField>
+																<LabelField name="PricesAndCurrency" id="1859">
+																	<DataPath>PricesAndCurrency</DataPath>
+																	<TitleLocation>None</TitleLocation>
+																	<HorizontalAlign>Center</HorizontalAlign>
+																	<HorizontalStretch>true</HorizontalStretch>
+																	<Hiperlink>true</Hiperlink>
+																	<Border width="1">
+																		<v8ui:style xsi:type="v8ui:ControlBorderType">Single</v8ui:style>
+																	</Border>
+																	<ContextMenu name="PricesAndCurrencyContextMenu" id="1860"/>
+																	<ExtendedTooltip name="PricesAndCurrencyExtendedTooltip" id="1861"/>
+																	<Events>
+																		<Event name="Click">EditPricesAndCurrency</Event>
+																	</Events>
+																</LabelField>
+																<InputField name="Company" id="1821">
+																	<DataPath>Object.Company</DataPath>
+																	<ReadOnly>true</ReadOnly>
+																	<TitleLocation>Top</TitleLocation>
+																	<ContextMenu name="CounterpartyContextMenu" id="1822"/>
+																	<ExtendedTooltip name="CompanyExtendedTooltip" id="1823"/>
+																	<Events>
+																		<Event name="OnChange">CompanyOnChange</Event>
+																	</Events>
+																</InputField>
+																<InputField name="StructuralUnit" id="1830">
+																	<DataPath>Object.StructuralUnit</DataPath>
+																	<ReadOnly>true</ReadOnly>
+																	<TitleLocation>Top</TitleLocation>
+																	<EditMode>EnterOnInput</EditMode>
+																	<ContextMenu name="StructuralUnitContextMenu" id="1831"/>
+																	<ExtendedTooltip name="StructuralUnitExtendedTooltip" id="1832"/>
+																</InputField>
+																<InputField name="Division" id="1833">
+																	<DataPath>Object.Division</DataPath>
+																	<TitleLocation>Top</TitleLocation>
+																	<EditMode>EnterOnInput</EditMode>
+																	<ContextMenu name="DivisionContextMenu" id="1834"/>
+																	<ExtendedTooltip name="DivisionExtendedTooltip" id="1835"/>
+																</InputField>
+																<InputField name="Responsible" id="1836">
+																	<DataPath>Object.Responsible</DataPath>
+																	<TitleLocation>Top</TitleLocation>
+																	<ToolTipRepresentation>None</ToolTipRepresentation>
+																	<EditMode>EnterOnInput</EditMode>
+																	<ContextMenu name="ResponsibleContextMenu" id="1837"/>
+																	<ExtendedTooltip name="ResponsibleExtendedTooltip" id="1838"/>
+																</InputField>
+																<CheckBoxField name="DontShowOnOpenCashdeskChoiceForm" id="1850">
+																	<DataPath>DontShowOnOpenCashdeskChoiceForm</DataPath>
+																	<ToolTip>
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Secelct this check box for CR petty cash and acquiring terminal choosing window not to be opened before cashier's working place opening</v8:content>
+																		</v8:item>
+																	</ToolTip>
+																	<ToolTipRepresentation>Button</ToolTipRepresentation>
+																	<CheckBoxType>Auto</CheckBoxType>
+																	<ContextMenu name="DontShowOnOpenCashdeskChoiceFormContextMenu" id="1851"/>
+																	<ExtendedTooltip name="DontShowOnOpenCashdeskChoiceFormExtendedTooltip" id="1852"/>
+																	<Events>
+																		<Event name="OnChange">DoNotShowOnOpenCashierChoiceFormOnChange</Event>
+																	</Events>
+																</CheckBoxField>
+															</ChildItems>
+														</Page>
+														<Page name="ServicePage" id="1789">
+															<Title>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Service page</v8:content>
+																</v8:item>
+															</Title>
+															<ToolTip>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Service page</v8:content>
+																</v8:item>
+															</ToolTip>
+															<ExtendedTooltip name="ServicePageExtendedTooltip" id="1790"/>
+															<ChildItems>
+																<CommandBar name="ServiceCommandBar" id="1909">
+																	<Title>
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Service command bar</v8:content>
+																		</v8:item>
+																	</Title>
+																	<ToolTip>
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Service command bar</v8:content>
+																		</v8:item>
+																	</ToolTip>
+																	<ExtendedTooltip name="ServiceCommandBarExtendedTooltip" id="1910"/>
+																	<ChildItems>
+																		<Button name="ShowJournal" id="1791">
+																			<Type>CommandBarButton</Type>
+																			<OnlyInAllActions>false</OnlyInAllActions>
+																			<CommandName>Form.Command.ShowJournal</CommandName>
+																			<ExtendedTooltip name="ShowJournalExtendedTooltip" id="1792"/>
+																		</Button>
+																		<Button name="ShowQuickSales" id="1793">
+																			<Type>CommandBarButton</Type>
+																			<OnlyInAllActions>false</OnlyInAllActions>
+																			<CommandName>Form.Command.ShowQuickSales</CommandName>
+																			<ExtendedTooltip name="ShowQuickSaleExtendedTooltip" id="1794"/>
+																		</Button>
+																		<Button name="ShowMyPettyCash" id="1911">
+																			<Type>CommandBarButton</Type>
+																			<OnlyInAllActions>false</OnlyInAllActions>
+																			<CommandName>Form.Command.ShowMyPettyCash</CommandName>
+																			<ExtendedTooltip name="ShowMyPettyCashExtendedTooltip" id="1912"/>
+																		</Button>
+																	</ChildItems>
+																</CommandBar>
+																<InputField name="PaymentByChargeCardTypeCards" id="1853">
+																	<DataPath>PaymentByChargeCardTypeCards</DataPath>
+																	<Visible>false</Visible>
+																	<ContextMenu name="PaymentWithPaymentCardsPaymentCardTypeContextMenu" id="1854"/>
+																	<ExtendedTooltip name="PaymentWithPaymentCardsPaymentCardKindExtendedTooltip" id="1855"/>
+																</InputField>
+															</ChildItems>
+														</Page>
+													</ChildItems>
+												</Pages>
+												<UsualGroup name="GroupSwitchJournalQuickProductsMyPettyCash" id="1817">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Group switcher journal quick products my petty cash</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Group switcher journal quick products my petty cash</v8:content>
+														</v8:item>
+													</ToolTip>
+													<Width>28</Width>
+													<HorizontalStretch>true</HorizontalStretch>
+													<Group>Vertical</Group>
+													<Representation>None</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="GroupSwitchJournalQuickProductsMyPettyCashExtendedTooltip" id="1818"/>
+													<ChildItems>
+														<RadioButtonField name="SwitchJournalQuickProducts" id="1724">
+															<DataPath>SwitchJournalQuickProducts</DataPath>
+															<TitleLocation>None</TitleLocation>
+															<RadioButtonType>Tumbler</RadioButtonType>
+															<ItemHeight>1</ItemHeight>
+															<EqualColumnsWidth>false</EqualColumnsWidth>
+															<ChoiceList>
+																<xr:Item>
+																	<xr:Presentation/>
+																	<xr:CheckState>0</xr:CheckState>
+																	<xr:Value xsi:type="FormChoiceListDesTimeValue">
+																		<Presentation>
+																			<v8:item>
+																				<v8:lang>en</v8:lang>
+																				<v8:content>Journal</v8:content>
+																			</v8:item>
+																		</Presentation>
+																		<Value xsi:type="xs:decimal">1</Value>
+																	</xr:Value>
+																</xr:Item>
+																<xr:Item>
+																	<xr:Presentation/>
+																	<xr:CheckState>0</xr:CheckState>
+																	<xr:Value xsi:type="FormChoiceListDesTimeValue">
+																		<Presentation>
+																			<v8:item>
+																				<v8:lang>en</v8:lang>
+																				<v8:content>Quick sale</v8:content>
+																			</v8:item>
+																		</Presentation>
+																		<Value xsi:type="xs:decimal">2</Value>
+																	</xr:Value>
+																</xr:Item>
+																<xr:Item>
+																	<xr:Presentation/>
+																	<xr:CheckState>0</xr:CheckState>
+																	<xr:Value xsi:type="FormChoiceListDesTimeValue">
+																		<Presentation>
+																			<v8:item>
+																				<v8:lang>en</v8:lang>
+																				<v8:content>My PettyCash</v8:content>
+																			</v8:item>
+																		</Presentation>
+																		<Value xsi:type="xs:decimal">3</Value>
+																	</xr:Value>
+																</xr:Item>
+															</ChoiceList>
+															<Font ref="style:NormalTextFont" bold="false" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+															<ContextMenu name="SwitchJournalQuickProductsContextMenu" id="1725"/>
+															<ExtendedTooltip name="SwitcherJournalQuickProductsExtendedTooltip" id="1726"/>
+															<Events>
+																<Event name="OnChange">SwitchJournalQuickProductsOnChange</Event>
+															</Events>
+														</RadioButtonField>
+													</ChildItems>
+												</UsualGroup>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="FooterReceiptCR" id="1727">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Footer CR receipt</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Footer CR receipt</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ToolTipRepresentation>None</ToolTipRepresentation>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<BackColor>style:FormBackColor</BackColor>
+							<ExtendedTooltip name="FooterReceiptCRExtendedTooltip" id="1728"/>
+							<ChildItems>
+								<UsualGroup name="FooterGroup" id="1935">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group footer</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group footer</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="FooterGroupExtendedTooltip" id="1936"/>
+									<ChildItems>
+										<Pages name="PagesDataOnRowAndChange" id="1973">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Pages data on row and change</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Pages data on row and change</v8:content>
+												</v8:item>
+											</ToolTip>
+											<PagesRepresentation>None</PagesRepresentation>
+											<ExtendedTooltip name="PagesDataOnRowAndChangeExtendedTooltip" id="1974"/>
+											<ChildItems>
+												<Page name="PageDataOnRow" id="1975">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Page data on row</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Page data on row</v8:content>
+														</v8:item>
+													</ToolTip>
+													<ExtendedTooltip name="PageDataOnRowExtendedTooltip" id="1976"/>
+													<ChildItems>
+														<LabelField name="DocumentReceiptCRInventoryProductsAndServicesDescriptionFull" id="826">
+															<DataPath>Items.Inventory.CurrentData.ProductsAndServicesCharacteristicAndBatch</DataPath>
+															<TitleLocation>None</TitleLocation>
+															<Font ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+															<ContextMenu name="DocumentReceiptCRInventoryProductsAndServicesDescriptionFullContextMenu" id="827"/>
+															<ExtendedTooltip name="DocumentReceiptCRInventoryProductsAndServicesDescriptionFullExtendedTooltip" id="828"/>
+														</LabelField>
+														<LabelField name="DocumentReceiptCRInventoryDataOnRow" id="966">
+															<DataPath>Items.Inventory.CurrentData.DataOnRow</DataPath>
+															<TitleLocation>None</TitleLocation>
+															<Font ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+															<ContextMenu name="DocumentReceiptCRInventoryDataOnRowContextMenu" id="967"/>
+															<ExtendedTooltip name="DocumentReceiptCRInventoryDataOnRowExtendedTooltip" id="968"/>
+														</LabelField>
+													</ChildItems>
+												</Page>
+												<Page name="PageChange" id="1977">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Page change</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Page change</v8:content>
+														</v8:item>
+													</ToolTip>
+													<ExtendedTooltip name="PageChangeExtendedTooltip" id="1978"/>
+													<ChildItems>
+														<LabelField name="ChangeRow" id="1970">
+															<DataPath>ChangeRow</DataPath>
+															<TitleLocation>None</TitleLocation>
+															<HorizontalAlign>Center</HorizontalAlign>
+															<VerticalAlign>Center</VerticalAlign>
+															<Height>2</Height>
+															<HorizontalStretch>true</HorizontalStretch>
+															<VerticalStretch>false</VerticalStretch>
+															<TextColor>style:CashierWorkplaceChangeTextColor</TextColor>
+															<Font ref="style:LargeTextFont" height="16" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+															<ContextMenu name="ChangeRowContextMenu" id="1971"/>
+															<ExtendedTooltip name="ChangeRowExtendedTooltip" id="1972"/>
+														</LabelField>
+													</ChildItems>
+												</Page>
+											</ChildItems>
+										</Pages>
+										<UsualGroup name="InformationGroupOnCurrentRow" id="792">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Information group on current row</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Information group on current row</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Vertical</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="InformationGroupOnCurrentRowExtendedTooltip" id="793"/>
+											<ChildItems>
+												<UsualGroup name="GroupPresentationRows" id="1955">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Group presentation rows</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Group presentation rows</v8:content>
+														</v8:item>
+													</ToolTip>
+													<Height>2</Height>
+													<VerticalStretch>false</VerticalStretch>
+													<Group>Vertical</Group>
+													<Representation>None</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="GroupPresentationRowsExtendedTooltip" id="1956"/>
+												</UsualGroup>
+											</ChildItems>
+										</UsualGroup>
+										<UsualGroup name="GroupFooterPayment" id="1729">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Payment</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Payment</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ToolTipRepresentation>None</ToolTipRepresentation>
+											<Group>Horizontal</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="GroupFooterPaymentExtendedTooltip" id="1730"/>
+											<ChildItems>
+												<LabelDecoration name="TotalTitle" id="1797">
+													<Width>4</Width>
+													<Height>1</Height>
+													<TextColor>style:FormTextColor</TextColor>
+													<Font ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Total:</v8:content>
+														</v8:item>
+													</Title>
+													<ContextMenu name="TotalHeaderContextMenu" id="1798"/>
+													<ExtendedTooltip name="TotalTitleExtendedTooltip" id="1799"/>
+												</LabelDecoration>
+												<InputField name="Paid" id="1733">
+													<DataPath>AmountReceiptWithoutDiscounts</DataPath>
+													<ReadOnly>true</ReadOnly>
+													<SkipOnInput>true</SkipOnInput>
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Total</v8:content>
+														</v8:item>
+													</Title>
+													<TitleTextColor>style:FormTextColor</TitleTextColor>
+													<TitleFont ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+													<TitleLocation>None</TitleLocation>
+													<ToolTipRepresentation>None</ToolTipRepresentation>
+													<HorizontalAlign>Right</HorizontalAlign>
+													<VerticalAlign>Center</VerticalAlign>
+													<Width>14</Width>
+													<Height>1</Height>
+													<Format>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>ND=15; NFD=2; NZ=</v8:content>
+														</v8:item>
+													</Format>
+													<TextColor>style:FormTextColor</TextColor>
+													<Font ref="style:LargeTextFont" height="16" kind="StyleItem"/>
+													<ContextMenu name="PayedContextMenu" id="1734"/>
+													<ExtendedTooltip name="PaidExtendedTooltip" id="1735"/>
+												</InputField>
+												<LabelDecoration name="DiscountTitle" id="1810">
+													<Width>6</Width>
+													<Height>1</Height>
+													<TextColor>style:FormTextColor</TextColor>
+													<Font ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content> Discount:</v8:content>
+														</v8:item>
+													</Title>
+													<ContextMenu name="DiscountHeaderContextMenu" id="1811"/>
+													<ExtendedTooltip name="DiscountTitleExtendedTooltip" id="1812"/>
+												</LabelDecoration>
+												<InputField name="DiscountAmount" id="1740">
+													<DataPath>DiscountAmount</DataPath>
+													<ReadOnly>true</ReadOnly>
+													<SkipOnInput>true</SkipOnInput>
+													<TitleLocation>None</TitleLocation>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Discount</v8:content>
+														</v8:item>
+													</ToolTip>
+													<ToolTipRepresentation>None</ToolTipRepresentation>
+													<VerticalAlign>Center</VerticalAlign>
+													<Width>12</Width>
+													<Height>1</Height>
+													<Format>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>ND=15; NFD=2; NZ=</v8:content>
+														</v8:item>
+													</Format>
+													<TextColor>style:FormTextColor</TextColor>
+													<Font ref="style:LargeTextFont" height="16" kind="StyleItem"/>
+													<ContextMenu name="DiscountAmountContextMenu" id="1741"/>
+													<ExtendedTooltip name="DiscountAmountExtendedTooltip" id="1742"/>
+												</InputField>
+												<LabelDecoration name="DecorationDelimiter_8" id="1940">
+													<Width>2</Width>
+													<ContextMenu name="DecorationDelimiter_8ContextMenu" id="1941"/>
+													<ExtendedTooltip name="DecorationDelimiter_8ExtendedTooltip" id="1942"/>
+												</LabelDecoration>
+												<LabelDecoration name="ForPaymentTitle" id="1802">
+													<Width>7</Width>
+													<Height>1</Height>
+													<TextColor>style:FormTextColor</TextColor>
+													<Font ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content> For payment:</v8:content>
+														</v8:item>
+													</Title>
+													<VerticalAlign>Center</VerticalAlign>
+													<ContextMenu name="ForPaymentHeaderContextMenu" id="1803"/>
+													<ExtendedTooltip name="ForPaymentTitleExtendedTooltip" id="1804"/>
+												</LabelDecoration>
+												<InputField name="DocumentAmount" id="1745">
+													<DataPath>Object.DocumentAmount</DataPath>
+													<ReadOnly>true</ReadOnly>
+													<SkipOnInput>true</SkipOnInput>
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>For payment</v8:content>
+														</v8:item>
+													</Title>
+													<TitleTextColor>style:FormTextColor</TitleTextColor>
+													<TitleFont ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+													<TitleLocation>None</TitleLocation>
+													<ToolTipRepresentation>None</ToolTipRepresentation>
+													<HorizontalAlign>Right</HorizontalAlign>
+													<VerticalAlign>Center</VerticalAlign>
+													<Width>14</Width>
+													<Height>1</Height>
+													<Format>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>ND=15; NFD=2; NZ=</v8:content>
+														</v8:item>
+													</Format>
+													<TextColor>style:FormTextColor</TextColor>
+													<Font ref="style:LargeTextFont" height="16" kind="StyleItem"/>
+													<ContextMenu name="DocumentAmountContextMenu" id="1746"/>
+													<ExtendedTooltip name="DocumentAmountExtendedTooltip" id="1747"/>
+												</InputField>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</UsualGroup>
+								<Button name="AcceptPayment" id="1754">
+									<Type>UsualButton</Type>
+									<DefaultButton>true</DefaultButton>
+									<SkipOnInput>true</SkipOnInput>
+									<Width>10</Width>
+									<Height>3</Height>
+									<CommandName>Form.Command.AcceptPayment</CommandName>
+									<BackColor>web:Gold</BackColor>
+									<BorderColor>style:BorderColor</BorderColor>
+									<Font ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Accept payment (Ctrl+Enter)</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTipRepresentation>None</ToolTipRepresentation>
+									<ExtendedTooltip name="AcceptPaymentExtendedTooltip" id="1755"/>
+								</Button>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="GroupReturn" id="901">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Return</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group return</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Width>100</Width>
+					<Group>Horizontal</Group>
+					<BackColor>style:FormBackColor</BackColor>
+					<ExtendedTooltip name="GroupReturnExtendedTooltip" id="902"/>
+					<ChildItems>
+						<UsualGroup name="ReceiptsCRAndButtons" id="1061">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>CR receipts. Choose reason for return</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>CR receipts and buttons</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Width>60</Width>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<BackColor>style:FormBackColor</BackColor>
+							<ExtendedTooltip name="ReceiptsCRAndButtonsExtendedTooltip" id="1062"/>
+							<ChildItems>
+								<UsualGroup name="GroupTitleChecksCR" id="1759">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group title CR receipts</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group title CR receipts</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupTitleReceiptCRExtendedTooltip" id="1760"/>
+									<ChildItems>
+										<LabelDecoration name="DecorationTitleReceiptsCR" id="1761">
+											<TextColor>style:ReportsVariantsGroupColor</TextColor>
+											<Font ref="sys:DefaultGUIFont" height="12" kind="WindowsFont"/>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Choose reason for return</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="DecorationTitleCRAccountContextMenu" id="1762"/>
+											<ExtendedTooltip name="DecorationTitleReceiptCRExtendedTooltip" id="1763"/>
+										</LabelDecoration>
+										<CheckBoxField name="ReceiptIsNotShown" id="1229">
+											<DataPath>ReceiptIsNotShown</DataPath>
+											<TitleFont ref="style:NormalTextFont" kind="StyleItem"/>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="ReceiptNotShowedInContextMenu" id="1230"/>
+											<ExtendedTooltip name="ReceiptIsNotShownExtendedTooltip" id="1231"/>
+											<Events>
+												<Event name="OnChange">ReceiptInNotShowedOnChange</Event>
+											</Events>
+										</CheckBoxField>
+									</ChildItems>
+								</UsualGroup>
+								<Pages name="PagesReceiptCRList_and_ReceiptCRContent_and_PageWithLable" id="1403">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Pages CR receipts list and CR receipt content and page with label</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Pages CR receipts list and CR receipt content and page with label</v8:content>
+										</v8:item>
+									</ToolTip>
+									<PagesRepresentation>None</PagesRepresentation>
+									<ExtendedTooltip name="PagesReceiptCRList_and_ReceiptCRContent_and_PageWithLabeleExtendedTooltip" id="1404"/>
+									<ChildItems>
+										<Page name="PageReceiptCRList_and_ReceiptCRComposition" id="1405">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Page CR receipt list and CR receipt content</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Page CR receipt list and CR receipt content</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ExtendedTooltip name="PageReceiptCRList_and_ReceiptCRContentExtendedTooltip" id="1406"/>
+											<ChildItems>
+												<UsualGroup name="CommandBarGroupListReceiptsCR" id="1422">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Command bar group list CR receipts</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Command bar group list CR receipts</v8:content>
+														</v8:item>
+													</ToolTip>
+													<Height>1</Height>
+													<Group>Horizontal</Group>
+													<Representation>None</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="GroupCommandBarListReceiptsCRExtendedTooltip" id="1423"/>
+													<ChildItems>
+														<InputField name="ReceiptCRPeriodKind" id="1773">
+															<DataPath>ReceiptCRPeriodKind</DataPath>
+															<TitleLocation>None</TitleLocation>
+															<HorizontalAlign>Center</HorizontalAlign>
+															<HorizontalStretch>false</HorizontalStretch>
+															<DropListButton>true</DropListButton>
+															<ChoiceButton>false</ChoiceButton>
+															<ClearButton>false</ClearButton>
+															<TextEdit>false</TextEdit>
+															<ContextMenu name="ReceiptCRPeriodTypeContextMenu" id="1774"/>
+															<ExtendedTooltip name="ReceiptCRPeriodKindExtendedTooltip" id="1775"/>
+															<Events>
+																<Event name="ChoiceProcessing">ReceiptCRPeriodKindChoiceProcessing</Event>
+															</Events>
+														</InputField>
+														<Button name="Dependencies" id="1945">
+															<Type>UsualButton</Type>
+															<OnlyInAllActions>true</OnlyInAllActions>
+															<CommandName>Form.Command.Dependencies</CommandName>
+															<ExtendedTooltip name="DependenciesExtendedTooltip" id="1946"/>
+														</Button>
+														<LabelDecoration name="PeriodAndSearchStringTypeDelimiter" id="1779">
+															<HorizontalStretch>true</HorizontalStretch>
+															<ContextMenu name="PeriodKindAndSearchStringDelimiterContextMenu" id="1780"/>
+															<ExtendedTooltip name="PeriodKindAndSearchStringDelimiterExtendedTooltip" id="1781"/>
+														</LabelDecoration>
+														<SearchStringAddition name="SupplementSearchStringReceiptCR" id="1414">
+															<AdditionSource>
+																<Item>ReceiptCRList</Item>
+																<Type>SearchStringRepresentation</Type>
+															</AdditionSource>
+															<Title>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Supplement search string CR receipt</v8:content>
+																</v8:item>
+															</Title>
+															<ContextMenu name="SupplementSearchStringReceiptCRContextMenu" id="1415"/>
+															<ExtendedTooltip name="SupplementSearchStringReceiptCRExtendedTooltip" id="1416"/>
+														</SearchStringAddition>
+													</ChildItems>
+												</UsualGroup>
+												<Table name="ReceiptCRList" id="1121">
+													<Height>11</Height>
+													<UseAlternationRowColor>true</UseAlternationRowColor>
+													<EnableStartDrag>true</EnableStartDrag>
+													<DataPath>ReceiptCRList</DataPath>
+													<CommandSet>
+														<ExcludedCommand>UndoPosting</ExcludedCommand>
+														<ExcludedCommand>Copy</ExcludedCommand>
+														<ExcludedCommand>Create</ExcludedCommand>
+														<ExcludedCommand>ListSettings</ExcludedCommand>
+														<ExcludedCommand>DynamicListStandardSettings</ExcludedCommand>
+														<ExcludedCommand>FindByCurrentValue</ExcludedCommand>
+														<ExcludedCommand>CopyToClipboard</ExcludedCommand>
+														<ExcludedCommand>Choose</ExcludedCommand>
+														<ExcludedCommand>SetDeletionMark</ExcludedCommand>
+														<ExcludedCommand>Change</ExcludedCommand>
+														<ExcludedCommand>Post</ExcludedCommand>
+														<ExcludedCommand>Delete</ExcludedCommand>
+													</CommandSet>
+													<AutoRefresh>true</AutoRefresh>
+													<AutoRefreshPeriod>60</AutoRefreshPeriod>
+													<Period>
+														<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+														<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+														<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+													</Period>
+													<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+													<RestoreCurrentRow>false</RestoreCurrentRow>
+													<TopLevelParent xsi:nil="true"/>
+													<ShowRoot>true</ShowRoot>
+													<AllowRootChoice>false</AllowRootChoice>
+													<UpdateOnDataChange>Auto</UpdateOnDataChange>
+													<ContextMenu name="ReceiptCRListContextMenu" id="1122">
+														<ChildItems>
+															<Button name="ReceiptCRListOutputListContextMenu" id="1886">
+																<Type>CommandBarButton</Type>
+																<CommandName>Form.Item.ReceiptCRList.StandardCommand.OutputList</CommandName>
+																<ExtendedTooltip name="ReceiptCRListOutputListContextMenuExtendedTooltip" id="1887"/>
+															</Button>
+															<Button name="ReceiptCRListContextMenuChangeForm" id="1884">
+																<Type>CommandBarButton</Type>
+																<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
+																<ExtendedTooltip name="ReceiptCRListContextMenuChangeFormExtendedTooltip" id="1885"/>
+															</Button>
+															<Button name="ReceiptCRListContextMenuHelp" id="1903">
+																<Type>CommandBarButton</Type>
+																<CommandName>Form.StandardCommand.Help</CommandName>
+																<ExtendedTooltip name="ReceiptCRListContextMenuHelpExtendedTooltip" id="1904"/>
+															</Button>
+															<Button name="ReceiptCRListContextMenuDependencies" id="1943">
+																<Type>CommandBarButton</Type>
+																<CommandName>Form.Command.Dependencies</CommandName>
+																<ExtendedTooltip name="ReceiptCRListContextMenuDependenciesExtendedTooltip" id="1944"/>
+															</Button>
+														</ChildItems>
+													</ContextMenu>
+													<AutoCommandBar name="ReceiptCRListCommandBar" id="1123">
+														<Autofill>false</Autofill>
+													</AutoCommandBar>
+													<ExtendedTooltip name="ReceiptCRListExtendedTooltip" id="1124"/>
+													<SearchStringAddition name="ReceiptCRListSearchString" id="1125">
+														<AdditionSource>
+															<Item>ReceiptCRList</Item>
+															<Type>SearchStringRepresentation</Type>
+														</AdditionSource>
+														<ContextMenu name="ReceiptCRListSearchStringContextMenu" id="1128"/>
+														<ExtendedTooltip name="ReceiptCRListSearchStringExtendedTooltip" id="1129"/>
+													</SearchStringAddition>
+													<ViewStatusAddition name="ReceiptCRListViewStatus" id="1130">
+														<AdditionSource>
+															<Item>ReceiptCRList</Item>
+															<Type>ViewStatusRepresentation</Type>
+														</AdditionSource>
+														<ContextMenu name="ReceiptCRListViewStatusContextMenu" id="1133"/>
+														<ExtendedTooltip name="ReceiptCRListViewStatusExtendedTooltip" id="1134"/>
+													</ViewStatusAddition>
+													<SearchControlAddition name="ReceiptCRListSearchManagement" id="1135">
+														<AdditionSource>
+															<Item>ReceiptCRList</Item>
+															<Type>SearchControl</Type>
+														</AdditionSource>
+														<ContextMenu name="ReceiptCRListSearchManagementContextMenu" id="1138"/>
+														<ExtendedTooltip name="ReceiptCRListSearchManagementExtendedTooltip" id="1139"/>
+													</SearchControlAddition>
+													<Events>
+														<Event name="OnActivateRow">ReceiptCRListOnRowRevitalization</Event>
+													</Events>
+													<ChildItems>
+														<LabelField name="ReceiptCRListDate" id="1140">
+															<DataPath>ReceiptCRList.Date</DataPath>
+															<Width>10</Width>
+															<ContextMenu name="ReceiptCRListDateContextMenu" id="1141"/>
+															<ExtendedTooltip name="ReceiptCRListDateExtendedTooltip" id="1142"/>
+														</LabelField>
+														<LabelField name="ReceiptCRListReceiptNumber" id="1391">
+															<DataPath>ReceiptCRList.ReceiptNumber</DataPath>
+															<Title>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>receipt number</v8:content>
+																</v8:item>
+															</Title>
+															<Width>8</Width>
+															<ContextMenu name="ReceiptReceiptCRNumberListContextMenu" id="1392"/>
+															<ExtendedTooltip name="ReceiptCRListReceiptNumberExtendedTooltip" id="1393"/>
+														</LabelField>
+														<ColumnGroup name="AmountCurrency" id="1879">
+															<Title>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Amount currency</v8:content>
+																</v8:item>
+															</Title>
+															<ToolTip>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Amount currency</v8:content>
+																</v8:item>
+															</ToolTip>
+															<Group>InCell</Group>
+															<ExtendedTooltip name="AmountCurrencyExtendedTooltip" id="1880"/>
+															<ChildItems>
+																<LabelField name="ReceiptCRListDocumentAmount" id="1146">
+																	<DataPath>ReceiptCRList.DocumentAmount</DataPath>
+																	<Title>
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Amount</v8:content>
+																		</v8:item>
+																	</Title>
+																	<Width>11</Width>
+																	<ContextMenu name="ReceiptCRListDocumentAmountContextMenu" id="1147"/>
+																	<ExtendedTooltip name="ReceiptCRListDocumentAmountExtendedTooltip" id="1148"/>
+																</LabelField>
+																<LabelField name="ReceiptCRListDocumentCurrency" id="1881">
+																	<DataPath>ReceiptCRList.DocumentCurrency</DataPath>
+																	<ShowInHeader>false</ShowInHeader>
+																	<Width>1</Width>
+																	<ContextMenu name="ReceiptCRDocumentCurrencyListContextMenu" id="1882"/>
+																	<ExtendedTooltip name="ReceiptCRListDocumentCurrencyExtendedTooltip" id="1883"/>
+																</LabelField>
+															</ChildItems>
+														</ColumnGroup>
+														<LabelField name="ReceiptCRListStatus" id="1864">
+															<DataPath>ReceiptCRList.Status</DataPath>
+															<ContextMenu name="ReceiptCRListStatusContextMenu" id="1865"/>
+															<ExtendedTooltip name="ReceiptCRListStatusExtendedTooltip" id="1866"/>
+														</LabelField>
+														<LabelField name="ReceiptCRListReceiptCRNumber" id="1876">
+															<DataPath>ReceiptCRList.ReceiptCRNumber</DataPath>
+															<UserVisible>
+																<xr:Common>false</xr:Common>
+															</UserVisible>
+															<ContextMenu name="ReceiptCRListReceiptCRNumberContextMenu" id="1877"/>
+															<ExtendedTooltip name="ReceiptCRListReceiptCRNumberExtendedTooltip" id="1878"/>
+														</LabelField>
+														<LabelField name="ReceiptCRListCompany" id="1873">
+															<DataPath>ReceiptCRList.Company</DataPath>
+															<UserVisible>
+																<xr:Common>false</xr:Common>
+															</UserVisible>
+															<ContextMenu name="ReceiptCRCounterpartyListContextMenu" id="1874"/>
+															<ExtendedTooltip name="ReceiptCRListCompanyExtendedTooltip" id="1875"/>
+														</LabelField>
+														<LabelField name="ReceiptCRListResponsible" id="1267">
+															<DataPath>ReceiptCRList.Responsible</DataPath>
+															<UserVisible>
+																<xr:Common>false</xr:Common>
+															</UserVisible>
+															<ContextMenu name="ReceiptCRListResponsibleContextMenu" id="1268"/>
+															<ExtendedTooltip name="ReceiptCRListResponsibleExtendedTooltip" id="1269"/>
+														</LabelField>
+														<LabelField name="ReceiptCRListCashRegister" id="1261">
+															<DataPath>ReceiptCRList.CashCR</DataPath>
+															<UserVisible>
+																<xr:Common>false</xr:Common>
+															</UserVisible>
+															<ContextMenu name="ReceiptCRListCRPettyCashContextMenu" id="1262"/>
+															<ExtendedTooltip name="ReceiptCRListReceiptCRExtendedTooltip" id="1263"/>
+														</LabelField>
+														<LabelField name="ReceiptCRListCashCRSession" id="1424">
+															<DataPath>ReceiptCRList.CashCRSession</DataPath>
+															<UserVisible>
+																<xr:Common>false</xr:Common>
+															</UserVisible>
+															<ContextMenu name="ReceiptCRListCashierShiftContextMenu" id="1425"/>
+															<ExtendedTooltip name="ReceiptCRListCashCRSessionExtendedTooltip" id="1426"/>
+														</LabelField>
+														<LabelField name="ReceiptCRListStructuralUnit" id="1870">
+															<DataPath>ReceiptCRList.StructuralUnit</DataPath>
+															<UserVisible>
+																<xr:Common>false</xr:Common>
+															</UserVisible>
+															<ContextMenu name="ReceiptCRListStructuralUnitContextMenu" id="1871"/>
+															<ExtendedTooltip name="ReceiptCRListStructuralUnitExtendedTooltip" id="1872"/>
+														</LabelField>
+														<LabelField name="ReceiptCRListComment" id="1867">
+															<DataPath>ReceiptCRList.Comment</DataPath>
+															<UserVisible>
+																<xr:Common>false</xr:Common>
+															</UserVisible>
+															<ContextMenu name="ReceiptCRListCommentContextMenu" id="1868"/>
+															<ExtendedTooltip name="ReceiptCRListCommentExtendedTooltip" id="1869"/>
+														</LabelField>
+														<LabelField name="ReceiptCRListAuthor" id="1273">
+															<DataPath>ReceiptCRList.Author</DataPath>
+															<UserVisible>
+																<xr:Common>false</xr:Common>
+															</UserVisible>
+															<ContextMenu name="ReceiptCRListAuthorContextMenu" id="1274"/>
+															<ExtendedTooltip name="ReceiptCRListAuthorExtendedTooltip" id="1275"/>
+														</LabelField>
+														<LabelField name="ReceiptCRListRefs" id="1385">
+															<DataPath>ReceiptCRList.Ref</DataPath>
+															<UserVisible>
+																<xr:Common>false</xr:Common>
+															</UserVisible>
+															<ContextMenu name="ReceiptCRRefListContextMenu" id="1386"/>
+															<ExtendedTooltip name="ReceiptCRListRefExtendedTooltip" id="1387"/>
+														</LabelField>
+													</ChildItems>
+												</Table>
+												<InputField name="ReceiptContent" id="1289">
+													<DataPath>ReceiptContent</DataPath>
+													<ReadOnly>true</ReadOnly>
+													<TitleLocation>None</TitleLocation>
+													<Height>4</Height>
+													<HorizontalStretch>true</HorizontalStretch>
+													<VerticalStretch>true</VerticalStretch>
+													<MultiLine>true</MultiLine>
+													<ContextMenu name="ReceiptContentContextMenu" id="1290"/>
+													<ExtendedTooltip name="ReceiptContentExtendedTooltip" id="1291"/>
+												</InputField>
+											</ChildItems>
+										</Page>
+										<Page name="PageWithEmptyLable" id="1407">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Page with empty label</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Page with empty label</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ExtendedTooltip name="PageWithEmptyLabelExtendedTooltip" id="1408"/>
+											<ChildItems>
+												<LabelDecoration name="LabelToHideCRChecksList" id="1409">
+													<ContextMenu name="LabelToHideReceiptCRListContextMenu" id="1410"/>
+													<ExtendedTooltip name="LabelToHideReceiptsCRListExtendedTooltip" id="1411"/>
+												</LabelDecoration>
+											</ChildItems>
+										</Page>
+									</ChildItems>
+								</Pages>
+								<UsualGroup name="GroupFooterRefunds" id="1110">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group footer refunds</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group footer refunds</v8:content>
+										</v8:item>
+									</ToolTip>
+									<HorizontalStretch>true</HorizontalStretch>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupFooterRefundsExtendedTooltip" id="1111"/>
+									<ChildItems>
+										<UsualGroup name="GroupLinksToSupplierIRKO" id="1455">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group links to supplier IRKO</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group links to supplier IRKO</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Vertical</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="GroupLinksToSupplierIRKOExtendedTooltip" id="1456"/>
+											<ChildItems>
+												<LabelDecoration name="DecorationSupplierInvoice" id="1107">
+													<Visible>false</Visible>
+													<HorizontalStretch>true</HorizontalStretch>
+													<Hyperlink>true</Hyperlink>
+													<ContextMenu name="DecorationGoodReceiptContextMenu" id="1108"/>
+													<ExtendedTooltip name="DecorationSupplierInvoiceExtendedTooltip" id="1109"/>
+													<Events>
+														<Event name="Click">DecorationDebitInvoiceClick</Event>
+													</Events>
+												</LabelDecoration>
+												<LabelDecoration name="DecorationCPV" id="1452">
+													<Visible>false</Visible>
+													<HorizontalStretch>true</HorizontalStretch>
+													<Hyperlink>true</Hyperlink>
+													<ContextMenu name="DecorationCPVContextMenu" id="1453"/>
+													<ExtendedTooltip name="DecorationCPVExtendedTooltip" id="1454"/>
+													<Events>
+														<Event name="Click">DecorationCPVClick</Event>
+													</Events>
+												</LabelDecoration>
+												<LabelDecoration name="DecorationReceiptCRForReturn" id="1459">
+													<Height>2</Height>
+													<HorizontalStretch>true</HorizontalStretch>
+													<Hyperlink>true</Hyperlink>
+													<ContextMenu name="DecorationReceiptCRForReturnContextMenu" id="1460"/>
+													<ExtendedTooltip name="DecorationReceiptCRForReturnExtendedTooltip" id="1461"/>
+													<Events>
+														<Event name="Click">CRDecorationForReturnReceiptClick</Event>
+													</Events>
+												</LabelDecoration>
+											</ChildItems>
+										</UsualGroup>
+										<UsualGroup name="GroupCreateSupplierInvoiceButtons_and_CPV" id="1457">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Goods receipt and CPV creation button group</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Goods receipt and CPV creation button group</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Vertical</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="GroupButtonCreateSupplierInvoice_and_CPVExtendedTooltip" id="1458"/>
+											<ChildItems>
+												<Button name="CreateDebitInvoiceForReturn" id="1101">
+													<Type>UsualButton</Type>
+													<Visible>false</Visible>
+													<Width>31</Width>
+													<Height>1</Height>
+													<CommandName>Form.Command.CreateDebitInvoiceForReturn</CommandName>
+													<Font ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+													<ExtendedTooltip name="CreateGoodsInvoiceForReturnExtendedTooltip" id="1102"/>
+												</Button>
+												<Button name="CreateCPVBasedOnReceipt" id="1103">
+													<Type>UsualButton</Type>
+													<Visible>false</Visible>
+													<Width>31</Width>
+													<Height>1</Height>
+													<CommandName>Form.Command.CreateCPVBasedOnReceipt</CommandName>
+													<Font ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>2. Create CPV based on receipt</v8:content>
+														</v8:item>
+													</Title>
+													<ExtendedTooltip name="CreateCPVBasedOnReceiptExtendedTooltip" id="1104"/>
+												</Button>
+												<Button name="CreateReceiptCRForReturn" id="1099">
+													<Type>UsualButton</Type>
+													<Width>22</Width>
+													<Height>2</Height>
+													<CommandName>Form.Command.CreateReceiptCRForReturn</CommandName>
+													<Font ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+													<ExtendedTooltip name="CreateReceiptCRForReturnExtendedTooltip" id="1100"/>
+												</Button>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="GroupCommandBarAndSidePanelRefunds" id="1247">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Command panel and side panel group refunds</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Command panel and side panel group refunds</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupCommandBarAndSidePanelRefundsExtendedTooltip" id="1248"/>
+							<ChildItems>
+								<UsualGroup name="GroupControlPanelRefunds" id="1924">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group control panel refunds</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group control panel refunds</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Width>1</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<BackColor>style:FormBackColor</BackColor>
+									<ExtendedTooltip name="GroupControlPanelRefundsExtendedTooltip" id="1925"/>
+									<ChildItems>
+										<LabelDecoration name="DecorationDelimiter_5" id="1926">
+											<VerticalStretch>true</VerticalStretch>
+											<ContextMenu name="DecorationDelimiter_5ContextMenu" id="1927"/>
+											<ExtendedTooltip name="DecorationDelimiter_5ExtendedTooltip" id="1928"/>
+										</LabelDecoration>
+										<PictureDecoration name="GroupbySidePanelRefunds" id="1255">
+											<Width>1</Width>
+											<Height>2</Height>
+											<TextColor>style:ReportsVariantsGroupColor</TextColor>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>&gt;&gt;</v8:content>
+												</v8:item>
+											</Title>
+											<Hyperlink>true</Hyperlink>
+											<Picture>
+												<xr:Ref>CommonPicture.CWP_MinimizeAdditionalPanel</xr:Ref>
+												<xr:LoadTransparent>true</xr:LoadTransparent>
+											</Picture>
+											<ContextMenu name="GroupbySidePanelRefundsContextMenu" id="1256"/>
+											<ExtendedTooltip name="GroupbySidePanelRefundsExtendedTooltip" id="1257"/>
+											<Events>
+												<Event name="Click">GroupbySidePanelRefundsClick</Event>
+											</Events>
+										</PictureDecoration>
+										<LabelDecoration name="DecorationDelimiter_6" id="1929">
+											<VerticalStretch>true</VerticalStretch>
+											<ContextMenu name="DecorationDelimiter_6ContextMenu" id="1930"/>
+											<ExtendedTooltip name="DecorationDelimiter_6ExtendedTooltip" id="1931"/>
+										</LabelDecoration>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="SidePanelRefunds" id="1922">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Side panel refunds</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Side panel refunds</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Width>33</Width>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<BackColor>style:CashierWorkplaceAdditionalPanelColor</BackColor>
+									<ExtendedTooltip name="SidePanelRefundsExtendedTooltip" id="1923"/>
+									<ChildItems>
+										<LabelDecoration name="DecorationTitleReceiptsCRForReturn" id="1764">
+											<TextColor>style:ReportsVariantsGroupColor</TextColor>
+											<Font ref="sys:DefaultGUIFont" height="12" kind="WindowsFont"/>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Return receipts cash register</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="DecorationTitleReceiptsCRForReturnContextMenu" id="1765"/>
+											<ExtendedTooltip name="DecorationTitleReceiptsCRForReturnExtendedTooltip" id="1766"/>
+										</LabelDecoration>
+										<InputField name="ReceiptCRPeriodKindForReturn" id="1776">
+											<DataPath>ReceiptCRPeriodKindForReturn</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<HorizontalAlign>Center</HorizontalAlign>
+											<DropListButton>true</DropListButton>
+											<ChoiceButton>false</ChoiceButton>
+											<ClearButton>false</ClearButton>
+											<TextEdit>false</TextEdit>
+											<ContextMenu name="ReceiptCRPeriodKindForReturnContextMenu" id="1777"/>
+											<ExtendedTooltip name="ReceiptCRPeriodKindForReturnExtendedTooltip" id="1778"/>
+											<Events>
+												<Event name="ChoiceProcessing">ReceiptCRPeriodKindForReturnChoiceProcessing</Event>
+											</Events>
+										</InputField>
+										<Table name="ReceiptCRListForReturn" id="1189">
+											<UseAlternationRowColor>true</UseAlternationRowColor>
+											<EnableStartDrag>true</EnableStartDrag>
+											<DataPath>ReceiptCRListForReturn</DataPath>
+											<RowPictureDataPath>ReceiptCRListForReturn.DefaultPicture</RowPictureDataPath>
+											<SearchStringLocation>None</SearchStringLocation>
+											<ViewStatusLocation>None</ViewStatusLocation>
+											<AutoRefresh>true</AutoRefresh>
+											<AutoRefreshPeriod>60</AutoRefreshPeriod>
+											<Period>
+												<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+												<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+												<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+											</Period>
+											<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+											<RestoreCurrentRow>false</RestoreCurrentRow>
+											<TopLevelParent xsi:nil="true"/>
+											<ShowRoot>true</ShowRoot>
+											<AllowRootChoice>false</AllowRootChoice>
+											<UpdateOnDataChange>Auto</UpdateOnDataChange>
+											<ContextMenu name="ReceiptCRListForReturnContextMenu" id="1190">
+												<ChildItems>
+													<Button name="ReceiptCRListForReturnOutputListContextMenu" id="1888">
+														<Type>CommandBarButton</Type>
+														<CommandName>Form.Item.ReceiptCRList.StandardCommand.OutputList</CommandName>
+														<ExtendedTooltip name="ReceiptCRListForReturnOutputListContextMenuExtendedTooltip" id="1889"/>
+													</Button>
+													<Button name="ReceiptCRListForReturnContextMenuChangeForm" id="1890">
+														<Type>CommandBarButton</Type>
+														<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
+														<ExtendedTooltip name="ReceiptCRListForReturnContextMenuChangeFormExtendedTooltip" id="1891"/>
+													</Button>
+													<Button name="ReceiptCRListForReturnContextMenuHelp" id="1905">
+														<Type>CommandBarButton</Type>
+														<CommandName>Form.StandardCommand.Help</CommandName>
+														<ExtendedTooltip name="ReceiptCRListForReturnContextMenuHelpExtendedTooltip" id="1906"/>
+													</Button>
+												</ChildItems>
+											</ContextMenu>
+											<AutoCommandBar name="ReceiptCRListForReturnCommandBar" id="1191">
+												<Autofill>false</Autofill>
+											</AutoCommandBar>
+											<ExtendedTooltip name="ReceiptCRListForReturnExtendedTooltip" id="1192"/>
+											<SearchStringAddition name="ReceiptCRListForReturnSearchString" id="1193">
+												<AdditionSource>
+													<Item>ReceiptCRListForReturn</Item>
+													<Type>SearchStringRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="ReceiptCRListForReturnSearchStringContextMenu" id="1196"/>
+												<ExtendedTooltip name="ReceiptCRListForReturnSearchStringExtendedTooltip" id="1197"/>
+											</SearchStringAddition>
+											<ViewStatusAddition name="ReceiptCRListForReturnViewStatus" id="1198">
+												<AdditionSource>
+													<Item>ReceiptCRListForReturn</Item>
+													<Type>ViewStatusRepresentation</Type>
+												</AdditionSource>
+												<HorizontalStretch>true</HorizontalStretch>
+												<HorizontalLocation>Center</HorizontalLocation>
+												<ContextMenu name="ReceiptCRListForReturnStatusViewContextMenu" id="1201"/>
+												<ExtendedTooltip name="ReceiptCRListForReturnViewStatusExtendedTooltip" id="1202"/>
+											</ViewStatusAddition>
+											<SearchControlAddition name="ReceiptCRListForReturnSearchManagement" id="1203">
+												<AdditionSource>
+													<Item>ReceiptCRListForReturn</Item>
+													<Type>SearchControl</Type>
+												</AdditionSource>
+												<ContextMenu name="ReceiptCRListForReturnSearchManagementContextMenu" id="1206"/>
+												<ExtendedTooltip name="ReceiptCRListForReturnSearchManagementExtendedTooltip" id="1207"/>
+											</SearchControlAddition>
+											<ChildItems>
+												<LabelField name="ReceiptCRListForReturnDate" id="1211">
+													<DataPath>ReceiptCRListForReturn.Date</DataPath>
+													<Width>10</Width>
+													<ContextMenu name="ReceiptCRListForReturnDateContextMenu" id="1212"/>
+													<ExtendedTooltip name="ReceiptCRListForReturnDateExtendedTooltip" id="1213"/>
+												</LabelField>
+												<LabelField name="ReceiptCRListForReturnReceiptNumber" id="1400">
+													<DataPath>ReceiptCRListForReturn.ReceiptNumber</DataPath>
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>receipt number</v8:content>
+														</v8:item>
+													</Title>
+													<Width>8</Width>
+													<HorizontalStretch>false</HorizontalStretch>
+													<ContextMenu name="ReceiptCRListForReturnReceiptNumberContextMenu" id="1401"/>
+													<ExtendedTooltip name="ReceiptCRListForReturnReceiptNumberExtendedTooltip" id="1402"/>
+												</LabelField>
+												<LabelField name="ReceiptCRListForReturnDocumentAmount" id="1214">
+													<DataPath>ReceiptCRListForReturn.DocumentAmount</DataPath>
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Amount</v8:content>
+														</v8:item>
+													</Title>
+													<Width>10</Width>
+													<ContextMenu name="ReceiptCRListForReturnDocumentAmountContextMenu" id="1215"/>
+													<ExtendedTooltip name="ReceiptCRListForReturnDocumentAmountExtendedTooltip" id="1216"/>
+												</LabelField>
+												<LabelField name="ReceiptCRListForReturnRefs" id="1388">
+													<DataPath>ReceiptCRListForReturn.Ref</DataPath>
+													<UserVisible>
+														<xr:Common>false</xr:Common>
+													</UserVisible>
+													<ContextMenu name="ReceiptCRListForReturnRefsContextMenu" id="1389"/>
+													<ExtendedTooltip name="ReceiptCRListForReturnRefsExtendedTooltip" id="1390"/>
+												</LabelField>
+											</ChildItems>
+										</Table>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+		<LabelDecoration name="LabelSinceChangeOpeningMore24Hours" id="1957">
+			<Visible>false</Visible>
+			<TextColor>style:SpecialTextColor</TextColor>
+			<Title formatted="false">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Warning!</v8:content>
+				</v8:item>
+			</Title>
+			<ContextMenu name="LabelSinceChangeOpeningMore24HoursContextMenu" id="1958"/>
+			<ExtendedTooltip name="LabelSinceChangeOpeningMore24HoursExtendedTooltip" id="1959"/>
+		</LabelDecoration>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="List" id="1">
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<UseAlways>
+				<Field>List.Ref</Field>
+				<Field>List.Date</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>SELECT
+	DocumentJournalRetailSales.Ref,
+	DocumentJournalRetailSales.Date,
+	DocumentJournalRetailSales.DeletionMark,
+	DocumentJournalRetailSales.Number,
+	DocumentJournalRetailSales.Posted,
+	CASE
+		WHEN &amp;WithoutConnectingEquipment
+			THEN SubString(DocumentJournalRetailSales.Number, 6, 6)
+		ELSE DocumentJournalRetailSales.ReceiptNumber
+	END AS ReceiptNumber,
+	CASE
+		WHEN DocumentJournalRetailSales.Type = Type(Document.ReceiptCRReturn)
+			THEN DocumentJournalRetailSales.Amount * -1
+		ELSE DocumentJournalRetailSales.Amount
+	END AS Amount,
+	DocumentJournalRetailSales.Type
+	FROM
+	DocumentJournal.RetailSales AS DocumentJournalRetailSales
+	WHERE
+	DocumentJournalRetailSales.CashCR = &amp;CashCR
+	AND CASE
+			WHEN (NOT &amp;ChoiceOnStatuses
+					OR DocumentJournalRetailSales.CashCRSession.CashCRSessionStatus = &amp;Status)
+					AND (NOT &amp;FilterByChange
+						OR DocumentJournalRetailSales.CashCRSession = &amp;CashCRSession
+						OR DocumentJournalRetailSales.Ref = &amp;CashCRSession)
+				THEN TRUE
+			ELSE FALSE
+		END
+	AND CASE
+			WHEN DocumentJournalRetailSales.Type = Type(Document.RetailReport)
+				THEN CASE
+						WHEN DocumentJournalRetailSales.CashCRSessionStatus = &amp;Status
+							THEN FALSE
+						ELSE TRUE
+					END
+			ELSE TRUE
+		END
+	AND Not DocumentJournalRetailSales.DeletionMark
+		AND DocumentJournalRetailSales.Posted</QueryText>
+				<MainTable>DocumentJournal.RetailSales</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemField">
+							<dcsset:field>Date</dcsset:field>
+							<dcsset:orderType>Asc</dcsset:orderType>
+						</dcsset:item>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:item>
+							<dcsset:selection>
+								<dcsset:item>
+									<dcsset:field>ReceiptNumber</dcsset:field>
+								</dcsset:item>
+								<dcsset:item>
+									<dcsset:field>Amount</dcsset:field>
+								</dcsset:item>
+							</dcsset:selection>
+							<dcsset:filter>
+								<dcsset:item xsi:type="dcsset:FilterItemComparison">
+									<dcsset:left xsi:type="dcscor:Field">Type</dcsset:left>
+									<dcsset:comparisonType>Equal</dcsset:comparisonType>
+									<dcsset:right xsi:type="dcscor:DesignTimeValue">Document.ReceiptCRReturn</dcsset:right>
+								</dcsset:item>
+							</dcsset:filter>
+							<dcsset:appearance>
+								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+									<dcscor:parameter>TextColor</dcscor:parameter>
+									<dcscor:value xsi:type="v8ui:Color">style:NegativeTextColor</dcscor:value>
+								</dcscor:item>
+							</dcsset:appearance>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:selection>
+								<dcsset:item>
+									<dcsset:field>ReceiptNumber</dcsset:field>
+								</dcsset:item>
+								<dcsset:item>
+									<dcsset:field>Amount</dcsset:field>
+								</dcsset:item>
+							</dcsset:selection>
+							<dcsset:filter>
+								<dcsset:item xsi:type="dcsset:FilterItemComparison">
+									<dcsset:left xsi:type="dcscor:Field">Type</dcsset:left>
+									<dcsset:comparisonType>Equal</dcsset:comparisonType>
+									<dcsset:right xsi:type="dcscor:DesignTimeValue">Document.RetailReport</dcsset:right>
+								</dcsset:item>
+							</dcsset:filter>
+							<dcsset:appearance>
+								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+									<dcscor:parameter>Font</dcscor:parameter>
+									<dcscor:value xsi:type="v8ui:Font" ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+								</dcscor:item>
+							</dcsset:appearance>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:selection>
+								<dcsset:item>
+									<dcsset:field>ReceiptNumber</dcsset:field>
+								</dcsset:item>
+							</dcsset:selection>
+							<dcsset:filter>
+								<dcsset:item xsi:type="dcsset:FilterItemComparison">
+									<dcsset:left xsi:type="dcscor:Field">Type</dcsset:left>
+									<dcsset:comparisonType>Equal</dcsset:comparisonType>
+									<dcsset:right xsi:type="dcscor:DesignTimeValue">Document.RetailReport</dcsset:right>
+								</dcsset:item>
+							</dcsset:filter>
+							<dcsset:appearance>
+								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+									<dcscor:parameter>Text</dcscor:parameter>
+									<dcscor:value xsi:type="xs:string">Session is close</dcscor:value>
+								</dcscor:item>
+							</dcsset:appearance>
+						</dcsset:item>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="ProductsAndServicesSearchValue" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Products and services search value</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.ProductsAndServices</v8:Type>
+			</Type>
+			<Save>
+				<Field>ProductsAndServicesSearchValue</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="Object" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Object</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DocumentObject.ReceiptCR</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+			<UseAlways>
+				<Field>Object.RegisterRecords</Field>
+			</UseAlways>
+			<Columns>
+				<AdditionalColumns table="Object.DiscountsMarkups">
+					<Column name="ProductsAndServices" id="1">
+						<Title>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Products and services</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>cfg:CatalogRef.ProductsAndServices</v8:Type>
+						</Type>
+					</Column>
+					<Column name="Characteristic" id="2">
+						<Title>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Characteristic</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>cfg:CatalogRef.ProductsAndServicesCharacteristics</v8:Type>
+						</Type>
+						<FunctionalOptions>
+							<Item>6c8550bb-f6df-4d47-bbea-cfbc7c362006</Item>
+						</FunctionalOptions>
+					</Column>
+					<Column name="BasisTableLineNumber" id="3">
+						<Title>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>No in "Products"</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:decimal</v8:Type>
+							<v8:NumberQualifiers>
+								<v8:Digits>10</v8:Digits>
+								<v8:FractionDigits>0</v8:FractionDigits>
+								<v8:AllowedSign>Any</v8:AllowedSign>
+							</v8:NumberQualifiers>
+						</Type>
+					</Column>
+					<Column name="CharacteristicsAreUsed" id="4">
+						<Title>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Characteristics are used</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:boolean</v8:Type>
+						</Type>
+					</Column>
+					<Column name="DiscountBannedFromView" id="5">
+						<Title>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Discount banned from view</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:boolean</v8:Type>
+						</Type>
+					</Column>
+				</AdditionalColumns>
+				<AdditionalColumns table="Object.Inventory">
+					<Column name="DiscountAmount" id="1">
+						<Title>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Discount amount</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:decimal</v8:Type>
+							<v8:NumberQualifiers>
+								<v8:Digits>15</v8:Digits>
+								<v8:FractionDigits>2</v8:FractionDigits>
+								<v8:AllowedSign>Any</v8:AllowedSign>
+							</v8:NumberQualifiers>
+						</Type>
+					</Column>
+					<Column name="ProductsAndServicesCharacteristicAndBatch" id="2">
+						<Title>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Products and services characteristic and batch</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:string</v8:Type>
+							<v8:StringQualifiers>
+								<v8:Length>0</v8:Length>
+								<v8:AllowedLength>Variable</v8:AllowedLength>
+							</v8:StringQualifiers>
+						</Type>
+					</Column>
+					<Column name="DataOnRow" id="3">
+						<Title>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Data on row</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:string</v8:Type>
+							<v8:StringQualifiers>
+								<v8:Length>0</v8:Length>
+								<v8:AllowedLength>Variable</v8:AllowedLength>
+							</v8:StringQualifiers>
+						</Type>
+					</Column>
+					<Column name="TotalDiscountAmountIsMoreThanAmount" id="4">
+						<Title>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Total amount of the discount is more than the amount</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:boolean</v8:Type>
+						</Type>
+					</Column>
+					<Column name="AmountDiscountsMarkups" id="5">
+						<Title>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Amount discounts markups</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:decimal</v8:Type>
+							<v8:NumberQualifiers>
+								<v8:Digits>15</v8:Digits>
+								<v8:FractionDigits>2</v8:FractionDigits>
+								<v8:AllowedSign>Any</v8:AllowedSign>
+							</v8:NumberQualifiers>
+						</Type>
+					</Column>
+				</AdditionalColumns>
+			</Columns>
+		</Attribute>
+		<Attribute name="BalanceInCashier" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Balance in petty cash</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>15</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="AmountShortChange" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>change</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>15</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="AmountReceiptWithoutDiscounts" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Total</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>15</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="DiscountAmount" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Discount amount</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>15</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="DocumentStatus" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Document state</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>20</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="PictureDocumentStatus" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Document status image</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>1</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="PostingIsAllowed" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Posting is allowed</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="SubsidiaryCompany" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>SubsidiaryCompany</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Companies</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="UsePeripherals" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Use peripherals</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="StructuralUnitType" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Structural unit type</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.StructuralUnitsTypes</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="CashCR" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Cash register</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.CashRegisters</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="CashCRUseWithoutEquipmentConnection" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Cash register use without equipment connection</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="FiscalRegister" id="17">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Fiscal register</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Peripherals</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Show" id="19">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Show</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="BalanceInCashierRow" id="20">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Balance in petty cash</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>15</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="QuickSale" id="21">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Quick sale</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="ProductsAndServices" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Products and services</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.ProductsAndServices</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Characteristic" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Characteristic</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.ProductsAndServicesCharacteristics</v8:Type>
+					</Type>
+					<FunctionalOptions>
+						<Item>6c8550bb-f6df-4d47-bbea-cfbc7c362006</Item>
+					</FunctionalOptions>
+				</Column>
+				<Column name="Shortcut" id="9">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Combination of keys</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="CommandName" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Command name</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Ctrl" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Ctrl</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Shift" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Shift</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Alt" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Alt</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Key" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Key</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Title" id="8">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Title</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="QuickProduct" id="10">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Quick product</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="CWPSetting" id="22">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>CWP setup</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.SettingsCWP</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Workplace" id="23">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Workplace</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Workplaces</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="FastProductsCurrentGroup" id="24">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Quick products current group</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Change" id="25">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Change</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>15</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ImportantButtonsColor" id="26">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Important buttons color</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8ui:Color</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ReceiptCRList" id="29">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>CR receipts list</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<UseAlways>
+				<Field>ReceiptCRList.Ref</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>SELECT
+	DocumentReceiptCR.Ref,
+	DocumentReceiptCR.Number,
+	DocumentReceiptCR.Date,
+	DocumentReceiptCR.Archival,
+	DocumentReceiptCR.DocumentCurrency,
+	DocumentReceiptCR.PriceKind,
+	DocumentReceiptCR.CashCR,
+	DocumentReceiptCR.CashCRSession,
+	DocumentReceiptCR.Comment,
+	DocumentReceiptCR.IncludeVATInPrice,
+	DocumentReceiptCR.ReceiptCRNumber,
+	DocumentReceiptCR.Company,
+	DocumentReceiptCR.CashReceived,
+	DocumentReceiptCR.StructuralUnit,
+	DocumentReceiptCR.Status,
+	DocumentReceiptCR.DocumentAmount,
+	DocumentReceiptCR.PaymentForm,
+	DocumentReceiptCR.VATTaxation,
+	DocumentReceiptCR.AmountIncludesVAT,
+	DocumentReceiptCR.POSTerminal,
+	DocumentReceiptCR.DiscountMarkupKind,
+	DocumentReceiptCR.Division,
+	DocumentReceiptCR.Author,
+	DocumentReceiptCR.Responsible,
+	DocumentReceiptCR.DiscountCard,
+	DocumentReceiptCR.DiscountPercentByDiscountCard,
+	DocumentReceiptCR.DiscountsAreCalculated,
+	DocumentReceiptCR.PointInTime,
+	CASE
+		WHEN &amp;WithoutConnectingEquipment
+			THEN SubString(DocumentReceiptCR.Number, 6, 6)
+		ELSE DocumentReceiptCR.ReceiptCRNumber
+	END AS ReceiptNumber
+	FROM
+	Document.ReceiptCR AS DocumentReceiptCR
+	WHERE
+	DocumentReceiptCR.CashCR = &amp;CashCR
+	AND CASE
+			WHEN (NOT &amp;ChoiceOnStatuses
+					OR DocumentReceiptCR.CashCRSession.CashCRSessionStatus = &amp;Status)
+					AND (NOT &amp;FilterByChange
+						OR DocumentReceiptCR.CashCRSession = &amp;CashCRSession)
+				THEN TRUE
+			ELSE FALSE
+		END
+		AND DocumentReceiptCR.Posted</QueryText>
+				<MainTable>Document.ReceiptCR</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="ReceiptCRListForReturn" id="30">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>CR receipt list for return</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>SELECT
+	DocumentReceiptCRReturn.Ref,
+	DocumentReceiptCRReturn.Number,
+	DocumentReceiptCRReturn.Date,
+	DocumentReceiptCRReturn.Archival,
+	DocumentReceiptCRReturn.DocumentCurrency,
+	DocumentReceiptCRReturn.PriceKind,
+	DocumentReceiptCRReturn.CashCR,
+	DocumentReceiptCRReturn.CashCRSession,
+	DocumentReceiptCRReturn.Comment,
+	DocumentReceiptCRReturn.ReceiptCRNumber,
+	DocumentReceiptCRReturn.Company,
+	DocumentReceiptCRReturn.StructuralUnit,
+	DocumentReceiptCRReturn.DocumentAmount,
+	DocumentReceiptCRReturn.VATTaxation,
+	DocumentReceiptCRReturn.AmountIncludesVAT,
+	DocumentReceiptCRReturn.ReceiptCR,
+	DocumentReceiptCRReturn.POSTerminal,
+	DocumentReceiptCRReturn.IncludeVATInPrice,
+	DocumentReceiptCRReturn.DiscountMarkupKind,
+	DocumentReceiptCRReturn.Division,
+	DocumentReceiptCRReturn.Author,
+	DocumentReceiptCRReturn.Responsible,
+	DocumentReceiptCRReturn.DiscountCard,
+	DocumentReceiptCRReturn.DiscountPercentByDiscountCard,
+	DocumentReceiptCRReturn.DiscountsAreCalculated,
+	DocumentReceiptCRReturn.PointInTime,
+	CASE
+		WHEN &amp;WithoutConnectingEquipment
+			THEN SubString(DocumentReceiptCRReturn.Number, 6, 6)
+		ELSE DocumentReceiptCRReturn.ReceiptCRNumber
+	END AS ReceiptNumber
+	FROM
+	Document.ReceiptCRReturn AS DocumentReceiptCRReturn
+	WHERE
+	DocumentReceiptCRReturn.CashCR = &amp;CashCR
+	AND CASE
+			WHEN (NOT &amp;ChoiceOnStatuses
+					OR DocumentReceiptCRReturn.CashCRSession.CashCRSessionStatus = &amp;Status)
+					AND (NOT &amp;FilterByChange
+						OR DocumentReceiptCRReturn.CashCRSession = &amp;CashCRSession)
+				THEN TRUE
+			ELSE FALSE
+			END</QueryText>
+				<MainTable>Document.ReceiptCRReturn</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="ReceiptIsNotShown" id="31">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Receipt is not showed</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ReceiptContent" id="32">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Receipt content</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ForCurrentShift" id="33">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>For current shift</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.PeriodsCWPKinds</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ForYesterday" id="34">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>For yesterday</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.PeriodsCWPKinds</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ForUserDefinedPeriod" id="35">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>For user-defined period</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.PeriodsCWPKinds</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ForEntirePeriod" id="36">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>For all period</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.PeriodsCWPKinds</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ForPreviousShift" id="37">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>For last shift</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.PeriodsCWPKinds</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="SupplierInvoiceForReturn" id="38">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Inventory receipt for return</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DocumentRef.SupplierInvoice</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="CPV" id="39">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>CPV</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DocumentRef.CashPayment</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ReceiptCRForReturn" id="40">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>CR receipt for return</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DocumentRef.ReceiptCRReturn</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="SelectionOpenParameters" id="41">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Selection open parameters</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="RefreshImageAutoDiscountsAfterWrite" id="42">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Refresh image auto discounts after write</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ControlAtWarehouseDisabled" id="43">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Control at warehouse disabled</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="UseAutomaticDiscounts" id="44">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Use automatic discounts</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="AddressDiscountsAppliedInTemporaryStorage" id="45">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Address of the applied discounts in temporary storage</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="DiscountsCalculatedBeforeWrite" id="46">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Discounts calculated before write</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="InstalledGrayColor" id="47">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Gray color is set</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="DocumentDateChangedManually" id="48">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Document date changed manually</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="SwitchJournalQuickProducts" id="49">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Switch journal quick products</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>1</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="MagazinePeriodKind" id="50">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Journal period kind</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<Save>
+				<Field>MagazinePeriodKind</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="ReceiptCRPeriodKind" id="51">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>CR receipt period kind</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<Save>
+				<Field>ReceiptCRPeriodKind</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="ReceiptCRPeriodKindForReturn" id="52">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>CR receipt period kind for return</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<Save>
+				<Field>ReceiptCRPeriodKindForReturn</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="SessionIsOpen" id="53">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Session is open</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.CashCRSessionStatuses</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Multiplicity" id="27">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Multiplicity</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="RepetitionNationalCurrency" id="54">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>National currency multiplicity</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ExchangeRate" id="55">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Exchange rate</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>4</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="RateNationalCurrency" id="56">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>National currency exchange rate</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>4</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="CurrencyTransactionsAccounting" id="57">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Currency transactions</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="DontShowOnOpenCashdeskChoiceForm" id="58">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Do not show on opening</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="WillBeGivenDialogAboutRecordsChanges" id="60">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Will be given a dialog about record of changes</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="DocumentDate" id="61">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Document date</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="CashCRUseWithoutEquipmentConnection1" id="65">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Cash register use without equipment connection</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="PricesAndCurrency" id="81">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Prices and currency</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="POSTerminal" id="82">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>POS terminal</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Peripherals</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="PaymentByChargeCardTypeCards" id="59">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Payment with payment cards payment card kind</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="StructureStateCashCRSession" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Structure state cash session</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="CatalogPeriodKindTransfer" id="62">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Journal period kind</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.PeriodsCWPKinds</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ReceiptCRPeriodTransferKind" id="63">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>CR receipt period kind</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.PeriodsCWPKinds</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ReceiptCRPeriodKindForReturnTransfer" id="64">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>CR receipt period kind for return</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.PeriodsCWPKinds</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="SettingsSaved" id="18">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Settings saved</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="DocumentConvertedAtClient" id="66">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Document recalculated at client</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="PreviousCashCR" id="67">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Previous cash CR</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.CashRegisters</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="User" id="28">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>User</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Users</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="DiscountCardRead" id="68">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Discount card read</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ProductsAndServicesTypeInventory" id="69">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Products and services type inventory</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.ProductsAndServicesTypes</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ProductsAndServicesTypeService" id="70">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Products and services type service</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.ProductsAndServicesTypes</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ChangeRow" id="71">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Change row</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="SupportedPeripheralTypes" id="72">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Supported peripherals types</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="Pick" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Product selection</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Pick</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Pick</Action>
+			<Representation>TextPicture</Representation>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="CloseChange" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Cash session closure</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Cash session closure</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.PeripheralsReportWithBlanking</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>CloseCashCRSession</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="SearchByBarcode" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Search by barcode</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Search by barcode</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Shortcut>F7</Shortcut>
+			<Picture>
+				<xr:Ref>CommonPicture.NewByBarcode</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>SearchByBarcode</Action>
+			<Representation>Picture</Representation>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="CashDeposition" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>CashDeposition</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>CashDeposition</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.FillForm</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>CashDeposition</Action>
+			<Representation>Picture</Representation>
+		</Command>
+		<Command name="Withdrawal" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Withdrawal</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Withdrawal</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.ProductsExport</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Withdrawal</Action>
+			<Representation>Picture</Representation>
+		</Command>
+		<Command name="IssueReceipt" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Issue receipt</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Issue receipt</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>IssueReceiptExecute</Action>
+			<Representation>TextPicture</Representation>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="ReportPrintingWithoutBlanking" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Print report without blanking</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Print report without blanking</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.PeripheralReportWithoutBlanking</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+				<xr:TransparentPixel x="4" y="2"/>
+			</Picture>
+			<Action>ReportPrintingWithoutBlankingExecute</Action>
+			<Representation>Picture</Representation>
+		</Command>
+		<Command name="NavigationRefunds" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Refunds</v8:content>
+				</v8:item>
+			</Title>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="NavigationProductAcceptance" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Goods receipt</v8:content>
+				</v8:item>
+			</Title>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="NavigationChangeEarnings" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Change earnings</v8:content>
+				</v8:item>
+			</Title>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="ReadDiscountCard" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Read discount card</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Read discount card</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Shortcut>Ctrl+K</Shortcut>
+			<Picture>
+				<xr:Ref>CommonPicture.ReadDiscountCard</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ReadDiscountCard</Action>
+			<FunctionalOptions>
+				<Item>FunctionalOption.UseDiscountCards</Item>
+			</FunctionalOptions>
+			<Representation>Picture</Representation>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="GetWeight" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Weight</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Get weight</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.GetWeight</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>GetWeight</Action>
+			<FunctionalOptions>
+				<Item>FunctionalOption.UsePeripherals</Item>
+			</FunctionalOptions>
+			<Representation>Picture</Representation>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="ImportDataFromDCT" id="17">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Import data from DTC</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Import data from DTC</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.PeripheralsDataCollectionTerminal16</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+				<xr:TransparentPixel x="13" y="2"/>
+			</Picture>
+			<Action>ImportDataFromDCT</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="AcceptPayment" id="18">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Accept version payment</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Accept version payment</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Shortcut>Ctrl+Alt+P</Shortcut>
+			<Action>Pay</Action>
+		</Command>
+		<Command name="CalculateDiscountsMarkups" id="19">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>% Auto</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Calculate discounts markups</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Refresh</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>CalculateDiscountsMarkups</Action>
+			<FunctionalOptions>
+				<Item>FunctionalOption.UseAutomaticDiscountsMarkups</Item>
+			</FunctionalOptions>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="PrintSalesReceipt" id="24">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Print sales receipt</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Print sales receipt</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Print</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>PrintSalesReceipt</Action>
+			<Representation>Picture</Representation>
+		</Command>
+		<Command name="CashierManagerChange" id="25">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Cashier manager shift</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Cashier manager shift</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.ActiveUsers</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Representation>Picture</Representation>
+		</Command>
+		<Command name="SetPeriod" id="26">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Set period</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Set period</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>0</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Representation>Picture</Representation>
+		</Command>
+		<Command name="ShowJournal" id="27">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Show journal</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Show journal</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ShowJournal</Action>
+		</Command>
+		<Command name="ShowQuickSales" id="28">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Quick sale</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Show quick products</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ShowQuickSales</Action>
+		</Command>
+		<Command name="IncreaseQuantity" id="30">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Increase quantity</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Increase quantity</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.PLUS</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>GroupQuantity</Action>
+			<Representation>Picture</Representation>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="ReduceQuantity" id="31">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Reduce quantity</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Reduce quantity</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ReduceQuantity</Action>
+			<Representation>Picture</Representation>
+		</Command>
+		<Command name="ChangeQuantityUsingCalculator" id="32">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Change quantity in current row</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Change quantity in current row</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Calculator</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ChangeQuantityUsingCalculator</Action>
+			<Representation>Picture</Representation>
+		</Command>
+		<Command name="DeleteLineTSInventory" id="33">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Delete line TS inventory</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Clear row from tabular section</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Delete</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Representation>Picture</Representation>
+		</Command>
+		<Command name="ClearTSInventory" id="34">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Clear tabular section</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Clear tabular section</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ClearTSInventory</Action>
+		</Command>
+		<Command name="PrintCopyOnFiscalRegistrar" id="35">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Print last slip receipt</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Print copy on fiscal registrar</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>PrintCopyOnFiscalRegistrar</Action>
+		</Command>
+		<Command name="QuickProductsSettings" id="36">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Setting</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Quick products settings</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.SectionAdministration</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>QuickProductsSettings</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="ReceiptCancellation" id="37">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Receipt cancellation</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Receipt cancellation</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ReceiptCancellation</Action>
+		</Command>
+		<Command name="CreateReceiptCRForReturn" id="38">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Create CR receipt for return</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Create CR receipt for return</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>CreateReceiptCRForReturn</Action>
+		</Command>
+		<Command name="CreateDebitInvoiceForReturn" id="39">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>1. Create debit invoice for return</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Create debit invoice for return</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>CreateDebitInvoiceForReturn</Action>
+		</Command>
+		<Command name="CreateCPVBasedOnReceipt" id="40">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>2. Create CPV based on goods receipt</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Create CPV based on goods receipt</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>CreateCPVBasedOnReceipt</Action>
+		</Command>
+		<Command name="CreateSupplierInvoiceListForReturn" id="45">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Goods receipt (for close shift)</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>List create goods receipt for return</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>CreateSupplierInvoiceListForReturn</Action>
+		</Command>
+		<Command name="OpenProductsAndServicesCard" id="50">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Open products and services card</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Open products and services card. If products and services in the row is not chosen the new position adding dialog will be opened</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Magnifier</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>OpenProductsAndServicesCard</Action>
+			<Representation>Picture</Representation>
+		</Command>
+		<Command name="ListCreateReceiptCRForReturn" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>List create CR receipt for return</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>List create CR receipt for return</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ListCreateReceiptCRForReturn</Action>
+		</Command>
+		<Command name="AddressPrintingCommandsInTemporaryStorage" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Address printing commands in temporary storage</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Address printing commands in temporary storage</v8:content>
+				</v8:item>
+			</ToolTip>
+		</Command>
+		<Command name="ShowMyPettyCash" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Show my petty cash</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Show my petty cash</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ShowMyPettyCash</Action>
+		</Command>
+		<Command name="AppliedDiscounts" id="20">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Applied discounts</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Applied discounts</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>AppliedDiscounts</Action>
+		</Command>
+		<Command name="Dependencies" id="21">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Hierarchy structure</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Hierarchy structure</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.Dependencies</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Dependencies</Action>
+			<Representation>Picture</Representation>
+		</Command>
+		<Command name="RemoveReservation" id="29">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Remove reserve</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Remove reserve</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.UndoPosting</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>RemoveReservation</Action>
+			<Representation>TextPicture</Representation>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+	</Commands>
+	<CommandInterface>
+		<NavigationPanel>
+			<Item>
+				<Command>Report.DiscountsAppliedInDocument.Command.AppliedDiscounts</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+		</NavigationPanel>
+	</CommandInterface>
+</Form>

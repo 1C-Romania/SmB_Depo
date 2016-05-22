@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"></meta><meta name="GENERATOR" content="MSHTML 11.00.9600.18321"></meta></head><body>
+<meta name="GENERATOR" content="MSHTML 9.00.8113.16470"></meta><h1>Purchase of goods data processor</h1>
+<p>This processor is designed to calculate the need of goods based on sales statistics for the previous period and automatically generate the purchase orders .</p>
+<p>Filling in the tabular section of <strong>Products</strong> and calculation of costs is performed using the button <strong>Calculate the demand.</strong> IN advance it is necessary to specify the number of days for which must be calculated the need and the period for calculating the sales statistics. It is also possible to limit the structure of goods only by products of a specific vendor or by goods of a certain items group.</p>
+<p>Tabular section of <strong>Products</strong> is represented as a tree which lines are grouped by vendor:</p>
+<p></p>
+<li><strong>Vendor </strong>- vendor, specified in the items card on the tab <strong>Storage and purchase parameters</strong>; 
+</li><li><strong>ProductsAndServices</strong>- goods to be purchased; 
+</li><li><strong>Characteristics </strong>- goods characteristics; 
+</li><li><strong>Current balance </strong>- тcurrent balance in the warehouses of an enterprise; 
+</li><li><strong>Sold (COUNT)</strong> - COUNT of the sold goods for the statistics period calculation; 
+</li><li><strong>Was selling (days)</strong> - the number of days in the period of the statistics calculation during which the goods were in balances; 
+</li><li><strong>In average for a day</strong> - an average Amount of sales for a day, is calculated by the formula: <strong>Sold (COUNT) / </strong><strong>Was selling (days)</strong>; 
+</li><li><strong>Is recommended to purchase </strong>- the need in goods, recommended to purchase. Is calculated by the formula: <strong>In average for a day</strong> <strong>* Number of days - </strong><strong>Current balance</strong> , where <strong>Number of days</strong> - number of days for which must be calculated the need. When calculating the fractional part must be rounded to the bigger value. The value in this column can be changed by the user. 
+<p></p>
+<p>Filling in the tabular section of <strong>Goods</strong> is performed in accordance with the parameters set in the header of the processing. By default, only those goods are displayed which have been sold for the period of statistics calculation. To display all the items, including those for which there were no sales, please click on the <strong>Show zero sales</strong>.</p>
+<p></p>
+<p>Formation of purchase orders is performed by the button <strong>Generate an order</strong>. At the same time for each supplier for the selected lines a separate order is Creatingd. The column <strong>Quantity</strong> of the tabular section of the order is filled in by the value from the column <strong>Recommended to purchase</strong> . Attributes of the order heading are filled in by the values set for the current user, by default. Purchase price in the tabular section of the order are filled in by prices types specified in the contract of the counterparty by default .</p>
+<p>The result of the orders generation is displayed on the <strong>Orders</strong> tab . After the generation it is necessary to see the result of filling in the attributes of the documents and fill in the date of receipt of goods in the orders . For selected lines it is possible to perform a group posting or removal of the orders.</p>
+<p></p></li></body></html>

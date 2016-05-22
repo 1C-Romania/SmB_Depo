@@ -1,0 +1,1108 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
+	<AutoTitle>false</AutoTitle>
+	<CommandBarLocation>None</CommandBarLocation>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="FormCommandBar" id="-1"/>
+	<Events>
+		<Event name="ChoiceProcessing">ChoiceProcessing</Event>
+		<Event name="NotificationProcessing">NotificationProcessing</Event>
+		<Event name="OnOpen">OnOpen</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+		<Event name="OnClose">OnClose</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="InformationReferences" id="67">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Information references</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Information references</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<ExtendedTooltip name="InformationLinksExtendedTooltip" id="69"/>
+		</UsualGroup>
+		<UsualGroup name="HeaderGroup" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group header</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Header</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="HeaderGroupExtendedTooltip" id="70"/>
+			<ChildItems>
+				<UsualGroup name="GroupQuickFilter" id="26">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Quick filter</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group fast filter</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="GroupQuickFilterExtendedTooltip" id="77"/>
+					<ChildItems>
+						<UsualGroup name="PriceTypeName" id="34">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Filter by price kind</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Price kind filters</v8:content>
+								</v8:item>
+							</ToolTip>
+							<VerticalStretch>false</VerticalStretch>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ExtendedTooltip name="DescriptionPricesTypeExtendedTooltip" id="78"/>
+							<ChildItems>
+								<Pages name="FilterPagesPriceKinds" id="35">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>CounterpartyPriceKind</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group counterparty filter</v8:content>
+										</v8:item>
+									</ToolTip>
+									<PagesRepresentation>None</PagesRepresentation>
+									<ExtendedTooltip name="FilterPagesPriceKindsExtendedTooltip" id="79"/>
+									<ChildItems>
+										<Page name="QuickFilterPriceKinds" id="36">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Quick filter price kinds</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group counterparty quick filter</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ExtendedTooltip name="QuickFilterPriceKindsExtendedTooltip" id="80"/>
+											<ChildItems>
+												<InputField name="PriceKind" id="4">
+													<DataPath>PriceKind</DataPath>
+													<TitleLocation>None</TitleLocation>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Filter by price kind</v8:content>
+														</v8:item>
+													</ToolTip>
+													<Wrap>false</Wrap>
+													<ClearButton>true</ClearButton>
+													<ContextMenu name="PriceTypeContextMenu" id="5"/>
+													<ExtendedTooltip name="PricesTypeExtendedTooltip" id="81"/>
+													<Events>
+														<Event name="OnChange">PricesKindOnChange</Event>
+														<Event name="Clearing">PriceKindClear</Event>
+													</Events>
+												</InputField>
+											</ChildItems>
+										</Page>
+										<Page name="MultipleFilterPriceKinds" id="39">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Multiple filter price kinds</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group counterparty multiple filter</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ExtendedTooltip name="PriceKindMultipleFilterExtendedTooltip" id="82"/>
+											<ChildItems>
+												<LabelDecoration name="DecorationMultipleFilterPriceKinds" id="40">
+													<VerticalStretch>true</VerticalStretch>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Multiple filter</v8:content>
+														</v8:item>
+													</Title>
+													<Hyperlink>true</Hyperlink>
+													<VerticalAlign>Center</VerticalAlign>
+													<ContextMenu name="DecorationMultipleFilterKindsOfPricesContextMenu" id="41"/>
+													<ExtendedTooltip name="DecorationMultipleFilterKindsOfPricesExtendedTooltip" id="83"/>
+													<Events>
+														<Event name="Click">MultipleFilterByPriceKindClick</Event>
+													</Events>
+												</LabelDecoration>
+											</ChildItems>
+										</Page>
+									</ChildItems>
+								</Pages>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="PriceGroupName" id="42">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Filter by price group</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Description price group</v8:content>
+								</v8:item>
+							</ToolTip>
+							<VerticalStretch>false</VerticalStretch>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ExtendedTooltip name="DescriptionPriceGroupExtendedTooltip" id="84"/>
+							<ChildItems>
+								<Pages name="FilterPagesPriceGroups" id="43">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Price group</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group counterparty filter</v8:content>
+										</v8:item>
+									</ToolTip>
+									<PagesRepresentation>None</PagesRepresentation>
+									<ExtendedTooltip name="FilterPagesPriceGroupsExtendedTooltip" id="85"/>
+									<ChildItems>
+										<Page name="QuickFilterPriceGroups" id="44">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Quick filter group price group</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group counterparty quick filter</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ExtendedTooltip name="QuickFiltersPriceGroupsExtendedTooltip" id="86"/>
+											<ChildItems>
+												<InputField name="PriceGroup" id="2">
+													<DataPath>PriceGroup</DataPath>
+													<TitleLocation>None</TitleLocation>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Filter by price group</v8:content>
+														</v8:item>
+													</ToolTip>
+													<Wrap>false</Wrap>
+													<ClearButton>true</ClearButton>
+													<ContextMenu name="PriceGroupContextMenu" id="3"/>
+													<ExtendedTooltip name="PriceGroupExtendedTooltip" id="87"/>
+													<Events>
+														<Event name="OnChange">PriceGroupOnChange</Event>
+														<Event name="Clearing">PriceGroupClear</Event>
+													</Events>
+												</InputField>
+											</ChildItems>
+										</Page>
+										<Page name="MultipleFilterPriceGroups" id="47">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Multiple filter price kind group</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group counterparty multiple filter</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ExtendedTooltip name="MultipleFilterPriceGroupsExtendedTooltip" id="88"/>
+											<ChildItems>
+												<LabelDecoration name="DecorationMultipleFilterPriceGroups" id="48">
+													<VerticalStretch>true</VerticalStretch>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Multiple filter</v8:content>
+														</v8:item>
+													</Title>
+													<Hyperlink>true</Hyperlink>
+													<VerticalAlign>Center</VerticalAlign>
+													<ContextMenu name="DecorationMultipleFilterPriceGroupsContextMenu" id="49"/>
+													<ExtendedTooltip name="DecorationMultipleFilterPriceGroupsExtendedTooltip" id="89"/>
+													<Events>
+														<Event name="Click">MultipleFilterByPriceGroupClick</Event>
+													</Events>
+												</LabelDecoration>
+											</ChildItems>
+										</Page>
+									</ChildItems>
+								</Pages>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ProductsAndServicesName" id="50">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Filter by products and services</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Filters by products and services</v8:content>
+								</v8:item>
+							</ToolTip>
+							<VerticalStretch>false</VerticalStretch>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ExtendedTooltip name="DescriptionProductsAndServicesExtendedTooltip" id="90"/>
+							<ChildItems>
+								<Pages name="FilterPagesProductsAndServices" id="51">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Products and services</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group counterparty filter</v8:content>
+										</v8:item>
+									</ToolTip>
+									<PagesRepresentation>None</PagesRepresentation>
+									<ExtendedTooltip name="FilterPagesProductsAndServicesExtendedTooltip" id="91"/>
+									<ChildItems>
+										<Page name="QuickFilterProductsAndServices" id="52">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Quick filter products and services</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group counterparty quick filter</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ExtendedTooltip name="QuickFilterProductsAndServicesExtendedTooltip" id="92"/>
+											<ChildItems>
+												<InputField name="ProductsAndServices" id="6">
+													<DataPath>ProductsAndServices</DataPath>
+													<TitleLocation>None</TitleLocation>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Filter by products and services</v8:content>
+														</v8:item>
+													</ToolTip>
+													<Wrap>false</Wrap>
+													<ClearButton>true</ClearButton>
+													<ContextMenu name="ProductsAndServicesContextMenu" id="7"/>
+													<ExtendedTooltip name="ProductsAndServicesExtendedTooltip" id="93"/>
+													<Events>
+														<Event name="OnChange">ProductsAndServicesOnChange</Event>
+														<Event name="Clearing">ProductsAndServicesClear</Event>
+													</Events>
+												</InputField>
+											</ChildItems>
+										</Page>
+										<Page name="MultipleFilterProductsAndServices" id="55">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Multiple filter products and services</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group counterparty multiple filter</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ExtendedTooltip name="MultipleFilterProductsAndServicesExtendedTooltip" id="94"/>
+											<ChildItems>
+												<LabelDecoration name="DecorationMultipleFilterProductsAndServices" id="56">
+													<VerticalStretch>true</VerticalStretch>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Multiple filter</v8:content>
+														</v8:item>
+													</Title>
+													<Hyperlink>true</Hyperlink>
+													<VerticalAlign>Center</VerticalAlign>
+													<ContextMenu name="DecorationMultipleFilterProductsAndServicesContextMenu" id="57"/>
+													<ExtendedTooltip name="DecorationMultipleFilterProductsAndServicesExtendedTooltip" id="95"/>
+													<Events>
+														<Event name="Click">MultipleFilterByProductsAndServicesClick</Event>
+													</Events>
+												</LabelDecoration>
+											</ChildItems>
+										</Page>
+									</ChildItems>
+								</Pages>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="SelectionCommandGroup" id="58">
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Go to multiple filters</v8:content>
+								</v8:item>
+							</ToolTip>
+							<VerticalStretch>false</VerticalStretch>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ExtendedTooltip name="SelectionCommandGroupExtendedTooltip" id="96"/>
+							<ChildItems>
+								<Button name="GoToMultipleFilters" id="59">
+									<Type>UsualButton</Type>
+									<SkipOnInput>true</SkipOnInput>
+									<CommandName>Form.Command.GoToMultipleFilters</CommandName>
+									<ExtendedTooltip name="GotoMultipleFiltersExtendedTooltip" id="97"/>
+								</Button>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="CommandGroup" id="60">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Command group</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Command group</v8:content>
+				</v8:item>
+			</ToolTip>
+			<VerticalStretch>false</VerticalStretch>
+			<Group>Horizontal</Group>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="CommandGroupExtendedTooltip" id="98"/>
+			<ChildItems>
+				<CommandBar name="CommandGroupWorksScenes" id="123">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Command group working with prices</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Command group working with prices</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="CommandsGroupWorkWithPricesExtendedTooltip" id="124"/>
+					<ChildItems>
+						<Button name="Refresh" id="19">
+							<Type>CommandBarButton</Type>
+							<SkipOnInput>false</SkipOnInput>
+							<Width>4</Width>
+							<CommandName>Form.Command.Refresh</CommandName>
+							<ExtendedTooltip name="RefreshExtendedTooltip" id="104"/>
+						</Button>
+						<Button name="AbortPriceListBackGroundFormation" id="68">
+							<Type>CommandBarButton</Type>
+							<Enabled>false</Enabled>
+							<Width>4</Width>
+							<CommandName>Form.Command.AbortPriceListBackGroundFormation</CommandName>
+							<ExtendedTooltip name="AbortPriceListBackGroundFormationExtendedTooltip" id="105"/>
+						</Button>
+						<Button name="Add" id="15">
+							<Type>CommandBarButton</Type>
+							<SkipOnInput>false</SkipOnInput>
+							<Width>10</Width>
+							<CommandName>Form.Command.Add</CommandName>
+							<ExtendedTooltip name="AddExtendedTooltip" id="100"/>
+						</Button>
+						<Button name="Copy" id="16">
+							<Type>CommandBarButton</Type>
+							<SkipOnInput>false</SkipOnInput>
+							<Width>4</Width>
+							<CommandName>Form.Command.Copy</CommandName>
+							<ExtendedTooltip name="CopyExtendedTooltip" id="101"/>
+						</Button>
+						<Button name="Change" id="17">
+							<Type>CommandBarButton</Type>
+							<SkipOnInput>false</SkipOnInput>
+							<Width>4</Width>
+							<CommandName>Form.Command.Change</CommandName>
+							<ExtendedTooltip name="ChangeExtendedTooltip" id="102"/>
+						</Button>
+						<Button name="History" id="21">
+							<Type>CommandBarButton</Type>
+							<SkipOnInput>false</SkipOnInput>
+							<Width>4</Width>
+							<CommandName>Form.Command.History</CommandName>
+							<ExtendedTooltip name="HistoryExtendedTooltip" id="103"/>
+						</Button>
+						<Button name="Print" id="20">
+							<Type>CommandBarButton</Type>
+							<SkipOnInput>true</SkipOnInput>
+							<Width>8</Width>
+							<CommandName>Form.Command.Print</CommandName>
+							<ExtendedTooltip name="PrintExtendedTooltip" id="106"/>
+						</Button>
+						<Button name="ImportPricesFromExternalSource" id="125">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Command.ImportPricesFromExternalSource</CommandName>
+							<ExtendedTooltip name="ImportPricesFromExternalSourceExtendedTooltip" id="126"/>
+						</Button>
+					</ChildItems>
+				</CommandBar>
+				<CommandBar name="GroupPanel" id="12">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group bar</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Panel</v8:content>
+						</v8:item>
+					</ToolTip>
+					<HorizontalLocation>Right</HorizontalLocation>
+					<ExtendedTooltip name="PanelGroupExtendedTooltip" id="99"/>
+					<ChildItems>
+						<Button name="ShowTitle" id="24">
+							<Type>CommandBarButton</Type>
+							<SkipOnInput>false</SkipOnInput>
+							<CommandName>Form.Command.ShowTitle</CommandName>
+							<ExtendedTooltip name="ShowHeaderExtendedTooltip" id="108"/>
+						</Button>
+						<Button name="Pricing" id="25">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Command.Pricing</CommandName>
+							<ExtendedTooltip name="PricFormationToolTip" id="107"/>
+						</Button>
+						<Button name="ChangeForm" id="22">
+							<Type>CommandBarButton</Type>
+							<Representation>Picture</Representation>
+							<SkipOnInput>false</SkipOnInput>
+							<OnlyInAllActions>true</OnlyInAllActions>
+							<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
+							<ExtendedTooltip name="ChangeFormExtendedTooltip" id="109"/>
+						</Button>
+						<Button name="Help" id="23">
+							<Type>CommandBarButton</Type>
+							<SkipOnInput>false</SkipOnInput>
+							<CommandName>Form.StandardCommand.Help</CommandName>
+							<ExtendedTooltip name="HelpExtendedTooltip" id="110"/>
+						</Button>
+					</ChildItems>
+				</CommandBar>
+			</ChildItems>
+		</UsualGroup>
+		<SpreadSheetDocumentField name="SpreadsheetDocument" id="13">
+			<DataPath>SpreadsheetDocument</DataPath>
+			<DefaultItem>true</DefaultItem>
+			<TitleLocation>None</TitleLocation>
+			<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+			<ViewScalingMode>Normal</ViewScalingMode>
+			<ContextMenu name="SpreadsheetDocumentContextMenu" id="14">
+				<ChildItems>
+					<ButtonGroup name="SpreadsheetDocumentContextMenuGroupWorkingWithPrices" id="63">
+						<ToolTip>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Tabular document context menu group for the work with prices</v8:content>
+							</v8:item>
+						</ToolTip>
+						<ExtendedTooltip name="SpreadsheetDocumentContextMenuGroupWorkingWithPricesExtendedTooltip" id="111"/>
+						<ChildItems>
+							<Button name="SpreadsheetDocumentContextMenuAdd" id="61">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.Add</CommandName>
+								<ExtendedTooltip name="SpreadsheetDocumentContextMenuAddExtendedTooltip" id="112"/>
+							</Button>
+							<Button name="SpreadsheetDocumentContextMenuCopy" id="65">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.Copy</CommandName>
+								<ExtendedTooltip name="SpreadsheetDocumentContextMenuCopyExtendedTooltip" id="113"/>
+							</Button>
+							<Button name="SpreadsheetDocumentContextMenuChange" id="64">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.Change</CommandName>
+								<ExtendedTooltip name="SpreadsheetDocumentContextMenuChangeExtendedTooltip" id="114"/>
+							</Button>
+							<Button name="SpreadsheetDocumentContextMenuHistory" id="66">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.History</CommandName>
+								<ExtendedTooltip name="SpreadsheetDocumentContextMenuHistoryExtendedTooltip" id="115"/>
+							</Button>
+						</ChildItems>
+					</ButtonGroup>
+				</ChildItems>
+			</ContextMenu>
+			<ExtendedTooltip name="SpreadsheetDocumentExtendedTooltip" id="116"/>
+			<Events>
+				<Event name="OnActivateArea">SpreadsheetDocumentOnActivateArea</Event>
+				<Event name="Selection">SpreadsheetDocumentSelection</Event>
+			</Events>
+		</SpreadSheetDocumentField>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.PriceList</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="PriceGroup" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Price group</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.PriceGroups</v8:Type>
+			</Type>
+			<Save>
+				<Field>PriceGroup</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="ToDate" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>As of</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>DateTime</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Actuality" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>A</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<Save>
+				<Field>Actuality</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="ProductsAndServices" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Products and services</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.ProductsAndServices</v8:Type>
+			</Type>
+			<Save>
+				<Field>ProductsAndServices</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="CurrentArea" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Current area</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="SpreadsheetDocument" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Spreadsheet document</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type xmlns:mxl="http://v8.1c.ru/8.2/data/spreadsheet">mxl:SpreadsheetDocument</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="PriceKind" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Price kind</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.PriceKinds</v8:Type>
+			</Type>
+			<Save>
+				<Field>PriceKind</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="UseCharacteristics" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Use characteristics</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="TablePriceKinds" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Table price types</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="PriceKind" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Price kind</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.PriceKinds</v8:Type>
+					</Type>
+				</Column>
+				<Column name="NPP" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>NPP</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="OutputFullDescr" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Output full description in price list</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.YesNo</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="OutputCode" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Output code</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.YesNo</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="BackgroundJobStorageAddress" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Background job storage address</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="BackgroundJobID" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Background job ID</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:UUID</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="BackgroundJobValidateOnClose" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Background task to verify when closing</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="BackgroundJobIntervalChecks" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Verification interval background job</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>15</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Completed" id="17">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Completed</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="OperationsStartTime" id="18">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Operation start time</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>25</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="FormateByAvailabilityInWarehouses" id="19">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Generate by availability in the warehouses</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ItemHierarchy" id="20">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>ProductsAndServices hierarchy</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="EnableAutoCreation" id="21">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Enable auto creation</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="DataLoadSettings" id="22">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Data load settings</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="Refresh" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Refresh</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Refresh</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Refresh</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Refresh</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="Add" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Add</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Add</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.AddListItem</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Add</Action>
+			<Representation>Picture</Representation>
+		</Command>
+		<Command name="History" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>History</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>History</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>0</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>History</Action>
+			<Representation>Picture</Representation>
+		</Command>
+		<Command name="Print" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Print</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Print</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Print</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Print</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="Change" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Change</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Change</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.ChangeListItem</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Change</Action>
+			<Representation>Picture</Representation>
+		</Command>
+		<Command name="Copy" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Copy</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Copy</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.CloneListItem</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Copy</Action>
+			<Representation>Picture</Representation>
+		</Command>
+		<Command name="ShowTitle" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Title</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Show title</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ShowTitle</Action>
+		</Command>
+		<Command name="Pricing" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Pricing</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Pricing</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Pricing</Action>
+		</Command>
+		<Command name="GoToMultipleFilters" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Setting</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Go to multiple filters</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.ReportSettings</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>GoToMultipleFilters</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="AbortPriceListBackGroundFormation" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Break</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Abort price list forming</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.StopSign</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>AbortPriceListBackGroundFormation</Action>
+			<Representation>Picture</Representation>
+		</Command>
+		<Command name="ImportPricesFromExternalSource" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Import prices from external source</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Import prices from external source</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Use>
+				<xr:Common>false</xr:Common>
+				<xr:Value name="Role.FullRights">true</xr:Value>
+				<xr:Value name="Role.EditDocumentPrices">true</xr:Value>
+			</Use>
+			<Picture>
+				<xr:Ref>CommonPicture.LoadFromFile</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ImportPricesFromExternalSource</Action>
+			<Representation>Picture</Representation>
+		</Command>
+	</Commands>
+</Form>

@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<CommandInterface xmlns="http://v8.1c.ru/8.3/xcf/extrnprops" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<CommandsVisibility>
+		<Command name="DataProcessor.DataImportFromTM103.StandardCommand.Open">
+			<Visibility>
+				<xr:Common>true</xr:Common>
+			</Visibility>
+		</Command>
+		<Command name="CommonForm.FormFillingInformationAboutCompany.StandardCommand.Open">
+			<Visibility>
+				<xr:Common>true</xr:Common>
+			</Visibility>
+		</Command>
+		<Command name="CommonForm.FormBalancesEntering.StandardCommand.Open">
+			<Visibility>
+				<xr:Common>true</xr:Common>
+			</Visibility>
+		</Command>
+		<Command name="DataProcessor.DataImportFromExternalSources.Command.DataImportFromExternalSources">
+			<Visibility>
+				<xr:Common>true</xr:Common>
+			</Visibility>
+		</Command>
+		<Command name="CommonCommand.WhatNewsPageInVideoVersion">
+			<Visibility>
+				<xr:Common>false</xr:Common>
+			</Visibility>
+		</Command>
+		<Command name="CommonForm.SystemChangesDescription.StandardCommand.Open">
+			<Visibility>
+				<xr:Common>true</xr:Common>
+			</Visibility>
+		</Command>
+		<Command name="CommonCommand.ProductPageOn1CSite">
+			<Visibility>
+				<xr:Common>true</xr:Common>
+			</Visibility>
+		</Command>
+		<Command name="CommonCommand.OnlineSupportMonitor">
+			<Visibility>
+				<xr:Common>true</xr:Common>
+			</Visibility>
+		</Command>
+		<Command name="DataProcessor.InformationOnStart.Command.InformationOnStart">
+			<Visibility>
+				<xr:Common>true</xr:Common>
+			</Visibility>
+		</Command>
+		<Command name="CommonCommand.ApplicationPageOn1CSite">
+			<Visibility>
+				<xr:Common>true</xr:Common>
+			</Visibility>
+		</Command>
+		<Command name="CommonCommand.PageMobileApplicationOnGooglePlay">
+			<Visibility>
+				<xr:Common>false</xr:Common>
+			</Visibility>
+		</Command>
+		<Command name="CommonCommand.PageMobileApplicationOnAppStore">
+			<Visibility>
+				<xr:Common>false</xr:Common>
+			</Visibility>
+		</Command>
+	</CommandsVisibility>
+	<CommandsPlacement>
+		<Command name="DataProcessor.DataImportFromTM103.StandardCommand.Open">
+			<CommandGroup>CommandGroup.OpeningBalances</CommandGroup>
+			<Placement>Manual</Placement>
+		</Command>
+		<Command name="CommonForm.FormFillingInformationAboutCompany.StandardCommand.Open">
+			<CommandGroup>CommandGroup.OpeningBalances</CommandGroup>
+			<Placement>Manual</Placement>
+		</Command>
+		<Command name="CommonForm.FormBalancesEntering.StandardCommand.Open">
+			<CommandGroup>CommandGroup.OpeningBalances</CommandGroup>
+			<Placement>Manual</Placement>
+		</Command>
+		<Command name="DataProcessor.DataImportFromExternalSources.Command.DataImportFromExternalSources">
+			<CommandGroup>CommandGroup.OpeningBalances</CommandGroup>
+			<Placement>Manual</Placement>
+		</Command>
+		<Command name="CommonCommand.WhatNewsPageInVideoVersion">
+			<CommandGroup>CommandGroup.Information</CommandGroup>
+			<Placement>Manual</Placement>
+		</Command>
+		<Command name="CommonForm.SystemChangesDescription.StandardCommand.Open">
+			<CommandGroup>CommandGroup.Information</CommandGroup>
+			<Placement>Manual</Placement>
+		</Command>
+		<Command name="CommonCommand.ProductPageOn1CSite">
+			<CommandGroup>CommandGroup.Information</CommandGroup>
+			<Placement>Manual</Placement>
+		</Command>
+		<Command name="CommonCommand.OnlineSupportMonitor">
+			<CommandGroup>CommandGroup.Information</CommandGroup>
+			<Placement>Manual</Placement>
+		</Command>
+		<Command name="DataProcessor.InformationOnStart.Command.InformationOnStart">
+			<CommandGroup>CommandGroup.Information</CommandGroup>
+			<Placement>Manual</Placement>
+		</Command>
+		<Command name="CommonCommand.ApplicationPageOn1CSite">
+			<CommandGroup>CommandGroup.MobileApplication</CommandGroup>
+			<Placement>Manual</Placement>
+		</Command>
+		<Command name="CommonCommand.PageMobileApplicationOnGooglePlay">
+			<CommandGroup>CommandGroup.MobileApplication</CommandGroup>
+			<Placement>Manual</Placement>
+		</Command>
+		<Command name="CommonCommand.PageMobileApplicationOnAppStore">
+			<CommandGroup>CommandGroup.MobileApplication</CommandGroup>
+			<Placement>Manual</Placement>
+		</Command>
+	</CommandsPlacement>
+	<CommandsOrder>
+		<Command name="DataProcessor.DataImportFromTM103.StandardCommand.Open">
+			<CommandGroup>CommandGroup.OpeningBalances</CommandGroup>
+		</Command>
+		<Command name="CommonForm.FormFillingInformationAboutCompany.StandardCommand.Open">
+			<CommandGroup>CommandGroup.OpeningBalances</CommandGroup>
+		</Command>
+		<Command name="CommonForm.FormBalancesEntering.StandardCommand.Open">
+			<CommandGroup>CommandGroup.OpeningBalances</CommandGroup>
+		</Command>
+		<Command name="DataProcessor.DataImportFromExternalSources.Command.DataImportFromExternalSources">
+			<CommandGroup>CommandGroup.OpeningBalances</CommandGroup>
+		</Command>
+		<Command name="CommonCommand.WhatNewsPageInVideoVersion">
+			<CommandGroup>CommandGroup.Information</CommandGroup>
+		</Command>
+		<Command name="CommonForm.SystemChangesDescription.StandardCommand.Open">
+			<CommandGroup>CommandGroup.Information</CommandGroup>
+		</Command>
+		<Command name="CommonCommand.ProductPageOn1CSite">
+			<CommandGroup>CommandGroup.Information</CommandGroup>
+		</Command>
+		<Command name="CommonCommand.OnlineSupportMonitor">
+			<CommandGroup>CommandGroup.Information</CommandGroup>
+		</Command>
+		<Command name="DataProcessor.InformationOnStart.Command.InformationOnStart">
+			<CommandGroup>CommandGroup.Information</CommandGroup>
+		</Command>
+		<Command name="CommonCommand.ApplicationPageOn1CSite">
+			<CommandGroup>CommandGroup.MobileApplication</CommandGroup>
+		</Command>
+		<Command name="CommonCommand.PageMobileApplicationOnGooglePlay">
+			<CommandGroup>CommandGroup.MobileApplication</CommandGroup>
+		</Command>
+		<Command name="CommonCommand.PageMobileApplicationOnAppStore">
+			<CommandGroup>CommandGroup.MobileApplication</CommandGroup>
+		</Command>
+	</CommandsOrder>
+	<GroupsOrder>
+		<Group>NavigationPanelOrdinary</Group>
+		<Group>CommandGroup.OpeningBalances</Group>
+		<Group>CommandGroup.Information</Group>
+		<Group>CommandGroup.MobileApplication</Group>
+	</GroupsOrder>
+</CommandInterface>

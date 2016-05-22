@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"></meta><meta name="GENERATOR" content="MSHTML 11.00.9600.18321"></meta></head><body>
+<h1>Payment receipt document</h1>
+<p class="Usual"></p>
+<p class="Usual">The document registers transactions of incoming non-cash assets in the database. </p>
+<p class="Usual"> </p>
+<p class="Usual">Document transaction types: </p>
+<ul><li>
+<div><strong>From Customer.</strong></div>
+</li><li><strong>From vendor.</strong> 
+</li><li><strong>From advance holder.</strong> 
+</li><li><strong>Currency Purchase.</strong> 
+</li><li><strong>Taxes Return.</strong> 
+</li><li>
+<div><strong>Other.</strong></div></li></ul><p class="Usual">The transaction <strong>From Customer</strong> is used for registration of the customer non-cash payments. </p>
+<p class="Usual">If it is required to receive a payment from vendor for the previously returned items, then the <strong>From vendor</strong> transaction is selected<em>.</em> </p>
+<p class="Usual">If it is required to accept cash assets from an advance holder - the <strong>From advance holder </strong>transaction is selected.</p>
+<p class="Usual">In other cases - the <strong>Other </strong>transaction is selected.</p>
+<p class="Usual"></p>
+<p class="Usual">Attributes required for any transaction type:</p>
+<ul><li>
+<div><strong>Company - </strong>company, for which the document is Creatingd. It is selected from the <a href="Catalog.Companies/Help"><font color="#0000ff">Companies</font></a> list. The attribute is displayed on the form if Accounting by Multiple Companies is enabled in accounting options.</div>
+</li><li>
+<div><strong>Transaction kind - </strong>of the document. The following items are to be selected from the list: from customer, from vendor, from advance holder, currency purchase, taxes return and other.</div>
+</li><li>
+<div><strong>Bank account - </strong>of the Company, for which payment is processed. It is selected from the <a href="Catalog.BankAccounts/Help"><font color="#0000ff">Bank accounts</font></a> list.</div>
+</li><li>
+<div><strong>Item - </strong>of cash flow, selected from the <a href="Catalog.BankingFlowItems/Help"><font color="#0000ff">Banking flow item</font></a> list.</div>
+</li><li>
+<div><strong>Document Amount - </strong>of payment in currency of bank account.</div>
+</li><li>
+<div><strong>Basis - </strong>document of the payment. </div>
+</li><li>
+<div><strong>In. Doc. No - </strong>number of the incoming documen .</div>
+</li><li>
+<div><strong>In. Doc Company contract date - </strong>date of the incoming documen </div>
+</li><li>
+<div><strong>Abbreviation of payment purpose</strong></div>
+</li><li>
+<div><strong>Note -</strong> any additional information.</div></li></ul><p class="Usual"></p>
+<p class="Usual">Attributes required for From vendor or From Customer transaction types:</p>
+<ul><li>
+<div><strong>Counterparty - </strong>customer or vendor, selected from the <a href="Catalog.Counterparties/Help"><font color="#0000ff">Counterparties</font></a> list.</div>
+</li><li>
+<div><strong>Account of Company -</strong> selected from the <a href="Catalog.BankAccounts/Help"><font color="#0000ff">Bank accounts</font></a> list.</div>
+</li><li>
+<p class="Usual" style="MARGIN-RIGHT: 0px" dir="ltr"><strong>Taxation -</strong> sales taxes and VAT.</p>
+</li><li>
+<div><strong>Payments Details. </strong>Table attributes:</div>
+<ul><li>
+<div><strong>Company contract - </strong>agreement between company and company. It is selected from the list of <a href="Catalog.CounterpartyCompany contracts/Help"><font color="#0000ff">Counterparty Company contracts</font></a>.</div>
+</li><li>
+<div><strong>Advance - </strong>prepayment flag. </div>
+</li><li>
+<div><strong>Document - </strong>of the payment. IN case of From Customer transaction type it is specified only for non-advance payments. IN case of From vendor transaction, it is specified always.</div>
+</li><li>
+<div><strong>Accounts Amount - </strong>payment Amount in currency of agreement.</div>
+</li><li>
+<div><strong>Rate - </strong>of the currency of agreement. The attribute is displayed on the form if currency transactions are enabled in the accounting options. </div>
+</li><li>
+<div><strong>Factor - </strong>of the rate of agreement currency. The attribute is displayed on the form if currency transactions are enabled in the accounting options.</div>
+</li><li><strong>Payments Amount - </strong>payment Amount in currency of bank account. The attribute is displayed on the form if currency transactions are enabled in the accounting options. 
+</li><li><strong>VAT rate - </strong>selected from the <a href="Catalog.VAT rates/Help"><font color="#0000ff">VAT rates</font></a> list. 
+</li><li><strong>Including VAT -</strong> Amount of VAT. 
+</li><li><strong>Invoice for Payments</strong> - selected in case when payment is made towards specific invoice. It is selected from the <a href="Document.InvoiceForPayments/Help"><font color="#0000ff">Invoice For payments</font></a> list. 
+</li><li><strong>Order -</strong> displayed in case of payment on specific order. 
+</li><li><strong>Payments planning document - </strong>is selected from the list of the documents  <a href="Document.BankingTransferPlan/Help">"Banking transfer (plan)</a>" or "<u><a href="Document.BankingReceiptPlan/Help"><font color="#0000ff">Banking receipt (plan)"</font></a>.</u></li></ul></li></ul><p class="Usual"></p>
+<p class="Usual">Attributes required for From advance holder transaction type:</p>
+<ul><li>
+<div><strong>Advance Holder -</strong> employee from whom the payment is received,<strong> </strong>selected from the <a href="Catalog.Performers/Help"><font color="#0000ff">Performers</font></a> list.</div>
+</li><li>
+<div><strong>Document - </strong>of issue of cash assets to an advance folder.</div>
+<div></div>
+</li><li><strong>Payments planning document - </strong>is selected from the list of the documents  <a href="Document.BankingTransferPlan/Help">"Banking transfer (plan)</a>" or "<u><a href="Document.BankingReceiptPlan/Help"><font color="#0000ff">Banking receipt (plan)"</font></a>.</u> 
+<div></div></li></ul><p class="Usual"></p>
+<p class="Usual">Attributes required for <strong>Currency Purchase</strong> transaction type:</p>
+<ul><li>
+<div>
+<div><strong>Account </strong>- GL account where payment will be attributed.</div></div>
+</li><li>
+<div>
+<div><strong>Acquiring Rate - </strong>of the currency. The attribute is displayed on the form if currency transactions are enabled in the accounting options, and account currency equals to the national currency.</div></div>
+</li><li>
+<div><strong>Factor - </strong>the attribute is displayed on the form if currency transactions are enabled in the accounting options, and account currency equals to the national currency. </div>
+</li><li>
+<div><strong>Amount in the currency of accounting</strong></div>
+<div></div>
+</li><li><strong>Payments planning document - </strong>is selected from the list of the documents  <a href="Document.BankingTransferPlan/Help">"Banking transfer (plan)</a>" or "<u><a href="Document.BankingReceiptPlan/Help"><font color="#0000ff">Banking receipt (plan)"</font></a>.</u> 
+<div></div></li></ul><p>Attributes required for <strong>Taxes Return</strong> transaction type:</p>
+<li>
+<div>
+<div><strong>Accrued tax type </strong>- type of the tax which is going to be returned. Is selected from the "<u><font color="#0000ff">Taxes types" </font></u>list.</div></div>
+</li><li>
+<div>
+<div><strong>Business Activity- </strong>reversing of expenses by cash method accounting. Is selected from the "<a href="Catalog.HапpавлeнияДeятeльнocти/Help"><font color="#0000ff">Business activities" </font></a>catalog. The attribute is displayed in the form if in the accounting parameters settings the use of the cash method accounting is enabled.</div></div>
+<p class="Usual"></p>
+<p class="Usual">Attributes required for <strong>Other</strong> transaction type:</p>
+<ul><li>
+<div><strong>Account </strong>- GL account where payment will be attributed.</div>
+<div></div>
+</li><li><strong>Payments planning document - </strong>is selected from the list of the documents  <a href="Document.BankingTransferPlan/Help">"Banking transfer (plan)</a>" or "<u><a href="Document.BankingReceiptPlan/Help"><font color="#0000ff">Banking receipt (plan)"</font></a>.</u> 
+<div></div></li></ul><p class="Usual"></p>
+<p class="Usual">The Payment receipt document can be entered on the basis of the following documents:</p>
+<p></p>
+<ul><li>
+<div><a href="Document.AcceptanceCertificate/Help"><font color="#0000ff">Services acceptance certificate</font></a>.</div>
+</li><li>
+<div>
+<div><a href="Document.CustomerInvoice/Help"><font color="#0000ff">Customer invoice</font></a>.</div></div>
+</li><li>
+<div>
+<div><a href="Document.FixedAssetsTransfer/Help"><font color="#0000ff">Fixed assets sale</font></a>.</div></div>
+</li><li>
+<div>
+<div><a href="Document.InvoiceForPayments/Help"><font color="#0000ff">Invoice for Payments</font></a>.</div></div>
+</li><li>
+<div>
+<div><a href="Document.BankingTransferPlan/Help"><font color="#0000ff">Banking Transfer </font><font color="#0000ff">(Plan)</font></a>.</div></div>
+</li><li>
+<div>
+<div><a href="Document.BankingReceiptPlan/Help"><font color="#0000ff">Banking Receipt </font><font color="#0000ff">(Plan)</font></a>.</div></div>
+</li><li>
+<div>
+<div>
+<div><a href="Document.CustomerOrder/Help"><font color="#0000ff">Customer Order</font></a>.</div></div></div></li></ul><p class="Usual"> </p></li></body></html>

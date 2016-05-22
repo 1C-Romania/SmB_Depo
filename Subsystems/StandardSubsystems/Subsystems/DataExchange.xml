@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<MetaDataObject xmlns="http://v8.1c.ru/8.3/MDClasses" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:cmi="http://v8.1c.ru/8.2/managed-application/cmi" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xpr="http://v8.1c.ru/8.3/xcf/predef" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Subsystem uuid="842c8662-8f39-405e-9665-cbdabc116159">
+		<Properties>
+			<Name>DataExchange</Name>
+			<Synonym>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Data exchange</v8:content>
+				</v8:item>
+			</Synonym>
+			<Comment/>
+			<IncludeHelpInContents>false</IncludeHelpInContents>
+			<IncludeInCommandInterface>false</IncludeInCommandInterface>
+			<Explanation/>
+			<Picture/>
+			<Content>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.DataExchangeClient</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.DataExchangeReUse</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.DataExchangeEvents</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.DataExchangeServer</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">ScheduledJob.DataSynchronization</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Constant.UseDataSynchronization</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Catalog.DataExchangeScripts</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Enum.ActionsAtExchange</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Enum.ExchangeObjectPriorities</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Enum.ExchangeExecutionResult</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Enum.ExchangeMessagesTransportKinds</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.ObjectRegistrationRulesImport</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.ExchangeMessagesTransportFILE</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.ExchangeTransportSettings</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonCommand.ConfigureExchangeMessagesTransportParameters</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">SessionParameter.ObjectRegistrationRules</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.DataExchangeStatus</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonCommand.GoToDataImportEventsEventLogMonitor</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">SessionParameter.ReusableValuesUpdateDateORM</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Constant.ReusableValuesUpdateDateORM</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">EventSubscription.RecordDataMigrationRestrictionFilterChanges</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">EventSubscription.DisableUseExchangePlan</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonPicture.DataSynchronizationPerforming</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Constant.DistributedInformationBaseNodePrefix</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.DataExchangeOverridable</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.InfobasesObjectsCompliance</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Enum.DataExchangeRuleKinds</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.DataExchangeRules</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Enum.RuleSourcesForDataExchange</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">SessionParameter.SelectiveObjectRegistrationRules</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonCommand.OpenObjectConversionRules</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonCommand.OpenObjectRegistrationRules</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommandGroup.DataExchangeParameters</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.DataExchangeCreationAssistant</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonPicture.DataSynchronizationSetting</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.InfobaseObjectsMapping</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.InteractiveDataExchangeAssistant</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.ExchangeMessagesTransportFTP</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.EmailExchangeMessagesTransport</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonPicture.DataExchangeStatus</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.SuccessfulDataExchangeStatus</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonPicture.StatusesOfObjectsMapping</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.DistributedInfobaseObjectsConversion</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonCommand.OpenDataExchange</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonCommand.ExecuteDataExchange</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonCommand.GoToDataExportEventsEventLogMonitor</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonCommand.OpenDataExchangesScripts</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonPicture.DataExchangeStatusError</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonForm.DataExchanges</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Role.DataSynchronizationSetting</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Role.DataSynchronization</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommandGroup.DataExchangeExecution</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonCommand.ExecuteDataExchangeInteractively</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.UniversalXMLDataExchange</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonPicture.DataSynchronizationInteractiveExecution</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Enum.ExchangeObjectsExportModes</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.InfobasesNodesCommonSettings</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Constant.SubordinatedDIBNodeSetup</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonPicture.MappingObjectsPicturesCollection</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Constant.SubordinatedDIBNodeSettingsFinished</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.DataExchangeExternalConnection</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonForm.CorrespondentInfobaseObjectSelection</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">FunctionalOption.UseDataSynchronizationInLocalMode</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">FunctionalOption.ReusableValuesActualUpdateDateORM</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">FunctionalOption.InfobasePrefix</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">EventSubscription.EnableUseExchangePlan</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonCommand.GetSecondInfobaseDataExchangeSettings</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">EventSubscription.CheckDataExchangeSettingChangePossibility</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">EventSubscription.CheckDataMigrationRestrictionFiltersChanges</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">EventSubscription.CancelSendNodeDataInDistributedInfobase</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">WebService.Exchange</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.DataExchangeMessages</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.NodesCommonDataChange</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">EventSubscription.RegisterNodesCommonDataChanges</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Constant.UseDataSynchronizationInLocalMode</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Constant.UseDataSynchronizationSaaS</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">WebService.Exchange_2_0_1_6</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">FunctionalOption.UseDataSynchronization</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Constant.DataExchangeMessageFromMainNode</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.DataExchangeGlobal</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.DataExchangeExecution</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonForm.AdditionalDetails</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonTemplate.InstructionHowToInstallUpdateManually</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.DataExchangeServerCall</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.DataExchangeClientServer</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.InfobaseObjectsConversion</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">ScheduledJob.DeleteIrrelevantInformationSynchronization</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonPicture.DataSynchronizationDisable</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonPicture.DataSynchronizationSubsystem</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonPicture.DataSynchronization</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonPicture.DataSynchronizationLongOperation</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonPicture.DataSynchronizationScheduleStatus</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.InteractiveExportChange</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonPicture.MetadataObjectsCollection</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonPicture.DataSynchronizationLongOperation48</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.DataExchangeResults</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Enum.DataExchangeProblemTypes</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">EventSubscription.CheckDocumentProblemSolving</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">EventSubscription.CheckObjectProblemSolving</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonPicture.DataSynchronizationCollision</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonPicture.DataSynchronizationUnacceptedByDate</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">StyleItem.UnacceptedVersion</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonCommand.OpenDataExchangeResults</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">EventSubscription.ClearInfobaseNodeReferences</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonPicture.DataSynchronizationDataAnalysis48</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">SessionParameter.DataExchangeMessageImportModeBeforeStart</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Constant.RetryDataExportExchangeMessagesBeforeStart</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonPicture.DataSynchronizationDataReceived</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.ChangeRecordForExchangeData</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonCommand.SentDataContent</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonCommand.DeleteSynchronizationSetting</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">SessionParameter.DataSynchronizationPasswords</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">SessionParameter.ExchangeDataPriority</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Constant.ImportDataExchangeMessage</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Constant.DataExchangeMessagesDirectoryForLinux</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Constant.DataExchangeMessagesDirectoryForWindows</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Constant.DataImportTransactionItemCount</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonCommand.OpenDataSynchronizationRules</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">SessionParameter.VersionsDifferenceErrorOnReceivingData</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">EventSubscription.DisableAutomaticDataSynchronization</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.DataExchangeXDTOServer</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">XDTOPackage.ExchangeMessage</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">bb7fad68-32d3-4e6a-be62-2c4c34c94737</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">572019eb-ffc4-4cfd-b4ba-c09267900c6c</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">950bcd80-4dde-4a88-8ccc-2c0d9becaefd</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">f8e740be-2dde-4f44-af21-0b747321bba5</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">30ed923a-2f44-40a7-893b-4d14dd9dedb6</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">7ba0e618-313b-4f5c-837b-5413c0d32c13</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.SynchronizedObjectPublicIDs</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.ObjectDataForRegistrationInExchanges</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.XDTOObjectsConversion</xr:Item>
+			</Content>
+		</Properties>
+		<ChildObjects/>
+	</Subsystem>
+</MetaDataObject>

@@ -1,0 +1,328 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<CommandBarLocation>None</CommandBarLocation>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="FormCommandBar" id="-1"/>
+	<ChildItems>
+		<Table name="List" id="1">
+			<UseAlternationRowColor>true</UseAlternationRowColor>
+			<EnableStartDrag>true</EnableStartDrag>
+			<DataPath>List</DataPath>
+			<RowPictureDataPath>List.DefaultPicture</RowPictureDataPath>
+			<CommandSet>
+				<ExcludedCommand>Copy</ExcludedCommand>
+				<ExcludedCommand>Create</ExcludedCommand>
+			</CommandSet>
+			<SearchStringLocation>None</SearchStringLocation>
+			<ViewStatusLocation>None</ViewStatusLocation>
+			<SearchControlLocation>None</SearchControlLocation>
+			<AutoRefresh>false</AutoRefresh>
+			<AutoRefreshPeriod>60</AutoRefreshPeriod>
+			<Period>
+				<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+				<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+				<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+			</Period>
+			<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+			<RestoreCurrentRow>false</RestoreCurrentRow>
+			<TopLevelParent xsi:nil="true"/>
+			<ShowRoot>true</ShowRoot>
+			<AllowRootChoice>false</AllowRootChoice>
+			<UpdateOnDataChange>Auto</UpdateOnDataChange>
+			<ContextMenu name="ListContextMenu" id="2"/>
+			<AutoCommandBar name="ListCommandBar" id="3"/>
+			<ExtendedTooltip name="ListExtendedTooltip" id="90"/>
+			<SearchStringAddition name="SearchStringList" id="133">
+				<AdditionSource>
+					<Item>List</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ListSearchStringContextMenu" id="134"/>
+				<ExtendedTooltip name="ListSearchStringExtendedTooltip" id="135"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ListViewStatus" id="136">
+				<AdditionSource>
+					<Item>List</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ListViewStatusContextMenu" id="137"/>
+				<ExtendedTooltip name="ListViewStatusExtendedTooltip" id="138"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ListSearchControl" id="139">
+				<AdditionSource>
+					<Item>List</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ListSearchControlContextMenu" id="140"/>
+				<ExtendedTooltip name="ListSearchControlExtendedTooltip" id="141"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="Selection">ListSelection</Event>
+				<Event name="BeforeRowChange">ListBeforeRowChange</Event>
+			</Events>
+			<ChildItems>
+				<LabelField name="Description" id="4">
+					<DataPath>List.Description</DataPath>
+					<ContextMenu name="DescriptionContextMenu" id="5"/>
+					<ExtendedTooltip name="DescriptionExtendedTooltip" id="91"/>
+				</LabelField>
+				<LabelField name="EDNumber" id="56">
+					<DataPath>List.EDNumber</DataPath>
+					<ContextMenu name="EDNumberContextMenu" id="57"/>
+					<ExtendedTooltip name="EDNumberExtendedTooltip" id="92"/>
+				</LabelField>
+				<LabelField name="UniqueId" id="82">
+					<DataPath>List.UniqueId</DataPath>
+					<ContextMenu name="UUIDContextMenu" id="83"/>
+					<ExtendedTooltip name="UUIDExtendedTooltip" id="93"/>
+				</LabelField>
+				<LabelField name="FileOwner" id="8">
+					<DataPath>List.FileOwner</DataPath>
+					<ContextMenu name="FileOwnerContextMenu" id="9"/>
+					<ExtendedTooltip name="FileOwnerExtendedTooltip" id="94"/>
+				</LabelField>
+				<LabelField name="CreationDate" id="12">
+					<DataPath>List.CreationDate</DataPath>
+					<Width>8</Width>
+					<ContextMenu name="CreationDateContextMenu" id="13"/>
+					<ExtendedTooltip name="CreationDateExtendedTooltip" id="98"/>
+				</LabelField>
+				<LabelField name="UUIDExternal" id="84">
+					<DataPath>List.UUIDExternal</DataPath>
+					<ContextMenu name="UUIDExternalContextMenu" id="85"/>
+					<ExtendedTooltip name="UUIDExternalExtendedTooltip" id="95"/>
+				</LabelField>
+				<LabelField name="Author" id="6">
+					<DataPath>List.Author</DataPath>
+					<ContextMenu name="AuthorContextMenu" id="7"/>
+					<ExtendedTooltip name="AuthorExtendedTooltip" id="96"/>
+				</LabelField>
+				<LabelField name="ModificationDateUniversal" id="10">
+					<DataPath>List.ModificationDateUniversal</DataPath>
+					<Width>8</Width>
+					<ContextMenu name="UniversalModificationDateContextMenu" id="11"/>
+					<ExtendedTooltip name="UniversalModificationDateExtendedTooltip" id="97"/>
+				</LabelField>
+				<CheckBoxField name="Encrypted" id="14">
+					<DataPath>List.Encrypted</DataPath>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="EncryptedContextMenu" id="15"/>
+					<ExtendedTooltip name="EncryptedExtendedTooltip" id="99"/>
+				</CheckBoxField>
+				<LabelField name="Changed" id="16">
+					<DataPath>List.Changed</DataPath>
+					<ContextMenu name="ChangedContextMenu" id="17"/>
+					<ExtendedTooltip name="ChangedExtendedTooltip" id="100"/>
+				</LabelField>
+				<LabelField name="PictureIndex" id="18">
+					<DataPath>List.PictureIndex</DataPath>
+					<ContextMenu name="PictureIndexContextMenu" id="19"/>
+					<ExtendedTooltip name="PictureIndexExtendedTooltip" id="101"/>
+				</LabelField>
+				<LabelField name="Description" id="20">
+					<DataPath>List.Description</DataPath>
+					<ContextMenu name="DescriptionContextMenu" id="21"/>
+					<ExtendedTooltip name="DescriptionExtendedTooltip" id="102"/>
+				</LabelField>
+				<LabelField name="Responsible" id="60">
+					<DataPath>List.Responsible</DataPath>
+					<ContextMenu name="ResponsibleContextMenu" id="61"/>
+					<ExtendedTooltip name="ResponsibleExtendedTooltip" id="103"/>
+				</LabelField>
+				<CheckBoxField name="DigitallySigned" id="22">
+					<DataPath>1/19</DataPath>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="DigitallySignedContextMenu" id="23"/>
+					<ExtendedTooltip name="DigitallySignedExtendedTooltip" id="104"/>
+				</CheckBoxField>
+				<LabelField name="PathToFile" id="24">
+					<DataPath>List.PathToFile</DataPath>
+					<ContextMenu name="PathToFileContextMenu" id="25"/>
+					<ExtendedTooltip name="PathToFileExtendedTooltip" id="105"/>
+				</LabelField>
+				<LabelField name="Size" id="26">
+					<DataPath>List.Size</DataPath>
+					<ContextMenu name="SizeContextMenu" id="27"/>
+					<ExtendedTooltip name="SizeExtendedTooltip" id="106"/>
+				</LabelField>
+				<LabelField name="Extension" id="28">
+					<DataPath>List.Extension</DataPath>
+					<ContextMenu name="ExtensionContextMenu" id="29"/>
+					<ExtendedTooltip name="ExtensionExtendedTooltip" id="107"/>
+				</LabelField>
+				<LabelField name="IsEditing" id="30">
+					<DataPath>List.IsEditing</DataPath>
+					<ContextMenu name="EditContextMenu" id="31"/>
+					<ExtendedTooltip name="EditExtendedTooltip" id="108"/>
+				</LabelField>
+				<LabelField name="ImportStatus" id="58">
+					<DataPath>1/54</DataPath>
+					<ContextMenu name="ImportStatusContextMenu" id="59"/>
+					<ExtendedTooltip name="ImportStatusExtendedTooltip" id="109"/>
+				</LabelField>
+				<LabelField name="TextExtractionStatus" id="32">
+					<DataPath>List.TextExtractionStatus</DataPath>
+					<ContextMenu name="StatusExtractionOfTextContextMenu" id="33"/>
+					<ExtendedTooltip name="StatusExtractionOfTextExtendedTooltip" id="110"/>
+				</LabelField>
+				<LabelField name="FileStorageType" id="34">
+					<DataPath>List.FileStorageType</DataPath>
+					<ContextMenu name="FileStorageTypeContextMenu" id="35"/>
+					<ExtendedTooltip name="FileStorageTypeExtendedTooltip" id="111"/>
+				</LabelField>
+				<LabelField name="Volume" id="36">
+					<DataPath>List.Volume</DataPath>
+					<ContextMenu name="VolumeContextMenu" id="37"/>
+					<ExtendedTooltip name="VolumeExtendedTooltip" id="112"/>
+				</LabelField>
+				<LabelField name="EDFProfileSettings" id="88">
+					<DataPath>List.EDFProfileSettings</DataPath>
+					<ContextMenu name="EDFProfileSettingsContextMenu" id="89"/>
+					<ExtendedTooltip name="EDFProfileSettingsExtendedTooltip" id="113"/>
+				</LabelField>
+				<LabelField name="EDAgreement" id="76">
+					<DataPath>List.EDAgreement</DataPath>
+					<ContextMenu name="EDAgreementContextMenu" id="77"/>
+					<ExtendedTooltip name="AgreementEDExtendedTooltip" id="114"/>
+				</LabelField>
+				<LabelField name="EDKind" id="40">
+					<DataPath>List.EDKind</DataPath>
+					<ContextMenu name="EDTypeContextMenu" id="41"/>
+					<ExtendedTooltip name="EDTypeExtendedTooltip" id="115"/>
+				</LabelField>
+				<LabelField name="EDFScheduleVersion" id="80">
+					<DataPath>List.EDFScheduleVersion</DataPath>
+					<ContextMenu name="EDFScheduleVersionContextMenu" id="81"/>
+					<ExtendedTooltip name="EDFScheduleVersionExtendedTooltip" id="116"/>
+				</LabelField>
+				<LabelField name="EDPointType" id="78">
+					<DataPath>List.VersionPointTypeED</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>ED item type</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="EDPointTypeContextMenu" id="79"/>
+					<ExtendedTooltip name="EDPointTypeExtendedTooltip" id="117"/>
+				</LabelField>
+				<LabelField name="EDDirection" id="38">
+					<DataPath>List.EDDirection</DataPath>
+					<ContextMenu name="EDDirectionContextMenu" id="39"/>
+					<ExtendedTooltip name="EDDirectionExtendedTooltip" id="118"/>
+				</LabelField>
+				<LabelField name="EDStatusChangeDate" id="44">
+					<DataPath>List.EDStatusChangeDate</DataPath>
+					<Width>8</Width>
+					<ContextMenu name="EDStatusChangeDateContextMenu" id="45"/>
+					<ExtendedTooltip name="EDStatusChangeDateExtendedTooltip" id="119"/>
+				</LabelField>
+				<LabelField name="EDStatus" id="42">
+					<DataPath>List.EDStatus</DataPath>
+					<ContextMenu name="EDStatusContextMenu" id="43"/>
+					<ExtendedTooltip name="EDStatusExtendedTooltip" id="120"/>
+				</LabelField>
+				<LabelField name="EDComplectElementType" id="54">
+					<DataPath>1/36</DataPath>
+					<ContextMenu name="PointTypeKitEDContextMenu" id="55"/>
+					<ExtendedTooltip name="PointTypeKitEDExtendedTooltip" id="121"/>
+				</LabelField>
+				<LabelField name="EDComplectNumber" id="48">
+					<DataPath>1/15</DataPath>
+					<ContextMenu name="KitNumberEDContextMenu" id="49"/>
+					<ExtendedTooltip name="KitNumberEDExtendedTooltip" id="122"/>
+				</LabelField>
+				<LabelField name="Counterparty" id="72">
+					<DataPath>List.Counterparty</DataPath>
+					<ContextMenu name="CounterpartyContextMenu" id="73"/>
+					<ExtendedTooltip name="CounterpartyExtendedTooltip" id="123"/>
+				</LabelField>
+				<LabelField name="EDRecipient" id="50">
+					<DataPath>List.EDRecipient</DataPath>
+					<ContextMenu name="EDRecipientContextMenu" id="51"/>
+					<ExtendedTooltip name="RecipientEDExtendedTooltip" id="124"/>
+				</LabelField>
+				<LabelField name="Company" id="70">
+					<DataPath>List.Company</DataPath>
+					<ContextMenu name="CounterpartyContextMenu" id="71"/>
+					<ExtendedTooltip name="CounterpartyExtendedTooltip" id="125"/>
+				</LabelField>
+				<LabelField name="EDFrom" id="52">
+					<DataPath>List.EDFrom</DataPath>
+					<ContextMenu name="EDSenderContextMenu" id="53"/>
+					<ExtendedTooltip name="EDSenderExtendedTooltip" id="126"/>
+				</LabelField>
+				<LabelField name="EDVersionNumber" id="66">
+					<DataPath>List.EDVersionNumber</DataPath>
+					<ContextMenu name="EDVersionNumberContextMenu" id="67"/>
+					<ExtendedTooltip name="EDVersionNumberExtendedTooltip" id="127"/>
+				</LabelField>
+				<LabelField name="SenderDocumentNumber" id="68">
+					<DataPath>List.SenderDocumentNumber</DataPath>
+					<ContextMenu name="SenderDocumentNumberContextMenu" id="69"/>
+					<ExtendedTooltip name="SenderDocumentNumberExtendedTooltip" id="128"/>
+				</LabelField>
+				<LabelField name="SenderDocumentDate" id="62">
+					<DataPath>List.SenderDocumentDate</DataPath>
+					<Width>8</Width>
+					<ContextMenu name="DateDocumentSenderContextMenu" id="63"/>
+					<ExtendedTooltip name="DateDocumentSenderExtendedTooltip" id="129"/>
+				</LabelField>
+				<LabelField name="EDOperator" id="46">
+					<DataPath>1/16</DataPath>
+					<ContextMenu name="EDOperatorContextMenu" id="47"/>
+					<ExtendedTooltip name="OperatorEDExtendedTooltip" id="130"/>
+				</LabelField>
+				<LabelField name="ElectronicDocumentOwner" id="74">
+					<DataPath>List.ElectronicDocumentOwner</DataPath>
+					<ContextMenu name="ElectronicDocumentOwnerContextMenu" id="75"/>
+					<ExtendedTooltip name="ElectronicDocumentOwnerExtendedTooltip" id="131"/>
+				</LabelField>
+				<LabelField name="FileDescription" id="86">
+					<DataPath>List.FileDescription</DataPath>
+					<ContextMenu name="FileDescriptionContextMenu" id="87"/>
+					<ExtendedTooltip name="FileDescriptionExtendedTooltip" id="132"/>
+				</LabelField>
+			</ChildItems>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="List" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>List</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>false</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<MainTable>Catalog.EDAttachedFiles</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemField">
+							<dcsset:field>CreationDate</dcsset:field>
+							<dcsset:orderType>Asc</dcsset:orderType>
+						</dcsset:item>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+	</Attributes>
+</Form>

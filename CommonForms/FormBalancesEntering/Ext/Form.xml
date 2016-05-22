@@ -1,0 +1,3619 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<AutoTitle>false</AutoTitle>
+	<Customizable>false</Customizable>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="NotificationProcessing">NotificationProcessing</Event>
+		<Event name="OnOpen">OnOpen</Event>
+		<Event name="BeforeClose">BeforeClose</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="InformationReferences" id="646">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Information references</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Information references</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<ExtendedTooltip name="InformationLinksExtendedTooltip" id="647"/>
+		</UsualGroup>
+		<Pages name="Pages" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Pages</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Pages</v8:content>
+				</v8:item>
+			</ToolTip>
+			<PagesRepresentation>None</PagesRepresentation>
+			<ExtendedTooltip name="PagesExtendedTooltip" id="648"/>
+			<ChildItems>
+				<Page name="Step0" id="546">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Step0</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Step0</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="Step0ExtendedTooltip" id="649"/>
+					<ChildItems>
+						<UsualGroup name="Step0Navigation" id="553">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Navigation</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Navigation</v8:content>
+								</v8:item>
+							</ToolTip>
+							<HorizontalStretch>true</HorizontalStretch>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="Step0NavigationExtendedTooltip" id="650"/>
+							<ChildItems>
+								<LabelDecoration name="Decoration133" id="584">
+									<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Begin</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<VerticalAlign>Center</VerticalAlign>
+									<ContextMenu name="Decoration133ContextMenu" id="585"/>
+									<ExtendedTooltip name="Decoration133ExtendedTooltip" id="651"/>
+									<Events>
+										<Event name="Click">Decoration133Click</Event>
+									</Events>
+								</LabelDecoration>
+								<PictureDecoration name="Decoration81" id="554">
+									<Width>2</Width>
+									<Height>1</Height>
+									<Picture>
+										<xr:Ref>CommonPicture.FundsSection</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="Decoration81ContextMenu" id="555"/>
+									<ExtendedTooltip name="Decoration81ExtendedTooltip" id="653"/>
+								</PictureDecoration>
+								<LabelDecoration name="Decoration82" id="556">
+									<Font ref="sys:DefaultGUIFont" bold="false" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Bank and petty cash</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<VerticalAlign>Center</VerticalAlign>
+									<ContextMenu name="Decoration82ContextMenu" id="557"/>
+									<ExtendedTooltip name="Decoration82ExtendedTooltip" id="654"/>
+									<Events>
+										<Event name="Click">Decoration47Click</Event>
+									</Events>
+								</LabelDecoration>
+								<PictureDecoration name="Decoration121" id="560">
+									<Width>2</Width>
+									<Height>1</Height>
+									<Picture>
+										<xr:Ref>CommonPicture.PurchaseSection</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="Decoration121ContextMenu" id="561"/>
+									<ExtendedTooltip name="Decoration121ExtendedTooltip" id="656"/>
+								</PictureDecoration>
+								<LabelDecoration name="Decoration122" id="562">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Products</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<VerticalAlign>Center</VerticalAlign>
+									<ContextMenu name="Decoration122ContextMenu" id="563"/>
+									<ExtendedTooltip name="Decoration122ExtendedTooltip" id="657"/>
+									<Events>
+										<Event name="Click">Decoration50Click</Event>
+									</Events>
+								</LabelDecoration>
+								<PictureDecoration name="Decoration124" id="566">
+									<Width>2</Width>
+									<Height>1</Height>
+									<Picture>
+										<xr:Ref>CommonPicture.PayrollSection</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="Decoration124ContextMenu" id="567"/>
+									<ExtendedTooltip name="Decoration124ExtendedTooltip" id="659"/>
+								</PictureDecoration>
+								<LabelDecoration name="Decoration125" id="568">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Accounts payable</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<VerticalAlign>Center</VerticalAlign>
+									<ContextMenu name="Decoration125ContextMenu" id="569"/>
+									<ExtendedTooltip name="Decoration125ExtendedTooltip" id="660"/>
+									<Events>
+										<Event name="Click">Decoration53Click</Event>
+									</Events>
+								</LabelDecoration>
+								<PictureDecoration name="Decoration127" id="572">
+									<Width>2</Width>
+									<Height>1</Height>
+									<Picture>
+										<xr:Ref>CommonPicture.PayrollSection</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="Decoration127ContextMenu" id="573"/>
+									<ExtendedTooltip name="Decoration127ExtendedTooltip" id="662"/>
+								</PictureDecoration>
+								<LabelDecoration name="Decoration128" id="574">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Accounts receivable</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<VerticalAlign>Center</VerticalAlign>
+									<ContextMenu name="Decoration128ContextMenu" id="575"/>
+									<ExtendedTooltip name="Decoration128ExtendedTooltip" id="663"/>
+									<Events>
+										<Event name="Click">Decoration56Click</Event>
+									</Events>
+								</LabelDecoration>
+								<PictureDecoration name="Decoration130" id="578">
+									<Width>2</Width>
+									<Height>1</Height>
+									<Picture>
+										<xr:Ref>CommonPicture.SectionEnterprise</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="Decoration130ContextMenu" id="579"/>
+									<ExtendedTooltip name="Decoration130ExtendedTooltip" id="665"/>
+								</PictureDecoration>
+								<LabelDecoration name="Decoration131" id="580">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Finish</v8:content>
+										</v8:item>
+									</Title>
+									<VerticalAlign>Center</VerticalAlign>
+									<ContextMenu name="Decoration131ContextMenu" id="581"/>
+									<ExtendedTooltip name="Decoration131ExtendedTooltip" id="666"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+						<LabelDecoration name="Decoration6" id="549">
+							<Width>73</Width>
+							<Font ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Hello! I am your opening balance input wizard.</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Decoration6ContextMenu" id="550"/>
+							<ExtendedTooltip name="Decoration6ExtendedTooltip" id="667"/>
+						</LabelDecoration>
+						<LabelDecoration name="Decoration4" id="613">
+							<ContextMenu name="Decoration4ContextMenu" id="614"/>
+							<ExtendedTooltip name="Decoration4ExtendedTooltip" id="668"/>
+						</LabelDecoration>
+						<InputField name="BalanceDate" id="642">
+							<DataPath>BalanceDate</DataPath>
+							<TitleTextColor>style:ExplanationText</TitleTextColor>
+							<ContextMenu name="BalanceDateContextMenu" id="643"/>
+							<ExtendedTooltip name="BalanceDateExtendedTooltip" id="669"/>
+							<Events>
+								<Event name="OnChange">DateOfChange</Event>
+							</Events>
+						</InputField>
+						<LabelDecoration name="Decoration5" id="644">
+							<ContextMenu name="Decoration5ContextMenu" id="645"/>
+							<ExtendedTooltip name="Decoration5ExtendedTooltip" id="670"/>
+						</LabelDecoration>
+						<LabelDecoration name="Decoration25" id="551">
+							<Height>1</Height>
+							<TextColor>style:ExplanationText</TextColor>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Specify the wizard mode:</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Decoration25ContextMenu" id="552"/>
+							<ExtendedTooltip name="Decoration25ExtendedTooltip" id="671"/>
+						</LabelDecoration>
+						<RadioButtonField name="AssistantSimpleUseMode" id="547">
+							<DataPath>AssistantSimpleUseMode</DataPath>
+							<TitleTextColor>style:ExplanationText</TitleTextColor>
+							<TitleLocation>None</TitleLocation>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Configuration settings will be populated with recommended values.</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<RadioButtonType>Auto</RadioButtonType>
+							<ColumnsCount>1</ColumnsCount>
+							<ChoiceList>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Simple (recommended)</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xr:DesignTimeRef">Enum.YesNo.EnumValue.Yes</Value>
+									</xr:Value>
+								</xr:Item>
+							</ChoiceList>
+							<ContextMenu name="SimpleModeUsingAssistantContextMenu" id="548"/>
+							<ExtendedTooltip name="SimpleModeUsingAssistantExtendedTooltip" id="672"/>
+							<Events>
+								<Event name="OnChange">AssistantSimpleUseModeOnChange</Event>
+							</Events>
+						</RadioButtonField>
+						<RadioButtonField name="SimpleModeAssistantUsage1" id="607">
+							<DataPath>AssistantSimpleUseMode</DataPath>
+							<TitleTextColor>style:ExplanationText</TitleTextColor>
+							<TitleLocation>None</TitleLocation>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>In this mode the configuration settings can be edited manually.</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<RadioButtonType>Auto</RadioButtonType>
+							<ColumnsCount>1</ColumnsCount>
+							<ChoiceList>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Extended</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xr:DesignTimeRef">Enum.YesNo.EnumValue.No</Value>
+									</xr:Value>
+								</xr:Item>
+							</ChoiceList>
+							<ContextMenu name="SimpleModeAssistantUsage1ContextMenu" id="608"/>
+							<ExtendedTooltip name="SimpleModeAssistantUsage1ExtendedTooltip" id="674"/>
+							<Events>
+								<Event name="OnChange">AssistantSimpleUseModeOnChange</Event>
+							</Events>
+						</RadioButtonField>
+					</ChildItems>
+				</Page>
+				<Page name="Step1" id="15">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Bank and petty cash</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Products</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Picture>
+						<xr:Ref>CommonPicture.SubsystemCash</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</Picture>
+					<ExtendedTooltip name="Step1ExtendedTooltip" id="676"/>
+					<ChildItems>
+						<UsualGroup name="Step1Navigation" id="418">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Navigation</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Navigation</v8:content>
+								</v8:item>
+							</ToolTip>
+							<HorizontalStretch>true</HorizontalStretch>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="Step1NavigationExtendedTooltip" id="677"/>
+							<ChildItems>
+								<LabelDecoration name="Decoration134" id="586">
+									<Width>5</Width>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Begin</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<VerticalAlign>Center</VerticalAlign>
+									<ContextMenu name="Decoration134ContextMenu" id="587"/>
+									<ExtendedTooltip name="Decoration134ExtendedTooltip" id="678"/>
+									<Events>
+										<Event name="Click">Decoration133Click</Event>
+									</Events>
+								</LabelDecoration>
+								<PictureDecoration name="Decoration57" id="419">
+									<Width>2</Width>
+									<Height>1</Height>
+									<Picture>
+										<xr:Ref>CommonPicture.FundsSection</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="Decoration57ContextMenu" id="420"/>
+									<ExtendedTooltip name="Decoration57ExtendedTooltip" id="680"/>
+								</PictureDecoration>
+								<LabelDecoration name="Decoration58" id="421">
+									<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Bank and petty cash</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<VerticalAlign>Center</VerticalAlign>
+									<ContextMenu name="Decoration58ContextMenu" id="422"/>
+									<ExtendedTooltip name="Decoration58ExtendedTooltip" id="681"/>
+									<Events>
+										<Event name="Click">Decoration47Click</Event>
+									</Events>
+								</LabelDecoration>
+								<PictureDecoration name="Decoration84" id="425">
+									<Width>2</Width>
+									<Height>1</Height>
+									<Picture>
+										<xr:Ref>CommonPicture.PurchaseSection</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="Decoration84ContextMenu" id="426"/>
+									<ExtendedTooltip name="Decoration84ExtendedTooltip" id="683"/>
+								</PictureDecoration>
+								<LabelDecoration name="Decoration85" id="427">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Products</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<VerticalAlign>Center</VerticalAlign>
+									<ContextMenu name="Decoration85ContextMenu" id="428"/>
+									<ExtendedTooltip name="Decoration85ExtendedTooltip" id="684"/>
+									<Events>
+										<Event name="Click">Decoration50Click</Event>
+									</Events>
+								</LabelDecoration>
+								<PictureDecoration name="Decoration87" id="431">
+									<Width>2</Width>
+									<Height>1</Height>
+									<Picture>
+										<xr:Ref>CommonPicture.PayrollSection</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="Decoration87ContextMenu" id="432"/>
+									<ExtendedTooltip name="Decoration87ExtendedTooltip" id="686"/>
+								</PictureDecoration>
+								<LabelDecoration name="Decoration88" id="433">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Accounts payable</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<VerticalAlign>Center</VerticalAlign>
+									<ContextMenu name="Decoration88ContextMenu" id="434"/>
+									<ExtendedTooltip name="Decoration88ExtendedTooltip" id="687"/>
+									<Events>
+										<Event name="Click">Decoration53Click</Event>
+									</Events>
+								</LabelDecoration>
+								<PictureDecoration name="Decoration90" id="437">
+									<Width>2</Width>
+									<Height>1</Height>
+									<Picture>
+										<xr:Ref>CommonPicture.PayrollSection</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="Decoration90ContextMenu" id="438"/>
+									<ExtendedTooltip name="Decoration90ExtendedTooltip" id="689"/>
+								</PictureDecoration>
+								<LabelDecoration name="Decoration91" id="439">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Accounts receivable</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<VerticalAlign>Center</VerticalAlign>
+									<ContextMenu name="Decoration91ContextMenu" id="440"/>
+									<ExtendedTooltip name="Decoration91ExtendedTooltip" id="690"/>
+									<Events>
+										<Event name="Click">Decoration56Click</Event>
+									</Events>
+								</LabelDecoration>
+								<PictureDecoration name="Decoration118" id="507">
+									<Width>2</Width>
+									<Height>1</Height>
+									<Picture>
+										<xr:Ref>CommonPicture.SectionEnterprise</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="Decoration118ContextMenu" id="508"/>
+									<ExtendedTooltip name="Decoration118ExtendedTooltip" id="692"/>
+								</PictureDecoration>
+								<LabelDecoration name="Decoration94" id="445">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Finish</v8:content>
+										</v8:item>
+									</Title>
+									<VerticalAlign>Center</VerticalAlign>
+									<ContextMenu name="Decoration94ContextMenu" id="446"/>
+									<ExtendedTooltip name="Decoration94ExtendedTooltip" id="693"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+						<LabelDecoration name="Step1FOTitle" id="192">
+							<Width>73</Width>
+							<HorizontalStretch>true</HorizontalStretch>
+							<Font ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Before you enter the cash balance, please answer some questions about your company</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Step1FOTitleContextMenu" id="193"/>
+							<ExtendedTooltip name="Step1FOExtendedHeaderToolTip" id="694"/>
+						</LabelDecoration>
+						<UsualGroup name="Step1FO" id="213">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Settings</v8:content>
+								</v8:item>
+							</Title>
+							<HorizontalStretch>true</HorizontalStretch>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="Step1FOExtendedTooltip" id="695"/>
+							<ChildItems>
+								<UsualGroup name="CurrencyOperationsAccountingGroup" id="634">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group currency transactions</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group currency transactions</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupCurrencyOperationsAccountingExtendedTooltip" id="696"/>
+									<ChildItems>
+										<RadioButtonField name="CurrencyTransactionsAccounting" id="194">
+											<DataPath>CurrencyTransactionsAccounting</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Company uses multiple currencies</v8:content>
+												</v8:item>
+											</Title>
+											<TitleTextColor>style:ExplanationText</TitleTextColor>
+											<ToolTipRepresentation>Button</ToolTipRepresentation>
+											<RadioButtonType>Auto</RadioButtonType>
+											<ChoiceList>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation/>
+														<Value xsi:type="xr:DesignTimeRef">Enum.YesNo.EnumValue.Yes</Value>
+													</xr:Value>
+												</xr:Item>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation/>
+														<Value xsi:type="xr:DesignTimeRef">Enum.YesNo.EnumValue.No</Value>
+													</xr:Value>
+												</xr:Item>
+											</ChoiceList>
+											<ContextMenu name="CurrencyOperationsAccountingContextMenu" id="195"/>
+											<ExtendedTooltip name="CurrencyOperationsAccountingExtendedTooltip" id="697">
+												<Title formatted="true">
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>If it is necessary to keep accounts of operations in several currencies, you should enable this option. 
+The parameter affects the reflection of currency, exchange rates and multiplicity of currency in the corresponding objects, e.g. in the form of the prices and currency selection called out of the documents.</v8:content>
+													</v8:item>
+												</Title>
+											</ExtendedTooltip>
+											<Events>
+												<Event name="OnChange">CurrencyTransactionsAccountingOnChange</Event>
+											</Events>
+										</RadioButtonField>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="NationalCurrencyGroup" id="615">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group national currency</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group national currency</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupNationalCurrencyExtendedTooltip" id="699"/>
+									<ChildItems>
+										<InputField name="NationalCurrency" id="544">
+											<DataPath>NationalCurrency</DataPath>
+											<ToolTipRepresentation>Button</ToolTipRepresentation>
+											<HorizontalStretch>false</HorizontalStretch>
+											<QuickChoice>false</QuickChoice>
+											<AutoMarkIncomplete>true</AutoMarkIncomplete>
+											<ContextMenu name="NationalCurrencyContextMenu" id="545"/>
+											<ExtendedTooltip name="NationalCurrencyExtendedTooltip" id="700">
+												<Title formatted="true">
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Specify the required national currency of your Countries. For example, it will be Russian rubles for Russia.
+
+</v8:content>
+													</v8:item>
+												</Title>
+											</ExtendedTooltip>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="AccountingCurrencyGroup" id="618">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group accounting currency</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group accounting currency</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupAccountingCurrencyExtendedTooltip" id="702"/>
+									<ChildItems>
+										<InputField name="AccountingCurrency" id="230">
+											<DataPath>AccountingCurrency</DataPath>
+											<ToolTipRepresentation>Button</ToolTipRepresentation>
+											<HorizontalStretch>false</HorizontalStretch>
+											<QuickChoice>false</QuickChoice>
+											<AutoMarkIncomplete>true</AutoMarkIncomplete>
+											<ContextMenu name="AccountingCurrencyContextMenu" id="231"/>
+											<ExtendedTooltip name="AccountingCurrencyExtendedTooltip" id="703">
+												<Title formatted="true">
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>If the management accounting currency should differ from the national currency, for example, to be in euro, you should enable this option.
+&lt;b&gt;&lt;color #ff0000&gt;IMPORTANT!&lt;/&gt;&lt;/&gt; Key parameter. You can not disable this option if there is accounting data in the system.</v8:content>
+													</v8:item>
+												</Title>
+											</ExtendedTooltip>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+						<LabelDecoration name="Step1AttributesHeader" id="167">
+							<Width>73</Width>
+							<Font ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Fill in the bank and petty cash opening balance.</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Step1AttributesHeaderContextMenu" id="168"/>
+							<ExtendedTooltip name="Step1AttributesHeaderExtendedTooltip" id="705"/>
+						</LabelDecoration>
+						<UsualGroup name="Step1Attributes" id="542">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Attributes</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="Step1AttributesExtendedTooltip" id="706"/>
+							<ChildItems>
+								<Table name="EnterOpeningBalanceBankAndPettyCashCashAssets" id="44">
+									<AutoInsertNewRow>true</AutoInsertNewRow>
+									<EnableStartDrag>true</EnableStartDrag>
+									<EnableDrag>true</EnableDrag>
+									<DataPath>EnterOpeningBalanceBankAndPettyCash.CashAssets</DataPath>
+									<SearchStringLocation>None</SearchStringLocation>
+									<ViewStatusLocation>None</ViewStatusLocation>
+									<SearchControlLocation>None</SearchControlLocation>
+									<RowFilter xsi:nil="true"/>
+									<ContextMenu name="InputOpeningBalancesOfBankAndCashCashAssetsContextMenu" id="45"/>
+									<AutoCommandBar name="InputOpeningBalancesBankAndPettyCashCashAssetsAndCommandPanel" id="46"/>
+									<ExtendedTooltip name="InputOpeningBalancesOfBankAndCashCashAssetsExtendedTooltip" id="707"/>
+									<SearchStringAddition name="EnterOpeningBalanceBankAndPettyCashCashAssetsSearchString" id="866">
+										<AdditionSource>
+											<Item>EnterOpeningBalanceBankAndPettyCashCashAssets</Item>
+											<Type>SearchStringRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="EnterOpeningBalanceBankAndPettyCashCashAssetsSearchStringContextMenu" id="867"/>
+										<ExtendedTooltip name="EnterOpeningBalanceBankAndPettyCashCashAssetsSearchStringExtendedTooltip" id="868"/>
+									</SearchStringAddition>
+									<ViewStatusAddition name="EnterOpeningBalanceBankAndPettyCashCashAssetsViewStatus" id="869">
+										<AdditionSource>
+											<Item>EnterOpeningBalanceBankAndPettyCashCashAssets</Item>
+											<Type>ViewStatusRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="EnterOpeningBalanceBankAndPettyCashCashAssetsViewStatusContextMenu" id="870"/>
+										<ExtendedTooltip name="EnterOpeningBalanceBankAndPettyCashCashAssetsViewStatusExtendedTooltip" id="871"/>
+									</ViewStatusAddition>
+									<SearchControlAddition name="EnterOpeningBalanceBankAndPettyCashCashAssetsSearchManagement" id="872">
+										<AdditionSource>
+											<Item>EnterOpeningBalanceBankAndPettyCashCashAssets</Item>
+											<Type>SearchControl</Type>
+										</AdditionSource>
+										<ContextMenu name="EnterOpeningBalanceBankAndPettyCashCashAssetsSearchManagementContextMenu" id="873"/>
+										<ExtendedTooltip name="EnterOpeningBalanceBankAndPettyCashCashAssetsSearchManagementExtendedTooltip" id="874"/>
+									</SearchControlAddition>
+									<ChildItems>
+										<LabelField name="InputOpeningBalancesBankAndPettyCashCashAssetsAndLineNumber" id="47">
+											<DataPath>EnterOpeningBalanceBankAndPettyCash.CashAssets.LineNumber</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>2</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ContextMenu name="InputOpeningBalancesBankAndPettyCashCashAssetsLineNumberContextMenu" id="48"/>
+											<ExtendedTooltip name="InputOpeningBalancesBankAndPettyCashCashAssetsLineNumberExtendedTooltip" id="708"/>
+										</LabelField>
+										<InputField name="InputOpeningBalancesBankAndPettyCashCashAssetsBankAccountPettyCash" id="49">
+											<DataPath>EnterOpeningBalanceBankAndPettyCash.CashAssets.BankAccountPettyCash</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>20</Width>
+											<ChoiceParameterLinks>
+												<xr:Link>
+													<xr:Name>Filter.Owner</xr:Name>
+													<xr:DataPath xsi:type="xs:string">Company</xr:DataPath>
+													<xr:ValueChange>Clear</xr:ValueChange>
+												</xr:Link>
+											</ChoiceParameterLinks>
+											<ContextMenu name="InputOpeningBalancesBankAndPettyCashCashAssetsBankAccountPettyCashContextMenu" id="50"/>
+											<ExtendedTooltip name="InputOpeningBalancesBankAndPettyCashCashAssetsBankAccountCashCRTypeExtendedTooltip" id="709"/>
+											<Events>
+												<Event name="OnChange">EnterOpeningBalanceBankAndPettyCashCashAssetsBankAccountPettyCashOnChange</Event>
+											</Events>
+										</InputField>
+										<InputField name="InputOpeningBalancesBankAndPettyCashCashAssetsCurrencyOfCashAssets" id="51">
+											<DataPath>EnterOpeningBalanceBankAndPettyCash.CashAssets.CashCurrency</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>6</Width>
+											<ContextMenu name="InputOpeningBalancesBankAndPettyCashCashAssetsCurrencyOfCashAssetsContextMenu" id="52"/>
+											<ExtendedTooltip name="InputOpeningBalancesBankAndPettyCashCashAssetsCurrencyOfCashAssetsExtendedTooltip" id="710"/>
+											<Events>
+												<Event name="OnChange">EnterOpeningBalanceBankAndPettyCashCashAssetsCurrencyOfCashAssetsOnChange</Event>
+												<Event name="StartChoice">EnterOpeningBalanceBankAndPettyCashCashAssetsCurrencyOfCashAssetsStartChoice</Event>
+											</Events>
+										</InputField>
+										<InputField name="InputOpeningBalancesBankAndPettyCashCashAssetsSummShaftDesc" id="53">
+											<DataPath>EnterOpeningBalanceBankAndPettyCash.CashAssets.AmountCur</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Amount</v8:content>
+												</v8:item>
+											</Title>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>10</Width>
+											<ContextMenu name="InputOpeningBalancesBankAndPettyCashCashAssetsSummCurContextMenu" id="54"/>
+											<ExtendedTooltip name="InputOpeningBalancesBankAndPettyCashCashAssetsSummCurExtendedTooltip" id="711"/>
+											<Events>
+												<Event name="OnChange">EnterOpeningBalanceBankAndPettyCashCashAssetsAmountCurOnChange</Event>
+											</Events>
+										</InputField>
+										<InputField name="InputOpeningBalancesBankAndPettyCashCashAssetsSumm" id="55">
+											<DataPath>EnterOpeningBalanceBankAndPettyCash.CashAssets.Amount</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Amount in account currency</v8:content>
+												</v8:item>
+											</Title>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>16</Width>
+											<ContextMenu name="InputOpeningBalancesBankAndPettyCashCashAssetsSummContextMenu" id="56"/>
+											<ExtendedTooltip name="InputOpeningBalancesBankAndPettyCashCashAssetsSummExtendedTooltip" id="712"/>
+										</InputField>
+									</ChildItems>
+								</Table>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="Step2" id="14">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Products</v8:content>
+						</v8:item>
+					</Title>
+					<TitleFont ref="sys:DefaultGUIFont" kind="WindowsFont"/>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Step2</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Picture>
+						<xr:Ref>CommonPicture.SubsystemInventoryAndPurchasing</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</Picture>
+					<ExtendedTooltip name="Step2ExtendedTooltip" id="713"/>
+					<ChildItems>
+						<UsualGroup name="Step2Navigation" id="447">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Navigation</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Navigation</v8:content>
+								</v8:item>
+							</ToolTip>
+							<HorizontalStretch>true</HorizontalStretch>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="Step2NavigationExtendedTooltip" id="714"/>
+							<ChildItems>
+								<LabelDecoration name="Decoration136" id="590">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Begin</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<VerticalAlign>Center</VerticalAlign>
+									<ContextMenu name="Decoration136ContextMenu" id="591"/>
+									<ExtendedTooltip name="Decoration136ExtendedTooltip" id="715"/>
+									<Events>
+										<Event name="Click">Decoration133Click</Event>
+									</Events>
+								</LabelDecoration>
+								<PictureDecoration name="Decoration60" id="448">
+									<Width>2</Width>
+									<Height>1</Height>
+									<Picture>
+										<xr:Ref>CommonPicture.FundsSection</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="Decoration60ContextMenu" id="449"/>
+									<ExtendedTooltip name="Decoration60ExtendedTooltip" id="717"/>
+								</PictureDecoration>
+								<LabelDecoration name="Decoration61" id="450">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Bank and petty cash</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<VerticalAlign>Center</VerticalAlign>
+									<ContextMenu name="Decoration61ContextMenu" id="451"/>
+									<ExtendedTooltip name="Decoration61ExtendedTooltip" id="718"/>
+									<Events>
+										<Event name="Click">Decoration47Click</Event>
+									</Events>
+								</LabelDecoration>
+								<PictureDecoration name="Decoration95" id="454">
+									<Width>2</Width>
+									<Height>1</Height>
+									<Picture>
+										<xr:Ref>CommonPicture.PurchaseSection</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="Decoration95ContextMenu" id="455"/>
+									<ExtendedTooltip name="Decoration95ExtendedTooltip" id="720"/>
+								</PictureDecoration>
+								<LabelDecoration name="Decoration96" id="456">
+									<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Products</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<VerticalAlign>Center</VerticalAlign>
+									<ContextMenu name="Decoration96ContextMenu" id="457"/>
+									<ExtendedTooltip name="Decoration96ExtendedTooltip" id="721"/>
+									<Events>
+										<Event name="Click">Decoration50Click</Event>
+									</Events>
+								</LabelDecoration>
+								<PictureDecoration name="Decoration98" id="460">
+									<Width>2</Width>
+									<Height>1</Height>
+									<Picture>
+										<xr:Ref>CommonPicture.PayrollSection</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="Decoration98ContextMenu" id="461"/>
+									<ExtendedTooltip name="Decoration98ExtendedTooltip" id="723"/>
+								</PictureDecoration>
+								<LabelDecoration name="Decoration99" id="462">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Accounts payable</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<VerticalAlign>Center</VerticalAlign>
+									<ContextMenu name="Decoration99ContextMenu" id="463"/>
+									<ExtendedTooltip name="Decoration99ExtendedTooltip" id="724"/>
+									<Events>
+										<Event name="Click">Decoration53Click</Event>
+									</Events>
+								</LabelDecoration>
+								<PictureDecoration name="Decoration101" id="466">
+									<Width>2</Width>
+									<Height>1</Height>
+									<Picture>
+										<xr:Ref>CommonPicture.PayrollSection</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="Decoration101ContextMenu" id="467"/>
+									<ExtendedTooltip name="Decoration101ExtendedTooltip" id="726"/>
+								</PictureDecoration>
+								<LabelDecoration name="Decoration102" id="468">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Accounts receivable</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<VerticalAlign>Center</VerticalAlign>
+									<ContextMenu name="Decoration102ContextMenu" id="469"/>
+									<ExtendedTooltip name="Decoration102ExtendedTooltip" id="727"/>
+									<Events>
+										<Event name="Click">Decoration56Click</Event>
+									</Events>
+								</LabelDecoration>
+								<PictureDecoration name="Decoration117" id="505">
+									<Width>2</Width>
+									<Height>1</Height>
+									<Picture>
+										<xr:Ref>CommonPicture.SectionEnterprise</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="Decoration117ContextMenu" id="506"/>
+									<ExtendedTooltip name="Decoration117ExtendedTooltip" id="729"/>
+								</PictureDecoration>
+								<LabelDecoration name="Decoration105" id="474">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Finish</v8:content>
+										</v8:item>
+									</Title>
+									<VerticalAlign>Center</VerticalAlign>
+									<ContextMenu name="Decoration105ContextMenu" id="475"/>
+									<ExtendedTooltip name="Decoration105ExtendedTooltip" id="730"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+						<LabelDecoration name="Step2FOTitle" id="182">
+							<Width>73</Width>
+							<Font ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Before you enter the goods opening balance, please answer some questions about your company</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Step2FOTitleContextMenu" id="183"/>
+							<ExtendedTooltip name="Step2FOExtendedHeaderToolTip" id="731"/>
+						</LabelDecoration>
+						<UsualGroup name="Step2FO" id="212">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Settings</v8:content>
+								</v8:item>
+							</Title>
+							<HorizontalStretch>true</HorizontalStretch>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="Step2FOExtendedTooltip" id="732"/>
+							<ChildItems>
+								<UsualGroup name="SeveralWarehousesAccountingGroup" id="637">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Accounting group by the various units of measurement</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Accounting group by the various units of measurement</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupAccountingBySeveralWarehousesExtendedTooltip" id="733"/>
+									<ChildItems>
+										<RadioButtonField name="AccountingBySeveralWarehouses" id="184">
+											<DataPath>AccountingBySeveralWarehouses</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Your company has more than one warehouse</v8:content>
+												</v8:item>
+											</Title>
+											<TitleTextColor>style:ExplanationText</TitleTextColor>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>"Keep accounts of several warehouses". If it is necessary to keep accounts in several warehouses of the software product, you should enable this option.
+
+This option enables a possibility to specify the warehouses in the documents.</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ToolTipRepresentation>Button</ToolTipRepresentation>
+											<RadioButtonType>Auto</RadioButtonType>
+											<ChoiceList>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation/>
+														<Value xsi:type="xr:DesignTimeRef">Enum.YesNo.EnumValue.Yes</Value>
+													</xr:Value>
+												</xr:Item>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation/>
+														<Value xsi:type="xr:DesignTimeRef">Enum.YesNo.EnumValue.No</Value>
+													</xr:Value>
+												</xr:Item>
+											</ChoiceList>
+											<ContextMenu name="AccountingBySeveralWarehousesContextMenu" id="185"/>
+											<ExtendedTooltip name="AccountingBySeveralWarehousesExtendedTooltip" id="734">
+												<Title formatted="true">
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>If it is necessary to keep accounts in several warehouses of the software product, you should enable this option.
+This option enables a possibility to specify the warehouses in the documents.</v8:content>
+													</v8:item>
+												</Title>
+											</ExtendedTooltip>
+											<Events>
+												<Event name="OnChange">AccountingBySeveralWarehousesOnChange</Event>
+											</Events>
+										</RadioButtonField>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="GroupAccountingInDifferentUOMments" id="627">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Accounting group by the various units of measurement</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Accounting group by the various units of measurement</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupAccountingAtDifferentUOMmentsExtendedTooltip" id="736"/>
+									<ChildItems>
+										<RadioButtonField name="AccountingInVariousUOM" id="186">
+											<DataPath>AccountingInVariousUOM</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Your goods can be measured in different units</v8:content>
+												</v8:item>
+											</Title>
+											<TitleTextColor>style:ExplanationText</TitleTextColor>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>This option defines the possibility of products and services accounting in various units for example in pieces, blocks, boxes or kilograms.</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ToolTipRepresentation>Button</ToolTipRepresentation>
+											<RadioButtonType>Auto</RadioButtonType>
+											<ChoiceList>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation/>
+														<Value xsi:type="xr:DesignTimeRef">Enum.YesNo.EnumValue.Yes</Value>
+													</xr:Value>
+												</xr:Item>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation/>
+														<Value xsi:type="xr:DesignTimeRef">Enum.YesNo.EnumValue.No</Value>
+													</xr:Value>
+												</xr:Item>
+											</ChoiceList>
+											<ContextMenu name="AccountingAtDifferentDimensionUnitsContextMenu" id="187"/>
+											<ExtendedTooltip name="AccountingAtDifferentDimensionUnitsExtendedTooltip" id="737">
+												<Title formatted="true">
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>This option defines the possibility of products and services accounting in various units for example in pieces, blocks, boxes or kilograms.
+&lt;b&gt;&lt;color #ff0000&gt;IMPORTANT!&lt;/&gt;&lt;/&gt; Key parameter. You can not disable this option if there is accounting data in the system.</v8:content>
+													</v8:item>
+												</Title>
+											</ExtendedTooltip>
+											<Events>
+												<Event name="OnChange">AccountingInVariousUOMOnChange</Event>
+											</Events>
+										</RadioButtonField>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="GroupUseCharacteristics" id="628">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group use characteristics</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group use characteristics</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupUseCharacteristicsExtendedTooltip" id="739"/>
+									<ChildItems>
+										<RadioButtonField name="UseCharacteristics" id="188">
+											<DataPath>UseCharacteristics</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>You are going to use characteristics of products and services</v8:content>
+												</v8:item>
+											</Title>
+											<TitleTextColor>style:ExplanationText</TitleTextColor>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>The option defines whether it is possible to keep accounts of inventories, works, and services by products and services characteristics. Usually additional characteristics are color, size, power, signs, etc.
+</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ToolTipRepresentation>Button</ToolTipRepresentation>
+											<RadioButtonType>Auto</RadioButtonType>
+											<ChoiceList>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation/>
+														<Value xsi:type="xr:DesignTimeRef">Enum.YesNo.EnumValue.Yes</Value>
+													</xr:Value>
+												</xr:Item>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation/>
+														<Value xsi:type="xr:DesignTimeRef">Enum.YesNo.EnumValue.No</Value>
+													</xr:Value>
+												</xr:Item>
+											</ChoiceList>
+											<ContextMenu name="UseCharacteristicsContextMenu" id="189"/>
+											<ExtendedTooltip name="UseCharacteristicsExtendedTooltip" id="740">
+												<Title formatted="true">
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>The option defines whether it is possible to keep accounts of inventories, works, and services by products and services characteristics. Characteristics are the additional view of analytics and provide the most convenient structure of products and services. Usually additional characteristics are color, size, power, signs, etc.
+&lt;b&gt;&lt;color #ff0000&gt;IMPORTANT! &lt;/&gt;&lt;/&gt;Key parameter. You can not disable this option if there is accounting data in the system.</v8:content>
+													</v8:item>
+												</Title>
+											</ExtendedTooltip>
+											<Events>
+												<Event name="OnChange">UseCharacteristicsOnChange</Event>
+											</Events>
+										</RadioButtonField>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="UseBatchesGroup" id="629">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group use batches</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group use batches</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupUseBatchExtendedTooltip" id="742"/>
+									<ChildItems>
+										<RadioButtonField name="UseBatches" id="416">
+											<DataPath>UseBatches</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>You are going to use Products and services batches</v8:content>
+												</v8:item>
+											</Title>
+											<TitleTextColor>style:ExplanationText</TitleTextColor>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>The parameter defines whether inventory accounting by specific products and services batches is possible. With batch accounting, each batch of the same inventory can be accounted in the warehouse separately. </v8:content>
+												</v8:item>
+											</ToolTip>
+											<ToolTipRepresentation>Button</ToolTipRepresentation>
+											<RadioButtonType>Auto</RadioButtonType>
+											<ChoiceList>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation/>
+														<Value xsi:type="xr:DesignTimeRef">Enum.YesNo.EnumValue.Yes</Value>
+													</xr:Value>
+												</xr:Item>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation/>
+														<Value xsi:type="xr:DesignTimeRef">Enum.YesNo.EnumValue.No</Value>
+													</xr:Value>
+												</xr:Item>
+											</ChoiceList>
+											<ContextMenu name="UseBatchContextMenu" id="417"/>
+											<ExtendedTooltip name="UseBatchExtendedTooltip" id="743">
+												<Title formatted="true">
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>The parameter defines whether inventory accounting by specific products and services batches is possible. With batch accounting, each batch of the same inventory can be accounted in the warehouse separately. Batch accounting is mandatory for inventory received for commission, processing, or safe custody from an external counterparty. For own inventories, it is determined by the company type.
+&lt;b&gt;&lt;color #ff0000&gt;IMPORTANT! &lt;/&gt;&lt;/&gt;Products and services batch &lt;b&gt;is not&lt;/&gt; an analog of inventories posting document and is not used for determining the cost of inventory writeoff by FIFO method.
+&lt;b&gt;&lt;color #ff0000&gt;IMPORTANT! &lt;/&gt;&lt;/&gt;Key parameter. You can not disable this option if there is accounting data in the system.</v8:content>
+													</v8:item>
+												</Title>
+											</ExtendedTooltip>
+											<Events>
+												<Event name="OnChange">UseBatchesOnChange</Event>
+											</Events>
+										</RadioButtonField>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+						<LabelDecoration name="Step2AttributesHeader" id="162">
+							<Width>73</Width>
+							<Font ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Fill in goods opening balance</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Step2AttributesHeaderContextMenu" id="163"/>
+							<ExtendedTooltip name="Step2AttributesHeaderExtendedTooltip" id="745"/>
+						</LabelDecoration>
+						<UsualGroup name="Step2Attributes" id="161">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Attributes</v8:content>
+								</v8:item>
+							</Title>
+							<HorizontalStretch>true</HorizontalStretch>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="Step2AttributesExtendedTooltip" id="746"/>
+							<ChildItems>
+								<UsualGroup name="Step2Top" id="411">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Step2 top</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="Step2TopExtendedTooltip" id="747"/>
+									<ChildItems>
+										<InputField name="ProductsAndServices" id="408">
+											<DataPath>ProductsAndServices</DataPath>
+											<ContextMenu name="ProductsAndServicesContextMenu" id="409"/>
+											<ExtendedTooltip name="ProductsAndServicesExtendedTooltip" id="748"/>
+										</InputField>
+										<Button name="AddProductsAndServices" id="410">
+											<Type>UsualButton</Type>
+											<CommandName>Form.Command.AddProductsAndServices</CommandName>
+											<ExtendedTooltip name="AddProductsAndServicesExtendedTooltip" id="749"/>
+										</Button>
+									</ChildItems>
+								</UsualGroup>
+								<Table name="EnterOpeningBalanceProductsInventory" id="21">
+									<Height>1</Height>
+									<AutoInsertNewRow>true</AutoInsertNewRow>
+									<EnableStartDrag>true</EnableStartDrag>
+									<EnableDrag>true</EnableDrag>
+									<DataPath>EnterOpeningBalanceProducts.Inventory</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Balance of inventory</v8:content>
+										</v8:item>
+									</Title>
+									<SearchStringLocation>None</SearchStringLocation>
+									<ViewStatusLocation>None</ViewStatusLocation>
+									<SearchControlLocation>None</SearchControlLocation>
+									<RowFilter xsi:nil="true"/>
+									<ContextMenu name="EnterOpeningBalanceProductsInventoryContextMenu" id="22"/>
+									<AutoCommandBar name="EnterOpeningBalanceProductsInventoryCommandPanel" id="23">
+										<ChildItems>
+											<Button name="EnterOpeningBalanceProductsInventoryDataImportFromExternalSources" id="904">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.DataImportFromExternalSources</CommandName>
+												<ExtendedTooltip name="EnterOpeningBalanceProductsInventoryDataImportFromExternalSourcesExtendedTooltip" id="905"/>
+											</Button>
+										</ChildItems>
+									</AutoCommandBar>
+									<ExtendedTooltip name="EnterOpeningBalanceProductsInventoryExtendedTooltip" id="751"/>
+									<SearchStringAddition name="EnterOpeningBalanceProductsInventorySearchString" id="875">
+										<AdditionSource>
+											<Item>EnterOpeningBalanceProductsInventory</Item>
+											<Type>SearchStringRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="EnterOpeningBalanceProductsInventorySearchStringContextMenu" id="876"/>
+										<ExtendedTooltip name="EnterOpeningBalanceProductsInventorySearchStringExtendedTooltip" id="877"/>
+									</SearchStringAddition>
+									<ViewStatusAddition name="EnterOpeningBalanceProductsInventoryViewStatus" id="878">
+										<AdditionSource>
+											<Item>EnterOpeningBalanceProductsInventory</Item>
+											<Type>ViewStatusRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="EnterOpeningBalanceProductsInventoryViewStatusContextMenu" id="879"/>
+										<ExtendedTooltip name="EnterOpeningBalanceProductsInventoryViewStatusExtendedTooltip" id="880"/>
+									</ViewStatusAddition>
+									<SearchControlAddition name="EnterOpeningBalanceProductsInventorySearchManagement" id="881">
+										<AdditionSource>
+											<Item>EnterOpeningBalanceProductsInventory</Item>
+											<Type>SearchControl</Type>
+										</AdditionSource>
+										<ContextMenu name="EnterOpeningBalanceProductsInventorySearchManagementContextMenu" id="882"/>
+										<ExtendedTooltip name="EnterOpeningBalanceProductsInventorySearchControlExtendedTooltip" id="883"/>
+									</SearchControlAddition>
+									<Events>
+										<Event name="OnEditEnd">EnterOpeningBalanceProductsInventoryOnEditEnd</Event>
+									</Events>
+									<ChildItems>
+										<LabelField name="EnterOpeningBalanceProductsInventoryLineNumber" id="24">
+											<DataPath>EnterOpeningBalanceProducts.Inventory.LineNumber</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<FixingInTable>Left</FixingInTable>
+											<Width>2</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ContextMenu name="EnterOpeningBalanceProductsInventoryLineNumberContextMenu" id="25"/>
+											<ExtendedTooltip name="EnterOpeningBalanceProductsInventoryLineNumberExtendedTooltip" id="752"/>
+										</LabelField>
+										<InputField name="EnterOpeningBalanceProductsInventoryStructuralUnit" id="26">
+											<DataPath>EnterOpeningBalanceProducts.Inventory.StructuralUnit</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<FixingInTable>Left</FixingInTable>
+											<Width>21</Width>
+											<ChoiceParameters>
+												<app:item name="Filter.StructuralUnitType">
+													<app:value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation/>
+														<Value xsi:type="xr:DesignTimeRef">Enum.StructuralUnitsTypes.EnumValue.Warehouse</Value>
+													</app:value>
+												</app:item>
+											</ChoiceParameters>
+											<ContextMenu name="EnterOpeningBalanceProductsInventoryStructuralUnitContextMenu" id="27"/>
+											<ExtendedTooltip name="EnterOpeningBalanceProductsInventoryStructuralUnitExtendedTooltip" id="753"/>
+										</InputField>
+										<InputField name="EnterOpeningBalanceProductsInventoryCell" id="28">
+											<DataPath>EnterOpeningBalanceProducts.Inventory.Cell</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<FixingInTable>Left</FixingInTable>
+											<Width>9</Width>
+											<ContextMenu name="EnterOpeningBalanceProductsInventoryCellContextMenu" id="29"/>
+											<ExtendedTooltip name="EnterOpeningBalanceProductsInventoryCellExtendedTooltip" id="754"/>
+										</InputField>
+										<InputField name="EnterOpeningBalanceProductsInventoryProduct" id="30">
+											<DataPath>EnterOpeningBalanceProducts.Inventory.ProductsAndServices</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>20</Width>
+											<ContextMenu name="EnterOpeningBalanceProductsInventoryProductsContextMenu" id="31"/>
+											<ExtendedTooltip name="EnterOpeningBalanceProductsInventoryProductsExtendedTooltip" id="755"/>
+											<Events>
+												<Event name="OnChange">EnterOpeningBalanceProductsInventoryProductsAndServicesOnChange</Event>
+											</Events>
+										</InputField>
+										<InputField name="EnterOpeningBalanceProductsInventoryCharacteristic" id="32">
+											<DataPath>EnterOpeningBalanceProducts.Inventory.Characteristic</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>20</Width>
+											<ContextMenu name="EnterOpeningBalanceProductsInventoryCharacteristicContextMenu" id="33"/>
+											<ExtendedTooltip name="EnterOpeningBalanceProductsInventoryCharacteristicExtendedTooltip" id="756"/>
+										</InputField>
+										<InputField name="EnterOpeningBalanceProductsInventoryBatch" id="34">
+											<DataPath>EnterOpeningBalanceProducts.Inventory.Batch</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>20</Width>
+											<ContextMenu name="EnterOpeningBalanceProductsInventoryBatchContextMenu" id="35"/>
+											<ExtendedTooltip name="EnterOpeningBalanceProductsInventoryBatchExtendedTooltip" id="757"/>
+										</InputField>
+										<InputField name="EnterOpeningBalanceProductsInventoryMeasurementUnit" id="36">
+											<DataPath>EnterOpeningBalanceProducts.Inventory.MeasurementUnit</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>6</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ChoiceButton>false</ChoiceButton>
+											<OpenButton>false</OpenButton>
+											<ChooseType>false</ChooseType>
+											<ChoiceListButton>true</ChoiceListButton>
+											<ContextMenu name="EnterOpeningBalanceProductsInventoryMeasurementUnitContextMenu" id="37"/>
+											<ExtendedTooltip name="EnterOpeningBalanceProductsInventoryMeasurementUnitExtendedTooltip" id="758"/>
+											<Events>
+												<Event name="ChoiceProcessing">EnterOpeningBalanceProductsInventoryMeasurementUnitChoiceProcessing</Event>
+											</Events>
+										</InputField>
+										<InputField name="EnterOpeningBalanceProductsInventoryQuantity" id="38">
+											<DataPath>EnterOpeningBalanceProducts.Inventory.Quantity</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>10</Width>
+											<ContextMenu name="EnterOpeningBalanceProductsInventoryQuantityContextMenu" id="39"/>
+											<ExtendedTooltip name="EnterOpeningBalanceProductsInventoryQuantityExtendedTooltip" id="759"/>
+											<Events>
+												<Event name="OnChange">EnterOpeningBalanceProductsInventoryQuantityOnChange</Event>
+											</Events>
+										</InputField>
+										<InputField name="EnterOpeningBalanceProductsInventoryPrice" id="232">
+											<DataPath>EnterOpeningBalanceProducts.Inventory.Price</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Purchase price</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>ProductsAndServices purchase price</v8:content>
+												</v8:item>
+											</ToolTip>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>11</Width>
+											<ContextMenu name="EnterOpeningBalanceProductsInventoryPriceCotextMenu" id="233"/>
+											<ExtendedTooltip name="EnterOpeningBalanceProductsInventoryPriceExtendedTooltip" id="760"/>
+											<Events>
+												<Event name="OnChange">EnterOpeningBalanceProductsInventoryPriceOnChange</Event>
+											</Events>
+										</InputField>
+										<InputField name="EnterOpeningBalanceProductsInventoryAmount" id="40">
+											<DataPath>EnterOpeningBalanceProducts.Inventory.Amount</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>10</Width>
+											<ContextMenu name="EnterOpeningBalanceProductsInventoryAmountContextMenu" id="41"/>
+											<ExtendedTooltip name="EnterOpeningBalanceProductsInventoryAmountExtendedTooltip" id="761"/>
+											<Events>
+												<Event name="OnChange">EnterOpeningBalanceProductsInventoryAmountOnChange</Event>
+											</Events>
+										</InputField>
+										<InputField name="EnterOpeningBalanceProductsInventoryCustomerOrder" id="42">
+											<DataPath>EnterOpeningBalanceProducts.Inventory.CustomerOrder</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>20</Width>
+											<ContextMenu name="EnterOpeningBalanceProductsInventoryCustomersOrderContextMenu" id="43"/>
+											<ExtendedTooltip name="EnterOpeningBalanceProductsInventoryCustomersOrderExtendedTooltip" id="762"/>
+										</InputField>
+									</ChildItems>
+								</Table>
+								<UsualGroup name="Step2Bottom" id="241">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Step2 bottom</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="Step2BottomExtendedTooltip" id="763"/>
+									<ChildItems>
+										<Button name="GoToPricing" id="244">
+											<Type>UsualButton</Type>
+											<CommandName>Form.Command.GoToPricing</CommandName>
+											<ExtendedTooltip name="NavigateToPriceFormationExtendedTooltip" id="764"/>
+										</Button>
+										<LabelDecoration name="Decoration12" id="245">
+											<HorizontalStretch>true</HorizontalStretch>
+											<ContextMenu name="Decoration12ContextMenu" id="246"/>
+											<ExtendedTooltip name="Decoration12ExtendedTooltip" id="765"/>
+										</LabelDecoration>
+										<UsualGroup name="Step2Totals" id="243">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Step2 totals</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Step2 totals</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Horizontal</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<BackColor>style:TotalsGroupBackground</BackColor>
+											<ExtendedTooltip name="Step2TotalsExtendedTooltip" id="766"/>
+											<ChildItems>
+												<InputField name="EnterOpeningBalanceProductsInventoryTotalQuantity" id="234">
+													<DataPath>EnterOpeningBalanceProducts.Inventory.TotalQuantity</DataPath>
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Quantity</v8:content>
+														</v8:item>
+													</Title>
+													<Width>8</Width>
+													<ChoiceButton>false</ChoiceButton>
+													<ContextMenu name="EnterOpeningBalanceProductsInventoryTotalQuantityContextMenu" id="235"/>
+													<ExtendedTooltip name="EnterOpeningBalanceProductsInventoryTotalQuantityExtendedTooltip" id="767"/>
+												</InputField>
+												<UsualGroup name="Step2TotalAmountCurrency" id="240">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Step2 total amount currency</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Step2 total amount currency</v8:content>
+														</v8:item>
+													</ToolTip>
+													<Group>Horizontal</Group>
+													<Representation>None</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="Step2TotalAmountCurrencyExtendedTooltip" id="768"/>
+													<ChildItems>
+														<InputField name="EnterOpeningBalanceProductsInventoryTotalAmount" id="236">
+															<DataPath>EnterOpeningBalanceProducts.Inventory.TotalAmount</DataPath>
+															<Title>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Amount</v8:content>
+																</v8:item>
+															</Title>
+															<Width>8</Width>
+															<ChoiceButton>false</ChoiceButton>
+															<ContextMenu name="EnterOpeningBalanceProductsInventoryTotalAmountContextMenu" id="237"/>
+															<ExtendedTooltip name="EnterOpeningBalanceProductsInventoryTotalAmountExtendedTooltip" id="769"/>
+														</InputField>
+														<LabelField name="AccountingCurrency1" id="238">
+															<DataPath>AccountingCurrency</DataPath>
+															<TitleLocation>None</TitleLocation>
+															<Width>3</Width>
+															<HorizontalStretch>false</HorizontalStretch>
+															<ContextMenu name="AccountingCurrency1ContextMenu" id="239"/>
+															<ExtendedTooltip name="AccountingCurrency1ExtendedTooltip" id="770"/>
+														</LabelField>
+													</ChildItems>
+												</UsualGroup>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="Step3" id="20">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Accounts payable </v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Step3</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Picture>
+						<xr:Ref>CommonPicture.SubsystemPayrollAndHR</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</Picture>
+					<ExtendedTooltip name="Step3ExtendedTooltip" id="771"/>
+					<ChildItems>
+						<UsualGroup name="Step3Navigation" id="476">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Navigation</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Navigation</v8:content>
+								</v8:item>
+							</ToolTip>
+							<HorizontalStretch>true</HorizontalStretch>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="Step3NavigationExtendedTooltip" id="772"/>
+							<ChildItems>
+								<LabelDecoration name="Decoration138" id="594">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Begin</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<VerticalAlign>Center</VerticalAlign>
+									<ContextMenu name="Decoration138ContextMenu" id="595"/>
+									<ExtendedTooltip name="Decoration138ExtendedTooltip" id="773"/>
+									<Events>
+										<Event name="Click">Decoration133Click</Event>
+									</Events>
+								</LabelDecoration>
+								<PictureDecoration name="Decoration63" id="477">
+									<Width>2</Width>
+									<Height>1</Height>
+									<Picture>
+										<xr:Ref>CommonPicture.FundsSection</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="Decoration63ContextMenu" id="478"/>
+									<ExtendedTooltip name="Decoration63ExtendedTooltip" id="775"/>
+								</PictureDecoration>
+								<LabelDecoration name="Decoration64" id="479">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Bank and petty cash</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<VerticalAlign>Center</VerticalAlign>
+									<ContextMenu name="Decoration64ContextMenu" id="480"/>
+									<ExtendedTooltip name="Decoration64ExtendedTooltip" id="776"/>
+									<Events>
+										<Event name="Click">Decoration47Click</Event>
+									</Events>
+								</LabelDecoration>
+								<PictureDecoration name="Decoration106" id="483">
+									<Width>2</Width>
+									<Height>1</Height>
+									<Picture>
+										<xr:Ref>CommonPicture.PurchaseSection</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="Decoration106ContextMenu" id="484"/>
+									<ExtendedTooltip name="Decoration106ExtendedTooltip" id="778"/>
+								</PictureDecoration>
+								<LabelDecoration name="Decoration107" id="485">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Products</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<VerticalAlign>Center</VerticalAlign>
+									<ContextMenu name="Decoration107ContextMenu" id="486"/>
+									<ExtendedTooltip name="Decoration107ExtendedTooltip" id="779"/>
+									<Events>
+										<Event name="Click">Decoration50Click</Event>
+									</Events>
+								</LabelDecoration>
+								<PictureDecoration name="Decoration109" id="489">
+									<Width>2</Width>
+									<Height>1</Height>
+									<Picture>
+										<xr:Ref>CommonPicture.PayrollSection</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="Decoration109ContextMenu" id="490"/>
+									<ExtendedTooltip name="Decoration109ExtendedTooltip" id="781"/>
+								</PictureDecoration>
+								<LabelDecoration name="Decoration110" id="491">
+									<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Accounts payable</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<VerticalAlign>Center</VerticalAlign>
+									<ContextMenu name="Decoration110ContextMenu" id="492"/>
+									<ExtendedTooltip name="Decoration110ExtendedTooltip" id="782"/>
+									<Events>
+										<Event name="Click">Decoration53Click</Event>
+									</Events>
+								</LabelDecoration>
+								<PictureDecoration name="Decoration112" id="495">
+									<Width>2</Width>
+									<Height>1</Height>
+									<Picture>
+										<xr:Ref>CommonPicture.PayrollSection</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="Decoration112ContextMenu" id="496"/>
+									<ExtendedTooltip name="Decoration112ExtendedTooltip" id="784"/>
+								</PictureDecoration>
+								<LabelDecoration name="Decoration113" id="497">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Accounts receivable</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<VerticalAlign>Center</VerticalAlign>
+									<ContextMenu name="Decoration113ContextMenu" id="498"/>
+									<ExtendedTooltip name="Decoration113ExtendedTooltip" id="785"/>
+									<Events>
+										<Event name="Click">Decoration56Click</Event>
+									</Events>
+								</LabelDecoration>
+								<PictureDecoration name="Decoration115" id="501">
+									<Width>2</Width>
+									<Height>1</Height>
+									<Picture>
+										<xr:Ref>CommonPicture.SectionEnterprise</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="Decoration115ContextMenu" id="502"/>
+									<ExtendedTooltip name="Decoration115ExtendedTooltip" id="787"/>
+								</PictureDecoration>
+								<LabelDecoration name="Decoration116" id="503">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Finish</v8:content>
+										</v8:item>
+									</Title>
+									<VerticalAlign>Center</VerticalAlign>
+									<ContextMenu name="Decoration116ContextMenu" id="504"/>
+									<ExtendedTooltip name="Decoration116ExtendedTooltip" id="788"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+						<LabelDecoration name="Step3Header" id="171">
+							<Width>73</Width>
+							<Font ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Fill in opening balance of accounts payable</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Step3HeaderContextMenu" id="172"/>
+							<ExtendedTooltip name="Step3HeaderExtendedTooltip" id="789"/>
+						</LabelDecoration>
+						<UsualGroup name="Step3Attributes" id="169">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Vendors settlements balances </v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="Step3AttributesExtendedTooltip" id="790"/>
+							<ChildItems>
+								<UsualGroup name="Step3CommandPanel" id="398">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Command bar</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="Step3CommandPanelExtendedTooltip" id="791"/>
+									<ChildItems>
+										<CommandBar name="Step3CommandLeft" id="399">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Step3 (commands left)</v8:content>
+												</v8:item>
+											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
+											<CommandSource>Item.EnterOpeningBalanceCounterpartiesSettlementsAccountsPayable</CommandSource>
+											<ExtendedTooltip name="Step3CommandLeftExtendedTooltip" id="792"/>
+											<ChildItems>
+												<Button name="EnterOpeningBalanceCounterpartiesSettlementsAccountsPayableDataImportFromExternalSourcesAccountsPayable" id="906">
+													<Type>CommandBarButton</Type>
+													<CommandName>Form.Command.DataImportFromExternalSourcesAccountsPayable</CommandName>
+													<ExtendedTooltip name="EnterOpeningBalanceCounterpartiesSettlementsAccountsPayableImportDataFromExternalAccountsPayableExtendedTooltip" id="907"/>
+												</Button>
+											</ChildItems>
+										</CommandBar>
+										<CommandBar name="Step3CommandRight" id="395">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Step3 (commands right)</v8:content>
+												</v8:item>
+											</Title>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ExtendedTooltip name="Step3CommandsRightExtendedTooltip" id="794"/>
+										</CommandBar>
+									</ChildItems>
+								</UsualGroup>
+								<Table name="EnterOpeningBalanceCounterpartiesSettlementsAccountsPayable" id="58">
+									<AutoInsertNewRow>true</AutoInsertNewRow>
+									<EnableStartDrag>true</EnableStartDrag>
+									<EnableDrag>true</EnableDrag>
+									<DataPath>EnterOpeningBalanceCounterpartiesSettlements.AccountsPayable</DataPath>
+									<SearchStringLocation>None</SearchStringLocation>
+									<ViewStatusLocation>None</ViewStatusLocation>
+									<SearchControlLocation>None</SearchControlLocation>
+									<RowFilter xsi:nil="true"/>
+									<ContextMenu name="InputOpeningBalancesCounterpartiesPaymentsVendorsPaymentsContextMenu" id="59"/>
+									<AutoCommandBar name="InputOpeningBalancesCounterpartiesPaymentsVendorsPaymentsCommandPanel" id="60">
+										<Autofill>false</Autofill>
+									</AutoCommandBar>
+									<ExtendedTooltip name="InputOpeningBalancesCounterpartiesPaymentsVendorsPaymentsExtendedTooltip" id="795"/>
+									<SearchStringAddition name="EnterOpeningBalanceCounterpartiesSettlementsAccountsPayableSearchString" id="884">
+										<AdditionSource>
+											<Item>EnterOpeningBalanceCounterpartiesSettlementsAccountsPayable</Item>
+											<Type>SearchStringRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="EnterOpeningBalanceCounterpartiesSettlementsAccountsPayableSearchStringContextMenu" id="885"/>
+										<ExtendedTooltip name="EnterOpeningBalanceCounterpartiesSettlementsAccountsPayableSearchStringExtendedTooltip" id="886"/>
+									</SearchStringAddition>
+									<ViewStatusAddition name="EnterOpeningBalanceCounterpartiesSettlementsAccountsPayableViewStatus" id="887">
+										<AdditionSource>
+											<Item>EnterOpeningBalanceCounterpartiesSettlementsAccountsPayable</Item>
+											<Type>ViewStatusRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="EnterOpeningBalanceCounterpartiesSettlementsAccountsPayableViewStatusContextMenu" id="888"/>
+										<ExtendedTooltip name="EnterOpeningBalanceCounterpartiesSettlementsAccountsPayableViewStatusExtendedTooltip" id="889"/>
+									</ViewStatusAddition>
+									<SearchControlAddition name="EnterOpeningBalanceCounterpartiesSettlementsAccountsPayableSearchManagement" id="890">
+										<AdditionSource>
+											<Item>EnterOpeningBalanceCounterpartiesSettlementsAccountsPayable</Item>
+											<Type>SearchControl</Type>
+										</AdditionSource>
+										<ContextMenu name="EnterOpeningBalanceCounterpartiesSettlementsAccountsPayableSearchManagementContextMenu" id="891"/>
+										<ExtendedTooltip name="EnterOpeningBalanceCounterpartiesSettlementsAccountsPayableSearchManagementExtendedTooltip" id="892"/>
+									</SearchControlAddition>
+									<Events>
+										<Event name="AfterDeleteRow">EnterOpeningBalanceCounterpartiesSettlementsAccountsPayableAfterDeleteRowRow</Event>
+									</Events>
+									<ChildItems>
+										<LabelField name="EnterOpeningBalanceCounterpartiesSettlementsAccountsPayableLineNumber" id="61">
+											<DataPath>EnterOpeningBalanceCounterpartiesSettlements.AccountsPayable.LineNumber</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<FixingInTable>Left</FixingInTable>
+											<Width>2</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ContextMenu name="EnterOpeningBalanceCounterpartiesSettlementsAccountsPayableLineNumberContextMenu" id="62"/>
+											<ExtendedTooltip name="EnterOpeningBalanceCounterpartiesSettlementsAccountsPayableLineNumberExtendedTooltip" id="796"/>
+										</LabelField>
+										<InputField name="EnterOpeningBalanceCounterpartiesSettlementsAccountsPayableCounterparty" id="63">
+											<DataPath>EnterOpeningBalanceCounterpartiesSettlements.AccountsPayable.Counterparty</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<FixingInTable>Left</FixingInTable>
+											<Width>20</Width>
+											<ContextMenu name="EnterOpeningBalanceCounterpartiesSettlementsAccountsPayableCounterpartyContextMenu" id="64"/>
+											<ExtendedTooltip name="EnterOpeningBalanceCounterpartiesSettlementsAccountsPayableCounterpartyExtendedTooltip" id="797"/>
+											<Events>
+												<Event name="OnChange">EnterOpeningBalanceCounterpartiesSettlementsAccountsPayableCounterpartyOnChange</Event>
+											</Events>
+										</InputField>
+										<CheckBoxField name="EnterOpeningBalanceCounterpartiesSettlementsAccountsPayableAdvanceFlag" id="67">
+											<DataPath>EnterOpeningBalanceCounterpartiesSettlements.AccountsPayable.AdvanceFlag</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="EnterOpeningBalanceCounterpartiesSettlementsAccountsPayableAdvanceFlagContextMenu" id="68"/>
+											<ExtendedTooltip name="EnterOpeningBalanceCounterpartiesSettlementsAccountsPayableAdvanceFlagExtendedTooltip" id="799"/>
+											<Events>
+												<Event name="OnChange">EnterOpeningBalanceCounterpartiesSettlementsAccountsPayableAdvanceFlagOnChange</Event>
+											</Events>
+										</CheckBoxField>
+										<InputField name="EnterOpeningBalanceCounterpartiesSettlementsAccountsPayableAmountCur" id="73">
+											<DataPath>EnterOpeningBalanceCounterpartiesSettlements.AccountsPayable.AmountCur</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Amount</v8:content>
+												</v8:item>
+											</Title>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>10</Width>
+											<ContextMenu name="EnterOpeningBalanceCounterpartiesSettlementsAccountsPayableCurSummContextMenu" id="74"/>
+											<ExtendedTooltip name="EnterOpeningBalanceCounterpartiesSettlementsAccountsPayableCurSummExtendedTooltip" id="802"/>
+											<Events>
+												<Event name="OnChange">EnterOpeningBalanceCounterpartiesSettlementsAccountsPayableAmountValOnChange</Event>
+											</Events>
+										</InputField>
+										<InputField name="EnterOpeningBalanceCounterpartiesSettlementsAccountsPayableAmount" id="75">
+											<DataPath>EnterOpeningBalanceCounterpartiesSettlements.AccountsPayable.Amount</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Amount in account currency</v8:content>
+												</v8:item>
+											</Title>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>16</Width>
+											<ContextMenu name="EnterOpeningBalanceCounterpartiesSettlementsAccountsPayableSummContextMenu" id="76"/>
+											<ExtendedTooltip name="EnterOpeningBalanceCounterpartiesSettlementsAccountsPayableSummExtendedTooltip" id="803"/>
+										</InputField>
+										<InputField name="EnterOpeningBalanceCounterpartiesSettlementsAccountsPayableContract" id="65">
+											<DataPath>EnterOpeningBalanceCounterpartiesSettlements.AccountsPayable.Contract</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>20</Width>
+											<ContextMenu name="EnterOpeningBalanceCounterpartiesSettlementsAccountsPayableContractContextMenu" id="66"/>
+											<ExtendedTooltip name="EnterOpeningBalanceCounterpartiesSettlementsAccountsPayableContractExtendedTooltip" id="798"/>
+											<Events>
+												<Event name="OnChange">EnterOpeningBalanceCounterpartiesSettlementsAccountsPayableContractOnChange</Event>
+											</Events>
+										</InputField>
+										<InputField name="EnterOpeningBalanceCounterpartiesSettlementsAccountsPayableDocument" id="71">
+											<DataPath>EnterOpeningBalanceCounterpartiesSettlements.AccountsPayable.Document</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>20</Width>
+											<AutoMarkIncomplete>false</AutoMarkIncomplete>
+											<ContextMenu name="EnterOpeningBalanceCounterpartiesSettlementsAccountsPayableDocumentContextMenu" id="72"/>
+											<ExtendedTooltip name="EnterOpeningBalanceCounterpartiesSettlementsAccountsPayableDocumentExtendedTooltip" id="800"/>
+											<Events>
+												<Event name="OnChange">EnterOpeningBalanceCounterpartiesSettlementsAccountsPayableDocumentOnChange</Event>
+											</Events>
+										</InputField>
+										<InputField name="EnterOpeningBalanceCounterpartiesSettlementsAccountsPayablePurchaseOrder" id="69">
+											<DataPath>EnterOpeningBalanceCounterpartiesSettlements.AccountsPayable.PurchaseOrder</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>20</Width>
+											<ContextMenu name="EnterOpeningBalanceCounterpartiesSettlementsAccountsPayableVendorsOrderContextMenu" id="70"/>
+											<ExtendedTooltip name="EnterOpeningBalanceCounterpartiesSettlementsAccountsPayableVendorsOrderExtendedTooltip" id="801"/>
+										</InputField>
+										<InputField name="EnterOpeningBalanceCounterpartiesSettlementsAccountsPayableInvoiceForPayment" id="77">
+											<DataPath>EnterOpeningBalanceCounterpartiesSettlements.AccountsPayable.InvoiceForPayment</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>16</Width>
+											<ContextMenu name="EnterOpeningBalanceCounterpartiesSettlementsAccountsPayableInvoiceForPaymentContextMenu" id="78"/>
+											<ExtendedTooltip name="EnterOpeningBalanceCounterpartiesSettlementsAccountsPayableInvoiceForPaymentExtendedTooltip" id="804"/>
+										</InputField>
+									</ChildItems>
+								</Table>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="Step4" id="57">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Accounts receivable </v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Accounts payable</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Picture>
+						<xr:Ref>CommonPicture.SubsystemPayrollAndHR</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</Picture>
+					<ExtendedTooltip name="Step4ExtendedTooltip" id="805"/>
+					<ChildItems>
+						<UsualGroup name="Step4Navigation" id="316">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Navigation</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Navigation</v8:content>
+								</v8:item>
+							</ToolTip>
+							<HorizontalStretch>true</HorizontalStretch>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="Step4NavigationExtendedTooltip" id="806"/>
+							<ChildItems>
+								<LabelDecoration name="Decoration140" id="598">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Begin</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<VerticalAlign>Center</VerticalAlign>
+									<ContextMenu name="Decoration140ContextMenu" id="599"/>
+									<ExtendedTooltip name="Decoration140ExtendedTooltip" id="807"/>
+									<Events>
+										<Event name="Click">Decoration133Click</Event>
+									</Events>
+								</LabelDecoration>
+								<PictureDecoration name="Decoration46" id="317">
+									<Width>2</Width>
+									<Height>1</Height>
+									<Picture>
+										<xr:Ref>CommonPicture.FundsSection</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="Decoration46ContextMenu" id="318"/>
+									<ExtendedTooltip name="Decoration46ExtendedTooltip" id="809"/>
+								</PictureDecoration>
+								<LabelDecoration name="Decoration47" id="319">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Bank and petty cash</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<VerticalAlign>Center</VerticalAlign>
+									<ContextMenu name="Decoration47ContextMenu" id="320"/>
+									<ExtendedTooltip name="Decoration47ExtendedTooltip" id="810"/>
+									<Events>
+										<Event name="Click">Decoration47Click</Event>
+									</Events>
+								</LabelDecoration>
+								<PictureDecoration name="Decoration49" id="323">
+									<Width>2</Width>
+									<Height>1</Height>
+									<Picture>
+										<xr:Ref>CommonPicture.PurchaseSection</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="Decoration49ContextMenu" id="324"/>
+									<ExtendedTooltip name="Decoration49ExtendedTooltip" id="812"/>
+								</PictureDecoration>
+								<LabelDecoration name="Decoration50" id="325">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Products</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<VerticalAlign>Center</VerticalAlign>
+									<ContextMenu name="Decoration50ContextMenu" id="326"/>
+									<ExtendedTooltip name="Decoration50ExtendedTooltip" id="813"/>
+									<Events>
+										<Event name="Click">Decoration50Click</Event>
+									</Events>
+								</LabelDecoration>
+								<PictureDecoration name="Decoration52" id="329">
+									<Width>2</Width>
+									<Height>1</Height>
+									<Picture>
+										<xr:Ref>CommonPicture.PayrollSection</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="Decoration52ContextMenu" id="330"/>
+									<ExtendedTooltip name="Decoration52ExtendedTooltip" id="815"/>
+								</PictureDecoration>
+								<LabelDecoration name="Decoration53" id="331">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Accounts payable</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<VerticalAlign>Center</VerticalAlign>
+									<ContextMenu name="Decoration53ContextMenu" id="332"/>
+									<ExtendedTooltip name="Decoration53ExtendedTooltip" id="816"/>
+									<Events>
+										<Event name="Click">Decoration53Click</Event>
+									</Events>
+								</LabelDecoration>
+								<PictureDecoration name="Decoration55" id="335">
+									<Width>2</Width>
+									<Height>1</Height>
+									<Picture>
+										<xr:Ref>CommonPicture.PayrollSection</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="Decoration55ContextMenu" id="336"/>
+									<ExtendedTooltip name="Decoration55ExtendedTooltip" id="818"/>
+								</PictureDecoration>
+								<LabelDecoration name="Decoration56" id="337">
+									<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Accounts receivable</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<VerticalAlign>Center</VerticalAlign>
+									<ContextMenu name="Decoration56ContextMenu" id="338"/>
+									<ExtendedTooltip name="Decoration56ExtendedTooltip" id="819"/>
+									<Events>
+										<Event name="Click">Decoration56Click</Event>
+									</Events>
+								</LabelDecoration>
+								<PictureDecoration name="Decoration119" id="509">
+									<Width>2</Width>
+									<Height>1</Height>
+									<Picture>
+										<xr:Ref>CommonPicture.SectionEnterprise</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="Decoration119ContextMenu" id="510"/>
+									<ExtendedTooltip name="Decoration119ExtendedTooltip" id="821"/>
+								</PictureDecoration>
+								<LabelDecoration name="Decoration66" id="357">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Finish</v8:content>
+										</v8:item>
+									</Title>
+									<VerticalAlign>Center</VerticalAlign>
+									<ContextMenu name="Decoration66ContextMenu" id="358"/>
+									<ExtendedTooltip name="Decoration66ExtendedTooltip" id="822"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+						<LabelDecoration name="Step4Header" id="203">
+							<Width>73</Width>
+							<Font ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Fill in opening balance of accounts receivable</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Step4HeaderContextMenu" id="204"/>
+							<ExtendedTooltip name="Step4HeaderExtendedTooltip" id="823"/>
+						</LabelDecoration>
+						<UsualGroup name="Step4Attributes" id="170">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Attributes</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="Step4AttributesExtendedTooltip" id="824"/>
+							<ChildItems>
+								<UsualGroup name="Step4CommandPanel" id="400">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Step4 (command bar)</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="Step4CommandPanelExtendedTooltip" id="825"/>
+									<ChildItems>
+										<CommandBar name="Step4CommandLeft" id="401">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Step4 commands left</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Step4 commands left</v8:content>
+												</v8:item>
+											</ToolTip>
+											<HorizontalStretch>true</HorizontalStretch>
+											<CommandSource>Item.EnterOpeningBalanceCounterpartiesSettlementsAccountsReceivable</CommandSource>
+											<ExtendedTooltip name="Step4CommandLeftExtendedTooltip" id="826"/>
+											<ChildItems>
+												<Button name="EnterOpeningBalanceCounterpartiesSettlementsAccountsReceivableDataImportFromExternalSourcesAccountsReceivable" id="908">
+													<Type>CommandBarButton</Type>
+													<CommandName>Form.Command.DataImportFromExternalSourcesAccountsReceivable</CommandName>
+													<ExtendedTooltip name="EnterOpeningBalanceCounterpartiesSettlementsAccountsReceivableImportDataFromExternalAccountsReceivableExtendedTooltip" id="909"/>
+												</Button>
+											</ChildItems>
+										</CommandBar>
+										<CommandBar name="Step4CommandRight" id="402">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Step4 commands right</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Step4 commands right</v8:content>
+												</v8:item>
+											</ToolTip>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ExtendedTooltip name="Step4CommandsRightExtendedTooltip" id="828"/>
+										</CommandBar>
+									</ChildItems>
+								</UsualGroup>
+								<Table name="EnterOpeningBalanceCounterpartiesSettlementsAccountsReceivable" id="79">
+									<AutoInsertNewRow>true</AutoInsertNewRow>
+									<EnableStartDrag>true</EnableStartDrag>
+									<EnableDrag>true</EnableDrag>
+									<DataPath>EnterOpeningBalanceCounterpartiesSettlements.AccountsReceivable</DataPath>
+									<SearchStringLocation>None</SearchStringLocation>
+									<ViewStatusLocation>None</ViewStatusLocation>
+									<SearchControlLocation>None</SearchControlLocation>
+									<RowFilter xsi:nil="true"/>
+									<ContextMenu name="InputOpeningBalancesCounterpartiesPaymentsCustomersPaymentsContextMenu" id="80"/>
+									<AutoCommandBar name="InputOpeningBalancesCounterpartiesPaymentsCustomersPaymentsCommandPanel" id="81">
+										<Autofill>false</Autofill>
+									</AutoCommandBar>
+									<ExtendedTooltip name="InputOpeningBalancesCounterpartiesPaymentsCustomersPaymentsExtendedTooltip" id="829"/>
+									<SearchStringAddition name="EnterOpeningBalanceCounterpartiesSettlementsAccountsReceivableSearchString" id="893">
+										<AdditionSource>
+											<Item>EnterOpeningBalanceCounterpartiesSettlementsAccountsReceivable</Item>
+											<Type>SearchStringRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="EnterOpeningBalanceCounterpartiesSettlementsAccountsReceivableSearchStringContextMenu" id="894"/>
+										<ExtendedTooltip name="EnterOpeningBalanceCounterpartiesSettlementsAccountsReceivableSearchStringExtendedTooltip" id="895"/>
+									</SearchStringAddition>
+									<ViewStatusAddition name="EnterOpeningBalanceCounterpartiesSettlementsAccountsReceivableViewStatus" id="896">
+										<AdditionSource>
+											<Item>EnterOpeningBalanceCounterpartiesSettlementsAccountsReceivable</Item>
+											<Type>ViewStatusRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="EnterOpeningBalanceCounterpartiesSettlementsAccountsReceivableViewStatusContextMenu" id="897"/>
+										<ExtendedTooltip name="EnterOpeningBalanceCounterpartiesSettlementsAccountsReceivableViewStatusExtendedTooltip" id="898"/>
+									</ViewStatusAddition>
+									<SearchControlAddition name="EnterOpeningBalanceCounterpartiesSettlementsAccountsReceivableSearchManagement" id="899">
+										<AdditionSource>
+											<Item>EnterOpeningBalanceCounterpartiesSettlementsAccountsReceivable</Item>
+											<Type>SearchControl</Type>
+										</AdditionSource>
+										<ContextMenu name="EnterOpeningBalanceCounterpartiesSettlementsAccountsReceivableSearchManagementContextMenu" id="900"/>
+										<ExtendedTooltip name="EnterOpeningBalanceCounterpartiesSettlementsAccountsReceivableSearchManagementExtendedTooltip" id="901"/>
+									</SearchControlAddition>
+									<Events>
+										<Event name="AfterDeleteRow">EnterOpeningBalanceCounterpartiesSettlementsAccountsReceivableAfterDeleteRowRow</Event>
+									</Events>
+									<ChildItems>
+										<LabelField name="EnterOpeningBalanceCounterpartiesSettlementsAccountsReceivableLineNumber" id="82">
+											<DataPath>EnterOpeningBalanceCounterpartiesSettlements.AccountsReceivable.LineNumber</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<FixingInTable>Left</FixingInTable>
+											<Width>2</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ContextMenu name="EnterOpeningBalanceCounterpartiesSettlementsAccountsReceivableLineNumberContextMenu" id="83"/>
+											<ExtendedTooltip name="EnterOpeningBalanceCounterpartiesSettlementsAccountsReceivableLineNumberExtendedTooltip" id="830"/>
+										</LabelField>
+										<InputField name="EnterOpeningBalanceCounterpartiesSettlementsAccountsReceivableCounterparty" id="84">
+											<DataPath>EnterOpeningBalanceCounterpartiesSettlements.AccountsReceivable.Counterparty</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<FixingInTable>Left</FixingInTable>
+											<Width>20</Width>
+											<ContextMenu name="EnterOpeningBalanceCounterpartiesSettlementsAccountsReceivableCounterpartyContextMenu" id="85"/>
+											<ExtendedTooltip name="EnterOpeningBalanceCounterpartiesSettlementsAccountsReceivableCounterpartyExtendedTooltip" id="831"/>
+											<Events>
+												<Event name="OnChange">EnterOpeningBalanceCounterpartiesSettlementsAccountsReceivableCounterpartyOnChange</Event>
+											</Events>
+										</InputField>
+										<CheckBoxField name="EnterOpeningBalanceCounterpartiesSettlementsAccountsReceivableAdvanceFlag" id="88">
+											<DataPath>EnterOpeningBalanceCounterpartiesSettlements.AccountsReceivable.AdvanceFlag</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="EnterOpeningBalanceCounterpartiesSettlementsAccountsReceivableAdvanceFlagContextMenu" id="89"/>
+											<ExtendedTooltip name="EnterOpeningBalanceCounterpartiesSettlementsAccountsReceivableAdvanceFlagExtendedTooltip" id="833"/>
+											<Events>
+												<Event name="OnChange">EnterOpeningBalanceCounterpartiesSettlementsAccountsReceivableAdvanceFlagOnChange</Event>
+											</Events>
+										</CheckBoxField>
+										<InputField name="EnterOpeningBalanceCounterpartiesSettlementsAccountsReceivableAmountCur" id="94">
+											<DataPath>EnterOpeningBalanceCounterpartiesSettlements.AccountsReceivable.AmountCur</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Amount</v8:content>
+												</v8:item>
+											</Title>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>10</Width>
+											<ContextMenu name="EnterOpeningBalanceCounterpartiesSettlementsAccountsReceivableCurSummSummContextMenu" id="95"/>
+											<ExtendedTooltip name="EnterOpeningBalanceCounterpartiesSettlementsAccountsReceivableCurSummExtendedTooltip" id="836"/>
+											<Events>
+												<Event name="OnChange">EnterOpeningBalanceCounterpartiesSettlementsAccountsReceivableAmountCurOnChange</Event>
+											</Events>
+										</InputField>
+										<InputField name="EnterOpeningBalanceCounterpartiesSettlementsAccountsReceivableAmount" id="96">
+											<DataPath>EnterOpeningBalanceCounterpartiesSettlements.AccountsReceivable.Amount</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Amount in account currency</v8:content>
+												</v8:item>
+											</Title>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>17</Width>
+											<ContextMenu name="EnterOpeningBalanceCounterpartiesSettlementsAccountsReceivableSummContextMenu" id="97"/>
+											<ExtendedTooltip name="EnterOpeningBalanceCounterpartiesSettlementsAccountsReceivableSummExtendedTooltip" id="837"/>
+										</InputField>
+										<InputField name="EnterOpeningBalanceCounterpartiesSettlementsAccountsReceivableContract" id="86">
+											<DataPath>EnterOpeningBalanceCounterpartiesSettlements.AccountsReceivable.Contract</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>20</Width>
+											<ContextMenu name="EnterOpeningBalanceCounterpartiesSettlementsAccountsReceivableContractContextMenu" id="87"/>
+											<ExtendedTooltip name="EnterOpeningBalanceCounterpartiesSettlementsAccountsReceivableContractExtendedTooltip" id="832"/>
+											<Events>
+												<Event name="OnChange">EnterOpeningBalanceCounterpartiesSettlementsAccountsReceivableContractOnChange</Event>
+											</Events>
+										</InputField>
+										<InputField name="EnterOpeningBalanceCounterpartiesSettlementsAccountsReceivableDocument" id="92">
+											<DataPath>EnterOpeningBalanceCounterpartiesSettlements.AccountsReceivable.Document</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>20</Width>
+											<AutoMarkIncomplete>false</AutoMarkIncomplete>
+											<ContextMenu name="EnterOpeningBalanceCounterpartiesSettlementsAccountsReceivableDocumentContextMenu" id="93"/>
+											<ExtendedTooltip name="EnterOpeningBalanceCounterpartiesSettlementsAccountsReceivableDocumentExtendedTooltip" id="834"/>
+											<Events>
+												<Event name="OnChange">EnterOpeningBalanceCounterpartiesSettlementsAccountsReceivableDocumentOnChange</Event>
+											</Events>
+										</InputField>
+										<InputField name="EnterOpeningBalanceCounterpartiesSettlementsAccountsReceivableCustomerOrder" id="90">
+											<DataPath>EnterOpeningBalanceCounterpartiesSettlements.AccountsReceivable.CustomerOrder</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>20</Width>
+											<ContextMenu name="EnterOpeningBalanceCounterpartiesSettlementsAccountsReceivableCustomersOrderContextMenu" id="91"/>
+											<ExtendedTooltip name="EnterOpeningBalanceCounterpartiesSettlementsAccountsReceivableCustomerOrderExtendedTooltip" id="835"/>
+										</InputField>
+										<InputField name="EnterOpeningBalanceCounterpartiesSettlementsAccountsReceivableInvoiceForPayment" id="98">
+											<DataPath>EnterOpeningBalanceCounterpartiesSettlements.AccountsReceivable.InvoiceForPayment</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>20</Width>
+											<ContextMenu name="EnterOpeningBalanceCounterpartiesSettlementsAccountsReceivableInvoiceForPaymentContextMenu" id="99"/>
+											<ExtendedTooltip name="EnterOpeningBalanceCounterpartiesSettlementsAccountsReceivableInvoiceForPaymentExtendedTooltip" id="838"/>
+										</InputField>
+									</ChildItems>
+								</Table>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="Step5" id="363">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Finish</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="Step5ExtendedTooltip" id="839"/>
+					<ChildItems>
+						<UsualGroup name="Step4Navigation1" id="511">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Navigation</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Navigation</v8:content>
+								</v8:item>
+							</ToolTip>
+							<HorizontalStretch>true</HorizontalStretch>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="Step4Navigation1ExtendedTooltip" id="840"/>
+							<ChildItems>
+								<LabelDecoration name="Decoration142" id="602">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Begin</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<VerticalAlign>Center</VerticalAlign>
+									<ContextMenu name="Decoration142ContextMenu" id="603"/>
+									<ExtendedTooltip name="Decoration142ExtendedTooltip" id="841"/>
+									<Events>
+										<Event name="Click">Decoration133Click</Event>
+									</Events>
+								</LabelDecoration>
+								<PictureDecoration name="Decoration67" id="512">
+									<Width>2</Width>
+									<Height>1</Height>
+									<Picture>
+										<xr:Ref>CommonPicture.FundsSection</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="Decoration67ContextMenu" id="513"/>
+									<ExtendedTooltip name="Decoration67ExtendedTooltip" id="843"/>
+								</PictureDecoration>
+								<LabelDecoration name="Decoration69" id="514">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Bank and petty cash</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<VerticalAlign>Center</VerticalAlign>
+									<ContextMenu name="Decoration69ContextMenu" id="515"/>
+									<ExtendedTooltip name="Decoration69ExtendedTooltip" id="844"/>
+									<Events>
+										<Event name="Click">Decoration47Click</Event>
+									</Events>
+								</LabelDecoration>
+								<PictureDecoration name="Decoration71" id="518">
+									<Width>2</Width>
+									<Height>1</Height>
+									<Picture>
+										<xr:Ref>CommonPicture.PurchaseSection</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="Decoration71ContextMenu" id="519"/>
+									<ExtendedTooltip name="Decoration71ExtendedTooltip" id="846"/>
+								</PictureDecoration>
+								<LabelDecoration name="Decoration72" id="520">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Products</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<VerticalAlign>Center</VerticalAlign>
+									<ContextMenu name="Decoration72ContextMenu" id="521"/>
+									<ExtendedTooltip name="Decoration72ExtendedTooltip" id="847"/>
+									<Events>
+										<Event name="Click">Decoration50Click</Event>
+									</Events>
+								</LabelDecoration>
+								<PictureDecoration name="Decoration74" id="524">
+									<Width>2</Width>
+									<Height>1</Height>
+									<Picture>
+										<xr:Ref>CommonPicture.PayrollSection</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="Decoration74ContextMenu" id="525"/>
+									<ExtendedTooltip name="Decoration74ExtendedTooltip" id="849"/>
+								</PictureDecoration>
+								<LabelDecoration name="Decoration75" id="526">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Accounts payable</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<VerticalAlign>Center</VerticalAlign>
+									<ContextMenu name="Decoration75ContextMenu" id="527"/>
+									<ExtendedTooltip name="Decoration75ExtendedTooltip" id="850"/>
+									<Events>
+										<Event name="Click">Decoration53Click</Event>
+									</Events>
+								</LabelDecoration>
+								<PictureDecoration name="Decoration77" id="530">
+									<Width>2</Width>
+									<Height>1</Height>
+									<Picture>
+										<xr:Ref>CommonPicture.PayrollSection</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="Decoration77ContextMenu" id="531"/>
+									<ExtendedTooltip name="Decoration77ExtendedTooltip" id="852"/>
+								</PictureDecoration>
+								<LabelDecoration name="Decoration78" id="532">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Accounts receivable</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<VerticalAlign>Center</VerticalAlign>
+									<ContextMenu name="Decoration78ContextMenu" id="533"/>
+									<ExtendedTooltip name="Decoration78ExtendedTooltip" id="853"/>
+									<Events>
+										<Event name="Click">Decoration56Click</Event>
+									</Events>
+								</LabelDecoration>
+								<PictureDecoration name="Decoration120" id="536">
+									<Width>2</Width>
+									<Height>1</Height>
+									<Picture>
+										<xr:Ref>CommonPicture.SectionEnterprise</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="Decoration120ContextMenu" id="537"/>
+									<ExtendedTooltip name="Decoration120ExtendedTooltip" id="855"/>
+								</PictureDecoration>
+								<LabelDecoration name="Decoration80" id="538">
+									<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Finish</v8:content>
+										</v8:item>
+									</Title>
+									<VerticalAlign>Center</VerticalAlign>
+									<ContextMenu name="Decoration80ContextMenu" id="539"/>
+									<ExtendedTooltip name="Decoration80ExtendedTooltip" id="856"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+						<LabelDecoration name="Decoration83" id="393">
+							<Width>73</Width>
+							<HorizontalStretch>true</HorizontalStretch>
+							<Font ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Well done! You entered opening balances successfully</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Decoration83ContextMenu" id="394"/>
+							<ExtendedTooltip name="Decoration83ExtendedTooltip" id="857"/>
+						</LabelDecoration>
+						<PictureDecoration name="Decoration93" id="540">
+							<Picture>
+								<xr:Ref>CommonPicture.Flag</xr:Ref>
+								<xr:LoadTransparent>true</xr:LoadTransparent>
+							</Picture>
+							<ContextMenu name="Decoration93ContextMenu" id="541"/>
+							<ExtendedTooltip name="Decoration93ExtendedTooltip" id="858"/>
+						</PictureDecoration>
+						<Button name="DocumentsListEnterOpeningBalance" id="606">
+							<Type>Hyperlink</Type>
+							<CommandName>Form.Command.DocumentsListEnterOpeningBalance</CommandName>
+							<ExtendedTooltip name="ListOfDocumentsOfInputInitialBalancesExtendedTooltip" id="859"/>
+						</Button>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+		<UsualGroup name="Footer" id="902">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Footer</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Footer</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="FooterExtendedTooltip" id="903"/>
+			<ChildItems>
+				<LabelDecoration name="DecorationNextActionExplanation" id="210">
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Click Next </v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="DecorationExplanationFollowingContextMenuActions" id="211"/>
+					<ExtendedTooltip name="DecorationExplanationNextActionsExtendedTooltip" id="860"/>
+				</LabelDecoration>
+				<UsualGroup name="ButtonsGroup" id="12">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Buttons</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Horizontal</Group>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ButtonsGroupExtendedTooltip" id="861"/>
+					<ChildItems>
+						<LabelDecoration name="Decoration1" id="100">
+							<HorizontalStretch>true</HorizontalStretch>
+							<ContextMenu name="Decoration1ContextMenu" id="101"/>
+							<ExtendedTooltip name="Decoration1ExtendedTooltip" id="862"/>
+						</LabelDecoration>
+						<Button name="Back" id="176">
+							<Type>UsualButton</Type>
+							<Representation>PictureAndText</Representation>
+							<Width>9</Width>
+							<CommandName>Form.Command.Back</CommandName>
+							<Picture>
+								<xr:Abs>Picture.png</xr:Abs>
+								<xr:LoadTransparent>true</xr:LoadTransparent>
+							</Picture>
+							<ExtendedTooltip name="BackExtendedTooltip" id="863"/>
+						</Button>
+						<Button name="GoToNext" id="175">
+							<Type>UsualButton</Type>
+							<Representation>PictureAndText</Representation>
+							<CommandName>Form.Command.GoToNext</CommandName>
+							<Picture>
+								<xr:Abs>Picture.png</xr:Abs>
+								<xr:LoadTransparent>true</xr:LoadTransparent>
+							</Picture>
+							<ExtendedTooltip name="NextExtendedTooltip" id="864"/>
+						</Button>
+						<Button name="CloseForm" id="102">
+							<Type>UsualButton</Type>
+							<Width>9</Width>
+							<CommandName>Form.Command.CloseForm</CommandName>
+							<ExtendedTooltip name="CloseFormExtendedTooltip" id="865"/>
+						</Button>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="EnterOpeningBalanceProducts" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Initial balances entering goods</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DocumentObject.EnterOpeningBalance</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+			<UseAlways>
+				<Field>EnterOpeningBalanceProducts.RegisterRecords</Field>
+			</UseAlways>
+		</Attribute>
+		<Attribute name="EnterOpeningBalanceBankAndPettyCash" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Initial balances entering goods</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DocumentObject.EnterOpeningBalance</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+			<UseAlways>
+				<Field>EnterOpeningBalanceBankAndPettyCash.RegisterRecords</Field>
+			</UseAlways>
+		</Attribute>
+		<Attribute name="EnterOpeningBalanceCounterpartiesSettlements" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Initial balances entering goods</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DocumentObject.EnterOpeningBalance</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+			<UseAlways>
+				<Field>EnterOpeningBalanceCounterpartiesSettlements.RegisterRecords</Field>
+			</UseAlways>
+			<Columns>
+				<AdditionalColumns table="EnterOpeningBalanceCounterpartiesSettlements.AccountsReceivable">
+					<Column name="DoOperationsByContracts" id="1">
+						<Title>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Do operations by contracts</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:boolean</v8:Type>
+						</Type>
+					</Column>
+					<Column name="DoOperationsByDocuments" id="2">
+						<Title>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Do operations by documents</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:boolean</v8:Type>
+						</Type>
+					</Column>
+					<Column name="DoOperationsByOrders" id="3">
+						<Title>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Account settlements by orders</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:boolean</v8:Type>
+						</Type>
+					</Column>
+					<Column name="TrackPaymentsByBills" id="4">
+						<Title>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Keep records of payments by bills</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:boolean</v8:Type>
+						</Type>
+					</Column>
+				</AdditionalColumns>
+				<AdditionalColumns table="EnterOpeningBalanceCounterpartiesSettlements.AccountsPayable">
+					<Column name="DoOperationsByContracts" id="1">
+						<Title>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Do operations by contracts</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:boolean</v8:Type>
+						</Type>
+					</Column>
+					<Column name="DoOperationsByDocuments" id="2">
+						<Title>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Do operations by documents</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:boolean</v8:Type>
+						</Type>
+					</Column>
+					<Column name="DoOperationsByOrders" id="3">
+						<Title>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Account settlements by orders</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:boolean</v8:Type>
+						</Type>
+					</Column>
+					<Column name="TrackPaymentsByBills" id="4">
+						<Title>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Keep records of payments by bills</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:boolean</v8:Type>
+						</Type>
+					</Column>
+				</AdditionalColumns>
+			</Columns>
+		</Attribute>
+		<Attribute name="ProductsAndServices" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Products and services</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="AccountingBySeveralWarehouses" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Accounting by multiple warehouses</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.YesNo</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="AccountingInVariousUOM" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Accounting in various UOM</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.YesNo</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="UseCharacteristics" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Use characteristics</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.YesNo</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="UseBatches" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Use batches</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.YesNo</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="CurrencyTransactionsAccounting" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Currency transactions</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.YesNo</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="Counterparty" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Counterparty</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="AccountingCurrency" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Accounting currency</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Currencies</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="Company" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Company</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Companies</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="NationalCurrency" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>National currency</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Currencies</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="AssistantSimpleUseMode" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Assistant simple use mode</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.YesNo</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="BalanceDate" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Date of opening balance entry</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="DataLoadSettings" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Data load settings</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<ConditionalAppearance>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>EnterOpeningBalanceCounterpartiesSettlementsAccountsReceivableDocument</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemGroup">
+						<dcsset:groupType>AndGroup</dcsset:groupType>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">EnterOpeningBalanceCounterpartiesSettlements.AccountsReceivable.Document</dcsset:left>
+							<dcsset:comparisonType>NotFilled</dcsset:comparisonType>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">EnterOpeningBalanceCounterpartiesSettlements.AccountsReceivable.DoOperationsByDocuments</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+						</dcsset:item>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>TextColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:MinorInscriptionText</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>MarkIncomplete</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Text</dcscor:parameter>
+						<dcscor:value xsi:type="xs:string">&lt;filled out automatically&gt;</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:use>false</dcscor:use>
+						<dcscor:parameter>ReadOnly</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>EnterOpeningBalanceCounterpartiesSettlementsAccountsPayableDocument</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemGroup">
+						<dcsset:groupType>AndGroup</dcsset:groupType>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">EnterOpeningBalanceCounterpartiesSettlements.AccountsPayable.Document</dcsset:left>
+							<dcsset:comparisonType>NotFilled</dcsset:comparisonType>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">EnterOpeningBalanceCounterpartiesSettlements.AccountsPayable.DoOperationsByDocuments</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+						</dcsset:item>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>TextColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:MinorInscriptionText</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>MarkIncomplete</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Text</dcscor:parameter>
+						<dcscor:value xsi:type="xs:string">&lt;filled out automatically&gt;</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:use>false</dcscor:use>
+						<dcscor:parameter>ReadOnly</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>EnterOpeningBalanceCounterpartiesSettlementsAccountsReceivableContract</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemGroup">
+						<dcsset:groupType>AndGroup</dcsset:groupType>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">EnterOpeningBalanceCounterpartiesSettlements.AccountsReceivable.Counterparty</dcsset:left>
+							<dcsset:comparisonType>Filled</dcsset:comparisonType>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">EnterOpeningBalanceCounterpartiesSettlements.AccountsReceivable.DoOperationsByContracts</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+						</dcsset:item>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>TextColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:MinorInscriptionText</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>MarkIncomplete</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Text</dcscor:parameter>
+						<dcscor:value xsi:type="xs:string">&lt;Contract settlements are not accounted for the counterparty&gt;</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ReadOnly</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>EnterOpeningBalanceCounterpartiesSettlementsAccountsReceivableDocument</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemGroup">
+						<dcsset:groupType>AndGroup</dcsset:groupType>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">EnterOpeningBalanceCounterpartiesSettlements.AccountsReceivable.Counterparty</dcsset:left>
+							<dcsset:comparisonType>Filled</dcsset:comparisonType>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">EnterOpeningBalanceCounterpartiesSettlements.AccountsReceivable.DoOperationsByDocuments</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+						</dcsset:item>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>TextColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:MinorInscriptionText</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>MarkIncomplete</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Text</dcscor:parameter>
+						<dcscor:value xsi:type="xs:string">&lt;Document settlements are not accounted for the counterparty&gt;</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ReadOnly</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>EnterOpeningBalanceCounterpartiesSettlementsAccountsReceivableCustomerOrder</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemGroup">
+						<dcsset:groupType>AndGroup</dcsset:groupType>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">EnterOpeningBalanceCounterpartiesSettlements.AccountsReceivable.Counterparty</dcsset:left>
+							<dcsset:comparisonType>Filled</dcsset:comparisonType>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">EnterOpeningBalanceCounterpartiesSettlements.AccountsReceivable.DoOperationsByOrders</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+						</dcsset:item>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>TextColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:MinorInscriptionText</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>MarkIncomplete</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Text</dcscor:parameter>
+						<dcscor:value xsi:type="xs:string">&lt;order settlements are not accounted for the counterparty&gt;</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ReadOnly</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>EnterOpeningBalanceCounterpartiesSettlementsAccountsReceivableInvoiceForPayment</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemGroup">
+						<dcsset:groupType>AndGroup</dcsset:groupType>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">EnterOpeningBalanceCounterpartiesSettlements.AccountsReceivable.Counterparty</dcsset:left>
+							<dcsset:comparisonType>Filled</dcsset:comparisonType>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">EnterOpeningBalanceCounterpartiesSettlements.AccountsReceivable.TrackPaymentsByBills</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+						</dcsset:item>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>TextColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:MinorInscriptionText</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>MarkIncomplete</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Text</dcscor:parameter>
+						<dcscor:value xsi:type="xs:string">&lt;payments are not accounted for the counterparty&gt;</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ReadOnly</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>EnterOpeningBalanceCounterpartiesSettlementsAccountsPayableContract</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemGroup">
+						<dcsset:groupType>AndGroup</dcsset:groupType>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">EnterOpeningBalanceCounterpartiesSettlements.AccountsPayable.Counterparty</dcsset:left>
+							<dcsset:comparisonType>Filled</dcsset:comparisonType>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">EnterOpeningBalanceCounterpartiesSettlements.AccountsPayable.DoOperationsByContracts</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+						</dcsset:item>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>TextColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:MinorInscriptionText</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>MarkIncomplete</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Text</dcscor:parameter>
+						<dcscor:value xsi:type="xs:string">&lt;Contract settlements are not accounted for the counterparty&gt;</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ReadOnly</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>EnterOpeningBalanceCounterpartiesSettlementsAccountsPayableDocument</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemGroup">
+						<dcsset:groupType>AndGroup</dcsset:groupType>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">EnterOpeningBalanceCounterpartiesSettlements.AccountsPayable.Counterparty</dcsset:left>
+							<dcsset:comparisonType>Filled</dcsset:comparisonType>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">EnterOpeningBalanceCounterpartiesSettlements.AccountsPayable.DoOperationsByDocuments</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+						</dcsset:item>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>TextColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:MinorInscriptionText</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>MarkIncomplete</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Text</dcscor:parameter>
+						<dcscor:value xsi:type="xs:string">&lt;Document settlements are not accounted for the counterparty&gt;</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ReadOnly</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>EnterOpeningBalanceCounterpartiesSettlementsAccountsPayablePurchaseOrder</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemGroup">
+						<dcsset:groupType>AndGroup</dcsset:groupType>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">EnterOpeningBalanceCounterpartiesSettlements.AccountsPayable.Counterparty</dcsset:left>
+							<dcsset:comparisonType>Filled</dcsset:comparisonType>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">EnterOpeningBalanceCounterpartiesSettlements.AccountsPayable.DoOperationsByOrders</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+						</dcsset:item>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>TextColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:MinorInscriptionText</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>MarkIncomplete</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Text</dcscor:parameter>
+						<dcscor:value xsi:type="xs:string">&lt;order settlements are not accounted for the counterparty&gt;</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ReadOnly</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>EnterOpeningBalanceCounterpartiesSettlementsAccountsPayableInvoiceForPayment</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemGroup">
+						<dcsset:groupType>AndGroup</dcsset:groupType>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">EnterOpeningBalanceCounterpartiesSettlements.AccountsPayable.Counterparty</dcsset:left>
+							<dcsset:comparisonType>Filled</dcsset:comparisonType>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">EnterOpeningBalanceCounterpartiesSettlements.AccountsPayable.TrackPaymentsByBills</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+						</dcsset:item>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>TextColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:MinorInscriptionText</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>MarkIncomplete</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Text</dcscor:parameter>
+						<dcscor:value xsi:type="xs:string">&lt;payments are not accounted for the counterparty&gt;</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ReadOnly</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+		</ConditionalAppearance>
+	</Attributes>
+	<Commands>
+		<Command name="CloseForm" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Close</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Close form</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>CloseForm</Action>
+		</Command>
+		<Command name="GoToNext" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Next</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Next</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>GoToNext</Action>
+		</Command>
+		<Command name="Back" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Back</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Back</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Back</Action>
+		</Command>
+		<Command name="AddProductsAndServices" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Add item</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Add ProductsAndServices</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.CreateListItem</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>AddProductsAndServices</Action>
+		</Command>
+		<Command name="ProductsAndServicesList" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Go to list</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Counterparty list</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.ListPicture</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+		</Command>
+		<Command name="AddCounterparty" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Add item</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Add ProductsAndServices</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.CreateListItem</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>AddProductsAndServices</Action>
+		</Command>
+		<Command name="CounterpartiesList" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Go to list</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Counterparty list</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.ListPicture</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+		</Command>
+		<Command name="GoToPricing" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Go to pricing</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Go to pricing</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>GoToPricing</Action>
+		</Command>
+		<Command name="AddProductsFromTable" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Add counterparties from table</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Add products from table</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>AddFromTable</Action>
+		</Command>
+		<Command name="AddCounterpartiesFromTable" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Add counterparties from table</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Add counterparties from table</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>AddCounterpartiesFromTable</Action>
+		</Command>
+		<Command name="DocumentsListEnterOpeningBalance" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Go to document list "Enter opening balance"</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Document list opening balances entering</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>DocumentsListEnterOpeningBalance</Action>
+		</Command>
+		<Command name="DataImportFromExternalSources" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Import data from external source</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Import data from external source</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Use>
+				<xr:Common>false</xr:Common>
+				<xr:Value name="Role.FullRights">true</xr:Value>
+			</Use>
+			<Picture>
+				<xr:Ref>CommonPicture.LoadFromFile</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>DataImportFromExternalSources</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="DataImportFromExternalSourcesAccountsPayable" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Import data from external source</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Import data from external source vendors settlements</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.LoadFromFile</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>DataImportFromExternalSourcesAccountsPayable</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="DataImportFromExternalSourcesAccountsReceivable" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Import data from external source</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Import data from external source customer settlements</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.LoadFromFile</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>DataImportFromExternalSourcesAccountsReceivable</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+	</Commands>
+</Form>

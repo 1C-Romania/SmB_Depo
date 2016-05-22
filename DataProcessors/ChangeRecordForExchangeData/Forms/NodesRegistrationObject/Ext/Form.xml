@@ -1,0 +1,682 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Title>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Object registration nodes</v8:content>
+		</v8:item>
+	</Title>
+	<AutoTitle>false</AutoTitle>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<ChildItems>
+			<Button name="TreeNodesExchangeChangeRegistration" id="33">
+				<Type>CommandBarButton</Type>
+				<Representation>PictureAndText</Representation>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.ChangeRegistration</CommandName>
+				<Picture>
+					<xr:Ref>StdPicture.Write</xr:Ref>
+					<xr:LoadTransparent>true</xr:LoadTransparent>
+				</Picture>
+				<ExtendedTooltip name="TreeNodesExchangeChangeRegistrationExtendedTooltip" id="58"/>
+			</Button>
+			<ButtonGroup name="Group1" id="48">
+				<Title>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Switch marks</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="Group1ExtendedTooltip" id="59"/>
+				<ChildItems>
+					<Button name="FormSetMarkAllNodes" id="36">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.MarkAllNodes</CommandName>
+						<ExtendedTooltip name="FormSetMarkAllNodesExtendedTooltip" id="60"/>
+					</Button>
+					<Button name="FormUnmarkAllNodes" id="37">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.UnMarkAllNodes</CommandName>
+						<ExtendedTooltip name="FormUnMarkAllNodesExtendedTooltip" id="61"/>
+					</Button>
+				</ChildItems>
+			</ButtonGroup>
+			<ButtonGroup name="Group2" id="56">
+				<Title>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Additionally</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTip>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Group2</v8:content>
+					</v8:item>
+				</ToolTip>
+				<ExtendedTooltip name="Group2ExtendedTooltip" id="62"/>
+				<ChildItems>
+					<Button name="FormTreeNodesReread" id="49">
+						<Type>CommandBarButton</Type>
+						<Representation>PictureAndText</Representation>
+						<CommandName>Form.Command.RereadTreeNodes</CommandName>
+						<Picture>
+							<xr:Ref>StdPicture.Refresh</xr:Ref>
+							<xr:LoadTransparent>true</xr:LoadTransparent>
+						</Picture>
+						<Title>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Refresh</v8:content>
+							</v8:item>
+						</Title>
+						<ExtendedTooltip name="FormTreeOfNodesExtendedTooltipReread" id="63"/>
+					</Button>
+					<Button name="FormOpenSettingsForm" id="57">
+						<Type>CommandBarButton</Type>
+						<Representation>PictureAndText</Representation>
+						<CommandName>Form.Command.OpenFormSettings</CommandName>
+						<ExtendedTooltip name="FormOpenFormSettingsExtendedTooltip" id="64"/>
+					</Button>
+				</ChildItems>
+			</ButtonGroup>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnOpen">OnOpen</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<Table name="TreeNodesExchange" id="1">
+			<Representation>Tree</Representation>
+			<CommandBarLocation>None</CommandBarLocation>
+			<DefaultItem>true</DefaultItem>
+			<ChangeRowSet>false</ChangeRowSet>
+			<ChangeRowOrder>false</ChangeRowOrder>
+			<SelectionMode>SingleRow</SelectionMode>
+			<HorizontalLines>false</HorizontalLines>
+			<VerticalLines>false</VerticalLines>
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<InitialListView>Beginning</InitialListView>
+			<InitialTreeView>ExpandAllLevels</InitialTreeView>
+			<DataPath>TreeNodesExchange</DataPath>
+			<RowPictureDataPath>TreeNodesExchange.PictureIndex</RowPictureDataPath>
+			<RowsPicture>
+				<xr:Abs>RowsPicture.png</xr:Abs>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</RowsPicture>
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Exchange nods</v8:content>
+				</v8:item>
+			</Title>
+			<CommandSet>
+				<ExcludedCommand>HierarchicalList</ExcludedCommand>
+				<ExcludedCommand>Tree</ExcludedCommand>
+				<ExcludedCommand>Copy</ExcludedCommand>
+				<ExcludedCommand>List</ExcludedCommand>
+				<ExcludedCommand>SortListAsc</ExcludedCommand>
+				<ExcludedCommand>MoveUp</ExcludedCommand>
+				<ExcludedCommand>SortListDesc</ExcludedCommand>
+				<ExcludedCommand>Delete</ExcludedCommand>
+				<ExcludedCommand>EndEdit</ExcludedCommand>
+				<ExcludedCommand>Add</ExcludedCommand>
+				<ExcludedCommand>Change</ExcludedCommand>
+				<ExcludedCommand>MoveDown</ExcludedCommand>
+			</CommandSet>
+			<SearchStringLocation>None</SearchStringLocation>
+			<ViewStatusLocation>None</ViewStatusLocation>
+			<SearchControlLocation>None</SearchControlLocation>
+			<ContextMenu name="ExchangeNodeTreeContextMenu" id="2">
+				<ChildItems>
+					<ButtonGroup name="TreeNodesExchangeContextMenuGroup1" id="40">
+						<ExtendedTooltip name="ExchangeNodeTreeContextMenuGroup1ExtendedTooltip" id="65"/>
+						<ChildItems>
+							<Button name="ExchangeNodeTreeContextMenuToMarkAllNodes" id="41">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.MarkAllNodes</CommandName>
+								<Picture>
+									<xr:Ref>StdPicture.CheckAll</xr:Ref>
+									<xr:LoadTransparent>true</xr:LoadTransparent>
+								</Picture>
+								<ExtendedTooltip name="ExchangeNodeTreeContextMenuMarkAllNodesExtendedTooltip" id="66"/>
+							</Button>
+							<Button name="ExchangeNodeTreeContextMenuToMarkAllNodes" id="42">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.UnMarkAllNodes</CommandName>
+								<Picture>
+									<xr:Ref>StdPicture.UncheckAll</xr:Ref>
+									<xr:LoadTransparent>true</xr:LoadTransparent>
+								</Picture>
+								<ExtendedTooltip name="ExchangeNodeTreeContextMenuToMarkAllNodesExtendedTooltip" id="67"/>
+							</Button>
+							<Button name="ExchangeNodeTreeContextMenuInvertMarkAllNodes" id="43">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.InvertMarkAllNodes</CommandName>
+								<Picture>
+									<xr:Abs>Picture.png</xr:Abs>
+									<xr:LoadTransparent>true</xr:LoadTransparent>
+								</Picture>
+								<ExtendedTooltip name="ExchangeNodeTreeContextMenuInvertMarkAllNodesExtendedTooltip" id="68"/>
+							</Button>
+						</ChildItems>
+					</ButtonGroup>
+					<Button name="TreeNodesExchangeContextMenuOpenFormEditingOfNode" id="47">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.OpenFormEditingOfNode</CommandName>
+						<Title>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Registration of the other node objects</v8:content>
+							</v8:item>
+						</Title>
+						<ExtendedTooltip name="TreeNodesExchangeContextMenuOpenFormEditingFromNodeExtendedTooltip" id="69"/>
+					</Button>
+					<ButtonGroup name="ExchangeNodeTreeContextMenuGroup2" id="44">
+						<ExtendedTooltip name="ExchangeNodeTreeContextMenuGroup2ExtendedTooltip" id="70"/>
+						<ChildItems>
+							<Button name="TreeNodesExchangeContextMenuOutputList" id="45">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Item.TreeNodesExchange.StandardCommand.OutputList</CommandName>
+								<ExtendedTooltip name="ExchangeNodeTreeContextMenuOutputListExtendedTooltip" id="71"/>
+							</Button>
+							<Button name="ExchangeNodeTreeContextMenuCopyToClipboard" id="46">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Item.TreeNodesExchange.StandardCommand.CopyToClipboard</CommandName>
+								<ExtendedTooltip name="ExchangeNodeTreeContextMenuCopyToClipboardExtendedTooltip" id="72"/>
+							</Button>
+						</ChildItems>
+					</ButtonGroup>
+				</ChildItems>
+			</ContextMenu>
+			<AutoCommandBar name="TreeNodesExchangeCommandBar" id="3">
+				<Autofill>false</Autofill>
+			</AutoCommandBar>
+			<ExtendedTooltip name="TreeNodesExchangeExtendedTooltip" id="73"/>
+			<SearchStringAddition name="TreeNodesExchangeSearchString" id="83">
+				<AdditionSource>
+					<Item>TreeNodesExchange</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="TreeNodesExchangeSearchStringContextMenu" id="84"/>
+				<ExtendedTooltip name="TreeNodesExchangeSearchStringExtendedTooltip" id="85"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="TreeNodesExchangeViewStatus" id="86">
+				<AdditionSource>
+					<Item>TreeNodesExchange</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="TreeNodesExchangeViewStatusContextMenu" id="87"/>
+				<ExtendedTooltip name="TreeNodesExchangeViewStatusExtendedTooltip" id="88"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="TreeNodesExchangeSearchManagement" id="89">
+				<AdditionSource>
+					<Item>TreeNodesExchange</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="TreeNodesExchangeSearchManagementContextMenu" id="90"/>
+				<ExtendedTooltip name="TreeNodesExchangeSearchManagementExtendedTooltip" id="91"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="Selection">TreeNodesExchangeCase</Event>
+			</Events>
+			<ChildItems>
+				<ColumnGroup name="TreeNodesExchangeCheckDescription" id="14">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Node description</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Node description</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>InCell</Group>
+					<ExtendedTooltip name="NodesExchangeTreeCheckDescriptionExtendedTooltip" id="74"/>
+					<ChildItems>
+						<CheckBoxField name="TreeNodesExchangeCheck" id="12">
+							<DataPath>TreeNodesExchange.Check</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<EditMode>EnterOnInput</EditMode>
+							<ThreeState>true</ThreeState>
+							<ContextMenu name="ExchangeCheckSitesTreeContextMenu" id="13"/>
+							<ExtendedTooltip name="TreeNodesExchangeCheckExtendedTooltip" id="75"/>
+							<Events>
+								<Event name="OnChange">TreeNodesExchangeCheckOnChange</Event>
+							</Events>
+						</CheckBoxField>
+						<LabelField name="TreeNodesExchangeDescription" id="4">
+							<DataPath>TreeNodesExchange.Description</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Node</v8:content>
+								</v8:item>
+							</Title>
+							<EditMode>Directly</EditMode>
+							<ContextMenu name="TreeNodesExchangeNameContextMenu" id="5"/>
+							<ExtendedTooltip name="TreeNodesExchangeDescriptionExtendedTooltip" id="76"/>
+						</LabelField>
+					</ChildItems>
+				</ColumnGroup>
+				<LabelField name="TreeNodesExchangeCode" id="31">
+					<DataPath>TreeNodesExchange.Code</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Code</v8:content>
+						</v8:item>
+					</Title>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="TreeNodesExchangeCodeContextMenu" id="32"/>
+					<ExtendedTooltip name="TreeNodesExchangeCodeExtendedTooltip" id="77"/>
+				</LabelField>
+				<ColumnGroup name="ExchangeNodesTreeGroup1" id="53">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Registration details</v8:content>
+						</v8:item>
+					</Title>
+					<Group>InCell</Group>
+					<ExtendedTooltip name="TreeNodesExchangeGroup1ExtendedTooltip" id="78"/>
+					<ChildItems>
+						<PictureField name="TreeNodesExchangeAutoRecord" id="34">
+							<DataPath>TreeNodesExchange.PictureIndexAutoRecord</DataPath>
+							<UserVisible>
+								<xr:Common>false</xr:Common>
+							</UserVisible>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>AutoRecord</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>None</TitleLocation>
+							<EditMode>EnterOnInput</EditMode>
+							<ValuesPicture>
+								<xr:Abs>ValuesPicture.png</xr:Abs>
+								<xr:LoadTransparent>true</xr:LoadTransparent>
+							</ValuesPicture>
+							<ContextMenu name="TreeNodesExchangeAutoRecordContextMenu" id="35"/>
+							<ExtendedTooltip name="TreeNodesExchangeAutoRecordExtendedTooltip" id="79"/>
+						</PictureField>
+						<InputField name="TreeNodesExchangeMessageNo" id="54">
+							<DataPath>TreeNodesExchange.MessageNo</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Message No</v8:content>
+								</v8:item>
+							</Title>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="TreeNodesExchangeMessageNoContextMenu" id="55"/>
+							<ExtendedTooltip name="TreeNodesExchangeMessageNoExtendedTooltip" id="80"/>
+						</InputField>
+					</ChildItems>
+				</ColumnGroup>
+			</ChildItems>
+		</Table>
+		<UsualGroup name="GroupOfHiddenData" id="50">
+			<Visible>false</Visible>
+			<Enabled>false</Enabled>
+			<EnableContentChange>true</EnableContentChange>
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group of hidden data</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group of hidden data</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Representation>None</Representation>
+			<ExtendedTooltip name="GroupOfHiddenDataExtendedTooltip" id="81"/>
+			<ChildItems>
+				<PictureDecoration name="HiddenPictureInformation32" id="51">
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Hidden picture inforamtion32</v8:content>
+						</v8:item>
+					</Title>
+					<Picture>
+						<xr:Abs>Picture.png</xr:Abs>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</Picture>
+					<ContextMenu name="HiddenPictureInformation23ContextMenu" id="52"/>
+					<ExtendedTooltip name="HiddenPictureInformation32ExtendedTooltip" id="82"/>
+				</PictureDecoration>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.ChangeRecordForExchangeData</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="TreeNodesExchange" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Exchange nodes tree</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTree</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Description" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Exchange node</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="PictureIndex" id="8">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Picture index</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>0</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="Check" id="3">
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="Ref" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Ref</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:TypeSet>cfg:ExchangePlanRef</v8:TypeSet>
+					</Type>
+				</Column>
+				<Column name="Code" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Code</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="PictureIndexAutoRecord" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Autoregistration picture index</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="InitialCheck" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Initial check</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="MessageNo" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Message No</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="NotExported" id="9">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Not exported</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="RegistrationObject" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Registration object</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="TableRegistration" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Registration table</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ChangeRegistration" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Change registration</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Change registration</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Write</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ChangeRegistration</Action>
+		</Command>
+		<Command name="MarkAllNodes" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Mark all nodes</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Mark all nodes</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.CheckAll</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>MarkAllNodes</Action>
+		</Command>
+		<Command name="UnMarkAllNodes" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Unmark all nodes</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Unmark all nodes</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.UncheckAll</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>UnMarkAllNodes</Action>
+		</Command>
+		<Command name="InvertMarkAllNodes" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Change all nodes mark</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Change all nodes mark</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InvertMarkAllNodes</Action>
+		</Command>
+		<Command name="OpenFormEditingOfNode" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Open editing form from the node</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Open editing form from the node</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>OpenFormEditingOfNode</Action>
+		</Command>
+		<Command name="RereadTreeNodes" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Reread the nodes tree</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Reread the nodes tree</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Reread</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>RereadTreeNodes</Action>
+		</Command>
+		<Command name="OpenFormSettings" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Settings</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Open form settings</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.ReportSettings</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>OpenFormSettings</Action>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="RegistrationObject">
+			<Type/>
+			<KeyParameter>true</KeyParameter>
+		</Parameter>
+		<Parameter name="TableRegistration">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<KeyParameter>true</KeyParameter>
+		</Parameter>
+		<Parameter name="NotifyAboutChanges">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<KeyParameter>true</KeyParameter>
+		</Parameter>
+	</Parameters>
+</Form>

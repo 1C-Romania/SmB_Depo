@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"></meta><link rel="stylesheet" type="text/css" href="v8help://service_book/service_style"></link><meta name="GENERATOR" content="MSHTML 11.00.9600.18321"></meta></head><body>
+<p>Designed to store additional reports/processors.</p>
+<p>You can connect and use additional (external) reports/processors in the mode of 1C: Enterprise. Use them to expand the application functions without customizing it. It may help to promptly solve tasks with constant support of the application supplier. </p>
+<p>Additional reports/processors are developed in the Designer mode, so you have to contact the developer. You can also get them from the Internet. </p>
+<p>To use additional reports/processors, use the <strong>Print forms, reports, and processors </strong>command in the <strong>Administration </strong>section, select the relevant check box. Then get access to the <strong>Additional reports/processors </strong>command. By default, the check box is selected.  </p>
+<p>The list shows:</p>
+<ul><li>
+<div><strong>Name</strong>- a full name of the report/processor.</div>
+</li><li>
+<div><strong>Type</strong>- there are different <a href="#1">kinds of additional reports/processors</a>. They are defined by the developer. The kind defines functions.</div>
+</li><li>
+<div><strong>Publication</strong>- visible of additional reports/processors is also highlighted with color. Red means additional reports/processors in debugging mode which are available only for the administrator. Gray means disabled additional reports/processors. The additional reports/processors marked for deletion also get inactive and are shown in gray and with a special sign.</div>
+</li><li>
+<div><strong>Version</strong>- a version number for this processor (stated by the developer).</div>
+</li><li>
+<div><strong>Responsible user </strong>- a user appointed to be responsible for this report/processor. They monitor states of additional report/processor, update versions, etc. (by default, it is "Administrator").</div></li></ul><p>Use the <strong>More - Edit form </strong>command to add more columns:</p>
+<ul><li><strong>Object name</strong> - includes a kind and other data. It is filled out by the developer and set by default. 
+</li><li><strong>Solutions compatibility mode</strong>- the application version for which the processor is used. 
+</li><li><strong>Comment </strong>- detailed information about the additional report/processor. 
+</li><li><strong>Uses variants storage</strong>- a property for additional reports. "Yes" if the additional report stores data in the application variants storage. 
+</li><li><strong>Use for list form </strong>- "Yes" if the command invoking an additional report/processor is on the lists windows; 
+</li><li><strong>Use for object form</strong>- "Yes" if the command invoking the additional report/processor is on the lists items windows. 
+</li><li><strong>Information</strong>- description of the additional report/processor, written by the developer. 
+</li><li><strong>File name </strong>- the extension and name of the additional report/processor file. 
+</li><li><strong>Safe mode</strong>- "Yes" if the additional report/processor is run in the safe mode. Normally, most processors are executed in the safe mode. It ensures that they do not contain an unreliable application code being executed on the server. Still some processors may require execution in unsafe mode. The application warns about it. Export such processors only from reliable sources (suppliers) or check them before export. For more information on the safe mode, see 1C: Enterprise platform documentation.</li></ul><h3>Adding additional report/processor </h3>
+<ul><li>Click <strong>Create </strong>and select the file of <a href="v8help://1cv8/ExtRepotrs">external report/processor</a> on your computer (specify a path on the disk) and <a href="Catalog.AdditionalReportsAndDataProcessors.Form.ItemForm/Help">configure its parameters</a>. The set of data depends on the purpose of the report/processor. If a wrong file is selected, the application indicates an error, e.g. a message stating that the additional processor is designed for another application version. </li></ul><h3>Grouping additional reports/processors</h3>
+<p>If the list is long, it is appropriate to group additional reports/processors by some criteria. To do it, enter the necessary quantity of groups:</p>
+<ul><li>Click <strong>Create group </strong>and enter the group name. The new group can be subordinate to another group: select the necessary group in the <strong>Parent </strong>field. 
+</li><li>Drag necessary additional reports/processors to the group.</li></ul><h3>Filters</h3>
+<p>If the list contains a lot of additional reports/processors, it is appropriate to use filters:</p>
+<ul><li>
+<div>By the <strong>Type </strong>field - select one of the additional report/processor kinds to filter, e.g. "Report".  </div>
+</li><li>
+<div>By the <strong>Publication </strong>field- select the necessary state to filter, e.g. "In use".</div>
+</li><li>
+<div>By the <strong>Type</strong> and <strong>Publication </strong>fields - combine the two filters in long lists.</div></li></ul><h3>Exporting from file</h3>
+<ul><li>Use the <strong>Export from file</strong> command to update the processor in the internal application storage. Specify the path and click <strong>Open</strong>.</li></ul><h3>Importing to file</h3>
+<ul><li>Use the <strong>More - Import to file</strong> command to load the additional report/processor from the storage to a file on the computer disk.  Specify the computer folder, and then click <strong>Save</strong>. The attachment file name is assigned automatically; you can rename it.</li></ul><h3>Kinds<a name="#1"> of additional reports/processors</a></h3>
+<p>There are several kinds of additional reports/processors :</p>
+<ul><li><strong>Global reports/processors </strong>- used independently from the application data; also known as common. The commands for their use are in the application sections. Use the global reports/processors to import data to the application, update or clear the index of the full-text search, etc. They contain commands invoked only from the command interface sections. The commands do not depend on specific application objects. The list of available sections for commands placement is predefined by the developer and included in the file of additional report/processor; you can not change it. 
+</li><li><strong>Assigned additional reports/processors </strong>- designed for one or more specific documents or lists; the list of available assignations is predefined by the developer and included in the text of the additional report/processor; so when you configure them, you can select from this list. This type includes several additional reports/processors: 
+<ul><li><strong>Report </strong>- an assigned additional report. Use it to generate a report for a specific application object. 
+</li><li><strong>Completing object</strong> - an assigned additional processor automatically completing or clearing one or more list items. 
+</li><li><strong>Print form </strong>- an assigned additional processor multiplying the document print form. 
+</li><li><strong>Creating linked objects </strong>- an assigned additional processor quickly filling in lists by copying items.</li></ul></li></ul><h3>See also:</h3>
+<ul><li><a href="v8help://frame/form_common">Working with forms</a></li></ul></body></html>

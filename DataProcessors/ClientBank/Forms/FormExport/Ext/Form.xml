@@ -1,0 +1,1058 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Title>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Payment order export</v8:content>
+		</v8:item>
+	</Title>
+	<AutoTitle>false</AutoTitle>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="NotificationProcessing">NotificationProcessing</Event>
+		<Event name="OnOpen">OnOpen</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="CommandBar" id="508">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Command bar</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Command bar</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="CommandBarExtendedTooltip" id="509"/>
+			<ChildItems>
+				<CommandBar name="CommandBarLeft" id="510">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Command bar left</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Command bar left</v8:content>
+						</v8:item>
+					</ToolTip>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ExtendedTooltip name="CommandBarLeftExtendedTooltip" id="511"/>
+				</CommandBar>
+				<InputField name="ExportingStartPeriod" id="7">
+					<DataPath>Object.StartPeriod</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Period from</v8:content>
+						</v8:item>
+					</Title>
+					<TitleLocation>Left</TitleLocation>
+					<Wrap>false</Wrap>
+					<ContextMenu name="ExportStartPeriodContextMenu" id="8"/>
+					<ExtendedTooltip name="ExportingStartPeriodExtendedTooltip" id="471"/>
+					<Events>
+						<Event name="OnChange">StartPeriodOnChange</Event>
+					</Events>
+				</InputField>
+				<InputField name="ExportEndPeriod" id="9">
+					<DataPath>Object.EndPeriod</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>to</v8:content>
+						</v8:item>
+					</Title>
+					<Wrap>false</Wrap>
+					<ContextMenu name="ExportEndPeriodContextMenu" id="10"/>
+					<ExtendedTooltip name="ExportEndPeriodExtendedTooltip" id="472"/>
+					<Events>
+						<Event name="OnChange">EndPeriodOnChange</Event>
+					</Events>
+				</InputField>
+				<CommandBar name="CommandBarRight" id="520">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Command bar right</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Command bar right</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Width>7</Width>
+					<HorizontalStretch>true</HorizontalStretch>
+					<HorizontalLocation>Right</HorizontalLocation>
+					<ExtendedTooltip name="CommandBarRightExtendedTooltip" id="521"/>
+					<ChildItems>
+						<Button name="FormSetting" id="456">
+							<Type>CommandBarButton</Type>
+							<Representation>Picture</Representation>
+							<CommandName>Form.Command.Setting</CommandName>
+							<ExtendedTooltip name="FormSettingsExtendedTooltip" id="463"/>
+						</Button>
+					</ChildItems>
+				</CommandBar>
+				<CommandBar name="FormCommands" id="522">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Commands of form</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Commands of form</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Width>10</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<CommandSource>Form</CommandSource>
+					<ExtendedTooltip name="FormCommandsExtendedTooltip" id="523"/>
+				</CommandBar>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="Period" id="42">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Period</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Period</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="PeriodExtendedTooltip" id="469"/>
+		</UsualGroup>
+		<UsualGroup name="InformationReferences" id="455">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Information references</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Information references</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<ExtendedTooltip name="InformationLinksExtendedTooltip" id="464"/>
+		</UsualGroup>
+		<UsualGroup name="Dumps" id="39">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Exporting</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Dumps</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ExportsExtendedTooltip" id="465"/>
+			<ChildItems>
+				<UsualGroup name="GroupBankAccountExport" id="600">
+					<Visible>false</Visible>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group company</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group company</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="GroupBankAccountExportExtendedTooltip" id="601"/>
+					<ChildItems>
+						<LabelDecoration name="TitleBankAccountDump" id="602">
+							<Width>12</Width>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Bank account</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="TitleBankAccountDumpContextMenu" id="603"/>
+							<ExtendedTooltip name="TitleBankAccountExportExtendedTooltip" id="604"/>
+						</LabelDecoration>
+						<InputField name="ExportingBankAccount" id="605">
+							<DataPath>Object.BankAccount</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<Wrap>false</Wrap>
+							<ChoiceForm>Catalog.BankAccounts.Form.ChoiceFormWithoutOwner</ChoiceForm>
+							<ChoiceParameters>
+								<app:item name="Filter.ThisIsCompanyAccount">
+									<app:value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation/>
+										<Value xsi:type="xs:boolean">true</Value>
+									</app:value>
+								</app:item>
+							</ChoiceParameters>
+							<ContextMenu name="ExportingBankAccountContextMenu" id="606"/>
+							<ExtendedTooltip name="DumpBankAccountExtendedTooltip" id="607"/>
+							<Events>
+								<Event name="OnChange">BankAccountOnChange</Event>
+							</Events>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<Table name="Exporting" id="45">
+					<SkipOnInput>false</SkipOnInput>
+					<ChangeRowSet>false</ChangeRowSet>
+					<ChangeRowOrder>false</ChangeRowOrder>
+					<HorizontalLines>false</HorizontalLines>
+					<UseAlternationRowColor>true</UseAlternationRowColor>
+					<AutoInsertNewRow>true</AutoInsertNewRow>
+					<DataPath>Object.Exporting</DataPath>
+					<SearchStringLocation>None</SearchStringLocation>
+					<ViewStatusLocation>None</ViewStatusLocation>
+					<SearchControlLocation>None</SearchControlLocation>
+					<RowFilter xsi:nil="true"/>
+					<ContextMenu name="DumpContextMenu" id="46"/>
+					<AutoCommandBar name="ExportingCommandBar" id="47">
+						<Autofill>false</Autofill>
+						<ChildItems>
+							<Button name="Refresh" id="172">
+								<Type>CommandBarButton</Type>
+								<Representation>Picture</Representation>
+								<SkipOnInput>false</SkipOnInput>
+								<CommandName>Form.Command.ExportRefresh</CommandName>
+								<ExtendedTooltip name="RefreshExtendedTooltip" id="459"/>
+							</Button>
+							<ButtonGroup name="GroupMark" id="457">
+								<Title>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Group mark</v8:content>
+									</v8:item>
+								</Title>
+								<ToolTip>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Group mark</v8:content>
+									</v8:item>
+								</ToolTip>
+								<HorizontalStretch>false</HorizontalStretch>
+								<ExtendedTooltip name="GroupMarkExtendedTooltip" id="460"/>
+								<ChildItems>
+									<Button name="CheckAll" id="173">
+										<Type>CommandBarButton</Type>
+										<SkipOnInput>false</SkipOnInput>
+										<CommandName>Form.Command.ExportCheckAll</CommandName>
+										<ExtendedTooltip name="SetFlagsExtendedTooltip" id="461"/>
+									</Button>
+									<Button name="UncheckAll" id="174">
+										<Type>CommandBarButton</Type>
+										<SkipOnInput>false</SkipOnInput>
+										<CommandName>Form.Command.ExportUncheckAll</CommandName>
+										<ExtendedTooltip name="UncheckFlagsExtendedTooltip" id="462"/>
+									</Button>
+								</ChildItems>
+							</ButtonGroup>
+						</ChildItems>
+					</AutoCommandBar>
+					<ExtendedTooltip name="ExportExtendedTooltip" id="473"/>
+					<SearchStringAddition name="ExportSearchString" id="486">
+						<AdditionSource>
+							<Item>Exporting</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="ExportSearchStringContextMenu" id="487"/>
+						<ExtendedTooltip name="ExportSearchStringExtendedTooltip" id="488"/>
+					</SearchStringAddition>
+					<ViewStatusAddition name="ExportViewState" id="489">
+						<AdditionSource>
+							<Item>Exporting</Item>
+							<Type>ViewStatusRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="ExportViewStateContextMenu" id="490"/>
+						<ExtendedTooltip name="ExportViewStateExtendedTooltip" id="491"/>
+					</ViewStatusAddition>
+					<SearchControlAddition name="ExportSearchManagement" id="492">
+						<AdditionSource>
+							<Item>Exporting</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<ContextMenu name="ExportSearchManagementContextMenu" id="493"/>
+						<ExtendedTooltip name="ExportSearchManagementExtendedTooltip" id="494"/>
+					</SearchControlAddition>
+					<Events>
+						<Event name="Selection">ExportSelection</Event>
+					</Events>
+					<ChildItems>
+						<ColumnGroup name="Rows" id="499">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Rows</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Rows</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ExtendedTooltip name="RowsExtendedTooltip" id="500"/>
+							<ChildItems>
+								<ColumnGroup name="Row1" id="495">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Row1</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Row1</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<ExtendedTooltip name="Row1ExtendedTooltip" id="496"/>
+									<ChildItems>
+										<CheckBoxField name="ExportExporting" id="170">
+											<DataPath>Object.Exporting.Exporting</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<FixingInTable>Left</FixingInTable>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="ExportingExportContextMenu" id="171"/>
+											<ExtendedTooltip name="DumpExportingExtendedTooltip" id="475"/>
+											<Events>
+												<Event name="OnChange">DowloadingExportOnChange</Event>
+											</Events>
+										</CheckBoxField>
+										<PictureField name="ExportPictureNumber" id="177">
+											<DataPath>Object.Exporting.PictureNumber</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<FixingInTable>Left</FixingInTable>
+											<HeaderPicture>
+												<xr:Ref>CommonPicture.Information</xr:Ref>
+												<xr:LoadTransparent>true</xr:LoadTransparent>
+											</HeaderPicture>
+											<Width>2</Width>
+											<Height>1</Height>
+											<ValuesPicture>
+												<xr:Ref>CommonPicture.CollectionEventLogMonitorEventKinds</xr:Ref>
+												<xr:LoadTransparent>true</xr:LoadTransparent>
+											</ValuesPicture>
+											<Border width="1">
+												<v8ui:style xsi:type="v8ui:ControlBorderType">WithoutBorder</v8ui:style>
+											</Border>
+											<ContextMenu name="ExportPictureNumberContextMenu" id="178"/>
+											<ExtendedTooltip name="ExportPictureNumberExtendedTooltip" id="476"/>
+										</PictureField>
+										<InputField name="ExportingLineNumber" id="48">
+											<DataPath>Object.Exporting.LineNumber</DataPath>
+											<FixingInTable>Left</FixingInTable>
+											<Width>1</Width>
+											<Wrap>false</Wrap>
+											<ContextMenu name="ExportingLineNumberContextMenu" id="49"/>
+											<ExtendedTooltip name="ImportLineNumberExtendedTooltip" id="474"/>
+										</InputField>
+										<InputField name="ExportDocumentKind" id="86">
+											<DataPath>Object.Exporting.DocumentKind</DataPath>
+											<UserVisible>
+												<xr:Common>false</xr:Common>
+											</UserVisible>
+											<ReadOnly>true</ReadOnly>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Type</v8:content>
+												</v8:item>
+											</Title>
+											<Width>15</Width>
+											<Wrap>false</Wrap>
+											<ContextMenu name="DumpDocumentTypeContextMenu" id="87"/>
+											<ExtendedTooltip name="ExportingDocumentTypeExtendedTooltip" id="477"/>
+										</InputField>
+										<InputField name="ExportingDate" id="50">
+											<DataPath>Object.Exporting.Date</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<Width>15</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<Wrap>false</Wrap>
+											<ContextMenu name="ExportingDateContextMenu" id="51"/>
+											<ExtendedTooltip name="DumpDateExtendedTooltip" id="478"/>
+										</InputField>
+										<InputField name="ExportingNumber" id="52">
+											<DataPath>Object.Exporting.Number</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<FooterText>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Total marked:</v8:content>
+												</v8:item>
+											</FooterText>
+											<Width>17</Width>
+											<Wrap>false</Wrap>
+											<ContextMenu name="ExportingNumberContextMenu" id="53"/>
+											<ExtendedTooltip name="ExportingNumberExtendedTooltip" id="479"/>
+										</InputField>
+										<InputField name="ExportDocumentAmount" id="78">
+											<DataPath>Object.Exporting.DocumentAmount</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Amount</v8:content>
+												</v8:item>
+											</Title>
+											<FooterDataPath>Object.Exporting.TotalDocumentAmountAllocated</FooterDataPath>
+											<Width>10</Width>
+											<Wrap>false</Wrap>
+											<ContextMenu name="DumpDocumentSumContextMenu" id="79"/>
+											<ExtendedTooltip name="DumpDocumentSumExtendedTooltip" id="480"/>
+										</InputField>
+										<InputField name="DumpCounterparty" id="80">
+											<DataPath>Object.Exporting.Counterparty</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<Width>15</Width>
+											<Wrap>false</Wrap>
+											<ContextMenu name="ExportCounterpartyContextMenu" id="81"/>
+											<ExtendedTooltip name="ExportingCounterpartyExtendedTooltip" id="481"/>
+										</InputField>
+										<InputField name="ExportingCounterpartyAccountNumber" id="82">
+											<DataPath>Object.Exporting.CounterpartyAccountNo</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Account of counterparty</v8:content>
+												</v8:item>
+											</Title>
+											<Wrap>false</Wrap>
+											<ContextMenu name="ExportCounterpartyAccountNumberContextMenu" id="83"/>
+											<ExtendedTooltip name="ExportingCounterpartyNumberAccountsExtendedTooltip" id="482"/>
+										</InputField>
+										<InputField name="ExportOperationKind" id="84">
+											<DataPath>Object.Exporting.OperationKind</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Operation</v8:content>
+												</v8:item>
+											</Title>
+											<Wrap>false</Wrap>
+											<ContextMenu name="ExportingOperationTypeContextMenu" id="85"/>
+											<ExtendedTooltip name="DumpOperationTypeExtendedTooltip" id="484"/>
+										</InputField>
+										<InputField name="ExportEDState" id="524">
+											<DataPath>Object.Exporting.EDStatus</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="ExportEDStateContextMenu" id="525"/>
+											<ExtendedTooltip name="ExportEDStateExtendedTooltip" id="526"/>
+										</InputField>
+									</ChildItems>
+								</ColumnGroup>
+								<ColumnGroup name="Row2" id="497">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Row2</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Row2</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="Row2ExtendedTooltip" id="498"/>
+									<ChildItems>
+										<InputField name="ExportPaymentDestination" id="54">
+											<DataPath>Object.Exporting.PaymentDestination</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<ShowInHeader>false</ShowInHeader>
+											<ShowInFooter>false</ShowInFooter>
+											<Wrap>false</Wrap>
+											<TextColor>style:MinorInscriptionText</TextColor>
+											<Font ref="sys:DefaultGUIFont" faceName="Arial" height="10" bold="false" italic="true" underline="false" strikeout="false" kind="WindowsFont"/>
+											<ContextMenu name="DumpPaymentDestinationContextMenu" id="55"/>
+											<ExtendedTooltip name="ExportPaymentDestinationExtendedTooltip" id="483"/>
+										</InputField>
+									</ChildItems>
+								</ColumnGroup>
+							</ChildItems>
+						</ColumnGroup>
+					</ChildItems>
+				</Table>
+				<UsualGroup name="Totals" id="506">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Totals</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Totals</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="TotalsExtendedTooltip" id="507"/>
+					<ChildItems>
+						<LabelField name="ExportErrorsDescription" id="404">
+							<DataPath>Items.Exporting.CurrentData.ErrorsDescriptionFull</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<TextColor>style:SpecialTextColor</TextColor>
+							<ContextMenu name="ExportingDetailsErrorsContextMenu" id="405"/>
+							<ExtendedTooltip name="ExportDetailsErrorsExtendedTooltip" id="485"/>
+						</LabelField>
+						<UsualGroup name="Amount" id="504">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Amount</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Amount</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<BackColor>style:TotalsGroupBackground</BackColor>
+							<ExtendedTooltip name="AmountExtendedTooltip" id="505"/>
+							<ChildItems>
+								<InputField name="ForExport" id="501">
+									<DataPath>Object.Exporting.TotalDocumentAmountAllocated</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>To export for amount</v8:content>
+										</v8:item>
+									</Title>
+									<Width>12</Width>
+									<ChoiceButton>false</ChoiceButton>
+									<ContextMenu name="ForExportContextMenu" id="502"/>
+									<ExtendedTooltip name="ForExportExtendedTooltip" id="503"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+				<Pages name="StatementExportGroup" id="534">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Statement export</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Statement export group</v8:content>
+						</v8:item>
+					</ToolTip>
+					<PagesRepresentation>None</PagesRepresentation>
+					<ExtendedTooltip name="StatementExportGroupExtendedTooltip" id="535"/>
+					<ChildItems>
+						<Page name="StatementExportGroupInFile" id="536">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Statement export to file</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Statement export to file</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ExtendedTooltip name="StatementExportGroupInFileExtendedTooltip" id="537"/>
+							<ChildItems>
+								<CommandBar name="CommandBarGroupExport" id="579">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Command bar: export</v8:content>
+										</v8:item>
+									</Title>
+									<Width>18</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ExtendedTooltip name="CommandBarGroupExportExtendedTooltip" id="580"/>
+									<ChildItems>
+										<Button name="Export" id="593">
+											<Type>CommandBarButton</Type>
+											<DefaultButton>true</DefaultButton>
+											<SkipOnInput>false</SkipOnInput>
+											<Width>14</Width>
+											<Height>1</Height>
+											<CommandName>Form.Command.Exporting</CommandName>
+											<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Exporting</v8:content>
+												</v8:item>
+											</Title>
+											<ExtendedTooltip name="ExportExtendedTooltip" id="594"/>
+										</Button>
+									</ChildItems>
+								</CommandBar>
+							</ChildItems>
+						</Page>
+						<Page name="StatementExportGroupThroughED" id="565">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Export to bank in electronic form</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Export to bank in electronic form</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ExtendedTooltip name="StatementExportGroupThroughEDExtendedTooltip" id="566"/>
+							<ChildItems>
+								<UsualGroup name="StatementExportDescriptionGroupThroughED" id="527">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Statement export description</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Statement export description</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="StatementExportDescriptionGroupThroughEDExtendedTooltip" id="528"/>
+									<ChildItems>
+										<LabelField name="DirectMessageExchange" id="529">
+											<DataPath>DirectMessageExchange</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<TextColor>#4682B4</TextColor>
+											<ContextMenu name="DirectMessageExchangeContextMenu" id="530"/>
+											<ExtendedTooltip name="DirectExchangeMessageExtendedTooltip" id="531"/>
+										</LabelField>
+									</ChildItems>
+								</UsualGroup>
+								<CommandBar name="CommandBarGroupEDExport" id="598">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Command bar: export</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Export payment orders by direct exchange with banks</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Width>18</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ExtendedTooltip name="CommandBarGroupEDExportExtendedTooltip" id="599"/>
+									<ChildItems>
+										<Button name="SendToBank" id="571">
+											<Type>CommandBarButton</Type>
+											<Width>14</Width>
+											<CommandName>Form.Command.SendToBank</CommandName>
+											<TextColor>style:ButtonTextColor</TextColor>
+											<BackColor>style:ButtonBackColor</BackColor>
+											<BorderColor>style:BorderColor</BorderColor>
+											<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+											<ExtendedTooltip name="SendToBankExtendedTooltip" id="572"/>
+										</Button>
+									</ChildItems>
+								</CommandBar>
+							</ChildItems>
+						</Page>
+					</ChildItems>
+				</Pages>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.ClientBank</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<Save>
+				<Field>Object.ImportFile</Field>
+				<Field>Object.ExportFile</Field>
+				<Field>Object.Encoding</Field>
+				<Field>Object.CFItemOutgoing</Field>
+				<Field>Object.CFItemIncoming</Field>
+				<Field>Object.Application</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="ImportTitle" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Import title</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="Counterparty" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Counterparty</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogObject.Companies</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="CounterpartyTable" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Counterparty table</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTree</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Presentation" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Presentation</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>255</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Value" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Value</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>255</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Attribute" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Attribute</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:Type>cfg:CatalogRef.Counterparties</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>255</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="RowNum" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Line number</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>255</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Import" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Import</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="IsCounterparty" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>This is counterparty</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="FileOperationsExtensionConnected" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>File operations extension connected</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ReadStream" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Demand</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/txtedt">d5p1:TextDocument</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="DirectMessageExchange" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Direct exchange message</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="DirectExchangeWithBanksAgreement" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Direct exchange with banks agreement</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.EDUsageAgreements</v8:Type>
+			</Type>
+		</Attribute>
+		<ConditionalAppearance>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>CounterpartyTableExport</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">CounterpartyTable.ThisIsCounterparty</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Visible</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>Exporting</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Object.Exporting.Exporting</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>TextColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:MinorInscriptionText</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+		</ConditionalAppearance>
+	</Attributes>
+	<Commands>
+		<Command name="Exporting" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Exporting</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Export payment orders to file</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>0:f34ae49d-4015-41de-b882-6b4f3e2aa653</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+				<xr:TransparentPixel x="4" y="2"/>
+			</Picture>
+			<Action>ExportExecute</Action>
+			<Representation>Text</Representation>
+		</Command>
+		<Command name="ExportRefresh" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Refresh</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Refresh</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Refresh</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>DumpUpdateRun</Action>
+			<Representation>Picture</Representation>
+		</Command>
+		<Command name="ExportCheckAll" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Mark all</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Mark all</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.CheckAll</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>DumpMarkAllRun</Action>
+			<Representation>Picture</Representation>
+		</Command>
+		<Command name="ExportUncheckAll" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Uncheck for All</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Uncheck for All</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.UncheckAll</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>DumpUnmarkAllRun</Action>
+			<Representation>Picture</Representation>
+		</Command>
+		<Command name="Setting" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Setting</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Setting</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.DocumentSetting</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Setting</Action>
+		</Command>
+		<Command name="SendToBank" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Send to bank</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Send payment orders to bank</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>SendToBank</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+	</Commands>
+</Form>

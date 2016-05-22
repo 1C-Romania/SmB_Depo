@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head><style>TABLE {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; WIDTH: 98%; BORDER-TOP: 0px; BORDER-RIGHT: 0px; CellSpacing: 4; CellPadding: 0
+}
+TD {
+	VERTICAL-ALIGN: top
+}
+</style><meta content="text/html; charset=utf-8" http-equiv="Content-Type"></meta><link rel="stylesheet" type="text/css" href="V8help://service_book/service_style"></link><meta name="GENERATOR" content="MSHTML 11.00.9600.18321"></meta></head><body>
+<p>This panel is used to configure data synchronization for the infobase.</p>
+<table><tbody><tr><td width="30%">
+<li><strong>Directory of temporary Windows files</strong></li></td>
+<td>Path to a single directory of temporary files of all servers in the cluster used for servers running under Windows OS.</td></tr><tr><td>
+<li><strong>Directory of temporary Linux files</strong></li></td>
+<td>Path to a single directory of temporary files of all servers in the cluster used for servers running under Linux operating system.</td></tr><tr><td colspan="2">
+<p>You may leave the directories<strong> </strong>of temporary files <strong>empty</strong> if only <strong>one server</strong> is running in<strong> </strong>1C:Enterprise cluster, or the application<strong> </strong>works in the <strong>file mode. </strong></p>
+<p>If all cluster servers are running under operating systems of one family (Windows/Linux), then it is not required to fill in the second field.</p>
+<p>The directory must<strong> be available to read and</strong> <strong>write</strong> for all cluster servers, including, for all users of operating systems whose names are used to run 1C:Enterprise server. UNC path shall also be the same for all servers of one family - for this you shall connect the directory to servers under one name.</p>
+<p>In the <strong>Directory of temporary Linux files </strong>field you can specify only local path, for example, /home/path.</p>
+<p>To use UNC path, it is necessary to make a reference to it. To do it, do the following using administrator rights:</p>
+<p><strong>mkdir folder<br></strong>--- enter directory name instead of folder, for example, in /home directory do mkdir shared - it creates a shared directory with full path /home/shared.</p>
+<p><strong>mount -t cifs //server/share folder -o //domain/user, password=pwd</strong></p>
+<p>- where //server/share - UNC path to another computer, the folder - path of the directory on a Linux machine, for example \home\shared, //domain/user - domain/user name if needed, pwd - user password (if needed).</p>
+<p>If the name and password are not necessary, the command is as follows:<br><strong>mount -t cifs //server/share folder</strong> </p>
+<p>After this specify the folder, for example, /home/shared</p>
+<p>For more details on 1C:Enterprise server administration see documents of 1C:Enterprise platform.</p></td></tr></tbody></table><p></p></body></html>

@@ -1,0 +1,704 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>DataSource1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>DataSet1</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>CustomerOrder</dataPath>
+			<field>CustomerOrder</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ReservedAtWarehouse</dataPath>
+			<field>ReservedAtWarehouse</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>SupplySource</dataPath>
+			<field>SupplySource</field>
+			<useRestriction>
+				<condition>true</condition>
+			</useRestriction>
+			<attributeUseRestriction>
+				<condition>true</condition>
+			</attributeUseRestriction>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Counterparty</dataPath>
+			<field>Counterparty</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ProductsAndServices</dataPath>
+			<field>ProductsAndServices</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Paid</dataPath>
+			<field>Paid</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Company</dataPath>
+			<field>Company</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>LeftToProvide</dataPath>
+			<field>LeftToProvide</field>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>MarkNegatives</dcscor:parameter>
+					<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>LeftToPay</dataPath>
+			<field>LeftToPay</field>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>MarkNegatives</dcscor:parameter>
+					<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>RemainingToShip</dataPath>
+			<field>RemainingToShip</field>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>MarkNegatives</dcscor:parameter>
+					<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Shipped</dataPath>
+			<field>Shipped</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Batch</dataPath>
+			<field>Batch</field>
+			<useRestriction>
+				<condition>true</condition>
+			</useRestriction>
+			<attributeUseRestriction>
+				<condition>true</condition>
+			</attributeUseRestriction>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>PlacedInOrders</dataPath>
+			<field>PlacedInOrders</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>StructuralUnit</dataPath>
+			<field>StructuralUnit</field>
+			<attributeUseRestriction>
+				<condition>true</condition>
+			</attributeUseRestriction>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>DocumentAmount</dataPath>
+			<field>DocumentAmount</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>InvoiceForPayment</dataPath>
+			<field>InvoiceForPayment</field>
+			<useRestriction>
+				<condition>true</condition>
+			</useRestriction>
+			<attributeUseRestriction>
+				<condition>true</condition>
+			</attributeUseRestriction>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>GLAccount</dataPath>
+			<field>GLAccount</field>
+			<useRestriction>
+				<condition>true</condition>
+			</useRestriction>
+			<attributeUseRestriction>
+				<condition>true</condition>
+			</attributeUseRestriction>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Characteristic</dataPath>
+			<field>Characteristic</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>PaymentState</dataPath>
+			<field>PaymentState</field>
+			<useRestriction>
+				<condition>true</condition>
+			</useRestriction>
+			<valueType>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>30</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</valueType>
+			<availableValue>
+				<value xsi:type="xs:string">Unpaid</value>
+				<presentation xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Unpaid</v8:content>
+					</v8:item>
+				</presentation>
+			</availableValue>
+			<availableValue>
+				<value xsi:type="xs:string">Partially paid</value>
+				<presentation xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Partially paid</v8:content>
+					</v8:item>
+				</presentation>
+			</availableValue>
+			<availableValue>
+				<value xsi:type="xs:string">Fully paid</value>
+				<presentation xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Fully paid</v8:content>
+					</v8:item>
+				</presentation>
+			</availableValue>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>StatusShipment</dataPath>
+			<field>StatusShipment</field>
+			<useRestriction>
+				<condition>true</condition>
+			</useRestriction>
+			<valueType>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>30</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</valueType>
+			<availableValue>
+				<value xsi:type="xs:string">NotInvoiced</value>
+				<presentation xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>NotInvoiced</v8:content>
+					</v8:item>
+				</presentation>
+			</availableValue>
+			<availableValue>
+				<value xsi:type="xs:string">Partially shipped</value>
+				<presentation xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Partially shipped</v8:content>
+					</v8:item>
+				</presentation>
+			</availableValue>
+			<availableValue>
+				<value xsi:type="xs:string">Fully shipped</value>
+				<presentation xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Fully shipped</v8:content>
+					</v8:item>
+				</presentation>
+			</availableValue>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Ordered</dataPath>
+			<field>Ordered</field>
+		</field>
+		<dataSource>DataSource1</dataSource>
+		<query>SELECT ALLOWED
+	CustomerOrdersBalanceAndTurnovers.Company AS Company,
+	CustomerOrdersBalanceAndTurnovers.CustomerOrder AS CustomerOrder,
+	CustomerOrdersBalanceAndTurnovers.ProductsAndServices AS ProductsAndServices,
+	CustomerOrdersBalanceAndTurnovers.Characteristic AS Characteristic,
+	CustomerOrdersBalanceAndTurnovers.CustomerOrder.Counterparty AS Counterparty,
+	CustomerOrdersBalanceAndTurnovers.QuantityReceipt AS Ordered,
+	CustomerOrdersBalanceAndTurnovers.QuantityExpense AS Shipped,
+	CustomerOrdersBalanceAndTurnovers.QuantityClosingBalance AS RemainingToShip,
+	ISNULL(InventoryBalances.QuantityBalance, 0) AS ReservedAtWarehouse,
+	ISNULL(OrdersPlacementBalances.QuantityBalance, 0) AS PlacedInOrders,
+	CustomerOrdersBalanceAndTurnovers.QuantityClosingBalance - ISNULL(InventoryBalances.QuantityBalance, 0) - ISNULL(OrdersPlacementBalances.QuantityBalance, 0) AS LeftToProvide,
+	ISNULL(InvoicesAndOrdersPaymentTurnovers.AmountTurnover, 0) AS DocumentAmount,
+	ISNULL(InvoicesAndOrdersPaymentTurnovers.AdvanceAmountTurnover, 0) + ISNULL(InvoicesAndOrdersPaymentTurnovers.PaymentAmountTurnover, 0) AS Paid,
+	ISNULL(InvoicesAndOrdersPaymentTurnovers.AmountTurnover, 0) - ISNULL(InvoicesAndOrdersPaymentTurnovers.AdvanceAmountTurnover, 0) - ISNULL(InvoicesAndOrdersPaymentTurnovers.PaymentAmountTurnover, 0) AS LeftToPay,
+	CASE
+		WHEN CustomerOrdersBalanceAndConsolidatedTurnovers.QuantityReceipt = CustomerOrdersBalanceAndConsolidatedTurnovers.QuantityClosingBalance
+			THEN "NotShipped"
+		WHEN CustomerOrdersBalanceAndConsolidatedTurnovers.QuantityClosingBalance &lt;= 0
+			THEN "Fully shipped"
+		ELSE "Partially shipped"
+	END AS StatusShipment,
+	CASE
+		WHEN ISNULL(InvoicesAndOrdersPaymentTurnovers.AdvanceAmountTurnover, 0) + ISNULL(InvoicesAndOrdersPaymentTurnovers.PaymentAmountTurnover, 0) = 0
+			THEN "Unpaid"
+		WHEN ISNULL(InvoicesAndOrdersPaymentTurnovers.AmountTurnover, 0) - ISNULL(InvoicesAndOrdersPaymentTurnovers.AdvanceAmountTurnover, 0) - ISNULL(InvoicesAndOrdersPaymentTurnovers.PaymentAmountTurnover, 0) &lt;= 0
+			THEN "Fully paid"
+		ELSE "Partially paid"
+	END AS PaymentState
+	FROM
+	AccumulationRegister.CustomerOrders.BalanceAndTurnovers(, , , , ) AS CustomerOrdersBalanceAndTurnovers
+		LEFT JOIN AccumulationRegister.Inventory.Balance(, Not CustomerOrder = VALUE(Document.CustomerOrder.EmptyRef)) AS InventoryBalances
+		ON CustomerOrdersBalanceAndTurnovers.ProductsAndServices = InventoryBalances.ProductsAndServices
+			AND CustomerOrdersBalanceAndTurnovers.Characteristic = InventoryBalances.Characteristic
+			AND CustomerOrdersBalanceAndTurnovers.CustomerOrder = InventoryBalances.CustomerOrder
+		LEFT JOIN AccumulationRegister.OrdersPlacement.Balance(, ) AS OrdersPlacementBalances
+		ON CustomerOrdersBalanceAndTurnovers.ProductsAndServices = OrdersPlacementBalances.ProductsAndServices
+			AND CustomerOrdersBalanceAndTurnovers.Characteristic = OrdersPlacementBalances.Characteristic
+			AND CustomerOrdersBalanceAndTurnovers.CustomerOrder = OrdersPlacementBalances.CustomerOrder
+		LEFT JOIN AccumulationRegister.InvoicesAndOrdersPayment.Turnovers(, , , InvoiceForPayment REFS Document.CustomerOrder) AS InvoicesAndOrdersPaymentTurnovers
+		ON CustomerOrdersBalanceAndTurnovers.CustomerOrder = InvoicesAndOrdersPaymentTurnovers.InvoiceForPayment
+		INNER JOIN AccumulationRegister.CustomerOrders.BalanceAndTurnovers(, , , , ) AS CustomerOrdersBalanceAndConsolidatedTurnovers
+		ON CustomerOrdersBalanceAndTurnovers.CustomerOrder = CustomerOrdersBalanceAndConsolidatedTurnovers.CustomerOrder
+	WHERE
+	(&amp;StatusShipment = "All orders"
+			OR &amp;StatusShipment = CASE
+				WHEN CustomerOrdersBalanceAndConsolidatedTurnovers.QuantityReceipt = CustomerOrdersBalanceAndConsolidatedTurnovers.QuantityClosingBalance
+					THEN "NotShipped"
+				WHEN CustomerOrdersBalanceAndConsolidatedTurnovers.QuantityClosingBalance &lt;= 0
+					THEN "Fully shipped"
+				ELSE "Partially shipped"
+			END)
+	AND (&amp;PaymentState = "All orders"
+			OR &amp;PaymentState = CASE
+				WHEN ISNULL(InvoicesAndOrdersPaymentTurnovers.AdvanceAmountTurnover, 0) + ISNULL(InvoicesAndOrdersPaymentTurnovers.PaymentAmountTurnover, 0) = 0
+					THEN "Unpaid"
+				WHEN ISNULL(InvoicesAndOrdersPaymentTurnovers.AmountTurnover, 0) - ISNULL(InvoicesAndOrdersPaymentTurnovers.AdvanceAmountTurnover, 0) - ISNULL(InvoicesAndOrdersPaymentTurnovers.PaymentAmountTurnover, 0) &lt;= 0
+					THEN "Fully paid"
+				ELSE "Partially paid"
+				END)</query>
+	</dataSet>
+	<totalField>
+		<dataPath>ReservedAtWarehouse</dataPath>
+		<expression>SUM(ReservedAtWarehouse)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Paid</dataPath>
+		<expression>Max(Paid)</expression>
+		<group>CustomerOrder</group>
+	</totalField>
+	<totalField>
+		<dataPath>LeftToProvide</dataPath>
+		<expression>SUM(LeftToProvide)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>LeftToPay</dataPath>
+		<expression>Max(LeftToPay)</expression>
+		<group>CustomerOrder</group>
+	</totalField>
+	<totalField>
+		<dataPath>RemainingToShip</dataPath>
+		<expression>SUM(RemainingToShip)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Shipped</dataPath>
+		<expression>SUM(Shipped)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>PlacedInOrders</dataPath>
+		<expression>SUM(PlacedInOrders)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>DocumentAmount</dataPath>
+		<expression>Max(DocumentAmount)</expression>
+		<group>CustomerOrder</group>
+	</totalField>
+	<totalField>
+		<dataPath>Paid</dataPath>
+		<expression>0</expression>
+		<group>ProductsAndServices</group>
+		<group>Characteristic</group>
+	</totalField>
+	<totalField>
+		<dataPath>LeftToPay</dataPath>
+		<expression>0</expression>
+		<group>ProductsAndServices</group>
+		<group>Characteristic</group>
+	</totalField>
+	<totalField>
+		<dataPath>DocumentAmount</dataPath>
+		<expression>0</expression>
+		<group>ProductsAndServices</group>
+		<group>Characteristic</group>
+	</totalField>
+	<totalField>
+		<dataPath>Ordered</dataPath>
+		<expression>SUM(Ordered)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>DocumentAmount</dataPath>
+		<expression>SUM(EvalExpressionWithGroupArray ("Max(DocumentAmount)", "CustomerOrder"))</expression>
+		<group>Counterparty</group>
+		<group>Counterparty Hierarchy</group>
+		<group>Company</group>
+		<group>Overall</group>
+	</totalField>
+	<totalField>
+		<dataPath>Paid</dataPath>
+		<expression>SUM(EvalExpressionWithGroupArray ("Max(Paid)", "CustomerOrder"))</expression>
+		<group>Counterparty</group>
+		<group>Counterparty Hierarchy</group>
+		<group>Company</group>
+		<group>Overall</group>
+	</totalField>
+	<totalField>
+		<dataPath>LeftToPay</dataPath>
+		<expression>SUM(EvalExpressionWithGroupArray ("Max(LeftToPay)", "CustomerOrder"))</expression>
+		<group>Counterparty</group>
+		<group>Counterparty Hierarchy</group>
+		<group>Company</group>
+		<group>Overall</group>
+	</totalField>
+	<parameter>
+		<name>BeginOfPeriod</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Begin of period</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>EndOfPeriod</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>End of period</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>false</useRestriction>
+		<expression>CASE WHEN &amp;EndOfPeriod = DateTime(1,1,1) OR &amp;EndOfPeriod = Undefined OR &amp;EndOfPeriod = NULL THEN DateTime(3999,12,31) ELSE EndOfPeriod(&amp;EndOfPeriod, "Day") END</expression>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>Period</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Period</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>DATEADD(&amp;EndOfPeriod, "Second", 1)</expression>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>PaymentState</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Payment state</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:string</v8:Type>
+			<v8:StringQualifiers>
+				<v8:Length>25</v8:Length>
+				<v8:AllowedLength>Variable</v8:AllowedLength>
+			</v8:StringQualifiers>
+		</valueType>
+		<value xsi:type="xs:string">All orders</value>
+		<useRestriction>true</useRestriction>
+		<availableValue>
+			<value xsi:type="xs:string">All orders</value>
+		</availableValue>
+		<availableValue>
+			<value xsi:type="xs:string">Unpaid</value>
+		</availableValue>
+		<availableValue>
+			<value xsi:type="xs:string">Partially paid</value>
+		</availableValue>
+		<availableValue>
+			<value xsi:type="xs:string">Fully paid</value>
+		</availableValue>
+		<availableAsField>false</availableAsField>
+		<denyIncompleteValues>true</denyIncompleteValues>
+		<use>Always</use>
+	</parameter>
+	<parameter>
+		<name>StatusShipment</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Shipment state</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:string</v8:Type>
+			<v8:StringQualifiers>
+				<v8:Length>25</v8:Length>
+				<v8:AllowedLength>Variable</v8:AllowedLength>
+			</v8:StringQualifiers>
+		</valueType>
+		<value xsi:type="xs:string">All orders</value>
+		<useRestriction>true</useRestriction>
+		<availableValue>
+			<value xsi:type="xs:string">All orders</value>
+		</availableValue>
+		<availableValue>
+			<value xsi:type="xs:string">NotInvoiced</value>
+		</availableValue>
+		<availableValue>
+			<value xsi:type="xs:string">Partially shipped</value>
+		</availableValue>
+		<availableValue>
+			<value xsi:type="xs:string">Fully shipped</value>
+		</availableValue>
+		<availableAsField>false</availableAsField>
+		<denyIncompleteValues>true</denyIncompleteValues>
+		<use>Always</use>
+	</parameter>
+	<parameter>
+		<name>TitleOutput</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Output title</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:boolean</v8:Type>
+		</valueType>
+		<value xsi:type="xs:boolean">false</value>
+		<useRestriction>false</useRestriction>
+		<availableAsField>false</availableAsField>
+		<use>Always</use>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>Default</dcsset:name>
+		<dcsset:presentation xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Shipping and payment by orders</v8:content>
+			</v8:item>
+		</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemFolder">
+					<dcsset:lwsTitle>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Payment</v8:content>
+						</v8:item>
+					</dcsset:lwsTitle>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>DocumentAmount</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Paid</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>LeftToPay</dcsset:field>
+					</dcsset:item>
+					<dcsset:placement>Auto</dcsset:placement>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemFolder">
+					<dcsset:lwsTitle>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Shipment</v8:content>
+						</v8:item>
+					</dcsset:lwsTitle>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Ordered</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Shipped</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>RemainingToShip</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ReservedAtWarehouse</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>PlacedInOrders</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>LeftToProvide</dcsset:field>
+					</dcsset:item>
+					<dcsset:placement>Auto</dcsset:placement>
+				</dcsset:item>
+				<dcsset:viewMode>Normal</dcsset:viewMode>
+				<dcsset:userSettingID>9ffb990a-17a9-4848-bac0-1613aff382e2</dcsset:userSettingID>
+			</dcsset:selection>
+			<dcsset:filter>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Counterparty</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:userSettingID>07c06bc3-996e-4ee2-9418-c20064216171</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">ProductsAndServices</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:userSettingID>5b6c1aeb-80eb-4bd4-a36b-a5c789db7f29</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">CustomerOrder</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:userSettingID>d20d67aa-15a8-4600-9252-0fc904a5b905</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:left xsi:type="dcscor:Field">CustomerOrder.Closed</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+					<dcsset:userSettingID>613f4409-52c3-4fe8-8d86-3a31176dca6b</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:viewMode>Normal</dcsset:viewMode>
+				<dcsset:userSettingID>b245a563-bd94-4bd5-94a4-3f7902e4d29e</dcsset:userSettingID>
+			</dcsset:filter>
+			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>EndOfPeriod</dcscor:parameter>
+					<dcscor:value xsi:type="xs:dateTime">0001-01-01T00:00:00</dcscor:value>
+					<dcsset:viewMode>Inaccessible</dcsset:viewMode>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>Period</dcscor:parameter>
+					<dcscor:value xsi:type="v8:StandardBeginningDate">
+						<v8:variant xsi:type="v8:StandardBeginningDateVariant">Custom</v8:variant>
+						<v8:date>0001-01-01T00:00:00</v8:date>
+					</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>PaymentState</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">All orders</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>StatusShipment</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">All orders</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>TitleOutput</dcscor:parameter>
+					<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+					<dcsset:viewMode>Normal</dcsset:viewMode>
+					<dcsset:userSettingID>ec76a68f-9d20-4853-8e36-784622338ba6</dcsset:userSettingID>
+				</dcscor:item>
+			</dcsset:dataParameters>
+			<dcsset:order>
+				<dcsset:viewMode>Normal</dcsset:viewMode>
+				<dcsset:userSettingID>47d8b0f1-ef68-4809-9269-009e9b172aac</dcsset:userSettingID>
+			</dcsset:order>
+			<dcsset:outputParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>TitleOutput</dcscor:parameter>
+					<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">DontOutput</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Title</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Shipping and payment by the customer orders</v8:content>
+						</v8:item>
+					</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>DataParametersOutput</dcscor:parameter>
+					<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">DontOutput</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>FilterOutput</dcscor:parameter>
+					<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">DontOutput</dcscor:value>
+				</dcscor:item>
+			</dcsset:outputParameters>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>Counterparty</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+				<dcsset:item xsi:type="dcsset:StructureItemGroup">
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>CustomerOrder</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+					<dcsset:item xsi:type="dcsset:StructureItemGroup">
+						<dcsset:groupItems>
+							<dcsset:item xsi:type="dcsset:GroupItemField">
+								<dcsset:field>ProductsAndServices</dcsset:field>
+								<dcsset:groupType>Items</dcsset:groupType>
+								<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+								<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+								<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+							</dcsset:item>
+						</dcsset:groupItems>
+						<dcsset:order>
+							<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+						</dcsset:order>
+						<dcsset:selection>
+							<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+						</dcsset:selection>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+					</dcsset:item>
+				</dcsset:item>
+			</dcsset:item>
+			<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+			<dcsset:itemsUserSettingID>5776bff4-91f0-4262-844f-4eb0a087fba8</dcsset:itemsUserSettingID>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

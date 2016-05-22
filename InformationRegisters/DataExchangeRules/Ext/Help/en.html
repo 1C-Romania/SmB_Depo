@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"></meta><link rel="stylesheet" type="text/css" href="V8help://service_book/service_style"></link><meta name="GENERATOR" content="MSHTML 11.00.9600.18321"></meta></head><body>
+<p style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">By default, <a href="CommonForm.DataExchanges/Help">data synchronization</a> is performed in accordance with so called <strong>Standard exchange rules</strong>. If these rules are out of date, execution of data synchronization would lead to very serious errors and damage of information. Therefore, when setting a new data synchronization, and also when a new update of any application involved in data synchronization is released, relevancy of the standard exchange rules shall be verified. </p>
+<p style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">Standard exchange rules consist of <a href="InformationRegister.DataExchangeRules.Form.ObjectConversionRules/Help">object conversion rules</a> and <a href="InformationRegister.DataExchangeRules.Form.ObjectRegistrationRules/Help">object registration rules.</a> Data conversion rules are used in synchronization of data of two applications. Registration rules are provided for all types of<a href="CommonForm.DataExchanges/Help"> data synchronization</a>. The set of relevant exchange rules is published on the technical support site <a href="https://1c-dn.com/user/updates/">http://users.v8.1c.en</a>. Correctional versions of exchange rules are also published on this site.</p>
+<h3 style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">Verification of relevancy of synchronization rules</h3>
+<ul><li>
+<div style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">When verifying relevancy of the rules, the attention shall be paid to the following controlled parameters:</div>
+<ul><li>
+<div style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">Release numbers of the source application and the receiver application for which the rules are intended</div>
+</li><li>
+<div style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">Date of rules creation</div></li></ul></li><li>
+<p style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">The verification should be performed according to the following rules:</p>
+<ul><li>
+<div style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">values of controlled parameters imported in the source application are determined</div>
+</li><li>
+<div style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">values of controlled parameters imported in the receiver application are determined</div>
+</li><li>
+<div style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">values of controlled parameters included in the source application delivery package are determined</div>
+</li><li>
+<div style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">values of controlled parameters included in the receiver application delivery package are determined</div></li></ul></li><li>
+<div style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">After analysis of all these rules, rules with the most current dates of creation are selected. When analyzing the rules, configuration release numbers shall be taken into account. Configuration release numbers specified in the rules shall correspond to the configuration releases, between which data synchronization is being adjusted</div></li></ul><h3 style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">Verification of rules imported to applications</h3>
+<ul><li>
+<div style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">Create a new data synchronization, but do not start it</div>
+</li><li>
+<div style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">Open the created data synchronization setting</div>
+</li><li>
+<div style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">On the <strong>More</strong> menu of the data synchronization setting, run the <strong>Import object conversion rules </strong>command </div>
+</li><li>
+<div style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">Check information on the data conversion rules</div>
+</li><li>
+<div style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">Then run the <strong>More - Import object registration rules </strong>command </div>
+</li><li>
+<div style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">Check information on the object registration rules</div>
+</li><li>
+<div style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">You can analyze the controlled parameters imported in the application for already existing data synchronization setting in a similar way. For example, to check the object registration rules in the existing data synchronization setting in a slave node, use the <strong>Import object registration rules </strong>command </div>
+</li><li>
+<div style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">To verify data synchronization rules for two applications, these actions should be made successively for the source application and for the receiver application</div></li></ul><h3 style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">Verification of rules supplied with applications</h3>
+<ul><li>
+<div style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">In the <strong>Data conversion rules </strong>window<strong> </strong>(<strong>Data registration </strong>rules), select the <strong>From file on computer </strong>option using the option button. Execute the <strong>Import </strong>command </div>
+</li><li>
+<div style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">Select the conversion rules file in the application delivery package</div>
+</li><li>
+<div style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">The file path depends on the application delivery package. It is usually located in the <strong>Data exchange </strong>folder </div>
+</li><li>
+<div style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">Verify information about the rules</div>
+</li><li>
+<div style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">These actions should be made successively for both applications involved in the data synchronization</div></li></ul><h3 style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">Control of rules from external file</h3>
+<ul><li>
+<div style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">It is necessary to read information about these rules, then to save a copy of the rules used in a file using the <strong>Save conversion (registration) rules in file </strong>option </div>
+</li><li>
+<div style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">Select the <strong>Use standard rules </strong>option </div>
+</li><li>View the displayed information on the rules</li></ul><h3 style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">Making decisions based on verification results </h3>
+<ul><li>
+<div style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">As a result of rules verification, the newer version is chosen and one of the following decisions is taken:</div>
+</li><li>
+<div style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">Continue using the current rules</div>
+<ul><li>
+<div style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">Additional actions are not required</div></li></ul></li><li>
+<div style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">Use the latest rules from the set of rules in one of the applications </div>
+<ul><li>
+<div style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">Order of importing is described in the file which is usually named as <strong>Exchange rules connection.txt</strong>, you can also find it in the <strong>Data exchanges </strong>directory</div></li></ul></li><li>
+<div style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">Use standard object conversion and registration rules built in the configuration instead of rules from an external source</div>
+<ul><li>
+<div style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">To do this, it is necessary to run the <strong>More - Export object conversion rules (object registration rules) </strong>command. Then select the <strong>Use standard rules </strong>option</div></li></ul></li></ul></body></html>

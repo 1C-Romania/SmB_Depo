@@ -1,0 +1,419 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<MetaDataObject xmlns="http://v8.1c.ru/8.3/MDClasses" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:cmi="http://v8.1c.ru/8.2/managed-application/cmi" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xpr="http://v8.1c.ru/8.3/xcf/predef" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Enum uuid="9d8e09d4-753a-421c-a041-840d13ac7fdd">
+		<InternalInfo>
+			<xr:GeneratedType name="EnumRef.GLAccountsTypes" category="Ref">
+				<xr:TypeId>43d4c67c-5675-4e13-bdab-c1795a087140</xr:TypeId>
+				<xr:ValueId>3067cd7c-aeac-4ebc-b0ac-3948544a7c07</xr:ValueId>
+			</xr:GeneratedType>
+			<xr:GeneratedType name="EnumManager.GLAccountsTypes" category="Manager">
+				<xr:TypeId>e3c01811-795d-45d9-b391-019f92e1a77e</xr:TypeId>
+				<xr:ValueId>507d559f-ad09-4227-8c53-7b8031c884e3</xr:ValueId>
+			</xr:GeneratedType>
+			<xr:GeneratedType name="EnumList.GLAccountsTypes" category="List">
+				<xr:TypeId>aee1c11e-1041-4e38-9abc-f746dc0d76d5</xr:TypeId>
+				<xr:ValueId>0fbf9f8e-1581-4552-aa3c-04b3fc2c21ef</xr:ValueId>
+			</xr:GeneratedType>
+		</InternalInfo>
+		<Properties>
+			<Name>GLAccountsTypes</Name>
+			<Synonym>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>GL Accounts Types</v8:content>
+				</v8:item>
+			</Synonym>
+			<Comment/>
+			<UseStandardCommands>true</UseStandardCommands>
+			<StandardAttributes>
+				<xr:StandardAttribute name="Order">
+					<xr:LinkByType/>
+					<xr:FillChecking>DontCheck</xr:FillChecking>
+					<xr:MultiLine>false</xr:MultiLine>
+					<xr:FillFromFillingValue>false</xr:FillFromFillingValue>
+					<xr:CreateOnInput>Auto</xr:CreateOnInput>
+					<xr:MaxValue xsi:nil="true"/>
+					<xr:ToolTip/>
+					<xr:ExtendedEdit>false</xr:ExtendedEdit>
+					<xr:Format/>
+					<xr:ChoiceForm/>
+					<xr:QuickChoice>Auto</xr:QuickChoice>
+					<xr:ChoiceHistoryOnInput>Auto</xr:ChoiceHistoryOnInput>
+					<xr:EditFormat/>
+					<xr:PasswordMode>false</xr:PasswordMode>
+					<xr:MarkNegatives>false</xr:MarkNegatives>
+					<xr:MinValue xsi:nil="true"/>
+					<xr:Synonym/>
+					<xr:Comment/>
+					<xr:FullTextSearch>Use</xr:FullTextSearch>
+					<xr:ChoiceParameterLinks/>
+					<xr:FillValue xsi:nil="true"/>
+					<xr:Mask/>
+					<xr:ChoiceParameters/>
+				</xr:StandardAttribute>
+				<xr:StandardAttribute name="Ref">
+					<xr:LinkByType/>
+					<xr:FillChecking>DontCheck</xr:FillChecking>
+					<xr:MultiLine>false</xr:MultiLine>
+					<xr:FillFromFillingValue>false</xr:FillFromFillingValue>
+					<xr:CreateOnInput>Auto</xr:CreateOnInput>
+					<xr:MaxValue xsi:nil="true"/>
+					<xr:ToolTip/>
+					<xr:ExtendedEdit>false</xr:ExtendedEdit>
+					<xr:Format/>
+					<xr:ChoiceForm/>
+					<xr:QuickChoice>Auto</xr:QuickChoice>
+					<xr:ChoiceHistoryOnInput>Auto</xr:ChoiceHistoryOnInput>
+					<xr:EditFormat/>
+					<xr:PasswordMode>false</xr:PasswordMode>
+					<xr:MarkNegatives>false</xr:MarkNegatives>
+					<xr:MinValue xsi:nil="true"/>
+					<xr:Synonym/>
+					<xr:Comment/>
+					<xr:FullTextSearch>Use</xr:FullTextSearch>
+					<xr:ChoiceParameterLinks/>
+					<xr:FillValue xsi:nil="true"/>
+					<xr:Mask/>
+					<xr:ChoiceParameters/>
+				</xr:StandardAttribute>
+			</StandardAttributes>
+			<Characteristics/>
+			<QuickChoice>true</QuickChoice>
+			<ChoiceMode>BothWays</ChoiceMode>
+			<DefaultListForm/>
+			<DefaultChoiceForm/>
+			<AuxiliaryListForm/>
+			<AuxiliaryChoiceForm/>
+			<ListPresentation/>
+			<ExtendedListPresentation/>
+			<Explanation/>
+			<ChoiceHistoryOnInput>Auto</ChoiceHistoryOnInput>
+		</Properties>
+		<ChildObjects>
+			<EnumValue uuid="5102918e-757b-4943-bf00-4cbc8df02998">
+				<Properties>
+					<Name>DepreciationFixedAssets</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Depreciation</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>02</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="b07d58b2-4574-40f5-acec-e6f2c74f18fb">
+				<Properties>
+					<Name>FixedAssets</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Property</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>01</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="046a8519-395f-4366-ac6c-ca27fa2407ec">
+				<Properties>
+					<Name>AccountsGroup</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Accounts group</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>Service</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="0c4c49bb-1b81-4602-8b39-d3564cf564a7">
+				<Properties>
+					<Name>Debitors</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Debitors (debt to us)</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>62.01, 60.02, 68.02, 71.02</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="8f3b1d03-64cd-462f-a1fe-950982f883c3">
+				<Properties>
+					<Name>CashAssets</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Cash assets</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>50, 51, 57</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="da49f105-2268-408c-8de7-ef4634c0d729">
+				<Properties>
+					<Name>LongtermObligations</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Long-Term Obligations</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>67</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="81e75666-4e76-4851-955d-b5dc4845dec8">
+				<Properties>
+					<Name>Incomings</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Income</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>90.01</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="7c8e0707-68fb-4dce-a725-62e30f5e61a2">
+				<Properties>
+					<Name>Inventory</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Inventory</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>10, 41</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="a7beb8e7-467a-4eaf-82fc-ee2e36cd8fee">
+				<Properties>
+					<Name>Capital</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Capital</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>80</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="1d03d511-46e2-44e2-b308-74fd55844fd4">
+				<Properties>
+					<Name>IndirectExpenses</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Indirect expenses (distributed for the products cost)</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>25</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="29da78ec-451a-461a-b5fb-42673e9f05d6">
+				<Properties>
+					<Name>ShorttermInvestments</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Short-Term Investments</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>58</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="677ef3a3-7629-4daa-a942-b0a6be1b0302">
+				<Properties>
+					<Name>Creditors</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>creditor (our debt)</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>60.01, 62.02, 68.01, 70.01, 71.01</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="e8d30bfb-737f-4f81-be50-2c6b6f8aba28">
+				<Properties>
+					<Name>CreditsAndLoans</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Credits and Loans</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>66</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="30ff5fcb-ef12-417f-9ceb-bdb1759e9131">
+				<Properties>
+					<Name>ProfitTax</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Income tax</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="1afcd952-5525-4193-b0d9-ca932ae1cdc9">
+				<Properties>
+					<Name>UnfinishedProduction</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Goods in production</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>20</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="e8453ad8-d31c-4389-9d97-bbc381f808a5">
+				<Properties>
+					<Name>UndistributedProfit</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Undistributed Profit</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>84</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="a21817d3-3640-48a3-986c-22a9e8c97a0d">
+				<Properties>
+					<Name>ProfitLosses</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Income (Losses)</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>99</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="b9972905-321f-431d-84a3-21e05583b5c7">
+				<Properties>
+					<Name>CreditInterestRates</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Credit Interest Rates</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="e2b59cf0-51c1-457c-a753-f3f10819216c">
+				<Properties>
+					<Name>OtherFixedAssets</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Other Fixed assets</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>08</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="27c88418-1caf-44b1-a909-5873a404ceb6">
+				<Properties>
+					<Name>OtherIncome</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Other income</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>90.01</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="5ef74f61-b3f9-46c3-bde5-12c05060bd10">
+				<Properties>
+					<Name>OtherShorttermObligations</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Other Short-Term Obligations</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>98</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="b1fd0eea-187c-473a-8e1c-695eb1dfabf4">
+				<Properties>
+					<Name>OtherCurrentAssets</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Other Current Assets</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>94, 97</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="70ee4c0b-2257-44f3-bfa4-d609a59160b3">
+				<Properties>
+					<Name>OtherExpenses</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Other expenses (distributed for the financial result)</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>91.02</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="3a3fbf65-51fa-4811-922b-b3ba02eca8bf">
+				<Properties>
+					<Name>Expenses</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Expenses (distributed for the financial result)</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>90.07, 90.08</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="e63dcabb-67dd-4a56-b5d8-88622ebfe009">
+				<Properties>
+					<Name>ReserveAndAdditionalCapital</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Reserve and Additional Capital</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>82</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="9de512b2-bc36-4cf1-8ad5-cc21960673e6">
+				<Properties>
+					<Name>CostOfGoodsSold</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Cost of goods sold</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>90.02</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="b9f4608a-1b44-44ab-9d25-3453985c64df">
+				<Properties>
+					<Name>TradeMarkup</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Trade markup</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+				</Properties>
+			</EnumValue>
+		</ChildObjects>
+	</Enum>
+</MetaDataObject>

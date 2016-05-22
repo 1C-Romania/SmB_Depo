@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"></meta><link rel="stylesheet" type="text/css" href="v8help://service_book/service_style"></link><meta name="GENERATOR" content="MSHTML 11.00.9600.18321"></meta></head><body>
+<h1>Supplier invoice document</h1>
+<p class="Usual"></p>
+<p class="Usual">The document registers purchases of inventory from vendors in the database.</p>
+<p class="Usual"></p>
+<p class="Usual">Document transaction types:</p>
+<ul><li>
+<p class="Usual">Receipt from vendor.</p>
+</li><li>
+<p class="Usual">Receipt to Consignment.</p>
+</li><li>
+<p class="Usual">Receipt to processing.</p>
+</li><li>
+<p class="Usual">Receipt for Safe Custody.</p>
+</li><li>
+<p class="Usual">Return from customer.</p>
+</li><li>
+<p class="Usual">Return from consignee.</p>
+</li><li>
+<p class="Usual">Return from the processing company.</p>
+</li><li>
+<p class="Usual">Return from Safe Custody.</p></li></ul><p class="Usual"></p>
+<p class="Usual"></p>
+<p class="Usual">Document attributes:</p>
+<ul style="MARGIN-RIGHT: 0px" dir="ltr"><li>
+<div><strong>Company -</strong> company, for which the document is Creatingd. It is selected from the <a href="Catalog.Companies/Help"><font color="#0000ff">Companies</font></a> list. The attribute is displayed on the form if Accounting by Multiple Companies is enabled in accounting options.</div>
+</li><li>
+<div><strong>Transaction kind</strong> - of the document.</div>
+</li><li><strong>Counterparty -</strong> vendor selected from the <a href="Catalog.Counterparties/Help"><font color="#0000ff">Counerparties</font></a> list. 
+</li><li>
+<p class="Usual"><strong>Company contract</strong> - agreement between company and company. It is selected from the list of <a href="Catalog.CounterpartyCompany contracts/Help"><font color="#0066cc">Counterparty Company contracts</font></a>.</p>
+</li><li>
+<p class="Usual"><strong>Basis - </strong>document<strong> </strong><a href="Document.CustomerInvoice/Help"><font color="#0000ff">Customer invoice</font></a>. The attribute is mandatory for the transaction type Return from customer.</p>
+</li><li>
+<p class="Usual"><strong>Order - </strong>of a purchase transaction. Document <a href="Document.PurchaseOrder/Help"><font color="#0000ff">Purchase order</font></a> is selected for the following transaction types: Receipt from vendor, Receipt to Consignment or Return from the processing company. Document <a href="Document.CustomerOrder/Help"><font color="#0000ff">Customer order</font></a> is selected for the following types of transactions: Return from customer, Return from consignee or Receipt to processing. The attribute is displayed on the form if <strong>order is enabled for the entire document</strong> in the accounting options. The attribute is optional. Note: the attribute is not displayed on the form for the transaction types of Transfer for Safe Custody or Return from Safe Custody.</p>
+<p class="Usual"><strong>Structural unit, warehouse - </strong>warehouse which is selected from the <a href="Catalog.StructuralUnits/Help"><font color="#0000ff">Structural units</font></a> list from items of the Structural unit, warehouse type.</p>
+</li><li>
+<p class="Usual"><strong>Cell - </strong>cell of the warehouse to which the inventory is being received. It is selected from the <a href="Catalog.Cells/Help"><font color="#0000ff">Structural unit, warehouse Cells</font></a> list. The attribute is displayed on the form if warehouses having cells are enabled in the accounting options and warehouse does not have the order flag.</p>
+</li><li>
+<p class="Usual"><strong>Include Expenses in Cost Price -</strong> attribute is displayed on the form for the Receipt from vendor transaction type .</p></li></ul><p class="Usual"></p>
+<p class="Usual">To change the price types, discounts and currencies, click on the <a href="CommonForm.PricesAndCurrencyForm/Help"><font color="#0000ff">Edit Prices and Currencies</font></a> button. IN case when the <strong>Register Vendor Prices</strong> flag is checked, prices will be recorded in register for future analysis.</p>
+<ul><li>
+<p class="Usual"><strong>Inventory.</strong> The table can be filled by using the Pick method (command bar button <a href="CommonForm.PickForm/Help"><font color="#0000ff">Pick</font></a> of the table) or the manual data input. Attributes of the table:</p>
+<ul><li><strong>ProductsAndServices - </strong>being purchased, selected from the <a href="Catalog.ProductsAndServices/Help"><font color="#0000ff">ProductsAndServices</font></a> list with the Inventory item type. 
+</li><li>
+<p class="Usual"><strong>Characteristic - </strong>if necessary, characteristic of the item may be selected in this field. It is selected from the <a href="Catalog.ProductsAndServicesCharacteristics/Help"><font color="#0000ff">Products and services characteristics</font></a> list. The attribute is displayed on the form if characteristics are enabled for the items in accounting options.</p>
+</li><li>
+<p class="Usual"><strong>Batch - </strong>if necessary, batch of the item may be selected in this field. It is selected from the <a href="Catalog.ProductsAndServicesBatches/Help"><font color="#0066cc">Products and services batches</font></a> list. The attribute is displayed on the form if batches are enabled for the items in accounting options.</p>
+</li><li>
+<p class="Usual"><strong>Quantity - </strong>COUNT of purchased items.</p>
+</li><li>
+<p class="Usual"><strong>UOM</strong> - unit of measure. It is selected from the <a href="Catalog.UOMClassifier/Help"><font color="#0000ff">UOM Classifier</font></a> list or from the <a href="Catalog.UOM/Help"><font color="#0000ff">Units of Measure</font></a> list.</p>
+</li><li>
+<p class="Usual"><strong>Price</strong> - price of purchased item.</p>
+</li><li>
+<p class="Usual"><strong>Amount</strong> - cost of purchased item.</p>
+<p class="Usual"><strong>VAT rate - </strong>VAT rate selected from the <a href="Catalog.VAT rates/Help"><font color="#0000ff">VAT rates</font></a> list.</p>
+</li><li>
+<p class="Usual"><strong>Including VAT - </strong>Amount of VAT.</p>
+</li><li>
+<p class="Usual"><strong>Total - </strong>total Amount calculated according to the price and currency settings. To change the settings click on the <a href="CommonForm.PricesAndCurrencyForm/Help"><font color="#0000ff">Edit Prices and Currencies</font></a> button.</p>
+</li><li>
+<p class="Usual"><strong>Cost of Goods Sold</strong> - cost price of the returned item. The attribute is displayed on the form for the Return from customer transaction type .</p>
+</li><li>
+<p class="Usual"><strong>Order </strong>- of a purchase transaction. Document <a href="Document.PurchaseOrder/Help"><font color="#0000ff">Purchase order</font></a> is selected for the following transaction types: Receipt from vendor, Receipt to Consignment or Return from the processing company. Document <a href="Document.CustomerOrder/Help"><font color="#0000ff">Customer order</font></a> is selected for the following types of transactions: Return from customer, Return from consignee or Receipt to processing. The attribute is displayed on the form if <strong>order is enabled for each document</strong> <strong>line </strong>in the accounting options. The attribute is optional. Note: the attribute is not displayed on the form for the transaction types of Transfer for Safe Custody or Return from Safe Custody..</p>
+</li><li>
+<p class="Usual"><strong>Amount of expense</strong> - Amount of expenses distributed on the cost of purchased items. The field can be filled automatically via the command bar button Distribute of the table Inventory. The attribute is displayed on the form if for the Receipt from vendor transaction type .</p>
+</li><li>
+<p class="Usual"><strong>Content</strong> - text of the item in the print form. To enable the attribute go to <strong>All actions - Change form...</strong> and check the flag.</p></li></ul></li><li>
+<p class="Usual"><strong>Expenses.</strong> Document table can be filled using pick method (button <a href="CommonForm.PickForm/Help"><font color="#0000ff">Pick</font></a> on the command bar), or data can be entered manually. The table is displayed on the form for the Receipt from vendor transaction type. Table fields:</p>
+<ul><li>
+<p class="Usual"><strong>ProductsAndServices </strong>- item, which cost is being distributed on the inventory items, selected from the <a href="Catalog.ProductsAndServices/Help"><font color="#0066cc">ProductsAndServices</font></a> list with the Expense item type.</p>
+</li><li>
+<p class="Usual"><strong>Quantity</strong> - COUNT of items.</p>
+</li><li>
+<p class="Usual"><strong>UOM</strong> - unit of measure. It is selected from the <a href="Catalog.UOMClassifier/Help"><font color="#0066cc">UOM Classifier</font></a> list or from the <a href="Catalog.UOM/Help"><font color="#0066cc">Units of Measure</font></a> list.</p>
+</li><li>
+<p class="Usual"><strong>Price</strong> - item price.</p>
+</li><li>
+<p class="Usual"><strong>Amount</strong> - item cost.</p>
+</li><li>
+<p class="Usual"><strong>VAT rate</strong> - VAT rate selected from the <a href="Catalog.VAT rates/Help"><font color="#0066cc">VAT rates</font></a> list.</p>
+</li><li>
+<p class="Usual"><strong>Including VAT</strong> - Amount of VAT.</p>
+</li><li>
+<p class="Usual"><strong>Total</strong> - total Amount calculated according to the price and currency settings. To change the settings click on the <a href="CommonForm.PricesAndCurrencyForm/Help"><font color="#0066cc">Edit Prices and Currencies</font></a> button.</p>
+</li><li>
+<p class="Usual"><strong>Work order</strong> - related to expenses. It is selected from the <a href="Document.PurchaseOrder/Help"><font color="#0000ff">Work order</font></a>s list. The attribute is optional.</p>
+</li><li>
+<p class="Usual"><strong>Customer Order</strong> - where expenses will be attributed. It is selected from the <a href="Document.CustomerOrder/Help"><font color="#0000ff">Customer order</font></a> list. The attribute is displayed on the form if the flag Include Expenses in Cost Price is checked.</p>
+</li><li>
+<p class="Usual"><strong>Structural unit</strong> - where expenses will be attributed. It is selected from the <a href="Catalog.StructuralUnits/Help"><font color="#0000ff">Structural units</font></a> list with the Structural unit type. The attribute is displayed on the form if the flag Include Expenses in Cost Price is checked.</p>
+</li><li>
+<p class="Usual"><strong>Business Activity</strong> - of the company where expenses will be attributed. It is selected from the <a href="Catalog.BusinessActivities/Help"><font color="#0000ff">Business Activities</font></a> list. The attribute is displayed on the form if the flag Include Expenses in Cost Price is checked.</p>
+</li><li>
+<p class="Usual"><strong>Content</strong> - expense<strong> </strong>item text in the print form. To enable the attribute go to <strong>All actions - Change form...</strong> and check the flag.</p></li></ul></li><li>
+<p class="Usual"><strong>Prepayments.</strong> The table contains prepayments paid to vendors or received from customers earlier. To edit data in Prepayment table, click on the <a href="CommonForm.CustomerAdvancesPickForm/Help"><font color="#0000ff">Edit Setoff of advance payment</font></a> button. Table fields:</p>
+<ul><li>
+<p class="Usual"><strong>Document</strong> - document with prepayment: <a href="Document.PaymentExpense/Help"><font color="#0000ff">Expense</font></a>, <a href="Document.PettyBankingExpense/Help"><font color="#0000ff">Expense from Petty Banking</font></a>, <a href="Document.PettyBankingReceipt/Help"><font color="#0000ff">Receipt to Banking</font></a>, <a href="Document.PaymentReceipt/Help"><font color="#3366ff">Payment receipt</font></a>. </p>
+<p class="Usual"><strong>Amount of settlements - </strong>Amount in contract currency.</p>
+</li><li>
+<p class="Usual"><strong>Rate - </strong>rate used to recalculate Amount to document currency.</p>
+</li><li>
+<p class="Usual"><strong>Factor - </strong>factor used to recalculate Amount to document currency.</p>
+</li><li>
+<p class="Usual"><strong>Payments Amount - </strong>Amount of prepayment in document currency.</p></li></ul></li><li>
+<p class="Usual"><strong>Additional datarmation.</strong> Belongs to group of attributes:</p>
+<ul><li>
+<p class="Usual"><strong>Note</strong> - any additional information.</p></li></ul></li></ul><p class="Usual"></p>
+<p class="Usual">The document Supplier invoice can be entered on the basis of the following documents:</p>
+<ul><li>
+<div><a href="Document.CustomerInvoice/Help"><font color="#0000ff">Customer invoice</font></a>.</div>
+</li><li>
+<div><a href="Document.CustomerOrder/Help"><font color="#0000ff">Customer Order</font></a>.</div>
+</li><li>
+<div><a href="Document.PurchaseOrder/Help"><font color="#0000ff">Work order</font></a>.</div></li></ul></body></html>

@@ -1,0 +1,1490 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Width>82</Width>
+	<Customizable>false</Customizable>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<CommandSet>
+		<ExcludedCommand>No</ExcludedCommand>
+		<ExcludedCommand>SaveValues</ExcludedCommand>
+		<ExcludedCommand>WriteAndClose</ExcludedCommand>
+		<ExcludedCommand>Abort</ExcludedCommand>
+		<ExcludedCommand>Retry</ExcludedCommand>
+		<ExcludedCommand>Yes</ExcludedCommand>
+		<ExcludedCommand>Cancel</ExcludedCommand>
+		<ExcludedCommand>RestoreValues</ExcludedCommand>
+		<ExcludedCommand>Ignore</ExcludedCommand>
+		<ExcludedCommand>OK</ExcludedCommand>
+		<ExcludedCommand>Write</ExcludedCommand>
+	</CommandSet>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="NotificationProcessing">NotificationProcessing</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+		<Event name="OnClose">OnClose</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="GroupTitle" id="1574">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content> </v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content> </v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="GroupHeaderExtendedTooltip" id="1632"/>
+			<ChildItems>
+				<LabelDecoration name="SectionDescription" id="1575">
+					<Width>70</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<VerticalStretch>false</VerticalStretch>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Use this section to keep track of the application state, back up and restore data, update versions, and optimize performance.</v8:content>
+						</v8:item>
+					</Title>
+					<VerticalAlign>Top</VerticalAlign>
+					<ContextMenu name="SectionDescriptionContextMenu" id="1576"/>
+					<ExtendedTooltip name="SectionDescriptionExtendedTooltip" id="1633"/>
+				</LabelDecoration>
+				<LabelDecoration name="Decoration" id="1584">
+					<HorizontalStretch>true</HorizontalStretch>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content> </v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content> </v8:content>
+						</v8:item>
+					</ToolTip>
+					<ContextMenu name="DecorationContextMenu" id="1585"/>
+					<ExtendedTooltip name="DecorationExtendedTooltip" id="1634"/>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="GroupFrequencyService" id="1431">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Frequency service group</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Frequency service group</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Width>82</Width>
+			<HorizontalStretch>false</HorizontalStretch>
+			<Group>Horizontal</Group>
+			<Representation>NormalSeparation</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="GroupFrequencyServiceExtendedTooltip" id="1637"/>
+			<ChildItems>
+				<Button name="DataProcessorEventLogMonitorOpen" id="1445">
+					<Type>Hyperlink</Type>
+					<CommandName>DataProcessor.EventLogMonitor.StandardCommand.Open</CommandName>
+					<ExtendedTooltip name="DatProcessorEventLogMonitorOpenExtendedTooltip" id="1638"/>
+				</Button>
+				<Button name="DataProcessorActiveUserOpen" id="1446">
+					<Type>Hyperlink</Type>
+					<CommandName>DataProcessor.ActiveUsers.StandardCommand.Open</CommandName>
+					<ExtendedTooltip name="DataProcessorActiveUsersOpenExtendedTooltip" id="1639"/>
+				</Button>
+				<Button name="DataProcessorBlockingConnectionsWithInfobaseOpen" id="1447">
+					<Type>Hyperlink</Type>
+					<CommandName>DataProcessor.UserWorkBlocking.StandardCommand.Open</CommandName>
+					<ExtendedTooltip name="DataProcessorLockInfobaseConnectionsOpenExtendedTooltip" id="1640"/>
+				</Button>
+				<Button name="DataProcessorMarkedObjectsDeletionOpen" id="1448">
+					<Type>Hyperlink</Type>
+					<CommandName>DataProcessor.MarkedObjectDeletion.StandardCommand.Open</CommandName>
+					<ExtendedTooltip name="DataProcessorMarkedObjectDeletionOpenExtendedTooltip" id="1641"/>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="SupportAndMaintenance" id="1800">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Support and maintenance</v8:content>
+				</v8:item>
+			</Title>
+			<TitleTextColor>style:TitleColorSettingsGroup</TitleTextColor>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Support and maintenance</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Width>82</Width>
+			<HorizontalStretch>false</HorizontalStretch>
+			<Group>Horizontal</Group>
+			<Representation>NormalSeparation</Representation>
+			<ChildItemsWidth>Equal</ChildItemsWidth>
+			<ExtendedTooltip name="SupportAndMaintenanceExtendedTooltip" id="1801"/>
+			<ChildItems>
+				<Button name="InformationAndSupport" id="1798">
+					<Type>Hyperlink</Type>
+					<CommandName>Form.Command.InformationAndSupport</CommandName>
+					<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+					<ExtendedTooltip name="InformationAndSupportExtendedTooltip" id="1799">
+						<Height>3</Height>
+						<Title formatted="false">
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Create support requests directly from the application (for service users). Links to legal and educational support on the its.1c.ru portal</v8:content>
+							</v8:item>
+						</Title>
+					</ExtendedTooltip>
+				</Button>
+				<LabelDecoration name="Decoration1" id="1802">
+					<ContextMenu name="Decoration1ContextMenu" id="1803"/>
+					<ExtendedTooltip name="Decoration1ExtendedTooltip" id="1804"/>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="GroupScheduledOperations" id="1527">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Scheduled operations</v8:content>
+				</v8:item>
+			</Title>
+			<TitleTextColor>style:TitleColorSettingsGroup</TitleTextColor>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Scheduled operations</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Width>82</Width>
+			<HorizontalStretch>false</HorizontalStretch>
+			<Group>Vertical</Group>
+			<Representation>NormalSeparation</Representation>
+			<ChildItemsWidth>Equal</ChildItemsWidth>
+			<ExtendedTooltip name="GroupScheduledOperationsExtendedTooltip" id="1642"/>
+			<ChildItems>
+				<UsualGroup name="Group5" id="1586">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content> </v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content> </v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ChildItemsWidth>Equal</ChildItemsWidth>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="Group5ExtendedTooltip" id="1643"/>
+					<ChildItems>
+						<Button name="DataProcessorScheduledAndBackgroundJobs" id="1502">
+							<Type>Hyperlink</Type>
+							<Width>41</Width>
+							<CommandName>DataProcessor.ScheduledAndBackgroundJobs.Command.ScheduledAndBackgroundJobs</CommandName>
+							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<ExtendedTooltip name="DataProcessorScheduledAndBackgroundJobsExtendedTooltip" id="1645">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Scheduled jobs scheduling and launch</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+						</Button>
+						<Button name="InformationRegisterChangeProhibitionDatesDataChangeProhibitionDates" id="1552">
+							<Type>Hyperlink</Type>
+							<CommandName>InformationRegister.ChangeProhibitionDates.Command.DataChangeProhibitionDates</CommandName>
+							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<ExtendedTooltip name="InformationRegisterChangeProhibitionDateOfDataChangeProhibitionDateExtendedTooltip" id="1648">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Restrict changes of previous period data.</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+						</Button>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="Group6" id="1587">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content> </v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content> </v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ChildItemsWidth>Equal</ChildItemsWidth>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="Group6ExtendedTooltip" id="1650"/>
+					<ChildItems>
+						<Button name="DataProcessorManagingTotalsAndAggregatesOpen" id="1501">
+							<Type>Hyperlink</Type>
+							<Width>41</Width>
+							<CommandName>DataProcessor.TotalAndAggregateManagement.StandardCommand.Open</CommandName>
+							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<ExtendedTooltip name="DataProcessorTotalAndAggregateManagementOpenExtendedTooltip" id="1652">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Calculated totals period setup.
+Reconstruction, aggregates filling and optimization.</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+						</Button>
+						<Button name="FullTextSearchAndTextsExtractionManagement" id="1503">
+							<Type>Hyperlink</Type>
+							<CommandName>Form.Command.FullTextSearchAndTextsExtractionManagement</CommandName>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Full text search management</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<ExtendedTooltip name="FullTextSearchAndTextsExtractionManagementExtendedTooltip" id="1655">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>The full text search index update and clearance.
+Managing text extraction from files.</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+						</Button>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="GroupMarkedObjectDeletionOnSchedule" id="1766">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content> </v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Frequency service group</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Width>86</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ChildItemsWidth>Equal</ChildItemsWidth>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="GroupMarkedObjectDeletionOnScheduleExtendedTooltip" id="1767"/>
+					<ChildItems>
+						<CheckBoxField name="DeleteMarkedUse" id="1770">
+							<DataPath>DeleteMarkedUse</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Automatically remove marked objects on schedule</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="DeleteMarkedUseContextMenu" id="1771"/>
+							<ExtendedTooltip name="DeleteMarkedUseExtendedTooltip" id="1772"/>
+							<Events>
+								<Event name="OnChange">DeleteMarkedUseOnChange</Event>
+							</Events>
+						</CheckBoxField>
+						<Button name="DeleteMarkedConfigureSchedule" id="1773">
+							<Type>Hyperlink</Type>
+							<Enabled>false</Enabled>
+							<CommandName>Form.Command.DeleteMarkedConfigureSchedule</CommandName>
+							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<ExtendedTooltip name="DeleteMarkedConfigureScheduleExtendedTooltip" id="1774"/>
+						</Button>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="GroupBackupAndRecovery" id="1467">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Backup and recovery</v8:content>
+				</v8:item>
+			</Title>
+			<TitleTextColor>style:TitleColorSettingsGroup</TitleTextColor>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Backup and recovery</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Width>82</Width>
+			<HorizontalStretch>false</HorizontalStretch>
+			<Group>Vertical</Group>
+			<Representation>NormalSeparation</Representation>
+			<ChildItemsWidth>Equal</ChildItemsWidth>
+			<ExtendedTooltip name="CloneBackupAndRestorationGroupExtendedTooltip" id="1657"/>
+			<ChildItems>
+				<UsualGroup name="Group1" id="1620">
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ChildItemsWidth>Equal</ChildItemsWidth>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="Group1ExtendedTooltip" id="1658"/>
+					<ChildItems>
+						<UsualGroup name="Group3" id="1471">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content> </v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content> </v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="Group3ExtendedTooltip" id="1659"/>
+							<ChildItems>
+								<LabelDecoration name="ApplicationBackup" id="1570">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Backup</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+									<Hyperlink>true</Hyperlink>
+									<ContextMenu name="ApplicationBackupCopyContextMenu" id="1571"/>
+									<ExtendedTooltip name="ApplicationBackupCopyExtendedTooltip" id="1661">
+										<Title formatted="false">
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Start data backup.</v8:content>
+											</v8:item>
+										</Title>
+									</ExtendedTooltip>
+									<Events>
+										<Event name="Click">ApplicationBackupClick</Event>
+									</Events>
+								</LabelDecoration>
+								<LabelDecoration name="RecoveryFromBackup" id="1568">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Recovery from the backup copy</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+									<Hyperlink>true</Hyperlink>
+									<ContextMenu name="RestorationFromBackupCopiesCommandContextMenu" id="1569"/>
+									<ExtendedTooltip name="RestoreFromBackupCopyExtendedTooltip" id="1664">
+										<Title formatted="false">
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Launch of the data recovery out of the backup files.</v8:content>
+											</v8:item>
+										</Title>
+									</ExtendedTooltip>
+									<Events>
+										<Event name="Click">RestoringFromBackupClick</Event>
+									</Events>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="GroupBackupSetting" id="1479">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group backup setup</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group backup setup</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Width>43</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupSettingBackupExtendedTooltip" id="1666"/>
+							<ChildItems>
+								<LabelDecoration name="BackupSetup" id="1572">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Backup setup</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+									<Hyperlink>true</Hyperlink>
+									<ContextMenu name="BackupSettingContextMenu" id="1573"/>
+									<ExtendedTooltip name="SettingBackupExtendedTooltip" id="1667">
+										<Title formatted="false">
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Backup parameters setup.</v8:content>
+											</v8:item>
+										</Title>
+									</ExtendedTooltip>
+									<Events>
+										<Event name="Click">BackupSettingClick</Event>
+									</Events>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="GroupRestorationBackupCopiesSaaS" id="1615">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group backup recovery</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group backup recovery</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Width>86</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<Group>Horizontal</Group>
+					<Representation>StrongSeparation</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="GroupRestorationBackupCopiesSaaSExtendedTooltip" id="1669"/>
+					<ChildItems>
+						<PictureDecoration name="BackupRestorationSaaS" id="1618">
+							<Width>2</Width>
+							<Height>1</Height>
+							<ToolTipRepresentation>ShowRight</ToolTipRepresentation>
+							<Picture>
+								<xr:Ref>CommonPicture.UnavailableFieldsInformtion</xr:Ref>
+								<xr:LoadTransparent>true</xr:LoadTransparent>
+							</Picture>
+							<ContextMenu name="BackupRestorationSaaSContextMenu" id="1619"/>
+							<ExtendedTooltip name="BackupRestorationSaaSExtendedTooltip" id="1670">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>To restore the application out of the previously created backup copy it is necessary to open the Service manager and run the commands Setup -&gt; Applications backup copies</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+						</PictureDecoration>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="GroupAddressClassifier" id="1864">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Address classifier</v8:content>
+				</v8:item>
+			</Title>
+			<TitleTextColor>style:FormTextColor</TitleTextColor>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Address classifier</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<ExtendedTooltip name="GroupAddressClassifierExtendedTooltip" id="1865"/>
+			<ChildItems>
+				<UsualGroup name="GroupAddressClassifierSettings" id="1808">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Address classifier</v8:content>
+						</v8:item>
+					</Title>
+					<TitleFont ref="sys:DefaultGUIFont" height="11" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group address classifier settings</v8:content>
+						</v8:item>
+					</ToolTip>
+					<HorizontalStretch>false</HorizontalStretch>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="GroupAddressClassifierSettingsExtendedTooltip" id="1809"/>
+					<ChildItems>
+						<UsualGroup name="GroupDataSource" id="1812">
+							<TitleTextColor>style:FormTextColor</TitleTextColor>
+							<TitleFont ref="style:NormalTextFont" kind="StyleItem"/>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group data source</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ChildItemsWidth>Equal</ChildItemsWidth>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupDataSourceExtendedTooltip" id="1813"/>
+							<ChildItems>
+								<RadioButtonField name="FIASDataSourceService1C" id="1816">
+									<DataPath>ConstantsSet.AddressClassifierDataSource</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Use the Web-service provided by the 1C company. Permanent Internet connection required.</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+									<RadioButtonType>Auto</RadioButtonType>
+									<ColumnsCount>1</ColumnsCount>
+									<ChoiceList>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Use the 1C web service for input and validation of addresses</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:string">Service1C</Value>
+											</xr:Value>
+										</xr:Item>
+									</ChoiceList>
+									<ContextMenu name="FIASDataSource1CServiceContextMenu" id="1817"/>
+									<ExtendedTooltip name="FIASDataSource1CServiceExtendedTooltip" id="1818"/>
+									<Events>
+										<Event name="OnChange">AddressClassifierOnChange</Event>
+									</Events>
+								</RadioButtonField>
+								<Button name="InformationRegisterAddressAuthorizationObjectsOnUsersSupportSite" id="1830">
+									<Type>Hyperlink</Type>
+									<CommandName>InformationRegister.AddressObjects.Command.AuthorizationOnUsersSupportSite</CommandName>
+									<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+									<ExtendedTooltip name="InformationRegisterAddressObjectsAuthorizationOnUsersSupportSiteExtendedTooltip" id="1831">
+										<Title formatted="false">
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Specify the required login and password received during registration on 1C users support website.</v8:content>
+											</v8:item>
+										</Title>
+									</ExtendedTooltip>
+								</Button>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="GroupDataSourceVariants" id="1814">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group data source variants</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group data source variants</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ChildItemsWidth>Equal</ChildItemsWidth>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupDataSourceVariantsExtendedTooltip" id="1815"/>
+							<ChildItems>
+								<RadioButtonField name="FIASDataSourceLocally" id="1822">
+									<DataPath>ConstantsSet.AddressClassifierDataSource</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Use data imported from the 1C website or folder on drive. It is possible to work without connection to the Internet.</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+									<RadioButtonType>Auto</RadioButtonType>
+									<ColumnsCount>1</ColumnsCount>
+									<ChoiceList>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Import classifier into application</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:string"/>
+											</xr:Value>
+										</xr:Item>
+									</ChoiceList>
+									<ContextMenu name="FIASDataSourceLocallyContextMenu" id="1823"/>
+									<ExtendedTooltip name="FIASDataSourceLocallyExtendedTooltip" id="1824"/>
+									<Events>
+										<Event name="OnChange">AddressClassifierOnChange</Event>
+									</Events>
+								</RadioButtonField>
+								<LabelDecoration name="Decoration3" id="1858">
+									<ContextMenu name="Decoration3ContextMenu" id="1859"/>
+									<ExtendedTooltip name="Decoration3ExtendedTooltip" id="1860"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="GroupAddressCommandClassifier" id="1835">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Address classifier</v8:content>
+						</v8:item>
+					</Title>
+					<TitleFont ref="sys:DefaultGUIFont" faceName="MS Shell Dlg" height="11" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content> </v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="GroupAddressCommandClassifierExtendedTooltip" id="1836"/>
+					<ChildItems>
+						<UsualGroup name="CommandGroupAddressClassifier" id="1837">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Command group address classifier</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Command group address classifier</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ChildItemsWidth>Equal</ChildItemsWidth>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="CommandGroupAddressClassifierExtendedTooltip" id="1838"/>
+							<ChildItems>
+								<Button name="InformationRegisterAddressObjectsImportAddressClassifier" id="1841">
+									<Type>Hyperlink</Type>
+									<CommandName>InformationRegister.AddressObjects.Command.ImportAddressClassifier</CommandName>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Import classifier</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+									<ExtendedTooltip name="InformationRegisterAddressObjectsImportAddressClassifierExtendedTooltip" id="1842">
+										<Title formatted="false">
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Importing the address classifier from the 1C website or folder on the drive.</v8:content>
+											</v8:item>
+										</Title>
+									</ExtendedTooltip>
+								</Button>
+								<Button name="InformationRegisterAddressObjectsCheckForAddressClassifierUpdate" id="1846">
+									<Type>Hyperlink</Type>
+									<CommandName>InformationRegister.AddressObjects.Command.CheckForAddressClassifierUpdates</CommandName>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Check for updates</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+									<ExtendedTooltip name="InformationRegisterAddressObjectsCheckForAddressClassifierUpdateExtendedTooltip" id="1847">
+										<Title formatted="false">
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Validation and update of address classifier on 1C website .</v8:content>
+											</v8:item>
+										</Title>
+									</ExtendedTooltip>
+								</Button>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="AddressClassifierRightColumn" id="1851">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Address classifier right column</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Address classifier right column</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ChildItemsWidth>Equal</ChildItemsWidth>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="AddressClassifierRightColumnExtendedTooltip" id="1852"/>
+							<ChildItems>
+								<Button name="InformationRegisterAddressObjectsClearAddressClassifier" id="1853">
+									<Type>Hyperlink</Type>
+									<CommandName>InformationRegister.AddressObjects.Command.ToClearAddressClassifier</CommandName>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Clear address information</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+									<ExtendedTooltip name="InformationRegisterAddressObjectsClearAddressClassifierExtendedTooltip" id="1854">
+										<Title formatted="false">
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Delete the exported address information for the selected unused states to reduce the size of the base.</v8:content>
+											</v8:item>
+										</Title>
+									</ExtendedTooltip>
+								</Button>
+								<LabelDecoration name="Decoration4" id="1861">
+									<ContextMenu name="Decoration4ContextMenu" id="1862"/>
+									<ExtendedTooltip name="Decoration4ExtendedTooltip" id="1863"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="GroupClassifiers" id="1556">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Classifiers</v8:content>
+				</v8:item>
+			</Title>
+			<TitleTextColor>style:TitleColorSettingsGroup</TitleTextColor>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Classifiers</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Width>82</Width>
+			<HorizontalStretch>false</HorizontalStretch>
+			<Group>Vertical</Group>
+			<Representation>NormalSeparation</Representation>
+			<ChildItemsWidth>Equal</ChildItemsWidth>
+			<ExtendedTooltip name="GroupClassifiersExtendedTooltip" id="1679"/>
+			<ChildItems>
+				<UsualGroup name="Group4" id="1557">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content> </v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content> </v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ChildItemsWidth>Equal</ChildItemsWidth>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="Group4ExtendedTooltip" id="1680"/>
+					<ChildItems>
+						<Button name="ImportBanksClassifier" id="1625">
+							<Type>Hyperlink</Type>
+							<CommandName>Form.Command.ImportBanksClassifier</CommandName>
+							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<ExtendedTooltip name="ImportBanksClassifierExtendedTooltip" id="1682">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Importing the bank classifier from the 1C:ITS drive or RBC website.</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+						</Button>
+						<Button name="DataProcessorCurrencyRatesImportProcess" id="1624">
+							<Type>Hyperlink</Type>
+							<CommandName>Form.Command.DataProcessorCurrencyRatesImportProcess</CommandName>
+							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<ExtendedTooltip name="DatProcessorCurrencyRatesImportProcessExtendedTooltip" id="1688">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Importing the exchange rates of the selected currencies for the specified period from the RBC website.</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+						</Button>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="GroupOnlineUserSupport" id="1866">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Online user support</v8:content>
+				</v8:item>
+			</Title>
+			<TitleTextColor>style:TitleColorSettingsGroup</TitleTextColor>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Classifiers</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Width>82</Width>
+			<HorizontalStretch>false</HorizontalStretch>
+			<Group>Vertical</Group>
+			<Representation>NormalSeparation</Representation>
+			<ChildItemsWidth>Equal</ChildItemsWidth>
+			<ExtendedTooltip name="GroupOnlineUserSupportExtendedTooltip" id="1867"/>
+			<ChildItems>
+				<UsualGroup name="GroupConnectionTimeout" id="1868">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content> </v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content> </v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ChildItemsWidth>Equal</ChildItemsWidth>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="GroupConnectionTimeoutExtendedTooltip" id="1869"/>
+					<ChildItems>
+						<UsualGroup name="GroupInternetSupportConnection" id="1885">
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group online support connection</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupInternetSupportConnectionExtendedTooltip" id="1886">
+								<Height>5</Height>
+								<Title formatted="true">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>For authorization in the online user support system, use the same username and password as on the website &lt;link https://1c-dn.com/user/profile/&gt;users.v8.1c.ru&lt;/&gt;. If you do not have username and password, you should register yourself or request the support from the partner of 1C company with whom you have the ITS agreement.</v8:content>
+									</v8:item>
+								</Title>
+								<Events>
+									<Event name="URLProcessing">GroupInternetSupportConnectionExtendedTooltipDataProcessorNavigationRefs</Event>
+								</Events>
+							</ExtendedTooltip>
+							<ChildItems>
+								<Button name="ConnectOnlineUserSupport" id="1870">
+									<Type>Hyperlink</Type>
+									<CommandName>Form.Command.ConnectOnlineUserSupport</CommandName>
+									<ToolTipRepresentation>Button</ToolTipRepresentation>
+									<ExtendedTooltip name="ConnectOnlineUserSupportExtendedTooltip" id="1871">
+										<Title formatted="true">
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>If you are using a firewall on the computer, it is recommended to add the "webits" address of user Online support server to the list of allowed addresses.1c.ru, ports 80 (HTTP) and 443 (HTTPS). The settings of exceptions for each particular firewall or antivirus are configured according to the user's manual provided with the corresponding firewall or antivirus.
+If necessary, you should allow access to the specified address and network ports at Internet gateway.
+
+
+If the connection with the user Online support server is established through 1C:Enterprise server, it is necessary to allow the request to the "webits" Internet-resource in the security profile of 1C:Enterprise.1c.ru through safe connection protocol (HTTPS, port 443).</v8:content>
+											</v8:item>
+										</Title>
+									</ExtendedTooltip>
+								</Button>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="GroupTimeoutOfConnection" id="1875">
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group timeout of connection</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupTimeoutOfConnectionExtendedTooltip" id="1876">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Maximum timeout in seconds to establish connection with the online user support server. 30 Seconds by default.</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+							<ChildItems>
+								<InputField name="ConnectionTimeoutToOnlineSupportService" id="1872">
+									<DataPath>ConstantsSet.ConnectionTimeoutToOnlineSupportService</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Connection timeout</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTipRepresentation>ShowRight</ToolTipRepresentation>
+									<SpinButton>true</SpinButton>
+									<ContextMenu name="ConnectionTimeoutToOnlineSupportServiceContextMenu" id="1873"/>
+									<ExtendedTooltip name="ConnectionTimeoutToOnlineSupportServiceExtendedTooltip" id="1874">
+										<TextColor>style:FormTextColor</TextColor>
+										<Title formatted="false">
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>sec.</v8:content>
+											</v8:item>
+										</Title>
+									</ExtendedTooltip>
+									<Events>
+										<Event name="OnChange">ConnectionTimeoutToOnlineSupportServiceOnChange</Event>
+									</Events>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="GroupConnectionFromServer" id="1877">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content> </v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content> </v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ChildItemsWidth>Equal</ChildItemsWidth>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="GroupConnectionFromServerExtendedTooltip" id="1878"/>
+					<ChildItems>
+						<CheckBoxField name="ConnectionToOUSServiceFromServer" id="1879">
+							<DataPath>ConstantsSet.ConnectionToOUSServiceFromServer</DataPath>
+							<TitleLocation>Right</TitleLocation>
+							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ConnectionToOUSServiceFromServerContextMenu" id="1880"/>
+							<ExtendedTooltip name="ConnectionToOUSServiceFromServerExtendedTooltip" id="1881">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>If local computers have access to the Internet it is recommended not to enable the option. If there is access to Internet on 1C:Enterprise server the option shall be set up.</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+							<Events>
+								<Event name="OnChange">ConnectionToOUSServiceFromServerOnChange</Event>
+							</Events>
+						</CheckBoxField>
+						<LabelDecoration name="Decoration5" id="1882">
+							<ContextMenu name="Decoration5ContextMenu" id="1883"/>
+							<ExtendedTooltip name="Decoration5ExtendedTooltip" id="1884"/>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="GroupPersonalDataProtection" id="1608">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Personal data protection</v8:content>
+				</v8:item>
+			</Title>
+			<TitleTextColor>style:TitleColorSettingsGroup</TitleTextColor>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content> </v8:content>
+				</v8:item>
+			</ToolTip>
+			<Width>82</Width>
+			<HorizontalStretch>false</HorizontalStretch>
+			<Group>Horizontal</Group>
+			<Representation>NormalSeparation</Representation>
+			<ChildItemsWidth>Equal</ChildItemsWidth>
+			<ExtendedTooltip name="GroupPersonalDataProtectionExtendedTooltip" id="1690"/>
+			<ChildItems>
+				<Button name="OpenSettingsRegistrationEventsAccessToPersonalData" id="1601">
+					<Type>Hyperlink</Type>
+					<CommandName>CommonForm.AccessToPersonalDataEventsRegistrationSettings.StandardCommand.Open</CommandName>
+					<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+					<ExtendedTooltip name="OpenAccessToPersonalDataEventsRegistrationSettingsExtendedTooltip" id="1692">
+						<Title formatted="false">
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Registration of the access events in accordance with the requirements of the Federal Law No. 152-FZ from 07/27/2006 "On personal data".</v8:content>
+							</v8:item>
+						</Title>
+					</ExtendedTooltip>
+				</Button>
+				<Button name="DataProcessorPersonalDataProtection" id="1605">
+					<Type>Hyperlink</Type>
+					<CommandName>DataProcessor.PersonalDataProtection.Command.PersonalDataProtection</CommandName>
+					<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+					<ExtendedTooltip name="DataProcessorPersonalDataProtectionExtendedTooltip" id="1695">
+						<Title formatted="false">
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>View personal data requests of selected application objects.</v8:content>
+							</v8:item>
+						</Title>
+					</ExtendedTooltip>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="GroupRefreshEnabledAndDetailsChanges" id="1537">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Application version update</v8:content>
+				</v8:item>
+			</Title>
+			<TitleTextColor>style:TitleColorSettingsGroup</TitleTextColor>
+			<Width>82</Width>
+			<HorizontalStretch>false</HorizontalStretch>
+			<Group>Vertical</Group>
+			<Representation>NormalSeparation</Representation>
+			<ChildItemsWidth>Equal</ChildItemsWidth>
+			<ExtendedTooltip name="GroupRefreshEnabledAndDetailsChangesExtendedTooltip" id="1697"/>
+			<ChildItems>
+				<UsualGroup name="Columns1" id="1614">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content> </v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content> </v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ChildItemsWidth>Equal</ChildItemsWidth>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="Columns1ExtendedTooltip" id="1698"/>
+					<ChildItems>
+						<Button name="DataProcessorConfigurationUpdate" id="1452">
+							<Type>Hyperlink</Type>
+							<CommandName>DataProcessor.ConfigurationUpdate.StandardCommand.Open</CommandName>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Update search and installation</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<ExtendedTooltip name="DatProcessorConfigurationUpdateExtendedTooltip" id="1700">
+								<Height>3</Height>
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Get information about last updates and automatic installation of updates in specified time when closing the application.</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+						</Button>
+						<Button name="ApplicationUpdateSetup" id="1748">
+							<Type>Hyperlink</Type>
+							<CommandName>Form.Command.ApplicationUpdateSetup</CommandName>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Set the application update using the Internet</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<ExtendedTooltip name="ApplicationUpdateConfiguringExtendedTooltip" id="1749">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Set the application update using the Internet</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+						</Button>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="Columns2" id="1627">
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ChildItemsWidth>Equal</ChildItemsWidth>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="Columns2ExtendedTooltip" id="1705"/>
+					<ChildItems>
+						<Button name="OpenSystemChangesDescription" id="1463">
+							<Type>Hyperlink</Type>
+							<CommandName>CommonForm.SystemChangesDescription.StandardCommand.Open</CommandName>
+							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<ExtendedTooltip name="OpenUpdateDescriptionExtendedTooltip" id="1703">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Change history by application versions.</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+						</Button>
+						<Button name="ResultsUpdateAndAdditionalProcessingData" id="1629">
+							<Type>Hyperlink</Type>
+							<CommandName>Form.Command.ResultsUpdateAndAdditionalProcessingData</CommandName>
+							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<ExtendedTooltip name="ResultsUpdateAndAdditionalInformationProcessorDataExtendedTooltip" id="1707">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Information about the application version update progress, delayed execution of additional data processor procedures.</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+						</Button>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="Columns3" id="1753">
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ChildItemsWidth>Equal</ChildItemsWidth>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="Columns3ExtendedTooltip" id="1754"/>
+					<ChildItems>
+						<CheckBoxField name="DetailInfobaseUpdateInEventLogMonitor" id="1610">
+							<DataPath>ConstantsSet.DetailInfobaseUpdateInEventLogMonitor</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Detalize the update progress in the event log</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>Right</TitleLocation>
+							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="DetailInfobaseUpdateInEventLogMonitorContextMenu" id="1611"/>
+							<ExtendedTooltip name="DetailInfobaseUpdateInEventLogMonitorExtendedTooltip" id="1710">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Record a detailed information about the update progress to the event log.</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+							<Events>
+								<Event name="OnChange">DetailInfobaseUpdateInEventLogMonitorOnChange</Event>
+							</Events>
+						</CheckBoxField>
+						<LabelDecoration name="Decoration2" id="1805">
+							<ContextMenu name="Decoration2ContextMenu" id="1806"/>
+							<ExtendedTooltip name="Decoration2ExtendedTooltip" id="1807"/>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="ConstantsSet" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Constants set</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:ConstantsSet</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<UseAlways>
+				<Field>ConstantsSet.UseSeparationByDataAreas</Field>
+				<Field>ConstantsSet.UseFullTextSearch</Field>
+				<Field>ConstantsSet.SMSProvider.Ref</Field>
+				<Field>ConstantsSet.PriceListShowFullDescr.Ref</Field>
+				<Field>ConstantsSet.PriceListShowCode.Ref</Field>
+				<Field>ConstantsSet.PostponeEditProhibitionDate.Ref</Field>
+				<Field>ConstantsSet.OffsetAdvancesDebtsAutomatically.Ref</Field>
+				<Field>ConstantsSet.InfobaseUsageMode.Ref</Field>
+				<Field>ConstantsSet.ExchangeRateDifferencesCalculationFrequency.Ref</Field>
+				<Field>ConstantsSet.DiscountsMarkupsSharedUsageOptions.Ref</Field>
+				<Field>ConstantsSet.DeleteCryptographyContext.Ref</Field>
+				<Field>ConstantsSet.DeleteContractControllingOnPosting.Ref</Field>
+				<Field>ConstantsSet.AuthorizationContext.Ref</Field>
+				<Field>ConstantsSet.AddressClassifierDataSource</Field>
+				<Field>ConstantsSet.ActivityKind.Ref</Field>
+			</UseAlways>
+		</Attribute>
+		<Attribute name="RunMode" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Work mode (fixed structure)</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+			<Edit>
+				<xr:Common>false</xr:Common>
+			</Edit>
+		</Attribute>
+		<Attribute name="DeleteMarkedID" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Delete marked identifier</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:UUID</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="DeleteMarkedUse" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Delete marked usage</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="DeleteMarkedSchedule" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Delete marked schedule</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="FullTextSearchAndTextsExtractionManagement" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Full text search management</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Full-text search and text extraction management</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ProcessingManagingFullTextSearch</Action>
+		</Command>
+		<Command name="DataProcessorCurrencyRatesImportProcess" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Import exchange rates</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Import exchange rates from site</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>DataProcessorCurrencyRatesImportProcess</Action>
+			<FunctionalOptions>
+				<Item>FunctionalOption.StandardSubsystemsLocalMode</Item>
+			</FunctionalOptions>
+		</Command>
+		<Command name="ImportBanksClassifier" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Import bank classifier</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Import bank classifier</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ImportBanksClassifier</Action>
+		</Command>
+		<Command name="ResultsUpdateAndAdditionalProcessingData" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Update results and additional data processing</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Update results and additional data processing</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>PostponedProcessingData</Action>
+		</Command>
+		<Command name="AdditionalReportsOnAdministration" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Additional reports on administration</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Additional reports on administration</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>AdditionalReportsOnAdministration</Action>
+		</Command>
+		<Command name="AdditionalAdministrativeDataProcessors" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Additional administrative data processors</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Additional administrative data processors</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>AdditionalAdministrativeDataProcessors</Action>
+		</Command>
+		<Command name="ApplicationUpdateSetup" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Application update setup</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Application update setup</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ApplicationUpdateSetup</Action>
+		</Command>
+		<Command name="DeleteMarkedConfigureSchedule" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Setup schedule</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Set up the schedule of automatic deletion of marked objects in the scheduled job.</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>DeleteMarkedConfigureSchedule</Action>
+		</Command>
+		<Command name="SearchAndDeleteDuplicates" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Search and delete duplicates</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Search and delete duplicates</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>SearchAndDeleteDuplicates</Action>
+		</Command>
+		<Command name="InformationAndSupport" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Information and support</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Information and support</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InformationAndSupport</Action>
+		</Command>
+		<Command name="ConnectOnlineUserSupport" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Connect Online support</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Connect the online user support</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ConnectOnlineUserSupport</Action>
+		</Command>
+	</Commands>
+</Form>

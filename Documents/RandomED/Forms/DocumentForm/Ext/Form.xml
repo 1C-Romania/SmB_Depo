@@ -1,0 +1,1236 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<AutoTitle>false</AutoTitle>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoTime>CurrentOrLast</AutoTime>
+	<UsePostingMode>Auto</UsePostingMode>
+	<RepostOnWrite>true</RepostOnWrite>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<ChildItems>
+			<ButtonGroup name="ButtonGroupRejection" id="130">
+				<Title>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Button group rejection</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTip>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Button group rejection</v8:content>
+					</v8:item>
+				</ToolTip>
+				<ExtendedTooltip name="ButtonGroupRejectionExtendedTooltip" id="142"/>
+				<ChildItems>
+					<Button name="FormReject" id="121">
+						<Type>CommandBarButton</Type>
+						<OnlyInAllActions>false</OnlyInAllActions>
+						<CommandName>Form.Command.Reject</CommandName>
+						<ExtendedTooltip name="FormRejectExtendedTooltip" id="143"/>
+					</Button>
+					<Button name="FormCancelRejection" id="129">
+						<Type>CommandBarButton</Type>
+						<OnlyInAllActions>false</OnlyInAllActions>
+						<CommandName>Form.Command.CancelRejection</CommandName>
+						<ExtendedTooltip name="FormCancelRejectionExtendedTooltip" id="144"/>
+					</Button>
+				</ChildItems>
+			</ButtonGroup>
+			<Button name="SignAndSendED" id="53">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.SignAndSendED</CommandName>
+				<ExtendedTooltip name="SignAndSendEDExtendedTooltip" id="145"/>
+			</Button>
+			<Button name="FormDataProcessorElectronicDocumentsEDPrint" id="190">
+				<Type>CommandBarButton</Type>
+				<OnlyInAllActions>false</OnlyInAllActions>
+				<CommandName>DataProcessor.ElectronicDocuments.Command.EDPrint</CommandName>
+				<DataPath>Object.Ref</DataPath>
+				<ExtendedTooltip name="FormDataProcessorElectronicDocumentsEDPrintExtendedTooltip" id="191"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="AfterWriteAtServer">AfterWriteAtServer</Event>
+		<Event name="NotificationProcessing">NotificationProcessing</Event>
+		<Event name="BeforeWriteAtServer">BeforeWriteAtServer</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="Header" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Header</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="HeaderExtendedTooltip" id="146"/>
+			<ChildItems>
+				<UsualGroup name="LeftColumn" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Left column</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="LeftColumnExtendedTooltip" id="147"/>
+					<ChildItems>
+						<UsualGroup name="NumberDateGroup" id="33">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group number date</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group number date</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="NumberDateGroupExtendedTooltip" id="148"/>
+							<ChildItems>
+								<InputField name="Number" id="3">
+									<DataPath>Object.Number</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>10</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="NumberContextMenu" id="4"/>
+									<ExtendedTooltip name="NumberExtendedTooltip" id="149"/>
+									<Events>
+										<Event name="OnChange">NumberOnChange</Event>
+									</Events>
+								</InputField>
+								<InputField name="Date" id="5">
+									<DataPath>Object.Date</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>from</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>14</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="DateContextMenu" id="6"/>
+									<ExtendedTooltip name="DateExtendedTooltip" id="150"/>
+									<Events>
+										<Event name="OnChange">DateOnChange</Event>
+									</Events>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<InputField name="Company" id="7">
+							<DataPath>Object.Company</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>28</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="CounterpartyContextMenu" id="8"/>
+							<ExtendedTooltip name="CounterpartyExtendedTooltip" id="151"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="RightColumn" id="9">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Right column</v8:content>
+						</v8:item>
+					</Title>
+					<HorizontalStretch>false</HorizontalStretch>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="RightColumnExtendedTooltip" id="152"/>
+					<ChildItems>
+						<LabelDecoration name="Decoration1" id="66">
+							<Visible>false</Visible>
+							<ContextMenu name="Decoration1ContextMenu" id="67"/>
+							<ExtendedTooltip name="Decoration1ExtendedTooltip" id="153"/>
+						</LabelDecoration>
+						<InputField name="DocumentType" id="132">
+							<DataPath>Object.DocumentType</DataPath>
+							<ContextMenu name="DocumentTypeContextMenu" id="133"/>
+							<ExtendedTooltip name="DocumentTypeExtendedTooltip" id="154"/>
+						</InputField>
+						<InputField name="Counterparty" id="10">
+							<DataPath>Object.Counterparty</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>28</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="CounterpartyContextMenu" id="11"/>
+							<ExtendedTooltip name="CounterpartyExtendedTooltip" id="155"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="CoveringNote" id="134">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Note to attachment</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Text of the accompanying note that is passed to the recipient with the attachment.</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<ExtendedTooltip name="CoveringNoteExtendedTooltip" id="156"/>
+			<ChildItems>
+				<TextDocumentField name="Message" id="135">
+					<DataPath>Object.Text</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Text of the accompanying note that is passed to the recipient with the attachment.</v8:content>
+						</v8:item>
+					</ToolTip>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="MessageContextMenu" id="136"/>
+					<ExtendedTooltip name="MessageExtendedTooltip" id="157"/>
+				</TextDocumentField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="AttachmentGroup" id="34">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Attachment</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Attachment</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<ExtendedTooltip name="AttachmentsGroupExtendedTooltip" id="158"/>
+			<ChildItems>
+				<Table name="Attachments" id="16">
+					<Representation>List</Representation>
+					<ChangeRowOrder>false</ChangeRowOrder>
+					<Height>2</Height>
+					<SelectionMode>SingleRow</SelectionMode>
+					<Header>false</Header>
+					<VerticalScrollBar>DontUse</VerticalScrollBar>
+					<HorizontalLines>false</HorizontalLines>
+					<VerticalLines>false</VerticalLines>
+					<AutoInsertNewRow>true</AutoInsertNewRow>
+					<VerticalStretch>false</VerticalStretch>
+					<EnableStartDrag>true</EnableStartDrag>
+					<EnableDrag>true</EnableDrag>
+					<DataPath>Attachments</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Attachment</v8:content>
+						</v8:item>
+					</Title>
+					<CommandSet>
+						<ExcludedCommand>Copy</ExcludedCommand>
+						<ExcludedCommand>SortListAsc</ExcludedCommand>
+						<ExcludedCommand>MoveUp</ExcludedCommand>
+						<ExcludedCommand>CancelSearch</ExcludedCommand>
+						<ExcludedCommand>OutputList</ExcludedCommand>
+						<ExcludedCommand>SortListDesc</ExcludedCommand>
+						<ExcludedCommand>CopyToClipboard</ExcludedCommand>
+						<ExcludedCommand>EndEdit</ExcludedCommand>
+						<ExcludedCommand>Change</ExcludedCommand>
+						<ExcludedCommand>Find</ExcludedCommand>
+						<ExcludedCommand>MoveDown</ExcludedCommand>
+					</CommandSet>
+					<SearchStringLocation>None</SearchStringLocation>
+					<ViewStatusLocation>None</ViewStatusLocation>
+					<SearchControlLocation>None</SearchControlLocation>
+					<RowFilter xsi:nil="true"/>
+					<ContextMenu name="AttachmentsContextMenu" id="17">
+						<ChildItems>
+							<Button name="Change" id="58">
+								<Type>CommandBarButton</Type>
+								<CommandName>0</CommandName>
+								<ExtendedTooltip name="ChangeExtendedTooltip" id="159"/>
+							</Button>
+						</ChildItems>
+					</ContextMenu>
+					<AutoCommandBar name="AttachmentsCommandBar" id="18">
+						<Autofill>false</Autofill>
+						<ChildItems>
+							<Button name="Add" id="60">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Item.Attachments.StandardCommand.Add</CommandName>
+								<ExtendedTooltip name="AddExtendedTooltip" id="160"/>
+							</Button>
+							<Button name="Delete" id="61">
+								<Type>CommandBarButton</Type>
+								<Representation>PictureAndText</Representation>
+								<CommandName>Form.Item.Attachments.StandardCommand.Delete</CommandName>
+								<ExtendedTooltip name="DeleteExtendedTooltip" id="161"/>
+							</Button>
+							<Button name="Sign" id="57">
+								<Type>CommandBarButton</Type>
+								<Representation>PictureAndText</Representation>
+								<CommandName>Form.Command.SignDocument</CommandName>
+								<Picture>
+									<xr:Ref>CommonPicture.DigitallySigned</xr:Ref>
+									<xr:LoadTransparent>true</xr:LoadTransparent>
+								</Picture>
+								<ExtendedTooltip name="SignExtendedTooltip" id="162"/>
+							</Button>
+						</ChildItems>
+					</AutoCommandBar>
+					<ExtendedTooltip name="AttachmentsExtendedTooltip" id="164"/>
+					<SearchStringAddition name="AttachmentsSearchString" id="192">
+						<AdditionSource>
+							<Item>Attachments</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="AttachmentsSearchStringContextMenu" id="193"/>
+						<ExtendedTooltip name="AttachmentsSearchStringExtendedTooltip" id="194"/>
+					</SearchStringAddition>
+					<ViewStatusAddition name="AttachmentsViewState" id="195">
+						<AdditionSource>
+							<Item>Attachments</Item>
+							<Type>ViewStatusRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="AttachmentsViewStatusContextMenu" id="196"/>
+						<ExtendedTooltip name="AttachmentsViewStatusExtendedTooltip" id="197"/>
+					</ViewStatusAddition>
+					<SearchControlAddition name="AttachmentsSearchControl" id="198">
+						<AdditionSource>
+							<Item>Attachments</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<ContextMenu name="AttachmentsSearchControlContextMenu" id="199"/>
+						<ExtendedTooltip name="AttachmentsSearchControlExtendedTooltip" id="200"/>
+					</SearchControlAddition>
+					<Events>
+						<Event name="Selection">AttachmentsSelection</Event>
+						<Event name="BeforeAddRow">AttachmentsBeforeAdd</Event>
+						<Event name="BeforeDeleteRow">AttachmentsBeforeDelete</Event>
+						<Event name="AfterDeleteRow">AttachmentsAfterDeleteRow</Event>
+					</Events>
+					<ChildItems>
+						<ColumnGroup name="FileGroup" id="52">
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>File group</v8:content>
+								</v8:item>
+							</ToolTip>
+							<HorizontalStretch>true</HorizontalStretch>
+							<Group>InCell</Group>
+							<ExtendedTooltip name="GroupFileExtendedTooltip" id="165"/>
+							<ChildItems>
+								<PictureField name="AttachmentsPictureIndex" id="46">
+									<DataPath>Attachments.PictureIndex</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ShowInHeader>false</ShowInHeader>
+									<VerticalStretch>false</VerticalStretch>
+									<ValuesPicture>
+										<xr:Ref>CommonPicture.FileIconCollection</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</ValuesPicture>
+									<ContextMenu name="AttachmentsPictureIndexContextMenu" id="47"/>
+									<ExtendedTooltip name="AttachmentsPictureIndexExtendedTooltip" id="166"/>
+								</PictureField>
+								<InputField name="AttachmentsFileDescription" id="55">
+									<DataPath>Attachments.FileDescription</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ShowInHeader>false</ShowInHeader>
+									<HorizontalStretch>true</HorizontalStretch>
+									<ContextMenu name="AttachmentsFileDescriptionContextMenu" id="56"/>
+									<ExtendedTooltip name="AttachmentsFileDescriptionExtendedTooltip" id="167"/>
+								</InputField>
+							</ChildItems>
+						</ColumnGroup>
+					</ChildItems>
+				</Table>
+				<CheckBoxField name="ConfirmationRequired" id="68">
+					<DataPath>Object.ConfirmationRequired</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Required response recipient's signature</v8:content>
+						</v8:item>
+					</Title>
+					<TitleLocation>Right</TitleLocation>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Shows that the document is to be digitally signed by the recipient</v8:content>
+						</v8:item>
+					</ToolTip>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ConfirmationRequiredContextMenu" id="69"/>
+					<ExtendedTooltip name="ConfirmationRequiredExtendedTooltip" id="168"/>
+					<Events>
+						<Event name="OnChange">ConfirmationRequiredOnChange</Event>
+					</Events>
+				</CheckBoxField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="FooterGroup" id="70">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group footer</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group footer</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="FooterGroupExtendedTooltip" id="169"/>
+			<ChildItems>
+				<UsualGroup name="DSGroup" id="71">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Set signatures:</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Put DS</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ExtendedTooltip name="GroupDSExtendedTooltip" id="170"/>
+					<ChildItems>
+						<Table name="DS" id="72">
+							<Representation>List</Representation>
+							<CommandBarLocation>None</CommandBarLocation>
+							<ReadOnly>true</ReadOnly>
+							<ChangeRowSet>false</ChangeRowSet>
+							<ChangeRowOrder>false</ChangeRowOrder>
+							<HorizontalLines>false</HorizontalLines>
+							<VerticalLines>false</VerticalLines>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>DS</DataPath>
+							<RowPictureDataPath>DS.OutputImages</RowPictureDataPath>
+							<RowsPicture>
+								<xr:Ref>CommonPicture.ElectronicDocumentsWrongSignature</xr:Ref>
+								<xr:LoadTransparent>true</xr:LoadTransparent>
+							</RowsPicture>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Set signatures</v8:content>
+								</v8:item>
+							</Title>
+							<CommandSet>
+								<ExcludedCommand>Copy</ExcludedCommand>
+								<ExcludedCommand>SortListAsc</ExcludedCommand>
+								<ExcludedCommand>MoveUp</ExcludedCommand>
+								<ExcludedCommand>CancelSearch</ExcludedCommand>
+								<ExcludedCommand>OutputList</ExcludedCommand>
+								<ExcludedCommand>SelectAll</ExcludedCommand>
+								<ExcludedCommand>SortListDesc</ExcludedCommand>
+								<ExcludedCommand>CopyToClipboard</ExcludedCommand>
+								<ExcludedCommand>Delete</ExcludedCommand>
+								<ExcludedCommand>EndEdit</ExcludedCommand>
+								<ExcludedCommand>Add</ExcludedCommand>
+								<ExcludedCommand>Change</ExcludedCommand>
+								<ExcludedCommand>Find</ExcludedCommand>
+								<ExcludedCommand>MoveDown</ExcludedCommand>
+							</CommandSet>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="DSContextMenu" id="73">
+								<ChildItems>
+									<Button name="CheckSignatures" id="137">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.CheckSignatures</CommandName>
+										<ExtendedTooltip name="ValidateSignaturesExtendedTooltip" id="171"/>
+									</Button>
+									<Button name="OpenCertificate" id="138">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.OpenCertificate</CommandName>
+										<ExtendedTooltip name="OpenCertificateExtendedTooltip" id="172"/>
+									</Button>
+									<Button name="TrustCertificate" id="139">
+										<Type>CommandBarButton</Type>
+										<Enabled>false</Enabled>
+										<CommandName>Form.Command.TrustThisCertificate</CommandName>
+										<ExtendedTooltip name="TrustCertificateExtendedTooltip" id="173"/>
+									</Button>
+								</ChildItems>
+							</ContextMenu>
+							<AutoCommandBar name="ESCommandBar" id="74"/>
+							<ExtendedTooltip name="DSExtendedTooltip" id="174"/>
+							<SearchStringAddition name="DSSearchString" id="201">
+								<AdditionSource>
+									<Item>DS</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="DSSearchStringContextMenu" id="202"/>
+								<ExtendedTooltip name="ESSearchStringExtendedTooltip" id="203"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="DSStateView" id="204">
+								<AdditionSource>
+									<Item>DS</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="DSStateViewContextMenu" id="205"/>
+								<ExtendedTooltip name="ESStatusViewExtendedTooltip" id="206"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="DSSearchControl" id="207">
+								<AdditionSource>
+									<Item>DS</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="DSSearchControlContextMenu" id="208"/>
+								<ExtendedTooltip name="DSSearchControlExtendedTooltip" id="209"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="Selection">DSChoice</Event>
+								<Event name="OnActivateRow">DSOnActivateRow</Event>
+							</Events>
+							<ChildItems>
+								<InputField name="DSCertificateIsIssuedTo" id="109">
+									<DataPath>DS.CertificateIsIssuedTo</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="EDCertificateIsIssuedToContextMenu" id="110"/>
+									<ExtendedTooltip name="DSCertificateIsIssuedToExtendedTooltip" id="175"/>
+								</InputField>
+								<InputField name="DSSignatureDate" id="111">
+									<DataPath>DS.SignatureDate</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="DSSignatureDateContextMenu" id="112"/>
+									<ExtendedTooltip name="DSSignatureDateExtendedTooltip" id="176"/>
+								</InputField>
+								<InputField name="DSSignatureCorrect" id="119">
+									<DataPath>DS.SignatureIsCorrect</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="DSSignatureCorrectContextMenu" id="120"/>
+									<ExtendedTooltip name="DSSignatureCorrectExtendedTooltip" id="177"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="GroupStatusesAndRejections" id="84">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group of statuses and rejection</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group of statuses and rejection</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="GroupStatusesAndRejectionsExtendedTooltip" id="178"/>
+					<ChildItems>
+						<Pages name="FolderPagesFooter" id="87">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Footer pages group</v8:content>
+								</v8:item>
+							</Title>
+							<PagesRepresentation>None</PagesRepresentation>
+							<ExtendedTooltip name="GroupOfPagesFooterExtendedTooltip" id="179"/>
+							<ChildItems>
+								<Page name="GroupStatusesAndStates" id="88">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group statuses and states</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group statuses</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="GroupStatusesAndStatesExtendedTooltip" id="180"/>
+									<ChildItems>
+										<Table name="EDStatuses" id="89">
+											<Representation>List</Representation>
+											<TitleLocation>Top</TitleLocation>
+											<ReadOnly>true</ReadOnly>
+											<AutoInsertNewRow>true</AutoInsertNewRow>
+											<EnableStartDrag>true</EnableStartDrag>
+											<EnableDrag>true</EnableDrag>
+											<DataPath>EDStatuses</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Statuses</v8:content>
+												</v8:item>
+											</Title>
+											<CommandSet>
+												<ExcludedCommand>Copy</ExcludedCommand>
+												<ExcludedCommand>SortListAsc</ExcludedCommand>
+												<ExcludedCommand>MoveUp</ExcludedCommand>
+												<ExcludedCommand>CancelSearch</ExcludedCommand>
+												<ExcludedCommand>OutputList</ExcludedCommand>
+												<ExcludedCommand>SelectAll</ExcludedCommand>
+												<ExcludedCommand>SortListDesc</ExcludedCommand>
+												<ExcludedCommand>CopyToClipboard</ExcludedCommand>
+												<ExcludedCommand>Delete</ExcludedCommand>
+												<ExcludedCommand>EndEdit</ExcludedCommand>
+												<ExcludedCommand>Add</ExcludedCommand>
+												<ExcludedCommand>Change</ExcludedCommand>
+												<ExcludedCommand>Find</ExcludedCommand>
+												<ExcludedCommand>MoveDown</ExcludedCommand>
+											</CommandSet>
+											<SearchStringLocation>None</SearchStringLocation>
+											<ViewStatusLocation>None</ViewStatusLocation>
+											<SearchControlLocation>None</SearchControlLocation>
+											<RowFilter xsi:nil="true"/>
+											<ContextMenu name="EDStatusesContextMenu" id="90"/>
+											<AutoCommandBar name="EDStatusesCommandPanel" id="91"/>
+											<ExtendedTooltip name="EDStatusesExtendedTooltip" id="181"/>
+											<SearchStringAddition name="EDStatusesSearchString" id="210">
+												<AdditionSource>
+													<Item>EDStatuses</Item>
+													<Type>SearchStringRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="EDStatusesSearchStringContextMenu" id="211"/>
+												<ExtendedTooltip name="EDStatusesSearchStringExtendedTooltip" id="212"/>
+											</SearchStringAddition>
+											<ViewStatusAddition name="EDStatusesStateView" id="213">
+												<AdditionSource>
+													<Item>EDStatuses</Item>
+													<Type>ViewStatusRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="EDStatusesStatusViewContextMenu" id="214"/>
+												<ExtendedTooltip name="EDStatusesStatusViewExtendedTooltip" id="215"/>
+											</ViewStatusAddition>
+											<SearchControlAddition name="EDStatusesSearchControl" id="216">
+												<AdditionSource>
+													<Item>EDStatuses</Item>
+													<Type>SearchControl</Type>
+												</AdditionSource>
+												<ContextMenu name="EDStatusesSearchControlContextMenu" id="217"/>
+												<ExtendedTooltip name="EDStatusesSearchControlExtendedTooltip" id="218"/>
+											</SearchControlAddition>
+											<ChildItems>
+												<InputField name="EDStatusesStatus" id="105">
+													<DataPath>EDStatuses.Status</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="EDStatusesStatusContextMenu" id="106"/>
+													<ExtendedTooltip name="EDStatusesStatusExtendedTooltip" id="182"/>
+												</InputField>
+												<CheckBoxField name="EDStatusesPassed" id="107">
+													<DataPath>EDStatuses.Passed</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<CheckBoxType>Auto</CheckBoxType>
+													<ContextMenu name="EDStatusesPassedContextMenu" id="108"/>
+													<ExtendedTooltip name="EDStatusesPassedExtendedTooltip" id="183"/>
+												</CheckBoxField>
+											</ChildItems>
+										</Table>
+									</ChildItems>
+								</Page>
+								<Page name="GroupPageRejection" id="122">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Deviation</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="GroupPageRejectionExtendedTooltip" id="184"/>
+									<ChildItems>
+										<Table name="RejectionReasons" id="123">
+											<Representation>List</Representation>
+											<ReadOnly>true</ReadOnly>
+											<AutoInsertNewRow>true</AutoInsertNewRow>
+											<EnableStartDrag>true</EnableStartDrag>
+											<EnableDrag>true</EnableDrag>
+											<DataPath>RejectionReasons</DataPath>
+											<SearchStringLocation>None</SearchStringLocation>
+											<ViewStatusLocation>None</ViewStatusLocation>
+											<SearchControlLocation>None</SearchControlLocation>
+											<RowFilter xsi:nil="true"/>
+											<ContextMenu name="RejectionReasonsContextMenu" id="124"/>
+											<AutoCommandBar name="RejectionReasonsCommandPanel" id="125">
+												<Autofill>false</Autofill>
+											</AutoCommandBar>
+											<ExtendedTooltip name="RejectionReasonsExtendedTooltip" id="185"/>
+											<SearchStringAddition name="RejectionReasonsSearchString" id="219">
+												<AdditionSource>
+													<Item>RejectionReasons</Item>
+													<Type>SearchStringRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="RejectionReasonsSearchStringContextMenu" id="220"/>
+												<ExtendedTooltip name="RejectionReasonsSearchStringExtendedTooltip" id="221"/>
+											</SearchStringAddition>
+											<ViewStatusAddition name="RejectionReasonsStatusView" id="222">
+												<AdditionSource>
+													<Item>RejectionReasons</Item>
+													<Type>ViewStatusRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="RejectionReasonsStatusViewContextMenu" id="223"/>
+												<ExtendedTooltip name="RejectionReasonsStatusViewExtendedTooltip" id="224"/>
+											</ViewStatusAddition>
+											<SearchControlAddition name="RejectionReasonsSearchControl" id="225">
+												<AdditionSource>
+													<Item>RejectionReasons</Item>
+													<Type>SearchControl</Type>
+												</AdditionSource>
+												<ContextMenu name="RejectionReasonsSearchControlContextMenu" id="226"/>
+												<ExtendedTooltip name="RejectionReasonsSearchControlExtendedTooltip" id="227"/>
+											</SearchControlAddition>
+											<ChildItems>
+												<InputField name="RejectionReasonsRejectionReason" id="126">
+													<DataPath>RejectionReasons.RejectionReason</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<MultiLine>true</MultiLine>
+													<ContextMenu name="RejectionReasonsRejectionReasonContextMenu" id="127"/>
+													<ExtendedTooltip name="RejectionReasonsRejectionReasonExtendedTooltip" id="186"/>
+												</InputField>
+											</ChildItems>
+										</Table>
+									</ChildItems>
+								</Page>
+							</ChildItems>
+						</Pages>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<LabelField name="BasisDocument" id="140">
+			<DataPath>Object.BasisDocument</DataPath>
+			<Hiperlink>true</Hiperlink>
+			<ContextMenu name="BasisDocumentContextMenu" id="141"/>
+			<ExtendedTooltip name="BasisDocumentExtendedTooltip" id="187"/>
+		</LabelField>
+		<LabelField name="DocumentStatus" id="64">
+			<DataPath>Object.DocumentStatus</DataPath>
+			<ContextMenu name="StatusDocumentContextMenu" id="65"/>
+			<ExtendedTooltip name="StatusDocumentExtendedTooltip" id="188"/>
+		</LabelField>
+		<InputField name="Comment" id="62">
+			<DataPath>Object.Comment</DataPath>
+			<ContextMenu name="CommentContextMenu" id="63"/>
+			<ExtendedTooltip name="CommentExtendedTooltip" id="189"/>
+		</InputField>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Type>
+				<v8:Type>cfg:DocumentObject.RandomED</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+			<UseAlways>
+				<Field>Object.RegisterRecords</Field>
+			</UseAlways>
+		</Attribute>
+		<Attribute name="Attachments" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Attachments</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Ref" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>ED</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.EDAttachedFiles</v8:Type>
+					</Type>
+				</Column>
+				<Column name="FileName" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>File name</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Extension" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Extension</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="PictureIndex" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Picture index</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="FileDescription" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>File description</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>300</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="StatusChanged" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Status changed</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="EDAgreement" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Agreement on the ED use</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.EDUsageAgreements</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="AgreementWasDefined" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Agreement was being bedefined</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="DS" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>DS</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<FunctionalOptions>
+				<Item>FunctionalOption.UseDigitalSignatures</Item>
+			</FunctionalOptions>
+			<Columns>
+				<Column name="CertificateIsIssuedTo" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>To whom the certificate is issued</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="SignatureDate" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Signature date</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="MissingInList" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Missing in list</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Imprint" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Imprint</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="OutputImages" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Image output</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>0</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="SignatureIsCorrect" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Signature status</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="LineNumber" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Line number</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>2</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="EDStatuses" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>ED statuses</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Status" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Status</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>35</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Passed" id="2">
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="EDRefused" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>EDRefused</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="RejectionReasons" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Decline reasons</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="RejectionReason" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Cause</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="EDFProfileSettings" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>EDF settings profile</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.EDFProfileSettings</v8:Type>
+			</Type>
+		</Attribute>
+		<ConditionalAppearance>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>SignAndSendED</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Object.DocumentStatus</dcsset:left>
+						<dcsset:comparisonType>InList</dcsset:comparisonType>
+						<dcsset:right xsi:type="dcscor:DesignTimeValue">Enum.EDStatuses.Sent</dcsset:right>
+						<dcsset:right xsi:type="dcscor:DesignTimeValue">Enum.EDStatuses.PreparedToSending</dcsset:right>
+						<dcsset:right xsi:type="dcscor:DesignTimeValue">Enum.EDStatuses.ConfirmationSent</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Enabled</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+		</ConditionalAppearance>
+	</Attributes>
+	<Commands>
+		<Command name="SignAndSendED" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Send message</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Send the electronic document to the counterparty</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.OutgoingEmail</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>SignAndSend</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="SignDocument" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Sign </v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Sign document</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>SignDocument</Action>
+			<FunctionalOptions>
+				<Item>FunctionalOption.UseDigitalSignatures</Item>
+			</FunctionalOptions>
+		</Command>
+		<Command name="Reject" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Reject electronic document</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Reject electronic document</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.StopSign</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Reject</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="CancelRejection" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Cancel rejection</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Cancel rejection</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.Approve</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+				<xr:TransparentPixel x="13" y="1"/>
+			</Picture>
+			<Action>CancelRejection</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="CheckSignatures" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Update signatures statuses</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Verifies whether the set signatures are valid</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>CheckSignatures</Action>
+		</Command>
+		<Command name="OpenCertificate" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Open certificate</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Open certificate</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>OpenCertificate</Action>
+		</Command>
+		<Command name="TrustThisCertificate" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Trust this certificate</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Trust this certificate</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>TrustThisCertificate</Action>
+		</Command>
+	</Commands>
+	<CommandInterface>
+		<NavigationPanel>
+			<Item>
+				<Command>Catalog.EDAttachedFiles.Command.EDFStructure</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+		</NavigationPanel>
+	</CommandInterface>
+</Form>

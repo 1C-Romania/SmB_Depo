@@ -1,0 +1,17 @@
+﻿<package xmlns="http://v8.1c.ru/8.1/xdto" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="urn:x-obml:1.0">
+	<property xmlns:d2p1="urn:x-obml:1.0" name="signed" type="d2p1:CMSDETACHED"/>
+	<valueType name="ContentType" base="xs:string" variety="Atomic">
+		<enumeration>application/xml</enumeration>
+		<enumeration>application/octet-stream</enumeration>
+		<enumeration>text/plain</enumeration>
+	</valueType>
+	<objectType name="CMSDETACHED">
+		<property name="data">
+			<typeDef xsi:type="ObjectType">
+				<property xmlns:d5p1="urn:x-obml:1.0" name="contentType" type="d5p1:ContentType" lowerBound="0" form="Attribute"/>
+				<property name="__content" type="xs:base64Binary" form="Text"/>
+			</typeDef>
+		</property>
+		<property name="signature" type="xs:base64Binary" lowerBound="0" upperBound="-1"/>
+	</objectType>
+</package>

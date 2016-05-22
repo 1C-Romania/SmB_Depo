@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"></meta><link rel="stylesheet" type="text/css" href="v8help://service_book/service_style"></link><meta name="GENERATOR" content="MSHTML 11.00.9600.18321"></meta></head><body>
+<p>Description of scheduled job properties.</p>
+<p>Generally, scheduled jobs do not have to be changed. However, you can do it by clearing the <strong>Enabled </strong>check box. </p>
+<p>Sometimes you need to create two schedules for one scheduled job. Then you can add a new scheduled job with one of the predefined templates.</p>
+<h3>General </h3>
+<p>These are the essential properties for scheduled job setup. They are included in the supply just like all other properties and need to be changed only in exceptional cases.</p>
+<ul><li><strong>Name </strong>- name of a scheduled job. It is usually empty. Instead, the application uses the synonym stated in the scheduled job template made with Designer. If no template synonym is available, the application uses the name. 
+</li><li><strong>Enabled </strong>- use this check box to enable/disable execution of a scheduled job. For example, when you want to disable a scheduled job for a while without editing the schedule. 
+</li><li>Use the <strong>Schedule </strong>link to configure the <a href="v8help://mngbase/jobschedule.lf"><font color="#000080">scheduled job schedule</font></a>.</li></ul><h3>Actions in case of errors</h3>
+<ul><li><strong>Repeat, times </strong>- number of attempts to execute a scheduled job in case of an error. 
+</li><li><strong>Repeat every, sec </strong>- a period (in seconds) between attempts to execute a scheduled job in case of an error.</li></ul><p></p>
+<h3>Advanced</h3>
+<ul><li><strong>Predefined </strong>- <strong>Yes/No </strong>value. Manually defined scheduled jobs are hardly ever used. 
+</li><li><strong>Identifier </strong>- useful only for an advanced administrator who knows the embedded language. Required to examine irregular problems in the operation of scheduled jobs if any. 
+</li><li><strong>Key </strong> - useful only for an advanced administrator who knows the embedded language. Required to fine-tune scheduled job execution and examine irregular problems in the operation of scheduled jobs if any. If the key is specified, then before starting a <a href="DataProcessor.ScheduledAndBackgroundJobs.Form.BackgroundJob/Help"><font color="#000080">background job</font></a> the system checks for other background jobs under the template that already works for the scheduled job instance. 
+</li><li><strong>User name  </strong>- name of the infobase <a href="Catalog.Users.Form.ItemForm/Help"><font color="#000080">user</font></a> that will be used to execute the scheduled job. Select it from the <a href="Catalog.Users/Help"><font color="#000080">Users</font></a> list.</li></ul><h3>Metadata</h3>
+<ul><li><strong>Name </strong>- name of the scheduled job template defined in Designer. 
+</li><li><strong>Synonym </strong>- synonym of the scheduled job template defined in Designer. 
+</li><li><strong>Method name </strong>- name of the configuration procedure to be executed in the background job created under the scheduled job schedule.</li></ul><h3>Message to user and error description</h3>
+<ul><li>The field contains a text of any messages and description of the errors during the last background job created under this scheduled job. The same content is available when you open the last background job of this scheduled job.</li></ul><h3>See also:</h3>
+<ul><li><a href="DataProcessor.ScheduledAndBackgroundJobs/Help"><font color="#000080">Scheduled and background jobs</font></a></li></ul></body></html>

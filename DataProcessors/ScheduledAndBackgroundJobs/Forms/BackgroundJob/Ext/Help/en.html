@@ -1,0 +1,18 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"></meta><link rel="stylesheet" type="text/css" href="v8help://service_book/service_style"></link><meta name="GENERATOR" content="MSHTML 11.00.9600.18321"></meta></head><body>
+<p>Properties of a background job can be described as follows:</p>
+<h3>Basic</h3>
+<ul><li><strong>Name </strong>- a copy of the <strong>Name </strong>field for a <a href="DataProcessor.ScheduledAndBackgroundJobs.Form.ScheduledJob/Help">scheduled job</a>. Use the <strong>Execute now </strong>button on the scheduled job command bar to assign the "Manual start: &lt;Scheduled job presentation&gt;" value to the background job. 
+</li><li><strong>State </strong>- possible values are "Job completed", "Job completed with errors", "Job cancelled by user", "Job in progress". 
+</li><li><strong>Start date </strong>- date and time when the background job was started. 
+</li><li><strong>End date </strong>- date and time when the background job was finished (if the job is in progress, the values are empty: &lt;&gt;). 
+</li><li><strong>Execution location </strong>- name of the network computer without a domain on which the job was executed. If the scheduled jobs were processed in a file infobase, the name is either the server name or the user computer name.</li></ul><h3>Advanced</h3>
+<ul><li><strong>ID </strong>- it is useful only for an advanced administrator who knows the internal 1C language. It is required to examine non-standard issues of background job operation if any. 
+</li><li><strong>Key </strong>- value of the <strong>Key </strong>field specified in the scheduled job (when the background job was created) or another expressive value if the background job is software based and not created with the server planner. 
+</li><li><strong>Metadata method name</strong> - name of the configuration procedure which is being performed or was performed in the background job. Usually, it corresponds with the value of the <strong>Method name </strong>field of the relevant scheduled job.</li></ul><h3>Scheduled job</h3>
+<ul><li><strong>Name </strong>- one of the field values is selected (in sequence of search for entered information): 
+<ul><li><strong>Name</strong> 
+</li><li><strong>Synonym</strong> 
+</li><li><strong>Name</strong></li></ul></li><li><strong>ID </strong>- identifier of the scheduled job corresponding with the background job.</li></ul><h3>Message to user and error description</h3>
+<ul><li>The field contains the text of messages and error descriptions that occurred during execution of the background job.</li></ul><h3>See also:</h3>
+<ul><li>
+<div><a href="DataProcessor.ScheduledAndBackgroundJobs/Help">Scheduled and <font color="#3366ff">b</font>ackground <font color="#3366ff">j</font>obs</a></div></li></ul></body></html>

@@ -1,0 +1,597 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Title>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Key combination selection</v8:content>
+		</v8:item>
+	</Title>
+	<Width>90</Width>
+	<Height>20</Height>
+	<AutoTitle>false</AutoTitle>
+	<CommandBarLocation>Top</CommandBarLocation>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<ChildItems>
+			<Button name="FormChoose" id="27">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.Select</CommandName>
+				<ExtendedTooltip name="FormChooseExtendedTooltip" id="54"/>
+			</Button>
+			<Button name="FormHelp" id="21">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.Help</CommandName>
+				<ExtendedTooltip name="FormHelpExtendedTooltip" id="55"/>
+			</Button>
+			<Button name="FormChangeForm" id="20">
+				<Type>CommandBarButton</Type>
+				<Visible>false</Visible>
+				<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
+				<ExtendedTooltip name="FormChangeFormExtendedTooltip" id="56"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<LabelField name="Presentation" id="52">
+			<DataPath>Presentation</DataPath>
+			<ReadOnly>true</ReadOnly>
+			<Width>12</Width>
+			<HorizontalStretch>false</HorizontalStretch>
+			<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+			<ContextMenu name="PresentationContextMenu" id="53"/>
+			<ExtendedTooltip name="PresentationExtendedTooltip" id="57"/>
+		</LabelField>
+		<Table name="ShortcutsTable" id="1">
+			<Representation>List</Representation>
+			<ChangeRowSet>false</ChangeRowSet>
+			<ChangeRowOrder>false</ChangeRowOrder>
+			<Header>false</Header>
+			<EnableStartDrag>true</EnableStartDrag>
+			<EnableDrag>true</EnableDrag>
+			<DataPath>ShortcutsTable</DataPath>
+			<SearchStringLocation>None</SearchStringLocation>
+			<ViewStatusLocation>None</ViewStatusLocation>
+			<SearchControlLocation>None</SearchControlLocation>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="ShortcutsTableContextMenu" id="2"/>
+			<AutoCommandBar name="ShortcutsTableCommandBar" id="3">
+				<Autofill>false</Autofill>
+			</AutoCommandBar>
+			<ExtendedTooltip name="ShortcutsTableExtendedTooltip" id="58"/>
+			<SearchStringAddition name="ShortcutsTableSearchString" id="83">
+				<AdditionSource>
+					<Item>ShortcutsTable</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ShortcutsTableSearchStringContextMenu" id="84"/>
+				<ExtendedTooltip name="ShortcutsTableSearchStringExtendedTooltip" id="85"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ShortcutsTableViewStatus" id="86">
+				<AdditionSource>
+					<Item>ShortcutsTable</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ShortcutsTableViewStatusContextMenu" id="87"/>
+				<ExtendedTooltip name="ShortcutsTableViewStatusExtendedTooltip" id="88"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ShortcutsTableSearchControl" id="89">
+				<AdditionSource>
+					<Item>ShortcutsTable</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ShortcutsTableSearchControlContextMenu" id="90"/>
+				<ExtendedTooltip name="ShortcutsTableSearchControlExtendedTooltip" id="91"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="Selection">ShortcutsTableChoice</Event>
+				<Event name="OnActivateRow">ShortcutsTableOnActivateRow</Event>
+				<Event name="OnActivateField">ShortcutsTableOnActivateField</Event>
+			</Events>
+			<ChildItems>
+				<ColumnGroup name="ShortcutsTableGroup1" id="28">
+					<ReadOnly>true</ReadOnly>
+					<Width>9</Width>
+					<ExtendedTooltip name="ShortcutsTableGroup1ExtendedTooltip" id="59"/>
+					<ChildItems>
+						<InputField name="ShortcutsTableKey" id="4">
+							<DataPath>ShortcutsTable.Key</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>9</Width>
+							<ContextMenu name="ShortcutsTableKeyContextMenu" id="5"/>
+							<ExtendedTooltip name="ShortcutsTableKeyExtendedTooltip" id="60"/>
+						</InputField>
+						<InputField name="ShortcutsTableKey_" id="29">
+							<DataPath>ShortcutsTable.Key_</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>9</Width>
+							<ContextMenu name="ShortcutsTableKey_ContextMenu" id="30"/>
+							<ExtendedTooltip name="ShortcutsTableKey_ExtendedTooltip" id="61"/>
+						</InputField>
+					</ChildItems>
+				</ColumnGroup>
+				<ColumnGroup name="ShortcutsTableGroup2" id="31">
+					<ReadOnly>true</ReadOnly>
+					<Width>9</Width>
+					<ExtendedTooltip name="ShortcutsTableGroup2ExtendedTooltip" id="62"/>
+					<ChildItems>
+						<InputField name="ShortcutsTableCtrl" id="6">
+							<DataPath>ShortcutsTable.Ctrl</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>9</Width>
+							<ContextMenu name="ShortcutsTableCtrlContextMenu" id="7"/>
+							<ExtendedTooltip name="ShortcutsTableCtrlExtendedTooltip" id="63"/>
+						</InputField>
+						<InputField name="ShortcutsTableCtrl_" id="32">
+							<DataPath>ShortcutsTable.Ctrl_</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>9</Width>
+							<ContextMenu name="ShortcutsTableCtrl_ContextMenu" id="33"/>
+							<ExtendedTooltip name="ShortcutsTableCtrl_ExtendedTooltip" id="64"/>
+						</InputField>
+					</ChildItems>
+				</ColumnGroup>
+				<ColumnGroup name="ShortcutsTableGroup3" id="34">
+					<ReadOnly>true</ReadOnly>
+					<Width>9</Width>
+					<ExtendedTooltip name="ShortcutsTableGroup3ExtendedTooltip" id="65"/>
+					<ChildItems>
+						<InputField name="ShortcutsTableAlt" id="8">
+							<DataPath>ShortcutsTable.Alt</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>9</Width>
+							<ContextMenu name="ShortcutsTableAltContextMenu" id="9"/>
+							<ExtendedTooltip name="ShortcutsTableAltExtendedTooltip" id="66"/>
+						</InputField>
+						<InputField name="ShortcutsTableAlt_" id="35">
+							<DataPath>ShortcutsTable.Alt_</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>9</Width>
+							<ContextMenu name="ShortcutsTableAlt_ContextMenu" id="36"/>
+							<ExtendedTooltip name="ShortcutsTableAlt_ExtendedTooltip" id="67"/>
+						</InputField>
+					</ChildItems>
+				</ColumnGroup>
+				<ColumnGroup name="ShortcutsTableGroup4" id="37">
+					<ReadOnly>true</ReadOnly>
+					<Width>9</Width>
+					<ExtendedTooltip name="ShortcutsTableGroup4ExtendedTooltip" id="68"/>
+					<ChildItems>
+						<InputField name="ShortcutsTableShift" id="10">
+							<DataPath>ShortcutsTable.Shift</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>9</Width>
+							<ContextMenu name="ShortcutsTableShiftContextMenu" id="11"/>
+							<ExtendedTooltip name="ShortcutsTableShiftExtendedTooltip" id="69"/>
+						</InputField>
+						<InputField name="ShortcutsTableShift_" id="38">
+							<DataPath>ShortcutsTable.Shift_</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>9</Width>
+							<ContextMenu name="ShortcutsTableShift_ContextMenu" id="39"/>
+							<ExtendedTooltip name="ShortcutsTableShift_ExtendedTooltip" id="70"/>
+						</InputField>
+					</ChildItems>
+				</ColumnGroup>
+				<ColumnGroup name="ShortcutsTableGroup5" id="40">
+					<ReadOnly>true</ReadOnly>
+					<Width>9</Width>
+					<ExtendedTooltip name="ShortcutsTableGroup5ExtendedTooltip" id="71"/>
+					<ChildItems>
+						<InputField name="ShortcutsTableAlt_Shift" id="12">
+							<DataPath>ShortcutsTable.Alt_Shift</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>9</Width>
+							<ContextMenu name="ShortcutsTableAlt_ShiftContexMenu" id="13"/>
+							<ExtendedTooltip name="ShortcutsTableAlt_ShiftExtendedTooltip" id="72"/>
+						</InputField>
+						<InputField name="ShortcutsTableAlt_Shift_" id="41">
+							<DataPath>ShortcutsTable.Alt_Shift_</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>9</Width>
+							<ContextMenu name="ShortcutsTableAlt_Shift_ContextMenu" id="42"/>
+							<ExtendedTooltip name="ShortcutsTableAlt_Shift_ExtendedTooltip" id="73"/>
+						</InputField>
+					</ChildItems>
+				</ColumnGroup>
+				<ColumnGroup name="ShortcutsTableGroup6" id="43">
+					<ReadOnly>true</ReadOnly>
+					<Width>9</Width>
+					<ExtendedTooltip name="ShortcutsTableGroup6ExtendedTooltip" id="74"/>
+					<ChildItems>
+						<InputField name="ShortcutsTableCtrl_Shift" id="14">
+							<DataPath>ShortcutsTable.Ctrl_Shift</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>9</Width>
+							<ContextMenu name="ShortcutsTableCtrl_ShiftContexMenu" id="15"/>
+							<ExtendedTooltip name="ShortcutsTableCtrl_ShiftExtendedTooltip" id="75"/>
+						</InputField>
+						<InputField name="ShortcutsTableCtrl_Shift_" id="44">
+							<DataPath>ShortcutsTable.Ctrl_Shift_</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>9</Width>
+							<ContextMenu name="ShortcutsTableCtrl_Shift_ContextMenu" id="45"/>
+							<ExtendedTooltip name="ShortcutsTableCtrl_Shift_ExtendedTooltip" id="76"/>
+						</InputField>
+					</ChildItems>
+				</ColumnGroup>
+				<ColumnGroup name="ShortcutsTableGroup7" id="46">
+					<ReadOnly>true</ReadOnly>
+					<Width>9</Width>
+					<ExtendedTooltip name="ShortcutsTableGroup7ExtendedTooltip" id="77"/>
+					<ChildItems>
+						<InputField name="ShortcutsTableCtrl_Alt" id="16">
+							<DataPath>ShortcutsTable.Ctrl_Alt</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>9</Width>
+							<ContextMenu name="ShortcutsTableCtrl_AltContexMenu" id="17"/>
+							<ExtendedTooltip name="ShortcutsTableCtrl_AltExtendedTooltip" id="78"/>
+						</InputField>
+						<InputField name="ShortcutsTableCtrl_Alt_" id="47">
+							<DataPath>ShortcutsTable.Ctrl_Alt_</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>9</Width>
+							<ContextMenu name="ShortcutsTableCtrl_Alt_ContextMenu" id="48"/>
+							<ExtendedTooltip name="ShortcutsTableCtrl_Alt_ExtendedTooltip" id="79"/>
+						</InputField>
+					</ChildItems>
+				</ColumnGroup>
+				<ColumnGroup name="ShortcutsTableGroup8" id="49">
+					<ReadOnly>true</ReadOnly>
+					<Width>9</Width>
+					<ExtendedTooltip name="ShortcutsTableGroup8ExtendedTooltip" id="80"/>
+					<ChildItems>
+						<InputField name="ShortcutsTableCtrl_Alt_Shift" id="18">
+							<DataPath>ShortcutsTable.Ctrl_Alt_Shift</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>9</Width>
+							<ContextMenu name="ShortcutsTableCtrl_Alt_ShiftContexMenu" id="19"/>
+							<ExtendedTooltip name="ShortcutsTableCtrl_Alt_ShiftExtendedTooltip" id="81"/>
+						</InputField>
+						<InputField name="ShortcutsTableCtrl_Alt_Shift_" id="50">
+							<DataPath>ShortcutsTable.Ctrl_Alt_Shift_</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>9</Width>
+							<ContextMenu name="ShortcutsTableCtrl_Alt_Shift_ContextMenu" id="51"/>
+							<ExtendedTooltip name="ShortcutsTableCtrl_Alt_Shift_ExtendedTooltip" id="82"/>
+						</InputField>
+					</ChildItems>
+				</ColumnGroup>
+			</ChildItems>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="ShortcutsTable" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Table of key combinations</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Key" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Key</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Ctrl" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Ctrl</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Alt" id="3">
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Shift" id="4">
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Alt_Shift" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Alt+Shift</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Ctrl_Shift" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Ctrl+Shift</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Ctrl_Alt" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Ctrl+Alt</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Ctrl_Alt_Shift" id="8">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Ctrl+Alt+Shift</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Key_" id="10">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Key</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Ctrl_" id="11">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Ctrl</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Alt_" id="12">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Alt</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Shift_" id="13">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Shift</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Alt_Shift_" id="14">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Alt+Shift</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Ctrl_Shift_" id="15">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Ctrl+Shift</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Ctrl_Alt_" id="16">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Ctrl+Alt</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Ctrl_Alt_Shift_" id="17">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Ctrl+Alt+Shift</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="KeyName" id="9">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Key name</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="Shortcut" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Combination of keys</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="Presentation" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Selected key combination</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Workplace" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Workplace</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Workplaces</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="Select" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Select</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Select</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.ChooseValue</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Select</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+	</Commands>
+</Form>

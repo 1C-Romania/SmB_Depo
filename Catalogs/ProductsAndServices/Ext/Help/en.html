@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"></meta><link rel="stylesheet" type="text/css" href="v8help://service_book/service_style"></link><meta name="GENERATOR" content="MSHTML 11.00.9600.18321"></meta></head><body>
+<h1>Products and services catalog </h1>
+<p>The information about goods, materials, finished products, fixed assets, jobs, services, technological operations, services of the external companies and job types is Saved in this list.</p>
+<p>The list has a multi-level hierarchical structure. The items can be regrouped by moving them from one folder to another. </p>
+<p>The following information is entered:</p>
+<ul><li>
+<div><strong>Belongs to group.</strong> Refers to the folder, to which the item belongs. Whenever the <strong>Belongs to group</strong> is changed, the item is moved to a new catalog folder.</div>
+</li><li>
+<div><strong>Short Abbreviation.</strong> The field is used for selection and quick search of the item.</div>
+</li><li>
+<div><strong>Code.</strong> Item code.</div>
+</li><li>
+<div>
+<div><strong>SKU.</strong> Product numeric code. A text value, used in the print forms of the documents.</div></div>
+</li><li>
+<div>
+<div><strong>Type.</strong> Item type. It defines the item attribute set and usage rules. Available Item types:</div></div>
+<ul><li>
+<div><strong>Inventory Item.</strong> Real inventory item that is Saved at a warehouse.</div>
+</li><li>
+<div><strong>Work.</strong> Company contract jobs of the production nature, for example, house construction, sewing.</div>
+</li><li>
+<div><strong>tools.</strong> toolss, for example, travel agency, barber shop, legal services.</div>
+</li><li>
+<div><strong>Operation.</strong> Technological operations performed during the job, service execution; finished goods production.</div>
+</li><li>
+<div><strong>Expense.</strong> Third-party company services, related to company expenses, for example, office or equipment rent.</div>
+</li><li>
+<div><strong>Work type.</strong> Work type, for which a tariff can be defined.</div></li></ul></li><li>
+<div><strong>Full Abbreviation.</strong> The field is used in the print forms of the documents. For example: Yogurt "Bio double health" strawberry rosehip 480 g - this is a full description; Bio 4 health, straw.hip.480 yogurt - short description for a quick search.</div>
+</li><li>
+<div><strong>Abbreviation. </strong>Arbitrary text description of the items object.</div>
+</li><li>
+<div>
+<p></p><strong>Main Parameters.</strong> Page:</div></li></ul><ul><li>
+<div><strong>Picture.</strong> Item picture.</div>
+</li><li>
+<div><strong>ProductsAndServices Belongs to group.</strong> The aggregative ProductsAndServices classifier, which is represented as a separate <a href="Catalog.ProductAndtoolsBelongs to groups/Help"><font color="#0000ff">list</font></a> in the system. Some ProductsAndServices position can be included only in a one ProductsAndServices group. Respectively, some ProductsAndServices group can contain many items.</div>
+</li><li>
+<div><strong>Unit of Measure.</strong> Each ProductsAndServices item has an accounting unit of measure which is selected from the <a href="Catalog.UOMClassifier/Help"><font color="#0000ff">UOM Classifier</font></a> list. The item may have other <a href="Catalog.UOM/Help"><font color="#0000ff">units of measure</font></a> (packs) different from the main unit of measure. For example, the cigarettes may have the following units of measure: "piece", "pack", "block", "box". Packs may be defined both for the specific item from the item Navigation Panel / Go To / Units of Measure), and for the entire ProductsAndServices group. Each unit of measure has its own recalculation factor relatively to the . </div>
+</li><li>
+<div><strong>End term (day).</strong> The standard order completion term that can be promised to a client. It is used in the <a href="Document.CustomerOrder/Help"><font color="#0000ff">customer order</font></a> generation process.</div>
+</li><li>
+<div><strong>Deduction of expenses Method.</strong> The inventory evaluation method. Available methods are: <em>By Average</em>, <em>FIFO</em>. IN daily accounting, inventory is always WrittenOff by average value (calculated at the moment of document posting). IN the operational procedure <a href="Document.MonthEnd/Help"><font color="#0000ff">Month end</font></a> the value that is being WrittenOff is adjusted according to the selected method.</div>
+</li><li>
+<div><strong>VAT Rate. </strong>The default <a href="Catalog.VAT rates/Help"><font color="#0000ff">VAT rate</font></a> that is used in documents.</div>
+</li><li>
+<div><strong>Price Belongs to group.</strong> The default <a href="Catalog.PriceBelongs to groups/Help"><font color="#0000ff">Price Belongs to group</font></a>, to which the ProductsAndServices item belongs. It is used for products grouping in the <a href="DataProcessor.PriceList/Help"><font color="#0000ff">price-list</font></a>.</div>
+</li><li>
+<div><strong>Business Activity. </strong>When the items are sold, sales revenue, cost price, sales VAT will be charged to the selected <a href="Catalog.BusinessActivities/Help"><font color="#0000ff">business activity</font></a>. Cost of the materials and half-finished products that are transferred to production will be charged to expenses of the specified activity. The specified business activity will be filled automatically in documents for calculation of expenses, which appear in accounting of the third-party companies' services.</div>
+</li><li>
+<div><strong>Expense GL Account.</strong> <a href="ChartOfAccounts.Managerial/Help"><font color="#0000ff">GL Account</font></a> of the expenses, to which cost of the inventory, transferred to production, will be charged. This account is also used to calculate the expenses, which appear in accounting of the third-party companies' services.</div>
+</li><li>
+<div><strong>Inventory GL Account.</strong> <a href="ChartOfAccounts.Managerial/Help"><font color="#0000ff">GL Account</font></a> of the inventory that belongs to the company.</div></li></ul><p></p>
+<ul><li>
+<div><strong>Parameters storage and purchasing.</strong> Page:</div>
+<ul><li>
+<div><strong>Parameters storage.</strong> Belongs to group of the attributes:</div>
+<ul><li>
+<div><strong>Structural unit, warehouse.</strong> Storage <a href="Catalog.StructuralUnits/Help"><font color="#0000ff">warehouse</font></a> by default.</div>
+</li><li>
+<div><strong>Cell.</strong> Default storage <a href="Catalog.Cells/Help"><font color="#0000ff">warehouse cell</font></a>.</div>
+</li><li>
+<div><strong>MIN Balance.</strong> MIN (insurance) item stock balance, used to cover possible breaks in inventory supply (production) process.</div>
+</li><li>
+<div><strong>Reorder Point.</strong> It is required to generate a <a href="Document.PurchaseOrder/Help"><font color="#0000ff">purchase order</font></a> or a production <a href="Document.toolsOrder/Help"><font color="#0000ff">production order</font></a> to maintain a necessary stock balance when stock level has reached this point.</div></li></ul></li><li>
+<div><strong>tools and Purchasing Parameters.</strong> Belongs to group of the attributes:</div>
+<ul><li>
+<div><strong>Replenishment Method.</strong> A default method of the current item inventory replenishment: purchasing - from vendor, production, processing - production by company from the company's resources.</div>
+</li><li>
+<div><strong>Replenishment term (day).</strong> Term in days, required to replenish the item balance.</div>
+</li><li>
+<div><strong>Vendor.</strong> Default <a href="Catalog.Counterparties/Help"><font color="#0000ff">Vendor</font></a> of the item.</div>
+</li><li>
+<div><strong>Specification.</strong> Default <a href="Catalog.Specifications/Help"><font color="#0000ff">specification</font></a> of production of the item. A list of specifications can be opened from the item Navigation Panel / Go To / See Also / Specifications.</div></li></ul></li><li>
+<div><strong>Additional Account Inventorying Dimensions.</strong> Belongs to group of the attributes:</div>
+<ul><li>
+<div><strong>Characteristics.</strong> The option indicates, that accounting by characteristics is enabled for the current item. Information about the item characteristics is entered in the <a href="Catalog.ProductsAndServicesCharacteristics/Help"><font color="#0000ff">ProductsAndServices Characteristics</font></a> list. A list of the characteristics can be opened from the item Navigation Panel / Go To / Characteristics.</div>
+</li><li>
+<div><strong>Batches.</strong> The option indicates, that accounting by batches is enabled for the current item. Information about the item batches is entered in the <a href="Catalog.ProductsAndServicesBatches/Help"><font color="#0000ff">Products and services batches</font></a> list. Accounting by batches is mandatory for the items, received from the external companies. There should be Creatingd at least one batch with the <em>Goods on Commission</em> status for the goods, accepted on commission. Respectively: for materials accepted for processing - <em>Commission Materials</em>, for inventory, accepted for safe custody - <em>Safe Custody</em>. A list of the batches can be opened from the item Navigation Panel / Go To / Batches.</div></li></ul></li></ul></li></ul><p class="Important">The fags of accounting by batches and characteristics will be visible only in case when accounting by batches and characteristics is enabled for the entire company in <a href="CommonForm.SectionsSettingForm/Help"><font color="#0000ff">Acounting Otions</font></a>.</p>
+<ul><li>
+<div><strong>Note.</strong> Arbitrary text description of the item object.</div></li></ul></body></html>

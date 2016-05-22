@@ -1,0 +1,561 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<AutoTitle>false</AutoTitle>
+	<AutoCommandBar name="FormCommandBar" id="-1"/>
+	<Events>
+		<Event name="NotificationProcessing">NotificationProcessing</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="GroupContent" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Content</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group of content</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ContentGroupExtendedTooltip" id="4"/>
+			<ChildItems>
+				<UsualGroup name="Interactions" id="74">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Interactions</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Interactions</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="InteractionsExtendedTooltip" id="75"/>
+					<ChildItems>
+						<Table name="InteractionsList" id="10">
+							<Representation>List</Representation>
+							<ReadOnly>true</ReadOnly>
+							<RowSelectionMode>Row</RowSelectionMode>
+							<Header>false</Header>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>InteractionsList</DataPath>
+							<CommandSet>
+								<ExcludedCommand>Copy</ExcludedCommand>
+								<ExcludedCommand>SortListAsc</ExcludedCommand>
+								<ExcludedCommand>MoveUp</ExcludedCommand>
+								<ExcludedCommand>SortListDesc</ExcludedCommand>
+								<ExcludedCommand>Delete</ExcludedCommand>
+								<ExcludedCommand>EndEdit</ExcludedCommand>
+								<ExcludedCommand>Add</ExcludedCommand>
+								<ExcludedCommand>Change</ExcludedCommand>
+								<ExcludedCommand>MoveDown</ExcludedCommand>
+							</CommandSet>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="InteractionsListContextMenu" id="11">
+								<ChildItems>
+									<Button name="InteractionsListReviewedKM" id="70">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.Reviewed</CommandName>
+										<ExtendedTooltip name="InteractionsListReviewedKMExtendedTooltip" id="71"/>
+									</Button>
+								</ChildItems>
+							</ContextMenu>
+							<AutoCommandBar name="InteractionsListCommandBar" id="12">
+								<Autofill>false</Autofill>
+								<ChildItems>
+									<Button name="InteractionsListAddComment" id="44">
+										<Type>CommandBarButton</Type>
+										<DefaultButton>true</DefaultButton>
+										<CommandName>Form.Command.AddComment</CommandName>
+										<ExtendedTooltip name="InteractionsListAddCommentExtendedTooltip" id="45"/>
+									</Button>
+									<Button name="InteractionsListReviewed" id="72">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.Reviewed</CommandName>
+										<ExtendedTooltip name="InteractionsListReviewedExtendedTooltip" id="73"/>
+									</Button>
+								</ChildItems>
+							</AutoCommandBar>
+							<ExtendedTooltip name="InteractionsListExtendedTooltip" id="13"/>
+							<SearchStringAddition name="InteractionsListSearchString" id="14">
+								<AdditionSource>
+									<Item>InteractionsList</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="InteractionsListSearchStringContextMenu" id="17"/>
+								<ExtendedTooltip name="InteractionsListSearchStringExtendedTooltip" id="18"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="InteractionsListViewStatus" id="19">
+								<AdditionSource>
+									<Item>InteractionsList</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="InteractionsListViewStatusContextMenu" id="22"/>
+								<ExtendedTooltip name="InteractionsListViewStatusExtendedTooltip" id="23"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="InteractionsListSearchManagement" id="24">
+								<AdditionSource>
+									<Item>InteractionsList</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="InteractionsListSearchManagementContextMenu" id="27"/>
+								<ExtendedTooltip name="InteractionsListSearchManagementExtendedTooltip" id="28"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="Selection">InteractionsListSelection</Event>
+							</Events>
+							<ChildItems>
+								<ColumnGroup name="InteractionsListPictureGroup" id="66">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Interactions list picture group</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Interactions list picture group</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>InCell</Group>
+									<ExtendedTooltip name="InteractionsListPictureGroupExtendedTooltip" id="67"/>
+									<ChildItems>
+										<PictureField name="InteractionsListPictureNumber" id="38">
+											<DataPath>InteractionsList.PictureNumber</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>2</Width>
+											<ValuesPicture>
+												<xr:Ref>CommonPicture.Interactions</xr:Ref>
+												<xr:LoadTransparent>true</xr:LoadTransparent>
+											</ValuesPicture>
+											<ContextMenu name="InteractionsListPictureNumberContextMenu" id="39"/>
+											<ExtendedTooltip name="InteractionsListPictureNumberExtendedTooltip" id="40"/>
+										</PictureField>
+										<InputField name="InteractionsListExplanationToPicture" id="41">
+											<DataPath>InteractionsList.ExplanationToPicture</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="InteractionsListExplanationToPictureContextMenu" id="42"/>
+											<ExtendedTooltip name="InteractionsListExplanationToPictureExtendedTooltip" id="43"/>
+										</InputField>
+									</ChildItems>
+								</ColumnGroup>
+								<InputField name="InteractionsListDate" id="35">
+									<DataPath>InteractionsList.Date</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Format>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>DLF=DDT</v8:content>
+										</v8:item>
+									</Format>
+									<EditFormat>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>DLF=DDT</v8:content>
+										</v8:item>
+									</EditFormat>
+									<ContextMenu name="InteractionsListDateContextMenu" id="36"/>
+									<ExtendedTooltip name="InteractionsListDateExtendedTooltip" id="37"/>
+								</InputField>
+								<ColumnGroup name="InteractionsListDescriptionGroup" id="68">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Interactions list description group</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Interactions list description group</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="InteractionsListDescriptionGroupExtendedTooltip" id="69"/>
+									<ChildItems>
+										<InputField name="InteractionsListDescription" id="32">
+											<DataPath>InteractionsList.Description</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content> </v8:content>
+												</v8:item>
+											</Title>
+											<EditMode>EnterOnInput</EditMode>
+											<CellHyperlink>true</CellHyperlink>
+											<Height>3</Height>
+											<Font italic="true" kind="AutoFont"/>
+											<ContextMenu name="InteractionsListDescriptionContextMenu" id="33"/>
+											<ExtendedTooltip name="InteractionsListDescriptionExtendedTooltip" id="34"/>
+										</InputField>
+									</ChildItems>
+								</ColumnGroup>
+								<PictureField name="InteractionsListAttachmentPicture" id="46">
+									<DataPath>InteractionsList.AttachmentPicture</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="InteractionsListAttachmentPictureContextMenu" id="47"/>
+									<ExtendedTooltip name="InteractionsListAttachmentPictureExtendedTooltip" id="48"/>
+								</PictureField>
+							</ChildItems>
+						</Table>
+						<UsualGroup name="CorrespondenceFooter" id="49">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Correspondence footer</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Correspondence footer</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="CorrespondenceFooterExtendedTooltip" id="50"/>
+							<ChildItems>
+								<LabelDecoration name="FooterDecorationLeft" id="51">
+									<HorizontalStretch>true</HorizontalStretch>
+									<ContextMenu name="FooterDecorationLeftContextMenu" id="52"/>
+									<ExtendedTooltip name="FooterDecorationLeftExtendedTooltip" id="53"/>
+								</LabelDecoration>
+								<PictureDecoration name="LeftButton" id="54">
+									<Width>2</Width>
+									<Height>1</Height>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Left button</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="LeftButtonContextMenu" id="55"/>
+									<ExtendedTooltip name="ButtonLeftExtendedTooltip" id="56"/>
+									<Events>
+										<Event name="Click">LeftButtonClick</Event>
+									</Events>
+								</PictureDecoration>
+								<LabelDecoration name="CurrentPage" id="57">
+									<Font height="12" bold="true" kind="AutoFont"/>
+									<ContextMenu name="CurrentPageContextMenu" id="58"/>
+									<ExtendedTooltip name="CurrentPageExtendedTooltip" id="59"/>
+								</LabelDecoration>
+								<PictureDecoration name="RightButton" id="60">
+									<Width>2</Width>
+									<Height>1</Height>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Left button</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="RightButtonContextMenu" id="61"/>
+									<ExtendedTooltip name="ButtonRightExtendedTooltip" id="62"/>
+									<Events>
+										<Event name="Click">RightButtonClick</Event>
+									</Events>
+								</PictureDecoration>
+								<LabelDecoration name="FooterDecorationRight" id="63">
+									<HorizontalStretch>true</HorizontalStretch>
+									<ContextMenu name="FooterDecorationRightContextMenu" id="64"/>
+									<ExtendedTooltip name="FooterDecorationRightExtendedTooltip" id="65"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.InformationCenter</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="InteractionsList" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Interactions list</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Subject" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Subject</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Description" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Description</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Date" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Date</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>DateTime</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+				<Column name="PictureNumber" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Picture no</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="ExplanationToPicture" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Explanation to picture</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>5</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="AttachmentPicture" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Attachment picture</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>v8ui:Picture</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ID" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>ID</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>v8:UUID</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Incoming" id="8">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Incoming</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Type" id="9">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Type</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Seen" id="10">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Seen</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="SupportRequestID" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Support request identifier</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:UUID</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="UserID" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>User identifier</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:UUID</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="CurrentPage" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Current page</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Reviewed" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Reviewed</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<ConditionalAppearance>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>InteractionsList</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">InteractionsList.Seen</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>BackColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:ReportLineColor</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+		</ConditionalAppearance>
+	</Attributes>
+	<Commands>
+		<Command name="AddComment" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Add comment</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Add comment</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.MessageToSupport</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>AddComment</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="Reviewed" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Reviewed</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Reviewed</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.Successfully</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Reviewed</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="SupportRequestID">
+			<Type>
+				<v8:Type>v8:UUID</v8:Type>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

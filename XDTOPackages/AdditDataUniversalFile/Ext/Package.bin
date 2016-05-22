@@ -1,0 +1,16 @@
+﻿<package xmlns="http://v8.1c.ru/8.1/xdto" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="AdditFileUniversal">
+	<property xmlns:d2p1="AdditFileUniversal" name="AdditFile" type="d2p1:AdditFile"/>
+	<property xmlns:d2p1="AdditFileUniversal" name="Attribute" type="d2p1:Attribute"/>
+	<objectType name="AdditFile">
+		<property name="FileID" type="xs:string" lowerBound="1" form="Attribute"/>
+		<property name="AdditFileId" type="xs:string" lowerBound="1" form="Attribute"/>
+		<property name="FormatVersion" type="xs:string" lowerBound="1" form="Attribute"/>
+		<property name="GeneratingDate" type="xs:dateTime" lowerBound="1" form="Attribute"/>
+		<property xmlns:d3p1="AdditFileUniversal" name="Data" type="d3p1:Attribute" lowerBound="0"/>
+	</objectType>
+	<objectType name="Attribute" ordered="false" sequenced="true">
+		<property name="Name" type="xs:string" lowerBound="0" form="Attribute"/>
+		<property name="Value" type="xs:string" lowerBound="0" form="Attribute"/>
+		<property xmlns:d3p1="AdditFileUniversal" ref="d3p1:Attribute" lowerBound="0" upperBound="-1"/>
+	</objectType>
+</package>

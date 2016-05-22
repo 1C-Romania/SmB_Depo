@@ -1,0 +1,1290 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Title>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Bank statement import</v8:content>
+		</v8:item>
+	</Title>
+	<AutoTitle>false</AutoTitle>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="ChoiceProcessing">ChoiceProcessing</Event>
+		<Event name="NotificationProcessing">NotificationProcessing</Event>
+		<Event name="OnOpen">OnOpen</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="CommandBar" id="523">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Command bar</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Command bar</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="CommandBarExtendedTooltip" id="524"/>
+			<ChildItems>
+				<CommandBar name="CommandBarLeft" id="575">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Command bar left</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Command bar left</v8:content>
+						</v8:item>
+					</ToolTip>
+					<HorizontalStretch>true</HorizontalStretch>
+					<ExtendedTooltip name="CommandBarLeftExtendedTooltip" id="576"/>
+					<ChildItems>
+						<Button name="ImportRefresh" id="585">
+							<Type>CommandBarButton</Type>
+							<Visible>false</Visible>
+							<Representation>Picture</Representation>
+							<SkipOnInput>false</SkipOnInput>
+							<CommandName>Form.Command.ImportRefresh</CommandName>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Refresh</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="ImportUpdateExtendedTooltip" id="586"/>
+						</Button>
+						<ButtonGroup name="GroupMark" id="579">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group mark</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group mark</v8:content>
+								</v8:item>
+							</ToolTip>
+							<HorizontalStretch>true</HorizontalStretch>
+							<ExtendedTooltip name="GroupMarkExtendedTooltip" id="580"/>
+							<ChildItems>
+								<Button name="ImportCheckAll" id="581">
+									<Type>CommandBarButton</Type>
+									<Visible>false</Visible>
+									<Representation>Picture</Representation>
+									<SkipOnInput>false</SkipOnInput>
+									<CommandName>Form.Command.ImportCheckAll</CommandName>
+									<ExtendedTooltip name="ImportCancelAllExtendedTooltip" id="582"/>
+								</Button>
+								<Button name="ImportUnmarkAll" id="583">
+									<Type>CommandBarButton</Type>
+									<Visible>false</Visible>
+									<Representation>Picture</Representation>
+									<SkipOnInput>false</SkipOnInput>
+									<CommandName>Form.Command.ImportUnmarkAll</CommandName>
+									<ExtendedTooltip name="ImportUnmarkAtAllExtendedTooltip" id="584"/>
+								</Button>
+							</ChildItems>
+						</ButtonGroup>
+					</ChildItems>
+				</CommandBar>
+				<UsualGroup name="QueryStatementGroup" id="547">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Query statement</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Query statement group</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ChildItemsWidth>Equal</ChildItemsWidth>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="QueryStatementGroupExtendedTooltip" id="548"/>
+					<ChildItems>
+						<InputField name="ImportStartPeriod" id="549">
+							<DataPath>Object.StartPeriod</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Period from</v8:content>
+								</v8:item>
+							</Title>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="ImportStartPeriodContextMenu" id="550"/>
+							<ExtendedTooltip name="ImportStartPeriodExtendedTooltip" id="551"/>
+						</InputField>
+						<InputField name="ImportEndPeriod" id="552">
+							<DataPath>Object.EndPeriod</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>to</v8:content>
+								</v8:item>
+							</Title>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="ImportEndPeriodContextMenu" id="553"/>
+							<ExtendedTooltip name="ImportEndPeriodExtendedTooltip" id="554"/>
+						</InputField>
+						<Button name="RequestElectronicBankStatement" id="555">
+							<Type>UsualButton</Type>
+							<Representation>PictureAndText</Representation>
+							<CommandName>Form.Command.RequestElectronicBankStatement</CommandName>
+							<ExtendedTooltip name="RequestBankElectronicStatementExtendedTooltip" id="556"/>
+						</Button>
+					</ChildItems>
+				</UsualGroup>
+				<CommandBar name="CommandBarRight" id="531">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Command bar right</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Command bar right</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Width>7</Width>
+					<HorizontalStretch>true</HorizontalStretch>
+					<HorizontalLocation>Right</HorizontalLocation>
+					<ExtendedTooltip name="CommandBarRightExtendedTooltip" id="532"/>
+					<ChildItems>
+						<Button name="FormSetting" id="457">
+							<Type>CommandBarButton</Type>
+							<Representation>Picture</Representation>
+							<OnlyInAllActions>true</OnlyInAllActions>
+							<CommandName>Form.Command.Setting</CommandName>
+							<ExtendedTooltip name="FormSettingsExtendedTooltip" id="464"/>
+						</Button>
+					</ChildItems>
+				</CommandBar>
+				<CommandBar name="FormCommands" id="543">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Commands of form</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Commands of form</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Width>10</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<CommandSource>Form</CommandSource>
+					<ExtendedTooltip name="FormCommandsExtendedTooltip" id="544"/>
+				</CommandBar>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="InformationReferences" id="455">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Information references</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Information references</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<ExtendedTooltip name="InformationLinksExtendedTooltip" id="465"/>
+		</UsualGroup>
+		<UsualGroup name="Imports" id="40">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Import</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Imports</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ExportExtendedTooltip" id="466"/>
+			<ChildItems>
+				<LabelField name="BankElectronicStatement" id="559">
+					<DataPath>BankElectronicStatement</DataPath>
+					<Hiperlink>true</Hiperlink>
+					<ContextMenu name="BankElectronicStatementContextMenu" id="560"/>
+					<ExtendedTooltip name="BankElectronicStatementExtendedTooltip" id="561"/>
+					<Events>
+						<Event name="Click">BankElectronicStatementClick</Event>
+					</Events>
+				</LabelField>
+				<Table name="Import" id="186">
+					<SkipOnInput>false</SkipOnInput>
+					<ChangeRowSet>false</ChangeRowSet>
+					<ChangeRowOrder>false</ChangeRowOrder>
+					<HorizontalLines>false</HorizontalLines>
+					<UseAlternationRowColor>true</UseAlternationRowColor>
+					<AutoInsertNewRow>true</AutoInsertNewRow>
+					<DataPath>Object.Import</DataPath>
+					<SearchStringLocation>None</SearchStringLocation>
+					<ViewStatusLocation>None</ViewStatusLocation>
+					<SearchControlLocation>None</SearchControlLocation>
+					<RowFilter xsi:nil="true"/>
+					<ContextMenu name="ImportingContextMenu" id="187"/>
+					<AutoCommandBar name="ImportCommandBar" id="188">
+						<Autofill>false</Autofill>
+						<ChildItems>
+							<Button name="ImportUpdate1" id="387">
+								<Type>CommandBarButton</Type>
+								<Representation>PictureAndText</Representation>
+								<SkipOnInput>false</SkipOnInput>
+								<CommandName>Form.Command.ImportRefresh</CommandName>
+								<Title>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Update from statement</v8:content>
+									</v8:item>
+								</Title>
+								<ExtendedTooltip name="ImportUpdate1ExtendedTooltip" id="460"/>
+							</Button>
+							<ButtonGroup name="GroupMark1" id="458">
+								<Title>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Group mark1</v8:content>
+									</v8:item>
+								</Title>
+								<ToolTip>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Group mark1</v8:content>
+									</v8:item>
+								</ToolTip>
+								<HorizontalStretch>true</HorizontalStretch>
+								<ExtendedTooltip name="GroupMark1ExtendedTooltip" id="461"/>
+								<ChildItems>
+									<Button name="ImportCancelAll1" id="377">
+										<Type>CommandBarButton</Type>
+										<Representation>Picture</Representation>
+										<SkipOnInput>false</SkipOnInput>
+										<CommandName>Form.Command.ImportCheckAll</CommandName>
+										<ExtendedTooltip name="ImportCancelAll1ExtendedTooltip" id="462"/>
+									</Button>
+									<Button name="ImportUnmarkAtAll1" id="378">
+										<Type>CommandBarButton</Type>
+										<Representation>Picture</Representation>
+										<SkipOnInput>false</SkipOnInput>
+										<CommandName>Form.Command.ImportUnmarkAll</CommandName>
+										<ExtendedTooltip name="ImportUnmarkAtAll1ExtendedTooltip" id="463"/>
+									</Button>
+								</ChildItems>
+							</ButtonGroup>
+						</ChildItems>
+					</AutoCommandBar>
+					<ExtendedTooltip name="ImportExtendedTooltip" id="467"/>
+					<SearchStringAddition name="ImportSearchString" id="497">
+						<AdditionSource>
+							<Item>Import</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="ImportSearchStringContextMenu" id="498"/>
+						<ExtendedTooltip name="ImportSearchStringExtendedTooltip" id="499"/>
+					</SearchStringAddition>
+					<ViewStatusAddition name="ImportViewStatus" id="500">
+						<AdditionSource>
+							<Item>Import</Item>
+							<Type>ViewStatusRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="ImportViewStatusContextMenu" id="501"/>
+						<ExtendedTooltip name="ImportViewStatusExtendedTooltip" id="502"/>
+					</ViewStatusAddition>
+					<SearchControlAddition name="ImportSearchManagement" id="503">
+						<AdditionSource>
+							<Item>Import</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<ContextMenu name="ImportSearchManagementContextMenu" id="504"/>
+						<ExtendedTooltip name="ImportSearchManagementExtendedTooltip" id="505"/>
+					</SearchControlAddition>
+					<Events>
+						<Event name="Selection">ImportSelection</Event>
+					</Events>
+					<ChildItems>
+						<ColumnGroup name="Rows" id="515">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Rows</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Rows</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ExtendedTooltip name="RowsExtendedTooltip" id="516"/>
+							<ChildItems>
+								<ColumnGroup name="Row1" id="517">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Row1</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Row1</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<ExtendedTooltip name="Row1ExtendedTooltip" id="518"/>
+									<ChildItems>
+										<CheckBoxField name="ImportExport" id="193">
+											<DataPath>Object.Import.Import</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<FixingInTable>Left</FixingInTable>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="ImportExportContextMenu" id="194"/>
+											<ExtendedTooltip name="ImportExportExtendedTooltip" id="469"/>
+											<Events>
+												<Event name="OnChange">ImportExportOnChange</Event>
+											</Events>
+										</CheckBoxField>
+										<PictureField name="ImportPictureNumber" id="375">
+											<DataPath>Object.Import.PictureNumber</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<TitleLocation>None</TitleLocation>
+											<FixingInTable>Left</FixingInTable>
+											<HeaderPicture>
+												<xr:Ref>CommonPicture.Information</xr:Ref>
+												<xr:LoadTransparent>true</xr:LoadTransparent>
+											</HeaderPicture>
+											<Width>2</Width>
+											<Height>1</Height>
+											<ValuesPicture>
+												<xr:Ref>CommonPicture.CollectionEventLogMonitorEventKinds</xr:Ref>
+												<xr:LoadTransparent>true</xr:LoadTransparent>
+											</ValuesPicture>
+											<Border width="1">
+												<v8ui:style xsi:type="v8ui:ControlBorderType">WithoutBorder</v8ui:style>
+											</Border>
+											<ContextMenu name="ImportPictureNumberContextMenu" id="376"/>
+											<ExtendedTooltip name="ImportPictureNumberExtendedTooltip" id="470"/>
+										</PictureField>
+										<InputField name="ImportLineNumber" id="189">
+											<DataPath>Object.Import.LineNumber</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<FixingInTable>Left</FixingInTable>
+											<Width>1</Width>
+											<Wrap>false</Wrap>
+											<ContextMenu name="ImportLineNumberContextMenu" id="190"/>
+											<ExtendedTooltip name="ImportLineNumberExtendedTooltip" id="468"/>
+										</InputField>
+										<InputField name="ImportDocDate" id="235">
+											<DataPath>Object.Import.DocDate</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Date</v8:content>
+												</v8:item>
+											</Title>
+											<Width>15</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<Wrap>false</Wrap>
+											<ContextMenu name="ImportDocDateContextMenu" id="236"/>
+											<ExtendedTooltip name="ImportDocDateExtendedTooltip" id="472"/>
+										</InputField>
+										<InputField name="ImportDocNumber" id="197">
+											<DataPath>Object.Import.DocNo</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<Width>14</Width>
+											<Wrap>false</Wrap>
+											<ContextMenu name="ImportDocNoContextMenu" id="198"/>
+											<ExtendedTooltip name="ImportDocNoExtendedTooltip" id="473"/>
+										</InputField>
+										<InputField name="ImportDocumentSum" id="209">
+											<DataPath>Object.Import.DocumentAmount</DataPath>
+											<UserVisible>
+												<xr:Common>false</xr:Common>
+											</UserVisible>
+											<ReadOnly>true</ReadOnly>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Amount</v8:content>
+												</v8:item>
+											</Title>
+											<FooterText>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Total marked:</v8:content>
+												</v8:item>
+											</FooterText>
+											<Width>12</Width>
+											<Wrap>false</Wrap>
+											<ContextMenu name="ImportDocumentAmountContextMenu" id="210"/>
+											<ExtendedTooltip name="ImportDocumentSumExtendedTooltip" id="474"/>
+										</InputField>
+										<InputField name="ImportAmountDebited" id="213">
+											<DataPath>Object.Import.AmountDebited</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<FooterDataPath>Object.Import.TotalAmountReceiptAllocated</FooterDataPath>
+											<Width>10</Width>
+											<Wrap>false</Wrap>
+											<ContextMenu name="ImportSumDebitedContextMenu" id="214"/>
+											<ExtendedTooltip name="ImportSumDebitedExtendedTooltip" id="475"/>
+										</InputField>
+										<InputField name="ImportAmountWrittenOff" id="211">
+											<DataPath>Object.Import.AmountCredited</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<FooterDataPath>Object.Import.TotalAmountWriteOffAllocated</FooterDataPath>
+											<Width>10</Width>
+											<Wrap>false</Wrap>
+											<ContextMenu name="ImportAmountWrittenOffContextMenu" id="212"/>
+											<ExtendedTooltip name="ImportAmountWrittenOffExtendedTooltip" id="476"/>
+										</InputField>
+										<InputField name="ImportDocumentName" id="381">
+											<DataPath>Object.Import.DocumentName</DataPath>
+											<UserVisible>
+												<xr:Common>false</xr:Common>
+											</UserVisible>
+											<ReadOnly>true</ReadOnly>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Document</v8:content>
+												</v8:item>
+											</Title>
+											<Width>15</Width>
+											<Wrap>false</Wrap>
+											<ContextMenu name="ImportDocumentNameContextMenu" id="382"/>
+											<ExtendedTooltip name="ImportDocumentNameExtendedTooltip" id="471"/>
+										</InputField>
+										<InputField name="ImportCompanyAccount" id="207">
+											<DataPath>Object.Import.BankAccount</DataPath>
+											<Wrap>false</Wrap>
+											<ContextMenu name="ImportAccountCompaniesContextMenu" id="208"/>
+											<ExtendedTooltip name="ImportAccountCompaniesExtendedTooltip" id="477"/>
+										</InputField>
+										<InputField name="ImportCounterparty" id="379">
+											<DataPath>Object.Import.Counterparty</DataPath>
+											<Wrap>false</Wrap>
+											<ContextMenu name="ImportCounterpartyContextMenu" id="380"/>
+											<ExtendedTooltip name="ImportCounterpartyExtendedTooltip" id="478"/>
+										</InputField>
+										<InputField name="ImportContract" id="361">
+											<DataPath>Object.Import.Contract</DataPath>
+											<Wrap>false</Wrap>
+											<ContextMenu name="ImportContractContextMenu" id="362"/>
+											<ExtendedTooltip name="ImportContractExtendedTooltip" id="479"/>
+										</InputField>
+										<InputField name="ImportOperationKind" id="373">
+											<DataPath>Object.Import.OperationKind</DataPath>
+											<Wrap>false</Wrap>
+											<ContextMenu name="ImportOperationTypeContextMenu" id="374"/>
+											<ExtendedTooltip name="ImportOperationTypeExtendedTooltip" id="480"/>
+										</InputField>
+										<InputField name="ImportCFItem" id="363">
+											<DataPath>Object.Import.CFItem</DataPath>
+											<Wrap>false</Wrap>
+											<ContextMenu name="ImportCFItemContextMenu" id="364"/>
+											<ExtendedTooltip name="ImportCFItemExtendedTooltip" id="482"/>
+										</InputField>
+										<CheckBoxField name="ExportAdvanceFlag" id="388">
+											<DataPath>Object.Import.AdvanceFlag</DataPath>
+											<Visible>false</Visible>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="ImportAdvanceFlagContextMenu" id="389"/>
+											<ExtendedTooltip name="ImportAdvanceFlagExtendedTooltip" id="483"/>
+										</CheckBoxField>
+										<InputField name="ImportOrder" id="390">
+											<DataPath>Object.Import.Order</DataPath>
+											<Visible>false</Visible>
+											<Wrap>false</Wrap>
+											<ContextMenu name="ImportOrderContextMenu" id="391"/>
+											<ExtendedTooltip name="ImportOrderExtendedTooltip" id="484"/>
+											<Events>
+												<Event name="StartChoice">ImportOrderStartChoice</Event>
+											</Events>
+										</InputField>
+									</ChildItems>
+								</ColumnGroup>
+								<ColumnGroup name="Row2" id="519">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Row2</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Row2</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="Row2ExtendedTooltip" id="520"/>
+									<ChildItems>
+										<InputField name="ImportPaymentDestination" id="319">
+											<DataPath>Object.Import.PaymentDestination</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<ShowInHeader>false</ShowInHeader>
+											<ShowInFooter>false</ShowInFooter>
+											<Wrap>false</Wrap>
+											<TextColor>style:MinorInscriptionText</TextColor>
+											<Font ref="sys:DefaultGUIFont" faceName="Arial" height="10" bold="false" italic="true" underline="false" strikeout="false" kind="WindowsFont"/>
+											<ContextMenu name="ImportPaymentDestinationContextMenu" id="320"/>
+											<ExtendedTooltip name="ImportPaymentDestinationExtendedTooltip" id="481"/>
+										</InputField>
+									</ChildItems>
+								</ColumnGroup>
+							</ChildItems>
+						</ColumnGroup>
+					</ChildItems>
+				</Table>
+				<UsualGroup name="Totals" id="533">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Totals</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Totals</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="TotalsExtendedTooltip" id="534"/>
+					<ChildItems>
+						<LabelField name="ImportDetailsErrors" id="402">
+							<DataPath>Items.Import.CurrentData.ErrorsDescriptionFull</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<TextColor>style:SpecialTextColor</TextColor>
+							<ContextMenu name="ImportDetailsErrorsContextMenu" id="403"/>
+							<ExtendedTooltip name="ImportDetailsErrorsExtendedTooltip" id="485"/>
+						</LabelField>
+						<UsualGroup name="Amount" id="538">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Amount</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Amount</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<BackColor>style:TotalsGroupBackground</BackColor>
+							<ExtendedTooltip name="AmountExtendedTooltip" id="539"/>
+							<ChildItems>
+								<InputField name="ToImport" id="540">
+									<DataPath>Object.Import.TotalDocumentAmountAllocated</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>To import for amount</v8:content>
+										</v8:item>
+									</Title>
+									<Width>12</Width>
+									<ChoiceButton>false</ChoiceButton>
+									<ContextMenu name="ToImportContextMenu" id="541"/>
+									<ExtendedTooltip name="ToImportExtendedTooltip" id="542"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="NotFoundAttributes" id="407">
+					<Visible>false</Visible>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Payers and accounts are not found in the infobase</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Attributes not found</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<ExtendedTooltip name="NotFoundsAttributesExtendedTooltip" id="486"/>
+					<ChildItems>
+						<Table name="CounterpartyTable" id="408">
+							<Representation>Tree</Representation>
+							<SkipOnInput>false</SkipOnInput>
+							<ChangeRowSet>false</ChangeRowSet>
+							<ChangeRowOrder>false</ChangeRowOrder>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>CounterpartyTable</DataPath>
+							<CommandSet>
+								<ExcludedCommand>HierarchicalList</ExcludedCommand>
+								<ExcludedCommand>Tree</ExcludedCommand>
+								<ExcludedCommand>Copy</ExcludedCommand>
+								<ExcludedCommand>List</ExcludedCommand>
+								<ExcludedCommand>SortListAsc</ExcludedCommand>
+								<ExcludedCommand>MoveUp</ExcludedCommand>
+								<ExcludedCommand>OutputList</ExcludedCommand>
+								<ExcludedCommand>SelectAll</ExcludedCommand>
+								<ExcludedCommand>SortListDesc</ExcludedCommand>
+								<ExcludedCommand>CopyToClipboard</ExcludedCommand>
+								<ExcludedCommand>Delete</ExcludedCommand>
+								<ExcludedCommand>EndEdit</ExcludedCommand>
+								<ExcludedCommand>Add</ExcludedCommand>
+								<ExcludedCommand>Change</ExcludedCommand>
+								<ExcludedCommand>MoveDown</ExcludedCommand>
+							</CommandSet>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<ContextMenu name="CounterpartyTableContextMenu" id="409"/>
+							<AutoCommandBar name="CounterpartyTableCommandBar" id="410">
+								<Autofill>false</Autofill>
+								<ChildItems>
+									<Button name="TableOfCounterpartiesNotFoundAttributesImportCheckAll" id="453">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.NotFoundAttributesImportingMarkAll</CommandName>
+										<ExtendedTooltip name="TableOfCounterpartiesNotFoundAttributesImportCheckAllExtendedTooltip" id="487"/>
+									</Button>
+									<Button name="TableCounterpartyNotFoundAttributesUnmarkAll" id="454">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.NotFoundsUnmarkAllAttributes</CommandName>
+										<ExtendedTooltip name="CounterpartyTableNotFoundsUnmarkAllExtendedAttributesOfToolTip" id="488"/>
+									</Button>
+									<Button name="CounterpartyTableCreateCounterparties" id="419">
+										<Type>CommandBarButton</Type>
+										<Representation>PictureAndText</Representation>
+										<SkipOnInput>false</SkipOnInput>
+										<CommandName>Form.Command.CreateCounterparties</CommandName>
+										<ExtendedTooltip name="CounterpartyTableCreateCounterpartiesExtendedTooltip" id="489"/>
+									</Button>
+									<Button name="CounterpartyTableDelete" id="450">
+										<Type>CommandBarButton</Type>
+										<CommandName>408:8d772f97-c0ef-47c0-9cb0-efea28c61341</CommandName>
+										<ExtendedTooltip name="CounterpartyTableDeleteExtendedTooltip" id="490"/>
+									</Button>
+								</ChildItems>
+							</AutoCommandBar>
+							<ExtendedTooltip name="CounterpartiesTableExtendedTooltip" id="491"/>
+							<SearchStringAddition name="CounterpartyTableSearchString" id="506">
+								<AdditionSource>
+									<Item>CounterpartyTable</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="CounterpartyTableSearchStringContextMenu" id="507"/>
+								<ExtendedTooltip name="CounterpartyTableSearchStringExtendedTooltip" id="508"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="CounterpartyTableViewStatus" id="509">
+								<AdditionSource>
+									<Item>CounterpartyTable</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="CounterpartyTableViewStatusContextMenu" id="510"/>
+								<ExtendedTooltip name="CounterpartyTableViewStatusExtendedTooltip" id="511"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="CounterpartyTableSearchManagement" id="512">
+								<AdditionSource>
+									<Item>CounterpartyTable</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="CounterpartyTableSearchManagementContextMenu" id="513"/>
+								<ExtendedTooltip name="CounterpartyTableSearchManagementExtendedTooltip" id="514"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<CheckBoxField name="CounterpartyTableExport" id="451">
+									<DataPath>CounterpartyTable.Import</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<EditMode>EnterOnInput</EditMode>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="CounterpartiesTableExportContextMenu" id="452"/>
+									<ExtendedTooltip name="CounterpartyTableExportExtendedTooltip" id="492"/>
+								</CheckBoxField>
+								<InputField name="CounterpartyTablePresentation" id="411">
+									<DataPath>CounterpartyTable.Presentation</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Payer account</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="CounterpartyTablePresentationContextMenu" id="412"/>
+									<ExtendedTooltip name="CounterpartyTablePresentationExtendedTooltip" id="493"/>
+								</InputField>
+								<InputField name="CounterpartiesTableValue" id="413">
+									<DataPath>CounterpartyTable.Value</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content> </v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="CounterpartiesTableValueContextMenu" id="414"/>
+									<ExtendedTooltip name="CounterpartyTableValueExtendedTooltip" id="494"/>
+								</InputField>
+								<InputField name="CounterpartyTableAttribute" id="415">
+									<DataPath>CounterpartyTable.Attribute</DataPath>
+									<Visible>false</Visible>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="CounterpartyTableAttributeContextMenu" id="416"/>
+									<ExtendedTooltip name="CounterpartyTableAttributeExtendedTooltip" id="495"/>
+								</InputField>
+								<InputField name="CounterpartiesTableNumRow" id="417">
+									<DataPath>CounterpartyTable.RowNum</DataPath>
+									<Visible>false</Visible>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="CounterpartyTableNumRowsContextMenu" id="418"/>
+									<ExtendedTooltip name="CounterpartyTableNumStringsExtendedTooltip" id="496"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="StatementImportGroup" id="573">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Statement import group</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Statement import group</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="StatementImportGroupExtendedTooltip" id="574"/>
+					<ChildItems>
+						<UsualGroup name="StatementImportDescriptionGroupThroughED" id="562">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Statement import description</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Statement import description</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="StatementImportDescriptionGroupThroughEDExtendedTooltip" id="563"/>
+							<ChildItems>
+								<LabelField name="DirectMessageExchange" id="564">
+									<DataPath>DirectMessageExchange</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<TextColor>#4682B4</TextColor>
+									<ContextMenu name="DirectMessageExchangeContextMenu" id="565"/>
+									<ExtendedTooltip name="DirectExchangeMessageExtendedTooltip" id="566"/>
+								</LabelField>
+							</ChildItems>
+						</UsualGroup>
+						<CommandBar name="CommandBarGroupImport" id="569">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Command bar: import</v8:content>
+								</v8:item>
+							</Title>
+							<Width>18</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ExtendedTooltip name="GroupCommandBarImportExtendedTooltip" id="570"/>
+							<ChildItems>
+								<Button name="Import" id="44">
+									<Type>CommandBarButton</Type>
+									<DefaultButton>true</DefaultButton>
+									<SkipOnInput>false</SkipOnInput>
+									<Width>14</Width>
+									<CommandName>Form.Command.Import</CommandName>
+									<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+									<ExtendedTooltip name="ImportExtendedTooltip" id="459"/>
+								</Button>
+							</ChildItems>
+						</CommandBar>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.ClientBank</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<Save>
+				<Field>Object.ImportFile</Field>
+				<Field>Object.ExportFile</Field>
+				<Field>Object.Encoding</Field>
+				<Field>Object.CFItemOutgoing</Field>
+				<Field>Object.CFItemIncoming</Field>
+				<Field>Object.Application</Field>
+			</Save>
+			<Columns>
+				<AdditionalColumns table="Object.Import"/>
+			</Columns>
+		</Attribute>
+		<Attribute name="ImportTitle" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Import title</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="SubsidiaryCompany" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>SubsidiaryCompany</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogObject.Companies</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="CounterpartyTable" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Counterparty table</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTree</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Presentation" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Presentation</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>255</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Value" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Value</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>255</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Attribute" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Attribute</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:Type>cfg:CatalogRef.Counterparties</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>255</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="RowNum" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Line number</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>255</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Import" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Import</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="IsCounterparty" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>This is counterparty</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="FileOperationsExtensionConnected" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>File operations extension connected</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ReadStream" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Demand</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/txtedt">d5p1:TextDocument</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="WarningText" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Warning text</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="DirectExchangeWithBanksAgreement" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Direct exchange with banks agreement</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.EDUsageAgreements</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="DirectMessageExchange" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Direct exchange message</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="BankElectronicStatement" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Bank electronic statement</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.EDAttachedFiles</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="FileURL" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>File URL</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<ConditionalAppearance>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>CounterpartyTableExport</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">CounterpartyTable.ThisIsCounterparty</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Visible</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>Import</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Object.Import.Import</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>TextColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:UnacceptedVersion</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+		</ConditionalAppearance>
+	</Attributes>
+	<Commands>
+		<Command name="Import" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Import</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Import</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>0:61c83d1d-ffdf-486b-98a3-322f2fc63418</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+				<xr:TransparentPixel x="6" y="2"/>
+			</Picture>
+			<Action>ImportExecute</Action>
+			<Representation>Text</Representation>
+		</Command>
+		<Command name="ImportUnmarkAll" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Uncheck for All</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Uncheck for All</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.UncheckAll</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ImportUncheckAllExecute</Action>
+		</Command>
+		<Command name="ImportCheckAll" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Mark all</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Mark all</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.CheckAll</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ImportCancelAllExecute</Action>
+		</Command>
+		<Command name="ImportRefresh" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Import Refresh</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Import Refresh</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Refresh</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ImportUpdateExecute</Action>
+		</Command>
+		<Command name="CreateCounterparties" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Create</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Create counterparties</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.CreateListItem</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>CreateCounterparties</Action>
+		</Command>
+		<Command name="NotFoundAttributesImportingMarkAll" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Mark all</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Mark all</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.CheckAll</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>NotFoundAttributesImportingMarkAll</Action>
+		</Command>
+		<Command name="NotFoundsUnmarkAllAttributes" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Uncheck for All</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Uncheck for All</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.UncheckAll</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>NotFoundsUnmarkAllAttributes</Action>
+		</Command>
+		<Command name="Setting" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Setting</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Setting</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.DocumentSetting</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Setting</Action>
+		</Command>
+		<Command name="RequestElectronicBankStatement" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Request statement</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Request bank statement</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.IncomingEmail</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>RequestElectronicBankStatement</Action>
+		</Command>
+	</Commands>
+</Form>

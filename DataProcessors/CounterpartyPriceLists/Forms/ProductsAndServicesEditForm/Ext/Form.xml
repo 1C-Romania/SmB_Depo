@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Width>50</Width>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<CommandBarLocation>None</CommandBarLocation>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="FormCommandBar" id="-1"/>
+	<Events>
+		<Event name="ChoiceProcessing">ChoiceProcessing</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<Table name="Counterparties" id="1">
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<EnableStartDrag>true</EnableStartDrag>
+			<EnableDrag>true</EnableDrag>
+			<DataPath>Object.ProductsAndServices</DataPath>
+			<SearchStringLocation>None</SearchStringLocation>
+			<ViewStatusLocation>None</ViewStatusLocation>
+			<SearchControlLocation>None</SearchControlLocation>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="CounterpartiesContextMenu" id="2"/>
+			<AutoCommandBar name="CounterpartiesCommandBar" id="3">
+				<ChildItems>
+					<Button name="CounterpartiesPickup" id="15">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.Pick</CommandName>
+						<ExtendedTooltip name="CounterpartiesSelectionExtendedTooltip" id="17"/>
+					</Button>
+				</ChildItems>
+			</AutoCommandBar>
+			<ExtendedTooltip name="CounterpartyExtendedTooltip" id="18"/>
+			<SearchStringAddition name="CounterpartiesSearchString" id="24">
+				<AdditionSource>
+					<Item>Counterparties</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="CounterpartiesSearchStringContextMenu" id="25"/>
+				<ExtendedTooltip name="CounterpartiesSearchStringExtendedTooltip" id="26"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="CounterpartiesViewStatus" id="27">
+				<AdditionSource>
+					<Item>Counterparties</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="CounterpartiesViewStatusContextMenu" id="28"/>
+				<ExtendedTooltip name="CounterpartiesViewStatusExtendedTooltip" id="29"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="CounterpartiesSearchControl" id="30">
+				<AdditionSource>
+					<Item>Counterparties</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="CounterpartiesSearchControlContextMenu" id="31"/>
+				<ExtendedTooltip name="CounterpartiesSearchControlExtendedTooltip" id="32"/>
+			</SearchControlAddition>
+			<ChildItems>
+				<LabelField name="CounterpartiesLineNumber" id="10">
+					<DataPath>Object.ProductsAndServices.LineNumber</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="CounterpartiesLineNumberContextMenu" id="11"/>
+					<ExtendedTooltip name="CounterpartiesLineNumberExtendedTooltip" id="19"/>
+				</LabelField>
+				<InputField name="CounterpartiesReference" id="12">
+					<DataPath>Object.ProductsAndServices.Ref</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="CounterpartiesRefContextMenu" id="13"/>
+					<ExtendedTooltip name="CounterpartiesRefExtendedTooltip" id="20"/>
+				</InputField>
+			</ChildItems>
+		</Table>
+		<CommandBar name="CommandGroup" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Command group</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Command group</v8:content>
+				</v8:item>
+			</ToolTip>
+			<HorizontalLocation>Right</HorizontalLocation>
+			<ExtendedTooltip name="CommandGroupExtendedTooltip" id="21"/>
+			<ChildItems>
+				<Button name="OK" id="14">
+					<Type>CommandBarButton</Type>
+					<DefaultButton>true</DefaultButton>
+					<CommandName>Form.Command.OK</CommandName>
+					<ExtendedTooltip name="OKExtendedTooltip" id="22"/>
+				</Button>
+				<Button name="FormClose" id="16">
+					<Type>CommandBarButton</Type>
+					<Representation>Text</Representation>
+					<CommandName>Form.StandardCommand.Close</CommandName>
+					<ExtendedTooltip name="FormCloseExtendedTooltip" id="23"/>
+				</Button>
+			</ChildItems>
+		</CommandBar>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.CounterpartyPriceLists</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="OK" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>OK</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>OK</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>OK</Action>
+		</Command>
+		<Command name="Pick" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Pick</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Pick</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Pick</Action>
+		</Command>
+	</Commands>
+</Form>

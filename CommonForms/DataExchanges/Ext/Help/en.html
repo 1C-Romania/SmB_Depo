@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"></meta><link rel="stylesheet" type="text/css" href="v8help://service_book/service_style"></link><meta name="GENERATOR" content="MSHTML 11.00.9600.18321"></meta></head><body>
+<p style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">Designed to set up data synchronization and store existing data synchronization settings. </p>
+<p style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">You can open the <strong>Data synchronization </strong>window in the <strong>Desktop</strong> or use the relevant command in <strong>Administration - Data synchronization settings.</strong> If there is no or only one setting, the window looks like a panel. IN this case, the <strong>More </strong>menu is hidden and all necessary commands are displayed in the panel. The window looks like a list if there are two or more synchronization settings.</p>
+<p style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto"> The window displays:</p>
+<ul><li>
+<div style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto"><img></img> - data synchronization is scheduled. The same mark is used in this column for the synchronizations performed automatically according to a predefined <a href="Catalog.DataExchangeScripts.Form.ItemForm/Help">script</a>.</div>
+</li><li>
+<div style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto"><strong>Application </strong>- a name of the application for which a given synchronization is customized.</div>
+</li><li>
+<div style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto"><strong>Infobase </strong>- a name of the infobase to synchronize with.</div>
+</li><li>
+<p style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">You also see a synchronization state (time since last synchronization in minutes, <strong>Now</strong>, <strong>Never</strong>). The <img width="16" height="16"></img> sign indicates failed synchronizations, the <img width="16" height="16"></img> sign indicates warnings:</p>
+<ul><li>
+<p style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto"><strong>Data sent </strong>- last time when data was sent.</p>
+</li><li>
+<div style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto"><strong>Data received </strong>- last time when data was received.</div></li></ul></li><li>
+<div style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">At the bottom of the list, you see an <strong>Infobase prefix</strong>.</div></li></ul><h3 style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">Customizing data synchronization</h3>
+<ul><li>
+<div style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">To customize new data synchronization with another application, select the relevant command in the <strong>Set up data synchronization </strong>submenu. It will open <a href="DataProcessor.DataExchangeCreationAssistant/Help">data synchronization settings</a>.</div></li></ul><h3 style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">Viewing settings </h3>
+<ul><li>
+<div style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">To get accounting information about the synchronized applications and get recommendations about data synchronization setup, click <strong>More - More about data synchronization with this application</strong>. </div>
+</li><li>
+<div style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">You can find a similar command in the context menu.</div></li></ul><h3 style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">Data synchronization</h3>
+<ul><li>
+<div style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">Select the necessary setting, click <img></img> <strong>Synchronize </strong>to start automatic data synchronization. </div>
+</li><li>
+<div style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">You can also double-click the setting. Click <strong>Yes </strong>to confirm your selection.</div></li></ul><h3 style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">Manual data synchronization</h3>
+<ul><li>
+<div style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">To synchronize data manually, select a setting in the list and click <img></img> <strong>Synchronize data with additional parameters</strong>. New data from another application will be loaded first, then data will loaded back. </div>
+</li><li>
+<div style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">Use the <strong>Synchronized data with additional parameters </strong>command to synchronize data after setting up <a href="DataProcessor.InteractiveDataExchangeAssistant/Help">similar data mapping</a>. This procedure is useful when similar data has been added to both applications independently. To prevent most of such situations, you can set up frequent scheduled data synchronization.</div></li></ul><h3 style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">Scheduled synchronization</h3>
+<ul><li>
+<div style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">Use the <strong>More </strong>- <strong>Data synchronization scripts </strong>command to <img width="16" height="16"></img><strong>Set up </strong>data synchronization according to a <a href="Catalog.DataExchangeScripts/Help">predefined schedule</a>. IN this case, in client server mode, data will be synchronized in the background within the <strong>Data synchronization </strong>scheduled job; in file mode, you will have to start an additional session to perform <a href="DataProcessor.ScheduledAndBackgroundJobs/Help">scheduled jobs</a>.</div>
+</li><li>
+<div style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">You can use a context menu to find the command.</div></li></ul><h3 style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">Viewing warnings</h3>
+<ul><li>
+<div style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">Follow the <img></img> <strong>Warnings </strong>link (with the number of warnings within brackets) to learn more about <a href="InformationRegister.DataExchangeResults/Help">warnings</a> related to data synchronization.</div></li></ul><h3 style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">Showing failed only</h3>
+<ul><li>
+<div style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">Click <strong>Failed only </strong>to show only failed synchronization attempts or attempts with warnings.</div></li></ul><h3 style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">Viewing registration log</h3>
+<ul><li>
+<div style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">Use the <strong>More - </strong><strong>Data sending events </strong>or <strong>Data receipt events </strong>menu commands to learn details of data synchronization process from the application <a href="DataProcessor.RegistrationLog/Help">registration log</a> filtered by synchronization events and view each <a href="DataProcessor.RegistrationLog.Form.EventForm/Help">event</a>.</div></li></ul><h3 style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">Using synchronization rules from external file</h3>
+<ul dir="ltr"><li>
+<div style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">To replace the standard <a href="InformationRegister.DataExchangeRules.Form.ObjectConversionRules/Help">object conversion rules</a> and <a href="InformationRegister.DataExchangeRules.Form.ObjectRegistrationRules/Help">object registration rules</a> with rules from an external file:</div>
+<ul><li style="MARGIN-RIGHT: 0px"><img></img> open the data synchronization which rules you want to change. 
+</li><li style="MARGIN-RIGHT: 0px">Run the <strong>More - Export rules </strong>command. 
+</li><li style="MARGIN-RIGHT: 0px">In the object conversion/registration rules window, switch to <strong>Export from file on computer</strong> and click <strong>Export</strong> to select a rules file on the computer or in a network folder. </li></ul><ul><li style="MARGIN-RIGHT: 0px">Check that you are exporting correct rules compatible with your versions of the source and receiver application.  
+</li><li style="MARGIN-RIGHT: 0px">Click <strong>Save and close</strong>. The exported rules will be applied immediately.</li></ul></li></ul><h3 style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">Deleting synchronization setting </h3>
+<ul><li>
+<div style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">Select a setting, click <strong>More - <img width="16" height="16"></img> Delete synchronization setting.</strong> </div>
+</li><li>
+<div style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto"><strong>Warning! The setting will be deleted permanently.</strong></div></li></ul><h3 style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">Restoring infobase from backup</h3>
+<ul style="MARGIN-RIGHT: 0px" dir="ltr"><li>
+<div style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">When you restore an infobase from a backup, it is recommended to:</div>
+<ul><li>
+<div style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">Temporarily disable automatic data  synchronization (clear the <strong>Automatic scheduled </strong>check box in all data synchronization scripts).</div>
+</li><li>
+<div style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">Cancel sending data prepared for other applications (for each data synchronization setting, run the <strong>More – Sent data content </strong>command; in the opened <a href="DataProcessor.ChangesRegistrationForDataExchange/Help">Changes registration</a> window, in the object tree, select the root and run the <strong>Cancel registration – All selected subtypes </strong>command).</div>
+</li><li>
+<div style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">Resend the data entered into other applications since the last backup of this infobase - from other applications to this infobase.</div>
+</li><li>
+<div style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">Restore automatic data synchronization.</div></li></ul></li><li>
+<div style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">If considerable part of data is lost, it is recommended to delete all the data  synchronization settings and recustomize synchronization. Otherwise, you may lose all data in the synchronized applications because you send them outdated data from the restored infobase. </div></li></ul><h3 style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto">See also:</h3>
+<ul><li>
+<div style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto"><a href="v8help://frame/form_common">Working with forms</a><br></div></li></ul></body></html>

@@ -1,0 +1,495 @@
+﻿#Region ParameterArea
+// Update procedure parameters
+var now = new Date();
+var outFileName = "log" + now.valueOf() + ".txt"; // Path to log-file
+
+var TempCatalog = [TempFilesDir]; // directory for copying .cd file when extra copying.
+var v8exe = [ApplicationExecutableFileName]; // Path to the executable file 1C:Enterprise 8
+var infoBasePath = [ParameterOfPathToInformationBase]; 
+var BaseFileName = [PathStringToInfobaseFile]; 
+var connectionString = [InfobaseConnectionString] + 'From="AllowUsersWork";'+ 'UC=Backup'; 
+var infoBaseAuthorization = [UserAuthenticationParameters]; 
+var backupFileCopyName = [BackupDirectory2] + '1Cv8' + now.valueOf() + '.zip';  // Backup file
+var backupFileName = [DirectoryBackupCopies];  // Backup file
+var UseRestore = [RestoreInfobase];  // Use IB restoration in case of the fall
+var createBackup = [CreateBackup]; // Create Backup
+var eventLogID = [EventLogMonitorEvent];
+var comConnectorName = [COMConnectorName];  // COM class name for work with 1C:Enterprise 8 through COM connection
+var useComConnector = [UseCOMConnector];  // flag of using the COM connection for work with the 1C:Enterprise 8
+var tempLogFileName = "templog.txt";
+var retryCount = 0;
+#EndRegion
+
+#Region BackupArea
+// Initialization
+var oFileSystemObject = new ActiveXObject("Scripting.FileSystemObject");
+
+
+var thisFileName;
+var thisFileDir;
+
+if (oHTA != null)
+{
+	thisFileName = eval("oHTA.commandLine");
+	thisFileDir = thisFileName.substr(1, thisFileName.lastIndexOf("\\")-1);
+}
+else
+{
+	thisFileName = eval("WScript.ScriptDescriptionFull");
+	thisFileDir = thisFileName.substr(0, thisFileName.lastIndexOf("\\")-1);
+}
+var oShell = new ActiveXObject("WScript.Shell"); 
+var oShellApplication = new ActiveXObject("Shell.Application");
+oShell.CurrentDirectory = thisFileDir;
+
+var errorMarker = "{ERR}";
+var successMarker = "{OK }";
+
+// Stage variables
+var backupCreated = false;
+var logging1C = false;
+var ComConnection = null;
+
+// Open file sFilePath.
+function runApp(sFilePath, sFileArgs, show, bWaitOnReturn) 
+{ 
+	if (bWaitOnReturn == undefined)
+	    bWaitOnReturn = false;
+	if (show == undefined)
+	    show = SW_SHOW;
+	if (sFileArgs == undefined)
+	    sFileArgs = "";
+	var ret = -1;
+	log(format("Run: {0}; parameters: {1}; window: {2}; waiting for: {3}", 
+	    sFilePath, sFileArgs, SWtoString(show), bWaitOnReturn));
+	if (oFileSystemObject.FileExists(sFilePath))
+	{
+        try
+        {
+	        ret = oShell.Run(format('"{0}" {1}', sFilePath, sFileArgs), show, bWaitOnReturn); 
+	    }
+        catch(e) 
+        { 
+            log(format("Except in runApp: {0}, {1}.", e.name, e.message), true);
+            return -1;
+        }
+   		log(format("Return code: {0}", ret), ret != 0);
+   		return ret;
+    }
+    else
+		log(format("Started file doesn't exist: {0}", sFilePath), true);
+	return ret;
+}
+
+function clearLogFile()
+{
+    var outFile = oFileSystemObject.OpenTextFile(outFileName, ForWriting, true, TristateTrue);
+    outFile.Close();
+}
+
+// Write text in log
+function log(text, failed)
+{
+	if (failed == undefined)
+	    failed = false;
+	logFile(text, failed);
+}
+
+// Write text in log-file
+function logFile(text, failed)
+{
+	var now = new Date();
+    var f;
+    try
+    {
+        f = oFileSystemObject.OpenTextFile(outFileName, ForAppending, true, TristateTrue);
+    }
+    catch(e) { return; }    
+	try
+	{
+    	var status = (failed == false ? successMarker : errorMarker);
+	    f.WriteLine(format("{0} {1} {2}", now, status, text));
+	}
+	finally
+	{
+	    try
+	    {
+	        f.Close();
+	    }
+	    catch(e) { return; }
+	}
+}
+
+// Write text from temporary log file
+function appendLog()
+{
+	var f;
+	var outf;
+	var text;
+	try
+	{
+		f = oFileSystemObject.OpenTextFile(tempLogFileName, ForReading, false, TristateFalse);
+		outf = oFileSystemObject.OpenTextFile(outFileName, ForAppending, true, TristateTrue);
+	}
+    catch(e) { return; }    
+    try
+    {
+    	var oldAtEndOfStream = f.AtEndOfStream;
+		if (!oldAtEndOfStream)
+		{
+			text = f.ReadAll();
+    		outf.WriteLine(text);
+		}
+	}
+	finally
+	{
+		try
+		{
+			f.Close();
+			outf.Close();
+		}
+	    catch(e) { return; }
+    }
+}
+
+// Write text in event log monitor
+function log1C(text, failed)
+{
+    if (logging1C)
+        return;
+    var connection = createConnection();
+    if (connection == null)
+        return;
+    try
+    {
+        log1CInternal(connection, text, failed);
+    }
+    finally
+    {
+        connection = null;
+    }
+}
+
+// Write text in event log monitor
+function log1CInternal(connection, text, failed)
+{
+    if (logging1C)
+        return;
+    logging1C = true;
+    try
+    {
+        try
+        {
+            var eventLogLevel = failed ? connection.EventLogLevel.Error : connection.EventLogLevel.Information;
+            connection.WriteLogEvent(eventLogID, eventLogLevel, null, null, text, 
+                connection.EventLogEntryTransactionMode.Independent);
+        }
+        catch(e) 
+        { 
+            log(format("Exception in log1CInternal: {0}, {1}.", e.name, e.message), true);
+            return;
+        }
+    }
+    finally
+    {
+        logging1C = false;
+    }
+}
+
+// Initialization
+function initialize()
+{
+    clearLogFile();
+    log(format("Script file: {0}", thisFileName));
+     return 0; 
+}
+
+// Finalization
+function finalize(success)
+{
+    if (success == undefined)
+        success = false;
+
+    // Write update result in Event Log
+    writeEventLogMonitor(success);
+
+    if (!success)
+    {
+            allowConnections(); // Connection permission
+    }
+
+    write1CEventLogMonitor();      // Write all information from log-file to events log monitor
+    setResult(success);
+
+    // clearing global COM connection
+    ComConnection = null;
+
+}
+	
+function createConnection()
+{
+    if (!useComConnector)
+    	return null;
+    
+    if (!ComConnection == null)	
+    	return ComConnection;
+    		
+    try
+    {
+        var ComConnector = new ActiveXObject(comConnectorName);
+        ComConnection = ComConnector.Connect(connectionString);
+        return ComConnection;
+    }
+    catch(e)
+    {
+        log(format("Except in createConnection: {0}, {1}", e.name, e.message), true);
+        return null;
+    }
+    
+}
+
+
+// Write all log-file in the events log monitor
+function write1CEventLogMonitor()
+{
+    if (!oFileSystemObject.FileExists(outFileName))
+        return;
+        
+    var connection = createConnection();
+    if (connection == null)
+        return;
+    try
+    {
+        var f = oFileSystemObject.OpenTextFile(outFileName, ForReading, false, TristateTrue);
+        
+        var text;
+        while (!f.AtEndOfStream)
+        {
+            text = f.ReadLine();
+            while ((text.indexOf(successMarker) < 0) && (text.indexOf(errorMarker) < 0) && !f.AtEndOfStream)
+               text += "\n" + f.ReadLine();
+
+            var failed = text.indexOf(errorMarker) > 0;
+            log1CInternal(connection, text, failed);
+        }
+    }
+    catch(e) 
+    { 
+        log(format("Exception in write1CEventLog: {0}, {1}.", e.name, e.message), true);
+        return;
+    }
+    finally
+    {
+        connection = null;
+    }
+}
+
+function doSetResult(success)
+{
+    var connection = createConnection();
+    if (connection == null)
+        return (useComConnector ? 1 : 0);
+    var res = 0;
+    try
+    {
+        connection.InfobaseBackupServer.CompleteRecovering(success);
+    
+    }
+    catch(e)
+    {
+        log(format("Exception when calling InfobaseBackupServer.CompleteRecovering: {0}, {1}.", e.name, e.message), true);
+        res = 2;
+    }
+    return res;
+}
+
+
+// Pass the result of execution to application 
+function setResult(success)
+{
+    
+    var result = doSetResult(success);
+    CollectGarbage();   // releases the connection with COM object
+    return result;
+}
+
+// Write execution result of update procedure in Event Log
+function writeEventLogMonitor(success)
+{
+    try
+    {
+        var eventKind = success ? EVENT_SUCCESS : EVENT_CRITICAL;
+        var message;
+        if (success)
+            message = "Restoring the infobase passed successfully.";
+        else
+            message = "An error occurred while restoring the infobase.";
+        message += format(" Inforbase parameters: {0}.", infoBasePath);
+        if (!success)
+            message += " Restoration protocol was saved to the event log.";
+        oShell.LogEvent(eventKind, message);
+    }
+    catch(e)
+    {
+        log(format("Except in writeEventLog: {0}, {1}.", e.name, e.message), true);
+    }
+}
+
+//Create a copy of the IB
+
+  function CreateBackup()
+  
+  {
+
+     var NewTextFile = oFileSystemObject.CreateTextFile(backupFileCopyName,false);
+	
+	NewTextFile.Write(String.fromCharCode(80,75,5,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0));
+	NewTextFile.Close();
+	
+	var ZIPFile = oFileSystemObject.GetAbsolutePathName(backupFileCopyName);
+	var dFolder = oShellApplication.NameSpace(ZIPFile);
+   	var file = oFileSystemObject.GetAbsolutePathName(TempCatalog + '\\1Cv8.1CD');
+	if (!createBackup)
+		return 0;
+	try
+	{
+		
+		dFolder.CopyHere(file,4|16|1024);
+			ret = 0;
+   		log(format("Try to create a backup", ret), ret != 0);
+	}
+	catch(e)
+	{
+		CollectGarbage();   // prevents exception out of memory
+		log(format("Exception while base backup creating : {0}, {1}.", e.name, e.message), true);
+		ret = -1;
+	}
+
+
+   }
+// IB restoration
+function backupDB()
+{
+    var oShellApplication = new ActiveXObject("Shell.Application"); 	
+	var ZIPFile = oFileSystemObject.GetAbsolutePathName(backupFileName);
+	var dFolder = oShellApplication.NameSpace(ZIPFile);
+   	var file = oFileSystemObject.GetAbsolutePathName(BaseFileName);
+	var Folder = oShellApplication.Namespace(file);
+	var FileObject	= oFileSystemObject.GetFile(BaseFileName + '1Cv8.1CD');
+	var FileObject2 = new ActiveXObject("Scripting.FileSystemObject");
+	
+	// firstly, move the base cd file into a temporary directory
+	if (FileObject2.FileExists(TempCatalog + '1Cv8.1CD')) {
+		FileObject2.DeleteFile(TempCatalog + '1Cv8.1CD');
+	}
+	try
+	{
+		FileObject.Move(TempCatalog);
+	}
+	catch(e)
+	{
+		retryCount++;
+		CollectGarbage();   // prevents exception out of memory
+		if (retryCount > 5) 
+		{
+			log(format("Error of transfer base file to a temporary directory (maybe there are active sessions to base file): {0}, {1}.", e.name, e.message), true);
+			return 1;
+		}
+		else
+		{
+			log(format("Try to move base file to a temporary directory ({0} out of 5): {1}, {2}.", retryCount, e.name, e.message));
+			return -1;
+		}
+	}
+
+	if (!createBackup)
+		return 0;
+	
+	try
+	{
+        Folder.CopyHere(dFolder.Items());
+        
+		
+        ret = 0;
+   		log(format("Databases are restored: {0}", ret), ret != 0);
+	}
+	catch(e)
+	{
+		CollectGarbage();   // prevents exception out of memory
+		log(format("Exception while restoring base from the backup: {0}, {1}.", e.name, e.message), true);
+		ret = 1;
+	}
+	if (ret == 0)
+	    backupCreated = true;
+	    	
+   	
+	return ret;
+}
+
+function WaitUntilFinish()
+{
+	FileName = BaseFileName+ '\\1Cv8.1CD';
+
+	var FileArchiveObject = new ActiveXObject("Scripting.FileSystemObject");
+	FileArchive = FileArchiveObject.GetFile(FileName);
+	
+	FileSize = FileArchive.size / 1024;
+	
+	if (FileSize < 5)
+		return -1;
+	
+	return 0;
+}
+
+// Restoring the infobase from the backup
+function restoreDB()
+{
+    if (!backupCreated)
+        return 0;
+	try
+	{
+		oFileSystemObject.CopyFile(backupFileName, BaseFileName, true);
+		ret = 0;
+		log(format("Database was restored from backup", ret), ret != 0);
+	}
+	catch(e)
+	{
+		CollectGarbage();   // prevents exception out of memory
+		log(format("Exception while base restoring from backup", e.name, e.message), true);
+		ret = -1;
+	}
+	return ret;
+}
+
+function doAllowConnections()
+{
+	var BlockFilePath = BaseFileName + '1Cv8.cdn';
+	if (oFileSystemObject.FileExists(BlockFilePath))
+	{
+		try
+		{
+			oFileSystemObject.DeleteFile(BaseFileName + '1Cv8.cdn');
+		}
+		catch(e)
+		{
+			log(format("Error when deleting the 1Cv8 lock file.cdn: {0}, {1}.", e.name, e.message), true);
+			return 3;
+		}
+	}
+	return 0;
+}
+
+// Initial infobase filling, new connections permission and update result notification
+function allowConnections()
+{
+    var result = doAllowConnections();
+    CollectGarbage();   // releases the connection with COM object
+    return result;
+}
+
+// Interactive run "1C:Enterprise"
+function runEnterprise()
+{
+	return runApp(v8exe, format('ENTERPRISE {0} {1}', infoBasePath, infoBaseAuthorization), SW_SHOW, false);
+}
+#EndRegion

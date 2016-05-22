@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Title>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Choose ProductsAndServices groups</v8:content>
+		</v8:item>
+	</Title>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<Table name="ProductsAndServicesGroups" id="1">
+			<Representation>List</Representation>
+			<Header>false</Header>
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<EnableStartDrag>true</EnableStartDrag>
+			<EnableDrag>true</EnableDrag>
+			<DataPath>ListValueSelection</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>ProductsAndServices groups</v8:content>
+				</v8:item>
+			</Title>
+			<CommandSet>
+				<ExcludedCommand>Copy</ExcludedCommand>
+				<ExcludedCommand>CheckAll</ExcludedCommand>
+				<ExcludedCommand>UncheckAll</ExcludedCommand>
+				<ExcludedCommand>SelectAll</ExcludedCommand>
+				<ExcludedCommand>CopyToClipboard</ExcludedCommand>
+				<ExcludedCommand>EndEdit</ExcludedCommand>
+			</CommandSet>
+			<SearchStringLocation>None</SearchStringLocation>
+			<ViewStatusLocation>None</ViewStatusLocation>
+			<SearchControlLocation>None</SearchControlLocation>
+			<ContextMenu name="ProductsAndServicesGroupsContextMenu" id="2"/>
+			<AutoCommandBar name="ProductsAndServicesGroupsCommandBar" id="3"/>
+			<ExtendedTooltip name="ProductsAndServicesGroupsExtendedTooltip" id="8"/>
+			<SearchStringAddition name="ProductsAndServicesGroupsSearchString" id="12">
+				<AdditionSource>
+					<Item>ProductsAndServicesGroups</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ProductsAndServicesGroupsSearchStringContextMenu" id="13"/>
+				<ExtendedTooltip name="ProductsAndServicesGroupsSearchStringExtendedTooltip" id="14"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ProductsAndServicesGroupsViewStatus" id="15">
+				<AdditionSource>
+					<Item>ProductsAndServicesGroups</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ProductsAndServicesGroupsViewStatusContextMenu" id="16"/>
+				<ExtendedTooltip name="ProductsAndServicesGroupsViewStatusExtendedTooltip" id="17"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ProductsAndServicesGroupsSearchManagement" id="18">
+				<AdditionSource>
+					<Item>ProductsAndServicesGroups</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ProductsAndServicesGroupsSearchManagementContextMenu" id="19"/>
+				<ExtendedTooltip name="ProductsAndServicesGroupsSearchManagementExtendedTooltip" id="20"/>
+			</SearchControlAddition>
+			<ChildItems>
+				<InputField name="ProductsAndServicesGroupValue" id="4">
+					<DataPath>ListValueSelection.Value</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="CatalogGroupValueContextMenu" id="5"/>
+					<ExtendedTooltip name="ProductsAndServicesGroupValueExtendedTooltip" id="9"/>
+				</InputField>
+			</ChildItems>
+		</Table>
+		<CommandBar name="GroupOK" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group OK</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group OK</v8:content>
+				</v8:item>
+			</ToolTip>
+			<HorizontalLocation>Right</HorizontalLocation>
+			<ExtendedTooltip name="GroupOKExtendedTooltip" id="10"/>
+			<ChildItems>
+				<Button name="CommandOK" id="7">
+					<Type>CommandBarButton</Type>
+					<DefaultButton>true</DefaultButton>
+					<CommandName>Form.Command.CommandOK</CommandName>
+					<ExtendedTooltip name="OKCommandExtendedTooltip" id="11"/>
+				</Button>
+			</ChildItems>
+		</CommandBar>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="ListValueSelection" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>List value selection</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+			<Settings xsi:type="v8:TypeDescription">
+				<v8:Type>cfg:CatalogRef.ProductsAndServices</v8:Type>
+				<v8:Type>cfg:CatalogRef.ProductsAndServicesCategories</v8:Type>
+			</Settings>
+		</Attribute>
+		<Attribute name="FilterKind" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Kind of filter</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="CommandOK" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>OK</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Command OK</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Write</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>CommandOK</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+	</Commands>
+</Form>

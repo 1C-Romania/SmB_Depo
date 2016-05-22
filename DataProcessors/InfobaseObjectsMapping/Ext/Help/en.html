@@ -1,0 +1,16 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"></meta><link rel="stylesheet" type="text/css" href="v8help://service_book/service_style"></link><meta name="GENERATOR" content="MSHTML 11.00.9600.18321"></meta></head><body>
+<p>Designed to map data of two applications.</p>
+<p>To open the list, use the <strong>Map </strong>command on the <strong>Data mapping </strong>page of the <a href="DataProcessor.InteractiveDataExchangeAssistant/Help">Interactive data synchronization wizard</a>. You can also double-click the line with data-mapping problems. The list consists of two columns corresponding with the exchange infobases. The data is grouped by application objects (documents and lists). At the list bottom, there is a status bar showing the number of mapped and unmapped items.</p>
+<p>In the <strong>Configure display </strong>field, you can select data to display<strong> </strong>in the list. By default, it is <strong>Unmapped data</strong>.</p>
+<h3>Mapping objects</h3>
+<ul><li>Click <strong>Map automatically </strong>(recommended) and select check boxes for necessary fields. Some fields are selected by default. To confirm your selection, click <strong>Map</strong>. After search, the mapped data is displayed. Click <strong>Apply </strong>to confirm. 
+</li><li>After automatic mapping you can map the remaining objects manually or edit your mapping. Select the necessary objects of the two bases and click <strong>Unmap </strong>to try to map the objects manually. Then click <strong>Map</strong>. 
+</li><li>To confirm, click <strong>Save and close</strong>.</li></ul><h3>Configuring mapping table fields</h3>
+<ul><li>Click <strong>Columns </strong>to add list fields and columns. Select check boxes for additional fields if necessary and click <strong>Apply </strong>to confirm.</li></ul><h3>Receiving data from another application</h3>
+<ul><li>To receive data of another application, click <strong>More - </strong><img></img> <strong>Export</strong> <strong>data from another application</strong>.</li></ul><h3>Object mapping sequence</h3>
+<ul><li>It is recommended to map and load data considering its links. Especially when the field is used to map objects. 
+</li><li>For example, a configuration has a counterparty contract catalog subordinate to a counterparty catalog. The counterparty contracts are mapped according to the owner catalog, i.e. the counterparty catalog. Consequently, to map the data correctly, you need to firstly map and import the counterparty catalog and then map and import the counterparty contract catalog. 
+</li><li>Otherwise, the mapping-table fields may contain empty links like:<br>&lt;Object not found&gt; (26:a0b9001b24e002fe11dfba347dd41412). 
+</li><li>An empty link refers to an object which has not been exported yet from the exchange message to the current infobase. </li></ul><h3>See also:</h3>
+<ul><li>
+<div><a href="CommonForm.DataExchanges/Help">Data synchronization</a></div></li></ul></body></html>

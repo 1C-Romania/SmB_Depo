@@ -1,0 +1,515 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
+	<CommandBarLocation>None</CommandBarLocation>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="FormCommandBar" id="-1"/>
+	<Events>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+		<Event name="BeforeLoadDataFromSettingsAtServer">OnLoadDataFromSettingsAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="Filters" id="22">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Filters</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Filters</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="FiltersExtendedTooltip" id="49"/>
+			<ChildItems>
+				<InputField name="Counterparty" id="29">
+					<DataPath>Counterparty</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<Wrap>false</Wrap>
+					<ClearButton>false</ClearButton>
+					<OpenButton>false</OpenButton>
+					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+					<InputHint>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Counterparty</v8:content>
+						</v8:item>
+					</InputHint>
+					<ContextMenu name="CounterpartyContextMenu" id="30"/>
+					<ExtendedTooltip name="CounterpartyExtendedTooltip" id="50"/>
+					<Events>
+						<Event name="OnChange">CounterpartyOnChange</Event>
+					</Events>
+				</InputField>
+				<InputField name="Responsible" id="47">
+					<DataPath>Responsible</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<ClearButton>false</ClearButton>
+					<OpenButton>false</OpenButton>
+					<InputHint>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Responsible</v8:content>
+						</v8:item>
+					</InputHint>
+					<ContextMenu name="ResponsibleContextMenu" id="48"/>
+					<ExtendedTooltip name="ResponsibleExtendedTooltip" id="51"/>
+					<Events>
+						<Event name="OnChange">ResponsibleOnChange</Event>
+					</Events>
+				</InputField>
+				<InputField name="DocumentType" id="33">
+					<DataPath>DocumentTypePresentation</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<Wrap>false</Wrap>
+					<DropListButton>true</DropListButton>
+					<ClearButton>false</ClearButton>
+					<OpenButton>false</OpenButton>
+					<TextEdit>false</TextEdit>
+					<ChoiceListButton>true</ChoiceListButton>
+					<InputHint>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Document type</v8:content>
+						</v8:item>
+					</InputHint>
+					<ContextMenu name="DocumentTypeContextMenu" id="34"/>
+					<ExtendedTooltip name="DocumentTypeExtendedTooltip" id="52"/>
+					<Events>
+						<Event name="OnChange">DocumentTypeOnChange</Event>
+					</Events>
+				</InputField>
+				<InputField name="Company" id="25">
+					<DataPath>Company</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<Wrap>false</Wrap>
+					<ClearButton>false</ClearButton>
+					<OpenButton>false</OpenButton>
+					<InputHint>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Company</v8:content>
+						</v8:item>
+					</InputHint>
+					<ContextMenu name="CounterpartyContextMenu" id="26"/>
+					<ExtendedTooltip name="CounterpartyExtendedTooltip" id="53"/>
+					<Events>
+						<Event name="OnChange">CompanyOnChange</Event>
+					</Events>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<CommandBar name="CommandBar" id="81">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Command bar</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Command bar</v8:content>
+				</v8:item>
+			</ToolTip>
+			<CommandSource>Form</CommandSource>
+			<ExtendedTooltip name="CommandBarExtendedTooltip" id="82"/>
+			<ChildItems>
+				<Button name="FormChangeForm" id="87">
+					<Type>CommandBarButton</Type>
+					<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
+					<ExtendedTooltip name="FormChangeFormExtendedTooltip" id="88"/>
+				</Button>
+				<Button name="FormHelp" id="83">
+					<Type>CommandBarButton</Type>
+					<OnlyInAllActions>false</OnlyInAllActions>
+					<CommandName>Form.StandardCommand.Help</CommandName>
+					<ExtendedTooltip name="FormHelpExtendedTooltip" id="84"/>
+				</Button>
+			</ChildItems>
+		</CommandBar>
+		<Table name="List" id="1">
+			<Representation>List</Representation>
+			<SkipOnInput>false</SkipOnInput>
+			<DefaultItem>true</DefaultItem>
+			<UseAlternationRowColor>true</UseAlternationRowColor>
+			<EnableStartDrag>true</EnableStartDrag>
+			<DataPath>List</DataPath>
+			<RowPictureDataPath>List.DefaultPicture</RowPictureDataPath>
+			<SearchStringLocation>CommandBar</SearchStringLocation>
+			<ViewStatusLocation>Top</ViewStatusLocation>
+			<SearchControlLocation>CommandBar</SearchControlLocation>
+			<AutoRefresh>false</AutoRefresh>
+			<AutoRefreshPeriod>60</AutoRefreshPeriod>
+			<Period>
+				<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+				<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+				<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+			</Period>
+			<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+			<RestoreCurrentRow>false</RestoreCurrentRow>
+			<TopLevelParent xsi:nil="true"/>
+			<ShowRoot>false</ShowRoot>
+			<AllowRootChoice>false</AllowRootChoice>
+			<UpdateOnDataChange>Auto</UpdateOnDataChange>
+			<ContextMenu name="ListContextMenu" id="2"/>
+			<AutoCommandBar name="ListCommandBar" id="3">
+				<Autofill>false</Autofill>
+			</AutoCommandBar>
+			<ExtendedTooltip name="ListExtendedTooltip" id="56"/>
+			<SearchStringAddition name="SearchStringList" id="72">
+				<AdditionSource>
+					<Item>List</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ListSearchStringContextMenu" id="73"/>
+				<ExtendedTooltip name="ListSearchStringExtendedTooltip" id="74"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ListViewStatus" id="75">
+				<AdditionSource>
+					<Item>List</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ListViewStatusContextMenu" id="76"/>
+				<ExtendedTooltip name="ListViewStatusExtendedTooltip" id="77"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ListSearchControl" id="78">
+				<AdditionSource>
+					<Item>List</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ListSearchControlContextMenu" id="79"/>
+				<ExtendedTooltip name="ListSearchControlExtendedTooltip" id="80"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="BeforeAddRow">ListBeforeAddRow</Event>
+			</Events>
+			<ChildItems>
+				<LabelField name="ListDate" id="4">
+					<DataPath>List.Date</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Date</v8:content>
+						</v8:item>
+					</Title>
+					<Width>10</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<Format>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>DLF=D</v8:content>
+						</v8:item>
+					</Format>
+					<ContextMenu name="DateListContextMenu" id="5"/>
+					<ExtendedTooltip name="DateListExtendedTooltip" id="57"/>
+				</LabelField>
+				<LabelField name="ListNumber" id="6">
+					<DataPath>List.Number</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Number</v8:content>
+						</v8:item>
+					</Title>
+					<Width>11</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="NumberListContextMenu" id="7"/>
+					<ExtendedTooltip name="NumberListExtendedTooltip" id="58"/>
+				</LabelField>
+				<LabelField name="ListCounterparty" id="14">
+					<DataPath>List.Counterparty</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Counterparty</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ListCounterpartyContextMenu" id="15"/>
+					<ExtendedTooltip name="ListCounterpartyExtendedTooltip" id="63"/>
+				</LabelField>
+				<LabelField name="ListAgreement" id="16">
+					<DataPath>List.Contract</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Contract</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ListContractContextMenu" id="17"/>
+					<ExtendedTooltip name="ListContractExtendedTooltip" id="64"/>
+				</LabelField>
+				<ColumnGroup name="Amount" id="85">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Amount</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Amount</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>InCell</Group>
+					<ExtendedTooltip name="AmountExtendedTooltip" id="86"/>
+					<ChildItems>
+						<LabelField name="AmountList" id="37">
+							<DataPath>List.Amount</DataPath>
+							<Width>10</Width>
+							<ContextMenu name="ListSumContextMenu" id="38"/>
+							<ExtendedTooltip name="ListAmountExtendedTooltip" id="61"/>
+						</LabelField>
+						<LabelField name="CurrencyList" id="18">
+							<DataPath>List.Currency</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Currency</v8:content>
+								</v8:item>
+							</Title>
+							<ShowInHeader>false</ShowInHeader>
+							<Width>1</Width>
+							<ContextMenu name="CurrencyListContextMenu" id="19"/>
+							<ExtendedTooltip name="CurrencyListExtendedTooltip" id="62"/>
+						</LabelField>
+					</ChildItems>
+				</ColumnGroup>
+				<LabelField name="TypeList" id="8">
+					<DataPath>List.Type</DataPath>
+					<DefaultItem>true</DefaultItem>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Type</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="TypeListContextMenu" id="9"/>
+					<ExtendedTooltip name="TypeListExtendedTooltip" id="59"/>
+				</LabelField>
+				<LabelField name="OperationKindsList" id="12">
+					<DataPath>List.OperationKind</DataPath>
+					<ContextMenu name="ListOperationTypeContextMenu" id="13"/>
+					<ExtendedTooltip name="ListOperationTypeExtendedTooltip" id="66"/>
+				</LabelField>
+				<LabelField name="ListCompanies" id="10">
+					<DataPath>List.Company</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Company</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ListCompanyContextMenu" id="11"/>
+					<ExtendedTooltip name="ListCompanyExtendedTooltip" id="60"/>
+				</LabelField>
+				<LabelField name="OrderVendorList" id="27">
+					<DataPath>List.PurchaseOrder</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<ContextMenu name="OrderVendorListContextMenu" id="28"/>
+					<ExtendedTooltip name="OrderVendorListExtendedTooltip" id="65"/>
+				</LabelField>
+				<LabelField name="ListIncomingDocumentDate" id="39">
+					<DataPath>List.IncomingDocumentDate</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<ContextMenu name="ListIncomingDocumentDateContextMenu" id="40"/>
+					<ExtendedTooltip name="ListIncomingDocumentDateExtendedTooltip" id="67"/>
+				</LabelField>
+				<LabelField name="ListOfIncomingDocumentNumber" id="41">
+					<DataPath>List.IncomingDocumentNumber</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<ContextMenu name="ListOfIncomingDocumentNumberContextMenu" id="42"/>
+					<ExtendedTooltip name="ListOfIncomingDocumentNumberExtendedTooltip" id="68"/>
+				</LabelField>
+				<LabelField name="ListResponsible" id="43">
+					<DataPath>List.Responsible</DataPath>
+					<ContextMenu name="ListResponsibleContextMenu" id="44"/>
+					<ExtendedTooltip name="ListResponsibleExtendedTooltip" id="69"/>
+				</LabelField>
+				<LabelField name="CommentList" id="20">
+					<DataPath>List.Comment</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Comment</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="CommentListContextMenu" id="21"/>
+					<ExtendedTooltip name="CommentListExtendedTooltip" id="70"/>
+				</LabelField>
+				<LabelField name="ListAuthor" id="45">
+					<DataPath>List.Author</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<ContextMenu name="AuthorListContextMenu" id="46"/>
+					<ExtendedTooltip name="AuthorListExtendedTooltip" id="71"/>
+				</LabelField>
+			</ChildItems>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="List" id="1">
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<UseAlways>
+				<Field>List.OrderState</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>SELECT
+	DocumentJournalPurchaseDocuments.Ref,
+	DocumentJournalPurchaseDocuments.Date,
+	DocumentJournalPurchaseDocuments.DeletionMark,
+	DocumentJournalPurchaseDocuments.Number,
+	DocumentJournalPurchaseDocuments.Posted,
+	DocumentJournalPurchaseDocuments.Company,
+	DocumentJournalPurchaseDocuments.OperationKind,
+	DocumentJournalPurchaseDocuments.Counterparty,
+	DocumentJournalPurchaseDocuments.Contract,
+	DocumentJournalPurchaseDocuments.PurchaseOrder,
+	DocumentJournalPurchaseDocuments.Amount,
+	DocumentJournalPurchaseDocuments.Currency,
+	DocumentJournalPurchaseDocuments.Comment,
+	DocumentJournalPurchaseDocuments.Type,
+	DocumentJournalPurchaseDocuments.Ref.OrderState AS OrderState,
+	DocumentJournalPurchaseDocuments.Responsible,
+	DocumentJournalPurchaseDocuments.IncomingDocumentNumber,
+	DocumentJournalPurchaseDocuments.IncomingDocumentDate,
+	DocumentJournalPurchaseDocuments.Author
+FROM
+	DocumentJournal.PurchaseDocuments AS DocumentJournalPurchaseDocuments</QueryText>
+				<MainTable>DocumentJournal.PurchaseDocuments</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="Counterparty" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Counterparty</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Counterparties</v8:Type>
+			</Type>
+			<Save>
+				<Field>Counterparty</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="Company" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Company</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Companies</v8:Type>
+			</Type>
+			<Save>
+				<Field>Company</Field>
+			</Save>
+			<FunctionalOptions>
+				<Item>FunctionalOption.MultipleCompaniesAccounting</Item>
+			</FunctionalOptions>
+		</Attribute>
+		<Attribute name="DocumentType" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Document type</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="DocumentTypePresentation" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Document type</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<Save>
+				<Field>DocumentTypePresentation</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="DocumentTypes" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Document types</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Responsible" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Responsible</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Employees</v8:Type>
+			</Type>
+			<Save>
+				<Field>Responsible</Field>
+			</Save>
+		</Attribute>
+	</Attributes>
+</Form>

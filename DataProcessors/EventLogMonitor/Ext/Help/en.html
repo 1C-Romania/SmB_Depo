@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"></meta><link rel="stylesheet" type="text/css" href="v8help://service_book/service_style"></link><meta name="GENERATOR" content="MSHTML 11.00.9600.18321"></meta></head><body>
+<p>A application administrator often needs to find out which events occurred in the application at certain moments of time or which actions were performed by any particular <a href="Catalog.Users.Form.ItemForm/Help">user</a>. This can be ensured through the event log. </p>
+<p>The event log may register main actions performed to modify data, execute regular operations, connect to/ exit the application, etc. The event log is adjusted in the Configurator. </p>
+<p>The event log can be opened by the corresponding command in the <strong>Administration - Support and servicing </strong>section.</p>
+<p>The following types of events may occur when working with the application - every such event is indicated in the event log by a special icon: </p>
+<table cellspacing="0" cellpadding="3" width="700" border="0"><tbody><tr valign="middle"><td width="30"><img src="StdPicture.Stop" width="16" height="16"></img></td>
+<td>- Error</td></tr><tr valign="middle"><td><img src="CommonPicture.Warning" width="16" height="16"></img></td>
+<td>- Warning</td></tr><tr valign="middle"><td><img src="CommonPicture.Information"></img></td>
+<td>- Information</td></tr><tr valign="middle"><td><img src="CommonPicture.UnavailableFieldsInformtion"></img></td>
+<td>- Information on unavailable fields</td></tr><tr valign="middle"><td><img src="CommonPicture.EventLogMonitorNote"></img></td>
+<td>- Note</td></tr></tbody></table>Every event is recorderd in a separate line of the event log. 
+<p>The list includes:</p>
+<ul><li>
+<div><strong>Date, time</strong> - in addition to the date and time, an icon identifying event type is displayed </div>
+</li><li>
+<div><strong>User</strong> - the full name of the user</div>
+</li><li>
+<div><strong>Computer</strong> - the net name of the computer</div>
+</li><li>
+<div><strong>Application</strong> - for example, <strong>Thin client</strong> </div>
+</li><li>
+<div><strong>Session</strong> - the number of the session </div>
+</li><li>
+<div><strong>Event</strong> - the type of the event </div>
+</li><li>
+<div><strong>Data, Comment</strong> - identification of the application object: particular list item, document, etc.; in the comment the event summary is given </div>
+</li><li>
+<div><strong>Metadata</strong> - the type of the application object and its name: the list, document kind, etc. </div></li></ul><p>To adjust the number, visual display and relative position of columns in the event log, press <strong>More - </strong><strong>Change form</strong>.</p>
+<h3>Updating event list</h3>
+<ul><li>The event list is not a dynamic list. To view events included into the event log, open the log and click<img src="StdPicture.Refresh"></img><strong>Refresh current list</strong> or press <strong>F5</strong> </li></ul><h3>Number of events</h3>
+<ul><li>
+<div>The event log shows a fixed number of records displayed in the <strong>Display</strong> field (by default it is equal to 200). IN addition to preliminary defined values (200, 500, 1000 and 10000 events), you can enter any number of events to be saved</div></li></ul><h3>Filters</h3>
+<p>Using filters you can filter events in the event log. </p>
+<ul><li>
+<div>In the <strong>Criticality</strong> quick selection field, select the <strong>Error</strong> or <strong>Warnings</strong> value to view specific types of events. By default, the event log shows <strong>All events</strong></div>
+</li><li>
+<div>For quick setting the period for events review in the log, click <img src="StdPicture.SetDateInterval"></img><strong>Interval</strong>. To go to setting date intervals, you can double-click the content of the <strong>Date, Time </strong>column</div>
+</li><li>
+<div>Select data in one of the log columns, click <span lang="EN-US" style="FONT-SIZE: 11pt; FONT-FAMILY: &quot;Calibri&quot;,sans-serif; LINE-HEIGHT: 107%; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: Calibri; mso-fareast-theme-font: minor-latin; mso-hansi-theme-font: minor-latin; mso-bidi-font-family: &quot;Times New Roman&quot;; mso-bidi-theme-font: minor-bidi; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA"><strong>Set filter by value in current column</strong></span>. By this the application will filter log events which contain these data. The same command can be found in the right-click menu</div>
+</li><li>
+<div>To filter events by one or several criteria, click<strong><img src="StdPicture.FilterCriterion"></img>Set filtering</strong>. You can also follow the link to the <strong>Filter </strong>field. If any filters are set (including quick filters), the link takes the values of the filtering criteria, and if no filters are set, the link takes the value <strong>Not set</strong>. Filters can be set in the following ways:</div>
+<ul><li>
+<div>in the <strong>Interval</strong> field choose the period, specify the <strong>Beginning of period</strong> and <strong>End of period</strong></div>
+</li><li>
+<div>in the <strong>Importance</strong> list, using checkboxes choose one or several types of events <strong>(Error</strong>, <strong>Warning</strong>, <strong>Information</strong>, <strong>Note</strong>) by which events should be filtered. All checkboxes are selected by default</div>
+</li><li>
+<div>in the <strong>Events</strong> field, choose values from the list using checkboxes (all checkboxes are selected by default)</div>
+</li><li>
+<div>in the <strong>Users</strong> field, choose values from the list using checkboxes (this list specifies only users included in the event log. The checkboxes are cleared by default)</div>
+</li><li>
+<div>in the <strong>Applications</strong> field, choose values from the list using checkboxes (<strong>Configurator</strong>, <strong>Thin client</strong>, <strong>Background task</strong>. The checkboxes are cleared by default)</div>
+</li><li>
+<div>in the <strong>Computers</strong> field, choose the needed values from the list using checkboxes (The checkboxes are cleared by default)</div>
+</li><li>
+<div>in the <strong>Sessions</strong> field, list the needed numbers of sessions separated by "<strong>;</strong>"</div>
+</li><li>in the <strong>Data</strong> fields group, you can choose one of the following filtering types to facilitate the search: 
+<ul><li>
+<div>in the <strong>Metadata </strong>field,<strong> </strong>using checkboxes choose needed values from the list (the list is ordered by data types) for filtering: choose the needed name of the list, document, etc., for example, "Russian banks classifier guide"</div>
+</li><li>in the <strong>Data</strong> field, you can select search elements from application lists: 
+<ul><li>
+<div>select the <strong>Data type</strong>, for example, "Bank" </div>
+</li><li>
+<div>from the corresponding application list, for example, "Russian banks classifier", select a particular application object, for example, "Sberbank"</div></li></ul></li></ul></li><li>
+<div>in the <strong>Data presentation</strong> field, input search data manually or copy the data from the list</div>
+</li><li>
+<div>In the <strong>Transaction</strong> fields group, choose the <strong>Transaction status </strong>from the list using checkboxes (<strong>No transaction</strong>, <strong>Fixed</strong>, <strong>Not completed</strong>, <strong>Canceled</strong>). All checkboxes are selected by default. Filtering by the transaction <strong>Identifier</strong> field is also possible</div>
+</li><li>
+<div>in the <strong>Other</strong> fields group, you can select with checkboxes <strong><span lang="EN-US" style="FONT-SIZE: 11pt; FONT-FAMILY: &quot;Calibri&quot;,sans-serif; LINE-HEIGHT: 107%; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: Calibri; mso-fareast-theme-font: minor-latin; mso-hansi-theme-font: minor-latin; mso-bidi-font-family: &quot;Times New Roman&quot;; mso-bidi-theme-font: minor-bidi; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">Working servers, Main IP-ports, Auxiliary IP-ports</span></strong>, and also perform filtering by the <strong>Comment </strong>field</div></li></ul></li><li>
+<div>After specifying fields for filtering, press <strong>OK</strong>. After that events will be filtered and the link will take the form of the filtering criteria list</div>
+</li><li>
+<div>Records satisfying the set criteria will be displayed in the amount not exceeding the value of the <strong>Display </strong>field </div>
+</li><li>
+<div>To disable all filters (including quick ones), click <span lang="EN-US" style="FONT-SIZE: 11pt; FONT-FAMILY: &quot;Calibri&quot;,sans-serif; LINE-HEIGHT: 107%; mso-ascii-theme-font: minor-latin; mso-fareast-font-family: Calibri; mso-fareast-theme-font: minor-latin; mso-hansi-theme-font: minor-latin; mso-bidi-font-family: &quot;Times New Roman&quot;; mso-bidi-theme-font: minor-bidi; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA"><strong>Remove filters</strong></span> or run the <strong>More - Remove filters </strong>command. This command can also be found in the right-click menu</div></li></ul><h3>Viewing event</h3>
+<ul><li>
+<div>To view detailed information on an <a href="DataProcessor.EventLogMonitor.Form.EventForm/Help">event</a>, select it in the list and click <img src="StdPicture.Properties"></img><strong>Open</strong>. This command can be found in the right-click menu</div>
+</li><li>
+<div>You can also view the event by double-clicking the required line </div></li></ul><h3>Viewing application objects</h3>
+<p class="Usual">If the event is linked to a application object, you can open this object for viewing. </p>
+<ul><li>
+<div>Select the required data in the <strong>Data, Comment</strong> column of the corresponding event and click<img src="StdPicture.ShowData"></img><strong>Open data for viewing</strong>. This command can also be found in the right-click menu</div>
+</li><li>
+<div>You can also open data for viewing by double-clicking content of the <strong>Data, Comment </strong>column</div></li></ul><h3>See also</h3>
+<ul><li><a href="v8help://frame/form_common">Working with forms</a></li></ul></body></html>

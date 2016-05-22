@@ -1,0 +1,633 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Title>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Clearing address classifier</v8:content>
+		</v8:item>
+	</Title>
+	<Height>15</Height>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
+	<SaveDataInSettings>UseList</SaveDataInSettings>
+	<AutoTitle>false</AutoTitle>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnOpen">OnOpen</Event>
+		<Event name="BeforeClose">BeforeClose</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+		<Event name="OnClose">OnClose</Event>
+	</Events>
+	<ChildItems>
+		<Pages name="ClearingSteps" id="59">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Clearing steps</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Clearing steps</v8:content>
+				</v8:item>
+			</ToolTip>
+			<PagesRepresentation>None</PagesRepresentation>
+			<ExtendedTooltip name="ClearingStepsExtendedTooltip" id="60"/>
+			<ChildItems>
+				<Page name="StatesToClearSelection" id="61">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>States to clear selection</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>States to clear selection</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="StatesToClearSelectionExtendedTooltip" id="62"/>
+					<ChildItems>
+						<Table name="RFTerritorialEntities" id="1">
+							<Representation>Tree</Representation>
+							<ChangeRowSet>false</ChangeRowSet>
+							<ChangeRowOrder>false</ChangeRowOrder>
+							<Header>false</Header>
+							<HorizontalLines>false</HorizontalLines>
+							<VerticalLines>false</VerticalLines>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>RFTerritorialEntities</DataPath>
+							<RowPictureDataPath>RFTerritorialEntities.Exported</RowPictureDataPath>
+							<CommandSet>
+								<ExcludedCommand>Copy</ExcludedCommand>
+								<ExcludedCommand>MoveUp</ExcludedCommand>
+								<ExcludedCommand>SelectAll</ExcludedCommand>
+								<ExcludedCommand>Delete</ExcludedCommand>
+								<ExcludedCommand>EndEdit</ExcludedCommand>
+								<ExcludedCommand>Add</ExcludedCommand>
+								<ExcludedCommand>Change</ExcludedCommand>
+								<ExcludedCommand>MoveDown</ExcludedCommand>
+							</CommandSet>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="RFTerritorialEntitiesContextMenu" id="2"/>
+							<AutoCommandBar name="RFTerritorialEntitiesCommandBar" id="3">
+								<Autofill>false</Autofill>
+								<ChildItems>
+									<Button name="RFTerritorialEntitiesSelectCheckboxes" id="47">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.CheckAll</CommandName>
+										<ExtendedTooltip name="RFTerritorialEntitiesSelectCheckboxesExtendedTooltip" id="48"/>
+									</Button>
+									<Button name="RFTerritorialEntitiesUncheckAll" id="49">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.UncheckAll</CommandName>
+										<ExtendedTooltip name="RFTerritorialEntitiesUncheckAllExtendedTooltip" id="50"/>
+									</Button>
+									<Button name="RFTerritorialEntitiesFind" id="43">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Item.RFTerritorialEntities.StandardCommand.Find</CommandName>
+										<ExtendedTooltip name="RFTerritorialEntitiesSearchExtendedTooltip" id="44"/>
+									</Button>
+									<Button name="RFTerritorialEntitiesCancelSearch" id="45">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Item.RFTerritorialEntities.StandardCommand.CancelSearch</CommandName>
+										<ExtendedTooltip name="RFTerritorialEntitiesCancelSearchExtendedTooltip" id="46"/>
+									</Button>
+								</ChildItems>
+							</AutoCommandBar>
+							<ExtendedTooltip name="RFTerritorialEntitiesExtendedTooltip" id="4"/>
+							<SearchStringAddition name="RFTerritorialEntitiesSearchString" id="119">
+								<AdditionSource>
+									<Item>RFTerritorialEntities</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="RFTerritorialEntitiesSearchStringContextMenu" id="120"/>
+								<ExtendedTooltip name="RFTerritorialEntitiesSearchStringExtendedTooltip" id="121"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="RFTerritorialEntitiesStatusView" id="122">
+								<AdditionSource>
+									<Item>RFTerritorialEntities</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="RFTerritorialEntitiesViewStatusContextMenu" id="123"/>
+								<ExtendedTooltip name="RFTerritorialEntitiesViewStatusExtendedTooltip" id="124"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="RFTerritorialEntitiesSearchManagement" id="125">
+								<AdditionSource>
+									<Item>RFTerritorialEntities</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="RFTerritorialEntitiesSearchManagementContextMenu" id="126"/>
+								<ExtendedTooltip name="RFTerritorialEntitiesSearchManagementExtendedTooltip" id="127"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="Selection">RFTerritorialEntitiesSelection</Event>
+							</Events>
+							<ChildItems>
+								<ColumnGroup name="RFTerritorialEntitiesGroup" id="134">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>RF territorial entities</v8:content>
+										</v8:item>
+									</Title>
+									<Group>InCell</Group>
+									<ExtendedTooltip name="RFTerritorialEntitiesGroupExtendedTooltip" id="135"/>
+									<ChildItems>
+										<CheckBoxField name="RFTerritorialEntitiesClear" id="20">
+											<DataPath>RFTerritorialEntities.Clear</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="RFTerritorialEntitiesClearContextMenu" id="21"/>
+											<ExtendedTooltip name="RFTerritorialEntitiesClearExtendedTooltip" id="22"/>
+											<Events>
+												<Event name="OnChange">RFTerritorialEntitiesClearOnChange</Event>
+											</Events>
+										</CheckBoxField>
+										<LabelField name="RFTerritorialEntitiesRepresentation" id="17">
+											<DataPath>RFTerritorialEntities.Presentation</DataPath>
+											<HorizontalAlign>Left</HorizontalAlign>
+											<EditMode>EnterOnInput</EditMode>
+											<FooterHorizontalAlign>Left</FooterHorizontalAlign>
+											<ContextMenu name="RFTerritorialEntitiesPresentationContextMenu" id="18"/>
+											<ExtendedTooltip name="RFTerritorialEntitiesPresentationExtendedTooltip" id="19"/>
+										</LabelField>
+									</ChildItems>
+								</ColumnGroup>
+							</ChildItems>
+						</Table>
+						<UsualGroup name="ImportingCommandsGroup" id="8">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Importing commands group</v8:content>
+								</v8:item>
+							</Title>
+							<HorizontalStretch>true</HorizontalStretch>
+							<Group>Horizontal</Group>
+							<Representation>NormalSeparation</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ImportingCommandsGroupExtendedTooltip" id="9"/>
+							<ChildItems>
+								<LabelField name="SelectedStatesToClear" id="51">
+									<DataPath>SelectedStatesToClear</DataPath>
+									<HorizontalAlign>Left</HorizontalAlign>
+									<Width>2</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<Format>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>NZ=-</v8:content>
+										</v8:item>
+									</Format>
+									<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+									<ContextMenu name="SelectedStatesToClearContextMenu" id="52"/>
+									<ExtendedTooltip name="SelectedStatesToClearExtendedTooltip" id="53"/>
+								</LabelField>
+								<LabelDecoration name="LabelIndent" id="116">
+									<HorizontalStretch>true</HorizontalStretch>
+									<ContextMenu name="LabelIndentContextMenu" id="117"/>
+									<ExtendedTooltip name="LabelIndentExtendedTooltip" id="118"/>
+								</LabelDecoration>
+								<CommandBar name="ImportingGroupCommandsBar" id="128">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Importing group commands bar</v8:content>
+										</v8:item>
+									</Title>
+									<HorizontalLocation>Right</HorizontalLocation>
+									<ExtendedTooltip name="ImportingGroupCommandsBarExtendedTooltip" id="129"/>
+									<ChildItems>
+										<Button name="Clear" id="10">
+											<Type>CommandBarButton</Type>
+											<DefaultButton>true</DefaultButton>
+											<CommandName>Form.Command.Clear</CommandName>
+											<ExtendedTooltip name="ClearExtendedTooltip" id="11"/>
+										</Button>
+									</ChildItems>
+								</CommandBar>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="WaitingForClearing" id="63">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Waiting for clearing</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Waiting for clearing</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="WaitingForClearingExtendedTooltip" id="64"/>
+					<ChildItems>
+						<UsualGroup name="DetailsGroup" id="65">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group description</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group description</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupDescriptionExtendedTooltip" id="66"/>
+							<ChildItems>
+								<PictureDecoration name="LongOperationPicture" id="67">
+									<Width>10</Width>
+									<Height>4</Height>
+									<HorizontalStretch>false</HorizontalStretch>
+									<VerticalStretch>false</VerticalStretch>
+									<Picture>
+										<xr:Ref>CommonPicture.LongOperation48</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="LongOperationPictureContextMenu" id="68"/>
+									<ExtendedTooltip name="LongOperationPictureExtendedTooltip" id="69"/>
+								</PictureDecoration>
+								<LabelField name="ClearingDescriptionText" id="73">
+									<DataPath>ClearingDescriptionText</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+									<ContextMenu name="ClearingDescriptionTextContextMenu" id="74"/>
+									<ExtendedTooltip name="ClearingDescriptionTextExtendedTooltip" id="75">
+										<Title formatted="false">
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Clearing of address classifier can take
+a long time which depends on the number of selected regions of the RF.</v8:content>
+											</v8:item>
+										</Title>
+									</ExtendedTooltip>
+								</LabelField>
+							</ChildItems>
+						</UsualGroup>
+						<LabelDecoration name="Decoration2" id="80">
+							<VerticalStretch>true</VerticalStretch>
+							<ContextMenu name="Decoration2ContextMenu" id="81"/>
+							<ExtendedTooltip name="Decoration2ExtendedTooltip" id="82"/>
+						</LabelDecoration>
+						<LabelField name="ImportingStatusText" id="88">
+							<DataPath>ClearingStatusText</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<ContextMenu name="ImportingStatusTextContextMenu" id="89"/>
+							<ExtendedTooltip name="ImportingStatusTextExtendedTooltip" id="90"/>
+						</LabelField>
+						<UsualGroup name="CancelCommandsGroup" id="76">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Cancel commands group</v8:content>
+								</v8:item>
+							</Title>
+							<HorizontalStretch>true</HorizontalStretch>
+							<VerticalStretch>true</VerticalStretch>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="CancelCommandsGroupExtendedTooltip" id="77"/>
+							<ChildItems>
+								<LabelDecoration name="Decoration3" id="85">
+									<HorizontalStretch>true</HorizontalStretch>
+									<ContextMenu name="Decoration3ContextMenu" id="86"/>
+									<ExtendedTooltip name="Decoration3ExtendedTooltip" id="87"/>
+								</LabelDecoration>
+								<CommandBar name="CancelCommandsGroupBar" id="130">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Cancel commands group bar</v8:content>
+										</v8:item>
+									</Title>
+									<HorizontalLocation>Right</HorizontalLocation>
+									<ExtendedTooltip name="CancelCommandsGroupBarExtendedTooltip" id="131"/>
+									<ChildItems>
+										<Button name="BreakClearing" id="78">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.BreakClearing</CommandName>
+											<ExtendedTooltip name="BreakClearingExtendedTooltip" id="79"/>
+										</Button>
+									</ChildItems>
+								</CommandBar>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="SuccessfulCompletion" id="91">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Successful completion</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Successful completion</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="SuccessfulCompletionExtendedTooltip" id="92"/>
+					<ChildItems>
+						<UsualGroup name="GroupCompletionDetails" id="93">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group description</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group description</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupCompletionDescriptionExtendedTooltip" id="94"/>
+							<ChildItems>
+								<PictureDecoration name="PictureSuccessfulCompletion" id="95">
+									<Width>10</Width>
+									<Height>2</Height>
+									<HorizontalStretch>false</HorizontalStretch>
+									<VerticalStretch>false</VerticalStretch>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Long operation</v8:content>
+										</v8:item>
+									</Title>
+									<Picture>
+										<xr:Ref>CommonPicture.Successfully32</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="PictureSuccessfulCompletionContextMenu" id="96"/>
+									<ExtendedTooltip name="PictureSuccessfulCompletionExtendedTooltip" id="97"/>
+								</PictureDecoration>
+								<LabelField name="CompletionClearingDescriptionText" id="98">
+									<DataPath>ClearingDescriptionText</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<TitleLocation>None</TitleLocation>
+									<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+									<ContextMenu name="CompletionClearingDescriptionTextContextMenu" id="99"/>
+									<ExtendedTooltip name="ClearingCompletionDescriptionTextExtendedTooltip" id="100"/>
+								</LabelField>
+							</ChildItems>
+						</UsualGroup>
+						<LabelDecoration name="Decoration4" id="103">
+							<VerticalStretch>true</VerticalStretch>
+							<ContextMenu name="Decoration4ContextMenu" id="104"/>
+							<ExtendedTooltip name="Decoration4ExtendedTooltip" id="105"/>
+						</LabelDecoration>
+						<UsualGroup name="CompletionCommandsGroup" id="101">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Completion commands group</v8:content>
+								</v8:item>
+							</Title>
+							<HorizontalStretch>true</HorizontalStretch>
+							<VerticalStretch>true</VerticalStretch>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="CompletionCommandsGroupExtendedTooltip" id="102"/>
+							<ChildItems>
+								<LabelDecoration name="Decoration5" id="111">
+									<HorizontalStretch>true</HorizontalStretch>
+									<ContextMenu name="Decoration5ContextMenu" id="112"/>
+									<ExtendedTooltip name="Decoration5ExtendedTooltip" id="113"/>
+								</LabelDecoration>
+								<CommandBar name="CompletionCommandsGroupPanel" id="132">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Completion commands group panel</v8:content>
+										</v8:item>
+									</Title>
+									<HorizontalLocation>Right</HorizontalLocation>
+									<ExtendedTooltip name="CompletionCommandsGroupPanelExtendedTooltip" id="133"/>
+									<ChildItems>
+										<Button name="Close" id="114">
+											<Type>CommandBarButton</Type>
+											<Representation>Text</Representation>
+											<CommandName>Form.StandardCommand.Close</CommandName>
+											<ExtendedTooltip name="CloseExtendedTooltip" id="115"/>
+										</Button>
+									</ChildItems>
+								</CommandBar>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="RFTerritorialEntities" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>RF territorial entities</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="RFTerritorialEntityCode" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>RF territorial entity code</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>2</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="Presentation" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>RFTerritorialEntity</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Exported" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Exported</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Clear" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Clear</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="SelectedStatesToClear" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>States</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>2</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ClearingDescriptionText" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Clearing description text</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ClearingStatusText" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Clearing status text</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ParametersOfLongOperation" id="10">
+			<Type/>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="Clear" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Clear address information</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Clear address information for selected states</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Clear</Action>
+		</Command>
+		<Command name="CheckAll" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Check all</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Select all states for exporting</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.CheckAll</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>CheckAll</Action>
+		</Command>
+		<Command name="UncheckAll" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Uncheck all</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Clear mark for export from all states</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.UncheckAll</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>UncheckAll</Action>
+		</Command>
+		<Command name="BreakClearing" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Break</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Break cleaning</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>BreakClearing</Action>
+		</Command>
+	</Commands>
+</Form>

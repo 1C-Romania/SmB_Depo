@@ -1,0 +1,374 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="FormCommandBar" id="-1"/>
+	<Events>
+		<Event name="NotificationProcessing">NotificationProcessing</Event>
+		<Event name="OnOpen">OnOpen</Event>
+		<Event name="OnClose">OnClose</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="Code" id="1">
+			<DataPath>Object.Code</DataPath>
+			<UserVisible>
+				<xr:Common>false</xr:Common>
+			</UserVisible>
+			<EditMode>EnterOnInput</EditMode>
+			<ContextMenu name="CodeContextMenu" id="2"/>
+			<ExtendedTooltip name="CodeExtendedTooltip" id="3"/>
+		</InputField>
+		<InputField name="Description" id="4">
+			<DataPath>Object.Description</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<ContextMenu name="DescriptionContextMenu" id="5"/>
+			<ExtendedTooltip name="DescriptionExtendedTooltip" id="6"/>
+		</InputField>
+		<UsualGroup name="MainParametersGroup" id="30">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Main parameters group</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Main parameters group</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="MainParametersGroupExtendedTooltip" id="31"/>
+			<ChildItems>
+				<InputField name="Prefix" id="7">
+					<DataPath>Object.Prefix</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Prefix</v8:content>
+						</v8:item>
+					</Title>
+					<EditMode>EnterOnInput</EditMode>
+					<Width>5</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="PrefixContextMenu" id="8"/>
+					<ExtendedTooltip name="PrefixExtendedTooltip" id="9"/>
+				</InputField>
+				<InputField name="Suffix" id="10">
+					<DataPath>Object.Suffix</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Suffix</v8:content>
+						</v8:item>
+					</Title>
+					<EditMode>EnterOnInput</EditMode>
+					<Width>5</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="SuffixContextMenu" id="11"/>
+					<ExtendedTooltip name="SuffixExtendedTooltip" id="12"/>
+				</InputField>
+				<InputField name="BlocksDelimiter" id="13">
+					<DataPath>Object.BlocksDelimiter</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="BlocksDelimiterContextMenu" id="14"/>
+					<ExtendedTooltip name="BlocksDelimiterExtendedTooltip" id="15"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="GroupCodeLength" id="28">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Code length</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group code length</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<ExtendedTooltip name="GroupCodeLengthExtendedTooltip" id="29"/>
+			<ChildItems>
+				<InputField name="CodeLength" id="34">
+					<DataPath>Object.CodeLength</DataPath>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>If length is not specified then it is not controlled. Code length includes prefix, suffix and delimiters.</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ToolTipRepresentation>ShowRight</ToolTipRepresentation>
+					<ContextMenu name="CodeLengthContextMenu" id="35"/>
+					<ExtendedTooltip name="CodeLengthExtendedTooltip" id="36"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="GroupFieldDataCode" id="32">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Data of field where the code is stored</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<ExtendedTooltip name="GroupFieldDataCodeExtendedTooltip" id="33"/>
+			<ChildItems>
+				<InputField name="BlockNumber" id="22">
+					<DataPath>Object.BlockNumber</DataPath>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>If number is not specified then the 1st block is used</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ToolTipRepresentation>ShowRight</ToolTipRepresentation>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="BlockNumberContextMenu" id="23"/>
+					<ExtendedTooltip name="BlockNumberExtendedTooltip" id="24"/>
+				</InputField>
+				<InputField name="FirstFieldSymbolNumber" id="16">
+					<DataPath>Object.FirstFieldSymbolNumber</DataPath>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>If number is not specified then start with the 1st symbol</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ToolTipRepresentation>ShowRight</ToolTipRepresentation>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="FirstFieldSymbolNumberContextMenu" id="17"/>
+					<ExtendedTooltip name="FirstFieldSymbolNumberExtendedTooltip" id="18"/>
+				</InputField>
+				<InputField name="FieldLenght" id="19">
+					<DataPath>Object.FieldLenght</DataPath>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>If length is not specified then the entire block is used as a code</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ToolTipRepresentation>ShowRight</ToolTipRepresentation>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="FieldLengthContextMenu" id="20"/>
+					<ExtendedTooltip name="FieldLengthExtendedTooltip" id="21"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="GroupExamples" id="42">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Examples</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Examples</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<CollapsedRepresentationTitle>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Examples</v8:content>
+				</v8:item>
+			</CollapsedRepresentationTitle>
+			<ExtendedTooltip name="GroupExamplesExtendedTooltip" id="43"/>
+			<ChildItems>
+				<UsualGroup name="GroupCardCodeAsExampleAndTemplateCheck" id="54">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group card code as an example and template check</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group card code as an example and template check</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="GroupCardCodeAsExampleAndTemplateCheckExtendedTooltip" id="55"/>
+					<ChildItems>
+						<UsualGroup name="GroupTemplateCheck" id="52">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group template check</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group template check</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupTemplateCheckExtendedTooltip" id="53"/>
+							<ChildItems>
+								<InputField name="CardCode" id="44">
+									<DataPath>CardCode</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Card data (as an example)</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>To view the code read the card on magnetic card reader</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ToolTipRepresentation>None</ToolTipRepresentation>
+									<ContextMenu name="CardCodeContextMenu" id="45"/>
+									<ExtendedTooltip name="CardCodeExtendedTooltip" id="46"/>
+								</InputField>
+								<Button name="CheckTemplate" id="50">
+									<Type>UsualButton</Type>
+									<CommandName>Form.Command.CheckCodeByTemplate</CommandName>
+									<ExtendedTooltip name="CheckTemplateExtendedTooltip" id="51"/>
+								</Button>
+								<InputField name="CardCodeByTemplate" id="47">
+									<DataPath>CardCodeByTemplate</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<TitleLocation>None</TitleLocation>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="CardCodeByTemplateContextMenu" id="48"/>
+									<ExtendedTooltip name="CardCodeByTemplateExtendedTooltip" id="49"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<LabelDecoration name="DecorationHelp" id="56">
+							<TextColor>style:ExplanationText</TextColor>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>To view card data read tha card on magnetic card reader</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="DecorationToolTipContextMenu" id="57"/>
+							<ExtendedTooltip name="DecorationHelpExtendedTooltip" id="58"/>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<LabelDecoration name="ExamplesMagneticCardsTemplates" id="37">
+					<Title formatted="true">
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>&lt;fontsize 10&gt;&lt;b&gt;Example 1: ";00035?" and code = "&lt;/&gt;&lt;/&gt;&lt;fontsize 10&gt;&lt;b&gt;00035&lt;/&gt;&lt;/&gt;&lt;fontsize 10&gt;&lt;b&gt;"&lt;/&gt;&lt;/&gt;
+In this case the tamplate may not be used.
+Settings: Prefix = "&lt;fontsize 10&gt;&lt;b&gt;;&lt;/&gt;&lt;/&gt;", suffix = "&lt;fontsize 10&gt;&lt;b&gt;?&lt;/&gt;&lt;/&gt;",code length = "&lt;fontsize 10&gt;&lt;b&gt;7&lt;/&gt;&lt;/&gt;". Leave the other fields empty or = 0.
+
+&lt;fontsize 10&gt;&lt;b&gt;Example 2&lt;/&gt;&lt;/&gt;&lt;fontsize 10&gt;&lt;b&gt;: ";00&lt;/&gt;&lt;/&gt;&lt;fontsize 10&gt;&lt;b&gt;351&lt;/&gt;&lt;/&gt;&lt;fontsize 10&gt;&lt;b&gt;=1234322&lt;/&gt;&lt;/&gt;&lt;fontsize 10&gt;&lt;b&gt;?" and code = "00351"&lt;/&gt;&lt;/&gt;
+Settings: Prefix = "&lt;fontsize 10&gt;&lt;b&gt;;&lt;/&gt;&lt;/&gt;", suffix = "&lt;fontsize 10&gt;&lt;b&gt;?&lt;/&gt;&lt;/&gt;", separator = "&lt;fontsize 10&gt;&lt;b&gt;=&lt;/&gt;&lt;/&gt;", code length= "&lt;fontsize 10&gt;&lt;b&gt;15&lt;/&gt;&lt;/&gt;". Leave the other fields empty or = 0.
+
+&lt;fontsize 10&gt;&lt;b&gt;Example 3&lt;/&gt;&lt;/&gt;&lt;fontsize 10&gt;&lt;b&gt;: ";00&lt;/&gt;&lt;/&gt;&lt;fontsize 10&gt;&lt;b&gt;351&lt;/&gt;&lt;/&gt;&lt;fontsize 10&gt;&lt;b&gt;=1234322&lt;/&gt;&lt;/&gt;&lt;fontsize 10&gt;&lt;b&gt;?" and code = "&lt;/&gt;&lt;/&gt;&lt;fontsize 10&gt;&lt;b&gt;1234322&lt;/&gt;&lt;/&gt;&lt;fontsize 10&gt;&lt;b&gt;"&lt;/&gt;&lt;/&gt;
+Settings: Prefix = "&lt;fontsize 10&gt;&lt;b&gt;;&lt;/&gt;&lt;/&gt;", suffix = "&lt;fontsize 10&gt;&lt;b&gt;?&lt;/&gt;&lt;/&gt;", separator = "&lt;fontsize 10&gt;&lt;b&gt;=&lt;/&gt;&lt;/&gt;", code length = "&lt;fontsize 10&gt;&lt;b&gt;15&lt;/&gt;&lt;/&gt;", number block = "&lt;fontsize 10&gt;&lt;b&gt;2&lt;/&gt;&lt;/&gt;". Leave the other fields empty or = 0.
+
+&lt;fontsize 10&gt;&lt;b&gt;Example 4&lt;/&gt;&lt;/&gt;&lt;fontsize 10&gt;&lt;b&gt;: ";&lt;/&gt;&lt;/&gt;&lt;fontsize 10&gt;&lt;b&gt;00035&lt;/&gt;&lt;/&gt;&lt;fontsize 10&gt;&lt;b&gt;342^&lt;/&gt;&lt;/&gt;&lt;fontsize 10&gt;&lt;b&gt;Petrov Ivan&lt;/&gt;&lt;/&gt;&lt;fontsize 10&gt;&lt;b&gt;?^=12012344&lt;/&gt;&lt;/&gt;&lt;fontsize 10&gt;&lt;b&gt;" and code = "&lt;/&gt;&lt;/&gt;&lt;fontsize 10&gt;&lt;b&gt;35&lt;/&gt;&lt;/&gt;&lt;fontsize 10&gt;&lt;b&gt;342&lt;/&gt;&lt;/&gt;&lt;fontsize 10&gt;&lt;b&gt;"&lt;/&gt;&lt;/&gt;
+Settings: Prefix = "&lt;fontsize 10&gt;&lt;b&gt;;&lt;/&gt;&lt;/&gt;", suffix = "&lt;fontsize 10&gt;&lt;b&gt;?&lt;/&gt;&lt;/&gt;", separator = "&lt;fontsize 10&gt;&lt;b&gt;=&lt;/&gt;&lt;/&gt;", number of first symbol = "&lt;fontsize 10&gt;&lt;b&gt;4&lt;/&gt;&lt;/&gt;", fields length= "&lt;fontsize 10&gt;&lt;b&gt;5&lt;/&gt;&lt;/&gt;". Leave the other fields empty or = 0.
+
+</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTipRepresentation>ShowAuto</ToolTipRepresentation>
+					<ContextMenu name="ExamplesMagneticCardsTemplatesContextMenu" id="38"/>
+					<ExtendedTooltip name="ExamplesMagneticCardsTemplatesExtendedTooltip" id="39"/>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Type>
+				<v8:Type>cfg:CatalogObject.DiscountCardsTemplates</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="CardCode" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Card code</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="CardCodeByTemplate" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Card code by template</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="SupportedPeripheralTypes" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Supported peripherals types</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="UsePeripherals" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Use peripherals</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="CheckCodeByTemplate" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Check code by template</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Check code by template</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>CheckTemplate</Action>
+		</Command>
+	</Commands>
+</Form>

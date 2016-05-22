@@ -1,0 +1,610 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<AutoTime>CurrentOrLast</AutoTime>
+	<UsePostingMode>Auto</UsePostingMode>
+	<RepostOnWrite>true</RepostOnWrite>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<ChildItems>
+			<ButtonGroup name="ImportantCommandsGroup" id="120">
+				<Title>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Important commands</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTip>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Important commands</v8:content>
+					</v8:item>
+				</ToolTip>
+				<ExtendedTooltip name="ImportantCommandsGroupExtendedTooltip" id="121"/>
+			</ButtonGroup>
+			<ButtonGroup name="GroupGlobalCommands" id="122">
+				<Title>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Global commands group</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTip>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Global commands group</v8:content>
+					</v8:item>
+				</ToolTip>
+				<CommandSource>FormCommandPanelGlobalCommands</CommandSource>
+				<ExtendedTooltip name="GroupGlobalCommandsExtendedTooltip" id="123"/>
+				<ChildItems>
+					<Button name="CommonCommandReportByMovements" id="126">
+						<Type>CommandBarButton</Type>
+						<OnlyInAllActions>false</OnlyInAllActions>
+						<CommandName>CommonCommand.ReportByMovements</CommandName>
+						<DataPath>Object.Ref</DataPath>
+						<ExtendedTooltip name="CommonCommandReportByMovementsExtendedTooltip" id="127"/>
+					</Button>
+					<Button name="CommonCommandObjectFilling" id="124">
+						<Type>CommandBarButton</Type>
+						<CommandName>CommonCommand.ObjectFilling</CommandName>
+						<DataPath>Object.Ref</DataPath>
+						<ExtendedTooltip name="CommonCommandObjectFillingExtendedTooltip" id="125"/>
+					</Button>
+					<Button name="CommonCommandObjectReports" id="128">
+						<Type>CommandBarButton</Type>
+						<CommandName>CommonCommand.ObjectReports</CommandName>
+						<DataPath>Object.Ref</DataPath>
+						<ExtendedTooltip name="CommonCommandObjectReportsExtendedTooltip" id="129"/>
+					</Button>
+				</ChildItems>
+			</ButtonGroup>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="AfterWrite">AfterWrite</Event>
+		<Event name="OnReadAtServer">OnReadAtServer</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="Header" id="35">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Header</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Header</v8:content>
+				</v8:item>
+			</ToolTip>
+			<HorizontalStretch>true</HorizontalStretch>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="HeaderExtendedTooltip" id="79"/>
+			<ChildItems>
+				<UsualGroup name="GroupHeaderMain" id="77">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Header group main</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Header group main</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="GroupHeaderMainExtendedTooltip" id="83"/>
+					<ChildItems>
+						<InputField name="Company" id="8">
+							<DataPath>Object.Company</DataPath>
+							<SkipOnInput>true</SkipOnInput>
+							<Wrap>false</Wrap>
+							<ContextMenu name="CounterpartyContextMenu" id="9"/>
+							<ExtendedTooltip name="CounterpartyExtendedTooltip" id="84"/>
+							<Events>
+								<Event name="OnChange">CompanyOnChange</Event>
+							</Events>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="GroupHeaderAdditionally" id="78">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group header additionally</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group header additionally</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="HeaderGroupAdditionallyExtendedTooltip" id="80"/>
+					<ChildItems>
+						<LabelDecoration name="Decoration1" id="113">
+							<HorizontalStretch>true</HorizontalStretch>
+							<ContextMenu name="Decoration1ContextMenu" id="114"/>
+							<ExtendedTooltip name="Decoration1ExtendedTooltip" id="115"/>
+						</LabelDecoration>
+						<InputField name="Number" id="3">
+							<DataPath>Object.Number</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<SkipOnInput>true</SkipOnInput>
+							<Width>10</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Wrap>false</Wrap>
+							<PasswordMode>false</PasswordMode>
+							<InputHint>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;Auto&gt;</v8:content>
+								</v8:item>
+							</InputHint>
+							<ContextMenu name="NumberContextMenu" id="4"/>
+							<ExtendedTooltip name="NumberExtendedTooltip" id="81"/>
+						</InputField>
+						<InputField name="Date" id="5">
+							<DataPath>Object.Date</DataPath>
+							<SkipOnInput>true</SkipOnInput>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>from</v8:content>
+								</v8:item>
+							</Title>
+							<Width>15</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Wrap>false</Wrap>
+							<ContextMenu name="DateContextMenu" id="6"/>
+							<ExtendedTooltip name="DateExtendedTooltip" id="82"/>
+							<Events>
+								<Event name="OnChange">DateOnChange</Event>
+							</Events>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<Pages name="Pages" id="116">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Pages</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Pages</v8:content>
+				</v8:item>
+			</ToolTip>
+			<ExtendedTooltip name="PagesExtendedTooltip" id="117"/>
+			<ChildItems>
+				<Page name="VA" id="36">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Assets</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Assets</v8:content>
+						</v8:item>
+					</ToolTip>
+					<TitleDataPath>Object.FixedAssets.RowsCount</TitleDataPath>
+					<ExtendedTooltip name="FAExtendedTooltip" id="85"/>
+					<ChildItems>
+						<Table name="FixedAssets" id="12">
+							<Representation>List</Representation>
+							<SkipOnInput>false</SkipOnInput>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>Object.FixedAssets</DataPath>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="FixedAssetsContextMenu" id="13"/>
+							<AutoCommandBar name="FixedAssetsCommandBar" id="14"/>
+							<ExtendedTooltip name="FixedAssetsExtendedTooltip" id="86"/>
+							<SearchStringAddition name="FixedAssetsSearchString" id="104">
+								<AdditionSource>
+									<Item>FixedAssets</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="FixedAssetsSearchStringContextMenu" id="105"/>
+								<ExtendedTooltip name="FixedAssetsSearchStringExtendedTooltip" id="106"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="FixedAssetsStatusView" id="107">
+								<AdditionSource>
+									<Item>FixedAssets</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="FixedAssetsViewStatusContextMenu" id="108"/>
+								<ExtendedTooltip name="FixedAssetsViewStatusExtendedTooltip" id="109"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="FixedAssetsSearchManagement" id="110">
+								<AdditionSource>
+									<Item>FixedAssets</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="FixedAssetsSearchManagementContextMenu" id="111"/>
+								<ExtendedTooltip name="FixedAssetsSearchManagementExtendedTooltip" id="112"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="OnStartEdit">FixedAssetsOnStartEdit</Event>
+							</Events>
+							<ChildItems>
+								<InputField name="FixedAssetsStringNumber" id="46">
+									<DataPath>Object.FixedAssets.LineNumber</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<FixingInTable>Left</FixingInTable>
+									<Width>4</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<Wrap>false</Wrap>
+									<ContextMenu name="FixedAssetsLineNumberContextMenu" id="47"/>
+									<ExtendedTooltip name="FixedAssetsLineNumberExtendedTooltip" id="87"/>
+								</InputField>
+								<InputField name="CapitalAsstesCapitalAsset" id="48">
+									<DataPath>Object.FixedAssets.FixedAsset</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<FixingInTable>Left</FixingInTable>
+									<Width>25</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<Wrap>false</Wrap>
+									<ContextMenu name="FixedAssetsFixedAssetContextMenu" id="49"/>
+									<ExtendedTooltip name="FixedAssetsFixedAssetExtendedTooltip" id="88"/>
+									<Events>
+										<Event name="OnChange">FixedAssetsFixedAssetOnChange</Event>
+									</Events>
+								</InputField>
+								<InputField name="FixedAssetsUsagePeriodForDepreciationCalculation" id="50">
+									<DataPath>Object.FixedAssets.UsagePeriodForDepreciationCalculation</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Useful life (mo.)</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>12</Width>
+									<Wrap>false</Wrap>
+									<ContextMenu name="FixedAssetsUsagePeriodForDepreciationCalculationContextMenu" id="51"/>
+									<ExtendedTooltip name="FixedAssetsUsagePeriodForDepreciationCalculationExtendedTooltip" id="89"/>
+									<Events>
+										<Event name="OnChange">FixedAssetsUsagePeriodForDepreciationCalculationOnChange</Event>
+									</Events>
+								</InputField>
+								<InputField name="FixedAssetsAmountOfProductionWorkForCalculatingDepreciation" id="52">
+									<DataPath>Object.FixedAssets.AmountOfProductsServicesForDepreciationCalculation</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Wrap>false</Wrap>
+									<ContextMenu name="FixedAssetsAmountOfWorkProductionForCalculatingDepreciationContextMenu" id="53"/>
+									<ExtendedTooltip name="FixedAssetsAmountOfWorkProductionForCalculatingDepreciationExtendedTooltip" id="90"/>
+									<Events>
+										<Event name="OnChange">FixedAssetsVolumeProductsWorksForDepreciationCalculationOnChange</Event>
+									</Events>
+								</InputField>
+								<InputField name="FixedAssetsActivityDirection" id="60">
+									<DataPath>Object.FixedAssets.BusinessActivity</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Wrap>false</Wrap>
+									<ContextMenu name="FixedAssetsBusinessActivityContextMenu" id="61"/>
+									<ExtendedTooltip name="FixedAssetsBusinessActivityExtendedTooltip" id="91"/>
+								</InputField>
+								<InputField name="FixedAssetsStructuralUnit" id="62">
+									<DataPath>Object.FixedAssets.StructuralUnit</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Wrap>false</Wrap>
+									<ContextMenu name="FixedAssetsStructuralUnitContextMenu" id="63"/>
+									<ExtendedTooltip name="FixedAssetsStructuralUnitExtendedTooltip" id="92"/>
+								</InputField>
+								<CheckBoxField name="FixedAssetsApplyInCurrentMonth" id="56">
+									<DataPath>Object.FixedAssets.ApplyInCurrentMonth</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="FixedAssetsApplyInCurrentMonthContextMenu" id="57"/>
+									<ExtendedTooltip name="FixedAssetsApplyInCurrentMonthExtendedTooltip" id="93"/>
+								</CheckBoxField>
+								<InputField name="FixedAssetsCostForDepreciationCalculationBeforeChanging" id="73">
+									<DataPath>Object.FixedAssets.CostForDepreciationCalculationBeforeChanging</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="CurrentCostForFixedAssetsDepreciationCalculationContextMenu" id="74"/>
+									<ExtendedTooltip name="CurrentCostOfFixedAssetsForCalculatingDepreciationExtendedTooltip" id="94"/>
+								</InputField>
+								<InputField name="FixedAssetsCostForDepreciationCalculation" id="54">
+									<DataPath>Object.FixedAssets.CostForDepreciationCalculation</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Wrap>false</Wrap>
+									<ContextMenu name="FixedAssetsCostForDepreciationCalculationContextMenu" id="55"/>
+									<ExtendedTooltip name="FixedAssetsCostForDepreciationCalculationExtendedTooltip" id="95"/>
+								</InputField>
+								<InputField name="FixedAssetsGLExpenseAccount" id="58">
+									<DataPath>Object.FixedAssets.GLExpenseAccount</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Wrap>false</Wrap>
+									<ContextMenu name="FixedAssetsExpenseAccountContextMenu" id="59"/>
+									<ExtendedTooltip name="FixedAssetsExpenseAccountExtendedTooltip" id="96"/>
+								</InputField>
+								<InputField name="FixedAssetsRevaluationAccount" id="75">
+									<DataPath>Object.FixedAssets.RevaluationAccount</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="FixedAssetsRevaluationAccountContextMenu" id="76"/>
+									<ExtendedTooltip name="FixedAssetsRevaluationAccountExtendedTooltip" id="97"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="AdvancedPage" id="118">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Additionally</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Advanced page</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="AdvancedPageExtendedTooltip" id="119"/>
+					<ChildItems>
+						<InputField name="Comment" id="10">
+							<DataPath>Object.Comment</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<MultiLine>true</MultiLine>
+							<InputHint>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Comment</v8:content>
+								</v8:item>
+							</InputHint>
+							<ContextMenu name="CommentContextMenu" id="11"/>
+							<ExtendedTooltip name="CommentExtendedTooltip" id="98"/>
+							<Events>
+								<Event name="OnChange">CommentOnChange</Event>
+							</Events>
+						</InputField>
+						<LabelField name="DocumentAuthor" id="71">
+							<DataPath>Object.Author</DataPath>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Author of document</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Width>35</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Border width="1">
+								<v8ui:style xsi:type="v8ui:ControlBorderType">Single</v8ui:style>
+							</Border>
+							<TextColor>#993300</TextColor>
+							<ContextMenu name="AuthorDocumentContextMenu" id="72"/>
+							<ExtendedTooltip name="DocumentAuthorExtendedTooltip" id="103"/>
+						</LabelField>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Type>
+				<v8:Type>cfg:DocumentObject.FixedAssetsModernization</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+			<UseAlways>
+				<Field>Object.RegisterRecords</Field>
+			</UseAlways>
+		</Attribute>
+		<Attribute name="SubsidiaryCompany" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>SubsidiaryCompany</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Companies</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="DocumentDate" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Document date</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>DateTime</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="CostItemDepreciationOfFixedAssets" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>The cost of depreciation of fixed assets</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="TableFixedAssets" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Assets</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="FixedAsset" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Assets</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.FixedAssets</v8:Type>
+					</Type>
+				</Column>
+				<Column name="CostForDepreciationCalculation" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Cost for depreciation calculation</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="UsagePeriodForDepreciationCalculation" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Usage period to calculate depreciation</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>4</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="GLExpenseAccount" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>GL expense account</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:ChartOfAccountsRef.Managerial</v8:Type>
+					</Type>
+				</Column>
+				<Column name="BusinessActivity" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Business activity</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.BusinessActivities</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Division" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Division</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.StructuralUnits</v8:Type>
+					</Type>
+				</Column>
+				<Column name="AmountOfProductsServicesForDepreciationCalculation" id="10">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Amount of finished goods services for depreciation calculation</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="Division" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Division</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="PostingIsAllowed" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Posting is allowed</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="MainDivision" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Main division</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.StructuralUnits</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<CommandInterface>
+		<NavigationPanel>
+			<Item>
+				<Command>3:b492ee69-b518-4421-adb6-88baac778e66</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+		</NavigationPanel>
+	</CommandInterface>
+</Form>

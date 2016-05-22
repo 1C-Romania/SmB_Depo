@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<MetaDataObject xmlns="http://v8.1c.ru/8.3/MDClasses" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:cmi="http://v8.1c.ru/8.2/managed-application/cmi" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xpr="http://v8.1c.ru/8.3/xcf/predef" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<FilterCriterion uuid="0eaf5cce-274c-4d51-9fae-446407325553">
+		<InternalInfo>
+			<xr:GeneratedType name="FilterCriterionManager.Dependencies" category="Manager">
+				<xr:TypeId>59f0e5a5-ea55-4895-b490-fd6d2906c9f8</xr:TypeId>
+				<xr:ValueId>2bc595c0-8440-4995-9796-c0a747cb3c58</xr:ValueId>
+			</xr:GeneratedType>
+			<xr:GeneratedType name="FilterCriterionList.Dependencies" category="List">
+				<xr:TypeId>356f2676-21a3-4039-8e82-ba8df18fa07a</xr:TypeId>
+				<xr:ValueId>2accd320-4ca1-4e24-904b-ee1b5071c5f1</xr:ValueId>
+			</xr:GeneratedType>
+		</InternalInfo>
+		<Properties>
+			<Name>Dependencies</Name>
+			<Synonym>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Hierarchy structure</v8:content>
+				</v8:item>
+			</Synonym>
+			<Comment/>
+			<Type/>
+			<UseStandardCommands>true</UseStandardCommands>
+			<Content>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.ExpenseReport.TabularSection.AdvancesPaid.Attribute.Document</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.ExpenseReport.TabularSection.Inventory.Attribute.CustomerOrder</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.ExpenseReport.TabularSection.Expenses.Attribute.CustomerOrder</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.ExpenseReport.TabularSection.Payments.Attribute.Order</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.ExpenseReport.TabularSection.Payments.Attribute.Document</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.ExpenseReport.TabularSection.Payments.Attribute.InvoiceForPayment</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.AcceptanceCertificate.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.AcceptanceCertificate.Attribute.CustomerOrder</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.AcceptanceCertificate.TabularSection.WorksAndServices.Attribute.CustomerOrder</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.AcceptanceCertificate.TabularSection.Prepayment.Attribute.Document</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.AcceptanceCertificate.TabularSection.Prepayment.Attribute.Order</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.Budget.TabularSection.Incomings.Attribute.CustomerOrder</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.Budget.TabularSection.Expenses.Attribute.CustomerOrder</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.EnterOpeningBalance.TabularSection.Inventory.Attribute.CustomerOrder</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.EnterOpeningBalance.TabularSection.DirectCost.Attribute.CustomerOrder</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.EnterOpeningBalance.TabularSection.InventoryTransferred.Attribute.Order</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.EnterOpeningBalance.TabularSection.InventoryReceived.Attribute.Order</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.EnterOpeningBalance.TabularSection.AccountsReceivable.Attribute.CustomerOrder</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.EnterOpeningBalance.TabularSection.AccountsReceivable.Attribute.Document</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.EnterOpeningBalance.TabularSection.AccountsPayable.Attribute.PurchaseOrder</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.EnterOpeningBalance.TabularSection.AccountsPayable.Attribute.Document</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.EnterOpeningBalance.TabularSection.AdvanceHolderPayments.Attribute.Document</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.Netting.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.Netting.TabularSection.Debitor.Attribute.Document</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.Netting.TabularSection.Debitor.Attribute.Order</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.Netting.TabularSection.Creditor.Attribute.Document</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.Netting.TabularSection.Creditor.Attribute.Order</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.PowerOfAttorney.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.AdditionalCosts.Attribute.PurchaseOrder</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.AdditionalCosts.TabularSection.Inventory.Attribute.ReceiptDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.AdditionalCosts.TabularSection.Inventory.Attribute.CustomerOrder</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.AdditionalCosts.TabularSection.Prepayment.Attribute.Document</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.WorkOrder.Attribute.Event</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.WorkOrder.TabularSection.Works.Attribute.Customer</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.ProductionOrder.Attribute.CustomerOrder</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.ProductionOrder.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.CustomerOrder.Attribute.Event</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.CustomerOrder.TabularSection.Prepayment.Attribute.Document</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.PurchaseOrder.Attribute.CustomerOrder</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.PurchaseOrder.Attribute.Event</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.Payroll.TabularSection.AccrualsDeductions.Attribute.CustomerOrder</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.InventoryReceipt.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.AgentReport.TabularSection.Inventory.Attribute.CustomerOrder</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.AgentReport.TabularSection.Prepayment.Attribute.Document</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.AgentReport.TabularSection.Prepayment.Attribute.Order</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.ReportToPrincipal.TabularSection.Inventory.Attribute.CustomerOrder</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.ReportToPrincipal.TabularSection.Inventory.Attribute.PurchaseOrder</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.ReportToPrincipal.TabularSection.Prepayment.Attribute.Document</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.ReportToPrincipal.TabularSection.Prepayment.Attribute.Order</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.ProcessingReport.Attribute.CustomerOrder</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.ProcessingReport.TabularSection.Prepayment.Attribute.Document</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.RetailReport.Attribute.InventoryReconciliation</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.SubcontractorReport.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.SubcontractorReport.Attribute.CustomerOrder</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.SubcontractorReport.TabularSection.Prepayment.Attribute.Document</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.FixedAssetsTransfer.TabularSection.Prepayment.Attribute.Document</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.CashTransfer.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.InventoryTransfer.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.InventoryTransfer.Attribute.CustomerOrder</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.InventoryTransfer.TabularSection.Inventory.Attribute.CustomerOrder</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.TransferBetweenCells.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.SalesTarget.TabularSection.Inventory.Attribute.CustomerOrder</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.PaymentOrder.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.CashReceipt.Attribute.Document</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.CashReceipt.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.CashReceipt.TabularSection.PaymentDetails.Attribute.Document</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.CashReceipt.TabularSection.PaymentDetails.Attribute.Order</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.CashReceipt.TabularSection.PaymentDetails.Attribute.InvoiceForPayment</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.PaymentReceiptPlan.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.PaymentReceipt.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.PaymentReceipt.Attribute.Document</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.PaymentReceipt.TabularSection.PaymentDetails.Attribute.Document</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.PaymentReceipt.TabularSection.PaymentDetails.Attribute.Order</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.PaymentReceipt.TabularSection.PaymentDetails.Attribute.InvoiceForPayment</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoice.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoice.Attribute.Order</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoice.TabularSection.Inventory.Attribute.Order</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoice.TabularSection.Expenses.Attribute.PurchaseOrder</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoice.TabularSection.Expenses.Attribute.Order</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoice.TabularSection.Prepayment.Attribute.Document</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoice.TabularSection.Prepayment.Attribute.Order</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.GoodsReceipt.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.OtherExpenses.TabularSection.Expenses.Attribute.CustomerOrder</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.CostAllocation.TabularSection.Costs.Attribute.CustomerOrder</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.CostAllocation.TabularSection.CostAllocation.Attribute.CustomerOrder</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.CostAllocation.TabularSection.Products.Attribute.CustomerOrder</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.CostAllocation.TabularSection.Inventory.Attribute.CustomerOrder</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.CostAllocation.TabularSection.InventoryDistribution.Attribute.CustomerOrder</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.CashOutflowPlan.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.CashPayment.Attribute.Document</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.CashPayment.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.CashPayment.TabularSection.PaymentDetails.Attribute.Document</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.CashPayment.TabularSection.PaymentDetails.Attribute.Order</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.CashPayment.TabularSection.PaymentDetails.Attribute.InvoiceForPayment</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.CashPayment.TabularSection.PaymentDetails.Attribute.PlanningDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.CashPayment.TabularSection.PayrollPayment.Attribute.Statement</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.CustomerInvoice.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.CustomerInvoice.Attribute.Order</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.CustomerInvoice.TabularSection.Inventory.Attribute.Order</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.CustomerInvoice.TabularSection.Prepayment.Attribute.Document</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.CustomerInvoice.TabularSection.Prepayment.Attribute.Order</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.GoodsExpense.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.PaymentExpense.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.PaymentExpense.Attribute.Document</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.PaymentExpense.TabularSection.PaymentDetails.Attribute.Document</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.PaymentExpense.TabularSection.PaymentDetails.Attribute.Order</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.PaymentExpense.TabularSection.PaymentDetails.Attribute.InvoiceForPayment</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.PaymentExpense.TabularSection.PaymentDetails.Attribute.PlanningDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.PaymentExpense.TabularSection.PayrollPayment.Attribute.Statement</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.InventoryReservation.Attribute.CustomerOrder</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.InventoryAssembly.Attribute.CustomerOrder</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.InventoryAssembly.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.JobSheet.TabularSection.Operations.Attribute.CustomerOrder</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.Event.Attribute.EventType</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.Event.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.Event.TabularSection.BasisDocuments.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.InventoryWriteOff.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.InvoiceForPayment.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.InvoiceForPayment.Attribute.Event</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoiceForPayment.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoiceForPayment.Attribute.Event</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.CustomerInvoiceNote.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.CustomerInvoiceNote.TabularSection.BasisDocuments.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoiceNote.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.ReceiptCR.Attribute.CashCRSession</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.ReceiptCRReturn.Attribute.ReceiptCR</xr:Item>
+			</Content>
+			<DefaultForm/>
+			<AuxiliaryForm/>
+			<ListPresentation/>
+			<ExtendedListPresentation/>
+			<Explanation>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Document subordination structure</v8:content>
+				</v8:item>
+			</Explanation>
+		</Properties>
+		<ChildObjects/>
+	</FilterCriterion>
+</MetaDataObject>

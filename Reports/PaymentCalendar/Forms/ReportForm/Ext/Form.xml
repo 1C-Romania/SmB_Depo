@@ -1,0 +1,398 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
+	<SaveDataInSettings>UseList</SaveDataInSettings>
+	<CommandBarLocation>None</CommandBarLocation>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<ReportResult>Result</ReportResult>
+	<DetailsData>DetailsData</DetailsData>
+	<ReportFormType>Main</ReportFormType>
+	<VariantAppearance>CurrentVariantDescription</VariantAppearance>
+	<AutoShowState>ShowOnComposition</AutoShowState>
+	<AutoCommandBar name="FormCommandBar" id="-1"/>
+	<Events>
+		<Event name="NotificationProcessing">NotificationProcessing</Event>
+		<Event name="OnSaveVariantAtServer">OnSaveVariantAtServer</Event>
+		<Event name="OnLoadUserSettingsAtServer">OnLoadUserSettingsAtServer</Event>
+		<Event name="OnLoadVariantAtServer">OnLoadVariantAtServer</Event>
+		<Event name="OnSaveUserSettingsAtServer">OnSaveUserSettingsAtServer</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="PeriodGroup" id="56">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group period</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group period</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="PeriodGroupExtendedTooltip" id="126"/>
+			<ChildItems>
+				<InputField name="Company" id="54">
+					<DataPath>Company</DataPath>
+					<TitleLocation>Top</TitleLocation>
+					<Wrap>false</Wrap>
+					<ContextMenu name="CounterpartyContextMenu" id="55"/>
+					<ExtendedTooltip name="CounterpartyExtendedTooltip" id="127"/>
+					<Events>
+						<Event name="OnChange">CompanyOnChange</Event>
+					</Events>
+				</InputField>
+				<InputField name="DelayedPaymentsPeriod" id="118">
+					<DataPath>Report.DelayedPaymentsPeriod</DataPath>
+					<TitleLocation>Top</TitleLocation>
+					<ContextMenu name="DelayedPaymentsPeriodContextMenu" id="119"/>
+					<ExtendedTooltip name="DelayedPaymentsPeriodExtendedTooltip" id="128"/>
+					<Events>
+						<Event name="OnChange">DelayedPaymentsPeriodOnChange</Event>
+					</Events>
+				</InputField>
+				<InputField name="FuturePaymentsPeriod" id="120">
+					<DataPath>Report.FuturePaymentsPeriod</DataPath>
+					<TitleLocation>Top</TitleLocation>
+					<ContextMenu name="FuturePaysPeriodContextMenu" id="121"/>
+					<ExtendedTooltip name="FuturePaysPeriodExtendedTooltip" id="129"/>
+					<Events>
+						<Event name="OnChange">FuturePaymentsPeriodOnChange</Event>
+					</Events>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ReportGroup" id="6">
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="RequestGroupExtendedTooltip" id="130"/>
+			<ChildItems>
+				<Button name="CAIncomePlanCreate" id="115">
+					<Type>UsualButton</Type>
+					<SkipOnInput>false</SkipOnInput>
+					<CommandName>Document.PaymentReceiptPlan.StandardCommand.Create</CommandName>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Add receipt</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="CAReceiptCreatePlanExtendedTooltip" id="131"/>
+				</Button>
+				<Button name="CAExpencePlanCreate" id="116">
+					<Type>UsualButton</Type>
+					<SkipOnInput>false</SkipOnInput>
+					<CommandName>0:d996c48f-3ab5-4b25-a452-7dafc2f39e98</CommandName>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Add Expense</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="CAExpenseCreatePlanExtendedTooltip" id="132"/>
+				</Button>
+				<Button name="CATransferPlanCreate" id="117">
+					<Type>UsualButton</Type>
+					<SkipOnInput>false</SkipOnInput>
+					<CommandName>Document.CashTransferPlan.StandardCommand.Create</CommandName>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Add transfer</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="CATransferPlanCreateExtendedTooltip" id="133"/>
+				</Button>
+				<Button name="Generate" id="36">
+					<Type>UsualButton</Type>
+					<SkipOnInput>false</SkipOnInput>
+					<CommandName>Form.Command.Generate</CommandName>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Generate</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="GenerateExtendedTooltip" id="134"/>
+				</Button>
+				<UsualGroup name="MainGroup" id="8">
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="MainGroupExtendedTooltip" id="135"/>
+					<ChildItems>
+						<CommandBar name="MainCommandBar" id="9">
+							<ExtendedTooltip name="MainCommandBarExtendedTooltip" id="136"/>
+							<ChildItems>
+								<Button name="Settings" id="10">
+									<Type>CommandBarButton</Type>
+									<SkipOnInput>false</SkipOnInput>
+									<CommandName>Form.StandardCommand.ReportSettings</CommandName>
+									<ExtendedTooltip name="SettingsExtendedTooltip" id="137"/>
+								</Button>
+								<Button name="SelectConfiguration" id="11">
+									<Type>CommandBarButton</Type>
+									<SkipOnInput>false</SkipOnInput>
+									<OnlyInAllActions>false</OnlyInAllActions>
+									<CommandName>Form.StandardCommand.LoadReportSettings</CommandName>
+									<ExtendedTooltip name="ChooseConfigureExtendedTooltip" id="138"/>
+								</Button>
+								<Button name="SaveSetting" id="12">
+									<Type>CommandBarButton</Type>
+									<SkipOnInput>false</SkipOnInput>
+									<OnlyInAllActions>false</OnlyInAllActions>
+									<CommandName>Form.StandardCommand.SaveReportSettings</CommandName>
+									<ExtendedTooltip name="SaveConfigurationExtendedTooltip" id="139"/>
+								</Button>
+								<Button name="StandardSetting" id="13">
+									<Type>CommandBarButton</Type>
+									<SkipOnInput>false</SkipOnInput>
+									<OnlyInAllActions>false</OnlyInAllActions>
+									<CommandName>Form.StandardCommand.StandardSettings</CommandName>
+									<ExtendedTooltip name="StandardSettingExtendedTooltip" id="140"/>
+								</Button>
+								<Button name="ChangeVariant" id="79">
+									<Type>CommandBarButton</Type>
+									<SkipOnInput>false</SkipOnInput>
+									<OnlyInAllActions>false</OnlyInAllActions>
+									<CommandName>Form.StandardCommand.ChangeVariant</CommandName>
+									<ExtendedTooltip name="ChangeVariantExtendedTooltip" id="141"/>
+								</Button>
+								<Button name="SaveVariant" id="80">
+									<Type>CommandBarButton</Type>
+									<SkipOnInput>false</SkipOnInput>
+									<OnlyInAllActions>false</OnlyInAllActions>
+									<CommandName>Form.StandardCommand.SaveVariant</CommandName>
+									<ExtendedTooltip name="SaveVariantExtendedTooltip" id="142"/>
+								</Button>
+								<Button name="ChooseVariant" id="81">
+									<Type>CommandBarButton</Type>
+									<SkipOnInput>false</SkipOnInput>
+									<OnlyInAllActions>false</OnlyInAllActions>
+									<CommandName>Form.StandardCommand.LoadVariant</CommandName>
+									<ExtendedTooltip name="SelectVariantExtendedTooltip" id="143"/>
+								</Button>
+								<Button name="NewWindow" id="14">
+									<Type>CommandBarButton</Type>
+									<SkipOnInput>false</SkipOnInput>
+									<OnlyInAllActions>false</OnlyInAllActions>
+									<CommandName>Form.StandardCommand.NewWindow</CommandName>
+									<ExtendedTooltip name="NewWindowExtendedTooltip" id="144"/>
+								</Button>
+								<Button name="Help" id="17">
+									<Type>CommandBarButton</Type>
+									<SkipOnInput>false</SkipOnInput>
+									<OnlyInAllActions>true</OnlyInAllActions>
+									<CommandName>Form.StandardCommand.Help</CommandName>
+									<ExtendedTooltip name="HelpExtendedTooltip" id="145"/>
+								</Button>
+								<Button name="CollapseAllGroups" id="124">
+									<Type>CommandBarButton</Type>
+									<OnlyInAllActions>true</OnlyInAllActions>
+									<CommandName>Form.Item.Result.StandardCommand.CollapseAllGroups</CommandName>
+									<ExtendedTooltip name="CollapseAllGroupsExtendedTooltip" id="146"/>
+								</Button>
+								<Button name="ExpandAllGroups" id="125">
+									<Type>CommandBarButton</Type>
+									<OnlyInAllActions>true</OnlyInAllActions>
+									<CommandName>Form.Item.Result.StandardCommand.ExpandAllGroups</CommandName>
+									<ExtendedTooltip name="ExpandAllGroupsExtendedTooltip" id="147"/>
+								</Button>
+							</ChildItems>
+						</CommandBar>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<Table name="UserSettings" id="18">
+			<CommandBarLocation>None</CommandBarLocation>
+			<Autofill>true</Autofill>
+			<SkipOnInput>false</SkipOnInput>
+			<HeightInTableRows>5</HeightInTableRows>
+			<Header>false</Header>
+			<VerticalStretch>false</VerticalStretch>
+			<DataPath>Report.SettingsComposer.UserSettings</DataPath>
+			<CommandSet>
+				<ExcludedCommand>HierarchicalList</ExcludedCommand>
+				<ExcludedCommand>Tree</ExcludedCommand>
+				<ExcludedCommand>List</ExcludedCommand>
+			</CommandSet>
+			<SearchStringLocation>None</SearchStringLocation>
+			<ViewStatusLocation>None</ViewStatusLocation>
+			<SearchControlLocation>None</SearchControlLocation>
+			<ViewMode>QuickAccess</ViewMode>
+			<ContextMenu name="UserSettingsContextMenu" id="19"/>
+			<AutoCommandBar name="UserSettingsCommandPanel" id="20"/>
+			<ExtendedTooltip name="UserSettingsExtendedTooltip" id="148"/>
+			<SearchStringAddition name="UserSettingsSearchString" id="150">
+				<AdditionSource>
+					<Item>UserSettings</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="UserSettingsSearchStringContextMenu" id="151"/>
+				<ExtendedTooltip name="UserSettingsSearchStringExtendedTooltip" id="152"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="UserSettingsViewStatus" id="153">
+				<AdditionSource>
+					<Item>UserSettings</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="UserSettingsViewStatusContextMenu" id="154"/>
+				<ExtendedTooltip name="UserSettingsViewStatusExtendedTooltip" id="155"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="UserSettingsSearchManagement" id="156">
+				<AdditionSource>
+					<Item>UserSettings</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="UserSettingsSearchManagementContextMenu" id="157"/>
+				<ExtendedTooltip name="UserSettingsSearchManagementExtendedTooltip" id="158"/>
+			</SearchControlAddition>
+		</Table>
+		<SpreadSheetDocumentField name="Result" id="21">
+			<DataPath>Result</DataPath>
+			<DefaultItem>true</DefaultItem>
+			<TitleLocation>None</TitleLocation>
+			<Width>100</Width>
+			<Height>15</Height>
+			<SelectionShowMode>WhenActive</SelectionShowMode>
+			<ViewScalingMode>Normal</ViewScalingMode>
+			<ContextMenu name="ResultContextMenu" id="22"/>
+			<ExtendedTooltip name="ResultExtendedTooltip" id="149"/>
+			<Events>
+				<Event name="DetailProcessing">ResultDetailProcessing</Event>
+			</Events>
+		</SpreadSheetDocumentField>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Report" id="1">
+			<Type>
+				<v8:Type>cfg:ReportObject.PaymentCalendar</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<Save>
+				<Field>Report.SettingsComposer.Settings.Selection</Field>
+				<Field>Report.SettingsComposer.Settings.Order</Field>
+				<Field>Report.SettingsComposer.Settings.Filter</Field>
+				<Field>Report.SettingsComposer.Settings.ConditionalAppearance</Field>
+				<Field>Report.FuturePaymentsPeriod</Field>
+				<Field>Report.DelayedPaymentsPeriod</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="CurrentVariantDescription" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Report variant</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<Save>
+				<Field>CurrentVariantDescription</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="Result" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Result</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type xmlns:mxl="http://v8.1c.ru/8.2/data/spreadsheet">mxl:SpreadsheetDocument</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Company" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Company</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Companies</v8:Type>
+			</Type>
+			<Save>
+				<Field>Company</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="FactPaymentsInput" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Output actual payments</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<Save>
+				<Field>FactPaymentsInput</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="DetailsData" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Details data</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="CompositionSchema" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Composition scheme</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="Generate" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Generate</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Create payment calendar</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.GenerateReport</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>MakeExecute</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+	</Commands>
+</Form>

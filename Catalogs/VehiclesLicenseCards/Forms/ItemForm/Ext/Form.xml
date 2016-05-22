@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="FormCommandBar" id="-1"/>
+	<ChildItems>
+		<InputField name="Description" id="4">
+			<DataPath>Object.Description</DataPath>
+			<ReadOnly>true</ReadOnly>
+			<TitleLocation>None</TitleLocation>
+			<EditMode>EnterOnInput</EditMode>
+			<HorizontalStretch>true</HorizontalStretch>
+			<ContextMenu name="DescriptionContextMenu" id="5"/>
+			<ExtendedTooltip name="DescriptionExtendedTooltip" id="6"/>
+		</InputField>
+		<InputField name="RegistrationNumberInGovernmentAgency" id="35">
+			<DataPath>Object.RegistrationNumberInGovernmentAgency</DataPath>
+			<HorizontalStretch>true</HorizontalStretch>
+			<ContextMenu name="RegistrationNumberInGovernmentAgencyContextMenu" id="36"/>
+			<ExtendedTooltip name="RegistrationNumberInGovernmentAgencyExtendedTooltip" id="37"/>
+		</InputField>
+		<UsualGroup name="Group1" id="25">
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="Group1ExtendedTooltip" id="26"/>
+			<ChildItems>
+				<InputField name="LicenseCardSeries" id="7">
+					<DataPath>Object.LicenseCardSeries</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="LicenseCardSeriesContextMenu" id="8"/>
+					<ExtendedTooltip name="LicenseCardSeriesExtendedTooltip" id="9"/>
+					<Events>
+						<Event name="OnChange">LicenseCardSeriesOnChange</Event>
+					</Events>
+				</InputField>
+				<InputField name="LicenseCardNumber" id="10">
+					<DataPath>Object.LicenseCardNumber</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="LicenseCardNumberContextMenu" id="11"/>
+					<ExtendedTooltip name="LicenseCardNumberExtendedTooltip" id="12"/>
+					<Events>
+						<Event name="OnChange">LicenseCardNumberOnChange</Event>
+					</Events>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<InputField name="LicenseCardsDateIssued" id="16">
+			<DataPath>Object.LicenseCardsDateIssued</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<ContextMenu name="LicenseCardDateIssuedContextMenu" id="17"/>
+			<ExtendedTooltip name="LicenseCardDateIssuedExtendedTooltip" id="18"/>
+			<Events>
+				<Event name="OnChange">LicenseCardsDateIssuedOnChange</Event>
+			</Events>
+		</InputField>
+		<UsualGroup name="Group2" id="27">
+			<Group>Vertical</Group>
+			<Representation>None</Representation>
+			<ExtendedTooltip name="Group2ExtendedTooltip" id="28"/>
+			<ChildItems>
+				<InputField name="Vehicle" id="32">
+					<DataPath>Object.Owner</DataPath>
+					<ContextMenu name="VehicleContextMenu" id="33"/>
+					<ExtendedTooltip name="VehicleExtendedTooltip" id="34"/>
+				</InputField>
+				<InputField name="LicenseCardKind" id="13">
+					<DataPath>Object.LicenseCardKind</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<DropListButton>true</DropListButton>
+					<ChoiceList>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Standard (including international)</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:string">Standard</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Limited</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:string">Limited</Value>
+							</xr:Value>
+						</xr:Item>
+					</ChoiceList>
+					<ContextMenu name="LicenseCardTypeContextMenu" id="14"/>
+					<ExtendedTooltip name="LicenseCardKindExtendedTooltip" id="15"/>
+				</InputField>
+				<InputField name="VehicleLicenseValidityPeriod" id="19">
+					<DataPath>Object.VehicleLicenseValidityPeriod</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="VehicleLicenseValidityPeriodContextMenu" id="20"/>
+					<ExtendedTooltip name="VehicleLicenseValidityPeriodExtendedTooltip" id="21"/>
+				</InputField>
+				<InputField name="LicenseOwner" id="29">
+					<DataPath>Object.LicenseOwner</DataPath>
+					<ContextMenu name="LicenseOwnerContextMenu" id="30"/>
+					<ExtendedTooltip name="LicenseOwnerExtendedTooltip" id="31"/>
+					<Events>
+						<Event name="OnChange">LicenseOwnerOnChange</Event>
+					</Events>
+				</InputField>
+				<InputField name="LicensedActivityKind" id="22">
+					<DataPath>Object.ActivityKind</DataPath>
+					<TitleLocation>Left</TitleLocation>
+					<EditMode>EnterOnInput</EditMode>
+					<MultiLine>true</MultiLine>
+					<ContextMenu name="LicensedActivityTypeContextMenu" id="23"/>
+					<ExtendedTooltip name="LicensedActivityKindExtendedTooltip" id="24"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Type>
+				<v8:Type>cfg:CatalogObject.VehiclesLicenseCards</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+	</Attributes>
+</Form>

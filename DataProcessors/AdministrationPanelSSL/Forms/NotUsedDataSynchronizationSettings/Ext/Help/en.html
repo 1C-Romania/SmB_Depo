@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head><style>TABLE {
+	BORDER-TOP: 0px; BORDER-RIGHT: 0px; WIDTH: 98%; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; cellSpacing: 4; cellPadding: 0
+}
+TD {
+	VERTICAL-ALIGN: top
+}
+</style><meta content="text/html; charset=utf-8" http-equiv="Content-Type"></meta><link rel="stylesheet" type="text/css" href="v8help://service_book/service_style"></link><meta name="GENERATOR" content="MSHTML 11.00.9600.18321"></meta></head><body>
+<p>This panel is used for setting the data synchronization with other applications and shared work in the distributed database.</p>
+<ul><li><strong>Data synchronization</strong> - select this checkbox in order to activate the <strong>Data synchronization</strong> application section and commands as follows: 
+<ul><li><a href="CommonForm.DataExchanges/Help">Data synchronization</a> - activates settings and performance of data synchronization with other applications (for example, with 1C:Enterprise Accounting 3.0), as well as shared work in the distributed database. 
+</li><li><a href="InformationRegister.DataExchangeResults/Help">Warnings during data synchronization</a> - activates viewing of warnings which arose during data synchronization (unposted documents, missing attributes, conflicts and data rejected by the date of prohibition). 
+</li><li><strong>Current database prefix</strong> - a prefix is added automatically in catalogs items codes and documents numbers to distinguish applications in which they were entered, and to avoid data duplication. 
+</li><li><strong>Change</strong> - by means of this command it is possible to assign database prefix or to change it if necessary. 
+</li><li><a href="InformationRegister.ChangeProhibitionDates/Help">Data import prohibition dates</a> - activates prohibition to import the data of previous periods from other applications. See also: <strong>Data change prohibition dates</strong><strong> </strong>in the <a href="DataProcessor.AdministrationPanelSSL.Form.SupportAndService/Help">Support and service</a> subsection.</li></ul></li></ul><h3>Servers cluster temp files directory of 1C:Enterprise</h3>
+<ul><li>Path to a common shared directory for servers general temp files of 1C:Enterprise working in one cluster: 
+<ul><li><strong>Under OS Windows </strong>- specify a path to temp files common directory for all server clusters which will be used for servers working under OS Windows. 
+</li><li><strong>Under OS Linux </strong>- a path to temp files common directory for all server clusters which will be used for servers working under OS Linux.</li></ul></li><li>Temp files directory can be <strong>empty</strong> when in a cluster of 1C:Enterprise only <strong>one server</strong> or application works in <strong>file mode</strong>. 
+</li><li>If all server clusters work under operating systems of one family (Windows/Linux), then the second field can be left empty. 
+</li><li>The directory has to be <strong>available for reading and writing </strong>for all server clusters. Including all users of operating systems who start 1C:Enterprise servers. 
+</li><li>UNC path to a directory has to be identical to all servers of one family - to do this, you need to connect to servers under one name. 
+</li><li>The <strong>Linux temp files directory </strong>field can be used to specify a local path only, for example,<strong> /home/path</strong>. 
+</li><li>It is necessary to make a link to UNC path to use it. For this purpose under administrator rights (root) make the following: 
+<ul><li><strong>mkdir folder<br></strong>--- instead of <strong>folder</strong> write directory name. For example, in directory <strong>/home</strong> make <strong>mkdir shared</strong> - this command will created a directory <strong>shared</strong> with full path <strong>/home/shared</strong>. 
+</li><li><strong>mount -t cifs //server/share folder -o //domain/user, password=pwd</strong><br>- where <strong>//server/share</strong> - UNC path on other computer , <strong>folder</strong> - directory path on Linux computer, for example <strong>\home\shared</strong>, <strong>//domain/user</strong> - name of domain/user if necessary, <strong>pwd</strong> - user password (if necessary). 
+</li><li>If name and password are not necessary, the command looks like:<br><strong>mount -t cifs //server/share folder</strong> 
+</li><li>After that, specify a <strong>folder </strong>in the path to directory, for example, <strong>/home/shared</strong>.</li></ul></li></ul><p>For more information about server administration of 1C:Enterprise see the documentation on 1C:Enterprise platform.</p>
+<h3>See also </h3>
+<ul><li><a href="DataProcessor.AdministrationPanelSSL/Help">Application settings</a></li></ul></body></html>

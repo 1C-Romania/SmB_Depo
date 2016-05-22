@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"></meta><link rel="stylesheet" type="text/css" href="v8help://service_book/service_style"></link><meta name="GENERATOR" content="MSHTML 11.00.9600.18321"></meta></head><body>
+<p>Properties of the currency you use.</p>
+<p>Any company uses currency extensively: all money-related documents (invoices, payment orders, contracts, waybills) include an expressed or implied <strong>Currency</strong> field. This field is filled out according to the company's business area: it may be ruble, some foreign currency or conditional unit.</p>
+<h3>General currency information</h3>
+<div>When you add a currency from the <a href="Catalog.Currencies.Form.CurrencyPickFromClassifier/Help">All-Russian Currency Classifier</a>, the following fields of the new currency are filled out automatically:</div>
+<ul><li>
+<div><strong>Currency name</strong> - the full name of the currency.</div>
+</li><li>
+<div><strong>Numeric code</strong> - an international standard, the unique numeric code identifies the currency when exporting its rates from the Internet (from the RBC website).</div>
+</li><li>
+<div><strong>Character code</strong> - an international standard, used as a short name of the currency and its main representation.</div>
+</li><li>
+<div><strong>Currency rate</strong> - if the <strong>exported from the Internet</strong> checkbox is selected, the currency may be exported from the RBC website. </div></li></ul><h3>More about currency rate radio button</h3>
+<ul><li>
+<div>change the <strong>Currency rate is exported from the Internet</strong> radio button only in special situations:</div>
+<ul><li>
+<div>If you add a currency from the classifier (so you may export its rates) and the software suggests using this currency as the conditional unit with the rate entered manually;</div>
+</li><li>
+<div>For technical reasons, when the currency rate update is available only when the radio button is selected.</div></li></ul></li><li>
+<div>For your national currency, change the <strong>Currency rate </strong>radio button to <strong>entered manually</strong>, since the ruble-to-ruble rate will always be 1, and, for example, a Russian company should select <strong>entered manually </strong>in the Currency rate field for ruble.</div></li></ul><h3>Linking currency rate to another currency</h3>
+<ul><li>The company may use this option to calculate its internal rate of a specific currency. 
+</li><li>
+<div>Change the <strong>Currency rate</strong> radio button to<strong> linked</strong> <strong>to another currency</strong>.</div>
+</li><li>
+<div>Select from the list or enter the other currency which rate will determine the rate of the present currency.</div>
+</li><li>
+<div>Specify the <strong>Markup, % </strong>ratio - the coefficient for the rate of the main currency to calculate the rate of the present currency.</div></li></ul><h3>Calculation using formula</h3>
+<ul><li>You can add a currency which rate depends on multiple currencies simultaneously. 
+</li><li>To do it, change the <strong>Currency rate </strong>radio button to <strong>calculated by formula</strong>. 
+</li><li>Define the rate calculation method in the relevant field. For example, <strong>(USD+EUR)/2</strong>.</li></ul><h3>Currency wording parameters</h3>
+<p>Define the wording parameters for the integer/fraction parts of the currency to use them in print forms.</p>
+<ul><li><strong>Integer part</strong> - define the declension parameters for the currency integer part: <strong>Grammatical gender</strong> and the relevant singular/plural templates. 
+</li><li><strong>Fraction part</strong> - define the declension parameters for the currency fraction part: <strong>Grammatical gender</strong> and the relevant singular/plural templates. 
+</li><li><strong>Decimal places - </strong>if the fraction component is represented with a number, define the number of decimal places shown in the text. For example if there is one decimal place, the document amount will be shown as 150.2 euros, two decimal points correspond with 150.20 euros. 
+</li><li><strong>Amount wording sample</strong> - the number entered into the <strong>Amount </strong>field will be written according to the specified currency wording parameters. Use this option to check your currency wording parameters.</li></ul><p>By default, the currency wording parameters are available for the basic currencies: <strong>ruble, euro, and dollar</strong>. Fill in the parameters of other currencies on your own.</p>
+<h3>Viewing currency rate</h3>
+<ul><li>To convert the amount into rubles, use the <a href="InformationRegister.CurrencyRates/Help">currency rate</a>. 
+</li><li>Click <strong>Currency rates</strong> on the currency navigation panel. You can specify the review period for easy viewing of the currencies rates.</li></ul><p></p>
+<h3>Entering currency rate manually </h3>
+<ul><li>You can <a href="DataProcessor.CurrencyRatesImportProcess/Help">export</a> the main currency rates from the RBC website. If the rate of some currency can not be exported, the <strong>Currency rate</strong> radio button is automatically changed to <strong>entered manually</strong>. 
+</li><li>To enter a rate manually: 
+<ul><li>Click <strong>Currency rates</strong> on the currency navigation panel. 
+</li><li>Click <strong>Create</strong>, fill in the currency rate as of a necessary date (by default, it is the current date).</li></ul><h3>See also</h3>
+<ul><li><a href="Catalog.Currencies/Help">Currencies</a> 
+</li><li><a href="v8help://frame/form_common">Working with forms</a></li></ul></li></ul></body></html>

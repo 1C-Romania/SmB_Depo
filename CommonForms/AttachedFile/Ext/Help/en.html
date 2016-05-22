@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"></meta><link rel="stylesheet" type="text/css" href="V8help://service_book/service_style"></link><meta name="GENERATOR" content="MSHTML 11.00.9600.18321"></meta></head><body>
+<p>It is intended for viewing information about the attached file. </p>
+<p>It is opened from the <a href="CommonForm.AttachedFiles/Help">list of attached files</a> by means of the <strong>More - Open card</strong> command (F2 button). </p>
+<h3>File info</h3>
+<ul><li><strong>Description </strong>- the full name of the file. It is automatically filled in by the application when the file is attached and the file card is created, it can be changed 
+</li><li><strong>Details</strong> - file details to be entered 
+</li><li><strong>Author - </strong>the user who added the file to the base 
+</li><li><strong>Created - </strong>the date when the file was added to the base 
+</li><li><strong>Edited</strong> - the last user who edited the file 
+</li><li><strong>Changed</strong> - the date of changing file data (local time) 
+</li><li>
+<div><strong>Location - </strong>the name and date of the document to which the file is attached. You can view the document</div>
+</li><li>
+<div>
+<div><strong>Size - </strong>the size of file data</div></div>
+</li><li>
+<div><strong>Extension</strong> - the extension (format) of the file</div></li></ul><h3>Editing attached file</h3>
+<ul><li>
+<div>
+<div>In thin client, <a href="CommonForm.EditSpreadsheetDocument/Help">editing table documents files</a> (.mxl<strong> </strong>format) is done in the imbedded form of a table documents editor. IN web client, it is necessary to import an application for editing these files. <a href="InformationRegister.UserPrintTemplates/Help">Here</a> you can find details about editing table documents</div></div>
+</li><li>
+<div>For editing files of other formats you should install the related applications on the computer, for example, for editing Microsoft Word files you should have this application installed</div>
+</li><li>The <strong>View</strong> command opens the file using an external application for viewing or editing, depending on whether it is marked as being locked by other user for editing or not 
+</li><li>
+<div>
+<div>The<strong> More - Edit</strong> command opens the file in editing mode and also locks the file in the application. The locked file becomes unavailable for editing by other user of the application and is displayed in green in the list</div></div>
+</li><li>
+<div>The<strong> More</strong> <strong>- Finish editing</strong> command unlocks the file, saves it in the application and removes the edit locking mark. When you finish editing, save the file and close the external application</div>
+</li><li>
+<div>
+<div>
+<div>The <strong>More - Cancel editinging</strong> command unlocks the file without saving changes of the file made in the application and removes the edit locking mark. This command can be useful if you need to invalidate file editing results (for example, to cancel unwanted changes or errors entered to the file)</div></div></div></li></ul><h3>Saving file</h3>
+<ul><li>
+<div>With the help of the<strong> More - Save as</strong> command, you can save the file to the specified directory on the hard or network drive</div>
+</li><li>
+<div>Using the corresponding command of the <strong>More</strong> menu, you can <strong>Open file directory in Windows Explorer</strong></div></li></ul><h3>Updating file</h3>
+<ul><li>With the help of the<strong> More - Update from file on hard drive</strong> command you can update the file from the original file on the drive (based on which the file was initially created in the application)</li></ul><h3>Digital signature and encryption</h3>
+<p>When you use a digital signature, the <strong>More - Digital signature and encryption</strong> drop-down<strong> </strong>menu<strong> </strong>becomes available, which contains the following commands for working with digital signatures:</p>
+<ul><li>
+<div><strong>Sign - </strong>creates a digital signature for the file. Before creating a digital signature, the <a>application suggests choosing a </a>digital signature certificate from those available on the computer. You can choose the certificate also during application settings customization. A file being signed becomes unavailable for editing and is displayed in lists with the  <img src="CommonPicture.DigitallySigned"></img>icon</div>
+</li><li>
+<div><strong>Add digital signature from file - </strong><a href="CommonForm.AddDigitalSignatureFromFile/Help">adds signature</a> to the file. You can use this command, for example if the signature (signature file) was obtained later than the signed file was</div>
+</li><li>
+<div><strong>Save with digital signature</strong> - <a href="CommonForm.SaveWithDigitalSignature/Help">saves signature</a> to the file on the hard drive. The command can be used, for example if you need to pass a signed file to another person</div>
+</li><li>
+<div><strong>Encrypt - </strong>starts file encryption<a>. </a>Unlike signing, several certificates may be used, for example if you need to encrypt a file for several users. Encrypted files are displayed in lists with the <img src="CommonPicture.Encrypted"></img>icon</div>
+</li><li>
+<p><strong>Decrypt - </strong>initiates file decryption<a>. For</a> decryption you need to enter the password for the private key</p></li></ul><p>When using digital signatures and encryption, the following tabs are available :</p>
+<h3>Digital signatures</h3>
+<p>The tab includes information about the file digital signature:</p>
+<ul><li><strong>Signature author - </strong>the user who signed the file 
+</li><li><strong>Signature date - </strong>the date of signing the file 
+</li><li><strong>Comment</strong> - additional signature information to be entered  
+</li><li><strong>Status</strong> - the signature validity status</li></ul><p>With the help of the related commands you can:</p>
+<ul><li><strong>Sign</strong> a file 
+</li><li><strong>Open the signature</strong> - to open the window with basic properties of the digital signature certificate for the selected file: to whom it was issued and by who, purpose and validity period of the certificate on the basis of which the signature was created 
+</li><li><strong>Check</strong> if someone changed the signed file using one or several digital signature certificates. For this purpose, select one or several signatures. If the digital signature of the stored file does not correspond to any digital signature certificate, such digital signature after the checking is displayed in red in the list and has the <strong>Not valid</strong> satus in the status column <strong></strong>
+</li><li><strong>Check</strong> <strong>all</strong> - to check all signatures 
+</li><li><strong>Save</strong> the digital signature to<strong> </strong>the file on the hard drive 
+</li><li><strong>Remove </strong>the digital signature from the file</li></ul><h3>Allowed to decrypt</h3>
+<ul><li>
+<div>The tab includes information on file encryption</div>
+</li><li>
+<div>In the list, this tab displays the certificates used for file encryption. By double clicking or using the related command, you can <strong>Open digital signature certificate</strong> and view its main properties: to whom it was issued and by who, its purpose and validity period</div></li></ul><h3>See also</h3>
+<ul><li><a href="v8help://frame/form_common">Working with forms</a></li></ul></body></html>

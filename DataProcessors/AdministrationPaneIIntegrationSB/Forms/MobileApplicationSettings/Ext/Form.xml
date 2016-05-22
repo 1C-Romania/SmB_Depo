@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Title>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Synchronization with mobile applications</v8:content>
+		</v8:item>
+	</Title>
+	<AutoTitle>false</AutoTitle>
+	<Customizable>false</Customizable>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<CommandSet>
+		<ExcludedCommand>No</ExcludedCommand>
+		<ExcludedCommand>SaveValues</ExcludedCommand>
+		<ExcludedCommand>WriteAndClose</ExcludedCommand>
+		<ExcludedCommand>Abort</ExcludedCommand>
+		<ExcludedCommand>Retry</ExcludedCommand>
+		<ExcludedCommand>Yes</ExcludedCommand>
+		<ExcludedCommand>Cancel</ExcludedCommand>
+		<ExcludedCommand>RestoreValues</ExcludedCommand>
+		<ExcludedCommand>Ignore</ExcludedCommand>
+		<ExcludedCommand>OK</ExcludedCommand>
+		<ExcludedCommand>Write</ExcludedCommand>
+	</CommandSet>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="SettingsOfExchangeWithMobileApplication" id="2101">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Synchronization with mobile application</v8:content>
+				</v8:item>
+			</Title>
+			<TitleFont ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Settings of exchange with mobile application</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Width>86</Width>
+			<HorizontalStretch>false</HorizontalStretch>
+			<Group>Horizontal</Group>
+			<Representation>NormalSeparation</Representation>
+			<ChildItemsWidth>Equal</ChildItemsWidth>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="SettingsOfExchangeWithMobileApplicationExtendedTooltip" id="2102"/>
+			<ChildItems>
+				<UsualGroup name="GroupExchangeWithMobileApplication" id="2103">
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group backup recovery</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Width>86</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<Group>Horizontal</Group>
+					<Representation>StrongSeparation</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="GroupExchangeWithMobileApplicationExtendedTooltip" id="2104"/>
+					<ChildItems>
+						<PictureDecoration name="Decoration18" id="2105">
+							<Width>2</Width>
+							<Height>1</Height>
+							<Picture>
+								<xr:Ref>CommonPicture.UnavailableFieldsInformtion</xr:Ref>
+								<xr:LoadTransparent>true</xr:LoadTransparent>
+							</Picture>
+							<ContextMenu name="Decoration18ContextMenu" id="2106"/>
+							<ExtendedTooltip name="Decoration18ExtendedTooltip" id="2107"/>
+						</PictureDecoration>
+						<UsualGroup name="GroupAddressToConnectToCentralDatabaseFromMobileDevice" id="2108">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group address for connection to the central base from the mobile device</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group address for connection to the central base from the mobile device</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Shortcut>Ctrl+S</Shortcut>
+							<Group>Vertical</Group>
+							<Representation>NormalSeparation</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupAddressToConnectToCentralDatabaseFromMobileDeviceExtendedTooltip" id="2109"/>
+							<ChildItems>
+								<LabelDecoration name="ExplanationExchangeWithMobileApplication" id="2110">
+									<Height>4</Height>
+									<TextColor>style:ExplanationText</TextColor>
+									<Title formatted="true">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>With the mobile application, you can keep track of your orders and basic shipping and payment operations. It can work together with the box and cloud versions of 1C:Small Buisiness 8, and independently as well.</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="ExplanationExchangeWithMobileApplicationContextMenu" id="2111"/>
+									<ExtendedTooltip name="ExplanationExchangeWithMobileApplicationExtendedTooltip" id="2112"/>
+								</LabelDecoration>
+								<InputField name="AddressForConnectionToCentralDatabaseFromMobileDevice" id="2113">
+									<DataPath>AddressForConnectionToCentralDatabaseFromMobileDevice</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<ContextMenu name="AddressForConnectionToCentralDatabaseFromMobileDeviceContextMenu" id="2114"/>
+									<ExtendedTooltip name="AddressForConnectionToCentralDatabaseFromMobileDeviceExtendedTooltip" id="2115"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="ConstantsSet" id="1">
+			<Type>
+				<v8:Type>cfg:ConstantsSet</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<UseAlways>
+				<Field>ConstantsSet.UseUsersGroups</Field>
+				<Field>ConstantsSet.UseUserReminders</Field>
+				<Field>ConstantsSet.UseObjectVersioning</Field>
+				<Field>ConstantsSet.UseExternalUsers</Field>
+				<Field>ConstantsSet.UseDigitalSignatures</Field>
+				<Field>ConstantsSet.UseDataSynchronization</Field>
+				<Field>ConstantsSet.UseAdditionalAttributesAndInformation</Field>
+				<Field>ConstantsSet.TextFileExtensionsList</Field>
+				<Field>ConstantsSet.SystemTitle</Field>
+				<Field>ConstantsSet.StoreFilesInVolumesOnHardDisk</Field>
+				<Field>ConstantsSet.SMSProvider.Ref</Field>
+				<Field>ConstantsSet.ProhibitedDataAreaFileExtensionList</Field>
+				<Field>ConstantsSet.ProhibitImportFilesByExtension</Field>
+				<Field>ConstantsSet.PriceListShowFullDescr.Ref</Field>
+				<Field>ConstantsSet.PriceListShowCode.Ref</Field>
+				<Field>ConstantsSet.PrefixForExchangeWithSite</Field>
+				<Field>ConstantsSet.PostponeEditProhibitionDate.Ref</Field>
+				<Field>ConstantsSet.OffsetAdvancesDebtsAutomatically.Ref</Field>
+				<Field>ConstantsSet.MaxDataAreaFileSize</Field>
+				<Field>ConstantsSet.LimitAccessOnRecordsLevel</Field>
+				<Field>ConstantsSet.InfobaseUsageMode.Ref</Field>
+				<Field>ConstantsSet.FunctionalOptionUseExchangeWithSites</Field>
+				<Field>ConstantsSet.ExchangeRateDifferencesCalculationFrequency.Ref</Field>
+				<Field>ConstantsSet.DoNotPostDocumentsWithIncorrectContracts</Field>
+				<Field>ConstantsSet.DistributedInformationBaseNodePrefix</Field>
+				<Field>ConstantsSet.DiscountsMarkupsSharedUsageOptions.Ref</Field>
+				<Field>ConstantsSet.DeleteCryptographyContext.Ref</Field>
+				<Field>ConstantsSet.DeleteContractControllingOnPosting.Ref</Field>
+				<Field>ConstantsSet.DataExchangeMessagesDirectoryForWindows</Field>
+				<Field>ConstantsSet.DataExchangeMessagesDirectoryForLinux</Field>
+				<Field>ConstantsSet.DataAreasOpenDocumentFileExtensionList</Field>
+				<Field>ConstantsSet.AuthorizationContext.Ref</Field>
+				<Field>ConstantsSet.ActivityKind.Ref</Field>
+			</UseAlways>
+		</Attribute>
+		<Attribute name="AddressForConnectionToCentralDatabaseFromMobileDevice" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Address to connect from mobile device</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<FunctionalOptions>
+				<Item>FunctionalOption.SaaS</Item>
+			</FunctionalOptions>
+		</Attribute>
+	</Attributes>
+</Form>

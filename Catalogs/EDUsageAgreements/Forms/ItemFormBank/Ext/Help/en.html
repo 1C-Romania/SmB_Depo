@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"></meta><link rel="stylesheet" type="text/css" href="v8help://service_book/service_style"></link><meta name="GENERATOR" content="MSHTML 11.00.9600.18321"></meta></head><body>
+<h1>EDF settings for exchange with bank</h1>
+<p style="MARGIN-BOTTOM: 5px; MARGIN-LEFT: 20px; MARGIN-TOP: 0px"><a href="#ebf9777b737347d59d19de2295b6fd729797ade61f135f174b11e2031c66e2fdf1">Correct identification of participants in the direct exchange setting for banks</a></p>
+<p style="MARGIN-BOTTOM: 5px; MARGIN-LEFT: 20px; MARGIN-TOP: 0px"><a href="#ebf9777b737347d59d19de2295b6fd729797ade61f135f174b11e2031c66e2fdf2">Direct exchange in asynchronous mode</a></p>
+<p style="MARGIN-BOTTOM: 5px; MARGIN-LEFT: 20px; MARGIN-TOP: 0px"><a href="#ebf9777b737347d59d19de2295b6fd729797ade61f135f174b11e2031c66e2fdf3">Direct exchange using digital signature</a></p>
+<p style="MARGIN-BOTTOM: 5px; MARGIN-LEFT: 20px; MARGIN-TOP: 0px"><a href="#ebf9777b737347d59d19de2295b6fd729797ade61f135f174b11e2031c66e2fdf4">Direct exchange in asynchronous mode without digital signature</a></p>
+<p style="MARGIN-BOTTOM: 5px; MARGIN-LEFT: 20px; MARGIN-TOP: 0px"><a href="#ebf9777b737347d59d19de2295b6fd729797ade61f135f174b11e2031c66e2fdf5">Direct exchange with login/password authentication </a></p>
+<p style="MARGIN-BOTTOM: 5px; MARGIN-LEFT: 20px; MARGIN-TOP: 0px"><a href="#ebf9777b737347d59d19de2295b6fd729797ade61f135f174b11e2031c66e2fdf6">Direct exchange with additional data processor</a></p>
+<p style="MARGIN-BOTTOM: 5px; MARGIN-LEFT: 20px; MARGIN-TOP: 0px"> </p>
+<p></p><a name="ebf9777b737347d59d19de2295b6fd729797ade61f135f174b11e2031c66e2fdf1">
+<h3 style="MARGIN-LEFT: 20px">Correct identification of participants in direct exchange setting for banks</h3></a>
+<p style="MARGIN-LEFT: 20px">For direct exchange setting for banks, do following:</p>
+<ul style="MARGIN-LEFT: 40px"><li>Select an <strong>Organization</strong> 
+</li><li>Define a <strong>Bank </strong>for interaction</li></ul><blockquote style="MARGIN-RIGHT: 0px" dir="ltr">
+<p>According to the selected bank, you see a set of required parameters.</p>
+<p>If you have selected a bank which parameters are unknown, you can select a<strong> </strong>bank service <strong>connection variant</strong>.</p>
+<p>There are three connection variants:</p>
+<blockquote style="MARGIN-RIGHT: 0px" dir="ltr">
+<p><strong>- Direct connection to bank service (asynchronously)</strong>. Data request and data receipt are divided into separate processes. </p>
+<p><strong>- </strong><strong>Direct connection to bank service (synchronously)</strong>. After a data request, the system always waits for a response from the bank server. IN this case, there are two possible authentication variants: <strong>With certificate </strong>and <strong>With login and password.</strong></p>
+<p>For this variant, specify the <b>Bank resources for data exchange</b> on the <strong>Data exchange settings </strong>tab: bank web server address, data sending/receipt resources addresses. The bank provides values of these parameters when making a contract with the customer.</p>
+<p><strong>- With an additional data processor - </strong>exchange with the bank uses an additional data processor.</p>
+<p>To use this variant, enable additional reports and data processors. Then export an external data processor from a file and specify it in the agreement. The file with a data processor is provided by the bank.</p></blockquote></blockquote>
+<p style="MARGIN-LEFT: 20px"></p>
+<table border="4"><tbody><tr><td>Important. To exchange electronic documents with a specific bank, enter only one agreement for each organization. This agreement will use the settings for all the bank accounts of the organization.</td></tr></tbody></table><p></p>
+<p></p><a name="ebf9777b737347d59d19de2295b6fd729797ade61f135f174b11e2031c66e2fdf2">
+<h3 style="MARGIN-LEFT: 20px">Direct exchange in asynchronous mode</h3></a>
+<p style="MARGIN-LEFT: 20px"><font size="1">This variant generates electronic documents and sends them to the bank without a signature. After sending, payment documents are available in the external client bank. To have a payment executed, confirm it in the client bank. To log on to the bank resource, use your login and password: use the <strong>EDF settings </strong>form to:</font></p><font size="1">
+<ul><li>
+<div style="MARGIN-LEFT: 20px"><font size="1">Select the bank application: <strong>Direct connection to bank server (asynchronously).</strong></font></div>
+</li><li>
+<div style="MARGIN-LEFT: 20px">Enter the organization ID</div>
+</li><li>
+<div style="MARGIN-LEFT: 20px">Specify the bank server address</div></li></ul><p style="MARGIN-LEFT: 20px"></p><a name="ebf9777b737347d59d19de2295b6fd729797ade61f135f174b11e2031c66e2fdf3">
+<h3 style="MARGIN-LEFT: 20px">Direct exchange using digital signature</h3></a></font>
+<p style="MARGIN-LEFT: 20px">To use electronic document signature for direct exchange with banks:</p>
+<ul style="MARGIN-LEFT: 40px"><li>In common settings, enable digital signature 
+</li><li>Define general cryptography settings 
+</li><li>Select the connection variant: <strong>Direct connection to bank server (synchronously)</strong> 
+</li><li>Specify the <strong>Bank server address</strong>,<strong> resources for sending and receipt </strong>of electronic documents 
+</li><li>Specify the <strong>authentication variant - with signature certificate</strong> 
+</li><li>In the <strong>EDF settings </strong>form, in the table segment of the <strong>Digital signature key certificates, </strong>specify items of the <strong>Digital signature certificates </strong>list; set up the sequence of the organization's "first" and "second" signatures in electronic documents.</li></ul><p style="MARGIN-LEFT: 20px"></p>
+<table border="4"><tbody><tr><td>Important. The sequence of the <strong>Digital signature certificates</strong> items in the list defines the owner of the "first" and "second" signatures. If the organization has only the "first" signature in the payment order, specify only one digital signature certificate in the agreement settings.</td></tr></tbody></table><a name="ebf9777b737347d59d19de2295b6fd729797ade61f135f174b11e2031c66e2fdf3"></a><a name="ebf9777b737347d59d19de2295b6fd729797ade61f135f174b11e2031c66e2fdf4">
+<h3 style="MARGIN-LEFT: 20px">Direct exchange in synchronous mode without digital signature</h3></a>
+<p style="MARGIN-LEFT: 20px"><font size="1">This variant generates electronic documents and sends them to the bank without a signature. After sending, payment documents are available in the external client bank. To have a payment executed, confirm it in the client bank. To log on to the bank resource, use your login and password: use the <strong>EDF settings </strong>form to:</font></p>
+<ul><li>
+<div style="MARGIN-LEFT: 20px">Select the connection variant: <strong>Direct connection to bank server (synchronously)</strong></div>
+</li><li>
+<div style="MARGIN-LEFT: 20px">Specify the <strong>Bank server address, </strong><strong>resources for sending and receipt </strong>of electronic documents </div>
+</li><li>
+<div style="MARGIN-LEFT: 20px">Specify authentication variant - <strong>with login and password</strong></div></li></ul><a name="ebf9777b737347d59d19de2295b6fd729797ade61f135f174b11e2031c66e2fdf5">
+<h3 style="MARGIN-LEFT: 20px">Direct exchange with bank with login and password</h3></a>
+<p style="MARGIN-LEFT: 20px"><font size="1">This variant generates electronic documents and sends them to the bank without a signature</font>. <font size="1">After sending, payment documents are available in the external client bank</font>. <font size="1">To have a payment executed, confirm it in the client bank. To log on to the bank resource, use your login and password: use the <strong>EDF settings </strong>form to</font>:</p>
+<ul><li>
+<div style="MARGIN-LEFT: 20px">Select the bank application: <strong>Direct connection to bank server (synchronously</strong><strong>)</strong></div>
+</li><li>
+<div style="MARGIN-LEFT: 20px">Specify authentication variant - <strong>with login and password</strong></div></li></ul><p style="MARGIN-LEFT: 20px"><strong></strong> </p>
+<p style="MARGIN-LEFT: 20px"></p><a name="ebf9777b737347d59d19de2295b6fd729797ade61f135f174b11e2031c66e2fdf6">
+<h3 style="MARGIN-LEFT: 20px">Direct exchange with additional data processor</h3></a>
+<p style="MARGIN-LEFT: 20px">To use this variant, enable additional reports and data processors. Then export an external data processor from a file and specify it in the agreement. The file with a data processor is provided by the bank.</p>
+<p style="MARGIN-LEFT: 20px">In this case, all the cryptography, authentication and data transmission functions are performed with an additional data processor. To use this variant:</p>
+<ul><li>
+<div style="MARGIN-LEFT: 20px">In the application settings, enable additional reports and data processors</div>
+</li><li>
+<div style="MARGIN-LEFT: 20px">Add an additional data processor to the <strong>Additional reports and data processors </strong>catalog</div>
+</li><li>
+<div style="MARGIN-LEFT: 20px">Select the imported data processor in the EDF settings</div>
+</li><li>
+<div style="MARGIN-LEFT: 20px">In the <strong>EDF settings </strong>form, click<strong> Export certificate from storage</strong> to add necessary signature certificates</div></li></ul></body></html>

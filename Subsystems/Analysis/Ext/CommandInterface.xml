@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<CommandInterface xmlns="http://v8.1c.ru/8.3/xcf/extrnprops" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<CommandsOrder>
+		<Command name="CommonCommand.ReportsPanel_Analysis">
+			<CommandGroup>ActionsPanelReports</CommandGroup>
+		</Command>
+		<Command name="CommonCommand.AdditionalReportsAnalysis">
+			<CommandGroup>ActionsPanelReports</CommandGroup>
+		</Command>
+	</CommandsOrder>
+	<SubsystemsOrder>
+		<Subsystem>Subsystem.Analysis.Subsystem.PerformanceIndicators</Subsystem>
+		<Subsystem>Subsystem.Analysis.Subsystem.Sales</Subsystem>
+		<Subsystem>Subsystem.Analysis.Subsystem.Funds</Subsystem>
+		<Subsystem>Subsystem.Analysis.Subsystem.AccountsReceivable</Subsystem>
+		<Subsystem>Subsystem.Analysis.Subsystem.AccountsPayable</Subsystem>
+		<Subsystem>Subsystem.Analysis.Subsystem.Warehouse</Subsystem>
+		<Subsystem>Subsystem.Analysis.Subsystem.Production</Subsystem>
+		<Subsystem>Subsystem.Analysis.Subsystem.FinancialResult</Subsystem>
+		<Subsystem>Subsystem.Analysis.Subsystem.Planning</Subsystem>
+		<Subsystem>Subsystem.Analysis.Subsystem.Budgeting</Subsystem>
+	</SubsystemsOrder>
+	<GroupsOrder>
+		<Group>NavigationPanelImportant</Group>
+		<Group>NavigationPanelSeeAlso</Group>
+		<Group>ActionsPanelReports</Group>
+	</GroupsOrder>
+</CommandInterface>

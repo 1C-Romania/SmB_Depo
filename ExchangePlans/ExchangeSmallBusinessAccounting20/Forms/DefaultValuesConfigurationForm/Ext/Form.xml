@@ -1,0 +1,673 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Title>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Settings assistant</v8:content>
+		</v8:item>
+	</Title>
+	<Width>50</Width>
+	<AutoTitle>false</AutoTitle>
+	<CommandBarLocation>None</CommandBarLocation>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="FormCommandBar" id="-1"/>
+	<Events>
+		<Event name="OnOpen">OnOpen</Event>
+		<Event name="BeforeClose">BeforeClose</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<Pages name="MainPanel" id="35">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Main panel</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Main panel</v8:content>
+				</v8:item>
+			</ToolTip>
+			<PagesRepresentation>None</PagesRepresentation>
+			<ExtendedTooltip name="MainPanelExtendedTooltip" id="76"/>
+			<ChildItems>
+				<Page name="PageTaxKind" id="36">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Page tax type</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Page tax type</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="PageTaxTypeExtendedTooltip" id="77"/>
+					<ChildItems>
+						<InputField name="TaxKind" id="4">
+							<DataPath>TaxKind</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<ContextMenu name="TaxTypeContextMenu" id="5"/>
+							<ExtendedTooltip name="TaxTypeExtendedTooltip" id="78">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>The value will be added to the "Tax kind" attribute when importing from Enterprise Accounting the cash outflow documents reflecting the payment of taxes.</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+						</InputField>
+					</ChildItems>
+				</Page>
+				<Page name="PageExpenseItem" id="41">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Expense item page</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Expense item page</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="PageExpenseItemExtendedTooltip" id="80"/>
+					<ChildItems>
+						<InputField name="ExpenseItem" id="6">
+							<DataPath>ExpenseItem</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+							<ContextMenu name="ExpenseItemContextMenu" id="7"/>
+							<ExtendedTooltip name="ExpenseItemExtendedTooltip" id="81">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>The value will be added to the "CF item" attribute when importing the cash outflow documents in case this field is not filled in Enterprise Accounting.</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+						</InputField>
+					</ChildItems>
+				</Page>
+				<Page name="PageDebitItem" id="46">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Debit item page</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Debit item page</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="PageDebitItemExtendedTooltip" id="83"/>
+					<ChildItems>
+						<InputField name="DebitItem" id="8">
+							<DataPath>DebitItem</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+							<ContextMenu name="DebitItemContextMenu" id="9"/>
+							<ExtendedTooltip name="DebitItemExtendedTooltip" id="84">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Value will be used to fill in the "CF item" attribute when importing the cash assets receipt documents in case if this field is not filled in the "Enterprise Accounting" configuration.</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+						</InputField>
+					</ChildItems>
+				</Page>
+				<Page name="PagePettyCash" id="51">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Petty cash page</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Petty cash page</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="PagePettyCashExtendedTooltip" id="86"/>
+					<ChildItems>
+						<InputField name="PettyCash" id="2">
+							<DataPath>PettyCash</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<ContextMenu name="TicketBoxContextMenu" id="3"/>
+							<ExtendedTooltip name="PettyCashExtendedTooltip" id="87">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>The value will be added to the "Petty cash" attribute when importing the cash documents.</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+						</InputField>
+					</ChildItems>
+				</Page>
+				<Page name="PageCashCR" id="56">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Page cash register</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Page cash register</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="PageCashCRCRExtendedTooltip" id="89"/>
+					<ChildItems>
+						<InputField name="CashCR" id="18">
+							<DataPath>CashCR</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<ContextMenu name="CashCRContextMenu" id="19"/>
+							<ExtendedTooltip name="CashCRExtendedTooltip" id="90">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>The value will be added to the "Cash Register" attribute when exporting the cash receipt documents from the retail outlet.</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+						</InputField>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+		<LabelDecoration name="IndentDecoration" id="57">
+			<VerticalStretch>true</VerticalStretch>
+			<ContextMenu name="IndentDecorationContextMenu" id="58"/>
+			<ExtendedTooltip name="IndentDecorationExtendedTooltip" id="92"/>
+		</LabelDecoration>
+		<UsualGroup name="NavigationPanelBorder" id="59">
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Navigation panel border</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<ExtendedTooltip name="NavigationPanelBorderExtendedTooltip" id="93"/>
+			<ChildItems>
+				<Pages name="NavigationPanel" id="60">
+					<EnableContentChange>true</EnableContentChange>
+					<PagesRepresentation>None</PagesRepresentation>
+					<ExtendedTooltip name="NavigationPanelExtendedTooltip" id="94"/>
+					<ChildItems>
+						<Page name="NavigationPageStart" id="61">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Navigation page start</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Navigation page start</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<ExtendedTooltip name="NavigationPageStartExtendedTooltip" id="95"/>
+							<ChildItems>
+								<CommandBar name="CommandBarBegin" id="62">
+									<EnableContentChange>true</EnableContentChange>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Begin command bar</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Begin command bar</v8:content>
+										</v8:item>
+									</ToolTip>
+									<HorizontalLocation>Right</HorizontalLocation>
+									<ExtendedTooltip name="CommandBarBeginExtendedTooltip" id="96"/>
+									<ChildItems>
+										<Button name="CommandBack" id="63">
+											<Type>CommandBarButton</Type>
+											<Enabled>false</Enabled>
+											<CommandName>Form.Command.CommandBack</CommandName>
+											<ExtendedTooltip name="BackCommandExtendedTooltip" id="97"/>
+										</Button>
+										<Button name="CommandNext" id="64">
+											<Type>CommandBarButton</Type>
+											<DefaultButton>true</DefaultButton>
+											<CommandName>Form.Command.CommandNext</CommandName>
+											<ExtendedTooltip name="NextCommandExtendedTooltip" id="98"/>
+										</Button>
+										<Button name="CommandCancel" id="65">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.CommandCancel</CommandName>
+											<ExtendedTooltip name="CancelCommandExtendedTooltip" id="99"/>
+										</Button>
+									</ChildItems>
+								</CommandBar>
+							</ChildItems>
+						</Page>
+						<Page name="NavigationPageContinuation" id="66">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Navigation page continuation</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Navigation page 1</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<ExtendedTooltip name="NavigationPageContinuationExtendedTooltip" id="100"/>
+							<ChildItems>
+								<CommandBar name="CommandBarContinuation" id="67">
+									<EnableContentChange>true</EnableContentChange>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Command panel continuation</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Command panel continuation</v8:content>
+										</v8:item>
+									</ToolTip>
+									<HorizontalLocation>Right</HorizontalLocation>
+									<ExtendedTooltip name="CommandBarContinuedExtendedTooltip" id="101"/>
+									<ChildItems>
+										<Button name="BackCommandContinued" id="68">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.CommandBack</CommandName>
+											<ExtendedTooltip name="BackCommandContinuedExtendedTooltip" id="102"/>
+										</Button>
+										<Button name="CommandNextContinuation" id="69">
+											<Type>CommandBarButton</Type>
+											<DefaultItem>true</DefaultItem>
+											<CommandName>Form.Command.CommandNext</CommandName>
+											<ExtendedTooltip name="NextCommandContinuedExtendedTooltip" id="103"/>
+										</Button>
+										<Button name="CommandCancelContinuation" id="70">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.CommandCancel</CommandName>
+											<ExtendedTooltip name="CancelCommandContinuedExtendedTooltip" id="104"/>
+										</Button>
+									</ChildItems>
+								</CommandBar>
+							</ChildItems>
+						</Page>
+						<Page name="NavigationPageEnd" id="71">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Navigation page end</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Navigation page 1</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<ExtendedTooltip name="NavigationPageEndExtendedTooltip" id="105"/>
+							<ChildItems>
+								<CommandBar name="CommandBarEnd" id="72">
+									<EnableContentChange>true</EnableContentChange>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Command bar end</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Command bar end</v8:content>
+										</v8:item>
+									</ToolTip>
+									<HorizontalLocation>Right</HorizontalLocation>
+									<ExtendedTooltip name="CommandBarEndExtendedTooltip" id="106"/>
+									<ChildItems>
+										<Button name="CommandBackEnd" id="73">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.CommandBack</CommandName>
+											<ExtendedTooltip name="BackCommandEndExtendedTooltip" id="107"/>
+										</Button>
+										<Button name="CommandDone" id="74">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.CommandDone</CommandName>
+											<ExtendedTooltip name="DoneCommandExtendedTooltip" id="108"/>
+										</Button>
+										<Button name="CommandCancelEnd" id="75">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.CommandCancel</CommandName>
+											<ExtendedTooltip name="CancelCommandEndExtendedTooltip" id="109"/>
+										</Button>
+									</ChildItems>
+								</CommandBar>
+							</ChildItems>
+						</Page>
+					</ChildItems>
+				</Pages>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="DefaultValuesAtNode" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Default values at node</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="PettyCash" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Petty cash</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.PettyCashes</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="TaxKind" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Tax kind</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.TaxTypes</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ExpenseItem" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Cash flow item (Outcome)</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.CashFlowItems</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="DebitItem" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Cash flow item (Income)</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.CashFlowItems</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="CashCR" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Cash register</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.CashRegisters</v8:Type>
+			</Type>
+			<FunctionalOptions>
+				<Item>FunctionalOption.RetailAccounting</Item>
+			</FunctionalOptions>
+		</Attribute>
+		<Attribute name="GoToTable" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Jump table</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="GoToNumber" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Sequence number of jump</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>3</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="MainPageName" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Main page name</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="DecorationPageName" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Decoration page name</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="NavigationPageName" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Navigation page name</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="OnOpenHandlerName" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>On open handler name</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="GoNextHandlerName" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Go to next handler name</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="GoBackHandlerName" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Go back handler name</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="LongOperation" id="8">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Long operation</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="LongOperationHandlerName" id="9">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Long operation handler name</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="GoToNumber" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Sequence number of jump</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>3</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ExportModeOnDemand" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Export mode if necessary</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.ExchangeObjectsExportModes</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="CorrespondentVersion" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Correspondent version</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="CommandDone" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Done</v8:content>
+				</v8:item>
+			</Title>
+			<Action>CommandDone</Action>
+		</Command>
+		<Command name="CommandNext" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Next &gt;&gt;</v8:content>
+				</v8:item>
+			</Title>
+			<Action>CommandNext</Action>
+		</Command>
+		<Command name="CommandBack" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>&lt;&lt; Back</v8:content>
+				</v8:item>
+			</Title>
+			<Action>CommandBack</Action>
+		</Command>
+		<Command name="CommandCancel" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Cancel</v8:content>
+				</v8:item>
+			</Title>
+			<Action>CommandCancel</Action>
+		</Command>
+	</Commands>
+</Form>

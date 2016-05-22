@@ -1,0 +1,438 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<CommandSet>
+		<ExcludedCommand>CancelSearch</ExcludedCommand>
+		<ExcludedCommand>Find</ExcludedCommand>
+	</CommandSet>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<ChildItems>
+			<Button name="FormCommonCommandDependencies" id="79">
+				<Type>CommandBarButton</Type>
+				<CommandName>CommonCommand.Dependencies</CommandName>
+				<DataPath>Items.List.CurrentData.Ref</DataPath>
+				<ExtendedTooltip name="FormCommonCommandDependenciesExtendedTooltip" id="80"/>
+			</Button>
+			<Button name="FormChangeForm" id="75">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
+				<ExtendedTooltip name="FormChangeFormExtendedTooltip" id="76"/>
+			</Button>
+			<Button name="FormHelp" id="77">
+				<Type>CommandBarButton</Type>
+				<OnlyInAllActions>false</OnlyInAllActions>
+				<CommandName>Form.StandardCommand.Help</CommandName>
+				<ExtendedTooltip name="FormHelpExtendedTooltip" id="78"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<Table name="List" id="1">
+			<Representation>List</Representation>
+			<CommandBarLocation>None</CommandBarLocation>
+			<SkipOnInput>false</SkipOnInput>
+			<DefaultItem>true</DefaultItem>
+			<ChoiceMode>true</ChoiceMode>
+			<UseAlternationRowColor>true</UseAlternationRowColor>
+			<EnableStartDrag>true</EnableStartDrag>
+			<DataPath>List</DataPath>
+			<RowPictureDataPath>List.DefaultPicture</RowPictureDataPath>
+			<SearchStringLocation>CommandBar</SearchStringLocation>
+			<ViewStatusLocation>Top</ViewStatusLocation>
+			<SearchControlLocation>CommandBar</SearchControlLocation>
+			<AutoRefresh>false</AutoRefresh>
+			<AutoRefreshPeriod>60</AutoRefreshPeriod>
+			<Period>
+				<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+				<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+				<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+			</Period>
+			<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+			<RestoreCurrentRow>false</RestoreCurrentRow>
+			<TopLevelParent xsi:nil="true"/>
+			<ShowRoot>true</ShowRoot>
+			<AllowRootChoice>false</AllowRootChoice>
+			<UpdateOnDataChange>Auto</UpdateOnDataChange>
+			<ContextMenu name="ListContextMenu" id="2"/>
+			<AutoCommandBar name="ListCommandBar" id="3"/>
+			<ExtendedTooltip name="ListExtendedTooltip" id="43"/>
+			<SearchStringAddition name="SearchStringList" id="44">
+				<AdditionSource>
+					<Item>List</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ListSearchStringContextMenu" id="45"/>
+				<ExtendedTooltip name="ListSearchStringExtendedTooltip" id="46"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ListViewStatus" id="47">
+				<AdditionSource>
+					<Item>List</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ListViewStatusContextMenu" id="48"/>
+				<ExtendedTooltip name="ListViewStatusExtendedTooltip" id="49"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ListSearchControl" id="50">
+				<AdditionSource>
+					<Item>List</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ListSearchControlContextMenu" id="51"/>
+				<ExtendedTooltip name="ListSearchControlExtendedTooltip" id="52"/>
+			</SearchControlAddition>
+			<ChildItems>
+				<LabelField name="ListDate" id="4">
+					<DataPath>List.Date</DataPath>
+					<DefaultItem>true</DefaultItem>
+					<Width>10</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<Format>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>DLF=D</v8:content>
+						</v8:item>
+					</Format>
+					<ContextMenu name="DateListContextMenu" id="5"/>
+					<ExtendedTooltip name="ListDateExtendedTooltip" id="53"/>
+				</LabelField>
+				<LabelField name="ListNumber" id="6">
+					<DataPath>List.Number</DataPath>
+					<Width>11</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="NumberListContextMenu" id="7"/>
+					<ExtendedTooltip name="ListNumberExtendedTooltip" id="54"/>
+				</LabelField>
+				<ColumnGroup name="CounterpartyAdvanceHolder" id="38">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Counterparty, advance holder</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Counterparty advance holder</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>InCell</Group>
+					<ExtendedTooltip name="CounterpartyAdvanceHolderExtendedTooltip" id="65"/>
+					<ChildItems>
+						<LabelField name="ListCounterparty" id="24">
+							<DataPath>List.Counterparty</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Where</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ListCounterpartyContextMenu" id="25"/>
+							<ExtendedTooltip name="ListCounterpartyExtendedTooltip" id="66"/>
+						</LabelField>
+						<LabelField name="ListAdvanceHolder" id="26">
+							<DataPath>List.AdvanceHolder</DataPath>
+							<ShowInHeader>false</ShowInHeader>
+							<Width>1</Width>
+							<ContextMenu name="ListAdvanceHolderContextMenu" id="27"/>
+							<ExtendedTooltip name="ListAdvanceHolderExtendedTooltip" id="67"/>
+						</LabelField>
+						<LabelField name="CorrespondenceList" id="34">
+							<DataPath>List.Correspondence</DataPath>
+							<ShowInHeader>false</ShowInHeader>
+							<Width>1</Width>
+							<ContextMenu name="ListCorrespondenceContextMenu" id="35"/>
+							<ExtendedTooltip name="ListCorrespondenceExtendedTooltip" id="69"/>
+						</LabelField>
+					</ChildItems>
+				</ColumnGroup>
+				<ColumnGroup name="Amount" id="73">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Amount</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Amount</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Width>10</Width>
+					<Group>InCell</Group>
+					<ExtendedTooltip name="AmountExtendedTooltip" id="74"/>
+					<ChildItems>
+						<LabelField name="ListDocumentAmount" id="30">
+							<DataPath>List.DocumentAmount</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Amount</v8:content>
+								</v8:item>
+							</Title>
+							<Width>10</Width>
+							<ContextMenu name="ListDocumentSumContextMenu" id="31"/>
+							<ExtendedTooltip name="DocumentListExtendedTooltipSumm" id="56"/>
+						</LabelField>
+						<LabelField name="CashAssetsCurrencyList" id="32">
+							<DataPath>List.CashCurrency</DataPath>
+							<ShowInHeader>false</ShowInHeader>
+							<Width>1</Width>
+							<ContextMenu name="ListCashAssetsCurrencyContextMenu" id="33"/>
+							<ExtendedTooltip name="ListCashCurrencyExtendedTooltip" id="57"/>
+						</LabelField>
+					</ChildItems>
+				</ColumnGroup>
+				<LabelField name="PettyCashList" id="14">
+					<DataPath>List.PettyCash</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<ContextMenu name="PettyCashContextMenu" id="15"/>
+					<ExtendedTooltip name="ListCashCRExtendedTooltip" id="60"/>
+				</LabelField>
+				<LabelField name="ListCompanies" id="8">
+					<DataPath>List.Company</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<ContextMenu name="ListCompanyContextMenu" id="9"/>
+					<ExtendedTooltip name="ListCompanyExtendedTooltip" id="55"/>
+				</LabelField>
+				<LabelField name="OperationKindsList" id="12">
+					<DataPath>List.OperationKind</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Operation</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ListOperationTypeContextMenu" id="13"/>
+					<ExtendedTooltip name="OperationKindsListExtendedTooltip" id="59"/>
+				</LabelField>
+				<LabelField name="ItemList" id="16">
+					<DataPath>List.Item</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<ContextMenu name="ItemListContextMenu" id="17"/>
+					<ExtendedTooltip name="ListItemExtendedTooltip" id="61"/>
+				</LabelField>
+				<LabelField name="ListIssue" id="18">
+					<DataPath>List.Issue</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<ContextMenu name="ListIssueContextMenu" id="19"/>
+					<ExtendedTooltip name="ListIssueExtendedTooltip" id="62"/>
+				</LabelField>
+				<LabelField name="BasisList" id="20">
+					<DataPath>List.Basis</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<ContextMenu name="BasisListContextMenu" id="21"/>
+					<ExtendedTooltip name="ListBasisExtendedTooltip" id="63"/>
+				</LabelField>
+				<LabelField name="ListApplication" id="22">
+					<DataPath>List.Application</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<ContextMenu name="ListApplicationContextMenu" id="23"/>
+					<ExtendedTooltip name="ListApendixExtendedTooltip" id="64"/>
+				</LabelField>
+				<LabelField name="DocumentList" id="28">
+					<DataPath>List.Document</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<ContextMenu name="DocumentListContextMenu" id="29"/>
+					<ExtendedTooltip name="ListDocumentExtendedTooltip" id="68"/>
+				</LabelField>
+				<LabelField name="ListTypeOfTax" id="36">
+					<DataPath>List.TaxKind</DataPath>
+					<ContextMenu name="ListTypeOfTaxContextMenu" id="37"/>
+					<ExtendedTooltip name="ListTaxKindExtendedTooltip" id="70"/>
+				</LabelField>
+				<LabelField name="RegistrationPeriod" id="41">
+					<DataPath>List.RegistrationPeriod</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<Format>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>DF=MM.yyyy</v8:content>
+						</v8:item>
+					</Format>
+					<ContextMenu name="RegistrationPeriodContextMenu" id="42"/>
+					<ExtendedTooltip name="RegistrationPeriodExtendedTooltip" id="71"/>
+				</LabelField>
+				<LabelField name="CommentList" id="10">
+					<DataPath>List.Comment</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<ContextMenu name="CommentListContextMenu" id="11"/>
+					<ExtendedTooltip name="ListCommentExtendedTooltip" id="58"/>
+				</LabelField>
+				<LabelField name="ListAuthor" id="39">
+					<DataPath>List.Author</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Author</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="AuthorListContextMenu" id="40"/>
+					<ExtendedTooltip name="ListAuthorExtendedTooltip" id="72"/>
+				</LabelField>
+				<LabelField name="Ref" id="81">
+					<DataPath>List.Ref</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<ContextMenu name="RefContextMenu" id="82"/>
+					<ExtendedTooltip name="RefExtendedTooltip" id="83"/>
+				</LabelField>
+			</ChildItems>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="List" id="1">
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<UseAlways>
+				<Field>List.Ref</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>SELECT
+	DocumentCashPayment.Ref,
+	DocumentCashPayment.DeletionMark,
+	DocumentCashPayment.Number,
+	DocumentCashPayment.Date,
+	DocumentCashPayment.Posted,
+	DocumentCashPayment.Author,
+	DocumentCashPayment.CashCurrency,
+	DocumentCashPayment.TaxKind,
+	DocumentCashPayment.OperationKind,
+	DocumentCashPayment.Issue,
+	DocumentCashPayment.Document,
+	DocumentCashPayment.BasisDocument,
+	DocumentCashPayment.Order,
+	DocumentCashPayment.PettyCash,
+	DocumentCashPayment.Comment,
+	DocumentCashPayment.Counterparty,
+	DocumentCashPayment.Correspondence,
+	DocumentCashPayment.BusinessActivity,
+	DocumentCashPayment.Company,
+	DocumentCashPayment.Basis,
+	DocumentCashPayment.RegistrationPeriod,
+	DocumentCashPayment.ByDocument,
+	DocumentCashPayment.AdvanceHolder,
+	DocumentCashPayment.Division,
+	DocumentCashPayment.Application,
+	DocumentCashPayment.Item,
+	DocumentCashPayment.DocumentAmount AS DocumentAmount,
+	DocumentCashPayment.VATTaxation,
+	DocumentCashPayment.CashCR,
+	DocumentCashPayment.ReceiptCRNumber,
+	DocumentCashPayment.PaymentDetails,
+	DocumentCashPayment.PayrollPayment,
+	DocumentCashPayment.PointInTime
+FROM
+	Document.CashPayment AS DocumentCashPayment</QueryText>
+				<MainTable>Document.CashPayment</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+	</Attributes>
+	<CommandInterface>
+		<CommandBar>
+			<Item>
+				<Command>0</Command>
+				<Type>Auto</Type>
+				<CommandGroup>CommandGroup.Print</CommandGroup>
+				<Index>1</Index>
+			</Item>
+			<Item>
+				<Command>0:19924510-8e95-4b13-9357-8f9c909d550a</Command>
+				<Type>Auto</Type>
+				<CommandGroup>CommandGroup.Print</CommandGroup>
+			</Item>
+			<Item>
+				<Command>CommonCommand.ObjectFilling</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormCommandBarImportant</CommandGroup>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+			<Item>
+				<Command>CommonCommand.ObjectReports</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormCommandBarImportant</CommandGroup>
+				<Index>3</Index>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+			<Item>
+				<Command>CommonCommand.CreatingLinkedObjects</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+			<Item>
+				<Command>CommonCommand.ObjectAdditionalPrintForms</Command>
+				<Type>Auto</Type>
+				<CommandGroup>CommandGroup.Print</CommandGroup>
+				<Index>2</Index>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+			<Item>
+				<Command>CommonCommand.ChangesHistory</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormCommandBarImportant</CommandGroup>
+				<Index>1</Index>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+			<Item>
+				<Command>CommonCommand.ReportByMovements</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormCommandBarImportant</CommandGroup>
+				<Index>2</Index>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+			<Item>
+				<Command>CommonCommand.Remind</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormCommandBarImportant</CommandGroup>
+				<Index>5</Index>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+		</CommandBar>
+	</CommandInterface>
+</Form>

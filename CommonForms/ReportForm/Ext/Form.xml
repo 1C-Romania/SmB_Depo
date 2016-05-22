@@ -1,0 +1,1326 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<AutoTitle>false</AutoTitle>
+	<CommandBarLocation>None</CommandBarLocation>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<ReportResult>ReportSpreadsheetDocument</ReportResult>
+	<DetailsData>ReportDetailsData</DetailsData>
+	<ReportFormType>Main</ReportFormType>
+	<VariantAppearance>ReportCurrentVariantName</VariantAppearance>
+	<AutoShowState>Auto</AutoShowState>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="ChoiceProcessing">ChoiceProcessing</Event>
+		<Event name="NotificationProcessing">NotificationProcessing</Event>
+		<Event name="OnOpen">OnOpen</Event>
+		<Event name="OnSaveVariantAtServer">OnSaveVariantAtServer</Event>
+		<Event name="OnLoadUserSettingsAtServer">OnLoadUserSettingsAtServer</Event>
+		<Event name="OnLoadVariantAtServer">OnLoadVariantAtServer</Event>
+		<Event name="OnSaveUserSettingsAtServer">OnSaveUserSettingsAtServer</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+		<Event name="OnClose">OnClose</Event>
+		<Event name="OnUpdateUserSettingSetAtServer">OnUpdateUserSettingsAtServer</Event>
+		<Event name="FillCheckProcessingAtServer">FillCheckProcessingAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="QuickSettings" id="416">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Quick settings</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Quick settings</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="QuickSettingsExtendedTooltip" id="417"/>
+		</UsualGroup>
+		<UsualGroup name="NotSorted" id="516">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Not sorted</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Not sorted</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="NotSortedExtendedTooltip" id="517"/>
+		</UsualGroup>
+		<UsualGroup name="Buttons" id="44">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Buttons</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Buttons</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ButtonsExtendedTooltip" id="115"/>
+			<ChildItems>
+				<CommandBar name="CommandsLeft" id="49">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Commands left</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Commands left</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="CommandsLeftExtendedTooltip" id="116"/>
+					<ChildItems>
+						<Button name="GenerateReport_Left" id="412">
+							<Type>CommandBarButton</Type>
+							<Representation>Text</Representation>
+							<DefaultButton>true</DefaultButton>
+							<CommandName>Form.Command.ReportAssembleResult</CommandName>
+							<ExtendedTooltip name="GenerateReport_LeftExtendedTooltip" id="413"/>
+						</Button>
+						<Button name="AllSettings_Left" id="500">
+							<Type>CommandBarButton</Type>
+							<Representation>Text</Representation>
+							<CommandName>Form.Command.AllSettings</CommandName>
+							<ExtendedTooltip name="AllSettings_LeftExtendedTooltip" id="501"/>
+						</Button>
+						<Popup name="GroupReportSettings_Left" id="358">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Report variants</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Choose settings</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Picture>
+								<xr:Ref>CommonPicture.ChooseReportVariant</xr:Ref>
+								<xr:LoadTransparent>true</xr:LoadTransparent>
+							</Picture>
+							<Representation>PictureAndText</Representation>
+							<ExtendedTooltip name="GroupReportSettings_LeftExtendedTooltip" id="359"/>
+							<ChildItems>
+								<Button name="SaveVariant_Left" id="506">
+									<Type>CommandBarButton</Type>
+									<Representation>PictureAndText</Representation>
+									<OnlyInAllActions>true</OnlyInAllActions>
+									<CommandName>Form.StandardCommand.SaveVariant</CommandName>
+									<Picture>
+										<xr:Ref>CommonPicture.SaveReportVariant</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Save report variant...</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="SaveVariant_LeftExtendedTooltip" id="507"/>
+								</Button>
+								<ButtonGroup name="ReportVariants_Left" id="360">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Report variants left</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Report variants left</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="ReportVariants_LeftExtendedTooltip" id="361"/>
+								</ButtonGroup>
+								<Button name="OtherReports" id="508">
+									<Type>CommandBarButton</Type>
+									<CommandName>Form.Command.OtherReports</CommandName>
+									<ExtendedTooltip name="OtherReportsExtendedTooltip" id="509"/>
+								</Button>
+							</ChildItems>
+						</Popup>
+						<Button name="Find_Left" id="62">
+							<Type>CommandBarButton</Type>
+							<Representation>Text</Representation>
+							<OnlyInAllActions>true</OnlyInAllActions>
+							<CommandName>Form.Item.ReportSpreadsheetDocument.StandardCommand.Find</CommandName>
+							<ExtendedTooltip name="Find_LeftExtendedTooltip" id="120"/>
+						</Button>
+						<Button name="Print_Left" id="56">
+							<Type>CommandBarButton</Type>
+							<Representation>Picture</Representation>
+							<OnlyInAllActions>true</OnlyInAllActions>
+							<CommandName>Form.StandardCommand.Print</CommandName>
+							<ExtendedTooltip name="Print_LeftExtendedTooltip" id="124"/>
+						</Button>
+						<Button name="Preview_Left" id="102">
+							<Type>CommandBarButton</Type>
+							<Representation>Picture</Representation>
+							<OnlyInAllActions>true</OnlyInAllActions>
+							<CommandName>Form.Item.ReportSpreadsheetDocument.StandardCommand.Preview</CommandName>
+							<ExtendedTooltip name="Preview_LeftExtendedTooltip" id="125"/>
+						</Button>
+						<Button name="Save_Left" id="57">
+							<Type>CommandBarButton</Type>
+							<Representation>Picture</Representation>
+							<OnlyInAllActions>true</OnlyInAllActions>
+							<CommandName>Form.StandardCommand.Save</CommandName>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Save...</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="Save_LeftExtendedTooltip" id="126"/>
+						</Button>
+						<Popup name="GroupSend_Left" id="63">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Send</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Send report via email</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Picture>
+								<xr:Ref>CommonPicture.Email</xr:Ref>
+								<xr:LoadTransparent>true</xr:LoadTransparent>
+							</Picture>
+							<Representation>Picture</Representation>
+							<ExtendedTooltip name="GroupSend_LeftExtendedTooltip" id="127"/>
+							<ChildItems>
+								<Button name="SendByEMail_Left" id="97">
+									<Type>CommandBarButton</Type>
+									<Representation>Picture</Representation>
+									<OnlyInAllActions>true</OnlyInAllActions>
+									<CommandName>Form.Command.SendByEMail</CommandName>
+									<ExtendedTooltip name="SendByEMail_LeftExtendedTooltip" id="128"/>
+								</Button>
+							</ChildItems>
+						</Popup>
+						<ButtonGroup name="GroupMinimizeRestore" id="518">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group minimize restore</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group minimize restore</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ExtendedTooltip name="GroupMinimizeRestoreExtendedTooltip" id="519"/>
+							<ChildItems>
+								<Button name="MinimizeAllGroups_Left" id="60">
+									<Type>CommandBarButton</Type>
+									<Representation>Picture</Representation>
+									<OnlyInAllActions>true</OnlyInAllActions>
+									<CommandName>Form.Item.ReportSpreadsheetDocument.StandardCommand.CollapseAllGroups</CommandName>
+									<ExtendedTooltip name="MinimizeAllGroups_LeftExtendedTooltip" id="121"/>
+								</Button>
+								<Button name="RestoreAllGroups_Left" id="61">
+									<Type>CommandBarButton</Type>
+									<Representation>Picture</Representation>
+									<OnlyInAllActions>true</OnlyInAllActions>
+									<CommandName>Form.Item.ReportSpreadsheetDocument.StandardCommand.ExpandAllGroups</CommandName>
+									<ExtendedTooltip name="ResoreAllGroups_LeftExtendedTooltip" id="122"/>
+								</Button>
+							</ChildItems>
+						</ButtonGroup>
+					</ChildItems>
+				</CommandBar>
+				<UsualGroup name="AutoSumGroup" id="110">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content> </v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content> </v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="AutoSumGroupExtendedTooltip" id="129"/>
+					<ChildItems>
+						<Button name="AutoSumButton" id="111">
+							<Type>UsualButton</Type>
+							<CommandName>Form.Command.CalculateAmount</CommandName>
+							<ExtendedTooltip name="AutoSumButtonExtendedTooltip" id="130"/>
+						</Button>
+						<InputField name="AutoSumLabel" id="105">
+							<DataPath>MarkedCellsAmount</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Sum of the selected cell numers</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Width>10</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<VerticalStretch>false</VerticalStretch>
+							<EditFormat>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>NZ=-</v8:content>
+								</v8:item>
+							</EditFormat>
+							<TextEdit>false</TextEdit>
+							<BackColor>style:FormBackColor</BackColor>
+							<BorderColor>style:FormBackColor</BorderColor>
+							<ContextMenu name="AutoSumLabelContextMenu" id="106"/>
+							<ExtendedTooltip name="AutoSumLabelExtendedTooltip" id="131"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<CommandBar name="CommandsMore" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Commands more</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Commands more</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Width>13</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<HorizontalLocation>Right</HorizontalLocation>
+					<ExtendedTooltip name="CommandsMoreExtendedTooltip" id="133"/>
+					<ChildItems>
+						<Button name="GenerateReport" id="101">
+							<Type>CommandBarButton</Type>
+							<OnlyInAllActions>false</OnlyInAllActions>
+							<CommandName>Form.Command.ReportAssembleResult</CommandName>
+							<ExtendedTooltip name="GenerateReportExtendedTooltip" id="135"/>
+						</Button>
+						<Button name="FormImmediately" id="468">
+							<Type>CommandBarButton</Type>
+							<OnlyInAllActions>false</OnlyInAllActions>
+							<CommandName>Form.Command.FormImmediately</CommandName>
+							<ExtendedTooltip name="FormImmediatelyExtendedTooltip" id="469"/>
+						</Button>
+						<ButtonGroup name="GroupReportSettings" id="104">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content> </v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content> </v8:content>
+								</v8:item>
+							</ToolTip>
+							<ExtendedTooltip name="GroupReportSettingsExtendedTooltip" id="144"/>
+							<ChildItems>
+								<Button name="AllSettings" id="458">
+									<Type>CommandBarButton</Type>
+									<OnlyInAllActions>false</OnlyInAllActions>
+									<CommandName>Form.Command.AllSettings</CommandName>
+									<ExtendedTooltip name="AllSettingsExtendedTooltip" id="459"/>
+								</Button>
+								<Button name="ChooseVariant" id="454">
+									<Type>CommandBarButton</Type>
+									<Representation>Picture</Representation>
+									<OnlyInAllActions>false</OnlyInAllActions>
+									<CommandName>Form.StandardCommand.LoadVariant</CommandName>
+									<Picture>
+										<xr:Ref>CommonPicture.ChooseReportVariant</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Select report variant...</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="SelectVariantExtendedTooltip" id="455"/>
+								</Button>
+								<Button name="SaveVariant" id="456">
+									<Type>CommandBarButton</Type>
+									<OnlyInAllActions>false</OnlyInAllActions>
+									<CommandName>Form.StandardCommand.SaveVariant</CommandName>
+									<Picture>
+										<xr:Ref>CommonPicture.SaveReportVariant</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Save report variant...</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="SaveVariantExtendedTooltip" id="457"/>
+								</Button>
+								<Popup name="GroupOtherReportSettings" id="502">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Other</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group other report settings</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="GroupOtherReportSettingsExtendedTooltip" id="503"/>
+									<ChildItems>
+										<ButtonGroup name="ReportVariantsCommands" id="450">
+											<EnableContentChange>true</EnableContentChange>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Report variants commands</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Report variants commands</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ExtendedTooltip name="ReportVariantsCommandsExtendedTooltip" id="451"/>
+											<ChildItems>
+												<Button name="ChangeVariant" id="452">
+													<Type>CommandBarButton</Type>
+													<OnlyInAllActions>false</OnlyInAllActions>
+													<CommandName>Form.Command.ChangeReportVariant</CommandName>
+													<ExtendedTooltip name="ChangeVariantExtendedTooltip" id="453"/>
+												</Button>
+											</ChildItems>
+										</ButtonGroup>
+										<Button name="ResetSettings" id="382">
+											<Type>CommandBarButton</Type>
+											<OnlyInAllActions>false</OnlyInAllActions>
+											<CommandName>Form.Command.DefaultSettings</CommandName>
+											<ExtendedTooltip name="ResetSettingsExtendedTooltip" id="383"/>
+										</Button>
+										<ButtonGroup name="GroupUserSettings" id="504">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content> </v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content> </v8:content>
+												</v8:item>
+											</ToolTip>
+											<ExtendedTooltip name="GroupUserSettingsExtendedTooltip" id="505"/>
+											<ChildItems>
+												<Button name="ReportSettings" id="510">
+													<Type>CommandBarButton</Type>
+													<OnlyInAllActions>false</OnlyInAllActions>
+													<CommandName>Form.StandardCommand.ReportSettings</CommandName>
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>All settings...</v8:content>
+														</v8:item>
+													</Title>
+													<ExtendedTooltip name="ReportSettingsExtendedTooltip" id="511"/>
+												</Button>
+												<Button name="ChooseSettings" id="462">
+													<Type>CommandBarButton</Type>
+													<OnlyInAllActions>false</OnlyInAllActions>
+													<CommandName>Form.StandardCommand.LoadReportSettings</CommandName>
+													<ExtendedTooltip name="SelectSettingsExtendedTooltip" id="463"/>
+												</Button>
+												<Button name="SaveSettings" id="460">
+													<Type>CommandBarButton</Type>
+													<OnlyInAllActions>false</OnlyInAllActions>
+													<CommandName>Form.StandardCommand.SaveReportSettings</CommandName>
+													<ExtendedTooltip name="SaveSettingsExtendedTooltip" id="461"/>
+												</Button>
+											</ChildItems>
+										</ButtonGroup>
+									</ChildItems>
+								</Popup>
+							</ChildItems>
+						</ButtonGroup>
+						<ButtonGroup name="GroupPrint" id="93">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Print</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content> </v8:content>
+								</v8:item>
+							</ToolTip>
+							<ExtendedTooltip name="GroupPrintExtendedTooltip" id="137"/>
+							<ChildItems>
+								<Button name="Print" id="52">
+									<Type>CommandBarButton</Type>
+									<OnlyInAllActions>false</OnlyInAllActions>
+									<CommandName>Form.StandardCommand.Print</CommandName>
+									<ExtendedTooltip name="PrintExtendedTooltip" id="138"/>
+								</Button>
+								<Button name="Preview" id="90">
+									<Type>CommandBarButton</Type>
+									<OnlyInAllActions>false</OnlyInAllActions>
+									<CommandName>Form.Item.ReportSpreadsheetDocument.StandardCommand.Preview</CommandName>
+									<ExtendedTooltip name="PreviewExtendedTooltip" id="139"/>
+								</Button>
+								<Button name="PageSetup" id="94">
+									<Type>CommandBarButton</Type>
+									<OnlyInAllActions>false</OnlyInAllActions>
+									<CommandName>Form.Item.ReportSpreadsheetDocument.StandardCommand.PageSetup</CommandName>
+									<ExtendedTooltip name="PageParametersExtendedTooltip" id="140"/>
+								</Button>
+							</ChildItems>
+						</ButtonGroup>
+						<Button name="Save" id="51">
+							<Type>CommandBarButton</Type>
+							<OnlyInAllActions>false</OnlyInAllActions>
+							<CommandName>Form.StandardCommand.Save</CommandName>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Save...</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="SaveExtendedTooltip" id="141"/>
+						</Button>
+						<Popup name="GroupSend" id="74">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Send</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Send report via email</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Picture>
+								<xr:Ref>CommonPicture.SendByEmail</xr:Ref>
+								<xr:LoadTransparent>true</xr:LoadTransparent>
+							</Picture>
+							<ExtendedTooltip name="GroupSendExtendedTooltip" id="142"/>
+							<ChildItems>
+								<Button name="SendByEMail" id="98">
+									<Type>CommandBarButton</Type>
+									<OnlyInAllActions>false</OnlyInAllActions>
+									<CommandName>Form.Command.SendByEMail</CommandName>
+									<ExtendedTooltip name="SendByEMailExtendedTooltip" id="143"/>
+								</Button>
+							</ChildItems>
+						</Popup>
+						<Button name="NewWindow" id="41">
+							<Type>CommandBarButton</Type>
+							<OnlyInAllActions>false</OnlyInAllActions>
+							<CommandName>Form.StandardCommand.NewWindow</CommandName>
+							<ExtendedTooltip name="NewWindowExtendedTooltip" id="159"/>
+						</Button>
+						<Button name="ChangeForm" id="42">
+							<Type>CommandBarButton</Type>
+							<OnlyInAllActions>false</OnlyInAllActions>
+							<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
+							<ExtendedTooltip name="ChangeFormExtendedTooltip" id="160"/>
+						</Button>
+						<Button name="Help" id="43">
+							<Type>CommandBarButton</Type>
+							<OnlyInAllActions>true</OnlyInAllActions>
+							<CommandName>Form.StandardCommand.Help</CommandName>
+							<ExtendedTooltip name="HelpExtendedTooltip" id="161"/>
+						</Button>
+					</ChildItems>
+				</CommandBar>
+			</ChildItems>
+		</UsualGroup>
+		<SpreadSheetDocumentField name="ReportSpreadsheetDocument" id="7">
+			<DataPath>ReportSpreadsheetDocument</DataPath>
+			<TitleLocation>None</TitleLocation>
+			<Width>60</Width>
+			<Height>15</Height>
+			<ContextMenu name="ReportSpreadsheetDocumentContextMenu" id="8">
+				<ChildItems>
+					<Button name="ReportSpreadsheetDocumentContextMenuReportCompileResult" id="168">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.ReportAssembleResult</CommandName>
+						<ExtendedTooltip name="ReportSpreadsheetDocumentContextMenuReportCompileResultExtendedTooltip" id="169"/>
+					</Button>
+					<ButtonGroup name="GroupMinimizeRestoreContext" id="520">
+						<Title>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Minimize/ Restore</v8:content>
+							</v8:item>
+						</Title>
+						<ToolTip>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Group minimize restore</v8:content>
+							</v8:item>
+						</ToolTip>
+						<ExtendedTooltip name="GroupMinimizeRestoreContextExtendedTooltip" id="521"/>
+						<ChildItems>
+							<Button name="MinimizeAllGroups_Context" id="522">
+								<Type>CommandBarButton</Type>
+								<Representation>Picture</Representation>
+								<OnlyInAllActions>true</OnlyInAllActions>
+								<CommandName>Form.Item.ReportSpreadsheetDocument.StandardCommand.CollapseAllGroups</CommandName>
+								<ExtendedTooltip name="MinimizeAllGroups_ContextEtendedToolTip" id="523"/>
+							</Button>
+							<Button name="ResoreAllGroups_Context" id="524">
+								<Type>CommandBarButton</Type>
+								<Representation>Picture</Representation>
+								<OnlyInAllActions>true</OnlyInAllActions>
+								<CommandName>Form.Item.ReportSpreadsheetDocument.StandardCommand.ExpandAllGroups</CommandName>
+								<ExtendedTooltip name="ResoreAllGroups_ContextExtendedTooltip" id="525"/>
+							</Button>
+						</ChildItems>
+					</ButtonGroup>
+				</ChildItems>
+			</ContextMenu>
+			<ExtendedTooltip name="ReportSpreadsheetDocumentExtendedTooltip" id="163"/>
+			<Events>
+				<Event name="AdditionalDetailProcessing">ReportSpreadsheetDocumentAdditionalDetailProcessing</Event>
+				<Event name="OnActivateArea">ReportSpreadsheetDocumentOnActivateArea</Event>
+				<Event name="DetailProcessing">ReportSpreadsheetDocumentDetailProcessing</Event>
+			</Events>
+		</SpreadSheetDocumentField>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Report" id="1">
+			<Type>
+				<v8:Type>cfg:ReportObject</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="ReportCurrentVariantName" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Report variant</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ReportSpreadsheetDocument" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Tabular section - report generation result</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type xmlns:mxl="http://v8.1c.ru/8.2/data/spreadsheet">mxl:SpreadsheetDocument</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ReportDetailsData" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Encryption data report</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="EncryptingMode" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Details mode</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<Edit>
+				<xr:Common>false</xr:Common>
+			</Edit>
+		</Attribute>
+		<Attribute name="ReportVariantMode" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Report of variant mode</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<Edit>
+				<xr:Common>false</xr:Common>
+			</Edit>
+		</Attribute>
+		<Attribute name="ReportSettings" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Report settings</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+			<Edit>
+				<xr:Common>false</xr:Common>
+			</Edit>
+		</Attribute>
+		<Attribute name="ReportDescription" id="19">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Report description</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ConstantCommands" id="20">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Constant commands</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+			<View>
+				<xr:Common>false</xr:Common>
+			</View>
+			<Edit>
+				<xr:Common>false</xr:Common>
+			</Edit>
+		</Attribute>
+		<Attribute name="ConstantAttributes" id="21">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Constant attributes</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+			<View>
+				<xr:Common>false</xr:Common>
+			</View>
+			<Edit>
+				<xr:Common>false</xr:Common>
+			</Edit>
+		</Attribute>
+		<Attribute name="ParametersForm" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Form parameters</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+			<Edit>
+				<xr:Common>false</xr:Common>
+			</Edit>
+		</Attribute>
+		<Attribute name="ReportCreated" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Report created</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="OutputRight" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Output right</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<Edit>
+				<xr:Common>false</xr:Common>
+			</Edit>
+		</Attribute>
+		<Attribute name="BackgroundJobStorageAddress" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Background job storage address</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="BackgroundJobID" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Background job ID</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="EncryptingOwnerPresentationMode" id="24">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Encryption mode owner presentation</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ReportVariantsCommandsVisible" id="25">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Report variant commands visible</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<View>
+				<xr:Common>false</xr:Common>
+			</View>
+			<Edit>
+				<xr:Common>false</xr:Common>
+			</Edit>
+		</Attribute>
+		<Attribute name="FastSearchOfUserSettings" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Fast user settings search</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="QuickSearchMetadataObjectName" id="28">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Fast search of the metadata objects names</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="DisablingLinksFastSearch" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Fast search of the connections being disabled</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="MarkedCellsAmount" id="23">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Amount</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ThereAreQuickSettings" id="17">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>There are quick settings</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="PanelVariantsCurrentVariantKey" id="22">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Panel variants current variant key</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="PanelVariantsItemNumber" id="27">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Variants of the panel item number</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ThereAreOtherReports" id="29">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>There are other reports</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ThereAreCommonSettings" id="31">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>There are common settings</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="FormIsOpened" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Form is opened</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="NeedToBeGenerated" id="32">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>It is necessary to generate</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="UserSettingsFirstReading" id="34">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>First reading of user settings</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="AddedVariants" id="26">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Added variants</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Ref" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Ref</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.ReportsVariants</v8:Type>
+					</Type>
+				</Column>
+				<Column name="VariantKey" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Option Key</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="CommandName" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Command name</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ThisIsReportForm" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>This is report form</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="DisabledLinks" id="18">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Disabled links</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="LinkType" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Link type</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="LeadingIdentifierInForm" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Leading identifier in a form</v8:content>
+						</v8:item>
+					</Title>
+					<Type/>
+				</Column>
+				<Column name="SubordinateIdentifierInForm" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Subordinate identifier in form</v8:content>
+						</v8:item>
+					</Title>
+					<Type/>
+				</Column>
+				<Column name="LeadingType" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Leading type</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>v8:TypeDescription</v8:Type>
+					</Type>
+				</Column>
+				<Column name="SubordinatedType" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Subordinated type</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>v8:TypeDescription</v8:Type>
+					</Type>
+				</Column>
+				<Column name="SubordinateNameParameter" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Subordinate name of the parameter</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="SubordinatedAction" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Subordinated action</v8:content>
+						</v8:item>
+					</Title>
+					<Type/>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="KeyOperation" id="30">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Key operation</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.KeyOperations</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="AllSettings" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Settings...</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>All settings...</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.ReportSettings</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>AllSettings</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="ChangeReportVariant" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Change report variant...</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Change the report variant</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Shortcut>Ctrl+F2</Shortcut>
+			<Action>ChangeReportVariant</Action>
+		</Command>
+		<Command name="DefaultSettings" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Standard settings</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Default settings</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>DefaultSettings</Action>
+		</Command>
+		<Command name="SendByEMail" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Send now...</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Create a new letter and attach the report as enclosure</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.Email</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>SendByEMail</Action>
+		</Command>
+		<Command name="ReportAssembleResult" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Generate</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Create</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Shortcut>F5</Shortcut>
+			<Picture>
+				<xr:Ref>StdPicture.GenerateReport</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ReportAssembleResult</Action>
+			<Representation>Text</Representation>
+		</Command>
+		<Command name="CalculateAmount" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Quantity</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Calculate the amount of the selected cell numbers</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.Amount</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>CalculateAmount</Action>
+			<Representation>Picture</Representation>
+		</Command>
+		<Command name="FormImmediately" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>To form immediately</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>To form immediately</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>FormImmediately</Action>
+		</Command>
+		<Command name="OtherReports" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Other reports...</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Other reports</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.Reports</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>OtherReports</Action>
+		</Command>
+	</Commands>
+</Form>

@@ -1,0 +1,719 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="NotificationProcessing">NotificationProcessing</Event>
+		<Event name="OnOpen">OnOpen</Event>
+		<Event name="BeforeClose">BeforeClose</Event>
+		<Event name="OnLoadDataFromSettingsAtServer">OnLoadDataFromSettingsAtServer</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+		<Event name="OnClose">OnClose</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="QuickFilters" id="40">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Quick filters</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Quick filters</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="FastFiltersExtendedTooltip" id="41"/>
+			<ChildItems>
+				<LabelDecoration name="LabelCounterparty" id="76">
+					<ContextMenu name="CounterpartyLabelContextMenu" id="77"/>
+					<ExtendedTooltip name="LabelCounterpartyExtendedTooltip" id="78"/>
+				</LabelDecoration>
+				<CheckBoxField name="FilterOnlyNominal" id="45">
+					<DataPath>FilterOnlyNominal</DataPath>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="FilterOnlyNominalContextMenu" id="46"/>
+					<ExtendedTooltip name="FilterOnlyNominalExtendedTooltip" id="47"/>
+					<Events>
+						<Event name="OnChange">FilterOnlyNominalOnChange</Event>
+					</Events>
+				</CheckBoxField>
+				<UsualGroup name="GroupFilterOnBarcodeAndMagneticCode" id="96">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group filter on barcode and magnetic code</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group filter on barcode and magnetic code</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ChildItemsWidth>Equal</ChildItemsWidth>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="GroupFilterOnBarcodeAndMagneticCodeExtendedTooltip" id="97"/>
+					<ChildItems>
+						<InputField name="FilterBarcode" id="81">
+							<DataPath>FilterBarcode</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<ClearButton>true</ClearButton>
+							<InputHint>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Barcode</v8:content>
+								</v8:item>
+							</InputHint>
+							<ContextMenu name="FilterBarcodeContextMenu" id="82"/>
+							<ExtendedTooltip name="FilterBarcodeExtendedTooltip" id="83"/>
+							<Events>
+								<Event name="OnChange">FilterBarcodeOnChange</Event>
+							</Events>
+						</InputField>
+						<InputField name="FilterMagneticCode" id="84">
+							<DataPath>FilterMagneticCode</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<ClearButton>true</ClearButton>
+							<InputHint>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Magnetic code</v8:content>
+								</v8:item>
+							</InputHint>
+							<ContextMenu name="FilterMagneticCodeContextMenu" id="85"/>
+							<ExtendedTooltip name="FilterMagneticCodeExtendedTooltip" id="86"/>
+							<Events>
+								<Event name="OnChange">FilterMagneticCodeOnChange</Event>
+							</Events>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<InputField name="FilterCardKind" id="42">
+					<DataPath>FilterCardKind</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<HorizontalStretch>false</HorizontalStretch>
+					<OpenButton>false</OpenButton>
+					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+					<InputHint>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Card kind</v8:content>
+						</v8:item>
+					</InputHint>
+					<ContextMenu name="FilterCardTypeContextMenu" id="43"/>
+					<ExtendedTooltip name="FilterCardTypeExtendedTooltip" id="44"/>
+					<Events>
+						<Event name="OnChange">FilterCardKindOnChange</Event>
+					</Events>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ListSettingsComposerUserSettings" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>User settings group</v8:content>
+				</v8:item>
+			</Title>
+			<VerticalStretch>false</VerticalStretch>
+			<Group>Vertical</Group>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ListSettingsComposerUserSettingsExtendedTooltip" id="2"/>
+		</UsualGroup>
+		<Table name="List" id="3">
+			<TitleLocation>Auto</TitleLocation>
+			<CommandBarLocation>Top</CommandBarLocation>
+			<ChoiceMode>true</ChoiceMode>
+			<UseAlternationRowColor>true</UseAlternationRowColor>
+			<InitialTreeView>ExpandTopLevel</InitialTreeView>
+			<EnableStartDrag>true</EnableStartDrag>
+			<EnableDrag>true</EnableDrag>
+			<DataPath>List</DataPath>
+			<RowPictureDataPath>List.DefaultPicture</RowPictureDataPath>
+			<SearchStringLocation>CommandBar</SearchStringLocation>
+			<ViewStatusLocation>Top</ViewStatusLocation>
+			<SearchControlLocation>CommandBar</SearchControlLocation>
+			<AutoRefresh>false</AutoRefresh>
+			<AutoRefreshPeriod>60</AutoRefreshPeriod>
+			<Period>
+				<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+				<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+				<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+			</Period>
+			<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+			<RestoreCurrentRow>false</RestoreCurrentRow>
+			<TopLevelParent xsi:nil="true"/>
+			<ShowRoot>true</ShowRoot>
+			<AllowRootChoice>false</AllowRootChoice>
+			<UpdateOnDataChange>Auto</UpdateOnDataChange>
+			<UserSettingsGroup>ListSettingsComposerUserSettings</UserSettingsGroup>
+			<ContextMenu name="ListContextMenu" id="4"/>
+			<AutoCommandBar name="ListCommandBar" id="5">
+				<ChildItems>
+					<Button name="ListChangeForm" id="92">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
+						<ExtendedTooltip name="ListChangeFormExtendedTooltip" id="93"/>
+					</Button>
+					<Button name="ListHelp" id="94">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.StandardCommand.Help</CommandName>
+						<ExtendedTooltip name="ListHelpExtendedTooltip" id="95"/>
+					</Button>
+				</ChildItems>
+			</AutoCommandBar>
+			<ExtendedTooltip name="ListExtendedTooltip" id="6"/>
+			<SearchStringAddition name="SearchStringList" id="7">
+				<AdditionSource>
+					<Item>List</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ListSearchStringContextMenu" id="10"/>
+				<ExtendedTooltip name="ListSearchStringExtendedTooltip" id="11"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ListViewStatus" id="12">
+				<AdditionSource>
+					<Item>List</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ListViewStatusContextMenu" id="15"/>
+				<ExtendedTooltip name="ListViewStatusExtendedTooltip" id="16"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ListSearchControl" id="17">
+				<AdditionSource>
+					<Item>List</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ListSearchControlContextMenu" id="20"/>
+				<ExtendedTooltip name="ListSearchControlExtendedTooltip" id="21"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="OnActivateRow">ListOnActivateRow</Event>
+			</Events>
+			<ChildItems>
+				<LabelField name="Description" id="22">
+					<DataPath>List.Description</DataPath>
+					<DefaultItem>true</DefaultItem>
+					<ContextMenu name="DescriptionContextMenu" id="23"/>
+					<ExtendedTooltip name="DescriptionExtendedTooltip" id="24"/>
+				</LabelField>
+				<LabelField name="Code" id="25">
+					<DataPath>List.Code</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<ContextMenu name="CodeContextMenu" id="26"/>
+					<ExtendedTooltip name="CodeExtendedTooltip" id="27"/>
+				</LabelField>
+				<LabelField name="CardCodeBarcode" id="28">
+					<DataPath>List.CardCodeBarcode</DataPath>
+					<ContextMenu name="CardCodeBarcodeContextMenu" id="29"/>
+					<ExtendedTooltip name="CardCodeBarcodeExtendedTooltip" id="30"/>
+				</LabelField>
+				<LabelField name="CardCodeMagnetic" id="31">
+					<DataPath>List.CardCodeMagnetic</DataPath>
+					<ContextMenu name="CardCodeMagneticContextMenu" id="32"/>
+					<ExtendedTooltip name="CardCodeMagneticExtendedTooltip" id="33"/>
+				</LabelField>
+				<LabelField name="CardOwner" id="34">
+					<DataPath>List.CardOwner</DataPath>
+					<ContextMenu name="CardOwnerContextMenu" id="35"/>
+					<ExtendedTooltip name="CardOwnerExtendedTooltip" id="36"/>
+				</LabelField>
+				<LabelField name="KindDiscountCard" id="37">
+					<DataPath>List.Owner</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Kind of discount card</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="KindDiscountCardContextMenu" id="38"/>
+					<ExtendedTooltip name="KindDiscountCardExtendedTooltip" id="39"/>
+				</LabelField>
+			</ChildItems>
+		</Table>
+		<UsualGroup name="GroupInformationAboutCounterparty" id="48">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Additional information</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Counterparty information</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Behavior>Collapsible</Behavior>
+			<Collapsed>true</Collapsed>
+			<ControlRepresentation>Picture</ControlRepresentation>
+			<ExtendedTooltip name="GroupInformationAboutCounterpartyExtendedTooltip" id="49"/>
+			<ChildItems>
+				<UsualGroup name="ListDetailsDefaultInformation" id="50">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>List details main information</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>List details main information</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ListDetailsDefaultInformationExtendedTooltip" id="51"/>
+					<ChildItems>
+						<UsualGroup name="ListDetailsCounterparty1" id="52">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Counterparty</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Counterparty</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ListDetailsCounterpartyExtendedTooltip" id="53"/>
+							<ChildItems>
+								<UsualGroup name="GroupDiscountOnDiscountCard" id="54">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group discount on discount card</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group discount on discount card</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Vertical</Group>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupDiscountOnDiscountCardExtendedTooltip" id="55"/>
+									<ChildItems>
+										<InputField name="DetailsDiscountPercentOnDiscountCard" id="56">
+											<DataPath>InformationDiscountPercentOnDiscountCard</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Discount on discount card (%)</v8:content>
+												</v8:item>
+											</Title>
+											<BackColor>style:FormBackColor</BackColor>
+											<BorderColor>style:FormBackColor</BorderColor>
+											<ContextMenu name="DetailsDiscountPercentOnDiscountCardContextMenu" id="57"/>
+											<ExtendedTooltip name="DetailsDiscountPercentOnDiscountCardExtendedTooltip" id="58"/>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="GroupCounterparty" id="59">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group counterparty</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group counterparty</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Vertical</Group>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupCounterpartyExtendedTooltip" id="60"/>
+									<ChildItems>
+										<LabelField name="DetailsListCounterparty" id="61">
+											<DataPath>Items.List.CurrentData.CardOwner</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Card owner</v8:content>
+												</v8:item>
+											</Title>
+											<TitleLocation>Left</TitleLocation>
+											<BackColor>style:FormBackColor</BackColor>
+											<ContextMenu name="DetailsListCounterpartyContextMenu" id="62"/>
+											<ExtendedTooltip name="DetailsListCounterpartyExtendedTooltip" id="63"/>
+										</LabelField>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="DetailsListCounterparty1" id="64">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Counterparty</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Counterparty</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="DetailsListCounterparty1ExtendedTooltip" id="65"/>
+							<ChildItems>
+								<InputField name="ListDetailsCounterpartyPhone" id="66">
+									<DataPath>CounterpartyPhoneInformation</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Phone</v8:content>
+										</v8:item>
+									</Title>
+									<TitleTextColor>style:UnavailableCellTextColor</TitleTextColor>
+									<BackColor>style:FormBackColor</BackColor>
+									<BorderColor>style:FormBackColor</BorderColor>
+									<ContextMenu name="DetailsListCounterpartyPhoneContextMenu" id="67"/>
+									<ExtendedTooltip name="DetailsListCounterpartyPhoneExtendedTooltip" id="68"/>
+								</InputField>
+								<LabelField name="ListDetailsEmailAddress" id="69">
+									<DataPath>CounterpartyInformationES</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Email</v8:content>
+										</v8:item>
+									</Title>
+									<TitleTextColor>style:UnavailableCellTextColor</TitleTextColor>
+									<Hiperlink>true</Hiperlink>
+									<BackColor>style:FormBackColor</BackColor>
+									<ContextMenu name="ListDetailsEmailAddressContextMenu" id="70"/>
+									<ExtendedTooltip name="ListDetailsEmailAddressExtendedTooltip" id="71"/>
+									<Events>
+										<Event name="Click">SendEmailToCounterparty</Event>
+									</Events>
+								</LabelField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="DetailsDocuments" id="72">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Related documents</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Related documents</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<BackColor>style:BackgroundRelatedDocuments</BackColor>
+							<ExtendedTooltip name="DetailsDocumentsExtendedTooltip" id="73"/>
+							<ChildItems>
+								<UsualGroup name="GroupSalesAmountOnDiscountCard" id="98">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group sales amount on discount card</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group sales amount on discount card</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupSalesAmountOnDiscountCardExtendedTooltip" id="99"/>
+									<ChildItems>
+										<InputField name="InformationSalesAmountOnDiscountCard" id="100">
+											<DataPath>InformationSalesAmountOnDiscountCard</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<HorizontalAlign>Right</HorizontalAlign>
+											<BackColor>style:BackgroundRelatedDocuments</BackColor>
+											<BorderColor>style:BackgroundRelatedDocuments</BorderColor>
+											<ContextMenu name="InformationSalesAmountOnDiscountCardContextMenu" id="101"/>
+											<ExtendedTooltip name="InformationSalesAmountOnDiscountCardExtendedTooltip" id="102"/>
+										</InputField>
+										<InputField name="InformationSimpCurrency" id="103">
+											<DataPath>InformationSimpCurrency</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<TitleLocation>None</TitleLocation>
+											<HorizontalStretch>true</HorizontalStretch>
+											<OpenButton>false</OpenButton>
+											<BackColor>style:BackgroundRelatedDocuments</BackColor>
+											<BorderColor>style:BackgroundRelatedDocuments</BorderColor>
+											<ContextMenu name="InformationSimpCurrencyContextMenu" id="104"/>
+											<ExtendedTooltip name="InformationSimpCurrencyExtendedTooltip" id="105"/>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+								<Button name="ReportSalesByDiscountCardsTestOpenReportSalesByDiscountCards" id="79">
+									<Type>Hyperlink</Type>
+									<CommandName>Report.SalesByDiscountCards.Command.SalesByDiscountCard</CommandName>
+									<DataPath>Items.List.CurrentData.Ref</DataPath>
+									<TextColor>style:RelatedInformationTextColor</TextColor>
+									<ExtendedTooltip name="ReportSalesByDiscountCardsTestOpenReportSalesByDiscountCardsExtendedTooltip" id="80"/>
+								</Button>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="CommentGroup" id="87">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group comment</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group comment</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="GroupCommentExtendedTooltip" id="88"/>
+					<ChildItems>
+						<LabelField name="CommentList" id="89">
+							<DataPath>Items.List.CurrentData.Comment</DataPath>
+							<Width>50</Width>
+							<ContextMenu name="CommentListContextMenu" id="90"/>
+							<ExtendedTooltip name="ListCommentExtendedTooltip" id="91"/>
+						</LabelField>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="List" id="1">
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<UseAlways>
+				<Field>List.Ref</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>false</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<MainTable>Catalog.DiscountCards</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="FilterCardKind" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Card kind</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.DiscountCardKinds</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="FilterOnlyNominal" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Only nominal</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<Save>
+				<Field>FilterOnlyNominal</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="CounterpartyPhoneInformation" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Phone</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>100</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="CounterpartyInformationES" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Email</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>100</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="InformationDiscountPercentOnDiscountCard" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Discount on discount card (%)</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>100</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ReferenceInformation" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Reference information</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.DiscountCards</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="FilterBarcode" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Barcode</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>100</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="FilterMagneticCode" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Magnetic code</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>100</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="SupportedPeripheralTypes" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Supported types of peripheral</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="UsePeripherals" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Use peripherals</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="InformationSalesAmountOnDiscountCard" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Sales amount</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>100</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="InformationSimpCurrency" id="13">
+			<Type>
+				<v8:Type>cfg:CatalogRef.Currencies</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Parameters>
+		<Parameter name="Counterparty">
+			<Type>
+				<v8:Type>cfg:CatalogRef.Counterparties</v8:Type>
+			</Type>
+			<KeyParameter>true</KeyParameter>
+		</Parameter>
+	</Parameters>
+</Form>

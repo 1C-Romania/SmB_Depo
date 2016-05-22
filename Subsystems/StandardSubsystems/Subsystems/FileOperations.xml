@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<MetaDataObject xmlns="http://v8.1c.ru/8.3/MDClasses" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:cmi="http://v8.1c.ru/8.2/managed-application/cmi" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xpr="http://v8.1c.ru/8.3/xcf/predef" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Subsystem uuid="2009c673-c1a5-45fc-8da2-a36c435085a6">
+		<Properties>
+			<Name>FileOperations</Name>
+			<Synonym>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>File operations</v8:content>
+				</v8:item>
+			</Synonym>
+			<Comment/>
+			<IncludeHelpInContents>false</IncludeHelpInContents>
+			<IncludeInCommandInterface>false</IncludeInCommandInterface>
+			<Explanation/>
+			<Picture/>
+			<Content>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonPicture.PublishFile</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.FileOperationsClientServer</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.FileOperationsClient</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonForm.MainWorkingDirectorySetting</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Catalog.FileVersions</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Catalog.Files</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Catalog.FileFolders</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonCommand.AttachedFiles</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.FileOperationsServiceClientReUse</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.FileOperationsOverridable</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.WorkingFileDirectories</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Enum.FileVersionComparisonMethods</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonPicture.Folders</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonCommand.PlaceInitialImageFiles</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonPicture.Scanning</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.ScannedFileNumbers</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">FilterCriterion.FilesInVolume</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.WorkWithScannerClient</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Enum.ScannedImagesFormats</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Enum.ScannedImageResolutions</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Enum.ImageChromaticities</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Enum.ImageRotationMethods</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Enum.PaperSizes</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonTemplate.TWAINComponent</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.FilesInWorkingDirectory</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Enum.FileDoubleClickActions</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Enum.TIFFCompressionOptions</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Enum.MultiplePageFilesStorageFormats</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Enum.OnePageFilesStorageFormats</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.FileOperations</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.VersionStoredFiles</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">EventSubscription.CopyFileVersionAttributesToFile</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.TransferFilesToVolumes</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.FileOperationsClientOverridable</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Enum.FileTypesForBuiltInEditor</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Role.FileFolderOperations</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonPicture.HelpToStart</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonPicture.HelpMoveDown</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonPicture.ArrowDownHelp</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.FileOperationsService</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.FileOperationsServiceServerCall</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.FileOperationsServiceClient</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.FileVersionsEncodings</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">DefinedType.FilesOwner</xr:Item>
+			</Content>
+		</Properties>
+		<ChildObjects/>
+	</Subsystem>
+</MetaDataObject>

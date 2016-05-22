@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"></meta><meta name="GENERATOR" content="MSHTML 11.00.9600.18321"></meta></head><body>
+<h1>Demand planning</h1>
+<p>The data processor calculates company inventory demand (deficit). To open the data processor, browse <strong>Supply and Purchasing / Actions panel / Tools / Inventory demand Planning</strong>.</p>
+<ul dir="ltr"><li>Settings: 
+<ul><li><strong>Filter period End</strong> – demand calculation period: starting current date to period end. 
+</li><li><strong>Company</strong> – company, for which demand is calculated. 
+</li><li><strong>Deficit Only </strong>– output only items, that are in deficit. </li></ul></li><li>
+<p class="Usual">Execution: </p></li></ul><blockquote class="Usual" style="MARGIN-RIGHT: 0px" dir="ltr">
+<p class="Usual" dir="ltr"></p>
+<ul><ul><li class="Usual">The data processor form contains tree of items and information about them. IN the columns of the data processor the following data is indicated: Item, characteristic, total deficit Amount, overdue demand SUM(in Item units) on current date, and demand forecast by dates.<br>By selecting item in the tree, you will see the calculation details: 
+<ul><li>anticipated inventory balance; 
+</li><li>anticipated receipts and expenses; 
+</li><li>minimum and maximum stock level; 
+</li><li>order details – sources of supplier invoices and expenses.</li></ul></li></ul></ul><p></p>
+<ul><li><strong>Important.</strong> IN column <strong>"Overdue"</strong> values: 
+<ul><li>anticipated receipts, having receipt date earlier than current date; 
+</li><li>anticipated expenses, having expense date earlier than current date; 
+</li><li>maximum stock level if current inventory balance is equal or less than minimum stock level (current balance is subtracted from maximum stock level).</li></ul></li><li><strong>Important.</strong> It is assumed that overdue indicators will be reached when the indicators in planned period are calculated. 
+</li><li><strong>Deficit </strong>calculation: if value of minimum stock balance is equal or greater than closing stock balance, then closing stock balance is subtracted from maximum stock balance. 
+</li><li>Calculation of indicators in planned period: 
+<ul><li><strong>Opening</strong> is equal to deficit Amount plus closing balance from previous column. 
+</li><li><strong>Receipt</strong> is equal to sum of all anticipated supplier invoices. 
+</li><li><strong>Demand</strong> is equal to sum of all anticipated inventory expenses. 
+</li><li><strong>MIN Balance</strong> is equal to minimum stock balance defined for specific item. 
+</li><li><strong>MAX Balance</strong> is equal to maximum stock balance defined for specific item. If maximum balance is zero – consider that it is equal to minimum stock balance. 
+</li><li><strong>Amount (Cur.)</strong> = Opening balance + Receipt – Demand</li></ul></li></ul></blockquote>
+<p>There is the "Recommendations" button located on the form command bar. A recommendations' dialog displays advises about hoe to eliminate inventory deficit.</p>
+<ul><li><strong>Recommendations.</strong> Table attributes: 
+<ul><li><strong>Item -</strong> that is in deficit, with details about inventory replenishment methods. The main replenishment method has a presentation of kind "…(main)". 
+</li><li><strong>Characteristic / Replenishmentment Source -</strong> item characteristic, including vendor details (Companies catalog). The vendor is defined by main vendor specified inside item card and by vendors, by whom Item prices were recorded. 
+</li><li><strong>Receipt Company contract date -</strong> stock demand date, with possible receipts' dates (specified the la date of: stock demand date and current date plus replenishment term). 
+</li><li><strong>Selected -</strong> item that should be included in order. This flag is marked by default for items, whose demand date is equal or greater than possible receipt date. 
+</li><li><strong>Quantity -</strong> deficit Amount. 
+</li><li><strong>Price</strong> - that has been recorded when item was received from company (company's price list). 
+</li><li><strong>Amount -</strong> item cost. 
+</li><li><strong>Currency - </strong>of the company price list. 
+</li><li><strong>Type of Prices</strong> - company price list. </li></ul></li><li><strong>Orders.</strong> The table contains list of orders, automatically generated via the "Generate Orders" button. 
+<ul><li>Order generating rules: 
+<ul><li>Document type is defined by item replenishment method (Purchase – document "Purchase order" with transaction type "Order for purchase", tools – document "tools orders", Processing – document "Work order" with transaction type "Order for processing"). 
+</li><li>If vendor is specified, then default contract will be filled. 
+</li><li>Items, having identical indicators: replenishment method, company, currency, receipt date (if the "Specify receipt planned date in tabular section" flag is marked in accounting settings) are grouped into single order.</li></ul></li></ul></li></ul></body></html>

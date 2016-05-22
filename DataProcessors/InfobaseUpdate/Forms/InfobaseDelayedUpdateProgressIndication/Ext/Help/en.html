@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"></meta><link rel="stylesheet" type="text/css" href="v8help://service_book/service_style"></link><meta name="GENERATOR" content="MSHTML 11.00.9600.18321"></meta></head><body>
+<p>It is intended for viewing the progress and <a href="DataProcessor.InfobaseUpdate/Help">delayed database update</a> results.</p>
+<p>When updating the database the processing of some part of data can be delayed and processed in a background mode during application operation. IN this case, the documents that are not yet processed will be unavailable. At the attempt to open such a document, the application displays a message informing that the document processing is temporarily locked, as the application update was not completed. Some reports can also be unavailable. At the attempt to generate a report, the application displays a message informing that the report can contain incorrect data as the application update was not completed.</p>
+<p>It opens automatically when application starts after the database is updated along with <a href="CommonForm.InfobaseUpdate/Help">Application revisions description</a> (<strong>What's new in configuration</strong>) window. </p>
+<p>Information on delayed application update results can be found in<strong> </strong>the <strong>Administration - Support and maintenance</strong> section by running the <strong>Update results and Information processing</strong> command<strong>; </strong>or by the<strong> Additional procedures in progress </strong>link in the <strong>What's new in configuration</strong> window. After running the command the<strong> </strong>link changes its description to the <strong>Additional data processing procedures are being performed. </strong></p>
+<h3>Information on database updating </h3>
+<ul><li>Update version, update date and time, updating process time are specified. </li></ul><h3>Viewing the event log</h3>
+<ul><li>To view the database update events in the <a href="DataProcessor.EventLogMonitor/Help">event log</a>, click the <strong>Technical information on update results</strong> link.</li></ul><h3>Data processing activities</h3>
+<ul><li>If data processing activities have not been launched yet, the link displays the<strong> Data processing activities </strong>list. Click the link to <a href="DataProcessor.InfobaseUpdate.Form.DelayedHandlers/Help">view additional</a> procedures list. 
+</li><li>Click<strong> Run</strong> to start data processing. 
+</li><li>If the processing starts, the link displays the number of procedures completed. 
+</li><li>When the data processing activities are completed, completion date and time are shown. The link displays<strong> All update procedures are successfully completed</strong> (the number of performed procedures is specified in parentheses).</li></ul><h3>Setting the data processing schedule </h3>
+<ul><li>As a rule data processing can take a long time (from several minutes to several hours depending on the entered data volume and computer performance), and its execution can slow down user's work. So it is recommended to start data processing during user lowest activity period. 
+</li><li>In client-server mode you can set up a<strong> Delayed database update</strong> scheduled job<strong>. </strong>Click the<strong> Configure schedule </strong>to<strong> </strong>set up the <strong>Delayed database update</strong> scheduled job<strong>. </strong>
+</li><li>You can also configure the <a href="DataProcessor.ScheduledAndBackgroundJobs.Form.ScheduledJob/Help">scheduled</a> job from <a href="DataProcessor.ScheduledAndBackgroundJobs/Help">the scheduled and background jobs</a> list using corresponding command of the <strong>Administration - Support and maintenance</strong> section. </li></ul><h3>Locking the check of scheduled job</h3>
+<ul><li>
+<div>In case the scheduled jobs are locked in a client-server mode, the delayed update will not be performed. </div>
+</li><li>
+<div>It is possible to control llocking by:</div>
+<ul><li>
+<div>Using the <strong>Test scheduled jobs locking </strong>link;</div>
+</li><li>
+<div>Using server cluster administration console. See platform documentation for console details.</div>
+<ul><li>
+<div>It is possible to launch a console using the <strong>Start</strong> menu by selecting the <strong>All applications-1C:Enterprise 8 - Additional </strong>section.</div>
+</li><li>
+<div>Select relevant central server, relevant cluster, and relevant information database to display a certain infobase properties.</div>
+</li><li>
+<div>To view database parameters, click the database name in a list with right mouse button.</div>
+</li><li>
+<div>Search for users and scheduled jobs locking in the database parameters list.</div>
+</li><li>
+<div>For more detailed information about the selected database llocking, select the <strong>Locking </strong>group in a console tree.</div></li></ul></li></ul></li></ul></body></html>

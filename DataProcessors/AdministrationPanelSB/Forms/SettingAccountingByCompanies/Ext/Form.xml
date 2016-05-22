@@ -1,0 +1,290 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Title>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Accounting by company subsidiaries</v8:content>
+		</v8:item>
+	</Title>
+	<Width>70</Width>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<Customizable>false</Customizable>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="AfterWrite">AfterWrite</Event>
+		<Event name="OnOpen">OnOpen</Event>
+		<Event name="BeforeWriteAtServer">BeforeWriteAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="CompanySettings" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Company settings</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Company settings</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Width>107</Width>
+			<HorizontalStretch>false</HorizontalStretch>
+			<Group>Vertical</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="SettingsCompaniesExtendedTooltip" id="62"/>
+			<ChildItems>
+				<CheckBoxField name="FunctionalOptionAccountingByMultipleCompanies" id="6">
+					<DataPath>ConstantsSet.FunctionalOptionAccountingByMultipleCompanies</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Keep accounts by several companies in info base</v8:content>
+						</v8:item>
+					</Title>
+					<TitleLocation>Right</TitleLocation>
+					<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="FunctionalOptionAccountingByMultipleCompaniesContextMenu" id="7"/>
+					<ExtendedTooltip name="FunctionalOptionAccountingByMultipleCompaniesExtendedTooltip" id="63">
+						<Title formatted="false">
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>The application provides an option to keep accounts both by one company (entrepreneur without a legal entity) and by two or more companies. If you need to keep accounts by several companies, then enable this option. </v8:content>
+							</v8:item>
+						</Title>
+					</ExtendedTooltip>
+					<Events>
+						<Event name="OnChange">FunctionalOptionAccountingByMultipleCompaniesOnChange</Event>
+					</Events>
+				</CheckBoxField>
+				<UsualGroup name="CompanySettingsSettings" id="10">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Company settings settings</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Company settings settings</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+					<HorizontalStretch>true</HorizontalStretch>
+					<Group>Vertical</Group>
+					<Representation>NormalSeparation</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="SettingsCompaniesSettingsExtendedTooltip" id="65">
+						<Title formatted="false">
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>The application provides two accounting methods if there are several companies in the accounting system: independent and by company. For more information, see the option help.</v8:content>
+							</v8:item>
+						</Title>
+					</ExtendedTooltip>
+					<ChildItems>
+						<UsualGroup name="SettingsAreCounterparty" id="18">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Counterparty company settings</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Counterparty company settings</v8:content>
+								</v8:item>
+							</ToolTip>
+							<HorizontalStretch>true</HorizontalStretch>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="SettingsAreCounterpartyExtendedTooltip" id="66"/>
+							<ChildItems>
+								<CheckBoxField name="AccountingBySubsidiaryCompany" id="12">
+									<DataPath>ConstantsSet.AccountingBySubsidiaryCompany</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Keep accounts by "Company - subsidiaries":</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>Right</TitleLocation>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Enables Company accounting - a group of companies, representing a single company, in terms of business management</v8:content>
+										</v8:item>
+									</ToolTip>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="AccountingBySubsidiaryCompanyContextMenu" id="13"/>
+									<ExtendedTooltip name="AccountingBySubsidiaryCompanyExtendedTooltip" id="67"/>
+									<Events>
+										<Event name="OnChange">AccountingBySubsidiaryCompanyOnChange</Event>
+									</Events>
+								</CheckBoxField>
+								<InputField name="SubsidiaryCompany" id="16">
+									<DataPath>ConstantsSet.SubsidiaryCompany</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Company-SubsidiaryCompany</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>None</TitleLocation>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>To perform company accounting, it is necessary to specify the organization-company on which consolidation of data will be carried out</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ToolTipRepresentation>Button</ToolTipRepresentation>
+									<HorizontalStretch>false</HorizontalStretch>
+									<Wrap>false</Wrap>
+									<ContextMenu name="SubsidiaryCompanyContextMenu" id="17"/>
+									<ExtendedTooltip name="SubsidiaryCompanyExtendedTooltip" id="68">
+										<Title formatted="true">
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>&lt;b&gt;"Accounting by company"&lt;/&gt;. 
+
+There are two schemes of accounting in the software when the accounting system includes several companies: • &lt;b&gt;Independent&lt;/&gt;&lt;b&gt;.&lt;/&gt; Accounting is separate for each company, the source documents are issued separately in each company. The advantage of this approach is usage of common catalogs (analytics objects) and common infobase (all information is kept in one place). 
+• &lt;b&gt;By company&lt;/&gt;. The accounting is done aggregatively for the whole company, the source documents are issued separately in each company. The advantage of this approach is the usage of common catalogs (analytics objects), common infobase (all information is stored in one place), and accounting for the whole company (if all companies constitute a single entity from the point of view of business).
+
+
+&lt;b&gt;&lt;color #ff0000&gt;IMPORTANT!&lt;/&gt;&lt;/&gt; Key parameter. If prior to this, the accounting was done by the subsidiary, the transition to the accounting by seperate companies is not possible. If prior to this the accounting was done by several companies, but without company's accounting data aggregation, the transition to the accounting by the subsidiary company is not possible. </v8:content>
+											</v8:item>
+										</Title>
+									</ExtendedTooltip>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<CommandBar name="Commands" id="57">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Commands</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Commands</v8:content>
+				</v8:item>
+			</ToolTip>
+			<HorizontalLocation>Right</HorizontalLocation>
+			<ExtendedTooltip name="CommandsExtendedTooltip" id="71"/>
+			<ChildItems>
+				<Button name="WriteAndClose" id="58">
+					<Type>CommandBarButton</Type>
+					<DefaultButton>true</DefaultButton>
+					<CommandName>Form.StandardCommand.WriteAndClose</CommandName>
+					<ExtendedTooltip name="WriteAndCloseExtendedTooltip" id="72"/>
+				</Button>
+				<Button name="Close" id="59">
+					<Type>CommandBarButton</Type>
+					<Representation>PictureAndText</Representation>
+					<CommandName>Form.StandardCommand.Close</CommandName>
+					<ExtendedTooltip name="CloseExtendedTooltip" id="73"/>
+				</Button>
+			</ChildItems>
+		</CommandBar>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="ConstantsSet" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Constants set</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:ConstantsSet</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+			<UseAlways>
+				<Field>ConstantsSet.SubsidiaryCompany</Field>
+				<Field>ConstantsSet.SMSProvider.Ref</Field>
+				<Field>ConstantsSet.ProductsAndServicesSKUInContent</Field>
+				<Field>ConstantsSet.PriceListShowFullDescr.Ref</Field>
+				<Field>ConstantsSet.PriceListShowCode.Ref</Field>
+				<Field>ConstantsSet.PostponeEditProhibitionDate.Ref</Field>
+				<Field>ConstantsSet.OffsetAdvancesDebtsAutomatically.Ref</Field>
+				<Field>ConstantsSet.NationalCurrency</Field>
+				<Field>ConstantsSet.InfobaseUsageMode.Ref</Field>
+				<Field>ConstantsSet.FunctionalOptionUseTechOperations</Field>
+				<Field>ConstantsSet.FunctionalOptionUseOrderWarehouse</Field>
+				<Field>ConstantsSet.FunctionalOptionUseDiscountsMarkups</Field>
+				<Field>ConstantsSet.FunctionalOptionUseCharacteristics</Field>
+				<Field>ConstantsSet.FunctionalOptionUseBudgeting</Field>
+				<Field>ConstantsSet.FunctionalOptionUseBatches</Field>
+				<Field>ConstantsSet.FunctionalOptionTransferRawMaterialsForProcessing</Field>
+				<Field>ConstantsSet.FunctionalOptionTransferInventoryOnSafeCustody</Field>
+				<Field>ConstantsSet.FunctionalOptionTransferGoodsOnCommission</Field>
+				<Field>ConstantsSet.FunctionalOptionTolling</Field>
+				<Field>ConstantsSet.FunctionalOptionTakingInventoryOnResponsibleStorage</Field>
+				<Field>ConstantsSet.FunctionalOptionReceiveGoodsOnCommission</Field>
+				<Field>ConstantsSet.FunctionalOptionInventoryReservation</Field>
+				<Field>ConstantsSet.FunctionalOptionAccountingRetail</Field>
+				<Field>ConstantsSet.FunctionalOptionAccountingCashMethodIncomeAndExpenses</Field>
+				<Field>ConstantsSet.FunctionalOptionAccountingByProjects</Field>
+				<Field>ConstantsSet.FunctionalOptionAccountingByMultipleCompanies</Field>
+				<Field>ConstantsSet.FunctionalOptionAccountingByCells</Field>
+				<Field>ConstantsSet.FunctionalCurrencyTransactionsAccounting</Field>
+				<Field>ConstantsSet.ExchangeRateDifferencesCalculationFrequency.Ref</Field>
+				<Field>ConstantsSet.DiscountsMarkupsSharedUsageOptions.Ref</Field>
+				<Field>ConstantsSet.DeleteCryptographyContext.Ref</Field>
+				<Field>ConstantsSet.DeleteContractControllingOnPosting.Ref</Field>
+				<Field>ConstantsSet.CustomerPaymentDueDate</Field>
+				<Field>ConstantsSet.ControlBalancesOnPosting</Field>
+				<Field>ConstantsSet.AuthorizationContext.Ref</Field>
+				<Field>ConstantsSet.ArchiveCRReceiptsOnCloseCashCRSession</Field>
+				<Field>ConstantsSet.ActivityKind.Ref</Field>
+				<Field>ConstantsSet.AccountingCurrency</Field>
+				<Field>ConstantsSet.AccountingBySubsidiaryCompany</Field>
+			</UseAlways>
+		</Attribute>
+		<Attribute name="ValueOnOpenAccountingForSeveralCompanies" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Value at opening accounting by several companies</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="CatalogCompanies" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Companies catalog</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Catalog companies</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>CatalogCompanies</Action>
+		</Command>
+	</Commands>
+</Form>

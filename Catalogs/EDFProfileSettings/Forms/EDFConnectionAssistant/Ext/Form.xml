@@ -1,0 +1,1767 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Title>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>EDF connection wizard</v8:content>
+		</v8:item>
+	</Title>
+	<AutoTitle>false</AutoTitle>
+	<CommandBarLocation>Bottom</CommandBarLocation>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<HorizontalAlign>Right</HorizontalAlign>
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="Done" id="137">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<SkipOnInput>false</SkipOnInput>
+				<CommandName>Form.Command.Done</CommandName>
+				<Title>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Done</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="DoneExtendedTooltip" id="561"/>
+			</Button>
+			<Button name="Cancel" id="138">
+				<Type>CommandBarButton</Type>
+				<SkipOnInput>false</SkipOnInput>
+				<CommandName>Form.Command.Cancel</CommandName>
+				<ExtendedTooltip name="CancelExtendedTooltip" id="562"/>
+			</Button>
+			<Button name="Help" id="139">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.Help</CommandName>
+				<ExtendedTooltip name="HelpExtendedTooltip" id="563"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="NotificationProcessing">NotificationProcessing</Event>
+		<Event name="OnOpen">OnOpen</Event>
+		<Event name="BeforeClose">BeforeClose</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<Pages name="AssistantPages" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Assistant pages</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Assistant pages</v8:content>
+				</v8:item>
+			</ToolTip>
+			<ExtendedTooltip name="AssistantPagesExtendedTooltip" id="564"/>
+			<ChildItems>
+				<Page name="Connection1CTaxcomPage" id="381">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>1C-Taxcom connection assistant</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>1C-Taxcom connection assistant</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="Connection1CTaxcomPageExtendedTooltip" id="565"/>
+					<ChildItems>
+						<InputField name="Connection1CTaxcomStartup" id="383">
+							<DataPath>Company</DataPath>
+							<TitleLocation>Left</TitleLocation>
+							<AutoMarkIncomplete>true</AutoMarkIncomplete>
+							<ContextMenu name="Connection1CTaxcomStartupContextMenu" id="384"/>
+							<ExtendedTooltip name="Connection1CTaxcomStartupExtendedTooltip" id="566"/>
+							<Events>
+								<Event name="OnChange">CompanyOnChange</Event>
+							</Events>
+						</InputField>
+						<UsualGroup name="GroupThroughOperatorInformationLabelCompany" id="430">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Unique code of the company as a participant of electronic document exchange.</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group comment open the electronic documents exchange settings</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupThroughOperatorInformationLabelCompanyExtendedTooltip" id="567"/>
+							<ChildItems>
+								<PictureDecoration name="Decoration48" id="431">
+									<Width>2</Width>
+									<Height>1</Height>
+									<Picture>
+										<xr:Ref>CommonPicture.Information02</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="Decoration48ContextMenu" id="432"/>
+									<ExtendedTooltip name="Decoration48ExtendedTooltip" id="568"/>
+								</PictureDecoration>
+								<LabelDecoration name="DescriptionCompany" id="433">
+									<TextColor>style:ExplanationText</TextColor>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Company - electronic documents exchange participant.</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="DescriptionCompanyContextMenu" id="434"/>
+									<ExtendedTooltip name="DescriptionCompanyExtendedTooltip" id="569"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="DSCertificateChoiceGroup" id="463">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>DS certificate choice group</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>DS certificate choice group</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="DSCertificateChoiceGroupExtendedTooltip" id="585"/>
+							<ChildItems>
+								<InputField name="DSCertificateThroughOperator" id="428">
+									<DataPath>CryptoCertificate</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Certificate of digital signature key</v8:content>
+										</v8:item>
+									</Title>
+									<ChoiceButton>true</ChoiceButton>
+									<OpenButton>true</OpenButton>
+									<QuickChoice>true</QuickChoice>
+									<AutoMarkIncomplete>true</AutoMarkIncomplete>
+									<ChooseType>false</ChooseType>
+									<ChoiceForm>Catalog.DeleteDSCertificates.Form.ChoiceForm</ChoiceForm>
+									<ContextMenu name="DSCertificateThroughOperatorContextMenu" id="429"/>
+									<ExtendedTooltip name="DSCertificateThroughOperatorExtendedTooltip" id="586"/>
+									<Events>
+										<Event name="StartChoice">DSCertificateChoiceBegin</Event>
+									</Events>
+								</InputField>
+								<Button name="OpenDSToolTip" id="459">
+									<Type>Hyperlink</Type>
+									<CommandName>Form.Command.OpenDSToolTip</CommandName>
+									<ExtendedTooltip name="OpenDSToolTipExtendedTooltip" id="587"/>
+								</Button>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="GroupIDWithOUSFilling" id="471">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>ID with ISU filling group</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>ID with ISU filling group</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupIDWithOUSFillingExtendedTooltip" id="588"/>
+							<ChildItems>
+								<LabelDecoration name="Decoration1" id="467">
+									<Width>26</Width>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Company identifier</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="Decoration1ContextMenu" id="468"/>
+									<ExtendedTooltip name="Decoration1ExtendedTooltip" id="589"/>
+								</LabelDecoration>
+								<LabelDecoration name="CaptionIDOfParticipantExchangeED" id="127">
+									<HorizontalStretch>true</HorizontalStretch>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Obtain a unique identifier of the ED exchange participant</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<ContextMenu name="LabelIDExchangeParticipantEDContextMenu" id="128"/>
+									<ExtendedTooltip name="LabelIDExchangeParticipantEDExtendedTooltip" id="590"/>
+									<Events>
+										<Event name="Click">CaptionEDExchangeParticipantIDPress</Event>
+									</Events>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="GroupIDFillingWithoutOUS" id="470">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Id without ISU filling group</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Id without ISU filling group</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupIDFillingWithoutOUSExtendedTooltip" id="591"/>
+							<ChildItems>
+								<InputField name="CompanyIDThroughOperator" id="123">
+									<DataPath>CompanyID</DataPath>
+									<AutoMarkIncomplete>true</AutoMarkIncomplete>
+									<ContextMenu name="CompanyIDThroughOperatorContextMenu" id="124"/>
+									<ExtendedTooltip name="CompanyIDThroughOperatorExtendedTooltip" id="592"/>
+								</InputField>
+								<UsualGroup name="GroupThroughOperatorInformationLabelID" id="423">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Unique code of the company as a participant of electronic document exchange.</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group comment open the electronic documents exchange settings</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Width>86</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupThroughOperatorInformationLabelIDExtendedTooltip" id="593"/>
+									<ChildItems>
+										<PictureDecoration name="Decoration47" id="424">
+											<Width>2</Width>
+											<Height>1</Height>
+											<Picture>
+												<xr:Ref>CommonPicture.Information02</xr:Ref>
+												<xr:LoadTransparent>true</xr:LoadTransparent>
+											</Picture>
+											<ContextMenu name="Decoration47ContextMenu" id="425"/>
+											<ExtendedTooltip name="Decoration47ExtendedTooltip" id="594"/>
+										</PictureDecoration>
+										<LabelDecoration name="IdentifierExplanation" id="421">
+											<HorizontalStretch>true</HorizontalStretch>
+											<TextColor>style:ExplanationText</TextColor>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>When registering on EDF operator service the company obtains a unique ID. 
+You can get it in your account settings of the EDF operator. ID should consist of 46 characters.</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="IdentifierExplanationContextMenu" id="422"/>
+											<ExtendedTooltip name="IdentifierExplanationExtendedTooltip" id="595"/>
+										</LabelDecoration>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+						<LabelDecoration name="Decoration2" id="714">
+							<VerticalStretch>true</VerticalStretch>
+							<ContextMenu name="Decoration2ContextMenu" id="715"/>
+							<ExtendedTooltip name="Decoration2ExtendedTooltip" id="716"/>
+						</LabelDecoration>
+						<UsualGroup name="GroupFooter" id="707">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group footer</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group footer</v8:content>
+								</v8:item>
+							</ToolTip>
+							<HorizontalStretch>true</HorizontalStretch>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="FooterGroupExtendedTooltip" id="708"/>
+							<ChildItems>
+								<UsualGroup name="SupportContactGroup" id="717">
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ChildItemsWidth>LeftWidest</ChildItemsWidth>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="SupportContactsGroupExtendedTooltip" id="718"/>
+									<ChildItems>
+										<InputField name="ServiceSupportPhoneNumber" id="719">
+											<DataPath>ServiceSupportPhoneNumber</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<SkipOnInput>true</SkipOnInput>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Support service</v8:content>
+												</v8:item>
+											</Title>
+											<HorizontalAlign>Right</HorizontalAlign>
+											<Width>12</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<TextColor>#373737</TextColor>
+											<BackColor>style:FormBackColor</BackColor>
+											<BorderColor>style:FormBackColor</BorderColor>
+											<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+											<ContextMenu name="ServiceSupportPhoneNumberContextMenu" id="720"/>
+											<ExtendedTooltip name="ServiceSupportPhoneNumberExtendedTooltip" id="721"/>
+										</InputField>
+										<InputField name="ServiceSupportEmailAddress" id="722">
+											<DataPath>ServiceSupportEmailAddress</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<SkipOnInput>true</SkipOnInput>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Support service</v8:content>
+												</v8:item>
+											</Title>
+											<TitleLocation>None</TitleLocation>
+											<HorizontalAlign>Left</HorizontalAlign>
+											<Width>8</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<TextColor>#373737</TextColor>
+											<BackColor>style:FormBackColor</BackColor>
+											<BorderColor>style:FormBackColor</BorderColor>
+											<Font ref="sys:DefaultGUIFont" bold="true" kind="WindowsFont"/>
+											<ContextMenu name="ServiceSupportEmailAddressContextMenu" id="723"/>
+											<ExtendedTooltip name="ServiceSupportEmailAddressExtendedTooltip" id="724"/>
+										</InputField>
+										<Button name="Button1CBuhphone" id="725">
+											<Type>Hyperlink</Type>
+											<CommandName>Form.Command.OpenLinkTo1CBuhphoneItem</CommandName>
+											<ExtendedTooltip name="Button1CBuhphoneExtendedTooltip" id="726"/>
+										</Button>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="PageDirectExchangeSettings" id="382">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Direct exchange with counterparties setup assistant</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Direct exchange with counterparties setup assistant</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="PageDirectExchangeSettingsExtendedTooltip" id="596"/>
+					<ChildItems>
+						<InputField name="CompanyDirectExchange" id="177">
+							<DataPath>Company</DataPath>
+							<AutoMarkIncomplete>true</AutoMarkIncomplete>
+							<ContextMenu name="CompanyDirectExchangeContextMenu" id="178"/>
+							<ExtendedTooltip name="CompanyDirectExchangeExtendedTooltip" id="597"/>
+							<Events>
+								<Event name="OnChange">CompanyOnChange</Event>
+							</Events>
+						</InputField>
+						<UsualGroup name="GroupDirectExchangeInformationLabelCompany" id="498">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Unique code of the company as a participant of electronic document exchange.</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group comment open the electronic documents exchange settings</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupDirectExchangeInformationLabelCompanyExtendedTooltip" id="598"/>
+							<ChildItems>
+								<PictureDecoration name="Decoration51" id="499">
+									<Width>2</Width>
+									<Height>1</Height>
+									<Picture>
+										<xr:Ref>CommonPicture.Information02</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="Decoration51ContextMenu" id="500"/>
+									<ExtendedTooltip name="Decoration51ExtendedTooltip" id="599"/>
+								</PictureDecoration>
+								<LabelDecoration name="CompanyDirectExchangeDesciption" id="501">
+									<TextColor>style:ExplanationText</TextColor>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Company - electronic documents exchange participant.</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="CompanyDirectExchangeDesciptionContextMenu" id="502"/>
+									<ExtendedTooltip name="CompanyDirectExchangeDesciptionExtendedTooltip" id="600"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+						<InputField name="CompanyIDDirectExchange" id="387">
+							<DataPath>CompanyID</DataPath>
+							<AutoMarkIncomplete>true</AutoMarkIncomplete>
+							<ContextMenu name="CompanyIDDirectExchangeContextMenu" id="388"/>
+							<ExtendedTooltip name="CompanyIDDirectExchangeExtendedTooltip" id="601"/>
+						</InputField>
+						<UsualGroup name="GroupDirectExchangeInformationLabelID" id="393">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Unique code of the company as a participant of electronic document exchange.</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group comment open the electronic documents exchange settings</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Width>86</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupDirectExchangeInformationLabelIDExtendedTooltip" id="602"/>
+							<ChildItems>
+								<PictureDecoration name="Decoration44" id="394">
+									<Width>2</Width>
+									<Height>1</Height>
+									<Picture>
+										<xr:Ref>CommonPicture.Information02</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="Decoration44ContextMenu" id="395"/>
+									<ExtendedTooltip name="Decoration44ExtendedTooltip" id="603"/>
+								</PictureDecoration>
+								<LabelDecoration name="DirectExchangeInformationLabelID" id="396">
+									<Height>2</Height>
+									<TextColor>style:ExplanationText</TextColor>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Each electronic document exchange participant has a unique ID. By default the parameter value is &lt;TIN_KPP&gt; of the company and can be changed manually.</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="DirectExchangeInformationLabelIDContextMenu" id="397"/>
+									<ExtendedTooltip name="DirectExchangeInformationLabelIDExtendedTooltip" id="604"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+						<InputField name="EDExchangeMethod" id="249">
+							<DataPath>EDExchangeMethod</DataPath>
+							<ListChoiceMode>true</ListChoiceMode>
+							<BackColor>style:ManagingFieldBackgroundColor</BackColor>
+							<ContextMenu name="EDExchangeVariantContextMenu" id="250"/>
+							<ExtendedTooltip name="EDExchangeVariantExtendedTooltip" id="605"/>
+							<Events>
+								<Event name="OnChange">EDExchangeMethodOnChange</Event>
+							</Events>
+						</InputField>
+						<Pages name="GroupParticipantSettings" id="251">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Participant settings group</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Participant settings group</v8:content>
+								</v8:item>
+							</ToolTip>
+							<PagesRepresentation>None</PagesRepresentation>
+							<ExtendedTooltip name="GroupParticipantSettingsExtendedTooltip" id="606"/>
+							<ChildItems>
+								<Page name="ParticipantSettingsGroupThroughEMail" id="288">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Participant settings group through email</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group of participant settings through the EDF operator</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="ParticipantSettingsGroupThroughEMailExtendedTooltip" id="607"/>
+									<ChildItems>
+										<UsualGroup name="GroupThroughEMailInformation" id="289">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Exchange method parameters</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>ParticipantData</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Vertical</Group>
+											<Representation>StrongSeparation</Representation>
+											<ExtendedTooltip name="GroupThroughEMailInformationExtendedTooltip" id="608"/>
+											<ChildItems>
+												<UsualGroup name="ElectronicAccountChoiceGroup" id="351">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Electronic account choice group</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Electronic account choice group</v8:content>
+														</v8:item>
+													</ToolTip>
+													<Group>Horizontal</Group>
+													<Representation>None</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="ElectronicAccountChoiceGroupExtendedTooltip" id="609"/>
+													<ChildItems>
+														<InputField name="CompanyEmail" id="297">
+															<DataPath>CompanyEmail</DataPath>
+															<Title>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Email account company Email</v8:content>
+																</v8:item>
+															</Title>
+															<ContextMenu name="CompanyEmailContextMenu" id="298"/>
+															<ExtendedTooltip name="CompanyEmailExtendedTooltip" id="610"/>
+														</InputField>
+														<LabelDecoration name="DecorationCreateAccount" id="352">
+															<Title formatted="false">
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Create account</v8:content>
+																</v8:item>
+															</Title>
+															<Hyperlink>true</Hyperlink>
+															<ContextMenu name="DecorationCreateAccountContextMenu" id="353"/>
+															<ExtendedTooltip name="DecorationCreateAccountExtendedTooltip" id="611"/>
+															<Events>
+																<Event name="Click">DecorationCreateAccountClick</Event>
+															</Events>
+														</LabelDecoration>
+													</ChildItems>
+												</UsualGroup>
+												<UsualGroup name="GroupThroughEMailInformationLabel" id="292">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Group through email information label</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Group comment open the electronic documents exchange settings</v8:content>
+														</v8:item>
+													</ToolTip>
+													<Width>86</Width>
+													<HorizontalStretch>false</HorizontalStretch>
+													<Group>Horizontal</Group>
+													<Representation>None</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="GroupThroughEMailInformationLabelExtendedTooltip" id="612"/>
+													<ChildItems>
+														<PictureDecoration name="Decoration32" id="293">
+															<Width>2</Width>
+															<Height>1</Height>
+															<Picture>
+																<xr:Ref>CommonPicture.Information02</xr:Ref>
+																<xr:LoadTransparent>true</xr:LoadTransparent>
+															</Picture>
+															<ContextMenu name="Decoration32ContextMenu" id="294"/>
+															<ExtendedTooltip name="Decoration32ExtendedTooltip" id="613"/>
+														</PictureDecoration>
+														<LabelDecoration name="CommentOpenElectronicDocumentsExchangeSettings3" id="295">
+															<Height>3</Height>
+															<TextColor>style:ExplanationText</TextColor>
+															<Title formatted="false">
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Specify the company email account to be used to send outgoing electronic documents and to receive incoming ones. It is strongly recommended to use the email account created for the exhcange purpose only.</v8:content>
+																</v8:item>
+															</Title>
+															<ContextMenu name="CommentOpenElectronicDocumentsExchangeSettings3ContextMenu" id="296"/>
+															<ExtendedTooltip name="CommentOpenElectronicDocumentsExchangeSettings3ExtendedTooltip" id="614"/>
+														</LabelDecoration>
+													</ChildItems>
+												</UsualGroup>
+												<UsualGroup name="GroupThroughEMailCryptographySetup" id="365">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Group through email cryptography setup</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Group through email cryptography setup</v8:content>
+														</v8:item>
+													</ToolTip>
+													<Group>Vertical</Group>
+													<Representation>NormalSeparation</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="GroupThroughEMailCryptographySetupExtendedTooltip" id="615"/>
+													<ChildItems>
+														<CheckBoxField name="UseDSThroughEMail" id="340">
+															<DataPath>UseDS</DataPath>
+															<TitleLocation>Right</TitleLocation>
+															<CheckBoxType>Auto</CheckBoxType>
+															<ContextMenu name="UseDSThroughEMailContextMenu" id="341"/>
+															<ExtendedTooltip name="UseDSThroughEMailExtendedTooltip" id="616"/>
+															<Events>
+																<Event name="OnChange">UseDSOnChange</Event>
+															</Events>
+														</CheckBoxField>
+														<UsualGroup name="GroupThroughEMailCryptographySetupInformationLabel" id="403">
+															<Title>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Group of exchange through the catalog information label</v8:content>
+																</v8:item>
+															</Title>
+															<ToolTip>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Group of exchange through the catalog information label</v8:content>
+																</v8:item>
+															</ToolTip>
+															<Width>86</Width>
+															<HorizontalStretch>false</HorizontalStretch>
+															<Group>Horizontal</Group>
+															<Representation>None</Representation>
+															<ShowTitle>false</ShowTitle>
+															<ExtendedTooltip name="GroupThroughEMailCryptographySetupInformationLabelExtendedTooltip" id="617"/>
+															<ChildItems>
+																<PictureDecoration name="Decoration45" id="404">
+																	<Width>2</Width>
+																	<Height>1</Height>
+																	<Picture>
+																		<xr:Ref>CommonPicture.Information02</xr:Ref>
+																		<xr:LoadTransparent>true</xr:LoadTransparent>
+																	</Picture>
+																	<ContextMenu name="Decoration45ContextMenu" id="405"/>
+																	<ExtendedTooltip name="Decoration45ExtendedTooltip" id="618"/>
+																</PictureDecoration>
+																<LabelDecoration name="Comment45" id="406">
+																	<Height>2</Height>
+																	<TextColor>style:ExplanationText</TextColor>
+																	<Title formatted="false">
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>To ensure the exchanged electronic document relevance in law the digital signature is required.</v8:content>
+																		</v8:item>
+																	</Title>
+																	<ContextMenu name="Comment45ContextMenu" id="407"/>
+																	<ExtendedTooltip name="Comment45ExtendedTooltip" id="619"/>
+																</LabelDecoration>
+															</ChildItems>
+														</UsualGroup>
+														<UsualGroup name="GroupThroughEMailDSCertificateChoice" id="525">
+															<Title>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>DS certificate choice group</v8:content>
+																</v8:item>
+															</Title>
+															<ToolTip>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>DS certificate choice group</v8:content>
+																</v8:item>
+															</ToolTip>
+															<Group>Horizontal</Group>
+															<Representation>None</Representation>
+															<ShowTitle>false</ShowTitle>
+															<ExtendedTooltip name="GroupThroughEMailDSCertificateChoiceExtendedTooltip" id="635"/>
+															<ChildItems>
+																<InputField name="DSCertificateThroughEMail" id="410">
+																	<DataPath>CryptoCertificate</DataPath>
+																	<Title>
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Certificate of digital signature key</v8:content>
+																		</v8:item>
+																	</Title>
+																	<OpenButton>true</OpenButton>
+																	<QuickChoice>true</QuickChoice>
+																	<AutoMarkIncomplete>true</AutoMarkIncomplete>
+																	<ChoiceForm>Catalog.DeleteDSCertificates.Form.ChoiceForm</ChoiceForm>
+																	<ContextMenu name="DSCertificateThroughEMailContextMenu" id="411"/>
+																	<ExtendedTooltip name="DSCertificateThroughEMailExtendedTooltip" id="636"/>
+																	<Events>
+																		<Event name="StartChoice">DSCertificateChoiceBegin</Event>
+																	</Events>
+																</InputField>
+																<Button name="OpenDSToolTip4" id="528">
+																	<Type>Hyperlink</Type>
+																	<CommandName>Form.Command.OpenDSToolTip</CommandName>
+																	<ExtendedTooltip name="OpenDSToolTip4ExtendedTooltip" id="637"/>
+																</Button>
+															</ChildItems>
+														</UsualGroup>
+													</ChildItems>
+												</UsualGroup>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</Page>
+								<Page name="ParticipantSettingsGroupThroughCatalog" id="279">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group of participant settings through the catalog</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group of participant settings through the EDF operator</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="ParticipantSettingsGroupThroughCatalogExtendedTooltip" id="638"/>
+									<ChildItems>
+										<UsualGroup name="GroupThroughCatalog" id="280">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Exchange method parameters</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>ParticipantData</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Vertical</Group>
+											<Representation>StrongSeparation</Representation>
+											<ExtendedTooltip name="GroupThroughCatalogExtendedTooltip" id="639"/>
+											<ChildItems>
+												<InputField name="IncomingDocumentsDir" id="286">
+													<DataPath>IncomingDocumentsDir</DataPath>
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Shared catalog for ED exchange</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Shared directory where incoming electronic document directory and outgoing electronic document directory will be created. Incoming electronic document directory will be used to receive incoming ED and outgoing electronic document directory will be used to send outgoing ED.</v8:content>
+														</v8:item>
+													</ToolTip>
+													<ChoiceButton>true</ChoiceButton>
+													<ContextMenu name="IncomingDocumentsDirContextMenu" id="287"/>
+													<ExtendedTooltip name="IncomingDocumentsDirExtendedTooltip" id="640"/>
+													<Events>
+														<Event name="StartChoice">IncomingDocumentsDirBeginChoice</Event>
+													</Events>
+												</InputField>
+												<UsualGroup name="GroupThroughCatalogInformationLabel" id="281">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Group through catalog information label</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Group through catalog information label</v8:content>
+														</v8:item>
+													</ToolTip>
+													<Width>86</Width>
+													<HorizontalStretch>false</HorizontalStretch>
+													<Group>Horizontal</Group>
+													<Representation>None</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="GroupThroughCatalogInformationLabelExtendedTooltip" id="641"/>
+													<ChildItems>
+														<PictureDecoration name="Decoration31" id="282">
+															<Width>2</Width>
+															<Height>1</Height>
+															<Picture>
+																<xr:Ref>CommonPicture.Information02</xr:Ref>
+																<xr:LoadTransparent>true</xr:LoadTransparent>
+															</Picture>
+															<ContextMenu name="Decoration31ContextMenu" id="283"/>
+															<ExtendedTooltip name="Decoration31ExtendedTooltip" id="642"/>
+														</PictureDecoration>
+														<LabelDecoration name="CommentOpenElectronicDocumentsExchangeSettings2" id="284">
+															<Height>1</Height>
+															<TextColor>style:ExplanationText</TextColor>
+															<Title formatted="false">
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Specify network directory where incoming and outgoing electronic document directories will be created.</v8:content>
+																</v8:item>
+															</Title>
+															<ContextMenu name="CommentOpenElectronicDocumentsExchangeSettings2ContextMenu" id="285"/>
+															<ExtendedTooltip name="CommentOpenElectronicDocumentsExchangeSettings2ExtendedTooltip" id="643"/>
+														</LabelDecoration>
+													</ChildItems>
+												</UsualGroup>
+												<UsualGroup name="GroupThroughCatalogCryptographySetup" id="364">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Group through catalog cryptography setup</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Group through catalog cryptography setup</v8:content>
+														</v8:item>
+													</ToolTip>
+													<Group>Vertical</Group>
+													<Representation>NormalSeparation</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="GroupThroughCatalogCryptographySetupExtendedTooltip" id="644"/>
+													<ChildItems>
+														<CheckBoxField name="UseDSThroughCatalog" id="330">
+															<DataPath>UseDS</DataPath>
+															<TitleLocation>Right</TitleLocation>
+															<CheckBoxType>Auto</CheckBoxType>
+															<ContextMenu name="UseDSThroughCatalogContextMenu" id="331"/>
+															<ExtendedTooltip name="UseDSThroughCatalogExtendedTooltip" id="645"/>
+															<Events>
+																<Event name="OnChange">UseDSOnChange</Event>
+															</Events>
+														</CheckBoxField>
+														<UsualGroup name="GroupThroughCatalogCryptographySetupInformationLabel" id="398">
+															<Title>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Group of exchange through the catalog information label</v8:content>
+																</v8:item>
+															</Title>
+															<ToolTip>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Group of exchange through the catalog information label</v8:content>
+																</v8:item>
+															</ToolTip>
+															<Width>86</Width>
+															<HorizontalStretch>false</HorizontalStretch>
+															<Group>Horizontal</Group>
+															<Representation>None</Representation>
+															<ShowTitle>false</ShowTitle>
+															<ExtendedTooltip name="GroupThroughCatalogCryptographySetupInformationLabelExtendedTooltip" id="646"/>
+															<ChildItems>
+																<PictureDecoration name="Decoration43" id="399">
+																	<Width>2</Width>
+																	<Height>1</Height>
+																	<Picture>
+																		<xr:Ref>CommonPicture.Information02</xr:Ref>
+																		<xr:LoadTransparent>true</xr:LoadTransparent>
+																	</Picture>
+																	<ContextMenu name="Decoration43ContextMenu" id="400"/>
+																	<ExtendedTooltip name="Decoration43ExtendedTooltip" id="647"/>
+																</PictureDecoration>
+																<LabelDecoration name="Comment43" id="401">
+																	<Height>2</Height>
+																	<TextColor>style:ExplanationText</TextColor>
+																	<Title formatted="false">
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>To ensure the exchanged electronic document relevance in law the digital signature is required.</v8:content>
+																		</v8:item>
+																	</Title>
+																	<ContextMenu name="Comment43ContextMenu" id="402"/>
+																	<ExtendedTooltip name="Comment43ExtendedTooltip" id="648"/>
+																</LabelDecoration>
+															</ChildItems>
+														</UsualGroup>
+														<UsualGroup name="GroupThroughEMailDSCertificate1Choice" id="529">
+															<Title>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>DS certificate choice group</v8:content>
+																</v8:item>
+															</Title>
+															<ToolTip>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>DS certificate choice group</v8:content>
+																</v8:item>
+															</ToolTip>
+															<Group>Horizontal</Group>
+															<Representation>None</Representation>
+															<ShowTitle>false</ShowTitle>
+															<ExtendedTooltip name="GroupThroughEMailDSCertificateChoice1ExtendedTooltip" id="664"/>
+															<ChildItems>
+																<InputField name="DSCertificateThroughCatalog" id="185">
+																	<DataPath>CryptoCertificate</DataPath>
+																	<Title>
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Certificate of digital signature key</v8:content>
+																		</v8:item>
+																	</Title>
+																	<ChoiceButton>true</ChoiceButton>
+																	<OpenButton>true</OpenButton>
+																	<QuickChoice>true</QuickChoice>
+																	<AutoMarkIncomplete>true</AutoMarkIncomplete>
+																	<ChooseType>false</ChooseType>
+																	<ChoiceForm>Catalog.DeleteDSCertificates.Form.ChoiceForm</ChoiceForm>
+																	<ChoiceParameterLinks>
+																		<xr:Link>
+																			<xr:Name>Filter.Company</xr:Name>
+																			<xr:DataPath xsi:type="xs:string">Company</xr:DataPath>
+																			<xr:ValueChange>Clear</xr:ValueChange>
+																		</xr:Link>
+																	</ChoiceParameterLinks>
+																	<ChoiceParameters>
+																		<app:item name="Filter.Revoked">
+																			<app:value xsi:type="FormChoiceListDesTimeValue">
+																				<Presentation/>
+																				<Value xsi:type="xs:boolean">false</Value>
+																			</app:value>
+																		</app:item>
+																		<app:item name="Filter.DeletionMark">
+																			<app:value xsi:type="FormChoiceListDesTimeValue">
+																				<Presentation/>
+																				<Value xsi:type="xs:boolean">false</Value>
+																			</app:value>
+																		</app:item>
+																	</ChoiceParameters>
+																	<ContextMenu name="DSCertificateThroughCatalogContextMenu" id="186"/>
+																	<ExtendedTooltip name="DSCertificateThroughCatalogExtendedTooltip" id="665"/>
+																	<Events>
+																		<Event name="StartChoice">DSCertificateChoiceBegin</Event>
+																	</Events>
+																</InputField>
+																<Button name="OpenDSToolTip35" id="532">
+																	<Type>Hyperlink</Type>
+																	<CommandName>Form.Command.OpenDSToolTip</CommandName>
+																	<ExtendedTooltip name="OpenDSToolTip35ExtendedTooltip" id="666"/>
+																</Button>
+															</ChildItems>
+														</UsualGroup>
+													</ChildItems>
+												</UsualGroup>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</Page>
+								<Page name="ParticipantSettingsGroupThroughFTP" id="299">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Participant settings group through FTP</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group of participant settings through the EDF operator</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="ParticipantSettingsGroupThroughFTPExtendedTooltip" id="667"/>
+									<ChildItems>
+										<UsualGroup name="GroupThroughFTPData" id="300">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Exchange method parameters</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>ParticipantData</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Vertical</Group>
+											<Representation>StrongSeparation</Representation>
+											<ExtendedTooltip name="GroupThroughFTPInformationExtendedTooltip" id="668"/>
+											<ChildItems>
+												<UsualGroup name="GroupFTPServerConnectionSetup" id="308">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Group FTP server connection setup</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Group FTP server connection setup</v8:content>
+														</v8:item>
+													</ToolTip>
+													<Group>Vertical</Group>
+													<Representation>None</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="GroupFTPServerConnectionSetupExtendedTooltip" id="669"/>
+													<ChildItems>
+														<UsualGroup name="GroupHorizontalFTP" id="309">
+															<Title>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Horizontal FTP group</v8:content>
+																</v8:item>
+															</Title>
+															<ToolTip>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Horizontal FTP group</v8:content>
+																</v8:item>
+															</ToolTip>
+															<Group>Horizontal</Group>
+															<Representation>None</Representation>
+															<ShowTitle>false</ShowTitle>
+															<ExtendedTooltip name="GroupHorizontalFTPExtendedTooltip" id="670"/>
+															<ChildItems>
+																<UsualGroup name="GroupLeftFTP" id="310">
+																	<Title>
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Group left FTP</v8:content>
+																		</v8:item>
+																	</Title>
+																	<ToolTip>
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Group left FTP</v8:content>
+																		</v8:item>
+																	</ToolTip>
+																	<Group>Vertical</Group>
+																	<Representation>None</Representation>
+																	<ShowTitle>false</ShowTitle>
+																	<ExtendedTooltip name="GroupLeftFTPExtendedTooltip" id="671"/>
+																	<ChildItems>
+																		<InputField name="FTPAddress" id="311">
+																			<DataPath>FTPServerAddress</DataPath>
+																			<Title>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Server address (without ftp://)</v8:content>
+																				</v8:item>
+																			</Title>
+																			<AutoMarkIncomplete>true</AutoMarkIncomplete>
+																			<ContextMenu name="FTPAddressContextMenu" id="312"/>
+																			<ExtendedTooltip name="FTPAdressExtendedTooltip" id="672"/>
+																		</InputField>
+																		<InputField name="FTPUser" id="313">
+																			<DataPath>FTPUser</DataPath>
+																			<Title>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>User</v8:content>
+																				</v8:item>
+																			</Title>
+																			<PasswordMode>false</PasswordMode>
+																			<ContextMenu name="FTPUserContextMenu" id="314"/>
+																			<ExtendedTooltip name="FTPUserExtendedTooltip" id="673"/>
+																		</InputField>
+																	</ChildItems>
+																</UsualGroup>
+																<UsualGroup name="GroupRightFTP" id="315">
+																	<Title>
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Group right FTP</v8:content>
+																		</v8:item>
+																	</Title>
+																	<ToolTip>
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Group right FTP</v8:content>
+																		</v8:item>
+																	</ToolTip>
+																	<Group>Vertical</Group>
+																	<Representation>None</Representation>
+																	<ShowTitle>false</ShowTitle>
+																	<ExtendedTooltip name="GroupRightFTPExtendedTooltip" id="674"/>
+																	<ChildItems>
+																		<UsualGroup name="GroupPortPassiveConnection" id="316">
+																			<Title>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Group port passive connection</v8:content>
+																				</v8:item>
+																			</Title>
+																			<ToolTip>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Group port passive connection</v8:content>
+																				</v8:item>
+																			</ToolTip>
+																			<Group>Horizontal</Group>
+																			<Representation>None</Representation>
+																			<ShowTitle>false</ShowTitle>
+																			<ExtendedTooltip name="GroupPortPassiveConnectionExtendedTooltip" id="675"/>
+																			<ChildItems>
+																				<InputField name="FTPPort" id="317">
+																					<DataPath>FTPPort</DataPath>
+																					<ContextMenu name="FTPPortContextMenu" id="318"/>
+																					<ExtendedTooltip name="FTPPortExtendedTooltip" id="676"/>
+																				</InputField>
+																				<CheckBoxField name="PassiveFTPConnection" id="319">
+																					<DataPath>PassiveFTPConnection</DataPath>
+																					<TitleLocation>Right</TitleLocation>
+																					<CheckBoxType>Auto</CheckBoxType>
+																					<ContextMenu name="PassiveConnectionFTPContextMenu" id="320"/>
+																					<ExtendedTooltip name="PassiveConnectionFTPExtendedTooltip" id="677"/>
+																				</CheckBoxField>
+																			</ChildItems>
+																		</UsualGroup>
+																		<InputField name="FTPPassword" id="321">
+																			<DataPath>FTPPassword</DataPath>
+																			<Title>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Password</v8:content>
+																				</v8:item>
+																			</Title>
+																			<PasswordMode>true</PasswordMode>
+																			<ContextMenu name="FTPPasswordContextMenu" id="322"/>
+																			<ExtendedTooltip name="FTPPasswordExtendedTooltip" id="678"/>
+																		</InputField>
+																	</ChildItems>
+																</UsualGroup>
+															</ChildItems>
+														</UsualGroup>
+														<UsualGroup name="GroupFTPResources" id="323">
+															<Title>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>FTP resources group</v8:content>
+																</v8:item>
+															</Title>
+															<ToolTip>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>FTP resources group</v8:content>
+																</v8:item>
+															</ToolTip>
+															<Group>Vertical</Group>
+															<Representation>None</Representation>
+															<ShowTitle>false</ShowTitle>
+															<ExtendedTooltip name="GroupFTPResourcesExtendedTooltip" id="679"/>
+															<ChildItems>
+																<InputField name="FTPIncomingDocumentsDir" id="324">
+																	<DataPath>FTPIncomingDocumentsDir</DataPath>
+																	<Title>
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Shared catalog for ED exchange</v8:content>
+																		</v8:item>
+																	</Title>
+																	<ToolTip>
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Shared directory where incoming electronic document directory and outgoing electronic document directory will be created. Incoming electronic document directory will be used to receive incoming ED and outgoing electronic document directory will be used to send outgoing ED.</v8:content>
+																		</v8:item>
+																	</ToolTip>
+																	<ContextMenu name="FTPIncomingDocumentsDirContextMenu" id="325"/>
+																	<ExtendedTooltip name="FTPIncomingDocumentsDirExtendedTooltip" id="680"/>
+																	<Events>
+																		<Event name="StartChoice">FTPIncomingDocumentsDirStartChoice</Event>
+																	</Events>
+																</InputField>
+															</ChildItems>
+														</UsualGroup>
+													</ChildItems>
+												</UsualGroup>
+												<UsualGroup name="GroupThroughFTPInformationLabel" id="303">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Group comment open the electronic documents exchange settings</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Group comment open the electronic documents exchange settings</v8:content>
+														</v8:item>
+													</ToolTip>
+													<Width>86</Width>
+													<HorizontalStretch>false</HorizontalStretch>
+													<Group>Horizontal</Group>
+													<Representation>None</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="GroupThroughFTPInformationLabelExtendedTooltip" id="681"/>
+													<ChildItems>
+														<PictureDecoration name="Decoration33" id="304">
+															<Width>2</Width>
+															<Height>1</Height>
+															<Picture>
+																<xr:Ref>CommonPicture.Information02</xr:Ref>
+																<xr:LoadTransparent>true</xr:LoadTransparent>
+															</Picture>
+															<ContextMenu name="Decoration33ContextMenu" id="305"/>
+															<ExtendedTooltip name="Decoration33ExtendedTooltip" id="682"/>
+														</PictureDecoration>
+														<LabelDecoration name="CommentOpenElectronicDocumentsExchangeSettings4" id="306">
+															<Height>2</Height>
+															<TextColor>style:ExplanationText</TextColor>
+															<Title formatted="false">
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Specify typical authorization settings of the FTP server and prescribe a shared directory where incoming and outgoing electronic document directories will be created.</v8:content>
+																</v8:item>
+															</Title>
+															<ContextMenu name="CommentOpenElectronicDocumentsExchangeSettings4ContextMenu" id="307"/>
+															<ExtendedTooltip name="CommentOpenElectronicDocumentsExchangeSettings4ExtendedTooltip" id="683"/>
+														</LabelDecoration>
+													</ChildItems>
+												</UsualGroup>
+												<UsualGroup name="GroupThroughFTPCryptographySetup" id="373">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Group cryptography setup through FTP</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Group cryptography setup through FTP</v8:content>
+														</v8:item>
+													</ToolTip>
+													<Group>Vertical</Group>
+													<Representation>NormalSeparation</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="GroupThroughFTPCryptographySetupExtendedTooltip" id="684"/>
+													<ChildItems>
+														<CheckBoxField name="UseDSThroughFTP" id="347">
+															<DataPath>UseDS</DataPath>
+															<TitleLocation>Right</TitleLocation>
+															<CheckBoxType>Auto</CheckBoxType>
+															<ContextMenu name="UseDSThroughFTPContextMenu" id="348"/>
+															<ExtendedTooltip name="UseDSThroughFTPExtendedTooltip" id="685"/>
+															<Events>
+																<Event name="OnChange">UseDSOnChange</Event>
+															</Events>
+														</CheckBoxField>
+														<UsualGroup name="GroupThroughCryptographyFTPSetupInformationLabel" id="412">
+															<Title>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Group of exchange through the catalog information label</v8:content>
+																</v8:item>
+															</Title>
+															<ToolTip>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Group of exchange through the catalog information label</v8:content>
+																</v8:item>
+															</ToolTip>
+															<Width>86</Width>
+															<HorizontalStretch>false</HorizontalStretch>
+															<Group>Horizontal</Group>
+															<Representation>None</Representation>
+															<ShowTitle>false</ShowTitle>
+															<ExtendedTooltip name="GroupThroughFTPCryptographySetupInformationLabelExtendedTooltip" id="686"/>
+															<ChildItems>
+																<PictureDecoration name="Decoration46" id="413">
+																	<Width>2</Width>
+																	<Height>1</Height>
+																	<Picture>
+																		<xr:Ref>CommonPicture.Information02</xr:Ref>
+																		<xr:LoadTransparent>true</xr:LoadTransparent>
+																	</Picture>
+																	<ContextMenu name="Decoration46ContextMenu" id="414"/>
+																	<ExtendedTooltip name="Decoration46ExtendedTooltip" id="687"/>
+																</PictureDecoration>
+																<LabelDecoration name="Comment44" id="415">
+																	<Height>2</Height>
+																	<TextColor>style:ExplanationText</TextColor>
+																	<Title formatted="false">
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>To ensure the exchanged electronic document relevance in law the digital signature is required.</v8:content>
+																		</v8:item>
+																	</Title>
+																	<ContextMenu name="Comment44ContextMenu" id="416"/>
+																	<ExtendedTooltip name="Comment44ExtendedTooltip" id="688"/>
+																</LabelDecoration>
+															</ChildItems>
+														</UsualGroup>
+														<UsualGroup name="GroupThroughDSCertificateChoiceFTP" id="494">
+															<Title>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>DS certificate choice group</v8:content>
+																</v8:item>
+															</Title>
+															<ToolTip>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>DS certificate choice group</v8:content>
+																</v8:item>
+															</ToolTip>
+															<Group>Horizontal</Group>
+															<Representation>None</Representation>
+															<ShowTitle>false</ShowTitle>
+															<ExtendedTooltip name="GroupThroughFTPDSCertificateChoiceExtendedTooltip" id="704"/>
+															<ChildItems>
+																<InputField name="DSCertificateThroughFTP" id="419">
+																	<DataPath>CryptoCertificate</DataPath>
+																	<Title>
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Certificate of digital signature key</v8:content>
+																		</v8:item>
+																	</Title>
+																	<ChoiceButton>true</ChoiceButton>
+																	<OpenButton>true</OpenButton>
+																	<QuickChoice>true</QuickChoice>
+																	<AutoMarkIncomplete>true</AutoMarkIncomplete>
+																	<ChooseType>false</ChooseType>
+																	<ChoiceForm>Catalog.DeleteDSCertificates.Form.ChoiceForm</ChoiceForm>
+																	<ChoiceParameterLinks>
+																		<xr:Link>
+																			<xr:Name>Filter.Company</xr:Name>
+																			<xr:DataPath xsi:type="xs:string">Company</xr:DataPath>
+																			<xr:ValueChange>Clear</xr:ValueChange>
+																		</xr:Link>
+																	</ChoiceParameterLinks>
+																	<ChoiceParameters>
+																		<app:item name="Filter.Revoked">
+																			<app:value xsi:type="FormChoiceListDesTimeValue">
+																				<Presentation/>
+																				<Value xsi:type="xs:boolean">false</Value>
+																			</app:value>
+																		</app:item>
+																		<app:item name="Filter.DeletionMark">
+																			<app:value xsi:type="FormChoiceListDesTimeValue">
+																				<Presentation/>
+																				<Value xsi:type="xs:boolean">false</Value>
+																			</app:value>
+																		</app:item>
+																	</ChoiceParameters>
+																	<ContextMenu name="DSCertificateThroughFTPContextMenu" id="420"/>
+																	<ExtendedTooltip name="DSCertificateThroughFTPExtendedTooltip" id="705"/>
+																	<Events>
+																		<Event name="StartChoice">DSCertificateChoiceBegin</Event>
+																	</Events>
+																</InputField>
+																<Button name="OpenDSToolTip3" id="497">
+																	<Type>Hyperlink</Type>
+																	<CommandName>Form.Command.OpenDSToolTip</CommandName>
+																	<ExtendedTooltip name="OpenDSToolTip3ExtendedTooltip" id="706"/>
+																</Button>
+															</ChildItems>
+														</UsualGroup>
+													</ChildItems>
+												</UsualGroup>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</Page>
+							</ChildItems>
+						</Pages>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Company" id="21">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Company</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Companies</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="CompanyID" id="25">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Company ID</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>46</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="CryptoCertificate" id="38">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Crypto certificate</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.DigitalSignaturesAndEncryptionKeyCertificates</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="SettingsProfileRef" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Profile settings reference</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.EDFProfileSettings</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="CryptographyContext" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Context for cryptography</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="AuthorizationContext" id="20">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Authorization context</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.WorkContextsWithED</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="EDExchangeMethod" id="30">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>ED exchange method</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.EDExchangeMethods</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="FTPIncomingDocumentsDir" id="32">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>FTP catalog of incoming documents</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="IncomingDocumentsDir" id="33">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Incoming documents catalog</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="CompanyEmail" id="34">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Company email</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.EmailAccounts</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="FTPServerAddress" id="35">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>FTP server address</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="FTPPassword" id="36">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>FTP password</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="PassiveFTPConnection" id="39">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Passive FTP connection</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="FTPUser" id="40">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>FTP user</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="FTPPort" id="41">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>FTP port</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="UseDS" id="43">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Sign electronic documents</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<FunctionalOptions>
+				<Item>FunctionalOption.UseDigitalSignatures</Item>
+			</FunctionalOptions>
+		</Attribute>
+		<Attribute name="ServiceSupportEmailAddress" id="37">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>20</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="CloseForm" id="42">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Close form</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ServiceSupportPhoneNumber" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Service support phone number</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>20</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<ConditionalAppearance>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>CaptionIDOfParticipantExchangeED</dcsset:field>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:field>PrivateOfficeOfParticipantExchangeED</dcsset:field>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:field>GroupCertificateChoice</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Company</dcsset:left>
+						<dcsset:comparisonType>NotFilled</dcsset:comparisonType>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Enabled</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>PrivateOfficeOfParticipantExchangeED</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">CompanyID</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:string"/>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Enabled</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+		</ConditionalAppearance>
+	</Attributes>
+	<Commands>
+		<Command name="Cancel" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Cancel</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Cancel</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Cancel</Action>
+		</Command>
+		<Command name="Done" id="17">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Done</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Done</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Done</Action>
+		</Command>
+		<Command name="OpenDSToolTip" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>What is a digital signature key?</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Open DS tooltip</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>OpenDSToolTip</Action>
+		</Command>
+		<Command name="OpenLinkTo1CBuhphoneItem" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>1CBuhphone</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Open an item on 1C Buhphone service at ITS</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>OpenLinkTo1CBuhphoneItem</Action>
+		</Command>
+	</Commands>
+</Form>

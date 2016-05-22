@@ -1,0 +1,1448 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<CommandBarLocation>Bottom</CommandBarLocation>
+	<ReportResult/>
+	<DetailsData/>
+	<ReportFormType>Variant</ReportFormType>
+	<VariantAppearance/>
+	<AutoShowState>Auto</AutoShowState>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<HorizontalAlign>Right</HorizontalAlign>
+	</AutoCommandBar>
+	<ChildItems>
+		<Table name="SettingsComposerSettings" id="1">
+			<Representation>Tree</Representation>
+			<Autofill>true</Autofill>
+			<HorizontalLines>false</HorizontalLines>
+			<UseAlternationRowColor>true</UseAlternationRowColor>
+			<InitialTreeView>ExpandAllLevels</InitialTreeView>
+			<EnableStartDrag>true</EnableStartDrag>
+			<EnableDrag>true</EnableDrag>
+			<DataPath>Report.SettingsComposer.Settings</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Settings table</v8:content>
+				</v8:item>
+			</Title>
+			<SearchStringLocation>None</SearchStringLocation>
+			<ViewStatusLocation>None</ViewStatusLocation>
+			<SearchControlLocation>None</SearchControlLocation>
+			<ContextMenu name="SettingsComposerSettingsContextmenu" id="2"/>
+			<AutoCommandBar name="SettingsComposerSettingsCommandBar" id="3"/>
+			<ExtendedTooltip name="SettingsComposerSettingsExtendedTooltip" id="4"/>
+			<SearchStringAddition name="SettingsComposerSettingsSearchString" id="195">
+				<AdditionSource>
+					<Item>SettingsComposerSettings</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="SettingsComposerSettingsSearchStringContextMenu" id="196"/>
+				<ExtendedTooltip name="SettingsComposerSettingsSearchStringExtendedTooltip" id="197"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="SettingsComposerSettingsViewStatus" id="198">
+				<AdditionSource>
+					<Item>SettingsComposerSettings</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="SettingsComposerSettingsViewStatusContextMenu" id="199"/>
+				<ExtendedTooltip name="SettingsComposerSettingsViewStatusExtendedTooltip" id="200"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="SettingsComposerSettingsSearchManagement" id="201">
+				<AdditionSource>
+					<Item>SettingsComposerSettings</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="SettingsComposerSettingsSearchManagementContextMenu" id="202"/>
+				<ExtendedTooltip name="SettingsComposerSettingsSearchManagementExtendedTooltip" id="203"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="OnActivateRow">SettingsComposerSettingOnActivateRow</Event>
+				<Event name="OnActivateField">SettingsComposerSettingOnActivateField</Event>
+			</Events>
+		</Table>
+		<Pages name="SettingPages" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Settings group</v8:content>
+				</v8:item>
+			</Title>
+			<ExtendedTooltip name="SettingPagesExtendedTooltip" id="6"/>
+			<ChildItems>
+				<Page name="DataParametersPage" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Parameters</v8:content>
+						</v8:item>
+					</Title>
+					<Picture>
+						<xr:Ref>StdPicture.DataCompositionDataParameters</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</Picture>
+					<ExtendedTooltip name="DataParametersPageExtendedTooltip" id="8"/>
+					<ChildItems>
+						<Table name="SettingsComposerSettingsDataParameters" id="9">
+							<Representation>Tree</Representation>
+							<Autofill>true</Autofill>
+							<Width>50</Width>
+							<InitialTreeView>ExpandAllLevels</InitialTreeView>
+							<DataPath>Items.SettingsComposerSettings.CurrentData.ItemDataParameters</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Parameter settings</v8:content>
+								</v8:item>
+							</Title>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<ContextMenu name="SettingsComposerSettingsDataParametersContextMenu" id="10"/>
+							<AutoCommandBar name="SettingsComposerSettingsDataParametersCommandBar" id="11"/>
+							<ExtendedTooltip name="SettingsComposerSettingsDataParametersExtendedTooltip" id="12"/>
+							<SearchStringAddition name="SettingsComposerSettingsDataParametersSearchString" id="204">
+								<AdditionSource>
+									<Item>SettingsComposerSettingsDataParameters</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="SettingsComposerSettingsDataParametersSearchStringContextMenu" id="205"/>
+								<ExtendedTooltip name="SettingsComposerSettingsDataParametersSearchStringExtendedTooltip" id="206"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="SettingsComposerSettingsDataParametersViewStatus" id="207">
+								<AdditionSource>
+									<Item>SettingsComposerSettingsDataParameters</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="SettingsComposerSettingsDataParametersViewStatusContextMenu" id="208"/>
+								<ExtendedTooltip name="SettingsComposerSettingsDataParametersViewStatusExtendedTooltip" id="209"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="SettingsComposerSettingsDataParametersSearchManagement" id="210">
+								<AdditionSource>
+									<Item>SettingsComposerSettingsDataParameters</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="SettingsComposerSettingsDataParametersSearchManagementContextMenu" id="211"/>
+								<ExtendedTooltip name="SettingsComposerSettingsDataParametersSearchManagementExtendedTooltip" id="212"/>
+							</SearchControlAddition>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="UserFieldsPage" id="13">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>User fields</v8:content>
+						</v8:item>
+					</Title>
+					<Picture>
+						<xr:Ref>StdPicture.DataCompositionUserFields</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</Picture>
+					<Group>Horizontal</Group>
+					<ExtendedTooltip name="UserFieldsPageExtendedTooltip" id="14"/>
+					<ChildItems>
+						<Table name="SettingsComposerSettingsUserFields" id="15">
+							<Representation>List</Representation>
+							<Autofill>true</Autofill>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>Items.SettingsComposerSettings.CurrentData.ItemUserFields</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>User fields settings</v8:content>
+								</v8:item>
+							</Title>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<ContextMenu name="SettingsComposerSettingsUserFieldsContextMenu" id="16"/>
+							<AutoCommandBar name="SettingsComposerSettingsUserFieldsCommandBar" id="17"/>
+							<ExtendedTooltip name="SettingsComposerSettingsUserFieldsExtendedTooltip" id="18"/>
+							<SearchStringAddition name="SettingsComposerSettingsUserFieldsSearchString" id="213">
+								<AdditionSource>
+									<Item>SettingsComposerSettingsUserFields</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="SettingsComposerSettingsUserFieldsSearchStringContextMenu" id="214"/>
+								<ExtendedTooltip name="SettingsComposerSettingsUserFieldsSearchStringExtendedTooltip" id="215"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="SettingsComposerSettingsUserFieldsViewStatus" id="216">
+								<AdditionSource>
+									<Item>SettingsComposerSettingsUserFields</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="SettingsComposerSettingsUserFieldsViewStatusContextMenu" id="217"/>
+								<ExtendedTooltip name="SettingsComposerSettingsUserFieldsViewStatusExtendedTooltip" id="218"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="SettingsComposerSettingsUserFieldsSearchManagement" id="219">
+								<AdditionSource>
+									<Item>SettingsComposerSettingsUserFields</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="SettingsComposerSettingsUserFieldsSearchManagementContextMenu" id="220"/>
+								<ExtendedTooltip name="SettingsComposerSettingsUserFieldsSearchManagementExtendedTooltip" id="221"/>
+							</SearchControlAddition>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="GroupFieldsPage" id="19">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Grouping fields</v8:content>
+						</v8:item>
+					</Title>
+					<Picture>
+						<xr:Ref>StdPicture.DataCompositionGroupFields</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</Picture>
+					<ExtendedTooltip name="GroupFieldsPageExtendedTooltip" id="20"/>
+					<ChildItems>
+						<Pages name="GroupFieldsPages" id="21">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Grouped field pages</v8:content>
+								</v8:item>
+							</Title>
+							<PagesRepresentation>None</PagesRepresentation>
+							<ExtendedTooltip name="GroupFieldsPagesExtendedTooltip" id="22"/>
+							<ChildItems>
+								<Page name="GroupFieldsSettings" id="23">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Page of the fields grouped</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Horizontal</Group>
+									<ChildItemsWidth>LeftNarrowest</ChildItemsWidth>
+									<ExtendedTooltip name="GroupFieldsSettingsExtendedTooltip" id="24"/>
+									<ChildItems>
+										<Table name="SettingsComposerSettingsGroupFieldsGroupFieldsAvailableFields" id="25">
+											<Representation>Tree</Representation>
+											<Autofill>true</Autofill>
+											<Width>60</Width>
+											<HeightInTableRows>15</HeightInTableRows>
+											<ChoiceMode>true</ChoiceMode>
+											<HorizontalLines>false</HorizontalLines>
+											<VerticalLines>false</VerticalLines>
+											<EnableStartDrag>true</EnableStartDrag>
+											<EnableDrag>true</EnableDrag>
+											<DataPath>Items.SettingsComposerSettings.CurrentData.ItemGroupFields.GroupFieldsAvailableFields</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Available fields of the grouped fields</v8:content>
+												</v8:item>
+											</Title>
+											<SearchStringLocation>None</SearchStringLocation>
+											<ViewStatusLocation>None</ViewStatusLocation>
+											<SearchControlLocation>None</SearchControlLocation>
+											<ContextMenu name="SettingsComposerGroupFieldSettingsGroupFieldsAvailableFieldsContextMenu" id="26"/>
+											<AutoCommandBar name="SettingsComposerGroupFieldsSettingsGroupFieldsAvailableFieldsCommandBar" id="27"/>
+											<ExtendedTooltip name="SettingsComposerSettingsGroupFieldsAvailableGroupFieldsFieldsExtendedTooltip" id="28"/>
+											<SearchStringAddition name="SettingsComposerSettingsGroupFieldsGroupFieldsAvailableFieldsSearchString" id="222">
+												<AdditionSource>
+													<Item>SettingsComposerSettingsGroupFieldsGroupFieldsAvailableFields</Item>
+													<Type>SearchStringRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="SettingsComposerSettingsGroupFieldsAvailableGroupFieldsFieldsSearchStringContextMenu" id="223"/>
+												<ExtendedTooltip name="SettingsComposerSettingsGroupFieldsAvailableGroupFieldsFieldsSearcgStringExtendedTooltip" id="224"/>
+											</SearchStringAddition>
+											<ViewStatusAddition name="SettingsComposerSettingsGroupFieldsAvailableGroupFieldsFieldsViewStatus" id="225">
+												<AdditionSource>
+													<Item>SettingsComposerSettingsGroupFieldsGroupFieldsAvailableFields</Item>
+													<Type>ViewStatusRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="SettingsComposerSettingsGroupFieldsAvailableGroupFieldsFieldsViewStatusContextMenu" id="226"/>
+												<ExtendedTooltip name="SettingsComposerSettingsGroupFieldsAvailableGroupFieldsFieldsViewStatusExtendedTooltip" id="227"/>
+											</ViewStatusAddition>
+											<SearchControlAddition name="SettingsComposerSettingsGroupFieldsAvailableGroupFieldsFieldsSearchManagement" id="228">
+												<AdditionSource>
+													<Item>SettingsComposerSettingsGroupFieldsGroupFieldsAvailableFields</Item>
+													<Type>SearchControl</Type>
+												</AdditionSource>
+												<ContextMenu name="SettingsComposerSettingsGroupFieldsAvailableGroupFieldsFieldsSearchManagementContextMenu" id="229"/>
+												<ExtendedTooltip name="SettingsComposerSettingsGroupFieldsAvailableGroupFieldsFieldsSearchManagementExtendedTooltip" id="230"/>
+											</SearchControlAddition>
+										</Table>
+										<Table name="SettingsComposerSettingsGroupFields" id="29">
+											<Representation>List</Representation>
+											<Autofill>true</Autofill>
+											<EnableStartDrag>true</EnableStartDrag>
+											<EnableDrag>true</EnableDrag>
+											<DataPath>Items.SettingsComposerSettings.CurrentData.ItemGroupFields</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>The table of grouped fields</v8:content>
+												</v8:item>
+											</Title>
+											<SearchStringLocation>None</SearchStringLocation>
+											<ViewStatusLocation>None</ViewStatusLocation>
+											<SearchControlLocation>None</SearchControlLocation>
+											<ContextMenu name="SettingsComposerGroupFieldSettingsContextMenu" id="30"/>
+											<AutoCommandBar name="SettingsComposerGroupFieldSettingsCommandBar" id="31"/>
+											<ExtendedTooltip name="SettingsComposerSettingsGroupFieldsExtendedTooltip" id="32"/>
+											<SearchStringAddition name="SettingsComposerSettingsGroupFieldsSearchString" id="231">
+												<AdditionSource>
+													<Item>SettingsComposerSettingsGroupFields</Item>
+													<Type>SearchStringRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="SettingsComposerSettingsGroupFieldsSearchStringContextMenu" id="232"/>
+												<ExtendedTooltip name="SettingsComposerSettingsGroupFieldsSearchStringExtendedTooltip" id="233"/>
+											</SearchStringAddition>
+											<ViewStatusAddition name="SettingsComposerSettingsGroupFieldsViewStatus" id="234">
+												<AdditionSource>
+													<Item>SettingsComposerSettingsGroupFields</Item>
+													<Type>ViewStatusRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="SettingsComposerSettingsGroupFieldsViewStatusContextMenu" id="235"/>
+												<ExtendedTooltip name="SettingsComposerSettingsGroupFieldsViewStatusExtendedTooltip" id="236"/>
+											</ViewStatusAddition>
+											<SearchControlAddition name="SettingsComposerSettingsGroupFieldsSearchManagement" id="237">
+												<AdditionSource>
+													<Item>SettingsComposerSettingsGroupFields</Item>
+													<Type>SearchControl</Type>
+												</AdditionSource>
+												<ContextMenu name="SettingsComposerSettingsGroupFieldsSearchManagementContextMenu" id="238"/>
+												<ExtendedTooltip name="SettingsComposerSettingsGroupFieldsSearchManagementExtendedTooltip" id="239"/>
+											</SearchControlAddition>
+										</Table>
+									</ChildItems>
+								</Page>
+								<Page name="GroupFieldsSettingsInaccessible" id="33">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Page of the unavailable grouped fields</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="InaccessibleGroupFieldsSettingsExtendedTooltip" id="34"/>
+									<ChildItems>
+										<LabelDecoration name="InaccessibleGroupFieldsStatic" id="35">
+											<Height>2</Height>
+											<HorizontalStretch>true</HorizontalStretch>
+											<VerticalStretch>false</VerticalStretch>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Current item can not contain the grouping field.
+In the structure tree, select a grouping for which it is required to view or change the grouping fields structure.</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="UnavailableGroupFieldsInscriptionContextMenu" id="36"/>
+											<ExtendedTooltip name="InaccessibleGroupFieldsLabelExtendedTooltip" id="37"/>
+										</LabelDecoration>
+									</ChildItems>
+								</Page>
+							</ChildItems>
+						</Pages>
+					</ChildItems>
+				</Page>
+				<Page name="SelectedFieldsPage" id="38">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Fields</v8:content>
+						</v8:item>
+					</Title>
+					<Picture>
+						<xr:Ref>StdPicture.DataCompositionSelection</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</Picture>
+					<ExtendedTooltip name="SelectFieldsPageExtendedTooltip" id="39"/>
+					<ChildItems>
+						<CheckBoxField name="LocalSelectedFields" id="40">
+							<DataPath>LocalSelectedFields</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>The current item has individual settings of the selected fields (for the detailed item setting)</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="LocalSelectedFieldsContextMenu" id="41"/>
+							<ExtendedTooltip name="LocalSelectedFieldsExtendedTooltip" id="42"/>
+							<Events>
+								<Event name="OnChange">LocalSelectedFieldsOnChange</Event>
+							</Events>
+						</CheckBoxField>
+						<Pages name="SelectedFieldsPages" id="43">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Fields pages</v8:content>
+								</v8:item>
+							</Title>
+							<PagesRepresentation>None</PagesRepresentation>
+							<ExtendedTooltip name="SelectFieldsPagesExtendedTooltip" id="44"/>
+							<ChildItems>
+								<Page name="SelectedFieldsSettings" id="45">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Fields page</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Horizontal</Group>
+									<ChildItemsWidth>LeftNarrowest</ChildItemsWidth>
+									<ExtendedTooltip name="SelectedFieldsSettingsExtendedTooltip" id="46"/>
+									<ChildItems>
+										<Table name="SettingsComposerSettingsSelectionSelectionAvailableFields" id="47">
+											<Representation>Tree</Representation>
+											<Autofill>true</Autofill>
+											<Width>60</Width>
+											<HeightInTableRows>15</HeightInTableRows>
+											<ChoiceMode>true</ChoiceMode>
+											<HorizontalLines>false</HorizontalLines>
+											<VerticalLines>false</VerticalLines>
+											<EnableStartDrag>true</EnableStartDrag>
+											<EnableDrag>true</EnableDrag>
+											<DataPath>Items.SettingsComposerSettings.CurrentData.ItemSelection.SelectionAvailableFields</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Fields of available fields</v8:content>
+												</v8:item>
+											</Title>
+											<SearchStringLocation>None</SearchStringLocation>
+											<ViewStatusLocation>None</ViewStatusLocation>
+											<SearchControlLocation>None</SearchControlLocation>
+											<ContextMenu name="SettingsComposerSettingsChoiceAvailableChoiceFieldsContextMenu" id="48"/>
+											<AutoCommandBar name="SettingsComposerSettingsChoiceAvailableChoiceFieldsCommandBar" id="49"/>
+											<ExtendedTooltip name="SettingsComposerSettingsSelectionAvailableSelectionFieldsExtendedTooltip" id="50"/>
+											<SearchStringAddition name="SettingsComposerSettingsSelectionAvailableSelectionFieldsSearchString" id="240">
+												<AdditionSource>
+													<Item>SettingsComposerSettingsSelectionSelectionAvailableFields</Item>
+													<Type>SearchStringRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="SettingsComposerSettingsSelectionAvailableSelectionFieldsSearchStringContextMenu" id="241"/>
+												<ExtendedTooltip name="SettingsComposerSettingsSelectionAvailableSelectionFieldsSearchStringExtendedTooltip" id="242"/>
+											</SearchStringAddition>
+											<ViewStatusAddition name="SettingsComposerSettingsSelectionAvailableSelectionFieldsStatusView" id="243">
+												<AdditionSource>
+													<Item>SettingsComposerSettingsSelectionSelectionAvailableFields</Item>
+													<Type>ViewStatusRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="SettingsComposerSettingsSelectionAvailableSelectionFieldsViewStatusContextMenu" id="244"/>
+												<ExtendedTooltip name="SettingsComposerSettingsSelectionAvailableSelectionFieldsViewStatusExtendedTooltip" id="245"/>
+											</ViewStatusAddition>
+											<SearchControlAddition name="SettingsComposerSettingsSelectionAvailableSelectionFieldsSearchManagement" id="246">
+												<AdditionSource>
+													<Item>SettingsComposerSettingsSelectionSelectionAvailableFields</Item>
+													<Type>SearchControl</Type>
+												</AdditionSource>
+												<ContextMenu name="SettingsComposerSettingsSelectionAvailableSelectionFieldsSearchManagementContextMenu" id="247"/>
+												<ExtendedTooltip name="SettingsComposerSettingsSelectionAvailableSelectionFieldsSearchManagementExtendedTooltip" id="248"/>
+											</SearchControlAddition>
+										</Table>
+										<Table name="SettingsComposerSettingsSelection" id="51">
+											<Representation>Tree</Representation>
+											<Autofill>true</Autofill>
+											<InitialTreeView>ExpandAllLevels</InitialTreeView>
+											<EnableStartDrag>true</EnableStartDrag>
+											<EnableDrag>true</EnableDrag>
+											<DataPath>Items.SettingsComposerSettings.CurrentData.ItemSelection</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Table of fields</v8:content>
+												</v8:item>
+											</Title>
+											<SearchStringLocation>None</SearchStringLocation>
+											<ViewStatusLocation>None</ViewStatusLocation>
+											<SearchControlLocation>None</SearchControlLocation>
+											<ContextMenu name="SettingsComposerSettingsChoiceContextMenu" id="52"/>
+											<AutoCommandBar name="SettingsComposerSettingsChoiceCommandPanel" id="53"/>
+											<ExtendedTooltip name="SettingsComposerSettingsSelectionExtendedTooltip" id="54"/>
+											<SearchStringAddition name="SettingsComposerSettingsSelectionSearchString" id="249">
+												<AdditionSource>
+													<Item>SettingsComposerSettingsSelection</Item>
+													<Type>SearchStringRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="SettingsComposerSettingsSelectionSearchStringContextMenu" id="250"/>
+												<ExtendedTooltip name="SettingsComposerSettingsSelectionSearchStringExtendedTooltip" id="251"/>
+											</SearchStringAddition>
+											<ViewStatusAddition name="SettingsComposerSettingsSelectionViewtatus" id="252">
+												<AdditionSource>
+													<Item>SettingsComposerSettingsSelection</Item>
+													<Type>ViewStatusRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="SettingsComposerSettingsSelectionViewStatusContextMenu" id="253"/>
+												<ExtendedTooltip name="SettingsComposerSettingsSelectionViewStatusExtendedTooltip" id="254"/>
+											</ViewStatusAddition>
+											<SearchControlAddition name="SettingsComposerSettingsSelectionSearchManagement" id="255">
+												<AdditionSource>
+													<Item>SettingsComposerSettingsSelection</Item>
+													<Type>SearchControl</Type>
+												</AdditionSource>
+												<ContextMenu name="SettingsComposerSettingsSelectionSearchManagementContextMenu" id="256"/>
+												<ExtendedTooltip name="SettingsComposerSettingsSelectionSearchManagementExtendedTooltip" id="257"/>
+											</SearchControlAddition>
+										</Table>
+									</ChildItems>
+								</Page>
+								<Page name="SelectedFieldsSettingsOff" id="55">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Disconnected fields page</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="SelectedFieldsDisabledSettingsExtendedTooltip" id="56"/>
+									<ChildItems>
+										<LabelDecoration name="LocalSelectedFieldsStatic" id="57">
+											<Height>3</Height>
+											<HorizontalStretch>true</HorizontalStretch>
+											<VerticalStretch>false</VerticalStretch>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>The selected fields for the current item will be generated automatically according to the selected fields of the whole report.
+In the structure tree, select an item - report for editing its selected fields.
+If you want the current item to have selected fields that differ from the selected report fields, select the check box above the text.</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="LocalSelectedFieldsInscriptionContextMenu" id="58"/>
+											<ExtendedTooltip name="LocalSelectedFieldsLabelExtendedTooltip" id="59"/>
+										</LabelDecoration>
+										<LabelDecoration name="GoToReportSelectedFields" id="60">
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Selected report fields</v8:content>
+												</v8:item>
+											</Title>
+											<Hyperlink>true</Hyperlink>
+											<ContextMenu name="TransitionToSelectedReportFieldsContextMenu" id="61"/>
+											<ExtendedTooltip name="GoToSelectedReportFieldsExtendedTooltip" id="62"/>
+											<Events>
+												<Event name="Click">GoToReport</Event>
+											</Events>
+										</LabelDecoration>
+									</ChildItems>
+								</Page>
+								<Page name="SelectedFieldsSettingsInaccessible" id="63">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Page of inaccessible fields</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="UnavailableFieldsSettingsSelectedExtendedTooltip" id="64"/>
+									<ChildItems>
+										<LabelDecoration name="InaccessibleSelectedFieldsStatic" id="65">
+											<Height>2</Height>
+											<HorizontalStretch>true</HorizontalStretch>
+											<VerticalStretch>false</VerticalStretch>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>The selected fields can not be set for the current item.
+In the structure tree, select an item - report for editing its selected fields.</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="UnavailableSelectedFieldsInscriptionContextMenu" id="66"/>
+											<ExtendedTooltip name="InaccessibleSelectedFieldsLabelExtendedTooltip" id="67"/>
+										</LabelDecoration>
+										<LabelDecoration name="GoToSelectedReportFieldsFromInaccessibleSelectedFields" id="68">
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Selected report fields</v8:content>
+												</v8:item>
+											</Title>
+											<Hyperlink>true</Hyperlink>
+											<ContextMenu name="GoToSelectedReportFieldsFromInaccessibleSelectedFieldsContextMenu" id="69"/>
+											<ExtendedTooltip name="GoToSelectedReportFieldsFromInaccessibleSelectedFieldsExtendedTooltip" id="70"/>
+											<Events>
+												<Event name="Click">GoToReport</Event>
+											</Events>
+										</LabelDecoration>
+									</ChildItems>
+								</Page>
+							</ChildItems>
+						</Pages>
+					</ChildItems>
+				</Page>
+				<Page name="FilterPage" id="71">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Filter</v8:content>
+						</v8:item>
+					</Title>
+					<Picture>
+						<xr:Ref>StdPicture.DataCompositionFilter</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</Picture>
+					<ExtendedTooltip name="FilterPageExtendedTooltip" id="72"/>
+					<ChildItems>
+						<CheckBoxField name="LocalFilter" id="73">
+							<DataPath>LocalFilter</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>The current item has individual filter (to filter records displayed in the item)</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="LocalFilterContextMenu" id="74"/>
+							<ExtendedTooltip name="LocalFilterExtendedTooltip" id="75"/>
+							<Events>
+								<Event name="OnChange">LocalFilterOnChange</Event>
+							</Events>
+						</CheckBoxField>
+						<Pages name="FilterPages" id="76">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Filter pages</v8:content>
+								</v8:item>
+							</Title>
+							<PagesRepresentation>None</PagesRepresentation>
+							<ExtendedTooltip name="FilterPagesExtendedTooltip" id="77"/>
+							<ChildItems>
+								<Page name="SettingsOFFilter" id="78">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Fields page</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Horizontal</Group>
+									<ChildItemsWidth>LeftNarrowest</ChildItemsWidth>
+									<ExtendedTooltip name="FilterSettingsExtendedTooltip" id="79"/>
+									<ChildItems>
+										<Table name="SettingsComposerSettingsFilterFilterAvailableFields" id="80">
+											<Representation>Tree</Representation>
+											<Autofill>true</Autofill>
+											<Width>60</Width>
+											<HeightInTableRows>15</HeightInTableRows>
+											<ChoiceMode>true</ChoiceMode>
+											<HorizontalLines>false</HorizontalLines>
+											<VerticalLines>false</VerticalLines>
+											<EnableStartDrag>true</EnableStartDrag>
+											<EnableDrag>true</EnableDrag>
+											<DataPath>Items.SettingsComposerSettings.CurrentData.ItemFilter.FilterAvailableFields</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Available filter fields</v8:content>
+												</v8:item>
+											</Title>
+											<SearchStringLocation>None</SearchStringLocation>
+											<ViewStatusLocation>None</ViewStatusLocation>
+											<SearchControlLocation>None</SearchControlLocation>
+											<ContextMenu name="SettingsComposerSettingsFilterAvailableFilterFieldsContextMenu" id="81"/>
+											<AutoCommandBar name="SettingsComposerSettingsFilterAvailableFilterFieldsCommandBar" id="82"/>
+											<ExtendedTooltip name="SettingsComposerSettingsFilterAvailableFilterFieldsExtendedTooltip" id="83"/>
+											<SearchStringAddition name="SettingsComposerSettingsFilterAvailableFilterFieldsSearchString" id="258">
+												<AdditionSource>
+													<Item>SettingsComposerSettingsFilterFilterAvailableFields</Item>
+													<Type>SearchStringRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="SettingsComposerSettingsFilterAvailableFilterFieldsSearchStringContextMenu" id="259"/>
+												<ExtendedTooltip name="SettingsComposerSettingsFilterAvailableFilterFieldsSearchStringExtendedTooltip" id="260"/>
+											</SearchStringAddition>
+											<ViewStatusAddition name="SettingsComposerSettingsFilterAvailableFilterFieldsViewStatus" id="261">
+												<AdditionSource>
+													<Item>SettingsComposerSettingsFilterFilterAvailableFields</Item>
+													<Type>ViewStatusRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="SettingsComposerSettingsFilterAvailableFilterFieldsViewStatusContextMenu" id="262"/>
+												<ExtendedTooltip name="SettingsComposerSettingsFilterAvailableFilterFieldsViewStatusExtendedTooltip" id="263"/>
+											</ViewStatusAddition>
+											<SearchControlAddition name="SettingsComposerSettingsFilterAvailableFilterFieldsSearchControl" id="264">
+												<AdditionSource>
+													<Item>SettingsComposerSettingsFilterFilterAvailableFields</Item>
+													<Type>SearchControl</Type>
+												</AdditionSource>
+												<ContextMenu name="SettingsComposerSettingsFilterAvailableFilterFieldsSearchControlContextMenu" id="265"/>
+												<ExtendedTooltip name="SettingsComposerSettingsFilterAvailableFilterFieldsSearchControlExtendedTooltip" id="266"/>
+											</SearchControlAddition>
+										</Table>
+										<Table name="SettingsComposerSettingsFilter" id="84">
+											<Representation>Tree</Representation>
+											<Autofill>true</Autofill>
+											<InitialTreeView>ExpandAllLevels</InitialTreeView>
+											<EnableStartDrag>true</EnableStartDrag>
+											<EnableDrag>true</EnableDrag>
+											<DataPath>Items.SettingsComposerSettings.CurrentData.ItemFilter</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Filter table</v8:content>
+												</v8:item>
+											</Title>
+											<SearchStringLocation>None</SearchStringLocation>
+											<ViewStatusLocation>None</ViewStatusLocation>
+											<SearchControlLocation>None</SearchControlLocation>
+											<ViewMode>All</ViewMode>
+											<SettingsNamedItemDetailedRepresentation>false</SettingsNamedItemDetailedRepresentation>
+											<ContextMenu name="SettingsComposerSettingsFilterContextMenu" id="85"/>
+											<AutoCommandBar name="SettingsComposerSettingsFilterCommandPanel" id="86"/>
+											<ExtendedTooltip name="SettingsComposerSettingsFilterExtendedTooltip" id="87"/>
+											<SearchStringAddition name="SettingsComposerSettingsFilterSearchString" id="267">
+												<AdditionSource>
+													<Item>SettingsComposerSettingsFilter</Item>
+													<Type>SearchStringRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="SettingsComposerSettingsFilterSearchStringContextMenu" id="268"/>
+												<ExtendedTooltip name="SettingsComposerSettingsFilterSearchStringExtendedTooltip" id="269"/>
+											</SearchStringAddition>
+											<ViewStatusAddition name="SettingsComposerSettingsFilterViewStatus" id="270">
+												<AdditionSource>
+													<Item>SettingsComposerSettingsFilter</Item>
+													<Type>ViewStatusRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="SettingsComposerSettingsFilterViewStatusContextMenu" id="271"/>
+												<ExtendedTooltip name="SettingsComposerSettingsFilterViewStatusExtendedTooltip" id="272"/>
+											</ViewStatusAddition>
+											<SearchControlAddition name="SettingsComposerSettingsFilterSearchControl" id="273">
+												<AdditionSource>
+													<Item>SettingsComposerSettingsFilter</Item>
+													<Type>SearchControl</Type>
+												</AdditionSource>
+												<ContextMenu name="SettingsComposerSettingsFilterSearchControlContextMenu" id="274"/>
+												<ExtendedTooltip name="SettingsComposerSettingsFilterSearchControlExtendedTooltip" id="275"/>
+											</SearchControlAddition>
+										</Table>
+									</ChildItems>
+								</Page>
+								<Page name="FilterSettingsOff" id="88">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Page of the disabled filter</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="DisabledFilterSettingsExtendedTooltip" id="89"/>
+									<ChildItems>
+										<LabelDecoration name="LocalFilterStatic" id="90">
+											<Height>3</Height>
+											<HorizontalStretch>true</HorizontalStretch>
+											<VerticalStretch>false</VerticalStretch>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Filter is not set in the current item.
+In the structure tree, select a report to edit the report filter.
+If you want the current item to have its own filter, select the check box above the text.</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="LocalFilterInscriptionContextMenu" id="91"/>
+											<ExtendedTooltip name="LocalFilterLabelExtendedTooltip" id="92"/>
+										</LabelDecoration>
+										<LabelDecoration name="GoToReportFilter" id="93">
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Report filter</v8:content>
+												</v8:item>
+											</Title>
+											<Hyperlink>true</Hyperlink>
+											<ContextMenu name="TransitionToReportSelectionContextMenu" id="94"/>
+											<ExtendedTooltip name="GoToReportFilterExtendedTooltip" id="95"/>
+											<Events>
+												<Event name="Click">GoToReport</Event>
+											</Events>
+										</LabelDecoration>
+									</ChildItems>
+								</Page>
+								<Page name="FilterSettingsInaccessible" id="96">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Unavailable filter page</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="InaccessibleFilterSettingsExtendedTooltip" id="97"/>
+									<ChildItems>
+										<LabelDecoration name="InaccessibleFilterStatic" id="98">
+											<Height>2</Height>
+											<HorizontalStretch>true</HorizontalStretch>
+											<VerticalStretch>false</VerticalStretch>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>The filter can not be set for the current item.
+In the structure tree, select a report to edit the report filter.</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="InaccessibleFilterStaticContextMenu" id="99"/>
+											<ExtendedTooltip name="InaccessibleFilterLabelExtendedTooltip" id="100"/>
+										</LabelDecoration>
+										<LabelDecoration name="GoToReportFilterFromInaccessibleFilter" id="101">
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Report filter</v8:content>
+												</v8:item>
+											</Title>
+											<Hyperlink>true</Hyperlink>
+											<ContextMenu name="GoToReportFilterFromInaccessibleFilterContextMenu" id="102"/>
+											<ExtendedTooltip name="GoToReportFilterFromInaccessibleFilterExtendedTooltip" id="103"/>
+											<Events>
+												<Event name="Click">GoToReport</Event>
+											</Events>
+										</LabelDecoration>
+									</ChildItems>
+								</Page>
+							</ChildItems>
+						</Pages>
+					</ChildItems>
+				</Page>
+				<Page name="OrderPage" id="104">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Sort</v8:content>
+						</v8:item>
+					</Title>
+					<Picture>
+						<xr:Ref>StdPicture.DataCompositionOrder</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</Picture>
+					<ExtendedTooltip name="OrderPageExtendedTooltip" id="105"/>
+					<ChildItems>
+						<CheckBoxField name="LocalOrder" id="106">
+							<DataPath>LocalOrder</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>The current item has individual sort (to sort records displayed in the item)</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="LocalOrderContextMenu" id="107"/>
+							<ExtendedTooltip name="LocalOrderExtendedTooltip" id="108"/>
+							<Events>
+								<Event name="OnChange">LocalOrderOnChange</Event>
+							</Events>
+						</CheckBoxField>
+						<Pages name="OrderPages" id="109">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Sorting pages</v8:content>
+								</v8:item>
+							</Title>
+							<PagesRepresentation>None</PagesRepresentation>
+							<ExtendedTooltip name="OrderPagesExtendedTooltip" id="110"/>
+							<ChildItems>
+								<Page name="OrderSettings" id="111">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Sorting page</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Horizontal</Group>
+									<ChildItemsWidth>LeftNarrowest</ChildItemsWidth>
+									<ExtendedTooltip name="OrderSettingsExtendedTooltip" id="112"/>
+									<ChildItems>
+										<Table name="SettingsComposerSettingsOrderOrderAvailableFields" id="113">
+											<Representation>Tree</Representation>
+											<Autofill>true</Autofill>
+											<Width>60</Width>
+											<HeightInTableRows>15</HeightInTableRows>
+											<ChoiceMode>true</ChoiceMode>
+											<HorizontalLines>false</HorizontalLines>
+											<VerticalLines>false</VerticalLines>
+											<EnableStartDrag>true</EnableStartDrag>
+											<EnableDrag>true</EnableDrag>
+											<DataPath>Items.SettingsComposerSettings.CurrentData.ItemOrder.OrderAvailableFields</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Available sorting fields</v8:content>
+												</v8:item>
+											</Title>
+											<SearchStringLocation>None</SearchStringLocation>
+											<ViewStatusLocation>None</ViewStatusLocation>
+											<SearchControlLocation>None</SearchControlLocation>
+											<ContextMenu name="SettingsComposerSettingsOrderAvailableOrderFieldsContextMenu" id="114"/>
+											<AutoCommandBar name="SettingsComposerSettingsOrderAvailableOrderFieldsCommandBar" id="115"/>
+											<ExtendedTooltip name="SettingsComposerSettingsOrderAvailableOrderFieldsExtendedTooltip" id="116"/>
+											<SearchStringAddition name="SettingsComposerSettingsOrderAvailableOrderFieldsSearchString" id="276">
+												<AdditionSource>
+													<Item>SettingsComposerSettingsOrderOrderAvailableFields</Item>
+													<Type>SearchStringRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="SettingsComposerSettingsOrderAvailableOrderFieldsSearchStringContextMenu" id="277"/>
+												<ExtendedTooltip name="SettingsComposerSettingsOrderAvailableOrderFieldsSearchStringExtendedTooltip" id="278"/>
+											</SearchStringAddition>
+											<ViewStatusAddition name="SettingsComposerSettingsOrderAvailableOrderFieldsViewStatus" id="279">
+												<AdditionSource>
+													<Item>SettingsComposerSettingsOrderOrderAvailableFields</Item>
+													<Type>ViewStatusRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="SettingsComposerSettingsOrderAvailableOrderFieldsViewStatusContextMenu" id="280"/>
+												<ExtendedTooltip name="SettingsComposerSettingsOrderAvailableOrderFieldsViewStatusExtendedTooltip" id="281"/>
+											</ViewStatusAddition>
+											<SearchControlAddition name="SettingsComposerSettingsOrderAvailableOrderFieldsSearchManagement" id="282">
+												<AdditionSource>
+													<Item>SettingsComposerSettingsOrderOrderAvailableFields</Item>
+													<Type>SearchControl</Type>
+												</AdditionSource>
+												<ContextMenu name="SettingsComposerSettingsOrderAvailableOrderFieldsSearchManagementContextMenu" id="283"/>
+												<ExtendedTooltip name="SettingsComposerSettingsOrderAvailableOrderFieldsSearchManagementExtendedTooltip" id="284"/>
+											</SearchControlAddition>
+										</Table>
+										<Table name="SettingsComposerSettingsOrder" id="117">
+											<Representation>List</Representation>
+											<Autofill>true</Autofill>
+											<EnableStartDrag>true</EnableStartDrag>
+											<EnableDrag>true</EnableDrag>
+											<DataPath>Items.SettingsComposerSettings.CurrentData.ItemOrder</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Table of sorting</v8:content>
+												</v8:item>
+											</Title>
+											<SearchStringLocation>None</SearchStringLocation>
+											<ViewStatusLocation>None</ViewStatusLocation>
+											<SearchControlLocation>None</SearchControlLocation>
+											<ContextMenu name="SettingsComposerSettingsOrderContextMenu" id="118"/>
+											<AutoCommandBar name="SettingsComposerSettingsOrderCommandPanel" id="119"/>
+											<ExtendedTooltip name="SettingsComposerSettingsOrderExtendedTooltip" id="120"/>
+											<SearchStringAddition name="SettingsComposerSettingsOrderSearchString" id="285">
+												<AdditionSource>
+													<Item>SettingsComposerSettingsOrder</Item>
+													<Type>SearchStringRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="SettingsComposerSettingsOrderSearchStringContextMenu" id="286"/>
+												<ExtendedTooltip name="SettingsComposerSettingsOrderSearchStringExtendedTooltip" id="287"/>
+											</SearchStringAddition>
+											<ViewStatusAddition name="SettingsComposerSettingsOrderViewStatus" id="288">
+												<AdditionSource>
+													<Item>SettingsComposerSettingsOrder</Item>
+													<Type>ViewStatusRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="SettingsComposerSettingsOrderViewStatusContextMenu" id="289"/>
+												<ExtendedTooltip name="SettingsComposerSettingsOrderViewStatusExtendedTooltip" id="290"/>
+											</ViewStatusAddition>
+											<SearchControlAddition name="SettingsComposerSettingsOrderSearchManagement" id="291">
+												<AdditionSource>
+													<Item>SettingsComposerSettingsOrder</Item>
+													<Type>SearchControl</Type>
+												</AdditionSource>
+												<ContextMenu name="SettingsComposerSettingsOrderSearchManagementContextMenu" id="292"/>
+												<ExtendedTooltip name="SettingsComposerSettingsOrderSearchManagementExtendedTooltip" id="293"/>
+											</SearchControlAddition>
+										</Table>
+									</ChildItems>
+								</Page>
+								<Page name="OrderSettingsOff" id="121">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Page of the disabled sorting</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="DisabledOrderSettingsExtendedTooltip" id="122"/>
+									<ChildItems>
+										<LabelDecoration name="LocalOrderStatic" id="123">
+											<Height>3</Height>
+											<HorizontalStretch>true</HorizontalStretch>
+											<VerticalStretch>false</VerticalStretch>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>The sorting is not set in the current item .
+In the structure tree, select a report to edit the report sorting.
+If you want the current item to have its own sorting, select the check box above the text.</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="LocalOrderInscriptionContextMenu" id="124"/>
+											<ExtendedTooltip name="LocalOrderLabelExtendedTooltip" id="125"/>
+										</LabelDecoration>
+										<LabelDecoration name="GoToReportOrder" id="126">
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Report sort</v8:content>
+												</v8:item>
+											</Title>
+											<Hyperlink>true</Hyperlink>
+											<ContextMenu name="TransitionToReportOrderContextMenu" id="127"/>
+											<ExtendedTooltip name="GoToReportOrderExtendedTooltip" id="128"/>
+											<Events>
+												<Event name="Click">GoToReport</Event>
+											</Events>
+										</LabelDecoration>
+									</ChildItems>
+								</Page>
+								<Page name="OrderSettingsInaccessible" id="129">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Page of the unavailable sorting</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="InaccessibleOrderSettingsExtendedTooltip" id="130"/>
+									<ChildItems>
+										<LabelDecoration name="InaccessibleOrderStatic" id="131">
+											<Height>2</Height>
+											<HorizontalStretch>true</HorizontalStretch>
+											<VerticalStretch>false</VerticalStretch>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Sorting can not be set for the current item.
+In the structure tree, select a report to edit the report sorting.</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="InaccessibleOrderStaticContextMenu" id="132"/>
+											<ExtendedTooltip name="InaccessibleOrderLabelExtendedTooltip" id="133"/>
+										</LabelDecoration>
+										<LabelDecoration name="GoToReportOrderFromInaccessibleOrder" id="134">
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Report sort</v8:content>
+												</v8:item>
+											</Title>
+											<Hyperlink>true</Hyperlink>
+											<ContextMenu name="GoToReportOrderFromInaccessibleOrderContextMenu" id="135"/>
+											<ExtendedTooltip name="GoToReportOrderFromInaccessibleOrderExtendedTooltip" id="136"/>
+											<Events>
+												<Event name="Click">GoToReport</Event>
+											</Events>
+										</LabelDecoration>
+									</ChildItems>
+								</Page>
+							</ChildItems>
+						</Pages>
+					</ChildItems>
+				</Page>
+				<Page name="ConditionalAppearancePage" id="137">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Conditional appearance</v8:content>
+						</v8:item>
+					</Title>
+					<Picture>
+						<xr:Ref>StdPicture.DataCompositionConditionalAppearance</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</Picture>
+					<ExtendedTooltip name="ConditionalAppearancePageExtendedTooltip" id="138"/>
+					<ChildItems>
+						<CheckBoxField name="LocalConditionalAppearance" id="139">
+							<DataPath>LocalConditionalAppearance</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Current item has own conditional appearance (to register the records displayed in the item)</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="LocalConditionalAppearanceContextMenu" id="140"/>
+							<ExtendedTooltip name="LocalConditionalAppearanceExtendedTooltip" id="141"/>
+							<Events>
+								<Event name="OnChange">LocalConditionalAppearanceOnChange</Event>
+							</Events>
+						</CheckBoxField>
+						<Pages name="ConditionalAppearancePages" id="142">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Conditional appearance pages</v8:content>
+								</v8:item>
+							</Title>
+							<PagesRepresentation>None</PagesRepresentation>
+							<ExtendedTooltip name="ConditionalAppearancePagesExtendedTooltip" id="143"/>
+							<ChildItems>
+								<Page name="ConditionalAppearanceSettings" id="144">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Conditional appearance page</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Horizontal</Group>
+									<ExtendedTooltip name="ConditionalAppearanceSettingsExtendedTooltip" id="145"/>
+									<ChildItems>
+										<Table name="SettingsComposerSettingsConditionalAppearance" id="146">
+											<Representation>List</Representation>
+											<Autofill>true</Autofill>
+											<EnableStartDrag>true</EnableStartDrag>
+											<EnableDrag>true</EnableDrag>
+											<DataPath>Items.SettingsComposerSettings.CurrentData.ItemConditionalAppearance</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Conditional appearance table</v8:content>
+												</v8:item>
+											</Title>
+											<SearchStringLocation>None</SearchStringLocation>
+											<ViewStatusLocation>None</ViewStatusLocation>
+											<SearchControlLocation>None</SearchControlLocation>
+											<SettingsNamedItemDetailedRepresentation>false</SettingsNamedItemDetailedRepresentation>
+											<ContextMenu name="SettingsComposerSettingsConditionalAppearanceContextMenu" id="147"/>
+											<AutoCommandBar name="SettingsComposerSettingsConditionalAppearanceCommandPanel" id="148"/>
+											<ExtendedTooltip name="SettingsComposerSettingsConditionalAppearanceExtendedTooltip" id="149"/>
+											<SearchStringAddition name="SettingsComposerSettingsConditionalAppearanceSearchString" id="294">
+												<AdditionSource>
+													<Item>SettingsComposerSettingsConditionalAppearance</Item>
+													<Type>SearchStringRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="SettingsComposerSettingsConditionalAppearanceSearchStringContextMenu" id="295"/>
+												<ExtendedTooltip name="SettingsComposerSettingsConditionalAppearanceSearchStringExtendedTooltip" id="296"/>
+											</SearchStringAddition>
+											<ViewStatusAddition name="SettingsComposerSettingsConditionalAppearanceViewStatus" id="297">
+												<AdditionSource>
+													<Item>SettingsComposerSettingsConditionalAppearance</Item>
+													<Type>ViewStatusRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="SettingsComposerSettingsConditionalAppearanceViewStatusContextMenu" id="298"/>
+												<ExtendedTooltip name="SettingsComposerSettingsConditionalAppearanceViewStatusExtendedTooltip" id="299"/>
+											</ViewStatusAddition>
+											<SearchControlAddition name="SettingsComposerSettingsConditionalAppearanceSearchManagement" id="300">
+												<AdditionSource>
+													<Item>SettingsComposerSettingsConditionalAppearance</Item>
+													<Type>SearchControl</Type>
+												</AdditionSource>
+												<ContextMenu name="SettingsComposerSettingsConditionalAppearanceSearchManagementContextMenu" id="301"/>
+												<ExtendedTooltip name="SettingsComposerSettingsConditionalAppearanceSearchManagementExtendedTooltip" id="302"/>
+											</SearchControlAddition>
+										</Table>
+									</ChildItems>
+								</Page>
+								<Page name="ConditionalAppearanceSettingsOff" id="150">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Page of the disabled conditional appearance</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="DisabledConditionalAppearanceSettingsExtendedTooltip" id="151"/>
+									<ChildItems>
+										<LabelDecoration name="LocalConditionalAppearanceStatic" id="152">
+											<Height>3</Height>
+											<HorizontalStretch>true</HorizontalStretch>
+											<VerticalStretch>false</VerticalStretch>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>The conditional apperance is not set in the current item.
+In the structure tree, select a report to edit the conditional appearance of the report.
+If you want the current item to have its own conditional appearance, select the check box above the text.</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="LocalConditionalAppearanceInscriptionContextMenu" id="153"/>
+											<ExtendedTooltip name="LocalConditionalAppearanceLabelExtendedTooltip" id="154"/>
+										</LabelDecoration>
+										<LabelDecoration name="GoToReportConditionalAppearance" id="155">
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Conditional report appearance</v8:content>
+												</v8:item>
+											</Title>
+											<Hyperlink>true</Hyperlink>
+											<ContextMenu name="TransferToReportConditionalAppearanceContextMenu" id="156"/>
+											<ExtendedTooltip name="GoToReportConditionalAppearanceExtendedTooltip" id="157"/>
+											<Events>
+												<Event name="Click">GoToReport</Event>
+											</Events>
+										</LabelDecoration>
+									</ChildItems>
+								</Page>
+								<Page name="ConditionalAppearanceSettingsInaccessible" id="158">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Page of the unavailable conditional appearance</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="InaccessibleConditionalAppearanceSettingsExtendedTooltip" id="159"/>
+									<ChildItems>
+										<LabelDecoration name="InaccessibleConditionalAppearanceStatic" id="160">
+											<Height>2</Height>
+											<HorizontalStretch>true</HorizontalStretch>
+											<VerticalStretch>false</VerticalStretch>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>The conditional appearance can not be set for the current item.
+In the structure tree, select a report to edit the conditional appearance of the report.</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="InaccessibleConditionalAppearanceStaticContextMenu" id="161"/>
+											<ExtendedTooltip name="InaccessibleConditionalAppearanceLabelExtendedTooltip" id="162"/>
+										</LabelDecoration>
+										<LabelDecoration name="GoToReportConditionalAppearanceFromInaccessibleConditionalAppearance" id="163">
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Conditional report appearance</v8:content>
+												</v8:item>
+											</Title>
+											<Hyperlink>true</Hyperlink>
+											<ContextMenu name="GoToReportConditionalAppearanceFromInaccessibleConditionalAppearanceContextMenu" id="164"/>
+											<ExtendedTooltip name="GoToReportConditionalAppearanceFromInaccessibleConditionalAppearanceExtendedTooltip" id="165"/>
+											<Events>
+												<Event name="Click">GoToReport</Event>
+											</Events>
+										</LabelDecoration>
+									</ChildItems>
+								</Page>
+							</ChildItems>
+						</Pages>
+					</ChildItems>
+				</Page>
+				<Page name="OutputParametersPage" id="166">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Additional settings</v8:content>
+						</v8:item>
+					</Title>
+					<Picture>
+						<xr:Ref>StdPicture.DataCompositionOutputParameters</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</Picture>
+					<ExtendedTooltip name="OutputParametersPageExtendedTooltip" id="167"/>
+					<ChildItems>
+						<CheckBoxField name="LocalOutputParameters" id="168">
+							<DataPath>LocalOutputParameters</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Current item has individual additional settings</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="LocalOutputParametersContextMenu" id="169"/>
+							<ExtendedTooltip name="LocalOutputParametersExtendedTooltip" id="170"/>
+							<Events>
+								<Event name="OnChange">LocalOutputParametersOnChange</Event>
+							</Events>
+						</CheckBoxField>
+						<Pages name="OutputParametersPages" id="171">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Additional setting pages</v8:content>
+								</v8:item>
+							</Title>
+							<PagesRepresentation>None</PagesRepresentation>
+							<ExtendedTooltip name="OutputParametersPagesExtendedTooltip" id="172"/>
+							<ChildItems>
+								<Page name="OutputParametersSettings" id="173">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Additional settings page</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Horizontal</Group>
+									<ExtendedTooltip name="OutputParametersSettingsExtendedTooltip" id="174"/>
+									<ChildItems>
+										<Table name="SettingsComposerSettingsOutputParameters" id="175">
+											<Representation>Tree</Representation>
+											<Autofill>true</Autofill>
+											<Width>50</Width>
+											<InitialTreeView>ExpandAllLevels</InitialTreeView>
+											<DataPath>Items.SettingsComposerSettings.CurrentData.ItemOutputParameters</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Additional settings table</v8:content>
+												</v8:item>
+											</Title>
+											<SearchStringLocation>None</SearchStringLocation>
+											<ViewStatusLocation>None</ViewStatusLocation>
+											<SearchControlLocation>None</SearchControlLocation>
+											<ContextMenu name="SettingsComposerOutputParametersSettingsContextMenu" id="176"/>
+											<AutoCommandBar name="SettingsComposerSettingsOutputParametersCommandBar" id="177"/>
+											<ExtendedTooltip name="SettingsComposerSettingsOutputParametersExtendedTooltip" id="178"/>
+											<SearchStringAddition name="SettingsComposerSettingsOutputParametersSearchString" id="303">
+												<AdditionSource>
+													<Item>SettingsComposerSettingsOutputParameters</Item>
+													<Type>SearchStringRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="SettingsComposerSettingsOutputParametersSearchStringContextMenu" id="304"/>
+												<ExtendedTooltip name="SettingsComposerSettingsOutputParametersSearchStringExtendedTooltip" id="305"/>
+											</SearchStringAddition>
+											<ViewStatusAddition name="SettingsComposerSettingsOutputParametersViewStatus" id="306">
+												<AdditionSource>
+													<Item>SettingsComposerSettingsOutputParameters</Item>
+													<Type>ViewStatusRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="SettingsComposerSettingsOutputParametersViewStatusContextMenu" id="307"/>
+												<ExtendedTooltip name="SettingsComposerSettingsOutputParametersViewStatusExtendedTooltip" id="308"/>
+											</ViewStatusAddition>
+											<SearchControlAddition name="SettingsComposerSettingsOutputParametersSearchManagement" id="309">
+												<AdditionSource>
+													<Item>SettingsComposerSettingsOutputParameters</Item>
+													<Type>SearchControl</Type>
+												</AdditionSource>
+												<ContextMenu name="SettingsComposerSettingsOutputParametersSearchManagementContextMenu" id="310"/>
+												<ExtendedTooltip name="SettingsComposerSettingsOutputParametersSearchManagementExtendedTooltip" id="311"/>
+											</SearchControlAddition>
+										</Table>
+									</ChildItems>
+								</Page>
+								<Page name="OutputParametersSettingsOff" id="179">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Page of the disabled additional settings</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="DisabledOutputParametersSettingsExtendedTooltip" id="180"/>
+									<ChildItems>
+										<LabelDecoration name="LocalOutputParametersStatic" id="181">
+											<Height>3</Height>
+											<HorizontalStretch>true</HorizontalStretch>
+											<VerticalStretch>false</VerticalStretch>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Additional settings are not set in the current item.
+Select in the structure tree the report for editing the additional settings of the report in general.
+If you want the current item to have its own additional settings, select the check box above the text.</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="LocalOutputParametersInscriptionContextMenu" id="182"/>
+											<ExtendedTooltip name="LocalOutputParametersLabelExtendedTooltip" id="183"/>
+										</LabelDecoration>
+										<LabelDecoration name="GoToReportOutputParameters" id="184">
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Click here to proceed to the additional report settings.</v8:content>
+												</v8:item>
+											</Title>
+											<Hyperlink>true</Hyperlink>
+											<ContextMenu name="TransitionToReportOutputParametersContextMenu" id="185"/>
+											<ExtendedTooltip name="GoToReportOutputParametersExtendedTooltip" id="186"/>
+											<Events>
+												<Event name="Click">GoToReport</Event>
+											</Events>
+										</LabelDecoration>
+									</ChildItems>
+								</Page>
+								<Page name="OutputParametersSettingsInaccessible" id="187">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Page of the unavailable additional settings</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="InaccessibleOutputParametersSettingsExtendedTooltip" id="188"/>
+									<ChildItems>
+										<LabelDecoration name="InaccessibleOutputParametersStatic" id="189">
+											<Height>2</Height>
+											<HorizontalStretch>true</HorizontalStretch>
+											<VerticalStretch>false</VerticalStretch>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Additional settings can not be set for the current item.
+Select in the structure tree the report for editing the additional settings of the report in general.</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="UnavailableOutputParametersInscriptionContextMenu" id="190"/>
+											<ExtendedTooltip name="InaccessibleOutputParametersLabelExtendedTooltip" id="191"/>
+										</LabelDecoration>
+										<LabelDecoration name="GoToReportOutputParametersFromInaccessibleOutputParameters" id="192">
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Click here to proceed to the additional report settings.</v8:content>
+												</v8:item>
+											</Title>
+											<Hyperlink>true</Hyperlink>
+											<ContextMenu name="GoToReportOutputParametersFromInaccessibleOutputParametersContextMenu" id="193"/>
+											<ExtendedTooltip name="GoToReportOutputParametersFromInaccessibleOutputParametersExtendedTooltip" id="194"/>
+											<Events>
+												<Event name="Click">GoToReport</Event>
+											</Events>
+										</LabelDecoration>
+									</ChildItems>
+								</Page>
+							</ChildItems>
+						</Pages>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Report" id="1">
+			<Type>
+				<v8:Type>cfg:ReportObject.EventsLogAnalysis</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="LocalSelectedFields" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Local selected fields</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="LocalFilter" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Local filter</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="LocalOrder" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Local order</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="LocalConditionalAppearance" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Local conditional appearance</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="LocalOutputParameters" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Local conditional appearance</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+</Form>

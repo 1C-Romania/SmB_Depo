@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<CommandSet>
+		<ExcludedCommand>No</ExcludedCommand>
+		<ExcludedCommand>CustomizeForm</ExcludedCommand>
+		<ExcludedCommand>SaveValues</ExcludedCommand>
+		<ExcludedCommand>Abort</ExcludedCommand>
+		<ExcludedCommand>Retry</ExcludedCommand>
+		<ExcludedCommand>Yes</ExcludedCommand>
+		<ExcludedCommand>Cancel</ExcludedCommand>
+		<ExcludedCommand>RestoreValues</ExcludedCommand>
+		<ExcludedCommand>Ignore</ExcludedCommand>
+		<ExcludedCommand>OK</ExcludedCommand>
+	</CommandSet>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="BeforeClose">BeforeClose</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<Table name="SignableEDKinds" id="32">
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<EnableStartDrag>true</EnableStartDrag>
+			<EnableDrag>true</EnableDrag>
+			<DataPath>SignableEDKinds</DataPath>
+			<CommandSet>
+				<ExcludedCommand>Copy</ExcludedCommand>
+				<ExcludedCommand>SortListAsc</ExcludedCommand>
+				<ExcludedCommand>MoveUp</ExcludedCommand>
+				<ExcludedCommand>CancelSearch</ExcludedCommand>
+				<ExcludedCommand>OutputList</ExcludedCommand>
+				<ExcludedCommand>SelectAll</ExcludedCommand>
+				<ExcludedCommand>SortListDesc</ExcludedCommand>
+				<ExcludedCommand>CopyToClipboard</ExcludedCommand>
+				<ExcludedCommand>Delete</ExcludedCommand>
+				<ExcludedCommand>EndEdit</ExcludedCommand>
+				<ExcludedCommand>Add</ExcludedCommand>
+				<ExcludedCommand>Change</ExcludedCommand>
+				<ExcludedCommand>Find</ExcludedCommand>
+				<ExcludedCommand>MoveDown</ExcludedCommand>
+			</CommandSet>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="SignableEDKindsContextMenu" id="33"/>
+			<AutoCommandBar name="SignableEDKindsCommandBar" id="34">
+				<Autofill>false</Autofill>
+				<ChildItems>
+					<Button name="SignableEDKindsSelectAll" id="60">
+						<Type>CommandBarButton</Type>
+						<Representation>Picture</Representation>
+						<CommandName>Form.Command.SelectAll</CommandName>
+						<ExtendedTooltip name="SignableEDKindsSelectAllExtendedTooltip" id="61"/>
+					</Button>
+					<Button name="SignableEDKindsUncheckAll" id="62">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.UncheckAll</CommandName>
+						<ExtendedTooltip name="SignableEDKindsUncheckAllExtendedTooltip" id="63"/>
+					</Button>
+				</ChildItems>
+			</AutoCommandBar>
+			<ExtendedTooltip name="SignableEDKindsExtendedTooltip" id="35"/>
+			<SearchStringAddition name="SignableEDKindsSearchString" id="36">
+				<AdditionSource>
+					<Item>SignableEDKinds</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="SignableEDKindsSearchStringContextMenu" id="39"/>
+				<ExtendedTooltip name="SignableEDKindsSearchStringExtendedTooltip" id="40"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="SignableEDKindsViewStatus" id="41">
+				<AdditionSource>
+					<Item>SignableEDKinds</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="SignableEDKindsViewStatusContextMenu" id="44"/>
+				<ExtendedTooltip name="SignableEDKindsViewStatusExtendedTooltip" id="45"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="SignableEDKindsSearchManagement" id="46">
+				<AdditionSource>
+					<Item>SignableEDKinds</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="SignableEDKindsSearchManagementContextMenu" id="49"/>
+				<ExtendedTooltip name="SignableEDKindsSearchManagementExtendedTooltip" id="50"/>
+			</SearchControlAddition>
+			<ChildItems>
+				<InputField name="DSCertificate1" id="51">
+					<DataPath>SignableEDKinds.DSCertificate</DataPath>
+					<Visible>false</Visible>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="DSCertificate1ContextMenu" id="52"/>
+					<ExtendedTooltip name="DSCertificate1ExtendedTooltip" id="53"/>
+				</InputField>
+				<ColumnGroup name="Group1" id="64">
+					<EnableContentChange>true</EnableContentChange>
+					<ToolTipRepresentation>None</ToolTipRepresentation>
+					<Group>InCell</Group>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="Group1ExtendedTooltip" id="65"/>
+					<ChildItems>
+						<CheckBoxField name="Use" id="57">
+							<DataPath>SignableEDKinds.Use</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<EditMode>EnterOnInput</EditMode>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="UseContextMenu" id="58"/>
+							<ExtendedTooltip name="UseExtendedTooltip" id="59"/>
+							<Events>
+								<Event name="OnChange">UseOnChange</Event>
+							</Events>
+						</CheckBoxField>
+						<InputField name="EDKind" id="54">
+							<DataPath>SignableEDKinds.EDKind</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="EDTypeContextMenu" id="55"/>
+							<ExtendedTooltip name="EDKindExtendedTooltip" id="56"/>
+						</InputField>
+					</ChildItems>
+				</ColumnGroup>
+			</ChildItems>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="SignableEDKinds" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Kinds of signable ED</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:InformationRegisterRecordSet.DigitallySignedEDKinds</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="DSCertificate" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>DS certificate</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.DigitalSignaturesAndEncryptionKeyCertificates</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="DataChanged" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Data changed</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="SelectAll" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Select all</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Select all</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.CheckAll</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>SelectAll</Action>
+			<Representation>Picture</Representation>
+		</Command>
+		<Command name="UncheckAll" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Uncheck all</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Uncheck all</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.UncheckAll</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>UncheckAll</Action>
+			<Representation>Picture</Representation>
+		</Command>
+	</Commands>
+</Form>

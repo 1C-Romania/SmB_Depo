@@ -1,0 +1,3097 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnOpen">OnOpen</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+		<Event name="OnClose">OnClose</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="WorkSchedules" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Work schedules</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Works schedules</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="WorkSchedulesExtendedTooltip" id="155"/>
+			<ChildItems>
+				<CommandBar name="GroupPanel" id="9">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group bar</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group bar</v8:content>
+						</v8:item>
+					</ToolTip>
+					<CommandSource>Form</CommandSource>
+					<ExtendedTooltip name="PanelGroupExtendedTooltip" id="156"/>
+					<ChildItems>
+						<Button name="FormChangeForm" id="257">
+							<Type>CommandBarButton</Type>
+							<OnlyInAllActions>false</OnlyInAllActions>
+							<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
+							<ExtendedTooltip name="FormChangeFormExtendedTooltip" id="258"/>
+						</Button>
+						<Button name="FormHelp" id="259">
+							<Type>CommandBarButton</Type>
+							<OnlyInAllActions>false</OnlyInAllActions>
+							<CommandName>Form.StandardCommand.Help</CommandName>
+							<ExtendedTooltip name="FormHelpExtendedTooltip" id="260"/>
+						</Button>
+					</ChildItems>
+				</CommandBar>
+				<Table name="List" id="1">
+					<Representation>List</Representation>
+					<CommandBarLocation>None</CommandBarLocation>
+					<SkipOnInput>false</SkipOnInput>
+					<DefaultItem>true</DefaultItem>
+					<Width>70</Width>
+					<HeightInTableRows>5</HeightInTableRows>
+					<UseAlternationRowColor>true</UseAlternationRowColor>
+					<EnableStartDrag>true</EnableStartDrag>
+					<DataPath>List</DataPath>
+					<SearchStringLocation>CommandBar</SearchStringLocation>
+					<ViewStatusLocation>Top</ViewStatusLocation>
+					<SearchControlLocation>CommandBar</SearchControlLocation>
+					<AutoRefresh>false</AutoRefresh>
+					<AutoRefreshPeriod>60</AutoRefreshPeriod>
+					<Period>
+						<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+						<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+						<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+					</Period>
+					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+					<RestoreCurrentRow>false</RestoreCurrentRow>
+					<TopLevelParent xsi:nil="true"/>
+					<ShowRoot>false</ShowRoot>
+					<AllowRootChoice>false</AllowRootChoice>
+					<UpdateOnDataChange>Auto</UpdateOnDataChange>
+					<ContextMenu name="ListContextMenu" id="2"/>
+					<AutoCommandBar name="ListCommandBar" id="3"/>
+					<ExtendedTooltip name="ListExtendedTooltip" id="157"/>
+					<SearchStringAddition name="SearchStringList" id="239">
+						<AdditionSource>
+							<Item>List</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="ListSearchStringContextMenu" id="240"/>
+						<ExtendedTooltip name="ListSearchStringExtendedTooltip" id="241"/>
+					</SearchStringAddition>
+					<ViewStatusAddition name="ListViewStatus" id="242">
+						<AdditionSource>
+							<Item>List</Item>
+							<Type>ViewStatusRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="ListViewStatusContextMenu" id="243"/>
+						<ExtendedTooltip name="ListViewStatusExtendedTooltip" id="244"/>
+					</ViewStatusAddition>
+					<SearchControlAddition name="ListSearchControl" id="245">
+						<AdditionSource>
+							<Item>List</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<ContextMenu name="ListSearchControlContextMenu" id="246"/>
+						<ExtendedTooltip name="ListSearchControlExtendedTooltip" id="247"/>
+					</SearchControlAddition>
+					<Events>
+						<Event name="OnActivateRow">ListOnActivateRow</Event>
+					</Events>
+					<ChildItems>
+						<InputField name="Marker" id="151">
+							<DataPath>List.Marker</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Marker</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>None</TitleLocation>
+							<Width>2</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="MarkerContextMenu" id="152"/>
+							<ExtendedTooltip name="MarkerExtendedTooltip" id="159"/>
+						</InputField>
+						<LabelField name="Description" id="4">
+							<DataPath>List.Description</DataPath>
+							<DefaultItem>true</DefaultItem>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Description</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="DescriptionContextMenu" id="5"/>
+							<ExtendedTooltip name="DescriptionExtendedTooltip" id="160"/>
+						</LabelField>
+						<LabelField name="Code" id="148">
+							<DataPath>List.Code</DataPath>
+							<UserVisible>
+								<xr:Common>false</xr:Common>
+							</UserVisible>
+							<ContextMenu name="CodeContextMenu" id="149"/>
+							<ExtendedTooltip name="CodeExtendedTooltip" id="158"/>
+						</LabelField>
+					</ChildItems>
+				</Table>
+			</ChildItems>
+		</UsualGroup>
+		<Pages name="GroupPages" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group pages</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group pages</v8:content>
+				</v8:item>
+			</ToolTip>
+			<ExtendedTooltip name="PagesGroupExtendedTooltip" id="161"/>
+			<Events>
+				<Event name="OnCurrentPageChange">PagesGroupOnCurrentPageChange</Event>
+			</Events>
+			<ChildItems>
+				<Page name="ScheduleToSchedulePage" id="15">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Timetable schedule</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Page timetable schedule</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="ScheduleToSchedulePageExtendedTooltip" id="162"/>
+					<ChildItems>
+						<UsualGroup name="ScheduleOnScheduleHeader" id="23">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Timetable schedule header</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Timetable schedule header</v8:content>
+								</v8:item>
+							</ToolTip>
+							<HorizontalStretch>true</HorizontalStretch>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ScheduleOnScheduleHeaderExtendedTooltip" id="163"/>
+							<ChildItems>
+								<CommandBar name="TimetableSchedulePanelYear" id="24">
+									<Visible>false</Visible>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Timetable schedule panel year</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Timetable schedule panel year</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="ScheduleOnSchedulePanelYearExtendedTooltip" id="164"/>
+									<ChildItems>
+										<Button name="TimetableScheduleEdit" id="21">
+											<Type>CommandBarButton</Type>
+											<Representation>Picture</Representation>
+											<CommandName>Form.Command.TimetableScheduleEdit</CommandName>
+											<ExtendedTooltip name="ScheduleOnScheduleEditExtendedTooltip" id="165"/>
+										</Button>
+										<Button name="TimetableScheduleDelete" id="22">
+											<Type>CommandBarButton</Type>
+											<Representation>Picture</Representation>
+											<CommandName>Form.Command.TimetableScheduleDelete</CommandName>
+											<ExtendedTooltip name="ScheduleOnScheduleDeleteExtendedTooltip" id="166"/>
+										</Button>
+										<Button name="FillByTemplate" id="154">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.FillByTemplate</CommandName>
+											<ExtendedTooltip name="FillByPatternExtendedTooltip" id="167"/>
+										</Button>
+									</ChildItems>
+								</CommandBar>
+								<UsualGroup name="TimetableSchedulePanelDay" id="38">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Timetable schedule panel day</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Timetable schedule panel day</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ScheduleOnSchedulePanelDayExtendedTooltip" id="168"/>
+									<ChildItems>
+										<LabelDecoration name="MarkSelectedAs" id="39">
+											<Width>9</Width>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Mark as:</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="MarkSelectedAsContextMenu" id="40"/>
+											<ExtendedTooltip name="MarkSelectedAsExtendedTooltip" id="169"/>
+										</LabelDecoration>
+										<CommandBar name="ButtonsTimeStamp" id="265">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Time stamp buttons</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Time stamp buttons</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Width>3</Width>
+											<ExtendedTooltip name="ButtonsTimeStampExtendedTooltip" id="266"/>
+											<ChildItems>
+												<Button name="MarkSelectedAsWorking" id="50">
+													<Type>CommandBarButton</Type>
+													<Representation>PictureAndText</Representation>
+													<CommandName>Form.Command.MarkSelectedAsWorking</CommandName>
+													<Picture>
+														<xr:Ref>CommonPicture.TimeWorking</xr:Ref>
+														<xr:LoadTransparent>true</xr:LoadTransparent>
+													</Picture>
+													<ExtendedTooltip name="MarkSelectedAsWorkingExtendedTooltip" id="170"/>
+												</Button>
+												<Button name="MarkSelectedAsNonWorking" id="51">
+													<Type>CommandBarButton</Type>
+													<Representation>PictureAndText</Representation>
+													<CommandName>Form.Command.MarkSelectedAsNonWorking</CommandName>
+													<Picture>
+														<xr:Ref>CommonPicture.TimeNotWorking</xr:Ref>
+														<xr:LoadTransparent>true</xr:LoadTransparent>
+													</Picture>
+													<ExtendedTooltip name="MarkSelectedAsNonWorkingToolTipNotWorking" id="171"/>
+												</Button>
+											</ChildItems>
+										</CommandBar>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="ScheduleOnSchedulePeriod" id="54">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Timetable schedule period</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Timetable schedule period</v8:content>
+										</v8:item>
+									</ToolTip>
+									<HorizontalStretch>false</HorizontalStretch>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ScheduleOnSchedulePeriodExtendedTooltip" id="173"/>
+									<ChildItems>
+										<LabelDecoration name="TimetableAtPeriod" id="25">
+											<Visible>false</Visible>
+											<Width>10</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Timetable at:</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="ScheduleForPeriodContextMenu" id="26"/>
+											<ExtendedTooltip name="ScheduleForPeriodExtendedTooltip" id="174"/>
+										</LabelDecoration>
+										<RadioButtonField name="RadioButton" id="267">
+											<DataPath>RadioButton</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Timetable for</v8:content>
+												</v8:item>
+											</Title>
+											<TitleLocation>None</TitleLocation>
+											<RadioButtonType>Tumbler</RadioButtonType>
+											<ChoiceList>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation>
+															<v8:item>
+																<v8:lang>en</v8:lang>
+																<v8:content>Day</v8:content>
+															</v8:item>
+														</Presentation>
+														<Value xsi:type="xs:string">Day</Value>
+													</xr:Value>
+												</xr:Item>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation>
+															<v8:item>
+																<v8:lang>en</v8:lang>
+																<v8:content>Year</v8:content>
+															</v8:item>
+														</Presentation>
+														<Value xsi:type="xs:string">Year</Value>
+													</xr:Value>
+												</xr:Item>
+											</ChoiceList>
+											<ContextMenu name="RadioButtonContextMenu" id="268"/>
+											<ExtendedTooltip name="RadioButtonExtendedTooltip" id="269"/>
+											<Events>
+												<Event name="OnChange">RadioButtonOnChange</Event>
+											</Events>
+										</RadioButtonField>
+										<CommandBar name="PanelShortenPeriod" id="261">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Panel shorten a period</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Panel shorten a period</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Width>3</Width>
+											<HorizontalLocation>Right</HorizontalLocation>
+											<ExtendedTooltip name="PanelShortenPeriodExtendedTooltip" id="262"/>
+											<ChildItems>
+												<Button name="TimetableScheduleShortenPeriod" id="34">
+													<Type>CommandBarButton</Type>
+													<Width>3</Width>
+													<Height>1</Height>
+													<CommandName>Form.Command.TimetableScheduleShortenPeriod</CommandName>
+													<ExtendedTooltip name="ScheduleOnScheduleToReducePeriodExtendedTooltip" id="178"/>
+												</Button>
+											</ChildItems>
+										</CommandBar>
+										<InputField name="TimetableSchedulePresentationPeriod" id="35">
+											<DataPath>TimetableSchedulePresentationPeriod</DataPath>
+											<SkipOnInput>true</SkipOnInput>
+											<TitleLocation>None</TitleLocation>
+											<HorizontalAlign>Center</HorizontalAlign>
+											<Width>14</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ChoiceButton>true</ChoiceButton>
+											<TextEdit>false</TextEdit>
+											<ChoiceButtonPicture>
+												<xr:Ref>StdPicture.Calendar</xr:Ref>
+												<xr:LoadTransparent>true</xr:LoadTransparent>
+											</ChoiceButtonPicture>
+											<ContextMenu name="ScheduleOnSchedulePeriodPresentationContextMenu" id="36"/>
+											<ExtendedTooltip name="ScheduleOnSchedulePeriodPresentationExtendedTooltip" id="179"/>
+											<Events>
+												<Event name="StartChoice">PeriodPresentationStartChoice</Event>
+											</Events>
+										</InputField>
+										<CommandBar name="PanelExtendPeriod" id="270">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Panel extend a period</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Panel extend a period</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Width>3</Width>
+											<ExtendedTooltip name="PanelExtendPeriodExtendedTooltip" id="271"/>
+											<ChildItems>
+												<Button name="TimetableScheduleExtendPeriod" id="37">
+													<Type>CommandBarButton</Type>
+													<Width>3</Width>
+													<Height>1</Height>
+													<CommandName>Form.Command.TimetableScheduleExtendPeriod</CommandName>
+													<ExtendedTooltip name="ScheduleOnScheduleToIncreasePeriodExtendedTooltip" id="180"/>
+												</Button>
+											</ChildItems>
+										</CommandBar>
+										<CommandBar name="ConfigurationPanel" id="263">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Configuration panel</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Configuration panel</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Width>3</Width>
+											<HorizontalLocation>Right</HorizontalLocation>
+											<ExtendedTooltip name="ConfigurationPanelExtendedTooltip" id="264"/>
+											<ChildItems>
+												<Button name="Settings" id="150">
+													<Type>CommandBarButton</Type>
+													<Representation>Picture</Representation>
+													<Width>11</Width>
+													<CommandName>Form.Command.Settings</CommandName>
+													<ExtendedTooltip name="SettingsExtendedTooltip" id="181"/>
+												</Button>
+											</ChildItems>
+										</CommandBar>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+						<SpreadSheetDocumentField name="TimetableSchedule" id="12">
+							<DataPath>TimetableSchedule</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<TitleLocation>None</TitleLocation>
+							<SelectionShowMode>WhenActive</SelectionShowMode>
+							<ViewScalingMode>Normal</ViewScalingMode>
+							<ContextMenu name="ScheduleOnScheduleContextMenu" id="13"/>
+							<ExtendedTooltip name="ScheduleOnScheduleExtendedTooltip" id="182"/>
+							<Events>
+								<Event name="Selection">TimetableScheduleSelection</Event>
+							</Events>
+						</SpreadSheetDocumentField>
+					</ChildItems>
+				</Page>
+				<Page name="PageResourcesWorkingBySchedule" id="16">
+					<UserVisible>
+						<xr:Common>true</xr:Common>
+						<xr:Value name="Role.SystemAdministrator">false</xr:Value>
+						<xr:Value name="Role.Administration">false</xr:Value>
+						<xr:Value name="Role.BasicRights">false</xr:Value>
+						<xr:Value name="Role.SBBasicRights">false</xr:Value>
+						<xr:Value name="Role.BasicRightsOfED">false</xr:Value>
+						<xr:Value name="Role.OutputToPrinterClipboardFile">false</xr:Value>
+						<xr:Value name="Role.EDExchangeExecution">false</xr:Value>
+						<xr:Value name="Role.DataExchangeWithMobileApplication">false</xr:Value>
+						<xr:Value name="Role.ExchangeDataWithSitesProcessing">false</xr:Value>
+						<xr:Value name="Role.DataSynchronization">false</xr:Value>
+						<xr:Value name="Role.AddChangeBasicReferenceData">false</xr:Value>
+						<xr:Value name="Role.AddChangeBankAccounts">false</xr:Value>
+						<xr:Value name="Role.AddCurrenciesChange">false</xr:Value>
+						<xr:Value name="Role.AddChangeReportsVariants">false</xr:Value>
+						<xr:Value name="Role.AddChangeExternalUsers">false</xr:Value>
+						<xr:Value name="Role.AddChangeAdditionalReportsAndDataProcessors">false</xr:Value>
+						<xr:Value name="Role.AddChangeCounterparties">false</xr:Value>
+						<xr:Value name="Role.AddChangeProductsAndServices">false</xr:Value>
+						<xr:Value name="Role.AddChangeCommonBasicReferenceData">false</xr:Value>
+						<xr:Value name="Role.AddChangeIndividualsPersonalData">false</xr:Value>
+						<xr:Value name="Role.AddChangePeripherals">false</xr:Value>
+						<xr:Value name="Role.AddChangeBankSubsystem">false</xr:Value>
+						<xr:Value name="Role.AddChangePurchasesSubsystem">false</xr:Value>
+						<xr:Value name="Role.AddChangeInventoryAndWarehouseSubsystem">false</xr:Value>
+						<xr:Value name="Role.AddChangePayrollSubsystem">false</xr:Value>
+						<xr:Value name="Role.AddChangeSurplusesAndShortagessSubsystem">false</xr:Value>
+						<xr:Value name="Role.AddChangePettyCashSubsystem">false</xr:Value>
+						<xr:Value name="Role.AddChangeMarketingSubsystem">false</xr:Value>
+						<xr:Value name="Role.AddChangeTasksSubsystem">false</xr:Value>
+						<xr:Value name="Role.AddChangeProcessingSubsystem">false</xr:Value>
+						<xr:Value name="Role.AddChangeProcessingProductionSubsystem">false</xr:Value>
+						<xr:Value name="Role.AddChangeHumanResourcesSubsystem">false</xr:Value>
+						<xr:Value name="Role.AddChangeFundsPlanningSubsystem">false</xr:Value>
+						<xr:Value name="Role.AddChangeSalesSubsystem">false</xr:Value>
+						<xr:Value name="Role.AddChangeProductionSubsystem">true</xr:Value>
+						<xr:Value name="Role.AddChangeRetailSalesSubsystem">false</xr:Value>
+						<xr:Value name="Role.AddChangeServiceSubsystem">true</xr:Value>
+						<xr:Value name="Role.AddChangeUsers">false</xr:Value>
+						<xr:Value name="Role.AddChangeEventsAndTasks">false</xr:Value>
+						<xr:Value name="Role.AddChangeCashFlowItems">false</xr:Value>
+						<xr:Value name="Role.AddEditCountries">false</xr:Value>
+						<xr:Value name="Role.AddChangeIndividuals">false</xr:Value>
+						<xr:Value name="Role.RunAutomation">false</xr:Value>
+						<xr:Value name="Role.RunWebClient">false</xr:Value>
+						<xr:Value name="Role.RunExternalConnection">false</xr:Value>
+						<xr:Value name="Role.RunThickClient">false</xr:Value>
+						<xr:Value name="Role.RunThinClient">false</xr:Value>
+						<xr:Value name="Role.AdditionalInformationChange">false</xr:Value>
+						<xr:Value name="Role.ChangePrintFormsTemplates">false</xr:Value>
+						<xr:Value name="Role.ChangeCurrentExternalUser">false</xr:Value>
+						<xr:Value name="Role.EditCurrentUser">false</xr:Value>
+						<xr:Value name="Role.ChangeAccessGroupsMembers">false</xr:Value>
+						<xr:Value name="Role.InteractiveOpenExternalReportsAndDataProcessors">false</xr:Value>
+						<xr:Value name="Role.ReportsVariantsUsage">false</xr:Value>
+						<xr:Value name="Role.UseGlobalAdditionalReportsAndDataProcessors">false</xr:Value>
+						<xr:Value name="Role.UseAdditionalReportsAndDataProcessors">false</xr:Value>
+						<xr:Value name="Role.UseInformationCenter">false</xr:Value>
+						<xr:Value name="Role.RemindersUse">false</xr:Value>
+						<xr:Value name="Role.UseAnalysisReports">false</xr:Value>
+						<xr:Value name="Role.UseFundsReports">false</xr:Value>
+						<xr:Value name="Role.UsePurchasesReports">false</xr:Value>
+						<xr:Value name="Role.UsePayrollReports">false</xr:Value>
+						<xr:Value name="Role.UseEnterpriseReports">false</xr:Value>
+						<xr:Value name="Role.UseSalesReports">false</xr:Value>
+						<xr:Value name="Role.UseProductionReports">false</xr:Value>
+						<xr:Value name="Role.UseServiceReports">false</xr:Value>
+						<xr:Value name="Role.UsePeripherals">false</xr:Value>
+						<xr:Value name="Role.UseSubordinationStructure">false</xr:Value>
+						<xr:Value name="Role.UseEMailAccounts">false</xr:Value>
+						<xr:Value name="Role.DSUsage">false</xr:Value>
+						<xr:Value name="Role.PerformanceSetupAndEstimation">false</xr:Value>
+						<xr:Value name="Role.EDParametersSetting">false</xr:Value>
+						<xr:Value name="Role.DataSynchronizationSetting">false</xr:Value>
+						<xr:Value name="Role.UpdateDataBaseConfiguration">false</xr:Value>
+						<xr:Value name="Role.PersonalDataProcessingConsentPreparation">false</xr:Value>
+						<xr:Value name="Role.FullRights">true</xr:Value>
+						<xr:Value name="Role.CheckForAvailableConfigurationUpdates">false</xr:Value>
+						<xr:Value name="Role.ViewEventLogMonitor">false</xr:Value>
+						<xr:Value name="Role.ViewApplicationChangesDescription">false</xr:Value>
+						<xr:Value name="Role.FileFolderOperations">false</xr:Value>
+						<xr:Value name="Role.FileOperations">false</xr:Value>
+						<xr:Value name="Role.EditObjectAttributes">false</xr:Value>
+						<xr:Value name="Role.AllFunctionsMode">false</xr:Value>
+						<xr:Value name="Role.SaveUserData">false</xr:Value>
+						<xr:Value name="Role.RemoteAccessBaseFunctionality">false</xr:Value>
+						<xr:Value name="Role.RemoteAccessDataExchangeSaaS">false</xr:Value>
+						<xr:Value name="Role.RemoteAccessMessageExchange">false</xr:Value>
+						<xr:Value name="Role.ReadBasicReferenceData">false</xr:Value>
+						<xr:Value name="Role.ReadObjectsVersions">false</xr:Value>
+						<xr:Value name="Role.ReadExternalUsers">false</xr:Value>
+						<xr:Value name="Role.ReadDocumentsByBankAndPettyCash">false</xr:Value>
+						<xr:Value name="Role.ReadSettlementsDocuments">false</xr:Value>
+						<xr:Value name="Role.ReadAdditionalInformation">false</xr:Value>
+						<xr:Value name="Role.ReadingInformationAboutObjectsVersions">false</xr:Value>
+						<xr:Value name="Role.ReadCashBalances">false</xr:Value>
+						<xr:Value name="Role.ReadInventoryAndSettlementsBalances">false</xr:Value>
+						<xr:Value name="Role.ReadAccrualsAndTimesheetBalances">false</xr:Value>
+						<xr:Value name="Role.ReadOrdersAndPaidBillsBalances">false</xr:Value>
+						<xr:Value name="Role.ReadSettlementsBalances">false</xr:Value>
+						<xr:Value name="Role.ReadIndividualsPersonalData">false</xr:Value>
+						<xr:Value name="Role.ReadIndividuals">false</xr:Value>
+						<xr:Value name="Role.EDReading">false</xr:Value>
+					</UserVisible>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Resources on schedule</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Page resources working by schedule</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="PageResourcesWorkingOnScheduleExtendedTooltip" id="186"/>
+					<ChildItems>
+						<UsualGroup name="ResourcesRunningOnScheduleHeader" id="124">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Resources working by schedule header</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Resources working by schedule header</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ResourcesRunningOnScheduleHeaderExtendedTooltip" id="187"/>
+							<ChildItems>
+								<UsualGroup name="ResourcesRunningOnSchedulePeriod" id="125">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Resources work by schedule period</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Resources work by schedule period</v8:content>
+										</v8:item>
+									</ToolTip>
+									<HorizontalStretch>false</HorizontalStretch>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ResourcesRunningOnSchedulePeriodExtendedTooltip" id="197"/>
+									<ChildItems>
+										<Button name="ResourcesWorkByScheduleShortenPeriod" id="134">
+											<Type>UsualButton</Type>
+											<Representation>Picture</Representation>
+											<Width>3</Width>
+											<CommandName>Form.Command.ResourcesWorkByScheduleShortenPeriod</CommandName>
+											<ExtendedTooltip name="ResourcesRunningOnScheduleToReducePeriodExtendedTooltip" id="203"/>
+										</Button>
+										<InputField name="ResourcesWorkBySchedulePeriodPresentation" id="127">
+											<DataPath>ResourcesWorkBySchedulePeriodPresentation</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<HorizontalAlign>Center</HorizontalAlign>
+											<Width>14</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ChoiceButton>true</ChoiceButton>
+											<TextEdit>false</TextEdit>
+											<ChoiceButtonPicture>
+												<xr:Ref>StdPicture.Calendar</xr:Ref>
+												<xr:LoadTransparent>true</xr:LoadTransparent>
+											</ChoiceButtonPicture>
+											<ContextMenu name="ResourcesRunningOnSchedulePeriodPresentationContextMenu" id="128"/>
+											<ExtendedTooltip name="ResourcesRunningOnSchedulePeriodPresentationExtendedTooltip" id="204"/>
+											<Events>
+												<Event name="StartChoice">ResourcesWorkBySchedulePeriodPresentationStartChoice</Event>
+											</Events>
+										</InputField>
+										<Button name="ResourcesWorkByScheduleExtendPeriod" id="135">
+											<Type>UsualButton</Type>
+											<Representation>Picture</Representation>
+											<Width>3</Width>
+											<CommandName>Form.Command.ResourcesWorkByScheduleExtendPeriod</CommandName>
+											<ExtendedTooltip name="ResourcesRunningOnScheduleToIncreasePeriodExtendedTooltip" id="205"/>
+										</Button>
+									</ChildItems>
+								</UsualGroup>
+								<CommandBar name="PanelResourcesBySchedule" id="272">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Panel resources on schedule</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Panel resources on schedule</v8:content>
+										</v8:item>
+									</ToolTip>
+									<CommandSource>Item.ResourcesBySchedule</CommandSource>
+									<ExtendedTooltip name="PanelResourcesByScheduleExtendedTooltip" id="273"/>
+									<ChildItems>
+										<Button name="TimetableScheduleCreate" id="274">
+											<Type>CommandBarButton</Type>
+											<OnlyInAllActions>false</OnlyInAllActions>
+											<CommandName>Form.Item.ResourcesBySchedule.StandardCommand.Create</CommandName>
+											<ExtendedTooltip name="ResourcesByScheduleCreateExtendedTooltip" id="275"/>
+										</Button>
+									</ChildItems>
+								</CommandBar>
+							</ChildItems>
+						</UsualGroup>
+						<Table name="ResourcesBySchedule" id="57">
+							<CommandBarLocation>None</CommandBarLocation>
+							<HeightInTableRows>4</HeightInTableRows>
+							<SelectionMode>SingleRow</SelectionMode>
+							<UseAlternationRowColor>true</UseAlternationRowColor>
+							<EnableStartDrag>true</EnableStartDrag>
+							<DataPath>ResourcesBySchedule</DataPath>
+							<RowPictureDataPath>ResourcesBySchedule.DefaultPicture</RowPictureDataPath>
+							<SearchStringLocation>CommandBar</SearchStringLocation>
+							<ViewStatusLocation>Top</ViewStatusLocation>
+							<SearchControlLocation>CommandBar</SearchControlLocation>
+							<AutoRefresh>false</AutoRefresh>
+							<AutoRefreshPeriod>60</AutoRefreshPeriod>
+							<Period>
+								<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+								<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+								<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+							</Period>
+							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+							<RestoreCurrentRow>true</RestoreCurrentRow>
+							<TopLevelParent xsi:nil="true"/>
+							<ShowRoot>true</ShowRoot>
+							<AllowRootChoice>false</AllowRootChoice>
+							<UpdateOnDataChange>Auto</UpdateOnDataChange>
+							<ContextMenu name="ResourcesByScheduleContextMenu" id="58"/>
+							<AutoCommandBar name="ResourcesByScheduleCommandBar" id="59"/>
+							<ExtendedTooltip name="ResourcesByScheduleExtendedTooltip" id="206"/>
+							<SearchStringAddition name="ResourcesByScheduleSearchString" id="248">
+								<AdditionSource>
+									<Item>ResourcesBySchedule</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ResourcesByScheduleSearchStringContextMenu" id="249"/>
+								<ExtendedTooltip name="ResourcesByScheduleSearchStringExtendedTooltip" id="250"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ResourcesByScheduleStatusView" id="251">
+								<AdditionSource>
+									<Item>ResourcesBySchedule</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ResourcesByScheduleViewStatusContextMenu" id="252"/>
+								<ExtendedTooltip name="ResourcesByScheduleViewStatusExtendedTooltip" id="253"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ResourcesByScheduleSearchManagement" id="254">
+								<AdditionSource>
+									<Item>ResourcesBySchedule</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ResourcesByScheduleSearchManagementContextMenu" id="255"/>
+								<ExtendedTooltip name="ResourcesByScheduleSearchManagementExtendedTooltip" id="256"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<LabelField name="ResourcesOnGraphicsResourceEnterprise" id="60">
+									<DataPath>ResourcesBySchedule.EnterpriseResource</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Resource \ Number</v8:content>
+										</v8:item>
+									</Title>
+									<Height>1</Height>
+									<ContextMenu name="ResourcesOnGraphicsResourceEnterpriseContextMenu" id="61"/>
+									<ExtendedTooltip name="ResourcesOnGraphicsResourceEnterpriseExtendedTooltip" id="207"/>
+								</LabelField>
+								<LabelField name="ResourcesByScheduleNumber1" id="62">
+									<DataPath>ResourcesBySchedule.Number1</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>1 </v8:content>
+										</v8:item>
+									</Title>
+									<Width>4</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ResourcesByScheduleNumber1ContextMenu" id="63"/>
+									<ExtendedTooltip name="ResourcesByScheduleNumber1ExtendedTooltip" id="208"/>
+								</LabelField>
+								<LabelField name="ResourcesByScheduleNumber2" id="84">
+									<DataPath>ResourcesBySchedule.Number2</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>2 </v8:content>
+										</v8:item>
+									</Title>
+									<Width>4</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ResourcesByScheduleNumber2ContextMenu" id="85"/>
+									<ExtendedTooltip name="ResourcesByScheduleNumber2ExtendedTooltip" id="209"/>
+								</LabelField>
+								<LabelField name="ResourcesByScheduleNumber3" id="106">
+									<DataPath>ResourcesBySchedule.Number3</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>3 </v8:content>
+										</v8:item>
+									</Title>
+									<Width>4</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ResourcesByScheduleNumber3ContextMenu" id="107"/>
+									<ExtendedTooltip name="ResourcesByScheduleNumber3ExtendedTooltip" id="210"/>
+								</LabelField>
+								<LabelField name="ResourcesByScheduleNumber4" id="112">
+									<DataPath>ResourcesBySchedule.Number4</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>4 </v8:content>
+										</v8:item>
+									</Title>
+									<Width>4</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ResourcesByScheduleNumber4ContextMenu" id="113"/>
+									<ExtendedTooltip name="ResourcesByScheduleNumber4ExtendedTooltip" id="211"/>
+								</LabelField>
+								<LabelField name="ResourcesByScheduleNumber5" id="114">
+									<DataPath>ResourcesBySchedule.Number5</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>5 </v8:content>
+										</v8:item>
+									</Title>
+									<Width>4</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ResourcesByScheduleNumber5ContextMenu" id="115"/>
+									<ExtendedTooltip name="ResourcesByScheduleNumber5ExtendedTooltip" id="212"/>
+								</LabelField>
+								<LabelField name="ResourcesByScheduleNumber6" id="116">
+									<DataPath>ResourcesBySchedule.Number6</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>6 </v8:content>
+										</v8:item>
+									</Title>
+									<Width>4</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ResourcesByScheduleNumber6ContextMenu" id="117"/>
+									<ExtendedTooltip name="ResourcesByScheduleNumber6ExtendedTooltip" id="213"/>
+								</LabelField>
+								<LabelField name="ResourcesByScheduleNumber7" id="118">
+									<DataPath>ResourcesBySchedule.Number7</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>7 </v8:content>
+										</v8:item>
+									</Title>
+									<Width>4</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ResourcesByScheduleNumber7ContextMenu" id="119"/>
+									<ExtendedTooltip name="ResourcesByScheduleNumber7ExtendedTooltip" id="214"/>
+								</LabelField>
+								<LabelField name="ResourcesByScheduleNumber8" id="120">
+									<DataPath>ResourcesBySchedule.Number8</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>8 </v8:content>
+										</v8:item>
+									</Title>
+									<Width>4</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ResourcesByScheduleNumber8ContextMenu" id="121"/>
+									<ExtendedTooltip name="ResourcesByScheduleNumber8ExtendedTooltip" id="215"/>
+								</LabelField>
+								<LabelField name="ResourcesByScheduleNumber9" id="122">
+									<DataPath>ResourcesBySchedule.Number9</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>9 </v8:content>
+										</v8:item>
+									</Title>
+									<Width>4</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ResourcesByScheduleNumber9ContextMenu" id="123"/>
+									<ExtendedTooltip name="ResourcesByScheduleNumber9ExtendedTooltip" id="216"/>
+								</LabelField>
+								<LabelField name="ResourcesByScheduleNumber10" id="64">
+									<DataPath>ResourcesBySchedule.Number10</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>10</v8:content>
+										</v8:item>
+									</Title>
+									<Width>4</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ResourcesByScheduleNumber10ContextMenu" id="65"/>
+									<ExtendedTooltip name="ResourcesByScheduleNumber10ExtendedTooltip" id="217"/>
+								</LabelField>
+								<LabelField name="ResourcesByScheduleNumber11" id="66">
+									<DataPath>ResourcesBySchedule.Number11</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>11</v8:content>
+										</v8:item>
+									</Title>
+									<Width>4</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ResourcesByScheduleNumber11ContextMenu" id="67"/>
+									<ExtendedTooltip name="ResourcesByScheduleNumber11ExtendedTooltip" id="218"/>
+								</LabelField>
+								<LabelField name="ResourcesByScheduleNumber12" id="68">
+									<DataPath>ResourcesBySchedule.Number12</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>12</v8:content>
+										</v8:item>
+									</Title>
+									<Width>4</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ResourcesByScheduleNumber12ContextMenu" id="69"/>
+									<ExtendedTooltip name="ResourcesByScheduleNumber12ExtendedTooltip" id="219"/>
+								</LabelField>
+								<LabelField name="ResourcesByScheduleNumber13" id="70">
+									<DataPath>ResourcesBySchedule.Number13</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>13</v8:content>
+										</v8:item>
+									</Title>
+									<Width>4</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ResourcesByScheduleNumber13ContextMenu" id="71"/>
+									<ExtendedTooltip name="ResourcesByScheduleNumber13ExtendedTooltip" id="220"/>
+								</LabelField>
+								<LabelField name="ResourcesByScheduleNumber14" id="72">
+									<DataPath>ResourcesBySchedule.Number14</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>14</v8:content>
+										</v8:item>
+									</Title>
+									<Width>4</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ResourcesByScheduleNumber14ContextMenu" id="73"/>
+									<ExtendedTooltip name="ResourcesByScheduleNumber14ExtendedTooltip" id="221"/>
+								</LabelField>
+								<LabelField name="ResourcesByScheduleNumber15" id="74">
+									<DataPath>ResourcesBySchedule.Number15</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>15</v8:content>
+										</v8:item>
+									</Title>
+									<Width>4</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ResourcesByScheduleNumber15ContextMenu" id="75"/>
+									<ExtendedTooltip name="ResourcesByScheduleNumber15ExtendedTooltip" id="222"/>
+								</LabelField>
+								<LabelField name="ResourcesByScheduleNumber16" id="76">
+									<DataPath>ResourcesBySchedule.Number16</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>16</v8:content>
+										</v8:item>
+									</Title>
+									<Width>4</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ResourcesByScheduleNumber16ContextMenu" id="77"/>
+									<ExtendedTooltip name="ResourcesByScheduleNumber16ExtendedTooltip" id="223"/>
+								</LabelField>
+								<LabelField name="ResourcesByScheduleNumber17" id="78">
+									<DataPath>ResourcesBySchedule.Number17</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>17</v8:content>
+										</v8:item>
+									</Title>
+									<Width>4</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ResourcesByScheduleNumber17ContextMenu" id="79"/>
+									<ExtendedTooltip name="ResourcesByScheduleNumber17ExtendedTooltip" id="224"/>
+								</LabelField>
+								<LabelField name="ResourcesByScheduleNumber18" id="80">
+									<DataPath>ResourcesBySchedule.Number18</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>18</v8:content>
+										</v8:item>
+									</Title>
+									<Width>4</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ResourcesByScheduleNumber18ContextMenu" id="81"/>
+									<ExtendedTooltip name="ResourcesByScheduleNumber18ExtendedTooltip" id="225"/>
+								</LabelField>
+								<LabelField name="ResourcesByScheduleNumber19" id="82">
+									<DataPath>ResourcesBySchedule.Number19</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>19</v8:content>
+										</v8:item>
+									</Title>
+									<Width>4</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ResourcesByScheduleNumber19ContextMenu" id="83"/>
+									<ExtendedTooltip name="ResourcesByScheduleNumber19ExtendedTooltip" id="226"/>
+								</LabelField>
+								<LabelField name="ResourcesByScheduleNumber20" id="86">
+									<DataPath>ResourcesBySchedule.Number20</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>20</v8:content>
+										</v8:item>
+									</Title>
+									<Width>4</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ResourcesByScheduleNumber20ContextMenu" id="87"/>
+									<ExtendedTooltip name="ResourcesByScheduleNumber20ExtendedTooltip" id="227"/>
+								</LabelField>
+								<LabelField name="ResourcesByScheduleNumber21" id="88">
+									<DataPath>ResourcesBySchedule.Number21</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>21</v8:content>
+										</v8:item>
+									</Title>
+									<Width>4</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ResourcesByScheduleNumber21ContextMenu" id="89"/>
+									<ExtendedTooltip name="ResourcesByScheduleNumber21ExtendedTooltip" id="228"/>
+								</LabelField>
+								<LabelField name="ResourcesByScheduleNumber22" id="90">
+									<DataPath>ResourcesBySchedule.Number22</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>22</v8:content>
+										</v8:item>
+									</Title>
+									<Width>4</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ResourcesByScheduleNumber22ContextMenu" id="91"/>
+									<ExtendedTooltip name="ResourcesByScheduleNumber22ExtendedTooltip" id="229"/>
+								</LabelField>
+								<LabelField name="ResourcesByScheduleNumber23" id="92">
+									<DataPath>ResourcesBySchedule.Number23</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>23</v8:content>
+										</v8:item>
+									</Title>
+									<Width>4</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ResourcesByScheduleNumber23ContextMenu" id="93"/>
+									<ExtendedTooltip name="ResourcesByScheduleNumber23ExtendedTooltip" id="230"/>
+								</LabelField>
+								<LabelField name="ResourcesByScheduleNumber24" id="94">
+									<DataPath>ResourcesBySchedule.Number24</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>24</v8:content>
+										</v8:item>
+									</Title>
+									<Width>4</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ResourcesByScheduleNumber24ContextMenu" id="95"/>
+									<ExtendedTooltip name="ResourcesByScheduleNumber24ExtendedTooltip" id="231"/>
+								</LabelField>
+								<LabelField name="ResourcesByScheduleNumber25" id="96">
+									<DataPath>ResourcesBySchedule.Number25</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>25</v8:content>
+										</v8:item>
+									</Title>
+									<Width>4</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ResourcesByScheduleNumber25ContextMenu" id="97"/>
+									<ExtendedTooltip name="ResourcesByScheduleNumber25ExtendedTooltip" id="232"/>
+								</LabelField>
+								<LabelField name="ResourcesOnNumber26" id="98">
+									<DataPath>ResourcesBySchedule.Number26</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>26</v8:content>
+										</v8:item>
+									</Title>
+									<Width>4</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ResourcesOnNumber26ContextMenu" id="99"/>
+									<ExtendedTooltip name="ResourcesOnNumber26ExtendedTooltip" id="233"/>
+								</LabelField>
+								<LabelField name="ResourcesByScheduleNumber27" id="100">
+									<DataPath>ResourcesBySchedule.Number27</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>27</v8:content>
+										</v8:item>
+									</Title>
+									<Width>4</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ResourcesByScheduleNumber27ContextMenu" id="101"/>
+									<ExtendedTooltip name="ResourcesByScheduleNumber27ExtendedTooltip" id="234"/>
+								</LabelField>
+								<LabelField name="ResourcesByScheduleNumber28" id="102">
+									<DataPath>ResourcesBySchedule.Number28</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>28</v8:content>
+										</v8:item>
+									</Title>
+									<Width>4</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ResourcesByScheduleNumber28ContextMenu" id="103"/>
+									<ExtendedTooltip name="ResourcesByScheduleNumber28ExtendedTooltip" id="235"/>
+								</LabelField>
+								<LabelField name="ResourcesByScheduleNumber29" id="104">
+									<DataPath>ResourcesBySchedule.Number29</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>29</v8:content>
+										</v8:item>
+									</Title>
+									<Width>4</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ResourcesByScheduleNumber29ContextMenu" id="105"/>
+									<ExtendedTooltip name="ResourcesByScheduleNumber29ExtendedTooltip" id="236"/>
+								</LabelField>
+								<LabelField name="ResourcesByScheduleNumber30" id="108">
+									<DataPath>ResourcesBySchedule.Number30</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>30</v8:content>
+										</v8:item>
+									</Title>
+									<Width>4</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ResourcesByScheduleNumber30ContextMenu" id="109"/>
+									<ExtendedTooltip name="ResourcesByScheduleNumber30ExtendedTooltip" id="237"/>
+								</LabelField>
+								<LabelField name="ResourcesByScheduleNumber31" id="110">
+									<DataPath>ResourcesBySchedule.Number31</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>31</v8:content>
+										</v8:item>
+									</Title>
+									<Width>4</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ResourcesByScheduleNumber31ContextMenu" id="111"/>
+									<ExtendedTooltip name="ResourcesByScheduleNumber31ExtendedTooltip" id="238"/>
+								</LabelField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="List" id="1">
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>false</DynamicDataRead>
+				<QueryText>SELECT
+	CatalogSchedules.Ref AS Ref,
+	CatalogSchedules.DeletionMark AS DeletionMark,
+	CatalogSchedules.Predefined AS Predefined,
+	CatalogSchedules.Code AS Code,
+	CatalogSchedules.Description AS Description,
+	CatalogSchedules.ScheduleType AS ScheduleType,
+	CatalogSchedules.WorkweekDuration AS WorkweekDuration,
+	CatalogSchedules.BeginnigDate AS BeginnigDate,
+	CatalogSchedules.Calendar AS Calendar,
+	CatalogSchedules.Color AS Color,
+	CatalogSchedules.Periods,
+	" " AS Marker
+FROM
+	Catalog.WorkSchedules AS CatalogSchedules</QueryText>
+				<MainTable>Catalog.WorkSchedules</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="TimetableSchedule" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Timetable schedule</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type xmlns:mxl="http://v8.1c.ru/8.2/data/spreadsheet">mxl:SpreadsheetDocument</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ScheduleDate" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Schedule date</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>DateTime</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="TimetableSchedulePresentationPeriod" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Resources work by schedule period presentation</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>45</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="NonWorkingTime" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Non working time</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>1</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="WorkingTime" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Working time</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>1</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="BusyPeriodColor" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Busy period color</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8ui:Color</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ColorOfFreePeriod" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Color of free period</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8ui:Color</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ResourcesBySchedule" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Resources by schedule</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<UseAlways>
+				<Field>ResourcesBySchedule.IsDate31</Field>
+				<Field>ResourcesBySchedule.IsDate30</Field>
+				<Field>ResourcesBySchedule.IsDate29</Field>
+				<Field>ResourcesBySchedule.IsDate28</Field>
+				<Field>ResourcesBySchedule.DayOfWeek9</Field>
+				<Field>ResourcesBySchedule.DayOfWeek8</Field>
+				<Field>ResourcesBySchedule.DayOfWeek7</Field>
+				<Field>ResourcesBySchedule.DayOfWeek6</Field>
+				<Field>ResourcesBySchedule.DayOfWeek5</Field>
+				<Field>ResourcesBySchedule.DayOfWeek4</Field>
+				<Field>ResourcesBySchedule.DayOfWeek31</Field>
+				<Field>ResourcesBySchedule.DayOfWeek30</Field>
+				<Field>ResourcesBySchedule.DayOfWeek3</Field>
+				<Field>ResourcesBySchedule.DayOfWeek29</Field>
+				<Field>ResourcesBySchedule.DayOfWeek28</Field>
+				<Field>ResourcesBySchedule.DayOfWeek27</Field>
+				<Field>ResourcesBySchedule.DayOfWeek26</Field>
+				<Field>ResourcesBySchedule.DayOfWeek25</Field>
+				<Field>ResourcesBySchedule.DayOfWeek24</Field>
+				<Field>ResourcesBySchedule.DayOfWeek23</Field>
+				<Field>ResourcesBySchedule.DayOfWeek22</Field>
+				<Field>ResourcesBySchedule.DayOfWeek21</Field>
+				<Field>ResourcesBySchedule.DayOfWeek20</Field>
+				<Field>ResourcesBySchedule.DayOfWeek2</Field>
+				<Field>ResourcesBySchedule.DayOfWeek19</Field>
+				<Field>ResourcesBySchedule.DayOfWeek18</Field>
+				<Field>ResourcesBySchedule.DayOfWeek17</Field>
+				<Field>ResourcesBySchedule.DayOfWeek16</Field>
+				<Field>ResourcesBySchedule.DayOfWeek15</Field>
+				<Field>ResourcesBySchedule.DayOfWeek14</Field>
+				<Field>ResourcesBySchedule.DayOfWeek13</Field>
+				<Field>ResourcesBySchedule.DayOfWeek12</Field>
+				<Field>ResourcesBySchedule.DayOfWeek11</Field>
+				<Field>ResourcesBySchedule.DayOfWeek10</Field>
+				<Field>ResourcesBySchedule.DayOfWeek1</Field>
+			</UseAlways>
+			<FunctionalOptions>
+				<Item>FunctionalOption.PlanEnterpriseResourcesImporting</Item>
+			</FunctionalOptions>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>SELECT
+	ResourcesWorkSchedules.EnterpriseResource AS EnterpriseResource,
+	SUM(CASE
+			WHEN WorkSchedules.BeginTime &lt; ResourcesWorkSchedules.Period
+					OR WorkSchedules.BeginTime &gt;= ISNULL(NestedSelect.Period, "00010101")
+				THEN 0
+			WHEN DATEDIFF(WorkSchedules.BeginTime, WorkSchedules.EndTime, Second) = 86399
+				THEN 24
+			ELSE DATEDIFF(WorkSchedules.BeginTime, DATEADD(WorkSchedules.EndTime, Second, 1), hour)
+		END) AS HoursTotal,
+	SUM(CASE
+			WHEN Day(WorkSchedules.BeginTime) = 1
+				THEN CASE
+						WHEN WorkSchedules.BeginTime &lt; ResourcesWorkSchedules.Period
+								OR WorkSchedules.BeginTime &gt;= ISNULL(NestedSelect.Period, "00010101")
+							THEN 0
+						WHEN DATEDIFF(WorkSchedules.BeginTime, WorkSchedules.EndTime, Second) = 86399
+							THEN 24
+						ELSE DATEDIFF(WorkSchedules.BeginTime, DATEADD(WorkSchedules.EndTime, Second, 1), hour)
+					END
+			ELSE 0
+		END) AS Number1,
+	SUM(CASE
+			WHEN Day(WorkSchedules.BeginTime) = 2
+				THEN CASE
+						WHEN WorkSchedules.BeginTime &lt; ResourcesWorkSchedules.Period
+								OR WorkSchedules.BeginTime &gt;= ISNULL(NestedSelect.Period, "00010101")
+							THEN 0
+						WHEN DATEDIFF(WorkSchedules.BeginTime, WorkSchedules.EndTime, Second) = 86399
+							THEN 24
+						ELSE DATEDIFF(WorkSchedules.BeginTime, DATEADD(WorkSchedules.EndTime, Second, 1), hour)
+					END
+			ELSE 0
+		END) AS Number2,
+	SUM(CASE
+			WHEN Day(WorkSchedules.BeginTime) = 3
+				THEN CASE
+						WHEN WorkSchedules.BeginTime &lt; ResourcesWorkSchedules.Period
+								OR WorkSchedules.BeginTime &gt;= ISNULL(NestedSelect.Period, "00010101")
+							THEN 0
+						WHEN DATEDIFF(WorkSchedules.BeginTime, WorkSchedules.EndTime, Second) = 86399
+							THEN 24
+						ELSE DATEDIFF(WorkSchedules.BeginTime, DATEADD(WorkSchedules.EndTime, Second, 1), hour)
+					END
+			ELSE 0
+		END) AS Number3,
+	SUM(CASE
+			WHEN Day(WorkSchedules.BeginTime) = 4
+				THEN CASE
+						WHEN WorkSchedules.BeginTime &lt; ResourcesWorkSchedules.Period
+								OR WorkSchedules.BeginTime &gt;= ISNULL(NestedSelect.Period, "00010101")
+							THEN 0
+						WHEN DATEDIFF(WorkSchedules.BeginTime, WorkSchedules.EndTime, Second) = 86399
+							THEN 24
+						ELSE DATEDIFF(WorkSchedules.BeginTime, DATEADD(WorkSchedules.EndTime, Second, 1), hour)
+					END
+			ELSE 0
+		END) AS Number4,
+	SUM(CASE
+			WHEN Day(WorkSchedules.BeginTime) = 5
+				THEN CASE
+						WHEN WorkSchedules.BeginTime &lt; ResourcesWorkSchedules.Period
+								OR WorkSchedules.BeginTime &gt;= ISNULL(NestedSelect.Period, "00010101")
+							THEN 0
+						WHEN DATEDIFF(WorkSchedules.BeginTime, WorkSchedules.EndTime, Second) = 86399
+							THEN 24
+						ELSE DATEDIFF(WorkSchedules.BeginTime, DATEADD(WorkSchedules.EndTime, Second, 1), hour)
+					END
+			ELSE 0
+		END) AS Number5,
+	SUM(CASE
+			WHEN Day(WorkSchedules.BeginTime) = 6
+				THEN CASE
+						WHEN WorkSchedules.BeginTime &lt; ResourcesWorkSchedules.Period
+								OR WorkSchedules.BeginTime &gt;= ISNULL(NestedSelect.Period, "00010101")
+							THEN 0
+						WHEN DATEDIFF(WorkSchedules.BeginTime, WorkSchedules.EndTime, Second) = 86399
+							THEN 24
+						ELSE DATEDIFF(WorkSchedules.BeginTime, DATEADD(WorkSchedules.EndTime, Second, 1), hour)
+					END
+			ELSE 0
+		END) AS Number6,
+	SUM(CASE
+			WHEN Day(WorkSchedules.BeginTime) = 7
+				THEN CASE
+						WHEN WorkSchedules.BeginTime &lt; ResourcesWorkSchedules.Period
+								OR WorkSchedules.BeginTime &gt;= ISNULL(NestedSelect.Period, "00010101")
+							THEN 0
+						WHEN DATEDIFF(WorkSchedules.BeginTime, WorkSchedules.EndTime, Second) = 86399
+							THEN 24
+						ELSE DATEDIFF(WorkSchedules.BeginTime, DATEADD(WorkSchedules.EndTime, Second, 1), hour)
+					END
+			ELSE 0
+		END) AS Number7,
+	SUM(CASE
+			WHEN Day(WorkSchedules.BeginTime) = 8
+				THEN CASE
+						WHEN WorkSchedules.BeginTime &lt; ResourcesWorkSchedules.Period
+								OR WorkSchedules.BeginTime &gt;= ISNULL(NestedSelect.Period, "00010101")
+							THEN 0
+						WHEN DATEDIFF(WorkSchedules.BeginTime, WorkSchedules.EndTime, Second) = 86399
+							THEN 24
+						ELSE DATEDIFF(WorkSchedules.BeginTime, DATEADD(WorkSchedules.EndTime, Second, 1), hour)
+					END
+			ELSE 0
+		END) AS Number8,
+	SUM(CASE
+			WHEN Day(WorkSchedules.BeginTime) = 9
+				THEN CASE
+						WHEN WorkSchedules.BeginTime &lt; ResourcesWorkSchedules.Period
+								OR WorkSchedules.BeginTime &gt;= ISNULL(NestedSelect.Period, "00010101")
+							THEN 0
+						WHEN DATEDIFF(WorkSchedules.BeginTime, WorkSchedules.EndTime, Second) = 86399
+							THEN 24
+						ELSE DATEDIFF(WorkSchedules.BeginTime, DATEADD(WorkSchedules.EndTime, Second, 1), hour)
+					END
+			ELSE 0
+		END) AS Number9,
+	SUM(CASE
+			WHEN Day(WorkSchedules.BeginTime) = 10
+				THEN CASE
+						WHEN WorkSchedules.BeginTime &lt; ResourcesWorkSchedules.Period
+								OR WorkSchedules.BeginTime &gt;= ISNULL(NestedSelect.Period, "00010101")
+							THEN 0
+						WHEN DATEDIFF(WorkSchedules.BeginTime, WorkSchedules.EndTime, Second) = 86399
+							THEN 24
+						ELSE DATEDIFF(WorkSchedules.BeginTime, DATEADD(WorkSchedules.EndTime, Second, 1), hour)
+					END
+			ELSE 0
+		END) AS Number10,
+	SUM(CASE
+			WHEN Day(WorkSchedules.BeginTime) = 11
+				THEN CASE
+						WHEN WorkSchedules.BeginTime &lt; ResourcesWorkSchedules.Period
+								OR WorkSchedules.BeginTime &gt;= ISNULL(NestedSelect.Period, "00010101")
+							THEN 0
+						WHEN DATEDIFF(WorkSchedules.BeginTime, WorkSchedules.EndTime, Second) = 86399
+							THEN 24
+						ELSE DATEDIFF(WorkSchedules.BeginTime, DATEADD(WorkSchedules.EndTime, Second, 1), hour)
+					END
+			ELSE 0
+		END) AS Number11,
+	SUM(CASE
+			WHEN Day(WorkSchedules.BeginTime) = 12
+				THEN CASE
+						WHEN WorkSchedules.BeginTime &lt; ResourcesWorkSchedules.Period
+								OR WorkSchedules.BeginTime &gt;= ISNULL(NestedSelect.Period, "00010101")
+							THEN 0
+						WHEN DATEDIFF(WorkSchedules.BeginTime, WorkSchedules.EndTime, Second) = 86399
+							THEN 24
+						ELSE DATEDIFF(WorkSchedules.BeginTime, DATEADD(WorkSchedules.EndTime, Second, 1), hour)
+					END
+			ELSE 0
+		END) AS Number12,
+	SUM(CASE
+			WHEN Day(WorkSchedules.BeginTime) = 13
+				THEN CASE
+						WHEN WorkSchedules.BeginTime &lt; ResourcesWorkSchedules.Period
+								OR WorkSchedules.BeginTime &gt;= ISNULL(NestedSelect.Period, "00010101")
+							THEN 0
+						WHEN DATEDIFF(WorkSchedules.BeginTime, WorkSchedules.EndTime, Second) = 86399
+							THEN 24
+						ELSE DATEDIFF(WorkSchedules.BeginTime, DATEADD(WorkSchedules.EndTime, Second, 1), hour)
+					END
+			ELSE 0
+		END) AS Number13,
+	SUM(CASE
+			WHEN Day(WorkSchedules.BeginTime) = 14
+				THEN CASE
+						WHEN WorkSchedules.BeginTime &lt; ResourcesWorkSchedules.Period
+								OR WorkSchedules.BeginTime &gt;= ISNULL(NestedSelect.Period, "00010101")
+							THEN 0
+						WHEN DATEDIFF(WorkSchedules.BeginTime, WorkSchedules.EndTime, Second) = 86399
+							THEN 24
+						ELSE DATEDIFF(WorkSchedules.BeginTime, DATEADD(WorkSchedules.EndTime, Second, 1), hour)
+					END
+			ELSE 0
+		END) AS Number14,
+	SUM(CASE
+			WHEN Day(WorkSchedules.BeginTime) = 15
+				THEN CASE
+						WHEN WorkSchedules.BeginTime &lt; ResourcesWorkSchedules.Period
+								OR WorkSchedules.BeginTime &gt;= ISNULL(NestedSelect.Period, "00010101")
+							THEN 0
+						WHEN DATEDIFF(WorkSchedules.BeginTime, WorkSchedules.EndTime, Second) = 86399
+							THEN 24
+						ELSE DATEDIFF(WorkSchedules.BeginTime, DATEADD(WorkSchedules.EndTime, Second, 1), hour)
+					END
+			ELSE 0
+		END) AS Number15,
+	SUM(CASE
+			WHEN Day(WorkSchedules.BeginTime) = 16
+				THEN CASE
+						WHEN WorkSchedules.BeginTime &lt; ResourcesWorkSchedules.Period
+								OR WorkSchedules.BeginTime &gt;= ISNULL(NestedSelect.Period, "00010101")
+							THEN 0
+						WHEN DATEDIFF(WorkSchedules.BeginTime, WorkSchedules.EndTime, Second) = 86399
+							THEN 24
+						ELSE DATEDIFF(WorkSchedules.BeginTime, DATEADD(WorkSchedules.EndTime, Second, 1), hour)
+					END
+			ELSE 0
+		END) AS Number16,
+	SUM(CASE
+			WHEN Day(WorkSchedules.BeginTime) = 17
+				THEN CASE
+						WHEN WorkSchedules.BeginTime &lt; ResourcesWorkSchedules.Period
+								OR WorkSchedules.BeginTime &gt;= ISNULL(NestedSelect.Period, "00010101")
+							THEN 0
+						WHEN DATEDIFF(WorkSchedules.BeginTime, WorkSchedules.EndTime, Second) = 86399
+							THEN 24
+						ELSE DATEDIFF(WorkSchedules.BeginTime, DATEADD(WorkSchedules.EndTime, Second, 1), hour)
+					END
+			ELSE 0
+		END) AS Number17,
+	SUM(CASE
+			WHEN Day(WorkSchedules.BeginTime) = 18
+				THEN CASE
+						WHEN WorkSchedules.BeginTime &lt; ResourcesWorkSchedules.Period
+								OR WorkSchedules.BeginTime &gt;= ISNULL(NestedSelect.Period, "00010101")
+							THEN 0
+						WHEN DATEDIFF(WorkSchedules.BeginTime, WorkSchedules.EndTime, Second) = 86399
+							THEN 24
+						ELSE DATEDIFF(WorkSchedules.BeginTime, DATEADD(WorkSchedules.EndTime, Second, 1), hour)
+					END
+			ELSE 0
+		END) AS Number18,
+	SUM(CASE
+			WHEN Day(WorkSchedules.BeginTime) = 19
+				THEN CASE
+						WHEN WorkSchedules.BeginTime &lt; ResourcesWorkSchedules.Period
+								OR WorkSchedules.BeginTime &gt;= ISNULL(NestedSelect.Period, "00010101")
+							THEN 0
+						WHEN DATEDIFF(WorkSchedules.BeginTime, WorkSchedules.EndTime, Second) = 86399
+							THEN 24
+						ELSE DATEDIFF(WorkSchedules.BeginTime, DATEADD(WorkSchedules.EndTime, Second, 1), hour)
+					END
+			ELSE 0
+		END) AS Number19,
+	SUM(CASE
+			WHEN Day(WorkSchedules.BeginTime) = 20
+				THEN CASE
+						WHEN WorkSchedules.BeginTime &lt; ResourcesWorkSchedules.Period
+								OR WorkSchedules.BeginTime &gt;= ISNULL(NestedSelect.Period, "00010101")
+							THEN 0
+						WHEN DATEDIFF(WorkSchedules.BeginTime, WorkSchedules.EndTime, Second) = 86399
+							THEN 24
+						ELSE DATEDIFF(WorkSchedules.BeginTime, DATEADD(WorkSchedules.EndTime, Second, 1), hour)
+					END
+			ELSE 0
+		END) AS Number20,
+	SUM(CASE
+			WHEN Day(WorkSchedules.BeginTime) = 21
+				THEN CASE
+						WHEN WorkSchedules.BeginTime &lt; ResourcesWorkSchedules.Period
+								OR WorkSchedules.BeginTime &gt;= ISNULL(NestedSelect.Period, "00010101")
+							THEN 0
+						WHEN DATEDIFF(WorkSchedules.BeginTime, WorkSchedules.EndTime, Second) = 86399
+							THEN 24
+						ELSE DATEDIFF(WorkSchedules.BeginTime, DATEADD(WorkSchedules.EndTime, Second, 1), hour)
+					END
+			ELSE 0
+		END) AS Number21,
+	SUM(CASE
+			WHEN Day(WorkSchedules.BeginTime) = 22
+				THEN CASE
+						WHEN WorkSchedules.BeginTime &lt; ResourcesWorkSchedules.Period
+								OR WorkSchedules.BeginTime &gt;= ISNULL(NestedSelect.Period, "00010101")
+							THEN 0
+						WHEN DATEDIFF(WorkSchedules.BeginTime, WorkSchedules.EndTime, Second) = 86399
+							THEN 24
+						ELSE DATEDIFF(WorkSchedules.BeginTime, DATEADD(WorkSchedules.EndTime, Second, 1), hour)
+					END
+			ELSE 0
+		END) AS Number22,
+	SUM(CASE
+			WHEN Day(WorkSchedules.BeginTime) = 23
+				THEN CASE
+						WHEN WorkSchedules.BeginTime &lt; ResourcesWorkSchedules.Period
+								OR WorkSchedules.BeginTime &gt;= ISNULL(NestedSelect.Period, "00010101")
+							THEN 0
+						WHEN DATEDIFF(WorkSchedules.BeginTime, WorkSchedules.EndTime, Second) = 86399
+							THEN 24
+						ELSE DATEDIFF(WorkSchedules.BeginTime, DATEADD(WorkSchedules.EndTime, Second, 1), hour)
+					END
+			ELSE 0
+		END) AS Number23,
+	SUM(CASE
+			WHEN Day(WorkSchedules.BeginTime) = 24
+				THEN CASE
+						WHEN WorkSchedules.BeginTime &lt; ResourcesWorkSchedules.Period
+								OR WorkSchedules.BeginTime &gt;= ISNULL(NestedSelect.Period, "00010101")
+							THEN 0
+						WHEN DATEDIFF(WorkSchedules.BeginTime, WorkSchedules.EndTime, Second) = 86399
+							THEN 24
+						ELSE DATEDIFF(WorkSchedules.BeginTime, DATEADD(WorkSchedules.EndTime, Second, 1), hour)
+					END
+			ELSE 0
+		END) AS Number24,
+	SUM(CASE
+			WHEN Day(WorkSchedules.BeginTime) = 25
+				THEN CASE
+						WHEN WorkSchedules.BeginTime &lt; ResourcesWorkSchedules.Period
+								OR WorkSchedules.BeginTime &gt;= ISNULL(NestedSelect.Period, "00010101")
+							THEN 0
+						WHEN DATEDIFF(WorkSchedules.BeginTime, WorkSchedules.EndTime, Second) = 86399
+							THEN 24
+						ELSE DATEDIFF(WorkSchedules.BeginTime, DATEADD(WorkSchedules.EndTime, Second, 1), hour)
+					END
+			ELSE 0
+		END) AS Number25,
+	SUM(CASE
+			WHEN Day(WorkSchedules.BeginTime) = 26
+				THEN CASE
+						WHEN WorkSchedules.BeginTime &lt; ResourcesWorkSchedules.Period
+								OR WorkSchedules.BeginTime &gt;= ISNULL(NestedSelect.Period, "00010101")
+							THEN 0
+						WHEN DATEDIFF(WorkSchedules.BeginTime, WorkSchedules.EndTime, Second) = 86399
+							THEN 24
+						ELSE DATEDIFF(WorkSchedules.BeginTime, DATEADD(WorkSchedules.EndTime, Second, 1), hour)
+					END
+			ELSE 0
+		END) AS Number26,
+	SUM(CASE
+			WHEN Day(WorkSchedules.BeginTime) = 27
+				THEN CASE
+						WHEN WorkSchedules.BeginTime &lt; ResourcesWorkSchedules.Period
+								OR WorkSchedules.BeginTime &gt;= ISNULL(NestedSelect.Period, "00010101")
+							THEN 0
+						WHEN DATEDIFF(WorkSchedules.BeginTime, WorkSchedules.EndTime, Second) = 86399
+							THEN 24
+						ELSE DATEDIFF(WorkSchedules.BeginTime, DATEADD(WorkSchedules.EndTime, Second, 1), hour)
+					END
+			ELSE 0
+		END) AS Number27,
+	SUM(CASE
+			WHEN Day(WorkSchedules.BeginTime) = 28
+				THEN CASE
+						WHEN WorkSchedules.BeginTime &lt; ResourcesWorkSchedules.Period
+								OR WorkSchedules.BeginTime &gt;= ISNULL(NestedSelect.Period, "00010101")
+							THEN 0
+						WHEN DATEDIFF(WorkSchedules.BeginTime, WorkSchedules.EndTime, Second) = 86399
+							THEN 24
+						ELSE DATEDIFF(WorkSchedules.BeginTime, DATEADD(WorkSchedules.EndTime, Second, 1), hour)
+					END
+			ELSE 0
+		END) AS Number28,
+	SUM(CASE
+			WHEN Day(WorkSchedules.BeginTime) = 29
+				THEN CASE
+						WHEN WorkSchedules.BeginTime &lt; ResourcesWorkSchedules.Period
+								OR WorkSchedules.BeginTime &gt;= ISNULL(NestedSelect.Period, "00010101")
+							THEN 0
+						WHEN DATEDIFF(WorkSchedules.BeginTime, WorkSchedules.EndTime, Second) = 86399
+							THEN 24
+						ELSE DATEDIFF(WorkSchedules.BeginTime, DATEADD(WorkSchedules.EndTime, Second, 1), hour)
+					END
+			ELSE 0
+		END) AS Number29,
+	SUM(CASE
+			WHEN Day(WorkSchedules.BeginTime) = 30
+				THEN CASE
+						WHEN WorkSchedules.BeginTime &lt; ResourcesWorkSchedules.Period
+								OR WorkSchedules.BeginTime &gt;= ISNULL(NestedSelect.Period, "00010101")
+							THEN 0
+						WHEN DATEDIFF(WorkSchedules.BeginTime, WorkSchedules.EndTime, Second) = 86399
+							THEN 24
+						ELSE DATEDIFF(WorkSchedules.BeginTime, DATEADD(WorkSchedules.EndTime, Second, 1), hour)
+					END
+			ELSE 0
+		END) AS Number30,
+	SUM(CASE
+			WHEN Day(WorkSchedules.BeginTime) = 31
+				THEN CASE
+						WHEN WorkSchedules.BeginTime &lt; ResourcesWorkSchedules.Period
+								OR WorkSchedules.BeginTime &gt;= ISNULL(NestedSelect.Period, "00010101")
+							THEN 0
+						WHEN DATEDIFF(WorkSchedules.BeginTime, WorkSchedules.EndTime, Second) = 86399
+							THEN 24
+						ELSE DATEDIFF(WorkSchedules.BeginTime, DATEADD(WorkSchedules.EndTime, Second, 1), hour)
+					END
+			ELSE 0
+		END) AS Number31,
+	WeekDay(BEGINOFPERIOD(&amp;BeginTime, MONTH)) AS DayOfWeek1,
+	WeekDay(DATEADD(BEGINOFPERIOD(&amp;BeginTime, MONTH), Day, 1)) AS DayOfWeek2,
+	WeekDay(DATEADD(BEGINOFPERIOD(&amp;BeginTime, MONTH), Day, 2)) AS DayOfWeek3,
+	WeekDay(DATEADD(BEGINOFPERIOD(&amp;BeginTime, MONTH), Day, 3)) AS DayOfWeek4,
+	WeekDay(DATEADD(BEGINOFPERIOD(&amp;BeginTime, MONTH), Day, 4)) AS DayOfWeek5,
+	WeekDay(DATEADD(BEGINOFPERIOD(&amp;BeginTime, MONTH), Day, 5)) AS DayOfWeek6,
+	WeekDay(DATEADD(BEGINOFPERIOD(&amp;BeginTime, MONTH), Day, 6)) AS DayOfWeek7,
+	WeekDay(DATEADD(BEGINOFPERIOD(&amp;BeginTime, MONTH), Day, 7)) AS DayOfWeek8,
+	WeekDay(DATEADD(BEGINOFPERIOD(&amp;BeginTime, MONTH), Day, 8)) AS DayOfWeek9,
+	WeekDay(DATEADD(BEGINOFPERIOD(&amp;BeginTime, MONTH), Day, 9)) AS DayOfWeek10,
+	WeekDay(DATEADD(BEGINOFPERIOD(&amp;BeginTime, MONTH), Day, 10)) AS DayOfWeek11,
+	WeekDay(DATEADD(BEGINOFPERIOD(&amp;BeginTime, MONTH), Day, 11)) AS DayOfWeek12,
+	WeekDay(DATEADD(BEGINOFPERIOD(&amp;BeginTime, MONTH), Day, 12)) AS DayOfWeek13,
+	WeekDay(DATEADD(BEGINOFPERIOD(&amp;BeginTime, MONTH), Day, 13)) AS DayOfWeek14,
+	WeekDay(DATEADD(BEGINOFPERIOD(&amp;BeginTime, MONTH), Day, 14)) AS DayOfWeek15,
+	WeekDay(DATEADD(BEGINOFPERIOD(&amp;BeginTime, MONTH), Day, 15)) AS DayOfWeek16,
+	WeekDay(DATEADD(BEGINOFPERIOD(&amp;BeginTime, MONTH), Day, 16)) AS DayOfWeek17,
+	WeekDay(DATEADD(BEGINOFPERIOD(&amp;BeginTime, MONTH), Day, 17)) AS DayOfWeek18,
+	WeekDay(DATEADD(BEGINOFPERIOD(&amp;BeginTime, MONTH), Day, 18)) AS DayOfWeek19,
+	WeekDay(DATEADD(BEGINOFPERIOD(&amp;BeginTime, MONTH), Day, 19)) AS DayOfWeek20,
+	WeekDay(DATEADD(BEGINOFPERIOD(&amp;BeginTime, MONTH), Day, 20)) AS DayOfWeek21,
+	WeekDay(DATEADD(BEGINOFPERIOD(&amp;BeginTime, MONTH), Day, 21)) AS DayOfWeek22,
+	WeekDay(DATEADD(BEGINOFPERIOD(&amp;BeginTime, MONTH), Day, 22)) AS DayOfWeek23,
+	WeekDay(DATEADD(BEGINOFPERIOD(&amp;BeginTime, MONTH), Day, 23)) AS DayOfWeek24,
+	WeekDay(DATEADD(BEGINOFPERIOD(&amp;BeginTime, MONTH), Day, 24)) AS DayOfWeek25,
+	WeekDay(DATEADD(BEGINOFPERIOD(&amp;BeginTime, MONTH), Day, 25)) AS DayOfWeek26,
+	WeekDay(DATEADD(BEGINOFPERIOD(&amp;BeginTime, MONTH), Day, 26)) AS DayOfWeek27,
+	WeekDay(DATEADD(BEGINOFPERIOD(&amp;BeginTime, MONTH), Day, 27)) AS DayOfWeek28,
+	WeekDay(DATEADD(BEGINOFPERIOD(&amp;BeginTime, MONTH), Day, 28)) AS DayOfWeek29,
+	WeekDay(DATEADD(BEGINOFPERIOD(&amp;BeginTime, MONTH), Day, 29)) AS DayOfWeek30,
+	WeekDay(DATEADD(BEGINOFPERIOD(&amp;BeginTime, MONTH), Day, 30)) AS DayOfWeek31,
+	CASE
+		WHEN MONTH(BEGINOFPERIOD(&amp;BeginTime, MONTH)) = MONTH(DATEADD(BEGINOFPERIOD(&amp;BeginTime, MONTH), Day, 27))
+			THEN TRUE
+		ELSE FALSE
+	END AS IsDate28,
+	CASE
+		WHEN MONTH(BEGINOFPERIOD(&amp;BeginTime, MONTH)) = MONTH(DATEADD(BEGINOFPERIOD(&amp;BeginTime, MONTH), Day, 28))
+			THEN TRUE
+		ELSE FALSE
+	END AS IsDate29,
+	CASE
+		WHEN MONTH(BEGINOFPERIOD(&amp;BeginTime, MONTH)) = MONTH(DATEADD(BEGINOFPERIOD(&amp;BeginTime, MONTH), Day, 29))
+			THEN TRUE
+		ELSE FALSE
+	END AS IsDate30,
+	CASE
+		WHEN MONTH(BEGINOFPERIOD(&amp;BeginTime, MONTH)) = MONTH(DATEADD(BEGINOFPERIOD(&amp;BeginTime, MONTH), Day, 30))
+			THEN TRUE
+		ELSE FALSE
+	END AS IsDate31
+	FROM
+	InformationRegister.ResourcesWorkSchedules AS ResourcesWorkSchedules
+		LEFT JOIN InformationRegister.WorkSchedules AS WorkSchedules
+		ON ResourcesWorkSchedules.WorkSchedule = WorkSchedules.WorkSchedule
+		LEFT JOIN (SELECT TOP 1
+			ResourcesWorkSchedules.Period AS Period,
+			ResourcesWorkSchedules.EnterpriseResource AS EnterpriseResource
+		FROM
+			InformationRegister.ResourcesWorkSchedules AS ResourcesWorkSchedules
+		WHERE
+			ResourcesWorkSchedules.WorkSchedule &lt;&gt; &amp;WorkSchedule
+			AND ResourcesWorkSchedules.Period &lt;= &amp;EndTime
+		
+		ORDER BY
+			Period) AS NestedSelect
+		ON ResourcesWorkSchedules.EnterpriseResource = NestedSelect.EnterpriseResource
+	WHERE
+	WorkSchedules.BeginTime &gt;= &amp;BeginTime
+	AND WorkSchedules.EndTime &lt;= &amp;EndTime
+	AND ResourcesWorkSchedules.WorkSchedule = &amp;WorkSchedule
+	AND WorkSchedules.WorkSchedule = &amp;WorkSchedule
+	AND ResourcesWorkSchedules.Period &lt;= &amp;EndTime
+
+	GROUP BY
+	ResourcesWorkSchedules.EnterpriseResource
+
+	HAVING
+	SUM(CASE
+			WHEN WorkSchedules.BeginTime &lt; ResourcesWorkSchedules.Period
+					OR WorkSchedules.BeginTime &gt;= ISNULL(NestedSelect.Period, "00010101")
+				THEN 0
+			WHEN DATEDIFF(WorkSchedules.BeginTime, WorkSchedules.EndTime, Second) = 86399
+				THEN 24
+			ELSE DATEDIFF(WorkSchedules.BeginTime, DATEADD(WorkSchedules.EndTime, Second, 1), hour)
+			END) &gt; 0</QueryText>
+				<MainTable>InformationRegister.ResourcesWorkSchedules</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemField">
+							<dcsset:field>EnterpriseResource</dcsset:field>
+							<dcsset:orderType>Asc</dcsset:orderType>
+						</dcsset:item>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="ResourcesWorkBySchedulePeriodPresentation" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Resources work by schedule period presentation</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>45</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="RepetitionFactorOFDay" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Repetition factor of day</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>2</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="RadioButton" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>RadioButton</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<ConditionalAppearance>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ResourcesByScheduleNumber1</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemGroup">
+						<dcsset:groupType>OrGroup</dcsset:groupType>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ResourcesBySchedule.DayOfWeek1</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">6</dcsset:right>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ResourcesBySchedule.DayOfWeek1</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">7</dcsset:right>
+						</dcsset:item>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>BackColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:NonWorkingTimeDayOff</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ResourcesByScheduleNumber2</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemGroup">
+						<dcsset:groupType>OrGroup</dcsset:groupType>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ResourcesBySchedule.DayOfWeek2</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">6</dcsset:right>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ResourcesBySchedule.DayOfWeek2</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">7</dcsset:right>
+						</dcsset:item>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>BackColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:NonWorkingTimeDayOff</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ResourcesByScheduleNumber3</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemGroup">
+						<dcsset:groupType>OrGroup</dcsset:groupType>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ResourcesBySchedule.DayOfWeek3</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">6</dcsset:right>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ResourcesBySchedule.DayOfWeek3</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">7</dcsset:right>
+						</dcsset:item>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>BackColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:NonWorkingTimeDayOff</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ResourcesByScheduleNumber4</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemGroup">
+						<dcsset:groupType>OrGroup</dcsset:groupType>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ResourcesBySchedule.DayOfWeek4</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">6</dcsset:right>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ResourcesBySchedule.DayOfWeek4</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">7</dcsset:right>
+						</dcsset:item>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>BackColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:NonWorkingTimeDayOff</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ResourcesByScheduleNumber5</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemGroup">
+						<dcsset:groupType>OrGroup</dcsset:groupType>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ResourcesBySchedule.DayOfWeek5</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">6</dcsset:right>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ResourcesBySchedule.DayOfWeek5</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">7</dcsset:right>
+						</dcsset:item>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>BackColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:NonWorkingTimeDayOff</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ResourcesByScheduleNumber6</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemGroup">
+						<dcsset:groupType>OrGroup</dcsset:groupType>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ResourcesBySchedule.DayOfWeek6</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">6</dcsset:right>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ResourcesBySchedule.DayOfWeek6</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">7</dcsset:right>
+						</dcsset:item>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>BackColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:NonWorkingTimeDayOff</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ResourcesByScheduleNumber7</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemGroup">
+						<dcsset:groupType>OrGroup</dcsset:groupType>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ResourcesBySchedule.DayOfWeek7</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">6</dcsset:right>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ResourcesBySchedule.DayOfWeek7</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">7</dcsset:right>
+						</dcsset:item>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>BackColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:NonWorkingTimeDayOff</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ResourcesByScheduleNumber8</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemGroup">
+						<dcsset:groupType>OrGroup</dcsset:groupType>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ResourcesBySchedule.DayOfWeek8</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">6</dcsset:right>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ResourcesBySchedule.DayOfWeek8</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">7</dcsset:right>
+						</dcsset:item>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>BackColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:NonWorkingTimeDayOff</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ResourcesByScheduleNumber9</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemGroup">
+						<dcsset:groupType>OrGroup</dcsset:groupType>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ResourcesBySchedule.DayOfWeek9</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">6</dcsset:right>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ResourcesBySchedule.DayOfWeek9</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">7</dcsset:right>
+						</dcsset:item>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>BackColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:NonWorkingTimeDayOff</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ResourcesByScheduleNumber10</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemGroup">
+						<dcsset:groupType>OrGroup</dcsset:groupType>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ResourcesBySchedule.DayOfWeek10</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">6</dcsset:right>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ResourcesBySchedule.DayOfWeek10</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">7</dcsset:right>
+						</dcsset:item>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>BackColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:NonWorkingTimeDayOff</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ResourcesByScheduleNumber11</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemGroup">
+						<dcsset:groupType>OrGroup</dcsset:groupType>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ResourcesBySchedule.DayOfWeek11</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">6</dcsset:right>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ResourcesBySchedule.DayOfWeek11</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">7</dcsset:right>
+						</dcsset:item>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>BackColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:NonWorkingTimeDayOff</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ResourcesByScheduleNumber12</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemGroup">
+						<dcsset:groupType>OrGroup</dcsset:groupType>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ResourcesBySchedule.DayOfWeek12</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">6</dcsset:right>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ResourcesBySchedule.DayOfWeek12</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">7</dcsset:right>
+						</dcsset:item>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>BackColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:NonWorkingTimeDayOff</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ResourcesByScheduleNumber13</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemGroup">
+						<dcsset:groupType>OrGroup</dcsset:groupType>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ResourcesBySchedule.DayOfWeek13</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">6</dcsset:right>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ResourcesBySchedule.DayOfWeek13</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">7</dcsset:right>
+						</dcsset:item>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>BackColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:NonWorkingTimeDayOff</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ResourcesByScheduleNumber14</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemGroup">
+						<dcsset:groupType>OrGroup</dcsset:groupType>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ResourcesBySchedule.DayOfWeek14</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">6</dcsset:right>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ResourcesBySchedule.DayOfWeek14</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">7</dcsset:right>
+						</dcsset:item>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>BackColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:NonWorkingTimeDayOff</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ResourcesByScheduleNumber15</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemGroup">
+						<dcsset:groupType>OrGroup</dcsset:groupType>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ResourcesBySchedule.DayOfWeek15</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">6</dcsset:right>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ResourcesBySchedule.DayOfWeek15</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">7</dcsset:right>
+						</dcsset:item>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>BackColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:NonWorkingTimeDayOff</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ResourcesByScheduleNumber16</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemGroup">
+						<dcsset:groupType>OrGroup</dcsset:groupType>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ResourcesBySchedule.DayOfWeek16</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">6</dcsset:right>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ResourcesBySchedule.DayOfWeek16</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">7</dcsset:right>
+						</dcsset:item>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>BackColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:NonWorkingTimeDayOff</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ResourcesByScheduleNumber17</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemGroup">
+						<dcsset:groupType>OrGroup</dcsset:groupType>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ResourcesBySchedule.DayOfWeek17</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">6</dcsset:right>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ResourcesBySchedule.DayOfWeek17</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">7</dcsset:right>
+						</dcsset:item>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>BackColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:NonWorkingTimeDayOff</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ResourcesByScheduleNumber18</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemGroup">
+						<dcsset:groupType>OrGroup</dcsset:groupType>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ResourcesBySchedule.DayOfWeek18</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">6</dcsset:right>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ResourcesBySchedule.DayOfWeek18</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">7</dcsset:right>
+						</dcsset:item>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>BackColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:NonWorkingTimeDayOff</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ResourcesByScheduleNumber19</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemGroup">
+						<dcsset:groupType>OrGroup</dcsset:groupType>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ResourcesBySchedule.DayOfWeek19</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">6</dcsset:right>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ResourcesBySchedule.DayOfWeek19</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">7</dcsset:right>
+						</dcsset:item>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>BackColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:NonWorkingTimeDayOff</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ResourcesByScheduleNumber20</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemGroup">
+						<dcsset:groupType>OrGroup</dcsset:groupType>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ResourcesBySchedule.DayOfWeek20</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">6</dcsset:right>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ResourcesBySchedule.DayOfWeek20</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">7</dcsset:right>
+						</dcsset:item>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>BackColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:NonWorkingTimeDayOff</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ResourcesByScheduleNumber21</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemGroup">
+						<dcsset:groupType>OrGroup</dcsset:groupType>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ResourcesBySchedule.DayOfWeek21</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">6</dcsset:right>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ResourcesBySchedule.DayOfWeek21</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">7</dcsset:right>
+						</dcsset:item>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>BackColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:NonWorkingTimeDayOff</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ResourcesByScheduleNumber22</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemGroup">
+						<dcsset:groupType>OrGroup</dcsset:groupType>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ResourcesBySchedule.DayOfWeek22</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">6</dcsset:right>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ResourcesBySchedule.DayOfWeek22</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">7</dcsset:right>
+						</dcsset:item>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>BackColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:NonWorkingTimeDayOff</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ResourcesByScheduleNumber23</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemGroup">
+						<dcsset:groupType>OrGroup</dcsset:groupType>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ResourcesBySchedule.DayOfWeek23</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">6</dcsset:right>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ResourcesBySchedule.DayOfWeek23</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">7</dcsset:right>
+						</dcsset:item>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>BackColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:NonWorkingTimeDayOff</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ResourcesByScheduleNumber24</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemGroup">
+						<dcsset:groupType>OrGroup</dcsset:groupType>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ResourcesBySchedule.DayOfWeek24</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">6</dcsset:right>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ResourcesBySchedule.DayOfWeek24</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">7</dcsset:right>
+						</dcsset:item>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>BackColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:NonWorkingTimeDayOff</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ResourcesByScheduleNumber25</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemGroup">
+						<dcsset:groupType>OrGroup</dcsset:groupType>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ResourcesBySchedule.DayOfWeek25</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">6</dcsset:right>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ResourcesBySchedule.DayOfWeek25</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">7</dcsset:right>
+						</dcsset:item>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>BackColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:NonWorkingTimeDayOff</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ResourcesOnNumber26</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemGroup">
+						<dcsset:groupType>OrGroup</dcsset:groupType>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ResourcesBySchedule.DayOfWeek26</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">6</dcsset:right>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ResourcesBySchedule.DayOfWeek26</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">7</dcsset:right>
+						</dcsset:item>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>BackColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:NonWorkingTimeDayOff</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ResourcesByScheduleNumber27</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemGroup">
+						<dcsset:groupType>OrGroup</dcsset:groupType>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ResourcesBySchedule.DayOfWeek27</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">6</dcsset:right>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ResourcesBySchedule.DayOfWeek27</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">7</dcsset:right>
+						</dcsset:item>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>BackColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:NonWorkingTimeDayOff</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ResourcesByScheduleNumber28</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemGroup">
+						<dcsset:groupType>OrGroup</dcsset:groupType>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ResourcesBySchedule.DayOfWeek28</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">6</dcsset:right>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ResourcesBySchedule.DayOfWeek28</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">7</dcsset:right>
+						</dcsset:item>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>BackColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:NonWorkingTimeDayOff</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ResourcesByScheduleNumber29</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemGroup">
+						<dcsset:groupType>OrGroup</dcsset:groupType>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ResourcesBySchedule.DayOfWeek30</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">6</dcsset:right>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ResourcesBySchedule.DayOfWeek30</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">7</dcsset:right>
+						</dcsset:item>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>BackColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:NonWorkingTimeDayOff</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ResourcesByScheduleNumber30</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemGroup">
+						<dcsset:groupType>OrGroup</dcsset:groupType>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ResourcesBySchedule.DayOfWeek30</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">6</dcsset:right>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ResourcesBySchedule.DayOfWeek30</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">7</dcsset:right>
+						</dcsset:item>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>BackColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:NonWorkingTimeDayOff</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ResourcesByScheduleNumber31</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemGroup">
+						<dcsset:groupType>OrGroup</dcsset:groupType>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ResourcesBySchedule.DayOfWeek31</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">6</dcsset:right>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ResourcesBySchedule.DayOfWeek31</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">7</dcsset:right>
+						</dcsset:item>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>BackColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:NonWorkingTimeDayOff</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ResourcesByScheduleNumber28</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">ResourcesBySchedule.IsDate28</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>BackColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:FormBackColor</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:use>false</dcscor:use>
+						<dcscor:parameter>Text</dcscor:parameter>
+						<dcscor:value xsi:type="xs:string">X</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ResourcesByScheduleNumber29</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">ResourcesBySchedule.IsDate29</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>BackColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:FormBackColor</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:use>false</dcscor:use>
+						<dcscor:parameter>Text</dcscor:parameter>
+						<dcscor:value xsi:type="xs:string">X</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ResourcesByScheduleNumber30</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">ResourcesBySchedule.IsDate30</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>BackColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:FormBackColor</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:use>false</dcscor:use>
+						<dcscor:parameter>Text</dcscor:parameter>
+						<dcscor:value xsi:type="xs:string">X</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ResourcesByScheduleNumber31</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">ResourcesBySchedule.IsDate31</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>BackColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:FormBackColor</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:use>false</dcscor:use>
+						<dcscor:parameter>Text</dcscor:parameter>
+						<dcscor:value xsi:type="xs:string">X</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+		</ConditionalAppearance>
+	</Attributes>
+	<Commands>
+		<Command name="TimetableScheduleEdit" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Edit day</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Timetable schedule edit</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Change</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>TimetableScheduleEdit</Action>
+		</Command>
+		<Command name="TimetableScheduleDelete" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Delete</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Timetable schedule delete</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Delete</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>TimetableScheduleDelete</Action>
+		</Command>
+		<Command name="TimetableScheduleExtendPeriod" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Timetable schedule extend period</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Timetable schedule extend period</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.MoveRight</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>TimetableScheduleExtendPeriod</Action>
+			<Representation>Picture</Representation>
+		</Command>
+		<Command name="TimetableScheduleShortenPeriod" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Timetable schedule shortened period</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Timetable schedule shortened period</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.MoveLeft</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>TimetableScheduleShortenPeriod</Action>
+			<Representation>Picture</Representation>
+		</Command>
+		<Command name="MarkSelectedAsWorking" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Working</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Mark selected as working</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>MarkSelectedAsWorking</Action>
+		</Command>
+		<Command name="MarkSelectedAsNonWorking" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Non-working</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Mark selected as working</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>MarkSelectedAsNonWorking</Action>
+		</Command>
+		<Command name="ResourcesWorkByScheduleExtendPeriod" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Resources work by schedule extend period</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Resources work by schedule extend period</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.MoveRight</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ResourcesWorkByScheduleExtendPeriod</Action>
+			<FunctionalOptions>
+				<Item>FunctionalOption.PlanEnterpriseResourcesImporting</Item>
+			</FunctionalOptions>
+		</Command>
+		<Command name="ResourcesWorkByScheduleShortenPeriod" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Resources work by schedule shortened period</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Resources work by schedule shortened period</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.MoveLeft</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ResourcesWorkByScheduleShortenPeriod</Action>
+			<FunctionalOptions>
+				<Item>FunctionalOption.PlanEnterpriseResourcesImporting</Item>
+			</FunctionalOptions>
+		</Command>
+		<Command name="Settings" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Settings</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Settings</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.DocumentSetting</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Settings</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="TimetableScheduleCreate" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Timetable schedule create</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Timetable schedule create</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.CreateListItem</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>TimetableScheduleCreate</Action>
+		</Command>
+		<Command name="FillByTemplate" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Populate from template</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Populate from template</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>FillByTemplate</Action>
+		</Command>
+	</Commands>
+</Form>

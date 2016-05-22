@@ -1,0 +1,1298 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Width>55</Width>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
+	<AutoTitle>false</AutoTitle>
+	<AutoFillCheck>false</AutoFillCheck>
+	<Customizable>false</Customizable>
+	<CommandBarLocation>None</CommandBarLocation>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<CommandSet>
+		<ExcludedCommand>No</ExcludedCommand>
+		<ExcludedCommand>SaveValues</ExcludedCommand>
+		<ExcludedCommand>Help</ExcludedCommand>
+		<ExcludedCommand>Abort</ExcludedCommand>
+		<ExcludedCommand>Retry</ExcludedCommand>
+		<ExcludedCommand>Yes</ExcludedCommand>
+		<ExcludedCommand>Cancel</ExcludedCommand>
+		<ExcludedCommand>RestoreValues</ExcludedCommand>
+		<ExcludedCommand>Ignore</ExcludedCommand>
+		<ExcludedCommand>OK</ExcludedCommand>
+	</CommandSet>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<HorizontalAlign>Right</HorizontalAlign>
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnOpen">OnOpen</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+		<Event name="OnClose">OnClose</Event>
+	</Events>
+	<ChildItems>
+		<Pages name="DataExchangeExecution" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Data exchange execution</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Data exchange execution</v8:content>
+				</v8:item>
+			</ToolTip>
+			<VerticalStretch>true</VerticalStretch>
+			<PagesRepresentation>None</PagesRepresentation>
+			<ExtendedTooltip name="DataExchangeExecutionExtendedTooltip" id="88"/>
+			<ChildItems>
+				<Page name="QueryUserPassword" id="53">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Query user password</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Data Import</v8:content>
+						</v8:item>
+					</ToolTip>
+					<VerticalStretch>true</VerticalStretch>
+					<ExtendedTooltip name="QueryUserPasswordExtendedTooltip" id="89"/>
+					<ChildItems>
+						<UsualGroup name="GroupPasswordRequest" id="131">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group of password request</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group of password request</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Representation>NormalSeparation</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupPasswordRequestExtendedTooltip" id="132"/>
+							<ChildItems>
+								<LabelDecoration name="Decoration2" id="63">
+									<HorizontalStretch>true</HorizontalStretch>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Enter the password to open the application in the Internet</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="Decoration2ContextMenu" id="64"/>
+									<ExtendedTooltip name="Decoration2ExtendedTooltip" id="90"/>
+								</LabelDecoration>
+								<UsualGroup name="GroupPasswordEntry" id="59">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group of password entry</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group of password entry</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupPasswordEntryExtendedTooltip" id="91"/>
+									<ChildItems>
+										<InputField name="WSPassword" id="54">
+											<DataPath>WSPassword</DataPath>
+											<Width>20</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<PasswordMode>true</PasswordMode>
+											<AutoMarkIncomplete>true</AutoMarkIncomplete>
+											<ContextMenu name="WSPasswordContextMenu" id="55"/>
+											<ExtendedTooltip name="WSPasswordExtendedTooltip" id="92"/>
+										</InputField>
+										<Button name="PasswordForgotten" id="58">
+											<Type>Hyperlink</Type>
+											<CommandName>Form.Command.PasswordForgotten</CommandName>
+											<ExtendedTooltip name="ForgotPasswordExtendedTooltip" id="93"/>
+										</Button>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="GroupWarningsOnLongSynchronization" id="136">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group warnings on long synchronization</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group warnings on long synchronization</v8:content>
+								</v8:item>
+							</ToolTip>
+							<VerticalStretch>true</VerticalStretch>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupWarningsOnLongSynchronizationExtendedTooltip" id="137"/>
+							<ChildItems>
+								<UsualGroup name="Group2" id="146">
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="Group2ExtendedTooltip" id="147"/>
+									<ChildItems>
+										<PictureDecoration name="Decoration3" id="143">
+											<Width>2</Width>
+											<Height>1</Height>
+											<Picture>
+												<xr:Ref>CommonPicture.Warning</xr:Ref>
+												<xr:LoadTransparent>true</xr:LoadTransparent>
+											</Picture>
+											<ContextMenu name="Decoration3ContextMenu" id="144"/>
+											<ExtendedTooltip name="Decoration3ExtendedTooltip" id="145"/>
+										</PictureDecoration>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="Group1" id="141">
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="Group1ExtendedTooltip" id="142"/>
+									<ChildItems>
+										<LabelDecoration name="Decoration1" id="133">
+											<VerticalStretch>false</VerticalStretch>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>In some cases data synchronization can take a
+ long time: - slow
+ communication channel; - large
+ data volume; - application update is avaliable in Internet.</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="Decoration1ContextMenu" id="134"/>
+											<ExtendedTooltip name="Decoration1ExtendedTooltip" id="135"/>
+										</LabelDecoration>
+										<CheckBoxField name="DontRecallOnLongSynchronization" id="138">
+											<DataPath>DontRecallOnLongSynchronization</DataPath>
+											<TitleLocation>Right</TitleLocation>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="DontRecallOnLongSynchronizationContextMenu" id="139"/>
+											<ExtendedTooltip name="DontRecallOnLongSynchronizationExtendedTooltip" id="140"/>
+										</CheckBoxField>
+										<LabelDecoration name="Decoration4" id="148">
+											<VerticalStretch>true</VerticalStretch>
+											<ContextMenu name="Decoration4ContextMenu" id="149"/>
+											<ExtendedTooltip name="Decoration4ExtendedTooltip" id="150"/>
+										</LabelDecoration>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+						<CommandBar name="ExchangeExecutionCommandPanel" id="60">
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Close command panel</v8:content>
+								</v8:item>
+							</ToolTip>
+							<VerticalStretch>false</VerticalStretch>
+							<HorizontalLocation>Right</HorizontalLocation>
+							<ExtendedTooltip name="CommandBarExecutionExchangeExtendedTooltip" id="94"/>
+							<ChildItems>
+								<Button name="RunExchange" id="62">
+									<Type>CommandBarButton</Type>
+									<DefaultButton>true</DefaultButton>
+									<DefaultItem>true</DefaultItem>
+									<CommandName>Form.Command.RunExchange</CommandName>
+									<ExtendedTooltip name="ExecuteExchangeExtendedTooltip" id="95"/>
+								</Button>
+								<Button name="FormClose2" id="70">
+									<Type>CommandBarButton</Type>
+									<Representation>Text</Representation>
+									<CommandName>Form.StandardCommand.Close</CommandName>
+									<ExtendedTooltip name="FormClose2ExtendedTooltip" id="96"/>
+								</Button>
+							</ChildItems>
+						</CommandBar>
+					</ChildItems>
+				</Page>
+				<Page name="DataSynchronizationExpectation" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Waiting for data synchronization</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Waiting for data synchronization</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Horizontal</Group>
+					<ExtendedTooltip name="WaitSynchronizationDataExtendedTooltip" id="97"/>
+					<ChildItems>
+						<PictureDecoration name="LongOperation" id="4">
+							<Width>7</Width>
+							<Height>3</Height>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Long operation</v8:content>
+								</v8:item>
+							</Title>
+							<Picture>
+								<xr:Ref>CommonPicture.DataSynchronizationLongOperation48</xr:Ref>
+								<xr:LoadTransparent>true</xr:LoadTransparent>
+							</Picture>
+							<ContextMenu name="LongOperationContextMenu" id="5"/>
+							<ExtendedTooltip name="LongOperationExtendedTooltip" id="98"/>
+						</PictureDecoration>
+						<LabelDecoration name="DataImportState" id="6">
+							<Height>3</Height>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Data synchronization in progress.
+Please wait...</v8:content>
+								</v8:item>
+							</Title>
+							<VerticalAlign>Center</VerticalAlign>
+							<ContextMenu name="DataImportStateContextMenu" id="7"/>
+							<ExtendedTooltip name="DataImportStateExtendedTooltip" id="99"/>
+						</LabelDecoration>
+					</ChildItems>
+				</Page>
+				<Page name="ExchangeEnd" id="12">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Exchange end</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Exchange end</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="ExchangeEndExtendedTooltip" id="100"/>
+					<ChildItems>
+						<Pages name="ExchangeCompletionState" id="17">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Exchange completion state</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Exchange completion state</v8:content>
+								</v8:item>
+							</ToolTip>
+							<PagesRepresentation>None</PagesRepresentation>
+							<ExtendedTooltip name="ExchangeCompletionStateExtendedTooltip" id="101"/>
+							<ChildItems>
+								<Page name="ExchangeCompletedSuccessfully" id="18">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Exchange completed successfully</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Exchange completed successfully</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<ExtendedTooltip name="ExchangeCompletedSuccessfullyExtendedTooltip" id="102"/>
+									<ChildItems>
+										<PictureDecoration name="ExchangeCompletedSuccessfullyPicture" id="13">
+											<Width>7</Width>
+											<Height>2</Height>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Exchange completed successfully picture</v8:content>
+												</v8:item>
+											</Title>
+											<Picture>
+												<xr:Ref>CommonPicture.Information32</xr:Ref>
+												<xr:LoadTransparent>true</xr:LoadTransparent>
+											</Picture>
+											<ContextMenu name="ExchangeCompletedSuccessfullyPictureContextMenu" id="14"/>
+											<ExtendedTooltip name="ExchangeCompletedSuccessfullyPictureExtendedTooltip" id="103"/>
+										</PictureDecoration>
+										<LabelDecoration name="ExchangeCompletedSuccessfullyState" id="15">
+											<Height>2</Height>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Data synchronization is completed.</v8:content>
+												</v8:item>
+											</Title>
+											<VerticalAlign>Center</VerticalAlign>
+											<ContextMenu name="ExchangeCompletedSuccessfullyStateContextMenu" id="16"/>
+											<ExtendedTooltip name="ExchangeCompletedSuccessfullyStateExtendedTooltip" id="104"/>
+										</LabelDecoration>
+									</ChildItems>
+								</Page>
+								<Page name="ExchangeCompletedWithError" id="19">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Exchange completed with error</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Exchange completed with error</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<ExtendedTooltip name="ExchangeCompletedWithErrorExtendedTooltip" id="105"/>
+									<ChildItems>
+										<PictureDecoration name="ExchangeCompletedWithErrorPicture" id="20">
+											<Width>7</Width>
+											<Height>2</Height>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Exchange completed with error picture</v8:content>
+												</v8:item>
+											</Title>
+											<Picture>
+												<xr:Ref>CommonPicture.Warning32</xr:Ref>
+												<xr:LoadTransparent>true</xr:LoadTransparent>
+											</Picture>
+											<ContextMenu name="ExchangeCompletedWithErrorPictureContextMenu" id="21"/>
+											<ExtendedTooltip name="ExchangeCompletedWithErrorPictureExtendedTooltip" id="106"/>
+										</PictureDecoration>
+										<LabelDecoration name="ExchangeFinishedWithErrorState" id="22">
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Failed to synchronize the data.
+Contact your administrator.</v8:content>
+												</v8:item>
+											</Title>
+											<VerticalAlign>Center</VerticalAlign>
+											<ContextMenu name="ExchangeFinishedWithErrorStateContextMenu" id="23"/>
+											<ExtendedTooltip name="ExchangeFinishedWithErrorStateExtendedTooltip" id="107"/>
+										</LabelDecoration>
+									</ChildItems>
+								</Page>
+								<Page name="ExchangeCompletedWithErrorForAdministrator" id="28">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Exchange completed with error</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Exchange completed with error</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<ExtendedTooltip name="ExchangeCompletedWithErrorForAdministratorExtendedTooltip" id="108"/>
+									<ChildItems>
+										<PictureDecoration name="ExchangeCompletedWithErrorPicture1" id="29">
+											<Width>7</Width>
+											<Height>2</Height>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Exchange completed with error picture</v8:content>
+												</v8:item>
+											</Title>
+											<Picture>
+												<xr:Ref>CommonPicture.Warning32</xr:Ref>
+												<xr:LoadTransparent>true</xr:LoadTransparent>
+											</Picture>
+											<ContextMenu name="ExchangeCompletedWithErrorPicture1ContextMenu" id="30"/>
+											<ExtendedTooltip name="ExchangeCompletedWithErrorPicture1ExtendedTooltip" id="109"/>
+										</PictureDecoration>
+										<UsualGroup name="StatusMessage" id="33">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Status message</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Status message</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Vertical</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="StatusMessageExtendedTooltip" id="110"/>
+											<ChildItems>
+												<LabelDecoration name="ExchangeCompletedWithErrorStateForAdministrator" id="31">
+													<VerticalStretch>false</VerticalStretch>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Failed to synchronize the data.</v8:content>
+														</v8:item>
+													</Title>
+													<VerticalAlign>Bottom</VerticalAlign>
+													<ContextMenu name="ExchangeCompletedWithErrorStateForAdministratorContextMenu" id="32"/>
+													<ExtendedTooltip name="ExchangeCompletedWithErrorStateForAdministratorExtendedTooltip" id="111"/>
+												</LabelDecoration>
+												<Button name="GoToEventLogMonitor" id="34">
+													<Type>Hyperlink</Type>
+													<CommandName>Form.Command.GoToEventLogMonitor</CommandName>
+													<ExtendedTooltip name="GoToEventLogMonitorExtendedTooltip" id="112"/>
+												</Button>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</Page>
+								<Page name="ExchangeEndWithConnectionError" id="81">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Exchange has been completed with the connection error</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Exchange completed with error</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<ExtendedTooltip name="ExchangeEndWithConnectionErrorExtendedTooltip" id="113"/>
+									<ChildItems>
+										<PictureDecoration name="PictureExchangeEndWithError2" id="82">
+											<Width>7</Width>
+											<Height>2</Height>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Exchange completed with error picture</v8:content>
+												</v8:item>
+											</Title>
+											<Picture>
+												<xr:Ref>CommonPicture.Warning32</xr:Ref>
+												<xr:LoadTransparent>true</xr:LoadTransparent>
+											</Picture>
+											<ContextMenu name="PictureExchangeCompletedWithError2ContextMenu" id="83"/>
+											<ExtendedTooltip name="PictureExchangeCompletedWithError2ExtendedTooltip" id="114"/>
+										</PictureDecoration>
+										<InputField name="UserMessageAboutError" id="86">
+											<DataPath>UserMessageAboutError</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<TitleLocation>None</TitleLocation>
+											<MultiLine>true</MultiLine>
+											<ContextMenu name="ErrorMessageToUserContextMenu" id="87"/>
+											<ExtendedTooltip name="ErrorMessageToUserExtendedTooltip" id="115"/>
+										</InputField>
+									</ChildItems>
+								</Page>
+								<Page name="UpdateNeeded" id="35">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Update is needed</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Update is needed</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<ExtendedTooltip name="UpdateNeededExtendedTooltip" id="116"/>
+									<ChildItems>
+										<PictureDecoration name="PictureUpdateNeeded" id="36">
+											<Width>5</Width>
+											<Height>2</Height>
+											<VerticalStretch>false</VerticalStretch>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Picture update is required</v8:content>
+												</v8:item>
+											</Title>
+											<Picture>
+												<xr:Ref>CommonPicture.Warning32</xr:Ref>
+												<xr:LoadTransparent>true</xr:LoadTransparent>
+											</Picture>
+											<ContextMenu name="PictureUpdateNeededContextMenu" id="37"/>
+											<ExtendedTooltip name="PictureUpdateNeededExtendedTooltip" id="117"/>
+										</PictureDecoration>
+										<Pages name="PanelUpdateNeeded" id="38">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Panel update is required</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Panel update is required</v8:content>
+												</v8:item>
+											</ToolTip>
+											<PagesRepresentation>None</PagesRepresentation>
+											<ExtendedTooltip name="PanelUpdateNeededExtendedTooltip" id="118"/>
+											<ChildItems>
+												<Page name="LimitedRightsUpdateNeeded" id="39">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Update is required rights restriction</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Update is required rights restriction</v8:content>
+														</v8:item>
+													</ToolTip>
+													<ExtendedTooltip name="UpdateNeededLimitedRightsExtendedTooltip" id="119"/>
+													<ChildItems>
+														<LabelDecoration name="TextUpdateNeededLimitedRights" id="40">
+															<Width>55</Width>
+															<Title formatted="false">
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Application update received from "%1". 
+It is necessary to install the application update after which the data synchronization will be continued. Contact your administrator.</v8:content>
+																</v8:item>
+															</Title>
+															<VerticalAlign>Center</VerticalAlign>
+															<ContextMenu name="UpdateNeededLimitedRightsTextContextMenu" id="41"/>
+															<ExtendedTooltip name="TextLimitedRightsUpdateNeededExtendedTooltip" id="120"/>
+														</LabelDecoration>
+													</ChildItems>
+												</Page>
+												<Page name="NeededFullRightsUpdate" id="42">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Update is required full rights</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Update is required full rights</v8:content>
+														</v8:item>
+													</ToolTip>
+													<ExtendedTooltip name="UpdateNeededCompleteRightsExtendedTooltip" id="121"/>
+													<ChildItems>
+														<LabelDecoration name="TextNeededUpdateFullRights" id="43">
+															<Width>55</Width>
+															<Title formatted="false">
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Application update received from "%1".
+It is necessary to install the application update after which the data synchronization will be continued.</v8:content>
+																</v8:item>
+															</Title>
+															<VerticalAlign>Center</VerticalAlign>
+															<ContextMenu name="UpdateWantedFullRightsTextContextMenu" id="44"/>
+															<ExtendedTooltip name="TextUpdateNeededCompleteRightsExtendedTooltip" id="122"/>
+														</LabelDecoration>
+													</ChildItems>
+												</Page>
+											</ChildItems>
+										</Pages>
+									</ChildItems>
+								</Page>
+								<Page name="ErrorVersionDifferences" id="151">
+									<Group>Horizontal</Group>
+									<ExtendedTooltip name="ErrorVersionDifferencesExtendedTooltip" id="152"/>
+									<ChildItems>
+										<PictureDecoration name="PictureErrorVersionDifferences" id="159">
+											<Width>4</Width>
+											<Height>2</Height>
+											<VerticalStretch>false</VerticalStretch>
+											<Picture>
+												<xr:Ref>CommonPicture.Warning32</xr:Ref>
+												<xr:LoadTransparent>true</xr:LoadTransparent>
+											</Picture>
+											<ContextMenu name="PictureErrorVersionDifferencesContextMenu" id="160"/>
+											<ExtendedTooltip name="PictureErrorVersionDifferencesExtendedTooltip" id="161"/>
+										</PictureDecoration>
+										<LabelDecoration name="DecorationErrorVersionDifferences" id="153">
+											<ContextMenu name="DecorationErrorVersionDifferencesContextMenu" id="154"/>
+											<ExtendedTooltip name="DecorationErrorVersionDifferencesExtendedTooltip" id="155"/>
+										</LabelDecoration>
+									</ChildItems>
+								</Page>
+							</ChildItems>
+						</Pages>
+						<Pages name="ActionsPanel" id="45">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Actions panel</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Actions panel</v8:content>
+								</v8:item>
+							</ToolTip>
+							<PagesRepresentation>None</PagesRepresentation>
+							<ExtendedTooltip name="ActionsPanelExtendedTooltip" id="123"/>
+							<ChildItems>
+								<Page name="ActionsClose" id="46">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Actions close</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Actions close</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="ActionsCloseExtendedTooltip" id="124"/>
+									<ChildItems>
+										<CommandBar name="CommandPanelClose" id="47">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Close command panel</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Close command panel</v8:content>
+												</v8:item>
+											</ToolTip>
+											<HorizontalLocation>Right</HorizontalLocation>
+											<ExtendedTooltip name="CommandBarCloseExtendedTooltip" id="125"/>
+											<ChildItems>
+												<Button name="FormClose" id="48">
+													<Type>CommandBarButton</Type>
+													<Representation>Text</Representation>
+													<CommandName>Form.StandardCommand.Close</CommandName>
+													<ExtendedTooltip name="FormCloseExtendedTooltip" id="126"/>
+												</Button>
+											</ChildItems>
+										</CommandBar>
+									</ChildItems>
+								</Page>
+								<Page name="ActionsInstallClose" id="49">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Actions install close</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Actions install close</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="ActionsSetCloseExtendedTooltip" id="127"/>
+									<ChildItems>
+										<CommandBar name="CommandPanelInstallClose" id="50">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Command bar</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Command bar</v8:content>
+												</v8:item>
+											</ToolTip>
+											<HorizontalLocation>Right</HorizontalLocation>
+											<ExtendedTooltip name="CommandBarSetCloseExtendedTooltip" id="128"/>
+											<ChildItems>
+												<Button name="InstallUpdate" id="51">
+													<Type>CommandBarButton</Type>
+													<CommandName>Form.Command.InstallUpdate</CommandName>
+													<ExtendedTooltip name="InstallUpdateExtendedTooltip" id="129"/>
+												</Button>
+												<Button name="FormClose1" id="52">
+													<Type>CommandBarButton</Type>
+													<Representation>Text</Representation>
+													<CommandName>Form.StandardCommand.Close</CommandName>
+													<ExtendedTooltip name="FormClose1ExtendedTooltip" id="130"/>
+												</Button>
+											</ChildItems>
+										</CommandBar>
+									</ChildItems>
+								</Page>
+								<Page name="ActionsContinueCancel" id="162">
+									<ExtendedTooltip name="ActionsContinueCancelExtendedTooltip" id="163"/>
+									<ChildItems>
+										<CommandBar name="CommandBarContinueCancel" id="164">
+											<HorizontalLocation>Right</HorizontalLocation>
+											<ExtendedTooltip name="CommandBarContinueCancelExtendedTooltip" id="165"/>
+											<ChildItems>
+												<Button name="ContinueSynchronization" id="168">
+													<Type>CommandBarButton</Type>
+													<CommandName>Form.Command.ContinueSynchronization</CommandName>
+													<ExtendedTooltip name="ContinueSynchronizationExtendedTooltip" id="169"/>
+												</Button>
+												<Button name="Close" id="166">
+													<Type>CommandBarButton</Type>
+													<Representation>Text</Representation>
+													<CommandName>Form.StandardCommand.Close</CommandName>
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Cancel</v8:content>
+														</v8:item>
+													</Title>
+													<ExtendedTooltip name="CloseExtendedTooltip" id="167"/>
+												</Button>
+											</ChildItems>
+										</CommandBar>
+									</ChildItems>
+								</Page>
+							</ChildItems>
+						</Pages>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="GoToNumber" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Sequence number of jump</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>3</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="InfobaseNode" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Infobase node</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:TypeSet>cfg:ExchangePlanRef</v8:TypeSet>
+			</Type>
+		</Attribute>
+		<Attribute name="GoToTable" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Jump table</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="GoToNumber" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Sequence number of jump</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>3</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="MainPageName" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Main page name</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="OnOpenHandlerName" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>On open handler name</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="GoNextHandlerName" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Go to next handler name</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="LongOperation" id="8">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Long operation</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="LongOperationHandlerName" id="9">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Long operation handler name</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="LongOperation" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Long operation</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="LongOperationFinished" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>The long operation is completed</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="MessageFileIDInService" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Message file ID in service</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="LongOperationID" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Long action ID</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="OperationStartDate" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Action start date</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>DateTime</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="WSPassword" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Password</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>50</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ExchangeMessageTransportKind" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Exchange message transport type</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.ExchangeMessagesTransportKinds</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ErrorInfo" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Error message</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="LongOperationCompletedWithError" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Long action completed with error</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="HasErrors" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Has errors</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="IsInRoleAddChangeOfDataExchanges" id="17">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>The role is available add edit data exchanges</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="IsInRoleFullAccess" id="18">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Role full access is avaliable</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="UpdateNeeded" id="19">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Update is needed</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="AddressForAccountPasswordRecovery" id="21">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Address to restore the account password</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="DataSynchronizationDisabled" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Data synchronization is disabled</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="UserMessageAboutError" id="22">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="UseCurrentUserForAuthentication" id="23">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Use the current user for authentication</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="PasswordSynchronizationIsSetTo" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Synchronization password is specified</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="CloseIfSuccessfulSynchronization" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Close in case of successfull synchronization</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="UseSavedAuthenticationParameters" id="20">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Use the saved authentication parameters</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="CompletingOfWorkSystem" id="25">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Completing of system work</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="DontRecallOnLongSynchronization" id="24">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Do not remind again</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="VersionsDifferenceErrorOnReceivingData" id="26">
+			<Type/>
+		</Attribute>
+		<Attribute name="CheckVersionDifference" id="27">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Check version difference</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="GoToEventLogMonitor" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Go to event log</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Go to event log</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>GoToEventLogMonitor</Action>
+		</Command>
+		<Command name="InstallUpdate" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Install update</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Install update</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InstallUpdate</Action>
+		</Command>
+		<Command name="PasswordForgotten" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Forgot password?</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Forgot password</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>PasswordForgotten</Action>
+		</Command>
+		<Command name="RunExchange" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Synchronize</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Run exchange</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>RunExchange</Action>
+		</Command>
+		<Command name="ContinueSynchronization" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Continue</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Continue data syncronization completion</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ContinueSynchronization</Action>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="InfobaseNode">
+			<Type>
+				<v8:TypeSet>cfg:ExchangePlanRef</v8:TypeSet>
+			</Type>
+		</Parameter>
+		<Parameter name="AddressForAccountPasswordRecovery">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="CloseIfSuccessfulSynchronization">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="CompletingOfWorkSystem">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

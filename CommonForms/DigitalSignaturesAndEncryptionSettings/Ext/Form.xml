@@ -1,0 +1,1338 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Width>90</Width>
+	<CommandBarLocation>Top</CommandBarLocation>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<ChildItems>
+			<Button name="FormClose" id="295">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.StandardCommand.Close</CommandName>
+				<ExtendedTooltip name="FormCloseExtendedTooltip" id="296"/>
+			</Button>
+			<Button name="FormRefresh" id="232">
+				<Type>CommandBarButton</Type>
+				<OnlyInAllActions>false</OnlyInAllActions>
+				<CommandName>Form.Command.Refresh</CommandName>
+				<ExtendedTooltip name="FormRefreshExtendedTooltip" id="233"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="NotificationProcessing">NotificationProcessing</Event>
+		<Event name="OnOpen">OnOpen</Event>
+		<Event name="OnReopen">OnReopen</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<Pages name="Pages" id="40">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Pages</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Pages</v8:content>
+				</v8:item>
+			</ToolTip>
+			<VerticalStretch>true</VerticalStretch>
+			<ExtendedTooltip name="PagesExtendedTooltip" id="41"/>
+			<Events>
+				<Event name="OnCurrentPageChange">PagesOnCurrentPageChange</Event>
+			</Events>
+			<ChildItems>
+				<Page name="PageCertificates" id="42">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Certificates</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="PageCertificatesExtendedTooltip" id="43"/>
+					<ChildItems>
+						<UsualGroup name="GroupCertificatesFilter" id="332">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Certificates group filter</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupCertificatesFilterExtendedTooltip" id="333"/>
+							<ChildItems>
+								<InputField name="CertificatesShow" id="290">
+									<DataPath>CertificatesShow</DataPath>
+									<Width>20</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ListChoiceMode>true</ListChoiceMode>
+									<ChoiceList>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>All certificates</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:string">AllCertificates</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>My certificates</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:string">MyCertificates</Value>
+											</xr:Value>
+										</xr:Item>
+									</ChoiceList>
+									<BackColor>style:ManagingFieldBackgroundColor</BackColor>
+									<ContextMenu name="CertificatesShowContextMenu" id="291"/>
+									<ExtendedTooltip name="CertificatesShowExtendedTooltip" id="292"/>
+									<Events>
+										<Event name="OnChange">CertificatesShowOnChange</Event>
+									</Events>
+								</InputField>
+								<InputField name="CertificatesShowApplications" id="334">
+									<DataPath>CertificatesShowApplications</DataPath>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ListChoiceMode>true</ListChoiceMode>
+									<ChoiceList>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Any</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xr:DesignTimeRef">Enum.CertificateIssueRequestState.EmptyRef</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.CertificateIssueRequestState.EnumValue.NotPrepared</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.CertificateIssueRequestState.EnumValue.Prepared</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.CertificateIssueRequestState.EnumValue.Sent</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.CertificateIssueRequestState.EnumValue.Rejected</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.CertificateIssueRequestState.EnumValue.ExecutedCertificateNotInstalled</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.CertificateIssueRequestState.EnumValue.Executed</Value>
+											</xr:Value>
+										</xr:Item>
+									</ChoiceList>
+									<ContextMenu name="CertificatesShowApplicationsContextMenu" id="335"/>
+									<ExtendedTooltip name="CertificatesShowApplicationsExtendedTooltip" id="336"/>
+									<Events>
+										<Event name="OnChange">CertificatesShowApplicationsOnChange</Event>
+									</Events>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="UserSettingsGroup" id="293">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>User settings group</v8:content>
+								</v8:item>
+							</Title>
+							<VerticalStretch>false</VerticalStretch>
+							<Group>Vertical</Group>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="UserSettingsGroupExtendedTooltip" id="294"/>
+						</UsualGroup>
+						<CommandBar name="CertificatesListCommandBar" id="266">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Certificates list command bar</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="CertificatesCommandBarListExtendedTooltip" id="267"/>
+							<ChildItems>
+								<Button name="CertificatesCreate" id="135">
+									<Type>CommandBarButton</Type>
+									<Visible>false</Visible>
+									<CommandName>Form.Item.Certificates.StandardCommand.Create</CommandName>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Add...</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="CertificatesCreateExtendedTooltip" id="136"/>
+								</Button>
+								<Popup name="CertificatesAdd" id="344">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Add</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="CertificatesAddExtendedTooltip" id="345"/>
+									<ChildItems>
+										<Button name="AddApplicationForCertificateIssue" id="346">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.AddApplicationForCertificateIssue</CommandName>
+											<ExtendedTooltip name="AddApplicationForCertificateIssueExtendedTooltip" id="347"/>
+										</Button>
+										<Button name="AddFromInstalledOnComputer" id="348">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.AddFromInstalledOnComputer</CommandName>
+											<ExtendedTooltip name="AddFromInstalledOnComputerExtendedTooltip" id="349"/>
+										</Button>
+									</ChildItems>
+								</Popup>
+								<ButtonGroup name="CertificatesStandardCommands" id="98">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Certificates standard commands</v8:content>
+										</v8:item>
+									</Title>
+									<CommandSource>Item.Certificates</CommandSource>
+									<ExtendedTooltip name="CertificatesStandardCommandsExtendedTooltip" id="99"/>
+								</ButtonGroup>
+							</ChildItems>
+						</CommandBar>
+						<Table name="Certificates" id="46">
+							<DefaultItem>true</DefaultItem>
+							<HeightInTableRows>4</HeightInTableRows>
+							<UseAlternationRowColor>true</UseAlternationRowColor>
+							<EnableStartDrag>true</EnableStartDrag>
+							<DataPath>Certificates</DataPath>
+							<RowPictureDataPath>Certificates.DefaultPicture</RowPictureDataPath>
+							<CommandSet>
+								<ExcludedCommand>Copy</ExcludedCommand>
+								<ExcludedCommand>Delete</ExcludedCommand>
+							</CommandSet>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<AutoRefresh>false</AutoRefresh>
+							<AutoRefreshPeriod>60</AutoRefreshPeriod>
+							<Period>
+								<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+								<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+								<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+							</Period>
+							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+							<RestoreCurrentRow>false</RestoreCurrentRow>
+							<TopLevelParent xsi:nil="true"/>
+							<ShowRoot>true</ShowRoot>
+							<AllowRootChoice>false</AllowRootChoice>
+							<UpdateOnDataChange>Auto</UpdateOnDataChange>
+							<UserSettingsGroup>UserSettingsGroup</UserSettingsGroup>
+							<ContextMenu name="CertificatesContextMenu" id="47">
+								<Autofill>false</Autofill>
+								<ChildItems>
+									<Button name="CertificatesContextMenuCreate" id="340">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Item.Certificates.StandardCommand.Create</CommandName>
+										<Title>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Add...</v8:content>
+											</v8:item>
+										</Title>
+										<ExtendedTooltip name="CertificatesCreateContextMenuExtendedTooltip" id="341"/>
+									</Button>
+									<ButtonGroup name="CertificatesContextMenuStandardCommands" id="342">
+										<Title>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Certificates context menu standard commands</v8:content>
+											</v8:item>
+										</Title>
+										<CommandSource>Item.Certificates</CommandSource>
+										<ExtendedTooltip name="CertificatesContextMenuStandardCommandsExtendedTooltip" id="343"/>
+									</ButtonGroup>
+								</ChildItems>
+							</ContextMenu>
+							<AutoCommandBar name="CertificatesCommandBar" id="48">
+								<Autofill>false</Autofill>
+							</AutoCommandBar>
+							<ExtendedTooltip name="CertificatesExtendedTooltip" id="49"/>
+							<SearchStringAddition name="CertificatesSearchString" id="299">
+								<AdditionSource>
+									<Item>Certificates</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="CertificatesSearchStringContextMenu" id="300"/>
+								<ExtendedTooltip name="CertificatesSearchStringExtendedTooltip" id="301"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="CertificatesViewStatus" id="302">
+								<AdditionSource>
+									<Item>Certificates</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="CertificatesViewStatusContextMenu" id="303"/>
+								<ExtendedTooltip name="CertificatesViewStatusExtendedTooltip" id="304"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="CertificatesSearchControl" id="305">
+								<AdditionSource>
+									<Item>Certificates</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="CertificatesSearchControlContextMenu" id="306"/>
+								<ExtendedTooltip name="CertificatesSearchControlExtendedTooltip" id="307"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="BeforeAddRow">CertificatesBeforeAdding</Event>
+							</Events>
+							<ChildItems>
+								<LabelField name="CertificatesName" id="53">
+									<DataPath>Certificates.Description</DataPath>
+									<Width>35</Width>
+									<ContextMenu name="CertificatesNameContextMenu" id="54"/>
+									<ExtendedTooltip name="CertificatesNameExtendedTooltip" id="55"/>
+								</LabelField>
+								<LabelField name="CertificatesWhoIssued" id="80">
+									<DataPath>Certificates.WhoIssued</DataPath>
+									<Width>20</Width>
+									<ContextMenu name="CertificatesIssuedByContextMenu" id="81"/>
+									<ExtendedTooltip name="CertificatesWhoIssuedExtendedTooltip" id="82"/>
+								</LabelField>
+								<LabelField name="CertificatesValidUntil" id="65">
+									<DataPath>Certificates.ValidUntil</DataPath>
+									<Width>13</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="CertificatesValidUntilContextMenu" id="66"/>
+									<ExtendedTooltip name="CertificatesValidUntilExtendedTooltip" id="67"/>
+								</LabelField>
+								<LabelField name="CertificatesUser" id="260">
+									<DataPath>Certificates.User</DataPath>
+									<ContextMenu name="CertificatesUserContextMenu" id="261"/>
+									<ExtendedTooltip name="CertificatesUserExtendedTooltip" id="262"/>
+								</LabelField>
+								<LabelField name="CertificatesRequestStatus" id="337">
+									<DataPath>Certificates.RequestStatus</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Request status</v8:content>
+										</v8:item>
+									</Title>
+									<Width>16</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="CertificatesRequestStatusContextMenu" id="338"/>
+									<ExtendedTooltip name="CertificatesRequestStatusExtendedTooltip" id="339"/>
+								</LabelField>
+								<LabelField name="CertificatesLink" id="142">
+									<DataPath>Certificates.Ref</DataPath>
+									<UserVisible>
+										<xr:Common>false</xr:Common>
+									</UserVisible>
+									<Width>1</Width>
+									<ContextMenu name="CertificatesLinkContextMenu" id="143"/>
+									<ExtendedTooltip name="CertificatesLinkExtendedTooltip" id="144"/>
+								</LabelField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="ApplicationPage" id="103">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Applications</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="ApplicationPagesExtendedTooltip" id="104"/>
+					<ChildItems>
+						<UsualGroup name="GroupWebClientExtensionNotSet" id="171">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group web client extension not set</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupWebClientExtensionNotSetExtendedTooltip" id="172"/>
+							<ChildItems>
+								<LabelDecoration name="ExplanationWebClientExtensionNotSet" id="165">
+									<HorizontalStretch>true</HorizontalStretch>
+									<TextColor>style:ExplanationTextError</TextColor>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>The extension for digital signature and encryption is not installed into Internet Explorer. You can not check which applications are installed on the computer.</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="ExplanationWebClientExtensionNotSetContextMenu" id="166"/>
+									<ExtendedTooltip name="ExplanationWebClientExtensionNotSetExtendedTooltip" id="167"/>
+								</LabelDecoration>
+								<Button name="SetExtension" id="297">
+									<Type>UsualButton</Type>
+									<CommandName>Form.Command.SetExtension</CommandName>
+									<ExtendedTooltip name="SetExtensionExtendedTooltip" id="298"/>
+								</Button>
+							</ChildItems>
+						</UsualGroup>
+						<CommandBar name="ApplicationsCommandBarSeparately" id="181">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Applications command bar separately</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Applications command bar separately</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ExtendedTooltip name="ApplicationsCommandBarSeparatelyExtendedTooltip" id="182"/>
+							<ChildItems>
+								<Button name="ApplicationsAdd" id="280">
+									<Type>CommandBarButton</Type>
+									<CommandName>Form.Item.Applications.StandardCommand.Add</CommandName>
+									<ExtendedTooltip name="ApplicationsAddExtendedTooltip" id="281"/>
+								</Button>
+								<Button name="ApplicationsChange" id="282">
+									<Type>CommandBarButton</Type>
+									<CommandName>Form.Item.Applications.StandardCommand.Change</CommandName>
+									<ExtendedTooltip name="ApplicationsChangeExtendedTooltip" id="283"/>
+								</Button>
+								<Button name="ApplicationsSetDeleteMark" id="276">
+									<Type>CommandBarButton</Type>
+									<OnlyInAllActions>false</OnlyInAllActions>
+									<CommandName>Form.Command.ApplicationsSetDeleteMark</CommandName>
+									<ExtendedTooltip name="ApplicationsSetDeleteMarkExtendedTooltip" id="277"/>
+								</Button>
+								<Button name="ApplicationsRefresh" id="230">
+									<Type>CommandBarButton</Type>
+									<CommandName>Form.Command.Refresh</CommandName>
+									<ExtendedTooltip name="ApplicationsRefreshExtendedTooltip" id="231"/>
+								</Button>
+								<Button name="ApplicationsOutputList" id="255">
+									<Type>CommandBarButton</Type>
+									<CommandName>Form.Item.Applications.StandardCommand.OutputList</CommandName>
+									<ExtendedTooltip name="ApplicationsOutputListExtendedTooltip" id="256"/>
+								</Button>
+							</ChildItems>
+						</CommandBar>
+						<Pages name="ApplicationPagesAndUpdate" id="320">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Application pages and update</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Application pages and update</v8:content>
+								</v8:item>
+							</ToolTip>
+							<PagesRepresentation>None</PagesRepresentation>
+							<ExtendedTooltip name="ApplicationPagesAndUpdateExtendedTooltip" id="321"/>
+							<ChildItems>
+								<Page name="ApplicationPageList" id="322">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Application page list</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Application page list</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="ApplicationPageListExtendedTooltip" id="323"/>
+									<ChildItems>
+										<LabelDecoration name="ApplicationsExplanation" id="257">
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Settings of digital signatures and encryption apps that users can use on their computers:</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="ApplicationsExplanationContextMenu" id="258"/>
+											<ExtendedTooltip name="ApplicationsExplanationExtendedTooltip" id="259"/>
+										</LabelDecoration>
+										<Table name="Applications" id="203">
+											<ChangeRowOrder>false</ChangeRowOrder>
+											<HeightInTableRows>1</HeightInTableRows>
+											<UseAlternationRowColor>true</UseAlternationRowColor>
+											<EnableStartDrag>true</EnableStartDrag>
+											<DataPath>Applications</DataPath>
+											<RowPictureDataPath>Applications.PictureNumber</RowPictureDataPath>
+											<RowsPicture>
+												<xr:Ref>CommonPicture.ElementsIcons</xr:Ref>
+												<xr:LoadTransparent>true</xr:LoadTransparent>
+											</RowsPicture>
+											<SearchStringLocation>None</SearchStringLocation>
+											<ViewStatusLocation>None</ViewStatusLocation>
+											<SearchControlLocation>None</SearchControlLocation>
+											<RowFilter xsi:nil="true"/>
+											<ContextMenu name="ApplicationsContextMenu" id="204">
+												<Autofill>false</Autofill>
+												<ChildItems>
+													<Button name="ApplicationsContextMenuAdd" id="284">
+														<Type>CommandBarButton</Type>
+														<CommandName>Form.Item.Applications.StandardCommand.Add</CommandName>
+														<ExtendedTooltip name="ApplicationsAddContextMenuExtendedTooltip" id="285"/>
+													</Button>
+													<Button name="ApplicationsContextMenuChange" id="286">
+														<Type>CommandBarButton</Type>
+														<CommandName>Form.Item.Applications.StandardCommand.Change</CommandName>
+														<ExtendedTooltip name="ApplicationsChangeContextMenuExtendedTooltip" id="287"/>
+													</Button>
+													<Button name="ApplicationsContextMenuApplicationsSetDeleteMark" id="278">
+														<Type>CommandBarButton</Type>
+														<CommandName>Form.Command.ApplicationsSetDeleteMark</CommandName>
+														<ExtendedTooltip name="ApplicationsContextMenuApplicationsSetDeleteMarkExtendedTooltip" id="279"/>
+													</Button>
+													<Button name="ApplicationsContextMenuRefresh" id="247">
+														<Type>CommandBarButton</Type>
+														<CommandName>Form.Command.Refresh</CommandName>
+														<ExtendedTooltip name="ApplicationsContextMenuRefreshExtendedTooltip" id="248"/>
+													</Button>
+													<Button name="ApplicationsContextMenuOutputList" id="249">
+														<Type>CommandBarButton</Type>
+														<CommandName>Form.Item.Applications.StandardCommand.OutputList</CommandName>
+														<ExtendedTooltip name="ApplicationsContextMenuOutputListExtendedTooltip" id="250"/>
+													</Button>
+													<Button name="ApplicationsContextMenuCopyToClipboard" id="251">
+														<Type>CommandBarButton</Type>
+														<CommandName>Form.Item.Applications.StandardCommand.CopyToClipboard</CommandName>
+														<ExtendedTooltip name="ApplicationsContextMenuCopyToClipboardExtendedTooltip" id="252"/>
+													</Button>
+													<Button name="ApplicationsContextMenuSelectAll" id="253">
+														<Type>CommandBarButton</Type>
+														<CommandName>Form.Item.Applications.StandardCommand.SelectAll</CommandName>
+														<ExtendedTooltip name="ApplicationsContextMenuSelectAllExtendedTooltip" id="254"/>
+													</Button>
+												</ChildItems>
+											</ContextMenu>
+											<AutoCommandBar name="ApplicationsCommandBar" id="205">
+												<Autofill>false</Autofill>
+											</AutoCommandBar>
+											<ExtendedTooltip name="ApplicationsExtendedTooltip" id="206"/>
+											<SearchStringAddition name="ApplicationsSearchString" id="308">
+												<AdditionSource>
+													<Item>Applications</Item>
+													<Type>SearchStringRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="ApplicationsSearchStringContextMenu" id="309"/>
+												<ExtendedTooltip name="ApplicationsSearchStringExtendedTooltip" id="310"/>
+											</SearchStringAddition>
+											<ViewStatusAddition name="ApplicationsViewStatus" id="311">
+												<AdditionSource>
+													<Item>Applications</Item>
+													<Type>ViewStatusRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="ApplicationsViewStatusContextMenu" id="312"/>
+												<ExtendedTooltip name="ApplicationsViewStatusExtendedTooltip" id="313"/>
+											</ViewStatusAddition>
+											<SearchControlAddition name="ApplicationsSearchManagement" id="314">
+												<AdditionSource>
+													<Item>Applications</Item>
+													<Type>SearchControl</Type>
+												</AdditionSource>
+												<ContextMenu name="ApplicationsSearchManagementContextMenu" id="315"/>
+												<ExtendedTooltip name="ApplicationsSearchManagementExtendedTooltip" id="316"/>
+											</SearchControlAddition>
+											<Events>
+												<Event name="BeforeAddRow">ApplicationsBeforeAdding</Event>
+												<Event name="BeforeDeleteRow">ApplicationsBeforeDelete</Event>
+												<Event name="OnActivateRow">ApplicationsOnRowActivetion</Event>
+												<Event name="BeforeRowChange">ApplicationsBeforeChanges</Event>
+											</Events>
+											<ChildItems>
+												<InputField name="ApplicationsDescription" id="213">
+													<DataPath>Applications.Description</DataPath>
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Application</v8:content>
+														</v8:item>
+													</Title>
+													<EditMode>EnterOnInput</EditMode>
+													<Width>15</Width>
+													<ContextMenu name="ApplicationsDescriptionContextMenu" id="214"/>
+													<ExtendedTooltip name="ApplicationsDescriptionExtendedTooltip" id="215"/>
+												</InputField>
+												<InputField name="ApplicationsCheckResult" id="223">
+													<DataPath>Applications.CheckResult</DataPath>
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Checking result</v8:content>
+														</v8:item>
+													</Title>
+													<EditMode>EnterOnInput</EditMode>
+													<AutoCellHeight>true</AutoCellHeight>
+													<Width>40</Width>
+													<MultiLine>true</MultiLine>
+													<ContextMenu name="ApplicationsCheckResultContextMenu" id="224"/>
+													<ExtendedTooltip name="ApplicationsCheckResultsExtendedTooltip" id="225"/>
+												</InputField>
+											</ChildItems>
+										</Table>
+										<UsualGroup name="GroupLinuxApplicationsPathToApplication" id="228">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Path to the application</v8:content>
+												</v8:item>
+											</Title>
+											<Group>Vertical</Group>
+											<Representation>None</Representation>
+											<TitleDataPath>Items.Applications.CurrentData.Description</TitleDataPath>
+											<ExtendedTooltip name="GroupApplicationsLinuxPathToApplicationExtendedTooltip" id="229"/>
+											<ChildItems>
+												<InputField name="ApplicationsLinuxPathToApplication" id="216">
+													<DataPath>Items.Applications.CurrentData.LinuxPathToApplication</DataPath>
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Path to the application on the computer OC Linux</v8:content>
+														</v8:item>
+													</Title>
+													<TitleFont ref="style:TextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+													<TitleLocation>None</TitleLocation>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Path to the application which is required on computers running the Linux operating system</v8:content>
+														</v8:item>
+													</ToolTip>
+													<ToolTipRepresentation>Button</ToolTipRepresentation>
+													<EditMode>EnterOnInput</EditMode>
+													<Height>1</Height>
+													<MultiLine>true</MultiLine>
+													<ExtendedEdit>true</ExtendedEdit>
+													<ContextMenu name="ApplicationsLinuxPathToApplicationContextMenu" id="217"/>
+													<ExtendedTooltip name="ApplicationsLinuxPathToApplicationExtendedTooltip" id="218"/>
+													<Events>
+														<Event name="OnChange">ApplicationsLinuxPathToApplicationOnChange</Event>
+													</Events>
+												</InputField>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</Page>
+								<Page name="ApplicationPageUpdate" id="324">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Application page update</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Application page update</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="PageApplicationsUpdateExtendedTooltip" id="325"/>
+									<ChildItems>
+										<LabelDecoration name="ApplicationsUpdate" id="326">
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Checking of applications installed on the computer. Please wait ...</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="ApplicationsUpdateContextMenu" id="327"/>
+											<ExtendedTooltip name="ApplicationsUpdateExtendedTooltip" id="328"/>
+										</LabelDecoration>
+										<PictureDecoration name="ApplicationsUpdateDecoration" id="329">
+											<Width>7</Width>
+											<Height>3</Height>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Applications update decoration</v8:content>
+												</v8:item>
+											</Title>
+											<PictureSize>AutoSize</PictureSize>
+											<Picture>
+												<xr:Ref>CommonPicture.LongOperation48</xr:Ref>
+												<xr:LoadTransparent>true</xr:LoadTransparent>
+											</Picture>
+											<ContextMenu name="ApplicationsUpdateDecorationContextMenu" id="330"/>
+											<ExtendedTooltip name="ApplicationsUpdateDecorationExtendedTooltip" id="331"/>
+										</PictureDecoration>
+									</ChildItems>
+								</Page>
+							</ChildItems>
+						</Pages>
+						<UsualGroup name="GroupCheckSignaturesAtServer" id="288">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group check signatures on server</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Horizontal</Group>
+							<Representation>NormalSeparation</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupCheckSignaturesAtServerExtendedTooltip" id="289"/>
+							<ChildItems>
+								<CheckBoxField name="CheckSignaturesAtServer" id="273">
+									<DataPath>CheckSignaturesAtServer</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Check signatures and certificates on server</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>Right</TitleLocation>
+									<ToolTipRepresentation>Button</ToolTipRepresentation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="CheckSignaturesAtServerContextMenu" id="274"/>
+									<ExtendedTooltip name="CheckSignaturesAtServerExtendedTooltip" id="275">
+										<Title formatted="false">
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>It allows you not to install
+the application to the user computer to check digital signatures and certificates.
+
+Important: at least one of
+the applications from the list must
+be installed on each computer with working 1C:Enterprise server or Web server which uses a file infobase.</v8:content>
+											</v8:item>
+										</Title>
+									</ExtendedTooltip>
+									<Events>
+										<Event name="OnChange">CheckSignaturesAtServerOnChange</Event>
+									</Events>
+								</CheckBoxField>
+								<CheckBoxField name="ToSignAtServer" id="317">
+									<DataPath>ToSignAtServer</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Sign and encrypt on server</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>Right</TitleLocation>
+									<ToolTipRepresentation>Button</ToolTipRepresentation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="SignAtServerContextMenu" id="318"/>
+									<ExtendedTooltip name="SignAtServerExtendedTooltip" id="319">
+										<Title formatted="false">
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>It allows you not to
+install the application and the certificate on the computer of the user for signing, encryption and decryption.
+
+Important: the application and the
+private key certificate must be installed
+on each computer with working 1C:Enterprise server or Web server which uses a file infobase.</v8:content>
+											</v8:item>
+										</Title>
+									</ExtendedTooltip>
+									<Events>
+										<Event name="OnChange">SignAtServerOnChange</Event>
+									</Events>
+								</CheckBoxField>
+							</ChildItems>
+						</UsualGroup>
+						<LabelDecoration name="Instruction" id="270">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Instructions on how to work with electronic signature and encryption applications</v8:content>
+								</v8:item>
+							</Title>
+							<Hyperlink>true</Hyperlink>
+							<ContextMenu name="InstructionContextMenu" id="271"/>
+							<ExtendedTooltip name="InstructionExtendedTooltip" id="272"/>
+							<Events>
+								<Event name="Click">InstructionClick</Event>
+							</Events>
+						</LabelDecoration>
+					</ChildItems>
+				</Page>
+				<Page name="SettingsPage" id="44">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Additionally</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="PageSettingsExtendedTooltip" id="45"/>
+					<ChildItems>
+						<InputField name="ExtensionForEncryptedFiles" id="9">
+							<DataPath>ExtensionForEncryptedFiles</DataPath>
+							<Width>10</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="ExtensionForEncryptedFilesContextMenu" id="10"/>
+							<ExtendedTooltip name="ExtensionForEncryptedFilesExtendedTooltip" id="19"/>
+							<Events>
+								<Event name="OnChange">ExtensionForEncryptedFilesOnChange</Event>
+							</Events>
+						</InputField>
+						<InputField name="ExtensionForSignatureFiles" id="13">
+							<DataPath>ExtensionForSignatureFiles</DataPath>
+							<Width>10</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="ExtensionForSignatureFilesContextMenu" id="14"/>
+							<ExtendedTooltip name="ExtensionForSignatureFilesExtendedTooltip" id="20"/>
+							<Events>
+								<Event name="OnChange">ExtensionForSignatureFilesOnChange</Event>
+							</Events>
+						</InputField>
+						<RadioButtonField name="ActionsOnSavingDataWithDigitalSignature" id="3">
+							<DataPath>ActionsOnSavingDS</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>On saving data in the file together with digital signature</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>Top</TitleLocation>
+							<RadioButtonType>Auto</RadioButtonType>
+							<ColumnsCount>1</ColumnsCount>
+							<ChoiceList>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Save All Signatures</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:string">SaveAllSignatures</Value>
+									</xr:Value>
+								</xr:Item>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Ask</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:string">Ask</Value>
+									</xr:Value>
+								</xr:Item>
+							</ChoiceList>
+							<ContextMenu name="ActionsOnSavingDataWithDigitalSignatureContextMenu" id="4"/>
+							<ExtendedTooltip name="ActionsOnSavingDataWithDigitalExtendedSignatureToolTip" id="18"/>
+							<Events>
+								<Event name="OnChange">ActionsOnSavingDataWithDigitalSignatureOnChange</Event>
+							</Events>
+						</RadioButtonField>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="ActionsOnSavingDS" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Actions when saving with ED</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<FillCheck>ShowError</FillCheck>
+		</Attribute>
+		<Attribute name="ExtensionForEncryptedFiles" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Extension for encrypted files</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<FillCheck>ShowError</FillCheck>
+		</Attribute>
+		<Attribute name="ExtensionForSignatureFiles" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Extension for signature files</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<FillCheck>ShowError</FillCheck>
+		</Attribute>
+		<Attribute name="ErrorText" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Error text</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Certificates" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Certificates</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<UseAlways>
+				<Field>Certificates.Ref</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>false</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<MainTable>Catalog.DigitalSignaturesAndEncryptionKeyCertificates</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:use>false</dcsset:use>
+							<dcsset:left xsi:type="dcscor:Field">Revoked</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:use>false</dcsset:use>
+							<dcsset:left xsi:type="dcscor:Field">ValidUntil</dcsset:left>
+							<dcsset:comparisonType>Greater</dcsset:comparisonType>
+							<dcsset:right xsi:type="v8:StandardBeginningDate">
+								<v8:variant xsi:type="v8:StandardBeginningDateVariant">BeginningOfThisDay</v8:variant>
+							</dcsset:right>
+						</dcsset:item>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemField">
+							<dcsset:field>Description</dcsset:field>
+							<dcsset:orderType>Asc</dcsset:orderType>
+						</dcsset:item>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="Applications" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Applications</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Ref" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Ref</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.DigitalSignatureAndEncryptionApplications</v8:Type>
+					</Type>
+				</Column>
+				<Column name="LinuxPathToApplication" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Linux path to application</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="CheckResult" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Checking result</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ApplicationName" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Application name</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ApplicationType" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Application type</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="SignAlgorithm" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Signing Algorithm</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="HashAlgorithm" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Hashing Algorithm</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="EncryptionAlgorithm" id="8">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Encryption algorithm</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Description" id="9">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Description</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Use" id="11">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Use</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="PictureNumber" id="10">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Picture no</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>1</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="DeletionMark" id="12">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Deletion mark</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="CheckSignaturesAtServer" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Check signatures on server</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="CertificatesShow" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Show</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ToSignAtServer" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Sign on server</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="InfobaseUserWithFullAccess" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>This is a user with full access</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="CertificatesShowApplications" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Request status</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.CertificateIssueRequestState</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="Refresh" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Refresh</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Refresh settings and applications list with checking results</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Refresh</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Refresh</Action>
+			<Representation>Text</Representation>
+		</Command>
+		<Command name="ApplicationsSetDeleteMark" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Mark for deletion / Clear mark</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Mark the current item for deletion / Uncheck the mark</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.MarkToDelete</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ApplicationsSetDeleteMark</Action>
+			<Representation>Text</Representation>
+		</Command>
+		<Command name="SetExtension" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Set the extension</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Set the extension</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>SetExtension</Action>
+		</Command>
+		<Command name="AddApplicationForCertificateIssue" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Request for certificate issue</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Request for certificate issue</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>AddApplicationForCertificateIssue</Action>
+		</Command>
+		<Command name="AddFromInstalledOnComputer" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>From installed on computer...</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>From installed on computer...</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>AddFromInstalledOnComputer</Action>
+		</Command>
+	</Commands>
+</Form>

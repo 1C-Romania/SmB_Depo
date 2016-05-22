@@ -1,0 +1,873 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>DataSource1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>MainDataSet</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>SKU</dataPath>
+			<field>SKU</field>
+			<useRestriction>
+				<condition>true</condition>
+			</useRestriction>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>PriceCurrency</dataPath>
+			<field>PriceCurrency</field>
+			<useRestriction>
+				<condition>true</condition>
+			</useRestriction>
+			<attributeUseRestriction>
+				<condition>true</condition>
+			</attributeUseRestriction>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>PriceKind</dataPath>
+			<field>PriceKind</field>
+			<useRestriction>
+				<condition>true</condition>
+			</useRestriction>
+			<attributeUseRestriction>
+				<condition>true</condition>
+			</attributeUseRestriction>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>MeasurementUnit</dataPath>
+			<field>MeasurementUnit</field>
+			<useRestriction>
+				<condition>true</condition>
+			</useRestriction>
+			<attributeUseRestriction>
+				<condition>true</condition>
+			</attributeUseRestriction>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>CustomerOrder</dataPath>
+			<field>CustomerOrder</field>
+			<useRestriction>
+				<condition>true</condition>
+			</useRestriction>
+			<attributeUseRestriction>
+				<condition>true</condition>
+			</attributeUseRestriction>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Code</dataPath>
+			<field>Code</field>
+			<useRestriction>
+				<condition>true</condition>
+			</useRestriction>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Description</dataPath>
+			<field>Description</field>
+			<useRestriction>
+				<condition>true</condition>
+			</useRestriction>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ProductsAndServices</dataPath>
+			<field>ProductsAndServices</field>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+			<inputParameters>
+				<dcscor:item>
+					<dcscor:parameter>ChoiceParameters</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:ChoiceParameters">
+						<dcscor:item>
+							<dcscor:choiceParameter>Filter.ProductsAndServicesType</dcscor:choiceParameter>
+							<dcscor:value xsi:type="dcscor:DesignTimeValue">Enum.ProductsAndServicesTypes.InventoryItem</dcscor:value>
+							<dcscor:value xsi:type="dcscor:DesignTimeValue">Enum.ProductsAndServicesTypes.Service</dcscor:value>
+							<dcscor:value xsi:type="dcscor:DesignTimeValue">Enum.ProductsAndServicesTypes.Work</dcscor:value>
+						</dcscor:item>
+					</dcscor:value>
+				</dcscor:item>
+				<dcscor:item>
+					<dcscor:parameter>ChoiceFoldersAndItems</dcscor:parameter>
+					<dcscor:value xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise" xsi:type="d6p1:FoldersAndItemsUse">FoldersAndItems</dcscor:value>
+				</dcscor:item>
+			</inputParameters>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Company</dataPath>
+			<field>Company</field>
+			<attributeUseRestriction>
+				<condition>true</condition>
+			</attributeUseRestriction>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Batch</dataPath>
+			<field>Batch</field>
+			<useRestriction>
+				<condition>true</condition>
+			</useRestriction>
+			<attributeUseRestriction>
+				<condition>true</condition>
+			</attributeUseRestriction>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>DeletionMark</dataPath>
+			<field>DeletionMark</field>
+			<useRestriction>
+				<condition>true</condition>
+			</useRestriction>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Parent</dataPath>
+			<field>Parent</field>
+			<useRestriction>
+				<condition>true</condition>
+			</useRestriction>
+			<attributeUseRestriction>
+				<condition>true</condition>
+			</attributeUseRestriction>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>GLAccount</dataPath>
+			<field>GLAccount</field>
+			<useRestriction>
+				<condition>true</condition>
+			</useRestriction>
+			<attributeUseRestriction>
+				<condition>true</condition>
+			</attributeUseRestriction>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ProductsAndServicesType</dataPath>
+			<field>ProductsAndServicesType</field>
+			<useRestriction>
+				<condition>true</condition>
+			</useRestriction>
+			<attributeUseRestriction>
+				<condition>true</condition>
+			</attributeUseRestriction>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>PictureFile</dataPath>
+			<field>PictureFile</field>
+			<useRestriction>
+				<condition>true</condition>
+			</useRestriction>
+			<attributeUseRestriction>
+				<condition>true</condition>
+			</attributeUseRestriction>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Characteristic</dataPath>
+			<field>Characteristic</field>
+			<useRestriction>
+				<condition>true</condition>
+			</useRestriction>
+			<attributeUseRestriction>
+				<condition>true</condition>
+			</attributeUseRestriction>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>CharacteristicDescription</dataPath>
+			<field>CharacteristicDescription</field>
+			<useRestriction>
+				<condition>true</condition>
+			</useRestriction>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>CharacteristicDeletionMark</dataPath>
+			<field>CharacteristicDeletionMark</field>
+			<useRestriction>
+				<condition>true</condition>
+			</useRestriction>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Price</dataPath>
+			<field>Price</field>
+			<useRestriction>
+				<condition>true</condition>
+			</useRestriction>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>PriceIncludesVAT</dataPath>
+			<field>PriceIncludesVAT</field>
+			<useRestriction>
+				<condition>true</condition>
+			</useRestriction>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Barcode</dataPath>
+			<field>Barcode</field>
+			<useRestriction>
+				<condition>true</condition>
+			</useRestriction>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>IsFolder</dataPath>
+			<field>IsFolder</field>
+			<useRestriction>
+				<condition>true</condition>
+			</useRestriction>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ProductsAndServicesVATRate</dataPath>
+			<field>ProductsAndServicesVATRate</field>
+			<useRestriction>
+				<condition>true</condition>
+			</useRestriction>
+			<attributeUseRestriction>
+				<condition>true</condition>
+			</attributeUseRestriction>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>WarehouseForBalances</dataPath>
+			<field>WarehouseForBalances</field>
+			<attributeUseRestriction>
+				<condition>true</condition>
+			</attributeUseRestriction>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.StructuralUnits</v8:Type>
+			</valueType>
+			<inputParameters>
+				<dcscor:item>
+					<dcscor:parameter>ChoiceParameters</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:ChoiceParameters">
+						<dcscor:item>
+							<dcscor:choiceParameter>Filter.StructuralUnitType</dcscor:choiceParameter>
+							<dcscor:value xsi:type="dcscor:DesignTimeValue">Enum.StructuralUnitsTypes.Warehouse</dcscor:value>
+							<dcscor:value xsi:type="dcscor:DesignTimeValue">Enum.StructuralUnitsTypes.Retail</dcscor:value>
+							<dcscor:value xsi:type="dcscor:DesignTimeValue">Enum.StructuralUnitsTypes.RetailAccrualAccounting</dcscor:value>
+						</dcscor:item>
+					</dcscor:value>
+				</dcscor:item>
+				<dcscor:item>
+					<dcscor:parameter>ChoiceFoldersAndItems</dcscor:parameter>
+					<dcscor:value xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise" xsi:type="d6p1:FoldersAndItemsUse">FoldersAndItems</dcscor:value>
+				</dcscor:item>
+			</inputParameters>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Balance</dataPath>
+			<field>Balance</field>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>MeasurementUnitCode</dataPath>
+			<field>MeasurementUnitCode</field>
+			<useRestriction>
+				<condition>true</condition>
+			</useRestriction>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>MeasurementUnitInternationalAbbreviation</dataPath>
+			<field>MeasurementUnitInternationalAbbreviation</field>
+			<useRestriction>
+				<condition>true</condition>
+			</useRestriction>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>MeasurementUnitDescriptionFull</dataPath>
+			<field>MeasurementUnitDescriptionFull</field>
+			<useRestriction>
+				<condition>true</condition>
+			</useRestriction>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ProductsAndServicesKind</dataPath>
+			<field>ProductsAndServicesKind</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>ProductsAndServices kind</v8:content>
+				</v8:item>
+			</title>
+			<useRestriction>
+				<field>true</field>
+				<condition>true</condition>
+				<group>true</group>
+				<order>true</order>
+			</useRestriction>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<dataSource>DataSource1</dataSource>
+		<query>SELECT ALLOWED
+	InventoryBalances.ProductsAndServices AS ProductsAndServices,
+	InventoryBalances.Characteristic AS Characteristic,
+	InventoryBalances.QuantityBalance AS QuantityBalance
+INTO TemporaryTableAvailableBallance
+FROM
+	AccumulationRegister.Inventory.Balance(, CustomerOrder = VALUE(Document.CustomerOrder.EmptyRef) {(ProductsAndServices).* AS ProductsAndServices, (StructuralUnit).* AS WarehouseForBalances}) AS InventoryBalances
+
+INDEX BY
+	ProductsAndServices,
+	Characteristic
+;
+
+////////////////////////////////////////////////////////////////////////////////
+SELECT ALLOWED
+	ProductsAndServices.Ref AS ProductsAndServices,
+	ProductsAndServicesCharacteristics.Ref AS Characteristic,
+	ProductsAndServices.DeletionMark AS DeletionMark,
+	ProductsAndServices.Parent AS Parent,
+	ProductsAndServices.IsFolder AS IsFolder,
+	ProductsAndServices.Code AS Code,
+	ProductsAndServices.Description AS Description,
+	ProductsAndServices.SKU AS SKU,
+	ProductsAndServices.ProductsAndServicesType AS ProductsAndServicesType,
+	ProductsAndServices.MeasurementUnit AS MeasurementUnit,
+	ProductsAndServices.VATRate AS VATRate,
+	ProductsAndServices.PictureFile AS PictureFile,
+	ProductsAndServicesCharacteristics.Description AS CharacteristicDescription,
+	ProductsAndServicesCharacteristics.DeletionMark AS CharacteristicDeletionMark
+INTO TemporaryTableProductsAndServicesCharacteristics
+FROM
+	Catalog.ProductsAndServices AS ProductsAndServices
+		INNER JOIN Catalog.ProductsAndServicesCharacteristics AS ProductsAndServicesCharacteristics
+		ON (ProductsAndServicesCharacteristics.Owner = ProductsAndServices.Ref)
+			AND (&amp;UseCharacteristics)
+			AND (ProductsAndServices.UseCharacteristics)
+WHERE
+	ProductsAndServices.ProductsAndServicesType IN(&amp;PermittedProductsAndServicesTypes)
+{WHERE
+	ProductsAndServices.Ref.* AS ProductsAndServices}
+
+UNION
+
+SELECT
+	ProductsAndServices.Ref,
+	VALUE(Catalog.ProductsAndServicesCharacteristics.EmptyRef),
+	ProductsAndServices.DeletionMark,
+	ProductsAndServices.Parent,
+	ProductsAndServices.IsFolder,
+	ProductsAndServices.Code,
+	ProductsAndServices.Description,
+	ProductsAndServices.SKU,
+	ProductsAndServices.ProductsAndServicesType,
+	ProductsAndServices.MeasurementUnit,
+	ProductsAndServices.VATRate,
+	ProductsAndServices.PictureFile,
+	NULL,
+	NULL
+FROM
+	Catalog.ProductsAndServices AS ProductsAndServices
+		{LEFT JOIN Catalog.ProductsAndServices.AdditionalAttributes AS ProductsAndServicesAdditionalAttributes
+		ON ProductsAndServices.Ref = ProductsAndServicesAdditionalAttributes.Ref}
+WHERE
+	Not ProductsAndServices.IsFolder
+	AND ProductsAndServices.ProductsAndServicesType IN(&amp;PermittedProductsAndServicesTypes)
+{WHERE
+	ProductsAndServices.Ref.* AS ProductsAndServices}
+
+INDEX BY
+	ProductsAndServices,
+	Characteristic
+;
+
+////////////////////////////////////////////////////////////////////////////////
+SELECT
+	TemporaryTableProductsAndServicesCharacteristics.ProductsAndServices AS ProductsAndServices,
+	TemporaryTableProductsAndServicesCharacteristics.Characteristic AS Characteristic,
+	TemporaryTableProductsAndServicesCharacteristics.DeletionMark AS DeletionMark,
+	TemporaryTableProductsAndServicesCharacteristics.Parent AS Parent,
+	TemporaryTableProductsAndServicesCharacteristics.IsFolder AS IsFolder,
+	TemporaryTableProductsAndServicesCharacteristics.Code AS Code,
+	TemporaryTableProductsAndServicesCharacteristics.Description AS Description,
+	TemporaryTableProductsAndServicesCharacteristics.SKU AS SKU,
+	TemporaryTableProductsAndServicesCharacteristics.ProductsAndServicesType AS ProductsAndServicesType,
+	TemporaryTableProductsAndServicesCharacteristics.MeasurementUnit AS MeasurementUnit,
+	TemporaryTableProductsAndServicesCharacteristics.VATRate AS VATRate,
+	TemporaryTableProductsAndServicesCharacteristics.PictureFile AS PictureFile,
+	TemporaryTableProductsAndServicesCharacteristics.CharacteristicDescription AS CharacteristicDescription,
+	TemporaryTableProductsAndServicesCharacteristics.CharacteristicDeletionMark AS CharacteristicDeletionMark,
+	ISNULL(TemporaryTableAvailableBallance.QuantityBalance, 0) AS Balance,
+	CASE
+		WHEN TemporaryTableProductsAndServicesCharacteristics.ProductsAndServicesType = VALUE(Enum.ProductsAndServicesTypes.InventoryItem)
+			THEN "Product"
+		ELSE "Service"
+	END AS ProductsAndServicesKind
+INTO TemporaryTableProductsAndServicesCharacteristicsBalance
+FROM
+	TemporaryTableProductsAndServicesCharacteristics AS TemporaryTableProductsAndServicesCharacteristics
+		LEFT JOIN TemporaryTableAvailableBallance AS TemporaryTableAvailableBallance
+		ON TemporaryTableProductsAndServicesCharacteristics.ProductsAndServices = TemporaryTableAvailableBallance.ProductsAndServices
+			AND TemporaryTableProductsAndServicesCharacteristics.Characteristic = TemporaryTableAvailableBallance.Characteristic
+
+INDEX BY
+	ProductsAndServices,
+	Characteristic
+;
+
+////////////////////////////////////////////////////////////////////////////////
+DROP TemporaryTableAvailableBallance
+;
+
+////////////////////////////////////////////////////////////////////////////////
+DROP TemporaryTableProductsAndServicesCharacteristics
+;
+
+////////////////////////////////////////////////////////////////////////////////
+SELECT ALLOWED
+	PriceKinds.Ref AS PriceKind,
+	CASE
+		WHEN &amp;CurrencyTransactionsAccounting
+			THEN PriceKinds.PriceCurrency
+		ELSE AccountingCurrency.Value
+	END AS PriceCurrency,
+	PriceKinds.PriceIncludesVAT AS PriceIncludesVAT
+INTO TemporaryTablePriceKinds
+FROM
+	Catalog.PriceKinds AS PriceKinds
+		INNER JOIN Constant.AccountingCurrency AS AccountingCurrency
+		ON (TRUE)
+WHERE
+	PriceKinds.Ref IN(&amp;PriceKinds)
+;
+
+////////////////////////////////////////////////////////////////////////////////
+SELECT
+	TemporaryTableProductsAndServicesCharacteristicsBalance.ProductsAndServices AS ProductsAndServices,
+	TemporaryTableProductsAndServicesCharacteristicsBalance.Characteristic AS Characteristic,
+	TemporaryTableProductsAndServicesCharacteristicsBalance.DeletionMark AS DeletionMark,
+	TemporaryTableProductsAndServicesCharacteristicsBalance.Parent AS Parent,
+	TemporaryTableProductsAndServicesCharacteristicsBalance.IsFolder AS IsFolder,
+	TemporaryTableProductsAndServicesCharacteristicsBalance.Code AS Code,
+	TemporaryTableProductsAndServicesCharacteristicsBalance.Description AS Description,
+	TemporaryTableProductsAndServicesCharacteristicsBalance.SKU AS SKU,
+	TemporaryTableProductsAndServicesCharacteristicsBalance.ProductsAndServicesType AS ProductsAndServicesType,
+	TemporaryTableProductsAndServicesCharacteristicsBalance.MeasurementUnit AS MeasurementUnit,
+	TemporaryTableProductsAndServicesCharacteristicsBalance.VATRate AS ProductsAndServicesVATRate,
+	TemporaryTableProductsAndServicesCharacteristicsBalance.PictureFile AS PictureFile,
+	TemporaryTableProductsAndServicesCharacteristicsBalance.CharacteristicDescription AS CharacteristicDescription,
+	TemporaryTableProductsAndServicesCharacteristicsBalance.CharacteristicDeletionMark AS CharacteristicDeletionMark,
+	TemporaryTableProductsAndServicesCharacteristicsBalance.ProductsAndServicesKind AS ProductsAndServicesKind,
+	TemporaryTableProductsAndServicesCharacteristicsBalance.Balance AS Balance,
+	TemporaryTablePriceKinds.PriceKind AS PriceKind,
+	TemporaryTablePriceKinds.PriceCurrency AS PriceCurrency,
+	TemporaryTablePriceKinds.PriceIncludesVAT AS PriceIncludesVAT
+INTO TemporaryTableProductsAndServicesPriceKinds
+FROM
+	TemporaryTableProductsAndServicesCharacteristicsBalance AS TemporaryTableProductsAndServicesCharacteristicsBalance
+		INNER JOIN TemporaryTablePriceKinds AS TemporaryTablePriceKinds
+		ON (TRUE)
+
+INDEX BY
+	ProductsAndServices,
+	Characteristic,
+	PriceKind
+;
+
+////////////////////////////////////////////////////////////////////////////////
+SELECT ALLOWED
+	TemporaryTableProductsAndServicesPriceKinds.ProductsAndServices AS ProductsAndServices,
+	TemporaryTableProductsAndServicesPriceKinds.Characteristic AS Characteristic,
+	TemporaryTableProductsAndServicesPriceKinds.DeletionMark AS DeletionMark,
+	TemporaryTableProductsAndServicesPriceKinds.Parent AS Parent,
+	TemporaryTableProductsAndServicesPriceKinds.IsFolder AS IsFolder,
+	TemporaryTableProductsAndServicesPriceKinds.Code AS Code,
+	TemporaryTableProductsAndServicesPriceKinds.Description AS Description,
+	TemporaryTableProductsAndServicesPriceKinds.SKU AS SKU,
+	TemporaryTableProductsAndServicesPriceKinds.ProductsAndServicesType AS ProductsAndServicesType,
+	TemporaryTableProductsAndServicesPriceKinds.MeasurementUnit AS MeasurementUnit,
+	TemporaryTableProductsAndServicesPriceKinds.ProductsAndServicesVATRate AS ProductsAndServicesVATRate,
+	TemporaryTableProductsAndServicesPriceKinds.PictureFile AS PictureFile,
+	TemporaryTableProductsAndServicesPriceKinds.CharacteristicDescription AS CharacteristicDescription,
+	TemporaryTableProductsAndServicesPriceKinds.CharacteristicDeletionMark AS CharacteristicDeletionMark,
+	TemporaryTableProductsAndServicesPriceKinds.PriceKind AS PriceKind,
+	TemporaryTableProductsAndServicesPriceKinds.PriceCurrency AS PriceCurrency,
+	TemporaryTableProductsAndServicesPriceKinds.PriceIncludesVAT AS PriceIncludesVAT,
+	TemporaryTableProductsAndServicesPriceKinds.ProductsAndServicesKind AS ProductsAndServicesKind,
+	TemporaryTableProductsAndServicesPriceKinds.Balance AS Balance,
+	ProductsAndServicesPricesSliceLast.Price AS Price
+INTO TemporaryTablePrices
+FROM
+	TemporaryTableProductsAndServicesPriceKinds AS TemporaryTableProductsAndServicesPriceKinds
+		LEFT JOIN InformationRegister.ProductsAndServicesPrices.SliceLast(
+				,
+				Actuality
+					AND (ProductsAndServices, Characteristic) In
+						(SELECT
+							TemporaryTableProductsAndServicesCharacteristicsBalance.ProductsAndServices,
+							TemporaryTableProductsAndServicesCharacteristicsBalance.Characteristic
+						FROM
+							TemporaryTableProductsAndServicesCharacteristicsBalance AS TemporaryTableProductsAndServicesCharacteristicsBalance)) AS ProductsAndServicesPricesSliceLast
+		ON TemporaryTableProductsAndServicesPriceKinds.ProductsAndServices = ProductsAndServicesPricesSliceLast.ProductsAndServices
+			AND TemporaryTableProductsAndServicesPriceKinds.Characteristic = ProductsAndServicesPricesSliceLast.Characteristic
+			AND TemporaryTableProductsAndServicesPriceKinds.PriceKind = ProductsAndServicesPricesSliceLast.PriceKind
+
+INDEX BY
+	ProductsAndServices,
+	Characteristic
+;
+
+////////////////////////////////////////////////////////////////////////////////
+DROP TemporaryTableProductsAndServicesPriceKinds
+;
+
+////////////////////////////////////////////////////////////////////////////////
+SELECT ALLOWED
+	TemporaryTablePrices.ProductsAndServices AS ProductsAndServices,
+	TemporaryTablePrices.Characteristic AS Characteristic,
+	MAX(ProductsAndServicesBarcodes.Barcode) AS Barcode
+INTO TemporaryTableBarcodesForPrices
+FROM
+	TemporaryTablePrices AS TemporaryTablePrices
+		INNER JOIN InformationRegister.ProductsAndServicesBarcodes AS ProductsAndServicesBarcodes
+		ON TemporaryTablePrices.ProductsAndServices = ProductsAndServicesBarcodes.ProductsAndServices
+			AND TemporaryTablePrices.Characteristic = ProductsAndServicesBarcodes.Characteristic
+
+GROUP BY
+	TemporaryTablePrices.ProductsAndServices,
+	TemporaryTablePrices.Characteristic
+
+INDEX BY
+	ProductsAndServices,
+	Characteristic
+;
+
+////////////////////////////////////////////////////////////////////////////////
+SELECT ALLOWED
+	TemporaryTablePrices.ProductsAndServices AS ProductsAndServices,
+	TemporaryTablePrices.Characteristic AS Characteristic,
+	TemporaryTablePrices.DeletionMark AS DeletionMark,
+	TemporaryTablePrices.Parent AS Parent,
+	TemporaryTablePrices.IsFolder AS IsFolder,
+	TemporaryTablePrices.Code AS Code,
+	TemporaryTablePrices.Description AS Description,
+	TemporaryTablePrices.SKU AS SKU,
+	TemporaryTablePrices.ProductsAndServicesType AS ProductsAndServicesType,
+	TemporaryTablePrices.MeasurementUnit AS MeasurementUnit,
+	TemporaryTablePrices.MeasurementUnit.Code AS MeasurementUnitCode,
+	TemporaryTablePrices.MeasurementUnit.DescriptionFull AS MeasurementUnitDescriptionFull,
+	TemporaryTablePrices.MeasurementUnit.InternationalAbbreviation AS MeasurementUnitInternationalAbbreviation,
+	TemporaryTablePrices.ProductsAndServicesVATRate AS ProductsAndServicesVATRate,
+	TemporaryTablePrices.PictureFile AS PictureFile,
+	TemporaryTablePrices.CharacteristicDescription AS CharacteristicDescription,
+	TemporaryTablePrices.CharacteristicDeletionMark AS CharacteristicDeletionMark,
+	TemporaryTablePrices.PriceKind AS PriceKind,
+	TemporaryTablePrices.PriceCurrency AS PriceCurrency,
+	TemporaryTablePrices.PriceIncludesVAT AS PriceIncludesVAT,
+	TemporaryTablePrices.Price AS Price,
+	TemporaryTablePrices.Balance AS Balance,
+	ISNULL(TemporaryTableBarcodesForPrices.Barcode, "") AS Barcode,
+	TemporaryTablePrices.ProductsAndServicesKind AS ProductsAndServicesKind
+FROM
+	TemporaryTablePrices AS TemporaryTablePrices
+		LEFT JOIN TemporaryTableBarcodesForPrices AS TemporaryTableBarcodesForPrices
+		ON TemporaryTablePrices.ProductsAndServices = TemporaryTableBarcodesForPrices.ProductsAndServices
+			AND TemporaryTablePrices.Characteristic = TemporaryTableBarcodesForPrices.Characteristic
+WHERE
+	TemporaryTablePrices.Price &gt; 0
+
+ORDER BY
+	ProductsAndServices,
+	Characteristic</query>
+	</dataSet>
+	<parameter>
+		<name>Period</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Period</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>UseCharacteristics</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Use characteristics</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:boolean</v8:Type>
+		</valueType>
+		<value xsi:type="xs:boolean">true</value>
+		<useRestriction>true</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>CompanyFolderOwner</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Counterparty directory owner</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef.Companies</v8:Type>
+		</valueType>
+		<value xsi:nil="true"/>
+		<useRestriction>true</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>PriceKinds</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Price kinds</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef.PriceKinds</v8:Type>
+		</valueType>
+		<value xsi:nil="true"/>
+		<useRestriction>true</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>CurrencyTransactionsAccounting</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Currency transactions</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:boolean</v8:Type>
+		</valueType>
+		<value xsi:type="xs:boolean">true</value>
+		<useRestriction>true</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>PermittedPictureTypes</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Permitted picture types</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:string</v8:Type>
+			<v8:StringQualifiers>
+				<v8:Length>0</v8:Length>
+				<v8:AllowedLength>Variable</v8:AllowedLength>
+			</v8:StringQualifiers>
+		</valueType>
+		<value xsi:type="xs:string"/>
+		<useRestriction>true</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>PermittedProductsAndServicesTypes</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Allowed products and services types</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:EnumRef.ProductsAndServicesTypes</v8:Type>
+		</valueType>
+		<value xsi:nil="true"/>
+		<useRestriction>true</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>Default</dcsset:name>
+		<dcsset:presentation xsi:type="xs:string">Default</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>SKU</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>PriceCurrency</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>PriceKind</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Parent</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>MeasurementUnit</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>MeasurementUnitCode</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>MeasurementUnitDescriptionFull</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>MeasurementUnitInternationalAbbreviation</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Code</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Description</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ProductsAndServices</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ProductsAndServicesVATRate</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Balance</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>DeletionMark</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ProductsAndServicesType</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>PictureFile</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Characteristic</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Price</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>PriceIncludesVAT</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>IsFolder</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>CharacteristicDeletionMark</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Barcode</dcsset:field>
+				</dcsset:item>
+			</dcsset:selection>
+			<dcsset:filter>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">ProductsAndServices</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="dcscor:DesignTimeValue">Catalog.ProductsAndServices.EmptyRef</dcsset:right>
+					<dcsset:userSettingID>b2c79129-42a0-4915-af9b-c6892ff1904c</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Balance</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="xs:decimal">0</dcsset:right>
+					<dcsset:userSettingID>ea57a1ae-ea61-4ffb-98d1-770f20a31dea</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">WarehouseForBalances</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="dcscor:DesignTimeValue">Catalog.StructuralUnits.EmptyRef</dcsset:right>
+					<dcsset:userSettingID>f11bd747-f0a0-4524-904a-0162a3e40db3</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:viewMode>Normal</dcsset:viewMode>
+				<dcsset:userSettingID>fbb967c1-2f89-40b1-ae39-9a6bf34a7b84</dcsset:userSettingID>
+				<dcsset:userSettingPresentation xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Filter</v8:content>
+					</v8:item>
+				</dcsset:userSettingPresentation>
+			</dcsset:filter>
+			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>UseCharacteristics</dcscor:parameter>
+					<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>CurrencyTransactionsAccounting</dcscor:parameter>
+					<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+				</dcscor:item>
+			</dcsset:dataParameters>
+			<dcsset:order>
+				<dcsset:viewMode>Normal</dcsset:viewMode>
+				<dcsset:userSettingPresentation xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Sort</v8:content>
+					</v8:item>
+				</dcsset:userSettingPresentation>
+			</dcsset:order>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

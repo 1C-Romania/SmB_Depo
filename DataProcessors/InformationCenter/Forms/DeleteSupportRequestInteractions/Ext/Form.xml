@@ -1,0 +1,500 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="FormAddNewMessage" id="18">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.AddNewMessage</CommandName>
+				<ExtendedTooltip name="FormAddNewMessageExtendedTooltip" id="26"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="CommandGroup" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Command group</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="CommandGroupExtendedTooltip" id="27"/>
+			<ChildItems>
+				<Button name="Refresh" id="17">
+					<Type>UsualButton</Type>
+					<Width>10</Width>
+					<CommandName>Form.Command.Refresh</CommandName>
+					<ExtendedTooltip name="RefreshExtendedTooltip" id="28"/>
+				</Button>
+				<Button name="Previous" id="13">
+					<Type>UsualButton</Type>
+					<CommandName>Form.Command.Previous</CommandName>
+					<ExtendedTooltip name="PreviousExtendedTooltip" id="29"/>
+				</Button>
+				<LabelDecoration name="Range" id="14">
+					<TextColor>#008000</TextColor>
+					<ContextMenu name="RangeContextMenu" id="15"/>
+					<ExtendedTooltip name="RangeExtendedTooltip" id="30"/>
+				</LabelDecoration>
+				<Button name="TheFollowing" id="16">
+					<Type>UsualButton</Type>
+					<CommandName>Form.Command.TheFollowing</CommandName>
+					<ExtendedTooltip name="FollowingExtendedTooltip" id="31"/>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
+		<Table name="InteractionsTable" id="1">
+			<Representation>List</Representation>
+			<TitleHeight>2</TitleHeight>
+			<ReadOnly>true</ReadOnly>
+			<Height>7</Height>
+			<SelectionMode>SingleRow</SelectionMode>
+			<RowSelectionMode>Row</RowSelectionMode>
+			<UseAlternationRowColor>true</UseAlternationRowColor>
+			<EnableStartDrag>true</EnableStartDrag>
+			<EnableDrag>true</EnableDrag>
+			<DataPath>InteractionsList</DataPath>
+			<SearchStringLocation>None</SearchStringLocation>
+			<ViewStatusLocation>None</ViewStatusLocation>
+			<SearchControlLocation>None</SearchControlLocation>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="InteractionsTableContextMenu" id="2"/>
+			<AutoCommandBar name="InteractionsTableCommandBar" id="3">
+				<Autofill>false</Autofill>
+			</AutoCommandBar>
+			<ExtendedTooltip name="InteractionsTableExtendedTooltip" id="32"/>
+			<SearchStringAddition name="InteractionsTableSearchString" id="41">
+				<AdditionSource>
+					<Item>InteractionsTable</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="InteractionsTableSearchStringContextMenu" id="42"/>
+				<ExtendedTooltip name="InteractionsTableSearchStringExtendedTooltip" id="43"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="InteractionsTableViewStatus" id="44">
+				<AdditionSource>
+					<Item>InteractionsTable</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="InteractionsTableStatusViewContextMenu" id="45"/>
+				<ExtendedTooltip name="InteractionsTableViewStatusExtendedTooltip" id="46"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="InteractionsTableSearchManagement" id="47">
+				<AdditionSource>
+					<Item>InteractionsTable</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="InteractionsTableSearchManagementContextMenu" id="48"/>
+				<ExtendedTooltip name="InteractionsTableSearchManagementExtendedTooltip" id="49"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="OnActivateRow">InteractionsTableOnActivateRow</Event>
+			</Events>
+			<ChildItems>
+				<PictureField name="InteractionsTablePictureTypeMessages" id="6">
+					<DataPath>InteractionsList.PictureTypeMessage</DataPath>
+					<HorizontalAlign>Center</HorizontalAlign>
+					<EditMode>EnterOnInput</EditMode>
+					<Zoomable>true</Zoomable>
+					<ContextMenu name="InteractionsTablePictureTypeMessagesContextMenu" id="7"/>
+					<ExtendedTooltip name="InteractionsTablePictureTypeMessagesExtendedTooltip" id="33"/>
+				</PictureField>
+				<InputField name="InteractionsTableMessageDate" id="8">
+					<DataPath>InteractionsList.MessageDate</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<Height>2</Height>
+					<Format>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>DF='ddd dd.MM.yyyy HH:mm'</v8:content>
+						</v8:item>
+					</Format>
+					<EditFormat>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>DF='ddd dd.MM.yyyy HH:mm'</v8:content>
+						</v8:item>
+					</EditFormat>
+					<ContextMenu name="InteractionsTableDateMessageContextMenu" id="9"/>
+					<ExtendedTooltip name="InteractionsTableMessageDateExtendedTooltip" id="34"/>
+				</InputField>
+				<InputField name="InteractionsTableMessageText" id="4">
+					<DataPath>InteractionsList.MessageText</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<Height>2</Height>
+					<ContextMenu name="InteractionsTableMessageTextContextMenu" id="5"/>
+					<ExtendedTooltip name="InteractionsTableTextMessagesExtendedTooltip" id="35"/>
+				</InputField>
+			</ChildItems>
+		</Table>
+		<UsualGroup name="GroupContent" id="19">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group of content</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="GroupOfExtendedTooltip" id="36"/>
+			<ChildItems>
+				<FormattedDocumentField name="CurrentMessageContent" id="10">
+					<DataPath>CurrentMessageContent</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<TitleLocation>None</TitleLocation>
+					<Width>60</Width>
+					<Height>15</Height>
+					<ContextMenu name="ContentCurrentMessagesContextMenu" id="11"/>
+					<ExtendedTooltip name="ContentCurrentMessagesExtendedTooltip" id="37"/>
+				</FormattedDocumentField>
+				<Table name="InteractionsTableAttachments" id="20">
+					<Representation>List</Representation>
+					<ReadOnly>true</ReadOnly>
+					<Width>25</Width>
+					<AutoInsertNewRow>true</AutoInsertNewRow>
+					<EnableStartDrag>true</EnableStartDrag>
+					<EnableDrag>true</EnableDrag>
+					<DataPath>Items.InteractionsTable.CurrentData.Attachments</DataPath>
+					<CommandSet>
+						<ExcludedCommand>Copy</ExcludedCommand>
+						<ExcludedCommand>SortListAsc</ExcludedCommand>
+						<ExcludedCommand>MoveUp</ExcludedCommand>
+						<ExcludedCommand>CancelSearch</ExcludedCommand>
+						<ExcludedCommand>OutputList</ExcludedCommand>
+						<ExcludedCommand>SelectAll</ExcludedCommand>
+						<ExcludedCommand>SortListDesc</ExcludedCommand>
+						<ExcludedCommand>CopyToClipboard</ExcludedCommand>
+						<ExcludedCommand>Delete</ExcludedCommand>
+						<ExcludedCommand>EndEdit</ExcludedCommand>
+						<ExcludedCommand>Add</ExcludedCommand>
+						<ExcludedCommand>Change</ExcludedCommand>
+						<ExcludedCommand>Find</ExcludedCommand>
+						<ExcludedCommand>MoveDown</ExcludedCommand>
+					</CommandSet>
+					<SearchStringLocation>None</SearchStringLocation>
+					<ViewStatusLocation>None</ViewStatusLocation>
+					<SearchControlLocation>None</SearchControlLocation>
+					<RowFilter xsi:nil="true"/>
+					<ContextMenu name="InteractionsTableAttachmentsContextMenu" id="21">
+						<ChildItems>
+							<Button name="SaveFile" id="25">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.SaveFile</CommandName>
+								<ExtendedTooltip name="SaveFileExtendedTooltip" id="38"/>
+							</Button>
+						</ChildItems>
+					</ContextMenu>
+					<AutoCommandBar name="InteractionsTableAttachmentsCommandPanel" id="22">
+						<Autofill>false</Autofill>
+					</AutoCommandBar>
+					<ExtendedTooltip name="InteractionsTableAttachmentsExtendedTooltip" id="39"/>
+					<SearchStringAddition name="InteractionsTableAttachmentsSearchString" id="50">
+						<AdditionSource>
+							<Item>InteractionsTableAttachments</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="InteractionsTableAttachmentsSearchStringContextMenu" id="51"/>
+						<ExtendedTooltip name="InteractionsTableAttachmentsSearchStringExtendedTooltip" id="52"/>
+					</SearchStringAddition>
+					<ViewStatusAddition name="InteractionsTableAttachmentsViewStatus" id="53">
+						<AdditionSource>
+							<Item>InteractionsTableAttachments</Item>
+							<Type>ViewStatusRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="InteractionsTableAttachmentsViewStatusContextMenu" id="54"/>
+						<ExtendedTooltip name="InteractionsTableAttachmentsViewStatusExtendedTooltip" id="55"/>
+					</ViewStatusAddition>
+					<SearchControlAddition name="InteractionsTableAttachmentsSearchManagement" id="56">
+						<AdditionSource>
+							<Item>InteractionsTableAttachments</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<ContextMenu name="InteractionsTableAttachmentsSearchManagementContextMenu" id="57"/>
+						<ExtendedTooltip name="InteractionsTableAttachmentsSearchManagementExtendedTooltip" id="58"/>
+					</SearchControlAddition>
+					<ChildItems>
+						<InputField name="InteractionsTableAttachmentsName" id="23">
+							<DataPath>Items.InteractionsTable.CurrentData.Attachments.Name</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="InteractionsTableAttachmentsNameContextMenu" id="24"/>
+							<ExtendedTooltip name="InteractionsTableAttachmentsNameExtendedTooltip" id="40"/>
+						</InputField>
+					</ChildItems>
+				</Table>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="InteractionsList" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Interactions list</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="MessageText" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Text</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="PictureTypeMessage" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content> </v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>v8ui:Picture</v8:Type>
+					</Type>
+				</Column>
+				<Column name="MessageDate" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Date</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>DateTime</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+				<Column name="HTMLText" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>HTML text</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="HTMLAttachments" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>HTML Attachments</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>v8:ValueListType</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ID" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>ID</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>v8:UUID</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Attachments" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Attachments</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>v8:ValueTable</v8:Type>
+					</Type>
+				</Column>
+				<AdditionalColumns table="InteractionsList.Attachments">
+					<Column name="Name" id="1">
+						<Title>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Nested files</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:string</v8:Type>
+							<v8:StringQualifiers>
+								<v8:Length>0</v8:Length>
+								<v8:AllowedLength>Variable</v8:AllowedLength>
+							</v8:StringQualifiers>
+						</Type>
+					</Column>
+					<Column name="ID" id="2">
+						<Title>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>ID</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>v8:UUID</v8:Type>
+						</Type>
+					</Column>
+				</AdditionalColumns>
+			</Columns>
+		</Attribute>
+		<Attribute name="CurrentMessageContent" id="3">
+			<Type>
+				<v8:Type xmlns:fd="http://v8.1c.ru/8.2/data/formatted-document">fd:FormattedDocument</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="SupportRequestID" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Support request identifier</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:UUID</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="CurrentPageNumber" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Current page number</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="Previous" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>&lt;&lt; Previous</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Previous</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Previous</Action>
+			<Representation>Text</Representation>
+		</Command>
+		<Command name="TheFollowing" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Next &gt;&gt;</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>TheFollowing</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Forward</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>TheFollowing</Action>
+			<Representation>Text</Representation>
+		</Command>
+		<Command name="Refresh" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Refresh</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Update message list</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Shortcut>F5</Shortcut>
+			<Picture>
+				<xr:Ref>StdPicture.Refresh</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Refresh</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="AddNewMessage" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Add a new message</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Add a new message</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.MessageToSupport</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>AddNewMessage</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="SaveFile" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Save file</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Save file</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.SaveFileAs</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>SaveFile</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+	</Commands>
+</Form>

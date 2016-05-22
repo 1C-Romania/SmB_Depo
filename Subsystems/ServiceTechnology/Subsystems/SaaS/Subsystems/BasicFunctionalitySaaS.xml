@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<MetaDataObject xmlns="http://v8.1c.ru/8.3/MDClasses" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:cmi="http://v8.1c.ru/8.2/managed-application/cmi" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xpr="http://v8.1c.ru/8.3/xcf/predef" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Subsystem uuid="10441633-2461-422d-864d-a8bdf790d8c7">
+		<Properties>
+			<Name>BasicFunctionalitySaaS</Name>
+			<Synonym>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Basic functionality in the service model</v8:content>
+				</v8:item>
+			</Synonym>
+			<Comment/>
+			<IncludeHelpInContents>true</IncludeHelpInContents>
+			<IncludeInCommandInterface>false</IncludeInCommandInterface>
+			<Explanation/>
+			<Picture/>
+			<Content>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.WorkInSafeModeServiceSaaS</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">XDTOPackage.ApplicationManifest_1_0_0_1</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">XDTOPackage.ApplicationPermissionsManagement_1_0_0_1</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">XDTOPackage.ApplicationPermissionsManifest_1_0_0_1</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.SaaSSTL</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.PermissionSettingsForExternalResourcesUseSaaS</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.MessagesPermissionsManagementControlInterface</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.MessagesPermissionsManagementControlMessageHandler_1_0_0_1</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Enum.QueryProcessingResultsForExternalResourcesUseSaaS</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">XDTOPackage.ApplicationPermissionsControl_1_0_0_1</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">XDTOPackage.ServiceCommon</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.MessagesPermissionsManagementControlSales</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.PermissionForExternalResourcesUseSettingsSaaSGlobal</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.PermissionForExternalResourcesUseSettingsSaaSClient</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Constant.ControlApplicationExternalAddress</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.RequestsForPermissionsToUseExternalResourcesSaaS</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">f327727d-76e1-4c24-b670-c31b7da45508</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.ExternalResourcesUsingPermissionsSaaS</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.PermissionOnUseDataAreasExternalResources</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.ExternalModulesConnectionModesSaaS</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">e06e0db9-40ef-48e5-ab0a-1fc75814d589</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.PermissionSettingOnExternalResourcesSaaSServerCall</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.PermissionApplicationOnUseExternalResourcesSaaS</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.PermissionApplicationOnUseExternalResourcesDataAreas</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.PermissionQueriesOnUseDataAreasExternalResources</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.ExternalModulesConnectionModesDataAreas</xr:Item>
+			</Content>
+		</Properties>
+		<ChildObjects/>
+	</Subsystem>
+</MetaDataObject>

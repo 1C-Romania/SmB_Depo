@@ -1,0 +1,1024 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Title>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Attributes of stamp</v8:content>
+		</v8:item>
+	</Title>
+	<Width>60</Width>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<CommandBarLocation>Bottom</CommandBarLocation>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<CommandSet>
+		<ExcludedCommand>No</ExcludedCommand>
+		<ExcludedCommand>CustomizeForm</ExcludedCommand>
+		<ExcludedCommand>SaveValues</ExcludedCommand>
+		<ExcludedCommand>Close</ExcludedCommand>
+		<ExcludedCommand>Abort</ExcludedCommand>
+		<ExcludedCommand>Retry</ExcludedCommand>
+		<ExcludedCommand>Yes</ExcludedCommand>
+		<ExcludedCommand>Cancel</ExcludedCommand>
+		<ExcludedCommand>RestoreValues</ExcludedCommand>
+		<ExcludedCommand>Ignore</ExcludedCommand>
+		<ExcludedCommand>OK</ExcludedCommand>
+	</CommandSet>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<HorizontalAlign>Right</HorizontalAlign>
+		<ChildItems>
+			<Button name="FormOK" id="34">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.OK</CommandName>
+				<ExtendedTooltip name="FormOKExtendedTooltip" id="104"/>
+			</Button>
+			<Button name="FormCancel" id="35">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.Cancel</CommandName>
+				<ExtendedTooltip name="FormCancelExtendedTooltip" id="105"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnOpen">OnOpen</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="GroupPrint" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Print</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group print</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="GroupPrintExtendedTooltip" id="106"/>
+			<ChildItems>
+				<UsualGroup name="GroupBasis" id="141">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Basis</v8:content>
+						</v8:item>
+					</Title>
+					<TitleTextColor>style:TitleColorSettingsGroup</TitleTextColor>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Basis</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Horizontal</Group>
+					<Representation>NormalSeparation</Representation>
+					<ExtendedTooltip name="GroupBasisExtendedTooltip" id="142"/>
+					<ChildItems>
+						<InputField name="StampBase" id="2">
+							<DataPath>StampBase</DataPath>
+							<DropListButton>true</DropListButton>
+							<ChoiceListButton>true</ChoiceListButton>
+							<ContextMenu name="StampBaseContextMenu" id="3"/>
+							<ExtendedTooltip name="StampBaseExtendedTooltip" id="107"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<Pages name="Pages" id="293">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Pages</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Pages</v8:content>
+				</v8:item>
+			</ToolTip>
+			<ExtendedTooltip name="PagesExtendedTooltip" id="294"/>
+			<ChildItems>
+				<Page name="PageDefault" id="295">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Default</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Main page</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="PageDefaultExtendedTooltip" id="296"/>
+					<ChildItems>
+						<UsualGroup name="GroupPrintAttributes" id="4">
+							<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupPrintAttributesExtendedTooltip" id="108"/>
+							<ChildItems>
+								<UsualGroup name="GroupCompanyBankAcc" id="5">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Bank accounts</v8:content>
+										</v8:item>
+									</Title>
+									<TitleTextColor>style:TitleColorSettingsGroup</TitleTextColor>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Print left</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Vertical</Group>
+									<Representation>NormalSeparation</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupCompanyBankAccExtendedTooltip" id="130"/>
+									<ChildItems>
+										<InputField name="Company" id="278">
+											<DataPath>Company</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<ContextMenu name="CompanyContextMenu" id="279"/>
+											<ExtendedTooltip name="CompanyExtendedTooltip" id="280"/>
+										</InputField>
+										<InputField name="BankAccountOfTheCompany" id="155">
+											<DataPath>BankAccountOfTheCompany</DataPath>
+											<ChoiceParameterLinks>
+												<xr:Link>
+													<xr:Name>Filter.Owner</xr:Name>
+													<xr:DataPath xsi:type="xs:string">Company</xr:DataPath>
+													<xr:ValueChange>Clear</xr:ValueChange>
+												</xr:Link>
+											</ChoiceParameterLinks>
+											<ContextMenu name="CompanyBankAccContextMenu" id="156"/>
+											<ExtendedTooltip name="BankAccountCompaniesExtendedTooltip" id="157"/>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="GroupCounterpartyBankAcc" id="27">
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Print left</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupCounterpartyBankAccExtendedTooltip" id="109"/>
+									<ChildItems>
+										<InputField name="Counterparty" id="281">
+											<DataPath>Counterparty</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<ContextMenu name="CounterpartyContextMenu" id="282"/>
+											<ExtendedTooltip name="CounterpartyExtendedTooltip" id="283"/>
+										</InputField>
+										<InputField name="CounterpartyBankAcc" id="173">
+											<DataPath>CounterpartyBankAcc</DataPath>
+											<ChoiceParameterLinks>
+												<xr:Link>
+													<xr:Name>Filter.Owner</xr:Name>
+													<xr:DataPath xsi:type="xs:string">Counterparty</xr:DataPath>
+													<xr:ValueChange>Clear</xr:ValueChange>
+												</xr:Link>
+											</ChoiceParameterLinks>
+											<ContextMenu name="CounterpartyBankAccContextMenu" id="174"/>
+											<ExtendedTooltip name="CounterpartyBankAccExtendedTooltip" id="175"/>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+								<LabelDecoration name="WarningBankAccounts" id="284">
+									<ContextMenu name="WarningBankAccountsContextMenu" id="285"/>
+									<ExtendedTooltip name="WarningBankAccountsExtendedTooltip" id="286"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="PageCarrier" id="297">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Transportation</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Page carrier</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="PageCarrierExtendedTooltip" id="298"/>
+					<ChildItems>
+						<UsualGroup name="GroupShipping" id="176">
+							<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group shipping</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupShippingExtendedTooltip" id="177"/>
+							<ChildItems>
+								<UsualGroup name="GroupLogistics" id="272">
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group logistics</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupLogisticsExtendedTooltip" id="273"/>
+									<ChildItems>
+										<InputField name="Consignor" id="161">
+											<DataPath>Consignor</DataPath>
+											<ContextMenu name="ConsignorContextMenu" id="162"/>
+											<ExtendedTooltip name="ConsignorExtendedTooltip" id="163"/>
+										</InputField>
+										<InputField name="Consignee" id="158">
+											<DataPath>Consignee</DataPath>
+											<ContextMenu name="ConsigneeContextMenu" id="159"/>
+											<ExtendedTooltip name="ConsigneeExtendedTooltip" id="160"/>
+											<Events>
+												<Event name="OnChange">ConsigneeOnChange</Event>
+											</Events>
+										</InputField>
+										<InputField name="ShippingAddress" id="167">
+											<DataPath>ShippingAddress</DataPath>
+											<DropListButton>true</DropListButton>
+											<ContextMenu name="ShippingAddressContextMenu" id="168"/>
+											<ExtendedTooltip name="ShippingAddressExtendedTooltip" id="169"/>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="GroupCarrierData" id="200">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Carrier</v8:content>
+								</v8:item>
+							</Title>
+							<TitleTextColor>style:TitleColorSettingsGroup</TitleTextColor>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group carrier data</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Representation>NormalSeparation</Representation>
+							<ExtendedTooltip name="GroupCarrierDataExtendedTooltip" id="201"/>
+							<ChildItems>
+								<InputField name="Carrier" id="180">
+									<DataPath>Carrier</DataPath>
+									<ContextMenu name="TransporterContextMenu" id="181"/>
+									<ExtendedTooltip name="CarrierExtendedTooltip" id="182"/>
+								</InputField>
+								<InputField name="CarrierBankAccount" id="183">
+									<DataPath>CarrierBankAccount</DataPath>
+									<ChoiceParameterLinks>
+										<xr:Link>
+											<xr:Name>Filter.Owner</xr:Name>
+											<xr:DataPath xsi:type="xs:string">Carrier</xr:DataPath>
+											<xr:ValueChange>Clear</xr:ValueChange>
+										</xr:Link>
+									</ChoiceParameterLinks>
+									<ContextMenu name="CarrierBankAccountContextMenu" id="184"/>
+									<ExtendedTooltip name="CarrierBankAccountExtendedTooltip" id="185"/>
+								</InputField>
+								<InputField name="DeliveryTerm" id="186">
+									<DataPath>DeliveryTerm</DataPath>
+									<ContextMenu name="TermDeliveryContextMenu" id="187"/>
+									<ExtendedTooltip name="DeliveryTermExtendedTooltip" id="188"/>
+								</InputField>
+								<InputField name="Driver" id="195">
+									<DataPath>Driver</DataPath>
+									<ContextMenu name="DriverContextMenu" id="196"/>
+									<ExtendedTooltip name="DriverExtendedTooltip" id="197"/>
+								</InputField>
+								<InputField name="Vehicle" id="189">
+									<DataPath>Vehicle</DataPath>
+									<ChoiceParameters>
+										<app:item name="Filter.VehicleType">
+											<app:value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.VehicleKinds.EnumValue.MotorVehicle</Value>
+											</app:value>
+										</app:item>
+									</ChoiceParameters>
+									<ContextMenu name="VehicleContextMenu" id="190"/>
+									<ExtendedTooltip name="VehicleExtendedTooltip" id="191"/>
+								</InputField>
+								<InputField name="Trailer" id="192">
+									<DataPath>Trailer</DataPath>
+									<ChoiceParameters>
+										<app:item name="Filter.VehicleType">
+											<app:value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.VehicleKinds.EnumValue.TowedVehicle</Value>
+											</app:value>
+										</app:item>
+									</ChoiceParameters>
+									<ContextMenu name="TrailerContextMenu" id="193"/>
+									<ExtendedTooltip name="TrailerExtendedTooltip" id="194"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="PageResponsiblePersons" id="299">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Responsible individuals</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Page responsible persons</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="PageResponsiblePersonsExtendedTooltip" id="300"/>
+					<ChildItems>
+						<UsualGroup name="GroupResponsiblePersons" id="202">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Responsible individuals</v8:content>
+								</v8:item>
+							</Title>
+							<TitleTextColor>style:TitleColorSettingsGroup</TitleTextColor>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group responsible persons</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Representation>NormalSeparation</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupResponsiblePersonsExtendedTooltip" id="203"/>
+							<ChildItems>
+								<InputField name="Head" id="207">
+									<DataPath>Head</DataPath>
+									<ContextMenu name="HeadContextMenu" id="208"/>
+									<ExtendedTooltip name="HeadExtendedTooltip" id="209"/>
+								</InputField>
+								<InputField name="HeadPosition" id="287">
+									<DataPath>HeadPosition</DataPath>
+									<ContextMenu name="HeadPositionContextMenu" id="288"/>
+									<ExtendedTooltip name="HeadPositionExtendedTooltip" id="289"/>
+								</InputField>
+								<LabelDecoration name="IndentDecoration" id="290">
+									<ContextMenu name="IndentDecorationContextMenu" id="291"/>
+									<ExtendedTooltip name="DecorationIndentExtendedTooltip" id="292"/>
+								</LabelDecoration>
+								<InputField name="ChiefAccountant" id="204">
+									<DataPath>ChiefAccountant</DataPath>
+									<ContextMenu name="ChiefAccountantContextMenu" id="205"/>
+									<ExtendedTooltip name="ChiefAccountantExtendedTooltip" id="206"/>
+								</InputField>
+								<InputField name="Released" id="210">
+									<DataPath>Released</DataPath>
+									<ContextMenu name="ReleasedByContextMenu" id="211"/>
+									<ExtendedTooltip name="ReleasedByExtendedTooltip" id="212"/>
+								</InputField>
+								<InputField name="ReleasedPosition" id="213">
+									<DataPath>ReleasedPosition</DataPath>
+									<ContextMenu name="ReleasedByPositionContextMenu" id="214"/>
+									<ExtendedTooltip name="ReleasedByPositionExtendedTooltip" id="215"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="PagePowerOfAttorney" id="301">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Power of attorney</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Page power of attorney</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="PagePowerOfAttorneyExtendedTooltip" id="302"/>
+					<ChildItems>
+						<UsualGroup name="GroupPowerOfAttorney" id="236">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Power of attorney</v8:content>
+								</v8:item>
+							</Title>
+							<TitleTextColor>style:TitleColorSettingsGroup</TitleTextColor>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group carrier data</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Representation>NormalSeparation</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupPowerOfAttorneyExtendedTooltip" id="237"/>
+							<ChildItems>
+								<UsualGroup name="GroupPowerOfAttorneyNumberDate" id="258">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group power of attorney number date</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group power of attorney number date</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupPowerOfAttorneyNumberDateExtendedTooltip" id="259"/>
+									<ChildItems>
+										<InputField name="PowerOfAttorneyNumber" id="260">
+											<DataPath>PowerOfAttorneyNumber</DataPath>
+											<Width>14</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ContextMenu name="PowerOfAttorneyNumberContextMenu" id="261"/>
+											<ExtendedTooltip name="PowerOfAttorneyNumberExtendedTooltip" id="262"/>
+										</InputField>
+										<InputField name="PowerOfAttorneyDate" id="263">
+											<DataPath>PowerOfAttorneyDate</DataPath>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ContextMenu name="PowerOfAttorneyDateContextMenu" id="264"/>
+											<ExtendedTooltip name="PowerOfAttorneyDateExtendedTooltip" id="265"/>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+								<InputField name="PowerOfAttorneyIssued" id="266">
+									<DataPath>PowerOfAttorneyIssued</DataPath>
+									<ContextMenu name="PowerOfAttorneyIssuedContextMenu" id="267"/>
+									<ExtendedTooltip name="PowerOfAttorneyIssuedExtendedTooltip" id="268"/>
+								</InputField>
+								<InputField name="PowerAttorneyPerson" id="269">
+									<DataPath>PowerAttorneyPerson</DataPath>
+									<ContextMenu name="PowerAttorneyPersonContextMenu" id="270"/>
+									<ExtendedTooltip name="PowerAttorneyPersonExtendedTooltip" id="271"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="StampBase" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Basis</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>300</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="BankAccountOfTheCompany" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Company's account</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.BankAccounts</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Consignee" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Consignee</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Counterparties</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="Consignor" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Consignor</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Counterparties</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ShippingAddress" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Shipping address</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>500</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="CounterpartyBankAcc" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Account of counterparty</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.BankAccounts</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="CarrierBankAccount" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Carrier account</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.BankAccounts</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="Carrier" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Carrier</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Counterparties</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="DeliveryTerm" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Delivery date</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="Vehicle" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Vehicle</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Vehicles</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="Trailer" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Trailer</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Vehicles</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Driver" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Driver</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Individuals</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="Head" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Manager</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Employees</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ChiefAccountant" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Chief accountant</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Employees</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="Released" id="17">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Released</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Employees</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ReleasedPosition" id="18">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Released by position</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Positions</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="PowerOfAttorneyDate" id="19">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>from</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="PowerOfAttorneyNumber" id="20">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Number</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>15</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="PowerOfAttorneyIssued" id="21">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Issued by</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>100</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="PowerAttorneyPerson" id="22">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Issued to</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Individuals</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="SaveParameters" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Save parameters</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Company" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Company</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Companies</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Counterparty" id="23">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Counterparty</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Counterparties</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="HeadPosition" id="24">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Manager position</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Positions</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Source" id="25">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Source</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>25</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="CounterpartyContract" id="26">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Counterparty contract</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.CounterpartyContracts</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="BasisDocument" id="27">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Basis document</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DocumentRef.SupplierInvoice</v8:Type>
+				<v8:Type>cfg:DocumentRef.InvoiceForPayment</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="OK" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>OK</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>OK</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>OK</Action>
+		</Command>
+		<Command name="Cancel" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Cancel</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Cancel</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Cancel</Action>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="Contract">
+			<Type>
+				<v8:Type>cfg:CatalogRef.CounterpartyContracts</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ShippingAddress">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>500</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="Consignor">
+			<Type>
+				<v8:Type>cfg:CatalogRef.Counterparties</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="Consignee">
+			<Type>
+				<v8:Type>cfg:CatalogRef.Counterparties</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ShipperBankAccount">
+			<Type>
+				<v8:Type>cfg:CatalogRef.BankAccounts</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ConsigneeBankAccount">
+			<Type>
+				<v8:Type>cfg:CatalogRef.BankAccounts</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="CounterpartyBankAcc">
+			<Type>
+				<v8:Type>cfg:CatalogRef.BankAccounts</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="PowerOfAttorneyNumber">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>15</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="PowerOfAttorneyDate">
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="PowerOfAttorneyIssued">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>100</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="PowerAttorneyPerson">
+			<Type>
+				<v8:Type>cfg:CatalogRef.Individuals</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="Released">
+			<Type>
+				<v8:Type>cfg:CatalogRef.Employees</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ReleasedPosition">
+			<Type>
+				<v8:Type>cfg:CatalogRef.Positions</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="Counterparty">
+			<Type>
+				<v8:Type>cfg:CatalogRef.Counterparties</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="Carrier">
+			<Type>
+				<v8:Type>cfg:CatalogRef.Counterparties</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="CarrierBankAccount">
+			<Type>
+				<v8:Type>cfg:CatalogRef.BankAccounts</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="DeliveryTerm">
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="Vehicle">
+			<Type>
+				<v8:Type>cfg:CatalogRef.Vehicles</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="Driver">
+			<Type>
+				<v8:Type>cfg:CatalogRef.Individuals</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="Date">
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="Company">
+			<Type>
+				<v8:Type>cfg:CatalogRef.Companies</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="Head">
+			<Type>
+				<v8:Type>cfg:CatalogRef.Employees</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ChiefAccountant">
+			<Type>
+				<v8:Type>cfg:CatalogRef.Employees</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="BankAccountOfTheCompany">
+			<Type>
+				<v8:Type>cfg:CatalogRef.BankAccounts</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="HeadPosition">
+			<Type>
+				<v8:Type>cfg:CatalogRef.Positions</v8:Type>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

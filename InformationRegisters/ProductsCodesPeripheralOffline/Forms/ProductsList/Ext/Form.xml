@@ -1,0 +1,1103 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Width>80</Width>
+	<Height>15</Height>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="HeaderGroup" id="30">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Header</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Header</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="HeaderGroupExtendedTooltip" id="68"/>
+			<ChildItems>
+				<UsualGroup name="FilterGroup" id="59">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Filter</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Filter</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="FilterGroupExtendedTooltip" id="69"/>
+					<ChildItems>
+						<InputField name="Filter" id="20">
+							<DataPath>Filter</DataPath>
+							<Width>24</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<TextEdit>false</TextEdit>
+							<ChoiceList>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation/>
+										<Value xsi:type="xs:string">All</Value>
+									</xr:Value>
+								</xr:Item>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation/>
+										<Value xsi:type="xs:string">modified</Value>
+									</xr:Value>
+								</xr:Item>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation/>
+										<Value xsi:type="xs:string">With errors</Value>
+									</xr:Value>
+								</xr:Item>
+							</ChoiceList>
+							<ChoiceListButton>true</ChoiceListButton>
+							<ContextMenu name="FilterContextMenu" id="21"/>
+							<ExtendedTooltip name="FilterExtendedTooltip" id="70"/>
+							<Events>
+								<Event name="OnChange">FilterOnChange</Event>
+							</Events>
+						</InputField>
+						<CommandBar name="CommandBarGroup" id="61">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Command bar</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Command bar</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ExtendedTooltip name="CommandBarGroupExtendedTooltip" id="71"/>
+							<ChildItems>
+								<Button name="Refresh" id="60">
+									<Type>CommandBarButton</Type>
+									<CommandName>Form.Command.Refresh</CommandName>
+									<ExtendedTooltip name="RefreshExtendedTooltip" id="72"/>
+								</Button>
+							</ChildItems>
+						</CommandBar>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<Table name="Products" id="1">
+			<Representation>List</Representation>
+			<ChangeRowSet>false</ChangeRowSet>
+			<ChangeRowOrder>false</ChangeRowOrder>
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<EnableStartDrag>true</EnableStartDrag>
+			<EnableDrag>true</EnableDrag>
+			<DataPath>Products</DataPath>
+			<RowPictureDataPath>Products.PictureIndexAreChanges</RowPictureDataPath>
+			<RowsPicture>
+				<xr:Ref>CommonPicture.Warning</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</RowsPicture>
+			<CommandSet>
+				<ExcludedCommand>Copy</ExcludedCommand>
+				<ExcludedCommand>Add</ExcludedCommand>
+				<ExcludedCommand>Change</ExcludedCommand>
+			</CommandSet>
+			<SearchStringLocation>None</SearchStringLocation>
+			<ViewStatusLocation>None</ViewStatusLocation>
+			<SearchControlLocation>None</SearchControlLocation>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="ProductsContextMenu" id="2">
+				<Autofill>false</Autofill>
+				<ChildItems>
+					<Button name="ProductsContextMenuProductsExport" id="46">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.ProductsExport</CommandName>
+						<ExtendedTooltip name="ProductsContextMenuProductsImportExtendedTooltip" id="73"/>
+					</Button>
+					<Button name="ProductsContextMenuProductsClear" id="47">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.ProductsClear</CommandName>
+						<ExtendedTooltip name="GoodsContextMenuProductsClearExtendedTooltip" id="74"/>
+					</Button>
+					<Button name="GoodsContextMenuGoodsReload" id="48">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.ProductsReload</CommandName>
+						<ExtendedTooltip name="ProductsContextMenuGoodsReloadExtendedTooltip" id="75"/>
+					</Button>
+					<Button name="ProductsContextMenuFind" id="49">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.Products.StandardCommand.Find</CommandName>
+						<ExtendedTooltip name="ProductsFindExtendedContextMenuToolTip" id="76"/>
+					</Button>
+					<Button name="ProductsContextMenuCancelSearch" id="50">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.Products.StandardCommand.CancelSearch</CommandName>
+						<ExtendedTooltip name="ProductsCancelSearchContextMenuExtendedTooltip" id="77"/>
+					</Button>
+					<Popup name="ProductsContextMenuPrintGroup" id="51">
+						<Title>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Print</v8:content>
+							</v8:item>
+						</Title>
+						<ToolTip>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Print</v8:content>
+							</v8:item>
+						</ToolTip>
+						<ExtendedTooltip name="ProductsContextMenuGroupPrintExtendedTooltip" id="78"/>
+						<ChildItems>
+							<Button name="GoodsContextMenuPrintGoodsCodes" id="44">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.PrintProductCodes</CommandName>
+								<ExtendedTooltip name="GoodsContextMenuPrintGoodsCodesExtendedTooltip" id="79"/>
+							</Button>
+							<Button name="GoodsContextMenuPrintPricetagsForSelectedStrings" id="45">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.PrintPricetagsForSelectedStrings</CommandName>
+								<ExtendedTooltip name="ProductsContextMenuPrintPriceTagsForSelectedRowsExtendedTooltip" id="80"/>
+							</Button>
+						</ChildItems>
+					</Popup>
+					<ButtonGroup name="GoodsContextMenuChangesRegistrationGroup" id="58">
+						<Title>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Records change</v8:content>
+							</v8:item>
+						</Title>
+						<ToolTip>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Records change</v8:content>
+							</v8:item>
+						</ToolTip>
+						<ExtendedTooltip name="GoodsContextMenuGroupChangeRegistrationExtendedTooltip" id="81"/>
+						<ChildItems>
+							<Button name="GoodsContextMenuRegisterChanges" id="54">
+								<Type>CommandBarButton</Type>
+								<OnlyInAllActions>false</OnlyInAllActions>
+								<CommandName>Form.Command.RegisterChangingForSelectedString</CommandName>
+								<ExtendedTooltip name="ProductsContextMenuRecordChangesExtendedTooltip" id="82"/>
+							</Button>
+							<Button name="GoodsContextMenuDeleteChangesRegistrationForSelectedStrings" id="56">
+								<Type>CommandBarButton</Type>
+								<OnlyInAllActions>false</OnlyInAllActions>
+								<CommandName>Form.Command.DeleteChangesRegistrationForSelectedStrings</CommandName>
+								<ExtendedTooltip name="GoodsContextMenuDeleteChangesRegistrationForSelectedStringsExtendedTooltip" id="83"/>
+							</Button>
+						</ChildItems>
+					</ButtonGroup>
+				</ChildItems>
+			</ContextMenu>
+			<AutoCommandBar name="ProductsCommandBar" id="3">
+				<Autofill>false</Autofill>
+				<ChildItems>
+					<Button name="PettyCashesProductsExport" id="29">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.ProductsExport</CommandName>
+						<ExtendedTooltip name="PettyCashesProductsImportExtendedTooltip" id="84"/>
+					</Button>
+					<Button name="PettyCashesProductsClear" id="28">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.ProductsClear</CommandName>
+						<ExtendedTooltip name="PettyCashProductsClearExtendedTooltip" id="85"/>
+					</Button>
+					<Button name="PettyCashesProductsReload" id="27">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.ProductsReload</CommandName>
+						<ExtendedTooltip name="CashRgisterGoodsReloadExtendedTooltip" id="86"/>
+					</Button>
+					<Button name="ProductsFind" id="22">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.Products.StandardCommand.Find</CommandName>
+						<ExtendedTooltip name="ProductsFindExtendedTooltip" id="87"/>
+					</Button>
+					<Button name="ProductsCancelSearch" id="23">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.Products.StandardCommand.CancelSearch</CommandName>
+						<ExtendedTooltip name="ProductsCancelSearchExtendedTooltip" id="88"/>
+					</Button>
+					<Popup name="ProductsGroupPrint" id="52">
+						<Title>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Print</v8:content>
+							</v8:item>
+						</Title>
+						<ToolTip>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Print</v8:content>
+							</v8:item>
+						</ToolTip>
+						<ExtendedTooltip name="ProductsGroupPrintExtendedTooltip" id="89"/>
+						<ChildItems>
+							<Button name="ProductsPrintProductCodes" id="42">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.PrintProductCodes</CommandName>
+								<ExtendedTooltip name="ProductsPrintProductsCodeExtendedTooltip" id="90"/>
+							</Button>
+							<Button name="GoodsPrintPricetagsForSelectedStrings" id="43">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.PrintPricetagsForSelectedStrings</CommandName>
+								<ExtendedTooltip name="ProductsPrintPriceTagsForSelectedRowsExtendedTooltip" id="91"/>
+							</Button>
+						</ChildItems>
+					</Popup>
+					<Button name="ProductsHelp" id="24">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.StandardCommand.Help</CommandName>
+						<ExtendedTooltip name="ProductsHelpExtendedTooltip" id="92"/>
+					</Button>
+					<ButtonGroup name="ProductsChangesRegistrationGroup" id="57">
+						<Title>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Records change</v8:content>
+							</v8:item>
+						</Title>
+						<ToolTip>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Records change</v8:content>
+							</v8:item>
+						</ToolTip>
+						<ExtendedTooltip name="GoodsGroupOfChangeRegistrationExtendedTooltip" id="93"/>
+						<ChildItems>
+							<Button name="ProductsRegisterChanges" id="53">
+								<Type>CommandBarButton</Type>
+								<OnlyInAllActions>false</OnlyInAllActions>
+								<CommandName>Form.Command.RegisterChangingForSelectedString</CommandName>
+								<ExtendedTooltip name="ProductsRecordChangesExtendedTooltip" id="94"/>
+							</Button>
+							<Button name="GoodsDeleteChangesRegistrationForSelectedStrings" id="55">
+								<Type>CommandBarButton</Type>
+								<OnlyInAllActions>false</OnlyInAllActions>
+								<CommandName>Form.Command.DeleteChangesRegistrationForSelectedStrings</CommandName>
+								<ExtendedTooltip name="ProductsDeleteChangeRecordsForSelectedRowsExtendedTooltip" id="95"/>
+							</Button>
+						</ChildItems>
+					</ButtonGroup>
+					<Button name="ProductsChangeForm" id="25">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
+						<ExtendedTooltip name="ProductsChangeFormExtendedTooltip" id="96"/>
+					</Button>
+				</ChildItems>
+			</AutoCommandBar>
+			<ExtendedTooltip name="ProductsExtendedTooltip" id="97"/>
+			<SearchStringAddition name="ProductsSearchString" id="110">
+				<AdditionSource>
+					<Item>Products</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ProductsSearchStringContextMenu" id="111"/>
+				<ExtendedTooltip name="ProductsSearchStringExtendedTooltip" id="112"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ProductsViewStatus" id="113">
+				<AdditionSource>
+					<Item>Products</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ProductsViewStatusContextMenu" id="114"/>
+				<ExtendedTooltip name="ProductsViewStatusExtendedTooltip" id="115"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ProductsSearchControl" id="116">
+				<AdditionSource>
+					<Item>Products</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ProductsSearchControlContextMenu" id="117"/>
+				<ExtendedTooltip name="ProductsSearchControlExtendedTooltip" id="118"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="Selection">ProductsSelection</Event>
+			</Events>
+			<ChildItems>
+				<InputField name="ProductsCode" id="14">
+					<DataPath>Products.Code</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Code</v8:content>
+						</v8:item>
+					</Title>
+					<EditMode>EnterOnInput</EditMode>
+					<Width>12</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ChoiceButton>false</ChoiceButton>
+					<MinValue xsi:type="xs:decimal">1</MinValue>
+					<ChoiceListButton>true</ChoiceListButton>
+					<ContextMenu name="ProductsCodeContextMenu" id="15"/>
+					<ExtendedTooltip name="ProductsCodeExtendedTooltip" id="98"/>
+				</InputField>
+				<InputField name="ProductsDescription" id="12">
+					<DataPath>Products.Description</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ProductsDescriptionContextMenu" id="13"/>
+					<ExtendedTooltip name="ProductsDescriptionExtendedTooltip" id="99"/>
+				</InputField>
+				<InputField name="ProductsDescriptionFull" id="62">
+					<DataPath>Products.DescriptionFull</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ProductsDescriptionFullContextMenu" id="63"/>
+					<ExtendedTooltip name="ProductsDescriptionFullExtendedTooltip" id="100"/>
+				</InputField>
+				<InputField name="ProductsProductsAndServices" id="6">
+					<DataPath>Products.ProductsAndServices</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ProductsProductContextMenu" id="7"/>
+					<ExtendedTooltip name="ProductsProductExtendedTooltip" id="101"/>
+				</InputField>
+				<InputField name="ProductsCharacteristics" id="8">
+					<DataPath>Products.Characteristic</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ProductsCharacteristicContextMenu" id="9"/>
+					<ExtendedTooltip name="ProductsCharacteristicExtendedTooltip" id="102"/>
+				</InputField>
+				<InputField name="ProductsBatch" id="66">
+					<DataPath>Products.Batch</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ProductsBatchContextMenu" id="67"/>
+					<ExtendedTooltip name="ProductsBatchExtendedTooltip" id="103"/>
+				</InputField>
+				<InputField name="ProductsMeasurementUnit" id="10">
+					<DataPath>Products.MeasurementUnit</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ProductsMeasurementUnitContextMenu" id="11"/>
+					<ExtendedTooltip name="ProductsMeasurementUnitExtendedTooltip" id="104"/>
+				</InputField>
+				<InputField name="ProductsPrice" id="16">
+					<DataPath>Products.Price</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="ProductsPriceContextMenu" id="17"/>
+					<ExtendedTooltip name="ProductsPriceExtendedTooltip" id="105"/>
+				</InputField>
+				<InputField name="ProductsBarcode" id="18">
+					<DataPath>Products.Barcode</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="ProductsBarcodeContextMenu" id="19"/>
+					<ExtendedTooltip name="BarcodeProductsExtendedTooltip" id="106"/>
+				</InputField>
+				<CheckBoxField name="ProductsWeight" id="31">
+					<DataPath>Products.Weight</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ProductsWeightContextMenu" id="32"/>
+					<ExtendedTooltip name="ProductsWeightExtendedTooltip" id="107"/>
+				</CheckBoxField>
+				<InputField name="ProductsTextNeededSeriesIndication" id="64">
+					<DataPath>Products.TextNeededSeriesIndication</DataPath>
+					<Visible>false</Visible>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Series</v8:content>
+						</v8:item>
+					</Title>
+					<EditMode>EnterOnInput</EditMode>
+					<Width>15</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="ProductsTextNeededSeriesIndicationContextMenu" id="65"/>
+					<ExtendedTooltip name="ProductsTextNeededSeriesIndicationExtendedTooltip" id="108"/>
+				</InputField>
+				<CheckBoxField name="ProductsUsed" id="4">
+					<DataPath>Products.Used</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<ReadOnly>true</ReadOnly>
+					<TitleLocation>None</TitleLocation>
+					<EditMode>EnterOnInput</EditMode>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ProductsUseContextMenu" id="5"/>
+					<ExtendedTooltip name="ProductsUsedExtendedTooltip" id="109"/>
+				</CheckBoxField>
+			</ChildItems>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Products" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Products</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Used" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Used</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ProductsAndServices" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Products and services</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.ProductsAndServices</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Characteristic" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Characteristic</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.ProductsAndServicesCharacteristics</v8:Type>
+					</Type>
+				</Column>
+				<Column name="MeasurementUnit" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Unit of measure</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.UOM</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Description" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Description</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Code" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>PLU</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="Price" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Price</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="Barcode" id="8">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Barcode</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Weight" id="9">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Weight</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="PictureIndexAreChanges" id="12">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Picture index is changes</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="HasErrors" id="14">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Has errors</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="DescriptionFull" id="10">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Full description</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="NeededSeriesIndication" id="11">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Series indication is needed</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+					<FunctionalOptions>
+						<Item>cb214591-d1b2-4f89-b5e9-c46c9b55b60f</Item>
+					</FunctionalOptions>
+				</Column>
+				<Column name="TextNeededSeriesIndication" id="13">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Series</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Batch" id="15">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Batch</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.ProductsAndServicesBatches</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="Filter" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Filter</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Device" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Device</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Peripherals</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ExchangeRule" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Export rule</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.ExchangeWithPeripheralsOfflineRules</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="EquipmentType" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Peripheral type</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.PeripheralTypes</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="MaximumCode" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Maximum code</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>15</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="InfobaseNode" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Infobase node</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:ExchangePlanRef.ExchangeWithPeripheralsOffline</v8:Type>
+			</Type>
+		</Attribute>
+		<ConditionalAppearance>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ProductsBarcode</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Products.Barcode</dcsset:left>
+						<dcsset:comparisonType>NotFilled</dcsset:comparisonType>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Products.Used</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">EquipmentType</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="dcscor:DesignTimeValue">Enum.PeripheralTypes.CashRegistersOffline</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>TextColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:ExplanationTextError</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Text</dcscor:parameter>
+						<dcscor:value xsi:type="xs:string">&lt;Barcode not defined&gt;</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+				<dcsset:presentation xsi:type="xs:string">Offline cash register</dcsset:presentation>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ProductsBarcode</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Products.Barcode</dcsset:left>
+						<dcsset:comparisonType>NotFilled</dcsset:comparisonType>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Products.Used</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">EquipmentType</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="dcscor:DesignTimeValue">Enum.PeripheralTypes.LabelsPrintingScales</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>TextColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">auto</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Text</dcscor:parameter>
+						<dcscor:value xsi:type="xs:string">&lt;barcode will be generated during exporting&gt;</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+				<dcsset:presentation xsi:type="xs:string">Scales</dcsset:presentation>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ProductsPrice</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Products.Price</dcsset:left>
+						<dcsset:comparisonType>NotFilled</dcsset:comparisonType>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Products.Used</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>TextColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:ExplanationTextError</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>HorizontalAlign</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:HorizontalAlign">Left</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Text</dcscor:parameter>
+						<dcscor:value xsi:type="xs:string">&lt;Price not defined&gt;</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ProductsDescription</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Products.Description</dcsset:left>
+						<dcsset:comparisonType>NotFilled</dcsset:comparisonType>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Products.Used</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>TextColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:ExplanationTextError</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Text</dcscor:parameter>
+						<dcscor:value xsi:type="xs:string">&lt;Desciption not defined&gt;</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ProductsCode</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemGroup">
+						<dcsset:groupType>AndGroup</dcsset:groupType>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">Products.Code</dcsset:left>
+							<dcsset:comparisonType>Greater</dcsset:comparisonType>
+							<dcsset:right xsi:type="dcscor:Field">MaximumCode</dcsset:right>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">MaximumCode</dcsset:left>
+							<dcsset:comparisonType>NotEqual</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">0</dcsset:right>
+						</dcsset:item>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>TextColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:ExplanationTextError</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>Products</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Products.Used</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>TextColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">auto</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ProductsTextNeededSeriesIndication</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Products.NeededSeriesIndication</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Products.Used</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>TextColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:ExplanationTextError</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Text</dcscor:parameter>
+						<dcscor:value xsi:type="xs:string">&lt;You need to specify series of the product on shipment to retail from this warehouse&gt;</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+		</ConditionalAppearance>
+	</Attributes>
+	<Commands>
+		<Command name="ProductsExport" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Export products</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Export the products to device</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ProductsExport</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="ProductsClear" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Clear</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Clear the item list in the device</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ProductsClear</Action>
+		</Command>
+		<Command name="ProductsReload" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Restart</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Clear the list of goods in the device and export the full list of goods</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ProductsReload</Action>
+		</Command>
+		<Command name="PrintPricetagsForSelectedStrings" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Tags for the selected rows</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Print labels for the selected rows</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>TagsPrinting</Action>
+		</Command>
+		<Command name="PrintProductCodes" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Product codes</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Print product codes</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>PrintProductCodes</Action>
+		</Command>
+		<Command name="RegisterChangingForSelectedString" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Record changes</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Register modification for the selected rows</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>RecordChanges</Action>
+		</Command>
+		<Command name="DeleteChangesRegistrationForSelectedStrings" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Delete the modifications registration</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Delete the modification registration for the selected rows</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>DeleteChangesRegistrationForSelectedStrings</Action>
+		</Command>
+		<Command name="Refresh" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Refresh</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Refresh</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Refresh</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Refresh</Action>
+			<Representation>Picture</Representation>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="Device">
+			<Type>
+				<v8:Type>cfg:CatalogRef.Peripherals</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ExchangeRule">
+			<Type>
+				<v8:Type>cfg:CatalogRef.ExchangeWithPeripheralsOfflineRules</v8:Type>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

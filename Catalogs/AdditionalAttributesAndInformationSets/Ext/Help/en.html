@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"></meta><link rel="stylesheet" type="text/css" href="v8help://service_book/service_style"></link><meta name="GENERATOR" content="MSHTML 11.00.9600.18321"></meta></head><body>
+<p>It allows you to configure sets of additional properties.</p>
+<p>You can configure sets of additional properties for specific application objects. </p>
+<p>The storage method for an additional property depends on the property type: </p>
+<ul><li><strong>Additional attributes </strong>- stored in the list item itself or in the document (they can be located in a special section or tab). They are created to implement the properties representing integral part of the object, entered when editing and available for editing by the users with access to the object with properties itself.  
+</li><li><strong>Additional data </strong>- designed to store the data about a catalog item or a document when the data is not an integral part of this item or document. Generally, open for view/editing by the users without access to the object itself. They can be edited in a separate window that can be opened from the object window.</li></ul><p>Different application objects may use additional attributes and data in various combinations: either additional attributes and data or additional attributes, or additional data. </p>
+<p>To use additional properties, select the <strong>Additional attributes and data </strong>check box in <strong>Administration - General settings</strong>. After that you get access to the relevant commands. You can work with additional attributes (data) in the relevant lists opened with the <strong>Additional data </strong>command in the <strong>Administration - General settings </strong>section. </p>
+<p>You can open the set of additional attributes from the application objects for which they are set up. Use the <strong>More - Add or delete additional attributes </strong>command from the <a href="CommonForm.AdditionalInformationEditing/Help"><font color="#000080">Additional data</font></a> window of the application object.  </p>
+<p>The <strong>Additional attributes (data)</strong> list is a table of two parts:</p>
+<ul><li>In the left column, there are <strong>Sets of additional attributes and data </strong>assigned for the catalog or documents shown as groups. If a catalog has groups, its <strong>Sets of additional attributes and data  </strong>correspond with the catalog groups. 
+</li><li>In the right column, there is a table with the list of additional attributes (data) included in the selected set. Required attributes (data) appear bold in the list of additional attributes (data). The table shows:  
+<ul><li><strong>Additional attribute (data) </strong>- includes a list of the additional attributes (data) names. 
+</li><li><strong>Value type </strong>- specifies the type of additional attributes (data) and the number of values.</li></ul></li></ul><p>The predefined sets of additional attributes and data correspond with the application objects (catalogs or documents), where the additional attributes and data can be used. You can not add new sets to this list. Sets are automatically created when you create groups in relevant lists. </p>
+<p>You can create a set of additional attributes and data for both all the list items and for some of them. In this case, the catalog is a group, and the group elements are catalog attributes or catalog attribute values (in this case, the number of the group elements will be equal to the number of the attribute values).</p>
+<h3>Assigning new additional attribute (data) to catalog or document</h3>
+<ul><li>According to the configuration, you can use one of the command inputting new attributes (data): 
+<ul><li>Select the set that corresponds with this catalog or document, and then click <strong>Create</strong>. By default, an additional attribute (data) can be added to only one set. Fill in the required <a href="ChartOfCharacteristicTypes.AdditionalAttributesAndInformation.Form.ItemForm/Help"><font color="#000080">fields</font></a>. 
+</li><li>Select the set that corresponds with this catalog or document, and then click <strong>Add - New</strong>, the command is similar to <strong>Create. </strong> Use this command to add the additional attribute (data) to one set. Fill in the required fields.</li></ul></li></ul><h3>General sets of additional attributes and data</h3>
+<ul><li>You can use <strong>Common </strong>sets for some catalogs. The additional  attributes and data entered into such a set, by default become common for all the items of these catalogs. 
+</li><li>
+<div>Select the <strong>Common </strong>set. </div>
+</li><li>
+<div>Click <strong>Create </strong>or <strong>Add - New</strong>. Fill in the required fields.</div></li></ul><h3>Adding from template</h3>
+<ul><li>To use this option, select the <strong>Attributes and data with values list </strong>check box in the <strong>Administration - General settings </strong>section. 
+</li><li>You can use previously entered additional  attributes and data from other sets, add attributes with a common values list for multiple one-type attributes (e.g. <strong>Door color </strong>from the <strong>Color</strong> attribute template). IN this case, the values list is taken from the sample attribute. It is convenient to provide centralized configuration of the values list for multiple one-type attributes simultaneously. 
+</li><li>
+<div>Select a set from the list.</div>
+</li><li>
+<div>Click <strong>Add - From template</strong>.</div>
+</li><li>
+<div>Select an additional  attribute (data) from the <a href="ChartOfCharacteristicTypes.AdditionalAttributesAndInformation.Form.ChoiceForm/Help"><font color="#000080">list</font></a> of the existing attributes (data). The type and all the values of the sample additional  attribute (data) will be copied to the new element. Fill in all required fields. By default, the attribute becomes common with the set of the used attribute. You can not enter new values. You are warned that the values list is shared with another attribute.</div></li></ul><h3>Adding common additional attributes (data)</h3>
+<ul><li>To use this option, select the <strong>Common attributes and data </strong>in the<strong> Administration - General settings.</strong> 
+</li><li>A common attribute is included in multiple sets. This variant is useful when both values list and the attribute must be common. IN lists and reports for items of different catalogs and documents, the common attributes are grouped and displayed as one attribute in one column or field. For example, you can use the common attribute <strong>Color </strong>to pick out all yellow shoes and clothes. 
+</li><li>
+<div>Select a set from the list. </div>
+</li><li>
+<div>Click <strong>Add - Common</strong>.</div>
+</li><li>
+<div>Select an existing common additional attribute (data). If the <a href="ChartOfCharacteristicTypes.AdditionalAttributesAndInformation.Form.ChoiceForm/Help"><font color="#000080">list</font></a> does not include the necessary attribute, click <strong>Create</strong>. Fill in the required fields.</div>
+</li><li>
+<div>To add a common attribute to multiple sets, repeat the procedure for each set.</div></li></ul><h3>More about selecting additional attributes (data)</h3>
+<ul dir="ltr"><li>
+<div>To delete a common additional attribute (data), delete it from all the sets that included the given attribute. To delete the attribute (data) permanently, you may have to delete the additional attributes (data).</div>
+</li><li>
+<div>When you mark the property for deletion in the set, the property value is saved in objects until they are cleared. The property marked for deletion in the set will be shown in the object window or the additional data window in a special way.</div>
+</li><li>
+<div>If necessary, you may clear the deletion mark.</div></li></ul><h3>See also:</h3>
+<ul><li><a href="ChartOfCharacteristicTypes.AdditionalAttributesAndInformation/Help"><font color="#000080">Additional attributes and data</font></a> 
+</li><li><a href="v8help://frame/form_common"><font color="#000080">Working with forms</font></a></li></ul></body></html>

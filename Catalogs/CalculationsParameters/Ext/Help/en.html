@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head><meta name="GENERATOR" content="MSHTML 11.00.9600.18321"></meta></head><body>
+<h1>Calculation parameters catalog</h1>
+<p class="Usual">The preconfigured data selection rules from the different accounting sections are Saved in this list. The data is used for <a href="Document.Payroll/Help"><font color="#0000ff">the payroll calculation</font></a>.</p>
+<p class="Usual"></p>
+<p class="Usual">Every item of this list contains a query template for obtaining some value from the database. The query may be composed in two ways. If the <strong>Custom Query</strong> flag IsSet, then the query text and parameters are available for editing; a query assistant is available in the fat client only. If the flag is not set, the following data should be specified: data source, filter periods, indicator (one), filter parameters. IN this case, the query will automatically be generated. IN case when the <strong>Specify Value on Payroll </strong>flag IsSet, the item does not require configuration; the parameter value will have to be specified before calculation in the <a href="Document.Payroll/Help"><font color="#0000ff">Payroll</font></a> document</p>
+<p class="Usual">The query parameters may be defined in several ways: </p>
+<ol><li>
+<div>Fixed parameter values could be specified on the <strong>Filter</strong> tab, or if the <strong>Custom Query</strong> flag IsSet - on the <strong>Parameters</strong> tab.</div>
+</li><li>
+<div>The query parameter values are filled automatically from the <a href="Document.Payroll/Help"><font color="#0000ff">Payroll</font></a> document. Such parameters are: Company, Currency, Structural unit , StructuralUnit, RegistrationFilter period, PointInTime, BeginOfFilter period, EndOfFilter period, Performer, OccupationType, PerformerNumber, TabNumber, Assignee, Ind, Individual, Position, AccrualDeductionKind, CustomerOrder, Order, Project, GLExpenseAccount, BusinessActivity, Size, DaysWorked, HoursWorked. It is not required to define values of the listed parameters. The specified values will not affect the calculation.</div></li></ol><p class="Usual">The following attributes have to be filled:</p>
+<ul><li>
+<div><strong>Id</strong> - calculations' parameter presentation in formula.</div>
+</li><li>
+<div><strong>Source </strong>of data selection.</div>
+</li><li>
+<div>
+<div><strong>Specify Value on Payroll </strong>- if the parameter value will be entered at the moment of a payroll calculation.</div></div>
+</li><li>
+<div>
+<div><strong>Custom Query. </strong>The option has to be set if the query and its parameters are edited manually.</div></div></li></ul><p class="Usual">On the <strong>Data </strong>tab, the data selection period is specified and the indicator is specified. </p>
+<p class="Usual">On the <strong>Filter</strong> tab the filters are applied to a data selection.</p>
+<p class="Usual">On the <strong>Query</strong> tab the calculation parameter configuration result can be reviewed and adjusted if required. The query can be edited if a button <strong>Edit Query</strong> is pressed. <strong>Query Assistant</strong> can be used via the <strong>Query Assistant</strong> button in the fat client.</p>
+<ul><li>
+<div><strong>Query</strong> - query text.</div>
+</li><li>
+<div><strong>Parameters -</strong> query parameters:</div>
+<ul><li>
+<div><strong>Name of </strong>the parameter. Being filled from the query text, it does not contain spaces.</div>
+</li><li>
+<div><strong>Presentation </strong>of the parameter. The presentation is displayed in the <a href="Document.Payroll/Help"><font color="#0000ff">Payroll</font></a> document. </div>
+</li><li>
+<div><strong>Value</strong> of the parameter.</div></li></ul></li></ul><p></p>
+<p>The item may be filled by a template. To do this press the <strong>Fill by Template</strong> button and pick one of the options:</p>
+<ul><li>
+<div><strong>Norm Days.</strong></div>
+</li><li>
+<div><strong>Norm Hours.</strong></div>
+</li><li>
+<div><strong>Worked Days.</strong></div>
+</li><li>
+<div><strong>Hours Worked.</strong></div>
+</li><li>
+<div><strong>Hours Worked by Jobs.</strong></div>
+</li><li>
+<div><strong>Tariff Rate.</strong></div>
+</li><li>
+<div><strong>Fixed Amount.</strong></div></li></ul><p class="Usual">The item will be configured according to the selected template after one of the option is picked. The item can be adjusted with custom settings later.</p></body></html>

@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<MetaDataObject xmlns="http://v8.1c.ru/8.3/MDClasses" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:cmi="http://v8.1c.ru/8.2/managed-application/cmi" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xpr="http://v8.1c.ru/8.3/xcf/predef" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<FilterCriterion uuid="3a976fab-11a5-4622-a69c-d2dc4c4bad3a">
+		<InternalInfo>
+			<xr:GeneratedType name="FilterCriterionManager.InvoiceForPaymentDocuments" category="Manager">
+				<xr:TypeId>536827ed-126a-4f3d-b0c6-05564b2f6275</xr:TypeId>
+				<xr:ValueId>2bdca85d-79d9-4e8c-8751-80eccc6c6f2d</xr:ValueId>
+			</xr:GeneratedType>
+			<xr:GeneratedType name="FilterCriterionList.InvoiceForPaymentDocuments" category="List">
+				<xr:TypeId>9cc694c3-fc5c-48aa-944a-48edd09a75e3</xr:TypeId>
+				<xr:ValueId>59f8ee6a-223b-46a8-a23b-818c08ce597c</xr:ValueId>
+			</xr:GeneratedType>
+		</InternalInfo>
+		<Properties>
+			<Name>InvoiceForPaymentDocuments</Name>
+			<Synonym>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Documents by invoice for payment</v8:content>
+				</v8:item>
+			</Synonym>
+			<Comment/>
+			<Type>
+				<v8:Type>cfg:DocumentRef.InvoiceForPayment</v8:Type>
+			</Type>
+			<UseStandardCommands>false</UseStandardCommands>
+			<Content>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.AcceptanceCertificate.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.EnterOpeningBalance.TabularSection.AccountsReceivable.Attribute.InvoiceForPayment</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.Netting.Attribute.InvoiceForPayment</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.Netting.TabularSection.Debitor.Attribute.InvoiceForPayment</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.Netting.TabularSection.Creditor.Attribute.InvoiceForPayment</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.CashReceipt.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.CashReceipt.TabularSection.PaymentDetails.Attribute.InvoiceForPayment</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.PaymentReceipt.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.PaymentReceipt.TabularSection.PaymentDetails.Attribute.InvoiceForPayment</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.CashPayment.TabularSection.PaymentDetails.Attribute.InvoiceForPayment</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.CustomerInvoice.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.PaymentExpense.TabularSection.PaymentDetails.Attribute.InvoiceForPayment</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.Event.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.Event.TabularSection.BasisDocuments.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.CustomerInvoiceNote.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.CustomerInvoiceNote.TabularSection.BasisDocuments.Attribute.BasisDocument</xr:Item>
+			</Content>
+			<DefaultForm/>
+			<AuxiliaryForm/>
+			<ListPresentation/>
+			<ExtendedListPresentation/>
+			<Explanation>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Document list by invoice for payment</v8:content>
+				</v8:item>
+			</Explanation>
+		</Properties>
+		<ChildObjects/>
+	</FilterCriterion>
+</MetaDataObject>

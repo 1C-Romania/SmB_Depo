@@ -1,0 +1,665 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Width>72</Width>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<ButtonGroup name="StandardCommandForm" id="65">
+				<Title>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Standard command form</v8:content>
+					</v8:item>
+				</Title>
+				<CommandSource>Form</CommandSource>
+				<ExtendedTooltip name="StandardCommandFormExtendedTooltip" id="90"/>
+				<ChildItems>
+					<Button name="FormCopy" id="229">
+						<Type>CommandBarButton</Type>
+						<Visible>false</Visible>
+						<CommandName>Form.StandardCommand.Copy</CommandName>
+						<ExtendedTooltip name="FormCopyExtendedTooltip" id="230"/>
+					</Button>
+					<Button name="FormDelete" id="231">
+						<Type>CommandBarButton</Type>
+						<Visible>false</Visible>
+						<CommandName>Form.StandardCommand.Delete</CommandName>
+						<ExtendedTooltip name="FormDeleteExtendedTooltip" id="232"/>
+					</Button>
+					<Button name="FormCheckCertificate" id="75">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.CheckCertificate</CommandName>
+						<ExtendedTooltip name="FormCheckCertificateExtendedTooltip" id="92"/>
+					</Button>
+					<Button name="FormSaveCertificateDataInFile" id="235">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.SaveCertificateDataInFile</CommandName>
+						<ExtendedTooltip name="FormSaveCertificateDataInFileExtendedTooltip" id="236"/>
+					</Button>
+				</ChildItems>
+			</ButtonGroup>
+			<Button name="FormCertificateRevoked" id="63">
+				<Type>CommandBarButton</Type>
+				<Representation>PictureAndText</Representation>
+				<OnlyInAllActions>false</OnlyInAllActions>
+				<CommandName>Form.Command.CertificateRevoked</CommandName>
+				<ExtendedTooltip name="FormCertificateRevokedExtendedTooltip" id="94"/>
+			</Button>
+			<Button name="FormShowAutofilledAttributes" id="219">
+				<Type>CommandBarButton</Type>
+				<OnlyInAllActions>false</OnlyInAllActions>
+				<CommandName>Form.Command.ShowAutofilledAttributes</CommandName>
+				<ExtendedTooltip name="FormShowAutofilledAttributesExtendedTooltip" id="220"/>
+			</Button>
+			<Button name="FormShowRequestForCertificateIssue" id="265">
+				<Type>CommandBarButton</Type>
+				<Enabled>false</Enabled>
+				<OnlyInAllActions>false</OnlyInAllActions>
+				<CommandName>Form.Command.ShowRequestForCertificateIssue</CommandName>
+				<ExtendedTooltip name="FormShowRequestForCertificateIssueExtendedTooltip" id="266"/>
+			</Button>
+			<Button name="FormChangeForm" id="233">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
+				<ExtendedTooltip name="FormChangeFormExtendedTooltip" id="234"/>
+			</Button>
+			<Button name="FormHelp" id="74">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.Help</CommandName>
+				<ExtendedTooltip name="FormHelpExtendedTooltip" id="95"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="AfterWrite">AfterWrite</Event>
+		<Event name="OnReadAtServer">OnReadAtServer</Event>
+		<Event name="OnOpen">OnOpen</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+		<Event name="FillCheckProcessingAtServer">FillCheckProcessingAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="CertificateData" id="151">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Certificate data</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="CertificateDataExtendedTooltip" id="152"/>
+			<ChildItems>
+				<Table name="CertificateDataDescription" id="237">
+					<Representation>List</Representation>
+					<ReadOnly>true</ReadOnly>
+					<SkipOnInput>true</SkipOnInput>
+					<Height>4</Height>
+					<RowSelectionMode>Row</RowSelectionMode>
+					<Header>false</Header>
+					<HorizontalScrollBar>DontUse</HorizontalScrollBar>
+					<HorizontalLines>false</HorizontalLines>
+					<VerticalLines>false</VerticalLines>
+					<AutoInsertNewRow>true</AutoInsertNewRow>
+					<VerticalStretch>false</VerticalStretch>
+					<EnableStartDrag>true</EnableStartDrag>
+					<EnableDrag>true</EnableDrag>
+					<DataPath>CertificateDataDescription</DataPath>
+					<SearchStringLocation>None</SearchStringLocation>
+					<ViewStatusLocation>None</ViewStatusLocation>
+					<SearchControlLocation>None</SearchControlLocation>
+					<RowFilter xsi:nil="true"/>
+					<ContextMenu name="CertificateDataDescriptionContextMenu" id="238">
+						<Autofill>false</Autofill>
+					</ContextMenu>
+					<AutoCommandBar name="CertificateDataDescriptionCommandBar" id="239">
+						<Autofill>false</Autofill>
+					</AutoCommandBar>
+					<ExtendedTooltip name="CertificateDataDescriptionExtendedTooltip" id="240"/>
+					<SearchStringAddition name="CertificateDataDescriptionSearchString" id="247">
+						<AdditionSource>
+							<Item>CertificateDataDescription</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="CertificateDataDescriptionSearchStringContextMenu" id="248"/>
+						<ExtendedTooltip name="CertificateDataDescriptionSearchStringExtendedTooltip" id="249"/>
+					</SearchStringAddition>
+					<ViewStatusAddition name="CertificateDataDescriptionViewStatus" id="250">
+						<AdditionSource>
+							<Item>CertificateDataDescription</Item>
+							<Type>ViewStatusRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="CertificateDataDescriptionViewStatusContextMenu" id="251"/>
+						<ExtendedTooltip name="CertificateDataDescriptionViewStatusExtendedTooltip" id="252"/>
+					</ViewStatusAddition>
+					<SearchControlAddition name="CertificateDataDescriptionSearchControl" id="253">
+						<AdditionSource>
+							<Item>CertificateDataDescription</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<ContextMenu name="CertificateDataDescriptionSearchControlContextMenu" id="254"/>
+						<ExtendedTooltip name="CertificateDataDescriptionSearchControlExtendedTooltip" id="255"/>
+					</SearchControlAddition>
+					<ChildItems>
+						<InputField name="CertificateDataDescriptionProperty" id="241">
+							<DataPath>CertificateDataDescription.Property</DataPath>
+							<SkipOnInput>true</SkipOnInput>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>13</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="CertificateDataDescriptionPropertyContextMenu" id="242"/>
+							<ExtendedTooltip name="CertificateDataDescriptionPropertyExtendedTooltip" id="243"/>
+						</InputField>
+						<InputField name="CertificateDataDescriptionValue" id="244">
+							<DataPath>CertificateDataDescription.Value</DataPath>
+							<SkipOnInput>true</SkipOnInput>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="CertificateDataDescriptionValueContextMenu" id="245"/>
+							<ExtendedTooltip name="CertificateDataDescriptionValueExtendedTooltip" id="246"/>
+						</InputField>
+					</ChildItems>
+				</Table>
+				<UsualGroup name="VerticalGroup3" id="261">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Vertical group 3</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="VerticalGroup3ExtendedTooltip" id="262"/>
+					<ChildItems>
+						<Button name="ShowCertificateData" id="153">
+							<Type>UsualButton</Type>
+							<Representation>Picture</Representation>
+							<SkipOnInput>true</SkipOnInput>
+							<CommandName>Form.Command.ShowCertificateData</CommandName>
+							<ExtendedTooltip name="ShowCertificateDataExtendedTooltip" id="154"/>
+						</Button>
+						<Button name="ShowRequestForCertificateIssue" id="263">
+							<Type>UsualButton</Type>
+							<Enabled>false</Enabled>
+							<CommandName>Form.Command.ShowRequestForCertificateIssue</CommandName>
+							<ExtendedTooltip name="ShowRequestForCertificateIssueExtendedTooltip" id="264"/>
+						</Button>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="HorizontalGroup1" id="210">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Horizontal group 1</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Horizontal group 1</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="HorizontalGroup1ExtendedTooltip" id="211"/>
+			<ChildItems>
+				<UsualGroup name="FieldsHeaders" id="199">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Fields headers</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Fields headers</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="FieldsHeadersExtendedTooltip" id="200"/>
+					<ChildItems>
+						<UsualGroup name="AutoFieldsHeadersFromCertificateData" id="217">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Headers of auto fields from certificate data</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="AutoFieldsHeadersFromCertificateDataExtendedTooltip" id="218"/>
+							<ChildItems>
+								<LabelDecoration name="SurnameTitle" id="207">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Surname:</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="SurnameHeaderContextMenu" id="208"/>
+									<ExtendedTooltip name="SurnameHeaderExtendedTooltip" id="209"/>
+								</LabelDecoration>
+								<LabelDecoration name="FirmHeader" id="212">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>firm:</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="FirmHeaderContextMenu" id="213"/>
+									<ExtendedTooltip name="FirmTitleExtendedTooltip" id="214"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+						<LabelDecoration name="DescriptionHeader" id="201">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Presentation:</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="DescriptionHeaderContextMenu" id="202"/>
+							<ExtendedTooltip name="DescriptionHeaderExtendedTooltip" id="203"/>
+						</LabelDecoration>
+						<LabelDecoration name="CompanyHeader" id="223">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Company:</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="CompanyHeaderContextMenu" id="224"/>
+							<ExtendedTooltip name="CompanyHeaderExtendedTooltip" id="225"/>
+						</LabelDecoration>
+						<LabelDecoration name="UserHeader" id="226">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>User:</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="UserHeaderContextMenu" id="227"/>
+							<ExtendedTooltip name="UserHeaderExtendedTooltip" id="228"/>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="Fields" id="215">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Fields</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Fields</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="FieldsExtendedTooltip" id="216"/>
+					<ChildItems>
+						<UsualGroup name="AutoFieldsFromCertificateData" id="193">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Auto fields from data certificate</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="AutoFieldsFromCertificateDataExtendedTooltip" id="194"/>
+							<ChildItems>
+								<UsualGroup name="VerticalGroup1" id="197">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Vertical group 1</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="VerticalGroup1ExtendedTooltip" id="198"/>
+									<ChildItems>
+										<UsualGroup name="HorizontalGroup3" id="189">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Horizontal group 3</v8:content>
+												</v8:item>
+											</Title>
+											<Group>Horizontal</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="HorizontalGroup3ExtendedTooltip" id="190"/>
+											<ChildItems>
+												<InputField name="Surname" id="174">
+													<DataPath>Object.Surname</DataPath>
+													<TitleLocation>None</TitleLocation>
+													<ContextMenu name="SurnameContextMenu" id="175"/>
+													<ExtendedTooltip name="SurnameExtendedTooltip" id="176"/>
+												</InputField>
+												<InputField name="Name" id="177">
+													<DataPath>Object.Name</DataPath>
+													<ContextMenu name="NameContextMenu" id="178"/>
+													<ExtendedTooltip name="NameExtendedTooltip" id="179"/>
+												</InputField>
+											</ChildItems>
+										</UsualGroup>
+										<InputField name="firm" id="186">
+											<DataPath>Object.firm</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<ContextMenu name="FirmContextMenu" id="187"/>
+											<ExtendedTooltip name="FirmExtendedTooltip" id="188"/>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="VerticalGroup2" id="191">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Vertical group 2</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="VerticalGroup2ExtendedTooltip" id="192"/>
+									<ChildItems>
+										<InputField name="Patronymic" id="180">
+											<DataPath>Object.Patronymic</DataPath>
+											<ContextMenu name="PatronymicContextMenu" id="181"/>
+											<ExtendedTooltip name="PatronymicExtendedTooltip" id="182"/>
+										</InputField>
+										<InputField name="Position" id="183">
+											<DataPath>Object.Position</DataPath>
+											<ContextMenu name="AppointmentContextMenu" id="184"/>
+											<ExtendedTooltip name="PositionExtendedTooltip" id="185"/>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+						<InputField name="Description" id="1">
+							<DataPath>Object.Description</DataPath>
+							<DefaultItem>true</DefaultItem>
+							<TitleLocation>None</TitleLocation>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="DescriptionContextMenu" id="2"/>
+							<ExtendedTooltip name="DescriptionExtendedTooltip" id="97">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Unique certificate presentation is used in selection fields when signing and encrypting. It is formed from the last name, first name, company, position and the validation period.
+For Example: "Ivanov Ivan, LLC 1C, Applicationmer, until 03.2017".
+
+When user has two certificates from different certifying
+centers (CC) the presentation shall be amended with CC name.
+For Example: "Ivanov Ivan, LLC 1C, Applicationmer, until 03.2017, 1C Certifying Center".
+
+When the certificate is used for special
+purpose by different users the presentation needs to be
+replaced for the purpose description, for example: "For invoice signature, up to 05.2019",
+" For tax reporting signature, before 12.2015".</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+						</InputField>
+						<InputField name="Company" id="168">
+							<DataPath>Object.Company</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<Width>35</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ChoiceHistoryOnInput>DontUse</ChoiceHistoryOnInput>
+							<ContextMenu name="CounterpartyContextMenu" id="169"/>
+							<ExtendedTooltip name="CompanyExtendedTooltip" id="170"/>
+						</InputField>
+						<UsualGroup name="HorizontalGroup" id="259">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Horizontal group</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="HorizontalGroupExtendedTooltip" id="260"/>
+							<ChildItems>
+								<InputField name="User" id="171">
+									<DataPath>Object.User</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<Width>35</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="UserContextMenu" id="172"/>
+									<ExtendedTooltip name="UserExtendedTooltip" id="173"/>
+								</InputField>
+								<InputField name="AddedBy" id="256">
+									<DataPath>Object.AddedBy</DataPath>
+									<ContextMenu name="AddedByContextMenu" id="257"/>
+									<ExtendedTooltip name="AddedByExtendedTooltip" id="258"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ForDigitalSignatureAndEncryption" id="221">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Private key settings (for creation of Digital signatures or data encryption)</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ExtendedTooltip name="ForDigitalSignatureAndEncryptionExtendedTooltip" id="222"/>
+			<ChildItems>
+				<InputField name="Application" id="129">
+					<DataPath>Object.Application</DataPath>
+					<ContextMenu name="ApplicationContextMenu" id="130"/>
+					<ExtendedTooltip name="ApplicationExtendedTooltip" id="131"/>
+				</InputField>
+				<CheckBoxField name="EnhancedProtectionPrivateKey" id="158">
+					<DataPath>Object.EnhancedProtectionPrivateKey</DataPath>
+					<TitleLocation>Right</TitleLocation>
+					<ToolTipRepresentation>Button</ToolTipRepresentation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="EnhancedProtectionPrivateKeyContextMenu" id="159"/>
+					<ExtendedTooltip name="EnhancedProtectionPrivateKeyExtendedTooltip" id="160"/>
+				</CheckBoxField>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Type>
+				<v8:Type>cfg:CatalogObject.DigitalSignaturesAndEncryptionKeyCertificates</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="CertificateAddress" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Certificate address</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="ForEncryption" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>For encryption</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="AttributesParameters" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Attributes parameters</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="CertificateDataDescription" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Description data certificate</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Property" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Property</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Value" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Value</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="CertificateRevoked" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Certificate revoked</v8:content>
+				</v8:item>
+			</Title>
+			<Action>CertificateRevoked</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="CheckCertificate" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Validate</v8:content>
+				</v8:item>
+			</Title>
+			<Action>CheckCertificate</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="ShowCertificateData" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Show the certificate data</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Show certificate data saved in file</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.KeyCertificate</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ShowCertificateData</Action>
+		</Command>
+		<Command name="ShowAutofilledAttributes" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Show autofilled attributes</v8:content>
+				</v8:item>
+			</Title>
+			<Action>ShowAutofilledAttributes</Action>
+		</Command>
+		<Command name="SaveCertificateDataInFile" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Save to file...</v8:content>
+				</v8:item>
+			</Title>
+			<Action>SaveCertificateDataInFile</Action>
+		</Command>
+		<Command name="ShowRequestForCertificateIssue" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Show request for the issued certificate</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Show request for the issued certificate</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.ApplicationForIssueKeyCertificate</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ShowRequestForCertificateIssue</Action>
+			<Representation>Picture</Representation>
+		</Command>
+	</Commands>
+	<CommandInterface>
+		<NavigationPanel>
+			<Item>
+				<Command>InformationRegister.PathToDigitalSignaturesAndEncryptionApplicationsOnLinuxServers.Command.ApplicationPathOnLinuxServers</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormNavigationPanelGoTo</CommandGroup>
+			</Item>
+		</NavigationPanel>
+		<CommandBar>
+			<Item>
+				<Command>0:63386b75-0cd0-4ae7-87c6-c5ea20c96cd9</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormCommandBarImportant</CommandGroup>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+		</CommandBar>
+	</CommandInterface>
+</Form>

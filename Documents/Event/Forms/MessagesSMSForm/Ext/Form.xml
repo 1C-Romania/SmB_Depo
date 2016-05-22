@@ -1,0 +1,642 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<AutoTime>CurrentOrLast</AutoTime>
+	<UsePostingMode>Auto</UsePostingMode>
+	<RepostOnWrite>true</RepostOnWrite>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<ButtonGroup name="ImportantCommandsGroup" id="282">
+				<Title>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Important commands group</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTip>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Important commands group</v8:content>
+					</v8:item>
+				</ToolTip>
+				<ExtendedTooltip name="ImportantCommandsGroupExtendedTooltip" id="283"/>
+				<ChildItems>
+					<Button name="FormSend" id="177">
+						<Type>CommandBarButton</Type>
+						<DefaultButton>true</DefaultButton>
+						<OnlyInAllActions>true</OnlyInAllActions>
+						<CommandName>Form.Command.Send</CommandName>
+						<ExtendedTooltip name="FormSendExtendedTooltip" id="178"/>
+					</Button>
+					<Button name="FormWrite" id="304">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.StandardCommand.Write</CommandName>
+						<ExtendedTooltip name="FormWriteExtendedTooltip" id="305"/>
+					</Button>
+					<Button name="FormRefreshDeliveryStatuses" id="336">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.RefreshDeliveryStatuses</CommandName>
+						<ExtendedTooltip name="FormRefreshDeliveryStatusesExtendedTooltip" id="337"/>
+					</Button>
+					<Button name="FormCommonCommandRemind" id="296">
+						<Type>CommandBarButton</Type>
+						<CommandName>CommonCommand.Remind</CommandName>
+						<DataPath>Object.Ref</DataPath>
+						<ExtendedTooltip name="FormCommonCommandRemindExtendedTooltip" id="297"/>
+					</Button>
+				</ChildItems>
+			</ButtonGroup>
+			<ButtonGroup name="GroupGlobalCommands" id="284">
+				<Title>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Global commands group</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTip>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Global commands group</v8:content>
+					</v8:item>
+				</ToolTip>
+				<CommandSource>FormCommandPanelGlobalCommands</CommandSource>
+				<ExtendedTooltip name="GroupGlobalCommandsExtendedTooltip" id="285"/>
+				<ChildItems>
+					<Button name="CommonCommandDependencies" id="294">
+						<Type>CommandBarButton</Type>
+						<CommandName>CommonCommand.Dependencies</CommandName>
+						<DataPath>Object.Ref</DataPath>
+						<ExtendedTooltip name="CommonCommandDependenciesExtendedTooltip" id="295"/>
+					</Button>
+					<Button name="CommonCommandObjectFilling" id="288">
+						<Type>CommandBarButton</Type>
+						<CommandName>CommonCommand.ObjectFilling</CommandName>
+						<DataPath>Object.Ref</DataPath>
+						<ExtendedTooltip name="CommonCommandObjectFillingExtendedTooltip" id="289"/>
+					</Button>
+					<Button name="CommonCommandObjectReports" id="292">
+						<Type>CommandBarButton</Type>
+						<CommandName>CommonCommand.ObjectReports</CommandName>
+						<DataPath>Object.Ref</DataPath>
+						<ExtendedTooltip name="CommonCommandObjectReportsExtendedTooltip" id="293"/>
+					</Button>
+					<Button name="CommonCommandChangesHistory" id="290">
+						<Type>CommandBarButton</Type>
+						<OnlyInAllActions>false</OnlyInAllActions>
+						<CommandName>CommonCommand.ChangesHistory</CommandName>
+						<DataPath>Object.Ref</DataPath>
+						<ExtendedTooltip name="CommonCommandChangesHistoryExtendedTooltip" id="291"/>
+					</Button>
+					<Button name="CommonCommandAdditionalInformationCommandBar" id="286">
+						<Type>CommandBarButton</Type>
+						<OnlyInAllActions>false</OnlyInAllActions>
+						<CommandName>CommonCommand.AdditionalInformationCommandBar</CommandName>
+						<DataPath>Object.Ref</DataPath>
+						<ExtendedTooltip name="CommonCommandAdditionalInformationCommandBarExtendedTooltip" id="287"/>
+					</Button>
+				</ChildItems>
+			</ButtonGroup>
+			<Button name="FormChangeForm" id="298">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
+				<ExtendedTooltip name="FormChangeFormExtendedTooltip" id="299"/>
+			</Button>
+			<Button name="FormHelp" id="300">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.Help</CommandName>
+				<ExtendedTooltip name="FormHelpExtendedTooltip" id="301"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="AfterWrite">AfterWrite</Event>
+		<Event name="NotificationProcessing">NotificationProcessing</Event>
+		<Event name="OnReadAtServer">OnReadAtServer</Event>
+		<Event name="BeforeWriteAtServer">BeforeWriteAtServer</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+		<Event name="FillCheckProcessingAtServer">FillCheckProcessingAtServer</Event>
+	</Events>
+	<ChildItems>
+		<Table name="Recipients" id="231">
+			<Representation>List</Representation>
+			<CommandBarLocation>None</CommandBarLocation>
+			<ChangeRowOrder>false</ChangeRowOrder>
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<AutoAddIncomplete>true</AutoAddIncomplete>
+			<EnableDrag>true</EnableDrag>
+			<DataPath>Object.Parties</DataPath>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="RecipientsContextMenu" id="232"/>
+			<AutoCommandBar name="RecipientCommandPanel" id="233"/>
+			<ExtendedTooltip name="RecipientsExtendedTooltip" id="234"/>
+			<SearchStringAddition name="RecipientsSearchString" id="235">
+				<AdditionSource>
+					<Item>Recipients</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="RecipientsSearchStringContextMenu" id="238"/>
+				<ExtendedTooltip name="RecipientsSearchStringExtendedTooltip" id="239"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="RecipientsViewStatus" id="240">
+				<AdditionSource>
+					<Item>Recipients</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="RecipientsViewStatusContextMenu" id="243"/>
+				<ExtendedTooltip name="RecipientsViewStatusExtendedTooltip" id="244"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="RecipientsSearchManagement" id="245">
+				<AdditionSource>
+					<Item>Recipients</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="RecipientsSearchManagementContextMenu" id="248"/>
+				<ExtendedTooltip name="RecipientsSearchManagementExtendedTooltip" id="249"/>
+			</SearchControlAddition>
+			<ChildItems>
+				<InputField name="ContactRecipients" id="314">
+					<DataPath>Object.Parties.Contact</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<Width>37</Width>
+					<ChoiceButton>true</ChoiceButton>
+					<ChoiceHistoryOnInput>DontUse</ChoiceHistoryOnInput>
+					<ContextMenu name="RecipientsContactContextMenu" id="315"/>
+					<ExtendedTooltip name="ContactRecipientsExtendedTooltip" id="316"/>
+					<Events>
+						<Event name="AutoComplete">ContactRecipientsAutoPick</Event>
+						<Event name="StartChoice">RecipientsContactStartChoice</Event>
+						<Event name="ChoiceProcessing">RecipientsContactChoiceProcessing</Event>
+					</Events>
+				</InputField>
+				<InputField name="RecipientsHowToContact" id="317">
+					<DataPath>Object.Parties.HowToContact</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Phone number</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Mobile phone number</v8:content>
+						</v8:item>
+					</ToolTip>
+					<EditMode>EnterOnInput</EditMode>
+					<Width>36</Width>
+					<ContextMenu name="RecipientsHowToContactContextMenu" id="318"/>
+					<ExtendedTooltip name="RecipientsHowToContactExtendedTooltip" id="319"/>
+				</InputField>
+				<InputField name="RecipientsDeliveryStatus" id="333">
+					<DataPath>Object.Parties.DeliveryStatus</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="RecipientsDeliveryStatusContextMenu" id="334"/>
+					<ExtendedTooltip name="RecipientsDeliveryStatusExtendedTooltip" id="335"/>
+				</InputField>
+			</ChildItems>
+		</Table>
+		<UsualGroup name="GroupSubject" id="338">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group subject</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group subject</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="GroupSubjectExtendedTooltip" id="339"/>
+			<ChildItems>
+				<InputField name="Subject" id="340">
+					<DataPath>Object.Subject</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>SMS message topic (not sent)</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ChoiceButton>true</ChoiceButton>
+					<QuickChoice>false</QuickChoice>
+					<ChooseType>false</ChooseType>
+					<InputHint>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Message subject</v8:content>
+						</v8:item>
+					</InputHint>
+					<ChoiceHistoryOnInput>DontUse</ChoiceHistoryOnInput>
+					<ContextMenu name="SubjectContextMenu" id="341"/>
+					<ExtendedTooltip name="SubjectExtendedTooltip" id="342"/>
+					<Events>
+						<Event name="AutoComplete">SubjectAutoSelection</Event>
+						<Event name="StartChoice">SubjectStartChoice</Event>
+						<Event name="ChoiceProcessing">SubjectChoiceProcessing</Event>
+					</Events>
+				</InputField>
+				<Button name="FillContent" id="343">
+					<Type>UsualButton</Type>
+					<CommandName>Form.Command.FillContent</CommandName>
+					<ExtendedTooltip name="FillContentExtendedTooltip" id="344"/>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
+		<InputField name="Content" id="320">
+			<DataPath>Object.Content</DataPath>
+			<TitleLocation>None</TitleLocation>
+			<Height>3</Height>
+			<MultiLine>true</MultiLine>
+			<InputHint>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Text</v8:content>
+				</v8:item>
+			</InputHint>
+			<ContextMenu name="ContentContextMenu" id="321"/>
+			<ExtendedTooltip name="ContentExtendedTooltip" id="322"/>
+			<Events>
+				<Event name="TextEditEnd">ContentTextEntryEnd</Event>
+			</Events>
+		</InputField>
+		<UsualGroup name="GroupInformationAboutMessage" id="323">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group information about message</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group information about message</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="GroupInformationAboutMessageExtendedTooltip" id="324"/>
+			<ChildItems>
+				<CheckBoxField name="SendTransliterated" id="328">
+					<DataPath>SendTransliterated</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Transfer Cyrillic symbols into Latin</v8:content>
+						</v8:item>
+					</Title>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="SendTransliteratedContextMenu" id="329"/>
+					<ExtendedTooltip name="SendTransliteratedExtendedTooltip" id="330"/>
+					<Events>
+						<Event name="OnChange">SendTransliteratedOnChange</Event>
+					</Events>
+				</CheckBoxField>
+				<LabelField name="CharactersLeft" id="325">
+					<DataPath>CharactersLeft</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<HorizontalAlign>Right</HorizontalAlign>
+					<ContextMenu name="CharactersLeftContextMenu" id="326"/>
+					<ExtendedTooltip name="CharactersLeftExtendedTooltip" id="327"/>
+				</LabelField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="AdditionalAttributesGroup" id="280">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Additional attributes</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Additional attribute group</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<ExtendedTooltip name="AdditionalAttributesGroupExtendedTooltip" id="281"/>
+		</UsualGroup>
+		<UsualGroup name="Footer" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Footer</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Footer</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ChildItemsWidth>LeftWide</ChildItemsWidth>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="FooterExtendedTooltip" id="9"/>
+			<ChildItems>
+				<UsualGroup name="FooterLeft" id="274">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Footer left</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Footer left</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="FooterLeftExtendedTooltip" id="275"/>
+					<ChildItems>
+						<UsualGroup name="GroupInformationSMS" id="345">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group SMS information</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group SMS information</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupInformationSMSExtendedTooltip" id="346"/>
+							<ChildItems>
+								<InputField name="SMSSenderName" id="347">
+									<DataPath>Object.SMSSenderName</DataPath>
+									<ContextMenu name="SMSSenderNameContextMenu" id="348"/>
+									<ExtendedTooltip name="SMSSenderNameExtendedTooltip" id="349"/>
+								</InputField>
+								<LabelField name="SMSProvider" id="350">
+									<DataPath>SMSProvider</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<Width>6</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="SMSProviderContextMenu" id="351"/>
+									<ExtendedTooltip name="SMSProviderExtendedTooltip" id="352"/>
+								</LabelField>
+							</ChildItems>
+						</UsualGroup>
+						<InputField name="Responsible" id="70">
+							<DataPath>Object.Responsible</DataPath>
+							<ContextMenu name="ResponsibleContextMenu" id="71"/>
+							<ExtendedTooltip name="ResponsibleExtendedTooltip" id="72"/>
+						</InputField>
+						<LabelField name="DocumentAuthor" id="96">
+							<DataPath>Object.Author</DataPath>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Author of document</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Border width="1">
+								<v8ui:style xsi:type="v8ui:ControlBorderType">Single</v8ui:style>
+							</Border>
+							<TextColor>#993300</TextColor>
+							<ContextMenu name="AuthorDocumentContextMenu" id="97"/>
+							<ExtendedTooltip name="DocumentAuthorExtendedTooltip" id="98"/>
+						</LabelField>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="FooterRight" id="276">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Footer right</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Footer right</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="FooterRightExtendedTooltip" id="277"/>
+					<ChildItems>
+						<InputField name="State" id="14">
+							<DataPath>Object.State</DataPath>
+							<Width>1</Width>
+							<ContextMenu name="StateContextMenu" id="15"/>
+							<ExtendedTooltip name="StatusExtendedTooltip" id="16"/>
+						</InputField>
+						<InputField name="SendingDate" id="99">
+							<DataPath>Object.EventBegin</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Sending date</v8:content>
+								</v8:item>
+							</Title>
+							<TitleTextColor>style:MinorInscriptionText</TitleTextColor>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>12</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<TextColor>style:MinorInscriptionText</TextColor>
+							<ContextMenu name="SendingDateContextMenu" id="100"/>
+							<ExtendedTooltip name="SendingDateExtendedTooltip" id="101"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Type>
+				<v8:Type>cfg:DocumentObject.Event</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+			<UseAlways>
+				<Field>Object.RegisterRecords</Field>
+			</UseAlways>
+		</Attribute>
+		<Attribute name="SMSSettingsComplete" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>SMS settings complete</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="SendTransliterated" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Send transliterated</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="CharactersLeft" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Characters left</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>70</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="AvailableRightSettingsSMS" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Available SMS settings right</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="SubjectRowHistory" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Subject history on row</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+			<Settings xsi:type="v8:TypeDescription">
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>200</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Settings>
+		</Attribute>
+		<Attribute name="SMSProvider" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>SMS provider</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.SMSProviders</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="Send" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Send</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Send</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.SendingSMS</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Send</Action>
+			<Representation>TextPicture</Representation>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="RefreshDeliveryStatuses" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Refresh delivery statuses</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Refresh delivery statuses</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>RefreshDeliveryStatuses</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="FillContent" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Fill content</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Fill in the content by topic</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.FillByBasis</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>FillContent</Action>
+			<Representation>Picture</Representation>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="Recipients">
+			<Type/>
+		</Parameter>
+		<Parameter name="Text">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+	</Parameters>
+	<CommandInterface>
+		<NavigationPanel>
+			<Item>
+				<Command>Document.Event.Command.OpenEventByBasis</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormNavigationPanelImportant</CommandGroup>
+			</Item>
+			<Item>
+				<Command>CommonCommand.AttachedToObjectFiles</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormNavigationPanelImportant</CommandGroup>
+				<Index>1</Index>
+			</Item>
+		</NavigationPanel>
+	</CommandInterface>
+</Form>

@@ -1,0 +1,1492 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Width>84</Width>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoTime>CurrentOrLast</AutoTime>
+	<UsePostingMode>Auto</UsePostingMode>
+	<RepostOnWrite>true</RepostOnWrite>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<ChildItems>
+			<ButtonGroup name="ImportantCommandsGroup" id="360">
+				<Title>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Important commands group</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTip>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Important commands group</v8:content>
+					</v8:item>
+				</ToolTip>
+				<ExtendedTooltip name="ImportantCommandsGroupExtendedTooltip" id="361"/>
+				<ChildItems>
+					<Button name="FormCommonCommandRemind" id="362">
+						<Type>CommandBarButton</Type>
+						<CommandName>CommonCommand.Remind</CommandName>
+						<DataPath>Object.Ref</DataPath>
+						<ExtendedTooltip name="FormCommonCommandRemindExtendedTooltip" id="363"/>
+					</Button>
+				</ChildItems>
+			</ButtonGroup>
+			<ButtonGroup name="GroupGlobalCommands" id="364">
+				<Title>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Global commands group</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTip>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Global commands group</v8:content>
+					</v8:item>
+				</ToolTip>
+				<CommandSource>FormCommandPanelGlobalCommands</CommandSource>
+				<ExtendedTooltip name="GroupGlobalCommandsExtendedTooltip" id="365"/>
+				<ChildItems>
+					<Button name="CommonCommandDependencies" id="580">
+						<Type>CommandBarButton</Type>
+						<CommandName>CommonCommand.Dependencies</CommandName>
+						<DataPath>Object.Ref</DataPath>
+						<ExtendedTooltip name="CommonCommandDependenciesExtendedTooltip" id="581"/>
+					</Button>
+					<Button name="CommonCommandObjectFilling" id="366">
+						<Type>CommandBarButton</Type>
+						<CommandName>CommonCommand.ObjectFilling</CommandName>
+						<DataPath>Object.Ref</DataPath>
+						<ExtendedTooltip name="CommonCommandObjectFillingExtendedTooltip" id="367"/>
+					</Button>
+					<Button name="CommonCommandObjectReports" id="368">
+						<Type>CommandBarButton</Type>
+						<CommandName>CommonCommand.ObjectReports</CommandName>
+						<DataPath>Object.Ref</DataPath>
+						<ExtendedTooltip name="CommonCommandObjectReportsExtendedTooltip" id="369"/>
+					</Button>
+					<Button name="CommonCommandChangesHistory" id="370">
+						<Type>CommandBarButton</Type>
+						<OnlyInAllActions>false</OnlyInAllActions>
+						<CommandName>CommonCommand.ChangesHistory</CommandName>
+						<DataPath>Object.Ref</DataPath>
+						<ExtendedTooltip name="CommonCommandChangesHistoryExtendedTooltip" id="371"/>
+					</Button>
+				</ChildItems>
+			</ButtonGroup>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnOpen">OnOpen</Event>
+		<Event name="BeforeClose">BeforeClose</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="Header" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Header</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Header</v8:content>
+				</v8:item>
+			</ToolTip>
+			<HorizontalStretch>true</HorizontalStretch>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ChildItemsWidth>Equal</ChildItemsWidth>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="HeaderExtendedTooltip" id="225"/>
+			<ChildItems>
+				<UsualGroup name="HeaderMain" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Main header</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Main header</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="HeaderMainExtendedTooltip" id="226"/>
+					<ChildItems>
+						<InputField name="Status" id="33">
+							<DataPath>Object.Status</DataPath>
+							<SkipOnInput>true</SkipOnInput>
+							<Width>1</Width>
+							<BackColor>style:ManagingFieldBackgroundColor</BackColor>
+							<ContextMenu name="StateContextMenu" id="34"/>
+							<ExtendedTooltip name="StateExtendedTooltip" id="231"/>
+							<Events>
+								<Event name="OnChange">StatusOnChange</Event>
+								<Event name="ChoiceProcessing">StatusChoiceProcessing</Event>
+							</Events>
+						</InputField>
+						<InputField name="Company" id="8">
+							<DataPath>Object.Company</DataPath>
+							<SkipOnInput>true</SkipOnInput>
+							<ContextMenu name="CounterpartyContextMenu" id="9"/>
+							<ExtendedTooltip name="CounterpartyExtendedTooltip" id="230"/>
+							<Events>
+								<Event name="OnChange">CompanyOnChange</Event>
+							</Events>
+						</InputField>
+						<UsualGroup name="PeriodGroupMatching" id="181">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group reconciliation period</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group reconciliation period</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupPeriodReconciliationExtendedTooltip" id="235"/>
+							<ChildItems>
+								<InputField name="BeginOfPeriod" id="182">
+									<DataPath>Object.BeginOfPeriod</DataPath>
+									<SkipOnInput>true</SkipOnInput>
+									<Width>10</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="BeginOfPeriodContextMenu" id="183"/>
+									<ExtendedTooltip name="BeginOfPeriodExtendedTooltip" id="236"/>
+									<Events>
+										<Event name="OnChange">BeginOfPeriodOnChange</Event>
+									</Events>
+								</InputField>
+								<InputField name="EndOfPeriod" id="184">
+									<DataPath>Object.EndOfPeriod</DataPath>
+									<SkipOnInput>true</SkipOnInput>
+									<Width>10</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="EndPeriodContextMenu" id="185"/>
+									<ExtendedTooltip name="EndPeriodExtendedTooltip" id="237"/>
+									<Events>
+										<Event name="OnChange">EndOfPeriodOnChange</Event>
+									</Events>
+								</InputField>
+								<Button name="SetInterval" id="186">
+									<Type>UsualButton</Type>
+									<CommandName>Form.Command.SetInterval</CommandName>
+									<ExtendedTooltip name="SetIntervalExtendedTooltip" id="238"/>
+								</Button>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="HeaderAdditionally" id="10">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Header additionally</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Header left</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="HeaderAdditionallyExtendedTooltip" id="232"/>
+					<ChildItems>
+						<UsualGroup name="NumberCurrency" id="578">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Number currency</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Number currency</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="NumberCurrencyExtendedTooltip" id="579"/>
+							<ChildItems>
+								<InputField name="Number" id="4">
+									<DataPath>Object.Number</DataPath>
+									<SkipOnInput>true</SkipOnInput>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Document sequence number</v8:content>
+										</v8:item>
+									</ToolTip>
+									<HorizontalStretch>false</HorizontalStretch>
+									<InputHint>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>&lt;Auto&gt;</v8:content>
+										</v8:item>
+									</InputHint>
+									<ContextMenu name="NumberContextMenu" id="5"/>
+									<ExtendedTooltip name="NumberExtendedTooltip" id="228"/>
+								</InputField>
+								<InputField name="DocumentCurrency" id="575">
+									<DataPath>Object.DocumentCurrency</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<Width>1</Width>
+									<InputHint>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Currency</v8:content>
+										</v8:item>
+									</InputHint>
+									<ContextMenu name="DocumentCurrencyContextMenu" id="576"/>
+									<ExtendedTooltip name="DocumentCurrencyExtendedTooltip" id="577"/>
+									<Events>
+										<Event name="OnChange">DocumentCurrencyOnChange</Event>
+									</Events>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<InputField name="Counterparty" id="16">
+							<DataPath>Object.Counterparty</DataPath>
+							<OpenButton>true</OpenButton>
+							<ContextMenu name="CounterpartyContextMenu" id="17"/>
+							<ExtendedTooltip name="CounterpartyExtendedTooltip" id="233"/>
+							<Events>
+								<Event name="OnChange">CounterpartyOnChange</Event>
+							</Events>
+						</InputField>
+						<UsualGroup name="GroupContracts" id="302">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group contracts</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group contracts</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupContractsExtendedTooltip" id="303"/>
+							<ChildItems>
+								<LabelField name="DescriptionContractsSelection" id="304">
+									<DataPath>Object.DescriptionContractsSelection</DataPath>
+									<Width>1</Width>
+									<HorizontalStretch>true</HorizontalStretch>
+									<Hiperlink>true</Hiperlink>
+									<ContextMenu name="ContractsSelectionDescriptionContextMenu" id="305"/>
+									<ExtendedTooltip name="ContractsSelectionDescriptionExtendedTooltip" id="306"/>
+									<Events>
+										<Event name="Click">ContractsSelectionDescriptionClick</Event>
+									</Events>
+								</LabelField>
+								<CheckBoxField name="SortByDate" id="312">
+									<DataPath>Object.SortByContracts</DataPath>
+									<TitleLocation>Right</TitleLocation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="SortByDateContextMenu" id="313"/>
+									<ExtendedTooltip name="SortByDateExtendedTooltip" id="314"/>
+								</CheckBoxField>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<Pages name="GroupPages" id="90">
+			<VerticalStretch>true</VerticalStretch>
+			<ExtendedTooltip name="PagesGroupExtendedTooltip" id="239"/>
+			<ChildItems>
+				<Page name="PageCompanyData" id="112">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Company data</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Debt for the end of reconciliation period by the counterparty data</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="PageDataCompaniesExtendedTooltip" id="240"/>
+					<ChildItems>
+						<UsualGroup name="GroupHeaderPagesCompanyData" id="338">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group header pages company data</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group header pages company data</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupHeaderPagesCompanyDataExtendedTooltip" id="339"/>
+							<ChildItems>
+								<CommandBar name="CommandBarCompanyData" id="326">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Command bar company data</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Command bar company data</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="CommandBarCompanyDataExtendedTooltip" id="327"/>
+									<ChildItems>
+										<Button name="Add" id="328">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Item.CompanyData.StandardCommand.Add</CommandName>
+											<ExtendedTooltip name="AddExtendedTooltip" id="329"/>
+										</Button>
+										<Button name="Copy" id="330">
+											<Type>CommandBarButton</Type>
+											<Representation>Picture</Representation>
+											<OnlyInAllActions>true</OnlyInAllActions>
+											<CommandName>Form.Item.CompanyData.StandardCommand.Copy</CommandName>
+											<ExtendedTooltip name="CopyExtendedTooltip" id="331"/>
+										</Button>
+										<Button name="MoveUp" id="334">
+											<Type>CommandBarButton</Type>
+											<OnlyInAllActions>true</OnlyInAllActions>
+											<CommandName>Form.Item.CompanyData.StandardCommand.MoveUp</CommandName>
+											<ExtendedTooltip name="MoveUpExtendedTooltip" id="335"/>
+										</Button>
+										<Button name="MoveDown" id="336">
+											<Type>CommandBarButton</Type>
+											<OnlyInAllActions>true</OnlyInAllActions>
+											<CommandName>Form.Item.CompanyData.StandardCommand.MoveDown</CommandName>
+											<ExtendedTooltip name="MoveDownExtendedTooltip" id="337"/>
+										</Button>
+										<ButtonGroup name="CommandBarCompanyDataFill" id="372">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Command bar fill company data</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Command bar fill company data</v8:content>
+												</v8:item>
+											</ToolTip>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ExtendedTooltip name="CommandBarCompanyDataFillExtendedTooltip" id="373"/>
+											<ChildItems>
+												<Button name="FillAccordingToAccounting" id="146">
+													<Type>CommandBarButton</Type>
+													<CommandName>Form.Command.FillAccordingToAccounting</CommandName>
+													<ExtendedTooltip name="FillAccordingToAccountingExtendedTooltip" id="241"/>
+												</Button>
+											</ChildItems>
+										</ButtonGroup>
+									</ChildItems>
+								</CommandBar>
+								<UsualGroup name="GroupBalanceCurrency" id="321">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group balance currency</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group balance currency</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupBalanceCurrencyExtendedTooltip" id="322"/>
+									<ChildItems>
+										<InputField name="BalanceBeginPeriod" id="323">
+											<DataPath>Object.BalanceBeginPeriod</DataPath>
+											<BackColor>style:ManagingFieldBackgroundColor</BackColor>
+											<ContextMenu name="BalanceBeginOfPeriodContextMenu" id="324"/>
+											<ExtendedTooltip name="BalanceBeginPeriodExtendedTooltip" id="325"/>
+										</InputField>
+										<Button name="CalculateInitialBalance" id="340">
+											<Type>UsualButton</Type>
+											<CommandName>Form.Command.PrimaryBalance</CommandName>
+											<ExtendedTooltip name="CalculateInitialBalanceExtendedTooltip" id="341"/>
+										</Button>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+						<Table name="CompanyData" id="374">
+							<CommandBarLocation>None</CommandBarLocation>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>Object.CompanyData</DataPath>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="CompanyDataContextMenu" id="375"/>
+							<AutoCommandBar name="DataCompaniesCommandPanel" id="376"/>
+							<ExtendedTooltip name="CompanyDataExtendedTooltip" id="377"/>
+							<SearchStringAddition name="CompanyDataSearchString" id="378">
+								<AdditionSource>
+									<Item>CompanyData</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="CompanyDataSearchStringContextMenu" id="381"/>
+								<ExtendedTooltip name="CompanyDataSearchStringExtendedTooltip" id="382"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="CompanyDataViewStatus" id="383">
+								<AdditionSource>
+									<Item>CompanyData</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="CompanyDataViewStatusContextMenu" id="386"/>
+								<ExtendedTooltip name="CompanyDataViewStatusExtendedTooltip" id="387"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="CompanyDataSearchManagement" id="388">
+								<AdditionSource>
+									<Item>CompanyData</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="CompanyDataSearchManagementContextMenu" id="391"/>
+								<ExtendedTooltip name="CompanyDataSearchManagementExtendedTooltip" id="392"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="OnChange">CompanyDataOnChange</Event>
+							</Events>
+							<ChildItems>
+								<LabelField name="CompanyDataLineNumber" id="393">
+									<DataPath>Object.CompanyData.LineNumber</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<FixingInTable>Left</FixingInTable>
+									<Width>4</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="CompanyDataLineNumberContextMenu" id="394"/>
+									<ExtendedTooltip name="CompanyDataLineNumberExtendedTooltip" id="395"/>
+								</LabelField>
+								<InputField name="CompanyDataDocumentNumber" id="396">
+									<DataPath>Object.CompanyData.DocumentNumber</DataPath>
+									<SkipOnInput>true</SkipOnInput>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Number</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<FixingInTable>Left</FixingInTable>
+									<Width>11</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="CompanyDataDocumentNumberContextMenu" id="397"/>
+									<ExtendedTooltip name="CompanyDataDocumentNumberExtendedTooltip" id="398"/>
+									<Events>
+										<Event name="OnChange">CompanyDataDocumentNumberOnChange</Event>
+									</Events>
+								</InputField>
+								<InputField name="CompanyDataDocumentDate" id="399">
+									<DataPath>Object.CompanyData.DocumentDate</DataPath>
+									<SkipOnInput>true</SkipOnInput>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Date</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<FixingInTable>Left</FixingInTable>
+									<Width>10</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="CompanyDataDocumentDateContextMenu" id="400"/>
+									<ExtendedTooltip name="CompanyDataDocumentDateExtendedTooltip" id="401"/>
+									<Events>
+										<Event name="OnChange">CompanyDataDocumentDateOnChange</Event>
+									</Events>
+								</InputField>
+								<InputField name="CompanyDataContract" id="569">
+									<DataPath>Object.CompanyData.Contract</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="CompanyDataContractContextMenu" id="570"/>
+									<ExtendedTooltip name="CompanyDataContractExtendedTooltip" id="571"/>
+									<Events>
+										<Event name="OnChange">CompanyDataContractOnChange</Event>
+									</Events>
+								</InputField>
+								<InputField name="CompanyDataAccountDocument" id="402">
+									<DataPath>Object.CompanyData.AccountingDocument</DataPath>
+									<UserVisible>
+										<xr:Common>false</xr:Common>
+									</UserVisible>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="CompanyDataAccountingDocumentContextMenu" id="403"/>
+									<ExtendedTooltip name="CompanyDataAccountingDocumentExtendedTooltip" id="404"/>
+									<Events>
+										<Event name="OnChange">CompanyDataAccountingDocumentOnChange</Event>
+									</Events>
+								</InputField>
+								<InputField name="CompanyDataDetailsDocument" id="405">
+									<DataPath>Object.CompanyData.DocumentDescription</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>30</Width>
+									<OpenButton>true</OpenButton>
+									<ContextMenu name="CompanyDataDetailsDocumentContextMenu" id="406"/>
+									<ExtendedTooltip name="CompanyDataDetailsDocumentExtendedTooltip" id="407"/>
+									<Events>
+										<Event name="Opening">CompanyDataDetailsDocumentOpen</Event>
+									</Events>
+								</InputField>
+								<InputField name="CompanyDataAmountIncreaseDebtCounterparty" id="408">
+									<DataPath>Object.CompanyData.CompanyDebtAmount</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<FooterDataPath>Object.CompanyData.TotalCompanyDebtAmount</FooterDataPath>
+									<ContextMenu name="CompanyDataAmountIncreaseDebtCounterpartyContextMenu" id="409"/>
+									<ExtendedTooltip name="CompanyDataAmountIncreaseDebtCounterpartyExtendedTooltip" id="410"/>
+								</InputField>
+								<InputField name="CompanyDataCounterpartyDebtDecreasingAmount" id="411">
+									<DataPath>Object.CompanyData.ClientDebtAmount</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<FooterDataPath>Object.CompanyData.TotalClientDebtAmount</FooterDataPath>
+									<ContextMenu name="OrganizationDataAmountReduceDebtCounterpartyContextMenu" id="412"/>
+									<ExtendedTooltip name="CompanyDataSumOfCounterpartyDebtReductionExtendedTooltip" id="413"/>
+								</InputField>
+								<InputField name="CompanyDataCurrencyByDocument" id="414">
+									<DataPath>Object.CompanyData.ContractCurrency</DataPath>
+									<UserVisible>
+										<xr:Common>false</xr:Common>
+									</UserVisible>
+									<ReadOnly>true</ReadOnly>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Currency</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="CompanyDataCurrencyByDocumentContextMenu" id="415"/>
+									<ExtendedTooltip name="CompanyDataCurrencyByDocumentExtendedTooltip" id="416"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+						<UsualGroup name="GroupFooterCompaniesPages" id="417">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group counteparty page footer</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group counteparty page footer</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupFooterPagesCompaniesExtendedTooltip" id="418"/>
+							<ChildItems>
+								<UsualGroup name="GroupCompanyData" id="419">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group company data</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group company data</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="DataGroupCompaniesExtendedTooltip" id="420"/>
+									<ChildItems>
+										<InputField name="Responsible" id="421">
+											<DataPath>Object.Responsible</DataPath>
+											<Width>38</Width>
+											<ContextMenu name="ResponsibleContextMenu" id="422"/>
+											<ExtendedTooltip name="ResponsibleExtendedTooltip" id="423"/>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="GroupTotalsOfOrganization" id="424">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group company totals</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group company totals</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupTotalCompaniesExtendedTooltip" id="425"/>
+									<ChildItems>
+										<UsualGroup name="GroupDifference" id="426">
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group company totals</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Horizontal</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="GroupDifferencesExtendedTooltip" id="427"/>
+											<ChildItems>
+												<InputField name="Discrepancy" id="428">
+													<DataPath>Discrepancy</DataPath>
+													<ReadOnly>true</ReadOnly>
+													<Width>10</Width>
+													<ContextMenu name="DifferenceContextMenu" id="429"/>
+													<ExtendedTooltip name="DiscrepancyExtendedTooltip" id="430"/>
+												</InputField>
+												<Button name="CalculateSummaryDataDiscrepancy" id="431">
+													<Type>UsualButton</Type>
+													<CommandName>Form.Command.CalculateSummaryDataDiscrepancy</CommandName>
+													<ExtendedTooltip name="CalculateTotalDivergenceDataExtendedTooltip" id="432"/>
+												</Button>
+											</ChildItems>
+										</UsualGroup>
+										<LabelDecoration name="Decoration1" id="433">
+											<HorizontalStretch>true</HorizontalStretch>
+											<ContextMenu name="Decoration1ContextMenu" id="434"/>
+											<ExtendedTooltip name="Decoration1ExtendedTooltip" id="435"/>
+										</LabelDecoration>
+										<UsualGroup name="Group1" id="436">
+											<Group>Horizontal</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<BackColor>style:TotalsGroupBackground</BackColor>
+											<ExtendedTooltip name="Group1ExtendedTooltip" id="437"/>
+											<ChildItems>
+												<InputField name="TotalDebtCompaniesAccordingToCompanies" id="438">
+													<DataPath>Object.CompanyData.TotalCompanyDebtAmount</DataPath>
+													<ReadOnly>true</ReadOnly>
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Accounts payable</v8:content>
+														</v8:item>
+													</Title>
+													<Width>9</Width>
+													<HorizontalStretch>false</HorizontalStretch>
+													<ContextMenu name="TotalDebtCompaniesAccordingToCompaniesContextMenu" id="439"/>
+													<ExtendedTooltip name="TotalDebtOrganizationByDataOrganizationExtendedTooltip" id="440"/>
+												</InputField>
+												<InputField name="TotalQuantityerpartyDebtAccordingToCompanies" id="441">
+													<DataPath>Object.CompanyData.TotalClientDebtAmount</DataPath>
+													<ReadOnly>true</ReadOnly>
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Counterparty debt</v8:content>
+														</v8:item>
+													</Title>
+													<Width>9</Width>
+													<HorizontalStretch>false</HorizontalStretch>
+													<ContextMenu name="TotalQuantityerpartyDebtAccordingToCompaniesContextMenu" id="442"/>
+													<ExtendedTooltip name="TotalQuantityerpartyDebtAccordingToOrganizationExtendedTooltip" id="443"/>
+												</InputField>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="PageCounterpartyData" id="91">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Information received from counterparty</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Debt for the end of reconciliation period by the counterparty data</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="PageCounterpartyDataExtendedTooltip" id="257"/>
+					<ChildItems>
+						<UsualGroup name="GroupHeaderPagesCounterpartyData" id="444">
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group header pages counterparty data</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupHeaderPagesCounterpartyDataExtendedTooltip" id="445"/>
+							<ChildItems>
+								<CommandBar name="GroupMainCommandBarPagesCounterpartyData" id="446">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group main command bar pages counterparty data</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group main command bar pages counterparty data</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="GroupMainCommandBarPagesCounterpartyDataExtendedTooltip" id="447"/>
+									<ChildItems>
+										<Button name="Add1" id="448">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Item.CounterpartyData.StandardCommand.Add</CommandName>
+											<ExtendedTooltip name="Add1ExtendedTooltip" id="449"/>
+										</Button>
+										<Button name="Copy1" id="456">
+											<Type>CommandBarButton</Type>
+											<Representation>Picture</Representation>
+											<OnlyInAllActions>true</OnlyInAllActions>
+											<CommandName>Form.Item.CounterpartyData.StandardCommand.Copy</CommandName>
+											<ExtendedTooltip name="Copy1ExtendedTooltip" id="457"/>
+										</Button>
+										<Button name="MoveUp1" id="468">
+											<Type>CommandBarButton</Type>
+											<Representation>Picture</Representation>
+											<OnlyInAllActions>true</OnlyInAllActions>
+											<CommandName>Form.Item.CounterpartyData.StandardCommand.MoveUp</CommandName>
+											<ExtendedTooltip name="MoveUp1ExtendedTooltip" id="469"/>
+										</Button>
+										<Button name="MoveDown1" id="470">
+											<Type>CommandBarButton</Type>
+											<Representation>Picture</Representation>
+											<OnlyInAllActions>true</OnlyInAllActions>
+											<CommandName>Form.Item.CounterpartyData.StandardCommand.MoveDown</CommandName>
+											<ExtendedTooltip name="MoveDown1ExtendedTooltip" id="471"/>
+										</Button>
+										<ButtonGroup name="GroupAdditionalCommandBarPagesCounterpartyData" id="454">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group additional command bar pages counterparty data</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group additional command bar pages counterparty data</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ExtendedTooltip name="GroupAdditionalCommandBarPagesCounterpartyDataExtendedTooltip" id="455"/>
+											<ChildItems>
+												<Button name="FillCounterpartyDataByCompanyData" id="450">
+													<Type>CommandBarButton</Type>
+													<CommandName>Form.Command.FillCounterpartyDataByCompanyData</CommandName>
+													<ExtendedTooltip name="FillCounterpartyDataByCompanyDataExtendedTooltip" id="451"/>
+												</Button>
+												<Button name="FillByAccountingDocumentsDates" id="452">
+													<Type>CommandBarButton</Type>
+													<CommandName>Form.Command.FillByAccountingDocumentsDates</CommandName>
+													<ExtendedTooltip name="FillByAccountingDocumentsDateExtendedTooltip" id="453"/>
+												</Button>
+											</ChildItems>
+										</ButtonGroup>
+									</ChildItems>
+								</CommandBar>
+							</ChildItems>
+						</UsualGroup>
+						<Table name="CounterpartyData" id="476">
+							<CommandBarLocation>None</CommandBarLocation>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>Object.CounterpartyData</DataPath>
+							<CommandSet>
+								<ExcludedCommand>OutputList</ExcludedCommand>
+								<ExcludedCommand>SelectAll</ExcludedCommand>
+								<ExcludedCommand>CopyToClipboard</ExcludedCommand>
+							</CommandSet>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="CounterpartyDataContextMenu" id="477"/>
+							<AutoCommandBar name="CounterpartyDataCommandBar" id="478"/>
+							<ExtendedTooltip name="CounterpartyDataExtendedTooltip" id="479"/>
+							<SearchStringAddition name="CounterpartyDataSearchString" id="480">
+								<AdditionSource>
+									<Item>CounterpartyData</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="CounterpartyDataSearchStringContextMenu" id="483"/>
+								<ExtendedTooltip name="CounterpartyDataSearchStringExtendedTooltip" id="484"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="CounterpartyDataViewStatus" id="485">
+								<AdditionSource>
+									<Item>CounterpartyData</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="CounterpartyDataViewStatusContextMenu" id="488"/>
+								<ExtendedTooltip name="CounterpartyDataViewStatusExtendedTooltip" id="489"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="CounterpartyDataSearchManagement" id="490">
+								<AdditionSource>
+									<Item>CounterpartyData</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="CounterpartyDataSearchManagementContextMenu" id="493"/>
+								<ExtendedTooltip name="CounterpartyDataSearchManagementExtendedTooltip" id="494"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="OnChange">CounterpartyDataOnChange</Event>
+							</Events>
+							<ChildItems>
+								<LabelField name="CounterpartyDataLineNumber" id="495">
+									<DataPath>Object.CounterpartyData.LineNumber</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<FixingInTable>Left</FixingInTable>
+									<Width>4</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="CounterpartyDataLineNumberContextMenu" id="496"/>
+									<ExtendedTooltip name="CounterpartyDataLineNumberExtendedTooltip" id="497"/>
+								</LabelField>
+								<InputField name="CounterpartyDataContract" id="572">
+									<DataPath>Object.CounterpartyData.Contract</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<FixingInTable>Left</FixingInTable>
+									<Width>15</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="CounterpartyDataContractContextMenu" id="573"/>
+									<ExtendedTooltip name="CounterpartyDataContractExtendedTooltip" id="574"/>
+									<Events>
+										<Event name="OnChange">CounterpartyDataContractOnChange</Event>
+									</Events>
+								</InputField>
+								<InputField name="CounterpartyDataIncNumber" id="501">
+									<DataPath>Object.CounterpartyData.IncomingDocumentNumber</DataPath>
+									<SkipOnInput>true</SkipOnInput>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Number (inc.)</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<FixingInTable>Left</FixingInTable>
+									<Width>12</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="CounterpartyDataInNumberContextMenu" id="502"/>
+									<ExtendedTooltip name="CounterpartyDataIncNumberExtendedTooltip" id="503"/>
+									<Events>
+										<Event name="OnChange">CounterpartyDataIncNumberOnChange</Event>
+									</Events>
+								</InputField>
+								<InputField name="CounterpartyDataIncDate" id="498">
+									<DataPath>Object.CounterpartyData.IncomingDocumentDate</DataPath>
+									<SkipOnInput>true</SkipOnInput>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Date (inc.)</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<FixingInTable>Left</FixingInTable>
+									<Width>11</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="CounterpartyDataInDateContextMenu" id="499"/>
+									<ExtendedTooltip name="CounterpartyDataEntryDateExtendedTooltip" id="500"/>
+									<Events>
+										<Event name="OnChange">CounterpartyDataIncDateOnChange</Event>
+									</Events>
+								</InputField>
+								<InputField name="CounterpartyDataCurrentDocument" id="504">
+									<DataPath>Object.CounterpartyData.AccountingDocument</DataPath>
+									<UserVisible>
+										<xr:Common>false</xr:Common>
+									</UserVisible>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="CounterpartyDataAccountingDocumentContextMenu" id="505"/>
+									<ExtendedTooltip name="CounterpartyDataAccountingDocumentExtendedTooltip" id="506"/>
+									<Events>
+										<Event name="OnChange">CounterpartyDataAccountingDocumentOnChange</Event>
+									</Events>
+								</InputField>
+								<InputField name="CounterpartyDataDetailsDocument" id="507">
+									<DataPath>Object.CounterpartyData.DocumentDescription</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>25</Width>
+									<OpenButton>true</OpenButton>
+									<ContextMenu name="CounterpartyDataDetailsDocumentContextMenu" id="508"/>
+									<ExtendedTooltip name="CounterpartyDataDocumentDescriptionExtendedTooltip" id="509"/>
+									<Events>
+										<Event name="Opening">CounterpartyDataDetailsDocumentOpen</Event>
+									</Events>
+								</InputField>
+								<InputField name="CounterpartyDataCounterpartyDebtIncreasingAmount" id="513">
+									<DataPath>Object.CounterpartyData.CompanyDebtAmount</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<FooterDataPath>Object.CounterpartyData.TotalCompanyDebtAmount</FooterDataPath>
+									<ContextMenu name="CounterpartyData:SumIncreaseDebtCounterpartyContextMenu" id="514"/>
+									<ExtendedTooltip name="CounterpartyDataAmountIncreaseDebtCounterpartyExtendedTooltip" id="515"/>
+								</InputField>
+								<InputField name="CounterpartyData:SumDebtReductionCounterparty" id="510">
+									<DataPath>Object.CounterpartyData.ClientDebtAmount</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<FooterDataPath>Object.CounterpartyData.TotalClientDebtAmount</FooterDataPath>
+									<ContextMenu name="CounterpartyDataSumDebtReductionCounterpartyContextMenu" id="511"/>
+									<ExtendedTooltip name="CounterpartyDataSumOfCounterpartyDebtReductionExtendedTooltip" id="512"/>
+								</InputField>
+								<InputField name="CounterpartyDataCurrencyByDocument" id="516">
+									<DataPath>Object.CounterpartyData.DocumentCurrency</DataPath>
+									<UserVisible>
+										<xr:Common>false</xr:Common>
+									</UserVisible>
+									<ReadOnly>true</ReadOnly>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Currency</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="CounterpartyDataCurrencyByDocumentContextMenu" id="517"/>
+									<ExtendedTooltip name="CounterpartyDataCurrencyByDocumentExtendedTooltip" id="518"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+						<UsualGroup name="GroupFooterPagesCounterparty" id="519">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group counteparty page footer</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group counteparty page footer</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupFooterPagesCounterpartyExtendedTooltip" id="520"/>
+							<ChildItems>
+								<UsualGroup name="DataGroupSellersAn" id="521">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group counter party data</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group company data</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="DataGroupSellersExtendedTooltip" id="522"/>
+									<ChildItems>
+										<InputField name="CounterpartyHeadNameAndSurname" id="523">
+											<DataPath>Object.CounterpartyRepresentative</DataPath>
+											<ContextMenu name="CounterpartyHeadFullNameContextMenu" id="524"/>
+											<ExtendedTooltip name="HeadDescriptionFullCounterpartyExtendedTooltip" id="525"/>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="GroupTotalQuantityerparty" id="529">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group counterparty totals</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group company totals</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupTotalQuantityerpartyExtendedTooltip" id="530"/>
+									<ChildItems>
+										<UsualGroup name="GroupDifference1" id="531">
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group company totals</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Horizontal</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="Group1DiscrepancyExtendedTooltip" id="532"/>
+											<ChildItems>
+												<InputField name="Discrepancy1" id="533">
+													<DataPath>Discrepancy</DataPath>
+													<ReadOnly>true</ReadOnly>
+													<Width>10</Width>
+													<ContextMenu name="Discrepancy1ContextMenu" id="534"/>
+													<ExtendedTooltip name="Discrepancy1ExtendedTooltip" id="535"/>
+												</InputField>
+												<Button name="CalculateSummaryDataDiscrepancy1" id="536">
+													<Type>UsualButton</Type>
+													<CommandName>Form.Command.CalculateSummaryDataDiscrepancy</CommandName>
+													<ExtendedTooltip name="CalculateTotalDataDiscrepancy1ExtendedTooltip" id="537"/>
+												</Button>
+											</ChildItems>
+										</UsualGroup>
+										<LabelDecoration name="Decoration2" id="538">
+											<HorizontalStretch>true</HorizontalStretch>
+											<ContextMenu name="Decoration2ContextMenu" id="539"/>
+											<ExtendedTooltip name="Decoration2ExtendedTooltip" id="540"/>
+										</LabelDecoration>
+										<UsualGroup name="Group2" id="541">
+											<Group>Horizontal</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<BackColor>style:TotalsGroupBackground</BackColor>
+											<ExtendedTooltip name="Group2ExtendedTooltip" id="542"/>
+											<ChildItems>
+												<InputField name="TotalDebtCompaniesAccordingToCounterparty" id="543">
+													<DataPath>Object.CounterpartyData.TotalClientDebtAmount</DataPath>
+													<ReadOnly>true</ReadOnly>
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Accounts payable</v8:content>
+														</v8:item>
+													</Title>
+													<Width>11</Width>
+													<HorizontalStretch>false</HorizontalStretch>
+													<ContextMenu name="TotalDebtCompaniesAccordingToCounterpartyContextMenu" id="544"/>
+													<ExtendedTooltip name="TotalDebtCompaniesAccordingToCounterpartyExtendedTooltip" id="545"/>
+												</InputField>
+												<InputField name="CounterpartyTotalDebtAccordingToCounterparty" id="546">
+													<DataPath>Object.CounterpartyData.TotalCompanyDebtAmount</DataPath>
+													<ReadOnly>true</ReadOnly>
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Counterparty debt</v8:content>
+														</v8:item>
+													</Title>
+													<Width>11</Width>
+													<HorizontalStretch>false</HorizontalStretch>
+													<ContextMenu name="CounterpartysTotalDebtAccordingToCounterpartyContextMenu" id="547"/>
+													<ExtendedTooltip name="CounterpartysTotalDebtAccordingToCounterpartyExtendedTooltip" id="548"/>
+												</InputField>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="AdvancedPage" id="549">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Additionally</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Advanced page</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="AdvancedPageExtendedTooltip" id="550"/>
+					<ChildItems>
+						<CheckBoxField name="AddCompanyInDocumentPresentation" id="582">
+							<DataPath>Object.AddCompanyInDocumentPresentation</DataPath>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="AddCompanyInDocumentPresentationContextMenu" id="583"/>
+							<ExtendedTooltip name="AddCompanyInDocumentPresentationExtendedTooltip" id="584"/>
+						</CheckBoxField>
+						<InputField name="DocumentDescription" id="566">
+							<DataPath>Object.DocumentDescription</DataPath>
+							<InputHint>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>If it is filled in, it is displayed for printing if it is copied by pressing F9, it will be copied to another document</v8:content>
+								</v8:item>
+							</InputHint>
+							<ContextMenu name="DocumentDescriptionContextMenu" id="567"/>
+							<ExtendedTooltip name="DocumentDescriptionExtendedTooltip" id="568"/>
+						</InputField>
+						<InputField name="Comment" id="551">
+							<DataPath>Object.Comment</DataPath>
+							<Height>1</Height>
+							<Wrap>false</Wrap>
+							<MultiLine>false</MultiLine>
+							<ChoiceButton>false</ChoiceButton>
+							<ContextMenu name="CommentContextMenu" id="552"/>
+							<ExtendedTooltip name="CommentExtendedTooltip" id="553"/>
+							<Events>
+								<Event name="OnChange">CommentOnChange</Event>
+							</Events>
+						</InputField>
+						<UsualGroup name="Additionally" id="554">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Additionally</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Additionally</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="AdditionallyExtendedTooltip" id="555"/>
+							<ChildItems>
+								<UsualGroup name="AdditionallyLeftColumn" id="556">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Left column</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="AdditionallyLeftColumnExtendedTooltip" id="557"/>
+									<ChildItems>
+										<LabelField name="DocumentAuthor" id="558">
+											<DataPath>Object.Author</DataPath>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Author of document</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Border width="1">
+												<v8ui:style xsi:type="v8ui:ControlBorderType">Single</v8ui:style>
+											</Border>
+											<TextColor>#993300</TextColor>
+											<ContextMenu name="AuthorDocumentContextMenu" id="559"/>
+											<ExtendedTooltip name="DocumentAuthorExtendedTooltip" id="560"/>
+										</LabelField>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="AdditionallyRightColumn" id="561">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Right column</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="AdditionallyRightColumnExtendedTooltip" id="562"/>
+									<ChildItems>
+										<InputField name="Date" id="563">
+											<DataPath>Object.Date</DataPath>
+											<SkipOnInput>true</SkipOnInput>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>The document registration date</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Width>14</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ContextMenu name="DateContextMenu" id="564"/>
+											<ExtendedTooltip name="DateExtendedTooltip" id="565"/>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Type>
+				<v8:Type>cfg:DocumentObject.SettlementsReconciliation</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+			<UseAlways>
+				<Field>Object.RegisterRecords</Field>
+			</UseAlways>
+		</Attribute>
+		<Attribute name="CompanyPrefix" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Company prefix</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>2</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="PostingIsAllowed" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Posting is allowed</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Discrepancy" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Discrepancy</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>15</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="DoOperationsByContracts" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Do operations by contracts</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="CanCloseFormWithFiles" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>You can close form with files</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="AccountingBySubsidiaryCompany" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Consolidate multiple companies</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="FillAccordingToAccounting" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Fill</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Fill by company data</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.FillByBasis</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>FillAccordingToAccounting</Action>
+			<Representation>TextPicture</Representation>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="SetInterval" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Set date interval</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Set date interval</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Use>
+				<xr:Common>true</xr:Common>
+				<xr:Value name="Role.ChangeCurrentExternalUser">false</xr:Value>
+				<xr:Value name="Role.BasicRights">false</xr:Value>
+				<xr:Value name="Role.RunAutomation">false</xr:Value>
+				<xr:Value name="Role.RunWebClient">false</xr:Value>
+				<xr:Value name="Role.RunExternalConnection">false</xr:Value>
+				<xr:Value name="Role.RunThickClient">false</xr:Value>
+				<xr:Value name="Role.RunThinClient">false</xr:Value>
+			</Use>
+			<Picture>
+				<xr:Ref>0</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>SetInterval</Action>
+			<Representation>Picture</Representation>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="FillCounterpartyDataByCompanyData" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Transfer from company data</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Fill out counterparty data with company data</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.FillByBasis</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>TransferFromCompanyData</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="FillByAccountingDocumentsDates" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Pick dates</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Fill by accounting documents dates</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>FillByAccountingDocumentsDates</Action>
+		</Command>
+		<Command name="CalculateSummaryDataDiscrepancy" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Calculate summary data discrepancy</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Calculate summary data discrepancy</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Refresh</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>CalculateSummaryDataDiscrepancy</Action>
+			<Representation>Picture</Representation>
+		</Command>
+		<Command name="PrimaryBalance" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Primary balance</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Primary balance</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Refresh</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>InitialBalance</Action>
+			<Representation>Picture</Representation>
+		</Command>
+	</Commands>
+	<CommandInterface>
+		<NavigationPanel>
+			<Item>
+				<Command>Document.Event.Command.OpenEventByBasis</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormNavigationPanelSeeAlso</CommandGroup>
+				<Index>2</Index>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+			<Item>
+				<Command>CommonCommand.AttachedToObjectFiles</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormNavigationPanelSeeAlso</CommandGroup>
+				<Index>1</Index>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+		</NavigationPanel>
+	</CommandInterface>
+</Form>

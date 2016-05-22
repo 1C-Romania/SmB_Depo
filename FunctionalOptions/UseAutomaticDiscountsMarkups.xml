@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<MetaDataObject xmlns="http://v8.1c.ru/8.3/MDClasses" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:cmi="http://v8.1c.ru/8.2/managed-application/cmi" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xpr="http://v8.1c.ru/8.3/xcf/predef" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<FunctionalOption uuid="3530406a-c5e3-4638-8238-ed76bf0ba146">
+		<Properties>
+			<Name>UseAutomaticDiscountsMarkups</Name>
+			<Synonym>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Use automatic discounts markups</v8:content>
+				</v8:item>
+			</Synonym>
+			<Comment/>
+			<Location>Constant.FunctionalOptionUseAutomaticDiscountsMarkups</Location>
+			<PrivilegedGetMode>true</PrivilegedGetMode>
+			<Content>
+				<xr:Object>Document.CustomerInvoice.TabularSection.Inventory.Attribute.AutomaticDiscountAmount</xr:Object>
+				<xr:Object>Catalog.AutomaticDiscounts</xr:Object>
+				<xr:Object>Catalog.DiscountsMarkupsProvidingConditions</xr:Object>
+				<xr:Object>Document.CustomerOrder.TabularSection.Inventory.Attribute.AutomaticDiscountsPercent</xr:Object>
+				<xr:Object>Document.CustomerOrder.TabularSection.Inventory.Attribute.AutomaticDiscountAmount</xr:Object>
+				<xr:Object>Document.CustomerInvoice.TabularSection.Inventory.Attribute.AutomaticDiscountsPercent</xr:Object>
+				<xr:Object>Report.AutomaticDiscounts</xr:Object>
+				<xr:Object>DataProcessor.ManualAndAutomaticMarkupAndDiscountKinds.Command.OpenDataProcessorsMainForm</xr:Object>
+				<xr:Object>Report.DiscountsAppliedInDocument</xr:Object>
+				<xr:Object>Document.AcceptanceCertificate.TabularSection.WorksAndServices.Attribute.AutomaticDiscountsPercent</xr:Object>
+				<xr:Object>Document.AcceptanceCertificate.TabularSection.WorksAndServices.Attribute.AutomaticDiscountAmount</xr:Object>
+				<xr:Object>Document.AcceptanceCertificate.TabularSection.WorksAndServices.Attribute.ConnectionKey</xr:Object>
+				<xr:Object>Document.CustomerOrder.TabularSection.Inventory.Attribute.ConnectionKey</xr:Object>
+				<xr:Object>Document.CustomerInvoice.TabularSection.Inventory.Attribute.ConnectionKey</xr:Object>
+				<xr:Object>Document.InvoiceForPayment.TabularSection.Inventory.Attribute.ConnectionKey</xr:Object>
+				<xr:Object>Document.InvoiceForPayment.TabularSection.Inventory.Attribute.AutomaticDiscountAmount</xr:Object>
+				<xr:Object>Document.InvoiceForPayment.TabularSection.Inventory.Attribute.AutomaticDiscountsPercent</xr:Object>
+				<xr:Object>Document.InvoiceForPayment.Attribute.DiscountsAreCalculated</xr:Object>
+				<xr:Object>Document.ReceiptCR.Attribute.DiscountsAreCalculated</xr:Object>
+				<xr:Object>Document.ReceiptCR.TabularSection.Inventory.Attribute.ConnectionKey</xr:Object>
+				<xr:Object>Document.ReceiptCR.TabularSection.Inventory.Attribute.AutomaticDiscountAmount</xr:Object>
+				<xr:Object>Document.ReceiptCR.TabularSection.Inventory.Attribute.AutomaticDiscountsPercent</xr:Object>
+				<xr:Object>Document.AcceptanceCertificate.Attribute.DiscountsAreCalculated</xr:Object>
+				<xr:Object>Document.CustomerOrder.Attribute.DiscountsAreCalculated</xr:Object>
+				<xr:Object>Document.RetailReport.TabularSection.DiscountsMarkups</xr:Object>
+				<xr:Object>Document.RetailReport.TabularSection.Inventory.Attribute.AutomaticDiscountsPercent</xr:Object>
+				<xr:Object>Document.RetailReport.TabularSection.Inventory.Attribute.AutomaticDiscountAmount</xr:Object>
+				<xr:Object>Document.CustomerOrder.TabularSection.Works.Attribute.AutomaticDiscountsPercent</xr:Object>
+				<xr:Object>Document.CustomerOrder.TabularSection.Works.Attribute.AutomaticDiscountAmount</xr:Object>
+				<xr:Object>Document.CustomerOrder.TabularSection.Works.Attribute.ConnectionKeyForMarkupsDiscounts</xr:Object>
+				<xr:Object>Document.ReceiptCRReturn.TabularSection.Inventory.Attribute.AutomaticDiscountsPercent</xr:Object>
+				<xr:Object>Document.ReceiptCRReturn.TabularSection.Inventory.Attribute.AutomaticDiscountAmount</xr:Object>
+				<xr:Object>Document.ReceiptCRReturn.TabularSection.Inventory.Attribute.ConnectionKey</xr:Object>
+				<xr:Object>Document.ReceiptCRReturn.Attribute.DiscountsAreCalculated</xr:Object>
+				<xr:Object>Document.ProcessingReport.Attribute.DiscountsAreCalculated</xr:Object>
+				<xr:Object>Document.ProcessingReport.TabularSection.Products.Attribute.ConnectionKey</xr:Object>
+				<xr:Object>Document.ProcessingReport.TabularSection.Products.Attribute.AutomaticDiscountsPercent</xr:Object>
+				<xr:Object>Document.ProcessingReport.TabularSection.Products.Attribute.AutomaticDiscountAmount</xr:Object>
+				<xr:Object>CommonCommand.AnalysisReportAutomaticDiscounts</xr:Object>
+			</Content>
+		</Properties>
+	</FunctionalOption>
+</MetaDataObject>

@@ -1,0 +1,710 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Title>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Electronic document exchange parameters</v8:content>
+		</v8:item>
+	</Title>
+	<Width>69</Width>
+	<AutoTitle>false</AutoTitle>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnOpen">OnOpen</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+		<Event name="OnClose">OnClose</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="UserManagementGroup" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>User management group</v8:content>
+				</v8:item>
+			</Title>
+			<HorizontalStretch>true</HorizontalStretch>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="UserManagementGroupExtendedTooltip" id="71"/>
+			<ChildItems>
+				<LabelDecoration name="LoginLabel" id="2">
+					<HorizontalStretch>true</HorizontalStretch>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content> </v8:content>
+						</v8:item>
+					</Title>
+					<HorizontalAlign>Right</HorizontalAlign>
+					<ContextMenu name="LoginLabelContextMenu" id="3"/>
+					<ExtendedTooltip name="LoginLabelExtendedTooltip" id="72"/>
+				</LabelDecoration>
+				<LabelDecoration name="LogoutLabel" id="4">
+					<Width>5</Width>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Exit</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Authorized user logout (the user will be requested to re-enter username and password next time)</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Hyperlink>true</Hyperlink>
+					<HorizontalAlign>Right</HorizontalAlign>
+					<ContextMenu name="LogoutLabelContextMenu" id="5"/>
+					<ExtendedTooltip name="LogoutLabelExtendedTooltip" id="73"/>
+					<Events>
+						<Event name="Click">LabelLogoutClick</Event>
+					</Events>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="FormHeaderGroup" id="6">
+			<Visible>false</Visible>
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Form header group</v8:content>
+				</v8:item>
+			</Title>
+			<HorizontalStretch>true</HorizontalStretch>
+			<VerticalStretch>false</VerticalStretch>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="FormHeaderGroupExtendedTooltip" id="74"/>
+			<ChildItems>
+				<LabelDecoration name="FormHeaderLabel" id="9">
+					<VerticalStretch>true</VerticalStretch>
+					<Font height="14" kind="AutoFont"/>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>ED exchange participant ID</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="FormHeaderLabelContextMenu" id="10"/>
+					<ExtendedTooltip name="FormHeaderLabelExtendedTooltip" id="75"/>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="GroupInformation" id="33">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Information group</v8:content>
+				</v8:item>
+			</Title>
+			<HorizontalStretch>true</HorizontalStretch>
+			<VerticalStretch>false</VerticalStretch>
+			<Group>Horizontal</Group>
+			<Representation>StrongSeparation</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="GroupInformationExtendedTooltip" id="76"/>
+			<ChildItems>
+				<PictureDecoration name="FormLogo" id="7">
+					<Width>4</Width>
+					<Height>2</Height>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Logo of the form</v8:content>
+						</v8:item>
+					</Title>
+					<Picture>
+						<xr:Ref>CommonPicture.OnlineUserSupport</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</Picture>
+					<ContextMenu name="FormLogoContextMenu" id="8"/>
+					<ExtendedTooltip name="FormLogoExtendedTooltip" id="77"/>
+				</PictureDecoration>
+				<Pages name="RegistrationInformationPanel" id="34">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Registration information panel</v8:content>
+						</v8:item>
+					</Title>
+					<PagesRepresentation>None</PagesRepresentation>
+					<ExtendedTooltip name="RegistrationInformationPanelExtendedTooltip" id="78"/>
+					<ChildItems>
+						<Page name="PageNotRegistered" id="35">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Page not registered</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="PageNotRegisteredExtendedTooltip" id="79"/>
+							<ChildItems>
+								<LabelDecoration name="Decoration1" id="11">
+									<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Information on registration of ED exchange participant</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="Decoration1ContextMenu" id="12"/>
+									<ExtendedTooltip name="Decoration1ExtendedTooltip" id="80"/>
+								</LabelDecoration>
+								<LabelDecoration name="Decoration2" id="13">
+									<HorizontalStretch>true</HorizontalStretch>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>To get the ED exchange participant unique ID, please fill in the form of application for registration. It will be transferred to ED exchange operator. After successfull execution of application you will be assigned the unique identifier of ED exchange participant. To create the application click "Create application"</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="Decoration2ContextMenu" id="14"/>
+									<ExtendedTooltip name="Decoration2ExtendedTooltip" id="81"/>
+								</LabelDecoration>
+								<LabelDecoration name="DecorationTechnicalSupport" id="108">
+									<Title formatted="true">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>You can contact &lt;link techsupport=""&gt;technical support&lt;/&gt; if you have 1C-Taxcom connection problems.</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="DecorationTechnicalSupportContextMenu" id="109"/>
+									<ExtendedTooltip name="DecorationTechnicalSupportExtendedTooltip" id="110"/>
+									<Events>
+										<Event name="URLProcessing">TechnicalSupportNavigationRefDataProcessor</Event>
+									</Events>
+								</LabelDecoration>
+							</ChildItems>
+						</Page>
+						<Page name="PageNotReviewed" id="36">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Not reviewed page</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="PageNotReviewedExtendedTooltip" id="82"/>
+							<ChildItems>
+								<LabelDecoration name="Decoration4" id="39">
+									<Width>50</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>The application was created to generate the ID for ED exchange participant</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="Decoration4ContextMenu" id="40"/>
+									<ExtendedTooltip name="Decoration4ExtendedTooltip" id="83"/>
+								</LabelDecoration>
+								<LabelDecoration name="Decoration4_1" id="65">
+									<Width>50</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>The application was created to register the certificate of ED exchange participant</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="Decoration4_1ContextMenu" id="66"/>
+									<ExtendedTooltip name="Decoration4_1ExtendedTooltip" id="84"/>
+								</LabelDecoration>
+								<LabelDecoration name="LabelApplication" id="41">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Application label</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Open the application for registration in the Taxcom electronic documents flow system</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Hyperlink>true</Hyperlink>
+									<ContextMenu name="LabelApplicationContextMenu" id="42"/>
+									<ExtendedTooltip name="LabelApplicationExtendedTooltip" id="85"/>
+									<Events>
+										<Event name="Click">LabelApplicationClick</Event>
+									</Events>
+								</LabelDecoration>
+								<LabelDecoration name="Decoration5" id="43">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>At the moment the application has not been reviewed by the operator yet.</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="Decoration5ContextMenu" id="44"/>
+									<ExtendedTooltip name="Decoration5ExtendedTooltip" id="86"/>
+								</LabelDecoration>
+								<LabelDecoration name="LabelRefresh" id="62">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Refresh label</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Check the status of application execution</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Hyperlink>true</Hyperlink>
+									<ContextMenu name="RefreshLabelContextMenu" id="63"/>
+									<ExtendedTooltip name="LabelRefreshExtendedTooltip" id="87"/>
+									<Events>
+										<Event name="Click">ClickRefreshLabel</Event>
+									</Events>
+								</LabelDecoration>
+								<LabelDecoration name="DecorationTechnicalSupport1" id="111">
+									<Title formatted="true">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>You can contact &lt;link TechSupport&gt;technical support&lt;/&gt; if you have problems.</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="DecorationTechnicalSupport1ContextMenu" id="112"/>
+									<ExtendedTooltip name="DecorationTechnicalSupport1ExtendedTooltip" id="113"/>
+									<Events>
+										<Event name="URLProcessing">TechnicalSupportNavigationRefDataProcessor</Event>
+									</Events>
+								</LabelDecoration>
+							</ChildItems>
+						</Page>
+						<Page name="PageReviewed" id="37">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Page reviewed</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="PageReviewedExtendedTooltip" id="88"/>
+							<ChildItems>
+								<LabelDecoration name="Decoration6" id="47">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>The application is successfully executed by operator. You have been assigned an ID:</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="Decoration6ContextMenu" id="48"/>
+									<ExtendedTooltip name="Decoration6ExtendedTooltip" id="89"/>
+								</LabelDecoration>
+								<LabelDecoration name="Decoration6_1" id="67">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Certificate is successfully registered for identifier</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="Decoration6_1ContextMenu" id="68"/>
+									<ExtendedTooltip name="Decoration6_1ExtendedTooltip" id="90"/>
+								</LabelDecoration>
+								<LabelDecoration name="LabelUUID" id="49">
+									<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Unique identifier</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="LabelUUIDContextMenu" id="50"/>
+									<ExtendedTooltip name="LabelUUIDExtendedTooltip" id="91"/>
+								</LabelDecoration>
+								<LabelDecoration name="LabelPersonalArea" id="51">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Personal area</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Open Taxcom subscriber personal area</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Hyperlink>true</Hyperlink>
+									<ContextMenu name="LabelPersonalAreaContextMenu" id="52"/>
+									<ExtendedTooltip name="LabelPersonalAreaExtendedTooltip" id="92"/>
+									<Events>
+										<Event name="Click">LabelPersonalAreaClick</Event>
+									</Events>
+								</LabelDecoration>
+								<LabelDecoration name="DecorationTechnicalSupport2" id="114">
+									<Title formatted="true">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>You can contact &lt;link TechSupport&gt;technical support&lt;/&gt; if you have problems.</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="DecorationTechnicalSupport2ContextMenu" id="115"/>
+									<ExtendedTooltip name="DecorationTechnicalSupport2ExtendedTooltip" id="116"/>
+									<Events>
+										<Event name="URLProcessing">TechnicalSupportNavigationRefDataProcessor</Event>
+									</Events>
+								</LabelDecoration>
+							</ChildItems>
+						</Page>
+						<Page name="PageDenied" id="38">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Page denied</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="PageDeniedExtendedTooltip" id="93"/>
+							<ChildItems>
+								<LabelDecoration name="LabelApplication1" id="53">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>LabelApplication1</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>The application for connection to Taxcom electronic documents flow system</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Hyperlink>true</Hyperlink>
+									<ContextMenu name="LabelApplication1ContextMenu" id="54"/>
+									<ExtendedTooltip name="LabelApplication1ExtendedTooltip" id="94"/>
+									<Events>
+										<Event name="Click">LabelApplication1Click</Event>
+									</Events>
+								</LabelDecoration>
+								<LabelDecoration name="Decoration7" id="55">
+									<Height>2</Height>
+									<Title formatted="true">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>The application for getting the ID for ED exchange participant is rejected by the operator. You can submit your application again or contact &lt;link TechSupport&gt;technical support&lt;/&gt;.</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="Decoration7ContextMenu" id="56"/>
+									<ExtendedTooltip name="Decoration7ExtendedTooltip" id="95"/>
+									<Events>
+										<Event name="URLProcessing">TechnicalSupportNavigationRefDataProcessor</Event>
+									</Events>
+								</LabelDecoration>
+								<LabelDecoration name="Decoration7_1" id="69">
+									<Height>2</Height>
+									<Title formatted="true">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>The application for certificate registration is rejected by operator. You can submit your application again or contact &lt;link TechSupport&gt;technical support&lt;/&gt;.</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="Decoration7_1ContextMenu" id="70"/>
+									<ExtendedTooltip name="Decoration7_1ExtendedTooltip" id="96"/>
+									<Events>
+										<Event name="URLProcessing">TechnicalSupportNavigationRefDataProcessor</Event>
+									</Events>
+								</LabelDecoration>
+								<UsualGroup name="GroupCause" id="57">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group cause</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupCauseExtendedTooltip" id="97"/>
+									<ChildItems>
+										<LabelDecoration name="Decoration8" id="60">
+											<HorizontalStretch>true</HorizontalStretch>
+											<ContextMenu name="Decoration8ContextMenu" id="61"/>
+											<ExtendedTooltip name="Decoration8ExtendedTooltip" id="98"/>
+										</LabelDecoration>
+										<LabelDecoration name="LabelChange" id="58">
+											<HorizontalStretch>false</HorizontalStretch>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Cause</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Show the cause of rejection of application for registration in the Taxcom electronic documents flow system</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Hyperlink>true</Hyperlink>
+											<ContextMenu name="LabelChangeContextMenu" id="59"/>
+											<ExtendedTooltip name="LabelChangeExtendedTooltip" id="99"/>
+											<Events>
+												<Event name="Click">LabelChangeClick</Event>
+											</Events>
+										</LabelDecoration>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</Page>
+					</ChildItems>
+				</Pages>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="CertificateDataGroup" id="64">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>DS certificate data</v8:content>
+				</v8:item>
+			</Title>
+			<TitleTextColor>#000000</TitleTextColor>
+			<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+			<Group>Vertical</Group>
+			<Representation>StrongSeparation</Representation>
+			<ExtendedTooltip name="CertificateDataGroupExtendedTooltip" id="100"/>
+			<ChildItems>
+				<LabelDecoration name="Decoration3" id="15">
+					<Visible>false</Visible>
+					<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>DS certificate data:</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="Decoration3ContextMenu" id="16"/>
+					<ExtendedTooltip name="Decoration3ExtendedTooltip" id="101"/>
+				</LabelDecoration>
+				<InputField name="DSCertificate" id="17">
+					<DataPath>DSCertificate</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<TitleLocation>Top</TitleLocation>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Digital signature certificate used for electronic documents exchange</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Width>60</Width>
+					<ContextMenu name="DSCertificateContextMenu" id="18"/>
+					<ExtendedTooltip name="DSCertificateExtendedTooltip" id="102"/>
+				</InputField>
+				<InputField name="Company" id="19">
+					<DataPath>Company</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<TitleLocation>Top</TitleLocation>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Information on the company</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ContextMenu name="CounterpartyContextMenu" id="20"/>
+					<ExtendedTooltip name="CounterpartyExtendedTooltip" id="103"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="CommandGroupApplicationCreation" id="23">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Application creation command group</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="CommandGroupApplicationCreationExtendedTooltip" id="104"/>
+			<ChildItems>
+				<LabelDecoration name="Indent" id="24">
+					<Width>30</Width>
+					<HorizontalStretch>true</HorizontalStretch>
+					<ContextMenu name="IndentContextMenu" id="25"/>
+					<ExtendedTooltip name="IndentExtendedTooltip" id="105"/>
+				</LabelDecoration>
+				<Button name="ExecuteAction" id="21">
+					<Type>UsualButton</Type>
+					<DefaultButton>true</DefaultButton>
+					<CommandName>Form.Command.ExecuteAction</CommandName>
+					<ExtendedTooltip name="ExecuteActionExtendedTooltip" id="106"/>
+				</Button>
+				<Button name="Close" id="22">
+					<Type>UsualButton</Type>
+					<CommandName>Form.Command.CloseForm</CommandName>
+					<ExtendedTooltip name="CloseExtendedTooltip" id="107"/>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.Connection1CTaxcom</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="DSCertificate" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>DS certificate</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.DigitalSignaturesAndEncryptionKeyCertificates</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Company" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Company</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:TypeSet>cfg:AnyRef</v8:TypeSet>
+			</Type>
+		</Attribute>
+		<Attribute name="RequestStatus" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Application status</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="RequestNumber" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Number of application</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ParticipantID" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Participant ID</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="RequestDate" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Date of application</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>DateTime</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="TimeoutSeconds" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Timeout in seconds</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="SoftwareClosing" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Software closing</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ThisIsCertificateAddition" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>This is addition of certificate</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ExecuteAction" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>    Create application     </v8:content>
+				</v8:item>
+			</Title>
+			<Action>ExecuteAction</Action>
+		</Command>
+		<Command name="CloseForm" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Close</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Close form</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>CloseForm</Action>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="ToAddCert">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

@@ -1,0 +1,2134 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<AutoTitle>false</AutoTitle>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="NotificationProcessing">NotificationProcessing</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="PreheaderGroup" id="305">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Preheader group</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Preheader group</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="PreheaderGroupExtendedTooltip" id="306"/>
+			<ChildItems>
+				<LabelDecoration name="Preheader" id="140">
+					<HorizontalStretch>true</HorizontalStretch>
+					<TextColor>#999999</TextColor>
+					<Font italic="true" kind="AutoFont"/>
+					<ContextMenu name="PreheaderContextMenu" id="141"/>
+					<ExtendedTooltip name="PreheaderExtendedTooltip" id="142"/>
+				</LabelDecoration>
+				<LabelDecoration name="Subject" id="307">
+					<TextColor>style:ButtonTextColor</TextColor>
+					<Font ref="sys:DefaultGUIFont" bold="false" italic="false" underline="true" strikeout="false" kind="WindowsFont"/>
+					<HorizontalAlign>Right</HorizontalAlign>
+					<ContextMenu name="SubjectContextMenu" id="308"/>
+					<ExtendedTooltip name="SubjectExtendedTooltip" id="309"/>
+				</LabelDecoration>
+				<LabelDecoration name="AdditionalParameter" id="434">
+					<HorizontalStretch>true</HorizontalStretch>
+					<TextColor>#999999</TextColor>
+					<HorizontalAlign>Right</HorizontalAlign>
+					<ContextMenu name="AdditionalParameterContextMenu" id="435"/>
+					<ExtendedTooltip name="AdditionalParameterExtendedTooltip" id="436"/>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="CommonGroup" id="936">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Common group</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Common group</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="CommonGroupExtendedTooltip" id="937"/>
+			<ChildItems>
+				<UsualGroup name="LeftGroup" id="938">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Left group</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Left group</v8:content>
+						</v8:item>
+					</ToolTip>
+					<VerticalStretch>true</VerticalStretch>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="LeftGroupExtendedTooltip" id="939"/>
+					<ChildItems>
+						<UsualGroup name="GroupContent" id="310">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group of content</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group of content</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ContentGroupExtendedTooltip" id="311"/>
+							<ChildItems>
+								<Pages name="Idea_1" id="1">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Idea 1</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Idea 1</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Width>15</Width>
+									<PagesRepresentation>None</PagesRepresentation>
+									<ExtendedTooltip name="Idea_1ExtendedTooltip" id="2"/>
+									<ChildItems>
+										<Page name="Added_1" id="3">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Added 1</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Added 1</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ExtendedTooltip name="Added_1ExtendedTooltip" id="4"/>
+											<ChildItems>
+												<UsualGroup name="Added_Group_1" id="5">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Added group 1</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Added group 1</v8:content>
+														</v8:item>
+													</ToolTip>
+													<Group>Vertical</Group>
+													<Representation>None</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="Added_Group_1ExtendedTooltip" id="6"/>
+													<ChildItems>
+														<UsualGroup name="Added_ContentGroup_1" id="10">
+															<Title>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Added content group 1</v8:content>
+																</v8:item>
+															</Title>
+															<ToolTip>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Added content group 1</v8:content>
+																</v8:item>
+															</ToolTip>
+															<Group>Horizontal</Group>
+															<Representation>None</Representation>
+															<ShowTitle>false</ShowTitle>
+															<ExtendedTooltip name="Added_ContentGroup_1ExtendedTooltip" id="11"/>
+															<ChildItems>
+																<UsualGroup name="Added_CoomandGroup_1" id="12">
+																	<Title>
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Added coomand group 1</v8:content>
+																		</v8:item>
+																	</Title>
+																	<ToolTip>
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Added coomand group 1</v8:content>
+																		</v8:item>
+																	</ToolTip>
+																	<Group>Vertical</Group>
+																	<Representation>None</Representation>
+																	<ShowTitle>false</ShowTitle>
+																	<ExtendedTooltip name="Added_CommandGroup_1ExtendedTooltip" id="13"/>
+																	<ChildItems>
+																		<PictureDecoration name="Added_Picture_1" id="14">
+																			<Width>10</Width>
+																			<Height>3</Height>
+																			<Title formatted="false">
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Added picture 1</v8:content>
+																				</v8:item>
+																			</Title>
+																			<PictureSize>AutoSize</PictureSize>
+																			<Picture>
+																				<xr:Ref>CommonPicture.NewIdea</xr:Ref>
+																				<xr:LoadTransparent>true</xr:LoadTransparent>
+																			</Picture>
+																			<ContextMenu name="Added_Picture_1ContextMenu" id="15"/>
+																			<ExtendedTooltip name="Added_Picture_1ExtendedTooltip" id="16"/>
+																		</PictureDecoration>
+																	</ChildItems>
+																</UsualGroup>
+															</ChildItems>
+														</UsualGroup>
+													</ChildItems>
+												</UsualGroup>
+											</ChildItems>
+										</Page>
+										<Page name="OnVote_1" id="39">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>On vote 1</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>On vote 1</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ExtendedTooltip name="OnVote_1ExtendedTooltip" id="40"/>
+											<ChildItems>
+												<UsualGroup name="OnVote_Group_1" id="41">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>On vote group 1</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>On vote group 1</v8:content>
+														</v8:item>
+													</ToolTip>
+													<Group>Vertical</Group>
+													<Representation>None</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="OnVote_Group_1ExtendedTooltip" id="42"/>
+													<ChildItems>
+														<UsualGroup name="OnVote_ContentGroup_1" id="46">
+															<Title>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>On vote content group 1</v8:content>
+																</v8:item>
+															</Title>
+															<ToolTip>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>On vote content group 1</v8:content>
+																</v8:item>
+															</ToolTip>
+															<Group>Horizontal</Group>
+															<Representation>None</Representation>
+															<ShowTitle>false</ShowTitle>
+															<ExtendedTooltip name="OnVote_ContentGroup_1ExtendedTooltip" id="47"/>
+															<ChildItems>
+																<UsualGroup name="OnVote_CommandGroup_1" id="48">
+																	<Title>
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>On vote command group 1</v8:content>
+																		</v8:item>
+																	</Title>
+																	<ToolTip>
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>On vote command group 1</v8:content>
+																		</v8:item>
+																	</ToolTip>
+																	<Group>Vertical</Group>
+																	<Representation>None</Representation>
+																	<ShowTitle>false</ShowTitle>
+																	<ExtendedTooltip name="OnVote_CommandGroup_1ExtendedTooltip" id="49"/>
+																	<ChildItems>
+																		<Pages name="CommandPageOnVote_1" id="50">
+																			<Title>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Commands page on vote 1</v8:content>
+																				</v8:item>
+																			</Title>
+																			<ToolTip>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Commands page on vote 1</v8:content>
+																				</v8:item>
+																			</ToolTip>
+																			<PagesRepresentation>None</PagesRepresentation>
+																			<ExtendedTooltip name="CommandPagesOnVote_1ExtendedTooltip" id="51"/>
+																			<ChildItems>
+																				<Page name="PageVotePlus_1" id="52">
+																					<Title>
+																						<v8:item>
+																							<v8:lang>en</v8:lang>
+																							<v8:content>Page vote plus 1</v8:content>
+																						</v8:item>
+																					</Title>
+																					<ToolTip>
+																						<v8:item>
+																							<v8:lang>en</v8:lang>
+																							<v8:content>Page vote plus 1</v8:content>
+																						</v8:item>
+																					</ToolTip>
+																					<HorizontalStretch>true</HorizontalStretch>
+																					<ExtendedTooltip name="PageVotePlus_1ExtendedTooltip" id="53"/>
+																					<ChildItems>
+																						<Button name="OnPlus_PLUS_1" id="54">
+																							<Type>UsualButton</Type>
+																							<Width>10</Width>
+																							<CommandName>Form.Command.PLUS</CommandName>
+																							<TextColor>#008000</TextColor>
+																							<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+																							<Title>
+																								<v8:item>
+																									<v8:lang>en</v8:lang>
+																									<v8:content>+ 1</v8:content>
+																								</v8:item>
+																							</Title>
+																							<ExtendedTooltip name="OnPlus_Plus_1ExtendedTooltip" id="55"/>
+																						</Button>
+																						<LabelDecoration name="OnPlus_Rating_1" id="56">
+																							<Width>10</Width>
+																							<TextColor>#999999</TextColor>
+																							<Font ref="sys:DefaultGUIFont" height="14" kind="WindowsFont"/>
+																							<HorizontalAlign>Center</HorizontalAlign>
+																							<ContextMenu name="OnPlus_Rating_1ContextMenu" id="57"/>
+																							<ExtendedTooltip name="OnPlus_Rating_1ExtendedTooltip" id="58"/>
+																						</LabelDecoration>
+																						<LabelDecoration name="OnPlus_minus_1" id="59">
+																							<Width>10</Width>
+																							<HorizontalStretch>false</HorizontalStretch>
+																							<TextColor>#FF0000</TextColor>
+																							<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+																							<Title formatted="false">
+																								<v8:item>
+																									<v8:lang>en</v8:lang>
+																									<v8:content>- 1</v8:content>
+																								</v8:item>
+																							</Title>
+																							<HorizontalAlign>Center</HorizontalAlign>
+																							<ContextMenu name="OnPlus_Minus_1ContextMenu" id="60"/>
+																							<ExtendedTooltip name="OnPlus_Minus_1ExtendedTooltip" id="61"/>
+																						</LabelDecoration>
+																					</ChildItems>
+																				</Page>
+																				<Page name="PageVoteMinus_1" id="62">
+																					<Title>
+																						<v8:item>
+																							<v8:lang>en</v8:lang>
+																							<v8:content>Page vote plus 1</v8:content>
+																						</v8:item>
+																					</Title>
+																					<ToolTip>
+																						<v8:item>
+																							<v8:lang>en</v8:lang>
+																							<v8:content>Page vote plus 1</v8:content>
+																						</v8:item>
+																					</ToolTip>
+																					<HorizontalStretch>true</HorizontalStretch>
+																					<ExtendedTooltip name="PageVoteMinus_1ExtendedTooltip" id="63"/>
+																					<ChildItems>
+																						<LabelDecoration name="OnMinus_PLUS_1" id="64">
+																							<Width>10</Width>
+																							<TextColor>#008000</TextColor>
+																							<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+																							<Title formatted="false">
+																								<v8:item>
+																									<v8:lang>en</v8:lang>
+																									<v8:content>+ 1</v8:content>
+																								</v8:item>
+																							</Title>
+																							<HorizontalAlign>Center</HorizontalAlign>
+																							<ContextMenu name="OnMinus_Plus_1ContextMenu" id="65"/>
+																							<ExtendedTooltip name="OnMinus_Plus_1ExtendedTooltip" id="66"/>
+																						</LabelDecoration>
+																						<LabelDecoration name="OnMinus_Rating_1" id="67">
+																							<Width>10</Width>
+																							<TextColor>#999999</TextColor>
+																							<Font ref="sys:DefaultGUIFont" height="14" kind="WindowsFont"/>
+																							<HorizontalAlign>Center</HorizontalAlign>
+																							<ContextMenu name="OnMinus_Rating_1ContextMenu" id="68"/>
+																							<ExtendedTooltip name="OnMinus_Rating_1ExtendedTooltip" id="69"/>
+																						</LabelDecoration>
+																						<Button name="OnMinus_minus_1" id="70">
+																							<Type>UsualButton</Type>
+																							<Width>10</Width>
+																							<CommandName>Form.Command.minus</CommandName>
+																							<TextColor>#FF0000</TextColor>
+																							<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+																							<ExtendedTooltip name="OnMinus_Minus_1ExtendedTooltip" id="71"/>
+																						</Button>
+																					</ChildItems>
+																				</Page>
+																				<Page name="PageWithoutVote_1" id="72">
+																					<Title>
+																						<v8:item>
+																							<v8:lang>en</v8:lang>
+																							<v8:content>Page vote plus 1</v8:content>
+																						</v8:item>
+																					</Title>
+																					<ToolTip>
+																						<v8:item>
+																							<v8:lang>en</v8:lang>
+																							<v8:content>Page vote plus 1</v8:content>
+																						</v8:item>
+																					</ToolTip>
+																					<HorizontalStretch>true</HorizontalStretch>
+																					<ExtendedTooltip name="PageWithoutVote_1ExtendedTooltip" id="73"/>
+																					<ChildItems>
+																						<Button name="WithoutVote_PLUS_1" id="74">
+																							<Type>UsualButton</Type>
+																							<Width>10</Width>
+																							<CommandName>Form.Command.PLUS</CommandName>
+																							<TextColor>#008000</TextColor>
+																							<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+																							<ExtendedTooltip name="WithoutVote_Plus_1ExtendedTooltip" id="75"/>
+																						</Button>
+																						<LabelDecoration name="WithoutVote_Rating_1" id="76">
+																							<Width>10</Width>
+																							<TextColor>#999999</TextColor>
+																							<Font ref="sys:DefaultGUIFont" height="14" kind="WindowsFont"/>
+																							<HorizontalAlign>Center</HorizontalAlign>
+																							<ContextMenu name="WithoutVote_Rating_1ContextMenu" id="77"/>
+																							<ExtendedTooltip name="WithoutVote_Rating_1ExtendedTooltip" id="78"/>
+																						</LabelDecoration>
+																						<Button name="WithoutVote_minus_1" id="79">
+																							<Type>UsualButton</Type>
+																							<Width>10</Width>
+																							<CommandName>Form.Command.minus</CommandName>
+																							<TextColor>#FF0000</TextColor>
+																							<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+																							<ExtendedTooltip name="WithoutVote_Minus_1ExtendedTooltip" id="80"/>
+																						</Button>
+																					</ChildItems>
+																				</Page>
+																			</ChildItems>
+																		</Pages>
+																	</ChildItems>
+																</UsualGroup>
+															</ChildItems>
+														</UsualGroup>
+													</ChildItems>
+												</UsualGroup>
+											</ChildItems>
+										</Page>
+										<Page name="Realized_1" id="100">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Realized 1</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Realized 1</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ExtendedTooltip name="Realized_1ExtendedTooltip" id="101"/>
+											<ChildItems>
+												<UsualGroup name="Realized_Group_1" id="102">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Realized group 1</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Realized group 1</v8:content>
+														</v8:item>
+													</ToolTip>
+													<Group>Vertical</Group>
+													<Representation>None</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="Realized_Group_1ExtendedTooltip" id="103"/>
+													<ChildItems>
+														<UsualGroup name="Realized_ContentGroup_1" id="107">
+															<Title>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Realized content group 1</v8:content>
+																</v8:item>
+															</Title>
+															<ToolTip>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Realized content group 1</v8:content>
+																</v8:item>
+															</ToolTip>
+															<Group>Horizontal</Group>
+															<Representation>None</Representation>
+															<ShowTitle>false</ShowTitle>
+															<ExtendedTooltip name="Realized_ContentGroup_1ExtendedTooltip" id="108"/>
+															<ChildItems>
+																<UsualGroup name="Realized_CommandGroup_1" id="109">
+																	<Title>
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Realized command group 1</v8:content>
+																		</v8:item>
+																	</Title>
+																	<ToolTip>
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Realized command group 1</v8:content>
+																		</v8:item>
+																	</ToolTip>
+																	<Group>Vertical</Group>
+																	<Representation>None</Representation>
+																	<ShowTitle>false</ShowTitle>
+																	<ExtendedTooltip name="Realized_CommandGroup_1ExtendedTooltip" id="110"/>
+																	<ChildItems>
+																		<PictureDecoration name="Realized_Picture_1" id="111">
+																			<Width>10</Width>
+																			<Height>3</Height>
+																			<Title formatted="false">
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Realized picture 1</v8:content>
+																				</v8:item>
+																			</Title>
+																			<PictureSize>AutoSize</PictureSize>
+																			<Picture>
+																				<xr:Ref>CommonPicture.RealizedIdea</xr:Ref>
+																				<xr:LoadTransparent>true</xr:LoadTransparent>
+																			</Picture>
+																			<ContextMenu name="Realized_Picture_1ContextMenu" id="112"/>
+																			<ExtendedTooltip name="Realized_Picture_1ExtendedTooltip" id="113"/>
+																		</PictureDecoration>
+																	</ChildItems>
+																</UsualGroup>
+															</ChildItems>
+														</UsualGroup>
+													</ChildItems>
+												</UsualGroup>
+											</ChildItems>
+										</Page>
+										<Page name="Rejected_1" id="136">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Rejected 1</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Rejected 1</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ExtendedTooltip name="Rejected_1ExtendedTooltip" id="137"/>
+											<ChildItems>
+												<UsualGroup name="Rejected_Group_1" id="138">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Rejected group 1</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Rejected group 1</v8:content>
+														</v8:item>
+													</ToolTip>
+													<Group>Vertical</Group>
+													<Representation>None</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="Rejected_Group_1ExtendedTooltip" id="139"/>
+													<ChildItems>
+														<UsualGroup name="Rejected_ContentGroup_1" id="143">
+															<Title>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Rejected content group 1</v8:content>
+																</v8:item>
+															</Title>
+															<ToolTip>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Rejected content group 1</v8:content>
+																</v8:item>
+															</ToolTip>
+															<Group>Horizontal</Group>
+															<Representation>None</Representation>
+															<ShowTitle>false</ShowTitle>
+															<ExtendedTooltip name="Rejected_ContentGroup_1ExtendedTooltip" id="144"/>
+															<ChildItems>
+																<UsualGroup name="Rejected_CommandGroup_1" id="145">
+																	<Title>
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Rejected command group 1</v8:content>
+																		</v8:item>
+																	</Title>
+																	<ToolTip>
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Rejected command group 1</v8:content>
+																		</v8:item>
+																	</ToolTip>
+																	<Group>Vertical</Group>
+																	<Representation>None</Representation>
+																	<ShowTitle>false</ShowTitle>
+																	<ExtendedTooltip name="Rejected_CommandGroup_1ExtendedTooltip" id="146"/>
+																	<ChildItems>
+																		<PictureDecoration name="Rejected_Picture_1" id="147">
+																			<Width>10</Width>
+																			<Height>3</Height>
+																			<Title formatted="false">
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Rejected picture 1</v8:content>
+																				</v8:item>
+																			</Title>
+																			<PictureSize>AutoSize</PictureSize>
+																			<Picture>
+																				<xr:Ref>CommonPicture.RejectedIdea</xr:Ref>
+																				<xr:LoadTransparent>true</xr:LoadTransparent>
+																			</Picture>
+																			<ContextMenu name="Rejected_Picture_1ContextMenu" id="148"/>
+																			<ExtendedTooltip name="Rejected_Picture_1ExtendedTooltip" id="149"/>
+																		</PictureDecoration>
+																	</ChildItems>
+																</UsualGroup>
+															</ChildItems>
+														</UsualGroup>
+													</ChildItems>
+												</UsualGroup>
+											</ChildItems>
+										</Page>
+										<Page name="Planned_1" id="169">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Planned 1</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Planned 1</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ExtendedTooltip name="Planned_1ExtendedTooltip" id="170"/>
+											<ChildItems>
+												<UsualGroup name="Planned_Group_1" id="171">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Planned group 1</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Planned group 1</v8:content>
+														</v8:item>
+													</ToolTip>
+													<Group>Vertical</Group>
+													<Representation>None</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="Planned_Group_1ExtendedTooltip" id="172"/>
+													<ChildItems>
+														<UsualGroup name="Planned_ContentGroup_1" id="176">
+															<Title>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Planned content group 1</v8:content>
+																</v8:item>
+															</Title>
+															<ToolTip>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Planned content group 1</v8:content>
+																</v8:item>
+															</ToolTip>
+															<Group>Horizontal</Group>
+															<Representation>None</Representation>
+															<ShowTitle>false</ShowTitle>
+															<ExtendedTooltip name="Planned_ContentGroup_1ExtendedTooltip" id="177"/>
+															<ChildItems>
+																<UsualGroup name="Planned_CommandGroup_1" id="178">
+																	<Title>
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Planned command group 1</v8:content>
+																		</v8:item>
+																	</Title>
+																	<ToolTip>
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Planned command group 1</v8:content>
+																		</v8:item>
+																	</ToolTip>
+																	<Group>Vertical</Group>
+																	<Representation>None</Representation>
+																	<ShowTitle>false</ShowTitle>
+																	<ExtendedTooltip name="Planned_CommandGroup_1ExtendedTooltip" id="179"/>
+																	<ChildItems>
+																		<PictureDecoration name="Planned_Picture_1" id="180">
+																			<Width>10</Width>
+																			<Height>3</Height>
+																			<Title formatted="false">
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Planned picture 1</v8:content>
+																				</v8:item>
+																			</Title>
+																			<PictureSize>AutoSize</PictureSize>
+																			<Picture>
+																				<xr:Ref>CommonPicture.PlannedIdea</xr:Ref>
+																				<xr:LoadTransparent>true</xr:LoadTransparent>
+																			</Picture>
+																			<ContextMenu name="Planned_Picture_1ContextMenu" id="181"/>
+																			<ExtendedTooltip name="Planned_Picture_1ExtendedTooltip" id="182"/>
+																		</PictureDecoration>
+																	</ChildItems>
+																</UsualGroup>
+															</ChildItems>
+														</UsualGroup>
+													</ChildItems>
+												</UsualGroup>
+											</ChildItems>
+										</Page>
+									</ChildItems>
+								</Pages>
+								<HTMLDocumentField name="Content" id="210">
+									<DataPath>Content</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<Width>70</Width>
+									<Height>5</Height>
+									<ContextMenu name="ContentContextMenu" id="211"/>
+									<ExtendedTooltip name="ContentExtendedTooltip" id="212"/>
+								</HTMLDocumentField>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="RightGroup" id="940">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Right group</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Right group</v8:content>
+						</v8:item>
+					</ToolTip>
+					<VerticalStretch>true</VerticalStretch>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="RightGroupExtendedTooltip" id="941"/>
+					<ChildItems>
+						<UsualGroup name="AdditionalParameters" id="942">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Additional parameters</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Additional parameters</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="AdditionalParametersExtendedTooltip" id="943"/>
+							<ChildItems>
+								<UsualGroup name="CommentDeveloperGroup" id="944">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Developer comment</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Developer comment group</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Vertical</Group>
+									<Representation>StrongSeparation</Representation>
+									<ExtendedTooltip name="CommentDeveloperGroupExtendedTooltip" id="945"/>
+									<ChildItems>
+										<LabelDecoration name="DeveloperComment" id="1257">
+											<HorizontalStretch>true</HorizontalStretch>
+											<VerticalStretch>true</VerticalStretch>
+											<ContextMenu name="CommentDeveloperContextMenu" id="1258"/>
+											<ExtendedTooltip name="DeveloperCommentExtendedTooltip" id="1259"/>
+										</LabelDecoration>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+						<InputField name="TextOfComment" id="213">
+							<DataPath>TextOfComment</DataPath>
+							<DefaultItem>true</DefaultItem>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Comment</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>Top</TitleLocation>
+							<Height>3</Height>
+							<VerticalStretch>false</VerticalStretch>
+							<MultiLine>true</MultiLine>
+							<ContextMenu name="CommentTextContextMenu" id="214"/>
+							<ExtendedTooltip name="CommentTextExtendedTooltip" id="215"/>
+						</InputField>
+						<CommandBar name="CommandBarToComment" id="216">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Command bar to comment</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Command bar to comment</v8:content>
+								</v8:item>
+							</ToolTip>
+							<HorizontalLocation>Right</HorizontalLocation>
+							<ExtendedTooltip name="CommandBarToCommentExtendedTooltip" id="217"/>
+							<ChildItems>
+								<Button name="AddComment" id="218">
+									<Type>CommandBarButton</Type>
+									<DefaultButton>true</DefaultButton>
+									<CommandName>Form.Command.AddComment</CommandName>
+									<ExtendedTooltip name="AddCommentExtendedTooltip" id="219"/>
+								</Button>
+							</ChildItems>
+						</CommandBar>
+						<UsualGroup name="GroupComments" id="220">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Comments group</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Comments group</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="CommentsGroupExtendedTooltip" id="221"/>
+							<ChildItems>
+								<Pages name="CommentPages_1" id="323">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Comment pages 1</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Comment pages 1</v8:content>
+										</v8:item>
+									</ToolTip>
+									<PagesRepresentation>None</PagesRepresentation>
+									<ExtendedTooltip name="CommentPages_1ExtendedTooltip" id="324"/>
+									<ChildItems>
+										<Page name="CommentPage_1" id="222">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Comment page 1</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Comment page 1</v8:content>
+												</v8:item>
+											</ToolTip>
+											<VerticalStretch>true</VerticalStretch>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="CommentPage_1ExtendedTooltip" id="223"/>
+											<ChildItems>
+												<UsualGroup name="GroupComments_1" id="1119">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Comment group 1</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Comment group 1</v8:content>
+														</v8:item>
+													</ToolTip>
+													<Group>Vertical</Group>
+													<Representation>StrongSeparation</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="CommentGroup_1ExtendedTooltip" id="1120"/>
+													<ChildItems>
+														<LabelDecoration name="CommentTitle_1" id="1101">
+															<HorizontalStretch>true</HorizontalStretch>
+															<ContextMenu name="CommentTitle_1ContextMenu" id="1102"/>
+															<ExtendedTooltip name="CommentTitle_1ExtendedTooltip" id="1103"/>
+														</LabelDecoration>
+														<LabelDecoration name="Comment1" id="1104">
+															<Height>2</Height>
+															<HorizontalStretch>true</HorizontalStretch>
+															<VerticalStretch>true</VerticalStretch>
+															<VerticalAlign>Top</VerticalAlign>
+															<ContextMenu name="Comment1ContextMenu" id="1105"/>
+															<ExtendedTooltip name="Comment1ExtendedTooltip" id="1106"/>
+														</LabelDecoration>
+														<UsualGroup name="CommentCommandPanel" id="312">
+															<Title>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Command panel comments</v8:content>
+																</v8:item>
+															</Title>
+															<ToolTip>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Command panel comments</v8:content>
+																</v8:item>
+															</ToolTip>
+															<Group>Horizontal</Group>
+															<Representation>None</Representation>
+															<ShowTitle>false</ShowTitle>
+															<ExtendedTooltip name="CommentCommandPanelExtendedTooltip" id="313"/>
+															<ChildItems>
+																<PictureDecoration name="PictureAnswer_1" id="314">
+																	<Width>2</Width>
+																	<Height>1</Height>
+																	<Title formatted="false">
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Picture answer 1</v8:content>
+																		</v8:item>
+																	</Title>
+																	<Hyperlink>true</Hyperlink>
+																	<PictureSize>Proportionally</PictureSize>
+																	<Picture>
+																		<xr:Ref>CommonPicture.AnswerToComment</xr:Ref>
+																		<xr:LoadTransparent>true</xr:LoadTransparent>
+																	</Picture>
+																	<ContextMenu name="PictureAnswer_1ContextMenu" id="315"/>
+																	<ExtendedTooltip name="PictureAnswer_1ExtendedTooltip" id="316"/>
+																	<Events>
+																		<Event name="Click">AnswerClick</Event>
+																	</Events>
+																</PictureDecoration>
+																<LabelDecoration name="Answer_1" id="270">
+																	<Title formatted="false">
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Answer</v8:content>
+																		</v8:item>
+																	</Title>
+																	<Hyperlink>true</Hyperlink>
+																	<ContextMenu name="Answer_1ContextMenu" id="271"/>
+																	<ExtendedTooltip name="Answer_1ExtendedTooltip" id="272"/>
+																	<Events>
+																		<Event name="Click">AnswerClick</Event>
+																	</Events>
+																</LabelDecoration>
+																<LabelDecoration name="LabelBlankCommentCommand_1" id="682">
+																	<HorizontalStretch>true</HorizontalStretch>
+																	<ContextMenu name="LabelBlankCommentCommand_1ContextMenu" id="683"/>
+																	<ExtendedTooltip name="LabelBlankCommentCommand_1ExtendedTooltip" id="684"/>
+																</LabelDecoration>
+																<PictureDecoration name="PictureDelete_1" id="317">
+																	<Width>2</Width>
+																	<Height>1</Height>
+																	<Title formatted="false">
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Picture delete 1</v8:content>
+																		</v8:item>
+																	</Title>
+																	<Hyperlink>true</Hyperlink>
+																	<Picture>
+																		<xr:Ref>StdPicture.DeleteDirectly</xr:Ref>
+																		<xr:LoadTransparent>true</xr:LoadTransparent>
+																	</Picture>
+																	<ContextMenu name="PictureDelete_1ContextMenu" id="318"/>
+																	<ExtendedTooltip name="PictureDelete_1ExtendedTooltip" id="319"/>
+																	<Events>
+																		<Event name="Click">DeleteClick</Event>
+																	</Events>
+																</PictureDecoration>
+																<LabelDecoration name="Delete_1" id="320">
+																	<TextColor>#FF0000</TextColor>
+																	<Title formatted="false">
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Delete</v8:content>
+																		</v8:item>
+																	</Title>
+																	<Hyperlink>true</Hyperlink>
+																	<ContextMenu name="Delete_1ContextMenu" id="321"/>
+																	<ExtendedTooltip name="Delete_1ExtendedTooltip" id="322"/>
+																	<Events>
+																		<Event name="Click">DeleteClick</Event>
+																	</Events>
+																</LabelDecoration>
+															</ChildItems>
+														</UsualGroup>
+													</ChildItems>
+												</UsualGroup>
+											</ChildItems>
+										</Page>
+										<Page name="BlankCommentPage_1" id="325">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Blank comment page 1</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Blank comment page 1</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ExtendedTooltip name="BlankCommentPage_1ExtendedTooltip" id="326"/>
+											<ChildItems>
+												<LabelDecoration name="BlankComment_1" id="327">
+													<ContextMenu name="BlankComment_1ContextMenu" id="328"/>
+													<ExtendedTooltip name="BlankComment_1ExtendedTooltip" id="329"/>
+												</LabelDecoration>
+											</ChildItems>
+										</Page>
+									</ChildItems>
+								</Pages>
+								<Pages name="CommentPages_2" id="1260">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Comment pages 1</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Comment pages 1</v8:content>
+										</v8:item>
+									</ToolTip>
+									<PagesRepresentation>None</PagesRepresentation>
+									<ExtendedTooltip name="CommentPages_2ExtendedTooltip" id="1261"/>
+									<ChildItems>
+										<Page name="CommentPage_2" id="1262">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Comment page 1</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Comment page 1</v8:content>
+												</v8:item>
+											</ToolTip>
+											<VerticalStretch>true</VerticalStretch>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="CommentPage_2ExtendedTooltip" id="1263"/>
+											<ChildItems>
+												<UsualGroup name="GroupComments_2" id="1264">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Comment group 1</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Comment group 1</v8:content>
+														</v8:item>
+													</ToolTip>
+													<Group>Vertical</Group>
+													<Representation>StrongSeparation</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="CommentGroup_2ExtendedTooltip" id="1265"/>
+													<ChildItems>
+														<LabelDecoration name="CommentTitle_2" id="1266">
+															<HorizontalStretch>true</HorizontalStretch>
+															<ContextMenu name="CommentTitle_2ContextMenu" id="1267"/>
+															<ExtendedTooltip name="CommentTitle_2ExtendedTooltip" id="1268"/>
+														</LabelDecoration>
+														<LabelDecoration name="Comment2" id="1269">
+															<Height>2</Height>
+															<HorizontalStretch>true</HorizontalStretch>
+															<VerticalStretch>true</VerticalStretch>
+															<VerticalAlign>Top</VerticalAlign>
+															<ContextMenu name="Comment2ContextMenu" id="1270"/>
+															<ExtendedTooltip name="Comment2ExtendedTooltip" id="1271"/>
+														</LabelDecoration>
+														<UsualGroup name="CommentCommandPanel1" id="1272">
+															<Title>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Command panel comments</v8:content>
+																</v8:item>
+															</Title>
+															<ToolTip>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Command panel comments</v8:content>
+																</v8:item>
+															</ToolTip>
+															<Group>Horizontal</Group>
+															<Representation>None</Representation>
+															<ShowTitle>false</ShowTitle>
+															<ExtendedTooltip name="CommentCommandPanel1ExtendedTooltip" id="1273"/>
+															<ChildItems>
+																<PictureDecoration name="PictureAnswer_2" id="1274">
+																	<Width>2</Width>
+																	<Height>1</Height>
+																	<Title formatted="false">
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Picture answer 1</v8:content>
+																		</v8:item>
+																	</Title>
+																	<Hyperlink>true</Hyperlink>
+																	<PictureSize>Proportionally</PictureSize>
+																	<Picture>
+																		<xr:Ref>CommonPicture.AnswerToComment</xr:Ref>
+																		<xr:LoadTransparent>true</xr:LoadTransparent>
+																	</Picture>
+																	<ContextMenu name="PictureAnswer_2ContextMenu" id="1275"/>
+																	<ExtendedTooltip name="PictureAnswer_2ExtendedTooltip" id="1276"/>
+																	<Events>
+																		<Event name="Click">AnswerClick</Event>
+																	</Events>
+																</PictureDecoration>
+																<LabelDecoration name="Answer_2" id="1277">
+																	<Title formatted="false">
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Answer</v8:content>
+																		</v8:item>
+																	</Title>
+																	<Hyperlink>true</Hyperlink>
+																	<ContextMenu name="Answer_2ContextMenu" id="1278"/>
+																	<ExtendedTooltip name="Answer_2ExtendedTooltip" id="1279"/>
+																	<Events>
+																		<Event name="Click">AnswerClick</Event>
+																	</Events>
+																</LabelDecoration>
+																<LabelDecoration name="LabelBlankCommentCommand_2" id="1280">
+																	<HorizontalStretch>true</HorizontalStretch>
+																	<ContextMenu name="LabelBlankCommentCommand_2ContextMenu" id="1281"/>
+																	<ExtendedTooltip name="LabelBlankCommentCommand_2ExtendedTooltip" id="1282"/>
+																</LabelDecoration>
+																<PictureDecoration name="PictureDelete_2" id="1283">
+																	<Width>2</Width>
+																	<Height>1</Height>
+																	<Title formatted="false">
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Picture delete 1</v8:content>
+																		</v8:item>
+																	</Title>
+																	<Hyperlink>true</Hyperlink>
+																	<Picture>
+																		<xr:Ref>StdPicture.DeleteDirectly</xr:Ref>
+																		<xr:LoadTransparent>true</xr:LoadTransparent>
+																	</Picture>
+																	<ContextMenu name="PictureDelete_2ContextMenu" id="1284"/>
+																	<ExtendedTooltip name="PictureDelete_2ExtendedTooltip" id="1285"/>
+																	<Events>
+																		<Event name="Click">DeleteClick</Event>
+																	</Events>
+																</PictureDecoration>
+																<LabelDecoration name="Delete_2" id="1286">
+																	<TextColor>#FF0000</TextColor>
+																	<Title formatted="false">
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Delete</v8:content>
+																		</v8:item>
+																	</Title>
+																	<Hyperlink>true</Hyperlink>
+																	<ContextMenu name="Delete_2ContextMenu" id="1287"/>
+																	<ExtendedTooltip name="Delete_2ExtendedTooltip" id="1288"/>
+																	<Events>
+																		<Event name="Click">DeleteClick</Event>
+																	</Events>
+																</LabelDecoration>
+															</ChildItems>
+														</UsualGroup>
+													</ChildItems>
+												</UsualGroup>
+											</ChildItems>
+										</Page>
+										<Page name="BlankCommentPage_2" id="1289">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Blank comment page 1</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Blank comment page 1</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ExtendedTooltip name="BlankCommentPage_2ExtendedTooltip" id="1290"/>
+											<ChildItems>
+												<LabelDecoration name="BlankComment_2" id="1291">
+													<ContextMenu name="BlankComment_2ContextMenu" id="1292"/>
+													<ExtendedTooltip name="BlankComment_2ExtendedTooltip" id="1293"/>
+												</LabelDecoration>
+											</ChildItems>
+										</Page>
+									</ChildItems>
+								</Pages>
+								<Pages name="CommentPages_3" id="1294">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Comment pages 1</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Comment pages 1</v8:content>
+										</v8:item>
+									</ToolTip>
+									<PagesRepresentation>None</PagesRepresentation>
+									<ExtendedTooltip name="CommentPages_3ExtendedTooltip" id="1295"/>
+									<ChildItems>
+										<Page name="CommentPage_3" id="1296">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Comment page 1</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Comment page 1</v8:content>
+												</v8:item>
+											</ToolTip>
+											<VerticalStretch>true</VerticalStretch>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="CommentPage_3ExtendedTooltip" id="1297"/>
+											<ChildItems>
+												<UsualGroup name="GroupComments_3" id="1298">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Comment group 1</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Comment group 1</v8:content>
+														</v8:item>
+													</ToolTip>
+													<Group>Vertical</Group>
+													<Representation>StrongSeparation</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="CommentGroup_3ExtendedTooltip" id="1299"/>
+													<ChildItems>
+														<LabelDecoration name="CommentTitle_3" id="1300">
+															<HorizontalStretch>true</HorizontalStretch>
+															<ContextMenu name="CommentTitle_3ContextMenu" id="1301"/>
+															<ExtendedTooltip name="CommentTitle_3ExtendedTooltip" id="1302"/>
+														</LabelDecoration>
+														<LabelDecoration name="Comment3" id="1303">
+															<Height>2</Height>
+															<HorizontalStretch>true</HorizontalStretch>
+															<VerticalStretch>true</VerticalStretch>
+															<VerticalAlign>Top</VerticalAlign>
+															<ContextMenu name="Comment3ContextMenu" id="1304"/>
+															<ExtendedTooltip name="Comment3ExtendedTooltip" id="1305"/>
+														</LabelDecoration>
+														<UsualGroup name="CommentCommandPanel2" id="1306">
+															<Title>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Command panel comments</v8:content>
+																</v8:item>
+															</Title>
+															<ToolTip>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Command panel comments</v8:content>
+																</v8:item>
+															</ToolTip>
+															<Group>Horizontal</Group>
+															<Representation>None</Representation>
+															<ShowTitle>false</ShowTitle>
+															<ExtendedTooltip name="CommentCommandPanel2ExtendedTooltip" id="1307"/>
+															<ChildItems>
+																<PictureDecoration name="PictureAnswer_3" id="1308">
+																	<Width>2</Width>
+																	<Height>1</Height>
+																	<Title formatted="false">
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Picture answer 1</v8:content>
+																		</v8:item>
+																	</Title>
+																	<Hyperlink>true</Hyperlink>
+																	<PictureSize>Proportionally</PictureSize>
+																	<Picture>
+																		<xr:Ref>CommonPicture.AnswerToComment</xr:Ref>
+																		<xr:LoadTransparent>true</xr:LoadTransparent>
+																	</Picture>
+																	<ContextMenu name="PictureAnswer_3ContextMenu" id="1309"/>
+																	<ExtendedTooltip name="PictureAnswer_3ExtendedTooltip" id="1310"/>
+																	<Events>
+																		<Event name="Click">AnswerClick</Event>
+																	</Events>
+																</PictureDecoration>
+																<LabelDecoration name="Answer_3" id="1311">
+																	<Title formatted="false">
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Answer</v8:content>
+																		</v8:item>
+																	</Title>
+																	<Hyperlink>true</Hyperlink>
+																	<ContextMenu name="Answer_3ContextMenu" id="1312"/>
+																	<ExtendedTooltip name="Answer_3ExtendedTooltip" id="1313"/>
+																	<Events>
+																		<Event name="Click">AnswerClick</Event>
+																	</Events>
+																</LabelDecoration>
+																<LabelDecoration name="LabelBlankCommentCommand_3" id="1314">
+																	<HorizontalStretch>true</HorizontalStretch>
+																	<ContextMenu name="LabelBlankCommentCommand_3ContextMenu" id="1315"/>
+																	<ExtendedTooltip name="LabelBlankCommentCommand_3ExtendedTooltip" id="1316"/>
+																</LabelDecoration>
+																<PictureDecoration name="PictureDelete_3" id="1317">
+																	<Width>2</Width>
+																	<Height>1</Height>
+																	<Title formatted="false">
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Picture delete 1</v8:content>
+																		</v8:item>
+																	</Title>
+																	<Hyperlink>true</Hyperlink>
+																	<Picture>
+																		<xr:Ref>StdPicture.DeleteDirectly</xr:Ref>
+																		<xr:LoadTransparent>true</xr:LoadTransparent>
+																	</Picture>
+																	<ContextMenu name="PictureDelete_3ContextMenu" id="1318"/>
+																	<ExtendedTooltip name="PictureDelete_3ExtendedTooltip" id="1319"/>
+																	<Events>
+																		<Event name="Click">DeleteClick</Event>
+																	</Events>
+																</PictureDecoration>
+																<LabelDecoration name="Delete_3" id="1320">
+																	<TextColor>#FF0000</TextColor>
+																	<Title formatted="false">
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Delete</v8:content>
+																		</v8:item>
+																	</Title>
+																	<Hyperlink>true</Hyperlink>
+																	<ContextMenu name="Delete_3ContextMenu" id="1321"/>
+																	<ExtendedTooltip name="Delete_3ExtendedTooltip" id="1322"/>
+																	<Events>
+																		<Event name="Click">DeleteClick</Event>
+																	</Events>
+																</LabelDecoration>
+															</ChildItems>
+														</UsualGroup>
+													</ChildItems>
+												</UsualGroup>
+											</ChildItems>
+										</Page>
+										<Page name="BlankCommentPage_3" id="1323">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Blank comment page 1</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Blank comment page 1</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ExtendedTooltip name="BlankCommentPage_3ExtendedTooltip" id="1324"/>
+											<ChildItems>
+												<LabelDecoration name="BlankComment_3" id="1325">
+													<ContextMenu name="BlankComment_3ContextMenu" id="1326"/>
+													<ExtendedTooltip name="BlankComment_3ExtendedTooltip" id="1327"/>
+												</LabelDecoration>
+											</ChildItems>
+										</Page>
+									</ChildItems>
+								</Pages>
+								<Pages name="CommentPages_4" id="1328">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Comment pages 1</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Comment pages 1</v8:content>
+										</v8:item>
+									</ToolTip>
+									<PagesRepresentation>None</PagesRepresentation>
+									<ExtendedTooltip name="CommentPages_4ExtendedTooltip" id="1329"/>
+									<ChildItems>
+										<Page name="CommentPage_4" id="1330">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Comment page 1</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Comment page 1</v8:content>
+												</v8:item>
+											</ToolTip>
+											<VerticalStretch>true</VerticalStretch>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="CommentPage_4ExtendedTooltip" id="1331"/>
+											<ChildItems>
+												<UsualGroup name="GroupComments_4" id="1332">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Comment group 1</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Comment group 1</v8:content>
+														</v8:item>
+													</ToolTip>
+													<Group>Vertical</Group>
+													<Representation>StrongSeparation</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="CommentGroup_4ExtendedTooltip" id="1333"/>
+													<ChildItems>
+														<LabelDecoration name="CommentTitle_4" id="1334">
+															<HorizontalStretch>true</HorizontalStretch>
+															<ContextMenu name="CommentTitle_4ContextMenu" id="1335"/>
+															<ExtendedTooltip name="CommentTitle_4ExtendedTooltip" id="1336"/>
+														</LabelDecoration>
+														<LabelDecoration name="Comment4" id="1337">
+															<Height>2</Height>
+															<HorizontalStretch>true</HorizontalStretch>
+															<VerticalStretch>true</VerticalStretch>
+															<VerticalAlign>Top</VerticalAlign>
+															<ContextMenu name="Comment4ContextMenu" id="1338"/>
+															<ExtendedTooltip name="Comment4ExtendedTooltip" id="1339"/>
+														</LabelDecoration>
+														<UsualGroup name="CommentCommandPanel3" id="1340">
+															<Title>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Command panel comments</v8:content>
+																</v8:item>
+															</Title>
+															<ToolTip>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Command panel comments</v8:content>
+																</v8:item>
+															</ToolTip>
+															<Group>Horizontal</Group>
+															<Representation>None</Representation>
+															<ShowTitle>false</ShowTitle>
+															<ExtendedTooltip name="CommentCommandPanel3ExtendedTooltip" id="1341"/>
+															<ChildItems>
+																<PictureDecoration name="PictureAnswer_4" id="1342">
+																	<Width>2</Width>
+																	<Height>1</Height>
+																	<Title formatted="false">
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Picture answer 1</v8:content>
+																		</v8:item>
+																	</Title>
+																	<Hyperlink>true</Hyperlink>
+																	<PictureSize>Proportionally</PictureSize>
+																	<Picture>
+																		<xr:Ref>CommonPicture.AnswerToComment</xr:Ref>
+																		<xr:LoadTransparent>true</xr:LoadTransparent>
+																	</Picture>
+																	<ContextMenu name="PictureAnswer_4ContextMenu" id="1343"/>
+																	<ExtendedTooltip name="PictureAnswer_4ExtendedTooltip" id="1344"/>
+																	<Events>
+																		<Event name="Click">AnswerClick</Event>
+																	</Events>
+																</PictureDecoration>
+																<LabelDecoration name="Answer_4" id="1345">
+																	<Title formatted="false">
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Answer</v8:content>
+																		</v8:item>
+																	</Title>
+																	<Hyperlink>true</Hyperlink>
+																	<ContextMenu name="Answer_4ContextMenu" id="1346"/>
+																	<ExtendedTooltip name="Answer_4ExtendedTooltip" id="1347"/>
+																	<Events>
+																		<Event name="Click">AnswerClick</Event>
+																	</Events>
+																</LabelDecoration>
+																<LabelDecoration name="LabelBlankCommentCommand_4" id="1348">
+																	<HorizontalStretch>true</HorizontalStretch>
+																	<ContextMenu name="LabelBlankCommentCommand_4ContextMenu" id="1349"/>
+																	<ExtendedTooltip name="LabelBlankCommentCommand_4ExtendedTooltip" id="1350"/>
+																</LabelDecoration>
+																<PictureDecoration name="PictureDelete_4" id="1351">
+																	<Width>2</Width>
+																	<Height>1</Height>
+																	<Title formatted="false">
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Picture delete 1</v8:content>
+																		</v8:item>
+																	</Title>
+																	<Hyperlink>true</Hyperlink>
+																	<Picture>
+																		<xr:Ref>StdPicture.DeleteDirectly</xr:Ref>
+																		<xr:LoadTransparent>true</xr:LoadTransparent>
+																	</Picture>
+																	<ContextMenu name="PictureDelete_4ContextMenu" id="1352"/>
+																	<ExtendedTooltip name="PictureDelete_4ExtendedTooltip" id="1353"/>
+																	<Events>
+																		<Event name="Click">DeleteClick</Event>
+																	</Events>
+																</PictureDecoration>
+																<LabelDecoration name="Delete_4" id="1354">
+																	<TextColor>#FF0000</TextColor>
+																	<Title formatted="false">
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Delete</v8:content>
+																		</v8:item>
+																	</Title>
+																	<Hyperlink>true</Hyperlink>
+																	<ContextMenu name="Delete_4ContextMenu" id="1355"/>
+																	<ExtendedTooltip name="Delete_ExtendedTooltip" id="1356"/>
+																	<Events>
+																		<Event name="Click">DeleteClick</Event>
+																	</Events>
+																</LabelDecoration>
+															</ChildItems>
+														</UsualGroup>
+													</ChildItems>
+												</UsualGroup>
+											</ChildItems>
+										</Page>
+										<Page name="BlankCommentPage_4" id="1357">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Blank comment page 1</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Blank comment page 1</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ExtendedTooltip name="BlankCommentPage_4ExtendedTooltip" id="1358"/>
+											<ChildItems>
+												<LabelDecoration name="BlankComment_4" id="1359">
+													<ContextMenu name="BlankComment_4ContextMenu" id="1360"/>
+													<ExtendedTooltip name="BlankComment_4ExtendedTooltip" id="1361"/>
+												</LabelDecoration>
+											</ChildItems>
+										</Page>
+									</ChildItems>
+								</Pages>
+								<Pages name="CommentPages_5" id="1362">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Comment pages 1</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Comment pages 1</v8:content>
+										</v8:item>
+									</ToolTip>
+									<PagesRepresentation>None</PagesRepresentation>
+									<ExtendedTooltip name="CommentPages_5ExtendedTooltip" id="1363"/>
+									<ChildItems>
+										<Page name="CommentPage_5" id="1364">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Comment page 1</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Comment page 1</v8:content>
+												</v8:item>
+											</ToolTip>
+											<VerticalStretch>true</VerticalStretch>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="CommentPage_5ExtendedTooltip" id="1365"/>
+											<ChildItems>
+												<UsualGroup name="GroupComments_5" id="1366">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Comment group 1</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Comment group 1</v8:content>
+														</v8:item>
+													</ToolTip>
+													<Group>Vertical</Group>
+													<Representation>StrongSeparation</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="CommentGroup_5ExtendedTooltip" id="1367"/>
+													<ChildItems>
+														<LabelDecoration name="CommentTitle_5" id="1368">
+															<HorizontalStretch>true</HorizontalStretch>
+															<ContextMenu name="CommentTitle_5ContextMenu" id="1369"/>
+															<ExtendedTooltip name="CommentTitle_5ExtendedTooltip" id="1370"/>
+														</LabelDecoration>
+														<LabelDecoration name="Comment5" id="1371">
+															<Height>2</Height>
+															<HorizontalStretch>true</HorizontalStretch>
+															<VerticalStretch>true</VerticalStretch>
+															<VerticalAlign>Top</VerticalAlign>
+															<ContextMenu name="Comment5ContextMenu" id="1372"/>
+															<ExtendedTooltip name="Comment5ExtendedTooltip" id="1373"/>
+														</LabelDecoration>
+														<UsualGroup name="CommentCommandPanel4" id="1374">
+															<Title>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Command panel comments</v8:content>
+																</v8:item>
+															</Title>
+															<ToolTip>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Command panel comments</v8:content>
+																</v8:item>
+															</ToolTip>
+															<Group>Horizontal</Group>
+															<Representation>None</Representation>
+															<ShowTitle>false</ShowTitle>
+															<ExtendedTooltip name="CommentCommandPanel4ExtendedTooltip" id="1375"/>
+															<ChildItems>
+																<PictureDecoration name="PictureAnswer_5" id="1376">
+																	<Width>2</Width>
+																	<Height>1</Height>
+																	<Title formatted="false">
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Picture answer 1</v8:content>
+																		</v8:item>
+																	</Title>
+																	<Hyperlink>true</Hyperlink>
+																	<PictureSize>Proportionally</PictureSize>
+																	<Picture>
+																		<xr:Ref>CommonPicture.AnswerToComment</xr:Ref>
+																		<xr:LoadTransparent>true</xr:LoadTransparent>
+																	</Picture>
+																	<ContextMenu name="PictureAnswer_5ContextMenu" id="1377"/>
+																	<ExtendedTooltip name="PictureAnswer_5ExtendedTooltip" id="1378"/>
+																	<Events>
+																		<Event name="Click">AnswerClick</Event>
+																	</Events>
+																</PictureDecoration>
+																<LabelDecoration name="Answer_5" id="1379">
+																	<Title formatted="false">
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Answer</v8:content>
+																		</v8:item>
+																	</Title>
+																	<Hyperlink>true</Hyperlink>
+																	<ContextMenu name="Answer_5ContextMenu" id="1380"/>
+																	<ExtendedTooltip name="Answer_5ExtendedTooltip" id="1381"/>
+																	<Events>
+																		<Event name="Click">AnswerClick</Event>
+																	</Events>
+																</LabelDecoration>
+																<LabelDecoration name="LabelBlankCommentCommand_5" id="1382">
+																	<HorizontalStretch>true</HorizontalStretch>
+																	<ContextMenu name="LabelBlankCommentCommand_5ContextMenu" id="1383"/>
+																	<ExtendedTooltip name="LabelBlankCommentCommand_5ExtendedTooltip" id="1384"/>
+																</LabelDecoration>
+																<PictureDecoration name="PictureDelete_5" id="1385">
+																	<Width>2</Width>
+																	<Height>1</Height>
+																	<Title formatted="false">
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Picture delete 1</v8:content>
+																		</v8:item>
+																	</Title>
+																	<Hyperlink>true</Hyperlink>
+																	<Picture>
+																		<xr:Ref>StdPicture.DeleteDirectly</xr:Ref>
+																		<xr:LoadTransparent>true</xr:LoadTransparent>
+																	</Picture>
+																	<ContextMenu name="PictureDelete_5ContextMenu" id="1386"/>
+																	<ExtendedTooltip name="PictureDelete_5ExtendedTooltip" id="1387"/>
+																	<Events>
+																		<Event name="Click">DeleteClick</Event>
+																	</Events>
+																</PictureDecoration>
+																<LabelDecoration name="Delete_5" id="1388">
+																	<TextColor>#FF0000</TextColor>
+																	<Title formatted="false">
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Delete</v8:content>
+																		</v8:item>
+																	</Title>
+																	<Hyperlink>true</Hyperlink>
+																	<ContextMenu name="Delete_5ContextMenu" id="1389"/>
+																	<ExtendedTooltip name="Delete_5ExtendedTooltip" id="1390"/>
+																	<Events>
+																		<Event name="Click">DeleteClick</Event>
+																	</Events>
+																</LabelDecoration>
+															</ChildItems>
+														</UsualGroup>
+													</ChildItems>
+												</UsualGroup>
+											</ChildItems>
+										</Page>
+										<Page name="BlankCommentPage_5" id="1391">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Blank comment page 1</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Blank comment page 1</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ExtendedTooltip name="BlankCommentPage_5ExtendedTooltip" id="1392"/>
+											<ChildItems>
+												<LabelDecoration name="BlankComment_5" id="1393">
+													<ContextMenu name="BlankComment_5ContextMenu" id="1394"/>
+													<ExtendedTooltip name="BlankComment_5ExtendedTooltip" id="1395"/>
+												</LabelDecoration>
+											</ChildItems>
+										</Page>
+									</ChildItems>
+								</Pages>
+								<UsualGroup name="Footer" id="437">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Footer</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Footer</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="FooterExtendedTooltip" id="438"/>
+									<ChildItems>
+										<LabelDecoration name="FooterDecorationLeft" id="439">
+											<HorizontalStretch>true</HorizontalStretch>
+											<ContextMenu name="FooterDecorationLeftContextMenu" id="440"/>
+											<ExtendedTooltip name="FooterDecorationLeftExtendedTooltip" id="441"/>
+										</LabelDecoration>
+										<PictureDecoration name="ButtonToLeft" id="442">
+											<Width>2</Width>
+											<Height>1</Height>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Button to the left</v8:content>
+												</v8:item>
+											</Title>
+											<Hyperlink>true</Hyperlink>
+											<ContextMenu name="ButtonToLeftContextMenu" id="443"/>
+											<ExtendedTooltip name="ButtonToLeftExtendedTooltip" id="444"/>
+											<Events>
+												<Event name="Click">ButtonToLeftClick</Event>
+											</Events>
+										</PictureDecoration>
+										<LabelDecoration name="PageNumber" id="445">
+											<Font ref="sys:DefaultGUIFont" height="12" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content> </v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="PageNumberContextMenu" id="446"/>
+											<ExtendedTooltip name="PageNumberExtendedTooltip" id="447"/>
+										</LabelDecoration>
+										<PictureDecoration name="ButtonToRight" id="448">
+											<Width>2</Width>
+											<Height>1</Height>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Button to the right</v8:content>
+												</v8:item>
+											</Title>
+											<Hyperlink>true</Hyperlink>
+											<PictureSize>Proportionally</PictureSize>
+											<ContextMenu name="ButtonToRightContextMenu" id="449"/>
+											<ExtendedTooltip name="ButtonToRightExtendedTooltip" id="450"/>
+											<Events>
+												<Event name="Click">ButtonToRightClick</Event>
+											</Events>
+										</PictureDecoration>
+										<LabelDecoration name="FooterDecorationRight" id="451">
+											<HorizontalStretch>true</HorizontalStretch>
+											<ContextMenu name="FooterDecorationRightContextMenu" id="452"/>
+											<ExtendedTooltip name="FooterDecorationRightExtendedTooltip" id="453"/>
+										</LabelDecoration>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.InformationCenter</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="Content" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Content</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="TextOfComment" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Comment Text</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>1000</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<FillCheck>ShowError</FillCheck>
+		</Attribute>
+		<Attribute name="Comment1" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Comment1</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Comment2" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Comment1</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Comment3" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Comment1</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Comment4" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Comment1</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Comment5" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Comment1</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="IdeaIdentifier" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Idea identifier</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="CurrentCommentsPage" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Current comment page</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="UserID" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>User identifier</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:UUID</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Comments" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Comments</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="ID" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>ID</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="DeveloperComment" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Developer comment</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="PLUS" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>+ 1</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>PLUS</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>PLUS</Action>
+		</Command>
+		<Command name="minus" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>- 1</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>minus</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>minus</Action>
+		</Command>
+		<Command name="AddComment" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Add comment</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Add comment</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>AddComment</Action>
+		</Command>
+	</Commands>
+</Form>

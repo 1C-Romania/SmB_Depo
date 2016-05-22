@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<MetaDataObject xmlns="http://v8.1c.ru/8.3/MDClasses" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:cmi="http://v8.1c.ru/8.2/managed-application/cmi" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xpr="http://v8.1c.ru/8.3/xcf/predef" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<FunctionalOption uuid="5538bbe6-ce6d-4864-b5dd-3679e639a6cc">
+		<Properties>
+			<Name>InventoryReservation</Name>
+			<Synonym>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Inventory reservation</v8:content>
+				</v8:item>
+			</Synonym>
+			<Comment/>
+			<Location>Constant.FunctionalOptionInventoryReservation</Location>
+			<PrivilegedGetMode>true</PrivilegedGetMode>
+			<Content>
+				<xr:Object>Document.CustomerInvoice.TabularSection.Inventory.Attribute.Reserve</xr:Object>
+				<xr:Object>Document.InventoryTransfer.TabularSection.Inventory.Attribute.Reserve</xr:Object>
+				<xr:Object>Document.InventoryAssembly.TabularSection.Inventory.Attribute.Reserve</xr:Object>
+				<xr:Object>Document.PurchaseOrder.TabularSection.Materials.Attribute.Reserve</xr:Object>
+				<xr:Object>Document.CustomerOrder.TabularSection.Inventory.Attribute.Reserve</xr:Object>
+				<xr:Object>Document.InventoryReservation</xr:Object>
+				<xr:Object>Document.ProductionOrder.TabularSection.Inventory.Attribute.Reserve</xr:Object>
+				<xr:Object>Document.ProcessingReport.TabularSection.Products.Attribute.Reserve</xr:Object>
+				<xr:Object>Document.ProductionOrder.Attribute.StructuralUnitReserve</xr:Object>
+				<xr:Object>Document.CostAllocation.TabularSection.Inventory.Attribute.Reserve</xr:Object>
+				<xr:Object>Document.CostAllocation.TabularSection.InventoryDistribution.Attribute.Reserve</xr:Object>
+				<xr:Object>Report.OrdersPlacement</xr:Object>
+				<xr:Object>Document.SubcontractorReport.Attribute.CustomerOrder</xr:Object>
+				<xr:Object>Document.ExpenseReport.TabularSection.Inventory.Attribute.CustomerOrder</xr:Object>
+				<xr:Object>Document.ExpenseReport.TabularSection.Expenses.Attribute.CustomerOrder</xr:Object>
+				<xr:Object>Document.EnterOpeningBalance.TabularSection.Inventory.Attribute.CustomerOrder</xr:Object>
+				<xr:Object>Document.EnterOpeningBalance.TabularSection.DirectCost.Attribute.CustomerOrder</xr:Object>
+				<xr:Object>Document.AdditionalCosts.TabularSection.Inventory.Attribute.CustomerOrder</xr:Object>
+				<xr:Object>Document.Payroll.TabularSection.AccrualsDeductions.Attribute.CustomerOrder</xr:Object>
+				<xr:Object>Document.InventoryTransfer.Attribute.CustomerOrder</xr:Object>
+				<xr:Object>Document.InventoryTransfer.TabularSection.Inventory.Attribute.CustomerOrder</xr:Object>
+				<xr:Object>Document.SupplierInvoice.TabularSection.Expenses.Attribute.Order</xr:Object>
+				<xr:Object>Document.CostAllocation.TabularSection.Costs.Attribute.CustomerOrder</xr:Object>
+				<xr:Object>Document.CostAllocation.TabularSection.CostAllocation.Attribute.CustomerOrder</xr:Object>
+				<xr:Object>Document.CostAllocation.TabularSection.Products.Attribute.CustomerOrder</xr:Object>
+				<xr:Object>Document.CostAllocation.TabularSection.Inventory.Attribute.CustomerOrder</xr:Object>
+				<xr:Object>Document.CostAllocation.TabularSection.InventoryDistribution.Attribute.CustomerOrder</xr:Object>
+				<xr:Object>Document.JobSheet.TabularSection.Operations.Attribute.CustomerOrder</xr:Object>
+				<xr:Object>AccumulationRegister.OrdersPlacement</xr:Object>
+				<xr:Object>AccumulationRegister.Inventory.Dimension.CustomerOrder</xr:Object>
+				<xr:Object>AccumulationRegister.InventoryDemand.Dimension.CustomerOrder</xr:Object>
+				<xr:Object>Document.ProductionOrder.Attribute.DeleteReserve</xr:Object>
+				<xr:Object>Document.CustomerOrder.TabularSection.Inventory.Attribute.ReserveShipment</xr:Object>
+				<xr:Object>Document.CustomerOrder.TabularSection.Materials.Attribute.ReserveShipment</xr:Object>
+				<xr:Object>Document.OtherExpenses.TabularSection.Expenses.Attribute.CustomerOrder</xr:Object>
+				<xr:Object>Document.ProductionOrder.TabularSection.Products.Attribute.Reserve</xr:Object>
+				<xr:Object>Document.InventoryAssembly.TabularSection.Products.Attribute.Reserve</xr:Object>
+				<xr:Object>Document.ProductionOrder.Attribute.CustomerOrder</xr:Object>
+				<xr:Object>Document.InventoryAssembly.Attribute.CustomerOrder</xr:Object>
+				<xr:Object>Document.CustomerOrder.Command.ReservationCancelCreateBasedOn</xr:Object>
+				<xr:Object>Document.CustomerOrder.Command.ReservationCreateBasedOn</xr:Object>
+				<xr:Object>Document.CustomerOrder.TabularSection.Materials.Attribute.Reserve</xr:Object>
+			</Content>
+		</Properties>
+	</FunctionalOption>
+</MetaDataObject>

@@ -1,0 +1,2526 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Title>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>EDF archive</v8:content>
+		</v8:item>
+	</Title>
+	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
+	<AutoTitle>false</AutoTitle>
+	<CommandBarLocation>None</CommandBarLocation>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<CommandSet>
+		<ExcludedCommand>No</ExcludedCommand>
+		<ExcludedCommand>Close</ExcludedCommand>
+		<ExcludedCommand>Abort</ExcludedCommand>
+		<ExcludedCommand>Retry</ExcludedCommand>
+		<ExcludedCommand>Yes</ExcludedCommand>
+		<ExcludedCommand>Cancel</ExcludedCommand>
+		<ExcludedCommand>Ignore</ExcludedCommand>
+		<ExcludedCommand>OK</ExcludedCommand>
+	</CommandSet>
+	<AutoCommandBar name="FormCommandBar" id="-1"/>
+	<Events>
+		<Event name="NotificationProcessing">NotificationProcessing</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+		<Event name="BeforeLoadDataFromSettingsAtServer">OnLoadDataFromSettingsAtServer</Event>
+	</Events>
+	<ChildItems>
+		<Pages name="APMPages" id="72">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>APM pages</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>APM pages</v8:content>
+				</v8:item>
+			</ToolTip>
+			<ExtendedTooltip name="AWPPagesExtendedTooltip" id="420"/>
+			<ChildItems>
+				<Page name="ED" id="111">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Incoming</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Outgoing electronic documents archive</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="EDExtendedTooltip" id="421"/>
+					<ChildItems>
+						<UsualGroup name="GroupQuickFilters" id="112">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Quick filters</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Quick filters</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupFastFiltersExtendedTooltip" id="422"/>
+							<ChildItems>
+								<InputField name="Responsible" id="169">
+									<DataPath>Responsible</DataPath>
+									<TitleLocation>Top</TitleLocation>
+									<ClearButton>true</ClearButton>
+									<OpenButton>false</OpenButton>
+									<QuickChoice>true</QuickChoice>
+									<ContextMenu name="ResponsibleContextMenu" id="170"/>
+									<ExtendedTooltip name="ResponsibleExtendedTooltip" id="423"/>
+									<Events>
+										<Event name="OnChange">ResponsibleOnChange</Event>
+									</Events>
+								</InputField>
+								<InputField name="EDKind" id="152">
+									<DataPath>EDKind</DataPath>
+									<TitleLocation>Top</TitleLocation>
+									<ClearButton>true</ClearButton>
+									<OpenButton>false</OpenButton>
+									<ListChoiceMode>true</ListChoiceMode>
+									<QuickChoice>true</QuickChoice>
+									<ChoiceList>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.EDKinds.EnumValue.ProductsDirectory</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.EDKinds.EnumValue.PriceList</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.EDKinds.EnumValue.ProductOrder</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.EDKinds.EnumValue.ResponseToOrder</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.EDKinds.EnumValue.InvoiceForPayment</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.EDKinds.EnumValue.TORG12</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.EDKinds.EnumValue.RandomED</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.EDKinds.EnumValue.ComissionGoodsSalesReport</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.EDKinds.EnumValue.ComissionGoodsWriteOffReport</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.EDKinds.EnumValue.AcceptanceCertificate</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.EDKinds.EnumValue.GoodsTransferBetweenCompanies</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.EDKinds.EnumValue.ProductsReturnBetweenCompanies</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.EDKinds.EnumValue.RightsDelegationAct</Value>
+											</xr:Value>
+										</xr:Item>
+									</ChoiceList>
+									<ContextMenu name="EDTypeContextMenu" id="153"/>
+									<ExtendedTooltip name="EDTypeExtendedTooltip" id="424"/>
+									<Events>
+										<Event name="OnChange">EDKindOnChange</Event>
+									</Events>
+								</InputField>
+								<InputField name="EDStatus" id="160">
+									<DataPath>EDStatus</DataPath>
+									<TitleLocation>Top</TitleLocation>
+									<ClearButton>true</ClearButton>
+									<OpenButton>false</OpenButton>
+									<ListChoiceMode>true</ListChoiceMode>
+									<QuickChoice>true</QuickChoice>
+									<ChoiceList>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.EDStatuses.EnumValue.Canceled</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.EDStatuses.EnumValue.ConfirmationDelivered</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.EDStatuses.EnumValue.ConfirmationPrepared</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.EDStatuses.EnumValue.DigitallySigned</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.EDStatuses.EnumValue.FullyDigitallySigned</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.EDStatuses.EnumValue.Received</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.EDStatuses.EnumValue.Rejected</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.EDStatuses.EnumValue.ConfirmationSent</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.EDStatuses.EnumValue.PartlyDigitallySigned</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.EDStatuses.EnumValue.Approved</Value>
+											</xr:Value>
+										</xr:Item>
+									</ChoiceList>
+									<ContextMenu name="EDStatusContextMenu" id="161"/>
+									<ExtendedTooltip name="EDStatusExtendedTooltip" id="425"/>
+									<Events>
+										<Event name="OnChange">EDStatusOnChange</Event>
+									</Events>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<Table name="List" id="171">
+							<Representation>List</Representation>
+							<UseAlternationRowColor>true</UseAlternationRowColor>
+							<EnableStartDrag>true</EnableStartDrag>
+							<DataPath>List</DataPath>
+							<RowPictureDataPath>List.DefaultPicture</RowPictureDataPath>
+							<CommandSet>
+								<ExcludedCommand>Copy</ExcludedCommand>
+								<ExcludedCommand>Create</ExcludedCommand>
+								<ExcludedCommand>CopyToClipboard</ExcludedCommand>
+								<ExcludedCommand>Choose</ExcludedCommand>
+								<ExcludedCommand>SetDeletionMark</ExcludedCommand>
+								<ExcludedCommand>Change</ExcludedCommand>
+								<ExcludedCommand>Delete</ExcludedCommand>
+							</CommandSet>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<AutoRefresh>false</AutoRefresh>
+							<AutoRefreshPeriod>60</AutoRefreshPeriod>
+							<Period>
+								<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+								<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+								<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+							</Period>
+							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+							<RestoreCurrentRow>false</RestoreCurrentRow>
+							<TopLevelParent xsi:nil="true"/>
+							<ShowRoot>true</ShowRoot>
+							<AllowRootChoice>false</AllowRootChoice>
+							<UpdateOnDataChange>Auto</UpdateOnDataChange>
+							<ContextMenu name="ListContextMenu" id="172"/>
+							<AutoCommandBar name="ListCommandBar" id="173">
+								<ChildItems>
+									<ButtonGroup name="ListButtonsGroup" id="239">
+										<Title>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Buttons list group</v8:content>
+											</v8:item>
+										</Title>
+										<ToolTip>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>List of available actions</v8:content>
+											</v8:item>
+										</ToolTip>
+										<ExtendedTooltip name="ListButtonGroupExtendedTooltip" id="426"/>
+										<ChildItems>
+											<Button name="SetResponsible" id="223">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.SetResponsible</CommandName>
+												<ExtendedTooltip name="SetResponsibleExtendedTooltip" id="427"/>
+											</Button>
+											<Button name="CompareEDDataInc" id="224">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.CompareEDDataInc</CommandName>
+												<ExtendedTooltip name="CompareDataEDInpExtendedTooltip" id="428"/>
+											</Button>
+										</ChildItems>
+									</ButtonGroup>
+									<ButtonGroup name="ListGroupExport" id="416">
+										<Title>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>List group export</v8:content>
+											</v8:item>
+										</Title>
+										<ToolTip>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>List group export</v8:content>
+											</v8:item>
+										</ToolTip>
+										<ExtendedTooltip name="ListGroupExportExtendedTooltip" id="429"/>
+										<ChildItems>
+											<Button name="FormExportIncomingElectronicDocumentsForFTS" id="417">
+												<Type>CommandBarButton</Type>
+												<OnlyInAllActions>false</OnlyInAllActions>
+												<CommandName>Form.Command.ExportIncomingElectronicDocumentsForFTS</CommandName>
+												<ExtendedTooltip name="FormExportIncomingElectronicDocumentsForFTSExtendedTooltip" id="430"/>
+											</Button>
+										</ChildItems>
+									</ButtonGroup>
+									<ButtonGroup name="CommandGroupForms" id="262">
+										<Title>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Context menu list command group</v8:content>
+											</v8:item>
+										</Title>
+										<ToolTip>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Context menu list command group</v8:content>
+											</v8:item>
+										</ToolTip>
+										<CommandSource>Form</CommandSource>
+										<ExtendedTooltip name="FormCommandGroupExtendedTooltip" id="431"/>
+									</ButtonGroup>
+									<Button name="ListHelp" id="402">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.StandardCommand.Help</CommandName>
+										<ExtendedTooltip name="HelpListExtendedTooltip" id="432"/>
+									</Button>
+									<Button name="ListCatalogEDAttachedFilesEDFStructure" id="571">
+										<Type>CommandBarButton</Type>
+										<CommandName>Catalog.EDAttachedFiles.Command.EDFStructure</CommandName>
+										<DataPath>Items.List.CurrentData.Ref</DataPath>
+										<ExtendedTooltip name="ListCatalogEDAttachedFilesEDFStructureExtendedTooltip" id="572"/>
+									</Button>
+								</ChildItems>
+							</AutoCommandBar>
+							<ExtendedTooltip name="ListExtendedTooltip" id="433"/>
+							<SearchStringAddition name="SearchStringList" id="575">
+								<AdditionSource>
+									<Item>List</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ListSearchStringContextMenu" id="576"/>
+								<ExtendedTooltip name="ListSearchStringExtendedTooltip" id="577"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ListViewStatus" id="578">
+								<AdditionSource>
+									<Item>List</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ListViewStatusContextMenu" id="579"/>
+								<ExtendedTooltip name="ListViewStatusExtendedTooltip" id="580"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ListSearchControl" id="581">
+								<AdditionSource>
+									<Item>List</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ListSearchControlContextMenu" id="582"/>
+								<ExtendedTooltip name="ListSearchControlExtendedTooltip" id="583"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="Selection">ListSelection</Event>
+							</Events>
+							<ChildItems>
+								<LabelField name="ListEDKind" id="178">
+									<DataPath>List.EDKind</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Document kind</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="EDKindListContextMenu" id="179"/>
+									<ExtendedTooltip name="EDKindListExtendedTooltip" id="434"/>
+								</LabelField>
+								<LabelField name="ListDocumentNumber" id="233">
+									<DataPath>List.DocumentNumber</DataPath>
+									<Width>20</Width>
+									<ContextMenu name="ListDocumentNumberContextMenu" id="234"/>
+									<ExtendedTooltip name="ListDocumentNumberExtendedTooltip" id="435"/>
+								</LabelField>
+								<LabelField name="ListDocumentDate" id="235">
+									<DataPath>List.DocumentDate</DataPath>
+									<Width>8</Width>
+									<ContextMenu name="ListDocumentDateContextMenu" id="236"/>
+									<ExtendedTooltip name="ListDocumentDateExtendedTooltip" id="436"/>
+								</LabelField>
+								<LabelField name="ListCounterparty" id="229">
+									<DataPath>List.Counterparty</DataPath>
+									<ContextMenu name="ListCounterpartyContextMenu" id="230"/>
+									<ExtendedTooltip name="ListCounterpartyExtendedTooltip" id="437"/>
+								</LabelField>
+								<LabelField name="ListCompanies" id="237">
+									<DataPath>List.Company</DataPath>
+									<ContextMenu name="ListCompanyContextMenu" id="238"/>
+									<ExtendedTooltip name="ListCompanyExtendedTooltip" id="438"/>
+								</LabelField>
+								<ColumnGroup name="ListVersionNumber" id="247">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>List version number</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Version No.</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>InCell</Group>
+									<ExtendedTooltip name="ListVersionNumberExtendedTooltip" id="439"/>
+									<ChildItems>
+										<LabelField name="ListEDFormingDateBySender" id="409">
+											<DataPath>List.EDFormingDateBySender</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Version</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Version of the electronic document</v8:content>
+												</v8:item>
+											</ToolTip>
+											<HorizontalAlign>Left</HorizontalAlign>
+											<ContextMenu name="ListDateEDFormBySenderContextMenu" id="410"/>
+											<ExtendedTooltip name="EDFormingDateBySenderExtendedTooltip" id="440"/>
+										</LabelField>
+									</ChildItems>
+								</ColumnGroup>
+								<LabelField name="ListDateReceived" id="227">
+									<DataPath>List.DateReceived</DataPath>
+									<Width>20</Width>
+									<ContextMenu name="ListDateReceivedContextMenu" id="228"/>
+									<ExtendedTooltip name="ListDateReceivedExtendedTooltip" id="441"/>
+								</LabelField>
+								<ColumnGroup name="ListStatus" id="242">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Status</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>List status</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>InCell</Group>
+									<ExtendedTooltip name="StatusListExtendedTooltip" id="442"/>
+									<ChildItems>
+										<LabelField name="ListEDStatus" id="192">
+											<DataPath>List.EDStatus</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Status</v8:content>
+												</v8:item>
+											</Title>
+											<Width>30</Width>
+											<ContextMenu name="EDListStatusContextMenu" id="193"/>
+											<ExtendedTooltip name="EDListStatusExtendedTooltip" id="443"/>
+										</LabelField>
+										<LabelField name="ListEDStatusChangeDate" id="182">
+											<DataPath>List.EDStatusChangeDate</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<Width>8</Width>
+											<ContextMenu name="ListEDStatusChangeDateContextMenu" id="183"/>
+											<ExtendedTooltip name="ListEDStatusChangeDateExtendedTooltip" id="444"/>
+										</LabelField>
+									</ChildItems>
+								</ColumnGroup>
+								<LabelField name="ListIBDocument" id="216">
+									<DataPath>List.IBDocument</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Document</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="DBDocumentListContextMenu" id="217"/>
+									<ExtendedTooltip name="DBDocumentListExtendedTooltip" id="445"/>
+								</LabelField>
+								<LabelField name="ListResponsible" id="188">
+									<DataPath>List.Responsible</DataPath>
+									<ContextMenu name="ListResponsibleContextMenu" id="189"/>
+									<ExtendedTooltip name="ListResponsibleExtendedTooltip" id="446"/>
+								</LabelField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="IED" id="266">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Outgoing</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Outgoing electronic documents archive</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="IEDExtendedTooltip" id="447"/>
+					<ChildItems>
+						<UsualGroup name="GroupQuickFiltersInit" id="267">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Quick filters</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Quick filters</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupQuickFiltersInitExtendedTooltip" id="448"/>
+							<ChildItems>
+								<InputField name="ResponsibleOutg" id="268">
+									<DataPath>ResponsibleOutg</DataPath>
+									<TitleLocation>Top</TitleLocation>
+									<ClearButton>true</ClearButton>
+									<OpenButton>false</OpenButton>
+									<QuickChoice>true</QuickChoice>
+									<ContextMenu name="ResponsibleInitContextMenu" id="269"/>
+									<ExtendedTooltip name="ResponsibleInitExtendedTooltip" id="449"/>
+									<Events>
+										<Event name="OnChange">ResponsibleOutgOnChange</Event>
+									</Events>
+								</InputField>
+								<InputField name="KindEDOutg" id="270">
+									<DataPath>KindEDOutg</DataPath>
+									<TitleLocation>Top</TitleLocation>
+									<ClearButton>true</ClearButton>
+									<OpenButton>false</OpenButton>
+									<ListChoiceMode>true</ListChoiceMode>
+									<QuickChoice>true</QuickChoice>
+									<ChoiceList>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.EDKinds.EnumValue.ProductsDirectory</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.EDKinds.EnumValue.PriceList</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.EDKinds.EnumValue.ProductOrder</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.EDKinds.EnumValue.ResponseToOrder</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.EDKinds.EnumValue.InvoiceForPayment</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.EDKinds.EnumValue.TORG12</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.EDKinds.EnumValue.RandomED</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.EDKinds.EnumValue.ComissionGoodsSalesReport</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.EDKinds.EnumValue.ComissionGoodsWriteOffReport</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.EDKinds.EnumValue.AcceptanceCertificate</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.EDKinds.EnumValue.GoodsTransferBetweenCompanies</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.EDKinds.EnumValue.ProductsReturnBetweenCompanies</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.EDKinds.EnumValue.RightsDelegationAct</Value>
+											</xr:Value>
+										</xr:Item>
+									</ChoiceList>
+									<ContextMenu name="EDTypeInitContextMenu" id="271"/>
+									<ExtendedTooltip name="EDTypeInitExtendedTooltip" id="450"/>
+									<Events>
+										<Event name="OnChange">EDKindOutgOnChange</Event>
+									</Events>
+								</InputField>
+								<InputField name="EDStatusOutg" id="272">
+									<DataPath>EDStatusOutg</DataPath>
+									<TitleLocation>Top</TitleLocation>
+									<ClearButton>true</ClearButton>
+									<OpenButton>false</OpenButton>
+									<ListChoiceMode>true</ListChoiceMode>
+									<QuickChoice>true</QuickChoice>
+									<ChoiceList>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.EDStatuses.EnumValue.Canceled</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.EDStatuses.EnumValue.Delivered</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.EDStatuses.EnumValue.NotSent</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.EDStatuses.EnumValue.Rejected</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.EDStatuses.EnumValue.Sent</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.EDStatuses.EnumValue.PreparedToSending</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.EDStatuses.EnumValue.DigitallySigned</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.EDStatuses.EnumValue.ConfirmationReceived</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.EDStatuses.EnumValue.FullyDigitallySigned</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.EDStatuses.EnumValue.Created</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.EDStatuses.EnumValue.Approved</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.EDStatuses.EnumValue.PartlyDigitallySigned</Value>
+											</xr:Value>
+										</xr:Item>
+									</ChoiceList>
+									<ContextMenu name="InitEdStatusContextMenu" id="273"/>
+									<ExtendedTooltip name="InitEDStatusExtendedTooltip" id="451"/>
+									<Events>
+										<Event name="OnChange">EDOutgStatusOnChange</Event>
+									</Events>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<Table name="ListOutg" id="274">
+							<Representation>List</Representation>
+							<UseAlternationRowColor>true</UseAlternationRowColor>
+							<EnableStartDrag>true</EnableStartDrag>
+							<DataPath>ListOutg</DataPath>
+							<RowPictureDataPath>ListOutg.DefaultPicture</RowPictureDataPath>
+							<CommandSet>
+								<ExcludedCommand>Copy</ExcludedCommand>
+								<ExcludedCommand>Create</ExcludedCommand>
+								<ExcludedCommand>CopyToClipboard</ExcludedCommand>
+								<ExcludedCommand>Choose</ExcludedCommand>
+								<ExcludedCommand>SetDeletionMark</ExcludedCommand>
+								<ExcludedCommand>Change</ExcludedCommand>
+								<ExcludedCommand>Delete</ExcludedCommand>
+							</CommandSet>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<AutoRefresh>false</AutoRefresh>
+							<AutoRefreshPeriod>60</AutoRefreshPeriod>
+							<Period>
+								<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+								<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+								<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+							</Period>
+							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+							<RestoreCurrentRow>false</RestoreCurrentRow>
+							<TopLevelParent xsi:nil="true"/>
+							<ShowRoot>true</ShowRoot>
+							<AllowRootChoice>false</AllowRootChoice>
+							<UpdateOnDataChange>Auto</UpdateOnDataChange>
+							<ContextMenu name="InitListContextMenu" id="275"/>
+							<AutoCommandBar name="InitListCommandPanel" id="276">
+								<ChildItems>
+									<ButtonGroup name="ListButtonsGroupOutg" id="336">
+										<Title>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Buttons list group</v8:content>
+											</v8:item>
+										</Title>
+										<ToolTip>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>List of available actions</v8:content>
+											</v8:item>
+										</ToolTip>
+										<ExtendedTooltip name="ListButtonGroupInitExtendedTooltip" id="452"/>
+										<ChildItems>
+											<Button name="ListOutgCompareEDDataOutg" id="399">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.CompareEDDataOutg</CommandName>
+												<ExtendedTooltip name="ListInitCompareDataEDInitExtendedTooltip" id="453"/>
+											</Button>
+										</ChildItems>
+									</ButtonGroup>
+									<ButtonGroup name="ListOutgGroupExport" id="418">
+										<Title>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>List outg group export</v8:content>
+											</v8:item>
+										</Title>
+										<ToolTip>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Open form of exporting electronic documents into a file to transmit to the FTS</v8:content>
+											</v8:item>
+										</ToolTip>
+										<ExtendedTooltip name="ListGroupOutgExportExtendedTooltip" id="454"/>
+										<ChildItems>
+											<Button name="ListOutgoingOutgExportElectronicDocumentsForFTS" id="419">
+												<Type>CommandBarButton</Type>
+												<OnlyInAllActions>false</OnlyInAllActions>
+												<CommandName>Form.Command.OutgoingElectronicDocumentsExportForFTS</CommandName>
+												<ExtendedTooltip name="ListOutgoingOutgExportElectronicDocumentsForFTSExtendedTooltip" id="455"/>
+											</Button>
+										</ChildItems>
+									</ButtonGroup>
+									<ButtonGroup name="GroupOutgCommandsForm" id="300">
+										<Title>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Context menu list command group</v8:content>
+											</v8:item>
+										</Title>
+										<ToolTip>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Context menu list command group</v8:content>
+											</v8:item>
+										</ToolTip>
+										<CommandSource>Form</CommandSource>
+										<ExtendedTooltip name="CommandGroupFormsInitExtendedTooltip" id="456"/>
+									</ButtonGroup>
+									<Button name="ListOutgHelp" id="403">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.StandardCommand.Help</CommandName>
+										<ExtendedTooltip name="ListInitHelpExtendedTooltip" id="457"/>
+									</Button>
+									<Button name="ListOutgCatalogEDAttachedFilesEDFStructure" id="573">
+										<Type>CommandBarButton</Type>
+										<CommandName>Catalog.EDAttachedFiles.Command.EDFStructure</CommandName>
+										<DataPath>Items.ListOutg.CurrentData.Ref</DataPath>
+										<ExtendedTooltip name="ListOutgCatalogEDAttachedFilesEDFStructureExtendedTooltip" id="574"/>
+									</Button>
+								</ChildItems>
+							</AutoCommandBar>
+							<ExtendedTooltip name="InitListExtendedTooltip" id="458"/>
+							<SearchStringAddition name="ListOutgSearchString" id="584">
+								<AdditionSource>
+									<Item>ListOutg</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ListOutgSearchStringContextMenu" id="585"/>
+								<ExtendedTooltip name="ListOutgSearchStringExtendedTooltip" id="586"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ListOutgViewStatus" id="587">
+								<AdditionSource>
+									<Item>ListOutg</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ListOutgViewStatusContextMenu" id="588"/>
+								<ExtendedTooltip name="ListOutgViewStatusExtendedTooltip" id="589"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ListOutgSearchManagement" id="590">
+								<AdditionSource>
+									<Item>ListOutg</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ListSearchOutgManagementContextMenu" id="591"/>
+								<ExtendedTooltip name="ListOutgSearchManagementExtendedTooltip" id="592"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="Selection">ListSelection</Event>
+							</Events>
+							<ChildItems>
+								<LabelField name="ListEDOutgKind" id="305">
+									<DataPath>ListOutg.KindEDOutg</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Document kind</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="EDInitKindListContextMenu" id="306"/>
+									<ExtendedTooltip name="EDInitKindListExtendedTooltip" id="459"/>
+								</LabelField>
+								<LabelField name="ListOutgDocumentNumber" id="321">
+									<DataPath>ListOutg.DocumentNumber</DataPath>
+									<Width>20</Width>
+									<ContextMenu name="ListInitDocumentNumberContextMenu" id="322"/>
+									<ExtendedTooltip name="ListInitDocumentNumberExtendedTooltip" id="460"/>
+								</LabelField>
+								<LabelField name="ListOutgDocumentDate" id="307">
+									<DataPath>ListOutg.DocumentDate</DataPath>
+									<ContextMenu name="ListInitDocumentDateContextMenu" id="308"/>
+									<ExtendedTooltip name="ListInitDocumentDateExtendedTooltip" id="461"/>
+								</LabelField>
+								<LabelField name="ListOutgCounterparty" id="315">
+									<DataPath>ListOutg.Counterparty</DataPath>
+									<ContextMenu name="ListInitCounterpartyContextMenu" id="316"/>
+									<ExtendedTooltip name="ListInitCounterpartyExtendedTooltip" id="462"/>
+								</LabelField>
+								<LabelField name="ListOutgCompany" id="323">
+									<DataPath>ListOutg.Company</DataPath>
+									<ContextMenu name="ListInitCompanyContextMenu" id="324"/>
+									<ExtendedTooltip name="ListInitCompanyExtendedTooltip" id="463"/>
+								</LabelField>
+								<LabelField name="ListOutgEDFormingDateBySender" id="411">
+									<DataPath>ListOutg.EDFormingDateBySender</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Version</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Version of the electronic document</v8:content>
+										</v8:item>
+									</ToolTip>
+									<HorizontalAlign>Left</HorizontalAlign>
+									<ContextMenu name="ListInitDateEDFormSenderContextMenu" id="412"/>
+									<ExtendedTooltip name="ListInitDateEDFormSenderExtendedTooltip" id="464"/>
+								</LabelField>
+								<LabelField name="ListOutgCreationDate" id="311">
+									<DataPath>ListOutg.CreationDate</DataPath>
+									<Width>20</Width>
+									<ContextMenu name="ListInitCreationDateContextMenu" id="312"/>
+									<ExtendedTooltip name="ListInitCreationDateExtendedTooltip" id="465"/>
+								</LabelField>
+								<ColumnGroup name="ListStatusOutg" id="291">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>List status</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Status</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>InCell</Group>
+									<ExtendedTooltip name="ListStateInitExtendedTooltip" id="466"/>
+									<ChildItems>
+										<LabelField name="ListOutgEDStatus" id="331">
+											<DataPath>ListOutg.EDStatusOutg</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Status</v8:content>
+												</v8:item>
+											</Title>
+											<Width>25</Width>
+											<ContextMenu name="ListInitEDStatusContextMenu" id="332"/>
+											<ExtendedTooltip name="ListInitEDStatusExtendedTooltip" id="467"/>
+										</LabelField>
+										<LabelField name="ListOutgEDStatusChangeDate" id="309">
+											<DataPath>ListOutg.EDStatusChangeDate</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Date of change</v8:content>
+												</v8:item>
+											</Title>
+											<TitleLocation>None</TitleLocation>
+											<ContextMenu name="ListInitEDStatusChangeDateContextMenu" id="310"/>
+											<ExtendedTooltip name="ListInitEDStatusChangeDateExtendedTooltip" id="468"/>
+										</LabelField>
+									</ChildItems>
+								</ColumnGroup>
+								<LabelField name="ListOutgIBDocument" id="313">
+									<DataPath>ListOutg.IBDocument</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Document</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="ListOfDocumentsInitDBContextMenu" id="314"/>
+									<ExtendedTooltip name="ListOfDocumentsInitDBExtendedTooltip" id="469"/>
+								</LabelField>
+								<LabelField name="ListOutgResponsible" id="325">
+									<DataPath>ListOutg.Responsible</DataPath>
+									<ContextMenu name="ListInitResponsibleContextMenu" id="326"/>
+									<ExtendedTooltip name="ListInitResponsibleExtendedTooltip" id="470"/>
+								</LabelField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="UnpackedPED" id="195">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Unpacked packages</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Unpacked transport containers for processing</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="UnzippedPEDExtendedTooltip" id="471"/>
+					<ChildItems>
+						<UsualGroup name="GroupQuickFiltersUnpackedPackages" id="250">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Quick filters</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Quick filters</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupQuickFiltersUnpackedPackagesExtendedTooltip" id="472"/>
+							<ChildItems>
+								<InputField name="UnpackedPackageCounterparty" id="251">
+									<DataPath>UnpackedPackageCounterparty</DataPath>
+									<TitleLocation>Top</TitleLocation>
+									<Width>25</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ClearButton>true</ClearButton>
+									<OpenButton>false</OpenButton>
+									<ContextMenu name="CounterpartyUnzippedPackageContextMenu" id="252"/>
+									<ExtendedTooltip name="CounterpartyUnzippedPackageExtendedTooltip" id="473"/>
+									<Events>
+										<Event name="OnChange">UnpackedPackageCounterpartyOnChange</Event>
+									</Events>
+								</InputField>
+								<InputField name="UnpackedPackageStatus" id="255">
+									<DataPath>UnpackedPackageStatus</DataPath>
+									<TitleLocation>Top</TitleLocation>
+									<Width>25</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ClearButton>true</ClearButton>
+									<OpenButton>false</OpenButton>
+									<ListChoiceMode>true</ListChoiceMode>
+									<QuickChoice>true</QuickChoice>
+									<ChoiceList>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.EDPackagesStatuses.EnumValue.ToUnpacking</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.EDPackagesStatuses.EnumValue.Canceled</Value>
+											</xr:Value>
+										</xr:Item>
+									</ChoiceList>
+									<ContextMenu name="UnzippedPackageStatusContextMenu" id="256"/>
+									<ExtendedTooltip name="UnzippedPackageStatusExtendedTooltip" id="474"/>
+									<Events>
+										<Event name="OnChange">UnpackedPackageStatusOnChange</Event>
+									</Events>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<Table name="UnpackedPackages" id="196">
+							<Representation>List</Representation>
+							<UseAlternationRowColor>true</UseAlternationRowColor>
+							<EnableStartDrag>true</EnableStartDrag>
+							<DataPath>UnpackedPackages</DataPath>
+							<RowPictureDataPath>UnpackedPackages.DefaultPicture</RowPictureDataPath>
+							<CommandSet>
+								<ExcludedCommand>Copy</ExcludedCommand>
+								<ExcludedCommand>Create</ExcludedCommand>
+								<ExcludedCommand>Choose</ExcludedCommand>
+							</CommandSet>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<AutoRefresh>false</AutoRefresh>
+							<AutoRefreshPeriod>60</AutoRefreshPeriod>
+							<Period>
+								<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+								<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+								<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+							</Period>
+							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+							<RestoreCurrentRow>false</RestoreCurrentRow>
+							<TopLevelParent xsi:nil="true"/>
+							<ShowRoot>true</ShowRoot>
+							<AllowRootChoice>false</AllowRootChoice>
+							<UpdateOnDataChange>Auto</UpdateOnDataChange>
+							<ContextMenu name="UnpackedPackagesContextMenu" id="197"/>
+							<AutoCommandBar name="UnpackedPackagesCommandPanel" id="198">
+								<ChildItems>
+									<ButtonGroup name="ButtonGroup" id="264">
+										<Title>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Button group</v8:content>
+											</v8:item>
+										</Title>
+										<ToolTip>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Button group</v8:content>
+											</v8:item>
+										</ToolTip>
+										<ExtendedTooltip name="ButtonGroupExtendedTooltip" id="475"/>
+										<ChildItems>
+											<Button name="UnpackSelectedPackages" id="226">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.UnpackSelectedPackages</CommandName>
+												<ExtendedTooltip name="UnpackMarkedPackagesExtendedTooltip" id="476"/>
+											</Button>
+										</ChildItems>
+									</ButtonGroup>
+									<Popup name="GroupSetStatus" id="257">
+										<Title>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Set status</v8:content>
+											</v8:item>
+										</Title>
+										<ToolTip>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Assignment of the export status for the selected ED</v8:content>
+											</v8:item>
+										</ToolTip>
+										<ExtendedTooltip name="GroupSetStateExtendedTooltip" id="477"/>
+										<ChildItems>
+											<Button name="SetStatusToUnpacking" id="259">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.SetStatusToUnpacking</CommandName>
+												<ExtendedTooltip name="SetStatusToUnpackExtendedTooltip" id="478"/>
+											</Button>
+											<Button name="SetStatusUnpackedPackagesCanceled" id="261">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.SetStatusUnpackedPackagesCanceled</CommandName>
+												<ExtendedTooltip name="SetCancelStatusUnpackedPackagesExtendedTooltip" id="479"/>
+											</Button>
+										</ChildItems>
+									</Popup>
+									<ButtonGroup name="GroupCommandsFormsPackages" id="263">
+										<Title>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Context menu list command group</v8:content>
+											</v8:item>
+										</Title>
+										<ToolTip>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Context menu list command group</v8:content>
+											</v8:item>
+										</ToolTip>
+										<CommandSource>Form</CommandSource>
+										<ExtendedTooltip name="CommandGroupFormsPackagesExtendedTooltip" id="480"/>
+									</ButtonGroup>
+									<Button name="UnpackedPackagesHelp" id="404">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.StandardCommand.Help</CommandName>
+										<ExtendedTooltip name="UnpackedPackagesHelpExtendedTooltip" id="481"/>
+									</Button>
+								</ChildItems>
+							</AutoCommandBar>
+							<ExtendedTooltip name="UnpackedPackagesExtendedTooltip" id="482"/>
+							<SearchStringAddition name="UnpackedPackagesSearchString" id="593">
+								<AdditionSource>
+									<Item>UnpackedPackages</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="UnpackedPackagesSearchStringContextMenu" id="594"/>
+								<ExtendedTooltip name="UnpackedPackagesSearchStringExtendedTooltip" id="595"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="UnpackedPackagesViewStatus" id="596">
+								<AdditionSource>
+									<Item>UnpackedPackages</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="UnpackedPackagesViewStatusContextMenu" id="597"/>
+								<ExtendedTooltip name="UnpackedPackagesViewStatusExtendedTooltip" id="598"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="UnpackedPackagesSearchManagement" id="599">
+								<AdditionSource>
+									<Item>UnpackedPackages</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="UnpackedPackagesSearchManagementContextMenu" id="600"/>
+								<ExtendedTooltip name="UnpackedPackagesSearchManagementExtendedTooltip" id="601"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<LabelField name="UnpackedPackagesCounterparty" id="203">
+									<DataPath>UnpackedPackages.Counterparty</DataPath>
+									<ContextMenu name="UnpackedPackagesCounterpartyContextMenu" id="204"/>
+									<ExtendedTooltip name="UnpackedPackagesCounterpartyExtendedTooltip" id="483"/>
+								</LabelField>
+								<LabelField name="UnpackedPackagesStatus" id="207">
+									<DataPath>UnpackedPackages.Status</DataPath>
+									<ContextMenu name="UnpackedPackagesStateContextMenu" id="208"/>
+									<ExtendedTooltip name="UnpackedPackagesStateExtendedTooltip" id="484"/>
+								</LabelField>
+								<LabelField name="UnpackedPackagesDateReceived" id="199">
+									<DataPath>UnpackedPackages.DateReceived</DataPath>
+									<Width>8</Width>
+									<ContextMenu name="UnpackedPackagesReceiveDateContextMenu" id="200"/>
+									<ExtendedTooltip name="UnpackedPackagesReceiveDateExtendedTooltip" id="485"/>
+								</LabelField>
+								<LabelField name="UnpackedPackagesCompany" id="205">
+									<DataPath>UnpackedPackages.Company</DataPath>
+									<ContextMenu name="UnzippedCompanyPackagesContextMenu" id="206"/>
+									<ExtendedTooltip name="UnzippedCompanyPackagesExtendedTooltip" id="486"/>
+								</LabelField>
+								<LabelField name="UnpackedPackagesPackage" id="243">
+									<DataPath>UnpackedPackages.Package</DataPath>
+									<ContextMenu name="UnpackedPackagesPackageContextMenu" id="244"/>
+									<ExtendedTooltip name="UnpackedPackagesPackageExtendedTooltip" id="487"/>
+								</LabelField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="UnshippedPED" id="374">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Unshipped packages</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Unsent PED</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="UnsentPEDExtendedTooltip" id="488"/>
+					<ChildItems>
+						<UsualGroup name="GroupQuickFiltersUnshippedPackages" id="389">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Quick filters</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Quick filters</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupQuickFiltersUnshippedPackagesExtendedTooltip" id="489"/>
+							<ChildItems>
+								<InputField name="UnshippedPackageCounterparty" id="390">
+									<DataPath>UnshippedPackageCounterparty</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Recipient</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>Top</TitleLocation>
+									<Width>25</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ClearButton>true</ClearButton>
+									<OpenButton>false</OpenButton>
+									<ContextMenu name="CounterpartyUnshippedPackageContextMenu" id="391"/>
+									<ExtendedTooltip name="CounterpartyUnshippedPackageExtendedTooltip" id="490"/>
+									<Events>
+										<Event name="OnChange">UnsentPackageCounterpartyOnChange</Event>
+									</Events>
+								</InputField>
+								<InputField name="UnshippedPackageStatus" id="392">
+									<DataPath>UnshippedPackageStatus</DataPath>
+									<TitleLocation>Top</TitleLocation>
+									<Width>25</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ClearButton>true</ClearButton>
+									<OpenButton>false</OpenButton>
+									<ListChoiceMode>true</ListChoiceMode>
+									<QuickChoice>true</QuickChoice>
+									<ChoiceList>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.EDPackagesStatuses.EnumValue.PreparedToSending</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.EDPackagesStatuses.EnumValue.Canceled</Value>
+											</xr:Value>
+										</xr:Item>
+									</ChoiceList>
+									<ContextMenu name="UnshippedPackageStatusContextMenu" id="393"/>
+									<ExtendedTooltip name="UnshippedPackageStatusExtendedTooltip" id="491"/>
+									<Events>
+										<Event name="OnChange">UnsentPackageStatusOnChange</Event>
+									</Events>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<Table name="UnshippedPackages" id="375">
+							<UseAlternationRowColor>true</UseAlternationRowColor>
+							<EnableStartDrag>true</EnableStartDrag>
+							<DataPath>UnshippedPackages</DataPath>
+							<RowPictureDataPath>UnshippedPackages.DefaultPicture</RowPictureDataPath>
+							<CommandSet>
+								<ExcludedCommand>Copy</ExcludedCommand>
+								<ExcludedCommand>Create</ExcludedCommand>
+							</CommandSet>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<AutoRefresh>false</AutoRefresh>
+							<AutoRefreshPeriod>60</AutoRefreshPeriod>
+							<Period>
+								<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+								<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+								<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+							</Period>
+							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+							<RestoreCurrentRow>false</RestoreCurrentRow>
+							<TopLevelParent xsi:nil="true"/>
+							<ShowRoot>true</ShowRoot>
+							<AllowRootChoice>false</AllowRootChoice>
+							<UpdateOnDataChange>Auto</UpdateOnDataChange>
+							<ContextMenu name="UnshippedPackagesContextMenu" id="376"/>
+							<AutoCommandBar name="UnshippedPackagesCommandPanel" id="377">
+								<ChildItems>
+									<ButtonGroup name="ButtonsGroupUnshippedPackages" id="397">
+										<Title>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Button group</v8:content>
+											</v8:item>
+										</Title>
+										<ToolTip>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Button group</v8:content>
+											</v8:item>
+										</ToolTip>
+										<ExtendedTooltip name="ButtonGroupUnshippedPackagesExtendedTooltip" id="492"/>
+										<ChildItems>
+											<Button name="SendSelectedPackages" id="398">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.SendSelectedPackages</CommandName>
+												<ExtendedTooltip name="SendMarkedPackagesExtendedTooltip" id="493"/>
+											</Button>
+										</ChildItems>
+									</ButtonGroup>
+									<Popup name="GroupSetStatusUnshippedPackages" id="394">
+										<Title>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Set status</v8:content>
+											</v8:item>
+										</Title>
+										<ToolTip>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Assignment of the export status for the selected ED</v8:content>
+											</v8:item>
+										</ToolTip>
+										<ExtendedTooltip name="GroupSetStateNotsendedPackagesExtendedTooltip" id="494"/>
+										<ChildItems>
+											<Button name="SetStatusPreparedToSending" id="395">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.SetStatusPreparedToSending</CommandName>
+												<ExtendedTooltip name="SetStatePreparedForSendingExtendedTooltip" id="495"/>
+											</Button>
+											<Button name="SetStatusUnshippedPackagesCanceled" id="396">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.SetStatusUnshippedPackagesCanceled</CommandName>
+												<ExtendedTooltip name="SetCancelStatusUnshippedPackagesExtendedTooltip" id="496"/>
+											</Button>
+										</ChildItems>
+									</Popup>
+									<Button name="UnshippedPackagesHelp" id="405">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.StandardCommand.Help</CommandName>
+										<ExtendedTooltip name="UnshippedPackagesHelpExtendedTooltip" id="497"/>
+									</Button>
+									<ButtonGroup name="UnshippedPackagesCommandGroupForms" id="414">
+										<Title>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Context menu list command group</v8:content>
+											</v8:item>
+										</Title>
+										<ToolTip>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Context menu list command group</v8:content>
+											</v8:item>
+										</ToolTip>
+										<CommandSource>Form</CommandSource>
+										<ExtendedTooltip name="UnshippedPackagesCommandGroupFormsExtendedTooltip" id="498"/>
+									</ButtonGroup>
+								</ChildItems>
+							</AutoCommandBar>
+							<ExtendedTooltip name="UnshippedPackagesExtendedTooltip" id="499"/>
+							<SearchStringAddition name="UnshippedPackagesSearchString" id="602">
+								<AdditionSource>
+									<Item>UnshippedPackages</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="UnshippedPackagesSearchStringContextMenu" id="603"/>
+								<ExtendedTooltip name="UnshippedPackagesSearchStringExtendedTooltip" id="604"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="UnshippedPackagesViewStatus" id="605">
+								<AdditionSource>
+									<Item>UnshippedPackages</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="UnshippedPackagesViewStatusContextMenu" id="606"/>
+								<ExtendedTooltip name="UnshippedPackagesViewStatusExtendedTooltip" id="607"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="UnshippedPackagesSearchManagement" id="608">
+								<AdditionSource>
+									<Item>UnshippedPackages</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="UnshippedPackagesSearchManagementContextMenu" id="609"/>
+								<ExtendedTooltip name="UnshippedPackagesSearchManagementExtendedTooltip" id="610"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<LabelField name="UnshippedPackagesCounterparty" id="380">
+									<DataPath>UnshippedPackages.Counterparty</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Recipient</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="UnshippedPackagesCounterpartyContextMenu" id="381"/>
+									<ExtendedTooltip name="UnshippedPackagesCounterpartyExtendedTooltip" id="500"/>
+								</LabelField>
+								<LabelField name="UnshippedPackagesStatus" id="386">
+									<DataPath>UnshippedPackages.Status</DataPath>
+									<ContextMenu name="UnshippedPackagesStateContextMenu" id="387"/>
+									<ExtendedTooltip name="UnshippedPackagesStateExtendedTooltip" id="501"/>
+								</LabelField>
+								<LabelField name="UnshippedPackagesCreationDate" id="378">
+									<DataPath>UnshippedPackages.CreationDate</DataPath>
+									<ContextMenu name="UnshippedPackagesCreationDateContextMenu" id="379"/>
+									<ExtendedTooltip name="UnshippedPackagesCreationDateExtendedTooltip" id="502"/>
+								</LabelField>
+								<LabelField name="UnshippedPackagesCompany" id="382">
+									<DataPath>UnshippedPackages.Company</DataPath>
+									<ContextMenu name="UnshippedPackagesCompanyContextMenu" id="383"/>
+									<ExtendedTooltip name="UnshippedPackagesCompanyExtendedTooltip" id="503"/>
+								</LabelField>
+								<LabelField name="UnshippedPackagesPackage" id="384">
+									<DataPath>UnshippedPackages.Package</DataPath>
+									<ContextMenu name="UnshippedPackagesPackageContextMenu" id="385"/>
+									<ExtendedTooltip name="UnshippedPackagesPackageExtendedTooltip" id="504"/>
+								</LabelField>
+								<LabelField name="UnshippedPackagesAgreement" id="400">
+									<DataPath>13/6</DataPath>
+									<ContextMenu name="UnshippedPackagesAgreementContextMenu" id="401"/>
+									<ExtendedTooltip name="UnshippedPackagesAgreementExtendedTooltip" id="505"/>
+								</LabelField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="packages" id="340">
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+						<xr:Value name="Role.FullRights">true</xr:Value>
+					</UserVisible>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>All packages</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>packages</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="PackagesExtendedTooltip" id="506"/>
+					<ChildItems>
+						<Table name="AllPackages" id="341">
+							<UseAlternationRowColor>true</UseAlternationRowColor>
+							<EnableStartDrag>true</EnableStartDrag>
+							<DataPath>AllPackages</DataPath>
+							<RowPictureDataPath>AllPackages.DefaultPicture</RowPictureDataPath>
+							<CommandSet>
+								<ExcludedCommand>Copy</ExcludedCommand>
+								<ExcludedCommand>Create</ExcludedCommand>
+								<ExcludedCommand>Delete</ExcludedCommand>
+							</CommandSet>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<AutoRefresh>false</AutoRefresh>
+							<AutoRefreshPeriod>60</AutoRefreshPeriod>
+							<Period>
+								<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+								<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+								<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+							</Period>
+							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+							<RestoreCurrentRow>false</RestoreCurrentRow>
+							<TopLevelParent xsi:nil="true"/>
+							<ShowRoot>true</ShowRoot>
+							<AllowRootChoice>false</AllowRootChoice>
+							<UpdateOnDataChange>Auto</UpdateOnDataChange>
+							<ContextMenu name="AllPagesContextMenu" id="342"/>
+							<AutoCommandBar name="AllPagesCommandPanel" id="343">
+								<ChildItems>
+									<ButtonGroup name="AllPackagesCommandsGroup" id="388">
+										<Title>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>All commands group packages</v8:content>
+											</v8:item>
+										</Title>
+										<ToolTip>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>All commands group packages</v8:content>
+											</v8:item>
+										</ToolTip>
+										<ExtendedTooltip name="AllPackagesCommandGroupExtendedTooltip" id="507"/>
+										<ChildItems>
+											<Button name="ElectronicDucumentsPackagesDelete" id="335">
+												<Type>CommandBarButton</Type>
+												<OnlyInAllActions>false</OnlyInAllActions>
+												<CommandName>DataProcessor.RemovingUsedEDPackagesFiles.Command.RemovingUsedEDPackagesFiles</CommandName>
+												<ExtendedTooltip name="ElectronicDucumentsPackagesDeleteExtendedTooltip" id="508"/>
+											</Button>
+											<Button name="AllPackagesSavePackageToDisc" id="413">
+												<Type>CommandBarButton</Type>
+												<Representation>PictureAndText</Representation>
+												<OnlyInAllActions>false</OnlyInAllActions>
+												<CommandName>Form.Command.SaveEDPackagesToDisc</CommandName>
+												<Picture>
+													<xr:Ref>CommonPicture.SaveFileAs</xr:Ref>
+													<xr:LoadTransparent>true</xr:LoadTransparent>
+												</Picture>
+												<ExtendedTooltip name="AllPackagesSavePackageOnHardDriveExtendedTooltip" id="509"/>
+											</Button>
+										</ChildItems>
+									</ButtonGroup>
+									<Button name="AllPackagesHelp" id="406">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.StandardCommand.Help</CommandName>
+										<ExtendedTooltip name="AllPackagesHelpExtendedTooltip" id="510"/>
+									</Button>
+									<ButtonGroup name="AllPackagesCommandGroupForms" id="415">
+										<Title>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Context menu list command group</v8:content>
+											</v8:item>
+										</Title>
+										<ToolTip>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Context menu list command group</v8:content>
+											</v8:item>
+										</ToolTip>
+										<CommandSource>Form</CommandSource>
+										<ExtendedTooltip name="AllPackagesCommandFormGroupExtendedTooltip" id="511"/>
+									</ButtonGroup>
+								</ChildItems>
+							</AutoCommandBar>
+							<ExtendedTooltip name="AllPackagesExtendedTooltip" id="512"/>
+							<SearchStringAddition name="AllPackagesSearchString" id="611">
+								<AdditionSource>
+									<Item>AllPackages</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="AllPackagesSearchStringContextMenu" id="612"/>
+								<ExtendedTooltip name="AllPackagesSearchStringExtendedTooltip" id="613"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="AllPackagesViewStatus" id="614">
+								<AdditionSource>
+									<Item>AllPackages</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="AllPackagesViewStatusContextMenu" id="615"/>
+								<ExtendedTooltip name="AllPackagesViewStatusExtendedTooltip" id="616"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="AllPackagesSearchManagement" id="617">
+								<AdditionSource>
+									<Item>AllPackages</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="AllPackagesSearchManagementContextMenu" id="618"/>
+								<ExtendedTooltip name="AllPackagesSearchManagementExtendedTooltip" id="619"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<LabelField name="AllPackagesDate" id="344">
+									<DataPath>AllPackages.Date</DataPath>
+									<ContextMenu name="AllPackagesDateContextMenu" id="345"/>
+									<ExtendedTooltip name="AllPackagesDateExtendedTooltip" id="513"/>
+								</LabelField>
+								<LabelField name="AllPackagesNumber" id="346">
+									<DataPath>AllPackages.Number</DataPath>
+									<ContextMenu name="AllPacagesNumberContextMenu" id="347"/>
+									<ExtendedTooltip name="AllPacagesNumberExtendedTooltip" id="514"/>
+								</LabelField>
+								<LabelField name="AllPackagesDirection" id="348">
+									<DataPath>AllPackages.Direction</DataPath>
+									<ContextMenu name="AllPackagesDirectionContextMenu" id="349"/>
+									<ExtendedTooltip name="AllPackagesDirectionExtendedTooltip" id="515"/>
+								</LabelField>
+								<LabelField name="AllPackagesAgreement" id="362">
+									<DataPath>12/18</DataPath>
+									<ContextMenu name="AllPackagesAgreementContextMenu" id="363"/>
+									<ExtendedTooltip name="AllPackagesAgreementExtendedTooltip" id="516"/>
+								</LabelField>
+								<LabelField name="AllPackagesPackageStatus" id="364">
+									<DataPath>AllPackages.PackageStatus</DataPath>
+									<ContextMenu name="AllPackagesPackageStatusContextMenu" id="365"/>
+									<ExtendedTooltip name="AllPackagesStatePackageExtendedTooltip" id="517"/>
+								</LabelField>
+								<LabelField name="AllPackagesCounterparty" id="366">
+									<DataPath>AllPackages.Counterparty</DataPath>
+									<ContextMenu name="AllPackagesCounterpartyContextMenu" id="367"/>
+									<ExtendedTooltip name="AllPackagesCounterpartyExtendedTooltip" id="518"/>
+								</LabelField>
+								<LabelField name="AllPackagesCompany" id="368">
+									<DataPath>AllPackages.Company</DataPath>
+									<ContextMenu name="AllPackagesCompanyContextMenu" id="369"/>
+									<ExtendedTooltip name="AllPackagesCompanyExtendedTooltip" id="519"/>
+								</LabelField>
+								<LabelField name="AllPackagesEDExchangeMethod" id="370">
+									<DataPath>AllPackages.EDExchangeMethod</DataPath>
+									<ContextMenu name="AllPackagesEDExchangeVariantContextMenu" id="371"/>
+									<ExtendedTooltip name="AllPackagesEDExchangeVariantExtendedTooltip" id="520"/>
+								</LabelField>
+								<LabelField name="AllPackagesPayee" id="350">
+									<DataPath>AllPackages.Recipient</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Recipient ID</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="AllPackagesRecipientContextMenu" id="351"/>
+									<ExtendedTooltip name="AllPackagesRecipientExtendedTooltip" id="521"/>
+								</LabelField>
+								<LabelField name="AllPackagesSender" id="352">
+									<DataPath>AllPackages.Sender</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Sender ID</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="AllPackagesSenderContextMenu" id="353"/>
+									<ExtendedTooltip name="AllPackagesSenderExtendedTooltip" id="522"/>
+								</LabelField>
+								<LabelField name="AllPackagesCompanyResourceAddress" id="356">
+									<DataPath>AllPackages.CompanyResourceAddress</DataPath>
+									<ContextMenu name="AllPackagesAddressOfCompaniesResourceContextMenu" id="357"/>
+									<ExtendedTooltip name="AllPackagesAddressResourceCompaniesExtendedTooltip" id="523"/>
+								</LabelField>
+								<LabelField name="AllPackagesCounterpartyAddressResource" id="358">
+									<DataPath>AllPackages.CounterpartyResourceAddress</DataPath>
+									<ContextMenu name="AllPackagesAddressOfCounterpartyResourceContextMenu" id="359"/>
+									<ExtendedTooltip name="AllPackagesAddressResourceCounterpartyExtendedTooltip" id="524"/>
+								</LabelField>
+								<LabelField name="AllPackagesComment" id="372">
+									<DataPath>AllPackages.Comment</DataPath>
+									<ContextMenu name="AllPackagesCommentContextMenu" id="373"/>
+									<ExtendedTooltip name="AllPackagesCommentExtendedTooltip" id="525"/>
+								</LabelField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="List" id="7">
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<UseAlways>
+				<Field>List.Ref</Field>
+				<Field>List.OurOperand</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>SELECT
+	AttachedFiles.Ref,
+	AttachedFiles.Description,
+	AttachedFiles.FileOwner AS IBDocument,
+	AttachedFiles.EDDirection,
+	AttachedFiles.EDKind,
+	AttachedFiles.EDStatus,
+	AttachedFiles.EDRecipient,
+	AttachedFiles.EDFrom,
+	AttachedFiles.EDStatusChangeDate,
+	AttachedFiles.Responsible,
+	AttachedFiles.CreationDate AS DateReceived,
+	AttachedFiles.Company AS Company,
+	AttachedFiles.Counterparty AS Counterparty,
+	AttachedFiles.SenderDocumentNumber AS DocumentNumber,
+	AttachedFiles.SenderDocumentDate AS DocumentDate,
+	EDStates.ElectronicDocument.EDFormingDateBySender AS LastEDVersionNumber,
+	NestedSelect.SignatureIsCorrect,
+	CASE
+		WHEN AttachedFiles.EDKind = VALUE(Enum.EDKinds.CustomerInvoiceNote)
+				OR AttachedFiles.EDKind = VALUE(Enum.EDKinds.NotificationAboutReception)
+				OR AttachedFiles.EDKind = VALUE(Enum.EDKinds.Confirmation)
+				OR AttachedFiles.EDKind = VALUE(Enum.EDKinds.NotificationAboutClarification)
+				OR AttachedFiles.EDKind = VALUE(Enum.EDKinds.Error)
+			THEN ""
+		WHEN AttachedFiles.EDFormingDateBySender = DATETIME(1, 1, 1, 0, 0, 0)
+				OR AttachedFiles.EDFormingDateBySender IS NULL 
+			THEN AttachedFiles.EDVersionNumber
+		ELSE AttachedFiles.EDFormingDateBySender
+	END AS EDFormingDateBySender,
+	CASE
+		WHEN (EDStates.ElectronicDocument.EDKind = VALUE(Enum.EDKinds.TORG12Customer)
+				OR EDStates.ElectronicDocument.EDKind = VALUE(Enum.EDKinds.ActCustomer))
+				AND (AttachedFiles.EDKind = VALUE(Enum.EDKinds.TORG12Seller)
+					OR AttachedFiles.EDKind = VALUE(Enum.EDKinds.ActPerformer))
+			THEN CASE
+					WHEN AttachedFiles.EDFormingDateBySender &gt; EDStates.ElectronicDocument.ElectronicDocumentOwner.EDFormingDateBySender
+						THEN TRUE
+					ELSE FALSE
+				END
+		WHEN AttachedFiles.EDFormingDateBySender &gt; EDStates.ElectronicDocument.EDFormingDateBySender
+			THEN TRUE
+		ELSE FALSE
+	END AS IsEDNewVersion,
+	TRUE AS OurOperand
+	FROM
+	Catalog.EDAttachedFiles AS AttachedFiles
+		LEFT JOIN InformationRegister.EDStates AS EDStates
+		ON AttachedFiles.FileOwner = EDStates.ObjectReference
+		LEFT JOIN (SELECT DISTINCT
+			EDAttachedFilesDigitalSignatures.Ref AS Ref,
+			EDAttachedFilesDigitalSignatures.SignatureIsCorrect AS SignatureIsCorrect
+		FROM
+			Catalog.EDAttachedFiles.DigitalSignatures AS EDAttachedFilesDigitalSignatures
+		WHERE
+			Not EDAttachedFilesDigitalSignatures.SignatureIsCorrect
+			AND EDAttachedFilesDigitalSignatures.Ref.EDDirection = VALUE(Enum.EDDirections.Incoming)
+			AND Not EDAttachedFilesDigitalSignatures.SignatureVerificationDate = DATETIME(1, 1, 1, 0, 0, 0)) AS NestedSelect
+		ON AttachedFiles.Ref = NestedSelect.Ref
+	WHERE
+	(AttachedFiles.EDDirection = VALUE(Enum.EDDirections.Incoming)
+			OR AttachedFiles.EDDirection = VALUE(Enum.EDDirections.Intercompany))
+		AND Not AttachedFiles.EDKind = VALUE(Enum.EDKinds.AddData)</QueryText>
+				<MainTable>Catalog.EDAttachedFiles</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemField">
+							<dcsset:field>DateReceived</dcsset:field>
+							<dcsset:orderType>Asc</dcsset:orderType>
+						</dcsset:item>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:item>
+							<dcsset:selection>
+								<dcsset:item>
+									<dcsset:field>EDFormingDateBySender</dcsset:field>
+								</dcsset:item>
+							</dcsset:selection>
+							<dcsset:filter>
+								<dcsset:item xsi:type="dcsset:FilterItemComparison">
+									<dcsset:left xsi:type="dcscor:Field">IsEDNewVersion</dcsset:left>
+									<dcsset:comparisonType>Equal</dcsset:comparisonType>
+									<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+								</dcsset:item>
+								<dcsset:item xsi:type="dcsset:FilterItemComparison">
+									<dcsset:left xsi:type="dcscor:Field">EDKind</dcsset:left>
+									<dcsset:comparisonType>NotEqual</dcsset:comparisonType>
+									<dcsset:right xsi:type="dcscor:DesignTimeValue">Enum.EDKinds.ProductsDirectory</dcsset:right>
+								</dcsset:item>
+							</dcsset:filter>
+							<dcsset:appearance>
+								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+									<dcscor:parameter>TextColor</dcscor:parameter>
+									<dcscor:value xsi:type="v8ui:Color">style:NegativeTextColor</dcscor:value>
+								</dcscor:item>
+							</dcsset:appearance>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:selection>
+								<dcsset:item>
+									<dcsset:field>EDStatusChangeDate</dcsset:field>
+								</dcsset:item>
+								<dcsset:item>
+									<dcsset:field>EDStatus</dcsset:field>
+								</dcsset:item>
+							</dcsset:selection>
+							<dcsset:filter>
+								<dcsset:item xsi:type="dcsset:FilterItemComparison">
+									<dcsset:left xsi:type="dcscor:Field">SignatureIsCorrect</dcsset:left>
+									<dcsset:comparisonType>Equal</dcsset:comparisonType>
+									<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+								</dcsset:item>
+							</dcsset:filter>
+							<dcsset:appearance>
+								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+									<dcscor:use>false</dcscor:use>
+									<dcscor:parameter>BackColor</dcscor:parameter>
+									<dcscor:value xsi:type="v8ui:Color">style:SpecialTextColor</dcscor:value>
+								</dcscor:item>
+								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+									<dcscor:parameter>TextColor</dcscor:parameter>
+									<dcscor:value xsi:type="v8ui:Color">style:SpecialTextColor</dcscor:value>
+								</dcscor:item>
+							</dcsset:appearance>
+						</dcsset:item>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="EDKind" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Document kind</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.EDKinds</v8:Type>
+			</Type>
+			<Save>
+				<Field>EDKind</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="EDStatus" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Document status</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.EDStatuses</v8:Type>
+			</Type>
+			<Save>
+				<Field>EDStatus</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="Responsible" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Responsible</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Users</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="UnpackedPackages" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Unpacked packages</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>SELECT
+	EDPackage.Ref AS Package,
+	EDPackage.Company AS Company,
+	EDPackage.Counterparty AS Counterparty,
+	EDPackage.PackageStatus AS Status,
+	EDPackage.Date AS DateReceived
+FROM
+	Document.EDPackage AS EDPackage
+WHERE
+	EDPackage.DeletionMark = FALSE
+	AND EDPackage.Direction = VALUE(Enum.EDDirections.Incoming)
+	AND (EDPackage.PackageStatus = VALUE(Enum.EDPackagesStatuses.ToUnpacking)
+	OR EDPackage.PackageStatus = VALUE(Enum.EDPackagesStatuses.Canceled))</QueryText>
+				<MainTable>Document.EDPackage</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemField">
+							<dcsset:use>false</dcsset:use>
+							<dcsset:field>DateReceived</dcsset:field>
+							<dcsset:orderType>Asc</dcsset:orderType>
+						</dcsset:item>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="UnpackedPackageStatus" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Package status</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.EDPackagesStatuses</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="UnpackedPackageCounterparty" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Counterparty</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Counterparties</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ListOutg" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>List outg</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<UseAlways>
+				<Field>ListOutg.Ref</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>SELECT
+	AttachedFiles.Ref,
+	AttachedFiles.Description,
+	AttachedFiles.FileOwner AS IBDocument,
+	AttachedFiles.EDDirection,
+	AttachedFiles.EDKind AS KindEDOutg,
+	AttachedFiles.EDStatus AS EDStatusOutg,
+	AttachedFiles.EDRecipient,
+	AttachedFiles.EDFrom,
+	AttachedFiles.EDStatusChangeDate,
+	AttachedFiles.Responsible,
+	AttachedFiles.Company AS Company,
+	AttachedFiles.Counterparty AS Counterparty,
+	AttachedFiles.CreationDate,
+	AttachedFiles.SenderDocumentNumber AS DocumentNumber,
+	AttachedFiles.SenderDocumentDate AS DocumentDate,
+	CASE
+		WHEN AttachedFiles.EDKind = VALUE(Enum.EDKinds.ProductsDirectory)
+				OR AttachedFiles.EDKind = VALUE(Enum.EDKinds.CustomerInvoiceNote)
+				OR AttachedFiles.EDKind = VALUE(Enum.EDKinds.NotificationAboutReception)
+				OR AttachedFiles.EDKind = VALUE(Enum.EDKinds.Confirmation)
+				OR AttachedFiles.EDKind = VALUE(Enum.EDKinds.NotificationAboutClarification)
+				OR AttachedFiles.EDKind = VALUE(Enum.EDKinds.Error)
+			THEN ""
+		WHEN AttachedFiles.EDFormingDateBySender = DATETIME(1, 1, 1, 0, 0, 0)
+			THEN AttachedFiles.EDVersionNumber
+		ELSE AttachedFiles.EDFormingDateBySender
+	END AS EDFormingDateBySender,
+	CASE
+		WHEN AttachedFiles.EDFProfileSettings.EDExchangeMethod = VALUE(Enum.EDExchangeMethods.ThroughEDFOperatorTaxcom)
+				AND AttachedFiles.VersionPointTypeED = VALUE(Enum.EDVersionElementTypes.PrimaryED)
+				AND Not AttachedFiles.EDFrom LIKE "%2AL%"
+			THEN FALSE
+		ELSE TRUE
+	END AS OurOperand
+	FROM
+	Catalog.EDAttachedFiles AS AttachedFiles
+	WHERE
+	(AttachedFiles.EDDirection = VALUE(Enum.EDDirections.Outgoing)
+			OR AttachedFiles.EDDirection = VALUE(Enum.EDDirections.Intercompany))
+		AND Not AttachedFiles.EDKind = VALUE(Enum.EDKinds.AddData)</QueryText>
+				<MainTable>Catalog.EDAttachedFiles</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemField">
+							<dcsset:field>CreationDate</dcsset:field>
+							<dcsset:orderType>Asc</dcsset:orderType>
+						</dcsset:item>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="ResponsibleOutg" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Responsible</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Users</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="KindEDOutg" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Document kind</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.EDKinds</v8:Type>
+			</Type>
+			<Save>
+				<Field>KindEDOutg</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="EDStatusOutg" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Document status</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.EDStatuses</v8:Type>
+			</Type>
+			<Save>
+				<Field>EDStatusOutg</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="AllPackages" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>All packages</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>false</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<MainTable>Document.EDPackage</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemField">
+							<dcsset:field>Date</dcsset:field>
+							<dcsset:orderType>Asc</dcsset:orderType>
+						</dcsset:item>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="UnshippedPackages" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Unshipped packages</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>SELECT
+	EDPackage.Ref AS Package,
+	EDPackage.Company AS Company,
+	EDPackage.Counterparty AS Counterparty,
+	EDPackage.PackageStatus AS Status,
+	EDPackage.Date AS CreationDate,
+	EDPackage.EDFSetup AS EDFSetup
+FROM
+	Document.EDPackage AS EDPackage
+WHERE
+	EDPackage.DeletionMark = FALSE
+	AND EDPackage.Direction = VALUE(Enum.EDDirections.Outgoing)
+	AND (EDPackage.PackageStatus = VALUE(Enum.EDPackagesStatuses.PreparedToSending)
+			OR EDPackage.PackageStatus = VALUE(Enum.EDPackagesStatuses.Canceled))</QueryText>
+				<MainTable>Document.EDPackage</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemField">
+							<dcsset:field>CreationDate</dcsset:field>
+							<dcsset:orderType>Asc</dcsset:orderType>
+						</dcsset:item>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="UnshippedPackageCounterparty" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Counterparty</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.RFBankClassifier</v8:Type>
+				<v8:Type>cfg:CatalogRef.Counterparties</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="UnshippedPackageStatus" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Package status</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.EDPackagesStatuses</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Object" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Object</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.ElectronicDocuments</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="SetResponsible" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Set responsible</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Install the responsible for the electronic document processing</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.User</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>SetResponsible</Action>
+		</Command>
+		<Command name="CompareEDDataInc" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Compare the versions of the 2 electronic documents</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Compare the data of the 2 electronic documents</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.DataCompositionDataParameters</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>CompareEDDataInc</Action>
+		</Command>
+		<Command name="UnpackSelectedPackages" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Unpack the selected packages</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Unpack the selected electronic document packages</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.ReadChanges</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Unpack</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="SetStatusToUnpacking" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>To unpack</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Install "To be unpacked" status</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>SetStatusToUnpacking</Action>
+		</Command>
+		<Command name="SetStatusUnpackedPackagesCanceled" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Canceled</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Install status "Canceled"</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>SetCancelStatus</Action>
+		</Command>
+		<Command name="SetStatusPreparedToSending" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Prepared for sending</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Install the status "Prepared for sending"</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>SetStatusPreparedToSending</Action>
+		</Command>
+		<Command name="SetStatusUnshippedPackagesCanceled" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Canceled</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Install status "Canceled"</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>SetCancelStatus</Action>
+		</Command>
+		<Command name="SendSelectedPackages" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Send the selected packages</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Send the selected electronic document packages</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.WriteChanges</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Send</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="CompareEDDataOutg" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Compare the versions of the 2 electronic documents</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Compare the data of the 2 electronic documents</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.DataCompositionDataParameters</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>CompareEDDataOutg</Action>
+		</Command>
+		<Command name="SaveEDPackagesToDisc" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Save the ED packages to the disk</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Save the ED packages to the disk</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>SaveEDPackagesToDisc</Action>
+		</Command>
+		<Command name="ExportIncomingElectronicDocumentsForFTS" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Export electronic documents for FTS</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Export incoming electronic documents for FTS</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ExportIncomingElectronicDocumentsForFTS</Action>
+		</Command>
+		<Command name="OutgoingElectronicDocumentsExportForFTS" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Export electronic documents for FTS</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Export incoming electronic documents for FTS</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>OutgoingElectronicDocumentsExportForFTS</Action>
+		</Command>
+	</Commands>
+</Form>

@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"></meta><link rel="stylesheet" type="text/css" href="v8help://service_book/service_style"></link><meta name="GENERATOR" content="MSHTML 11.00.9600.18321"></meta></head><body>
+<h1>Customer order document</h1>
+<p class="Usual"></p>
+<p class="Usual">The document is used for registration of customer requests for purchase of goods, jobs and services.</p>
+<p class="Usual"></p>
+<p class="Usual">Document attributes:</p>
+<ul><li>
+<div><strong>Company -</strong> company, for which the document is Creatingd. It is selected from the <a href="Catalog.Companies/Help"><u><font color="#000080">Companies</font></u></a> list. The attribute is displayed on the form if Accounting by Multiple Companies is enabled in accounting options.</div>
+</li><li>
+<div><strong>Transaction kind</strong> - one of the following: Sales Order or Processing Order.</div>
+</li><li><strong>Counterparty -</strong> customer selected from the <a href="Catalog.Counterparties/Help">Counterparty</a> list. 
+</li><li>
+<p class="Usual"><strong>Company contract</strong> - agreement between company and company. It is selected from the list of <a href="Catalog.CounterpartyCompany contracts/Help"><font color="#0066cc"><font color="#000080">Counterparty Company contracts</font></font></a>.</p>
+</li><li>
+<p class="Usual"><strong>Project - </strong>selected from the <a href="Catalog.Projects/Help">Projects</a> list.</p></li></ul><p class="Usual"></p>
+<p class="Usual">To change the price types, discounts and currencies, click on the <a href="CommonForm.PricesAndCurrencyForm/Help">Edit Prices and Currencies</a> button.</p>
+<ul><li>
+<p class="Usual"><strong>Inventory.</strong> Document table can be filled using pick method (button <a href="CommonForm.PickForm/Help"><u><font color="#000080">Pick</font></u></a> on the command bar), or data can be entered manually. Table fields:</p>
+<ul><li><strong>Item</strong> - item being ordered. 
+</li><li>
+<p class="Usual"><strong>Characteristic</strong> - if necessary, characteristic of the item may be selected in this field. It is selected from the <a href="Catalog.ProductsAndServicesCharacteristics/Help">Products and services characteristics</a> list. The attribute is displayed on the form if characteristics are enabled for the items in accounting options.</p>
+</li><li><strong>Quantity</strong> - COUNT of items. 
+</li><li>
+<p class="Usual"><strong>Reserve</strong> - COUNT of items to be reserved.</p>
+</li><li>
+<p class="Usual"><strong>UOM</strong> - unit of measure. It is selected from the <a href="Catalog.UOM/Help">UOM Classifier </a>list or from the <a href="Catalog.UOMClassifier/Help"><u><font color="#000080">Units of Measure</font></u></a> list.</p>
+</li><li>
+<p class="Usual"><strong>Price</strong> - item price.</p>
+</li><li>
+<p class="Usual"><strong>Discount, %</strong> - discount (markup) rate.</p>
+</li><li>
+<p class="Usual"><strong>Amount</strong> - cost of ordered item.</p>
+</li><li>
+<p class="Usual"><strong>VAT rate</strong> - VAT rate selected from the <a href="Catalog.VAT rates/Help"><u><font color="#000080">VAT rates</font></u></a> list.</p>
+</li><li>
+<p class="Usual"><strong>Including VAT</strong> - Amount of VAT.</p>
+</li><li>
+<p class="Usual"><strong>Total </strong>- total Amount calculated according to the price and currency settings. To change the settings click on the <a href="CommonForm.PricesAndCurrencyForm/Help"><font color="#0066cc">Edit Prices and Currencies</font></a> button.</p>
+</li><li><strong>Specification</strong> - specification which defines a set of rules for production of the ordered item. 
+</li><li><strong>Content</strong> - text of order in the print form. To enable the attribute go to <strong>All actions - Change form...</strong> and check the flag.</li></ul></li></ul><p></p>
+<blockquote style="MARGIN-RIGHT: 0px" dir="ltr">
+<li>
+<p class="Usual"><strong>Jobs</strong> - the table is available only for the transaction type "Job order. Document table can be filled using pick method (button <a href="CommonForm.PickForm/Help"><font color="#0066cc">Pick</font></a> on the command bar), or data can be entered manually. Table fields:</p>
+<ul><li><strong>Job Type - </strong>item selected from the <a href="Catalog.ProductsAndServices/Help"><font color="#0066cc">ProductsAndServices</font></a> list with the Job Type item type.<strong> </strong>
+</li><li><strong>Job, tools - </strong>service /job provided to customer. 
+</li><li><strong>Characteristic</strong> - if necessary, characteristic of the item may be selected in this field. It is selected from the <a href="Catalog.ProductsAndServicesCharacteristics/Help"><font color="#0066cc">Products and services characteristics</font></a> list. The attribute is displayed on the form if characteristics are enabled for the items in accounting options. 
+</li><li><strong>Time Norm</strong> - standard time required to complete the job. The norm equals 1 for the jobs having fix cost. 
+</li><li>
+<p class="Usual"><strong>Factor</strong> - COUNT of completed jobs / services provided.</p>
+</li><li>
+<p class="Usual"><strong>Price</strong> - price of job / service.</p>
+</li><li>
+<p class="Usual"><strong>Discount, %</strong> - discount (markup) rate.</p>
+</li><li>
+<p class="Usual"><strong>Amount</strong> - cost of job / service.</p>
+</li><li>
+<p class="Usual"><strong>VAT rate</strong> - VAT rate selected from the <a href="Catalog.VAT rates/Help"><font color="#0066cc">VAT rates</font></a> list.</p>
+</li><li>
+<p class="Usual"><strong>Including VAT</strong> - Amount of VAT.</p>
+</li><li>
+<p class="Usual"><strong>Total Amount</strong> - total Amount calculated according to the price and currency settings. To change the settings click on the <a href="CommonForm.PricesAndCurrencyForm/Help"><font color="#0066cc">Edit Prices and Currencies</font></a> button.</p>
+</li><li>
+<p class="Usual"><strong>Specification</strong> - selected from the <a href="Catalog.Specifications/Help"><font color="#0000ff">Specifications</font></a> list. Materials, required for the job, will be automatically filled according to selected specification.</p>
+</li><li>
+<p class="Usual"><strong>Materials - </strong>materials, required for the job<strong>.</strong></p>
+</li><li>
+<p class="Usual"><strong>Performers - </strong>employees who perform the job (with indication of the tariff)<strong>.</strong></p>
+</li><li>
+<p class="Usual"><strong>Content</strong> - text of job in the print form. To enable the attribute go to <strong>All actions - Change form...</strong> and check the flag.</p></li></ul></li></blockquote>
+<p>The document Customer Order can be entered on the basis of the <a href="Catalog.Counterparties/Help"><font color="#0000ff">Counterparty</font></a> list.</p>
+<p class="Usual"></p></body></html>

@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<MetaDataObject xmlns="http://v8.1c.ru/8.3/MDClasses" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:cmi="http://v8.1c.ru/8.2/managed-application/cmi" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xpr="http://v8.1c.ru/8.3/xcf/predef" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Subsystem uuid="4c6bf30a-9441-42b7-b8a3-59a7a4028fca">
+		<Properties>
+			<Name>ExchangeWithCounterparties</Name>
+			<Synonym>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Exchange with counterparties</v8:content>
+				</v8:item>
+			</Synonym>
+			<Comment/>
+			<IncludeHelpInContents>false</IncludeHelpInContents>
+			<IncludeInCommandInterface>false</IncludeInCommandInterface>
+			<Explanation/>
+			<Picture/>
+			<Content>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonForm.DataComparisonByProductsAndServices</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonCommand.DonwloadDataToFile</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonCommand.DataLoadFromFile</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonCommand.ImportRefillObjectFromFile</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Catalog.Counterparties</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Enum.Exchange1CRegulationsVersion</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Enum.EDOperationsKinds</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.EDExchangeStatesThroughEDFOperators</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.DeleteEDExchangeMembersThroughEDFOperators</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.RandomED</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">XDTOPackage.CML402</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">XDTOPackage.KORSFAKT</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">XDTOPackage.SFAKT</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">XDTOPackage.ActTitleOfCustomer</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">XDTOPackage.ReportExecutantTitle</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">XDTOPackage.Notification</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">XDTOPackage.TransferredDataCardTaxcom</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">XDTOPackage.Contacts</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">XDTOPackage.AgreementAboutCostChangeSender</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">XDTOPackage.AgreementAboutCostChangeRecipient</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">XDTOPackage.Confirmation</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">XDTOPackage.DataSendConfirmation</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">XDTOPackage.DataReceiveConfirmation</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">XDTOPackage.Torg12BuyerTitle</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">XDTOPackage.Torg12SellerTitle</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">XDTOPackage.TransportInformationTakskom</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">XDTOPackage.NotificationAboutEDClarification</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">XDTOPackage.AdditDataUniversalFile</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">XDTOPackage.ActTitleExecutiveFTS</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">XDTOPackage.ActsTitleOfCustomerFTS</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonCommand.ExportDirectoryInFile</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">XDTOPackage.CML208</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Enum.EDPackageFormatVersions</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">XDTOPackage.ExportDescriptionForReport</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonPicture.ForwardEmail</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">XDTOPackage.CancellationOffer</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonPicture.Amount</xr:Item>
+			</Content>
+		</Properties>
+		<ChildObjects/>
+	</Subsystem>
+</MetaDataObject>

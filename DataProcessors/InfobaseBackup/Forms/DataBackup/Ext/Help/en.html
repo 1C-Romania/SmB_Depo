@@ -1,0 +1,18 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"></meta><link rel="stylesheet" type="text/css" href="V8help://service_book/service_style"></link><meta name="GENERATOR" content="MSHTML 11.00.9600.18321"></meta></head><body>
+<p>It enables you to create an infobase backup.</p>
+<p>It is recommended to back up data before any actions that can irreversibly change large amounts of data, for example, before bulk edit of the application object attributes. IN this case, you need to back up data manually.</p>
+<p>To open it, in the<strong> Administration - Support - Backup </strong>section, run the <strong>Create backup </strong>command. </p>
+<h3>Creating backup</h3>
+<ul><li>In the upper part of the window, you can see the last data backup date. 
+</li><li>In the <strong>Backup directory </strong>field (required field), click <img src="StdPicture.Select"></img><strong>Select</strong>, and then select a folder you want to save the infobase copy into. It is recommended to store a backup file on another computer or an external storage device. 
+</li><li>If there are any <a href="DataProcessor.ActiveUsers/Help">current sessions</a>, a warning message appears. Click the hyperlink to<strong> View all active sessions</strong>. Users have to <a href="DataProcessor.UserWorkBlocking/Help">close</a> the application. 
+</li><li>Once you set the required parameters, click <strong>Save backup</strong>. </li></ul><h3>Backing up</h3>
+<ul><li>The application will try to back up data at once. The following message appears: "Initializing data backup." IN the window, you can see the <strong>Active</strong> <strong>users </strong>hyperlink. Click the hyperlink to see a list of user sessions. The application tries to end all user sessions. 
+</li><li>Once all user sessions are ended, the application locks data and creates a backup. 
+</li><li>If the application fails to end all user sessions, it will prompt you to back up data with the current user sessions. Administrator can continue if the application users are not entering any data (for example if users forgot to log out at the end of the day). Otherwise, end user sessions on their computers. 
+</li><li>Once the backup is successfully completed, the application opens again. The backup completion message appears. It contains a backup file path. 
+</li><li>If the application fails to forcibly end sessions, and administrator does not take any actions, the data may not be backed up then. A warning message appears informing you that the data is not backed up, and showing a list of sessions that failed to end (for example, Designer).</li></ul><p></p>
+<h3>Run the application if any errors occurred during backup</h3>
+<ul><li>Before you start backing up data, a message appears. It informs you how to start the application. 
+</li><li><font size="1"><font color="black"><span style="FONT-SIZE: 10pt; LINE-HEIGHT: 130%; mso-fareast-language: RU"><span style="LINE-HEIGHT: 130%; mso-bidi-font-size: 10.5pt"><span style="FONT-SIZE: 8pt; FONT-FAMILY: Verdana; COLOR: black; mso-fareast-language: RU; mso-fareast-font-family: 'Times New Roman'; mso-bidi-font-family: 'Times New Roman'; mso-ansi-language: RU; mso-bidi-language: AR-SA">To log on into the database if the backup failed, run 1C:Enterprise with the following<strong> </strong>parameters: <strong>ENTERPRISE /F &lt;database path&gt; /CAllowUserAccess /UC Backup.</strong></span></span></span></font></font></li></ul><h3>See also</h3>
+<ul><li><a href="V8help://frame/form_common">Working with forms</a></li></ul></body></html>

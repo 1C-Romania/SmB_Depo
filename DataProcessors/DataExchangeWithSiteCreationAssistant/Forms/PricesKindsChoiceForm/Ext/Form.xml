@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Title>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Choose price kinds</v8:content>
+		</v8:item>
+	</Title>
+	<AutoTitle>false</AutoTitle>
+	<Customizable>false</Customizable>
+	<CommandBarLocation>None</CommandBarLocation>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<Table name="PriceKindsList" id="1">
+			<Representation>List</Representation>
+			<Header>false</Header>
+			<HorizontalLines>false</HorizontalLines>
+			<VerticalLines>false</VerticalLines>
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<DataPath>PriceKindsList</DataPath>
+			<RowPictureDataPath>PriceKindsList.Picture</RowPictureDataPath>
+			<SearchStringLocation>None</SearchStringLocation>
+			<ViewStatusLocation>None</ViewStatusLocation>
+			<SearchControlLocation>None</SearchControlLocation>
+			<ContextMenu name="PriceKindsListContextMenu" id="2"/>
+			<AutoCommandBar name="PriceKindsListCommandBar" id="3">
+				<Autofill>false</Autofill>
+			</AutoCommandBar>
+			<ExtendedTooltip name="PriceKindsListExtendedTooltip" id="10"/>
+			<SearchStringAddition name="PriceKindsListSearchString" id="11">
+				<AdditionSource>
+					<Item>PriceKindsList</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="PriceKindsListSearchStringContextMenu" id="12"/>
+				<ExtendedTooltip name="PriceKindsListSearchStringExtendedTooltip" id="13"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="PriceKindsListViewStatus" id="14">
+				<AdditionSource>
+					<Item>PriceKindsList</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="PriceKindsListViewStatusContextMenu" id="15"/>
+				<ExtendedTooltip name="PriceKindsListViewStatusExtendedTooltip" id="16"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="PriceKindsListSearchControl" id="17">
+				<AdditionSource>
+					<Item>PriceKindsList</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="PriceKindsListSearchControlContextMenu" id="18"/>
+				<ExtendedTooltip name="PriceKindsListSearchControlExtendedTooltip" id="19"/>
+			</SearchControlAddition>
+			<ChildItems>
+				<CheckBoxField name="PriceKindsListCheck" id="6">
+					<DataPath>PriceKindsList.Check</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="PriceKindsListCheckContextMenu" id="7"/>
+					<ExtendedTooltip name="PriceKindsListCheckExtendedTooltip" id="20"/>
+				</CheckBoxField>
+				<InputField name="PriceKindsListValue" id="4">
+					<DataPath>PriceKindsList.Value</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="PriceKindsListValueContextMenu" id="5"/>
+					<ExtendedTooltip name="PriceKindsListValueExtendedTooltip" id="21"/>
+				</InputField>
+			</ChildItems>
+		</Table>
+		<CommandBar name="GroupOK" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group OK</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group OK</v8:content>
+				</v8:item>
+			</ToolTip>
+			<HorizontalLocation>Right</HorizontalLocation>
+			<ExtendedTooltip name="GroupOKExtendedTooltip" id="22"/>
+			<ChildItems>
+				<Button name="CommandOK" id="8">
+					<Type>CommandBarButton</Type>
+					<CommandName>Form.Command.CommandOK</CommandName>
+					<ExtendedTooltip name="OKCommandExtendedTooltip" id="23"/>
+				</Button>
+			</ChildItems>
+		</CommandBar>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.DataExchangeWithSiteCreationAssistant</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="PriceKindsList" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>List of price kinds</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+			<Settings xsi:type="v8:TypeDescription">
+				<v8:Type>cfg:CatalogRef.PriceKinds</v8:Type>
+			</Settings>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="CommandOK" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>OK</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Command OK</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Write</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>CommandOK</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+	</Commands>
+</Form>

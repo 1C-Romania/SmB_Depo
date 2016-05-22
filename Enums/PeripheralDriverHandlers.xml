@@ -1,0 +1,647 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<MetaDataObject xmlns="http://v8.1c.ru/8.3/MDClasses" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:cmi="http://v8.1c.ru/8.2/managed-application/cmi" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xpr="http://v8.1c.ru/8.3/xcf/predef" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Enum uuid="a332ead0-386e-4cfa-ba70-a56a66e9d098">
+		<InternalInfo>
+			<xr:GeneratedType name="EnumRef.PeripheralDriverHandlers" category="Ref">
+				<xr:TypeId>13ca54dc-661e-4d33-87e6-379ab1bb2795</xr:TypeId>
+				<xr:ValueId>22deeab2-3e23-4216-9c60-9a6c494c48a0</xr:ValueId>
+			</xr:GeneratedType>
+			<xr:GeneratedType name="EnumManager.PeripheralDriverHandlers" category="Manager">
+				<xr:TypeId>7242cda7-90ea-4bbb-9ac4-6ec71e0db66b</xr:TypeId>
+				<xr:ValueId>ee48b23b-8e4a-483d-a67e-ba7a948b30da</xr:ValueId>
+			</xr:GeneratedType>
+			<xr:GeneratedType name="EnumList.PeripheralDriverHandlers" category="List">
+				<xr:TypeId>9fa4c828-ad08-4797-af64-850d29346285</xr:TypeId>
+				<xr:ValueId>9a74034a-2fca-45e2-8c75-114e6f9728a9</xr:ValueId>
+			</xr:GeneratedType>
+		</InternalInfo>
+		<Properties>
+			<Name>PeripheralDriverHandlers</Name>
+			<Synonym>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Peripherals drivers handlers</v8:content>
+				</v8:item>
+			</Synonym>
+			<Comment/>
+			<UseStandardCommands>false</UseStandardCommands>
+			<StandardAttributes>
+				<xr:StandardAttribute name="Order">
+					<xr:LinkByType/>
+					<xr:FillChecking>DontCheck</xr:FillChecking>
+					<xr:MultiLine>false</xr:MultiLine>
+					<xr:FillFromFillingValue>false</xr:FillFromFillingValue>
+					<xr:CreateOnInput>Auto</xr:CreateOnInput>
+					<xr:MaxValue xsi:nil="true"/>
+					<xr:ToolTip/>
+					<xr:ExtendedEdit>false</xr:ExtendedEdit>
+					<xr:Format/>
+					<xr:ChoiceForm/>
+					<xr:QuickChoice>Auto</xr:QuickChoice>
+					<xr:ChoiceHistoryOnInput>Auto</xr:ChoiceHistoryOnInput>
+					<xr:EditFormat/>
+					<xr:PasswordMode>false</xr:PasswordMode>
+					<xr:MarkNegatives>false</xr:MarkNegatives>
+					<xr:MinValue xsi:nil="true"/>
+					<xr:Synonym/>
+					<xr:Comment/>
+					<xr:FullTextSearch>Use</xr:FullTextSearch>
+					<xr:ChoiceParameterLinks/>
+					<xr:FillValue xsi:nil="true"/>
+					<xr:Mask/>
+					<xr:ChoiceParameters/>
+				</xr:StandardAttribute>
+				<xr:StandardAttribute name="Ref">
+					<xr:LinkByType/>
+					<xr:FillChecking>DontCheck</xr:FillChecking>
+					<xr:MultiLine>false</xr:MultiLine>
+					<xr:FillFromFillingValue>false</xr:FillFromFillingValue>
+					<xr:CreateOnInput>Auto</xr:CreateOnInput>
+					<xr:MaxValue xsi:nil="true"/>
+					<xr:ToolTip/>
+					<xr:ExtendedEdit>false</xr:ExtendedEdit>
+					<xr:Format/>
+					<xr:ChoiceForm/>
+					<xr:QuickChoice>Auto</xr:QuickChoice>
+					<xr:ChoiceHistoryOnInput>Auto</xr:ChoiceHistoryOnInput>
+					<xr:EditFormat/>
+					<xr:PasswordMode>false</xr:PasswordMode>
+					<xr:MarkNegatives>false</xr:MarkNegatives>
+					<xr:MinValue xsi:nil="true"/>
+					<xr:Synonym/>
+					<xr:Comment/>
+					<xr:FullTextSearch>Use</xr:FullTextSearch>
+					<xr:ChoiceParameterLinks/>
+					<xr:FillValue xsi:nil="true"/>
+					<xr:Mask/>
+					<xr:ChoiceParameters/>
+				</xr:StandardAttribute>
+			</StandardAttributes>
+			<Characteristics/>
+			<QuickChoice>true</QuickChoice>
+			<ChoiceMode>BothWays</ChoiceMode>
+			<DefaultListForm/>
+			<DefaultChoiceForm/>
+			<AuxiliaryListForm/>
+			<AuxiliaryChoiceForm/>
+			<ListPresentation/>
+			<ExtendedListPresentation/>
+			<Explanation/>
+			<ChoiceHistoryOnInput>Auto</ChoiceHistoryOnInput>
+		</Properties>
+		<ChildObjects>
+			<EnumValue uuid="c353c92b-da91-4880-a1cb-829502dff4bb">
+				<Properties>
+					<Name>Handler1CRarusFiscalRegistersMobius</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>1C-Rarus: "Mobius" fiscal registers</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>FiscalRegister</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="46d7490e-9f9f-4a1c-a993-93daf6b4f9d9">
+				<Properties>
+					<Name>Handler1CRarusFiscalRegistersFelix</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>1C-Rarus: "Felix" fiscal registers</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>FiscalRegister</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="d706ac34-3097-4e1a-a090-d0ed690a910b">
+				<Properties>
+					<Name>Handler1CBarCodeScanners</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>1C: Barcode scanners (COM)</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>BarCodeScanner</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="6091611a-965a-4403-a6ac-4786a63930a5">
+				<Properties>
+					<Name>Handler1CBarCodeScannersNative</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>1C: Barcode scanners (NativeApi)</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>BarCodeScanner</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="5d298dc5-efa9-45f0-9665-9b6b0252c76a">
+				<Properties>
+					<Name>Handler1CMagneticCardReaders</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>1C: magnetic card readers</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>MagneticCardReader</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="6f76c28f-3f40-4b5c-b505-624ef6ec5a4f">
+				<Properties>
+					<Name>Handler1CFiscalRegistersEmulator</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>1C: Fiscal register (emulator)</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>FiscalRegister</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="d9721a2b-f955-4248-9d0e-e006d3b7433a">
+				<Properties>
+					<Name>HandlerACOMLabelPrintingScales</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>ACOM: label printing scales</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>LabelsPrintingScales</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="eeb30c47-1eeb-46a2-a327-a1bba111f058">
+				<Properties>
+					<Name>HandlerCASElectronicScales</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>CAS: electronic scales</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>ElectronicScales</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="088bf86b-31b9-4695-815c-7b7fc6507123">
+				<Properties>
+					<Name>HandlerScaleCASLabelPrintingScales</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>SCALE: Scales with label printing CL5000J</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>LabelsPrintingScales</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="f2076c19-cefb-415a-aaa3-6dac2884cf12">
+				<Properties>
+					<Name>HandlerTRPOSPOSTerminals</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>TRPOS: POS terminals</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>POSTerminal</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="575883be-20fd-4a0c-81bc-69227e0463f1">
+				<Properties>
+					<Name>HandlerUCSEFTPOSPOSTerminals</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>UCSEFTPOS: POS terminals</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>POSTerminal</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="02235eb2-fc28-4809-b715-ab91063772da">
+				<Properties>
+					<Name>HandlerATOLCustomerDisplays</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Atol customer displays handler</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>CustomerDisplay</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="6d612c75-cdac-45f2-9810-3f94401534b5">
+				<Properties>
+					<Name>HandlerATOLFiscalRegistersOffline</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>ATOL: Cashier workplace</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>CashRegistersOffline</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="d5af826b-3a92-4681-bb5e-dae5e1516375">
+				<Properties>
+					<Name>HandlerAtolBarCodeScanners</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Atol bar code scanners handler</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>BarCodeScanner</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="972ed56f-fa36-4d01-b73f-1f74abf5037b">
+				<Properties>
+					<Name>HandlerAtolMagneticCardReaders</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Atol magnetic cards readers handler</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>MagneticCardReader</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="cb572206-30fc-4702-a2f5-711397e11c1c">
+				<Properties>
+					<Name>HandlerAtolDataCollectionTerminals</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>ATOL: data collection terminals</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>DataCollectionTerminal</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="bfd1039b-4767-442c-93eb-e8d8ba200c84">
+				<Properties>
+					<Name>HandlerAtolDataCollectionTerminalsMobileLogistics</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>ATOL: Data collection terminals MobileLogistics 8.X</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>DataCollectionTerminal</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="c0f47771-4ca9-46c9-865e-ef39cd4e73a2">
+				<Properties>
+					<Name>HandlerAtolFiscalRegisters</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>ATOL: Fiscal registers 6.X</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>FiscalRegister</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="16d24854-926b-4187-86e1-b24a7f93c4e6">
+				<Properties>
+					<Name>HandlerATOLFiscalRegisters8X</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>ATOL: Fiscal registers 8.X</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>FiscalRegister</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="4533145d-7dbf-4ac7-87d8-744a70ec4ad4">
+				<Properties>
+					<Name>HandlerATOLFiscalRegistersUniversal</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>ATOL: Fiscal registers (Universal)</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>FiscalRegister</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="a0edd2c5-0d9d-4669-a373-0ee6074df4e6">
+				<Properties>
+					<Name>HandlerATOLElectronicScales</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Atol electronic scales handler</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>ElectronicScales</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="f0466427-6483-4a70-aa4c-e3fe34c3ffbe">
+				<Properties>
+					<Name>HandlerVersionTFiscalRegisters</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>VersionT: Fiscal registrars KASBI</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>FiscalRegister</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="538fc5bc-0d07-4a86-8e6b-2ba83af02cf9">
+				<Properties>
+					<Name>HandlerGAZPROMBANKPOSTerminals</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>GAZPROMBANK: POS terminals</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>POSTerminal</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="3fb0f944-27d7-496e-b454-9d3b880f912d">
+				<Properties>
+					<Name>HandlerHexagonBarCodeScanners</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Hexagon: Barcode scanners Proton</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>BarCodeScanner</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="66a698a8-d1b6-4306-8b2c-e513250c7293">
+				<Properties>
+					<Name>HandlerHexagonDataCollectionTerminals</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Hexagon: "Goods" data collection terminals</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>DataCollectionTerminal</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="c41db6a2-742e-4451-adc4-e97532ea26a2">
+				<Properties>
+					<Name>HandlerINPASPOSTerminalsPulsar</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>INPAS: Pulsar POS terminals</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>POSTerminal</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="5c000000-78cf-4704-9ae6-28aa68d773b0">
+				<Properties>
+					<Name>HandlerINPASPOSTerminalsSmart</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>INPAS: Smart POS terminals</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>POSTerminal</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="03eacfee-75e5-4b7a-93ec-b5f6234ed04d">
+				<Properties>
+					<Name>HandlerINPASPOSTerminalsUNIPOS</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>INPAS: UNIPOS POS terminals</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>POSTerminal</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="9dda0853-53b6-4531-adc5-a29653d373e0">
+				<Properties>
+					<Name>HandlerKKSCustomerDisplays</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>CRS: customer displays</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>CustomerDisplay</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="fbedc08f-6d24-483b-8133-0ed6f6171ddb">
+				<Properties>
+					<Name>HandlerKKSFiscalRegisters</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>CRS: fiscal data recorders</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>FiscalRegister</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="9973226e-8f79-41ff-b62b-1519341c11e7">
+				<Properties>
+					<Name>HandlerKleverensDataCollectionTerminals</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Kleverens: data collection terminals</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>DataCollectionTerminal</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="d1a3f795-baf1-4a3b-952d-0891544af68b">
+				<Properties>
+					<Name>HandlerORIONFiscalRegisters</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>ORION: FR01K fiscal register</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>FiscalRegister</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="933fea9a-488c-45ea-9103-76051e983a7c">
+				<Properties>
+					<Name>HandlerPrivatBankPOSTerminals</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Privatbank: Ingenico ECRCommX POS terminals</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>POSTerminal</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="98012e7d-d864-489e-867f-8c396a8fed21">
+				<Properties>
+					<Name>HandlerSBRFPOSTerminals</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>SB RF: POS terminals</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>POSTerminal</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="bfaee19a-4bcf-47d7-bbad-3946786ca669">
+				<Properties>
+					<Name>HandlerScancodeCustomerDisplays</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Scancode: Customer displays</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>CustomerDisplay</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="b9fcc8eb-fd2f-4780-b6a5-70bb6d30fac7">
+				<Properties>
+					<Name>HandlerScancodeBarCodeScanners</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Scancode: barcode scanners</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>BarCodeScanner</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="d77e5534-5b70-465f-b15e-19e3d0c6782e">
+				<Properties>
+					<Name>HandlerScancodeDataCollectionTerminals</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Scancode: data collection terminals</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>DataCollectionTerminal</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="e2c7dbdf-6807-4974-aa9d-35331cd88f96">
+				<Properties>
+					<Name>HandlerScancityDataCollectionTerminals</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Scansiti: data collection terminals</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>DataCollectionTerminal</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="9b2092fb-ffef-4fe2-9039-776e4447c15a">
+				<Properties>
+					<Name>HandlerSoftCasePOSTerminals</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>SoftCase: POS terminals</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>POSTerminal</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="e9412e04-b19c-4142-b6f9-1d6575e3c282">
+				<Properties>
+					<Name>HandlerShtrikhMLabelPrintingScales</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Shtrikh-M: label printing scales</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>LabelsPrintingScales</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="974336c6-63ae-4f03-aaf7-b52ce2c7f207">
+				<Properties>
+					<Name>HandlerShtrikhMCustomerDisplays</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Shtrikh-M: customer displays</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>CustomerDisplay</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="535cfe1f-6a7b-4830-ad69-e7b4f0335575">
+				<Properties>
+					<Name>HandlerShtrikhMCashRegisterOffline</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Shtrikh-M: Cashier</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>CashRegistersOffline</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="f52d8734-d18b-49b5-ba1b-952ec1dc4d34">
+				<Properties>
+					<Name>HandlerShtrikhMDataCollectionTerminals</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Shtrikh-M: data collection terminals</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>DataCollectionTerminal</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="4218e013-5733-493c-bd2b-0d04064c3de0">
+				<Properties>
+					<Name>HandlerShtrikhMFiscalRegisters</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Shtrikh-M: fiscal registers</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>FiscalRegister</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="c4e56496-1731-4afa-b625-afe6f8481f73">
+				<Properties>
+					<Name>HandlerShtrikhMFiscalRegistersUniversal</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Strikh-M: Fiscal registrers (Universal)</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>FiscalRegister</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="cb829d05-c466-4f45-ab17-513f607876b7">
+				<Properties>
+					<Name>HandlerShtrikhMElectronicScales</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Shtrikh-M: electronic scales</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>ElectronicScales</Comment>
+				</Properties>
+			</EnumValue>
+		</ChildObjects>
+	</Enum>
+</MetaDataObject>

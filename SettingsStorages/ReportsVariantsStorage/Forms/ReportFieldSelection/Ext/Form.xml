@@ -1,0 +1,476 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Title>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Report field selection</v8:content>
+		</v8:item>
+	</Title>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<AutoURL>false</AutoURL>
+	<AutoFillCheck>false</AutoFillCheck>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="FormChoose" id="26">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.Select</CommandName>
+				<ExtendedTooltip name="FormSelectExtendedTooltip" id="27"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<Pages name="Pages" id="20">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Pages</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Pages</v8:content>
+				</v8:item>
+			</ToolTip>
+			<PagesRepresentation>None</PagesRepresentation>
+			<ExtendedTooltip name="PagesExtendedTooltip" id="21"/>
+			<ChildItems>
+				<Page name="FiltersPage" id="22">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Filters page</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Filters page</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="FiltersPageExtendedTooltip" id="23"/>
+					<ChildItems>
+						<Table name="FiltersTable" id="1">
+							<Representation>Tree</Representation>
+							<CommandBarLocation>None</CommandBarLocation>
+							<Autofill>true</Autofill>
+							<ChangeRowSet>false</ChangeRowSet>
+							<ChangeRowOrder>false</ChangeRowOrder>
+							<ChoiceMode>true</ChoiceMode>
+							<SelectionMode>SingleRow</SelectionMode>
+							<Header>false</Header>
+							<HorizontalLines>false</HorizontalLines>
+							<VerticalLines>false</VerticalLines>
+							<DataPath>SettingsComposer.Settings.Filter.FilterAvailableFields</DataPath>
+							<ContextMenu name="FiltersTableContextMenu" id="2"/>
+							<AutoCommandBar name="FiltersTableCommandBar" id="3">
+								<Autofill>false</Autofill>
+							</AutoCommandBar>
+							<ExtendedTooltip name="FiltersTableExtendedTooltip" id="4"/>
+							<SearchStringAddition name="FiltersTableSearchString" id="5">
+								<AdditionSource>
+									<Item>FiltersTable</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="FiltersTableSearchStringContextMenu" id="8"/>
+								<ExtendedTooltip name="FiltersTableSearchStringExtendedTooltip" id="9"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="FiltersTableViewStatus" id="10">
+								<AdditionSource>
+									<Item>FiltersTable</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="FiltersTableViewStatusContextMenu" id="13"/>
+								<ExtendedTooltip name="FiltersTableViewStatusExtendedTooltip" id="14"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="FiltersTableSearchControl" id="15">
+								<AdditionSource>
+									<Item>FiltersTable</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="FiltersTableSearchControlContextMenu" id="18"/>
+								<ExtendedTooltip name="FiltersTableSearchControlExtendedTooltip" id="19"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="Selection">FiltersTableChoice</Event>
+							</Events>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="SelectedFieldsPage" id="28">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Selected fields page</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Selected fields page</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="SelectedFieldsPageExtendedTooltip" id="29"/>
+					<ChildItems>
+						<Table name="SelectedFieldsTable" id="30">
+							<Representation>Tree</Representation>
+							<CommandBarLocation>None</CommandBarLocation>
+							<Autofill>true</Autofill>
+							<ChangeRowSet>false</ChangeRowSet>
+							<ChangeRowOrder>false</ChangeRowOrder>
+							<ChoiceMode>true</ChoiceMode>
+							<SelectionMode>SingleRow</SelectionMode>
+							<Header>false</Header>
+							<HorizontalLines>false</HorizontalLines>
+							<VerticalLines>false</VerticalLines>
+							<DataPath>SettingsComposer.Settings.Selection.SelectionAvailableFields</DataPath>
+							<ContextMenu name="SelectedFieldsTableContextMenu" id="31"/>
+							<AutoCommandBar name="SelectedFieldsTableCommandBar" id="32">
+								<Autofill>false</Autofill>
+							</AutoCommandBar>
+							<ExtendedTooltip name="SelectedFieldsTableExtendedTooltip" id="33"/>
+							<SearchStringAddition name="SelectedFieldsTableSearchString" id="34">
+								<AdditionSource>
+									<Item>SelectedFieldsTable</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="SelectedFieldsTableSearchStringContextMenu" id="37"/>
+								<ExtendedTooltip name="SelectedFieldsTableSearchStringExtendedTooltip" id="38"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="SelectedFieldsTableViewStatus" id="39">
+								<AdditionSource>
+									<Item>SelectedFieldsTable</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="SelectedFieldsTableViewStatusContextMenu" id="42"/>
+								<ExtendedTooltip name="SelectedFieldsTableViewStatusExtendedTooltip" id="43"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="SelectedFieldsTableSearchControl" id="44">
+								<AdditionSource>
+									<Item>SelectedFieldsTable</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="SelectedFieldsSearchControlTableContextMenu" id="47"/>
+								<ExtendedTooltip name="SelectedFieldsTableSearchControlExtendedTooltip" id="48"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="Selection">SelectedFieldsTableSelection</Event>
+							</Events>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="SortPage" id="49">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Sort page</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Sort page</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="SortPageExtendedTooltip" id="50"/>
+					<ChildItems>
+						<Table name="SortTable" id="51">
+							<Representation>Tree</Representation>
+							<CommandBarLocation>None</CommandBarLocation>
+							<Autofill>true</Autofill>
+							<ChangeRowSet>false</ChangeRowSet>
+							<ChangeRowOrder>false</ChangeRowOrder>
+							<ChoiceMode>true</ChoiceMode>
+							<SelectionMode>SingleRow</SelectionMode>
+							<Header>false</Header>
+							<HorizontalLines>false</HorizontalLines>
+							<VerticalLines>false</VerticalLines>
+							<DataPath>SettingsComposer.Settings.Order.OrderAvailableFields</DataPath>
+							<ContextMenu name="SortTableContextMenu" id="52"/>
+							<AutoCommandBar name="SortTableCommandBar" id="53">
+								<Autofill>false</Autofill>
+							</AutoCommandBar>
+							<ExtendedTooltip name="SortTableExtendedTooltip" id="54"/>
+							<SearchStringAddition name="SortTableSearchString" id="55">
+								<AdditionSource>
+									<Item>SortTable</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="SortTableSearchStringContextMenu" id="58"/>
+								<ExtendedTooltip name="SortTableSearchStringExtendedTooltip" id="59"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="SortTableViewStatus" id="60">
+								<AdditionSource>
+									<Item>SortTable</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="SortTableViewStatusContextMenu" id="63"/>
+								<ExtendedTooltip name="SortTableViewStatusExtendedTooltip" id="64"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="SortTableSearchControl" id="65">
+								<AdditionSource>
+									<Item>SortTable</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="SortTableSearchControlContextMenu" id="68"/>
+								<ExtendedTooltip name="SortTableSearchControlExtendedTooltip" id="69"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="Selection">SortTableSelection</Event>
+							</Events>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="GroupFieldsPage" id="70">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Grouping fields page</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Grouping fields page</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="GroupFieldsPageExtendedTooltip" id="71"/>
+					<ChildItems>
+						<Table name="GroupFieldsTable" id="72">
+							<Representation>Tree</Representation>
+							<CommandBarLocation>None</CommandBarLocation>
+							<ChangeRowSet>false</ChangeRowSet>
+							<ChangeRowOrder>false</ChangeRowOrder>
+							<ChoiceMode>true</ChoiceMode>
+							<SelectionMode>SingleRow</SelectionMode>
+							<Header>false</Header>
+							<HorizontalLines>false</HorizontalLines>
+							<VerticalLines>false</VerticalLines>
+							<DataPath>GroupFields</DataPath>
+							<RowPictureDataPath>GroupFields.Picture</RowPictureDataPath>
+							<CommandSet>
+								<ExcludedCommand>Copy</ExcludedCommand>
+								<ExcludedCommand>SortListAsc</ExcludedCommand>
+								<ExcludedCommand>MoveUp</ExcludedCommand>
+								<ExcludedCommand>SortListDesc</ExcludedCommand>
+								<ExcludedCommand>Delete</ExcludedCommand>
+								<ExcludedCommand>EndEdit</ExcludedCommand>
+								<ExcludedCommand>Add</ExcludedCommand>
+								<ExcludedCommand>Change</ExcludedCommand>
+								<ExcludedCommand>MoveDown</ExcludedCommand>
+							</CommandSet>
+							<ContextMenu name="GroupFieldsTableContextMenu" id="73"/>
+							<AutoCommandBar name="GroupFieldsTableCommandBar" id="74"/>
+							<ExtendedTooltip name="GroupFieldsTableExtendedTooltip" id="75"/>
+							<SearchStringAddition name="GroupFieldsTableSearchString" id="76">
+								<AdditionSource>
+									<Item>GroupFieldsTable</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="GroupFieldsTableSearchStringContextMenu" id="79"/>
+								<ExtendedTooltip name="GroupFieldsTableSearchStringExtendedTooltip" id="80"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="GroupFieldsTableViewStatus" id="81">
+								<AdditionSource>
+									<Item>GroupFieldsTable</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="GroupFieldsTableViewStatusContextMenu" id="84"/>
+								<ExtendedTooltip name="GroupFieldsTableViewStatusExtendedTooltip" id="85"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="GroupFieldsTableSearchControl" id="86">
+								<AdditionSource>
+									<Item>GroupFieldsTable</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="GroupFieldsTableSearchControlContextMenu" id="89"/>
+								<ExtendedTooltip name="GroupFieldsTableSearchControlExtendedTooltip" id="90"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="Selection">GroupFieldsTableSelection</Event>
+								<Event name="BeforeExpand">GroupFieldsTableBeforeExpanding</Event>
+							</Events>
+							<ChildItems>
+								<InputField name="GroupFieldsPresentation" id="91">
+									<DataPath>GroupFields.Presentation</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<EditMode>EnterOnInput</EditMode>
+									<TextEdit>false</TextEdit>
+									<ContextMenu name="GroupFieldsPresentationContextMenu" id="92"/>
+									<ExtendedTooltip name="GroupFieldsPresentationExtendedTooltip" id="93"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="SettingsComposer" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Settings composer</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>dcsset:SettingsComposer</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ReportSettings" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Report settings</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="Mode" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Mode</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="GroupFields" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Grouping fields</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTree</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Presentation" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Presentation</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="DCField" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>DC field</v8:content>
+						</v8:item>
+					</Title>
+					<Type/>
+				</Column>
+				<Column name="NecessaryToReadAttached" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>It is necessary to read attached</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Picture" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Picture</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>v8ui:Picture</v8:Type>
+					</Type>
+				</Column>
+				<Column name="FullPresentation" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Full presentation</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="DCIdentifier" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>CD identifier</v8:content>
+						</v8:item>
+					</Title>
+					<Type/>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="CurrentCDHostIdentifier" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Identifier of the current CD host</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="Images" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Images</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="Select" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Select</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Select</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Select</Action>
+		</Command>
+	</Commands>
+</Form>

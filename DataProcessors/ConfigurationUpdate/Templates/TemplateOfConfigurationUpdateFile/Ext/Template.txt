@@ -1,0 +1,614 @@
+﻿#Region ParameterArea
+// Update procedure parameters
+var now = new Date();
+var outFileName = "log" + now.valueOf() + ".txt"; // Path to log-file
+var cfgFileNames = [FileNamesUpdate]; // Paths to .cf/.cfu-files with updates
+var v8conf = [NameOfExecutableDesignerFile] // Path to the executable file 1C:Enterprise 8
+var v8client = [NameOfExecutableFileOfClient] // Path to the executable file 1C:Enterprise 8
+var infoBasePath = [ParameterOfPathToInformationBase]; 
+var BaseFileName = [PathStringToInfobaseFile]; 
+var connectionString = [InfobaseConnectionString] + ';UC=ConfigurationPackageUpdateDB';
+var backupFileName = [DirectoryBackupCopies] + '1Cv8' + now.valueOf() + '.1CD';  // Backup file
+var UseRestore = [RestoreInfobase];  // Use IB restoration in case of the fall
+var createBackup = [CreateBackup]; // Create Backup
+var eventLogID = [EventLogMonitorEvent];
+var emailAddress = [EmailAddress];  // the email address to send the notification message
+var adminName = [UpdateAdministratorName];  // administrator name initiated update
+var doBlockUsers = [BlockInfobaseConnections];  // set connection lock before update
+var comConnectorName = [COMConnectorName];  // COM class name for work with 1C:Enterprise 8 through COM connection
+var useComConnector = [UseCOMConnector];  // flag of using the COM connection for work with the 1C:Enterprise 8
+var startEnterprise = [SessionLaunchAfterUpdate]; // perform enterprise run after update
+var makeCompression = [PerformIBTableCompression];  // run infobase table compression
+var tempLogFileName = "templog.txt";
+#EndRegion
+
+#Region AreaUpdateConfiguration
+// Initialization
+var oFileSystemObject = new ActiveXObject("Scripting.FileSystemObject");
+
+var thisFileName;
+var thisFileDir;
+var InfobasePassword;
+var ClusterPassword;
+
+if (oHTA != null) {
+    thisFileName = eval("oHTA.commandLine");
+    thisFileDir = thisFileName.substr(1, thisFileName.lastIndexOf("\\") - 1);
+    InfobasePassword = thisFileName.substr(thisFileName.indexOf("[p1]") + 4, thisFileName.indexOf("[/p1]") - thisFileName.indexOf("[p1]") - 4);
+    ClusterPassword = thisFileName.substr(thisFileName.indexOf("[p2]") + 4, thisFileName.indexOf("[/p2]") - thisFileName.indexOf("[p2]") - 4);
+    thisFileName = thisFileName.substr(1, thisFileName.indexOf("[p1]") - 4);
+}
+else {
+    thisFileName = eval("WScript.ScriptDescriptionFull");
+    thisFileDir = thisFileName.substr(0, thisFileName.lastIndexOf("\\") + 1);
+    InfobasePassword = eval("WScript.Arguments").Named.Item("p1");
+    ClusterPassword = eval("WScript.Arguments").Named.Item("p2");
+}
+
+var infoBaseAuthorization = format('/N\"{0}\" /P\"{1}\" /WA-', adminName, InfobasePassword);
+connectionString = format(connectionString, adminName, InfobasePassword);
+
+var oShell = new ActiveXObject("WScript.Shell");
+oShell.CurrentDirectory = thisFileDir;
+
+var errorMarker = "{ERR}";
+var successMarker = "{OK }";
+
+// Stage variables
+var backupCreated = false;
+var connectionsDenied = false;
+var logging1C = false;
+
+// Global variable com connection
+var ComConnection = null;
+
+// Variable function states doDisconnectAndBlockUsersHTA()
+var disconnectionStep = 0;
+var disconnectionInterval;
+var disconnectionStartDateTime;
+
+// Open file sFilePath.
+function runApp(sFilePath, sFileArgs, show, bWaitOnReturn) {
+    if (bWaitOnReturn == undefined)
+        bWaitOnReturn = false;
+    if (show == undefined)
+        show = SW_SHOW;
+    if (sFileArgs == undefined)
+        sFileArgs = "";
+    var ret = 1;
+    log(format("Run: {0}; parameters: {1}; window: {2}; waiting for: {3}",
+	    sFilePath, hidePass(sFileArgs), SWtoString(show), bWaitOnReturn));
+    if (oFileSystemObject.FileExists(sFilePath)) {
+        try {
+            ret = oShell.Run(format('"{0}" {1}', sFilePath, sFileArgs), show, bWaitOnReturn);
+        }
+        catch (e) {
+            log(format("Except in runApp: {0}, {1}.", e.name, e.message), true);
+            return 1;
+        }
+        log(format("Return code: {0}", ret), ret != 0);
+        return ret;
+    }
+    else
+        log(format("Started file doesn't exist: {0}", sFilePath), true);
+    return ret;
+}
+
+function hidePass(text) {
+    beforePass = text.substr(0, text.indexOf("/P") + 3);
+    afterPass = text.substr(text.indexOf(" /WA-") - 1, text.indexOf("/P") + 3);
+    return (beforePass + "******" + afterPass);
+}
+
+function clearLogFile() {
+    var outFile = oFileSystemObject.OpenTextFile(outFileName, ForWriting, true, TristateTrue);
+    outFile.Close();
+}
+
+// Write text in log
+function log(text, failed) {
+    if (failed == undefined)
+        failed = false;
+
+    logFile(text, failed);
+}
+
+// Write text in log-file
+function logFile(text, failed) {
+    var now = new Date();
+    var f;
+    try {
+        f = oFileSystemObject.OpenTextFile(outFileName, ForAppending, true, TristateTrue);
+    }
+    catch (e) { return; }
+    try {
+        var status = (failed == false ? successMarker : errorMarker);
+        f.WriteLine(format("{0} {1} {2}", now, status, text));
+    }
+    finally {
+        try {
+            f.Close();
+        }
+        catch (e) { return; }
+    }
+}
+
+// Write text from temporary log file
+function appendLog() {
+    var f;
+    var outf;
+    var text;
+    try {
+        f = oFileSystemObject.OpenTextFile(tempLogFileName, ForReading, false, TristateFalse);
+        outf = oFileSystemObject.OpenTextFile(outFileName, ForAppending, true, TristateTrue);
+    }
+    catch (e) { return; }
+    try {
+        if (!f.AtEndOfStream) {
+            text = f.ReadAll();
+            outf.WriteLine(text);
+        }
+    }
+    finally {
+        try {
+            f.Close();
+            outf.Close();
+        }
+        catch (e) { return; }
+    }
+}
+
+// Write text in event log monitor
+function log1C(text, failed) {
+    if (logging1C)
+        return;
+    var connection = createConnection();
+    if (connection == null)
+        return;
+    try {
+        log1CInternal(connection, text, failed);
+    } finally { };
+}
+
+// Write text in event log monitor
+function log1CInternal(connection, text, failed) {
+    if (logging1C)
+        return;
+    logging1C = true;
+    try {
+        try {
+            var eventLogLevel = failed ? connection.EventLogLevel.Error : connection.EventLogLevel.Information;
+            connection.WriteLogEvent(eventLogID, eventLogLevel, null, null, text,
+                connection.EventLogEntryTransactionMode.Independent);
+        }
+        catch (e) {
+            log(format("Except in log1CInternal: {0}, {1}.", e.name, e.message), true);
+            return;
+        }
+    }
+    finally {
+        logging1C = false;
+    }
+}
+
+// Initialization
+function initialize() {
+    clearLogFile();
+    log(format("Script file: {0}", thisFileName));
+    log(format("Update file quantity: {0}", cfgFileNames.length));
+    for (var i = 0; i < cfgFileNames.length; i++)
+        log(format("{0}. {1}", i + 1, cfgFileNames[i]));
+
+    return 0;
+}
+
+// Finalization
+function finalize(success) {
+    if (success == undefined)
+        success = false;
+
+    // Write update result in Event Log
+    writeEventLogMonitor(success);
+
+    if (!success) {
+        if (UseRestore) {
+            restoreDB();            // Restoration IB from temporary archive
+        }
+        allowConnections(false); // Connection permission
+    }
+
+    write1CEventLogMonitor();      // Write all information from log-file to events log monitor
+    setResult(success);
+
+    // clearing global COM connection
+    ComConnection = null;
+
+}
+
+function createConnection() {
+    if (!useComConnector)
+        return null;
+
+    if (ComConnection != null)
+        return ComConnection;
+
+
+    try {
+        log("External connection session with IB is started", false);
+        var ComConnector = new ActiveXObject(comConnectorName);
+        ComConnection = ComConnector.Connect(connectionString);
+        return ComConnection;
+    }
+    catch (e) {
+        log(format("Except in createConnection: {0}, {1}", e.name, e.message), true);
+        return null;
+    }
+}
+
+// Write all log-file in the events log monitor
+function write1CEventLogMonitor() {
+    if (!oFileSystemObject.FileExists(outFileName))
+        return;
+
+    var connection = createConnection();
+    if (connection == null)
+        return;
+    try {
+        var f = oFileSystemObject.OpenTextFile(outFileName, ForReading, false, TristateTrue);
+
+        var text;
+        while (!f.AtEndOfStream) {
+            text = f.ReadLine();
+            while ((text.indexOf(successMarker) < 0) && (text.indexOf(errorMarker) < 0) && !f.AtEndOfStream)
+                text += "\n" + f.ReadLine();
+
+            var failed = text.indexOf(errorMarker) > 0;
+            log1CInternal(connection, text, failed);
+        }
+    }
+    catch (e) {
+        log(format("Except in write1CEventLog: {0}, {1}.", e.name, e.message), true);
+        return;
+    }
+}
+
+function doSetResult(success) {
+    var connection = createConnection();
+    if (connection == null)
+        return (useComConnector ? 1 : 0);
+    var res = 0;
+    try {
+        connection.ConfigurationUpdate.FinishUpdate(success, emailAddress, adminName);
+    }
+    catch (e) {
+        log(format("Except at call ConfigurationUpdate.FinishUpdate: {0}, {1}.", e.name, e.message), true);
+        res = 2;
+    }
+    return res;
+}
+
+
+// Pass the result of execution to application 
+function setResult(success) {
+    var result = doSetResult(success);
+    CollectGarbage();   // releases the connection with COM object
+    return result;
+}
+
+// Write execution result of update procedure in Event Log
+function writeEventLogMonitor(success) {
+    try {
+        var eventKind = success ? EVENT_SUCCESS : EVENT_CRITICAL;
+        var message;
+        if (success)
+            message = "Infobase update is completed successfully.";
+        else
+            message = "Error when infobase update.";
+        message += format(" Inforbase parameters: {0}.", infoBasePath);
+        if (!success)
+            message += " Protocol update saved in journal registration.";
+        oShell.LogEvent(eventKind, message);
+    }
+    catch (e) {
+        log(format("Except in writeEventLog: {0}, {1}.", e.name, e.message), true);
+    }
+}
+
+// Creation infobase backup copy
+function backupDB() {
+    if (!createBackup)
+        return 0;
+    try {
+        var newpath = oFileSystemObject.CopyFile(BaseFileName, backupFileName, true);
+        ret = 0;
+        log(format("Database backup is created", ret), ret != 0);
+    }
+    catch (e) {
+        CollectGarbage();   // prevents exception out of memory
+        log(format("Exception while base backup creating : {0}, {1}.", e.name, e.message), true);
+        ret = 1;
+    }
+    if (ret == 0)
+        backupCreated = true;
+    return ret;
+}
+
+// Restoring the infobase from the backup
+function restoreDB() {
+    if (!backupCreated)
+        return 0;
+    try {
+        oFileSystemObject.CopyFile(backupFileName, BaseFileName, true);
+        ret = 0;
+        connection = null;
+        ComConnection = null;
+        CollectGarbage();   // releases the connection with COM object
+        log(format("Database was restored from backup", ret), ret != 0);
+    }
+    catch (e) {
+        CollectGarbage();   // prevents exception out of memory
+        log(format("Exception while base restoring from backup", e.name, e.message), true);
+        ret = -1;
+    }
+    return ret;
+}
+
+function doAllowConnections(updateAndFillDB) {
+    if (updateAndFillDB == undefined)
+        updateAndFillDB = true;
+
+    var connection = createConnection();
+    if (connection == null)
+        return (useComConnector ? 1 : 0);
+
+    if (updateAndFillDB)
+        try {
+            connection.InfobaseUpdate.RunInfobaseUpdate();
+        }
+        catch (e) {
+            connection = null;
+            CollectGarbage();   // prevents exception out of memory
+            log(format("Except at call InfobaseUpdate.ExecuteInfobaseUpdate: {0}, {1}.", e.name, e.message), true);
+            return 2;
+        }
+    if (connectionsDenied)
+        try {
+            connection.InfobaseConnections.AllowUsersWork();
+            connectionsDenied = false;
+        }
+        catch (e) {
+            connection = null;
+            CollectGarbage();   // prevents exception out of memory
+            log(format("Except at call InfobaseConnections.AllowUsersWork: {0}, {1}.", e.name, e.message), true);
+            return 3;
+        }
+    return 0;
+}
+
+// Initial infobase filling, new connections permission and update result notification
+function allowConnections(updateAndFillDB) {
+    var result = doAllowConnections(updateAndFillDB);
+    ComConnection = null;
+    CollectGarbage();   // releases the connection with COM object
+    return result;
+}
+
+function doTerminateSessionsAndBlockUsersHTA(connection) {
+    if (connection == null)
+        return 1;
+    var result = 0;
+    try {
+        while (true) {
+            switch (disconnectionStep) {
+                case 0:
+                    {
+                        connection.InfobaseConnections.SetConnectionLock("due to the need to update the configuration.",
+	                               														"ConfigurationPackageUpdateDB");
+                        disconnectionInterval = connection.InfobaseConnections.SessionLockParameters().SessionTerminationTimeout * 1000;
+                        disconnectionStartDateTime = connection.InfobaseConnections.SessionLockParameters().Begin;
+                        if (connection.ValueIsFilled(disconnectionStartDateTime))
+                            disconnectionStep++;
+                        else
+                            disconnectionStep += 2;
+                        break;
+                    }
+                case 1:
+                    {
+                        if (!connection.InfobaseConnections.ConnectionsBlockIsSet() ||
+                        connection.InfobaseConnections.InfobaseSessionCount(false) <= 1) {
+                            disconnectionStep++;
+                            break;
+                        }
+
+                        var now = new Date();
+                        if (now - disconnectionInterval <= disconnectionStartDateTime) // if the wait interval didn't expire yet, we wait once again
+                            return -1;
+                        disconnectionStep++;
+                        break;
+                    }
+                case 2:
+                    {
+                        if (!connection.InfobaseConnections.ConnectionsBlockIsSet()) {
+                            log("An attempt to close users sessions was unsuccessful: IB locking is cancelled.", true);
+                            return 3;
+                        }
+
+                        if (connection.InfobaseConnections.InfobaseSessionCount(false) <= 1)
+                            return 0;
+
+                        // after lock start all user sessions should be	
+                        // disabled if it didn't happen, try to interrupt connection forcibly.
+                        doTerminateSessions(connection);
+                        if (connection.InfobaseConnections.InfobaseSessionCount(false) > 1) {
+                            connection.InfobaseConnections.AllowUsersWork();
+                            var message = connection.InfobaseConnections.EnabledSessionsMessage();
+                            log(message, true);
+                            return 3;
+                        }
+                        return 0;
+                    }
+            }
+        }
+    }
+    catch (e) {
+        CollectGarbage();   // prevents exception out of memory
+        log(format("Except while call doDisconnectAndBlockUsersHTA: {0}, {1}.", e.name, e.message), true);
+        result = 2;
+    }
+    return result;
+}
+
+// User work disconnection and new connection ban Returns:
+//   -1           - execution is delayed, it is required to repeat
+//   function call through 18 seconds 0            - function is
+//   completed successfully other number - error code
+//  
+function terminateSessionsAndBlockUsersHTA() {
+    if (!doBlockUsers) {
+        connectionsDenied = true;
+        return 0;
+    }
+    var connection = createConnection();
+    if (connection == null && useComConnector)
+        return 1;
+    var result = -1;
+    if (useComConnector)
+        try {
+            result = doTerminateSessionsAndBlockUsersHTA(connection);
+        }
+        finally {
+            if (result != -1) {
+                connection = null;
+                ComConnection = null;
+                CollectGarbage();   // releases the connection with COM object
+                log("External connection session with IB is completed", false);
+            }
+        }
+    else
+        result = 0;
+    if (result == 0)
+        connectionsDenied = true;
+    return result;
+}
+
+function doTerminateSessionsAndBlockUsers() {
+    var connection = createConnection();
+    if (connection == null)
+        return (useComConnector ? 1 : 0);
+    try {
+        connection.InfobaseConnections.SetConnectionLock("due to the need to update the configuration.",
+	                               								"ConfigurationPackageUpdateDB");
+
+        var interval = connection.InfobaseConnections.SessionLockParameters().SessionTerminationTimeout * 1000;
+        var startDateTime = connection.GetConnectionsLock().Begin;
+        var now = new Date();
+
+        if (connection.ValueIsFilled(startDateTime))
+            while (now - interval <= startDateTime) {
+                if (!connection.GetConnectionsLock().Use)
+                    break;
+                if (connection.InfobaseConnections.InfobaseSessionCount(false) <= 1)
+                    break;
+                WScript.Sleep(18 * 1000); // Wait 18 seconds before the next check.
+                now = new Date();
+            }
+
+        if (!connection.GetConnectionsLock().Use) {
+            log("An attempt to close users sessions was unsuccessful: IB locking is cancelled.", true);
+            return 3;
+        }
+
+        // after lock start all user sessions should be
+        // disabled if it didn't happen, try to interrupt connections forcibly.
+        doTerminateSessions(connection);
+        if (connection.InfobaseConnections.InfobaseSessionCount(false) > 1) {
+            connection.InfobaseConnections.AllowUsersWork();
+            var message = connection.InfobaseConnections.EnabledSessionsMessage();
+            log(message, true);
+            return 3;
+        }
+    }
+    catch (e) {
+        CollectGarbage();   // prevents exception out of memory
+        log(format("Except while call doDisconnectAndBlockUsers: {0}, {1}.", e.name, e.message), true);
+        return 2;
+    }
+    return 0;
+}
+
+function doTerminateSessions(connection) {
+    var adminParams = connection.StandardSubsystemsServer.AdministrationParameters();
+    adminParams.PasswordAdministratorInfobase = InfobasePassword;
+    adminParams.ClusterAdministratorPassword = ClusterPassword;
+    connection.InfobaseConnectionsClientServer.DeleteAllSessionsExceptCurrent(adminParams);
+}
+
+// User work disconnection and new connection ban 
+function terminateSessionsAndBlockUsers() {
+    var result = 0;
+    if (doBlockUsers)
+        result = doTerminateSessionsAndBlockUsers();
+
+    ComConnection = null;
+    CollectGarbage();   // releases the connection with COM object
+    WScript.Sleep(1000); // waiting for 1 second (enough for complete COM connection).
+    
+    if (result == 0 && doBlockUsers)
+        connectionsDenied = true;
+    return result;
+}
+
+// Import update file in the main base
+function loadCfg(fileName) {
+    // /ImportCfg<name cf file> (for base versions aren't used) configuration import from file
+    var ret = runApp(v8conf, format('CONFIG {0} {1} /ImportCfg "{2}" /Out "{3}" /UCConfigurationPackageUpdateDB /DisableStartupMessages /DisableStartupDialogs',
+	    infoBasePath, infoBaseAuthorization, fileName, tempLogFileName), SW_SHOW, true);
+    appendLog();
+    return ret;
+}
+
+// Import update file in the main base
+function updateCfg(fileName) {
+    // /UpdateCfg<name cf | cfu file> configuration update located on the support
+    var ret = runApp(v8conf, format('CONFIG {0} {1} /UpdateCfg "{2}" /Out "{3}" /UCConfigurationPackageUpdateDB /DisableStartupMessages /DisableStartupDialogs',
+	    infoBasePath, infoBaseAuthorization, fileName, tempLogFileName), SW_SHOW, true);
+    appendLog();
+    return ret;
+}
+
+// Infobase configuration update
+function updateDbCfg() {
+    // /UpdateDBCfg - database configuration update
+    var ret = runApp(v8conf, format('CONFIG {0} {1} /UpdateDBCfg -server /Out "{2}" /UCConfigurationPackageUpdateDB /DisableStartupMessages /DisableStartupDialogs',
+	    infoBasePath, infoBaseAuthorization, tempLogFileName), SW_SHOW, true);
+    appendLog();
+    return ret;
+}
+
+// Testing and correction execution
+function compressDB()
+{
+	if (!makeCompression)
+		return 0;
+	
+	var ret = runApp(v8conf, format('CONFIG {0} {1} /IBCheckAndRepair -IBCompression /Out "{2}" /DisableStartupMessages /DisableStartupDialogs', 
+	    infoBasePath, infoBaseAuthorization, tempLogFileName), SW_SHOW, true);
+	appendLog();
+	return ret;
+}
+
+// Interactive run "1C:Enterprise"
+function runEnterprise() {
+    if (startEnterprise)
+        return runApp(v8client, format('ENTERPRISE {0} {1}', infoBasePath, infoBaseAuthorization), SW_SHOW, false);
+    return 0;
+}
+#EndRegion
+
+function runEnterprise() {
+    if (startEnterprise)
+        return runApp(v8client, format('ENTERPRISE {0} {1}', infoBasePath, infoBaseAuthorization), SW_SHOW, false);
+    return 0;
+}
+#EndRegion
+

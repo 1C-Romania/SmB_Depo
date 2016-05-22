@@ -1,0 +1,808 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>DataSource1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>LineNeedsInventory</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Deficit</dataPath>
+			<field>Deficit</field>
+			<useRestriction>
+				<condition>true</condition>
+			</useRestriction>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ClosingBalance</dataPath>
+			<field>ClosingBalance</field>
+			<useRestriction>
+				<condition>true</condition>
+			</useRestriction>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>MaxInventory</dataPath>
+			<field>MaxInventory</field>
+			<useRestriction>
+				<condition>true</condition>
+			</useRestriction>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>MinInventory</dataPath>
+			<field>MinInventory</field>
+			<useRestriction>
+				<condition>true</condition>
+			</useRestriction>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ProductsAndServices</dataPath>
+			<field>ProductsAndServices</field>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+			<inputParameters>
+				<dcscor:item>
+					<dcscor:parameter>ChoiceParameters</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:ChoiceParameters">
+						<dcscor:item>
+							<dcscor:choiceParameter>Filter.ProductsAndServicesType</dcscor:choiceParameter>
+							<dcscor:value xsi:type="dcscor:DesignTimeValue">Enum.ProductsAndServicesTypes.InventoryItem</dcscor:value>
+						</dcscor:item>
+					</dcscor:value>
+				</dcscor:item>
+			</inputParameters>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Company</dataPath>
+			<field>Company</field>
+			<useRestriction>
+				<condition>true</condition>
+			</useRestriction>
+			<attributeUseRestriction>
+				<condition>true</condition>
+			</attributeUseRestriction>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Batch</dataPath>
+			<field>Batch</field>
+			<useRestriction>
+				<condition>true</condition>
+			</useRestriction>
+			<attributeUseRestriction>
+				<condition>true</condition>
+			</attributeUseRestriction>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Period</dataPath>
+			<field>Period</field>
+			<useRestriction>
+				<condition>true</condition>
+			</useRestriction>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Receipt</dataPath>
+			<field>Receipt</field>
+			<useRestriction>
+				<condition>true</condition>
+			</useRestriction>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ReceiptOverdue</dataPath>
+			<field>ReceiptOverdue</field>
+			<useRestriction>
+				<condition>true</condition>
+			</useRestriction>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Demand</dataPath>
+			<field>Demand</field>
+			<useRestriction>
+				<condition>true</condition>
+			</useRestriction>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>NeedOverdue</dataPath>
+			<field>NeedOverdue</field>
+			<useRestriction>
+				<condition>true</condition>
+			</useRestriction>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Overdue</dataPath>
+			<field>Overdue</field>
+			<useRestriction>
+				<condition>true</condition>
+			</useRestriction>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>AvailableBalance</dataPath>
+			<field>AvailableBalance</field>
+			<useRestriction>
+				<condition>true</condition>
+			</useRestriction>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Characteristic</dataPath>
+			<field>Characteristic</field>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+			<inputParameters>
+				<dcscor:item>
+					<dcscor:parameter>ChoiceParameterLinks</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:ChoiceParameterLinks">
+						<dcscor:item>
+							<dcscor:choiceParameter>ProductsAndServices</dcscor:choiceParameter>
+							<dcscor:value>ProductsAndServices</dcscor:value>
+							<dcscor:mode xmlns:d8p1="http://v8.1c.ru/8.1/data/enterprise" xsi:type="d8p1:LinkedValueChangeMode">Clear</dcscor:mode>
+						</dcscor:item>
+					</dcscor:value>
+				</dcscor:item>
+			</inputParameters>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>CustomerOrder</dataPath>
+			<field>CustomerOrder</field>
+			<useRestriction>
+				<condition>true</condition>
+			</useRestriction>
+			<attributeUseRestriction>
+				<condition>true</condition>
+			</attributeUseRestriction>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>GLAccount</dataPath>
+			<field>GLAccount</field>
+			<useRestriction>
+				<condition>true</condition>
+			</useRestriction>
+			<attributeUseRestriction>
+				<condition>true</condition>
+			</attributeUseRestriction>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ProductionOrder</dataPath>
+			<field>ProductionOrder</field>
+			<useRestriction>
+				<condition>true</condition>
+			</useRestriction>
+			<attributeUseRestriction>
+				<condition>true</condition>
+			</attributeUseRestriction>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>PurchaseOrder</dataPath>
+			<field>PurchaseOrder</field>
+			<useRestriction>
+				<condition>true</condition>
+			</useRestriction>
+			<attributeUseRestriction>
+				<condition>true</condition>
+			</attributeUseRestriction>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>MovementType</dataPath>
+			<field>MovementType</field>
+			<useRestriction>
+				<condition>true</condition>
+			</useRestriction>
+			<attributeUseRestriction>
+				<condition>true</condition>
+			</attributeUseRestriction>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Order</dataPath>
+			<field>Order</field>
+			<useRestriction>
+				<condition>true</condition>
+			</useRestriction>
+			<attributeUseRestriction>
+				<condition>true</condition>
+			</attributeUseRestriction>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>OrderBalance</dataPath>
+			<field>OrderBalance</field>
+			<useRestriction>
+				<condition>true</condition>
+			</useRestriction>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Vendor</dataPath>
+			<field>Vendor</field>
+			<useRestriction>
+				<condition>true</condition>
+			</useRestriction>
+			<attributeUseRestriction>
+				<condition>true</condition>
+			</attributeUseRestriction>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Warehouse</dataPath>
+			<field>Warehouse</field>
+			<valueType>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.StructuralUnits</v8:Type>
+			</valueType>
+		</field>
+		<dataSource>DataSource1</dataSource>
+		<query>SELECT
+	OrdersBalance.MovementType AS MovementType,
+	OrdersBalance.Company AS Company,
+	OrdersBalance.ProductsAndServices AS ProductsAndServices,
+	CASE
+		WHEN OrdersBalance.ReplenishmentMethod = VALUE(Enum.InventoryReplenishmentMethods.Production)
+			THEN VALUE(Catalog.Counterparties.EmptyRef)
+		ELSE OrdersBalance.Vendor
+	END AS Vendor,
+	OrdersBalance.Characteristic AS Characteristic,
+	OrdersBalance.Order AS Order,
+	SUM(OrdersBalance.QuantityBalance) AS QuantityBalance
+	INTO TemporaryTableOrdersBalance
+	FROM
+	(SELECT
+		VALUE(Enum.InventoryMovementTypes.Shipment) AS MovementType,
+		CustomerOrdersBalances.Company AS Company,
+		CustomerOrdersBalances.ProductsAndServices AS ProductsAndServices,
+		CustomerOrdersBalances.ProductsAndServices.ReplenishmentMethod AS ReplenishmentMethod,
+		CustomerOrdersBalances.ProductsAndServices.Vendor AS Vendor,
+		CASE
+			WHEN &amp;UseCharacteristics
+				THEN CustomerOrdersBalances.Characteristic
+			ELSE VALUE(Catalog.ProductsAndServicesCharacteristics.EmptyRef)
+		END AS Characteristic,
+		CustomerOrdersBalances.CustomerOrder AS Order,
+		CustomerOrdersBalances.QuantityBalance AS QuantityBalance
+	FROM
+		AccumulationRegister.CustomerOrders.Balance(
+				&amp;DateBalance,
+				Company = &amp;Company
+					AND ProductsAndServices.ProductsAndServicesType = VALUE(Enum.ProductsAndServicesTypes.InventoryItem)
+					AND ProductsAndServices.ReplenishmentMethod IN (&amp;ReplenishmentMethod) {(ProductsAndServices).* AS ProductsAndServices, (Characteristic).* AS Characteristic}) AS CustomerOrdersBalances
+	
+	UNION ALL
+	
+	SELECT
+		InventoryDemandBalances.MovementType,
+		InventoryDemandBalances.Company,
+		InventoryDemandBalances.ProductsAndServices,
+		InventoryDemandBalances.ProductsAndServices.ReplenishmentMethod,
+		InventoryDemandBalances.ProductsAndServices.Vendor,
+		CASE
+			WHEN &amp;UseCharacteristics
+				THEN InventoryDemandBalances.Characteristic
+			ELSE VALUE(Catalog.ProductsAndServicesCharacteristics.EmptyRef)
+		END,
+		InventoryDemandBalances.CustomerOrder,
+		InventoryDemandBalances.QuantityBalance
+	FROM
+		AccumulationRegister.InventoryDemand.Balance(
+				&amp;EndDate,
+				Company = &amp;Company
+					AND ProductsAndServices.ProductsAndServicesType = VALUE(Enum.ProductsAndServicesTypes.InventoryItem)
+					AND ProductsAndServices.ReplenishmentMethod IN (&amp;ReplenishmentMethod) {(ProductsAndServices).* AS ProductsAndServices, (Characteristic).* AS Characteristic}) AS InventoryDemandBalances
+	
+	UNION ALL
+	
+	SELECT
+		VALUE(Enum.InventoryMovementTypes.Receipt),
+		PurchaseOrdersBalances.Company,
+		PurchaseOrdersBalances.ProductsAndServices,
+		PurchaseOrdersBalances.ProductsAndServices.ReplenishmentMethod,
+		PurchaseOrdersBalances.ProductsAndServices.Vendor,
+		CASE
+			WHEN &amp;UseCharacteristics
+				THEN PurchaseOrdersBalances.Characteristic
+			ELSE VALUE(Catalog.ProductsAndServicesCharacteristics.EmptyRef)
+		END,
+		PurchaseOrdersBalances.PurchaseOrder,
+		PurchaseOrdersBalances.QuantityBalance
+	FROM
+		AccumulationRegister.PurchaseOrders.Balance(
+				&amp;DateBalance,
+				Company = &amp;Company
+					AND ProductsAndServices.ProductsAndServicesType = VALUE(Enum.ProductsAndServicesTypes.InventoryItem)
+					AND ProductsAndServices.ReplenishmentMethod IN (&amp;ReplenishmentMethod) {(ProductsAndServices).* AS ProductsAndServices, (Characteristic).* AS Characteristic}) AS PurchaseOrdersBalances
+	
+	UNION ALL
+	
+	SELECT
+		VALUE(Enum.InventoryMovementTypes.Receipt),
+		ProductionOrdersBalances.Company,
+		ProductionOrdersBalances.ProductsAndServices,
+		ProductionOrdersBalances.ProductsAndServices.ReplenishmentMethod,
+		ProductionOrdersBalances.ProductsAndServices.Vendor,
+		CASE
+			WHEN &amp;UseCharacteristics
+				THEN ProductionOrdersBalances.Characteristic
+			ELSE VALUE(Catalog.ProductsAndServicesCharacteristics.EmptyRef)
+		END,
+		ProductionOrdersBalances.ProductionOrder,
+		ProductionOrdersBalances.QuantityBalance
+	FROM
+		AccumulationRegister.ProductionOrders.Balance(
+				&amp;DateBalance,
+				Company = &amp;Company
+					AND ProductsAndServices.ProductsAndServicesType = VALUE(Enum.ProductsAndServicesTypes.InventoryItem)
+					AND ProductsAndServices.ReplenishmentMethod IN (&amp;ReplenishmentMethod) {(ProductsAndServices).* AS ProductsAndServices, (Characteristic).* AS Characteristic}) AS ProductionOrdersBalances) AS OrdersBalance
+
+	GROUP BY
+	OrdersBalance.Company,
+	OrdersBalance.ProductsAndServices,
+	CASE
+		WHEN OrdersBalance.ReplenishmentMethod = VALUE(Enum.InventoryReplenishmentMethods.Production)
+			THEN VALUE(Catalog.Counterparties.EmptyRef)
+		ELSE OrdersBalance.Vendor
+	END,
+	OrdersBalance.Characteristic,
+	OrdersBalance.Order,
+	OrdersBalance.MovementType
+
+	INDEX BY
+	Company,
+	ProductsAndServices,
+	Characteristic,
+	Order
+;
+
+///////////////////////////////////////////////////////////////////////////////
+	SELECT
+	LineNeedsInventory.Period AS Period,
+	LineNeedsInventory.ProductsAndServices AS ProductsAndServices,
+	LineNeedsInventory.Vendor AS Vendor,
+	LineNeedsInventory.Characteristic AS Characteristic,
+	LineNeedsInventory.Order AS Order,
+	LineNeedsInventory.MovementType AS MovementType,
+	SUM(LineNeedsInventory.OrderBalance) AS OrderBalance,
+	SUM(LineNeedsInventory.MinInventory) AS MinInventory,
+	SUM(LineNeedsInventory.MaxInventory) AS MaxInventory,
+	SUM(LineNeedsInventory.AvailableBalance) AS AvailableBalance,
+	SUM(LineNeedsInventory.Receipt) AS Receipt,
+	SUM(LineNeedsInventory.ReceiptOverdue) AS ReceiptOverdue,
+	SUM(LineNeedsInventory.Demand) AS Demand,
+	SUM(LineNeedsInventory.NeedOverdue) AS NeedOverdue,
+	SUM(LineNeedsInventory.ClosingBalance) AS ClosingBalance,
+	SUM(LineNeedsInventory.Overdue) AS Overdue,
+	SUM(LineNeedsInventory.Deficit) AS Deficit
+	INTO TemporaryTableInventoryNeedsSchedule
+	FROM
+	(SELECT
+		&amp;StartDate AS Period,
+		InventoryBalances.ProductsAndServices AS ProductsAndServices,
+		CASE
+			WHEN InventoryBalances.ProductsAndServices.ReplenishmentMethod = VALUE(Enum.InventoryReplenishmentMethods.Production)
+				THEN VALUE(Catalog.Counterparties.EmptyRef)
+			ELSE InventoryBalances.ProductsAndServices.Vendor
+		END AS Vendor,
+		CASE
+			WHEN &amp;UseCharacteristics
+				THEN InventoryBalances.Characteristic
+			ELSE VALUE(Catalog.ProductsAndServicesCharacteristics.EmptyRef)
+		END AS Characteristic,
+		UNDEFINED AS Order,
+		UNDEFINED AS MovementType,
+		0 AS OrderBalance,
+		InventoryBalances.QuantityBalance AS AvailableBalance,
+		0 AS Receipt,
+		0 AS ReceiptOverdue,
+		0 AS Demand,
+		0 AS NeedOverdue,
+		0 AS MinInventory,
+		0 AS MaxInventory,
+		0 AS ClosingBalance,
+		0 AS Overdue,
+		0 AS Deficit
+	FROM
+		AccumulationRegister.Inventory.Balance(&amp;DateBalance, Company = &amp;Company {(ProductsAndServices).* AS ProductsAndServices, (Characteristic).* AS Characteristic, (StructuralUnit).* AS Warehouse}) AS InventoryBalances
+	
+	UNION ALL
+	
+	SELECT
+		&amp;StartDate,
+		InventoryManagement.ProductsAndServices,
+		CASE
+			WHEN InventoryManagement.ProductsAndServices.ReplenishmentMethod = VALUE(Enum.InventoryReplenishmentMethods.Production)
+				THEN VALUE(Catalog.Counterparties.EmptyRef)
+			ELSE InventoryManagement.ProductsAndServices.Vendor
+		END,
+		CASE
+			WHEN &amp;UseCharacteristics
+				THEN InventoryManagement.Characteristic
+			ELSE VALUE(Catalog.ProductsAndServicesCharacteristics.EmptyRef)
+		END,
+		UNDEFINED,
+		UNDEFINED,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		InventoryManagement.InventoryMinimumLevel,
+		InventoryManagement.InventoryMaximumLevel,
+		0,
+		0,
+		0
+	FROM
+		InformationRegister.InventoryManagement AS InventoryManagement
+	WHERE
+		InventoryManagement.Company = &amp;Company
+	{WHERE
+		InventoryManagement.ProductsAndServices.* AS ProductsAndServices,
+		InventoryManagement.Characteristic.* AS Characteristic}
+	
+	UNION ALL
+	
+	SELECT
+		CASE
+			WHEN InventoryTransferSchedule.Period &lt; &amp;StartDate
+					OR InventoryTransferSchedule.Period &gt; &amp;EndDate
+					OR InventoryTransferSchedule.Period IS NULL 
+				THEN &amp;StartDate
+			ELSE InventoryTransferSchedule.Period
+		END,
+		OrdersBalance.ProductsAndServices,
+		OrdersBalance.Vendor,
+		CASE
+			WHEN &amp;UseCharacteristics
+				THEN OrdersBalance.Characteristic
+			ELSE VALUE(Catalog.ProductsAndServicesCharacteristics.EmptyRef)
+		END,
+		OrdersBalance.Order,
+		OrdersBalance.MovementType,
+		CASE
+			WHEN InventoryTransferSchedule.Period &gt; &amp;EndDate
+				THEN -InventoryTransferSchedule.Quantity
+			ELSE OrdersBalance.QuantityBalance
+		END,
+		0,
+		SUM(CASE
+				WHEN InventoryTransferSchedule.MovementType = VALUE(Enum.InventoryMovementTypes.Receipt)
+						AND InventoryTransferSchedule.Period &lt;= &amp;EndDate
+						AND InventoryTransferSchedule.Period &gt;= &amp;StartDate
+					THEN InventoryTransferSchedule.Quantity
+				ELSE 0
+			END),
+		0,
+		SUM(CASE
+				WHEN InventoryTransferSchedule.MovementType = VALUE(Enum.InventoryMovementTypes.Shipment)
+						AND InventoryTransferSchedule.Period &lt;= &amp;EndDate
+						AND InventoryTransferSchedule.Period &gt;= &amp;StartDate
+					THEN InventoryTransferSchedule.Quantity
+				ELSE 0
+			END),
+		0,
+		0,
+		0,
+		0,
+		0,
+		0
+	FROM
+		TemporaryTableOrdersBalance AS OrdersBalance
+			LEFT JOIN AccumulationRegister.InventoryTransferSchedule AS InventoryTransferSchedule
+			ON OrdersBalance.Company = InventoryTransferSchedule.Company
+				AND OrdersBalance.ProductsAndServices = InventoryTransferSchedule.ProductsAndServices
+				AND OrdersBalance.Characteristic = InventoryTransferSchedule.Characteristic
+				AND OrdersBalance.Order = InventoryTransferSchedule.Order
+				AND OrdersBalance.MovementType = InventoryTransferSchedule.MovementType
+	{WHERE
+		InventoryTransferSchedule.ProductsAndServices.* AS ProductsAndServices,
+		InventoryTransferSchedule.Characteristic.* AS Characteristic}
+	
+	GROUP BY
+		CASE
+			WHEN InventoryTransferSchedule.Period &lt; &amp;StartDate
+					OR InventoryTransferSchedule.Period &gt; &amp;EndDate
+					OR InventoryTransferSchedule.Period IS NULL 
+				THEN &amp;StartDate
+			ELSE InventoryTransferSchedule.Period
+		END,
+		OrdersBalance.ProductsAndServices,
+		OrdersBalance.Vendor,
+		CASE
+			WHEN &amp;UseCharacteristics
+				THEN OrdersBalance.Characteristic
+			ELSE VALUE(Catalog.ProductsAndServicesCharacteristics.EmptyRef)
+		END,
+		OrdersBalance.Order,
+		OrdersBalance.MovementType,
+		CASE
+			WHEN InventoryTransferSchedule.Period &gt; &amp;EndDate
+				THEN -InventoryTransferSchedule.Quantity
+			ELSE OrdersBalance.QuantityBalance
+		END) AS LineNeedsInventory
+	WHERE
+	LineNeedsInventory.ProductsAndServices.ReplenishmentMethod IN(&amp;ReplenishmentMethod)
+
+	GROUP BY
+	LineNeedsInventory.Period,
+	LineNeedsInventory.ProductsAndServices,
+	LineNeedsInventory.Vendor,
+	LineNeedsInventory.Characteristic,
+	LineNeedsInventory.Order,
+	LineNeedsInventory.MovementType
+;
+
+///////////////////////////////////////////////////////////////////////////////
+	SELECT DISTINCT
+	TemporaryTableInventoryNeedsSchedule.Period AS Period,
+	TemporaryTableInventoryNeedsSchedule.ProductsAndServices AS ProductsAndServices,
+	CASE
+		WHEN TemporaryTableInventoryNeedsSchedule.Vendor = VALUE(Catalog.Counterparties.EmptyRef)
+			THEN CounterpartyProductsAndServicesPricesSliceLast.CounterpartyPriceKind.Owner
+		ELSE TemporaryTableInventoryNeedsSchedule.Vendor
+	END AS Vendor,
+	TemporaryTableInventoryNeedsSchedule.Characteristic AS Characteristic,
+	TemporaryTableInventoryNeedsSchedule.Order AS Order,
+	TemporaryTableInventoryNeedsSchedule.MovementType AS MovementType,
+	TemporaryTableInventoryNeedsSchedule.OrderBalance AS OrderBalance,
+	TemporaryTableInventoryNeedsSchedule.MinInventory AS MinInventory,
+	TemporaryTableInventoryNeedsSchedule.MaxInventory AS MaxInventory,
+	TemporaryTableInventoryNeedsSchedule.AvailableBalance AS AvailableBalance,
+	TemporaryTableInventoryNeedsSchedule.Receipt AS Receipt,
+	TemporaryTableInventoryNeedsSchedule.ReceiptOverdue AS ReceiptOverdue,
+	TemporaryTableInventoryNeedsSchedule.Demand AS Demand,
+	TemporaryTableInventoryNeedsSchedule.NeedOverdue AS NeedOverdue,
+	TemporaryTableInventoryNeedsSchedule.ClosingBalance AS ClosingBalance,
+	TemporaryTableInventoryNeedsSchedule.Overdue AS Overdue,
+	TemporaryTableInventoryNeedsSchedule.Deficit AS Deficit
+	FROM
+	TemporaryTableInventoryNeedsSchedule AS TemporaryTableInventoryNeedsSchedule
+		LEFT JOIN InformationRegister.CounterpartyProductsAndServicesPrices.SliceLast(&amp;StartDate, CounterpartyPriceKind IN (&amp;CounterpartyPriceKind)) AS CounterpartyProductsAndServicesPricesSliceLast
+		ON TemporaryTableInventoryNeedsSchedule.ProductsAndServices = CounterpartyProductsAndServicesPricesSliceLast.ProductsAndServices
+			AND TemporaryTableInventoryNeedsSchedule.Characteristic = CounterpartyProductsAndServicesPricesSliceLast.Characteristic
+			AND (CounterpartyProductsAndServicesPricesSliceLast.Actuality)
+	WHERE
+	(TemporaryTableInventoryNeedsSchedule.Vendor = &amp;Counterparty
+			OR CounterpartyProductsAndServicesPricesSliceLast.CounterpartyPriceKind.Owner = &amp;Counterparty
+			OR &amp;Counterparty = VALUE(Catalog.Counterparties.EmptyRef))
+
+	ORDER BY
+	ProductsAndServices,
+	Characteristic,
+	Period,
+		Order</query>
+	</dataSet>
+	<parameter>
+		<name>StartDate</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Begin of period</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>UseCharacteristics</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Use characteristics</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:boolean</v8:Type>
+		</valueType>
+		<value xsi:type="xs:boolean">false</value>
+		<useRestriction>true</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>Period</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Period</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>false</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>Company</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Company</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef.Companies</v8:Type>
+		</valueType>
+		<value xsi:type="dcscor:DesignTimeValue">Catalog.Companies.EmptyRef</value>
+		<useRestriction>true</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>EndDate</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>End of period</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>DateBalance</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Balances date</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>ReplenishmentMethod</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Replenishment method</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:EnumRef.InventoryReplenishmentMethods</v8:Type>
+		</valueType>
+		<value xsi:type="dcscor:DesignTimeValue">Enum.InventoryReplenishmentMethods.EmptyRef</value>
+		<useRestriction>true</useRestriction>
+	</parameter>
+	<parameter>
+		<name>CounterpartyPriceKind</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Counterparty price kinds</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef.CounterpartyPriceKind</v8:Type>
+		</valueType>
+		<value xsi:type="dcscor:DesignTimeValue">Catalog.CounterpartyPriceKind.EmptyRef</value>
+		<useRestriction>true</useRestriction>
+	</parameter>
+	<parameter>
+		<name>Counterparty</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Counterparty</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef.Counterparties</v8:Type>
+		</valueType>
+		<value xsi:type="dcscor:DesignTimeValue">Catalog.Counterparties.EmptyRef</value>
+		<useRestriction>true</useRestriction>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>Default</dcsset:name>
+		<dcsset:presentation xsi:type="xs:string">Default</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Period</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ProductsAndServices</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Characteristic</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Order</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>MovementType</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>OrderBalance</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>AvailableBalance</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Receipt</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ReceiptOverdue</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Demand</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>NeedOverdue</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>MinInventory</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>MaxInventory</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ClosingBalance</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Overdue</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Deficit</dcsset:field>
+				</dcsset:item>
+			</dcsset:selection>
+			<dcsset:filter>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">ProductsAndServices</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="dcscor:DesignTimeValue">Catalog.ProductsAndServices.EmptyRef</dcsset:right>
+					<dcsset:userSettingID>6b89f1e0-a511-4a96-8b46-558e4427a92a</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Characteristic</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="dcscor:DesignTimeValue">Catalog.ProductsAndServicesCharacteristics.EmptyRef</dcsset:right>
+					<dcsset:userSettingID>2b0cf98e-7848-4b64-b773-ff4ca31899b8</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Warehouse</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="dcscor:DesignTimeValue">Catalog.StructuralUnits.EmptyRef</dcsset:right>
+					<dcsset:userSettingID>f5741508-93c1-4918-8f1c-b12ac42587f3</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:viewMode>Normal</dcsset:viewMode>
+				<dcsset:userSettingID>f08072f8-c1da-4fd8-9ebe-649ac3cb30b5</dcsset:userSettingID>
+			</dcsset:filter>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+			</dcsset:item>
+			<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

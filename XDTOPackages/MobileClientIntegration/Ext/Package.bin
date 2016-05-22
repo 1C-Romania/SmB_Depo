@@ -1,0 +1,142 @@
+﻿<package xmlns="http://v8.1c.ru/8.1/xdto" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://www.1c.ru/SB/MobileExchange">
+	<import namespace="http://v8.1c.ru/8.1/data/core"/>
+	<valueType name="TypeTotal" base="xs:decimal" variety="Atomic" totalDigits="18" fractionDigits="2"/>
+	<valueType name="TypeQuantity" base="xs:decimal" variety="Atomic" fractionDigits="4"/>
+	<valueType name="TypeNomenclature" base="xs:string" variety="Atomic">
+		<enumeration xsi:type="xs:string">Product</enumeration>
+		<enumeration xsi:type="xs:string">Service</enumeration>
+	</valueType>
+	<valueType name="TypeOrderStatus" base="xs:string" variety="Atomic">
+		<enumeration xsi:type="xs:string">Open</enumeration>
+		<enumeration xsi:type="xs:string">InWork</enumeration>
+		<enumeration xsi:type="xs:string">Complete</enumeration>
+		<enumeration xsi:type="xs:string">Closed</enumeration>
+	</valueType>
+	<objectType name="Objects">
+		<property xmlns:d3p1="http://www.1c.ru/SB/MobileExchange" name="objects" type="d3p1:Object" lowerBound="0" upperBound="-1"/>
+	</objectType>
+	<objectType name="Object">
+		<property name="name" type="xs:string" lowerBound="0" nillable="true"/>
+		<property name="id" type="xs:string" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://www.1c.ru/SB/MobileExchange" name="CatContractors" base="d2p1:Object">
+		<property name="DeletionMark" type="xs:boolean" lowerBound="0" nillable="true"/>
+		<property name="IsFolder" type="xs:boolean" lowerBound="0" nillable="true"/>
+		<property name="Group" type="d2p1:CatContractors" lowerBound="0" nillable="true"/>
+		<property name="Adress" type="xs:string" lowerBound="0" nillable="true"/>
+		<property name="Zip" type="xs:string" lowerBound="0" nillable="true"/>
+		<property name="Country" type="xs:string" lowerBound="0" nillable="true"/>
+		<property name="City" type="xs:string" lowerBound="0" nillable="true"/>
+		<property name="Street" type="xs:string" lowerBound="0" nillable="true"/>
+		<property name="House" type="xs:string" lowerBound="0" nillable="true"/>
+		<property name="Tel" type="xs:string" lowerBound="0" nillable="true"/>
+		<property name="Email" type="xs:string" lowerBound="0" nillable="true"/>
+		<property name="Fax" type="xs:string" lowerBound="0" nillable="true"/>
+		<property name="Web" type="xs:string" lowerBound="0" nillable="true"/>
+		<property name="AdditionalInfo" type="xs:string" lowerBound="0" nillable="true"/>
+		<property name="ContactName" type="xs:string" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://www.1c.ru/SB/MobileExchange" name="CatItems" base="d2p1:Object">
+		<property name="DeletionMark" type="xs:boolean" lowerBound="0" nillable="true"/>
+		<property name="IsFolder" type="xs:boolean" lowerBound="0" nillable="true"/>
+		<property name="Group" type="d2p1:CatItems" lowerBound="0" nillable="true"/>
+		<property name="Item" type="xs:string" lowerBound="0" nillable="true"/>
+		<property name="Supplier" type="d2p1:CatContractors" lowerBound="0" nillable="true"/>
+		<property name="TypeItem" type="d2p1:TypeNomenclature" lowerBound="0" nillable="true"/>
+		<property name="BarCode" type="xs:string" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://www.1c.ru/SB/MobileExchange" name="DocOrders" base="d2p1:Object">
+		<property name="DeletionMark" type="xs:boolean" lowerBound="0" nillable="true"/>
+		<property name="Posted" type="xs:boolean" lowerBound="0" nillable="true"/>
+		<property name="Date" type="xs:dateTime" lowerBound="0" nillable="true"/>
+		<property name="Buyer" type="d2p1:CatContractors" lowerBound="0" nillable="true"/>
+		<property name="OrderStatus" type="d2p1:TypeOrderStatus" lowerBound="0" nillable="true"/>
+		<property name="Shipped" type="xs:boolean" lowerBound="0" nillable="true"/>
+		<property name="Paid" type="xs:boolean" lowerBound="0" nillable="true"/>
+		<property name="Total" type="d2p1:TypeTotal" lowerBound="0" nillable="true"/>
+		<property name="Items" lowerBound="0" nillable="true">
+			<typeDef xsi:type="ObjectType">
+				<property name="Item" lowerBound="0" upperBound="-1" nillable="true">
+					<typeDef xsi:type="ObjectType">
+						<property name="Nomenclature" type="d2p1:CatItems" lowerBound="0" nillable="true"/>
+						<property name="Price" type="d2p1:TypeTotal" lowerBound="0" nillable="true"/>
+						<property name="Quantity" type="d2p1:TypeQuantity" lowerBound="0" nillable="true"/>
+						<property name="Total" type="d2p1:TypeTotal" lowerBound="0" nillable="true"/>
+					</typeDef>
+				</property>
+			</typeDef>
+		</property>
+		<property name="Comment" type="xs:string" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://www.1c.ru/SB/MobileExchange" name="Remains" base="d2p1:Object">
+		<property name="Item" lowerBound="0" upperBound="-1" nillable="true">
+			<typeDef xsi:type="ObjectType">
+				<property name="Nomenclature" type="d2p1:CatItems" lowerBound="0" nillable="true"/>
+				<property name="Quantity" type="d2p1:TypeQuantity" lowerBound="0" nillable="true"/>
+				<property name="Total" type="d2p1:TypeTotal" lowerBound="0" nillable="true"/>
+			</typeDef>
+		</property>
+	</objectType>
+	<objectType xmlns:d2p1="http://www.1c.ru/SB/MobileExchange" name="Prices" base="d2p1:Object">
+		<property name="Date" type="xs:date"/>
+		<property name="Nomenclature" type="d2p1:CatItems" lowerBound="0" nillable="true"/>
+		<property name="Price" type="d2p1:TypeTotal" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://www.1c.ru/SB/MobileExchange" name="DocInvoice" base="d2p1:Object">
+		<property name="DeletionMark" type="xs:boolean" lowerBound="0" nillable="true"/>
+		<property name="Posted" type="xs:boolean" lowerBound="0" nillable="true"/>
+		<property name="Date" type="xs:dateTime" lowerBound="0" nillable="true"/>
+		<property name="Buyer" type="d2p1:CatContractors" lowerBound="0" nillable="true"/>
+		<property name="Total" type="d2p1:TypeTotal" lowerBound="0" nillable="true"/>
+		<property name="Order" type="d2p1:DocOrders" lowerBound="0" nillable="true"/>
+		<property name="Items" lowerBound="0" nillable="true">
+			<typeDef xsi:type="ObjectType">
+				<property name="Item" lowerBound="0" upperBound="-1" nillable="true">
+					<typeDef xsi:type="ObjectType">
+						<property name="Nomenclature" type="d2p1:CatItems" lowerBound="0" nillable="true"/>
+						<property name="Price" type="d2p1:TypeTotal" lowerBound="0" nillable="true"/>
+						<property name="Quantity" type="d2p1:TypeQuantity" lowerBound="0" nillable="true"/>
+						<property name="Total" type="d2p1:TypeTotal" lowerBound="0" nillable="true"/>
+					</typeDef>
+				</property>
+			</typeDef>
+		</property>
+	</objectType>
+	<objectType xmlns:d2p1="http://www.1c.ru/SB/MobileExchange" name="DocPurshareInvoice" base="d2p1:Object">
+		<property name="DeletionMark" type="xs:boolean" lowerBound="0" nillable="true"/>
+		<property name="Posted" type="xs:boolean" lowerBound="0" nillable="true"/>
+		<property name="Date" type="xs:dateTime" lowerBound="0" nillable="true"/>
+		<property name="Supplier" type="d2p1:CatContractors" lowerBound="0" nillable="true"/>
+		<property name="Total" type="d2p1:TypeTotal" lowerBound="0" nillable="true"/>
+		<property name="Items" lowerBound="0" nillable="true">
+			<typeDef xsi:type="ObjectType">
+				<property name="Item" lowerBound="0" upperBound="-1" nillable="true">
+					<typeDef xsi:type="ObjectType">
+						<property name="Nomenclature" type="d2p1:CatItems" lowerBound="0" nillable="true"/>
+						<property name="Price" type="d2p1:TypeTotal" lowerBound="0" nillable="true"/>
+						<property name="Quantity" type="d2p1:TypeQuantity" lowerBound="0" nillable="true"/>
+						<property name="Total" type="d2p1:TypeTotal" lowerBound="0" nillable="true"/>
+					</typeDef>
+				</property>
+			</typeDef>
+		</property>
+	</objectType>
+	<objectType xmlns:d2p1="http://www.1c.ru/SB/MobileExchange" name="DocIncomingPayment" base="d2p1:Object">
+		<property name="DeletionMark" type="xs:boolean" lowerBound="0" nillable="true"/>
+		<property name="Posted" type="xs:boolean" lowerBound="0" nillable="true"/>
+		<property name="Date" type="xs:dateTime" lowerBound="0" nillable="true"/>
+		<property name="Contractor" type="d2p1:CatContractors" lowerBound="0" nillable="true"/>
+		<property name="Total" type="d2p1:TypeTotal" lowerBound="0" nillable="true"/>
+		<property name="Order" type="d2p1:DocOrders" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://www.1c.ru/SB/MobileExchange" name="DocOutgoingPayment" base="d2p1:Object">
+		<property name="DeletionMark" type="xs:boolean" lowerBound="0" nillable="true"/>
+		<property name="Posted" type="xs:boolean" lowerBound="0" nillable="true"/>
+		<property name="Date" type="xs:dateTime" lowerBound="0" nillable="true"/>
+		<property name="Contractor" type="d2p1:CatContractors" lowerBound="0" nillable="true"/>
+		<property name="Total" type="d2p1:TypeTotal" lowerBound="0" nillable="true"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://www.1c.ru/SB/MobileExchange" name="ObjectDeletion" base="d2p1:Object">
+		<property name="Type" type="xs:string" lowerBound="0" nillable="true"/>
+	</objectType>
+</package>

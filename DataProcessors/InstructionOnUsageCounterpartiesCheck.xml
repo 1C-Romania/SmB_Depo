@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<MetaDataObject xmlns="http://v8.1c.ru/8.3/MDClasses" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:cmi="http://v8.1c.ru/8.2/managed-application/cmi" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xpr="http://v8.1c.ru/8.3/xcf/predef" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<DataProcessor uuid="7be54cf4-1c56-49a9-9ba3-5040593bb527">
+		<InternalInfo>
+			<xr:GeneratedType name="DataProcessorObject.InstructionOnUsageCounterpartiesCheck" category="Object">
+				<xr:TypeId>fca3ff9a-54e5-48e9-a206-feb39fd1db2a</xr:TypeId>
+				<xr:ValueId>56bd4736-6975-488a-ae9a-68174dbe81f4</xr:ValueId>
+			</xr:GeneratedType>
+			<xr:GeneratedType name="DataProcessorManager.InstructionOnUsageCounterpartiesCheck" category="Manager">
+				<xr:TypeId>83422cef-ecc0-4003-8bed-f31e03530022</xr:TypeId>
+				<xr:ValueId>8aca4d24-2595-48ff-8efd-6b42f58f0efe</xr:ValueId>
+			</xr:GeneratedType>
+		</InternalInfo>
+		<Properties>
+			<Name>InstructionOnUsageCounterpartiesCheck</Name>
+			<Synonym>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Instruction on the usage of counterparty check</v8:content>
+				</v8:item>
+			</Synonym>
+			<Comment/>
+			<UseStandardCommands>true</UseStandardCommands>
+			<DefaultForm>DataProcessor.InstructionOnUsageCounterpartiesCheck.Form.InstructionOnCheckingCounterparties</DefaultForm>
+			<AuxiliaryForm/>
+			<IncludeHelpInContents>false</IncludeHelpInContents>
+			<ExtendedPresentation/>
+			<Explanation/>
+		</Properties>
+		<ChildObjects>
+			<Form>InstructionOnCheckingCounterparties</Form>
+			<Template>InstructionOnCheckingCounterparties</Template>
+		</ChildObjects>
+	</DataProcessor>
+</MetaDataObject>

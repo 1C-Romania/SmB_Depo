@@ -1,0 +1,1319 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
+	<SaveDataInSettings>UseList</SaveDataInSettings>
+	<CommandBarLocation>Top</CommandBarLocation>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<HorizontalAlign>Right</HorizontalAlign>
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<Popup name="Mode" id="85">
+				<Title>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Set Printing Mode</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTip>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Mode</v8:content>
+					</v8:item>
+				</ToolTip>
+				<ExtendedTooltip name="ModeExtendedTooltip" id="109"/>
+				<ChildItems>
+					<Button name="SetModeTagsPrinting" id="86">
+						<Type>CommandBarButton</Type>
+						<SkipOnInput>false</SkipOnInput>
+						<CommandName>Form.Command.SetModeTagsPrinting</CommandName>
+						<ExtendedTooltip name="SetModeTagsPrintingExtendedTooltip" id="110"/>
+					</Button>
+					<Button name="SetModeTagsAndLabelsPrinting" id="87">
+						<Type>CommandBarButton</Type>
+						<SkipOnInput>false</SkipOnInput>
+						<CommandName>Form.Command.SetModeTagsAndLabelsPrinting</CommandName>
+						<ExtendedTooltip name="SetModeTagsPrintingAndLabelsExtendedTooltip" id="111"/>
+					</Button>
+					<Button name="SetModeLabelsPrinting" id="88">
+						<Type>CommandBarButton</Type>
+						<SkipOnInput>false</SkipOnInput>
+						<CommandName>Form.Command.SetModeLabelsPrinting</CommandName>
+						<ExtendedTooltip name="SetLabelsPrintingModeExtendedTooltip" id="112"/>
+					</Button>
+				</ChildItems>
+			</Popup>
+			<Button name="Print" id="48">
+				<Type>CommandBarButton</Type>
+				<Representation>PictureAndText</Representation>
+				<SkipOnInput>false</SkipOnInput>
+				<CommandName>Form.Command.Print</CommandName>
+				<Picture>
+					<xr:Ref>StdPicture.Print</xr:Ref>
+					<xr:LoadTransparent>true</xr:LoadTransparent>
+				</Picture>
+				<ExtendedTooltip name="PrintExtendedTooltip" id="106"/>
+			</Button>
+			<ButtonGroup name="Settings" id="101">
+				<Title>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Settings</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTip>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Settings</v8:content>
+					</v8:item>
+				</ToolTip>
+				<ExtendedTooltip name="SettingsExtendedTooltip" id="113"/>
+				<ChildItems>
+					<Button name="SaveValues" id="102">
+						<Type>CommandBarButton</Type>
+						<SkipOnInput>false</SkipOnInput>
+						<OnlyInAllActions>false</OnlyInAllActions>
+						<CommandName>Form.StandardCommand.SaveValues</CommandName>
+						<ExtendedTooltip name="SaveValuesExtendedTooltip" id="114"/>
+					</Button>
+					<Button name="RestoreValues" id="103">
+						<Type>CommandBarButton</Type>
+						<SkipOnInput>false</SkipOnInput>
+						<OnlyInAllActions>false</OnlyInAllActions>
+						<CommandName>Form.StandardCommand.RestoreValues</CommandName>
+						<ExtendedTooltip name="RecallValuesExtendedTooltip" id="115"/>
+					</Button>
+				</ChildItems>
+			</ButtonGroup>
+			<Button name="FormHelp" id="159">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.Help</CommandName>
+				<ExtendedTooltip name="FormHelpExtendedTooltip" id="160"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnSaveDataInSettingsAtServer">OnSaveDataInSettingsAtServer</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+		<Event name="BeforeLoadDataFromSettingsAtServer">OnLoadDataFromSettingsAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="HeaderGroup" id="76">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group header</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group header</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="HeaderGroupExtendedTooltip" id="116"/>
+			<ChildItems>
+				<UsualGroup name="GroupLeft" id="78">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group on the left</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group on the left</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="GroupLeftExtendedTooltip" id="117"/>
+					<ChildItems>
+						<InputField name="Company" id="23">
+							<DataPath>Object.Company</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<InputHint>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Company</v8:content>
+								</v8:item>
+							</InputHint>
+							<ContextMenu name="CounterpartyContextMenu" id="24"/>
+							<ExtendedTooltip name="CounterpartyExtendedTooltip" id="118"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="FolderRight" id="79">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group right</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group right</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="FolderRightExtendedTooltip" id="119"/>
+					<ChildItems>
+						<InputField name="PriceKind" id="46">
+							<DataPath>Object.PriceKind</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<InputHint>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Price kind</v8:content>
+								</v8:item>
+							</InputHint>
+							<ContextMenu name="KindPricesContextMenu" id="47"/>
+							<ExtendedTooltip name="KindPricesExtendedTooltip" id="120"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="FillModesGroup" id="89">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Fill mode</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group fill mode</v8:content>
+				</v8:item>
+			</ToolTip>
+			<HorizontalStretch>true</HorizontalStretch>
+			<Group>Horizontal</Group>
+			<Behavior>Collapsible</Behavior>
+			<Collapsed>true</Collapsed>
+			<ControlRepresentation>Picture</ControlRepresentation>
+			<Representation>None</Representation>
+			<ExtendedTooltip name="FillModesGroupExtendedTooltip" id="122"/>
+			<ChildItems>
+				<UsualGroup name="FillingPriceTagsMode" id="98">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Price tags fill mode</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Price tags fill mode</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="PriceTagsFillingModeExtendedTooltip" id="123"/>
+					<ChildItems>
+						<CheckBoxField name="FillPriceTagsQuantityOnInventory" id="92">
+							<DataPath>FillPriceTagsQuantityOnInventory</DataPath>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="FillPriceTagsQuantityOnInventoryContextMenu" id="93"/>
+							<ExtendedTooltip name="FillPriceTagsQuantityOnInventoryExtendedTooltip" id="124"/>
+						</CheckBoxField>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="FillingModeLabels" id="99">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Price tags fill mode</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Price tags fill mode</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="LabelsFillingModeExtendedTooltip" id="126"/>
+					<ChildItems>
+						<CheckBoxField name="FillLabelsQuantityOnInventory" id="96">
+							<DataPath>FillLabelsQuantityOnInventory</DataPath>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="FillLabelsQuantityByWarehouseBalancesContextMenu" id="97"/>
+							<ExtendedTooltip name="FillLabelsQuantityByBalanceOnWarehousesExtendedTooltip" id="127"/>
+						</CheckBoxField>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="FillingModeFromDocument" id="167">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Filling mode from the document</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Filling mode from the document</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ModeOfFillingDocumentExtendedTooltip" id="168"/>
+					<ChildItems>
+						<RadioButtonField name="FillingModeTagsRadioButton" id="164">
+							<DataPath>FillingModeTagsRadioButton</DataPath>
+							<RadioButtonType>Auto</RadioButtonType>
+							<ChoiceList>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Fill in with balances</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:string">Fill in with balances</Value>
+									</xr:Value>
+								</xr:Item>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Fill out from document</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:string">Fill out from document</Value>
+									</xr:Value>
+								</xr:Item>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Do not fill</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:string">Do not fill</Value>
+									</xr:Value>
+								</xr:Item>
+							</ChoiceList>
+							<ContextMenu name="FillingModeTagsRadioButtonContextMenu" id="165"/>
+							<ExtendedTooltip name="FillingModeTagsRadioButtonExtendedTooltip" id="166"/>
+							<Events>
+								<Event name="OnChange">FillingModeTagsRadioButtonOnChange</Event>
+							</Events>
+						</RadioButtonField>
+						<RadioButtonField name="FillingModePriceLabelRadioButton" id="161">
+							<DataPath>FillingModePriceLabelRadioButton</DataPath>
+							<RadioButtonType>Auto</RadioButtonType>
+							<ChoiceList>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Fill in with balances</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:string">Fill in with balances</Value>
+									</xr:Value>
+								</xr:Item>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Fill out from document</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:string">Fill out from document</Value>
+									</xr:Value>
+								</xr:Item>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Do not fill</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:string">Do not fill</Value>
+									</xr:Value>
+								</xr:Item>
+							</ChoiceList>
+							<ContextMenu name="FillingModePriceLabelRadioButtonContextMenu" id="162"/>
+							<ExtendedTooltip name="FillingPriceLabelModeRadioButtonExtendedTooltip" id="163"/>
+							<Events>
+								<Event name="OnChange">FillingModePriceLabelRadioButtonOnChange</Event>
+							</Events>
+						</RadioButtonField>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="FilterGroup" id="29">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Filter</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Filter group</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Behavior>Collapsible</Behavior>
+			<Collapsed>true</Collapsed>
+			<ControlRepresentation>Picture</ControlRepresentation>
+			<Representation>None</Representation>
+			<ExtendedTooltip name="FilterGroupExtendedTooltip" id="129"/>
+			<ChildItems>
+				<Table name="SettingsComposerSettingsFilterFilterAvailableFields" id="49">
+					<Representation>Tree</Representation>
+					<Autofill>true</Autofill>
+					<SkipOnInput>false</SkipOnInput>
+					<Width>35</Width>
+					<HeightInTableRows>4</HeightInTableRows>
+					<ChoiceMode>true</ChoiceMode>
+					<HorizontalLines>false</HorizontalLines>
+					<VerticalLines>false</VerticalLines>
+					<EnableStartDrag>true</EnableStartDrag>
+					<EnableDrag>true</EnableDrag>
+					<DataPath>SettingsComposer.Settings.Filter.FilterAvailableFields</DataPath>
+					<SearchStringLocation>None</SearchStringLocation>
+					<ViewStatusLocation>None</ViewStatusLocation>
+					<SearchControlLocation>None</SearchControlLocation>
+					<ContextMenu name="SettingsComposerSettingsFilterAvailableFilterFieldsContextMenu" id="50"/>
+					<AutoCommandBar name="SettingsComposerSettingsFilterAvailableFilterFieldsCommandBar" id="51"/>
+					<ExtendedTooltip name="SettingsComposerSettingsFilterAvailableFilterFieldsExtendedTooltip" id="130"/>
+					<SearchStringAddition name="SettingsComposerSettingsFilterAvailableFilterFieldsSearchString" id="169">
+						<AdditionSource>
+							<Item>SettingsComposerSettingsFilterFilterAvailableFields</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="SettingsComposerSettingsFilterAvailableFilterFieldsSearchStringContextMenu" id="170"/>
+						<ExtendedTooltip name="SettingsComposerSettingsFilterAvailableFilterFieldsSearchStringExtendedTooltip" id="171"/>
+					</SearchStringAddition>
+					<ViewStatusAddition name="SettingsComposerSettingsFilterAvailableFilterFieldsViewStatus" id="172">
+						<AdditionSource>
+							<Item>SettingsComposerSettingsFilterFilterAvailableFields</Item>
+							<Type>ViewStatusRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="SettingsComposerSettingsFilterAvailableFilterFieldsViewStatusContextMenu" id="173"/>
+						<ExtendedTooltip name="SettingsComposerSettingsFilterAvailableFilterFieldsViewStatusExtendedTooltip" id="174"/>
+					</ViewStatusAddition>
+					<SearchControlAddition name="SettingsComposerSettingsFilterAvailableFilterFieldsSearchControl" id="175">
+						<AdditionSource>
+							<Item>SettingsComposerSettingsFilterFilterAvailableFields</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<ContextMenu name="SettingsComposerSettingsFilterAvailableFilterFieldsSearchControlContextMenu" id="176"/>
+						<ExtendedTooltip name="SettingsComposerSettingsFilterAvailableFilterFieldsSearchControlExtendedTooltip" id="177"/>
+					</SearchControlAddition>
+				</Table>
+				<Table name="SettingsComposerSettingsFilter" id="52">
+					<Representation>Tree</Representation>
+					<Autofill>true</Autofill>
+					<SkipOnInput>false</SkipOnInput>
+					<InitialTreeView>ExpandAllLevels</InitialTreeView>
+					<EnableStartDrag>true</EnableStartDrag>
+					<EnableDrag>true</EnableDrag>
+					<DataPath>SettingsComposer.Settings.Filter</DataPath>
+					<CommandSet>
+						<ExcludedCommand>UserSettingItemProperties</ExcludedCommand>
+					</CommandSet>
+					<SearchStringLocation>None</SearchStringLocation>
+					<ViewStatusLocation>None</ViewStatusLocation>
+					<SearchControlLocation>None</SearchControlLocation>
+					<ViewMode>All</ViewMode>
+					<SettingsNamedItemDetailedRepresentation>false</SettingsNamedItemDetailedRepresentation>
+					<ContextMenu name="SettingsComposerSettingsFilterContextMenu" id="53"/>
+					<AutoCommandBar name="SettingsComposerSettingsFilterCommandPanel" id="54"/>
+					<ExtendedTooltip name="SettingsComposerSettingsFilterExtendedTooltip" id="131"/>
+					<SearchStringAddition name="SettingsComposerSettingsFilterSearchString" id="178">
+						<AdditionSource>
+							<Item>SettingsComposerSettingsFilter</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="SettingsComposerSettingsFilterSearchStringContextMenu" id="179"/>
+						<ExtendedTooltip name="SettingsComposerSettingsFilterSearchStringExtendedTooltip" id="180"/>
+					</SearchStringAddition>
+					<ViewStatusAddition name="SettingsComposerSettingsFilterViewStatus" id="181">
+						<AdditionSource>
+							<Item>SettingsComposerSettingsFilter</Item>
+							<Type>ViewStatusRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="SettingsComposerSettingsFilterViewStatusContextMenu" id="182"/>
+						<ExtendedTooltip name="SettingsComposerSettingsFilterViewStatusExtendedTooltip" id="183"/>
+					</ViewStatusAddition>
+					<SearchControlAddition name="SettingsComposerSettingsFilterSearchControl" id="184">
+						<AdditionSource>
+							<Item>SettingsComposerSettingsFilter</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<ContextMenu name="SettingsComposerSettingsFilterSearchControlContextMenu" id="185"/>
+						<ExtendedTooltip name="SettingsComposerSettingsFilterSearchControlExtendedTooltip" id="186"/>
+					</SearchControlAddition>
+				</Table>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="GroupInventory" id="42">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Products</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Products</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Representation>None</Representation>
+			<ExtendedTooltip name="InventoryGroupExtendedTooltip" id="132"/>
+			<ChildItems>
+				<Table name="Inventory" id="6">
+					<SkipOnInput>false</SkipOnInput>
+					<ChangeRowSet>false</ChangeRowSet>
+					<AutoInsertNewRow>true</AutoInsertNewRow>
+					<EnableStartDrag>true</EnableStartDrag>
+					<EnableDrag>true</EnableDrag>
+					<DataPath>Object.Inventory</DataPath>
+					<SearchStringLocation>CommandBar</SearchStringLocation>
+					<ViewStatusLocation>Top</ViewStatusLocation>
+					<SearchControlLocation>CommandBar</SearchControlLocation>
+					<RowFilter xsi:nil="true"/>
+					<ContextMenu name="InventoryContextMenu" id="7"/>
+					<AutoCommandBar name="InventoryCommandPanel" id="8">
+						<ChildItems>
+							<Button name="FillInventoryTable" id="25">
+								<Type>CommandBarButton</Type>
+								<Representation>PictureAndText</Representation>
+								<DefaultButton>true</DefaultButton>
+								<SkipOnInput>false</SkipOnInput>
+								<CommandName>Form.Command.FillInventoryTable</CommandName>
+								<ExtendedTooltip name="FillInventoryTableExtendedTooltip" id="105"/>
+							</Button>
+							<Button name="InventorySelectStrings" id="55">
+								<Type>CommandBarButton</Type>
+								<SkipOnInput>false</SkipOnInput>
+								<CommandName>Form.Command.ChooseLines</CommandName>
+								<Title>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Select All</v8:content>
+									</v8:item>
+								</Title>
+								<ExtendedTooltip name="InventorySelectStringsExtendedTooltip" id="136"/>
+							</Button>
+							<Button name="InventoryExcludeStrings" id="56">
+								<Type>CommandBarButton</Type>
+								<SkipOnInput>false</SkipOnInput>
+								<CommandName>Form.Command.ExcludeRows</CommandName>
+								<Title>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Exclude All</v8:content>
+									</v8:item>
+								</Title>
+								<ExtendedTooltip name="InventoryExcludeStringsExtendedTooltip" id="137"/>
+							</Button>
+							<Popup name="GroupSet" id="82">
+								<Title>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Selected rows</v8:content>
+									</v8:item>
+								</Title>
+								<ToolTip>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Set</v8:content>
+									</v8:item>
+								</ToolTip>
+								<ExtendedTooltip name="GroupSetExtendedTooltip" id="140"/>
+								<ChildItems>
+									<Button name="InventoryChooseSelectedStrings" id="57">
+										<Type>CommandBarButton</Type>
+										<SkipOnInput>false</SkipOnInput>
+										<CommandName>Form.Command.ChooseHighlightedLines</CommandName>
+										<Title>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Select</v8:content>
+											</v8:item>
+										</Title>
+										<ExtendedTooltip name="InventoryChooseSelectedStringsExtendedTooltip" id="138"/>
+									</Button>
+									<Button name="InventoryExcludeSelectedStrings" id="58">
+										<Type>CommandBarButton</Type>
+										<SkipOnInput>false</SkipOnInput>
+										<CommandName>Form.Command.ExcludeSelectedRows</CommandName>
+										<Title>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Delete</v8:content>
+											</v8:item>
+										</Title>
+										<ExtendedTooltip name="InventoryExcludeSelectedStringsExtendedTooltip" id="139"/>
+									</Button>
+									<ButtonGroup name="InventoryGroupSet" id="198">
+										<Title>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Inventory group set</v8:content>
+											</v8:item>
+										</Title>
+										<ToolTip>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Inventory group set</v8:content>
+											</v8:item>
+										</ToolTip>
+										<ExtendedTooltip name="InventoryGroupSetExtendedTooltip" id="199"/>
+										<ChildItems>
+											<Button name="InventorySetToStickersNumber" id="80">
+												<Type>CommandBarButton</Type>
+												<SkipOnInput>false</SkipOnInput>
+												<CommandName>Form.Command.SetPriceTagsQuantity</CommandName>
+												<ExtendedTooltip name="InventorySetNumberOfPriceTagsExtendedTooltip" id="141"/>
+											</Button>
+											<Button name="InventorySetPriceTagsTemplate" id="83">
+												<Type>CommandBarButton</Type>
+												<SkipOnInput>false</SkipOnInput>
+												<CommandName>Form.Command.SetPriceTagsTemplate</CommandName>
+												<ExtendedTooltip name="InventorySetPriceTagsTemplateExtendedTooltip" id="142"/>
+											</Button>
+											<Button name="InventorySetLabelsNumber" id="81">
+												<Type>CommandBarButton</Type>
+												<SkipOnInput>false</SkipOnInput>
+												<CommandName>Form.Command.SetLabelsQuantity</CommandName>
+												<ExtendedTooltip name="InventorySetLabelsNumberExtendedTooltip" id="143"/>
+											</Button>
+											<Button name="InventorySetLabelsTemplate" id="84">
+												<Type>CommandBarButton</Type>
+												<SkipOnInput>false</SkipOnInput>
+												<CommandName>Form.Command.SetLabelsTemplate</CommandName>
+												<ExtendedTooltip name="InventorySetLabelsTemplateExtendedTooltip" id="144"/>
+											</Button>
+										</ChildItems>
+									</ButtonGroup>
+								</ChildItems>
+							</Popup>
+						</ChildItems>
+					</AutoCommandBar>
+					<ExtendedTooltip name="InventoryExtendedTooltip" id="145"/>
+					<SearchStringAddition name="InventorySearchString" id="187">
+						<AdditionSource>
+							<Item>Inventory</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="InventorySearchStringContextMenu" id="188"/>
+						<ExtendedTooltip name="InventorySearchStringExtendedTooltip" id="189"/>
+					</SearchStringAddition>
+					<ViewStatusAddition name="InventoryViewStatus" id="190">
+						<AdditionSource>
+							<Item>Inventory</Item>
+							<Type>ViewStatusRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="InventoryViewStatusContextMenu" id="191"/>
+						<ExtendedTooltip name="InventoryViewStatusExtendedTooltip" id="192"/>
+					</ViewStatusAddition>
+					<SearchControlAddition name="InventorySearchManagement" id="193">
+						<AdditionSource>
+							<Item>Inventory</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<ContextMenu name="InventorySearchManagementContextMenu" id="194"/>
+						<ExtendedTooltip name="InventorySearchControlExtendedTooltip" id="195"/>
+					</SearchControlAddition>
+					<Events>
+						<Event name="Selection">InventorySelection</Event>
+					</Events>
+					<ChildItems>
+						<CheckBoxField name="InventorySelected" id="34">
+							<DataPath>Object.Inventory.Selected</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<FixingInTable>Left</FixingInTable>
+							<ShowInHeader>false</ShowInHeader>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="InventorySelectedContextMenu" id="35"/>
+							<ExtendedTooltip name="InventorySelectedExtendedTooltip" id="146"/>
+							<Events>
+								<Event name="OnChange">InventoryChosenOnChange</Event>
+							</Events>
+						</CheckBoxField>
+						<LabelField name="InventoryLineNumber" id="9">
+							<DataPath>Object.Inventory.LineNumber</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<FixingInTable>Left</FixingInTable>
+							<Width>2</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="InventoryLineNumberContextMenu" id="10"/>
+							<ExtendedTooltip name="InventoryLineNumberExtendedTooltip" id="147"/>
+						</LabelField>
+						<InputField name="InventoryBarcode" id="19">
+							<DataPath>Object.Inventory.Barcode</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<FixingInTable>Left</FixingInTable>
+							<Width>12</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="InventoryBarCodeContextMenu" id="20"/>
+							<ExtendedTooltip name="InventoryBarcodeExtendedTooltip" id="148"/>
+						</InputField>
+						<InputField name="InventoryProductsAndServices" id="11">
+							<DataPath>Object.Inventory.ProductsAndServices</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<FixingInTable>Left</FixingInTable>
+							<Width>20</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ChoiceButton>false</ChoiceButton>
+							<ClearButton>false</ClearButton>
+							<SpinButton>false</SpinButton>
+							<OpenButton>true</OpenButton>
+							<CreateButton>false</CreateButton>
+							<TextEdit>false</TextEdit>
+							<ContextMenu name="InventoryProductsAndServicesContextMenu" id="12"/>
+							<ExtendedTooltip name="InventoryProductsAndServicesExtendedTooltip" id="149"/>
+						</InputField>
+						<InputField name="InventoryCharacteristic" id="13">
+							<DataPath>Object.Inventory.Characteristic</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>20</Width>
+							<ChoiceButton>false</ChoiceButton>
+							<OpenButton>true</OpenButton>
+							<CreateButton>false</CreateButton>
+							<TextEdit>false</TextEdit>
+							<ContextMenu name="InventoryCharacteristicContextMenu" id="14"/>
+							<ExtendedTooltip name="InventoryCharacteristicExtendedTooltip" id="150"/>
+						</InputField>
+						<InputField name="InventoryBatch" id="15">
+							<DataPath>Object.Inventory.Batch</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>20</Width>
+							<ChoiceButton>false</ChoiceButton>
+							<OpenButton>true</OpenButton>
+							<TextEdit>false</TextEdit>
+							<ContextMenu name="InventoryBatchContextMenu" id="16"/>
+							<ExtendedTooltip name="InventoryBatchExtendedTooltip" id="151"/>
+						</InputField>
+						<InputField name="InventoryPrice" id="17">
+							<DataPath>Object.Inventory.Price</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>10</Width>
+							<ContextMenu name="InventoryPriceContextMenu" id="18"/>
+							<ExtendedTooltip name="InventoryPriceExtendedTooltip" id="152"/>
+						</InputField>
+						<InputField name="InventoryBalanceAtWarehouse" id="67">
+							<DataPath>Object.Inventory.BalanceAtWarehouse</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>At warehouse</v8:content>
+								</v8:item>
+							</Title>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>9</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="InventoryBalanceAtWarehouseContextMenu" id="68"/>
+							<ExtendedTooltip name="InventoryBalanceAtWarehouseExtendedTooltip" id="153"/>
+						</InputField>
+						<InputField name="InventoryDocumentQuantity" id="69">
+							<DataPath>Object.Inventory.QuantityInDocument</DataPath>
+							<Visible>false</Visible>
+							<ReadOnly>true</ReadOnly>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>In document</v8:content>
+								</v8:item>
+							</Title>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>10</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="InventoryDocumentQuantityContextMenu" id="70"/>
+							<ExtendedTooltip name="InventoryDocumentQuantityExtendedTooltip" id="154"/>
+						</InputField>
+						<InputField name="InventoryPriceTagTemplate" id="63">
+							<DataPath>Object.Inventory.PriceTagsTemplate</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>17</Width>
+							<ContextMenu name="InventoryPriceTagTemplateContextMenu" id="64"/>
+							<ExtendedTooltip name="InventoryPriceTagTemplateExtendedTooltip" id="155"/>
+							<Events>
+								<Event name="OnChange">InventoryPriceTagsTemplateOnChange</Event>
+							</Events>
+						</InputField>
+						<InputField name="InventoryPriceTagsNumber" id="21">
+							<DataPath>Object.Inventory.PriceTagsQuantity</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Tag quantity</v8:content>
+								</v8:item>
+							</Title>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>11</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="InventoryPriceTagsNumberContextMenu" id="22"/>
+							<ExtendedTooltip name="InventoryPriceTagsNumberExtendedTooltip" id="156"/>
+							<Events>
+								<Event name="OnChange">InventoryPriceTagsQuantityOnChange</Event>
+							</Events>
+						</InputField>
+						<InputField name="InventoryTagTemplate" id="61">
+							<DataPath>Object.Inventory.LabelTemplate</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>17</Width>
+							<ContextMenu name="InventoryTagTemplateContextMenu" id="62"/>
+							<ExtendedTooltip name="InventoryTagTemplateExtendedTooltip" id="157"/>
+							<Events>
+								<Event name="OnChange">InventoryLabelTemplateOnChange</Event>
+							</Events>
+						</InputField>
+						<InputField name="InventoryTagsNumber" id="65">
+							<DataPath>Object.Inventory.LabelsQuantity</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Labels quantity</v8:content>
+								</v8:item>
+							</Title>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="InventoryTagsNumberContextMenu" id="66"/>
+							<ExtendedTooltip name="InventoryTagsNumberExtendedTooltip" id="158"/>
+							<Events>
+								<Event name="OnChange">InventoryLabelsQuantityOnChange</Event>
+							</Events>
+						</InputField>
+					</ChildItems>
+				</Table>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.PrintLabelsAndTags</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<Save>
+				<Field>Object.PriceKind</Field>
+				<Field>Object.Company</Field>
+			</Save>
+			<Columns>
+				<AdditionalColumns table="Object.Inventory">
+					<Column name="Selected" id="1">
+						<Title>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Selected</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:boolean</v8:Type>
+						</Type>
+					</Column>
+				</AdditionalColumns>
+			</Columns>
+		</Attribute>
+		<Attribute name="SettingsComposer" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Settings composer</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>dcsset:SettingsComposer</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="FillOutPriceTagsQuantityOnDocument" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Fill in the tags number by the document</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="FillLabelsQuantityByDocument" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Fill in the tag quantity by document</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="VisibleSelection" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Filter visible</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<Save>
+				<Field>VisibleSelection</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="FillPriceTagsQuantityOnInventory" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Fill in the price tag quantity by balance</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<Save>
+				<Field>FillPriceTagsQuantityOnInventory</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="FillLabelsQuantityOnInventory" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Fill in the tag quantity by balance</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<Save>
+				<Field>FillLabelsQuantityOnInventory</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="Mode" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Mode</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<Save>
+				<Field>Mode</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="PrintFromDocument" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Print from document</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="VisibleRegimeFill" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Fill mode visible</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<Save>
+				<Field>VisibleRegimeFill</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="SavedSettings" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Saved Settings</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="FillingModePriceLabelRadioButton" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Price Tags</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="FillingModeTagsRadioButton" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>labels</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<ConditionalAppearance>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>GoodsLabelsQuantity</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Object.Products.LabelTemplate</dcsset:left>
+						<dcsset:comparisonType>NotFilled</dcsset:comparisonType>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>TextColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">web:LightGray</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+				<dcsset:presentation xsi:type="xs:string">Number of gray labels if it is not filled in</dcsset:presentation>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>GoodsPriceTagsQuantity</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Object.Products.PriceTagsTemplate</dcsset:left>
+						<dcsset:comparisonType>NotFilled</dcsset:comparisonType>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>TextColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">web:LightGray</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+				<dcsset:presentation xsi:type="xs:string">Number of gray price tags if it is not filled in</dcsset:presentation>
+			</dcsset:item>
+		</ConditionalAppearance>
+	</Attributes>
+	<Commands>
+		<Command name="FillInventoryTable" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Fill</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Fill</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>FillInventoryTable</Action>
+		</Command>
+		<Command name="ChooseHighlightedLines" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Select Highlighted</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Select Highlighted</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.CheckAll</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ChooseHighlightedLines</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="ChooseLines" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Select All</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Select All</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.CheckAll</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ChooseLines</Action>
+			<Representation>Picture</Representation>
+		</Command>
+		<Command name="ExcludeSelectedRows" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Exclude selected</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Exclude selected</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.UncheckAll</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ExcludeSelectedRows</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="ExcludeRows" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Exclude All</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Exclude All</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.UncheckAll</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ExcludeRows</Action>
+			<Representation>Picture</Representation>
+		</Command>
+		<Command name="Print" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Print</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Print</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Print</Action>
+		</Command>
+		<Command name="ShowHideFilter" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Show Hide Filter</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Show (hide) filter</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.DataCompositionFilter</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+		</Command>
+		<Command name="SetPriceTagsQuantity" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Set price tags quantity</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Set price tags quantity</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>SetPriceTagsQuantity</Action>
+		</Command>
+		<Command name="SetLabelsQuantity" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Set labels quantity</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Set price tags quantity</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>SetLabelsQuantity</Action>
+		</Command>
+		<Command name="SetPriceTagsTemplate" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Set price tags template</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Set price tags template</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>SetPriceTagsTemplate</Action>
+		</Command>
+		<Command name="SetLabelsTemplate" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Set labels template</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Set labels template</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>SetLabelsTemplate</Action>
+		</Command>
+		<Command name="SetModeTagsPrinting" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Tags printing</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Set mode tags printing</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>SetModeTagsPrinting</Action>
+		</Command>
+		<Command name="SetModeLabelsPrinting" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Labels printing</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Set mode labels printing</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>SetModeLabelsPrinting</Action>
+		</Command>
+		<Command name="SetModeTagsAndLabelsPrinting" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Print labels and tags</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Set a mode of labels and tags print</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>SetModeTagsAndLabelsPrinting</Action>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="AddressInStorage">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<KeyParameter>true</KeyParameter>
+		</Parameter>
+		<Parameter name="ActionsStructure">
+			<Type/>
+		</Parameter>
+	</Parameters>
+	<CommandInterface>
+		<NavigationPanel>
+			<Item>
+				<Command>Catalog.LabelsAndTagsTemplates.StandardCommand.OpenList</Command>
+				<Type>Added</Type>
+				<CommandGroup>FormNavigationPanelGoTo</CommandGroup>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+		</NavigationPanel>
+	</CommandInterface>
+</Form>

@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Title>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Document information</v8:content>
+		</v8:item>
+	</Title>
+	<AutoTitle>false</AutoTitle>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="FormOK" id="46">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<DefaultItem>true</DefaultItem>
+				<OnlyInAllActions>true</OnlyInAllActions>
+				<CommandName>Form.StandardCommand.OK</CommandName>
+				<ExtendedTooltip name="FormOKExtendedTooltip" id="47"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="Main" id="38">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Main</v8:content>
+				</v8:item>
+			</Title>
+			<HorizontalStretch>true</HorizontalStretch>
+			<Group>Vertical</Group>
+			<Behavior>Collapsible</Behavior>
+			<ExtendedTooltip name="MainExtendedTooltip" id="39"/>
+			<ChildItems>
+				<InputField name="Date" id="1">
+					<DataPath>Object.Date</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<ContextMenu name="DateContextMenu" id="2"/>
+					<ExtendedTooltip name="DateExtendedTooltip" id="3"/>
+				</InputField>
+				<InputField name="Company" id="4">
+					<DataPath>Object.Company</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<ContextMenu name="CounterpartyContextMenu" id="5"/>
+					<ExtendedTooltip name="CompanyExtendedTooltip" id="6"/>
+				</InputField>
+				<InputField name="StructuralUnit" id="7">
+					<DataPath>Object.StructuralUnit</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<ContextMenu name="StructuralUnitContextMenu" id="8"/>
+					<ExtendedTooltip name="StructuralUnitExtendedTooltip" id="9"/>
+				</InputField>
+				<InputField name="DocumentCurrency" id="22">
+					<DataPath>Object.DocumentCurrency</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<AutoMarkIncomplete>false</AutoMarkIncomplete>
+					<ContextMenu name="DocumentCurrencyContextMenu" id="23"/>
+					<ExtendedTooltip name="DocumentCurrencyExtendedTooltip" id="24"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="FolderPrices" id="40">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Prices</v8:content>
+				</v8:item>
+			</Title>
+			<HorizontalStretch>true</HorizontalStretch>
+			<Group>Vertical</Group>
+			<Behavior>Collapsible</Behavior>
+			<ExtendedTooltip name="GroupPricesExtendedTooltip" id="41"/>
+			<ChildItems>
+				<InputField name="PricePeriod" id="13">
+					<DataPath>Object.PricePeriod</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<ContextMenu name="PricePeriodContextMenu" id="14"/>
+					<ExtendedTooltip name="PricePeriodExtendedTooltip" id="15"/>
+				</InputField>
+				<InputField name="CounterpartyPriceKind" id="10">
+					<DataPath>Object.CounterpartyPriceKind</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<ContextMenu name="CounterpartyPriceTypeContextMenu" id="11"/>
+					<ExtendedTooltip name="CounterpartyPriceKindExtendedTooltip" id="12"/>
+				</InputField>
+				<InputField name="PriceKindCurrency" id="25">
+					<DataPath>Object.PriceKindCurrency</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<AutoMarkIncomplete>false</AutoMarkIncomplete>
+					<ContextMenu name="PricesKindCurrencyContextMenu" id="26"/>
+					<ExtendedTooltip name="PricesKindCurrencyExtendedTooltip" id="27"/>
+				</InputField>
+				<InputField name="VATTaxation" id="19">
+					<DataPath>Object.VATTaxation</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<ContextMenu name="VATTaxationContextMenu" id="20"/>
+					<ExtendedTooltip name="VATTaxationExtendedTooltip" id="21"/>
+				</InputField>
+				<InputField name="AmountIncludesVAT" id="16">
+					<DataPath>Object.AmountIncludesVAT</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<TitleLocation>Left</TitleLocation>
+					<ContextMenu name="AmountIncludesVATContextMenu" id="17"/>
+					<ExtendedTooltip name="AmountIncludesVATExtendedTooltip" id="18"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ProductsAndServicesGroup" id="44">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Available products and services</v8:content>
+				</v8:item>
+			</Title>
+			<HorizontalStretch>true</HorizontalStretch>
+			<Group>Horizontal</Group>
+			<ExtendedTooltip name="GroupProductsAndServicesExtendedTooltip" id="45"/>
+			<ChildItems>
+				<LabelDecoration name="DecorationProductsAndServicesTypeTitle" id="48">
+					<Width>14</Width>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>With type only:</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="DecorationProductsAndServicesTypeTitleContextMenu" id="49"/>
+					<ExtendedTooltip name="DecorationProductsAndServicesTypeTitleExtendedTooltip" id="50"/>
+				</LabelDecoration>
+				<LabelDecoration name="DecorationProductsAndServicesTypeContent" id="51">
+					<Width>15</Width>
+					<Font bold="true" kind="AutoFont"/>
+					<ContextMenu name="DecorationProductsAndServicesTypeContentContextMenu" id="52"/>
+					<ExtendedTooltip name="DecorationProductsAndServicesTypeContentExtendedTooltip" id="53"/>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.PickingReceipt</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+	</Attributes>
+</Form>

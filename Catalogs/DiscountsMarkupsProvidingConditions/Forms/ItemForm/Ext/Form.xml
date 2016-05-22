@@ -1,0 +1,796 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<Customizable>false</Customizable>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="FormCommandBar" id="-1"/>
+	<Events>
+		<Event name="AfterWrite">AfterWrite</Event>
+		<Event name="AfterWriteAtServer">AfterWriteAtServer</Event>
+		<Event name="OnReadAtServer">OnReadAtServer</Event>
+		<Event name="BeforeWrite">BeforeWrite</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="Parent" id="140">
+			<TitleLocation>Top</TitleLocation>
+			<Width>30</Width>
+			<HorizontalStretch>false</HorizontalStretch>
+			<ContextMenu name="ParentContextMenu" id="141"/>
+			<ExtendedTooltip name="ParentExtendedTooltip" id="185"/>
+		</InputField>
+		<UsualGroup name="GroupAssignmentCondition" id="74">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Assignment condition</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Assignment condition</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="GroupAssignmentConditionExtendedTooltip" id="186"/>
+			<ChildItems>
+				<InputField name="AssignmentCondition" id="7">
+					<DataPath>Object.AssignmentCondition</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Assignment condition</v8:content>
+						</v8:item>
+					</Title>
+					<TitleLocation>Top</TitleLocation>
+					<EditMode>EnterOnInput</EditMode>
+					<Width>30</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ListChoiceMode>true</ListChoiceMode>
+					<TextEdit>false</TextEdit>
+					<BackColor>style:ManagingFieldBackgroundColor</BackColor>
+					<ContextMenu name="AssignmentConditionContextMenu" id="8"/>
+					<ExtendedTooltip name="AssignmentConditionExtendedTooltip" id="187"/>
+					<Events>
+						<Event name="OnChange">AssignmentConditionOnChange</Event>
+					</Events>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<Pages name="GroupMainAttributesAndComment" id="310">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group main attributes and comment</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group main attributes and comment</v8:content>
+				</v8:item>
+			</ToolTip>
+			<ExtendedTooltip name="GroupMainAttributesAndCommentExtendedTooltip" id="311"/>
+			<ChildItems>
+				<Page name="GroupMainAttributes" id="312">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Main</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group main attributes</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="GroupMainAttributesExtendedTooltip" id="313"/>
+					<ChildItems>
+						<Pages name="Pages" id="39">
+							<EnableContentChange>true</EnableContentChange>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Pages</v8:content>
+								</v8:item>
+							</Title>
+							<HorizontalStretch>true</HorizontalStretch>
+							<VerticalStretch>true</VerticalStretch>
+							<PagesRepresentation>None</PagesRepresentation>
+							<ExtendedTooltip name="PagesExtendedTooltip" id="188"/>
+							<ChildItems>
+								<Page name="ForOneTimeSalesVolume" id="70">
+									<EnableContentChange>true</EnableContentChange>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Assignment conditions</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Page assignment conditions for one-time sales volume</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="ForOneTimeSalesVolumeExtendedTooltip" id="189"/>
+									<ChildItems>
+										<LabelDecoration name="Decoration" id="130">
+											<SkipOnInput>false</SkipOnInput>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Condition description:</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="DecorationContextMenu" id="131"/>
+											<ExtendedTooltip name="DecorationExtendedTooltip" id="190"/>
+										</LabelDecoration>
+										<UsualGroup name="GroupFirstRow" id="83">
+											<EnableContentChange>true</EnableContentChange>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group first row</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group first row</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Horizontal</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="GroupFirstRowExtendedTooltip" id="191"/>
+											<ChildItems>
+												<InputField name="UseRestrictionCriterionForSalesVolume" id="15">
+													<DataPath>Object.UseRestrictionCriterionForSalesVolume</DataPath>
+													<TitleLocation>None</TitleLocation>
+													<EditMode>EnterOnInput</EditMode>
+													<Width>14</Width>
+													<HorizontalStretch>false</HorizontalStretch>
+													<ContextMenu name="UseRestrictionCriterionForSalesVolumeContextMenu" id="16"/>
+													<ExtendedTooltip name="UseRestrictionCriterionForSalesVolumeExtendedTooltip" id="192"/>
+													<Events>
+														<Event name="OnChange">ApplicationCriterionForSalesVolumeOnChange</Event>
+													</Events>
+												</InputField>
+												<InputField name="RestrictionArea" id="25">
+													<DataPath>Object.RestrictionArea</DataPath>
+													<TitleLocation>None</TitleLocation>
+													<EditMode>EnterOnInput</EditMode>
+													<Width>12</Width>
+													<HorizontalStretch>false</HorizontalStretch>
+													<ContextMenu name="RestrictionAreaContextMenu" id="26"/>
+													<ExtendedTooltip name="RestrictionAreaExtendedTooltip" id="193"/>
+													<Events>
+														<Event name="OnChange">RestrictionAreaOnChange</Event>
+													</Events>
+												</InputField>
+												<InputField name="ComparisonType" id="125">
+													<DataPath>Object.ComparisonType</DataPath>
+													<TitleLocation>None</TitleLocation>
+													<Width>10</Width>
+													<HorizontalStretch>false</HorizontalStretch>
+													<ContextMenu name="ComparisonTypeContextMenu" id="126"/>
+													<ExtendedTooltip name="ComparisonTypeExtendedTooltip" id="194"/>
+													<Events>
+														<Event name="OnChange">ComparisonTypeOnChange</Event>
+													</Events>
+												</InputField>
+												<InputField name="AssignmentConditionValue" id="35">
+													<DataPath>Object.RestrictionConditionValue</DataPath>
+													<TitleLocation>None</TitleLocation>
+													<EditMode>EnterOnInput</EditMode>
+													<Width>10</Width>
+													<HorizontalStretch>false</HorizontalStretch>
+													<ContextMenu name="AssignmentConditionValueContextMenu" id="36"/>
+													<ExtendedTooltip name="AssignmentConditionValueExtendedTooltip" id="195"/>
+													<Events>
+														<Event name="OnChange">AssignmentConditionValueOnChange</Event>
+													</Events>
+												</InputField>
+												<InputField name="RestrictionCurrency" id="27">
+													<DataPath>Object.RestrictionCurrency</DataPath>
+													<TitleLocation>None</TitleLocation>
+													<EditMode>EnterOnInput</EditMode>
+													<Width>10</Width>
+													<HorizontalStretch>false</HorizontalStretch>
+													<DropListButton>true</DropListButton>
+													<ContextMenu name="RestrictionCurrencyContextMenu" id="28"/>
+													<ExtendedTooltip name="RestrictionCurrencyExtendedTooltip" id="196"/>
+													<Events>
+														<Event name="OnChange">RestrictionCurrencyOnChange</Event>
+													</Events>
+												</InputField>
+											</ChildItems>
+										</UsualGroup>
+										<UsualGroup name="GroupSecondString" id="84">
+											<EnableContentChange>true</EnableContentChange>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group second string</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group second string</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Horizontal</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="GroupSecondRowExtendedTooltip" id="197"/>
+											<ChildItems>
+												<Table name="SalesFilterByProductsAndServices" id="279">
+													<AutoInsertNewRow>true</AutoInsertNewRow>
+													<EnableStartDrag>true</EnableStartDrag>
+													<EnableDrag>true</EnableDrag>
+													<DataPath>Object.SalesFilterByProductsAndServices</DataPath>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Specify a list of products and services if you need to keep accounts of sales of only a particular list of products and services or products and services groups.If the list is not populated, then the sales volume is calculated without restriction by products and services.</v8:content>
+														</v8:item>
+													</ToolTip>
+													<ToolTipRepresentation>ShowTop</ToolTipRepresentation>
+													<RowFilter xsi:nil="true"/>
+													<ContextMenu name="FilterSalesByProductsAndServicesContextMenu" id="280"/>
+													<AutoCommandBar name="FilterSalesByProductsAndServicesCommandBar" id="281"/>
+													<ExtendedTooltip name="FilterSalesByProductsAndServicesExtendedTooltip" id="282"/>
+													<SearchStringAddition name="FilterSalesByProductsAndServicesSearchString" id="283">
+														<AdditionSource>
+															<Item>SalesFilterByProductsAndServices</Item>
+															<Type>SearchStringRepresentation</Type>
+														</AdditionSource>
+														<ContextMenu name="FilterSalesByProductsAndServicesSearchStringContextMenu" id="286"/>
+														<ExtendedTooltip name="FilterSalesByProductsAndServicesSearchStringExtendedTooltip" id="287"/>
+													</SearchStringAddition>
+													<ViewStatusAddition name="FilterSalesByProductsAndServicesViewStatus" id="288">
+														<AdditionSource>
+															<Item>SalesFilterByProductsAndServices</Item>
+															<Type>ViewStatusRepresentation</Type>
+														</AdditionSource>
+														<ContextMenu name="FilterSalesByProductsAndServicesViewStatusContextMenu" id="291"/>
+														<ExtendedTooltip name="FilterSalesByProductsAndServicesViewStatusExtendedTooltip" id="292"/>
+													</ViewStatusAddition>
+													<SearchControlAddition name="FilterSalesByProductsAndServicesSearchManagement" id="293">
+														<AdditionSource>
+															<Item>SalesFilterByProductsAndServices</Item>
+															<Type>SearchControl</Type>
+														</AdditionSource>
+														<ContextMenu name="FilterSalesByProductsAndServicesSearchManagementContextMenu" id="296"/>
+														<ExtendedTooltip name="FilterSalesByProductsAndServicesSearchManagementExtendedTooltip" id="297"/>
+													</SearchControlAddition>
+													<Events>
+														<Event name="OnEditEnd">FilterSalesByProductsAndServicesOnEditEnd</Event>
+														<Event name="AfterDeleteRow">FilterSalesByProductsAndServicesAfterDeletion</Event>
+													</Events>
+													<ChildItems>
+														<LabelField name="FilterSalesByProductsAndServicesLineNumber" id="298">
+															<DataPath>Object.SalesFilterByProductsAndServices.LineNumber</DataPath>
+															<EditMode>EnterOnInput</EditMode>
+															<Width>4</Width>
+															<HorizontalStretch>false</HorizontalStretch>
+															<ContextMenu name="FilterSalesByProductsAndServicesLineNumberContextMenu" id="299"/>
+															<ExtendedTooltip name="FilterSalesByProductsAndServicesLineNumberExtendedTooltip" id="300"/>
+														</LabelField>
+														<InputField name="FilterSalesByProductsAndServicesProductsAndServices" id="301">
+															<DataPath>Object.SalesFilterByProductsAndServices.ProductsAndServices</DataPath>
+															<EditMode>EnterOnInput</EditMode>
+															<ContextMenu name="FilterSalesByProductsAndServicesProductsAndServicesContextMenu" id="302"/>
+															<ExtendedTooltip name="FilterSalesByProductsAndServicesProductsAndServicesExtendedTooltip" id="303"/>
+															<Events>
+																<Event name="OnChange">FilterSalesByProductsAndServicesProductsAndServicesOnChange</Event>
+															</Events>
+														</InputField>
+														<InputField name="FilterSalesByProductsAndServicesCharacteristic" id="304">
+															<DataPath>Object.SalesFilterByProductsAndServices.Characteristic</DataPath>
+															<EditMode>EnterOnInput</EditMode>
+															<ContextMenu name="FilterSalesByProductsAndServicesCharacteristicContextMenu" id="305"/>
+															<ExtendedTooltip name="FilterSalesByProductsAndServicesCharacteristicExtendedTooltip" id="306"/>
+														</InputField>
+													</ChildItems>
+												</Table>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</Page>
+								<Page name="ForKitPurchase" id="155">
+									<Visible>false</Visible>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>For kit purchase</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>For kit purchase</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="ForPurchaseKitExtendedTooltip" id="229"/>
+									<ChildItems>
+										<Table name="PurchaseKit" id="156">
+											<AutoInsertNewRow>true</AutoInsertNewRow>
+											<EnableStartDrag>true</EnableStartDrag>
+											<EnableDrag>true</EnableDrag>
+											<DataPath>Object.PurchaseKit</DataPath>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Discount (markup) is provided if the document contains all items from the tabular section of the condition. 
+In column "Quantity" specify a minimum value.</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ToolTipRepresentation>ShowTop</ToolTipRepresentation>
+											<SearchStringLocation>None</SearchStringLocation>
+											<ViewStatusLocation>None</ViewStatusLocation>
+											<SearchControlLocation>None</SearchControlLocation>
+											<RowFilter xsi:nil="true"/>
+											<ContextMenu name="PurchaseKitContextMenu" id="157"/>
+											<AutoCommandBar name="PurchaseKitCommandBar" id="158"/>
+											<ExtendedTooltip name="PurchaseKitExtendedTooltip" id="230"/>
+											<SearchStringAddition name="PurchaseKitSearchString" id="261">
+												<AdditionSource>
+													<Item>PurchaseKit</Item>
+													<Type>SearchStringRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="PurchaseKitSearchStringContextMenu" id="262"/>
+												<ExtendedTooltip name="PurchaseKitSearchStringExtendedTooltip" id="263"/>
+											</SearchStringAddition>
+											<ViewStatusAddition name="PurchaseKitStatusView" id="264">
+												<AdditionSource>
+													<Item>PurchaseKit</Item>
+													<Type>ViewStatusRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="PurchaseKitViewStatusContextMenu" id="265"/>
+												<ExtendedTooltip name="PurchaseKitViewStatusExtendedTooltip" id="266"/>
+											</ViewStatusAddition>
+											<SearchControlAddition name="PurchaseKitSearchManagement" id="267">
+												<AdditionSource>
+													<Item>PurchaseKit</Item>
+													<Type>SearchControl</Type>
+												</AdditionSource>
+												<ContextMenu name="PurchaseKitSearchManagementContextMenu" id="268"/>
+												<ExtendedTooltip name="PurchaseKitSearchManagementExtendedTooltip" id="269"/>
+											</SearchControlAddition>
+											<Events>
+												<Event name="OnEditEnd">PurchaseKitOnEditEnd</Event>
+												<Event name="AfterDeleteRow">PurchaseKitAfterDeleteRow</Event>
+											</Events>
+											<ChildItems>
+												<LabelField name="PurchaseKitLineNumber" id="159">
+													<DataPath>Object.PurchaseKit.LineNumber</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<Width>4</Width>
+													<HorizontalStretch>false</HorizontalStretch>
+													<ContextMenu name="PurchaseKitLineNumberContextMenu" id="160"/>
+													<ExtendedTooltip name="PurchaseKitLineNumberExtendedTooltip" id="231"/>
+												</LabelField>
+												<LabelField name="PurchaseKitProductsAndServicesCode" id="181">
+													<DataPath>Object.PurchaseKit.ProductsAndServices.Code</DataPath>
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Code</v8:content>
+														</v8:item>
+													</Title>
+													<EditMode>EnterOnInput</EditMode>
+													<Width>9</Width>
+													<HorizontalStretch>false</HorizontalStretch>
+													<ContextMenu name="PurchaseKitProductsAndServicesCodeContextMenu" id="182"/>
+													<ExtendedTooltip name="PurchaseKitProductsAndServicesCodeExtendedTooltip" id="232"/>
+												</LabelField>
+												<LabelField name="PurchaseKitProductsAndServicesSKU" id="183">
+													<DataPath>Object.PurchaseKit.ProductsAndServices.SKU</DataPath>
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>SKU</v8:content>
+														</v8:item>
+													</Title>
+													<EditMode>EnterOnInput</EditMode>
+													<Width>12</Width>
+													<HorizontalStretch>false</HorizontalStretch>
+													<ContextMenu name="PurchaseKitProductsAndServicesSKUContextMenu" id="184"/>
+													<ExtendedTooltip name="PurchaseKitProductsAndServicesSKUExtendedTooltip" id="233"/>
+												</LabelField>
+												<InputField name="PurchaseKitProductsAndServices" id="161">
+													<DataPath>Object.PurchaseKit.ProductsAndServices</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="PurchaseKitProductsAndServicesContextMenu" id="162"/>
+													<ExtendedTooltip name="PurchaseKitProductsAndServicesExtendedTooltip" id="234"/>
+													<Events>
+														<Event name="OnChange">PurchaseKitProductsAndServicesOnChange</Event>
+													</Events>
+												</InputField>
+												<InputField name="PurchaseKitCharacteristic" id="163">
+													<DataPath>Object.PurchaseKit.Characteristic</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="PurchaseKitCharacteristicContextMenu" id="164"/>
+													<ExtendedTooltip name="PurchaseKitCharacteristicExtendedTooltip" id="235"/>
+												</InputField>
+												<InputField name="PurchaseKitMeasurementUnit" id="270">
+													<DataPath>Object.PurchaseKit.MeasurementUnit</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<Width>6</Width>
+													<HorizontalStretch>false</HorizontalStretch>
+													<DropListButton>true</DropListButton>
+													<ChoiceButton>false</ChoiceButton>
+													<OpenButton>false</OpenButton>
+													<ChooseType>false</ChooseType>
+													<ContextMenu name="PurchaseKitMeasurementUnitContextMenu" id="271"/>
+													<ExtendedTooltip name="PurchaseKitMeasurementUnitExtendedTooltip" id="272"/>
+												</InputField>
+												<InputField name="PurchaseKitCount" id="273">
+													<DataPath>Object.PurchaseKit.Quantity</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="PurchaseKitQuantityContextMenu" id="274"/>
+													<ExtendedTooltip name="PurchaseKitCountExtendedTooltip" id="275"/>
+												</InputField>
+											</ChildItems>
+										</Table>
+									</ChildItems>
+								</Page>
+							</ChildItems>
+						</Pages>
+					</ChildItems>
+				</Page>
+				<Page name="CommentGroup" id="314">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Comment</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group comment</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="GroupCommentExtendedTooltip" id="315"/>
+					<ChildItems>
+						<InputField name="Comment" id="307">
+							<DataPath>Object.Comment</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<MultiLine>true</MultiLine>
+							<InputHint>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Comment</v8:content>
+								</v8:item>
+							</InputHint>
+							<ContextMenu name="CommentContextMenu" id="308"/>
+							<ExtendedTooltip name="CommentExtendedTooltip" id="309"/>
+							<Events>
+								<Event name="OnChange">CommentOnChange</Event>
+							</Events>
+						</InputField>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+		<UsualGroup name="GroupDescription" id="129">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Description</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Description group</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="GroupDescriptionExtendedTooltip" id="250"/>
+			<ChildItems>
+				<InputField name="Description" id="1">
+					<DataPath>Object.Description</DataPath>
+					<TitleLocation>Left</TitleLocation>
+					<EditMode>EnterOnInput</EditMode>
+					<DropListButton>true</DropListButton>
+					<ChoiceListButton>true</ChoiceListButton>
+					<ContextMenu name="DescriptionContextMenu" id="2"/>
+					<ExtendedTooltip name="DescriptionExtendedTooltip" id="251"/>
+					<Events>
+						<Event name="OnChange">DescriptionOnChange</Event>
+						<Event name="AutoComplete">NameAutoFilter</Event>
+					</Events>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Type>
+				<v8:Type>cfg:CatalogObject.DiscountsMarkupsProvidingConditions</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+			<Columns>
+				<AdditionalColumns table="Object.SalesFilterByProductsAndServices">
+					<Column name="IsFolder" id="1">
+						<Title>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Folder</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:boolean</v8:Type>
+						</Type>
+					</Column>
+					<Column name="CharacteristicsAreUsed" id="2">
+						<Title>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Characteristics are used</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:boolean</v8:Type>
+						</Type>
+					</Column>
+				</AdditionalColumns>
+				<AdditionalColumns table="Object.PurchaseKit">
+					<Column name="CharacteristicsAreUsed" id="1">
+						<Title>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Characteristics are used</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:boolean</v8:Type>
+						</Type>
+					</Column>
+					<Column name="IsFolder" id="2">
+						<Title>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Folder</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:boolean</v8:Type>
+						</Type>
+					</Column>
+				</AdditionalColumns>
+			</Columns>
+		</Attribute>
+		<Attribute name="DescriptionChangedByUser" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Description is changed by user</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="UsedAutoDescription" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Auto description is used</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="DiscountRecipientType" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Discount recipient type</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="DiscountRecipientsTypes" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Discount recipients types</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="UsedCurrencies" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Currencies are used</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="AdditionalProductsAndServicesColumns" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Additional products and services columns</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="DiscountRecipientTypePrevious" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Discount recipient type previous</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<ConditionalAppearance>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>PurchaseKitCharacteristic</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Object.PurchaseKit.CharacteristicsAreUsed</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>TextColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">auto</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>MarkIncomplete</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Text</dcscor:parameter>
+						<dcscor:value xsi:type="xs:string">&lt;characteristics are not used&gt;</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ReadOnly</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>PurchaseKitProductsAndServicesCode</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemGroup">
+						<dcsset:groupType>AndGroup</dcsset:groupType>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">AdditionalProductsAndServicesColumns</dcsset:left>
+							<dcsset:comparisonType>NotEqual</dcsset:comparisonType>
+							<dcsset:right xsi:type="dcscor:DesignTimeValue">Enum.DocumentPrintFormsAdditionalColumn.Code</dcsset:right>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">AdditionalProductsAndServicesColumns</dcsset:left>
+							<dcsset:comparisonType>NotEqual</dcsset:comparisonType>
+							<dcsset:right xsi:type="dcscor:DesignTimeValue">Enum.DocumentPrintFormsAdditionalColumn.CodeSKU</dcsset:right>
+						</dcsset:item>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Visible</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>PurchaseKitProductsAndServicesSKU</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemGroup">
+						<dcsset:groupType>AndGroup</dcsset:groupType>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">AdditionalProductsAndServicesColumns</dcsset:left>
+							<dcsset:comparisonType>NotEqual</dcsset:comparisonType>
+							<dcsset:right xsi:type="dcscor:DesignTimeValue">Enum.DocumentPrintFormsAdditionalColumn.SKU</dcsset:right>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">AdditionalProductsAndServicesColumns</dcsset:left>
+							<dcsset:comparisonType>NotEqual</dcsset:comparisonType>
+							<dcsset:right xsi:type="dcscor:DesignTimeValue">Enum.DocumentPrintFormsAdditionalColumn.CodeSKU</dcsset:right>
+						</dcsset:item>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Visible</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>FilterSalesByProductsAndServicesCharacteristic</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Object.SalesFilterByProductsAndServices.CharacteristicsAreUsed</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>TextColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">auto</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>MarkIncomplete</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Text</dcscor:parameter>
+						<dcscor:value xsi:type="xs:string">&lt;characteristics are not used&gt;</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ReadOnly</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+		</ConditionalAppearance>
+	</Attributes>
+	<Parameters>
+		<Parameter name="AssignmentCondition">
+			<Type>
+				<v8:Type>cfg:EnumRef.DiscountsMarkupsProvidingConditions</v8:Type>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

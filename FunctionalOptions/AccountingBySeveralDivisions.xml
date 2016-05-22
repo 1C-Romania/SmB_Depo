@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<MetaDataObject xmlns="http://v8.1c.ru/8.3/MDClasses" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:cmi="http://v8.1c.ru/8.2/managed-application/cmi" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xpr="http://v8.1c.ru/8.3/xcf/predef" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<FunctionalOption uuid="d663bc58-63a6-40d8-8f52-a5cc5359d58f">
+		<Properties>
+			<Name>AccountingBySeveralDivisions</Name>
+			<Synonym>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Accounting by multiple divisions</v8:content>
+				</v8:item>
+			</Synonym>
+			<Comment>Accounting by multiple divisions in one infobase</Comment>
+			<Location>Constant.FunctionalOptionAccountingByMultipleDivisions</Location>
+			<PrivilegedGetMode>true</PrivilegedGetMode>
+			<Content>
+				<xr:Object>Catalog.CashRegisters.Attribute.Division</xr:Object>
+				<xr:Object>Document.ExpenseReport.TabularSection.Expenses.Attribute.StructuralUnit</xr:Object>
+				<xr:Object>Document.AcceptanceCertificate.Attribute.Division</xr:Object>
+				<xr:Object>Document.AdditionalCosts.Attribute.Division</xr:Object>
+				<xr:Object>Document.WorkOrder.Attribute.StructuralUnit</xr:Object>
+				<xr:Object>Document.FixedAssetsModernization.TabularSection.FixedAssets.Attribute.StructuralUnit</xr:Object>
+				<xr:Object>Document.EmployeeOccupationChange.TabularSection.Employees.Attribute.StructuralUnit</xr:Object>
+				<xr:Object>Document.Payroll.Attribute.StructuralUnit</xr:Object>
+				<xr:Object>Document.AgentReport.Attribute.Division</xr:Object>
+				<xr:Object>Document.ReportToPrincipal.Attribute.Division</xr:Object>
+				<xr:Object>Document.ProcessingReport.Attribute.Division</xr:Object>
+				<xr:Object>Document.SubcontractorReport.Attribute.Division</xr:Object>
+				<xr:Object>Document.SalesTarget.Attribute.StructuralUnit</xr:Object>
+				<xr:Object>Document.PayrollSheet.Attribute.StructuralUnit</xr:Object>
+				<xr:Object>Document.EmploymentContract.TabularSection.Employees.Attribute.StructuralUnit</xr:Object>
+				<xr:Object>Document.FixedAssetsEnter.TabularSection.FixedAssets.Attribute.StructuralUnit</xr:Object>
+				<xr:Object>Document.SupplierInvoice.Attribute.Division</xr:Object>
+				<xr:Object>Document.SupplierInvoice.TabularSection.Expenses.Attribute.StructuralUnit</xr:Object>
+				<xr:Object>Document.OtherExpenses.Attribute.StructuralUnit</xr:Object>
+				<xr:Object>Document.CostAllocation.Attribute.StructuralUnit</xr:Object>
+				<xr:Object>Document.CustomerInvoice.Attribute.Division</xr:Object>
+				<xr:Object>Document.JobSheet.Attribute.StructuralUnit</xr:Object>
+				<xr:Object>Document.InvoiceForPayment.Attribute.Division</xr:Object>
+				<xr:Object>Document.SupplierInvoiceForPayment.Attribute.Division</xr:Object>
+				<xr:Object>Document.Timesheet.Attribute.StructuralUnit</xr:Object>
+				<xr:Object>Document.TimeTracking.Attribute.StructuralUnit</xr:Object>
+				<xr:Object>InformationRegister.StaffList.Dimension.StructuralUnit</xr:Object>
+				<xr:Object>InformationRegister.FixedAssetsParameters.Resource.StructuralUnit</xr:Object>
+				<xr:Object>Document.PurchaseOrder.Attribute.StructuralUnit</xr:Object>
+				<xr:Object>Document.CustomerOrder.Attribute.SalesStructuralUnit</xr:Object>
+				<xr:Object>Document.Budget.TabularSection.Incomings.Attribute.StructuralUnit</xr:Object>
+				<xr:Object>Document.Budget.TabularSection.Expenses.Attribute.StructuralUnit</xr:Object>
+				<xr:Object>Document.EnterOpeningBalance.TabularSection.FixedAssets.Attribute.StructuralUnit</xr:Object>
+				<xr:Object>Document.EnterOpeningBalance.TabularSection.DirectCost.Attribute.StructuralUnit</xr:Object>
+				<xr:Object>Document.EnterOpeningBalance.TabularSection.PayrollPayments.Attribute.StructuralUnit</xr:Object>
+				<xr:Object>Document.ReceiptCR.Attribute.Division</xr:Object>
+				<xr:Object>Document.ReceiptCRReturn.Attribute.Division</xr:Object>
+				<xr:Object>Document.CashReceipt.Attribute.Division</xr:Object>
+				<xr:Object>Document.CashPayment.Attribute.Division</xr:Object>
+				<xr:Object>Document.PaymentExpense.Attribute.Division</xr:Object>
+				<xr:Object>Document.TaxAccrual.TabularSection.Taxes.Attribute.Division</xr:Object>
+			</Content>
+		</Properties>
+	</FunctionalOption>
+</MetaDataObject>

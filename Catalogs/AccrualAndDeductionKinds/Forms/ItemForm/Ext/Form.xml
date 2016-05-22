@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Width>44</Width>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="FormCommandBar" id="-1"/>
+	<Events>
+		<Event name="AfterWriteAtServer">AfterWriteAtServer</Event>
+		<Event name="NotificationProcessing">NotificationProcessing</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="Group1" id="34">
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<BackColor>style:UnselectedImageTextColor</BackColor>
+			<ExtendedTooltip name="Group1ExtendedTooltip" id="35"/>
+			<ChildItems>
+				<RadioButtonField name="Type" id="7">
+					<DataPath>Object.Type</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<RadioButtonType>Tumbler</RadioButtonType>
+					<ChoiceList>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Accrual</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xr:DesignTimeRef">Enum.AccrualAndDeductionTypes.EnumValue.Accrual</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Deduction</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xr:DesignTimeRef">Enum.AccrualAndDeductionTypes.EnumValue.Deduction</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>    Tax    </v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xr:DesignTimeRef">Enum.AccrualAndDeductionTypes.EnumValue.Tax</Value>
+							</xr:Value>
+						</xr:Item>
+					</ChoiceList>
+					<ContextMenu name="TypeContextMenu" id="8"/>
+					<ExtendedTooltip name="TypeExtendedTooltip" id="24"/>
+					<Events>
+						<Event name="OnChange">TypeOnChange</Event>
+					</Events>
+				</RadioButtonField>
+				<LabelDecoration name="Decoration1" id="36">
+					<Visible>false</Visible>
+					<Width>11</Width>
+					<ContextMenu name="Decoration1ContextMenu" id="37"/>
+					<ExtendedTooltip name="Decoration1ExtendedTooltip" id="38"/>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+		<LabelDecoration name="DecorationSplitter2" id="60">
+			<Font ref="sys:DefaultGUIFont" height="1" kind="WindowsFont"/>
+			<ContextMenu name="DecorationSplitter2ContextMenu" id="61"/>
+			<ExtendedTooltip name="DecorationSplitter2ExtendedTooltip" id="62"/>
+		</LabelDecoration>
+		<UsualGroup name="Group" id="13">
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="GroupExtendedTooltip" id="20"/>
+			<ChildItems>
+				<InputField name="Description" id="3">
+					<DataPath>Object.Description</DataPath>
+					<DefaultItem>true</DefaultItem>
+					<EditMode>EnterOnInput</EditMode>
+					<Wrap>false</Wrap>
+					<ContextMenu name="DescriptionContextMenu" id="4"/>
+					<ExtendedTooltip name="DescriptionExtendedTooltip" id="23"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<InputField name="Parent" id="5">
+			<DataPath>Object.Parent</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<Wrap>false</Wrap>
+			<OpenButton>false</OpenButton>
+			<ContextMenu name="ParentContextMenu" id="6"/>
+			<ExtendedTooltip name="ParentExtendedTooltip" id="21"/>
+		</InputField>
+		<LabelDecoration name="DecorationSplitter1" id="31">
+			<Font ref="sys:DefaultGUIFont" height="1" kind="WindowsFont"/>
+			<ContextMenu name="DecorationSplitter1ContextMenu" id="32"/>
+			<ExtendedTooltip name="DecorationSplitter1ExtendedTooltip" id="33"/>
+		</LabelDecoration>
+		<InputField name="TaxKind" id="17">
+			<DataPath>Object.TaxKind</DataPath>
+			<ContextMenu name="TaxTypeContextMenu" id="18"/>
+			<ExtendedTooltip name="TaxTypeExtendedTooltip" id="27"/>
+		</InputField>
+		<UsualGroup name="GroupFormula" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Edit calculation formula</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group formula</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<CollapsedRepresentationTitle>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Calculation formula</v8:content>
+				</v8:item>
+			</CollapsedRepresentationTitle>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="GroupFormulaExtendedTooltip" id="28"/>
+			<ChildItems>
+				<LabelField name="Formula" id="11">
+					<DataPath>Object.Formula</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Formula</v8:content>
+						</v8:item>
+					</Title>
+					<EditMode>EnterOnInput</EditMode>
+					<Height>1</Height>
+					<BackColor>style:FieldAlternativeBackColor</BackColor>
+					<ContextMenu name="FormulaContextMenu" id="12"/>
+					<ExtendedTooltip name="FormulaExtendedTooltip" id="30"/>
+				</LabelField>
+				<Button name="CommandEditCalculationFormula" id="15">
+					<Type>UsualButton</Type>
+					<Representation>Picture</Representation>
+					<SkipOnInput>false</SkipOnInput>
+					<CommandName>Form.Command.CommandEditCalculationFormula</CommandName>
+					<ExtendedTooltip name="CommandEditFormulaOfCalculationExtendedTooltip" id="29"/>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Type>
+				<v8:Type>cfg:CatalogObject.AccrualAndDeductionKinds</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="Tax" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Tax</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.AccrualAndDeductionTypes</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="CommandEditCalculationFormula" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Edit calculation formula</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Edit calculation formula</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Change</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>CommandEditCalculationFormula</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+	</Commands>
+</Form>

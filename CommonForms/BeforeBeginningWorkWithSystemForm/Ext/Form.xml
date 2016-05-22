@@ -1,0 +1,279 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Width>63</Width>
+	<AutoTitle>false</AutoTitle>
+	<CommandBarLocation>Top</CommandBarLocation>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnOpen">OnOpen</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="Group5" id="137">
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="Group5ExtendedTooltip" id="138"/>
+			<ChildItems>
+				<LabelDecoration name="Decoration1" id="82">
+					<HorizontalStretch>true</HorizontalStretch>
+					<TextColor>#B38000</TextColor>
+					<Font ref="sys:DefaultGUIFont" height="20" kind="WindowsFont"/>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Getting started</v8:content>
+						</v8:item>
+					</Title>
+					<VerticalAlign>Top</VerticalAlign>
+					<ContextMenu name="Decoration1ContextMenu" id="83"/>
+					<ExtendedTooltip name="Decoration1ExtendedTooltip" id="113"/>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="Group1" id="4">
+			<HorizontalStretch>true</HorizontalStretch>
+			<VerticalStretch>false</VerticalStretch>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="Group1ExtendedTooltip" id="114"/>
+			<ChildItems>
+				<UsualGroup name="Group2" id="62">
+					<HorizontalStretch>true</HorizontalStretch>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="Group2ExtendedTooltip" id="115"/>
+					<ChildItems>
+						<LabelDecoration name="Decoration3" id="58">
+							<Font ref="sys:DefaultGUIFont" height="14" kind="WindowsFont"/>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>1. Fill in information on the company</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Decoration3ContextMenu" id="59"/>
+							<ExtendedTooltip name="Decoration3ExtendedTooltip" id="116"/>
+						</LabelDecoration>
+						<LabelDecoration name="Decoration4" id="60">
+							<HorizontalStretch>true</HorizontalStretch>
+							<VerticalStretch>false</VerticalStretch>
+							<Font ref="sys:DefaultGUIFont" height="11" kind="WindowsFont"/>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Specify your company type, name, address, so this data will be filled in automatically when creating documents.</v8:content>
+								</v8:item>
+							</Title>
+							<VerticalAlign>Top</VerticalAlign>
+							<ContextMenu name="Decoration4ContextMenu" id="61"/>
+							<ExtendedTooltip name="Decoration4ExtendedTooltip" id="117"/>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<PictureDecoration name="Decoration12" id="67">
+					<Width>1</Width>
+					<Height>3</Height>
+					<HorizontalStretch>false</HorizontalStretch>
+					<VerticalStretch>false</VerticalStretch>
+					<Picture>
+						<xr:Ref>CommonPicture.Line</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</Picture>
+					<ContextMenu name="Decoration12ContextMenu" id="68"/>
+					<ExtendedTooltip name="Decoration12ExtendedTooltip" id="118"/>
+				</PictureDecoration>
+				<UsualGroup name="Group7" id="63">
+					<Width>9</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="Group7ExtendedTooltip" id="119"/>
+					<ChildItems>
+						<PictureDecoration name="FillInformationAboutCompanyStatus" id="65">
+							<Width>7</Width>
+							<Height>2</Height>
+							<HorizontalStretch>true</HorizontalStretch>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Fill information about company status</v8:content>
+								</v8:item>
+							</Title>
+							<Picture>
+								<xr:Ref>CommonPicture.GoToNext</xr:Ref>
+								<xr:LoadTransparent>true</xr:LoadTransparent>
+							</Picture>
+							<ContextMenu name="FillInformationAboutCompaniesStateContextMenu" id="66"/>
+							<ExtendedTooltip name="FillInformationAboutCompaniesStatusExtendedTooltip" id="120"/>
+						</PictureDecoration>
+						<Button name="FillInformationAboutCompany" id="64">
+							<Type>UsualButton</Type>
+							<SkipOnInput>true</SkipOnInput>
+							<Width>9</Width>
+							<CommandName>Form.Command.FillInformationAboutCompany</CommandName>
+							<ExtendedTooltip name="FillInformationAboutOrganizationExtendedTooltip" id="121"/>
+						</Button>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="Group3" id="13">
+			<HorizontalStretch>true</HorizontalStretch>
+			<VerticalStretch>false</VerticalStretch>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="Group3ExtendedTooltip" id="122"/>
+			<ChildItems>
+				<UsualGroup name="Group8" id="69">
+					<HorizontalStretch>true</HorizontalStretch>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="Group8ExtendedTooltip" id="123"/>
+					<ChildItems>
+						<LabelDecoration name="Decoration15" id="76">
+							<Font ref="sys:DefaultGUIFont" height="14" kind="WindowsFont"/>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>2. Fill in current balance</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Decoration15ContextMenu" id="77"/>
+							<ExtendedTooltip name="Decoration15ExtendedTooltip" id="124"/>
+						</LabelDecoration>
+						<LabelDecoration name="Decoration16" id="78">
+							<HorizontalStretch>true</HorizontalStretch>
+							<VerticalStretch>false</VerticalStretch>
+							<Font ref="sys:DefaultGUIFont" height="11" kind="WindowsFont"/>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Specify inventory and cash balance of your company to create the start point of accounting in the application.</v8:content>
+								</v8:item>
+							</Title>
+							<VerticalAlign>Top</VerticalAlign>
+							<ContextMenu name="Decoration16ContextMenu" id="79"/>
+							<ExtendedTooltip name="Decoration16ExtendedTooltip" id="125"/>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<PictureDecoration name="Decoration13" id="71">
+					<Width>1</Width>
+					<Height>3</Height>
+					<HorizontalStretch>false</HorizontalStretch>
+					<VerticalStretch>false</VerticalStretch>
+					<Picture>
+						<xr:Ref>CommonPicture.Line</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</Picture>
+					<ContextMenu name="Decoration13ContextMenu" id="72"/>
+					<ExtendedTooltip name="Decoration13ExtendedTooltip" id="126"/>
+				</PictureDecoration>
+				<UsualGroup name="Group9" id="70">
+					<Width>9</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="Group9ExtendedTooltip" id="127"/>
+					<ChildItems>
+						<PictureDecoration name="BalanceEnteringStatus" id="74">
+							<Width>7</Width>
+							<Height>2</Height>
+							<HorizontalStretch>true</HorizontalStretch>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Balance entering status</v8:content>
+								</v8:item>
+							</Title>
+							<Picture>
+								<xr:Ref>CommonPicture.GoToNext</xr:Ref>
+								<xr:LoadTransparent>true</xr:LoadTransparent>
+							</Picture>
+							<ContextMenu name="InputBalancesStateContextMenu" id="75"/>
+							<ExtendedTooltip name="InputBalancesStateExtendedTooltip" id="128"/>
+						</PictureDecoration>
+						<Button name="BalanceEntering" id="73">
+							<Type>UsualButton</Type>
+							<SkipOnInput>true</SkipOnInput>
+							<Width>9</Width>
+							<CommandName>Form.Command.BalanceEntering</CommandName>
+							<ExtendedTooltip name="InputBalancesExtendedTooltip" id="129"/>
+						</Button>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<LabelDecoration name="Decoration6" id="109">
+			<ContextMenu name="Decoration6ContextMenu" id="110"/>
+			<ExtendedTooltip name="Decoration6ExtendedTooltip" id="130"/>
+		</LabelDecoration>
+	</ChildItems>
+	<Attributes/>
+	<Commands>
+		<Command name="FillInformationAboutCompany" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Start &gt;</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Fill information about company</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>FillInformationAboutCompany</Action>
+		</Command>
+		<Command name="BalanceEntering" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Start &gt;</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Balance entering</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>BalanceEntering</Action>
+		</Command>
+	</Commands>
+	<CommandInterface>
+		<NavigationPanel>
+			<Item>
+				<Command>0</Command>
+				<Type>Added</Type>
+				<CommandGroup>bbad7852-aefc-4482-aa09-b078f7a752ee</CommandGroup>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+			<Item>
+				<Command>DataProcessor.ElectronicDocumentsExchangeWithBank.Command.ActualED</Command>
+				<Type>Added</Type>
+				<CommandGroup>bbad7852-aefc-4482-aa09-b078f7a752ee</CommandGroup>
+				<Index>1</Index>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+			<Item>
+				<Command>Catalog.Files.Command.AllFiles</Command>
+				<Type>Added</Type>
+				<CommandGroup>bbad7852-aefc-4482-aa09-b078f7a752ee</CommandGroup>
+				<Index>2</Index>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+		</NavigationPanel>
+	</CommandInterface>
+</Form>

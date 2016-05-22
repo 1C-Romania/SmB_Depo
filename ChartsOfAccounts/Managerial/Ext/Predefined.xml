@@ -1,0 +1,512 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<PredefinedData xmlns="http://v8.1c.ru/8.3/xcf/predef" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ChartOfAccountsPredefinedItems" version="2.1">
+	<Item id="ceacb23a-fb1f-4e1c-99a5-22726a63629b">
+		<Name>Service</Name>
+		<Code>00 </Code>
+		<Description>Service</Description>
+		<AccountType>ActivePassive</AccountType>
+		<OffBalance>false</OffBalance>
+		<Order> 00</Order>
+		<AccountingFlags>
+			<Flag ref="ChartOfAccounts.Managerial.AccountingFlag.Currency">false</Flag>
+		</AccountingFlags>
+	</Item>
+	<Item id="45a21369-997b-4acd-a53f-086501a82b73">
+		<Name>FixedAssets</Name>
+		<Code>01 </Code>
+		<Description>Property</Description>
+		<AccountType>Active</AccountType>
+		<OffBalance>false</OffBalance>
+		<Order> 01 </Order>
+		<AccountingFlags>
+			<Flag ref="ChartOfAccounts.Managerial.AccountingFlag.Currency">false</Flag>
+		</AccountingFlags>
+	</Item>
+	<Item id="01c14ce2-612f-42a7-8e2d-13f3d5b0ffb9">
+		<Name>DepreciationFixedAssets</Name>
+		<Code>02 </Code>
+		<Description>Depreciation</Description>
+		<AccountType>Passive</AccountType>
+		<OffBalance>false</OffBalance>
+		<Order> 02 </Order>
+		<AccountingFlags>
+			<Flag ref="ChartOfAccounts.Managerial.AccountingFlag.Currency">false</Flag>
+		</AccountingFlags>
+	</Item>
+	<Item id="bdb04be9-30f5-46b4-a3ac-1a72f9f7c35d">
+		<Name>InvestmentsInFixedAssets</Name>
+		<Code>08 </Code>
+		<Description>Attachments in property</Description>
+		<AccountType>Active</AccountType>
+		<OffBalance>false</OffBalance>
+		<Order> 08 </Order>
+		<AccountingFlags>
+			<Flag ref="ChartOfAccounts.Managerial.AccountingFlag.Currency">false</Flag>
+		</AccountingFlags>
+	</Item>
+	<Item id="2db638f0-3622-4ab7-9f7f-dd8fe946e63f">
+		<Name>RawMaterialsAndMaterials</Name>
+		<Code>10 </Code>
+		<Description>Raw materials and materials</Description>
+		<AccountType>Active</AccountType>
+		<OffBalance>false</OffBalance>
+		<Order> 10 </Order>
+		<AccountingFlags>
+			<Flag ref="ChartOfAccounts.Managerial.AccountingFlag.Currency">false</Flag>
+		</AccountingFlags>
+	</Item>
+	<Item id="d16c0403-0cb6-4402-a749-a7674ad28818">
+		<Name>UnfinishedProduction</Name>
+		<Code>20 </Code>
+		<Description>Goods in production</Description>
+		<AccountType>Active</AccountType>
+		<OffBalance>false</OffBalance>
+		<Order> 20 </Order>
+		<AccountingFlags>
+			<Flag ref="ChartOfAccounts.Managerial.AccountingFlag.Currency">false</Flag>
+		</AccountingFlags>
+	</Item>
+	<Item id="bb5dc64b-06a4-422f-b174-e55129963a74">
+		<Name>IndirectExpenses</Name>
+		<Code>25 </Code>
+		<Description>Indirect cost</Description>
+		<AccountType>Active</AccountType>
+		<OffBalance>false</OffBalance>
+		<Order> 25 </Order>
+		<AccountingFlags>
+			<Flag ref="ChartOfAccounts.Managerial.AccountingFlag.Currency">false</Flag>
+		</AccountingFlags>
+	</Item>
+	<Item id="0b18f279-1cb6-457b-962d-bd529a54e061">
+		<Name>ProductsFinishedProducts</Name>
+		<Code>41 </Code>
+		<Description>Goods, products</Description>
+		<AccountType>Active</AccountType>
+		<OffBalance>false</OffBalance>
+		<Order> 41 </Order>
+		<AccountingFlags>
+			<Flag ref="ChartOfAccounts.Managerial.AccountingFlag.Currency">false</Flag>
+		</AccountingFlags>
+	</Item>
+	<Item id="c2193df0-b1d4-4f98-8b37-d0e61fce5fa6">
+		<Name>TradeMarkup</Name>
+		<Code>42 </Code>
+		<Description>Trade markup</Description>
+		<AccountType>Passive</AccountType>
+		<OffBalance>false</OffBalance>
+		<Order> 42 </Order>
+		<AccountingFlags>
+			<Flag ref="ChartOfAccounts.Managerial.AccountingFlag.Currency">false</Flag>
+		</AccountingFlags>
+	</Item>
+	<Item id="7f214981-3b05-4e3e-8d8c-c8c7adfc92d9">
+		<Name>PettyCash</Name>
+		<Code>50 </Code>
+		<Description>PettyCash</Description>
+		<AccountType>Active</AccountType>
+		<OffBalance>false</OffBalance>
+		<Order> 50 </Order>
+		<AccountingFlags>
+			<Flag ref="ChartOfAccounts.Managerial.AccountingFlag.Currency">true</Flag>
+		</AccountingFlags>
+	</Item>
+	<Item id="14b45c0e-69e5-4340-8b05-280f46301c03">
+		<Name>Bank</Name>
+		<Code>51 </Code>
+		<Description>Bank</Description>
+		<AccountType>Active</AccountType>
+		<OffBalance>false</OffBalance>
+		<Order> 51 </Order>
+		<AccountingFlags>
+			<Flag ref="ChartOfAccounts.Managerial.AccountingFlag.Currency">true</Flag>
+		</AccountingFlags>
+	</Item>
+	<Item id="42d57f95-6695-469b-9f08-b527025b1dc5">
+		<Name>TransfersInProcess</Name>
+		<Code>57 </Code>
+		<Description>Transfers in process</Description>
+		<AccountType>Active</AccountType>
+		<OffBalance>false</OffBalance>
+		<Order> 57 </Order>
+		<AccountingFlags>
+			<Flag ref="ChartOfAccounts.Managerial.AccountingFlag.Currency">false</Flag>
+		</AccountingFlags>
+	</Item>
+	<Item id="ec0f1c43-ab8c-4df7-aa37-252b79151bc6">
+		<Name>FinancialInvestments</Name>
+		<Code>58 </Code>
+		<Description>Financial investments</Description>
+		<AccountType>Active</AccountType>
+		<OffBalance>false</OffBalance>
+		<Order> 58 </Order>
+		<AccountingFlags>
+			<Flag ref="ChartOfAccounts.Managerial.AccountingFlag.Currency">false</Flag>
+		</AccountingFlags>
+	</Item>
+	<Item id="5a7042a0-7610-49fe-a556-a0a60ce4bca1">
+		<Name>AccountsPayableAndContractors</Name>
+		<Code>60 </Code>
+		<Description>Settlements with suppliers and contractors</Description>
+		<AccountType>ActivePassive</AccountType>
+		<OffBalance>false</OffBalance>
+		<Order> 60 </Order>
+		<AccountingFlags>
+			<Flag ref="ChartOfAccounts.Managerial.AccountingFlag.Currency">true</Flag>
+		</AccountingFlags>
+		<ChildItems>
+			<Item id="9d195613-e9b0-4dd9-959d-72fd653ac7fc">
+				<Name>AccountsPayable</Name>
+				<Code>60.01 </Code>
+				<Description>Accounts payable</Description>
+				<AccountType>Passive</AccountType>
+				<OffBalance>false</OffBalance>
+				<Order> 60.01 </Order>
+				<AccountingFlags>
+					<Flag ref="ChartOfAccounts.Managerial.AccountingFlag.Currency">true</Flag>
+				</AccountingFlags>
+			</Item>
+			<Item id="5060faf9-602e-478c-be88-7145c6f48586">
+				<Name>SettlementsByAdvancesIssued</Name>
+				<Code>60.02 </Code>
+				<Description>Settlements by advances paid</Description>
+				<AccountType>Active</AccountType>
+				<OffBalance>false</OffBalance>
+				<Order> 60.02 </Order>
+				<AccountingFlags>
+					<Flag ref="ChartOfAccounts.Managerial.AccountingFlag.Currency">true</Flag>
+				</AccountingFlags>
+			</Item>
+		</ChildItems>
+	</Item>
+	<Item id="2ab60f18-44ad-400d-b09d-bb540772389a">
+		<Name>AccountsReceivableAndCustomers</Name>
+		<Code>62 </Code>
+		<Description>Settlement with customers and clients</Description>
+		<AccountType>ActivePassive</AccountType>
+		<OffBalance>false</OffBalance>
+		<Order> 62 </Order>
+		<AccountingFlags>
+			<Flag ref="ChartOfAccounts.Managerial.AccountingFlag.Currency">true</Flag>
+		</AccountingFlags>
+		<ChildItems>
+			<Item id="552c3f13-4ae6-48a3-a9e2-5ce660958242">
+				<Name>AccountsReceivable</Name>
+				<Code>62.01 </Code>
+				<Description>Accounts receivable</Description>
+				<AccountType>Active</AccountType>
+				<OffBalance>false</OffBalance>
+				<Order> 62.01 </Order>
+				<AccountingFlags>
+					<Flag ref="ChartOfAccounts.Managerial.AccountingFlag.Currency">true</Flag>
+				</AccountingFlags>
+			</Item>
+			<Item id="d38b5a6a-be8b-4c2b-8702-57ea8e02e3e6">
+				<Name>AccountsByAdvancesReceived</Name>
+				<Code>62.02 </Code>
+				<Description>Settlements by advances received</Description>
+				<AccountType>Passive</AccountType>
+				<OffBalance>false</OffBalance>
+				<Order> 62.02 </Order>
+				<AccountingFlags>
+					<Flag ref="ChartOfAccounts.Managerial.AccountingFlag.Currency">true</Flag>
+				</AccountingFlags>
+			</Item>
+		</ChildItems>
+	</Item>
+	<Item id="e34e9ad4-16de-40a3-b561-a03511ff2e47">
+		<Name>SettlementsByShorttermCreditsAndLoans</Name>
+		<Code>66 </Code>
+		<Description>Settlements by short-term loans</Description>
+		<AccountType>Passive</AccountType>
+		<OffBalance>false</OffBalance>
+		<Order> 66 </Order>
+		<AccountingFlags>
+			<Flag ref="ChartOfAccounts.Managerial.AccountingFlag.Currency">true</Flag>
+		</AccountingFlags>
+	</Item>
+	<Item id="f3879ecd-eb16-4df0-b633-9066d6c8c9e9">
+		<Name>AccountsByLongtermCreditsAndLoans</Name>
+		<Code>67 </Code>
+		<Description>Settlements by long-term loans</Description>
+		<AccountType>Passive</AccountType>
+		<OffBalance>false</OffBalance>
+		<Order> 67 </Order>
+		<AccountingFlags>
+			<Flag ref="ChartOfAccounts.Managerial.AccountingFlag.Currency">true</Flag>
+		</AccountingFlags>
+	</Item>
+	<Item id="be6993d3-e269-413b-8d5a-6e8539ab6c80">
+		<Name>TaxesSettlements</Name>
+		<Code>68 </Code>
+		<Description>Tax settlements</Description>
+		<AccountType>ActivePassive</AccountType>
+		<OffBalance>false</OffBalance>
+		<Order> 68 </Order>
+		<AccountingFlags>
+			<Flag ref="ChartOfAccounts.Managerial.AccountingFlag.Currency">false</Flag>
+		</AccountingFlags>
+		<ChildItems>
+			<Item id="66a3d158-e2e6-44db-881c-a4bf2ff6b3ad">
+				<Name>Taxes</Name>
+				<Code>68.01 </Code>
+				<Description>Taxes</Description>
+				<AccountType>Passive</AccountType>
+				<OffBalance>false</OffBalance>
+				<Order> 68.01 </Order>
+				<AccountingFlags>
+					<Flag ref="ChartOfAccounts.Managerial.AccountingFlag.Currency">false</Flag>
+				</AccountingFlags>
+			</Item>
+			<Item id="9ae53539-84e2-43a0-87f3-bd10ac6b2eb8">
+				<Name>TaxesToRefund</Name>
+				<Code>68.02 </Code>
+				<Description>Taxes to refund</Description>
+				<AccountType>Active</AccountType>
+				<OffBalance>false</OffBalance>
+				<Order> 68.02 </Order>
+				<AccountingFlags>
+					<Flag ref="ChartOfAccounts.Managerial.AccountingFlag.Currency">false</Flag>
+				</AccountingFlags>
+			</Item>
+		</ChildItems>
+	</Item>
+	<Item id="6c5d15d8-92e6-42c3-9e8a-88a29a7765be">
+		<Name>PayrollPaymentsOnPay</Name>
+		<Code>70 </Code>
+		<Description>Settlements with personnel for labor payment</Description>
+		<AccountType>Passive</AccountType>
+		<OffBalance>false</OffBalance>
+		<Order> 70 </Order>
+		<AccountingFlags>
+			<Flag ref="ChartOfAccounts.Managerial.AccountingFlag.Currency">true</Flag>
+		</AccountingFlags>
+	</Item>
+	<Item id="67a891e4-9208-4b98-81fa-90df7931f494">
+		<Name>SettlementsWithAdvanceHolders</Name>
+		<Code>71 </Code>
+		<Description>Settlements with advance holders</Description>
+		<AccountType>ActivePassive</AccountType>
+		<OffBalance>false</OffBalance>
+		<Order> 71 </Order>
+		<AccountingFlags>
+			<Flag ref="ChartOfAccounts.Managerial.AccountingFlag.Currency">true</Flag>
+		</AccountingFlags>
+		<ChildItems>
+			<Item id="f5b4c690-2b32-4e1b-a51b-a289e93382b7">
+				<Name>AdvanceHolderPayments</Name>
+				<Code>71.01 </Code>
+				<Description>Advances paid to the advance holders</Description>
+				<AccountType>Active</AccountType>
+				<OffBalance>false</OffBalance>
+				<Order> 71.01 </Order>
+				<AccountingFlags>
+					<Flag ref="ChartOfAccounts.Managerial.AccountingFlag.Currency">true</Flag>
+				</AccountingFlags>
+			</Item>
+			<Item id="681fb963-99aa-4ab5-bd75-a50f0fb9af90">
+				<Name>OverrunOfAdvanceHolders</Name>
+				<Code>71.02 </Code>
+				<Description>Overrun of advance holder</Description>
+				<AccountType>Passive</AccountType>
+				<OffBalance>false</OffBalance>
+				<Order> 71.02 </Order>
+				<AccountingFlags>
+					<Flag ref="ChartOfAccounts.Managerial.AccountingFlag.Currency">true</Flag>
+				</AccountingFlags>
+			</Item>
+		</ChildItems>
+	</Item>
+	<Item id="b1572658-029d-4c63-9503-034545b3fae1">
+		<Name>StatutoryCapital</Name>
+		<Code>80 </Code>
+		<Description>Statutory capital</Description>
+		<AccountType>Passive</AccountType>
+		<OffBalance>false</OffBalance>
+		<Order> 80 </Order>
+		<AccountingFlags>
+			<Flag ref="ChartOfAccounts.Managerial.AccountingFlag.Currency">false</Flag>
+		</AccountingFlags>
+	</Item>
+	<Item id="1130687d-84f7-4151-a7bb-e7fad1ce0b0a">
+		<Name>ReserveAndAdditionalCapital</Name>
+		<Code>82 </Code>
+		<Description>Reserve and Additional Capital</Description>
+		<AccountType>Passive</AccountType>
+		<OffBalance>false</OffBalance>
+		<Order> 82 </Order>
+		<AccountingFlags>
+			<Flag ref="ChartOfAccounts.Managerial.AccountingFlag.Currency">false</Flag>
+		</AccountingFlags>
+	</Item>
+	<Item id="23a17562-07f8-4faf-8fde-a079c77b32cc">
+		<Name>UndistributedProfit</Name>
+		<Code>84 </Code>
+		<Description>Undistributed profit (uncovered loss)</Description>
+		<AccountType>ActivePassive</AccountType>
+		<OffBalance>false</OffBalance>
+		<Order> 84 </Order>
+		<AccountingFlags>
+			<Flag ref="ChartOfAccounts.Managerial.AccountingFlag.Currency">false</Flag>
+		</AccountingFlags>
+	</Item>
+	<Item id="3a5b9345-0690-47b4-8f3a-f9e3d3a3a227">
+		<Name>Sales</Name>
+		<Code>90 </Code>
+		<Description>Sales</Description>
+		<AccountType>ActivePassive</AccountType>
+		<OffBalance>false</OffBalance>
+		<Order> 90 </Order>
+		<AccountingFlags>
+			<Flag ref="ChartOfAccounts.Managerial.AccountingFlag.Currency">false</Flag>
+		</AccountingFlags>
+		<ChildItems>
+			<Item id="f1d2beac-f415-451c-a142-09e0e2ca458f">
+				<Name>SalesRevenue</Name>
+				<Code>90.01 </Code>
+				<Description>Revenue from sales</Description>
+				<AccountType>Passive</AccountType>
+				<OffBalance>false</OffBalance>
+				<Order> 90.01 </Order>
+				<AccountingFlags>
+					<Flag ref="ChartOfAccounts.Managerial.AccountingFlag.Currency">false</Flag>
+				</AccountingFlags>
+			</Item>
+			<Item id="508af3bf-b374-4774-b10b-608297175dee">
+				<Name>CostOfGoodsSold</Name>
+				<Code>90.02 </Code>
+				<Description>Cost of goods sold</Description>
+				<AccountType>Active</AccountType>
+				<OffBalance>false</OffBalance>
+				<Order> 90.02 </Order>
+				<AccountingFlags>
+					<Flag ref="ChartOfAccounts.Managerial.AccountingFlag.Currency">false</Flag>
+				</AccountingFlags>
+			</Item>
+			<Item id="cb8a40d2-2dec-4a5d-be8d-7fe8778df8be">
+				<Name>CommercialExpenses</Name>
+				<Code>90.07 </Code>
+				<Description>Commercial expenses</Description>
+				<AccountType>Active</AccountType>
+				<OffBalance>false</OffBalance>
+				<Order> 90.07 </Order>
+				<AccountingFlags>
+					<Flag ref="ChartOfAccounts.Managerial.AccountingFlag.Currency">false</Flag>
+				</AccountingFlags>
+			</Item>
+			<Item id="f2c096be-28de-407b-8e97-8b65c3b9c0c1">
+				<Name>AdministrativeExpenses</Name>
+				<Code>90.08 </Code>
+				<Description>Administrative expenses</Description>
+				<AccountType>Active</AccountType>
+				<OffBalance>false</OffBalance>
+				<Order> 90.08 </Order>
+				<AccountingFlags>
+					<Flag ref="ChartOfAccounts.Managerial.AccountingFlag.Currency">false</Flag>
+				</AccountingFlags>
+			</Item>
+		</ChildItems>
+	</Item>
+	<Item id="ea8d6858-040d-4081-b436-9c5b9dbeb845">
+		<Name>OtherIncomeAndExpenses</Name>
+		<Code>91 </Code>
+		<Description>Other income and expenses</Description>
+		<AccountType>ActivePassive</AccountType>
+		<OffBalance>false</OffBalance>
+		<Order> 91 </Order>
+		<AccountingFlags>
+			<Flag ref="ChartOfAccounts.Managerial.AccountingFlag.Currency">false</Flag>
+		</AccountingFlags>
+		<ChildItems>
+			<Item id="4fca6175-c45f-4087-8873-f489db7949a2">
+				<Name>OtherIncome</Name>
+				<Code>91.01 </Code>
+				<Description>Other income</Description>
+				<AccountType>Passive</AccountType>
+				<OffBalance>false</OffBalance>
+				<Order> 91.01 </Order>
+				<AccountingFlags>
+					<Flag ref="ChartOfAccounts.Managerial.AccountingFlag.Currency">false</Flag>
+				</AccountingFlags>
+			</Item>
+			<Item id="814aeeef-6b5f-495c-b297-f2ce3f8a7901">
+				<Name>OtherExpenses</Name>
+				<Code>91.02 </Code>
+				<Description>Other expenses</Description>
+				<AccountType>Active</AccountType>
+				<OffBalance>false</OffBalance>
+				<Order> 91.02 </Order>
+				<AccountingFlags>
+					<Flag ref="ChartOfAccounts.Managerial.AccountingFlag.Currency">false</Flag>
+				</AccountingFlags>
+			</Item>
+			<Item id="fc567860-1a5a-4fc8-b5d7-6bd40d5d7dab">
+				<Name>CreditInterestRates</Name>
+				<Code>91.03 </Code>
+				<Description>Credit Interest Rates</Description>
+				<AccountType>Active</AccountType>
+				<OffBalance>false</OffBalance>
+				<Order> 91.03 </Order>
+				<AccountingFlags>
+					<Flag ref="ChartOfAccounts.Managerial.AccountingFlag.Currency">false</Flag>
+				</AccountingFlags>
+			</Item>
+		</ChildItems>
+	</Item>
+	<Item id="a462e77c-7f9a-44de-ae94-65eaeeae0509">
+		<Name>DeficiencyAndLossFromPropertySpoilage</Name>
+		<Code>94 </Code>
+		<Description>Shortfalls and losses due to impairment of assets</Description>
+		<AccountType>Active</AccountType>
+		<OffBalance>false</OffBalance>
+		<Order> 94 </Order>
+		<AccountingFlags>
+			<Flag ref="ChartOfAccounts.Managerial.AccountingFlag.Currency">false</Flag>
+		</AccountingFlags>
+	</Item>
+	<Item id="d0bd9ca6-e654-44d3-a67f-554c47c41d7e">
+		<Name>CostsOfFuturePeriods</Name>
+		<Code>97 </Code>
+		<Description>Costs of future periods</Description>
+		<AccountType>Active</AccountType>
+		<OffBalance>false</OffBalance>
+		<Order> 97 </Order>
+		<AccountingFlags>
+			<Flag ref="ChartOfAccounts.Managerial.AccountingFlag.Currency">false</Flag>
+		</AccountingFlags>
+	</Item>
+	<Item id="d99ad861-e815-4c55-881b-58bd316c0607">
+		<Name>ProfitsAndLosses</Name>
+		<Code>99 </Code>
+		<Description>Profits and losses</Description>
+		<AccountType>ActivePassive</AccountType>
+		<OffBalance>false</OffBalance>
+		<Order> 99 </Order>
+		<AccountingFlags>
+			<Flag ref="ChartOfAccounts.Managerial.AccountingFlag.Currency">false</Flag>
+		</AccountingFlags>
+		<ChildItems>
+			<Item id="4b028129-ba74-4362-b3e2-ee3a9652a6a6">
+				<Name>ProfitsAndLossesWithoutProfitTax</Name>
+				<Code>99.01 </Code>
+				<Description>Profits and losses (excluding the profits tax)</Description>
+				<AccountType>ActivePassive</AccountType>
+				<OffBalance>false</OffBalance>
+				<Order> 99.01 </Order>
+				<AccountingFlags>
+					<Flag ref="ChartOfAccounts.Managerial.AccountingFlag.Currency">false</Flag>
+				</AccountingFlags>
+			</Item>
+			<Item id="d75a79cf-add3-4115-aafc-040709f9bc0b">
+				<Name>ProfitsAndLosses_ProfitTax</Name>
+				<Code>99.02 </Code>
+				<Description>Income tax</Description>
+				<AccountType>ActivePassive</AccountType>
+				<OffBalance>false</OffBalance>
+				<Order> 99.02 </Order>
+				<AccountingFlags>
+					<Flag ref="ChartOfAccounts.Managerial.AccountingFlag.Currency">false</Flag>
+				</AccountingFlags>
+			</Item>
+		</ChildItems>
+	</Item>
+</PredefinedData>

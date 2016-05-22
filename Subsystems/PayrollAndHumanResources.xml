@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<MetaDataObject xmlns="http://v8.1c.ru/8.3/MDClasses" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:cmi="http://v8.1c.ru/8.2/managed-application/cmi" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xpr="http://v8.1c.ru/8.3/xcf/predef" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Subsystem uuid="b8f8c4e9-72d9-4d20-b6c6-329d92badec6">
+		<Properties>
+			<Name>PayrollAndHumanResources</Name>
+			<Synonym>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Payroll</v8:content>
+				</v8:item>
+			</Synonym>
+			<Comment/>
+			<IncludeHelpInContents>true</IncludeHelpInContents>
+			<IncludeInCommandInterface>true</IncludeInCommandInterface>
+			<Explanation/>
+			<Picture>
+				<xr:Ref>CommonPicture.PayrollSection</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+				<xr:TransparentPixel x="22" y="13"/>
+			</Picture>
+			<Content>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonPicture.SubsystemPayrollAndHR</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonCommand.ReportsPanel_PayrollAndHumanRecources</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.Event</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.EmployeeCalendar</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonCommand.AdditionalInformationProcessorsPayrollAndHumanResources</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonCommand.AdditionalReportsPayrollAndHumanResources</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">2ddbc4b0-21dd-4b57-8bf8-3c7453a1f35d</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">6848c25d-9b96-45b4-acaf-9e710ac6b417</xr:Item>
+			</Content>
+		</Properties>
+		<ChildObjects>
+			<Subsystem>HumanResources</Subsystem>
+			<Subsystem>Salary</Subsystem>
+			<Subsystem>ReferenceInformation</Subsystem>
+			<Subsystem>Analysis</Subsystem>
+		</ChildObjects>
+	</Subsystem>
+</MetaDataObject>

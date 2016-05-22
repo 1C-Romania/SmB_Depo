@@ -1,0 +1,389 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Title>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>User Online support connection parameters</v8:content>
+		</v8:item>
+	</Title>
+	<Width>96</Width>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<CommandBarLocation>Bottom</CommandBarLocation>
+	<CommandSet>
+		<ExcludedCommand>No</ExcludedCommand>
+		<ExcludedCommand>CustomizeForm</ExcludedCommand>
+		<ExcludedCommand>SaveValues</ExcludedCommand>
+		<ExcludedCommand>Close</ExcludedCommand>
+		<ExcludedCommand>Help</ExcludedCommand>
+		<ExcludedCommand>Abort</ExcludedCommand>
+		<ExcludedCommand>Retry</ExcludedCommand>
+		<ExcludedCommand>Yes</ExcludedCommand>
+		<ExcludedCommand>RestoreValues</ExcludedCommand>
+		<ExcludedCommand>Ignore</ExcludedCommand>
+		<ExcludedCommand>OK</ExcludedCommand>
+	</CommandSet>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<HorizontalAlign>Right</HorizontalAlign>
+	</AutoCommandBar>
+	<Events>
+		<Event name="NotificationProcessing">NotificationProcessing</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="GroupLoginAndPassword" id="35">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Online support service authorization parameters</v8:content>
+				</v8:item>
+			</Title>
+			<HorizontalStretch>true</HorizontalStretch>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="GroupLoginAndPasswordExtendedTooltip" id="66"/>
+			<ChildItems>
+				<UsualGroup name="GroupLoginAndPasswordVertically" id="45">
+					<Width>80</Width>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="GroupLoginAndPasswordVerticallyExtendedTooltip" id="67"/>
+					<ChildItems>
+						<Button name="Logon" id="43">
+							<Type>UsualButton</Type>
+							<CommandName>Form.Command.EnterLoginAndPasswordOrRegister</CommandName>
+							<ExtendedTooltip name="LogonExtendedTooltip" id="68"/>
+						</Button>
+						<UsualGroup name="GroupFieldsLoginAndPassword" id="61">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group of username and password fields</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group of username and password fields</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupLoginAndPasswordFieldsExtendedTooltip" id="69"/>
+						</UsualGroup>
+						<LabelDecoration name="DecorationExplanationLoginPassword" id="54">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>When Online support is connected, the following is used:</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="DecorationExplanationLoginPasswordContextMenu" id="55"/>
+							<ExtendedTooltip name="DecorationExplanationLoginPasswordExtendedTooltip" id="70"/>
+						</LabelDecoration>
+						<LabelField name="Login" id="37">
+							<DataPath>Login</DataPath>
+							<Width>30</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="LoginContextMenu" id="38"/>
+							<ExtendedTooltip name="LoginExtendedTooltip" id="71"/>
+						</LabelField>
+					</ChildItems>
+				</UsualGroup>
+				<LabelDecoration name="DecorationExplanationGettingLoginPassword" id="51">
+					<Height>4</Height>
+					<TextColor>#455185</TextColor>
+					<Title formatted="true">
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Users can use the same username and password as for the &lt;link open:UsersSite&gt;users.v8.1c.ru&lt;/&gt; site to log on user Online support system. If you do not have username and password, you should register yourself or request the support from the partner of 1C company with whom you have the ITS agreement.</v8:content>
+						</v8:item>
+					</Title>
+					<VerticalAlign>Top</VerticalAlign>
+					<TitleHeight>4</TitleHeight>
+					<ContextMenu name="DecorationExplanationGettingLoginPasswordContextMenu" id="52"/>
+					<ExtendedTooltip name="DecorationExplanationGettingLoginPasswordExtendedTooltip" id="72"/>
+					<Events>
+						<Event name="URLProcessing">DecorationExplanationGettingLoginPasswordDataProcessorNavigationRef</Event>
+					</Events>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="IndentGroupAndConnectionParameters" id="49">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Indent and connection parameters</v8:content>
+				</v8:item>
+			</Title>
+			<HorizontalStretch>true</HorizontalStretch>
+			<Group>Vertical</Group>
+			<Representation>NormalSeparation</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="GroupIndentAndConnectionParametersExtendedTooltip" id="73"/>
+			<ChildItems>
+				<UsualGroup name="GroupConnectionParameters" id="47">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Connection parameters</v8:content>
+						</v8:item>
+					</Title>
+					<HorizontalStretch>true</HorizontalStretch>
+					<Group>Vertical</Group>
+					<ExtendedTooltip name="GroupConnectionParametersExtendedTooltip" id="74"/>
+					<ChildItems>
+						<UsualGroup name="GroupConnectionFromServer" id="12">
+							<Group>Horizontal</Group>
+							<Representation>NormalSeparation</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupConnectionFromServerExtendedTooltip" id="75"/>
+							<ChildItems>
+								<UsualGroup name="GroupRadioButtonConnectionSide" id="59">
+									<Width>43</Width>
+									<Height>4</Height>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupRadioButtonConnectionSideExtendedTooltip" id="76"/>
+									<ChildItems>
+										<RadioButtonField name="ConnectionFromServer" id="1">
+											<DataPath>ConnectionFromServer</DataPath>
+											<TitleLocation>Left</TitleLocation>
+											<TitleHeight>2</TitleHeight>
+											<RadioButtonType>Auto</RadioButtonType>
+											<ColumnsCount>1</ColumnsCount>
+											<ChoiceList>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation>
+															<v8:item>
+																<v8:lang>en</v8:lang>
+																<v8:content>On local computer</v8:content>
+															</v8:item>
+														</Presentation>
+														<Value xsi:type="xs:decimal">0</Value>
+													</xr:Value>
+												</xr:Item>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation>
+															<v8:item>
+																<v8:lang>en</v8:lang>
+																<v8:content>At 1C:Enterprise server</v8:content>
+															</v8:item>
+														</Presentation>
+														<Value xsi:type="xs:decimal">1</Value>
+													</xr:Value>
+												</xr:Item>
+											</ChoiceList>
+											<ContextMenu name="ConnectionFromServerContextMenu" id="2"/>
+											<ExtendedTooltip name="ConnectionFromServerExtendedTooltip" id="77"/>
+											<Events>
+												<Event name="OnChange">ConnectionFromServerOnChange</Event>
+											</Events>
+										</RadioButtonField>
+									</ChildItems>
+								</UsualGroup>
+								<LabelDecoration name="DecorationExplanationConnectionFromServer" id="10">
+									<Height>4</Height>
+									<TextColor>#455185</TextColor>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Selection of computer with configured access to Internet. If local computers have access to Internet, it is recommended to select "On local computer". If Internet access is organized through 1C:Enterprise server, you should select "At 1C:Enterprise server".</v8:content>
+										</v8:item>
+									</Title>
+									<VerticalAlign>Top</VerticalAlign>
+									<TitleHeight>4</TitleHeight>
+									<ContextMenu name="DecorationExplanationConnectionFromServerContextMenu" id="11"/>
+									<ExtendedTooltip name="DecorationExplanationConnectionFromServerExtendedTooltip" id="78"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="GroupTimeout" id="5">
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupTimeoutExtendedTooltip" id="79"/>
+							<ChildItems>
+								<UsualGroup name="GoreGroupTimeout" id="15">
+									<Width>43</Width>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GoreGroupTimeoutExtendedTooltip" id="80"/>
+									<ChildItems>
+										<InputField name="ConnectionTimeout" id="3">
+											<DataPath>ConnectionTimeout</DataPath>
+											<SpinButton>true</SpinButton>
+											<ContextMenu name="ConnectionTimeoutContextMenu" id="4"/>
+											<ExtendedTooltip name="ConnectionTimeoutExtendedTooltip" id="81"/>
+											<Events>
+												<Event name="OnChange">ConnectionTimeoutOnChange</Event>
+											</Events>
+										</InputField>
+										<LabelDecoration name="DecorationTimeout" id="6">
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>sec.</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="DecorationTimeoutContextMenu" id="7"/>
+											<ExtendedTooltip name="DecorationTimeoutExtendedTooltip" id="82"/>
+										</LabelDecoration>
+									</ChildItems>
+								</UsualGroup>
+								<LabelDecoration name="DecorationExplanationTimeout" id="16">
+									<Height>2</Height>
+									<TextColor>#455185</TextColor>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Maximum timeout in seconds to establish connection with the online user support server.</v8:content>
+										</v8:item>
+									</Title>
+									<VerticalAlign>Top</VerticalAlign>
+									<TitleHeight>2</TitleHeight>
+									<ContextMenu name="DecorationTimeoutExplanationContextMenu" id="17"/>
+									<ExtendedTooltip name="DecorationTimeoutExplanationExtendedTooltip" id="83"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="GroupGeneralExplanation" id="57">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Recommendations on the settings of connection with Online support server</v8:content>
+				</v8:item>
+			</Title>
+			<HorizontalStretch>false</HorizontalStretch>
+			<Group>Vertical</Group>
+			<ExtendedTooltip name="GroupCommonExplanationExtendedTooltip" id="84"/>
+			<ChildItems>
+				<LabelDecoration name="DecorationRecommendations" id="22">
+					<Width>96</Width>
+					<Height>4</Height>
+					<HorizontalStretch>true</HorizontalStretch>
+					<VerticalStretch>false</VerticalStretch>
+					<TextColor>#455185</TextColor>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>If you are using a firewall on the computer, it is recommended to add the address of user Online support server -webits.1c.ru, ports 80 (HTTP) and 443 (HTTPS), to the list of allowed addresses. The settings of exceptions for each particular firewall or antivirus are configured according to the user's manual provided with the corresponding firewall or antivirus.
+If necessary, you should allow access to the specified address and network ports at Internet gateway.</v8:content>
+						</v8:item>
+					</Title>
+					<VerticalAlign>Top</VerticalAlign>
+					<ContextMenu name="DecorationRecomendationsContextMenu" id="23"/>
+					<ExtendedTooltip name="DecorationRecommendationsExtendedTooltip" id="85"/>
+				</LabelDecoration>
+				<LabelDecoration name="DecorationRecommendationsKS83" id="64">
+					<Width>96</Width>
+					<Height>2</Height>
+					<HorizontalStretch>true</HorizontalStretch>
+					<VerticalStretch>false</VerticalStretch>
+					<TextColor>#455185</TextColor>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>If the connection with the user Online support server is established through 1C:Enterprise server, it is necessary to allow the request to the webits.1c.ru Internet resource in the security profile of 1C:Enterprise through safe connection protocol (HTTPS, port 443).</v8:content>
+						</v8:item>
+					</Title>
+					<VerticalAlign>Top</VerticalAlign>
+					<ContextMenu name="DecorationRecommendationsKS83ContextMenu" id="65"/>
+					<ExtendedTooltip name="DecorationRecommendationsKS83ExtendedTooltip" id="86"/>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="ConnectionFromServer" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Establish connection with the Internet server support</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ConnectionTimeout" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Connection timeout</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>3</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Login" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Login</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="EmptyLogin" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Empty login</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="EnterLoginAndPasswordOrRegister" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Connect Online support</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Enter username and password or register</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>EnterLoginPasswordOrRegister</Action>
+		</Command>
+	</Commands>
+</Form>

@@ -1,0 +1,38 @@
+﻿
+#Region EventsHandlers
+
+&AtClient
+Procedure CommandProcessing(CommandParameter, CommandExecuteParameters)
+	
+	Cancel = False;
+	
+	TemporaryStorageAddress = "";
+	
+	GetSecondInfobaseDataExchangeSettingsAtServer(Cancel, TemporaryStorageAddress, CommandParameter);
+	
+	If Cancel Then
+		
+		ShowMessageBox(, NStr("en = 'Errors have occurred when receiving the data exchange settings.'"));
+		
+	Else
+		
+		GetFile(TemporaryStorageAddress, NStr("en = 'Data synchronization settings.xml'"), True);
+		
+	EndIf;
+	
+EndProcedure
+
+#EndRegion
+
+#Region ServiceProceduresAndFunctions
+
+&AtServer
+Procedure GetSecondInfobaseDataExchangeSettingsAtServer(Cancel, TemporaryStorageAddress, InfobaseNode)
+	
+	DataExchangeCreationAssistant = DataProcessors.DataExchangeCreationAssistant.Create();
+	DataExchangeCreationAssistant.Initialization(InfobaseNode);
+	DataExchangeCreationAssistant.RunAssistantParametersDumpIntoTemporaryStorage(Cancel, TemporaryStorageAddress);
+	
+EndProcedure
+
+#EndRegion

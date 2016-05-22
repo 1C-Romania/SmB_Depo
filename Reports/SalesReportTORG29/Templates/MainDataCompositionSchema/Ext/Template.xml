@@ -1,0 +1,754 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>DataSource1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>Query</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>QuantityClosingBalance</dataPath>
+			<field>QuantityClosingBalance</field>
+			<role>
+				<dcscom:balance>true</dcscom:balance>
+				<dcscom:balanceGroupName>Quantity</dcscom:balanceGroupName>
+				<dcscom:balanceType>ClosingBalance</dcscom:balanceType>
+			</role>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Format</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ND=15; NFD=3</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>MarkNegatives</dcscor:parameter>
+					<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>QuantityOpeningBalance</dataPath>
+			<field>QuantityOpeningBalance</field>
+			<role>
+				<dcscom:balance>true</dcscom:balance>
+				<dcscom:balanceGroupName>Quantity</dcscom:balanceGroupName>
+				<dcscom:balanceType>OpeningBalance</dcscom:balanceType>
+			</role>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Format</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ND=15; NFD=3</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>MarkNegatives</dcscor:parameter>
+					<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>QuantityReceipt</dataPath>
+			<field>QuantityReceipt</field>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Format</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ND=15; NFD=3</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>QuantityExpense</dataPath>
+			<field>QuantityExpense</field>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Format</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ND=15; NFD=3</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ProductsAndServices</dataPath>
+			<field>ProductsAndServices</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>AmountClosingBalance</dataPath>
+			<field>AmountClosingBalance</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Amount closing balance</v8:content>
+				</v8:item>
+			</title>
+			<role>
+				<dcscom:balance>true</dcscom:balance>
+				<dcscom:balanceGroupName>Amount</dcscom:balanceGroupName>
+				<dcscom:balanceType>ClosingBalance</dcscom:balanceType>
+			</role>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Format</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ND=15; NFD=2</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>MarkNegatives</dcscor:parameter>
+					<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>AmountOpeningBalance</dataPath>
+			<field>AmountOpeningBalance</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Amount Opening balance</v8:content>
+				</v8:item>
+			</title>
+			<role>
+				<dcscom:balance>true</dcscom:balance>
+				<dcscom:balanceGroupName>Amount</dcscom:balanceGroupName>
+				<dcscom:balanceType>OpeningBalance</dcscom:balanceType>
+			</role>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Format</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ND=15; NFD=2</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>MarkNegatives</dcscor:parameter>
+					<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>AmountReceipt</dataPath>
+			<field>AmountReceipt</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Amount receipt</v8:content>
+				</v8:item>
+			</title>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Format</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ND=15; NFD=2</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>AmountExpense</dataPath>
+			<field>AmountExpense</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Amount expense</v8:content>
+				</v8:item>
+			</title>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Format</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ND=15; NFD=2</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Characteristic</dataPath>
+			<field>Characteristic</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+				<dcscom:required>true</dcscom:required>
+			</role>
+			<inputParameters>
+				<dcscor:item>
+					<dcscor:parameter>ChoiceParameterLinks</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:ChoiceParameterLinks">
+						<dcscor:item>
+							<dcscor:choiceParameter>ProductsAndServices</dcscor:choiceParameter>
+							<dcscor:value>ProductsAndServices</dcscor:value>
+							<dcscor:mode xmlns:d8p1="http://v8.1c.ru/8.1/data/enterprise" xsi:type="d8p1:LinkedValueChangeMode">Clear</dcscor:mode>
+						</dcscor:item>
+					</dcscor:value>
+				</dcscor:item>
+			</inputParameters>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>SecondPeriod</dataPath>
+			<field>SecondPeriod</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Second period</v8:content>
+				</v8:item>
+			</title>
+			<role>
+				<dcscom:periodNumber>2</dcscom:periodNumber>
+				<dcscom:periodType>Main</dcscom:periodType>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>YearPeriod</dataPath>
+			<field>YearPeriod</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Period Year</v8:content>
+				</v8:item>
+			</title>
+			<role>
+				<dcscom:periodNumber>9</dcscom:periodNumber>
+				<dcscom:periodType>Main</dcscom:periodType>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>DayPeriod</dataPath>
+			<field>DayPeriod</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Day period</v8:content>
+				</v8:item>
+			</title>
+			<role>
+				<dcscom:periodNumber>5</dcscom:periodNumber>
+				<dcscom:periodType>Main</dcscom:periodType>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>QuarterPeriod</dataPath>
+			<field>QuarterPeriod</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Period Quarter</v8:content>
+				</v8:item>
+			</title>
+			<role>
+				<dcscom:periodNumber>8</dcscom:periodNumber>
+				<dcscom:periodType>Main</dcscom:periodType>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>MonthPeriod</dataPath>
+			<field>MonthPeriod</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Month period</v8:content>
+				</v8:item>
+			</title>
+			<role>
+				<dcscom:periodNumber>7</dcscom:periodNumber>
+				<dcscom:periodType>Main</dcscom:periodType>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>MinutePeriod</dataPath>
+			<field>MinutePeriod</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Minute period</v8:content>
+				</v8:item>
+			</title>
+			<role>
+				<dcscom:periodNumber>3</dcscom:periodNumber>
+				<dcscom:periodType>Main</dcscom:periodType>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>WeekPeriod</dataPath>
+			<field>WeekPeriod</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Period Week</v8:content>
+				</v8:item>
+			</title>
+			<role>
+				<dcscom:periodNumber>6</dcscom:periodNumber>
+				<dcscom:periodType>Main</dcscom:periodType>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>HourPeriod</dataPath>
+			<field>HourPeriod</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Period hour</v8:content>
+				</v8:item>
+			</title>
+			<role>
+				<dcscom:periodNumber>4</dcscom:periodNumber>
+				<dcscom:periodType>Main</dcscom:periodType>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Company</dataPath>
+			<field>Company</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Batch</dataPath>
+			<field>Batch</field>
+			<inputParameters>
+				<dcscor:item>
+					<dcscor:parameter>ChoiceParameterLinks</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:ChoiceParameterLinks">
+						<dcscor:item>
+							<dcscor:choiceParameter>Filter.Owner</dcscor:choiceParameter>
+							<dcscor:value>ProductsAndServices</dcscor:value>
+							<dcscor:mode xmlns:d8p1="http://v8.1c.ru/8.1/data/enterprise" xsi:type="d8p1:LinkedValueChangeMode">Clear</dcscor:mode>
+						</dcscor:item>
+					</dcscor:value>
+				</dcscor:item>
+			</inputParameters>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>StructuralUnit</dataPath>
+			<field>StructuralUnit</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Cell</dataPath>
+			<field>Cell</field>
+			<inputParameters>
+				<dcscor:item>
+					<dcscor:parameter>ChoiceParameterLinks</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:ChoiceParameterLinks">
+						<dcscor:item>
+							<dcscor:choiceParameter>Filter.Owner</dcscor:choiceParameter>
+							<dcscor:value>StructuralUnit</dcscor:value>
+							<dcscor:mode xmlns:d8p1="http://v8.1c.ru/8.1/data/enterprise" xsi:type="d8p1:LinkedValueChangeMode">Clear</dcscor:mode>
+						</dcscor:item>
+					</dcscor:value>
+				</dcscor:item>
+			</inputParameters>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Recorder</dataPath>
+			<field>Recorder</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Activity document (recorder)</v8:content>
+				</v8:item>
+			</title>
+			<role>
+				<dcscom:periodNumber>1</dcscom:periodNumber>
+				<dcscom:periodType>Main</dcscom:periodType>
+			</role>
+		</field>
+		<dataSource>DataSource1</dataSource>
+		<query>SELECT ALLOWED
+	InventoryInWarehouses.SecondPeriod AS Period,
+	InventoryInWarehouses.Recorder AS Recorder,
+	InventoryInWarehouses.ProductsAndServices AS ProductsAndServices,
+	InventoryInWarehouses.Characteristic AS Characteristic,
+	InventoryInWarehouses.StructuralUnit AS StructuralUnit,
+	ISNULL(InventoryInWarehouses.QuantityOpeningBalance, 0) AS QuantityOpeningBalance,
+	ISNULL(InventoryInWarehouses.QuantityReceipt, 0) AS QuantityReceipt,
+	ISNULL(InventoryInWarehouses.QuantityExpense, 0) AS QuantityExpense,
+	ISNULL(InventoryInWarehouses.QuantityClosingBalance, 0) AS QuantityClosingBalance
+INTO BalanceAndTurnovers
+FROM
+	AccumulationRegister.InventoryInWarehouses.BalanceAndTurnovers(, , Auto, , {(ProductsAndServices).* AS ProductsAndServices, (Characteristic).* AS Characteristic, (StructuralUnit).* AS StructuralUnit}) AS InventoryInWarehouses
+;
+
+////////////////////////////////////////////////////////////////////////////////
+SELECT ALLOWED
+	PricesTable.Period AS Period,
+	"Price setting" AS Recorder,
+	PricesTable.ProductsAndServices AS ProductsAndServices,
+	PricesTable.Characteristic AS Characteristic,
+	ISNULL(ProductsAndServicesPricesA.Price, 0) AS Price,
+	ISNULL(ProductsAndServicesPricesB.Price, 0) AS OldPrice,
+	ISNULL(ProductsAndServicesPricesA.Price, 0) - ISNULL(ProductsAndServicesPricesB.Price, 0) AS Delta
+INTO PriceChanges
+FROM
+	(SELECT
+		ProductsAndServicesPrices.Period AS Period,
+		MAX(PricesBeforeChanges.Period) AS LastChangeDate,
+		ProductsAndServicesPrices.PriceKind AS PriceKind,
+		ProductsAndServicesPrices.ProductsAndServices AS ProductsAndServices,
+		ProductsAndServicesPrices.Characteristic AS Characteristic
+	FROM
+		InformationRegister.ProductsAndServicesPrices AS ProductsAndServicesPrices
+			LEFT JOIN InformationRegister.ProductsAndServicesPrices AS PricesBeforeChanges
+			ON ProductsAndServicesPrices.Period &gt; PricesBeforeChanges.Period
+				AND ProductsAndServicesPrices.ProductsAndServices = PricesBeforeChanges.ProductsAndServices
+				AND ProductsAndServicesPrices.Characteristic = PricesBeforeChanges.Characteristic
+				AND (&amp;PriceKind = PricesBeforeChanges.PriceKind)
+				AND (PricesBeforeChanges.Actuality)
+	WHERE
+		ProductsAndServicesPrices.PriceKind = &amp;PriceKind
+		AND ProductsAndServicesPrices.Actuality
+	{WHERE
+		ProductsAndServicesPrices.ProductsAndServices.*,
+		ProductsAndServicesPrices.Characteristic.*}
+	
+	GROUP BY
+		ProductsAndServicesPrices.PriceKind,
+		ProductsAndServicesPrices.ProductsAndServices,
+		ProductsAndServicesPrices.Characteristic,
+		ProductsAndServicesPrices.Period) AS PricesTable
+		LEFT JOIN InformationRegister.ProductsAndServicesPrices AS ProductsAndServicesPricesA
+		ON PricesTable.Period = ProductsAndServicesPricesA.Period
+			AND PricesTable.ProductsAndServices = ProductsAndServicesPricesA.ProductsAndServices
+			AND PricesTable.Characteristic = ProductsAndServicesPricesA.Characteristic
+			AND PricesTable.PriceKind = ProductsAndServicesPricesA.PriceKind
+			AND (ProductsAndServicesPricesA.Actuality)
+		LEFT JOIN InformationRegister.ProductsAndServicesPrices AS ProductsAndServicesPricesB
+		ON PricesTable.LastChangeDate = ProductsAndServicesPricesB.Period
+			AND PricesTable.ProductsAndServices = ProductsAndServicesPricesB.ProductsAndServices
+			AND PricesTable.Characteristic = ProductsAndServicesPricesB.Characteristic
+			AND PricesTable.PriceKind = ProductsAndServicesPricesB.PriceKind
+			AND (ProductsAndServicesPricesB.Actuality)
+;
+
+////////////////////////////////////////////////////////////////////////////////
+SELECT
+	TableInventoryInWarehousesMaximumPeriod.RegisterRecordPeriod AS SecondPeriod,
+	TableInventoryInWarehousesMaximumPeriod.Recorder AS Recorder,
+	BEGINOFPERIOD(TableInventoryInWarehousesMaximumPeriod.RegisterRecordPeriod, MINUTE) AS MinutePeriod,
+	BEGINOFPERIOD(TableInventoryInWarehousesMaximumPeriod.RegisterRecordPeriod, hour) AS HourPeriod,
+	BEGINOFPERIOD(TableInventoryInWarehousesMaximumPeriod.RegisterRecordPeriod, Day) AS DayPeriod,
+	BEGINOFPERIOD(TableInventoryInWarehousesMaximumPeriod.RegisterRecordPeriod, WEEK) AS WeekPeriod,
+	BEGINOFPERIOD(TableInventoryInWarehousesMaximumPeriod.RegisterRecordPeriod, MONTH) AS MonthPeriod,
+	BEGINOFPERIOD(TableInventoryInWarehousesMaximumPeriod.RegisterRecordPeriod, QUARTER) AS QuarterPeriod,
+	BEGINOFPERIOD(TableInventoryInWarehousesMaximumPeriod.RegisterRecordPeriod, YEAR) AS YearPeriod,
+	TableInventoryInWarehousesMaximumPeriod.StructuralUnit AS StructuralUnit,
+	TableInventoryInWarehousesMaximumPeriod.ProductsAndServices AS ProductsAndServices,
+	TableInventoryInWarehousesMaximumPeriod.Characteristic AS Characteristic,
+	ISNULL(TableInventoryInWarehousesMaximumPeriod.QuantityOpeningBalance, 0) AS QuantityOpeningBalance,
+	ISNULL(TableInventoryInWarehousesMaximumPeriod.QuantityReceipt, 0) AS QuantityReceipt,
+	ISNULL(TableInventoryInWarehousesMaximumPeriod.QuantityExpense, 0) AS QuantityExpense,
+	ISNULL(TableInventoryInWarehousesMaximumPeriod.QuantityClosingBalance, 0) AS QuantityClosingBalance,
+	ISNULL(ProductsAndServicesPrices.Price * TableInventoryInWarehousesMaximumPeriod.QuantityOpeningBalance, 0) AS AmountOpeningBalance,
+	ISNULL(ProductsAndServicesPrices.Price * TableInventoryInWarehousesMaximumPeriod.QuantityReceipt, 0) AS AmountReceipt,
+	ISNULL(ProductsAndServicesPrices.Price * TableInventoryInWarehousesMaximumPeriod.QuantityExpense, 0) AS AmountExpense,
+	ISNULL(ProductsAndServicesPrices.Price * TableInventoryInWarehousesMaximumPeriod.QuantityClosingBalance, 0) AS AmountClosingBalance
+FROM
+	(SELECT
+		InventoryInWarehouses.Period AS RegisterRecordPeriod,
+		InventoryInWarehouses.Recorder AS Recorder,
+		InventoryInWarehouses.ProductsAndServices AS ProductsAndServices,
+		InventoryInWarehouses.Characteristic AS Characteristic,
+		InventoryInWarehouses.StructuralUnit AS StructuralUnit,
+		InventoryInWarehouses.QuantityOpeningBalance AS QuantityOpeningBalance,
+		InventoryInWarehouses.QuantityReceipt AS QuantityReceipt,
+		InventoryInWarehouses.QuantityExpense AS QuantityExpense,
+		InventoryInWarehouses.QuantityClosingBalance AS QuantityClosingBalance,
+		MAX(ProductsAndServicesPrices.Period) AS PeriodMaximum
+	FROM
+		BalanceAndTurnovers AS InventoryInWarehouses
+			LEFT JOIN PriceChanges AS ProductsAndServicesPrices
+			ON InventoryInWarehouses.ProductsAndServices = ProductsAndServicesPrices.ProductsAndServices
+				AND (ProductsAndServicesPrices.Characteristic = InventoryInWarehouses.Characteristic)
+				AND InventoryInWarehouses.Period &gt;= ProductsAndServicesPrices.Period
+	{WHERE
+		ProductsAndServicesPrices.ProductsAndServices.*,
+		ProductsAndServicesPrices.Characteristic.*}
+	
+	GROUP BY
+		InventoryInWarehouses.Period,
+		InventoryInWarehouses.Recorder,
+		InventoryInWarehouses.ProductsAndServices,
+		InventoryInWarehouses.Characteristic,
+		InventoryInWarehouses.StructuralUnit,
+		InventoryInWarehouses.QuantityOpeningBalance,
+		InventoryInWarehouses.QuantityReceipt,
+		InventoryInWarehouses.QuantityExpense,
+		InventoryInWarehouses.QuantityClosingBalance) AS TableInventoryInWarehousesMaximumPeriod
+		LEFT JOIN PriceChanges AS ProductsAndServicesPrices
+		ON (ProductsAndServicesPrices.ProductsAndServices = TableInventoryInWarehousesMaximumPeriod.ProductsAndServices)
+			AND (ProductsAndServicesPrices.Characteristic = TableInventoryInWarehousesMaximumPeriod.Characteristic)
+			AND (ProductsAndServicesPrices.Period = TableInventoryInWarehousesMaximumPeriod.PeriodMaximum)
+WHERE
+	TableInventoryInWarehousesMaximumPeriod.RegisterRecordPeriod between &amp;BeginOfPeriod AND &amp;EndOfPeriod
+
+UNION ALL
+
+SELECT
+	ClosestBalancesByProductsAndServices.Period,
+	ClosestBalancesByProductsAndServices.Recorder,
+	BEGINOFPERIOD(ClosestBalancesByProductsAndServices.Period, MINUTE),
+	BEGINOFPERIOD(ClosestBalancesByProductsAndServices.Period, hour),
+	BEGINOFPERIOD(ClosestBalancesByProductsAndServices.Period, Day),
+	BEGINOFPERIOD(ClosestBalancesByProductsAndServices.Period, WEEK),
+	BEGINOFPERIOD(ClosestBalancesByProductsAndServices.Period, MONTH),
+	BEGINOFPERIOD(ClosestBalancesByProductsAndServices.Period, QUARTER),
+	BEGINOFPERIOD(ClosestBalancesByProductsAndServices.Period, YEAR),
+	ClosestBalancesByProductsAndServices.StructuralUnit,
+	ClosestBalancesByProductsAndServices.ProductsAndServices,
+	ClosestBalancesByProductsAndServices.Characteristic,
+	ISNULL(InventoryInWarehousesBalanceAndTurnovers.QuantityClosingBalance, 0),
+	0,
+	0,
+	ISNULL(InventoryInWarehousesBalanceAndTurnovers.QuantityClosingBalance, 0),
+	ISNULL(ClosestBalancesByProductsAndServices.OldPrice * InventoryInWarehousesBalanceAndTurnovers.QuantityClosingBalance, 0),
+	ISNULL(CASE
+			WHEN ClosestBalancesByProductsAndServices.Delta &gt; 0
+				THEN ClosestBalancesByProductsAndServices.Delta * InventoryInWarehousesBalanceAndTurnovers.QuantityClosingBalance
+			ELSE 0
+		END, 0),
+	ISNULL(CASE
+			WHEN ClosestBalancesByProductsAndServices.Delta &lt; 0
+				THEN -ClosestBalancesByProductsAndServices.Delta * InventoryInWarehousesBalanceAndTurnovers.QuantityClosingBalance
+			ELSE 0
+		END, 0),
+	ClosestBalancesByProductsAndServices.Price * InventoryInWarehousesBalanceAndTurnovers.QuantityClosingBalance
+FROM
+	(SELECT
+		PriceChanges.Period AS Period,
+		PriceChanges.Recorder AS Recorder,
+		PriceChanges.Delta AS Delta,
+		PriceChanges.Price AS Price,
+		PriceChanges.OldPrice AS OldPrice,
+		PriceChanges.ProductsAndServices AS ProductsAndServices,
+		PriceChanges.Characteristic AS Characteristic,
+		InventoryInWarehousesBalanceAndTurnovers.StructuralUnit AS StructuralUnit,
+		MAX(InventoryInWarehousesBalanceAndTurnovers.Period) AS PeriodMaximum
+	FROM
+		PriceChanges AS PriceChanges
+			LEFT JOIN BalanceAndTurnovers AS InventoryInWarehousesBalanceAndTurnovers
+			ON PriceChanges.Period &gt; InventoryInWarehousesBalanceAndTurnovers.Period
+				AND PriceChanges.ProductsAndServices = InventoryInWarehousesBalanceAndTurnovers.ProductsAndServices
+				AND PriceChanges.Characteristic = InventoryInWarehousesBalanceAndTurnovers.Characteristic
+	
+	GROUP BY
+		PriceChanges.Period,
+		PriceChanges.Recorder,
+		PriceChanges.Delta,
+		PriceChanges.Price,
+		PriceChanges.OldPrice,
+		PriceChanges.ProductsAndServices,
+		InventoryInWarehousesBalanceAndTurnovers.StructuralUnit,
+		PriceChanges.Characteristic) AS ClosestBalancesByProductsAndServices
+		LEFT JOIN BalanceAndTurnovers AS InventoryInWarehousesBalanceAndTurnovers
+		ON ClosestBalancesByProductsAndServices.PeriodMaximum = InventoryInWarehousesBalanceAndTurnovers.Period
+			AND ClosestBalancesByProductsAndServices.ProductsAndServices = InventoryInWarehousesBalanceAndTurnovers.ProductsAndServices
+			AND ClosestBalancesByProductsAndServices.StructuralUnit = InventoryInWarehousesBalanceAndTurnovers.StructuralUnit
+			AND ClosestBalancesByProductsAndServices.Characteristic = InventoryInWarehousesBalanceAndTurnovers.Characteristic
+WHERE
+	InventoryInWarehousesBalanceAndTurnovers.QuantityClosingBalance &lt;&gt; 0
+	AND ClosestBalancesByProductsAndServices.Period between &amp;BeginOfPeriod AND &amp;EndOfPeriod
+
+ORDER BY
+	SecondPeriod</query>
+	</dataSet>
+	<totalField>
+		<dataPath>QuantityClosingBalance</dataPath>
+		<expression>SUM(QuantityClosingBalance)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>QuantityOpeningBalance</dataPath>
+		<expression>SUM(QuantityOpeningBalance)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>QuantityReceipt</dataPath>
+		<expression>SUM(QuantityReceipt)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>QuantityExpense</dataPath>
+		<expression>SUM(QuantityExpense)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>AmountClosingBalance</dataPath>
+		<expression>SUM(AmountClosingBalance)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>AmountOpeningBalance</dataPath>
+		<expression>SUM(AmountOpeningBalance)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>AmountReceipt</dataPath>
+		<expression>SUM(AmountReceipt)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>AmountExpense</dataPath>
+		<expression>SUM(AmountExpense)</expression>
+	</totalField>
+	<parameter>
+		<name>BeginOfPeriod</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Begin of period</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;PeriodOfReport.StartDate</expression>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>EndOfPeriod</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>End of period</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;PeriodOfReport.EndDate</expression>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>PeriodOfReport</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Report period</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>v8:StandardPeriod</v8:Type>
+		</valueType>
+		<value xsi:type="v8:StandardPeriod">
+			<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+			<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+			<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+		</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<parameter>
+		<name>PriceKind</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Price kind</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef.PriceKinds</v8:Type>
+		</valueType>
+		<value xsi:type="dcscor:DesignTimeValue">Catalog.PriceKinds.EmptyRef</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>Default</dcsset:name>
+		<dcsset:presentation xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Sales report TORG-29</v8:content>
+			</v8:item>
+		</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemFolder">
+					<dcsset:title>Quantity</dcsset:title>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>QuantityOpeningBalance</dcsset:field>
+						<dcsset:title>Opening balance</dcsset:title>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>QuantityReceipt</dcsset:field>
+						<dcsset:title>Receipt</dcsset:title>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>QuantityExpense</dcsset:field>
+						<dcsset:title>Expense</dcsset:title>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>QuantityClosingBalance</dcsset:field>
+						<dcsset:title>Closing balance</dcsset:title>
+					</dcsset:item>
+					<dcsset:placement>Auto</dcsset:placement>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemFolder">
+					<dcsset:title>Amount</dcsset:title>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>AmountOpeningBalance</dcsset:field>
+						<dcsset:title>Opening balance</dcsset:title>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>AmountReceipt</dcsset:field>
+						<dcsset:title>Receipt</dcsset:title>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>AmountExpense</dcsset:field>
+						<dcsset:title>Expense</dcsset:title>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>AmountClosingBalance</dcsset:field>
+						<dcsset:title>Closing balance</dcsset:title>
+					</dcsset:item>
+					<dcsset:placement>Auto</dcsset:placement>
+				</dcsset:item>
+				<dcsset:viewMode>Normal</dcsset:viewMode>
+				<dcsset:userSettingID>339af16b-bc7f-4c25-921f-fa697775d944</dcsset:userSettingID>
+			</dcsset:selection>
+			<dcsset:filter>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">StructuralUnit</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="dcscor:DesignTimeValue">Catalog.StructuralUnits.EmptyRef</dcsset:right>
+					<dcsset:userSettingID>e3b1dcfa-c382-4769-a460-cad6e3f8daa2</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">ProductsAndServices</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="dcscor:DesignTimeValue">Catalog.ProductsAndServices.EmptyRef</dcsset:right>
+					<dcsset:userSettingID>96aa64b5-39dc-4101-b3ae-e96b22e10060</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:viewMode>Normal</dcsset:viewMode>
+				<dcsset:userSettingID>6aad7574-5eb5-4dec-adc7-a2b91a0dac79</dcsset:userSettingID>
+			</dcsset:filter>
+			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>PeriodOfReport</dcscor:parameter>
+					<dcscor:value xsi:type="v8:StandardPeriod">
+						<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+						<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+						<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+					</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>PriceKind</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:DesignTimeValue">Catalog.PriceKinds.EmptyRef</dcscor:value>
+				</dcscor:item>
+			</dcsset:dataParameters>
+			<dcsset:order>
+				<dcsset:item xsi:type="dcsset:OrderItemField">
+					<dcsset:field>SecondPeriod</dcsset:field>
+					<dcsset:orderType>Asc</dcsset:orderType>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:OrderItemField">
+					<dcsset:field>Recorder</dcsset:field>
+					<dcsset:orderType>Asc</dcsset:orderType>
+				</dcsset:item>
+			</dcsset:order>
+			<dcsset:outputParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>HorizontalOverallPlacement</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">None</dcscor:value>
+					<dcsset:userSettingID>17cc04e0-cfd6-4e65-8e16-0ab4b53ff480</dcsset:userSettingID>
+					<dcsset:userSettingPresentation xsi:type="xs:string">Show totals across</dcsset:userSettingPresentation>
+				</dcscor:item>
+			</dcsset:outputParameters>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

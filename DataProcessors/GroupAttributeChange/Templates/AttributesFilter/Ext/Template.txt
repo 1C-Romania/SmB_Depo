@@ -1,0 +1,44 @@
+﻿<Items Description="Attributes non editable for all objects" Columns="ObjectType,Attribute">
+	
+	<Item ObjectType="*" Attribute="Description"/>
+	<Item ObjectType="*" Attribute="DeletionMark"/>
+	<Item ObjectType="*" Attribute="Ref"/>
+	<Item ObjectType="*" Attribute="AdditionalAttributes.*"/>
+	<Item ObjectType="*" Attribute="ContactInformation.*"/>
+	
+	<Item ObjectType="Catalogs" Attribute="PredefinedDataName"/>
+	<Item ObjectType="Catalogs" Attribute="Code"/>
+	<Item ObjectType="Catalogs" Attribute="Predefined"/>
+	<Item ObjectType="Catalogs" Attribute="IsFolder"/>
+	<Item ObjectType="Catalogs" Attribute="AdditionalOrderingAttribute"/>
+	
+	<Item ObjectType="Documents" Attribute="Number"/>
+	<Item ObjectType="Documents" Attribute="Posted"/>
+	<Item ObjectType="Documents" Attribute="Date"/>
+	
+	<Item ObjectType="ChartsOfCharacteristicTypes" Attribute="PredefinedDataName"/>
+	<Item ObjectType="ChartsOfCharacteristicTypes" Attribute="Code"/>
+	<Item ObjectType="ChartsOfCharacteristicTypes" Attribute="Predefined"/>
+	<Item ObjectType="ChartsOfCharacteristicTypes" Attribute="IsFolder"/>
+	<Item ObjectType="ChartsOfCharacteristicTypes" Attribute="ValueType"/>
+	
+	<Item ObjectType="ChartsOfAccounts" Attribute="PredefinedDataName"/>
+	<Item ObjectType="ChartsOfAccounts" Attribute="Code"/>
+	<Item ObjectType="ChartsOfAccounts" Attribute="Predefined"/>
+	<Item ObjectType="ChartsOfAccounts" Attribute="Order"/>
+	
+	<Item ObjectType="ChartsOfCalculationTypes" Attribute="PredefinedDataName"/>
+	<Item ObjectType="ChartsOfCalculationTypes" Attribute="Code"/>
+	<Item ObjectType="ChartsOfCalculationTypes" Attribute="Predefined"/>
+	<Item ObjectType="ChartsOfCalculationTypes" Attribute="ActionPeriodIsBasic"/>
+	
+	<Item ObjectType="Tasks" Attribute="Number"/>
+	
+	<Item ObjectType="BusinessProcesses" Attribute="Number"/>
+	<Item ObjectType="BusinessProcesses" Attribute="Date"/>
+	
+	<Item ObjectType="ExchangePlans" Attribute="Code"/>
+	<Item ObjectType="ExchangePlans" Attribute="SentNo"/>
+	<Item ObjectType="ExchangePlans" Attribute="ReceivedNo"/>
+	
+</Items>

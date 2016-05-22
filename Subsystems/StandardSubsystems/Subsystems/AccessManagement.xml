@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<MetaDataObject xmlns="http://v8.1c.ru/8.3/MDClasses" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:cmi="http://v8.1c.ru/8.2/managed-application/cmi" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xpr="http://v8.1c.ru/8.3/xcf/predef" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Subsystem uuid="1514eaff-faea-4d82-9465-d0d5292bb31d">
+		<Properties>
+			<Name>AccessManagement</Name>
+			<Synonym>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Access management</v8:content>
+				</v8:item>
+			</Synonym>
+			<Comment/>
+			<IncludeHelpInContents>false</IncludeHelpInContents>
+			<IncludeInCommandInterface>false</IncludeInCommandInterface>
+			<Explanation/>
+			<Picture/>
+			<Content>
+				<xr:Item xsi:type="xr:MDObjectRef">SessionParameter.AccessKindsWithoutGroupsForAccessValue</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Role.ChangeAccessGroupsMembers</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.AccessManagementOverridable</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.AccessManagement</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">EventSubscription.RefreshAccessValuesGroups</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Constant.LimitAccessOnRecordsLevel</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Catalog.AccessGroupsProfiles</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Catalog.AccessGroups</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">ChartOfCharacteristicTypes.DeleteAccessKinds</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.AccessManagementService</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">ScheduledJob.DataFillingForAccessLimit</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.DeleteRightsByAccessValues</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">SessionParameter.RightSettingsOwnerTypes</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">SessionParameter.AccessKindsWithOneGroupForAccessValue</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">SessionParameter.AllAccessKindsExceptSpecial</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.AccessManagementServiceReUse</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">SessionParameter.AccessKindsWithDisabledUse</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Report.AccessRights</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">StyleItem.DeniedAccessRight</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonCommand.SetRights</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonForm.ObjectRightsSettings</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">FunctionalOption.LimitAccessOnRecordsLevel</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonCommand.AccessRights</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonForm.AccessRights</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonForm.AccessRightsSimplified</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.AccessGroupsTables</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.RolesRights</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.ObjectRightsSettings</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.AccessRightsCorrelation</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Constant.AccessLimitationParameters</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">DefinedType.AccessValue</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Enum.AdditionalAccessValues</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">DefinedType.RightSettingsOwner</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.DeleteAccessValuesSets</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.DeleteAccessValuesGroups</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.ObjectRightsSettingsInheritance</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.AccessGroupsDefaultValues</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">SessionParameter.TablesWithSeparateRightSettings</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.AccessManagementServiceClient</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.AccessManagementServiceClientServer</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.AccessManagementServiceServerCall</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">SessionParameter.TablesIDsWithSeparateRightSettings</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">SessionParameter.AccessValueTypesWithGroups</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.AccessGroupsValues</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.AccessValuesGroups</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.AccessValuesSets</xr:Item>
+			</Content>
+		</Properties>
+		<ChildObjects/>
+	</Subsystem>
+</MetaDataObject>

@@ -1,0 +1,616 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="NotificationProcessing">NotificationProcessing</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+		<Event name="BeforeLoadDataFromSettingsAtServer">OnLoadDataFromSettingsAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="FilterGroup" id="38">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Filter group</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Filter group</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="FilterGroupExtendedTooltip" id="56"/>
+			<ChildItems>
+				<InputField name="Company" id="34">
+					<DataPath>Company</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<HorizontalStretch>false</HorizontalStretch>
+					<OpenButton>false</OpenButton>
+					<InputHint>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Company</v8:content>
+						</v8:item>
+					</InputHint>
+					<ContextMenu name="CounterpartyContextMenu" id="35"/>
+					<ExtendedTooltip name="CounterpartyExtendedTooltip" id="58"/>
+					<Events>
+						<Event name="OnChange">CompanyOnChange</Event>
+					</Events>
+				</InputField>
+				<InputField name="State" id="41">
+					<DataPath>State</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ChoiceList>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Not accepted for accounting</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xr:DesignTimeRef">Enum.FixedAssetsStates.EmptyRef</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Accepted for accounting</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xr:DesignTimeRef">Enum.FixedAssetsStates.EnumValue.AcceptedForAccounting</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Retired</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xr:DesignTimeRef">Enum.FixedAssetsStates.EnumValue.RemoveFromAccounting</Value>
+							</xr:Value>
+						</xr:Item>
+					</ChoiceList>
+					<InputHint>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>State</v8:content>
+						</v8:item>
+					</InputHint>
+					<ContextMenu name="StateContextMenu" id="42"/>
+					<ExtendedTooltip name="StateExtendedTooltip" id="57"/>
+					<Events>
+						<Event name="OnChange">StatusOnChange</Event>
+					</Events>
+				</InputField>
+				<LabelField name="PeriodOfLastDepreciation" id="53">
+					<DataPath>PeriodOfLastDepreciation</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<HorizontalAlign>Right</HorizontalAlign>
+					<TextColor>style:MinorInscriptionText</TextColor>
+					<ContextMenu name="LastCalculationPeriodContextMenu" id="54"/>
+					<ExtendedTooltip name="LastCalculationPeriodExtendedTooltip" id="59"/>
+				</LabelField>
+			</ChildItems>
+		</UsualGroup>
+		<Table name="List" id="1">
+			<SkipOnInput>false</SkipOnInput>
+			<DefaultItem>true</DefaultItem>
+			<UseAlternationRowColor>true</UseAlternationRowColor>
+			<EnableStartDrag>true</EnableStartDrag>
+			<EnableDrag>true</EnableDrag>
+			<DataPath>List</DataPath>
+			<RowPictureDataPath>List.DefaultPicture</RowPictureDataPath>
+			<SearchStringLocation>CommandBar</SearchStringLocation>
+			<ViewStatusLocation>Top</ViewStatusLocation>
+			<SearchControlLocation>CommandBar</SearchControlLocation>
+			<AutoRefresh>false</AutoRefresh>
+			<AutoRefreshPeriod>60</AutoRefreshPeriod>
+			<Period>
+				<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+				<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+				<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+			</Period>
+			<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+			<RestoreCurrentRow>false</RestoreCurrentRow>
+			<TopLevelParent xsi:nil="true"/>
+			<ShowRoot>false</ShowRoot>
+			<AllowRootChoice>false</AllowRootChoice>
+			<UpdateOnDataChange>Auto</UpdateOnDataChange>
+			<ContextMenu name="ListContextMenu" id="2"/>
+			<AutoCommandBar name="ListCommandBar" id="3">
+				<ChildItems>
+					<Button name="ListCreate" id="92">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.List.StandardCommand.Create</CommandName>
+						<ExtendedTooltip name="ListCreateExtendedTooltip" id="93"/>
+					</Button>
+					<Button name="ListCreateGroup" id="94">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.List.StandardCommand.CreateFolder</CommandName>
+						<ExtendedTooltip name="ListCreateGroupExtendedTooltip" id="95"/>
+					</Button>
+					<Popup name="OperationsWithProperty" id="45">
+						<Title>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Operations with fixed assets</v8:content>
+							</v8:item>
+						</Title>
+						<ToolTip>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Operations with fixed assets</v8:content>
+							</v8:item>
+						</ToolTip>
+						<ExtendedTooltip name="OperationsWithPropertyExtendedTooltip" id="61"/>
+						<ChildItems>
+							<ButtonGroup name="ListGroup1" id="90">
+								<ExtendedTooltip name="ListGroup1ExtendedTooltip" id="91"/>
+								<ChildItems>
+									<Button name="ChargeDepreciation" id="39">
+										<Type>CommandBarButton</Type>
+										<Representation>PictureAndText</Representation>
+										<CommandName>Form.Command.ChargeDepreciation</CommandName>
+										<ExtendedTooltip name="AccrueDepreciationExtendedTooltip" id="60"/>
+									</Button>
+								</ChildItems>
+							</ButtonGroup>
+							<Button name="ListDocumentsOnProperty" id="44">
+								<Type>CommandBarButton</Type>
+								<CommandName>DocumentJournal.FixedAssetsDocuments.Command.FixedAssetsDocumentsInMainWindow</CommandName>
+								<DataPath>Items.List.CurrentData.Ref</DataPath>
+								<Picture>
+									<xr:Ref>StdPicture.DocumentJournal</xr:Ref>
+									<xr:LoadTransparent>true</xr:LoadTransparent>
+								</Picture>
+								<ExtendedTooltip name="ListDocumentsOnPropertyExtendedTooltip" id="62"/>
+							</Button>
+							<ButtonGroup name="Actions" id="49">
+								<Title>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Actions</v8:content>
+									</v8:item>
+								</Title>
+								<ToolTip>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Actions</v8:content>
+									</v8:item>
+								</ToolTip>
+								<ExtendedTooltip name="ActionsExtendedTooltip" id="63"/>
+								<ChildItems>
+									<Button name="ListAcceptForAccounting" id="43">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.AcceptForAccounting</CommandName>
+										<Picture>
+											<xr:Ref>StdPicture.CreateListItem</xr:Ref>
+											<xr:LoadTransparent>true</xr:LoadTransparent>
+										</Picture>
+										<ExtendedTooltip name="ListAcceptForAccountingExtendedTooltip" id="64"/>
+									</Button>
+									<Button name="ListChangeParameters" id="40">
+										<Type>CommandBarButton</Type>
+										<Representation>PictureAndText</Representation>
+										<CommandName>Form.Command.ChangeParameters</CommandName>
+										<Picture>
+											<xr:Ref>StdPicture.CreateListItem</xr:Ref>
+											<xr:LoadTransparent>true</xr:LoadTransparent>
+										</Picture>
+										<ExtendedTooltip name="ListChangeSettingsExtendedTooltip" id="65"/>
+									</Button>
+									<Button name="ListEnterDepreciation" id="30">
+										<Type>CommandBarButton</Type>
+										<Representation>PictureAndText</Representation>
+										<CommandName>Form.Command.EnterWorkOutput</CommandName>
+										<Picture>
+											<xr:Ref>StdPicture.CreateListItem</xr:Ref>
+											<xr:LoadTransparent>true</xr:LoadTransparent>
+										</Picture>
+										<ExtendedTooltip name="ListEnterExtendedTooltip" id="66"/>
+									</Button>
+									<Button name="ListWriteOff" id="28">
+										<Type>CommandBarButton</Type>
+										<Representation>PictureAndText</Representation>
+										<CommandName>Form.Command.WriteOff</CommandName>
+										<Picture>
+											<xr:Ref>StdPicture.CreateListItem</xr:Ref>
+											<xr:LoadTransparent>true</xr:LoadTransparent>
+										</Picture>
+										<ExtendedTooltip name="ListWriteOffExtendedTooltip" id="67"/>
+									</Button>
+									<Button name="ListSell" id="29">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.Sell</CommandName>
+										<Picture>
+											<xr:Ref>StdPicture.CreateListItem</xr:Ref>
+											<xr:LoadTransparent>true</xr:LoadTransparent>
+										</Picture>
+										<ExtendedTooltip name="ListToSellExtendedTooltip" id="68"/>
+									</Button>
+								</ChildItems>
+							</ButtonGroup>
+						</ChildItems>
+					</Popup>
+					<ButtonGroup name="GroupGlobalCommands" id="106">
+						<Title>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Global commands group</v8:content>
+							</v8:item>
+						</Title>
+						<ToolTip>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Global commands group</v8:content>
+							</v8:item>
+						</ToolTip>
+						<CommandSource>FormCommandPanelGlobalCommands</CommandSource>
+						<ExtendedTooltip name="GroupGlobalCommandsExtendedTooltip" id="107"/>
+						<ChildItems>
+							<Button name="CommonCommandObjectReports" id="108">
+								<Type>CommandBarButton</Type>
+								<CommandName>CommonCommand.ObjectReports</CommandName>
+								<DataPath>Items.List.CurrentData.Ref</DataPath>
+								<ExtendedTooltip name="CommonCommandObjectReportsExtendedTooltip" id="109"/>
+							</Button>
+						</ChildItems>
+					</ButtonGroup>
+					<Button name="ListChangeForm" id="104">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
+						<ExtendedTooltip name="ListChangeFormExtendedTooltip" id="105"/>
+					</Button>
+					<Button name="ListHelp" id="55">
+						<Type>CommandBarButton</Type>
+						<OnlyInAllActions>false</OnlyInAllActions>
+						<CommandName>Form.StandardCommand.Help</CommandName>
+						<ExtendedTooltip name="ListAssistanceExtendedTooltip" id="73"/>
+					</Button>
+				</ChildItems>
+			</AutoCommandBar>
+			<ExtendedTooltip name="ListExtendedTooltip" id="74"/>
+			<SearchStringAddition name="SearchStringList" id="81">
+				<AdditionSource>
+					<Item>List</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ListSearchStringContextMenu" id="82"/>
+				<ExtendedTooltip name="ListSearchStringExtendedTooltip" id="83"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ListViewStatus" id="84">
+				<AdditionSource>
+					<Item>List</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ListViewStatusContextMenu" id="85"/>
+				<ExtendedTooltip name="ListViewStatusExtendedTooltip" id="86"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ListSearchControl" id="87">
+				<AdditionSource>
+					<Item>List</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ListSearchControlContextMenu" id="88"/>
+				<ExtendedTooltip name="ListSearchControlExtendedTooltip" id="89"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="OnActivateRow">ListOnActivateRow</Event>
+			</Events>
+			<ChildItems>
+				<ColumnGroup name="Group1" id="102">
+					<Group>InCell</Group>
+					<FixingInTable>Left</FixingInTable>
+					<ExtendedTooltip name="Group1ExtendedTooltip" id="103"/>
+					<ChildItems>
+						<LabelField name="ListDescription" id="4">
+							<DataPath>List.Description</DataPath>
+							<DefaultItem>true</DefaultItem>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Description</v8:content>
+								</v8:item>
+							</Title>
+							<Width>18</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="ListNameContextMenu" id="5"/>
+							<ExtendedTooltip name="ListNameExtendedTooltip" id="75"/>
+						</LabelField>
+						<LabelField name="ListCode" id="6">
+							<DataPath>List.Code</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Inv. No.</v8:content>
+								</v8:item>
+							</Title>
+							<Width>10</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="CodeListContextMenu" id="7"/>
+							<ExtendedTooltip name="ListCodeExtendedTooltip" id="76"/>
+						</LabelField>
+					</ChildItems>
+				</ColumnGroup>
+				<LabelField name="ListOpeningCost" id="16">
+					<DataPath>List.InitialCost</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Cost (initial)</v8:content>
+						</v8:item>
+					</Title>
+					<Width>15</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="ListOpeningCostContextMenu" id="17"/>
+					<ExtendedTooltip name="ListOpeningCostExtendedTooltip" id="77"/>
+				</LabelField>
+				<InputField name="ListDepreciationBalance" id="21">
+					<DataPath>List.DepreciationBalance</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Depreciation</v8:content>
+						</v8:item>
+					</Title>
+					<Width>12</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="ListDepreciationBalanceContextMenu" id="22"/>
+					<ExtendedTooltip name="ListDepreciationBalanceExtendedTooltip" id="78"/>
+				</InputField>
+				<LabelField name="ListResidualValue" id="25">
+					<DataPath>List.DepreciatedCost</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Cost (depreciated)</v8:content>
+						</v8:item>
+					</Title>
+					<Width>15</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="ListResidualValueContextMenu" id="26"/>
+					<ExtendedTooltip name="ListResidualValueExtendedTooltip" id="79"/>
+				</LabelField>
+				<LabelField name="ListState" id="23">
+					<DataPath>List.State</DataPath>
+					<ContextMenu name="ListStateContextMenu" id="24"/>
+					<ExtendedTooltip name="ListStateExtendedTooltip" id="80"/>
+				</LabelField>
+			</ChildItems>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="List" id="1">
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<UseAlways>
+				<Field>List.DepreciationMethod</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>SELECT
+	CatalogNonCurrentAssets.Ref,
+	CatalogNonCurrentAssets.DeletionMark,
+	CatalogNonCurrentAssets.Predefined,
+	CatalogNonCurrentAssets.Code,
+	CatalogNonCurrentAssets.Description,
+	CatalogNonCurrentAssets.Type,
+	CatalogNonCurrentAssets.GLAccount,
+	CatalogNonCurrentAssets.DepreciationAccount,
+	CatalogNonCurrentAssets.DepreciationMethod,
+	CatalogNonCurrentAssets.InitialCost,
+	CatalogNonCurrentAssets.MeasurementUnit,
+	FixedAssetsBalance.CostBalance,
+	FixedAssetsBalance.DepreciationBalance,
+	ISNULL(FixedAssetsStatesSliceLast.State, "Not accepted for accounting") AS State,
+	FixedAssetsBalance.CostBalance - FixedAssetsBalance.DepreciationBalance AS DepreciatedCost,
+	FixedAssetsParametersSliceLast.Recorder.Company AS Company
+FROM
+	Catalog.FixedAssets AS CatalogNonCurrentAssets
+		LEFT JOIN InformationRegister.FixedAssetsStates.SliceLast AS FixedAssetsStatesSliceLast
+		ON CatalogNonCurrentAssets.Ref = FixedAssetsStatesSliceLast.FixedAsset
+		LEFT JOIN AccumulationRegister.FixedAssets.Balance AS FixedAssetsBalance
+		ON CatalogNonCurrentAssets.Ref = FixedAssetsBalance.FixedAsset
+		LEFT JOIN InformationRegister.FixedAssetsParameters.SliceLast AS FixedAssetsParametersSliceLast
+		ON CatalogNonCurrentAssets.Ref = FixedAssetsParametersSliceLast.FixedAsset</QueryText>
+				<MainTable>Catalog.FixedAssets</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="Company" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Company</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Companies</v8:Type>
+			</Type>
+			<Save>
+				<Field>Company</Field>
+			</Save>
+			<FunctionalOptions>
+				<Item>FunctionalOption.MultipleCompaniesAccounting</Item>
+			</FunctionalOptions>
+		</Attribute>
+		<Attribute name="State" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>State</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.FixedAssetsStates</v8:Type>
+			</Type>
+			<Save>
+				<Field>State</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="FixedAssetsStatesStructure" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Fixed asset state structure</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="StructureMethodsOfDepreciationCalculation" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Structure depreciation accrual methods</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="PeriodOfLastDepreciation" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Period of last depreciation</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="AcceptForAccounting" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Accept for accounting</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Accept for accounting</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>AcceptForAccounting</Action>
+		</Command>
+		<Command name="WriteOff" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Write off</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Write Off</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>WriteOff</Action>
+		</Command>
+		<Command name="Sell" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Sell</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Sell</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Sell</Action>
+		</Command>
+		<Command name="EnterWorkOutput" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Enter work output</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Enter work output</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>EnterWorkOutput</Action>
+		</Command>
+		<Command name="ChargeDepreciation" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Accrue depreciation</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Accrue depreciation</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ChargeDepreciation</Action>
+		</Command>
+		<Command name="ChangeParameters" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Change parameters</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Change parameters</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ChangeParameters</Action>
+		</Command>
+	</Commands>
+</Form>

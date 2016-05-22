@@ -1,0 +1,1386 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Title>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Company information fill in assistant</v8:content>
+		</v8:item>
+	</Title>
+	<AutoTitle>false</AutoTitle>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnOpen">OnOpen</Event>
+		<Event name="BeforeClose">BeforeClose</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="InformationReferences" id="495">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Information references</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Information references</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<ExtendedTooltip name="InformationLinksExtendedTooltip" id="496"/>
+		</UsualGroup>
+		<Pages name="Pages" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Pages</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Pages</v8:content>
+				</v8:item>
+			</ToolTip>
+			<PagesRepresentation>None</PagesRepresentation>
+			<ExtendedTooltip name="PagesExtendedTooltip" id="497"/>
+			<ChildItems>
+				<Page name="Step1" id="14">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Step1 (form of ownership)</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Step1</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="Step1ExtendedTooltip" id="498"/>
+					<ChildItems>
+						<UsualGroup name="Group6" id="260">
+							<HorizontalStretch>true</HorizontalStretch>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="Group6ExtendedTooltip" id="499"/>
+							<ChildItems>
+								<LabelDecoration name="Decoration32" id="261">
+									<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Ownership form</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<ContextMenu name="Decoration32ContextMenu" id="262"/>
+									<ExtendedTooltip name="Decoration32ExtendedTooltip" id="500"/>
+									<Events>
+										<Event name="Click">Decoration32Click</Event>
+									</Events>
+								</LabelDecoration>
+								<LabelDecoration name="Decoration34" id="265">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Basic information</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<ContextMenu name="Decoration34ContextMenu" id="266"/>
+									<ExtendedTooltip name="Decoration34ExtendedTooltip" id="502"/>
+									<Events>
+										<Event name="Click">Decoration34Click</Event>
+									</Events>
+								</LabelDecoration>
+								<LabelDecoration name="Decoration36" id="269">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Codes</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<ContextMenu name="Decoration36ContextMenu" id="270"/>
+									<ExtendedTooltip name="Decoration36ExtendedTooltip" id="504"/>
+									<Events>
+										<Event name="Click">Decoration36Click</Event>
+									</Events>
+								</LabelDecoration>
+								<LabelDecoration name="Decoration38" id="273">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Responsible individuals</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<ContextMenu name="Decoration38ContextMenu" id="274"/>
+									<ExtendedTooltip name="Decoration38ExtendedTooltip" id="506"/>
+									<Events>
+										<Event name="Click">Decoration38Click</Event>
+									</Events>
+								</LabelDecoration>
+								<PictureDecoration name="Decoration119" id="457">
+									<Width>2</Width>
+									<Height>1</Height>
+									<Picture>
+										<xr:Ref>CommonPicture.SectionEnterprise</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="Decoration119ContextMenu" id="458"/>
+									<ExtendedTooltip name="Decoration119ExtendedTooltip" id="508"/>
+								</PictureDecoration>
+								<LabelDecoration name="Decoration40" id="277">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Finish</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="Decoration40ContextMenu" id="278"/>
+									<ExtendedTooltip name="Decoration40ExtendedTooltip" id="509"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+						<LabelDecoration name="Decoration2" id="173">
+							<Font ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Hello! I am your Counterparty information filling wizard.</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Decoration2ContextMenu" id="174"/>
+							<ExtendedTooltip name="Decoration2ExtendedTooltip" id="510"/>
+						</LabelDecoration>
+						<LabelDecoration name="Decoration5" id="179">
+							<TextColor>style:ExplanationText</TextColor>
+							<ContextMenu name="Decoration5ContextMenu" id="180"/>
+							<ExtendedTooltip name="Decoration5ExtendedTooltip" id="511"/>
+						</LabelDecoration>
+						<RadioButtonField name="CompanyLegalIndividual" id="80">
+							<DataPath>Company.LegalEntityIndividual</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Specify your company ownership:</v8:content>
+								</v8:item>
+							</Title>
+							<TitleTextColor>style:ExplanationText</TitleTextColor>
+							<TitleLocation>Top</TitleLocation>
+							<RadioButtonType>Auto</RadioButtonType>
+							<ColumnsCount>1</ColumnsCount>
+							<ChoiceList>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Your company is a legal entity</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xr:DesignTimeRef">Enum.LegalEntityIndividual.EnumValue.LegalEntity</Value>
+									</xr:Value>
+								</xr:Item>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>You are an individual entrepreneur</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xr:DesignTimeRef">Enum.LegalEntityIndividual.EnumValue.Ind</Value>
+									</xr:Value>
+								</xr:Item>
+							</ChoiceList>
+							<ContextMenu name="CompanyLegalIndividualContextMenu" id="81"/>
+							<ExtendedTooltip name="CompanyLegalIndividualExtendedTooltip" id="512"/>
+						</RadioButtonField>
+						<LabelDecoration name="Decoration4" id="177">
+							<VerticalStretch>true</VerticalStretch>
+							<ContextMenu name="Decoration4ContextMenu" id="178"/>
+							<ExtendedTooltip name="Decoration4ExtendedTooltip" id="513"/>
+						</LabelDecoration>
+					</ChildItems>
+				</Page>
+				<Page name="Step2LegalEntity" id="15">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Step2 (description)</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Step1</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="Step2LegalEntityExtendedTooltip" id="515"/>
+					<ChildItems>
+						<UsualGroup name="Group7" id="381">
+							<HorizontalStretch>true</HorizontalStretch>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="Group7ExtendedTooltip" id="516"/>
+							<ChildItems>
+								<LabelDecoration name="Decoration41" id="382">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Ownership form</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<ContextMenu name="Decoration41ContextMenu" id="383"/>
+									<ExtendedTooltip name="Decoration41ExtendedTooltip" id="517"/>
+									<Events>
+										<Event name="Click">Decoration32Click</Event>
+									</Events>
+								</LabelDecoration>
+								<LabelDecoration name="Decoration43" id="386">
+									<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Basic information</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<ContextMenu name="Decoration43ContextMenu" id="387"/>
+									<ExtendedTooltip name="Decoration43ExtendedTooltip" id="519"/>
+									<Events>
+										<Event name="Click">Decoration34Click</Event>
+									</Events>
+								</LabelDecoration>
+								<LabelDecoration name="Decoration45" id="390">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Codes</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<ContextMenu name="Decoration45ContextMenu" id="391"/>
+									<ExtendedTooltip name="Decoration45ExtendedTooltip" id="521"/>
+									<Events>
+										<Event name="Click">Decoration36Click</Event>
+									</Events>
+								</LabelDecoration>
+								<LabelDecoration name="Decoration47" id="394">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Responsible individuals</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<ContextMenu name="Decoration47ContextMenu" id="395"/>
+									<ExtendedTooltip name="Decoration47ExtendedTooltip" id="523"/>
+									<Events>
+										<Event name="Click">Decoration38Click</Event>
+									</Events>
+								</LabelDecoration>
+								<PictureDecoration name="Decoration120" id="459">
+									<Width>2</Width>
+									<Height>1</Height>
+									<Picture>
+										<xr:Ref>CommonPicture.SectionEnterprise</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="Decoration120ContextMenu" id="460"/>
+									<ExtendedTooltip name="Decoration120ExtendedTooltip" id="525"/>
+								</PictureDecoration>
+								<LabelDecoration name="Decoration49" id="398">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Finish</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="Decoration49ContextMenu" id="399"/>
+									<ExtendedTooltip name="Decoration49ExtendedTooltip" id="526"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+						<LabelDecoration name="Decoration8" id="185">
+							<Font ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Specify the basic information about your legal entity</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Decoration8ContextMenu" id="186"/>
+							<ExtendedTooltip name="Decoration8ExtendedTooltip" id="527"/>
+						</LabelDecoration>
+						<LabelDecoration name="Decoration28" id="251">
+							<ContextMenu name="Decoration28ContextMenu" id="252"/>
+							<ExtendedTooltip name="Decoration28ExtendedTooltip" id="528"/>
+						</LabelDecoration>
+						<LabelDecoration name="Decoration6" id="181">
+							<Width>75</Width>
+							<TextColor>style:ExplanationText</TextColor>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Fill in the short name of your company (e.g. Our company). This name will be displayed in all the configuration lists:</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Decoration6ContextMenu" id="182"/>
+							<ExtendedTooltip name="Decoration6ExtendedTooltip" id="529"/>
+						</LabelDecoration>
+						<InputField name="CompanyDescription" id="82">
+							<DataPath>Company.Description</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<VerticalStretch>false</VerticalStretch>
+							<ContextMenu name="CounterpartyNameContextMenu" id="83"/>
+							<ExtendedTooltip name="CounterpartyNameExtendedTooltip" id="530"/>
+							<Events>
+								<Event name="OnChange">CompanyDescriptionOnChange</Event>
+							</Events>
+						</InputField>
+						<LabelDecoration name="Decoration7" id="183">
+							<Width>75</Width>
+							<TextColor>style:ExplanationText</TextColor>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Fill in the full name of your company (e.g. - Our company LLC). This name will be displayed in the document print forms:</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Decoration7ContextMenu" id="184"/>
+							<ExtendedTooltip name="Decoration7ExtendedTooltip" id="531"/>
+						</LabelDecoration>
+						<InputField name="CompanyDescriptionFull" id="84">
+							<DataPath>Company.DescriptionFull</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<VerticalStretch>false</VerticalStretch>
+							<ContextMenu name="CompanyDescriptionFullContextMenu" id="85"/>
+							<ExtendedTooltip name="CompanyDescriptionFullExtendedTooltip" id="532"/>
+						</InputField>
+						<LabelDecoration name="Decoration9" id="187">
+							<Width>75</Width>
+							<TextColor>style:ExplanationText</TextColor>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Fill in the full name of your company used in tax remission documents (e.g. Our company LLC). This name will be displayed in the print documents forms of the taxes listing:</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Decoration9ContextMenu" id="188"/>
+							<ExtendedTooltip name="Decoration9ExtendedTooltip" id="533"/>
+						</LabelDecoration>
+						<InputField name="CompanyPayerDescriptionOnTaxTransfer" id="86">
+							<DataPath>Company.PayerDescriptionOnTaxTransfer</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<VerticalStretch>false</VerticalStretch>
+							<ContextMenu name="CompanyPayerDescriptionOnTaxTransferContextMenu" id="87"/>
+							<ExtendedTooltip name="CompanyPayerDescriptionOnTaxTransferExtendedTooltip" id="534"/>
+						</InputField>
+						<LabelDecoration name="Decoration16" id="208">
+							<VerticalStretch>true</VerticalStretch>
+							<ContextMenu name="Decoration16ContextMenu" id="209"/>
+							<ExtendedTooltip name="Decoration16ExtendedTooltip" id="535"/>
+						</LabelDecoration>
+					</ChildItems>
+				</Page>
+				<Page name="Step2Individual" id="16">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Step2 (description)</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Step1</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="Step2IndividualExtendedTooltip" id="537"/>
+					<ChildItems>
+						<UsualGroup name="Group8" id="400">
+							<HorizontalStretch>true</HorizontalStretch>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="Group8ExtendedTooltip" id="538"/>
+							<ChildItems>
+								<LabelDecoration name="Decoration50" id="401">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Ownership form</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<ContextMenu name="Decoration50ContextMenu" id="402"/>
+									<ExtendedTooltip name="Decoration50ExtendedTooltip" id="539"/>
+									<Events>
+										<Event name="Click">Decoration32Click</Event>
+									</Events>
+								</LabelDecoration>
+								<LabelDecoration name="Decoration52" id="405">
+									<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Basic information</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<ContextMenu name="Decoration52ContextMenu" id="406"/>
+									<ExtendedTooltip name="Decoration52ExtendedTooltip" id="541"/>
+									<Events>
+										<Event name="Click">Decoration34Click</Event>
+									</Events>
+								</LabelDecoration>
+								<LabelDecoration name="Decoration54" id="409">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Codes</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<ContextMenu name="Decoration54ContextMenu" id="410"/>
+									<ExtendedTooltip name="Decoration54ExtendedTooltip" id="543"/>
+									<Events>
+										<Event name="Click">Decoration36Click</Event>
+									</Events>
+								</LabelDecoration>
+								<LabelDecoration name="Decoration56" id="413">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Responsible individuals</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<ContextMenu name="Decoration56ContextMenu" id="414"/>
+									<ExtendedTooltip name="Decoration56ExtendedTooltip" id="545"/>
+									<Events>
+										<Event name="Click">Decoration38Click</Event>
+									</Events>
+								</LabelDecoration>
+								<PictureDecoration name="Decoration121" id="461">
+									<Width>2</Width>
+									<Height>1</Height>
+									<Picture>
+										<xr:Ref>CommonPicture.SectionEnterprise</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="Decoration121ContextMenu" id="462"/>
+									<ExtendedTooltip name="Decoration121ExtendedTooltip" id="547"/>
+								</PictureDecoration>
+								<LabelDecoration name="Decoration58" id="417">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Finish</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="Decoration58ContextMenu" id="418"/>
+									<ExtendedTooltip name="Decoration58ExtendedTooltip" id="548"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+						<LabelDecoration name="Decoration10" id="189">
+							<Width>73</Width>
+							<Font ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Specify the basic information about the sole proprietor</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Decoration10ContextMenu" id="190"/>
+							<ExtendedTooltip name="Decoration10ExtendedTooltip" id="549"/>
+						</LabelDecoration>
+						<LabelDecoration name="Decoration29" id="253">
+							<ContextMenu name="Decoration29ContextMenu" id="254"/>
+							<ExtendedTooltip name="Decoration29ExtendedTooltip" id="550"/>
+						</LabelDecoration>
+						<LabelDecoration name="Decoration11" id="191">
+							<Width>75</Width>
+							<TextColor>style:ExplanationText</TextColor>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Fill in the proprietor's full name:</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Decoration11ContextMenu" id="192"/>
+							<ExtendedTooltip name="Decoration11ExtendedTooltip" id="551"/>
+						</LabelDecoration>
+						<InputField name="IndividualName" id="88">
+							<DataPath>Individual.Description</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<ContextMenu name="IndividualNameContextMenu" id="89"/>
+							<ExtendedTooltip name="IndividualNameExtendedTooltip" id="552"/>
+						</InputField>
+						<LabelDecoration name="Decoration12" id="194">
+							<Width>75</Width>
+							<TextColor>style:ExplanationText</TextColor>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Fill in the short name of individual entrepreneur (e.g. - Ivanov). This name will be displayed in all the configuration lists:</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Decoration12ContextMenu" id="195"/>
+							<ExtendedTooltip name="Decoration12ExtendedTooltip" id="553"/>
+						</LabelDecoration>
+						<InputField name="CompanyName1" id="196">
+							<DataPath>Company.Description</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<ContextMenu name="CounterpartyName1ContextMenu" id="197"/>
+							<ExtendedTooltip name="CounterpartyName1ExtendedTooltip" id="554"/>
+						</InputField>
+						<LabelDecoration name="Decoration13" id="198">
+							<Width>75</Width>
+							<TextColor>style:ExplanationText</TextColor>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Fill in the full name of individual entrepreneur (e.g. Ivanov I.I. sole proprietor). This name will be displayed in the document print forms:</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Decoration13ContextMenu" id="199"/>
+							<ExtendedTooltip name="Decoration13ExtendedTooltip" id="555"/>
+						</LabelDecoration>
+						<InputField name="CompanyDescriptionFull1" id="200">
+							<DataPath>Company.DescriptionFull</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<ContextMenu name="CompanyDescriptionFull1ContextMenu" id="201"/>
+							<ExtendedTooltip name="CompanyDescriptionFull1ExtendedTooltip" id="556"/>
+						</InputField>
+						<LabelDecoration name="Decoration14" id="202">
+							<Width>75</Width>
+							<TextColor>style:ExplanationText</TextColor>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Fill in the full name of individual entrepreneur used in tax remission documents (e.g. Ivanov I.I. individual entrepreneur). This name will be displayed in the print documents forms of the taxes listing:</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Decoration14ContextMenu" id="203"/>
+							<ExtendedTooltip name="Decoration14ExtendedTooltip" id="557"/>
+						</LabelDecoration>
+						<InputField name="CompanyPayerDescriptionOnTaxTransfer1" id="204">
+							<DataPath>Company.PayerDescriptionOnTaxTransfer</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<ContextMenu name="CompanyPayerDescriptionOnTaxTransfer1ContextMenu" id="205"/>
+							<ExtendedTooltip name="CounterpartyPayerDescriptionOnTaxTransfer1ExtendedTooltip" id="558"/>
+						</InputField>
+						<UsualGroup name="Group1" id="193">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Additional information about the proprietor</v8:content>
+								</v8:item>
+							</Title>
+							<HorizontalStretch>true</HorizontalStretch>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ExtendedTooltip name="Group1ExtendedTooltip" id="559"/>
+							<ChildItems>
+								<InputField name="IndividualDateOfBirth" id="90">
+									<DataPath>Individual.BirthDate</DataPath>
+									<TitleTextColor>style:ExplanationText</TitleTextColor>
+									<ContextMenu name="IndividualDateOfBirthContextMenu" id="91"/>
+									<ExtendedTooltip name="IndividualDateOfBirthExtendedTooltip" id="560"/>
+								</InputField>
+								<RadioButtonField name="IndividualPersonGender" id="92">
+									<DataPath>Individual.Gender</DataPath>
+									<TitleTextColor>style:ExplanationText</TitleTextColor>
+									<RadioButtonType>Auto</RadioButtonType>
+									<ChoiceList>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.IndividualGender.EnumValue.Male</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.IndividualGender.EnumValue.Female</Value>
+											</xr:Value>
+										</xr:Item>
+									</ChoiceList>
+									<ContextMenu name="IndividualGenderContextMenu" id="93"/>
+									<ExtendedTooltip name="IndividualGenderExtendedTooltip" id="561"/>
+								</RadioButtonField>
+							</ChildItems>
+						</UsualGroup>
+						<LabelDecoration name="Decoration17" id="210">
+							<VerticalStretch>true</VerticalStretch>
+							<ContextMenu name="Decoration17ContextMenu" id="211"/>
+							<ExtendedTooltip name="Decoration17ExtendedTooltip" id="562"/>
+						</LabelDecoration>
+					</ChildItems>
+				</Page>
+				<Page name="Step3" id="17">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Step3 (codes)</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Step1</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="Step3ExtendedTooltip" id="564"/>
+					<ChildItems>
+						<UsualGroup name="Group9" id="419">
+							<HorizontalStretch>true</HorizontalStretch>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="Group9ExtendedTooltip" id="565"/>
+							<ChildItems>
+								<LabelDecoration name="Decoration59" id="420">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Ownership form</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<ContextMenu name="Decoration59ContextMenu" id="421"/>
+									<ExtendedTooltip name="Decoration59ExtendedTooltip" id="566"/>
+									<Events>
+										<Event name="Click">Decoration32Click</Event>
+									</Events>
+								</LabelDecoration>
+								<LabelDecoration name="Decoration61" id="424">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Basic information</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<ContextMenu name="Decoration61ContextMenu" id="425"/>
+									<ExtendedTooltip name="Decoration61ExtendedTooltip" id="568"/>
+									<Events>
+										<Event name="Click">Decoration34Click</Event>
+									</Events>
+								</LabelDecoration>
+								<LabelDecoration name="Decoration63" id="428">
+									<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Codes</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<ContextMenu name="Decoration63ContextMenu" id="429"/>
+									<ExtendedTooltip name="Decoration63ExtendedTooltip" id="570"/>
+									<Events>
+										<Event name="Click">Decoration36Click</Event>
+									</Events>
+								</LabelDecoration>
+								<LabelDecoration name="Decoration65" id="432">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Responsible individuals</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<ContextMenu name="Decoration65ContextMenu" id="433"/>
+									<ExtendedTooltip name="Decoration65ExtendedTooltip" id="572"/>
+									<Events>
+										<Event name="Click">Decoration38Click</Event>
+									</Events>
+								</LabelDecoration>
+								<PictureDecoration name="Decoration122" id="463">
+									<Width>2</Width>
+									<Height>1</Height>
+									<Picture>
+										<xr:Ref>CommonPicture.SectionEnterprise</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="Decoration122ContextMenu" id="464"/>
+									<ExtendedTooltip name="Decoration122ExtendedTooltip" id="574"/>
+								</PictureDecoration>
+								<LabelDecoration name="Decoration67" id="436">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Finish</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="Decoration67ContextMenu" id="437"/>
+									<ExtendedTooltip name="Decoration67ExtendedTooltip" id="575"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+						<LabelDecoration name="Decoration20" id="217">
+							<Width>73</Width>
+							<Font ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Specify the basic codes</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Decoration20ContextMenu" id="218"/>
+							<ExtendedTooltip name="Decoration20ExtendedTooltip" id="576"/>
+						</LabelDecoration>
+						<LabelDecoration name="Decoration30" id="255">
+							<ContextMenu name="Decoration30ContextMenu" id="256"/>
+							<ExtendedTooltip name="Decoration30ExtendedTooltip" id="577"/>
+						</LabelDecoration>
+						<LabelDecoration name="Decoration19" id="215">
+							<Width>75</Width>
+							<TextColor>style:ExplanationText</TextColor>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Fill main codes. Data is required for the correct documents print forms filling</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Decoration19ContextMenu" id="216"/>
+							<ExtendedTooltip name="Decoration19ExtendedTooltip" id="578"/>
+						</LabelDecoration>
+						<UsualGroup name="Group5" id="259">
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="Group5ExtendedTooltip" id="579"/>
+							<ChildItems>
+								<UsualGroup name="Group3" id="219">
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="Group3ExtendedTooltip" id="580"/>
+									<ChildItems>
+										<InputField name="CompanyTIN" id="94">
+											<DataPath>Company.TIN</DataPath>
+											<HorizontalStretch>true</HorizontalStretch>
+											<ContextMenu name="CompanyTINContextMenu" id="95"/>
+											<ExtendedTooltip name="CompanyTINExtendedTooltip" id="581"/>
+										</InputField>
+										<InputField name="CompanyKPP" id="96">
+											<DataPath>Company.KPP</DataPath>
+											<HorizontalStretch>true</HorizontalStretch>
+											<ContextMenu name="CompanyKPPContextMenu" id="97"/>
+											<ExtendedTooltip name="CompanyKPPExtendedTooltip" id="582"/>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="Group4" id="220">
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="Group4ExtendedTooltip" id="583"/>
+									<ChildItems>
+										<InputField name="CompanyRBCOCode" id="98">
+											<DataPath>Company.CodeByOKPO</DataPath>
+											<HorizontalStretch>true</HorizontalStretch>
+											<ContextMenu name="CompanyCodeByRBOCContextMenu" id="99"/>
+											<ExtendedTooltip name="CompanyCodeByRBOCExtendedTooltip" id="584"/>
+										</InputField>
+										<InputField name="CompanyCodeByOKATO" id="100">
+											<DataPath>Company.CodeByOKATO</DataPath>
+											<HorizontalStretch>true</HorizontalStretch>
+											<ContextMenu name="CounterpartyCodeByRNCofPSContextMenu" id="101"/>
+											<ExtendedTooltip name="CounterpartyCodeByRNCofPSExtendedTooltip" id="585"/>
+										</InputField>
+										<InputField name="CompanyCodeByOKTMO" id="633">
+											<DataPath>Company.CodebyOKTMO</DataPath>
+											<ContextMenu name="CompanyCodeByOKTMOContextMenu" id="634"/>
+											<ExtendedTooltip name="CompanyCodeByOKTMOExtendedTooltip" id="635"/>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+						<LabelDecoration name="Decoration26" id="240">
+							<VerticalStretch>true</VerticalStretch>
+							<ContextMenu name="Decoration26ContextMenu" id="241"/>
+							<ExtendedTooltip name="Decoration26ExtendedTooltip" id="586"/>
+						</LabelDecoration>
+					</ChildItems>
+				</Page>
+				<Page name="Step4" id="75">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Step4</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Step4</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="Step4ExtendedTooltip" id="588"/>
+					<ChildItems>
+						<UsualGroup name="Group10" id="438">
+							<HorizontalStretch>true</HorizontalStretch>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="Group10ExtendedTooltip" id="589"/>
+							<ChildItems>
+								<LabelDecoration name="Decoration68" id="439">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Ownership form</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<ContextMenu name="Decoration68ContextMenu" id="440"/>
+									<ExtendedTooltip name="Decoration68ExtendedTooltip" id="590"/>
+									<Events>
+										<Event name="Click">Decoration32Click</Event>
+									</Events>
+								</LabelDecoration>
+								<LabelDecoration name="Decoration70" id="443">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Basic information</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<ContextMenu name="Decoration70ContextMenu" id="444"/>
+									<ExtendedTooltip name="Decoration70ExtendedTooltip" id="592"/>
+									<Events>
+										<Event name="Click">Decoration34Click</Event>
+									</Events>
+								</LabelDecoration>
+								<LabelDecoration name="Decoration72" id="447">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Codes</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<ContextMenu name="Decoration72ContextMenu" id="448"/>
+									<ExtendedTooltip name="Decoration72ExtendedTooltip" id="594"/>
+									<Events>
+										<Event name="Click">Decoration36Click</Event>
+									</Events>
+								</LabelDecoration>
+								<LabelDecoration name="Decoration74" id="451">
+									<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Responsible individuals</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<ContextMenu name="Decoration74ContextMenu" id="452"/>
+									<ExtendedTooltip name="Decoration74ExtendedTooltip" id="596"/>
+									<Events>
+										<Event name="Click">Decoration38Click</Event>
+									</Events>
+								</LabelDecoration>
+								<PictureDecoration name="Decoration123" id="465">
+									<Width>2</Width>
+									<Height>1</Height>
+									<Picture>
+										<xr:Ref>CommonPicture.SectionEnterprise</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="Decoration123ContextMenu" id="466"/>
+									<ExtendedTooltip name="Decoration123ExtendedTooltip" id="598"/>
+								</PictureDecoration>
+								<LabelDecoration name="Decoration76" id="455">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Finish</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="Decoration76ContextMenu" id="456"/>
+									<ExtendedTooltip name="Decoration76ExtendedTooltip" id="599"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+						<LabelDecoration name="Decoration21" id="229">
+							<Width>73</Width>
+							<Font ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Specify the main responsible people</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Decoration21ContextMenu" id="230"/>
+							<ExtendedTooltip name="Decoration21ExtendedTooltip" id="600"/>
+						</LabelDecoration>
+						<LabelDecoration name="Decoration31" id="257">
+							<ContextMenu name="Decoration31ContextMenu" id="258"/>
+							<ExtendedTooltip name="Decoration31ExtendedTooltip" id="601"/>
+						</LabelDecoration>
+						<LabelDecoration name="Decoration22" id="231">
+							<Width>75</Width>
+							<TextColor>style:ExplanationText</TextColor>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Fill in the surmane, name and patronymic of the main people in charge. This information will be automatically reflected in the print form of the documents.</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Decoration22ContextMenu" id="232"/>
+							<ExtendedTooltip name="Decoration22ExtendedTooltip" id="602"/>
+						</LabelDecoration>
+						<InputField name="ChiefExecutiveName" id="221">
+							<DataPath>Chiefexecutive.Description</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Chief Executive's full name</v8:content>
+								</v8:item>
+							</Title>
+							<AutoMarkIncomplete>false</AutoMarkIncomplete>
+							<ContextMenu name="ChiefExecutiveNameContextMenu" id="222"/>
+							<ExtendedTooltip name="ChiefExecutiveNameExtendedTooltip" id="603"/>
+							<Events>
+								<Event name="OnChange">ChiefExecutiveNameOnChange</Event>
+							</Events>
+						</InputField>
+						<InputField name="ChiefAccountantDescription" id="223">
+							<DataPath>ChiefAccountant.Description</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Chief accountant's full name</v8:content>
+								</v8:item>
+							</Title>
+							<AutoMarkIncomplete>false</AutoMarkIncomplete>
+							<ContextMenu name="ChiefAccountantDescriptionContextMenu" id="224"/>
+							<ExtendedTooltip name="ChiefAccountantDescriptionExtendedTooltip" id="604"/>
+							<Events>
+								<Event name="OnChange">ChiefAccountantNameOnChange</Event>
+							</Events>
+						</InputField>
+						<InputField name="CashiersName" id="225">
+							<DataPath>Cashier.Description</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Cashier's full name</v8:content>
+								</v8:item>
+							</Title>
+							<AutoMarkIncomplete>false</AutoMarkIncomplete>
+							<ContextMenu name="CashierNameContextMenu" id="226"/>
+							<ExtendedTooltip name="CashierNameExtendedTooltip" id="605"/>
+							<Events>
+								<Event name="OnChange">CashierDescriptionOnChange</Event>
+							</Events>
+						</InputField>
+						<InputField name="WarehouseManDescription" id="227">
+							<DataPath>WarehouseMan.Description</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Storekeeper's full name</v8:content>
+								</v8:item>
+							</Title>
+							<AutoMarkIncomplete>false</AutoMarkIncomplete>
+							<ContextMenu name="StorekeeperNameContextMenu" id="228"/>
+							<ExtendedTooltip name="StorekeeperNameExtendedTooltip" id="606"/>
+							<Events>
+								<Event name="OnChange">WarehouseManNameOnChange</Event>
+							</Events>
+						</InputField>
+						<LabelDecoration name="Decoration23" id="233">
+							<VerticalStretch>true</VerticalStretch>
+							<ContextMenu name="Decoration23ContextMenu" id="234"/>
+							<ExtendedTooltip name="Decoration23ExtendedTooltip" id="607"/>
+						</LabelDecoration>
+					</ChildItems>
+				</Page>
+				<Page name="Step5" id="355">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Step5</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Step5</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="Step5ExtendedTooltip" id="609"/>
+					<ChildItems>
+						<UsualGroup name="Group11" id="467">
+							<HorizontalStretch>true</HorizontalStretch>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ExtendedTooltip name="Group11ExtendedTooltip" id="610"/>
+							<ChildItems>
+								<LabelDecoration name="Decoration77" id="468">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Ownership form</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<ContextMenu name="Decoration77ContextMenu" id="469"/>
+									<ExtendedTooltip name="Decoration77ExtendedTooltip" id="611"/>
+									<Events>
+										<Event name="Click">Decoration32Click</Event>
+									</Events>
+								</LabelDecoration>
+								<LabelDecoration name="Decoration79" id="472">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Basic information</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<ContextMenu name="Decoration79ContextMenu" id="473"/>
+									<ExtendedTooltip name="Decoration79ExtendedTooltip" id="613"/>
+									<Events>
+										<Event name="Click">Decoration34Click</Event>
+									</Events>
+								</LabelDecoration>
+								<LabelDecoration name="Decoration81" id="476">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Codes</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<ContextMenu name="Decoration81ContextMenu" id="477"/>
+									<ExtendedTooltip name="Decoration81ExtendedTooltip" id="615"/>
+									<Events>
+										<Event name="Click">Decoration36Click</Event>
+									</Events>
+								</LabelDecoration>
+								<LabelDecoration name="Decoration83" id="480">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Responsible individuals</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<ContextMenu name="Decoration83ContextMenu" id="481"/>
+									<ExtendedTooltip name="Decoration83ExtendedTooltip" id="617"/>
+									<Events>
+										<Event name="Click">Decoration38Click</Event>
+									</Events>
+								</LabelDecoration>
+								<PictureDecoration name="Decoration124" id="484">
+									<Width>2</Width>
+									<Height>1</Height>
+									<Picture>
+										<xr:Ref>CommonPicture.SectionEnterprise</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="Decoration124ContextMenu" id="485"/>
+									<ExtendedTooltip name="Decoration124ExtendedTooltip" id="619"/>
+								</PictureDecoration>
+								<LabelDecoration name="Decoration85" id="486">
+									<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Finish</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="Decoration85ContextMenu" id="487"/>
+									<ExtendedTooltip name="Decoration85ExtendedTooltip" id="620"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+						<LabelDecoration name="Decoration86" id="375">
+							<Font ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Well done! Information about the company was filled successfully!</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Decoration86ContextMenu" id="376"/>
+							<ExtendedTooltip name="Decoration86ExtendedTooltip" id="621"/>
+						</LabelDecoration>
+						<PictureDecoration name="Decoration89" id="488">
+							<Picture>
+								<xr:Ref>CommonPicture.Flag</xr:Ref>
+								<xr:LoadTransparent>true</xr:LoadTransparent>
+							</Picture>
+							<ContextMenu name="Decoration89ContextMenu" id="489"/>
+							<ExtendedTooltip name="Decoration89ExtendedTooltip" id="622"/>
+						</PictureDecoration>
+						<LabelDecoration name="Decoration87" id="377">
+							<VerticalStretch>true</VerticalStretch>
+							<ContextMenu name="Decoration87ContextMenu" id="378"/>
+							<ExtendedTooltip name="Decoration87ExtendedTooltip" id="623"/>
+						</LabelDecoration>
+						<UsualGroup name="ToolTip" id="490">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>ToolTip</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>ToolTip</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ToolTipExtendedTooltip" id="624"/>
+							<ChildItems>
+								<PictureDecoration name="Decoration90" id="491">
+									<Width>2</Width>
+									<Height>2</Height>
+									<Picture>
+										<xr:Ref>CommonPicture.Warning</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="Decoration90ContextMenu" id="492"/>
+									<ExtendedTooltip name="Decoration90ExtendedTooltip" id="625"/>
+								</PictureDecoration>
+								<LabelDecoration name="Decoration91" id="493">
+									<Width>75</Width>
+									<Font ref="sys:DefaultGUIFont" height="10" kind="WindowsFont"/>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>In the future you can fine-tune the accounting parameters from the "Enterprise" - "Settings" section (in the navigation panel).</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="Decoration91ContextMenu" id="494"/>
+									<ExtendedTooltip name="Decoration91ExtendedTooltip" id="626"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+		<UsualGroup name="Group2" id="12">
+			<Group>Horizontal</Group>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="Group2ExtendedTooltip" id="628"/>
+			<ChildItems>
+				<LabelDecoration name="DecorationNextActionExplanation" id="175">
+					<HorizontalStretch>true</HorizontalStretch>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Click "Next" to go to the next step</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="DecorationExplanationFollowingContextMenuActions" id="176"/>
+					<ExtendedTooltip name="DecorationNextActionExplanationExtendedTooltip" id="514"/>
+				</LabelDecoration>
+				<Button name="Back" id="21">
+					<Type>UsualButton</Type>
+					<Representation>PictureAndText</Representation>
+					<Width>9</Width>
+					<CommandName>Form.Command.Back</CommandName>
+					<Picture>
+						<xr:Abs>Picture.png</xr:Abs>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</Picture>
+					<ExtendedTooltip name="BackExtendedTooltip" id="630"/>
+				</Button>
+				<Button name="GoToNext" id="20">
+					<Type>UsualButton</Type>
+					<Representation>PictureAndText</Representation>
+					<CommandName>Form.Command.GoToNext</CommandName>
+					<Picture>
+						<xr:Abs>Picture.png</xr:Abs>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</Picture>
+					<ExtendedTooltip name="NextExtendedTooltip" id="631"/>
+				</Button>
+				<Button name="Close" id="214">
+					<Type>UsualButton</Type>
+					<Width>9</Width>
+					<CommandName>Form.Command.CloseForm</CommandName>
+					<ExtendedTooltip name="CloseExtendedTooltip" id="632"/>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Company" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Company</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogObject.Companies</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="Individual" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Individual</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogObject.Individuals</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="Chiefexecutive" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Chief executive officer</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogObject.Employees</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ChiefAccountant" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Chief executive officer</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogObject.Employees</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="Cashier" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Chief executive officer</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogObject.Employees</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="WarehouseMan" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Chief executive officer</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogObject.Employees</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="CloseForm" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Close</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Close form</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>CloseForm</Action>
+		</Command>
+		<Command name="CompleteFilling" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Complete filling</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Complete filling</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>CompleteFilling</Action>
+		</Command>
+		<Command name="GoToNext" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Next</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Next</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>GoToNext</Action>
+		</Command>
+		<Command name="Back" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Back</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Back</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Back</Action>
+		</Command>
+	</Commands>
+</Form>

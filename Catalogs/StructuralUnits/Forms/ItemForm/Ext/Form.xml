@@ -1,0 +1,346 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<ChildItems>
+			<ButtonGroup name="GroupGlobalCommands" id="50">
+				<Title>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Global commands group</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTip>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Global commands group</v8:content>
+					</v8:item>
+				</ToolTip>
+				<CommandSource>FormCommandPanelGlobalCommands</CommandSource>
+				<ExtendedTooltip name="GroupGlobalCommandsExtendedTooltip" id="51"/>
+				<ChildItems>
+					<Button name="CommonCommandObjectReports" id="52">
+						<Type>CommandBarButton</Type>
+						<CommandName>CommonCommand.ObjectReports</CommandName>
+						<DataPath>Object.Ref</DataPath>
+						<ExtendedTooltip name="CommonCommandObjectReportsExtendedTooltip" id="53"/>
+					</Button>
+					<Button name="CommonCommandAdditionalInformationCommandBar" id="54">
+						<Type>CommandBarButton</Type>
+						<OnlyInAllActions>false</OnlyInAllActions>
+						<CommandName>CommonCommand.AdditionalInformationCommandBar</CommandName>
+						<DataPath>Object.Ref</DataPath>
+						<ExtendedTooltip name="CommonCommandAdditionalInformationCommandBarExtendedTooltip" id="55"/>
+					</Button>
+				</ChildItems>
+			</ButtonGroup>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="AfterWriteAtServer">AfterWriteAtServer</Event>
+		<Event name="NotificationProcessing">NotificationProcessing</Event>
+		<Event name="OnReadAtServer">OnReadAtServer</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+		<Event name="BeforeWriteAtServer">BeforeWriteAtServer</Event>
+		<Event name="FillCheckProcessingAtServer">FillCheckProcessingAtServer</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="Description" id="3">
+			<DataPath>Object.Description</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<Width>1</Width>
+			<Wrap>false</Wrap>
+			<ContextMenu name="DescriptionContextMenu" id="4"/>
+			<ExtendedTooltip name="DescriptionExtendedTooltip" id="30"/>
+		</InputField>
+		<Pages name="Pages" id="40">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Pages</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Pages</v8:content>
+				</v8:item>
+			</ToolTip>
+			<VerticalStretch>true</VerticalStretch>
+			<ExtendedTooltip name="PagesExtendedTooltip" id="41"/>
+			<ChildItems>
+				<Page name="GeneralInformationPage" id="42">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>General information</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>General information page</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="GeneralInformationPageExtendedTooltip" id="43"/>
+					<ChildItems>
+						<UsualGroup name="Type" id="10">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Type</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Type</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="TypeExtendedTooltip" id="31"/>
+							<ChildItems>
+								<InputField name="StructuralUnitType" id="7">
+									<DataPath>Object.StructuralUnitType</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Wrap>false</Wrap>
+									<ListChoiceMode>true</ListChoiceMode>
+									<ChooseType>false</ChooseType>
+									<ChoiceListButton>false</ChoiceListButton>
+									<ContextMenu name="TypeOfStructuralUnitContextMenu" id="8"/>
+									<ExtendedTooltip name="TypeOfStructuralUnitExtendedTooltip" id="32"/>
+									<Events>
+										<Event name="OnChange">StructuralUnitTypeOnChange</Event>
+									</Events>
+								</InputField>
+								<CheckBoxField name="OrderWarehouse" id="11">
+									<DataPath>Object.OrderWarehouse</DataPath>
+									<TitleLocation>Right</TitleLocation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="OrderWarehouseContextMenu" id="12"/>
+									<ExtendedTooltip name="OrderWarehouseExtendedTooltip" id="33"/>
+									<Events>
+										<Event name="OnChange">OrderWarehouseOnChange</Event>
+									</Events>
+								</CheckBoxField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ParentCode" id="9">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Parent code</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Parent code</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ParentCodeExtendedTooltip" id="27"/>
+							<ChildItems>
+								<InputField name="Parent" id="5">
+									<DataPath>Object.Parent</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Wrap>false</Wrap>
+									<ContextMenu name="ParentContextMenu" id="6"/>
+									<ExtendedTooltip name="ParentExtendedTooltip" id="28"/>
+								</InputField>
+								<InputField name="Code" id="1">
+									<DataPath>Object.Code</DataPath>
+									<UserVisible>
+										<xr:Common>false</xr:Common>
+									</UserVisible>
+									<EditMode>EnterOnInput</EditMode>
+									<Wrap>false</Wrap>
+									<ContextMenu name="CodeContextMenu" id="2"/>
+									<ExtendedTooltip name="CodeExtendedTooltip" id="29"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<InputField name="Company" id="13">
+							<DataPath>Object.Company</DataPath>
+							<Wrap>false</Wrap>
+							<ContextMenu name="CounterpartyContextMenu" id="14"/>
+							<ExtendedTooltip name="CounterpartyExtendedTooltip" id="34"/>
+						</InputField>
+						<InputField name="RetailPriceKind" id="17">
+							<DataPath>Object.RetailPriceKind</DataPath>
+							<ContextMenu name="RetailPriceTypeContextMenu" id="18"/>
+							<ExtendedTooltip name="RetailPriceTypeExtendedTooltip" id="35"/>
+							<Events>
+								<Event name="OnChange">RetailPriceKindOnChange</Event>
+							</Events>
+						</InputField>
+						<InputField name="FRP" id="15">
+							<DataPath>Object.FRP</DataPath>
+							<ContextMenu name="ICContextMenu" id="16"/>
+							<ExtendedTooltip name="ICExtendedTooltip" id="36"/>
+						</InputField>
+						<UsualGroup name="Automatic transfer" id="48">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Automatic transfer</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Automatic transfer</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Representation>NormalSeparation</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="AutomaticTransferExtendedTooltip" id="49"/>
+							<ChildItems>
+								<Button name="AutoTransferInventory" id="56">
+									<Type>Hyperlink</Type>
+									<CommandName>Form.Command.AutoTransferInventory</CommandName>
+									<ExtendedTooltip name="AutomaticInventoryTransferExtendedTooltip" id="57"/>
+								</Button>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="AdditionalAttributesPage" id="25">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Additional attributes</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Additional attributes</v8:content>
+								</v8:item>
+							</ToolTip>
+							<HorizontalStretch>true</HorizontalStretch>
+							<Group>Vertical</Group>
+							<Representation>NormalSeparation</Representation>
+							<ExtendedTooltip name="AdditionalAttributesPageExtendedTooltip" id="38"/>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="AdvancedPage" id="46">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Additionally</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Advanced page</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="AdvancedPageExtendedTooltip" id="47"/>
+				</Page>
+				<Page name="PageContactInformation" id="44">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Addresses</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Contact information page</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="ContactInformationPageExtendedTooltip" id="45"/>
+				</Page>
+			</ChildItems>
+		</Pages>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Type>
+				<v8:Type>cfg:CatalogObject.StructuralUnits</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="TypeOfStructuralUnitRetail" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Structural unit type retail</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.StructuralUnitsTypes</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="TypeOfStructuralUnitWarehouse" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Structural unit type warehouse</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.StructuralUnitsTypes</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="TypeOfStructuralUnitRetailAmmountAccounting" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Structural unit type retail</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.StructuralUnitsTypes</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="AutoTransferInventory" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>View and edit parameters of inventory auto transfer</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Automatic transfer of inventories</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InventoryAutotransferClick</Action>
+			<FunctionalOptions>
+				<Item>FunctionalOption.AccountingByCells</Item>
+				<Item>FunctionalOption.AccountingBySeveralDivisions</Item>
+				<Item>FunctionalOption.AccountingBySeveralWarehouses</Item>
+			</FunctionalOptions>
+		</Command>
+	</Commands>
+	<CommandInterface>
+		<NavigationPanel>
+			<Item>
+				<Command>InformationRegister.StaffList.StandardCommand.OpenByValue.StructuralUnit</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormNavigationPanelGoTo</CommandGroup>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+			<Item>
+				<Command>InformationRegister.UTIIUse.StandardCommand.OpenByValue.StructuralUnit</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormNavigationPanelGoTo</CommandGroup>
+				<Index>1</Index>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+		</NavigationPanel>
+	</CommandInterface>
+</Form>

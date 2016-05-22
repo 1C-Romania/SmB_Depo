@@ -1,0 +1,82 @@
+﻿<package xmlns="http://v8.1c.ru/8.1/xdto" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="Import2Statements">
+	<property xmlns:d2p1="Import2Statements" name="File" type="d2p1:File"/>
+	<valueType name="DocumentKind" base="xs:string" variety="Atomic">
+		<enumeration>01</enumeration>
+		<enumeration>02</enumeration>
+		<enumeration>03</enumeration>
+		<enumeration>04</enumeration>
+	</valueType>
+	<valueType name="TimeType" base="xs:string" variety="Atomic" length="8">
+		<pattern>([0-1]{1}[0-9]{1}|2[0-3]{1})\.([0-5]{1}[0-9]{1})\.([0-5]{1}[0-9]{1})</pattern>
+	</valueType>
+	<valueType name="DateType" base="xs:string" variety="Atomic" length="10">
+		<pattern>(((0[1-9]{1}|[1-2]{1}[0-9]{1})\.(0[1-9]{1}|1[0-2]{1}))|((30)\.(0[1,3-9]{1}|1[0-2]{1}))|((31)\.(0[1,3,5,7,8]{1}|1[0,2]{1})))\.(18[0-9]{2}|19[0-9]{2}|20[0-9]{2})</pattern>
+	</valueType>
+	<valueType name="TINType" base="xs:string" variety="Atomic" minLength="10" maxLength="12"/>
+	<valueType name="CounterpartyId" base="xs:string" variety="Atomic" minLength="1" maxLength="1000"/>
+	<valueType name="CTDType" base="xs:string" variety="Atomic" length="7">
+		<pattern>[0-9]{7}</pattern>
+	</valueType>
+	<valueType name="KPPType" base="xs:string" variety="Atomic" length="9"/>
+	<objectType name="FileData">
+		<property name="Name" lowerBound="1" form="Attribute">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="1" maxLength="200"/>
+		</property>
+		<property name="Size" lowerBound="1" form="Attribute">
+			<typeDef xsi:type="ValueType" base="xs:integer" variety="Atomic" totalDigits="8"/>
+		</property>
+	</objectType>
+	<objectType name="Counterparty">
+		<property xmlns:d3p1="Import2Statements" name="ID" type="d3p1:CounterpartyId" lowerBound="1" form="Attribute"/>
+		<property name="Description" lowerBound="1" form="Attribute">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="1" maxLength="1000"/>
+		</property>
+		<property xmlns:d3p1="Import2Statements" name="TIN" type="d3p1:TINType" lowerBound="1" form="Attribute"/>
+		<property xmlns:d3p1="Import2Statements" name="KPP" type="d3p1:KPPType" lowerBound="0" form="Attribute"/>
+	</objectType>
+	<objectType name="Company">
+		<property name="Description" lowerBound="1" form="Attribute">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="1" maxLength="1000"/>
+		</property>
+		<property xmlns:d3p1="Import2Statements" name="TIN" type="d3p1:TINType" lowerBound="1" form="Attribute"/>
+		<property xmlns:d3p1="Import2Statements" name="KPP" type="d3p1:KPPType" lowerBound="0" form="Attribute"/>
+	</objectType>
+	<objectType name="File">
+		<property name="VersForm" lowerBound="1" form="Attribute">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="1" maxLength="5">
+				<enumeration>1.00</enumeration>
+			</typeDef>
+		</property>
+		<property xmlns:d3p1="Import2Statements" name="ExportDate" type="d3p1:DateType" lowerBound="1" form="Attribute"/>
+		<property xmlns:d3p1="Import2Statements" name="ImportTime" type="d3p1:TimeType" lowerBound="1" form="Attribute"/>
+		<property xmlns:d3p1="Import2Statements" name="Company" type="d3p1:Company"/>
+		<property name="Counterparties">
+			<typeDef xsi:type="ObjectType">
+				<property xmlns:d5p1="Import2Statements" name="Counterparty" type="d5p1:Counterparty" upperBound="-1"/>
+			</typeDef>
+		</property>
+		<property name="Document" upperBound="-1">
+			<typeDef xsi:type="ObjectType">
+				<property xmlns:d5p1="Import2Statements" name="Kind" type="d5p1:DocumentKind" lowerBound="1" form="Attribute"/>
+				<property xmlns:d5p1="Import2Statements" name="CTD" type="d5p1:CTDType" lowerBound="1" form="Attribute"/>
+				<property name="Direction" lowerBound="1" form="Attribute">
+					<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic">
+						<enumeration>0</enumeration>
+						<enumeration>1</enumeration>
+					</typeDef>
+				</property>
+				<property name="Number" lowerBound="1" form="Attribute">
+					<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="1" maxLength="500"/>
+				</property>
+				<property xmlns:d5p1="Import2Statements" name="Date" type="d5p1:DateType" lowerBound="1" form="Attribute"/>
+				<property name="BasDocNo" lowerBound="0" form="Attribute">
+					<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="1" maxLength="500"/>
+				</property>
+				<property xmlns:d5p1="Import2Statements" name="BasDocDate" type="d5p1:DateType" lowerBound="0" form="Attribute"/>
+				<property xmlns:d5p1="Import2Statements" name="CounterpartyId" type="d5p1:CounterpartyId" lowerBound="1" form="Attribute"/>
+				<property xmlns:d5p1="Import2Statements" name="FileDoc" type="d5p1:FileData"/>
+				<property xmlns:d5p1="Import2Statements" name="EDSFile" type="d5p1:FileData"/>
+			</typeDef>
+		</property>
+	</objectType>
+</package>

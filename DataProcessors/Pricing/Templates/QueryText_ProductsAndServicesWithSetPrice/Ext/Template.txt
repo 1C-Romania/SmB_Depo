@@ -1,0 +1,64 @@
+﻿SELECT
+	ProductsAndServicesTable.ProductsAndServices AS ProductsAndServices,
+	ProductsAndServicesTable.Characteristic AS Characteristic
+INTO ProductsAndServicesTable
+FROM
+	&ProductsAndServicesTable AS ProductsAndServicesTable
+;
+////////////////////////////////////////////////////////////////////////////////
+SELECT
+	MAX(CurrencyRates.Period) AS Period,
+	CurrencyRates.ExchangeRate AS ExchangeRate,
+	CurrencyRates.Multiplicity AS Multiplicity
+INTO PriceKindCurrencyRateSource
+FROM
+	InformationRegister.CurrencyRates.SliceLast(&ToDate, Currency = &CurrencySource) AS CurrencyRates
+
+GROUP BY
+	CurrencyRates.ExchangeRate,
+	CurrencyRates.Multiplicity
+;
+////////////////////////////////////////////////////////////////////////////////
+SELECT
+	MAX(CurrencyRates.Period) AS Period,
+	CurrencyRates.ExchangeRate AS ExchangeRate,
+	CurrencyRates.Multiplicity AS Multiplicity
+INTO PriceKindCurrencyRateReceiver
+FROM
+	InformationRegister.CurrencyRates.SliceLast(&ToDate, Currency = &CurrencyOfReceiver) AS CurrencyRates
+
+GROUP BY
+	CurrencyRates.ExchangeRate,
+	CurrencyRates.Multiplicity
+;
+////////////////////////////////////////////////////////////////////////////////
+
+SELECT
+	TRUE AS Check,
+	ProductsAndServicesPricesSliceLast.ProductsAndServices AS ProductsAndServices,
+	ProductsAndServicesPricesSliceLast.Characteristic,
+	ProductsAndServicesPricesSliceLast.MeasurementUnit,
+	CASE
+		WHEN &CurrencyOfReceiver <> &CurrencySource
+			THEN ProductsAndServicesPricesSliceLast.Price * PriceKindCurrencyRateSource.ExchangeRate * PriceKindCurrencyRateReceiver.Multiplicity / PriceKindCurrencyRateReceiver.ExchangeRate * PriceKindCurrencyRateSource.Multiplicity
+		ELSE ProductsAndServicesPricesSliceLast.Price
+	END AS Price
+	
+FROM
+	InformationRegister.ProductsAndServicesPrices.SliceLast(
+			&ToDate,
+			PriceKind = &PriceKind
+				AND Actuality
+				AND Not (ProductsAndServices, Characteristic) In
+						(SELECT
+							ProductsAndServicesTable.ProductsAndServices,
+							ProductsAndServicesTable.Characteristic
+						FROM
+							ProductsAndServicesTable AS ProductsAndServicesTable)) AS ProductsAndServicesPricesSliceLast, 
+	PriceKindCurrencyRateSource AS PriceKindCurrencyRateSource,
+	PriceKindCurrencyRateReceiver AS PriceKindCurrencyRateReceiver
+WHERE
+	&CharacteristicCondition
+
+ORDER BY
+	ProductsAndServices

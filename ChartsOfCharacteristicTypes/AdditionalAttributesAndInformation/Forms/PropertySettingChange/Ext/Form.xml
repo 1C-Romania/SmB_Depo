@@ -1,0 +1,643 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Title>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Change the additional attribute setting</v8:content>
+		</v8:item>
+	</Title>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="FormWriteAndClose" id="41">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.WriteAndClose</CommandName>
+				<ExtendedTooltip name="FormWriteAndCloseExtendedTooltip" id="60"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="BeforeClose">BeforeClose</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<Pages name="TypesProperties" id="40">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Types properties</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Types properties</v8:content>
+				</v8:item>
+			</ToolTip>
+			<PagesRepresentation>None</PagesRepresentation>
+			<ExtendedTooltip name="PropertiesTypesExtendedTooltip" id="61"/>
+			<ChildItems>
+				<Page name="Attribute" id="17">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Attribute</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Attribute</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="AttributesExtendedTooltip" id="62"/>
+					<ChildItems>
+						<UsualGroup name="AttributeWarning" id="52">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Warning attribute</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="AttributeWarningExtendedTooltip" id="63"/>
+							<ChildItems>
+								<PictureDecoration name="AttributeWarningPicture" id="48">
+									<Width>6</Width>
+									<Height>3</Height>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Attribute notification picture</v8:content>
+										</v8:item>
+									</Title>
+									<Picture>
+										<xr:Ref>CommonPicture.Warning32</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="AttributeWarningPictureContextMenu" id="49"/>
+									<ExtendedTooltip name="AttributeWarningPictureExtendedTooltip" id="64"/>
+								</PictureDecoration>
+								<LabelDecoration name="AttributeWarningComment" id="50">
+									<TextColor>style:ExplanationText</TextColor>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Reconfiguration of additional attribute is irreversible and
+can take a long time, depending on the number of documents in which this attribute is filled out.
+
+Instead of this there is an option to add a new attribute with
+its own values list and make gradual transition manually from using of this attribute to the new one (clear the value of this attribute and fill in the value of a new one).</v8:content>
+										</v8:item>
+									</Title>
+									<VerticalAlign>Top</VerticalAlign>
+									<ContextMenu name="AttributeWarningCommentContextMenu" id="51"/>
+									<ExtendedTooltip name="AttributeWarningCommentExtendedTooltip" id="65"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+						<RadioButtonField name="SeparateAttributeValues" id="8">
+							<DataPath>SeparatePropertyWithSeparateValuesList</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<RadioButtonType>Auto</RadioButtonType>
+							<ChoiceList>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Attribute with individual value list</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:decimal">1</Value>
+									</xr:Value>
+								</xr:Item>
+							</ChoiceList>
+							<ContextMenu name="SeparateAttributeValuesContextMenu" id="9"/>
+							<ExtendedTooltip name="SeparateAttributeValuesExtendedTooltip" id="66"/>
+							<Events>
+								<Event name="OnChange">KindOnChange</Event>
+							</Events>
+						</RadioButtonField>
+						<LabelDecoration name="IndividualValuesAttributeComment" id="14">
+							<TextColor>style:ExplanationText</TextColor>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>This attribute is included only to the one %1 set and it has an individual values list.</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="IndividualValuesOfAttributeCommentContextMenu" id="15"/>
+							<ExtendedTooltip name="IndividualValuesOfAttributeCommentExtendedTooltip" id="67"/>
+						</LabelDecoration>
+						<Pages name="AttributeKinds" id="30">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Attribute kinds</v8:content>
+								</v8:item>
+							</Title>
+							<PagesRepresentation>None</PagesRepresentation>
+							<ExtendedTooltip name="AttributeKindsExtendedTooltip" id="68"/>
+							<ChildItems>
+								<Page name="KindCommonAttributesValues" id="32">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Kind common attribute values</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Kind common attribute values</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="KindGeneralAttributesValuesExtendedTooltip" id="69"/>
+									<ChildItems>
+										<RadioButtonField name="CommonAttributesValues" id="6">
+											<DataPath>SinglePropertyWithCommonListOfValues</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<RadioButtonType>Auto</RadioButtonType>
+											<ChoiceList>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation>
+															<v8:item>
+																<v8:lang>en</v8:lang>
+																<v8:content>Attribute with the common values list</v8:content>
+															</v8:item>
+														</Presentation>
+														<Value xsi:type="xs:decimal">1</Value>
+													</xr:Value>
+												</xr:Item>
+											</ChoiceList>
+											<ContextMenu name="GeneralAttributesValuesContextMenu" id="7"/>
+											<ExtendedTooltip name="GeneralAttributesValuesExtendedTooltip" id="70"/>
+											<Events>
+												<Event name="OnChange">KindOnChange</Event>
+											</Events>
+										</RadioButtonField>
+										<LabelDecoration name="CommonAttributesValuesComment" id="12">
+											<TextColor>style:ExplanationText</TextColor>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>This attribute is included to the one %1 set only and it has the common
+list of values with other attributes added according to a template. You can use this option to adjust
+the settings of values list easily for various typical attributes (for example, "Color of clothes", "Color of shoes", etc.).</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="CommonValuesDetailsCommentContextMenu" id="13"/>
+											<ExtendedTooltip name="CommonValuesOfDetailsCommentExtendedTooltip" id="71"/>
+										</LabelDecoration>
+									</ChildItems>
+								</Page>
+								<Page name="CommonAttributeKind" id="31">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Common attribute kind</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Common attribute kind</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="KindCommonAttributeExtendedTooltip" id="72"/>
+									<ChildItems>
+										<RadioButtonField name="CommonAttribute" id="4">
+											<DataPath>CommonProperty</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<RadioButtonType>Auto</RadioButtonType>
+											<ChoiceList>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation>
+															<v8:item>
+																<v8:lang>en</v8:lang>
+																<v8:content>Common attribute</v8:content>
+															</v8:item>
+														</Presentation>
+														<Value xsi:type="xs:decimal">1</Value>
+													</xr:Value>
+												</xr:Item>
+											</ChoiceList>
+											<ContextMenu name="CommonAttributeContextMenu" id="5"/>
+											<ExtendedTooltip name="CommonAttributeExtendedTooltip" id="73"/>
+											<Events>
+												<Event name="OnChange">KindOnChange</Event>
+											</Events>
+										</RadioButtonField>
+										<LabelDecoration name="CommonAttributeComment" id="10">
+											<TextColor>style:ExplanationText</TextColor>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>This attribute is included at once to the several sets. You can use this option when not
+only the list of values shall be common but the attribute as well. Common attributes are grouped
+and displayed as one attribute in one column or field in lists and reports on various catalogs and documents.
+For example, using the "Colour" common attribute it is possible to promptly select all yellow clothes and shoes.</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="CommonAttributeCommentContextMenu" id="11"/>
+											<ExtendedTooltip name="CommonAttributeCommentExtendedTooltip" id="74"/>
+										</LabelDecoration>
+									</ChildItems>
+								</Page>
+							</ChildItems>
+						</Pages>
+					</ChildItems>
+				</Page>
+				<Page name="Information" id="16">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Information</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Information</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="InformationExtendedTooltip" id="75"/>
+					<ChildItems>
+						<UsualGroup name="InformationWarning" id="54">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Warning information</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Warning information</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="InformationWarningExtendedTooltip" id="76"/>
+							<ChildItems>
+								<PictureDecoration name="InformationWarningPicture" id="56">
+									<Width>6</Width>
+									<Height>3</Height>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Information notification picture</v8:content>
+										</v8:item>
+									</Title>
+									<Picture>
+										<xr:Ref>CommonPicture.Warning32</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="InformationWarningPictureContextMenu" id="57"/>
+									<ExtendedTooltip name="InformationWarningPictureExtendedTooltip" id="77"/>
+								</PictureDecoration>
+								<LabelDecoration name="InformationWarningComment" id="58">
+									<TextColor>style:ExplanationText</TextColor>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Reconfiguration of additional information is irreversible and
+can take a long time, depending on the number of documents in which this information is filled out.
+
+Instead of this there is an option to add new information with the
+its own values list and make gradual transition manually from using this information to the new one (clear the value of this information and fill in the value of a new one).</v8:content>
+										</v8:item>
+									</Title>
+									<VerticalAlign>Top</VerticalAlign>
+									<ContextMenu name="InformationWarningCommentContextMenu" id="59"/>
+									<ExtendedTooltip name="InformationWarningCommentExtendedTooltip" id="78"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+						<RadioButtonField name="SeparateInformationValues" id="26">
+							<DataPath>SeparatePropertyWithSeparateValuesList</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<RadioButtonType>Auto</RadioButtonType>
+							<ChoiceList>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Information with individual value list</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:decimal">1</Value>
+									</xr:Value>
+								</xr:Item>
+							</ChoiceList>
+							<ContextMenu name="SeparateInformationValuesContextMenu" id="27"/>
+							<ExtendedTooltip name="SeparateInformationValuesExtendedTooltip" id="79"/>
+							<Events>
+								<Event name="OnChange">KindOnChange</Event>
+							</Events>
+						</RadioButtonField>
+						<LabelDecoration name="SeparateDataValuesComment" id="28">
+							<TextColor>style:ExplanationText</TextColor>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>This information is included only to the one %1 set and it has an individual values list.</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="IndividualValuesOfCommentContextMenu" id="29"/>
+							<ExtendedTooltip name="SeparateValuesOfCommentExtendedTooltip" id="80"/>
+						</LabelDecoration>
+						<Pages name="KindsOfInformation" id="33">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Kinds of information</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Kinds of information</v8:content>
+								</v8:item>
+							</ToolTip>
+							<PagesRepresentation>None</PagesRepresentation>
+							<ExtendedTooltip name="KindsOfInformationExtendedTooltip" id="81"/>
+							<ChildItems>
+								<Page name="KindGeneralInformationValues" id="39">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Kind general information values</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Kind general information values</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="KindCommonValuesInformationExtendedTooltip" id="82"/>
+									<ChildItems>
+										<RadioButtonField name="GeneralValuesInformation" id="22">
+											<DataPath>SinglePropertyWithCommonListOfValues</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<RadioButtonType>Auto</RadioButtonType>
+											<ChoiceList>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation>
+															<v8:item>
+																<v8:lang>en</v8:lang>
+																<v8:content>Information with the common values list</v8:content>
+															</v8:item>
+														</Presentation>
+														<Value xsi:type="xs:decimal">1</Value>
+													</xr:Value>
+												</xr:Item>
+											</ChoiceList>
+											<ContextMenu name="CommonValuesInformationContextMenu" id="23"/>
+											<ExtendedTooltip name="CommonValuesInformationExtendedTooltip" id="83"/>
+											<Events>
+												<Event name="OnChange">KindOnChange</Event>
+											</Events>
+										</RadioButtonField>
+										<LabelDecoration name="GeneralInformationValuesComment" id="24">
+											<TextColor>style:ExplanationText</TextColor>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>This information is included to the one %1 set only and it has the common
+list of values with other information added according to a template. You can use this option to adjust
+easily the settings of values list for various typical information (for example, "Color of clothes", "Color of shoes", etc.).</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="CommonValuesInformationCommentContextMenu" id="25"/>
+											<ExtendedTooltip name="CommonValuesOfCommentInformationExtendedTooltip" id="84"/>
+										</LabelDecoration>
+									</ChildItems>
+								</Page>
+								<Page name="CommonInformationKind" id="34">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Common information kind</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Common information kind</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="KindCommonInformationExtendedTooltip" id="85"/>
+									<ChildItems>
+										<RadioButtonField name="CommonInformation" id="18">
+											<DataPath>CommonProperty</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<RadioButtonType>Auto</RadioButtonType>
+											<ChoiceList>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation>
+															<v8:item>
+																<v8:lang>en</v8:lang>
+																<v8:content>Common information</v8:content>
+															</v8:item>
+														</Presentation>
+														<Value xsi:type="xs:decimal">1</Value>
+													</xr:Value>
+												</xr:Item>
+											</ChoiceList>
+											<ContextMenu name="CommonInformationContextMenu" id="19"/>
+											<ExtendedTooltip name="CommonInformationExtendedTooltip" id="86"/>
+											<Events>
+												<Event name="OnChange">KindOnChange</Event>
+											</Events>
+										</RadioButtonField>
+										<LabelDecoration name="CommonInformationComment" id="20">
+											<TextColor>style:ExplanationText</TextColor>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>This information is included at once to the several sets. You can use this option when not
+only the list of values shall be common but the information as well. IN lists and reports on
+elements of various catalogs and documents, common information is grouped and displayed as one, in one column or a field.
+For example, using the "Colour" common attribute it is possible to promptly select all yellow clothes and shoes.</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="CommonInformationCommentContextMenu" id="21"/>
+											<ExtendedTooltip name="CommonInformationCommentExtendedTooltip" id="87"/>
+										</LabelDecoration>
+									</ChildItems>
+								</Page>
+							</ChildItems>
+						</Pages>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="CommonProperty" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Common property</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>1</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="SinglePropertyWithCommonListOfValues" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Separate property with the common values list</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>1</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="SeparatePropertyWithSeparateValuesList" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Separate property with the separate value list</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>1</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="Property" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Property</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:ChartOfCharacteristicTypesRef.AdditionalAttributesAndInformation</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ThisIsAdditionalInformation" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>This is additional information</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="CurrentSetOfProperties" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Current set of properties</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.AdditionalAttributesAndInformationSets</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ParametersOfLongOperation" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Durable operation parameters</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="WriteAndClose" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Save and close</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Save and close</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>WriteAndClose</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="ThisIsAdditionalInformation">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="AdditionalValuesOwner">
+			<Type>
+				<v8:Type>cfg:ChartOfCharacteristicTypesRef.AdditionalAttributesAndInformation</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="PropertySet">
+			<Type>
+				<v8:Type>cfg:CatalogRef.AdditionalAttributesAndInformationSets</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="Property">
+			<Type>
+				<v8:Type>cfg:ChartOfCharacteristicTypesRef.AdditionalAttributesAndInformation</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="CurrentSetOfProperties">
+			<Type>
+				<v8:Type>cfg:CatalogRef.AdditionalAttributesAndInformationSets</v8:Type>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

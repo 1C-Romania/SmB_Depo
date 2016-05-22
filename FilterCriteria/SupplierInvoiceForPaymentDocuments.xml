@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<MetaDataObject xmlns="http://v8.1c.ru/8.3/MDClasses" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:cmi="http://v8.1c.ru/8.2/managed-application/cmi" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xpr="http://v8.1c.ru/8.3/xcf/predef" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<FilterCriterion uuid="14567461-56e2-49da-b183-cc3dade6e3a2">
+		<InternalInfo>
+			<xr:GeneratedType name="FilterCriterionManager.SupplierInvoiceForPaymentDocuments" category="Manager">
+				<xr:TypeId>af05fd26-63ed-4f4f-9b72-30bb8478e1a7</xr:TypeId>
+				<xr:ValueId>1ac1e82d-b11d-42dc-8fcf-5dbedf5086c4</xr:ValueId>
+			</xr:GeneratedType>
+			<xr:GeneratedType name="FilterCriterionList.SupplierInvoiceForPaymentDocuments" category="List">
+				<xr:TypeId>8ce89245-ebe1-4601-8682-1f24158d43dc</xr:TypeId>
+				<xr:ValueId>70357374-d746-4c98-a8c4-6b3ff075a2fa</xr:ValueId>
+			</xr:GeneratedType>
+		</InternalInfo>
+		<Properties>
+			<Name>SupplierInvoiceForPaymentDocuments</Name>
+			<Synonym>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Documents by invoice for payment (received)</v8:content>
+				</v8:item>
+			</Synonym>
+			<Comment/>
+			<Type>
+				<v8:Type>cfg:DocumentRef.SupplierInvoiceForPayment</v8:Type>
+			</Type>
+			<UseStandardCommands>false</UseStandardCommands>
+			<Content>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.ExpenseReport.TabularSection.Payments.Attribute.InvoiceForPayment</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.EnterOpeningBalance.TabularSection.AccountsPayable.Attribute.InvoiceForPayment</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.Netting.Attribute.InvoiceForPayment</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.Netting.TabularSection.Debitor.Attribute.InvoiceForPayment</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.Netting.TabularSection.Creditor.Attribute.InvoiceForPayment</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.PaymentOrder.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.CashReceipt.TabularSection.PaymentDetails.Attribute.InvoiceForPayment</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.PaymentReceipt.TabularSection.PaymentDetails.Attribute.InvoiceForPayment</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoice.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.CashOutflowPlan.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.CashPayment.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.CashPayment.TabularSection.PaymentDetails.Attribute.InvoiceForPayment</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.PaymentExpense.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.PaymentExpense.TabularSection.PaymentDetails.Attribute.InvoiceForPayment</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.Event.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.Event.TabularSection.BasisDocuments.Attribute.BasisDocument</xr:Item>
+			</Content>
+			<DefaultForm/>
+			<AuxiliaryForm/>
+			<ListPresentation/>
+			<ExtendedListPresentation/>
+			<Explanation>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>List of the documents by invoice for payment (received)</v8:content>
+				</v8:item>
+			</Explanation>
+		</Properties>
+		<ChildObjects/>
+	</FilterCriterion>
+</MetaDataObject>

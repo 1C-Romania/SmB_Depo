@@ -1,0 +1,1339 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Width>110</Width>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoTime>CurrentOrLast</AutoTime>
+	<UsePostingMode>Auto</UsePostingMode>
+	<RepostOnWrite>true</RepostOnWrite>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<ChildItems>
+			<ButtonGroup name="ImportantCommandsGroup" id="206">
+				<Title>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Important commands</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTip>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Important commands</v8:content>
+					</v8:item>
+				</ToolTip>
+				<ExtendedTooltip name="ImportantCommandsGroupExtendedTooltip" id="207"/>
+				<ChildItems>
+					<Button name="FormCommonCommandRemind" id="208">
+						<Type>CommandBarButton</Type>
+						<CommandName>CommonCommand.Remind</CommandName>
+						<DataPath>Object.Ref</DataPath>
+						<ExtendedTooltip name="FormCommonCommandRemindExtendedTooltip" id="209"/>
+					</Button>
+				</ChildItems>
+			</ButtonGroup>
+			<ButtonGroup name="GroupGlobalCommands" id="210">
+				<Title>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Global commands group</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTip>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Global commands group</v8:content>
+					</v8:item>
+				</ToolTip>
+				<ExtendedTooltip name="GroupGlobalCommandsExtendedTooltip" id="211"/>
+				<ChildItems>
+					<Button name="CommonCommandDependencies" id="212">
+						<Type>CommandBarButton</Type>
+						<CommandName>CommonCommand.Dependencies</CommandName>
+						<DataPath>Object.Ref</DataPath>
+						<ExtendedTooltip name="CommonCommandDependenciesExtendedTooltip" id="213"/>
+					</Button>
+					<Button name="CommonCommandReportByMovements" id="214">
+						<Type>CommandBarButton</Type>
+						<OnlyInAllActions>false</OnlyInAllActions>
+						<CommandName>CommonCommand.ReportByMovements</CommandName>
+						<DataPath>Object.Ref</DataPath>
+						<ExtendedTooltip name="CommonCommandReportByMovementsExtendedTooltip" id="215"/>
+					</Button>
+					<Button name="CommonCommandObjectFilling" id="216">
+						<Type>CommandBarButton</Type>
+						<CommandName>CommonCommand.ObjectFilling</CommandName>
+						<DataPath>Object.Ref</DataPath>
+						<ExtendedTooltip name="CommonCommandObjectFillingExtendedTooltip" id="217"/>
+					</Button>
+					<Button name="CommonCommandObjectReports" id="218">
+						<Type>CommandBarButton</Type>
+						<CommandName>CommonCommand.ObjectReports</CommandName>
+						<DataPath>Object.Ref</DataPath>
+						<ExtendedTooltip name="CommonCommandObjectReportsExtendedTooltip" id="219"/>
+					</Button>
+					<Button name="CommonCommandChangesHistory" id="220">
+						<Type>CommandBarButton</Type>
+						<OnlyInAllActions>false</OnlyInAllActions>
+						<CommandName>CommonCommand.ChangesHistory</CommandName>
+						<DataPath>Object.Ref</DataPath>
+						<ExtendedTooltip name="CommonCommandChangesHistoryExtendedTooltip" id="221"/>
+					</Button>
+					<Button name="CommonCommandAdditionalInformationCommandBar" id="222">
+						<Type>CommandBarButton</Type>
+						<OnlyInAllActions>false</OnlyInAllActions>
+						<CommandName>CommonCommand.AdditionalInformationCommandBar</CommandName>
+						<DataPath>Object.Ref</DataPath>
+						<ExtendedTooltip name="CommonCommandAdditionalInformationCommandBarExtendedTooltip" id="223"/>
+					</Button>
+				</ChildItems>
+			</ButtonGroup>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="AfterWrite">AfterWrite</Event>
+		<Event name="OnReadAtServer">OnReadAtServer</Event>
+		<Event name="OnOpen">OnOpen</Event>
+		<Event name="BeforeClose">BeforeClose</Event>
+		<Event name="BeforeWriteAtServer">BeforeWriteAtServer</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="MainGroup" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Main group</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Main group</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ChildItemsWidth>Equal</ChildItemsWidth>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="MainGroupExtendedTooltip" id="117"/>
+			<ChildItems>
+				<UsualGroup name="GroupProducts" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Products</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Products</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="FolderProductsExtendedTooltip" id="118"/>
+					<ChildItems>
+						<Table name="Products" id="100">
+							<CommandBarLocation>None</CommandBarLocation>
+							<HeightInTableRows>3</HeightInTableRows>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>Object.Products</DataPath>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="ProductsContextMenu" id="101"/>
+							<AutoCommandBar name="ProductsCommandBar" id="102"/>
+							<ExtendedTooltip name="ProductsExtendedTooltip" id="119"/>
+							<SearchStringAddition name="ProductsSearchString" id="181">
+								<AdditionSource>
+									<Item>Products</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ProductsSearchStringContextMenu" id="182"/>
+								<ExtendedTooltip name="ProductsSearchStringExtendedTooltip" id="183"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ProductsViewStatus" id="184">
+								<AdditionSource>
+									<Item>Products</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ProductsViewStatusContextMenu" id="185"/>
+								<ExtendedTooltip name="ProductsViewStatusExtendedTooltip" id="186"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ProductsSearchManagement" id="187">
+								<AdditionSource>
+									<Item>Products</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ProductsSearchManagementContextMenu" id="188"/>
+								<ExtendedTooltip name="ProductsSearchManagementExtendedTooltip" id="189"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<InputField name="ProductsProductsAndServices" id="105">
+									<DataPath>Object.Products.ProductsAndServices</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Products</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>16</Width>
+									<ContextMenu name="ProductsProductsAndServicesContextMenu" id="106"/>
+									<ExtendedTooltip name="ProductsProductsAndServicesExtendedTooltip" id="121"/>
+									<Events>
+										<Event name="OnChange">ProductsProductsAndServicesOnChange</Event>
+									</Events>
+								</InputField>
+								<InputField name="ProductsCharacteristic" id="107">
+									<DataPath>Object.Products.Characteristic</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>16</Width>
+									<ContextMenu name="ProductsCharacteristicContextMenu" id="108"/>
+									<ExtendedTooltip name="ProductsCharacteristicExtendedTooltip" id="122"/>
+									<Events>
+										<Event name="OnChange">ProductsCharacteristicOnChange</Event>
+									</Events>
+								</InputField>
+								<InputField name="ProductsQuantity" id="109">
+									<DataPath>Object.Products.Quantity</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>10</Width>
+									<ContextMenu name="ProductsQuantityContextMenu" id="110"/>
+									<ExtendedTooltip name="ProductsQuantityExtendedTooltip" id="123"/>
+								</InputField>
+								<InputField name="ProductsMeasurementUnit" id="113">
+									<DataPath>Object.Products.MeasurementUnit</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>6</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<DropListButton>true</DropListButton>
+									<ChoiceButton>false</ChoiceButton>
+									<OpenButton>false</OpenButton>
+									<ChooseType>false</ChooseType>
+									<ChoiceListButton>true</ChoiceListButton>
+									<ContextMenu name="ProductsMeasurementUnitContextMenu" id="114"/>
+									<ExtendedTooltip name="ProductsMeasurementUnitExtendedTooltip" id="124"/>
+								</InputField>
+								<InputField name="ProductsSpecification" id="115">
+									<DataPath>Object.Products.Specification</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ProductsSpecificationContextMenu" id="116"/>
+									<ExtendedTooltip name="ProductsSpecificationExtendedTooltip" id="125"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="InvolvedResources" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Resources in use</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Resources in use</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="InvolvedResourcesExtendedTooltip" id="126"/>
+					<ChildItems>
+						<Table name="EnterpriseResources" id="4">
+							<CommandBarLocation>None</CommandBarLocation>
+							<HeightInTableRows>3</HeightInTableRows>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>Object.EnterpriseResources</DataPath>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="EnterpriseResourcesContextMenu" id="5"/>
+							<AutoCommandBar name="EnterpriseResourcesCommandBar" id="6"/>
+							<ExtendedTooltip name="EnterpriseResourcesExtendedTooltip" id="127"/>
+							<SearchStringAddition name="EnterpriseResourcesSearchString" id="190">
+								<AdditionSource>
+									<Item>EnterpriseResources</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="EnterpriseResourcesSearchStringContextMenu" id="191"/>
+								<ExtendedTooltip name="EnterpriseResourcesSearchStringExtendedTooltip" id="192"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="EnterpriseResourcesViewStatus" id="193">
+								<AdditionSource>
+									<Item>EnterpriseResources</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="EnterpriseResourcesViewStatusContextMenu" id="194"/>
+								<ExtendedTooltip name="EnterpriseResourcesViewStatusExtendedTooltip" id="195"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="EnterpriseResourcesSearchManagement" id="196">
+								<AdditionSource>
+									<Item>EnterpriseResources</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="EnterpriseResourcesSearchManagementContextMenu" id="197"/>
+								<ExtendedTooltip name="EnterpriseResourcesSearchManagementExtendedTooltip" id="198"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="OnStartEdit">EnterpriseResourcesOnStartEdit</Event>
+								<Event name="AfterDeleteRow">EnterpriseResourcesAfterDeleteRow</Event>
+							</Events>
+							<ChildItems>
+								<InputField name="EnterpriseResourcesEnterpriseResource" id="9">
+									<DataPath>Object.EnterpriseResources.EnterpriseResource</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>16</Width>
+									<ChoiceParameters>
+										<app:item name="Filter.DeletionMark">
+											<app:value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xs:boolean">false</Value>
+											</app:value>
+										</app:item>
+									</ChoiceParameters>
+									<ContextMenu name="EnterpriseResourcesEnterpriseResourceContextMenu" id="10"/>
+									<ExtendedTooltip name="EnterpriseResourcesEnterpriseResourceExtendedTooltip" id="129"/>
+									<Events>
+										<Event name="OnChange">EnterpriseResourcesEnterpriseResourceOnChange</Event>
+									</Events>
+								</InputField>
+								<InputField name="EnterpriseResourcesCapacity" id="11">
+									<DataPath>Object.EnterpriseResources.Capacity</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Import</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>8</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="EnterpriseResourcesPowerContextMenu" id="12"/>
+									<ExtendedTooltip name="EnterpriseResourcesCapacityExtendedTooltip" id="130"/>
+								</InputField>
+								<InputField name="EnterpriseResourcesDuration" id="13">
+									<DataPath>Object.EnterpriseResources.Duration</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<EditMode>EnterOnInput</EditMode>
+									<HeaderPicture>
+										<xr:Ref>StdPicture.SetTime</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</HeaderPicture>
+									<Width>6</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="EnterpriseResourcesDurationContextMenu" id="14"/>
+									<ExtendedTooltip name="EnterpriseResourcesDurationExtendedTooltip" id="131"/>
+									<Events>
+										<Event name="OnChange">EnterpriseResourcesDurationOnChange</Event>
+									</Events>
+								</InputField>
+								<InputField name="EnterpriseResourcesDay" id="30">
+									<DataPath>Object.EnterpriseResources.Start</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Day</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>10</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<Format>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>DF=MM/dd/yyyy</v8:content>
+										</v8:item>
+									</Format>
+									<EditFormat>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>DF=MM/dd/yyyy</v8:content>
+										</v8:item>
+									</EditFormat>
+									<ContextMenu name="EnterpriseResourcesDayContextMenu" id="31"/>
+									<ExtendedTooltip name="EnterpriseResourcesDayExtendedTooltip" id="132"/>
+									<Events>
+										<Event name="OnChange">EnterpriseResourcesDayOnChange</Event>
+									</Events>
+								</InputField>
+								<InputField name="EnterpriseResourcesStart" id="15">
+									<DataPath>Object.EnterpriseResources.Start</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>7</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ChoiceButton>false</ChoiceButton>
+									<ClearButton>false</ClearButton>
+									<SpinButton>false</SpinButton>
+									<OpenButton>false</OpenButton>
+									<Format>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>DF='H:mm'</v8:content>
+										</v8:item>
+									</Format>
+									<EditFormat>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>DF='H:mm'</v8:content>
+										</v8:item>
+									</EditFormat>
+									<ChoiceListButton>false</ChoiceListButton>
+									<ContextMenu name="EnterpriseResourcesStartContextMenu" id="16"/>
+									<ExtendedTooltip name="EnterpriseResourcesStartExtendedTooltip" id="133"/>
+									<Events>
+										<Event name="OnChange">EnterpriseResourcesStartOnChange</Event>
+									</Events>
+								</InputField>
+								<InputField name="EnterpriseResourcesFinish" id="17">
+									<DataPath>Object.EnterpriseResources.Finish</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>7</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ChoiceButton>false</ChoiceButton>
+									<ClearButton>false</ClearButton>
+									<SpinButton>false</SpinButton>
+									<OpenButton>false</OpenButton>
+									<Format>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>DF='H:mm'</v8:content>
+										</v8:item>
+									</Format>
+									<EditFormat>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>DF='H:mm'</v8:content>
+										</v8:item>
+									</EditFormat>
+									<ChoiceListButton>false</ChoiceListButton>
+									<ContextMenu name="EnterpriseResourcesFinishContextMenu" id="18"/>
+									<ExtendedTooltip name="EnterpriseResourcesFinishExtendedTooltip" id="134"/>
+									<Events>
+										<Event name="OnChange">EnterpriseResourcesFinishOnChange</Event>
+									</Events>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ScheduleResources" id="32">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Resources schedule</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Resources schedule</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ScheduleResourcesExtendedTooltip" id="135"/>
+			<ChildItems>
+				<UsualGroup name="ResourcesImportCommandPanel" id="39">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Commands bar resources load</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Commands bar resources load</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="CommandBarResourcesImportExtendedTooltip" id="136"/>
+					<ChildItems>
+						<Button name="ShortenPeriod" id="38">
+							<Type>UsualButton</Type>
+							<CommandName>Form.Command.ShortenPeriod</CommandName>
+							<ExtendedTooltip name="ReducePeriodExtendedTooltip" id="137"/>
+						</Button>
+						<InputField name="PeriodPresentation" id="35">
+							<DataPath>PeriodPresentation</DataPath>
+							<SkipOnInput>true</SkipOnInput>
+							<TitleLocation>None</TitleLocation>
+							<HorizontalAlign>Center</HorizontalAlign>
+							<Width>20</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ChoiceButton>true</ChoiceButton>
+							<TextEdit>false</TextEdit>
+							<ChoiceButtonPicture>
+								<xr:Ref>StdPicture.Calendar</xr:Ref>
+								<xr:LoadTransparent>true</xr:LoadTransparent>
+							</ChoiceButtonPicture>
+							<ContextMenu name="PeriodPresentationContextMenu" id="36"/>
+							<ExtendedTooltip name="PeriodPresentationExtendedTooltip" id="138"/>
+							<Events>
+								<Event name="StartChoice">PeriodPresentationStartChoice</Event>
+							</Events>
+						</InputField>
+						<Button name="ExtendPeriod" id="37">
+							<Type>UsualButton</Type>
+							<CommandName>Form.Command.ExtendPeriod</CommandName>
+							<ExtendedTooltip name="IncreasePeriodExtendedTooltip" id="139"/>
+						</Button>
+						<LabelDecoration name="IndentDecoration" id="76">
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="IndentDecorationContextMenu" id="77"/>
+							<ExtendedTooltip name="IndentDecorationExtendedTooltip" id="140"/>
+						</LabelDecoration>
+						<InputField name="FilterResourceKind" id="72">
+							<DataPath>FilterResourceKind</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<OpenButton>false</OpenButton>
+							<ChoiceParameters>
+								<app:item name="Filter.DeletionMark">
+									<app:value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation/>
+										<Value xsi:type="xs:boolean">false</Value>
+									</app:value>
+								</app:item>
+							</ChoiceParameters>
+							<InputHint>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Kind of resource</v8:content>
+								</v8:item>
+							</InputHint>
+							<ContextMenu name="FilterResourceTypeContextMenu" id="73"/>
+							<ExtendedTooltip name="FilterResourceTypeExtendedTooltip" id="141"/>
+							<Events>
+								<Event name="OnChange">FilterResourceKindOnChange</Event>
+							</Events>
+						</InputField>
+						<InputField name="FilterKeyResource" id="74">
+							<DataPath>FilterKeyResource</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<OpenButton>false</OpenButton>
+							<ChoiceParameterLinks>
+								<xr:Link>
+									<xr:Name>FilterResourceKind</xr:Name>
+									<xr:DataPath xsi:type="xs:string">FilterResourceKind</xr:DataPath>
+									<xr:ValueChange>Clear</xr:ValueChange>
+								</xr:Link>
+							</ChoiceParameterLinks>
+							<ChoiceParameters>
+								<app:item name="Filter.DeletionMark">
+									<app:value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation/>
+										<Value xsi:type="xs:boolean">false</Value>
+									</app:value>
+								</app:item>
+							</ChoiceParameters>
+							<InputHint>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Resource</v8:content>
+								</v8:item>
+							</InputHint>
+							<ContextMenu name="FilterKeyResourceContextMenu" id="75"/>
+							<ExtendedTooltip name="FilterKeyResourceExtendedTooltip" id="142"/>
+							<Events>
+								<Event name="OnChange">FilterKeyResourceOnChange</Event>
+							</Events>
+						</InputField>
+						<Button name="Refresh" id="78">
+							<Type>UsualButton</Type>
+							<CommandName>Form.Command.Refresh</CommandName>
+							<ExtendedTooltip name="RefreshExtendedTooltip" id="143"/>
+						</Button>
+					</ChildItems>
+				</UsualGroup>
+				<SpreadSheetDocumentField name="ResourcesImport" id="33">
+					<DataPath>ResourcesImport</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<Height>6</Height>
+					<ViewScalingMode>Normal</ViewScalingMode>
+					<ContextMenu name="ImportResourcesContextMenu" id="34">
+						<Autofill>false</Autofill>
+						<ChildItems>
+							<Button name="ImportResourcesContextMenuInvolveResource" id="79">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.UseResource</CommandName>
+								<ExtendedTooltip name="ImportResourcesContextMenuInvolveResourceExtendedTooltip" id="144"/>
+							</Button>
+						</ChildItems>
+					</ContextMenu>
+					<ExtendedTooltip name="ImportResourcesExtendedTooltip" id="145"/>
+					<Events>
+						<Event name="DetailProcessing">ResourcesImportDetailProcessing</Event>
+					</Events>
+				</SpreadSheetDocumentField>
+			</ChildItems>
+		</UsualGroup>
+		<Pages name="Pages" id="199">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Pages</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Pages</v8:content>
+				</v8:item>
+			</ToolTip>
+			<ExtendedTooltip name="PagesExtendedTooltip" id="200"/>
+			<ChildItems>
+				<Page name="InformationAboutOrder" id="40">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Information by order</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Information by order</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Horizontal</Group>
+					<ExtendedTooltip name="InformationAboutOrderExtendedTooltip" id="146"/>
+					<ChildItems>
+						<UsualGroup name="LeftPanel" id="41">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Left bar</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Panel</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="LeftPanelExtendedTooltip" id="147"/>
+							<ChildItems>
+								<UsualGroup name="StartFinish" id="61">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Start finish</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Start, finish</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="StartFinishExtendedTooltip" id="148"/>
+									<ChildItems>
+										<InputField name="Start" id="45">
+											<DataPath>Object.Start</DataPath>
+											<Width>12</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ContextMenu name="StartContextMenu" id="46"/>
+											<ExtendedTooltip name="StartExtendedTooltip" id="149"/>
+											<Events>
+												<Event name="OnChange">StartOnChange</Event>
+											</Events>
+										</InputField>
+										<InputField name="Finish" id="47">
+											<DataPath>Object.Finish</DataPath>
+											<Width>12</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ContextMenu name="FinishContextMenu" id="48"/>
+											<ExtendedTooltip name="FinishExtendedTooltip" id="153"/>
+											<Events>
+												<Event name="OnChange">FinishOnChange</Event>
+											</Events>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+								<InputField name="StructuralUnit" id="49">
+									<DataPath>Object.StructuralUnit</DataPath>
+									<ContextMenu name="StructuralUnitContextMenu" id="50"/>
+									<ExtendedTooltip name="StructuralUnitExtendedTooltip" id="155"/>
+									<Events>
+										<Event name="Opening">StructuralUnitOpening</Event>
+									</Events>
+								</InputField>
+								<InputField name="CustomerOrder" id="43">
+									<DataPath>Object.CustomerOrder</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Order</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="CustomerOrderContextMenu" id="44"/>
+									<ExtendedTooltip name="CustomerOrderExtendedTooltip" id="150"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="RightPanel" id="42">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Right panel</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Panel</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="RightPanelExtendedTooltip" id="152"/>
+							<ChildItems>
+								<InputField name="OperationKind" id="55">
+									<DataPath>Object.OperationKind</DataPath>
+									<ChoiceButton>true</ChoiceButton>
+									<ClearButton>false</ClearButton>
+									<SpinButton>false</SpinButton>
+									<OpenButton>false</OpenButton>
+									<ChoiceList>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.OperationKindsProductionOrder.EnumValue.Assembly</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.OperationKindsProductionOrder.EnumValue.Disassembly</Value>
+											</xr:Value>
+										</xr:Item>
+									</ChoiceList>
+									<ChoiceListButton>false</ChoiceListButton>
+									<BackColor>style:ManagingFieldBackgroundColor</BackColor>
+									<ContextMenu name="OperationTypeContextMenu" id="56"/>
+									<ExtendedTooltip name="OperationTypeExtendedTooltip" id="156"/>
+									<Events>
+										<Event name="OnChange">OperationKindOnChange</Event>
+										<Event name="ChoiceProcessing">OperationKindChoiceProcessing</Event>
+									</Events>
+								</InputField>
+								<InputField name="Company" id="53">
+									<DataPath>Object.Company</DataPath>
+									<ContextMenu name="CounterpartyContextMenu" id="54"/>
+									<ExtendedTooltip name="CounterpartyExtendedTooltip" id="154"/>
+									<Events>
+										<Event name="OnChange">CompanyOnChange</Event>
+									</Events>
+								</InputField>
+								<UsualGroup name="GroupState" id="62">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>GroupState</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>GroupState</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="StateExtendedTooltip" id="157"/>
+									<ChildItems>
+										<InputField name="OrderState" id="57">
+											<DataPath>Object.OrderState</DataPath>
+											<Width>15</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<OpenButton>false</OpenButton>
+											<ContextMenu name="OrderStateContextMenu" id="58"/>
+											<ExtendedTooltip name="OrderStateExtendedTooltip" id="158"/>
+										</InputField>
+										<CheckBoxField name="Closed" id="59">
+											<DataPath>Object.Closed</DataPath>
+											<TitleLocation>Right</TitleLocation>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="CloseContextMenu" id="60"/>
+											<ExtendedTooltip name="ClosedExtendedTooltip" id="159"/>
+										</CheckBoxField>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="GroupStatuses" id="80">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Statuses</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Statuses</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupStatusExtendedTooltip" id="160"/>
+									<ChildItems>
+										<InputField name="Status" id="203">
+											<DataPath>Status</DataPath>
+											<SkipOnInput>true</SkipOnInput>
+											<Width>15</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<DropListButton>true</DropListButton>
+											<TextEdit>false</TextEdit>
+											<ContextMenu name="StateContextMenu" id="204"/>
+											<ExtendedTooltip name="StatusExtendedTooltip" id="205"/>
+											<Events>
+												<Event name="OnChange">StatusOnChange</Event>
+											</Events>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="CommentPage" id="201">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Comment</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Comment page</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="CommentPageExtendedTooltip" id="202"/>
+					<ChildItems>
+						<InputField name="Comment" id="51">
+							<DataPath>Object.Comment</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<MultiLine>true</MultiLine>
+							<ContextMenu name="CommentContextMenu" id="52"/>
+							<ExtendedTooltip name="CommentExtendedTooltip" id="151"/>
+						</InputField>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Object</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DocumentObject.ProductionOrder</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+			<UseAlways>
+				<Field>Object.RegisterRecords</Field>
+			</UseAlways>
+		</Attribute>
+		<Attribute name="ResourcesImport" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Resources load</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type xmlns:mxl="http://v8.1c.ru/8.2/data/spreadsheet">mxl:SpreadsheetDocument</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="PeriodPresentation" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Period presentation</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>45</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="CalendarDate" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Calendar date</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>DateTime</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="PostingIsAllowed" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Posting is allowed</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Counterparty" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Counterparty</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Companies</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="DocumentDate" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Document date</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>DateTime</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="OperationKinds" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Operation types</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="NotifyWorkCalendar" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Notify work calendar</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="DocumentModified" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Document is modified</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="FilterResourceKind" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Kind of resource</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.EnterpriseResourcesKinds</v8:Type>
+			</Type>
+			<Save>
+				<Field>FilterResourceKind</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="FilterKeyResource" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Resource</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.KeyResources</v8:Type>
+			</Type>
+			<Save>
+				<Field>FilterKeyResource</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="TimeLimitTo" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Time limit to</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Time</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="TimeLimitFrom" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Limit time from</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Time</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="RepetitionFactorOFDay" id="17">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Repetition factor of day</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>2</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="CalendarDateBegin" id="18">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Calendar date begin</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>DateTime</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+			<Save>
+				<Field>CalendarDateBegin</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="CalendarDateEnd" id="19">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Calendar date end</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>DateTime</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+			<Save>
+				<Field>CalendarDateEnd</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="ColorEditing" id="22">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Color editing</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8ui:Color</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ColorBusyResource" id="23">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Color resource is busy</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8ui:Color</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="InProcessStatus" id="24">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>In process status</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.PurchaseOrderStates</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="CompletedStatus" id="25">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Completed state</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.PurchaseOrderStates</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Status" id="20">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Status</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>20</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<FillCheck>ShowError</FillCheck>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ExtendPeriod" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Extend period</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Extend period</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.MoveRight</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ExtendPeriod</Action>
+			<Representation>Picture</Representation>
+		</Command>
+		<Command name="ShortenPeriod" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Shorten period</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Shorten period</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.MoveLeft</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ShortenPeriod</Action>
+			<Representation>Picture</Representation>
+		</Command>
+		<Command name="Refresh" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Refresh</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Refresh</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Shortcut>F5</Shortcut>
+			<Picture>
+				<xr:Ref>StdPicture.Refresh</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Refresh</Action>
+			<Representation>Picture</Representation>
+		</Command>
+		<Command name="UseResource" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Use resource</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Use resource</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>UseResource</Action>
+		</Command>
+	</Commands>
+	<CommandInterface>
+		<NavigationPanel>
+			<Item>
+				<Command>CommonCommand.ReportByMovements</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormNavigationPanelImportant</CommandGroup>
+				<Index>1</Index>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+			<Item>
+				<Command>CommonCommand.Dependencies</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormNavigationPanelImportant</CommandGroup>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+			<Item>
+				<Command>AccumulationRegister.InventoryTransferSchedule.StandardCommand.OpenByRecorder</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormNavigationPanelGoTo</CommandGroup>
+				<Index>2</Index>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+			<Item>
+				<Command>AccumulationRegister.ProductionOrders.StandardCommand.OpenByRecorder</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormNavigationPanelGoTo</CommandGroup>
+				<Index>4</Index>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+			<Item>
+				<Command>AccumulationRegister.Inventory.StandardCommand.OpenByRecorder</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormNavigationPanelGoTo</CommandGroup>
+				<Index>1</Index>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+			<Item>
+				<Command>AccumulationRegister.InventoryDemand.StandardCommand.OpenByRecorder</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormNavigationPanelGoTo</CommandGroup>
+				<Index>3</Index>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+			<Item>
+				<Command>AccumulationRegister.OrdersPlacement.StandardCommand.OpenByRecorder</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormNavigationPanelGoTo</CommandGroup>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+			<Item>
+				<Command>AccumulationRegister.ProductRelease.StandardCommand.OpenByRecorder</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormNavigationPanelGoTo</CommandGroup>
+				<Index>5</Index>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+		</NavigationPanel>
+		<CommandBar>
+			<Item>
+				<Command>0:c42f200f-3765-425c-9acc-8936d97f587f</Command>
+				<Type>Auto</Type>
+				<CommandGroup>CommandGroup.Print</CommandGroup>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+			<Item>
+				<Command>0:c1814037-f23d-4e8c-ad6e-db644a22bb1d</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormCommandBarCreateBasedOn</CommandGroup>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+			<Item>
+				<Command>Document.ProductionOrder.StandardCommand.CreateBasedOn</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormCommandBarCreateBasedOn</CommandGroup>
+				<Index>2</Index>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+			<Item>
+				<Command>Document.PurchaseOrder.StandardCommand.CreateBasedOn</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormCommandBarCreateBasedOn</CommandGroup>
+				<Index>4</Index>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+			<Item>
+				<Command>Document.InventoryTransfer.StandardCommand.CreateBasedOn</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormCommandBarCreateBasedOn</CommandGroup>
+				<Index>3</Index>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+			<Item>
+				<Command>Document.InventoryAssembly.StandardCommand.CreateBasedOn</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormCommandBarCreateBasedOn</CommandGroup>
+				<Index>5</Index>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+			<Item>
+				<Command>Document.CostAllocation.StandardCommand.CreateBasedOn</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormCommandBarCreateBasedOn</CommandGroup>
+				<Index>6</Index>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+			<Item>
+				<Command>Document.JobSheet.StandardCommand.CreateBasedOn</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormCommandBarCreateBasedOn</CommandGroup>
+				<Index>7</Index>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+		</CommandBar>
+	</CommandInterface>
+</Form>

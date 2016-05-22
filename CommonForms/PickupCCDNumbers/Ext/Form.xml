@@ -1,0 +1,782 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Width>110</Width>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<CommandBarLocation>Bottom</CommandBarLocation>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<HorizontalAlign>Right</HorizontalAlign>
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="TransferDataInDocument" id="69">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.TransferDataInDocument</CommandName>
+				<ExtendedTooltip name="MoveDataToDocumentExtendedTooltip" id="83"/>
+			</Button>
+			<Button name="Cancel" id="68">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.Cancel</CommandName>
+				<ExtendedTooltip name="CancelExtendedTooltip" id="84"/>
+			</Button>
+			<Button name="FormHelp" id="80">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.Help</CommandName>
+				<ExtendedTooltip name="FormHelpExtendedTooltip" id="85"/>
+			</Button>
+			<Button name="FormChangeForm" id="81">
+				<Type>CommandBarButton</Type>
+				<Representation>Picture</Representation>
+				<OnlyInAllActions>true</OnlyInAllActions>
+				<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
+				<ExtendedTooltip name="FormChangeFormExtendedTooltip" id="86"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="FillingGroup" id="39">
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Filling</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>NormalSeparation</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="FillingGroupExtendedTooltip" id="87"/>
+			<ChildItems>
+				<InputField name="CountryOfOrigin" id="43">
+					<DataPath>CountryOfOrigin</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<InputHint>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Country of origin</v8:content>
+						</v8:item>
+					</InputHint>
+					<ContextMenu name="CountryOfOriginContextMenu" id="44"/>
+					<ExtendedTooltip name="CountryOfOriginExtendedTooltip" id="88"/>
+				</InputField>
+				<InputField name="CCDNo" id="40">
+					<DataPath>CCDNo</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<InputHint>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>CCD #</v8:content>
+						</v8:item>
+					</InputHint>
+					<ContextMenu name="CCDNumberContextMenu" id="41"/>
+					<ExtendedTooltip name="CCDNumberExtendedTooltip" id="89"/>
+					<Events>
+						<Event name="OnChange">NumberCCDOnChange</Event>
+					</Events>
+				</InputField>
+				<Button name="SetCCDNumber" id="47">
+					<Type>UsualButton</Type>
+					<CommandName>Form.Command.SetCCDNumber</CommandName>
+					<ExtendedTooltip name="SetCCDNumberExtendedTooltip" id="90"/>
+				</Button>
+				<LabelDecoration name="DecorationHelp" id="77">
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>How to clear CCD number?</v8:content>
+						</v8:item>
+					</Title>
+					<Hyperlink>true</Hyperlink>
+					<ContextMenu name="DecorationToolTipContextMenu" id="78"/>
+					<ExtendedTooltip name="DecorationToolTipExtendedTooltip" id="91"/>
+					<Events>
+						<Event name="Click">DecorationHelpClick</Event>
+					</Events>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="CommandsTabularSection" id="70">
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Tabular section commands</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="CommandsOfTabularSectionExtendedTooltip" id="92"/>
+			<ChildItems>
+				<CommandBar name="ButtonGroupMain" id="37">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Button group main</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Button group main</v8:content>
+						</v8:item>
+					</ToolTip>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ExtendedTooltip name="ButtonGroupBasicExtendedTooltip" id="93"/>
+					<ChildItems>
+						<Button name="FormSetMarkInAllRows" id="32">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Command.SetMarkInAllRows</CommandName>
+							<ExtendedTooltip name="FormSetMarkOnAllLinesExtendedTooltip" id="94"/>
+						</Button>
+						<Button name="FormUnmarkAllLines" id="33">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Command.UnmarkAllLines</CommandName>
+							<ExtendedTooltip name="FormUnmarkAllLinesExtendedTooltip" id="95"/>
+						</Button>
+						<Button name="FormInvertMark" id="36">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Command.InvertMark</CommandName>
+							<ExtendedTooltip name="FormInvertMarksExtendedTooltip" id="96"/>
+						</Button>
+						<Popup name="FolderWorkByCountry" id="82">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Work by country</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Work by country group</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ExtendedTooltip name="GroupWorkByCountryExtendedTooltip" id="97"/>
+							<ChildItems>
+								<Button name="FormSetMarkByCountry" id="34">
+									<Type>CommandBarButton</Type>
+									<CommandName>Form.Command.SetMarkForRowsWithSameCountry</CommandName>
+									<ExtendedTooltip name="FormSetMarkByCountryExtendedTooltip" id="98"/>
+								</Button>
+								<Button name="FormClearMarkForRowsWithSameCountry" id="35">
+									<Type>CommandBarButton</Type>
+									<CommandName>Form.Command.ClearMarkForRowsWithSameCountry</CommandName>
+									<ExtendedTooltip name="FormUnmarkRowsWithSimilarCountryExtendedTooltip" id="99"/>
+								</Button>
+							</ChildItems>
+						</Popup>
+					</ChildItems>
+				</CommandBar>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="GroupInventory" id="42">
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Inventory</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="InventoryGroupExtendedTooltip" id="100"/>
+			<ChildItems>
+				<Table name="InventoryTable" id="1">
+					<Representation>List</Representation>
+					<ChangeRowSet>false</ChangeRowSet>
+					<ChangeRowOrder>false</ChangeRowOrder>
+					<Output>Disable</Output>
+					<EnableStartDrag>true</EnableStartDrag>
+					<EnableDrag>true</EnableDrag>
+					<DataPath>Inventory</DataPath>
+					<CommandSet>
+						<ExcludedCommand>Copy</ExcludedCommand>
+						<ExcludedCommand>SortListAsc</ExcludedCommand>
+						<ExcludedCommand>MoveUp</ExcludedCommand>
+						<ExcludedCommand>CancelSearch</ExcludedCommand>
+						<ExcludedCommand>OutputList</ExcludedCommand>
+						<ExcludedCommand>SelectAll</ExcludedCommand>
+						<ExcludedCommand>SortListDesc</ExcludedCommand>
+						<ExcludedCommand>CopyToClipboard</ExcludedCommand>
+						<ExcludedCommand>Delete</ExcludedCommand>
+						<ExcludedCommand>EndEdit</ExcludedCommand>
+						<ExcludedCommand>Add</ExcludedCommand>
+						<ExcludedCommand>Change</ExcludedCommand>
+						<ExcludedCommand>Find</ExcludedCommand>
+						<ExcludedCommand>MoveDown</ExcludedCommand>
+					</CommandSet>
+					<SearchStringLocation>None</SearchStringLocation>
+					<ViewStatusLocation>None</ViewStatusLocation>
+					<SearchControlLocation>None</SearchControlLocation>
+					<RowFilter xsi:nil="true"/>
+					<ContextMenu name="InventoryTableContextMenu" id="2"/>
+					<AutoCommandBar name="InventoryTableCommandBar" id="3"/>
+					<ExtendedTooltip name="InventoryTableExtendedTooltip" id="101"/>
+					<SearchStringAddition name="InventoryTableSearchString" id="116">
+						<AdditionSource>
+							<Item>InventoryTable</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="InventoryTableSearchStringContextMenu" id="117"/>
+						<ExtendedTooltip name="InventoryTableSearchStringExtendedTooltip" id="118"/>
+					</SearchStringAddition>
+					<ViewStatusAddition name="InventoryTableViewStatus" id="119">
+						<AdditionSource>
+							<Item>InventoryTable</Item>
+							<Type>ViewStatusRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="InventoryTableViewStatusContextMenu" id="120"/>
+						<ExtendedTooltip name="InventoryTableViewStatusExtendedTooltip" id="121"/>
+					</ViewStatusAddition>
+					<SearchControlAddition name="InventoryTableSearchControl" id="122">
+						<AdditionSource>
+							<Item>InventoryTable</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<ContextMenu name="InventoryTableSearchControlContextMenu" id="123"/>
+						<ExtendedTooltip name="InventoryTableSearchControlExtendedTooltip" id="124"/>
+					</SearchControlAddition>
+					<ChildItems>
+						<CheckBoxField name="InventoryTableMark" id="30">
+							<DataPath>Inventory.Check</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ReserveTableMarkContextMenu" id="31"/>
+							<ExtendedTooltip name="InventoryTableMarkExtendedTooltip" id="102"/>
+						</CheckBoxField>
+						<InputField name="InventoryTableProductsAndServices" id="4">
+							<DataPath>Inventory.ProductsAndServices</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="InventoryTableProductsAndServicesContextMenu" id="5"/>
+							<ExtendedTooltip name="InventoryTableProductsAndServicesExtendedTooltip" id="103"/>
+						</InputField>
+						<InputField name="InventoryTableContent" id="6">
+							<DataPath>Inventory.Content</DataPath>
+							<UserVisible>
+								<xr:Common>false</xr:Common>
+							</UserVisible>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="InventoryTableContentContextMenu" id="7"/>
+							<ExtendedTooltip name="InventoryTableContentExtendedTooltip" id="104"/>
+						</InputField>
+						<InputField name="InventoryTableCharacteristic" id="8">
+							<DataPath>Inventory.Characteristic</DataPath>
+							<UserVisible>
+								<xr:Common>false</xr:Common>
+							</UserVisible>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="InventoryTableCharacteristicContextMenu" id="9"/>
+							<ExtendedTooltip name="InventoryTableCharacteristicExtendedTooltip" id="105"/>
+						</InputField>
+						<InputField name="InventoryTableCountryOfOrigin" id="26">
+							<DataPath>Inventory.CountryOfOrigin</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="InventoryTableCountryOfOriginContextMenu" id="27"/>
+							<ExtendedTooltip name="InventoryTableCountryOfOriginExtendedTooltip" id="114"/>
+							<Events>
+								<Event name="OnChange">InventoryTableCountryOfOriginOnChange</Event>
+								<Event name="StartChoice">InventoryTableCountryOfOriginStartChoice</Event>
+							</Events>
+						</InputField>
+						<InputField name="InventoryTableCCDNumber" id="28">
+							<DataPath>Inventory.CCDNo</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="InventoryTableCCDNumberContextMenu" id="29"/>
+							<ExtendedTooltip name="InventoryTableCCDNumberExtendedTooltip" id="115"/>
+							<Events>
+								<Event name="OnChange">InventoryTableNumberCCDOnChange</Event>
+								<Event name="StartChoice">InventoryTableCCDNumberStartChoice</Event>
+							</Events>
+						</InputField>
+						<InputField name="InventoryTableBatch" id="10">
+							<DataPath>Inventory.Batch</DataPath>
+							<UserVisible>
+								<xr:Common>false</xr:Common>
+							</UserVisible>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="InventoryTableBatchContextMenu" id="11"/>
+							<ExtendedTooltip name="InventoryTableBatchExtendedTooltip" id="106"/>
+						</InputField>
+						<InputField name="InventoryTableQuantity" id="12">
+							<DataPath>Inventory.Quantity</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>10</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="InventoryTableQuantityContextMenu" id="13"/>
+							<ExtendedTooltip name="InventoryTableQuantityExtendedTooltip" id="107"/>
+						</InputField>
+						<InputField name="InventoryTableMeasurementUnit" id="14">
+							<DataPath>Inventory.MeasurementUnit</DataPath>
+							<UserVisible>
+								<xr:Common>false</xr:Common>
+							</UserVisible>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>8</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<TextColor>style:MinorInscriptionText</TextColor>
+							<ContextMenu name="InventoryTableMeasurementUnitContextMenu" id="15"/>
+							<ExtendedTooltip name="InventoryTableMeasurementUnitExtendedTooltip" id="108"/>
+						</InputField>
+						<InputField name="InventoryTablePrice" id="16">
+							<DataPath>Inventory.Price</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>10</Width>
+							<TextColor>style:MinorInscriptionText</TextColor>
+							<ContextMenu name="InventoryTablePriceContextMenu" id="17"/>
+							<ExtendedTooltip name="InventoryTablePriceExtendedTooltip" id="109"/>
+						</InputField>
+						<InputField name="InventoryTableAmount" id="18">
+							<DataPath>Inventory.Amount</DataPath>
+							<UserVisible>
+								<xr:Common>false</xr:Common>
+							</UserVisible>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>10</Width>
+							<TextColor>style:MinorInscriptionText</TextColor>
+							<ContextMenu name="InventoryTableAmountContextMenu" id="19"/>
+							<ExtendedTooltip name="InventoryTableAmountExtendedTooltip" id="110"/>
+						</InputField>
+						<InputField name="InventoryTableVATRate" id="20">
+							<DataPath>Inventory.VATRate</DataPath>
+							<UserVisible>
+								<xr:Common>false</xr:Common>
+							</UserVisible>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>14</Width>
+							<TextColor>style:MinorInscriptionText</TextColor>
+							<ContextMenu name="InventoryTableVATRateContextMenu" id="21"/>
+							<ExtendedTooltip name="InventoryTableVATRateExtendedTooltip" id="111"/>
+						</InputField>
+						<InputField name="InventoryTableVATAmount" id="22">
+							<DataPath>Inventory.VATAmount</DataPath>
+							<UserVisible>
+								<xr:Common>false</xr:Common>
+							</UserVisible>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>12</Width>
+							<TextColor>style:MinorInscriptionText</TextColor>
+							<ContextMenu name="InventoryTableVATAmountContextMenu" id="23"/>
+							<ExtendedTooltip name="InventoryTableVATAmountExtendedTooltip" id="112"/>
+						</InputField>
+						<InputField name="InventoryTableTotalAmount" id="24">
+							<DataPath>Inventory.TotalAmount</DataPath>
+							<UserVisible>
+								<xr:Common>false</xr:Common>
+							</UserVisible>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>12</Width>
+							<TextColor>style:MinorInscriptionText</TextColor>
+							<ContextMenu name="InventoryTableTotalAmountContextMenu" id="25"/>
+							<ExtendedTooltip name="InventoryTableTotalAmountExtendedTooltip" id="113"/>
+						</InputField>
+					</ChildItems>
+				</Table>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Inventory" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Inventory</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="ProductsAndServices" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Products and services</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.ProductsAndServices</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Content" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Content</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Characteristic" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Characteristic</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.ProductsAndServicesCharacteristics</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Batch" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Batch</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.ProductsAndServicesBatches</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Quantity" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Quantity</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>3</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="MeasurementUnit" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Unit of Measure</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.UOMClassifier</v8:Type>
+						<v8:Type>cfg:CatalogRef.UOM</v8:Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Price" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Price</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="Amount" id="8">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Amount</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="VATRate" id="9">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>VAT rate</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.VATRates</v8:Type>
+					</Type>
+				</Column>
+				<Column name="VATAmount" id="10">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>VAT amount</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="TotalAmount" id="11">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>TotalAmount</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="CountryOfOrigin" id="12">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Country of origin</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.WorldCountries</v8:Type>
+					</Type>
+				</Column>
+				<Column name="CCDNo" id="13">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>CCD #</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.CCDNumbers</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Check" id="14">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>...</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="IsInventoryItem" id="15">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>This is inventory item</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="CCDNo" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>CCD #</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.CCDNumbers</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="CountryOfOrigin" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Country of origin</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.WorldCountries</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="OwnerFormUUID" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Unique identifier of the owner form</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:UUID</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="DocumentDate" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Document date</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="SetMarkInAllRows" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Install mark in all the rows</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Install mark in all the rows</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.CheckAll</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>SetMarkInAllRows</Action>
+			<Representation>Picture</Representation>
+		</Command>
+		<Command name="UnmarkAllLines" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Unmark all the rows</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Unmark all the rows</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.UncheckAll</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>UnmarkAllLines</Action>
+		</Command>
+		<Command name="SetMarkForRowsWithSameCountry" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Set the mark (for the rows with the same country)</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Mark rows with the same country</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.CheckAll</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>SetMarkForRowsWithSameCountry</Action>
+			<Representation>Text</Representation>
+		</Command>
+		<Command name="ClearMarkForRowsWithSameCountry" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Uncheck the mark (for the rows with the same country)</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Uncheck the mark for the rows with the same country</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.UncheckAll</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ClearMarkForRowsWithSameCountry</Action>
+		</Command>
+		<Command name="InvertMark" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Draw marks</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Invert</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InvertMark</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="SetCCDNumber" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Set</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Set CCD number</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.DataSynchronizationDataReceived</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>SetValues</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="TransferDataInDocument" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Transfer the data to the document</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Transfer the data to the document</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>TransferDataInDocument</Action>
+		</Command>
+	</Commands>
+</Form>

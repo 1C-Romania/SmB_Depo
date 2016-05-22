@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"></meta><link rel="stylesheet" type="text/css" href="v8help://service_book/service_style"></link><meta name="GENERATOR" content="MSHTML 11.00.9600.18321"></meta></head><body>
+<p>Designed to estimate the application performance.</p>
+<p>You can use the embedded APDEX data collection/analysis recognized as the international standard for application performance estimation. </p>
+<p>To estimate performance, fill in the <a href="Catalog.KeyOperations/Help">Key operations</a> list before you start working.</p>
+<p>To estimate performance with APDEX, take the following steps:</p>
+<ul><li>Find the priority of each <a href="Catalog.KeyOperations.Form.ItemForm/Help">key operation</a> of the application. 
+</li><li>Find the target performance time for each key operation. 
+</li><li>Collect information about the actual performance time of each key operation. 
+</li><li>On the basis of the collected data, define the performance level and interpret the acquired values.</li></ul><p>To view and analyze the performance estimations, use the <strong>Performance scores </strong>command in the <strong>Administration - Support and service </strong>section. </p>
+<h3>Table</h3>
+<p>The performance scores are added to the table including the following columns: </p>
+<ul><li>
+<div><strong>Key operation </strong>- a name of the key operation. The table shows all available <strong>Key operations</strong> in the relevant list. By default, the predefined <strong>Overall system performance </strong>key operation is shown only in the table.</div>
+<ul><li>Use the <img></img> <strong>Add </strong>and  <img></img> <strong>Delete </strong>buttons  to create a list of key application operations for estimating the application performance. 
+</li><li>Whenever a key operation is added to the table, you can not select it in the list (i.e. one operation can be added to the table just once). </li></ul></li><li>
+<div><strong>Priority </strong>- it is displayed from the <strong>Key operations </strong>list. </div>
+<ul><li>
+<div>Use the <img width="16" height="16"></img> <strong>Up </strong>and  <img width="16" height="16"></img> <strong>Down </strong>buttons to move key operations in the list. </div>
+</li><li>
+<div>When moving a key operation in the list, you automatically change its <strong>Priority</strong>. </div>
+</li><li>
+<div>The top and bottom operation is of the highest and lowest priority respectively. Therefore, you can set up the priority of each operation by moving them in the list. </div>
+</li><li>
+<div>The <strong>Overall system performance </strong>entry is always at the top; it has no priority and displays the application performance summary.</div></li></ul></li><li>
+<div><strong>Target time </strong>(in seconds) - it is displayed from the <strong>Key operations </strong>list. The performance level will be related to this value. If the target time values change, the performance values will change, too. </div></li></ul><h3>Setting period</h3>
+<ul><li>Before you estimate performance, specify the period to observe. 
+<ul><li>Enter the <strong>Start date</strong> and <strong>End date</strong>. Use the <img></img> button to select a calendar date and change time if necessary (by default, 0:00:00).</li></ul></li><li>In the <strong>Step </strong>field, you can set a number of results displayed in the period. For example if the period is one day and the step duration is one hour, the window will show 24 results (for each key operation). The per-hour result will be calculated by the special APDEX formula. If no operations were executed within one hour, the relevant table cell will show "0". The <a href="InformationRegister.TimeMeasurements/Help">estimations</a> will be made during the specified key operations, e.g. when posting a document. 
+</li><li>The estimation results will be shown in the <strong>Performance level </strong>window in the <strong>Table </strong>and <strong>Diagram </strong>tabs.</li></ul><h3>Updating table</h3>
+<ul><li>The list is not dynamic. To update the diagram and table data after editing the <strong>Period </strong>and/or <strong>Step </strong>fields, you can use the <strong>Update performance scores </strong>command.</li></ul><h3>Calculating target time</h3>
+<ul><li>Select a necessary operation (except for <strong>Overall system performance</strong>) and execute the <strong>Calculate target time from APDEX </strong>command from the context menu. You can not execute the command if time has been measured for this key operation.  </li></ul><h3>Performance level</h3>
+<ul><li>The performance level value is between 0 and 1. According to the level value, its field is shown in a specific color. The level can be understood as follows: </li></ul><p></p>
+<table border="1"><tbody><tr><td colspan="3">
+<p align="center"><strong>APDEX</strong> <strong>scale</strong></p></td></tr><tr><td colspan="2">
+<p align="center"><strong>Score</strong></p></td>
+<td rowspan="2">
+<p align="center"><strong>Level</strong></p></td></tr><tr><td>
+<p align="center"><strong>from</strong></p></td>
+<td>
+<p align="center"><strong>to</strong></p></td></tr><tr><td>0.00</td>
+<td>0.50</td>
+<td style="BACKGROUND-COLOR: #cccccc">unacceptable</td></tr><tr><td>0.50</td>
+<td>0.70</td>
+<td style="BACKGROUND-COLOR: #ffcc66">poor</td></tr><tr><td>0.70</td>
+<td>0.85</td>
+<td style="BACKGROUND-COLOR: #ffff66">fair</td></tr><tr><td>0.85</td>
+<td>0.94</td>
+<td style="BACKGROUND-COLOR: #ccff99">good</td></tr><tr><td>0.94</td>
+<td>1.00</td>
+<td style="BACKGROUND-COLOR: #ccffff">excellent</td></tr></tbody></table><h3>Filtering scores</h3>
+<p>To filter your performance scores, click  <img></img><strong>Filter</strong> and use a radio button to select one of the following:</p>
+<ul><li>The<strong> Filter </strong>- <strong>Better </strong>or <strong>Worse </strong>field 
+</li><li>To compare, select an APDEX level: <strong>Good</strong>, <strong>Fair</strong>, <strong>Poor</strong> 
+</li><li>The <strong>Condition </strong>field automatically shows the APDEX score corresponding with the level 
+</li><li>To start filtering, click <strong>OK</strong></li></ul><h3>Key operation execution history</h3>
+<ul><li>To view the <strong>Key operation execution history</strong>, double-click the table score. You can see a period of estimations stated in the table, the key operation parameters filled in from the key operation list, and the number of estimations. The estimation table shows information about each estimation:<strong> Duration</strong>, <strong>End time</strong>, <strong>User</strong>.</li></ul><h3>Diagram</h3>
+<ul><li>For a better convenience, the <strong>Diagram </strong>page shows the table scores as graphs, where each graph corresponds to a key operation. </li></ul><h3>Exporting performance estimation</h3>
+<ul><li>You can automatically export your performance scores to external files in background. For example, you can analyze performance in another application. 
+</li><li>To <a href="DataProcessor.PerformanceEstimation.Form.AutomaticExportPerformanceMeasurements/Help">set up exporting</a> of this data, click <strong>More - Configuration</strong>. Generated external files and the files containing the settings corresponding with the acquired estimations are packed in a ZIP archive. 
+</li><li>To export performance estimations manually, click <strong>More </strong>- <strong>Export</strong> <strong>data</strong>.</li></ul></body></html>

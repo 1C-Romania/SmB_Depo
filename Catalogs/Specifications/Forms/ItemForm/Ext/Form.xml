@@ -1,0 +1,422 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Width>90</Width>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<ChildItems>
+			<ButtonGroup name="GroupGlobalCommands" id="91">
+				<Title>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Global commands group</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTip>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Global commands group</v8:content>
+					</v8:item>
+				</ToolTip>
+				<CommandSource>FormCommandPanelGlobalCommands</CommandSource>
+				<ExtendedTooltip name="GroupGlobalCommandsExtendedTooltip" id="92"/>
+				<ChildItems>
+					<Button name="CommonCommandObjectReports" id="93">
+						<Type>CommandBarButton</Type>
+						<CommandName>CommonCommand.ObjectReports</CommandName>
+						<DataPath>Object.Ref</DataPath>
+						<ExtendedTooltip name="CommonCommandObjectReportsExtendedTooltip" id="94"/>
+					</Button>
+					<Button name="CommonCommandChangesHistory" id="95">
+						<Type>CommandBarButton</Type>
+						<OnlyInAllActions>false</OnlyInAllActions>
+						<CommandName>CommonCommand.ChangesHistory</CommandName>
+						<DataPath>Object.Ref</DataPath>
+						<ExtendedTooltip name="CommonCommandChangesHistoryExtendedTooltip" id="96"/>
+					</Button>
+				</ChildItems>
+			</ButtonGroup>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ProductsAndCharacteristic" id="42">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Finished goods and characteristic</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Finished goods and characteristic</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ProductsAndCharacteristicExtendedTooltip" id="48"/>
+			<ChildItems>
+				<InputField name="Owner" id="5">
+					<DataPath>Object.Owner</DataPath>
+					<SkipOnInput>true</SkipOnInput>
+					<EditMode>EnterOnInput</EditMode>
+					<Width>25</Width>
+					<Wrap>false</Wrap>
+					<ContextMenu name="OwnerContextMenu" id="6"/>
+					<ExtendedTooltip name="OwnerExtendedTooltip" id="49"/>
+				</InputField>
+				<InputField name="ProductCharacteristic" id="7">
+					<DataPath>Object.ProductCharacteristic</DataPath>
+					<SkipOnInput>true</SkipOnInput>
+					<EditMode>EnterOnInput</EditMode>
+					<Wrap>false</Wrap>
+					<CreateButton>false</CreateButton>
+					<ContextMenu name="ProductCharacteristicContextMenu" id="8"/>
+					<ExtendedTooltip name="ProductCharacteristicExtendedTooltip" id="50"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="CodeAndName" id="43">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Code and description</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Code and description</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="CodeAndNameExtendedTooltip" id="51"/>
+			<ChildItems>
+				<InputField name="Description" id="3">
+					<DataPath>Object.Description</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<Wrap>false</Wrap>
+					<ContextMenu name="DescriptionContextMenu" id="4"/>
+					<ExtendedTooltip name="DescriptionExtendedTooltip" id="52"/>
+				</InputField>
+				<InputField name="Code" id="1">
+					<DataPath>Object.Code</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<EditMode>EnterOnInput</EditMode>
+					<Width>10</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<Wrap>false</Wrap>
+					<ContextMenu name="CodeContextMenu" id="2"/>
+					<ExtendedTooltip name="CodeExtendedTooltip" id="53"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<Pages name="Pages" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Pages</v8:content>
+				</v8:item>
+			</Title>
+			<ExtendedTooltip name="PagesExtendedTooltip" id="54"/>
+			<ChildItems>
+				<Page name="GroupContent" id="10">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Content</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="GroupContentExtendedTooltip" id="55"/>
+					<ChildItems>
+						<Table name="Content" id="11">
+							<Representation>List</Representation>
+							<SkipOnInput>false</SkipOnInput>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>Object.Content</DataPath>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="ContentContextMenu" id="12"/>
+							<AutoCommandBar name="ContentCommandBar" id="13">
+								<ChildItems>
+									<Button name="ContentDataImportFromExternalSources" id="97">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.DataImportFromExternalSources</CommandName>
+										<ExtendedTooltip name="ContentDataImportFromExternalSourcesExtendedTooltip" id="98"/>
+									</Button>
+								</ChildItems>
+							</AutoCommandBar>
+							<ExtendedTooltip name="ContentExtendedTooltip" id="56"/>
+							<SearchStringAddition name="ContentSearchString" id="73">
+								<AdditionSource>
+									<Item>Content</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ContentSearchStringContextMenu" id="74"/>
+								<ExtendedTooltip name="ContentSearchStringExtendedTooltip" id="75"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ContentViewStatus" id="76">
+								<AdditionSource>
+									<Item>Content</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ContentViewStatusContextMenu" id="77"/>
+								<ExtendedTooltip name="ContentViewStatusExtendedTooltip" id="78"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ContentSearchControl" id="79">
+								<AdditionSource>
+									<Item>Content</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ContentSearchControlContextMenu" id="80"/>
+								<ExtendedTooltip name="ContentSearchControlExtendedTooltip" id="81"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<InputField name="ContentLineNumber" id="14">
+									<DataPath>Object.Content.LineNumber</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<FixingInTable>Left</FixingInTable>
+									<Width>4</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<Wrap>false</Wrap>
+									<ContextMenu name="ContentLineNumberContextMenu" id="15"/>
+									<ExtendedTooltip name="ContentLineNumberExtendedTooltip" id="57"/>
+								</InputField>
+								<InputField name="ContentContentRowType" id="16">
+									<DataPath>Object.Content.ContentRowType</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<FixingInTable>Left</FixingInTable>
+									<Width>10</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<Wrap>false</Wrap>
+									<ContextMenu name="ContentTypeRowsContentaContextMenu" id="17"/>
+									<ExtendedTooltip name="ContentTypeRowsContentaExtendedTooltip" id="58"/>
+									<Events>
+										<Event name="OnChange">ContentTypeOfContentRowOnChange</Event>
+									</Events>
+								</InputField>
+								<InputField name="ContentProductsAndServices" id="18">
+									<DataPath>Object.Content.ProductsAndServices</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<FixingInTable>Left</FixingInTable>
+									<Width>20</Width>
+									<Wrap>false</Wrap>
+									<ContextMenu name="ContentProductsAndServicesContextMenu" id="19"/>
+									<ExtendedTooltip name="ContentProductsAndServicesExtendedTooltip" id="59"/>
+									<Events>
+										<Event name="OnChange">ContentProductsAndServicesOnChange</Event>
+										<Event name="StartChoice">ContentProductsAndServicesStartChoice</Event>
+										<Event name="ChoiceProcessing">ContentProductsAndServicesChoiceProcessing</Event>
+									</Events>
+								</InputField>
+								<InputField name="ContentCharacteristic" id="20">
+									<DataPath>Object.Content.Characteristic</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>20</Width>
+									<Wrap>false</Wrap>
+									<CreateButton>false</CreateButton>
+									<ContextMenu name="ContentCharacteristicContextMenu" id="21"/>
+									<ExtendedTooltip name="ContentCharacteristicExtendedTooltip" id="60"/>
+									<Events>
+										<Event name="OnChange">ContentCharacteristicOnChange</Event>
+									</Events>
+								</InputField>
+								<InputField name="ContentCount" id="26">
+									<DataPath>Object.Content.Quantity</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>10</Width>
+									<Wrap>false</Wrap>
+									<ContextMenu name="ContentQuantityContextMenu" id="27"/>
+									<ExtendedTooltip name="ContentCountExtendedTooltip" id="61"/>
+								</InputField>
+								<InputField name="ContentMeasurementUnit" id="22">
+									<DataPath>Object.Content.MeasurementUnit</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>6</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<Wrap>false</Wrap>
+									<DropListButton>true</DropListButton>
+									<ChoiceButton>false</ChoiceButton>
+									<OpenButton>false</OpenButton>
+									<ChooseType>false</ChooseType>
+									<ChoiceListButton>true</ChoiceListButton>
+									<ContextMenu name="ContentUnitDimensionsContextMenu" id="23"/>
+									<ExtendedTooltip name="ContentUnitDimensionsExtendedTooltip" id="62"/>
+								</InputField>
+								<InputField name="ContentPricePart" id="46">
+									<DataPath>Object.Content.CostPercentage</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>12</Width>
+									<ContextMenu name="ContentForPriceContextMenu" id="47"/>
+									<ExtendedTooltip name="ContentForPriceExtendedTooltip" id="63"/>
+								</InputField>
+								<InputField name="ContentProductsQuantity" id="28">
+									<DataPath>Object.Content.ProductsQuantity</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>16</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<Wrap>false</Wrap>
+									<ContextMenu name="ContentProductsQuantityContextMenu" id="29"/>
+									<ExtendedTooltip name="ContentProductsQuantityExtendedTooltip" id="64"/>
+								</InputField>
+								<InputField name="ContentSpecification" id="24">
+									<DataPath>Object.Content.Specification</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>20</Width>
+									<Wrap>false</Wrap>
+									<ContextMenu name="ContentSpecificationContextMenu" id="25"/>
+									<ExtendedTooltip name="ContentSpecificationExtendedTooltip" id="65"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="GroupOperations" id="30">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Operations</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="GroupOperationsExtendedTooltip" id="66"/>
+					<ChildItems>
+						<Table name="Operations" id="31">
+							<Representation>List</Representation>
+							<SkipOnInput>false</SkipOnInput>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>Object.Operations</DataPath>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="OperationsContextMenu" id="32"/>
+							<AutoCommandBar name="OperationsCommandPanel" id="33"/>
+							<ExtendedTooltip name="OperationsExtendedTooltip" id="67"/>
+							<SearchStringAddition name="OperationsSearchString" id="82">
+								<AdditionSource>
+									<Item>Operations</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="OperationsSearchStringContextMenu" id="83"/>
+								<ExtendedTooltip name="OperationsSearchStringExtendedTooltip" id="84"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="OperationsViewingStatus" id="85">
+								<AdditionSource>
+									<Item>Operations</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="OperationsViewingStatusContextMenu" id="86"/>
+								<ExtendedTooltip name="OperationsViewingStatusExtendedTooltip" id="87"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="OperationsSearchManagement" id="88">
+								<AdditionSource>
+									<Item>Operations</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="OperationsSearchManagementContextMenu" id="89"/>
+								<ExtendedTooltip name="OperationsSearchManagementExtendedTooltip" id="90"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<InputField name="OperationsLineNumber" id="34">
+									<DataPath>Object.Operations.LineNumber</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>4</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<Wrap>false</Wrap>
+									<ContextMenu name="OperationsLineNumberContextMenu" id="35"/>
+									<ExtendedTooltip name="OperationsLineNumberExtendedTooltip" id="68"/>
+								</InputField>
+								<InputField name="OperationsOperation" id="36">
+									<DataPath>Object.Operations.Operation</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Wrap>false</Wrap>
+									<ContextMenu name="OperationsOperationContextMenu" id="37"/>
+									<ExtendedTooltip name="OperationsOperationExtendedTooltip" id="69"/>
+									<Events>
+										<Event name="OnChange">OperationsOperationOnChange</Event>
+									</Events>
+								</InputField>
+								<InputField name="OperationsTimeNorm" id="40">
+									<DataPath>Object.Operations.TimeNorm</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>15</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<Wrap>false</Wrap>
+									<ContextMenu name="OperationsTimeNormContextMenu" id="41"/>
+									<ExtendedTooltip name="OperationsTimeNormExtendedTooltip" id="70"/>
+								</InputField>
+								<InputField name="OperationsProductsQuantity" id="44">
+									<DataPath>Object.Operations.ProductsQuantity</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>16</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<Wrap>false</Wrap>
+									<ContextMenu name="OperationsProductsQuantityContextMenu" id="45"/>
+									<ExtendedTooltip name="OperationsProductsQuantityExtendedTooltip" id="71"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Type>
+				<v8:Type>cfg:CatalogObject.Specifications</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="DataLoadSettings" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Data load settings</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="DataImportFromExternalSources" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Import data from external source</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Import data from external source</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Use>
+				<xr:Common>false</xr:Common>
+				<xr:Value name="Role.FullRights">true</xr:Value>
+				<xr:Value name="Role.UseDataImportFromExternalSources">true</xr:Value>
+			</Use>
+			<Picture>
+				<xr:Ref>CommonPicture.LoadFromFile</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>DataImportFromExternalSources</Action>
+		</Command>
+	</Commands>
+</Form>

@@ -1,0 +1,568 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Customizable>false</Customizable>
+	<CommandBarLocation>None</CommandBarLocation>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<CommandSet>
+		<ExcludedCommand>No</ExcludedCommand>
+		<ExcludedCommand>SaveValues</ExcludedCommand>
+		<ExcludedCommand>WriteAndClose</ExcludedCommand>
+		<ExcludedCommand>Abort</ExcludedCommand>
+		<ExcludedCommand>Retry</ExcludedCommand>
+		<ExcludedCommand>Yes</ExcludedCommand>
+		<ExcludedCommand>Cancel</ExcludedCommand>
+		<ExcludedCommand>RestoreValues</ExcludedCommand>
+		<ExcludedCommand>Ignore</ExcludedCommand>
+		<ExcludedCommand>OK</ExcludedCommand>
+		<ExcludedCommand>Write</ExcludedCommand>
+	</CommandSet>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+		<Event name="OnClose">OnClose</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="GroupApplySettings" id="2105">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group apply settings</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group apply settings</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="GroupApplySettingsExtendedTooltip" id="2106"/>
+			<ChildItems>
+				<LabelDecoration name="HowToApplySettings" id="2107">
+					<Title formatted="true">
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>After settings change it is required to &lt;link RefreshInterface&gt; reopen all open windows&lt;/&gt; or reopen the application.</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="HowToApplySettingsContextMenu" id="2108"/>
+					<ExtendedTooltip name="HowToApplySettingsExtendedTooltip" id="2109"/>
+					<Events>
+						<Event name="URLProcessing">HowToApplySettingsNavigationRefProcessing</Event>
+					</Events>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="Group" id="2092">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Horizontal</Group>
+			<Representation>NormalSeparation</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="GroupExtendedTooltip" id="2093"/>
+			<ChildItems>
+				<UsualGroup name="CommonParametersForAllDataAreas" id="2007">
+					<TitleFont ref="sys:DefaultGUIFont" height="11" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+					<Width>43</Width>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="CommonParametersForAllDataAreasExtendedTooltip" id="2053"/>
+					<ChildItems>
+						<UsualGroup name="DataSynchronizationGroup" id="2024">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Data synchronization group</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Data synchronization with applications on the Internet</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="DataSynchronizationGroupExtendedTooltip" id="2054"/>
+							<ChildItems>
+								<UsualGroup name="GroupDataSynchronizationFlag" id="2035">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group data synchronization flag</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group data synchronization flag</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupDataSynchronizationFlagExtendedTooltip" id="2055"/>
+									<ChildItems>
+										<CheckBoxField name="UseDataSynchronization" id="2029">
+											<DataPath>ConstantsSet.UseDataSynchronization</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Data synchronization</v8:content>
+												</v8:item>
+											</Title>
+											<TitleLocation>Right</TitleLocation>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="UseSynchronizationDataContextMenu" id="2030"/>
+											<ExtendedTooltip name="UseSynchronizationDataExtendedTooltip" id="2056"/>
+											<Events>
+												<Event name="OnChange">UseDataSynchronizationOnChange</Event>
+											</Events>
+										</CheckBoxField>
+										<LabelDecoration name="ExplanationDataSynchronizationWithApplicationsInInternet1" id="2027">
+											<TextColor>style:ExplanationText</TextColor>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Data synchronization with
+other 1C:Enterprise applications and information systems.</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="ExplanationDataSynchronizationWithApplicationsInInternet1ContextMenu" id="2028"/>
+											<ExtendedTooltip name="ExplanationOfDataSynchronizationWithApplicationsOnInternet1ExtendedTooltip" id="2057"/>
+										</LabelDecoration>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="DataSynchronizationSubordinatedGrouping" id="2031">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Data synchronization subordinate grouping</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Data synchronization subordinate grouping</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="DataSynchronizationSubordinateGroupExtendedTooltip" id="2058"/>
+							<ChildItems>
+								<LabelDecoration name="Decoration2" id="2033">
+									<ContextMenu name="Decoration2ContextMenu" id="2034"/>
+									<ExtendedTooltip name="Decoration2ExtendedTooltip" id="2059"/>
+								</LabelDecoration>
+								<UsualGroup name="Group1" id="2032">
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="Group1ExtendedTooltip" id="2060"/>
+									<ChildItems>
+										<UsualGroup name="DataSynchronizationWithApplicationsInInternet" id="2019">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Data synchronization with applications on the Internet</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Data synchronization with applications on the Internet</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Vertical</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="DataSynchronizationWithApplicationsOnInternetExtendedTooltip" id="2061"/>
+											<ChildItems>
+												<CheckBoxField name="UseDataSynchronizationSaaSWithApplicationInInternet" id="2016">
+													<DataPath>ConstantsSet.UseDataSynchronizationSaaSWithApplicationInInternet</DataPath>
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Data synchronization with applications on the Internet</v8:content>
+														</v8:item>
+													</Title>
+													<TitleLocation>Right</TitleLocation>
+													<CheckBoxType>Auto</CheckBoxType>
+													<ContextMenu name="UseDataSynchronizationSaaSWithApplicationInInternetContextMenu" id="2017"/>
+													<ExtendedTooltip name="UseDataSynchronizationSaaSWithApplicationInInternetExtendedTooltip" id="2062"/>
+													<Events>
+														<Event name="OnChange">UseDataSynchronizationSaaSWithApplicationInInternetOnChange</Event>
+													</Events>
+												</CheckBoxField>
+												<LabelDecoration name="ExplanationDataSynchronizationWithApplicationsInInternet" id="2022">
+													<TextColor>style:ExplanationText</TextColor>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Data synchronization between the subscriber applications.</v8:content>
+														</v8:item>
+													</Title>
+													<ContextMenu name="ExplanationOfDataSynchronizationWithApplicationsInInternetContextMenu" id="2023"/>
+													<ExtendedTooltip name="ExplanationDataSynchronizationWithApplicationsOnInternetExtendedTooltip" id="2063"/>
+												</LabelDecoration>
+											</ChildItems>
+										</UsualGroup>
+										<UsualGroup name="DataSynchronizationWithApplicationsInLocalMode" id="2018">
+											<Group>Vertical</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="DataSynchronizationWithLocalModeExtendedTooltip" id="2064"/>
+											<ChildItems>
+												<CheckBoxField name="UseDataSynchronizationSaaSWithLocalApplication" id="2014">
+													<DataPath>ConstantsSet.UseDataSynchronizationSaaSWithLocalApplication</DataPath>
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Data synchronization with the application in the local mode</v8:content>
+														</v8:item>
+													</Title>
+													<TitleLocation>Right</TitleLocation>
+													<CheckBoxType>Auto</CheckBoxType>
+													<ContextMenu name="UseDataSynchronizationSaaSWithLocalApplicationContextMenu" id="2015"/>
+													<ExtendedTooltip name="UseDataSynchronizationSaaSWithLocalApplicationExtendedTooltip" id="2065"/>
+													<Events>
+														<Event name="OnChange">UseDataSynchronizationSaaSWithLocalApplicationOnChange</Event>
+													</Events>
+												</CheckBoxField>
+												<LabelDecoration name="ExplanationDataSynchronizationWithApplicationsInLocalMode" id="2020">
+													<TextColor>style:ExplanationText</TextColor>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Data synchronization between subscriber applications and applications in the local mode.</v8:content>
+														</v8:item>
+													</Title>
+													<ContextMenu name="ExplanationDataSynchronizationWithApplicationsInLocalModeContextMenu" id="2021"/>
+													<ExtendedTooltip name="ExplanationOfDataSynchronizationWithApplicationsInLocalModeExtendedTooltip" id="2066"/>
+												</LabelDecoration>
+											</ChildItems>
+										</UsualGroup>
+										<UsualGroup name="OfflineWork" id="2013">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>OffLine work</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>OffLine work</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Vertical</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="WorkOfflineExtendedTooltip" id="2067"/>
+											<ChildItems>
+												<CheckBoxField name="OfflineSaaS" id="2009">
+													<DataPath>ConstantsSet.OfflineSaaS</DataPath>
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>OffLine work</v8:content>
+														</v8:item>
+													</Title>
+													<TitleLocation>Right</TitleLocation>
+													<CheckBoxType>Auto</CheckBoxType>
+													<ContextMenu name="OfflineSaaSContextMenu" id="2010"/>
+													<ExtendedTooltip name="OfflineSaaSExtendedTooltip" id="2068"/>
+													<Events>
+														<Event name="OnChange">OfflineSaaSOnChange</Event>
+													</Events>
+												</CheckBoxField>
+												<LabelDecoration name="ExplanationOfflineWork" id="2011">
+													<TextColor>style:ExplanationText</TextColor>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Offline work with application in the absence of an Internet connection.</v8:content>
+														</v8:item>
+													</Title>
+													<ContextMenu name="ExplanationOfflineWorkContextMenu" id="2012"/>
+													<ExtendedTooltip name="ExplanationWorkOfflineExtendedTooltip" id="2069"/>
+												</LabelDecoration>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="GroupDataSynchronizationMonitorSynchronizationData" id="2036">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Data synchronization group data synchronization monitor</v8:content>
+						</v8:item>
+					</Title>
+					<Width>43</Width>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="GroupDataSynchronizationSyncDataMonitorExtendedTooltip" id="2070"/>
+					<ChildItems>
+						<Button name="MonitorSynchronizationData" id="2037">
+							<Type>Hyperlink</Type>
+							<CommandName>Form.Command.MonitorSynchronizationData</CommandName>
+							<ExtendedTooltip name="MonitorSynchronizationDataExtendedTooltip" id="2071"/>
+						</Button>
+						<LabelDecoration name="ExplanationSyncDataMonitor" id="2040">
+							<TextColor>style:ExplanationText</TextColor>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Monitor of the subscriber application data synchronization.</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="SyncDataDisplayExplanationContextMenu" id="2041"/>
+							<ExtendedTooltip name="ExplanationDataSyncMonitorExtendedTooltip" id="2072"/>
+						</LabelDecoration>
+						<UsualGroup name="ExchangeTransportSettingsGroup" id="2049">
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ExtendedTooltip name="ExchangeTransportSettingsGroupExtendedTooltip" id="2073"/>
+							<ChildItems>
+								<Button name="ExchangeTransportSettings" id="2042">
+									<Type>Hyperlink</Type>
+									<CommandName>Form.Command.ExchangeTransportSettings</CommandName>
+									<ExtendedTooltip name="ExchangeTransportSettingsExtendedTooltip" id="2074"/>
+								</Button>
+								<LabelDecoration name="ExplanationExchangeTransportSettings" id="2045">
+									<TextColor>style:ExplanationText</TextColor>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>End points connection settings.</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="ExplanationExchangeTransportSettingsContextMenu" id="2046"/>
+									<ExtendedTooltip name="ExplanationExchangeTransportSettingsExtendedTooltip" id="2075"/>
+								</LabelDecoration>
+								<Button name="DataAreasTransportExchangeSettings" id="2043">
+									<Type>Hyperlink</Type>
+									<CommandName>Form.Command.DataAreasTransportExchangeSettings</CommandName>
+									<ExtendedTooltip name="DataAreasTransportExchangeSettingsExtendedTooltip" id="2076"/>
+								</Button>
+								<LabelDecoration name="ExplanationDataAreasTransportExchangeSettings" id="2047">
+									<TextColor>style:ExplanationText</TextColor>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Connection settings are common for all the data areas.</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="ExplanationDataAreasTransportExchangeSettingsContextMenu" id="2048"/>
+									<ExtendedTooltip name="ExplanationDataAreasTransportExchangeSettingsExtendedTooltip" id="2077"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+						<Button name="DataExchangeRules" id="2050">
+							<Type>Hyperlink</Type>
+							<CommandName>Form.Command.DataExchangeRules</CommandName>
+							<ExtendedTooltip name="DataExchangeRulesExtendedTooltip" id="2078"/>
+						</Button>
+						<LabelDecoration name="ExplanationDataExchangeRules" id="2051">
+							<TextColor>style:ExplanationText</TextColor>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Conversion and registration rules of the objects.</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ExplanationDataExchangeRulesContextMenu" id="2052"/>
+							<ExtendedTooltip name="ExplanationDataExchangeRulesExtendedTooltip" id="2079"/>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="GroupTemporaryDirectoriesServersCluster" id="2094">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Temp files directory for the 1C:Enterprise server clusters:</v8:content>
+				</v8:item>
+			</Title>
+			<Width>86</Width>
+			<HorizontalStretch>false</HorizontalStretch>
+			<Group>Vertical</Group>
+			<Representation>NormalSeparation</Representation>
+			<ExtendedTooltip name="TemporaryDirectoriesClusterServerGroupExtendedTooltip" id="2095"/>
+			<ChildItems>
+				<InputField name="DataExchangeMessagesDirectoryForWindows" id="2096">
+					<DataPath>ConstantsSet.DataExchangeMessagesDirectoryForWindows</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Running Windows</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="DataExchangeMessagesDirectoryForWindowsContextMenu" id="2097"/>
+					<ExtendedTooltip name="DataExchangeMessagesDirectoryForWindowsExtendedTooltip" id="2098"/>
+					<Events>
+						<Event name="OnChange">DataExchangeMessagesDirectoryForWindowsOnChange</Event>
+					</Events>
+				</InputField>
+				<InputField name="DataExchangeMessagesDirectoryForLinux" id="2099">
+					<DataPath>ConstantsSet.DataExchangeMessagesDirectoryForLinux</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Running Linux</v8:content>
+						</v8:item>
+					</Title>
+					<Font bold="true" kind="AutoFont"/>
+					<ContextMenu name="DataExchangeMessagesDirectoryForLinuxContextMenu" id="2100"/>
+					<ExtendedTooltip name="DataExchangeMessagesDirectoryForLinuxExtendedTooltip" id="2101"/>
+					<Events>
+						<Event name="OnChange">DataExchangeMessagesDirectoryForLinuxOnChange</Event>
+					</Events>
+				</InputField>
+				<LabelDecoration name="ExplanationTemporaryDirectories" id="2102">
+					<TextColor>style:ExplanationText</TextColor>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Path to the integrated network directory for common temporary files of 1C:Enterprise servers which work in the same cluster.</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ExplanationTemporaryDirectoriesContextMenu" id="2103"/>
+					<ExtendedTooltip name="ExplanationTemporaryDirectoriesExtendedTooltip" id="2104"/>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="_DemoGroupOtherDataSynchronizationSettings" id="2088">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content> </v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content> </v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Representation>NormalSeparation</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="_DemoGroupOtherDataSynchronizationSettingsExtendedTooltip" id="2089"/>
+			<ChildItems>
+				<Button name="_DemoOtherDataSynchronizationSettings" id="2090">
+					<Type>Hyperlink</Type>
+					<CommandName>0</CommandName>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Demo: Other settings...</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="_DemoOtherDataSynchronizationSettingsExtendedTooltip" id="2091"/>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="ConstantsSet" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Constants set</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:ConstantsSet</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<UseAlways>
+				<Field>ConstantsSet.UseDataSynchronization</Field>
+				<Field>ConstantsSet.SMSProvider.Ref</Field>
+				<Field>ConstantsSet.PriceListShowFullDescr.Ref</Field>
+				<Field>ConstantsSet.PriceListShowCode.Ref</Field>
+				<Field>ConstantsSet.PostponeEditProhibitionDate.Ref</Field>
+				<Field>ConstantsSet.OffsetAdvancesDebtsAutomatically.Ref</Field>
+				<Field>ConstantsSet.InfobaseUsageMode.Ref</Field>
+				<Field>ConstantsSet.ExchangeRateDifferencesCalculationFrequency.Ref</Field>
+				<Field>ConstantsSet.DiscountsMarkupsSharedUsageOptions.Ref</Field>
+				<Field>ConstantsSet.DeleteCryptographyContext.Ref</Field>
+				<Field>ConstantsSet.DeleteContractControllingOnPosting.Ref</Field>
+				<Field>ConstantsSet.AuthorizationContext.Ref</Field>
+				<Field>ConstantsSet.ActivityKind.Ref</Field>
+			</UseAlways>
+		</Attribute>
+		<Attribute name="RunMode" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Work mode</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="MonitorSynchronizationData" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Data synchronization monitor</v8:content>
+				</v8:item>
+			</Title>
+			<Action>MonitorSynchronizationData</Action>
+		</Command>
+		<Command name="ExchangeTransportSettings" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Connection settings</v8:content>
+				</v8:item>
+			</Title>
+			<Action>ExchangeTransportSettings</Action>
+		</Command>
+		<Command name="DataAreasTransportExchangeSettings" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Connection settings for data areas</v8:content>
+				</v8:item>
+			</Title>
+			<Action>DataAreasTransportExchangeSettings</Action>
+		</Command>
+		<Command name="DataExchangeRules" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Data exchange rules</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Data exchange rules</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>DataExchangeRules</Action>
+		</Command>
+	</Commands>
+</Form>

@@ -1,0 +1,781 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>DataSource1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>MainDataSet</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>BankAccount</dataPath>
+			<field>BankAccount</field>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Date</dataPath>
+			<field>Date</field>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>OrderDateOnSite</dataPath>
+			<field>OrderDateOnSite</field>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>PayDate</dataPath>
+			<field>PayDate</field>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ShipmentDate</dataPath>
+			<field>ShipmentDate</field>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>CustomerOrder</dataPath>
+			<field>CustomerOrder</field>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>TIN</dataPath>
+			<field>TIN</field>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>CodeByOKPO</dataPath>
+			<field>CodeByOKPO</field>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Comment</dataPath>
+			<field>Comment</field>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Counterparty</dataPath>
+			<field>Counterparty</field>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>BalanceForPayment</dataPath>
+			<field>BalanceForPayment</field>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ResidueForShipment</dataPath>
+			<field>ResidueForShipment</field>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>KPP</dataPath>
+			<field>KPP</field>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ExchangeRate</dataPath>
+			<field>ExchangeRate</field>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Description</dataPath>
+			<field>Description</field>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>DescriptionFull</dataPath>
+			<field>DescriptionFull</field>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>VATTaxation</dataPath>
+			<field>VATTaxation</field>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Number</dataPath>
+			<field>Number</field>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>OrderNumberOnSite</dataPath>
+			<field>OrderNumberOnSite</field>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>PaymentNo</dataPath>
+			<field>PaymentNo</field>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ShipmentNo</dataPath>
+			<field>ShipmentNo</field>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>DeletionMark</dataPath>
+			<field>DeletionMark</field>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Posted</dataPath>
+			<field>Posted</field>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>AmountIncludesVAT</dataPath>
+			<field>AmountIncludesVAT</field>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>DocumentAmount</dataPath>
+			<field>DocumentAmount</field>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldNestedDataSet">
+			<dataPath>Products</dataPath>
+			<field>Products</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Products.SKU</dataPath>
+			<field>Products.SKU</field>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Products.TotalAmount</dataPath>
+			<field>Products.TotalAmount</field>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Products.ShipmentDate</dataPath>
+			<field>Products.ShipmentDate</field>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Products.MeasurementUnit</dataPath>
+			<field>Products.MeasurementUnit</field>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Products.MeasurementUnitCode</dataPath>
+			<field>Products.MeasurementUnitCode</field>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Products.MeasurementUnitInternationalAbbreviation</dataPath>
+			<field>Products.MeasurementUnitInternationalAbbreviation</field>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Products.MeasurementUnitDescriptionFull</dataPath>
+			<field>Products.MeasurementUnitDescriptionFull</field>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Products.Count</dataPath>
+			<field>Products.Count</field>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Products.ProductsAndServices</dataPath>
+			<field>Products.ProductsAndServices</field>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Products.ProductsAndServicesVATRate</dataPath>
+			<field>Products.ProductsAndServicesVATRate</field>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Products.DiscountMarkupPercent</dataPath>
+			<field>Products.DiscountMarkupPercent</field>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Products.VATRate</dataPath>
+			<field>Products.VATRate</field>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Products.Amount</dataPath>
+			<field>Products.Amount</field>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Products.VATAmount</dataPath>
+			<field>Products.VATAmount</field>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Products.ProductsAndServicesType</dataPath>
+			<field>Products.ProductsAndServicesType</field>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Products.Characteristic</dataPath>
+			<field>Products.Characteristic</field>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Products.Price</dataPath>
+			<field>Products.Price</field>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>LegalEntityIndividual</dataPath>
+			<field>LegalEntityIndividual</field>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>PaymentDate</dataPath>
+			<field>PaymentDate</field>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Products.MeasurementUnitDescription</dataPath>
+			<field>Products.MeasurementUnitDescription</field>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Currency</dataPath>
+			<field>Currency</field>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Closed</dataPath>
+			<field>Closed</field>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>OrderStatus</dataPath>
+			<field>OrderStatus</field>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ProductsAndServices</dataPath>
+			<field>ProductsAndServices</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Company</dataPath>
+			<field>Company</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Characteristic</dataPath>
+			<field>Characteristic</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>InvoiceForPayment</dataPath>
+			<field>InvoiceForPayment</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>OrderState</dataPath>
+			<field>OrderState</field>
+			<role>
+				<dcscom:required>true</dcscom:required>
+			</role>
+		</field>
+		<dataSource>DataSource1</dataSource>
+		<query>SELECT ALLOWED
+	Orders.Ref AS CustomerOrder,
+	CustomerOrdersFromSite.OrderNumberOnSite AS OrderNumberOnSite,
+	CustomerOrdersFromSite.OrderDateOnSite AS OrderDateOnSite,
+	Orders.DocumentCurrency AS Currency,
+	Orders.DocumentAmount AS DocumentAmount
+INTO TemporaryTableOrders
+FROM
+	InformationRegister.CustomerOrdersFromSite AS CustomerOrdersFromSite
+		INNER JOIN Document.CustomerOrder AS Orders
+		ON CustomerOrdersFromSite.CustomerOrder = Orders.Ref
+WHERE
+	(NOT Orders.Closed
+			OR Orders.Closed
+				AND Orders.OrderState = &amp;OrderStatusInProcess)
+	AND Orders.OperationKind = VALUE(Enum.OperationKindsCustomerOrder.OrderForSale)
+{WHERE
+	Orders.Ref.* AS CustomerOrder}
+;
+
+////////////////////////////////////////////////////////////////////////////////
+SELECT ALLOWED
+	CustomerOrdersBalances.CustomerOrder AS CustomerOrder,
+	CustomerOrdersBalances.QuantityBalance AS QuantityBalance
+INTO TemporaryTableShipmentBalance
+FROM
+	AccumulationRegister.CustomerOrders.Balance(
+			,
+			CustomerOrder In
+				(SELECT
+					TemporaryTableOrders.CustomerOrder
+				FROM
+					TemporaryTableOrders AS TemporaryTableOrders)) AS CustomerOrdersBalances
+;
+
+////////////////////////////////////////////////////////////////////////////////
+SELECT ALLOWED
+	TemporaryTableOrders.CustomerOrder AS CustomerOrder,
+	MAX(CustomerOrders.Recorder) AS ShipmentDocument
+INTO TemporaryTableShipmentDocuments
+FROM
+	TemporaryTableOrders AS TemporaryTableOrders
+		INNER JOIN AccumulationRegister.CustomerOrders AS CustomerOrders
+		ON TemporaryTableOrders.CustomerOrder = CustomerOrders.CustomerOrder
+			AND (CustomerOrders.RecordType = VALUE(AccumulationRecordType.Expense))
+
+GROUP BY
+	TemporaryTableOrders.CustomerOrder
+;
+
+////////////////////////////////////////////////////////////////////////////////
+SELECT ALLOWED
+	InvoicesAndOrdersPaymentTurnovers.InvoiceForPayment AS CustomerOrder,
+	InvoicesAndOrdersPaymentTurnovers.AmountTurnover - InvoicesAndOrdersPaymentTurnovers.PaymentAmountTurnover - InvoicesAndOrdersPaymentTurnovers.AdvanceAmountTurnover AS LeftToPay
+INTO TemporaryTableLeftToPay
+FROM
+	AccumulationRegister.InvoicesAndOrdersPayment.Turnovers(
+			,
+			,
+			,
+			InvoiceForPayment In
+				(SELECT
+					TemporaryTableOrders.CustomerOrder
+				FROM
+					TemporaryTableOrders AS TemporaryTableOrders)) AS InvoicesAndOrdersPaymentTurnovers
+;
+
+////////////////////////////////////////////////////////////////////////////////
+SELECT ALLOWED
+	TemporaryTableOrders.CustomerOrder AS CustomerOrder,
+	MAX(AccountsReceivable.Recorder) AS PaymentDocument,
+	SUM(AccountsReceivable.AmountCur) AS PaymentAmount
+INTO TemporaryTablePaymentDocuments
+FROM
+	TemporaryTableOrders AS TemporaryTableOrders
+		INNER JOIN AccumulationRegister.AccountsReceivable AS AccountsReceivable
+		ON TemporaryTableOrders.CustomerOrder = AccountsReceivable.Order
+			AND (AccountsReceivable.RecordType = VALUE(AccumulationRecordType.Expense))
+
+GROUP BY
+	TemporaryTableOrders.CustomerOrder
+;
+
+////////////////////////////////////////////////////////////////////////////////
+SELECT
+	TemporaryTableOrders.CustomerOrder AS CustomerOrder,
+	MAX(CustomerOrderPaymentCalendar.PayDate) AS PaymentDate
+INTO TemporaryTablePaySchedule
+FROM
+	TemporaryTableOrders AS TemporaryTableOrders
+		INNER JOIN Document.CustomerOrder.PaymentCalendar AS CustomerOrderPaymentCalendar
+		ON TemporaryTableOrders.CustomerOrder = CustomerOrderPaymentCalendar.Ref
+
+GROUP BY
+	TemporaryTableOrders.CustomerOrder
+;
+
+////////////////////////////////////////////////////////////////////////////////
+SELECT ALLOWED
+	TemporaryTableOrders.CustomerOrder AS CustomerOrder,
+	TemporaryTableOrders.OrderNumberOnSite AS OrderNumberOnSite,
+	TemporaryTableOrders.OrderDateOnSite AS OrderDateOnSite,
+	ISNULL(TemporaryTableLeftToPay.LeftToPay, 0) AS BalanceForPayment,
+	ISNULL(TemporaryTableShipmentBalance.QuantityBalance, 0) AS ResidueForShipment,
+	TemporaryTableOrders.CustomerOrder.Date AS Date,
+	TemporaryTableOrders.CustomerOrder.Number AS Number,
+	TemporaryTableOrders.CustomerOrder.Posted AS Posted,
+	TemporaryTableOrders.CustomerOrder.DeletionMark AS DeletionMark,
+	ISNULL(TemporaryTablePaySchedule.PaymentDate, DATETIME(1, 1, 1, 0, 0, 0)) AS PaymentDate,
+	ISNULL(TemporaryTablePaymentDocuments.PaymentDocument.Number, "") AS PaymentNo,
+	ISNULL(TemporaryTablePaymentDocuments.PaymentDocument.Date, DATETIME(1, 1, 1, 0, 0, 0)) AS PayDate,
+	ISNULL(TemporaryTableShipmentDocuments.ShipmentDocument.Number, "") AS ShipmentNo,
+	ISNULL(TemporaryTableShipmentDocuments.ShipmentDocument.Date, DATETIME(1, 1, 1, 0, 0, 0)) AS ShipmentDate,
+	TemporaryTableOrders.Currency AS Currency,
+	TemporaryTableOrders.DocumentAmount AS DocumentAmount,
+	TemporaryTableOrders.CustomerOrder.VATTaxation AS VATTaxation,
+	TemporaryTableOrders.CustomerOrder.AmountIncludesVAT AS AmountIncludesVAT,
+	TemporaryTableOrders.CustomerOrder.OrderState AS OrderState,
+	TemporaryTableOrders.CustomerOrder.OrderState.OrderStatus AS OrderStatus,
+	TemporaryTableOrders.CustomerOrder.Closed AS Closed,
+	TemporaryTableOrders.CustomerOrder.Comment AS Comment,
+	TemporaryTableOrders.CustomerOrder.BankAccount AS BankAccount,
+	TemporaryTableOrders.CustomerOrder.Counterparty AS Counterparty,
+	TemporaryTableOrders.CustomerOrder.Counterparty.Description AS Description,
+	TemporaryTableOrders.CustomerOrder.Counterparty.FullDescr AS DescriptionFull,
+	TemporaryTableOrders.CustomerOrder.Counterparty.LegalEntityIndividual AS LegalEntityIndividual,
+	TemporaryTableOrders.CustomerOrder.Counterparty.TIN AS TIN,
+	TemporaryTableOrders.CustomerOrder.Counterparty.KPP AS KPP,
+	TemporaryTableOrders.CustomerOrder.Counterparty.CodeByOKPO AS CodeByOKPO,
+	ISNULL(CurrencyRatesSliceLast.ExchangeRate, 1) AS ExchangeRate,
+	TemporaryTableOrders.CustomerOrder.Inventory.(
+		ProductsAndServices AS ProductsAndServices,
+		ProductsAndServices.ProductsAndServicesType AS ProductsAndServicesType,
+		Characteristic AS Characteristic,
+		Count AS Count,
+		Price AS Price,
+		DiscountMarkupPercent AS DiscountMarkupPercent,
+		Amount AS Amount,
+		VATRate AS VATRate,
+		VATAmount AS VATAmount,
+		TotalAmount AS TotalAmount,
+		ShipmentDate AS ShipmentDate,
+		ProductsAndServices.SKU AS SKU,
+		ProductsAndServices.MeasurementUnit AS MeasurementUnit,
+		ProductsAndServices.MeasurementUnit.Code AS MeasurementUnitCode,
+		ProductsAndServices.MeasurementUnit.Description AS MeasurementUnitDescription,
+		ProductsAndServices.MeasurementUnit.DescriptionFull AS MeasurementUnitDescriptionFull,
+		ProductsAndServices.MeasurementUnit.InternationalAbbreviation AS MeasurementUnitInternationalAbbreviation,
+		ProductsAndServices.VATRate AS ProductsAndServicesVATRate
+	) AS Products
+FROM
+	TemporaryTableOrders AS TemporaryTableOrders
+		LEFT JOIN TemporaryTablePaySchedule AS TemporaryTablePaySchedule
+		ON TemporaryTableOrders.CustomerOrder = TemporaryTablePaySchedule.CustomerOrder
+		LEFT JOIN TemporaryTableShipmentDocuments AS TemporaryTableShipmentDocuments
+		ON TemporaryTableOrders.CustomerOrder = TemporaryTableShipmentDocuments.CustomerOrder
+		LEFT JOIN TemporaryTablePaymentDocuments AS TemporaryTablePaymentDocuments
+		ON TemporaryTableOrders.CustomerOrder = TemporaryTablePaymentDocuments.CustomerOrder
+		LEFT JOIN InformationRegister.CurrencyRates.SliceLast(, ) AS CurrencyRatesSliceLast
+		ON TemporaryTableOrders.Currency = CurrencyRatesSliceLast.Currency
+		LEFT JOIN TemporaryTableShipmentBalance AS TemporaryTableShipmentBalance
+		ON TemporaryTableOrders.CustomerOrder = TemporaryTableShipmentBalance.CustomerOrder
+		LEFT JOIN TemporaryTableLeftToPay AS TemporaryTableLeftToPay
+		ON TemporaryTableOrders.CustomerOrder = TemporaryTableLeftToPay.CustomerOrder
+
+ORDER BY
+	CustomerOrder</query>
+	</dataSet>
+	<parameter>
+		<name>Period</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Period</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>BeginOfPeriod</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Begin of period</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<parameter>
+		<name>EndOfPeriod</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>End of period</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<parameter>
+		<name>OrderStatusInProcess</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Order state in process</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef.CustomerOrderStates</v8:Type>
+		</valueType>
+		<value xsi:nil="true"/>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>Default</dcsset:name>
+		<dcsset:presentation xsi:type="xs:string">Default</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>BankAccount</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Date</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Currency</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>OrderDateOnSite</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>PayDate</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>PaymentDate</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ShipmentDate</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>CustomerOrder</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>TIN</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>BalanceForPayment</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ResidueForShipment</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>CodeByOKPO</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Comment</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Counterparty</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>KPP</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ExchangeRate</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Description</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>DescriptionFull</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>VATTaxation</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Number</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>OrderNumberOnSite</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>PaymentNo</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ShipmentNo</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>DeletionMark</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Posted</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>OrderState</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>OrderStatus</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Closed</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>DocumentAmount</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>AmountIncludesVAT</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>LegalEntityIndividual</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemFolder">
+					<dcsset:field>Products</dcsset:field>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Products.VATRate</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Products.DiscountMarkupPercent</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Products.SKU</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Products.TotalAmount</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Products.ShipmentDate</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Products.MeasurementUnit</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Products.MeasurementUnitCode</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Products.MeasurementUnitDescription</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Products.MeasurementUnitInternationalAbbreviation</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Products.MeasurementUnitDescriptionFull</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Products.Count</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Products.ProductsAndServices</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Products.ProductsAndServicesVATRate</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Products.Amount</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Products.VATAmount</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Products.ProductsAndServicesType</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Products.Characteristic</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Products.Price</dcsset:field>
+					</dcsset:item>
+					<dcsset:placement>Auto</dcsset:placement>
+				</dcsset:item>
+			</dcsset:selection>
+			<dcsset:filter>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">CustomerOrder</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+				</dcsset:item>
+			</dcsset:filter>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

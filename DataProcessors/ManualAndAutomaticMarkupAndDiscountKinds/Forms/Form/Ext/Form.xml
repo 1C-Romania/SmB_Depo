@@ -1,0 +1,787 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Title>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Discounts and markups</v8:content>
+		</v8:item>
+	</Title>
+	<AutoTitle>false</AutoTitle>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="NotificationProcessing">NotificationProcessing</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<Pages name="GroupManualAndAutomaticDiscounts" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group manual and automatic discounts</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group manual and automatic discounts</v8:content>
+				</v8:item>
+			</ToolTip>
+			<ExtendedTooltip name="GroupManualAndAutomaticDiscountsExtendedTooltip" id="2"/>
+			<ChildItems>
+				<Page name="GroupAutomaticDiscounts" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Kinds of automatic discounts, markups</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group automatic discounts</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="GroupAutomaticDiscountsExtendedTooltip" id="6"/>
+					<ChildItems>
+						<UsualGroup name="GroupCommonVariantOfSharedUseOfDiscounts" id="122">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group common variant of shared usage of discounts</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group common variant of shared usage of discounts</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupCommonVariantOfSharedUseOfDiscountsExtendedTooltip" id="123"/>
+							<ChildItems>
+								<LabelDecoration name="LabelJointUseVariant" id="157">
+									<Visible>false</Visible>
+									<TextColor>style:ReportsVariantsGroupColor</TextColor>
+									<Font ref="style:NormalTextFont" kind="StyleItem"/>
+									<ContextMenu name="LabelJointUseVariantContextMenu" id="158"/>
+									<ExtendedTooltip name="LabelJointUseVariantExtendedTooltip" id="159"/>
+								</LabelDecoration>
+								<RadioButtonField name="SharedUsageVariantOfDiscounts" id="124">
+									<DataPath>SharedUsageVariantOfDiscounts</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<RadioButtonType>Tumbler</RadioButtonType>
+									<ChoiceList>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.DiscountsMarkupsSharedUsageOptions.EnumValue.Addition</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.DiscountsMarkupsSharedUsageOptions.EnumValue.Max</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.DiscountsMarkupsSharedUsageOptions.EnumValue.Minimum</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Successive usage</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xr:DesignTimeRef">Enum.DiscountsMarkupsSharedUsageOptions.EnumValue.Multiplication</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.DiscountsMarkupsSharedUsageOptions.EnumValue.Exclusion</Value>
+											</xr:Value>
+										</xr:Item>
+									</ChoiceList>
+									<ContextMenu name="SharedUsageVariantOfDiscountsContextMenu" id="125"/>
+									<ExtendedTooltip name="SharedUsageVariantOfDiscountsExtendedTooltip" id="126"/>
+									<Events>
+										<Event name="OnChange">SharedUsageVariantOfDiscountsOnChange</Event>
+									</Events>
+								</RadioButtonField>
+							</ChildItems>
+						</UsualGroup>
+						<Table name="AutomaticDiscounts" id="38">
+							<Representation>Tree</Representation>
+							<CommandBarLocation>Top</CommandBarLocation>
+							<UseAlternationRowColor>true</UseAlternationRowColor>
+							<InitialTreeView>ExpandTopLevel</InitialTreeView>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>AutomaticDiscounts</DataPath>
+							<RowPictureDataPath>AutomaticDiscounts.Picture</RowPictureDataPath>
+							<RowsPicture>
+								<xr:Ref>CommonPicture.DiscountMarkupState</xr:Ref>
+								<xr:LoadTransparent>true</xr:LoadTransparent>
+							</RowsPicture>
+							<CommandSet>
+								<ExcludedCommand>CreateFolder</ExcludedCommand>
+							</CommandSet>
+							<SearchStringLocation>CommandBar</SearchStringLocation>
+							<ViewStatusLocation>Top</ViewStatusLocation>
+							<SearchControlLocation>CommandBar</SearchControlLocation>
+							<AutoRefresh>false</AutoRefresh>
+							<AutoRefreshPeriod>60</AutoRefreshPeriod>
+							<Period>
+								<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+								<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+								<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+							</Period>
+							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+							<RestoreCurrentRow>false</RestoreCurrentRow>
+							<TopLevelParent xsi:nil="true"/>
+							<ShowRoot>true</ShowRoot>
+							<AllowRootChoice>false</AllowRootChoice>
+							<UpdateOnDataChange>Auto</UpdateOnDataChange>
+							<ContextMenu name="AutomaticDiscountsContextMenu" id="39">
+								<ChildItems>
+									<Button name="AutomaticDiscountsContextMenuEnableFlagActive" id="134">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.EnableFlagActive</CommandName>
+										<ExtendedTooltip name="AutomaticDiscountsContextMenuEnableFlagActiveExtendedTooltip" id="135"/>
+									</Button>
+									<Button name="AutomaticDiscountsContextMenuClearFlagActs" id="132">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.ClearFlagActs</CommandName>
+										<ExtendedTooltip name="AutomaticDiscountsContextMenuClearFlagActsExtendedTooltip" id="133"/>
+									</Button>
+								</ChildItems>
+							</ContextMenu>
+							<AutoCommandBar name="AutomaticDiscountsCommandBar" id="40">
+								<ChildItems>
+									<ButtonGroup name="CreateJointUseGroup" id="142">
+										<Title>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Create joint use group</v8:content>
+											</v8:item>
+										</Title>
+										<ToolTip>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Create joint use group</v8:content>
+											</v8:item>
+										</ToolTip>
+										<ExtendedTooltip name="CreateJointUseGroupExtendedTooltip" id="143"/>
+										<ChildItems>
+											<Button name="AutomaticDiscountsCreateJointUseGroup" id="127">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.CreateFolderSharedUse</CommandName>
+												<ExtendedTooltip name="AutomaticDiscountsCreateJointUseGroupExtendedTooltip" id="128"/>
+											</Button>
+										</ChildItems>
+									</ButtonGroup>
+									<ButtonGroup name="GroupFlagChangeActs" id="136">
+										<Title>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Group flag change is active</v8:content>
+											</v8:item>
+										</Title>
+										<ToolTip>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Group flag change is active</v8:content>
+											</v8:item>
+										</ToolTip>
+										<ExtendedTooltip name="GroupFlagChangeActsExtendedTooltip" id="137"/>
+										<ChildItems>
+											<Button name="AutomaticDiscountsEnableFlagActive" id="138">
+												<Type>CommandBarButton</Type>
+												<OnlyInAllActions>false</OnlyInAllActions>
+												<CommandName>Form.Command.EnableFlagActive</CommandName>
+												<ExtendedTooltip name="AutomaticDiscountsEnableFlagActiveExtendedTooltip" id="139"/>
+											</Button>
+											<Button name="AutomaticDiscountsClearFlagIsActive" id="140">
+												<Type>CommandBarButton</Type>
+												<OnlyInAllActions>false</OnlyInAllActions>
+												<CommandName>Form.Command.ClearFlagActs</CommandName>
+												<ExtendedTooltip name="AutomaticDiscountsClearFlagIsActiveExtendedTooltip" id="141"/>
+											</Button>
+										</ChildItems>
+									</ButtonGroup>
+									<Button name="AutomaticDiscountsChangeForm" id="150">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
+										<ExtendedTooltip name="AutomaticDiscountsChangeFormExtendedTooltip" id="151"/>
+									</Button>
+									<Button name="AutomaticDiscountsHelp" id="162">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.StandardCommand.Help</CommandName>
+										<ExtendedTooltip name="AutomaticDiscountsHelpExtendedTooltip" id="163"/>
+									</Button>
+								</ChildItems>
+							</AutoCommandBar>
+							<ExtendedTooltip name="AutomaticDiscountsExtendedTooltip" id="41"/>
+							<SearchStringAddition name="AutomaticDiscountsSearchString" id="42">
+								<AdditionSource>
+									<Item>AutomaticDiscounts</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="AutomaticDiscountsSearchStringContextMenu" id="45"/>
+								<ExtendedTooltip name="AutomaticDiscountsSearchStringExtendedTooltip" id="46"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="AutomaticDiscountsViewStatus" id="47">
+								<AdditionSource>
+									<Item>AutomaticDiscounts</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="AutomaticDiscountsViewStatusContextMenu" id="50"/>
+								<ExtendedTooltip name="AutomaticDiscountsViewStatusExtendedTooltip" id="51"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="AutomaticDiscountsSearchManagement" id="52">
+								<AdditionSource>
+									<Item>AutomaticDiscounts</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="AutomaticDiscountsSearchManagementContextMenu" id="55"/>
+								<ExtendedTooltip name="AutomaticDiscountsSearchManagementExtendedTooltip" id="56"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="OnChange">AutomaticDiscountsOnChange</Event>
+							</Events>
+							<ChildItems>
+								<LabelField name="Description" id="57">
+									<DataPath>AutomaticDiscounts.Description</DataPath>
+									<Width>34</Width>
+									<ContextMenu name="DescriptionContextMenu" id="58"/>
+									<ExtendedTooltip name="DescriptionExtendedTooltip" id="59"/>
+								</LabelField>
+								<CheckBoxField name="Acts" id="63">
+									<DataPath>AutomaticDiscounts.Acts</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Active</v8:content>
+										</v8:item>
+									</Title>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="OperatesContextMenu" id="64"/>
+									<ExtendedTooltip name="OperatesExtendedTooltip" id="65"/>
+								</CheckBoxField>
+								<LabelField name="AutomaticDiscountsPurpose" id="154">
+									<DataPath>AutomaticDiscounts.Purpose</DataPath>
+									<Width>13</Width>
+									<ContextMenu name="AutomaticDiscountsPurposeContextMenu" id="155"/>
+									<ExtendedTooltip name="AutomaticDiscountsPurposeExtendedTooltip" id="156"/>
+								</LabelField>
+								<LabelField name="AdditionalOrderingAttribute" id="90">
+									<DataPath>AutomaticDiscounts.AdditionalOrderingAttribute</DataPath>
+									<Width>7</Width>
+									<ContextMenu name="AdditionalOrderingAttributeContextMenu" id="91"/>
+									<ExtendedTooltip name="AdditionalOrderingAttributeExtendedTooltip" id="92"/>
+								</LabelField>
+								<LabelField name="AssignmentArea" id="72">
+									<DataPath>AutomaticDiscounts.AssignmentArea</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Area</v8:content>
+										</v8:item>
+									</Title>
+									<Width>8</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="AssignmentAreaContextMenu" id="73"/>
+									<ExtendedTooltip name="AssignmentAreaExtendedTooltip" id="74"/>
+								</LabelField>
+								<LabelField name="Code" id="60">
+									<DataPath>AutomaticDiscounts.Code</DataPath>
+									<UserVisible>
+										<xr:Common>false</xr:Common>
+									</UserVisible>
+									<ContextMenu name="CodeContextMenu" id="61"/>
+									<ExtendedTooltip name="CodeExtendedTooltip" id="62"/>
+								</LabelField>
+								<LabelField name="Ref" id="129">
+									<DataPath>AutomaticDiscounts.Ref</DataPath>
+									<UserVisible>
+										<xr:Common>false</xr:Common>
+									</UserVisible>
+									<ContextMenu name="RefContextMenu" id="130"/>
+									<ExtendedTooltip name="RefExtendedTooltip" id="131"/>
+								</LabelField>
+							</ChildItems>
+						</Table>
+						<LabelField name="AutomaticDiscountsComment" id="144">
+							<DataPath>Items.AutomaticDiscounts.CurrentData.Comment</DataPath>
+							<ContextMenu name="AutomaticDiscountsCommentContextMenu" id="145"/>
+							<ExtendedTooltip name="AutomaticDiscountsCommentExtendedTooltip" id="146"/>
+						</LabelField>
+						<UsualGroup name="GroupHelpInformation" id="167">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group help information</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group help information</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupHelpInformationExtendedTooltip" id="168"/>
+							<ChildItems>
+								<LabelDecoration name="HyperlinkHowWorkWithAutomaticDiscountsInApplication" id="164">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>How to work with automatic discounts in the application?</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<ContextMenu name="HyperlinkHowWorkWithAutomaticDiscountsInApplicationContextMenu" id="165"/>
+									<ExtendedTooltip name="HyperlinkHowWorkWithAutomaticDiscountsInApplicationExtendedTooltip" id="166"/>
+									<Events>
+										<Event name="Click">HyperlinkHowWorkWithAutomaticDiscountsInApplicationClick</Event>
+									</Events>
+								</LabelDecoration>
+								<LabelDecoration name="HyperlinkOnVideoTutorial" id="169">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Video tutorial on work with automatic discounts</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<ContextMenu name="HyperlinkOnVideoTutorialContextMenu" id="170"/>
+									<ExtendedTooltip name="HyperlinkOnVideoTutorialExtendedTooltip" id="171"/>
+									<Events>
+										<Event name="Click">HyperlinkOnVideoTutorialClick</Event>
+									</Events>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="GroupManualDiscounts" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Markup and discount kinds</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Manual discounts group</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="GroupManualDiscountsExtendedTooltip" id="4"/>
+					<ChildItems>
+						<Table name="MarkupAndDiscountKinds" id="7">
+							<UseAlternationRowColor>true</UseAlternationRowColor>
+							<EnableStartDrag>true</EnableStartDrag>
+							<DataPath>MarkupAndDiscountKinds</DataPath>
+							<RowPictureDataPath>MarkupAndDiscountKinds.DefaultPicture</RowPictureDataPath>
+							<SearchStringLocation>CommandBar</SearchStringLocation>
+							<ViewStatusLocation>Top</ViewStatusLocation>
+							<SearchControlLocation>CommandBar</SearchControlLocation>
+							<AutoRefresh>false</AutoRefresh>
+							<AutoRefreshPeriod>60</AutoRefreshPeriod>
+							<Period>
+								<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+								<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+								<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+							</Period>
+							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+							<RestoreCurrentRow>false</RestoreCurrentRow>
+							<TopLevelParent xsi:nil="true"/>
+							<ShowRoot>true</ShowRoot>
+							<AllowRootChoice>false</AllowRootChoice>
+							<UpdateOnDataChange>Auto</UpdateOnDataChange>
+							<ContextMenu name="MarkupAndDiscountKindsContextMenu" id="8"/>
+							<AutoCommandBar name="MarkupAndDiscountKindsCommandBar" id="9">
+								<ChildItems>
+									<Button name="MarkupAndDiscountKindsChangeForm" id="152">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
+										<ExtendedTooltip name="MarkupAndDiscountKindsChangeFormExtendedTooltip" id="153"/>
+									</Button>
+									<Button name="MarkupAndDiscountKindsHelp" id="160">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.StandardCommand.Help</CommandName>
+										<ExtendedTooltip name="MarkupAndDiscountKindsHelpExtendedTooltip" id="161"/>
+									</Button>
+									<Popup name="CreateBasedOn" id="118">
+										<Title>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Create on the basis</v8:content>
+											</v8:item>
+										</Title>
+										<ToolTip>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Create on the basis</v8:content>
+											</v8:item>
+										</ToolTip>
+										<ExtendedTooltip name="CreateBasedOnExtendedTooltip" id="119"/>
+										<ChildItems>
+											<Button name="MarkupAndDiscountKindsCommonCommandLinkedObjectsCreate" id="114">
+												<Type>CommandBarButton</Type>
+												<CommandName>CommonCommand.CreatingLinkedObjects</CommandName>
+												<DataPath>Items.MarkupAndDiscountKinds.CurrentData.Ref</DataPath>
+												<ExtendedTooltip name="MarkupAndDiscountKindsCommonCommandLinkedObjectsCreateExtendedTooltip" id="115"/>
+											</Button>
+										</ChildItems>
+									</Popup>
+									<Popup name="Print" id="120">
+										<Title>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Print</v8:content>
+											</v8:item>
+										</Title>
+										<ToolTip>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Print</v8:content>
+											</v8:item>
+										</ToolTip>
+										<Picture>
+											<xr:Ref>StdPicture.Print</xr:Ref>
+											<xr:LoadTransparent>true</xr:LoadTransparent>
+										</Picture>
+										<ExtendedTooltip name="PrintExtendedTooltip" id="121"/>
+										<ChildItems>
+											<Button name="MarkupAndDiscountKindsCommonCommandObjectAdditionalPrintForms" id="116">
+												<Type>CommandBarButton</Type>
+												<CommandName>CommonCommand.ObjectAdditionalPrintForms</CommandName>
+												<DataPath>Items.MarkupAndDiscountKinds.CurrentData.Ref</DataPath>
+												<ExtendedTooltip name="MarkupAndDiscountKindsCommonCommandObjectAdditionalPrintFormsExtendedTooltip" id="117"/>
+											</Button>
+										</ChildItems>
+									</Popup>
+								</ChildItems>
+							</AutoCommandBar>
+							<ExtendedTooltip name="MarkupAndDiscountKindsExtendedTooltip" id="10"/>
+							<SearchStringAddition name="MarkupAndDiscountKindsSearchString" id="11">
+								<AdditionSource>
+									<Item>MarkupAndDiscountKinds</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="MarkupAndDiscountKindsSearchStringContextMenu" id="14"/>
+								<ExtendedTooltip name="MarkupAndDiscountKindsSearchStringExtendedTooltip" id="15"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="MarkupAndDiscountKindsViewStatus" id="16">
+								<AdditionSource>
+									<Item>MarkupAndDiscountKinds</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="MarkupAndDiscountKindsViewStatusContextMenu" id="19"/>
+								<ExtendedTooltip name="MarkupAndDiscountKindsViewStatusExtendedTooltip" id="20"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="MarkupAndDiscountKindsSearchManagement" id="21">
+								<AdditionSource>
+									<Item>MarkupAndDiscountKinds</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="MarkupAndDiscountKindsSearchManagementContextMenu" id="24"/>
+								<ExtendedTooltip name="MarkupAndDiscountKindsSearchManagementExtendedTooltip" id="25"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<LabelField name="MarkupAndDiscountKindsDescription" id="26">
+									<DataPath>MarkupAndDiscountKinds.Description</DataPath>
+									<ContextMenu name="MarkupAndDiscountKindsDescriptionContextMenu" id="27"/>
+									<ExtendedTooltip name="MarkupAndDiscountKindsDescriptionExtendedTooltip" id="28"/>
+								</LabelField>
+								<LabelField name="MarkupAndDiscountKindsCode" id="29">
+									<DataPath>MarkupAndDiscountKinds.Code</DataPath>
+									<ContextMenu name="MarkupAndDiscountKindsCodeContextMenu" id="30"/>
+									<ExtendedTooltip name="MarkupAndDiscountKindsCodeExtendedTooltip" id="31"/>
+								</LabelField>
+								<LabelField name="MarkupAndDiscountKindsPercent" id="32">
+									<DataPath>MarkupAndDiscountKinds.Percent</DataPath>
+									<ContextMenu name="MarkupAndDiscountKindsPercentContextMenu" id="33"/>
+									<ExtendedTooltip name="MarkupAndDiscountKindsPercentExtendedTooltip" id="34"/>
+								</LabelField>
+								<LabelField name="MarkupAndDiscountKindsComment" id="35">
+									<DataPath>MarkupAndDiscountKinds.Comment</DataPath>
+									<ContextMenu name="MarkupAndDiscountKindsCommentContextMenu" id="36"/>
+									<ExtendedTooltip name="MarkupAndDiscountKindsCommentExtendedTooltip" id="37"/>
+								</LabelField>
+							</ChildItems>
+						</Table>
+						<LabelField name="Comment" id="147">
+							<DataPath>Items.MarkupAndDiscountKinds.CurrentData.Comment</DataPath>
+							<ContextMenu name="CommentContextMenu" id="148"/>
+							<ExtendedTooltip name="CommentExtendedTooltip" id="149"/>
+						</LabelField>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.ManualAndAutomaticMarkupAndDiscountKinds</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="MarkupAndDiscountKinds" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Markup and discount kinds</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>false</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<MainTable>Catalog.MarkupAndDiscountKinds</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="AutomaticDiscounts" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Automatic discounts</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<UseAlways>
+				<Field>AutomaticDiscounts.Ref</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>SELECT
+	CatalogAutomaticDiscounts.Description,
+	CASE
+		WHEN CatalogAutomaticDiscounts.IsFolder
+			THEN CASE
+					WHEN CatalogAutomaticDiscounts.SharedUsageVariant = VALUE(Enum.DiscountsMarkupsSharedUsageOptions.Max)
+						THEN 8
+					WHEN CatalogAutomaticDiscounts.SharedUsageVariant = VALUE(Enum.DiscountsMarkupsSharedUsageOptions.Minimum)
+						THEN 16
+					WHEN CatalogAutomaticDiscounts.SharedUsageVariant = VALUE(Enum.DiscountsMarkupsSharedUsageOptions.Addition)
+						THEN 0
+					WHEN CatalogAutomaticDiscounts.SharedUsageVariant = VALUE(Enum.DiscountsMarkupsSharedUsageOptions.Multiplication)
+						THEN 4
+					WHEN CatalogAutomaticDiscounts.SharedUsageVariant = VALUE(Enum.DiscountsMarkupsSharedUsageOptions.Exclusion)
+						THEN 12
+				END + CASE
+					WHEN CatalogAutomaticDiscounts.DeletionMark
+						THEN 3
+					ELSE 0
+				END
+		ELSE CASE
+				WHEN CatalogAutomaticDiscounts.AssignmentMethod = VALUE(Enum.DiscountsMarkupsProvidingWays.Percent)
+					THEN CASE
+							WHEN CatalogAutomaticDiscounts.DiscountMarkupValue &lt; 0
+								THEN 32
+							ELSE 28
+						END
+				WHEN CatalogAutomaticDiscounts.AssignmentMethod = VALUE(Enum.DiscountsMarkupsProvidingWays.Amount)
+					THEN CASE
+							WHEN CatalogAutomaticDiscounts.DiscountMarkupValue &lt; 0
+								THEN 40
+							ELSE 44
+						END
+			END + CASE
+				WHEN CatalogAutomaticDiscounts.DeletionMark
+					THEN 3
+				ELSE 0
+			END
+	END AS Picture,
+	CatalogAutomaticDiscounts.AdditionalOrderingAttribute AS AdditionalOrderingAttribute,
+	CatalogAutomaticDiscounts.DeletionMark,
+	CatalogAutomaticDiscounts.Acts,
+	CatalogAutomaticDiscounts.Ref,
+	CatalogAutomaticDiscounts.Parent,
+	CatalogAutomaticDiscounts.AssignmentMethod,
+	CatalogAutomaticDiscounts.Purpose,
+	CatalogAutomaticDiscounts.AssignmentArea,
+	CatalogAutomaticDiscounts.Code,
+	CatalogAutomaticDiscounts.ThereAreFoldersToBeClarifiedByProductsAndServices,
+	CASE
+		WHEN CatalogAutomaticDiscounts.Parent.SharedUsageVariant = VALUE(Enum.DiscountsMarkupsSharedUsageOptions.Exclusion)
+				OR CatalogAutomaticDiscounts.Parent.SharedUsageVariant = VALUE(Enum.DiscountsMarkupsSharedUsageOptions.Multiplication)
+				OR CatalogAutomaticDiscounts.Parent = VALUE(Catalog.AutomaticDiscounts.EmptyRef)
+					AND (DiscountsMarkupsSharedUsageOptions.Value = VALUE(Enum.DiscountsMarkupsSharedUsageOptions.Exclusion)
+						OR DiscountsMarkupsSharedUsageOptions.Value = VALUE(Enum.DiscountsMarkupsSharedUsageOptions.Multiplication))
+			THEN TRUE
+		ELSE FALSE
+	END AS ColorYellow,
+	CatalogAutomaticDiscounts.Comment
+	FROM
+	Catalog.AutomaticDiscounts AS CatalogAutomaticDiscounts,
+		Constant.DiscountsMarkupsSharedUsageOptions AS DiscountsMarkupsSharedUsageOptions</QueryText>
+				<MainTable>Catalog.AutomaticDiscounts</MainTable>
+				<AutoSaveUserSettings>false</AutoSaveUserSettings>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="SharedUsageVariantOfDiscounts" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Variant of discount shared use</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.DiscountsMarkupsSharedUsageOptions</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="AllowedEditDocumentPrices" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Allowed edit document prices</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Exclusion" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Exclusion</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.DiscountsMarkupsSharedUsageOptions</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Multiplication" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Multiplication</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.DiscountsMarkupsSharedUsageOptions</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="UseAutomaticDiscountsMarkups" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Use automatic discounts markups</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="CreateFolderSharedUse" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Create group of shared use</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Create group of shared use</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>CreateFolderSharedUse</Action>
+		</Command>
+		<Command name="ClearFlagActs" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Clear flag 'Acts'</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Clear flag acts</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ClearFlagActs</Action>
+		</Command>
+		<Command name="EnableFlagActive" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Select flag 'Acts'</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Select flag acts</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>EnableFlagActive</Action>
+		</Command>
+	</Commands>
+</Form>

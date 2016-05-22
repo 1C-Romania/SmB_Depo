@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"></meta><link rel="stylesheet" type="text/css" href="v8help://service_book/service_style"></link><meta name="GENERATOR" content="MSHTML 11.00.9600.18321"></meta></head><body>
+<p>The list provides more convenient mapping between the Designer infobase users and the<strong> Users </strong>and <strong>External user </strong>lists.</p>
+<p>To open the list, use the <strong>More - Infobase users </strong>command from the <a href="Catalog.Users/Help"><font color="#000080">user list</font></a> menu (or the <a href="Catalog.ExternalUsers/Help"><font color="#000080">external user</font></a> list).</p>
+<p>When you save a <a href="Catalog.Users.Form.ItemForm/Help"><font color="#000080">user</font></a> (or an <a href="Catalog.ExternalUsers.Form.ItemForm/Help"><font color="#000080">external user</font></a>), you automatically create a corresponding infobase user. Sometimes, the infobase user list data becomes being different from the user list data.  IN this case, you can use this list to:</p>
+<ul><li>Find "invalid" infobase users.  
+<ul><li>The infobase users and the listed users are mapped automatically. 
+</li><li>After mapping, infobase users get inactive if some application users have been added, edited or deleted with Designer. 
+</li><li>Infobase users highlighted in red are not mapped with users in the application list.</li></ul></li><li>Find data differences between the infobase user list and the lists of the application list users: 
+<ul><li>If an infobase user has been added with Designer (or in some non-standard software-based way), you can <a href="#2"><font color="#000080">map</font></a> this infobase user with a user in the list or<img></img><strong>Delete.</strong> 
+</li><li>If an infobase user was deleted with Designer (or in some non-standard software-based way), but the list still contains a link to this user, you can open the user in the list and resave them to clear this link (or update the link by creating a new infobase user). 
+</li><li>If a full name of the infobase user has been edited with Designer (or in some non-standard software-based way), you can <a href="#3"><font color="#000080">open</font></a> the user in the list and resave them to restore the full name of the infobase user.</li></ul></li><li><a href="#1"><font color="#000080">View the list</font></a> of all infobase users (also available in Designer).</li></ul><p>The list displays:</p>
+<ul><li>
+<div><strong>Full name </strong>- a full name of the infobase user (when data is not mapped, may be different from the full user name in the <strong>Users </strong>list (<strong>External users</strong>).</div>
+</li><li>
+<div><strong>Name (login)</strong> - when data is not mapped, may be different from the login in the <strong>Users </strong>list (<strong>External users</strong>).</div>
+</li><li>
+<div><strong>1C</strong> <strong>Authentication </strong>- <strong>Yes</strong>, when the check box is selected (otherwise, it is not filled in).</div>
+</li><li>
+<div><strong>OpenID</strong> <strong>Authentication</strong> - <strong>Yes</strong>, when the check box is selected.</div>
+</li><li>
+<div><strong>OS Authentication</strong> - <strong>Yes</strong>, when the check box is selected.</div></li></ul><p>Additional fields (<strong>More - Change form</strong>):</p>
+<ul><li>
+<div><strong>OS user </strong>- a name used to log on to the OS and the application.</div>
+</li><li>
+<div><strong>Mapped with external user</strong> - <strong>Yes, </strong>when this is an external application user.</div>
+</li><li>
+<div><strong>Added in Designer</strong> - <strong>Yes </strong>or empty, when the field shows <strong>False.</strong></div>
+</li><li>
+<div><strong>Edited in Designer </strong>- <strong>Yes </strong>or empty, when the field shows <strong>False.</strong></div>
+</li><li>
+<div><strong>Deleted in Designer </strong>- <strong>Yes </strong>or empty, when the field shows <strong>False</strong>.</div></li></ul><h3>Viewing problem items or entire list</h3>
+<ul><li>
+<div>Select the <strong>Show only added, edited or deleted with Designer </strong>check box to view only unmapped items that require user intervention. When the check box is cleared, you see the entire infobase user list.</div></li></ul><h3>Mapp<a name="#2">ing users</a></h3>
+<p>To map your lists, you can:</p>
+<ul><li>
+<div><strong>Map </strong>- manually map an infobase user with an existing application user:</div>
+<ul><li>
+<div>Select <strong>User </strong>or <strong>External user </strong>to map, click <strong>OK</strong>. </div>
+</li><li>
+<div>Select a user from the relevant list by double-clicking or finding them and clicking <strong>Select</strong>.</div>
+</li><li>
+<div>In the <strong>User </strong>(<strong>External user</strong>) window,  make necessary changes, click <strong>Save and close</strong>. After that, the lists mapping will be restored.</div></li></ul></li><li>
+<div><strong>Map with new</strong> - you can manually map with an infobase user by manually entering a new user:</div>
+<ul><li>
+<div>Select value <strong>User </strong>or <strong>External user</strong>, click <strong>OK</strong>. </div>
+</li><li>
+<div>Enter a new application user (external user). After the data is saved, lists mapping will be restored.</div></li></ul></li><li>
+<div><strong>Cancel mapping</strong> - you can cancel automatic mapping between infobase users and application list users to do it manually. Mapping cancellation is necessary very seldom - only after an incorrect mapping, e.g. when updating an infobase. IN other cases, cancellation is not recommended. </div></li></ul><h3><a name="#3">Viewing mapped user</a></h3>
+<ul><li>
+<div>Select an infobase user. Run the <strong>Go to user </strong>command in the <strong>More</strong>  menu or the right-click it to open the user (external user) mapped with the infobase user.</div></li></ul><h3>See also</h3>
+<ul><li><a href="v8help://frame/form_common"><font color="#000080">Working with forms</font></a></li></ul></body></html>

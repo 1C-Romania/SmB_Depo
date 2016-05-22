@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"></meta><link rel="stylesheet" type="text/css" href="v8help://service_book/service_style"></link><meta name="GENERATOR" content="MSHTML 11.00.9600.18321"></meta></head><body>
+<p>The interactive synchronization assistant is designed for data synchronization with optional preview and mapping of exported data. Use the assistant to map two synchronized infobase objects. After the objects are mapped, data is imported and then exported.</p>
+<p>Use the interactive data synchronization mode if before synchronization one object could have been added to both infobases independently. IN other words, use the interactive data synchronization mode for the first synchronization of two infobases already having entries. Such infobases are likely to contain similar objects. IN this case, the interactive mode allows you to manually map such objects.</p>
+<p>Open the assistant with the <img width="16" height="16"></img> <strong>Synchronize data with defining advanced parameters </strong>button in the <a href="CommonForm.DataExchanges/Help"><font color="#000080">data synchronization</font></a> list.</p>
+<h3>Connection parameters</h3>
+<ul><li>On the first assistant page, select the <a href="InformationRegister.ExchangeTransportSettings/Help"><font color="#000080">exchange message transport type</font></a> (you can change the existing connection variant indicated on the page), by clicking <img></img> <strong>Configure. </strong>If necessary, go to the information exchange directory and prove that the required files exist, or check the exchange message transport parameters. 
+</li><li>Click <strong>Next </strong>to go to the next page. </li></ul><h3 align="left">Mapping data</h3>
+<ul><li>The second assistant page shows the object mapping statistics. Before opening the page, the application tries to match the data automatically. 
+</li><li>Automatic mapping covers the default mapping fields with strict mapping rules. It is recommended to check automatic mapping results. The list contains: 
+<ul><li>
+<div><strong>Data, total received, pcs</strong>.</div>
+</li><li><img width="16" height="16"></img> - some remarks on object mapping 
+</li><li>
+<div align="left"><strong>In this application, pcs</strong>.</div>
+<div></div>
+</li><li>
+<div align="left"><strong>Not mapped, pcs</strong>.</div>
+</li><li>
+<div align="left"><strong>Mapping, %</strong></div></li></ul></li><li>Use the <strong>Map </strong>command to preview the imported data and <a href="DataProcessor.InfobaseObjectsMapping/Help"><font color="#000080">map objects manually</font></a>. Mapped manually, the object of the two infobases are saved to be mapped automatically next time. For the interactive import mode, it is recommended to map the objects manually first and then map the remaining unmapped objects manually. 
+</li><li>
+<div align="left">The list is not dynamic, so you need to click <img></img> <strong>Update </strong>to view the new data received and mapped  after you opened the list.</div>
+</li><li>
+<div align="left">Use the <strong>More -</strong> <strong>Receive data</strong>  command to import data from the selected table rows. Use the data import rarely, only when you need to map related data tables.</div>
+</li><li>
+<div align="left">The stated commands are available in the context menu of the mapping statistics table. Executed from the context menu, these commands are functional for multiple selected table rows.</div>
+</li><li>
+<div align="left">After mapping, the rules are saved and the page is not displayed anymore. </div>
+</li><li>
+<div align="left">Click <strong>Next </strong>to start data synchronization.</div></li></ul><h3>Exporting data</h3>
+<ul><li>On the third page of the assistant, state the data to send to the other application. If you do not specify data, the data modified since the previous synchronization session will be sent by default.  
+</li><li>By default, the <strong>Do not add </strong>variant is selected - data will be sent according to the common settings. 
+</li><li>
+<div align="left">To export documents additionally, switch to <strong>Add documents.</strong></div>
+<ul><li>
+<div align="left">In the <strong>Period:</strong> <img></img> field, <strong>Select </strong>the dates of the data you want to send.</div>
+</li><li>
+<div align="left">By default, the <strong>Filter:</strong> field is filled in with <strong>All documents </strong>(link). Click the link to define the <a href="DataProcessor.InteractiveExportChange.Form.PeriodAndFilterEditing/Help"><font color="#000080">filter criteria</font></a>: enter the field to filter, define <strong>Comparison type</strong>, select the <strong>Value </strong>to compare. There may be multiple criteria; in this case, they are grouped with logical <strong>AND, OR, </strong>and <strong>NOT</strong>.</div></li></ul></li><li>
+<div align="left">To add additional data, switch to <strong>Add data</strong>. </div>
+<ul><li>
+<div align="left">Pick up the data: click the <strong>Additional data is not selected </strong>link (by default). Pick up <a href="DataProcessor.InteractiveExportChange/Help"><font color="#000080">export data</font></a> from the relevant lists and click <strong>OK</strong>. The link displays the enumeration of the selected data.</div></li></ul></li><li>
+<div align="left">View the <a href="DataProcessor.InteractiveExportChange.Form.ExportContent/Help"><font color="#000080">export data statistics</font></a> using the <strong>Export data content report</strong> link.</div>
+</li><li>
+<div align="left">Click <strong>Settings </strong>to use <a href="DataProcessor.InteractiveExportChange.Form.SettingsContentEditing/Help"><font color="#000080">predefined</font></a> or save new settings.</div>
+</li><li>
+<div align="left">Click <strong>Next </strong>to begin data synchronization with the selected parameters.</div></li></ul><h3>Data synchronization complete</h3>
+<ul><li>The final page of the assistant indicates the synchronization state: 
+<ul><li><img></img><strong>Failed to receive data </strong>or <strong>Data has been received successfully</strong>,<strong> </strong>etc. 
+</li><li><strong><img width="16" height="16"></img></strong><strong>Failed to send data </strong>or <strong>Data has been sent successfully</strong>, etc. 
+</li><li>Use the <strong>More </strong>link to view the synchronization procedure log  and error reports.</li></ul></li><li>If necessary, you can set <a href="Catalog.DataExchangeScripts.Form.ItemForm/Help"><font color="#000080">data synchronization schedule</font></a> in automatic mode (if the current synchronization is not included in any of the existing <a href="Catalog.DataExchangeScripts/Help"><font color="#000080">synchronization schedules</font></a>). Click<img width="16" height="16"></img><strong>Configure</strong>. 
+</li><li>To finish your work with the assistant, click <strong>Done</strong>.</li></ul><h3>See also:</h3>
+<ul><li><a href="CommonForm.DataExchanges/Help"><font color="#000080">Data synchronization</font></a></li></ul></body></html>

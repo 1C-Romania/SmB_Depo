@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"></meta><link rel="stylesheet" type="text/css" href="v8help://service_book/service_style"></link><meta name="GENERATOR" content="MSHTML 11.00.9600.18321"></meta></head><body>
+<p>Designed to configure proxy server parameters.</p>
+<p>You can get files from the Internet via HTTP, HTTPS, and FTP protocols and save them on your client, server, or temporary storage.</p>
+<p>Some operations (e.g. exporting currency rates, exporting an address classifier, data exchange via an FTP resource, online website configuration update, etc.) may require Internet access. If you are online via a proxy server, specify its parameters in the application. There are client and server settings of a proxy server.</p>
+<p>Generally, the proxy server parameters are necessary for the server mechanisms receiving files from the Internet via HTTP, HTTPS, and FTP protocols.</p>
+<p>The client mechanisms (e.g. exporting of currency rates in thin and thick clients) require configuring at a workplace. You do not have to configure a proxy server to work with email. Normally, proxy server parameters are specified for each workplace individually, as the Internet access settings may differ for different workplaces. </p>
+<p>However if the organization uses a client server version of 1C:Enterprise, the proxy server parameters must be specified on 1C:Enterprise server, too (<strong>Administration - General settings</strong>).  The proxy server parameters for a workplace and for 1C:Enterprise server may differ. </p>
+<p>To provide Internet access to the client computers, proxy server parameters are defined at each client workplace (the <strong>Personal settings </strong>command in the <strong>Administration </strong>section). </p>
+<p><strong>Attention:</strong> when security profiles are activated, you can configure proxy server parameters only with the configuration file <strong>inetcfg.xml</strong>.</p>
+<h3>Configuring proxy server parameters</h3>
+<ul><li>Switch to a necessary variant of proxy server function: 
+<ul><li><strong>Do not use proxy server</strong> - the default value for the first application start. 
+</li><li><strong>Use system </strong><strong>proxy server </strong><strong>settings </strong>- settings are automatically filled with the values of the OS proxy server settings. IN this case, the completed settings can not be edited. 
+</li><li><strong>Use other </strong><strong>proxy server </strong><strong>settings </strong>- settings are configured manually: 
+<ul><li>Write the <strong>Server address </strong>and <strong>Port </strong>(a common parameter for 1C:Enterprise server and workplaces). 
+</li><li>For each workplace and server, specify proxy server <strong>User </strong>and their <strong>Password </strong>(they may be different, depending on the organization's network policy). 
+</li><li>Select the <strong>Do not use proxy from local addresses </strong>check box to minimize load on the proxy server operating in the organization local network.</li></ul></li></ul></li><li>To confirm proxy server parameters, click <strong>OK</strong>.</li></ul><h3>Advanced parameters</h3>
+<p>Click <strong>Advanced</strong> to customize <a href="CommonForm.ProxyServerAdditionalParameters/Help">advanced parameters</a>.</p>
+<h3>See also:</h3>
+<ul><li><a href="v8help://frame/form_common">Working with forms</a></li></ul></body></html>

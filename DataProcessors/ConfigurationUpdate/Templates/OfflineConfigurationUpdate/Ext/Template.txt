@@ -1,0 +1,93 @@
+﻿// updater.js
+
+function include(fileName)
+{
+    var stream = new ActiveXObject("Adodb.Stream");
+    stream.CharSet = "UNICODE";
+    stream.Type = 2;    // adTypeText 
+    stream.Open();
+    stream.LoadFromFile(fileName);
+    var code = stream.readText();
+    stream.Close();
+    return code;
+}
+
+var oHTA;
+var scriptFileName = WScript.ScriptDescriptionFull;
+var scriptDir = scriptFileName.substr(0, scriptFileName.lastIndexOf("\\") + 1);
+
+eval(include(scriptDir + "helpers.js"));
+eval(include(scriptDir + "main.js"));
+
+// Display update step message
+function setProgress(statusText)
+{
+	statusText += "...";
+	log(statusText);
+}
+
+function checkResult(ret)
+{
+    if (ret == 0)
+        return;
+    log(format("End with error. Error code: {0}. See details in previous record.", ret), true);
+    setProgress("Restoring the infobase");
+
+    finalize();
+    ClearTempFiles(); 
+
+    WScript.Quit(ret);
+}
+
+function ClearTempFiles()
+{
+    // Delete temporary files
+	try
+	{
+		oFileSystemObject.DeleteFile(thisFileDir + '\\main.js');
+		oFileSystemObject.DeleteFile(thisFileDir + '\\helpers.js');
+	}
+	catch(e) {}
+}
+
+
+setProgress("Initialization");
+var ret = initialize();
+checkResult(ret);
+
+setProgress("Users disconnection");
+ret = terminateSessionsAndBlockUsers(); 
+checkResult(ret);
+
+setProgress("Creation infobase backup copy");
+ret = backupDB(); 
+checkResult(ret);
+
+if (cfgFileNames.length == 0)
+{
+    setProgress("Infobase configuration update");
+    ret = updateDbCfg(); 
+    checkResult(ret);
+}
+else
+{
+	for(var cfgFileIndex = 0; cfgFileIndex < cfgFileNames.length; cfgFileIndex++)
+	{
+	    setProgress(format("Import update file in the main base ({0}/{1})", cfgFileIndex + 1, cfgFileNames.length));
+	    ret = updateCfg(cfgFileNames[cfgFileIndex]);
+	    if (ret != 0)   // If it wasn't succeeded to load the file, perhaps the configuration isn't on support.
+	        ret = loadCfg(cfgFileNames[cfgFileIndex]);
+	    checkResult(ret);
+	    setProgress(format("Update configuration infobases ({0}/{1})", cfgFileIndex + 1, cfgFileNames.length));
+	    ret = updateDbCfg(); 
+	    checkResult(ret);
+	}
+}
+
+setProgress("Permission to establish new connections");
+ret = allowConnections(); 
+checkResult(ret);
+
+setProgress("End");
+finalize(true);
+ClearTempFiles();

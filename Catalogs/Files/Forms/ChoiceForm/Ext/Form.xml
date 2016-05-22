@@ -1,0 +1,547 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Title>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Select file</v8:content>
+		</v8:item>
+	</Title>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<CommandBarLocation>None</CommandBarLocation>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="FormCommandBar" id="-1"/>
+	<Events>
+		<Event name="NotificationProcessing">NotificationProcessing</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="UserSettingsGroup" id="85">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>User settings group</v8:content>
+				</v8:item>
+			</Title>
+			<VerticalStretch>false</VerticalStretch>
+			<Group>Vertical</Group>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="UserSettingsGroupExtendedTooltip" id="86"/>
+		</UsualGroup>
+		<CommandBar name="CommandBar" id="83">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Command bar</v8:content>
+				</v8:item>
+			</Title>
+			<ExtendedTooltip name="CommandBarExtendedTooltip" id="84"/>
+			<ChildItems>
+				<Button name="Select" id="35">
+					<Type>CommandBarButton</Type>
+					<DefaultButton>true</DefaultButton>
+					<SkipOnInput>false</SkipOnInput>
+					<CommandName>Form.Item.List.StandardCommand.Choose</CommandName>
+					<ExtendedTooltip name="ChooseExtendedTooltip" id="46"/>
+				</Button>
+				<Button name="AddFile" id="64">
+					<Type>CommandBarButton</Type>
+					<Representation>Text</Representation>
+					<CommandName>Form.Command.AddFile</CommandName>
+					<ExtendedTooltip name="AddFileExtendedTooltip" id="65"/>
+				</Button>
+				<Button name="Change" id="33">
+					<Type>CommandBarButton</Type>
+					<SkipOnInput>false</SkipOnInput>
+					<CommandName>Form.Item.List.StandardCommand.Change</CommandName>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Open card</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="ChangeExtendedTooltip" id="47"/>
+				</Button>
+				<Button name="ChangeForm" id="69">
+					<Type>CommandBarButton</Type>
+					<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
+					<ExtendedTooltip name="ChangeFormExtendedTooltip" id="70"/>
+				</Button>
+				<Button name="Refresh" id="81">
+					<Type>CommandBarButton</Type>
+					<CommandName>Form.StandardCommand.Refresh</CommandName>
+					<ExtendedTooltip name="RefreshExtendedTooltip" id="82"/>
+				</Button>
+				<Button name="Help" id="30">
+					<Type>CommandBarButton</Type>
+					<SkipOnInput>false</SkipOnInput>
+					<CommandName>Form.StandardCommand.Help</CommandName>
+					<ExtendedTooltip name="HelpExtendedTooltip" id="48"/>
+				</Button>
+			</ChildItems>
+		</CommandBar>
+		<UsualGroup name="ListsGroup" id="29">
+			<Height>10</Height>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="FolderListsExtendedTooltip" id="49"/>
+			<ChildItems>
+				<Table name="Folders" id="11">
+					<Representation>Tree</Representation>
+					<CommandBarLocation>None</CommandBarLocation>
+					<ReadOnly>true</ReadOnly>
+					<SkipOnInput>false</SkipOnInput>
+					<Width>23</Width>
+					<SelectionMode>SingleRow</SelectionMode>
+					<RowSelectionMode>Row</RowSelectionMode>
+					<Header>false</Header>
+					<HorizontalScrollBar>DontUse</HorizontalScrollBar>
+					<HorizontalLines>false</HorizontalLines>
+					<VerticalLines>false</VerticalLines>
+					<EnableStartDrag>true</EnableStartDrag>
+					<EnableDrag>true</EnableDrag>
+					<DataPath>Folders</DataPath>
+					<BorderColor>style:BorderColor</BorderColor>
+					<SearchStringLocation>None</SearchStringLocation>
+					<ViewStatusLocation>None</ViewStatusLocation>
+					<SearchControlLocation>None</SearchControlLocation>
+					<AutoRefresh>false</AutoRefresh>
+					<AutoRefreshPeriod>60</AutoRefreshPeriod>
+					<Period>
+						<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+						<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+						<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+					</Period>
+					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+					<RestoreCurrentRow>false</RestoreCurrentRow>
+					<TopLevelParent xsi:nil="true"/>
+					<ShowRoot>false</ShowRoot>
+					<AllowRootChoice>false</AllowRootChoice>
+					<UpdateOnDataChange>Auto</UpdateOnDataChange>
+					<ContextMenu name="FoldersContextMenu" id="12"/>
+					<AutoCommandBar name="FoldersCommandBar" id="13"/>
+					<ExtendedTooltip name="FoldersExtendedTooltip" id="50"/>
+					<SearchStringAddition name="FoldersSearchString" id="87">
+						<AdditionSource>
+							<Item>Folders</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="FoldersSearchStringContextMenu" id="88"/>
+						<ExtendedTooltip name="FoldersSearchStringExtendedTooltip" id="89"/>
+					</SearchStringAddition>
+					<ViewStatusAddition name="FoldersViewStatus" id="90">
+						<AdditionSource>
+							<Item>Folders</Item>
+							<Type>ViewStatusRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="FoldersViewStatusContextMenu" id="91"/>
+						<ExtendedTooltip name="FoldersViewStatusExtendedTooltip" id="92"/>
+					</ViewStatusAddition>
+					<SearchControlAddition name="FoldersSearchManagement" id="93">
+						<AdditionSource>
+							<Item>Folders</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<ContextMenu name="FoldersSearchManagementContextMenu" id="94"/>
+						<ExtendedTooltip name="FoldersSearchManagementExtendedTooltip" id="95"/>
+					</SearchControlAddition>
+					<Events>
+						<Event name="OnActivateRow">FoldersOnActivateRow</Event>
+					</Events>
+					<ChildItems>
+						<ColumnGroup name="PictureAndDescriptionFolders" id="36">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Picture and description folders</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Picture and description folders</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>InCell</Group>
+							<ExtendedTooltip name="FoldersPictureAndDescriptionExtendedTooltip" id="51"/>
+							<ChildItems>
+								<PictureField name="FoldersPictureIndex" id="37">
+									<DataPath>Folders.PictureIndex</DataPath>
+									<ValuesPicture>
+										<xr:Ref>CommonPicture.Folders</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</ValuesPicture>
+									<ContextMenu name="FoldersPictureIndexContextMenu" id="38"/>
+									<ExtendedTooltip name="FoldersPictureIndexExtendedTooltip" id="52"/>
+								</PictureField>
+								<InputField name="FoldersName" id="14">
+									<DataPath>Folders.Description</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Folder</v8:content>
+										</v8:item>
+									</Title>
+									<FooterHorizontalAlign>Left</FooterHorizontalAlign>
+									<Width>10</Width>
+									<Wrap>false</Wrap>
+									<BorderColor>style:BorderColor</BorderColor>
+									<ContextMenu name="FoldersNameContextMenu" id="15"/>
+									<ExtendedTooltip name="FoldersNameExtendedTooltip" id="53"/>
+								</InputField>
+							</ChildItems>
+						</ColumnGroup>
+						<LabelField name="FoldersRef" id="66">
+							<DataPath>Folders.Ref</DataPath>
+							<UserVisible>
+								<xr:Common>false</xr:Common>
+							</UserVisible>
+							<Width>1</Width>
+							<ContextMenu name="FoldersRefContextMenu" id="67"/>
+							<ExtendedTooltip name="FoldersRefExtendedTooltip" id="68"/>
+						</LabelField>
+					</ChildItems>
+				</Table>
+				<Table name="List" id="2">
+					<CommandBarLocation>None</CommandBarLocation>
+					<ReadOnly>true</ReadOnly>
+					<SkipOnInput>false</SkipOnInput>
+					<DefaultItem>true</DefaultItem>
+					<Width>67</Width>
+					<ChoiceMode>true</ChoiceMode>
+					<SelectionMode>SingleRow</SelectionMode>
+					<RowSelectionMode>Row</RowSelectionMode>
+					<EnableStartDrag>true</EnableStartDrag>
+					<DataPath>List</DataPath>
+					<BorderColor>style:BorderColor</BorderColor>
+					<SearchStringLocation>None</SearchStringLocation>
+					<ViewStatusLocation>None</ViewStatusLocation>
+					<SearchControlLocation>None</SearchControlLocation>
+					<AutoRefresh>false</AutoRefresh>
+					<AutoRefreshPeriod>60</AutoRefreshPeriod>
+					<Period>
+						<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+						<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+						<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+					</Period>
+					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+					<RestoreCurrentRow>false</RestoreCurrentRow>
+					<TopLevelParent xsi:nil="true"/>
+					<ShowRoot>false</ShowRoot>
+					<AllowRootChoice>false</AllowRootChoice>
+					<UpdateOnDataChange>Auto</UpdateOnDataChange>
+					<UserSettingsGroup>UserSettingsGroup</UserSettingsGroup>
+					<ContextMenu name="ListContextMenu" id="3">
+						<Autofill>false</Autofill>
+						<ChildItems>
+							<Button name="ListContextMenuChoose" id="71">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Item.List.StandardCommand.Choose</CommandName>
+								<ExtendedTooltip name="ListContextMenuSelectExtendedTooltip" id="72"/>
+							</Button>
+							<Button name="ListContextMenuChange" id="75">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Item.List.StandardCommand.Change</CommandName>
+								<Title>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Open card</v8:content>
+									</v8:item>
+								</Title>
+								<ExtendedTooltip name="ListContextMenuChangeExtendedTooltip" id="76"/>
+							</Button>
+							<Button name="ListContextMenuFind" id="77">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Item.List.StandardCommand.Find</CommandName>
+								<ExtendedTooltip name="ListContextMenuFindExtendedTooltip" id="78"/>
+							</Button>
+							<Button name="ListContextMenuCancelSearch" id="79">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Item.List.StandardCommand.CancelSearch</CommandName>
+								<ExtendedTooltip name="ListContextMenuCancelSearchExtendedTooltip" id="80"/>
+							</Button>
+						</ChildItems>
+					</ContextMenu>
+					<AutoCommandBar name="ListCommandBar" id="4"/>
+					<ExtendedTooltip name="ListExtendedTooltip" id="54"/>
+					<SearchStringAddition name="SearchStringList" id="96">
+						<AdditionSource>
+							<Item>List</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="ListSearchStringContextMenu" id="97"/>
+						<ExtendedTooltip name="ListSearchStringExtendedTooltip" id="98"/>
+					</SearchStringAddition>
+					<ViewStatusAddition name="ListViewStatus" id="99">
+						<AdditionSource>
+							<Item>List</Item>
+							<Type>ViewStatusRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="ListViewStatusContextMenu" id="100"/>
+						<ExtendedTooltip name="ListViewStatusExtendedTooltip" id="101"/>
+					</ViewStatusAddition>
+					<SearchControlAddition name="ListSearchControl" id="102">
+						<AdditionSource>
+							<Item>List</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<ContextMenu name="ListSearchControlContextMenu" id="103"/>
+						<ExtendedTooltip name="ListSearchControlExtendedTooltip" id="104"/>
+					</SearchControlAddition>
+					<ChildItems>
+						<PictureField name="ListPictureNumberDigitallySignedEncrypted" id="41">
+							<DataPath>List.PictureNumberDigitallySignedEncrypted</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Existence of digital signature or encryption</v8:content>
+								</v8:item>
+							</ToolTip>
+							<HeaderPicture>
+								<xr:Ref>CommonPicture.DigitallySignedEncryptedTitle</xr:Ref>
+								<xr:LoadTransparent>true</xr:LoadTransparent>
+							</HeaderPicture>
+							<Width>2</Width>
+							<ValuesPicture>
+								<xr:Ref>CommonPicture.DigitallySignedEncryptedStates</xr:Ref>
+								<xr:LoadTransparent>true</xr:LoadTransparent>
+							</ValuesPicture>
+							<ContextMenu name="ListPictureNumberDigitallySignedEncryptedContextMenu" id="42"/>
+							<ExtendedTooltip name="ListPictureNumberDigitallySignedEncryptedExtendedTooltip" id="55"/>
+						</PictureField>
+						<ColumnGroup name="ListGroupPictureAndDescription" id="34">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>List group picture and name</v8:content>
+								</v8:item>
+							</Title>
+							<Group>InCell</Group>
+							<ExtendedTooltip name="ListGroupPictureAndDescriptionExtendedTooltip" id="57"/>
+							<ChildItems>
+								<PictureField name="ListPictureIndex" id="25">
+									<DataPath>List.PictureIndex</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<FooterHorizontalAlign>Left</FooterHorizontalAlign>
+									<Width>2</Width>
+									<Height>1</Height>
+									<ValuesPicture>
+										<xr:Ref>CommonPicture.FileIconCollection</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+										<xr:TransparentPixel x="10" y="10"/>
+									</ValuesPicture>
+									<Border width="1">
+										<v8ui:style xsi:type="v8ui:ControlBorderType">WithoutBorder</v8ui:style>
+									</Border>
+									<ContextMenu name="ListPictureIndexContextMenu" id="26"/>
+									<ExtendedTooltip name="ListPictureIndexExtendedTooltip" id="58"/>
+								</PictureField>
+								<InputField name="ListDescription" id="5">
+									<DataPath>List.Description</DataPath>
+									<DefaultItem>true</DefaultItem>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Description</v8:content>
+										</v8:item>
+									</Title>
+									<AutoCellHeight>true</AutoCellHeight>
+									<FooterHorizontalAlign>Left</FooterHorizontalAlign>
+									<Width>15</Width>
+									<Wrap>false</Wrap>
+									<BorderColor>style:BorderColor</BorderColor>
+									<ContextMenu name="ListNameContextMenu" id="6"/>
+									<ExtendedTooltip name="ListDescriptionExtendedTooltip" id="59"/>
+								</InputField>
+								<InputField name="ListDetails" id="31">
+									<DataPath>List.Description</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<AutoCellHeight>true</AutoCellHeight>
+									<Width>15</Width>
+									<Height>1</Height>
+									<Wrap>false</Wrap>
+									<MultiLine>false</MultiLine>
+									<ContextMenu name="ListDescriptionContextMenu" id="32"/>
+									<ExtendedTooltip name="ListDescriptionExtendedTooltip" id="60"/>
+								</InputField>
+							</ChildItems>
+						</ColumnGroup>
+						<InputField name="ListAuthor" id="21">
+							<DataPath>List.Author</DataPath>
+							<FooterHorizontalAlign>Left</FooterHorizontalAlign>
+							<Width>15</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Wrap>false</Wrap>
+							<BorderColor>style:BorderColor</BorderColor>
+							<ContextMenu name="AuthorListContextMenu" id="22"/>
+							<ExtendedTooltip name="ListAuthorExtendedTooltip" id="61"/>
+						</InputField>
+						<InputField name="ListCreationDate" id="23">
+							<DataPath>List.CreationDate</DataPath>
+							<FooterHorizontalAlign>Left</FooterHorizontalAlign>
+							<Width>15</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Wrap>false</Wrap>
+							<BorderColor>style:BorderColor</BorderColor>
+							<ContextMenu name="ListCreationDateContextMenu" id="24"/>
+							<ExtendedTooltip name="ListCreateDateExtendedTooltip" id="62"/>
+						</InputField>
+						<LabelField name="ListRef" id="39">
+							<DataPath>List.Ref</DataPath>
+							<UserVisible>
+								<xr:Common>false</xr:Common>
+							</UserVisible>
+							<Width>1</Width>
+							<ContextMenu name="ReferenceListContextMenu" id="40"/>
+							<ExtendedTooltip name="ListRefExtendedTooltip" id="63"/>
+						</LabelField>
+					</ChildItems>
+				</Table>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="List" id="1">
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<UseAlways>
+				<Field>List.Ref</Field>
+				<Field>List.DigitallySigned</Field>
+				<Field>List.CurrentVersionExtension</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>SELECT
+	Files.Ref,
+	Files.DeletionMark,
+	Files.Predefined,
+	Files.Code,
+	Files.Description,
+	Files.Author,
+	Files.CreationDate,
+	Files.StoreVersions,
+	Files.IsEditing,
+	Files.CurrentVersion,
+	Files.PictureIndex,
+	Files.Definition,
+	Files.FullDescr,
+	Files.FileOwner,
+	Files.DigitallySigned,
+	Files.Encrypted,
+	CASE
+		WHEN Files.DigitallySigned
+				AND Files.Encrypted
+			THEN 2
+		WHEN Files.Encrypted
+			THEN 1
+		WHEN Files.DigitallySigned
+			THEN 0
+		ELSE -1
+	END AS PictureNumberDigitallySignedEncrypted,
+	Files.CurrentVersionExtension
+	FROM
+	Catalog.Files AS Files
+	WHERE
+	Files.FileOwner = &amp;Owner
+		AND Files.DeletionMark = FALSE</QueryText>
+				<MainTable>Catalog.Files</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="Folders" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Folders</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<UseAlways>
+				<Field>Folders.Ref</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>SELECT
+	CatalogFileFolders.Ref,
+	CatalogFileFolders.DeletionMark,
+	CatalogFileFolders.Predefined,
+	CatalogFileFolders.Parent,
+	CatalogFileFolders.Code,
+	CatalogFileFolders.Description,
+	CatalogFileFolders.Description,
+	CatalogFileFolders.Responsible,
+	CatalogFileFolders.CreationDate,
+	CatalogFileFolders.AdditionalAttributes,
+	CASE 
+		When DeletionMark = True Then 1 
+	 Else 0
+	 End as PictureIndex
+FROM
+		Catalog.FileFolders AS CatalogFileFolders</QueryText>
+				<MainTable>Catalog.FileFolders</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="AddFile" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Create file</v8:content>
+				</v8:item>
+			</Title>
+			<Picture>
+				<xr:Ref>StdPicture.CreateListItem</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>AddFile</Action>
+			<Representation>Picture</Representation>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="Parameter1">
+			<Type>
+				<v8:Type>cfg:CatalogRef.FileFolders</v8:Type>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

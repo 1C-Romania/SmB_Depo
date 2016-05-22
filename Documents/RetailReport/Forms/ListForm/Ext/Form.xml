@@ -1,0 +1,569 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
+	<CommandBarLocation>None</CommandBarLocation>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="FormCommandBar" id="-1"/>
+	<Events>
+		<Event name="NotificationProcessing">NotificationProcessing</Event>
+		<Event name="OnOpen">OnOpen</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+		<Event name="BeforeLoadDataFromSettingsAtServer">OnLoadDataFromSettingsAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="FilterGroup" id="37">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Filter group</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Filter group</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="FilterGroupExtendedTooltip" id="47"/>
+			<ChildItems>
+				<InputField name="CashFilter" id="10">
+					<DataPath>CashCR</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<OpenButton>false</OpenButton>
+					<CreateButton>false</CreateButton>
+					<AutoMarkIncomplete>true</AutoMarkIncomplete>
+					<InputHint>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Cash register</v8:content>
+						</v8:item>
+					</InputHint>
+					<ContextMenu name="CashBoxFilterContextMenu" id="11"/>
+					<ExtendedTooltip name="CashBoxFilterExtendedTooltip" id="48"/>
+					<Events>
+						<Event name="OnChange">PettyCashFilterOnChange</Event>
+					</Events>
+				</InputField>
+				<InputField name="CashCRSessionStatusFilter" id="35">
+					<DataPath>CashCRSessionStatus</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<CreateButton>false</CreateButton>
+					<ListChoiceMode>true</ListChoiceMode>
+					<ChoiceList>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation/>
+								<Value xsi:type="xr:DesignTimeRef">Enum.CashCRSessionStatuses.EnumValue.IsOpen</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation/>
+								<Value xsi:type="xr:DesignTimeRef">Enum.CashCRSessionStatuses.EnumValue.Closed</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation/>
+								<Value xsi:type="xr:DesignTimeRef">Enum.CashCRSessionStatuses.EnumValue.ClosedReceiptsArchived</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>All</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xr:DesignTimeRef">Enum.CashCRSessionStatuses.EmptyRef</Value>
+							</xr:Value>
+						</xr:Item>
+					</ChoiceList>
+					<InputHint>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Session status</v8:content>
+						</v8:item>
+					</InputHint>
+					<ContextMenu name="CashCRSessionStatusFilterContextMenu" id="36"/>
+					<ExtendedTooltip name="CashCRSessionStatusFilterExtendedTooltip" id="49"/>
+					<Events>
+						<Event name="OnChange">CashCRSessionStatusFilterOnChange</Event>
+					</Events>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<Table name="RetailSalesReports" id="1">
+			<Representation>List</Representation>
+			<SkipOnInput>false</SkipOnInput>
+			<DefaultItem>true</DefaultItem>
+			<UseAlternationRowColor>true</UseAlternationRowColor>
+			<InitialTreeView>ExpandTopLevel</InitialTreeView>
+			<EnableStartDrag>true</EnableStartDrag>
+			<DataPath>RetailSalesReports</DataPath>
+			<RowPictureDataPath>RetailSalesReports.DefaultPicture</RowPictureDataPath>
+			<SearchStringLocation>CommandBar</SearchStringLocation>
+			<ViewStatusLocation>Top</ViewStatusLocation>
+			<SearchControlLocation>CommandBar</SearchControlLocation>
+			<AutoRefresh>false</AutoRefresh>
+			<AutoRefreshPeriod>60</AutoRefreshPeriod>
+			<Period>
+				<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+				<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+				<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+			</Period>
+			<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+			<RestoreCurrentRow>false</RestoreCurrentRow>
+			<TopLevelParent xsi:nil="true"/>
+			<ShowRoot>true</ShowRoot>
+			<AllowRootChoice>false</AllowRootChoice>
+			<UpdateOnDataChange>Auto</UpdateOnDataChange>
+			<ContextMenu name="RetailSalesReportsContextMenu" id="2">
+				<Autofill>false</Autofill>
+				<ChildItems>
+					<Button name="ContextMenuRetailSalesReportsCreate" id="38">
+						<Type>CommandBarButton</Type>
+						<SkipOnInput>false</SkipOnInput>
+						<CommandName>Form.StandardCommand.Create</CommandName>
+						<ExtendedTooltip name="ContextMenuRetailSalesReportsCreateExtendedTooltip" id="50"/>
+					</Button>
+					<Button name="ContextMenuRetailSalesReportsCopy" id="39">
+						<Type>CommandBarButton</Type>
+						<SkipOnInput>false</SkipOnInput>
+						<CommandName>Form.StandardCommand.Copy</CommandName>
+						<ExtendedTooltip name="ContextMenuRetailSalesReportsCopyExtendedTooltip" id="51"/>
+					</Button>
+					<ButtonGroup name="ContextMenuGroupListCommands" id="32">
+						<Title>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Commands of form</v8:content>
+							</v8:item>
+						</Title>
+						<ToolTip>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Context menu list command group</v8:content>
+							</v8:item>
+						</ToolTip>
+						<CommandSource>Form</CommandSource>
+						<ExtendedTooltip name="ContextMenuGroupListCommandsExtendedTooltip" id="52"/>
+					</ButtonGroup>
+				</ChildItems>
+			</ContextMenu>
+			<AutoCommandBar name="RetailSalesReportsCommandBar" id="3">
+				<Autofill>false</Autofill>
+				<ChildItems>
+					<Button name="ReportsAboutRetailSalesCreate" id="40">
+						<Type>CommandBarButton</Type>
+						<SkipOnInput>false</SkipOnInput>
+						<CommandName>Form.StandardCommand.Create</CommandName>
+						<ExtendedTooltip name="RetailSalesReportsCreateExtendedTooltip" id="53"/>
+					</Button>
+					<Button name="ReportsAboutRetailSalesCopy" id="41">
+						<Type>CommandBarButton</Type>
+						<SkipOnInput>false</SkipOnInput>
+						<CommandName>Form.StandardCommand.Copy</CommandName>
+						<ExtendedTooltip name="RetailSalesReportsCopyExtendedTooltip" id="54"/>
+					</Button>
+					<ButtonGroup name="CommandListGroup" id="12">
+						<Title>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Commands of form</v8:content>
+							</v8:item>
+						</Title>
+						<ToolTip>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Group list commands</v8:content>
+							</v8:item>
+						</ToolTip>
+						<CommandSource>Form</CommandSource>
+						<ExtendedTooltip name="CommandGroupListExtendedTooltip" id="55"/>
+						<ChildItems>
+							<Button name="FormDocumentRetailReportArchiveReceiptsCR" id="94">
+								<Type>CommandBarButton</Type>
+								<CommandName>Document.RetailReport.Command.ArchiveReceiptsCR</CommandName>
+								<DataPath>Items.RetailSalesReports.CurrentData.Ref</DataPath>
+								<ExtendedTooltip name="FormDocumentRetailReportArchiveReceiptsCRExtendedTooltip" id="95"/>
+							</Button>
+						</ChildItems>
+					</ButtonGroup>
+					<Popup name="PeripheralsManagementGroup" id="44">
+						<Title>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Equipment</v8:content>
+							</v8:item>
+						</Title>
+						<ToolTip>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Peripherals management</v8:content>
+							</v8:item>
+						</ToolTip>
+						<ExtendedTooltip name="GroupExtendedTooltipControl" id="56"/>
+						<ChildItems>
+							<Button name="RetailSalesReportsOpenFiscalRegisterControl" id="45">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.OpenFiscalRegisterManagement</CommandName>
+								<ExtendedTooltip name="RetailSalesReportsOpenFiscalRegisterControlExtendedTooltip" id="57"/>
+							</Button>
+							<Button name="RetailSalesReportsOpenPOSTerminalControl" id="46">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.OpenPOSTerminalManagement</CommandName>
+								<ExtendedTooltip name="RetailSalesReportsOpenPOSTerminalControlExtendedTooltip" id="58"/>
+							</Button>
+						</ChildItems>
+					</Popup>
+					<ButtonGroup name="GroupGlobalCommands" id="90">
+						<Title>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Global commands group</v8:content>
+							</v8:item>
+						</Title>
+						<ToolTip>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Global commands group</v8:content>
+							</v8:item>
+						</ToolTip>
+						<CommandSource>FormCommandPanelGlobalCommands</CommandSource>
+						<ExtendedTooltip name="GroupGlobalCommandsExtendedTooltip" id="91"/>
+						<ChildItems>
+							<Button name="CommonCommandDependencies" id="102">
+								<Type>CommandBarButton</Type>
+								<CommandName>CommonCommand.Dependencies</CommandName>
+								<DataPath>Items.RetailSalesReports.CurrentData.Ref</DataPath>
+								<ExtendedTooltip name="CommonCommandDependenciesExtendedTooltip" id="103"/>
+							</Button>
+							<Button name="CommonCommandReportByMovements" id="98">
+								<Type>CommandBarButton</Type>
+								<OnlyInAllActions>false</OnlyInAllActions>
+								<CommandName>CommonCommand.ReportByMovements</CommandName>
+								<DataPath>Items.RetailSalesReports.CurrentData.Ref</DataPath>
+								<ExtendedTooltip name="CommonCommandReportByMovementsExtendedTooltip" id="99"/>
+							</Button>
+							<Button name="CommonCommandObjectFilling" id="96">
+								<Type>CommandBarButton</Type>
+								<CommandName>CommonCommand.ObjectFilling</CommandName>
+								<DataPath>Items.RetailSalesReports.CurrentData.Ref</DataPath>
+								<ExtendedTooltip name="CommonCommandObjectFillingExtendedTooltip" id="97"/>
+							</Button>
+							<Button name="CommonCommandObjectReports" id="100">
+								<Type>CommandBarButton</Type>
+								<CommandName>CommonCommand.ObjectReports</CommandName>
+								<DataPath>Items.RetailSalesReports.CurrentData.Ref</DataPath>
+								<ExtendedTooltip name="CommonCommandObjectReportsExtendedTooltip" id="101"/>
+							</Button>
+						</ChildItems>
+					</ButtonGroup>
+					<SearchStringAddition name="SearchString" id="79">
+						<AdditionSource>
+							<Item>RetailSalesReports</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<Title>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Search string</v8:content>
+							</v8:item>
+						</Title>
+						<ContextMenu name="SearchStringContextMenu" id="80"/>
+						<ExtendedTooltip name="SearchStringExtendedTooltip" id="81"/>
+					</SearchStringAddition>
+					<SearchControlAddition name="SearchManagement" id="82">
+						<AdditionSource>
+							<Item>RetailSalesReports</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<Title>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Full-text search Management</v8:content>
+							</v8:item>
+						</Title>
+						<ContextMenu name="SearchManagementContextMenu" id="83"/>
+						<ExtendedTooltip name="SearchManagementExtendedTooltip" id="84"/>
+					</SearchControlAddition>
+					<Button name="FormChangeForm" id="92">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
+						<ExtendedTooltip name="FormChangeFormExtendedTooltip" id="93"/>
+					</Button>
+					<Button name="FormHelp" id="77">
+						<Type>CommandBarButton</Type>
+						<OnlyInAllActions>false</OnlyInAllActions>
+						<CommandName>Form.StandardCommand.Help</CommandName>
+						<ExtendedTooltip name="FormHelpExtendedTooltip" id="78"/>
+					</Button>
+				</ChildItems>
+			</AutoCommandBar>
+			<ExtendedTooltip name="RetailSalesReportsExtendedTooltip" id="59"/>
+			<SearchStringAddition name="RetailSalesReportsSearchString" id="68">
+				<AdditionSource>
+					<Item>RetailSalesReports</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="RetailSalesReportsSearchStringContextMenu" id="69"/>
+				<ExtendedTooltip name="RetailSalesReportsSearchStringExtendedTooltip" id="70"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="RetailSalesReportsViewStatus" id="71">
+				<AdditionSource>
+					<Item>RetailSalesReports</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="RetailSalesReportsViewStatusContextMenu" id="72"/>
+				<ExtendedTooltip name="RetailSalesReportsViewStatusExtendedTooltip" id="73"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="RetailSalesReportsSearchControl" id="74">
+				<AdditionSource>
+					<Item>RetailSalesReports</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="RetailSalesReportsSearchControlContextMenu" id="75"/>
+				<ExtendedTooltip name="RetailSalesReportsSearchControlExtendedTooltip" id="76"/>
+			</SearchControlAddition>
+			<ChildItems>
+				<LabelField name="Date" id="4">
+					<DataPath>RetailSalesReports.Date</DataPath>
+					<DefaultItem>true</DefaultItem>
+					<Width>10</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<Format>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>DLF=D</v8:content>
+						</v8:item>
+					</Format>
+					<ContextMenu name="DateContextMenu" id="5"/>
+					<ExtendedTooltip name="DateExtendedTooltip" id="62"/>
+				</LabelField>
+				<LabelField name="Number" id="6">
+					<DataPath>RetailSalesReports.Number</DataPath>
+					<Width>11</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="NumberContextMenu" id="7"/>
+					<ExtendedTooltip name="NumberExtendedTooltip" id="60"/>
+				</LabelField>
+				<ColumnGroup name="AmountCurrency" id="85">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Amount currency</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Amount currency</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>InCell</Group>
+					<ExtendedTooltip name="AmountCurrencyExtendedTooltip" id="86"/>
+					<ChildItems>
+						<LabelField name="DocumentAmount" id="13">
+							<DataPath>RetailSalesReports.DocumentAmount</DataPath>
+							<Width>10</Width>
+							<ContextMenu name="DocumentAmountContextMenu" id="14"/>
+							<ExtendedTooltip name="DocumentAmountExtendedTooltip" id="65"/>
+						</LabelField>
+						<LabelField name="Currency" id="15">
+							<DataPath>RetailSalesReports.DocumentCurrency</DataPath>
+							<ShowInHeader>false</ShowInHeader>
+							<Width>1</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="CurrencyContextMenu" id="16"/>
+							<ExtendedTooltip name="CurrencyExtendedTooltip" id="66"/>
+						</LabelField>
+					</ChildItems>
+				</ColumnGroup>
+				<LabelField name="CashCR" id="8">
+					<DataPath>RetailSalesReports.CashCR</DataPath>
+					<ContextMenu name="CashCRContextMenu" id="9"/>
+					<ExtendedTooltip name="CashCRExtendedTooltip" id="63"/>
+				</LabelField>
+				<LabelField name="CashCRSessionStatus" id="26">
+					<DataPath>RetailSalesReports.CashCRSessionStatus</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Session status</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="CashCRSessionStatusContextMenu" id="27"/>
+					<ExtendedTooltip name="CashCRSessionStatusExtendedTooltip" id="64"/>
+				</LabelField>
+				<LabelField name="Author" id="42">
+					<DataPath>RetailSalesReports.Author</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Author</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="AuthorContextMenu" id="43"/>
+					<ExtendedTooltip name="AuthorExtendedTooltip" id="67"/>
+				</LabelField>
+				<LabelField name="Comment" id="87">
+					<DataPath>RetailSalesReports.Comment</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<ContextMenu name="CommentContextMenu" id="88"/>
+					<ExtendedTooltip name="CommentExtendedTooltip" id="89"/>
+				</LabelField>
+			</ChildItems>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="RetailSalesReports" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Retail sales reports</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<UseAlways>
+				<Field>RetailSalesReports.Ref</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>false</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<MainTable>Document.RetailReport</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="CashCR" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Cash register</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.CashRegisters</v8:Type>
+			</Type>
+			<Save>
+				<Field>CashCR</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="CashFiscalRegister" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Petty cash - Fiscal register</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<Save>
+				<Field>CashFiscalRegister</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="CashCRSessionStatus" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Cash session status</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.CashCRSessionStatuses</v8:Type>
+			</Type>
+			<Save>
+				<Field>CashCRSessionStatus</Field>
+			</Save>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="OpenFiscalRegisterManagement" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Fiscal register management</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Open fiscal register management</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>OpenFiscalRegisterManagement</Action>
+		</Command>
+		<Command name="OpenPOSTerminalManagement" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>POS terminal management</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Open POS terminal management</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>OpenPOSTerminalManagement</Action>
+		</Command>
+	</Commands>
+	<CommandInterface>
+		<CommandBar>
+			<Item>
+				<Command>0:2d802f5c-a7a6-46a8-816d-ad8a588894df</Command>
+				<Type>Auto</Type>
+				<CommandGroup>CommandGroup.Print</CommandGroup>
+			</Item>
+			<Item>
+				<Command>0</Command>
+				<Type>Auto</Type>
+				<CommandGroup>CommandGroup.Print</CommandGroup>
+				<Index>2</Index>
+			</Item>
+			<Item>
+				<Command>0:70fbac02-e48d-4ad2-a601-9a03be2c20e3</Command>
+				<Type>Auto</Type>
+				<CommandGroup>CommandGroup.Print</CommandGroup>
+				<Index>1</Index>
+			</Item>
+		</CommandBar>
+	</CommandInterface>
+</Form>

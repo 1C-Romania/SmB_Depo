@@ -1,0 +1,558 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<CommandSet>
+		<ExcludedCommand>CancelSearch</ExcludedCommand>
+		<ExcludedCommand>Find</ExcludedCommand>
+	</CommandSet>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<ChildItems>
+			<ButtonGroup name="ImportantCommandsGroup" id="86">
+				<Title>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Important commands group</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTip>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Important commands group</v8:content>
+					</v8:item>
+				</ToolTip>
+				<ExtendedTooltip name="ImportantCommandsGroupExtendedTooltip" id="87"/>
+			</ButtonGroup>
+			<ButtonGroup name="GroupGlobalCommands" id="88">
+				<Title>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Global commands group</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTip>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Global commands group</v8:content>
+					</v8:item>
+				</ToolTip>
+				<CommandSource>FormCommandPanelGlobalCommands</CommandSource>
+				<ExtendedTooltip name="GroupGlobalCommandsExtendedTooltip" id="89"/>
+				<ChildItems>
+					<Button name="CommonCommandDependencies" id="102">
+						<Type>CommandBarButton</Type>
+						<CommandName>CommonCommand.Dependencies</CommandName>
+						<DataPath>Items.List.CurrentData.Ref</DataPath>
+						<ExtendedTooltip name="CommonCommandDependenciesExtendedTooltip" id="103"/>
+					</Button>
+					<Button name="CommonCommandReportByMovements" id="98">
+						<Type>CommandBarButton</Type>
+						<OnlyInAllActions>false</OnlyInAllActions>
+						<CommandName>CommonCommand.ReportByMovements</CommandName>
+						<DataPath>Items.List.CurrentData.Ref</DataPath>
+						<ExtendedTooltip name="CommonCommandReportByMovementsExtendedTooltip" id="99"/>
+					</Button>
+					<Button name="CommonCommandObjectFilling" id="94">
+						<Type>CommandBarButton</Type>
+						<CommandName>CommonCommand.ObjectFilling</CommandName>
+						<DataPath>Items.List.CurrentData.Ref</DataPath>
+						<ExtendedTooltip name="CommonCommandObjectFillingExtendedTooltip" id="95"/>
+					</Button>
+					<Button name="CommonCommandObjectReports" id="100">
+						<Type>CommandBarButton</Type>
+						<CommandName>CommonCommand.ObjectReports</CommandName>
+						<DataPath>Items.List.CurrentData.Ref</DataPath>
+						<ExtendedTooltip name="CommonCommandObjectReportsExtendedTooltip" id="101"/>
+					</Button>
+					<Button name="CommonCommandChangesHistory" id="96">
+						<Type>CommandBarButton</Type>
+						<OnlyInAllActions>false</OnlyInAllActions>
+						<CommandName>CommonCommand.ChangesHistory</CommandName>
+						<DataPath>Items.List.CurrentData.Ref</DataPath>
+						<ExtendedTooltip name="CommonCommandChangesHistoryExtendedTooltip" id="97"/>
+					</Button>
+				</ChildItems>
+			</ButtonGroup>
+			<Button name="FormChangeForm" id="90">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
+				<ExtendedTooltip name="FormChangeFormExtendedTooltip" id="91"/>
+			</Button>
+			<Button name="FormHelp" id="92">
+				<Type>CommandBarButton</Type>
+				<OnlyInAllActions>false</OnlyInAllActions>
+				<CommandName>Form.StandardCommand.Help</CommandName>
+				<ExtendedTooltip name="FormHelpExtendedTooltip" id="93"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="NotificationProcessing">NotificationProcessing</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<Table name="List" id="1">
+			<Representation>List</Representation>
+			<CommandBarLocation>None</CommandBarLocation>
+			<SkipOnInput>false</SkipOnInput>
+			<DefaultItem>true</DefaultItem>
+			<UseAlternationRowColor>true</UseAlternationRowColor>
+			<EnableStartDrag>true</EnableStartDrag>
+			<DataPath>List</DataPath>
+			<RowPictureDataPath>List.DefaultPicture</RowPictureDataPath>
+			<SearchStringLocation>CommandBar</SearchStringLocation>
+			<ViewStatusLocation>Top</ViewStatusLocation>
+			<SearchControlLocation>CommandBar</SearchControlLocation>
+			<AutoRefresh>false</AutoRefresh>
+			<AutoRefreshPeriod>60</AutoRefreshPeriod>
+			<Period>
+				<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+				<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+				<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+			</Period>
+			<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+			<RestoreCurrentRow>false</RestoreCurrentRow>
+			<TopLevelParent xsi:nil="true"/>
+			<ShowRoot>false</ShowRoot>
+			<AllowRootChoice>false</AllowRootChoice>
+			<UpdateOnDataChange>Auto</UpdateOnDataChange>
+			<ContextMenu name="ListContextMenu" id="2"/>
+			<AutoCommandBar name="ListCommandBar" id="3"/>
+			<ExtendedTooltip name="ListExtendedTooltip" id="34"/>
+			<SearchStringAddition name="SearchStringList" id="52">
+				<AdditionSource>
+					<Item>List</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ListSearchStringContextMenu" id="53"/>
+				<ExtendedTooltip name="ListSearchStringExtendedTooltip" id="54"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ListViewStatus" id="55">
+				<AdditionSource>
+					<Item>List</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ListViewStatusContextMenu" id="56"/>
+				<ExtendedTooltip name="ListViewStatusExtendedTooltip" id="57"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ListSearchControl" id="58">
+				<AdditionSource>
+					<Item>List</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ListSearchControlContextMenu" id="59"/>
+				<ExtendedTooltip name="ListSearchControlExtendedTooltip" id="60"/>
+			</SearchControlAddition>
+			<ChildItems>
+				<PictureField name="PaymentPictureNumber" id="71">
+					<DataPath>List.PaymentPictureNumber</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<HeaderPicture>
+						<xr:Ref>CommonPicture.ForPayment</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</HeaderPicture>
+					<Width>2</Width>
+					<ValuesPicture>
+						<xr:Ref>CommonPicture.OrderState</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</ValuesPicture>
+					<ContextMenu name="PictureNumberPaymentContextMenu" id="72"/>
+					<ExtendedTooltip name="PaymentPictureNumberExtendedTooltip" id="73"/>
+				</PictureField>
+				<LabelField name="ListDate" id="4">
+					<DataPath>List.Date</DataPath>
+					<DefaultItem>true</DefaultItem>
+					<Width>10</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<Format>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>DLF=D</v8:content>
+						</v8:item>
+					</Format>
+					<ContextMenu name="DateListContextMenu" id="5"/>
+					<ExtendedTooltip name="DateListExtendedTooltip" id="35"/>
+				</LabelField>
+				<LabelField name="ListNumber" id="6">
+					<DataPath>List.Number</DataPath>
+					<Width>11</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="NumberListContextMenu" id="7"/>
+					<ExtendedTooltip name="NumberListExtendedTooltip" id="36"/>
+				</LabelField>
+				<LabelField name="CashAssetsTypeList" id="18">
+					<DataPath>List.CashAssetsType</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Cash/Noncash</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="CashAssetsTypeListContextMenu" id="19"/>
+					<ExtendedTooltip name="CashAssetsTypeListExtendedTooltip" id="41"/>
+				</LabelField>
+				<ColumnGroup name="BankAccountPettyCash" id="50">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Bank account, Petty cash</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Bank account, Petty cash</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>InCell</Group>
+					<ExtendedTooltip name="BankAccountCashAdvancedToolTip" id="51"/>
+					<ChildItems>
+						<LabelField name="BankAccountList" id="20">
+							<DataPath>List.BankAccount</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Account / petty cash</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="BankAccountListContextMenu" id="21"/>
+							<ExtendedTooltip name="BankAccountListExtendedTooltip" id="42"/>
+						</LabelField>
+						<LabelField name="PettyCashList" id="22">
+							<DataPath>List.PettyCash</DataPath>
+							<ShowInHeader>false</ShowInHeader>
+							<Width>1</Width>
+							<ContextMenu name="PettyCashContextMenu" id="23"/>
+							<ExtendedTooltip name="PettyCashListExtendedTooltip" id="43"/>
+						</LabelField>
+					</ChildItems>
+				</ColumnGroup>
+				<ColumnGroup name="Amount" id="69">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Amount</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Amount</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>InCell</Group>
+					<ExtendedTooltip name="AmountExtendedTooltip" id="70"/>
+					<ChildItems>
+						<LabelField name="ListDocumentAmount" id="12">
+							<DataPath>List.DocumentAmount</DataPath>
+							<Width>10</Width>
+							<ContextMenu name="ListDocumentSumContextMenu" id="13"/>
+							<ExtendedTooltip name="ListDocumentSumExtendedTooltip" id="38"/>
+						</LabelField>
+						<LabelField name="DocumentCurrencyList" id="14">
+							<DataPath>List.DocumentCurrency</DataPath>
+							<ShowInHeader>false</ShowInHeader>
+							<Width>1</Width>
+							<ContextMenu name="ListDocumentCurrencyContextMenu" id="15"/>
+							<ExtendedTooltip name="ListDocumentCurrencyExtendedTooltip" id="39"/>
+						</LabelField>
+					</ChildItems>
+				</ColumnGroup>
+				<LabelField name="ListCFItem" id="16">
+					<DataPath>List.CashFlowItem</DataPath>
+					<ContextMenu name="ListCFItemContextMenu" id="17"/>
+					<ExtendedTooltip name="ListCFItemExtendedTooltip" id="40"/>
+				</LabelField>
+				<LabelField name="ListCounterparty" id="77">
+					<DataPath>List.Counterparty</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<ContextMenu name="ListCounterpartyContextMenu" id="78"/>
+					<ExtendedTooltip name="ListCounterpartyExtendedTooltip" id="79"/>
+				</LabelField>
+				<LabelField name="ListAgreement" id="74">
+					<DataPath>List.Contract</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<ContextMenu name="ListContractContextMenu" id="75"/>
+					<ExtendedTooltip name="ListContractExtendedTooltip" id="76"/>
+				</LabelField>
+				<LabelField name="ListAmountPaid" id="83">
+					<DataPath>List.AmountPaid</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Amount (Actual)</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ListAmountPaidContextMenu" id="84"/>
+					<ExtendedTooltip name="ListAmountPaidExtendedTooltip" id="85"/>
+				</LabelField>
+				<LabelField name="ListPaymentPercent" id="80">
+					<DataPath>List.PaymentPercentage</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>% (Fact)</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ListPayPercentageContextMenu" id="81"/>
+					<ExtendedTooltip name="ListPaymentPercentExtendedTooltip" id="82"/>
+				</LabelField>
+				<LabelField name="ListCompanies" id="8">
+					<DataPath>List.Company</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<ContextMenu name="ListCompanyContextMenu" id="9"/>
+					<ExtendedTooltip name="ListCompanyExtendedTooltip" id="37"/>
+				</LabelField>
+				<LabelField name="ListBasisDocument" id="24">
+					<DataPath>List.BasisDocument</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<ContextMenu name="ListBasisDocumentContextMenu" id="25"/>
+					<ExtendedTooltip name="ListBasisDocumentExtendedTooltip" id="44"/>
+				</LabelField>
+				<LabelField name="ListOfStateApprovalOfPayment" id="26">
+					<DataPath>List.PaymentConfirmationStatus</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Status</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ListOfStatusApprovalOfPaymentContextMenu" id="27"/>
+					<ExtendedTooltip name="ListOfStatusApprovalOfPaymentExtendedTooltip" id="45"/>
+				</LabelField>
+				<LabelField name="ListOfIncomingDocumentNumber" id="28">
+					<DataPath>List.IncomingDocumentNumber</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<Width>16</Width>
+					<ContextMenu name="ListOfIncomingDocumentNumberContextMenu" id="29"/>
+					<ExtendedTooltip name="ListOfIncomingDocumentNumberExtendedTooltip" id="46"/>
+				</LabelField>
+				<LabelField name="ListIncomingDocumentDate" id="30">
+					<DataPath>List.IncomingDocumentDate</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<Width>11</Width>
+					<ContextMenu name="ListIncomingDocumentDateContextMenu" id="31"/>
+					<ExtendedTooltip name="ListIncomingDocumentDateExtendedTooltip" id="47"/>
+				</LabelField>
+				<LabelField name="CommentList" id="10">
+					<DataPath>List.Comment</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<ContextMenu name="CommentListContextMenu" id="11"/>
+					<ExtendedTooltip name="CommentListExtendedTooltip" id="48"/>
+				</LabelField>
+				<LabelField name="ListAuthor" id="32">
+					<DataPath>List.Author</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Author</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="AuthorListContextMenu" id="33"/>
+					<ExtendedTooltip name="ListAuthorExtendedTooltip" id="49"/>
+				</LabelField>
+				<LabelField name="Ref" id="104">
+					<DataPath>List.Ref</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<ContextMenu name="RefContextMenu" id="105"/>
+					<ExtendedTooltip name="RefExtendedTooltip" id="106"/>
+				</LabelField>
+			</ChildItems>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="List" id="1">
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<UseAlways>
+				<Field>List.Ref</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>SELECT
+	CASE
+		WHEN DocumentCashOutflowPlan.Posted
+			THEN CASE
+					WHEN (DocumentCashOutflowPlan.PaymentConfirmationStatus = VALUE(Enum.PaymentApprovalStatuses.NotApproved)
+							OR ISNULL(PaymentEvent.DocumentAmount, 0) &lt;&gt; 0)
+							AND ISNULL(PaymentEvent.DocumentAmount, 0) - ISNULL(PaymentEvent.AmountOfPlanBalance, 0) = 0
+						THEN CASE
+								WHEN DocumentCashOutflowPlan.PaymentConfirmationStatus = VALUE(Enum.PaymentApprovalStatuses.Approved)
+										AND Not PaymentSchedule.InvoiceForPayment IS NULL 
+									THEN CASE
+											WHEN PaymentSchedule.Period &lt; &amp;CurrentDateSession
+												THEN 6
+											WHEN PaymentSchedule.Period = &amp;CurrentDateSession
+												THEN 4
+											ELSE 2
+										END
+								ELSE 2
+							END
+					WHEN ISNULL(PaymentEvent.DocumentAmount, 0) &lt;= ISNULL(PaymentEvent.DocumentAmount, 0) - ISNULL(PaymentEvent.AmountOfPlanBalance, 0)
+						THEN 0
+					ELSE CASE
+							WHEN DocumentCashOutflowPlan.PaymentConfirmationStatus = VALUE(Enum.PaymentApprovalStatuses.Approved)
+									AND Not PaymentSchedule.InvoiceForPayment IS NULL 
+								THEN CASE
+										WHEN PaymentSchedule.Period &lt; &amp;CurrentDateSession
+											THEN 5
+										WHEN PaymentSchedule.Period = &amp;CurrentDateSession
+											THEN 3
+										ELSE 1
+									END
+							ELSE 1
+						END
+				END
+		ELSE 2
+	END AS PaymentPictureNumber,
+	CASE
+		WHEN DocumentCashOutflowPlan.Posted
+				AND DocumentCashOutflowPlan.DocumentAmount &gt; 0
+			THEN CAST((ISNULL(PaymentEvent.DocumentAmount, 0) - ISNULL(PaymentEvent.AmountOfPlanBalance, 0)) * 100 / DocumentCashOutflowPlan.DocumentAmount AS NUMBER(15, 2))
+		ELSE 0
+	END AS PaymentPercentage,
+	ISNULL(PaymentEvent.DocumentAmount, 0) - ISNULL(PaymentEvent.AmountOfPlanBalance, 0) AS AmountPaid,
+	DocumentCashOutflowPlan.Ref,
+	DocumentCashOutflowPlan.DeletionMark,
+	DocumentCashOutflowPlan.Number,
+	DocumentCashOutflowPlan.Date,
+	DocumentCashOutflowPlan.Posted,
+	DocumentCashOutflowPlan.Company,
+	DocumentCashOutflowPlan.Comment,
+	DocumentCashOutflowPlan.DocumentAmount,
+	DocumentCashOutflowPlan.DocumentCurrency,
+	DocumentCashOutflowPlan.CashFlowItem,
+	DocumentCashOutflowPlan.CashAssetsType,
+	DocumentCashOutflowPlan.BankAccount,
+	DocumentCashOutflowPlan.PettyCash,
+	DocumentCashOutflowPlan.BasisDocument,
+	DocumentCashOutflowPlan.PaymentConfirmationStatus,
+	DocumentCashOutflowPlan.IncomingDocumentNumber,
+	DocumentCashOutflowPlan.IncomingDocumentDate,
+	DocumentCashOutflowPlan.Counterparty,
+	DocumentCashOutflowPlan.Contract,
+	DocumentCashOutflowPlan.Author,
+	DocumentCashOutflowPlan.PointInTime
+	FROM
+	Document.CashOutflowPlan AS DocumentCashOutflowPlan
+		{LEFT JOIN InformationRegister.OrdersPaymentSchedule AS PaymentSchedule
+		ON DocumentCashOutflowPlan.Ref = PaymentSchedule.InvoiceForPayment
+			AND (PaymentSchedule.Period &lt;= &amp;CurrentDateSession)}
+		LEFT JOIN InformationRegister.PaymentsSchedule AS PaymentEvent
+			ON DocumentCashOutflowPlan.Ref = PaymentEvent.InvoiceForPayment</QueryText>
+				<MainTable>Document.CashOutflowPlan</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:item>
+							<dcsset:selection>
+								<dcsset:item>
+									<dcsset:field>BankAccount</dcsset:field>
+								</dcsset:item>
+							</dcsset:selection>
+							<dcsset:filter>
+								<dcsset:item xsi:type="dcsset:FilterItemComparison">
+									<dcsset:left xsi:type="dcscor:Field">CashAssetsType</dcsset:left>
+									<dcsset:comparisonType>Equal</dcsset:comparisonType>
+									<dcsset:right xsi:type="dcscor:DesignTimeValue">Enum.CashAssetTypes.Cash</dcsset:right>
+								</dcsset:item>
+							</dcsset:filter>
+							<dcsset:appearance>
+								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+									<dcscor:parameter>Text</dcscor:parameter>
+									<dcscor:value xsi:type="xs:string"/>
+								</dcscor:item>
+							</dcsset:appearance>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:selection>
+								<dcsset:item>
+									<dcsset:field>PettyCash</dcsset:field>
+								</dcsset:item>
+							</dcsset:selection>
+							<dcsset:filter>
+								<dcsset:item xsi:type="dcsset:FilterItemComparison">
+									<dcsset:left xsi:type="dcscor:Field">CashAssetsType</dcsset:left>
+									<dcsset:comparisonType>Equal</dcsset:comparisonType>
+									<dcsset:right xsi:type="dcscor:DesignTimeValue">Enum.CashAssetTypes.Noncash</dcsset:right>
+								</dcsset:item>
+							</dcsset:filter>
+							<dcsset:appearance>
+								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+									<dcscor:parameter>Text</dcscor:parameter>
+									<dcscor:value xsi:type="xs:string"/>
+								</dcscor:item>
+							</dcsset:appearance>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:selection>
+								<dcsset:item>
+									<dcsset:field>BankAccount</dcsset:field>
+								</dcsset:item>
+								<dcsset:item>
+									<dcsset:field>PettyCash</dcsset:field>
+								</dcsset:item>
+							</dcsset:selection>
+							<dcsset:filter>
+								<dcsset:item xsi:type="dcsset:FilterItemComparison">
+									<dcsset:left xsi:type="dcscor:Field">CashAssetsType</dcsset:left>
+									<dcsset:comparisonType>NotFilled</dcsset:comparisonType>
+								</dcsset:item>
+							</dcsset:filter>
+							<dcsset:appearance>
+								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+									<dcscor:parameter>Text</dcscor:parameter>
+									<dcscor:value xsi:type="xs:string"/>
+								</dcscor:item>
+							</dcsset:appearance>
+						</dcsset:item>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+	</Attributes>
+</Form>

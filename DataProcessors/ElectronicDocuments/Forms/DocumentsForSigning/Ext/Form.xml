@@ -1,0 +1,1162 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<AutoTitle>false</AutoTitle>
+	<CommandBarLocation>Top</CommandBarLocation>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="NotificationProcessing">NotificationProcessing</Event>
+		<Event name="OnOpen">OnOpen</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<Pages name="APMPages" id="39">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>APM pages</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>APM pages</v8:content>
+				</v8:item>
+			</ToolTip>
+			<ExtendedTooltip name="AWPPagesExtendedTooltip" id="96"/>
+			<ChildItems>
+				<Page name="PageSummary" id="40">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Summary page</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Summary page</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="ResumePageExtendedTooltip" id="97"/>
+					<ChildItems>
+						<UsualGroup name="FolderAvailableCertificates" id="16">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Available certificates</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group available certificates</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Height>6</Height>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupAvailableCertificatesExtendedTooltip" id="98"/>
+							<ChildItems>
+								<Table name="CertificatesTable" id="3">
+									<Representation>List</Representation>
+									<CommandBarLocation>Top</CommandBarLocation>
+									<ReadOnly>true</ReadOnly>
+									<SkipOnInput>true</SkipOnInput>
+									<ChangeRowSet>false</ChangeRowSet>
+									<ChangeRowOrder>false</ChangeRowOrder>
+									<SelectionMode>SingleRow</SelectionMode>
+									<RowSelectionMode>Row</RowSelectionMode>
+									<UseAlternationRowColor>true</UseAlternationRowColor>
+									<EnableDrag>true</EnableDrag>
+									<DataPath>CertificatesTable</DataPath>
+									<CommandSet>
+										<ExcludedCommand>Copy</ExcludedCommand>
+										<ExcludedCommand>SortListAsc</ExcludedCommand>
+										<ExcludedCommand>MoveUp</ExcludedCommand>
+										<ExcludedCommand>CancelSearch</ExcludedCommand>
+										<ExcludedCommand>OutputList</ExcludedCommand>
+										<ExcludedCommand>SortListDesc</ExcludedCommand>
+										<ExcludedCommand>CopyToClipboard</ExcludedCommand>
+										<ExcludedCommand>Delete</ExcludedCommand>
+										<ExcludedCommand>EndEdit</ExcludedCommand>
+										<ExcludedCommand>Add</ExcludedCommand>
+										<ExcludedCommand>Change</ExcludedCommand>
+										<ExcludedCommand>Find</ExcludedCommand>
+										<ExcludedCommand>MoveDown</ExcludedCommand>
+									</CommandSet>
+									<SearchStringLocation>None</SearchStringLocation>
+									<ViewStatusLocation>None</ViewStatusLocation>
+									<SearchControlLocation>None</SearchControlLocation>
+									<RowFilter xsi:nil="true"/>
+									<ContextMenu name="CertificatesTableContextMenu" id="4">
+										<ChildItems>
+											<Button name="SignAll" id="46">
+												<Type>CommandBarButton</Type>
+												<Representation>PictureAndText</Representation>
+												<CommandName>Form.Command.SignAll</CommandName>
+												<Picture>
+													<xr:Ref>StdPicture.CheckSyntax</xr:Ref>
+													<xr:LoadTransparent>true</xr:LoadTransparent>
+												</Picture>
+												<ExtendedTooltip name="SignAllExtendedTooltip" id="99"/>
+											</Button>
+										</ChildItems>
+									</ContextMenu>
+									<AutoCommandBar name="CertificatesTableCommandPanel" id="5">
+										<Autofill>false</Autofill>
+										<ChildItems>
+											<Button name="SignAllDocument" id="50">
+												<Type>CommandBarButton</Type>
+												<Representation>PictureAndText</Representation>
+												<CommandName>Form.Command.SignAll</CommandName>
+												<Picture>
+													<xr:Ref>StdPicture.CheckSyntax</xr:Ref>
+													<xr:LoadTransparent>true</xr:LoadTransparent>
+												</Picture>
+												<ExtendedTooltip name="SignAllDocumentsExtendedTooltip" id="100"/>
+											</Button>
+											<Button name="CertificatesTableUpdateCertificatesList" id="60">
+												<Type>CommandBarButton</Type>
+												<Representation>PictureAndText</Representation>
+												<CommandName>Form.Command.Refresh</CommandName>
+												<ExtendedTooltip name="CertificatesTableRefreshListCertificatesExtendedTooltip" id="101"/>
+											</Button>
+											<ButtonGroup name="GroupCommandsCertificatesForm" id="74">
+												<Title>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Context menu list command group</v8:content>
+													</v8:item>
+												</Title>
+												<ToolTip>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Context menu list command group</v8:content>
+													</v8:item>
+												</ToolTip>
+												<CommandSource>Form</CommandSource>
+												<ExtendedTooltip name="CommandGroupFormsCertificatesExtendedTooltip" id="102"/>
+											</ButtonGroup>
+											<Button name="CertificatesTableHelp" id="92">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.StandardCommand.Help</CommandName>
+												<ExtendedTooltip name="CertificatesTableHelpExtendedTooltip" id="103"/>
+											</Button>
+										</ChildItems>
+									</AutoCommandBar>
+									<ExtendedTooltip name="CertificatesTableExtendedTooltip" id="104"/>
+									<SearchStringAddition name="CertificatesTableSearchString" id="139">
+										<AdditionSource>
+											<Item>CertificatesTable</Item>
+											<Type>SearchStringRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="CertificatesTableSearchSrtingContextMenu" id="140"/>
+										<ExtendedTooltip name="CertificatesTableSearchStringExtendedTooltip" id="141"/>
+									</SearchStringAddition>
+									<ViewStatusAddition name="CertificatesTableViewStatus" id="142">
+										<AdditionSource>
+											<Item>CertificatesTable</Item>
+											<Type>ViewStatusRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="CertificatesTableViewStatusContextMenu" id="143"/>
+										<ExtendedTooltip name="CertificatesTableViewStatusExtendedTooltip" id="144"/>
+									</ViewStatusAddition>
+									<SearchControlAddition name="CertificatesTableSearchManagement" id="145">
+										<AdditionSource>
+											<Item>CertificatesTable</Item>
+											<Type>SearchControl</Type>
+										</AdditionSource>
+										<ContextMenu name="CertificatesTableSearchManagementContextMenu" id="146"/>
+										<ExtendedTooltip name="CertificatesTableSearchManagementExtendedTooltip" id="147"/>
+									</SearchControlAddition>
+									<Events>
+										<Event name="Selection">CertificatesTableSelection</Event>
+									</Events>
+									<ChildItems>
+										<InputField name="CertificatesCertificatesTable" id="42">
+											<DataPath>CertificatesTable.Certificate</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Available certificates</v8:content>
+												</v8:item>
+											</Title>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="CertificatesCertificatesTableContextMenu" id="43"/>
+											<ExtendedTooltip name="CertificatesCertificatesTableExtendedTooltip" id="105"/>
+										</InputField>
+										<InputField name="CertificatesTableDocumentsCount" id="44">
+											<DataPath>CertificatesTable.DocumentsCount</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Number of documents to be signed</v8:content>
+												</v8:item>
+											</Title>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>8</Width>
+											<Format>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>NZ=0</v8:content>
+												</v8:item>
+											</Format>
+											<EditFormat>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>NZ=0</v8:content>
+												</v8:item>
+											</EditFormat>
+											<ContextMenu name="CertificatesTableDocumentsCountContextMenu" id="45"/>
+											<ExtendedTooltip name="CertificatesTableDocumentsCountExtendedTooltip" id="106"/>
+										</InputField>
+									</ChildItems>
+								</Table>
+							</ChildItems>
+						</UsualGroup>
+						<CommandBar name="ButtonsGroupForward" id="54">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Buttons group forward</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Buttons group forward</v8:content>
+								</v8:item>
+							</ToolTip>
+							<HorizontalLocation>Right</HorizontalLocation>
+							<ExtendedTooltip name="GroupButtonsNextExtendedTooltip" id="107"/>
+							<ChildItems>
+								<Button name="GoToDocumentsList" id="53">
+									<Type>CommandBarButton</Type>
+									<Representation>PictureAndText</Representation>
+									<CommandName>Form.Command.GoToDocumentsList</CommandName>
+									<Picture>
+										<xr:Ref>StdPicture.MoveRight</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ExtendedTooltip name="NavigateToDocumentsListExtendedTooltip" id="108"/>
+								</Button>
+							</ChildItems>
+						</CommandBar>
+					</ChildItems>
+				</Page>
+				<Page name="DetalizationPage" id="41">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Detalization page</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Detalization page</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="PageOfDetailExtendedTooltip" id="109"/>
+					<ChildItems>
+						<UsualGroup name="GroupQuickFilters" id="82">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Quick filters</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Quick filters</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupFastFiltersExtendedTooltip" id="110"/>
+							<ChildItems>
+								<InputField name="Counterparty" id="83">
+									<DataPath>Counterparty</DataPath>
+									<TitleLocation>Left</TitleLocation>
+									<ClearButton>true</ClearButton>
+									<OpenButton>false</OpenButton>
+									<ContextMenu name="CounterpartyContextMenu" id="84"/>
+									<ExtendedTooltip name="CounterpartyExtendedTooltip" id="111"/>
+									<Events>
+										<Event name="OnChange">CounterpartyOnChange</Event>
+									</Events>
+								</InputField>
+								<InputField name="EDKind" id="85">
+									<DataPath>EDKind</DataPath>
+									<TitleLocation>Left</TitleLocation>
+									<ClearButton>true</ClearButton>
+									<OpenButton>false</OpenButton>
+									<ListChoiceMode>true</ListChoiceMode>
+									<QuickChoice>true</QuickChoice>
+									<ChoiceList>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.EDKinds.EnumValue.PriceList</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.EDKinds.EnumValue.ProductOrder</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.EDKinds.EnumValue.ResponseToOrder</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.EDKinds.EnumValue.InvoiceForPayment</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.EDKinds.EnumValue.TORG12</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.EDKinds.EnumValue.ComissionGoodsSalesReport</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.EDKinds.EnumValue.ComissionGoodsWriteOffReport</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.EDKinds.EnumValue.AcceptanceCertificate</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.EDKinds.EnumValue.GoodsTransferBetweenCompanies</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.EDKinds.EnumValue.ProductsReturnBetweenCompanies</Value>
+											</xr:Value>
+										</xr:Item>
+									</ChoiceList>
+									<ContextMenu name="EDTypeContextMenu" id="86"/>
+									<ExtendedTooltip name="EDTypeExtendedTooltip" id="112"/>
+									<Events>
+										<Event name="OnChange">EDKindOnChange</Event>
+									</Events>
+								</InputField>
+								<InputField name="EDDirection" id="87">
+									<DataPath>EDDirection</DataPath>
+									<TitleLocation>Left</TitleLocation>
+									<ClearButton>true</ClearButton>
+									<OpenButton>false</OpenButton>
+									<QuickChoice>true</QuickChoice>
+									<ContextMenu name="EDDirectionContextMenu" id="88"/>
+									<ExtendedTooltip name="EDDirectionExtendedTooltip" id="113"/>
+									<Events>
+										<Event name="OnChange">EDDirectionOnChange</Event>
+									</Events>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<Table name="DocumentsTable" id="18">
+							<Representation>List</Representation>
+							<ChangeRowSet>false</ChangeRowSet>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<SearchOnInput>DontUse</SearchOnInput>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>DocumentsTable</DataPath>
+							<CommandSet>
+								<ExcludedCommand>Copy</ExcludedCommand>
+								<ExcludedCommand>MoveUp</ExcludedCommand>
+								<ExcludedCommand>SelectAll</ExcludedCommand>
+								<ExcludedCommand>CopyToClipboard</ExcludedCommand>
+								<ExcludedCommand>Delete</ExcludedCommand>
+								<ExcludedCommand>EndEdit</ExcludedCommand>
+								<ExcludedCommand>Add</ExcludedCommand>
+								<ExcludedCommand>Change</ExcludedCommand>
+								<ExcludedCommand>MoveDown</ExcludedCommand>
+							</CommandSet>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="DocumentsTableContextMenu" id="19">
+								<ChildItems>
+									<Button name="ContextMenuSign" id="28">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.Sign</CommandName>
+										<ExtendedTooltip name="ContextMenuSignExtendedTooltip" id="114"/>
+									</Button>
+									<Button name="ContextMenuUpdate" id="38">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.Refresh</CommandName>
+										<ExtendedTooltip name="ContextMenuRefreshExtendedTooltip" id="115"/>
+									</Button>
+								</ChildItems>
+							</ContextMenu>
+							<AutoCommandBar name="DocumentsTableCommandBar" id="20">
+								<Autofill>false</Autofill>
+								<ChildItems>
+									<Button name="Sign" id="26">
+										<Type>CommandBarButton</Type>
+										<DefaultItem>true</DefaultItem>
+										<CommandName>Form.Command.Sign</CommandName>
+										<ExtendedTooltip name="SignExtendedTooltip" id="116"/>
+									</Button>
+									<ButtonGroup name="CommandsGroupFlags" id="89">
+										<Title>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Commands group flags</v8:content>
+											</v8:item>
+										</Title>
+										<ToolTip>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Commands group flags</v8:content>
+											</v8:item>
+										</ToolTip>
+										<ExtendedTooltip name="CommandGroupFlagsExtendedTooltip" id="117"/>
+										<ChildItems>
+											<Button name="CancelSelected" id="58">
+												<Type>CommandBarButton</Type>
+												<Representation>PictureAndText</Representation>
+												<CommandName>Form.Command.CancelSelected</CommandName>
+												<ExtendedTooltip name="MarkSelectedExtendedTooltip" id="118"/>
+											</Button>
+											<Button name="UncheckSelectionFromAllRows" id="59">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.UncheckSelectionFromAllRows</CommandName>
+												<ExtendedTooltip name="UnmarkAllRowsExtendedTooltip" id="119"/>
+											</Button>
+										</ChildItems>
+									</ButtonGroup>
+									<Button name="Refresh" id="37">
+										<Type>CommandBarButton</Type>
+										<Representation>PictureAndText</Representation>
+										<CommandName>Form.Command.Refresh</CommandName>
+										<ExtendedTooltip name="RefreshExtendedTooltip" id="120"/>
+									</Button>
+									<ButtonGroup name="CommandsGroupList" id="75">
+										<Title>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Command group</v8:content>
+											</v8:item>
+										</Title>
+										<ToolTip>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Command group</v8:content>
+											</v8:item>
+										</ToolTip>
+										<CommandSource>Item.DocumentsTable</CommandSource>
+										<ExtendedTooltip name="CommandGroupListExtendedTooltip" id="121"/>
+										<ChildItems>
+											<Button name="DocumentsTableFind" id="76">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Item.DocumentsTable.StandardCommand.Find</CommandName>
+												<ExtendedTooltip name="DocumentsTableFindExtendedTooltip" id="122"/>
+											</Button>
+											<Button name="DocumentsTableCancelSearch" id="77">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Item.DocumentsTable.StandardCommand.CancelSearch</CommandName>
+												<ExtendedTooltip name="DocumentsTableCancelSearchExtendedTooltip" id="123"/>
+											</Button>
+										</ChildItems>
+									</ButtonGroup>
+									<ButtonGroup name="CommandGroupForms" id="73">
+										<Title>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Context menu list command group</v8:content>
+											</v8:item>
+										</Title>
+										<ToolTip>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Context menu list command group</v8:content>
+											</v8:item>
+										</ToolTip>
+										<CommandSource>Form</CommandSource>
+										<ExtendedTooltip name="FormCommandGroupExtendedTooltip" id="124"/>
+									</ButtonGroup>
+									<Button name="DocumentsTableHelp" id="93">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.StandardCommand.Help</CommandName>
+										<ExtendedTooltip name="DocumentsTableHelpExtendedTooltip" id="125"/>
+									</Button>
+								</ChildItems>
+							</AutoCommandBar>
+							<ExtendedTooltip name="DocumentsTableExtendedTooltip" id="126"/>
+							<SearchStringAddition name="DocumentsTableSearchString" id="148">
+								<AdditionSource>
+									<Item>DocumentsTable</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="DocumentsTableSearchStringContextMenu" id="149"/>
+								<ExtendedTooltip name="DocumentsTableSearchStringExtendedTooltip" id="150"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="DocumentsTableViewStatus" id="151">
+								<AdditionSource>
+									<Item>DocumentsTable</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="DocumentsTableViewStatusContextMenu" id="152"/>
+								<ExtendedTooltip name="DocumentsTableViewStatusExtendedTooltip" id="153"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="DocumentsTableSearchControl" id="154">
+								<AdditionSource>
+									<Item>DocumentsTable</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="DocumentsTableSearchControlContextMenu" id="155"/>
+								<ExtendedTooltip name="DocumentsTableSearchControlExtendedTooltip" id="156"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="Selection">DocumentsTableSelection</Event>
+							</Events>
+							<ChildItems>
+								<CheckBoxField name="DocumentsTableSelect" id="56">
+									<DataPath>DocumentsTable.Select</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ShowInHeader>false</ShowInHeader>
+									<ShowInFooter>false</ShowInFooter>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="DocumentsTableChooseContextMenu" id="57"/>
+									<ExtendedTooltip name="DocumentsTableChooseExtendedTooltip" id="127"/>
+								</CheckBoxField>
+								<InputField name="DocumentsTableElectronicDocumentEDKind" id="61">
+									<DataPath>DocumentsTable.ElectronicDocument.EDKind</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Document kind</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>20</Width>
+									<ContextMenu name="DocumentsTableElectronicDocumentEDTypeContextMenu" id="62"/>
+									<ExtendedTooltip name="DocumentsTableElectronicDocumentTypeEDExtendedTooltip" id="128"/>
+								</InputField>
+								<InputField name="DocumentsTableElectronicDocumentEDDirection" id="78">
+									<DataPath>DocumentsTable.ElectronicDocument.EDDirection</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Direction</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>15</Width>
+									<ContextMenu name="DocumentsTableElectronicDocumentEDDirectionContextMenu" id="79"/>
+									<ExtendedTooltip name="DocumentsTableElectronicDocumentEDDirectionExtendedTooltip" id="129"/>
+								</InputField>
+								<InputField name="DocumentsTableElectronicDocumentSenderDocumentNumber" id="63">
+									<DataPath>DocumentsTable.ElectronicDocument.SenderDocumentNumber</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Number</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>20</Width>
+									<ContextMenu name="DocumentsTableElectronicDocumentSenderDocumentNumberContextMenu" id="64"/>
+									<ExtendedTooltip name="DocumentsTableElectronicDocumentSenderDocumentNumberExtendedTooltip" id="130"/>
+								</InputField>
+								<InputField name="DocumentsTableDocumentDate" id="90">
+									<DataPath>DocumentsTable.DocumentDate</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>8</Width>
+									<ContextMenu name="DocumentsTableDocumentDateContextMenu" id="91"/>
+									<ExtendedTooltip name="DocumentsTableDocumentDateExtendedTooltip" id="131"/>
+								</InputField>
+								<InputField name="DocumentsTableVersion" id="94">
+									<DataPath>DocumentsTable.Version</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="DocumentsTableVersionContextMenu" id="95"/>
+									<ExtendedTooltip name="DocumentsTableVersionExtendedTooltip" id="132"/>
+								</InputField>
+								<InputField name="DocumentsTableDocumentAmount" id="80">
+									<DataPath>DocumentsTable.DocumentAmount</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Amount</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="DocumentsTableDocumentSumContextMenu" id="81"/>
+									<ExtendedTooltip name="DocumentsTableDocumentSumExtendedTooltip" id="133"/>
+								</InputField>
+								<InputField name="DocumentsTableElectronicDocumentCounterparty" id="69">
+									<DataPath>DocumentsTable.ElectronicDocument.Counterparty</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="DocumentsTableElectronicDocumentCounterpartyContextMenu" id="70"/>
+									<ExtendedTooltip name="DocumentsTableElectronicDocumentCounterpartyExtendedTooltip" id="134"/>
+								</InputField>
+								<InputField name="DocumentsTableElectronicDocumentCompany" id="67">
+									<DataPath>DocumentsTable.ElectronicDocument.Company</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="DocumentsTableElectronicDocumentCompanyContextMenu" id="68"/>
+									<ExtendedTooltip name="DocumentsTableElectronicDocumentCompanyExtendedTooltip" id="135"/>
+								</InputField>
+								<InputField name="DocumentsTableElectronicDocument" id="21">
+									<DataPath>DocumentsTable.ElectronicDocument</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Electronic document</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<ChoiceButton>false</ChoiceButton>
+									<ClearButton>false</ClearButton>
+									<SpinButton>false</SpinButton>
+									<OpenButton>true</OpenButton>
+									<ChoiceListButton>false</ChoiceListButton>
+									<ContextMenu name="DocumentsTableElectronicDocumentContextMenu" id="22"/>
+									<ExtendedTooltip name="DocumentsTableElectronicDocumentExtendedTooltip" id="136"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+						<CommandBar name="ButtonsGroupBack" id="55">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group buttons back</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Buttons group forward</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ExtendedTooltip name="GroupButtonsBackExtendedTooltip" id="137"/>
+							<ChildItems>
+								<Button name="ReturnToCertificatesList" id="47">
+									<Type>CommandBarButton</Type>
+									<CommandName>Form.Command.ReturnToCertificatesList</CommandName>
+									<ExtendedTooltip name="ReturnToSertificateListExtendedTooltip" id="138"/>
+								</Button>
+							</ChildItems>
+						</CommandBar>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="CertificatesTable" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Table of certificates</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Certificate" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Certificate</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.DigitalSignaturesAndEncryptionKeyCertificates</v8:Type>
+					</Type>
+				</Column>
+				<Column name="DocumentsCount" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Documents count</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="Imprint" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Imprint</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>225</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="UserPassword" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Password of user</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>50</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="DocumentsTable" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Table of documents</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="ElectronicDocument" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Electronic document</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.EDAttachedFiles</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Select" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Select</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="DocumentAmount" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Document amount</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="DocumentDate" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Date</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>Date</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+				<Column name="Version" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Version</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+						<v8:DateQualifiers>
+							<v8:DateFractions>DateTime</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+				<Column name="EDKind" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>ED kind</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:EnumRef.EDKinds</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="SignatureCertificate" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Signature certificate</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.DigitalSignaturesAndEncryptionKeyCertificates</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="SummaryTable" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Summary table</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="ElectronicDocument" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Electronic document</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.EDAttachedFiles</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Certificate" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Certificate</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.DigitalSignaturesAndEncryptionKeyCertificates</v8:Type>
+					</Type>
+				</Column>
+				<Column name="DocumentAmount" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Document amount</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="DocumentDate" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Date</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>Date</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+				<Column name="Version" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Version</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+						<v8:DateQualifiers>
+							<v8:DateFractions>DateTime</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+				<Column name="EDKind" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>ED kind</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:EnumRef.EDKinds</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="EDKind" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Document kind</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.EDKinds</v8:Type>
+			</Type>
+			<Save>
+				<Field>EDKind</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="Counterparty" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Counterparty</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Counterparties</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="EDDirection" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Direction</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.EDDirections</v8:Type>
+			</Type>
+			<Save>
+				<Field>EDDirection</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="Object" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Object</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.ElectronicDocuments</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="Sign" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Sign and send the selected</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Sign the selected electronic documents</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.DigitallySigned</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Sign</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="Refresh" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Refresh</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Refresh</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Shortcut>F5</Shortcut>
+			<Picture>
+				<xr:Ref>StdPicture.Refresh</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Refresh</Action>
+		</Command>
+		<Command name="SignAll" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Sign and send all by certificate</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Sign all</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>SignAll</Action>
+		</Command>
+		<Command name="ReturnToCertificatesList" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Back to certificate list</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Back to certificate list</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.MoveLeft</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ReturnToCertificatesList</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="GoToDocumentsList" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Proceed to the document list</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Proceed to the document list</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>GoToDocumentsList</Action>
+		</Command>
+		<Command name="CancelSelected" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Mark selected</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Mark selected rows</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.CheckAll</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>CancelSelected</Action>
+		</Command>
+		<Command name="UncheckSelectionFromAllRows" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Uncheck all rows</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Uncheck all rows</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.UncheckAll</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>UncheckSelectionFromAllRows</Action>
+		</Command>
+	</Commands>
+</Form>

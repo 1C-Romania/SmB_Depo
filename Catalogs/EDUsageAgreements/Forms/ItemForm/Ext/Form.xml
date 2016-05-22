@@ -1,0 +1,1562 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<ChildItems>
+			<Button name="SettingsTest" id="379">
+				<Type>CommandBarButton</Type>
+				<Representation>PictureAndText</Representation>
+				<CommandName>Form.Command.SettingsTest</CommandName>
+				<Picture>
+					<xr:Ref>CommonPicture.Information</xr:Ref>
+					<xr:LoadTransparent>true</xr:LoadTransparent>
+				</Picture>
+				<ExtendedTooltip name="SettingsTestExtendedTooltip" id="382"/>
+			</Button>
+			<Button name="SendInvitation" id="315">
+				<Type>CommandBarButton</Type>
+				<Representation>PictureAndText</Representation>
+				<CommandName>Form.Command.SendInvitation</CommandName>
+				<ExtendedTooltip name="SendInvitationExtendedTooltip" id="383"/>
+			</Button>
+			<Button name="AcceptInvitation" id="369">
+				<Type>CommandBarButton</Type>
+				<Representation>PictureAndText</Representation>
+				<CommandName>Form.Command.AcceptInvitation</CommandName>
+				<ExtendedTooltip name="AcceptInvitationExtendedTooltip" id="384"/>
+			</Button>
+			<Button name="RejectInvitation" id="370">
+				<Type>CommandBarButton</Type>
+				<Representation>PictureAndText</Representation>
+				<OnlyInAllActions>false</OnlyInAllActions>
+				<CommandName>Form.Command.RejectInvitation</CommandName>
+				<ExtendedTooltip name="RejectInvitationExtendedTooltip" id="385"/>
+			</Button>
+			<Button name="FormEnableAgreementSetupExtendedMode" id="345">
+				<Type>CommandBarButton</Type>
+				<OnlyInAllActions>false</OnlyInAllActions>
+				<CommandName>Form.Command.EnableAgreementSetupExtendedMode</CommandName>
+				<ExtendedTooltip name="FormEnableAgreementSetupExtendedModeExtendedTooltip" id="386"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="NotificationProcessing">NotificationProcessing</Event>
+		<Event name="OnReadAtServer">OnReadAtServer</Event>
+		<Event name="OnOpen">OnOpen</Event>
+		<Event name="8a5894c9-d2ff-4c1d-b433-89cc352bbfbc">BeforeWrite</Event>
+		<Event name="BeforeWrite">BeforeWrite</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="HeaderGroup" id="76">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group header</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group header</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="HeaderGroupExtendedTooltip" id="387"/>
+			<ChildItems>
+				<UsualGroup name="GroupHeaderLeft" id="78">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group header left</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group header left</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="GroupHeaderLeftExtendedTooltip" id="388"/>
+					<ChildItems>
+						<UsualGroup name="GroupConnectionStatus" id="372">
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Connection status group</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupConnectionStatusExtendedTooltip" id="389"/>
+							<ChildItems>
+								<LabelDecoration name="DecorationConnectionStatus" id="380">
+									<Width>17</Width>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Connection status:</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="DecorationConnectionStatusContextMenu" id="381"/>
+									<ExtendedTooltip name="DecorationConnectionStatusExtendedTooltip" id="390"/>
+								</LabelDecoration>
+								<LabelField name="ConnectionStatus" id="352">
+									<DataPath>Object.ConnectionStatus</DataPath>
+									<SkipOnInput>true</SkipOnInput>
+									<TitleLocation>None</TitleLocation>
+									<Width>15</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ConnectionStatusContextMenu" id="353"/>
+									<ExtendedTooltip name="ConnectionStatusExtendedTooltip" id="391"/>
+								</LabelField>
+								<LabelField name="ErrorDescription" id="377">
+									<DataPath>Object.ErrorDescription</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<Hiperlink>true</Hiperlink>
+									<ContextMenu name="ErrorDescriptionContextMenu" id="378"/>
+									<ExtendedTooltip name="ErrorDescriptionExtendedTooltip" id="392"/>
+								</LabelField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="Group5" id="366">
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="Group5ExtendedTooltip" id="393"/>
+							<ChildItems>
+								<InputField name="Counterparty" id="7">
+									<DataPath>Object.Counterparty</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoMarkIncomplete>true</AutoMarkIncomplete>
+									<ChooseType>false</ChooseType>
+									<ContextMenu name="CounterpartyContextMenu" id="8"/>
+									<ExtendedTooltip name="CounterpartyExtendedTooltip" id="394"/>
+									<Events>
+										<Event name="OnChange">CounterpartyOnChange</Event>
+									</Events>
+								</InputField>
+								<LabelField name="Partner" id="279">
+									<DataPath>Partner</DataPath>
+									<Width>19</Width>
+									<ContextMenu name="PartnerContextMenu" id="280"/>
+									<ExtendedTooltip name="PartnerExtendedTooltip" id="395"/>
+								</LabelField>
+							</ChildItems>
+						</UsualGroup>
+						<InputField name="CounterpartyContract" id="320">
+							<DataPath>Object.CounterpartyContract</DataPath>
+							<ContextMenu name="CounterpartyAgreementContextMenu" id="321"/>
+							<ExtendedTooltip name="CounterpartyAgreementExtendedTooltip" id="396"/>
+							<Events>
+								<Event name="OnChange">CounterpartyAgreementOnChange</Event>
+							</Events>
+						</InputField>
+						<InputField name="CounterpartyID" id="58">
+							<DataPath>Object.CounterpartyID</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Recipient ID</v8:content>
+								</v8:item>
+							</Title>
+							<WarningOnEditRepresentation>Show</WarningOnEditRepresentation>
+							<WarningOnEdit>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>The value modification may lead to the electronic documents exchange failure</v8:content>
+								</v8:item>
+							</WarningOnEdit>
+							<AutoMarkIncomplete>true</AutoMarkIncomplete>
+							<ContextMenu name="IDCounterpartyContextMenu" id="59"/>
+							<ExtendedTooltip name="IDCounterpartyExtendedTooltip" id="397"/>
+							<Events>
+								<Event name="OnChange">CounterpartyIDOnChange</Event>
+							</Events>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="GroupHeaderRight" id="79">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group header right</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group header right</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="HeaderGroupRightExtendedTooltip" id="398"/>
+					<ChildItems>
+						<InputField name="State" id="70">
+							<DataPath>Object.AgreementState</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Agreement status</v8:content>
+								</v8:item>
+							</Title>
+							<ChooseType>false</ChooseType>
+							<ContextMenu name="StateContextMenu" id="71"/>
+							<ExtendedTooltip name="StateExtendedTooltip" id="399"/>
+							<Events>
+								<Event name="OnChange">StatusOnChange</Event>
+							</Events>
+						</InputField>
+						<InputField name="CompanySender" id="5">
+							<DataPath>Object.Company</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<AutoMarkIncomplete>true</AutoMarkIncomplete>
+							<ContextMenu name="CompanySenderContextMenu" id="6"/>
+							<ExtendedTooltip name="CompanySenderExtendedTooltip" id="400"/>
+						</InputField>
+						<InputField name="EDFProfileSettings" id="318">
+							<DataPath>Object.EDFProfileSettings</DataPath>
+							<BackColor>style:ManagingFieldBackgroundColor</BackColor>
+							<TypeLink>
+								<xr:DataPath>Object.Company</xr:DataPath>
+								<xr:LinkItem>0</xr:LinkItem>
+							</TypeLink>
+							<ContextMenu name="EDFProfileSettingsContextMenu" id="319"/>
+							<ExtendedTooltip name="EDFProfileSettingsExtendedTooltip" id="401"/>
+							<Events>
+								<Event name="OnChange">EDFProfileSettingsOnChange</Event>
+							</Events>
+						</InputField>
+						<InputField name="CompanyID" id="56">
+							<DataPath>Object.CompanyID</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Sender ID</v8:content>
+								</v8:item>
+							</Title>
+							<AutoMarkIncomplete>true</AutoMarkIncomplete>
+							<ContextMenu name="CompanyIDContextMenu" id="57"/>
+							<ExtendedTooltip name="CompanyIDExtendedTooltip" id="402"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<Pages name="Pages" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Pages</v8:content>
+				</v8:item>
+			</Title>
+			<ExtendedTooltip name="PagesExtendedTooltip" id="403"/>
+			<ChildItems>
+				<Page name="Documents" id="283">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Electronic document types</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Documents</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="DocumentsExtendedTooltip" id="404"/>
+					<ChildItems>
+						<Table name="OutgoingDocuments" id="17">
+							<Representation>List</Representation>
+							<CommandBarLocation>None</CommandBarLocation>
+							<ChangeRowSet>false</ChangeRowSet>
+							<ChangeRowOrder>false</ChangeRowOrder>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>Object.OutgoingDocuments</DataPath>
+							<CommandSet>
+								<ExcludedCommand>Copy</ExcludedCommand>
+								<ExcludedCommand>SortListAsc</ExcludedCommand>
+								<ExcludedCommand>MoveUp</ExcludedCommand>
+								<ExcludedCommand>CancelSearch</ExcludedCommand>
+								<ExcludedCommand>OutputList</ExcludedCommand>
+								<ExcludedCommand>SelectAll</ExcludedCommand>
+								<ExcludedCommand>SortListDesc</ExcludedCommand>
+								<ExcludedCommand>CopyToClipboard</ExcludedCommand>
+								<ExcludedCommand>Delete</ExcludedCommand>
+								<ExcludedCommand>EndEdit</ExcludedCommand>
+								<ExcludedCommand>Add</ExcludedCommand>
+								<ExcludedCommand>Change</ExcludedCommand>
+								<ExcludedCommand>Find</ExcludedCommand>
+								<ExcludedCommand>MoveDown</ExcludedCommand>
+							</CommandSet>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="OutgoingDocumentsContextMenu" id="18"/>
+							<AutoCommandBar name="OutgoingDocumentsCommandBar" id="19"/>
+							<ExtendedTooltip name="OutgoingDocumentsExtendedTooltip" id="405"/>
+							<SearchStringAddition name="OutgoingDocumentsSearchString" id="448">
+								<AdditionSource>
+									<Item>OutgoingDocuments</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="OutgoingDocumentsSearchStringContextMenu" id="449"/>
+								<ExtendedTooltip name="OutgoingDocumentsSearchStringExtendedTooltip" id="450"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="OutgoingDocumentsStatusView" id="451">
+								<AdditionSource>
+									<Item>OutgoingDocuments</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="OutgoingDocumentsStatusViewContextMenu" id="452"/>
+								<ExtendedTooltip name="OutgoingDocumentsStatusViewExtendedTooltip" id="453"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="OutgoingDocumentsSearchControl" id="454">
+								<AdditionSource>
+									<Item>OutgoingDocuments</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="OutgoingDocumentsSearchControlContextMenu" id="455"/>
+								<ExtendedTooltip name="OutgoingDocumentsSearchControlExtendedTooltip" id="456"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="BeforeRowChange">OutgoingDocumentsBeforeStartChanging</Event>
+								<Event name="OnChange">OutgoingDocumentsOnChange</Event>
+							</Events>
+							<ChildItems>
+								<ColumnGroup name="OutgoingDocumentsGroup" id="351">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Document kind</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Outgoing documents group</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>InCell</Group>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="OutgoingDocumentsGroupExtendedTooltip" id="406"/>
+									<ChildItems>
+										<CheckBoxField name="OutgoingDocumentsUseExchange" id="172">
+											<DataPath>Object.OutgoingDocuments.ToForm</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ShowInHeader>false</ShowInHeader>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="OutgoingDocumentsUseExchangeContextMenu" id="173"/>
+											<ExtendedTooltip name="OutgoingDocumentsUseExchangeExtendedTooltip" id="407"/>
+										</CheckBoxField>
+										<InputField name="OutgoingDocumentsDocumentKind" id="22">
+											<DataPath>Object.OutgoingDocuments.OutgoingDocument</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Kind of document used in the EDF</v8:content>
+												</v8:item>
+											</Title>
+											<ChoiceForm>b03bf68c-3cf7-4dcf-9db9-00cc95b31828</ChoiceForm>
+											<ChoiceParameterLinks>
+												<xr:Link>
+													<xr:Name>Filter.Owner</xr:Name>
+													<xr:DataPath xsi:type="xs:string">Object.Ref</xr:DataPath>
+													<xr:ValueChange>Clear</xr:ValueChange>
+												</xr:Link>
+											</ChoiceParameterLinks>
+											<ChoiceParameters>
+												<app:item name="Filter.EDDirection">
+													<app:value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation/>
+														<Value xsi:type="xr:DesignTimeRef">Enum.EDDirections.EnumValue.Outgoing</Value>
+													</app:value>
+												</app:item>
+											</ChoiceParameters>
+											<ContextMenu name="OutgoingDocumentsDocumentTypeContextMenu" id="23"/>
+											<ExtendedTooltip name="OutgoingDocumentsDocumentTypeExtendedTooltip" id="408"/>
+										</InputField>
+									</ChildItems>
+								</ColumnGroup>
+								<InputField name="OutgoingDocumentsFormatVersion" id="270">
+									<DataPath>Object.OutgoingDocuments.FormatVersion</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Format</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<ListChoiceMode>true</ListChoiceMode>
+									<ChoiceList>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>CML 2.08</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:string">CML 2.08</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>CML 4.02</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:string">CML 4.02</Value>
+											</xr:Value>
+										</xr:Item>
+									</ChoiceList>
+									<ContextMenu name="OutgoingDocumentsFormatVersionContextMenu" id="271"/>
+									<ExtendedTooltip name="OutgoingDocumentsFormatVersionExtendedTooltip" id="409"/>
+								</InputField>
+								<CheckBoxField name="OutgoingDocumentsUseDS" id="327">
+									<DataPath>Object.OutgoingDocuments.UseDS</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>ToSign</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="OutgoingDocumentsUseDSContextMenu" id="328"/>
+									<ExtendedTooltip name="OutgoingDocumentsUseDSExtendedTooltip" id="410"/>
+								</CheckBoxField>
+								<InputField name="OutgoingDocumentsCounterpartyID" id="331">
+									<DataPath>Object.OutgoingDocuments.CounterpartyID</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Recipient ID</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="OutgoingDocumentsCounterpartyIDContextMenu" id="332"/>
+									<ExtendedTooltip name="OutgoingDocumentsCounterpartyIDExtendedTooltip" id="411"/>
+								</InputField>
+								<InputField name="OutgoingDocumentsEDFProfileSettings" id="329">
+									<DataPath>Object.OutgoingDocuments.EDFProfileSettings</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="OutgoingDocumentsEDFProfileSettingsContextMenu" id="330"/>
+									<ExtendedTooltip name="OutgoingDocumentsEDFProfileSettingsExtendedTooltip" id="412"/>
+									<Events>
+										<Event name="OnChange">OutgoingDocumentsEDFProfileSettingsOnChange</Event>
+									</Events>
+								</InputField>
+								<InputField name="OutgoingDocumentsCompanyID" id="333">
+									<DataPath>Object.OutgoingDocuments.CompanyID</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Sender ID</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="OutgoingDocumentsCompanyIDContextMenu" id="334"/>
+									<ExtendedTooltip name="OutgoingDocumentsCompanyIDExtendedTooltip" id="413"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="Settings" id="284">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Settings</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Settings</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="SettingsExtendedTooltip" id="414"/>
+					<ChildItems>
+						<UsualGroup name="SettingsGroupDirectExchange" id="287">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Direct exchange with counterparties</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Direct exchange settings group</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Representation>StrongSeparation</Representation>
+							<ExtendedTooltip name="GroupSettingsDirectExchangeExtendedTooltip" id="415"/>
+							<ChildItems>
+								<UsualGroup name="GroupSettingsDirectExchangeThroughDirectory" id="286">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Through directory</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Exchange through operator settings group</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Vertical</Group>
+									<ExtendedTooltip name="GroupSettingsDirectExchangeThroughDirectoryExtendedTooltip" id="416"/>
+									<ChildItems>
+										<InputField name="IncomingDocumentsDir" id="11">
+											<DataPath>Object.IncomingDocumentsDir</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Incoming documents catalog</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Directory which the incoming electronic documents will be received from</v8:content>
+												</v8:item>
+											</ToolTip>
+											<EditMode>EnterOnInput</EditMode>
+											<ChoiceButton>true</ChoiceButton>
+											<AutoMarkIncomplete>true</AutoMarkIncomplete>
+											<ChooseType>false</ChooseType>
+											<ContextMenu name="IncomingDocumentsDirContextMenu" id="12"/>
+											<ExtendedTooltip name="IncomingDocumentsDirExtendedTooltip" id="417"/>
+											<Events>
+												<Event name="StartChoice">IncomingDocumentsDirBeginChoice</Event>
+											</Events>
+										</InputField>
+										<LabelDecoration name="ExplanationDirectoryInboxDocuments" id="268">
+											<TextColor>style:ExplanationText</TextColor>
+											<ContextMenu name="DescriptionOfCatalogOfIncomingDocumentsContextMenu" id="269"/>
+											<ExtendedTooltip name="DescriptionOfCatalogOfIncomingDocumentsExtendedTooltip" id="418"/>
+										</LabelDecoration>
+										<InputField name="OutgoingDocumentsDir" id="13">
+											<DataPath>Object.OutgoingDocumentsDir</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Outgoing documents directory</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Directory the outgoing electronic documents will be copied to</v8:content>
+												</v8:item>
+											</ToolTip>
+											<EditMode>EnterOnInput</EditMode>
+											<ChoiceButton>true</ChoiceButton>
+											<AutoMarkIncomplete>true</AutoMarkIncomplete>
+											<ChooseType>false</ChooseType>
+											<ContextMenu name="OutgoingDocumentsDirContextMenu" id="14"/>
+											<ExtendedTooltip name="OutgoingDocumentsDirExtendedTooltip" id="419"/>
+											<Events>
+												<Event name="StartChoice">OutgoingDocumentsDirBeginChoice</Event>
+											</Events>
+										</InputField>
+										<LabelDecoration name="OutgoingDocumentsDirClarification" id="266">
+											<TextColor>style:ExplanationText</TextColor>
+											<ContextMenu name="OutgoingDocumentsDirClarificationContextMenu" id="267"/>
+											<ExtendedTooltip name="OutgoingDocumentsDirClarificationExtendedTooltip" id="420"/>
+										</LabelDecoration>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="GroupSettingsDirectExchangeThroughEMail" id="288">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>By email</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Exchange through operator settings group</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Vertical</Group>
+									<ExtendedTooltip name="GroupSettingsDirectExchangeThroughEMailExtendedTooltip" id="421"/>
+									<ChildItems>
+										<InputField name="CounterpartyEmail" id="262">
+											<DataPath>Object.CounterpartyEmail</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Email Counterparty email</v8:content>
+												</v8:item>
+											</Title>
+											<EditMode>EnterOnInput</EditMode>
+											<HorizontalStretch>true</HorizontalStretch>
+											<AutoMarkIncomplete>true</AutoMarkIncomplete>
+											<ChooseType>false</ChooseType>
+											<ContextMenu name="CounterpartyEmailContextMenu" id="263"/>
+											<ExtendedTooltip name="CounterpartyEmailExtendedTooltip" id="422"/>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="GroupSettingsDirectExchangeThroughFTP" id="289">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Through FTP</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Exchange through operator settings group</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Vertical</Group>
+									<ExtendedTooltip name="GroupSettingsDirectExchangeThroughFTPExtendedTooltip" id="423"/>
+									<ChildItems>
+										<UsualGroup name="GroupFTPResources" id="251">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>FTP resources group</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>FTP resources group</v8:content>
+												</v8:item>
+											</ToolTip>
+											<HorizontalStretch>true</HorizontalStretch>
+											<Group>Vertical</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="GroupFTPResourcesExtendedTooltip" id="424"/>
+											<ChildItems>
+												<InputField name="FTPIncomingDocumentsDir" id="247">
+													<DataPath>Object.IncomingDocumentsDirFTP</DataPath>
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Incoming documents catalog</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Directory on the resource out of which the incoming electronic document will be read</v8:content>
+														</v8:item>
+													</ToolTip>
+													<ChoiceButton>false</ChoiceButton>
+													<AutoMarkIncomplete>true</AutoMarkIncomplete>
+													<ContextMenu name="FTPIncomingDocumentsDirContextMenu" id="248"/>
+													<ExtendedTooltip name="FTPIncomingDocumentsDirExtendedTooltip" id="425"/>
+												</InputField>
+												<InputField name="FTPOutgoingDocumentsDir" id="249">
+													<DataPath>Object.OutgoingDocumentsDirFTP</DataPath>
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Outgoing documents directory</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Directory in the resource where the outgoing documents will be copied to</v8:content>
+														</v8:item>
+													</ToolTip>
+													<HorizontalStretch>true</HorizontalStretch>
+													<AutoMarkIncomplete>true</AutoMarkIncomplete>
+													<ContextMenu name="FTPOutgoingDocumentsDirContextMenu" id="250"/>
+													<ExtendedTooltip name="FTPOutgoingDocumentsDirExtendedTooltip" id="426"/>
+												</InputField>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</UsualGroup>
+								<LabelDecoration name="Decoration2" id="347">
+									<ContextMenu name="Decoration2ContextMenu" id="348"/>
+									<ExtendedTooltip name="Decoration2ExtendedTooltip" id="427"/>
+								</LabelDecoration>
+								<UsualGroup name="GroupSettingsDirectExchangeEncryption" id="294">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Encryption</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group direct exchange settings encryption</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupSettingsDirectExchangeEncryptionExtendedTooltip" id="428"/>
+									<ChildItems>
+										<CheckBoxField name="EncryptEDPackageData" id="305">
+											<DataPath>Object.EncryptEDPackageData</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Encrypt ED package data</v8:content>
+												</v8:item>
+											</Title>
+											<TitleLocation>Right</TitleLocation>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="EncryptEDPackageDataContextMenu" id="306"/>
+											<ExtendedTooltip name="EncryptEDPackageDataExtendedTooltip" id="429"/>
+											<Events>
+												<Event name="OnChange">EncryptEDPackageDataOnChange</Event>
+											</Events>
+										</CheckBoxField>
+										<UsualGroup name="GroupEDPackageDataEncryption" id="307">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>ED package data encryption group</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>ED package data encryption group</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Horizontal</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="GroupEDDataPackageEncryptionExtendedTooltip" id="430"/>
+											<ChildItems>
+												<InputField name="CompanyCertificateForDetails" id="54">
+													<DataPath>Object.CompanyCertificateForDetails</DataPath>
+													<ClearButton>true</ClearButton>
+													<ChoiceParameterLinks>
+														<xr:Link>
+															<xr:Name>Filter.Company</xr:Name>
+															<xr:DataPath xsi:type="xs:string">Object.Company</xr:DataPath>
+															<xr:ValueChange>Clear</xr:ValueChange>
+														</xr:Link>
+													</ChoiceParameterLinks>
+													<ContextMenu name="CompanyCertificateForDetailsContextMenu" id="55"/>
+													<ExtendedTooltip name="CompanyCertificateForDetailsExtendedTooltip" id="431"/>
+													<Events>
+														<Event name="StartChoice">CompanyCertificateForDetailsStartChoice</Event>
+														<Event name="ChoiceProcessing">CompanyCertificateForDetailsChoiceDataProcessor</Event>
+													</Events>
+												</InputField>
+												<InputField name="CounterpartyCertificateForEncryption" id="80">
+													<DataPath>CounterpartyEncryptionCertificatePresentation</DataPath>
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Encryption certificate</v8:content>
+														</v8:item>
+													</Title>
+													<ChoiceButton>true</ChoiceButton>
+													<ClearButton>true</ClearButton>
+													<ContextMenu name="CertificateOfCounterpartyForEncryptionContextMenu" id="81"/>
+													<ExtendedTooltip name="CertificateOfCounterpartyForEncryptionExtendedTooltip" id="432"/>
+													<Events>
+														<Event name="OnChange">CounterpartyCertificateForEncryptionOnChange</Event>
+														<Event name="StartChoice">CounterpartyCertificateForEncryptionBeginChoice</Event>
+														<Event name="Clearing">CounterpartyCertificateForEncryptionCleaning</Event>
+													</Events>
+												</InputField>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="SettingsGroupDirectExchangeEDPackageFormat" id="296">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>ED package format</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group direct exchange settings ED package format</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupSettingsDirectExchangeEDPackageFormatExtendedTooltip" id="433"/>
+									<ChildItems>
+										<CheckBoxField name="ChangeEDPackageFormat" id="303">
+											<DataPath>Object.ChangeEDPackageFormat</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Change ED package format</v8:content>
+												</v8:item>
+											</Title>
+											<TitleLocation>Right</TitleLocation>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="ChangeEDPackageFormatContextMenu" id="304"/>
+											<ExtendedTooltip name="ChangeEDPackageFormatExtendedTooltip" id="434"/>
+											<Events>
+												<Event name="OnChange">ChangeEDPackageFormatOnChange</Event>
+											</Events>
+										</CheckBoxField>
+										<UsualGroup name="GroupEDPackageFormat" id="308">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group ED package format</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group ED package format</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Vertical</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="GroupEDPackageFormatExtendedTooltip" id="435"/>
+											<ChildItems>
+												<InputField name="PackageFormatVersion" id="272">
+													<DataPath>Object.PackageFormatVersion</DataPath>
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Send in the electronic document package</v8:content>
+														</v8:item>
+													</Title>
+													<ContextMenu name="PackageFormatVersionContextMenu" id="273"/>
+													<ExtendedTooltip name="PackageFormatVersionExtendedTooltip" id="436"/>
+												</InputField>
+												<Table name="ExchangeFilesFormats" id="202">
+													<TitleLocation>Auto</TitleLocation>
+													<ChangeRowSet>false</ChangeRowSet>
+													<ChangeRowOrder>false</ChangeRowOrder>
+													<Height>7</Height>
+													<Header>false</Header>
+													<HorizontalLines>false</HorizontalLines>
+													<VerticalLines>false</VerticalLines>
+													<AutoInsertNewRow>true</AutoInsertNewRow>
+													<VerticalStretch>false</VerticalStretch>
+													<EnableStartDrag>true</EnableStartDrag>
+													<EnableDrag>true</EnableDrag>
+													<DataPath>Object.ExchangeFilesFormats</DataPath>
+													<CommandSet>
+														<ExcludedCommand>Copy</ExcludedCommand>
+														<ExcludedCommand>SortListAsc</ExcludedCommand>
+														<ExcludedCommand>MoveUp</ExcludedCommand>
+														<ExcludedCommand>CancelSearch</ExcludedCommand>
+														<ExcludedCommand>OutputList</ExcludedCommand>
+														<ExcludedCommand>SelectAll</ExcludedCommand>
+														<ExcludedCommand>SortListDesc</ExcludedCommand>
+														<ExcludedCommand>CopyToClipboard</ExcludedCommand>
+														<ExcludedCommand>Delete</ExcludedCommand>
+														<ExcludedCommand>EndEdit</ExcludedCommand>
+														<ExcludedCommand>Add</ExcludedCommand>
+														<ExcludedCommand>Change</ExcludedCommand>
+														<ExcludedCommand>Find</ExcludedCommand>
+														<ExcludedCommand>MoveDown</ExcludedCommand>
+													</CommandSet>
+													<SearchStringLocation>None</SearchStringLocation>
+													<ViewStatusLocation>None</ViewStatusLocation>
+													<SearchControlLocation>None</SearchControlLocation>
+													<RowFilter xsi:nil="true"/>
+													<ContextMenu name="ExchangeFilesFormatsContextMenu" id="203"/>
+													<AutoCommandBar name="ExchangeFilesFormatsCommandBar" id="204"/>
+													<ExtendedTooltip name="ExchangeFilesFormatsExtendedTooltip" id="437"/>
+													<SearchStringAddition name="ExchangeFilesFormatsSearchString" id="457">
+														<AdditionSource>
+															<Item>ExchangeFilesFormats</Item>
+															<Type>SearchStringRepresentation</Type>
+														</AdditionSource>
+														<ContextMenu name="ExchangeFilesFormatsSearchStringContextMenu" id="458"/>
+														<ExtendedTooltip name="ExchangeFileFormatsSearchStringExtendedTooltip" id="459"/>
+													</SearchStringAddition>
+													<ViewStatusAddition name="ExchangeFilesFormatsStatusView" id="460">
+														<AdditionSource>
+															<Item>ExchangeFilesFormats</Item>
+															<Type>ViewStatusRepresentation</Type>
+														</AdditionSource>
+														<ContextMenu name="ExchangeFileFormatsStatusViewContextMenu" id="461"/>
+														<ExtendedTooltip name="ExchangeFilesFormatsStatusViewExtendedTooltip" id="462"/>
+													</ViewStatusAddition>
+													<SearchControlAddition name="ExchangeFilesFormatsSearchControl" id="463">
+														<AdditionSource>
+															<Item>ExchangeFilesFormats</Item>
+															<Type>SearchControl</Type>
+														</AdditionSource>
+														<ContextMenu name="ExchangeFileFormatsSearchControlContextMenu" id="464"/>
+														<ExtendedTooltip name="ExchangeFileFormatsSearchControlExtendedTooltip" id="465"/>
+													</SearchControlAddition>
+													<ChildItems>
+														<CheckBoxField name="ExchangeFilesFormatsUse" id="207">
+															<DataPath>Object.ExchangeFilesFormats.Use</DataPath>
+															<TitleLocation>None</TitleLocation>
+															<EditMode>EnterOnInput</EditMode>
+															<CheckBoxType>Auto</CheckBoxType>
+															<ContextMenu name="ExchangeFilesFormatsUseContextMenu" id="208"/>
+															<ExtendedTooltip name="ExchangeFilesFormatsUseExtendedTooltip" id="438"/>
+														</CheckBoxField>
+														<InputField name="FilesFormatsExchangeFilesFormats" id="209">
+															<DataPath>Object.ExchangeFilesFormats.FileFormat</DataPath>
+															<ReadOnly>true</ReadOnly>
+															<EditMode>EnterOnInput</EditMode>
+															<ContextMenu name="FilesFormatsExchangeFilesFormatsContextMenu" id="210"/>
+															<ExtendedTooltip name="FilesFormatsExchangeFilesFormatsExtendedTooltip" id="439"/>
+														</InputField>
+													</ChildItems>
+												</Table>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="GroupSettingsDirectExchangeTrustedCertificates" id="295">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Trusted certificates</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group direct exchange settings trusted certificates</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupSettingsDirectExchangeTrustedCertificatesExtendedTooltip" id="440"/>
+									<ChildItems>
+										<CheckBoxField name="VerifySignatureCertificates" id="182">
+											<DataPath>Object.VerifySignatureCertificates</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Verify the counterparty signature certificates for incoming documents</v8:content>
+												</v8:item>
+											</Title>
+											<TitleLocation>Right</TitleLocation>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="VerifySignatureCertificatesContextMenu" id="183"/>
+											<ExtendedTooltip name="VerifySignatureCertificatesExtendedTooltip" id="441"/>
+											<Events>
+												<Event name="OnChange">VerifySignatureCertificatesOnChange</Event>
+											</Events>
+										</CheckBoxField>
+										<UsualGroup name="GroupSettingsDirectExchangeTrustedCertificatesList" id="302">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group direct exchange settings trusted certificates list</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group direct exchange settings trusted certificates list</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Vertical</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="GroupSettingsDirectExchangeTrustedCertificatesListExtendedTooltip" id="442"/>
+											<ChildItems>
+												<Table name="CounterpartySignaturesCertificates" id="177">
+													<ChangeRowOrder>false</ChangeRowOrder>
+													<AutoInsertNewRow>true</AutoInsertNewRow>
+													<EnableStartDrag>true</EnableStartDrag>
+													<EnableDrag>true</EnableDrag>
+													<DataPath>Object.CounterpartySignaturesCertificates</DataPath>
+													<SearchStringLocation>None</SearchStringLocation>
+													<ViewStatusLocation>None</ViewStatusLocation>
+													<SearchControlLocation>None</SearchControlLocation>
+													<RowFilter xsi:nil="true"/>
+													<ContextMenu name="CounterpartySignaturesCertificatesContextMenu" id="178"/>
+													<AutoCommandBar name="CounterpartySignaturesCertificatesCommandPanel" id="179"/>
+													<ExtendedTooltip name="CounterpartySignaturesCertificatesExtendedTooltip" id="443"/>
+													<SearchStringAddition name="CounterpartySignaturesCertificatesSearchString" id="466">
+														<AdditionSource>
+															<Item>CounterpartySignaturesCertificates</Item>
+															<Type>SearchStringRepresentation</Type>
+														</AdditionSource>
+														<ContextMenu name="CounterpartySignaturesCertificatesSearchStringContextMenu" id="467"/>
+														<ExtendedTooltip name="CounterpartySignaturesCertificatesSearchStringExtendedTooltip" id="468"/>
+													</SearchStringAddition>
+													<ViewStatusAddition name="CounterpartySignaturesCertificatesStatusView" id="469">
+														<AdditionSource>
+															<Item>CounterpartySignaturesCertificates</Item>
+															<Type>ViewStatusRepresentation</Type>
+														</AdditionSource>
+														<ContextMenu name="CounterpartySignaturesCertificatesStatusViewContextMenu" id="470"/>
+														<ExtendedTooltip name="CounterpartySignaturesCertificatesStatusViewExtendedTooltip" id="471"/>
+													</ViewStatusAddition>
+													<SearchControlAddition name="CounterpartySignaturesCertificatesSearchControl" id="472">
+														<AdditionSource>
+															<Item>CounterpartySignaturesCertificates</Item>
+															<Type>SearchControl</Type>
+														</AdditionSource>
+														<ContextMenu name="CounterpartySignaturesCertificatesSearchControlContextMenu" id="473"/>
+														<ExtendedTooltip name="CounterpartySignaturesCertificatesSearchControlExtendedTooltip" id="474"/>
+													</SearchControlAddition>
+													<ChildItems>
+														<LabelField name="CounterpartySignaturesCertificatesLineNumber" id="180">
+															<DataPath>Object.CounterpartySignaturesCertificates.LineNumber</DataPath>
+															<EditMode>EnterOnInput</EditMode>
+															<ContextMenu name="CounterpartySignaturesCertificatesLineNumberContextMenu" id="181"/>
+															<ExtendedTooltip name="CounterpartySignaturesCertificatesLineNumberExtendedTooltip" id="444"/>
+														</LabelField>
+														<InputField name="CounterpartySignaturesCertificatesCounterpartyCertificatePresentation" id="184">
+															<DataPath>Object.CounterpartySignaturesCertificates.CounterpartyCertificatePresentation</DataPath>
+															<Title>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Certificate </v8:content>
+																</v8:item>
+															</Title>
+															<EditMode>EnterOnInput</EditMode>
+															<ChoiceButton>true</ChoiceButton>
+															<ClearButton>true</ClearButton>
+															<ContextMenu name="CounterpartySignaturesCertificatesPresentationOfCounterpartyCertificateContextMenu" id="185"/>
+															<ExtendedTooltip name="CounterpartySignaturesCertificatesPresentationOfCounterpartyCertificateExtendedTooltip" id="445"/>
+															<Events>
+																<Event name="OnChange">CounterpartySignaturesCertificatesCounterpartyCertificatePresentationOnChange</Event>
+																<Event name="StartChoice">CounterpartySignaturesCertificatesCounterpartyCertificatePresentationBeginChoice</Event>
+																<Event name="Clearing">CounterpartySignaturesCertificatesCounterpartyCertificatePresentationClearing</Event>
+															</Events>
+														</InputField>
+													</ChildItems>
+												</Table>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+		<UsualGroup name="CommentGroup" id="371">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group comment</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group comment</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Representation>None</Representation>
+			<ChildItemsWidth>Equal</ChildItemsWidth>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="FolderCommentExtendedTooltip" id="446"/>
+			<ChildItems>
+				<InputField name="Comment" id="136">
+					<DataPath>Object.Comment</DataPath>
+					<ContextMenu name="CommentContextMenu" id="137"/>
+					<ExtendedTooltip name="CommentExtendedTooltip" id="447"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Type>
+				<v8:Type>cfg:CatalogObject.EDUsageAgreements</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+			<UseAlways>
+				<Field>Object.Ref</Field>
+			</UseAlways>
+			<Columns>
+				<AdditionalColumns table="Object.CompanySignatureCertificates"/>
+				<AdditionalColumns table="Object.OutgoingDocuments">
+					<Column name="CounterpartyCertificatePresentation" id="1">
+						<Title>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Counterparty certificate presentation</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:string</v8:Type>
+							<v8:StringQualifiers>
+								<v8:Length>0</v8:Length>
+								<v8:AllowedLength>Variable</v8:AllowedLength>
+							</v8:StringQualifiers>
+						</Type>
+					</Column>
+				</AdditionalColumns>
+				<AdditionalColumns table="Object.CounterpartySignaturesCertificates"/>
+				<AdditionalColumns table="Object.IncomingDocuments">
+					<Column name="CounterpartyCertificatePresentation" id="1">
+						<Title>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Counterparty certificate presentation</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:string</v8:Type>
+							<v8:StringQualifiers>
+								<v8:Length>0</v8:Length>
+								<v8:AllowedLength>Variable</v8:AllowedLength>
+							</v8:StringQualifiers>
+						</Type>
+					</Column>
+				</AdditionalColumns>
+			</Columns>
+		</Attribute>
+		<Attribute name="CounterpartyEncryptionCertificatePresentation" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Counterparty encryption certificate presentation</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<Edit>
+				<xr:Common>false</xr:Common>
+				<xr:Value name="Role.EDParametersSetting">true</xr:Value>
+				<xr:Value name="Role.FullRights">true</xr:Value>
+			</Edit>
+		</Attribute>
+		<Attribute name="StagesTableOutgoing" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Stages table outgoing</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="StagesTableIncoming" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Stages table incoming</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ThroughEDFOperator" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Through EDF operator</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Partner" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Partner</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="PathToParentDirectoryEDFProfileSettings" id="8">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="UsedAdditionalAnalyticsPartners" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Used additional analytics partners</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="DirectoryUseInApplication" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>In application catalog is used</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="InAgreementCatalogIsUsed" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>In agreement catalog is used</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ThroughDirectory" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Through directory</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ThroughEMail" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>By email</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ThroughFTP" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Through FTP</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="SetFormModified" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Define form modifications</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<ConditionalAppearance>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>CompanySender</dcsset:field>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:field>Counterparty</dcsset:field>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:field>CompanyID</dcsset:field>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:field>CounterpartyID</dcsset:field>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:field>CounterpartyEmail</dcsset:field>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:field>FTPOutgoingDocumentsDir</dcsset:field>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:field>FTPIncomingDocumentsDir</dcsset:field>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:field>IncomingDocumentsDir</dcsset:field>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:field>OutgoingDocumentsDir</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Object.AgreementState</dcsset:left>
+						<dcsset:comparisonType>NotEqual</dcsset:comparisonType>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>MarkIncomplete</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>OutgoingDocumentsFormatVersion</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemGroup">
+						<dcsset:groupType>NotGroup</dcsset:groupType>
+						<dcsset:item xsi:type="dcsset:FilterItemGroup">
+							<dcsset:groupType>AndGroup</dcsset:groupType>
+							<dcsset:item xsi:type="dcsset:FilterItemComparison">
+								<dcsset:left xsi:type="dcscor:Field">Object.OutgoingDocuments.OutgoingDocument</dcsset:left>
+								<dcsset:comparisonType>InList</dcsset:comparisonType>
+								<dcsset:right xsi:type="dcscor:DesignTimeValue">Enum.EDExchangeMethods.EmptyRef</dcsset:right>
+								<dcsset:right xsi:type="dcscor:DesignTimeValue">Enum.EDKinds.ProductOrder</dcsset:right>
+								<dcsset:right xsi:type="dcscor:DesignTimeValue">Enum.EDKinds.ResponseToOrder</dcsset:right>
+								<dcsset:right xsi:type="dcscor:DesignTimeValue">Enum.EDKinds.ComissionGoodsSalesReport</dcsset:right>
+								<dcsset:right xsi:type="dcscor:DesignTimeValue">Enum.EDKinds.ComissionGoodsWriteOffReport</dcsset:right>
+								<dcsset:right xsi:type="dcscor:DesignTimeValue">Enum.EDKinds.PriceList</dcsset:right>
+								<dcsset:right xsi:type="dcscor:DesignTimeValue">Enum.EDKinds.CustomerInvoiceNoteForPayment</dcsset:right>
+								<dcsset:right xsi:type="dcscor:DesignTimeValue">Enum.EDKinds.ProductsDirectory</dcsset:right>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:FilterItemComparison">
+								<dcsset:left xsi:type="dcscor:Field">Object.OutgoingDocuments.ToForm</dcsset:left>
+								<dcsset:comparisonType>Equal</dcsset:comparisonType>
+								<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+							</dcsset:item>
+						</dcsset:item>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>TextColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">#C0C0C0</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ReadOnly</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>OutgoingDocumentsCounterpartyID</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Object.OutgoingDocuments.EDExchangeMethod</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="dcscor:DesignTimeValue">Enum.EDExchangeMethods.ThroughEDFOperatorTaxcom</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:use>false</dcscor:use>
+						<dcscor:parameter>TextColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">#C0C0C0</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ReadOnly</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>CounterpartyID</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Object.EDExchangeMethod</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="dcscor:DesignTimeValue">Enum.EDExchangeMethods.ThroughEDFOperatorTaxcom</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:use>false</dcscor:use>
+						<dcscor:parameter>TextColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">#C0C0C0</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ReadOnly</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+		</ConditionalAppearance>
+	</Attributes>
+	<Commands>
+		<Command name="SendInvitation" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Send invitation</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Send invitation</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.ExportDataFromInfobaseIntoXMLFile</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+				<xr:TransparentPixel x="14" y="1"/>
+			</Picture>
+			<Action>SendInvitation</Action>
+		</Command>
+		<Command name="EnableAgreementSetupExtendedMode" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Enable extended mode</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Enable agreement setup extended mode</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>EnableAgreementSetupExtendedMode</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="AcceptInvitation" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Accept invitation</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Send invitation</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.WriteAndClose</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>AcceptInvitation</Action>
+		</Command>
+		<Command name="RejectInvitation" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Reject invitation</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Send invitation</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.StopSign</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>RejectInvitation</Action>
+		</Command>
+		<Command name="SettingsTest" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Test settings</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Test settings</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>SettingsTest</Action>
+		</Command>
+	</Commands>
+	<CommandInterface>
+		<CommandBar>
+			<Item>
+				<Command>DataProcessor.ElectronicDocuments.Command.ResendED</Command>
+				<Type>Auto</Type>
+				<CommandGroup>CommandGroup.ED</CommandGroup>
+				<Index>3</Index>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+			<Item>
+				<Command>DataProcessor.ElectronicDocuments.Command.GenerateSignSendED</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+			<Item>
+				<Command>Catalog.EDUsageAgreements.Command.SendCatalogByAgreement</Command>
+				<Type>Auto</Type>
+				<CommandGroup>CommandGroup.ED</CommandGroup>
+				<Index>1</Index>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+			<Item>
+				<Command>0:f23cbc33-9c7c-4f54-97b7-53b9231a1c6d</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormCommandBarImportant</CommandGroup>
+			</Item>
+		</CommandBar>
+	</CommandInterface>
+</Form>

@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<CommandSet>
+		<ExcludedCommand>Copy</ExcludedCommand>
+	</CommandSet>
+	<AutoCommandBar name="FormCommandBar" id="-1"/>
+	<Events>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="GroupDataParticipant" id="23">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Participant's data group</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Participant's data group</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="GroupDataParticipantExtendedTooltip" id="26"/>
+			<ChildItems>
+				<InputField name="Participant" id="3">
+					<DataPath>Record.Participant</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<ContextMenu name="ParticipantContextMenu" id="4"/>
+					<ExtendedTooltip name="ParticipantExtendedTooltip" id="27"/>
+				</InputField>
+				<InputField name="AgreementAboutEDUsage" id="9">
+					<DataPath>Record.AgreementAboutEDUsage</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<ContextMenu name="AgreementOnUseOfEDContextMenu" id="10"/>
+					<ExtendedTooltip name="AgreementOnUseOfEDExtendedTooltip" id="28"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="StatusGroup" id="19">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Status group</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Status group</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="GroupStatusExtendedTooltip" id="29"/>
+			<ChildItems>
+				<InputField name="Status" id="15">
+					<DataPath>Record.Status</DataPath>
+					<ContextMenu name="StateContextMenu" id="16"/>
+					<ExtendedTooltip name="StateExtendedTooltip" id="30"/>
+				</InputField>
+				<InputField name="StatusModificationDate" id="17">
+					<DataPath>Record.StatusModificationDate</DataPath>
+					<ContextMenu name="StatusModificationDateContextMenu" id="18"/>
+					<ExtendedTooltip name="StatusModificationDateExtendedTooltip" id="31"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<InputField name="ID" id="11">
+			<DataPath>Record.ID</DataPath>
+			<ContextMenu name="IDContextMenu" id="12"/>
+			<ExtendedTooltip name="IDExtendedTooltip" id="32"/>
+		</InputField>
+		<InputField name="EMail_Address" id="7">
+			<DataPath>Record.EMail_Address</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Email address</v8:content>
+				</v8:item>
+			</Title>
+			<ContextMenu name="EmailAddressContextMenu" id="8"/>
+			<ExtendedTooltip name="EMAddressExtendedTooltip" id="33"/>
+		</InputField>
+		<UsualGroup name="AdditionalParametersGroup" id="22">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Additional parameter group</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Additional parameter group</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="GroupAdditionalParametersExtendedTooltip" id="34"/>
+			<ChildItems>
+				<InputField name="EDExchangeFilesFormat" id="13">
+					<DataPath>Record.EDExchangeFilesFormat</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<ContextMenu name="EDExchangeFilesFormatContextMenu" id="14"/>
+					<ExtendedTooltip name="EDExchangeFilesFormatExtendedTooltip" id="35"/>
+				</InputField>
+				<InputField name="ScheduleVersion" id="20">
+					<DataPath>Record.EDFScheduleVersion</DataPath>
+					<ContextMenu name="ScheduleVersionContextMenu" id="21"/>
+					<ExtendedTooltip name="ScheduleVersionExtendedTooltip" id="36"/>
+					<Events>
+						<Event name="OnChange">ScheduleVersionOnChange</Event>
+					</Events>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<InputField name="ErrorDescription" id="24">
+			<DataPath>Record.ErrorDescription</DataPath>
+			<ReadOnly>true</ReadOnly>
+			<ContextMenu name="ErrorDescriptionContextMenu" id="25"/>
+			<ExtendedTooltip name="ErrorDescriptionExtendedTooltip" id="37"/>
+		</InputField>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Record" id="1">
+			<Type>
+				<v8:Type>cfg:InformationRegisterRecordManager.DeleteEDExchangeMembersThroughEDFOperators</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+	</Attributes>
+</Form>

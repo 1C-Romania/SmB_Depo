@@ -1,0 +1,775 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Width>88</Width>
+	<Customizable>false</Customizable>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="NotificationProcessing">NotificationProcessing</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+		<Event name="OnClose">OnClose</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="GroupTitle" id="1710">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content> </v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content> </v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="GroupHeaderExtendedTooltip" id="1733"/>
+			<ChildItems>
+				<LabelDecoration name="SectionDescription" id="1569">
+					<Width>78</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<VerticalStretch>false</VerticalStretch>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Electronic document exchange parameters setup.</v8:content>
+						</v8:item>
+					</Title>
+					<VerticalAlign>Top</VerticalAlign>
+					<ContextMenu name="SectionDescriptionContextMenu" id="1570"/>
+					<ExtendedTooltip name="SectionDescriptionExtendedTooltip" id="1734"/>
+				</LabelDecoration>
+				<LabelDecoration name="DecorationHeader" id="1711">
+					<HorizontalStretch>true</HorizontalStretch>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content> </v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content> </v8:content>
+						</v8:item>
+					</ToolTip>
+					<ContextMenu name="DecorationHeaderContextMenu" id="1712"/>
+					<ExtendedTooltip name="DecorationHeaderExtendedTooltip" id="1735"/>
+				</LabelDecoration>
+				<CommandBar name="GroupHelp" id="1713">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content> </v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content> </v8:content>
+						</v8:item>
+					</ToolTip>
+					<HorizontalStretch>false</HorizontalStretch>
+					<VerticalStretch>false</VerticalStretch>
+					<ExtendedTooltip name="HelpGroupExtendedTooltip" id="1736"/>
+					<ChildItems>
+						<Button name="Help" id="1714">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.StandardCommand.Help</CommandName>
+							<ExtendedTooltip name="HelpExtendedTooltip" id="1737"/>
+						</Button>
+					</ChildItems>
+				</CommandBar>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="EDExchangeManagementGroup" id="1245">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group ED exchange management</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group ED exchange management</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Width>86</Width>
+			<HorizontalStretch>false</HorizontalStretch>
+			<Group>Horizontal</Group>
+			<Representation>NormalSeparation</Representation>
+			<ChildItemsWidth>Equal</ChildItemsWidth>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="EDExchangeManagementGroupExtendedTooltip" id="1738"/>
+			<ChildItems>
+				<UsualGroup name="GroupEDExchangeManagementGroup1" id="1246">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group ED1 exchange management group</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group ED1 exchange management group</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="GroupGroupControllingED1ExtendedTooltip" id="1739"/>
+					<ChildItems>
+						<UsualGroup name="UseEDExchangeGroup" id="1248">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group use ED exchange</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group use ED exchange</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupUseExchangeEDExtendedTooltip" id="1740"/>
+							<ChildItems>
+								<CheckBoxField name="UseEDExchange" id="507">
+									<DataPath>ConstantsSet.UseEDExchange</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Electronic document exchange</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>Right</TitleLocation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="UseExchangeEDContextMenu" id="508"/>
+									<ExtendedTooltip name="UseExchangeEDExtendedTooltip" id="1741"/>
+									<Events>
+										<Event name="OnChange">UseEDExchangeOnChange</Event>
+									</Events>
+								</CheckBoxField>
+								<LabelDecoration name="ExplanationUseEDExchange" id="1249">
+									<TextColor>style:ExplanationText</TextColor>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Exchange of electronic documents with the counterparties, banks and other companies.</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="DescriptionUseExchangeEDContextMenu" id="1250"/>
+									<ExtendedTooltip name="DescriptionUseExchangeEDExtendedTooltip" id="1742"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="GroupUseDigitalSignatures" id="1705">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group use digital signatures</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group use digital signatures</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupUseDigitalSignaturesExtendedTooltip" id="1743"/>
+							<ChildItems>
+								<CheckBoxField name="UseDigitalSignatures" id="1706">
+									<DataPath>ConstantsSet.UseDigitalSignatures</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Digital signatures</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>Right</TitleLocation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="UseDigitalSignaturesContextMenu" id="1707"/>
+									<ExtendedTooltip name="UseDigitalSignaturesExtendedTooltip" id="1744"/>
+									<Events>
+										<Event name="OnChange">UseElectronicSignsOnChange</Event>
+									</Events>
+								</CheckBoxField>
+								<LabelDecoration name="ExplanationUseDigitalSignatures" id="1708">
+									<Height>3</Height>
+									<TextColor>style:ExplanationText</TextColor>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Verification for the file modification absence since the electronic digital signature generation.</v8:content>
+										</v8:item>
+									</Title>
+									<VerticalAlign>Top</VerticalAlign>
+									<ContextMenu name="ExplanationUseDigitalSignaturesContextMenu" id="1709"/>
+									<ExtendedTooltip name="ExplanationUseDigitalSignaturesExtendedTooltip" id="1745"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="GroupEDExchangeManagementGroup2" id="1247">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group ED1 exchange management group</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group ED1 exchange management group</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="GroupGroupControllingED2ExtendedTooltip" id="1746"/>
+					<ChildItems>
+						<UsualGroup name="GroupUseEDExchangeBetweenBanks" id="1715">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group use ED exchange between the banks</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group use the ED exchange between the companies</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupUseExchangeEDBetweenBanksExtendedTooltip" id="1747"/>
+							<ChildItems>
+								<CheckBoxField name="UseEDExchangeWithBanks" id="1716">
+									<DataPath>ConstantsSet.UseEDExchangeWithBanks</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Direct electronic documents exchange with banks</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>Right</TitleLocation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="UseExchangeEDWithBanksContextMenu" id="1717"/>
+									<ExtendedTooltip name="UseExchangeEDWithBanksExtendedTooltip" id="1748"/>
+									<Events>
+										<Event name="OnChange">UseEDExchangeWithBanksOnChange</Event>
+									</Events>
+								</CheckBoxField>
+								<LabelDecoration name="ExplanationUseEDExchangeBetweenBanks" id="1718">
+									<TextColor>style:ExplanationText</TextColor>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Generate digitally signed electronic documents when transferring data to banks. </v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="DescriptionUseEDExchangeBetweenBanksContextMenu" id="1719"/>
+									<ExtendedTooltip name="DescriptionUseEDExchangeBetweenBanksExtendedTooltip" id="1749"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="GroupUseEDExchangeBetweenCompanies" id="1251">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group use ED exchange between the companies</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group use ED exchange between the companies</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupUseExchangeEDBetweenCompaniesExtendedTooltip" id="1750"/>
+							<ChildItems>
+								<CheckBoxField name="UseEDExchangeBetweenCompanies" id="801">
+									<DataPath>ConstantsSet.UseEDExchangeBetweenCompanies</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Electronic document exchange between the companies</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>Right</TitleLocation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="UseExchangeEDBetweenCompaniesContextMenu" id="802"/>
+									<ExtendedTooltip name="UseExchangeEDBetweenCompaniesExtendedTooltip" id="1751"/>
+									<Events>
+										<Event name="OnChange">UseEdExchangeBetweenCompaniesOnChange</Event>
+									</Events>
+								</CheckBoxField>
+								<LabelDecoration name="ExplanationUseEDExchangeBetweenCompanies" id="1252">
+									<TextColor>style:ExplanationText</TextColor>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Generation of electronic documents with the digital signatures when transferring the data between companies.</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="DescriptionUseExchangeEDBetweenCompaniesContextMenu" id="1253"/>
+									<ExtendedTooltip name="DescriptionUseExchangeEDBetweenCompaniesExtendedTooltip" id="1752"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="GroupEDSettings" id="1254">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group ED settings</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group ED settings</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Width>86</Width>
+			<HorizontalStretch>false</HorizontalStretch>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ChildItemsWidth>Equal</ChildItemsWidth>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="SettingsGroupEDExtendedTooltip" id="1753"/>
+			<ChildItems>
+				<UsualGroup name="GroupEDSettings1" id="1255">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group of ED1 settings</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group of ED1 settings</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Width>43</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="SettingsGroupED1ExtendedTooltip" id="1754"/>
+					<ChildItems>
+						<UsualGroup name="GroupOpen1CTaxcomServiceConnectionAssistant" id="1721">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group open the typical agreements on the ED use</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group open the typical agreements on the ED use</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupOpenT1CaxcomServiceConnectionAssistantExtendedTooltip" id="1755"/>
+							<ChildItems>
+								<Button name="Open1CTaxcomServiceConnectionAssistant" id="1722">
+									<Type>Hyperlink</Type>
+									<CommandName>Form.Command.Open1CTaxcomServiceConnectionAssistant</CommandName>
+									<ExtendedTooltip name="Open1CTaxcomServiceConnectionAssistantExtendedTooltip" id="1756"/>
+								</Button>
+								<LabelDecoration name="ExplanationOpen1CTaxcomServiceConnectionAssistant" id="1723">
+									<TextColor>style:ExplanationText</TextColor>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Electronic document exchange setup through EDF operator.</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="ExplanationOpen1CTaxcomServiceConnectionAssistantContextMenu" id="1724"/>
+									<ExtendedTooltip name="ExplanationOpen1CTaxcomServiceConnectionAssistantExtendedTooltip" id="1757"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="GroupOpenDirectExchangeConnectionAssistant" id="1725">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group open agreement on the use of ED</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group open agreement on the use of ED</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Representation>NormalSeparation</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupOpenDirectExchangeConnectionAssistantExtendedTooltip" id="1758"/>
+							<ChildItems>
+								<Button name="OpenDirectExchangeConnectionAssistant" id="1726">
+									<Type>Hyperlink</Type>
+									<CommandName>Form.Command.OpenDirectExchangeConnectionAssistant</CommandName>
+									<ExtendedTooltip name="OpenDirectExchangeConnectionAssistantExtendedTooltip" id="1759"/>
+								</Button>
+								<LabelDecoration name="ExplanationOpenDirectExchangeConnectionAssistant" id="1727">
+									<TextColor>style:ExplanationText</TextColor>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Setup of electronic documents exchange through directory, email, FTP.</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="ExplanationOpenDirectExchangeConnectionAssistantContextMenu" id="1728"/>
+									<ExtendedTooltip name="ExplanationOpenDirectExchangeConnectionAssistantExtendedTooltip" id="1760"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="GroupConnectionAssistants" id="1720">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group of connection assistants</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group of connection assistants</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="GroupConnectionAssistantsExtendedTooltip" id="1761"/>
+					<ChildItems>
+						<UsualGroup name="GroupOpenTypicalAgreementAboutEDUsage" id="1260">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group open the typical agreements on the ED use</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group open the typical agreements on the ED use</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupOpenTypicalAgreementsOnUseOfEDExtendedTooltip" id="1762"/>
+							<ChildItems>
+								<Button name="OpenTypicalAgreementsAboutEDUsage" id="1267">
+									<Type>Hyperlink</Type>
+									<CommandName>Form.Command.OpenEDFProfilesSettings</CommandName>
+									<ExtendedTooltip name="OpenTypicalAgreementsOnUseOfEDExtendedTooltip" id="1763"/>
+								</Button>
+								<LabelDecoration name="ExplanationOpenTypicalAgreementsAboutEDUsage" id="1261">
+									<TextColor>style:ExplanationText</TextColor>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Company profiles setup for electronic documents exchange.</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="ExplanationOpenTypicalAgreementsOfEDUseContextMenu" id="1262"/>
+									<ExtendedTooltip name="ExplanationOpenTypicalAgreementsOfEDUseExtendedTooltip" id="1764"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="GroupOpenAgreementAboutEDUsage" id="1264">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group open agreement on the use of ED</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group open agreement on the use of ED</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Representation>NormalSeparation</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupOpenAgreementsAboutUsingEDExtendedTooltip" id="1765"/>
+							<ChildItems>
+								<Button name="OpenAgreementsAboutEDUsage" id="1268">
+									<Type>Hyperlink</Type>
+									<CommandName>Form.Command.OpenEDFSettings</CommandName>
+									<ExtendedTooltip name="OpenAgreementsAboutUsingEDExtendedTooltip" id="1766"/>
+								</Button>
+								<LabelDecoration name="ExplanationOpenAgreementsAboutEDUsage" id="1265">
+									<TextColor>style:ExplanationText</TextColor>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Setup of the electronic documents exchange parameters with the counterparties, banks and companies.</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="OpenAgreementsOnUseOfDescriptionOfEDContextMenu" id="1266"/>
+									<ExtendedTooltip name="DescriptionOpenAgreementsAboutUsingEDExtendedTooltip" id="1767"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="GroupEDSettings2" id="1779">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group ED settings</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>e d2 setting group</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Width>86</Width>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ChildItemsWidth>Equal</ChildItemsWidth>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="GroupEDSettings2ExtendedTooltip" id="1780"/>
+			<ChildItems>
+				<UsualGroup name="GroupDisableImmediateEDSending" id="1693">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group disable instant ED send</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group disable instant ED send</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="GroupDisconnectImmediateDispatchEDExtendedTooltip" id="1776"/>
+					<ChildItems>
+						<CheckBoxField name="UseElectronicDocumentsDelayedSending" id="1689">
+							<DataPath>ConstantsSet.UseElectronicDocumentsDelayedSending</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Delayed electronic documents sending</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="UseElectronicDocumentsDelayedSendingContextMenu" id="1690"/>
+							<ExtendedTooltip name="UseElectronicDocumentsDelayedSendingExtendedTooltip" id="1777"/>
+							<Events>
+								<Event name="OnChange">DetachImmediateEDSendingOnChange</Event>
+							</Events>
+						</CheckBoxField>
+						<LabelDecoration name="ExplanationUsePostponedEDSending" id="1691">
+							<TextColor>style:ExplanationText</TextColor>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Disabling of an immediate electronic documents sending when executing the "Generate, sign and send" command.</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="DescriptionDisconnectImmediateDispatchEDContextMenu" id="1692"/>
+							<ExtendedTooltip name="DescriptionDisconnectImmediateDispatchEDExtendedTooltip" id="1778"/>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="GroupCryptographySetup" id="1781">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group cryptography setup</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group cryptography setup</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="GroupCryptographySetupExtendedTooltip" id="1782"/>
+					<ChildItems>
+						<UsualGroup name="GroupDigitalSignaturesAndEncryptionSettings" id="1783">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group digital signature and encryption settings</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupDigitalSignaturesAndEncryptionSettingsExtendedTooltip" id="1784"/>
+							<ChildItems>
+								<Button name="DigitalSignaturesAndEncryptionSettings" id="1785">
+									<Type>Hyperlink</Type>
+									<CommandName>Form.Command.DigitalSignaturesAndEncryptionSettings</CommandName>
+									<ExtendedTooltip name="DigitalSignaturesAndEncryptionSettingsExtendedTooltip" id="1786"/>
+								</Button>
+								<LabelDecoration name="DigitalSignaturesAndEncryptionSettingsExplanation" id="1787">
+									<TextColor>style:ExplanationText</TextColor>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Customize applications and certificates used for signing and encryption.</v8:content>
+										</v8:item>
+									</Title>
+									<VerticalAlign>Top</VerticalAlign>
+									<ContextMenu name="ExplanationDigitalSignaturesAndEncryptionSettingsContextMenu" id="1788"/>
+									<ExtendedTooltip name="ExplanationDigitalSignaturesAndEncryptionSettingsExtendedTooltip" id="1789"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="ConstantsSet" id="1">
+			<Type>
+				<v8:Type>cfg:ConstantsSet</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<UseAlways>
+				<Field>ConstantsSet.SMSProvider.Ref</Field>
+				<Field>ConstantsSet.PriceListShowFullDescr.Ref</Field>
+				<Field>ConstantsSet.PriceListShowCode.Ref</Field>
+				<Field>ConstantsSet.PostponeEditProhibitionDate.Ref</Field>
+				<Field>ConstantsSet.OffsetAdvancesDebtsAutomatically.Ref</Field>
+				<Field>ConstantsSet.InfobaseUsageMode.Ref</Field>
+				<Field>ConstantsSet.ExchangeRateDifferencesCalculationFrequency.Ref</Field>
+				<Field>ConstantsSet.DiscountsMarkupsSharedUsageOptions.Ref</Field>
+				<Field>ConstantsSet.DeleteCryptographyContext.Ref</Field>
+				<Field>ConstantsSet.DeleteContractControllingOnPosting.Ref</Field>
+				<Field>ConstantsSet.AuthorizationContext.Ref</Field>
+				<Field>ConstantsSet.ActivityKind.Ref</Field>
+			</UseAlways>
+		</Attribute>
+		<Attribute name="RunMode" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Work mode</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="OpenEDFProfilesSettings" id="34">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>EDF settings profiles</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Open EDF profiles settings</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>OpenEDFProfilesSettings</Action>
+		</Command>
+		<Command name="OpenEDFSettings" id="35">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>EDF settings</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Open EDF settings</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>OpenAgreementsAboutEDUsage</Action>
+		</Command>
+		<Command name="Open1CTaxcomServiceConnectionAssistant" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Connect to 1C-Taxcom service</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Open 1C-Taxcom service connection assistant</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Open1CTaxcomServiceConnectionAssistant</Action>
+		</Command>
+		<Command name="OpenDirectExchangeConnectionAssistant" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Setup direct exchange with counterparties</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Open direct exchange with counterparties setup assistant</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>OpenDirectExchangeConnectionAssistant</Action>
+		</Command>
+		<Command name="DigitalSignaturesAndEncryptionSettings" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Digital signature and encryption settings</v8:content>
+				</v8:item>
+			</Title>
+			<Action>DigitalSignaturesAndEncryptionSettings</Action>
+		</Command>
+	</Commands>
+</Form>

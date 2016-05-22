@@ -1,0 +1,384 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<ChildItems>
+			<ButtonGroup name="ImportantCommandsGroup" id="82">
+				<Title>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Important commands</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTip>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Important commands</v8:content>
+					</v8:item>
+				</ToolTip>
+				<ExtendedTooltip name="ImportantCommandsGroupExtendedTooltip" id="83"/>
+				<ChildItems>
+					<Button name="FormCommonCommandRemind" id="100">
+						<Type>CommandBarButton</Type>
+						<CommandName>CommonCommand.Remind</CommandName>
+						<DataPath>Items.List.CurrentData.Ref</DataPath>
+						<ExtendedTooltip name="FormCommonCommandRemindExtendedTooltip" id="101"/>
+					</Button>
+				</ChildItems>
+			</ButtonGroup>
+			<ButtonGroup name="GroupGlobalCommands" id="84">
+				<Title>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Global commands group</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTip>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Global commands group</v8:content>
+					</v8:item>
+				</ToolTip>
+				<CommandSource>FormCommandPanelGlobalCommands</CommandSource>
+				<ExtendedTooltip name="GroupGlobalCommandsExtendedTooltip" id="85"/>
+				<ChildItems>
+					<Button name="CommonCommandDependencies" id="98">
+						<Type>CommandBarButton</Type>
+						<CommandName>CommonCommand.Dependencies</CommandName>
+						<DataPath>Items.List.CurrentData.Ref</DataPath>
+						<ExtendedTooltip name="CommonCommandDependenciesExtendedTooltip" id="99"/>
+					</Button>
+					<Button name="CommonCommandReportByMovements" id="94">
+						<Type>CommandBarButton</Type>
+						<OnlyInAllActions>false</OnlyInAllActions>
+						<CommandName>CommonCommand.ReportByMovements</CommandName>
+						<DataPath>Items.List.CurrentData.Ref</DataPath>
+						<ExtendedTooltip name="CommonCommandReportByMovementsExtendedTooltip" id="95"/>
+					</Button>
+					<Button name="CommonCommandObjectFilling" id="90">
+						<Type>CommandBarButton</Type>
+						<CommandName>CommonCommand.ObjectFilling</CommandName>
+						<DataPath>Items.List.CurrentData.Ref</DataPath>
+						<ExtendedTooltip name="CommonCommandObjectFillingExtendedTooltip" id="91"/>
+					</Button>
+					<Button name="CommonCommandObjectReports" id="96">
+						<Type>CommandBarButton</Type>
+						<CommandName>CommonCommand.ObjectReports</CommandName>
+						<DataPath>Items.List.CurrentData.Ref</DataPath>
+						<ExtendedTooltip name="CommonCommandObjectReportsExtendedTooltip" id="97"/>
+					</Button>
+					<Button name="CommonCommandChangesHistory" id="92">
+						<Type>CommandBarButton</Type>
+						<OnlyInAllActions>false</OnlyInAllActions>
+						<CommandName>CommonCommand.ChangesHistory</CommandName>
+						<DataPath>Items.List.CurrentData.Ref</DataPath>
+						<ExtendedTooltip name="CommonCommandChangesHistoryExtendedTooltip" id="93"/>
+					</Button>
+				</ChildItems>
+			</ButtonGroup>
+			<Button name="FormChangeForm" id="86">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
+				<ExtendedTooltip name="FormChangeFormExtendedTooltip" id="87"/>
+			</Button>
+			<Button name="FormHelp" id="88">
+				<Type>CommandBarButton</Type>
+				<OnlyInAllActions>false</OnlyInAllActions>
+				<CommandName>Form.StandardCommand.Help</CommandName>
+				<ExtendedTooltip name="FormHelpExtendedTooltip" id="89"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="NotificationProcessing">NotificationProcessing</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<Table name="List" id="1">
+			<Representation>List</Representation>
+			<CommandBarLocation>None</CommandBarLocation>
+			<SkipOnInput>false</SkipOnInput>
+			<DefaultItem>true</DefaultItem>
+			<UseAlternationRowColor>true</UseAlternationRowColor>
+			<EnableStartDrag>true</EnableStartDrag>
+			<DataPath>List</DataPath>
+			<RowPictureDataPath>List.DefaultPicture</RowPictureDataPath>
+			<SearchStringLocation>CommandBar</SearchStringLocation>
+			<ViewStatusLocation>Top</ViewStatusLocation>
+			<SearchControlLocation>CommandBar</SearchControlLocation>
+			<AutoRefresh>false</AutoRefresh>
+			<AutoRefreshPeriod>60</AutoRefreshPeriod>
+			<Period>
+				<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+				<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+				<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+			</Period>
+			<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+			<RestoreCurrentRow>false</RestoreCurrentRow>
+			<TopLevelParent xsi:nil="true"/>
+			<ShowRoot>true</ShowRoot>
+			<AllowRootChoice>false</AllowRootChoice>
+			<UpdateOnDataChange>Auto</UpdateOnDataChange>
+			<ContextMenu name="ListContextMenu" id="2"/>
+			<AutoCommandBar name="ListCommandBar" id="3"/>
+			<ExtendedTooltip name="ListExtendedTooltip" id="58"/>
+			<SearchStringAddition name="SearchStringList" id="70">
+				<AdditionSource>
+					<Item>List</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ListSearchStringContextMenu" id="71"/>
+				<ExtendedTooltip name="ListSearchStringExtendedTooltip" id="72"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ListViewStatus" id="73">
+				<AdditionSource>
+					<Item>List</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ListViewStatusContextMenu" id="74"/>
+				<ExtendedTooltip name="ListViewStatusExtendedTooltip" id="75"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ListSearchControl" id="76">
+				<AdditionSource>
+					<Item>List</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ListSearchControlContextMenu" id="77"/>
+				<ExtendedTooltip name="ListSearchControlExtendedTooltip" id="78"/>
+			</SearchControlAddition>
+			<ChildItems>
+				<LabelField name="Date" id="4">
+					<DataPath>List.Date</DataPath>
+					<DefaultItem>true</DefaultItem>
+					<Width>10</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<Format>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>DLF=D</v8:content>
+						</v8:item>
+					</Format>
+					<ContextMenu name="DateContextMenu" id="5"/>
+					<ExtendedTooltip name="DateExtendedTooltip" id="59"/>
+				</LabelField>
+				<LabelField name="Number" id="6">
+					<DataPath>List.Number</DataPath>
+					<Width>11</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="NumberContextMenu" id="7"/>
+					<ExtendedTooltip name="NumberExtendedTooltip" id="60"/>
+				</LabelField>
+				<LabelField name="State" id="56">
+					<DataPath>List.State</DataPath>
+					<Width>12</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="StateContextMenu" id="57"/>
+					<ExtendedTooltip name="StateExtendedTooltip" id="61"/>
+				</LabelField>
+				<LabelField name="Employee" id="12">
+					<DataPath>List.Employee</DataPath>
+					<Width>30</Width>
+					<ContextMenu name="EmployeeContextMenu" id="13"/>
+					<ExtendedTooltip name="EmployeeExtendedTooltip" id="65"/>
+				</LabelField>
+				<LabelField name="WorkKind" id="79">
+					<DataPath>List.WorkKind</DataPath>
+					<Width>20</Width>
+					<ContextMenu name="TypeOfContextMenu" id="80"/>
+					<ExtendedTooltip name="WorkKindExtendedTooltip" id="81"/>
+				</LabelField>
+				<LabelField name="DocumentAmount" id="54">
+					<DataPath>List.DocumentAmount</DataPath>
+					<Width>10</Width>
+					<ContextMenu name="DocumentAmountContextMenu" id="55"/>
+					<ExtendedTooltip name="DocumentAmountExtendedTooltip" id="66"/>
+				</LabelField>
+				<LabelField name="StructuralUnit" id="10">
+					<DataPath>List.StructuralUnit</DataPath>
+					<Width>20</Width>
+					<ContextMenu name="StructuralUnitContextMenu" id="11"/>
+					<ExtendedTooltip name="StructuralUnitExtendedTooltip" id="64"/>
+				</LabelField>
+				<LabelField name="OperationKind" id="42">
+					<DataPath>List.OperationKind</DataPath>
+					<Width>12</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="OperationTypeContextMenu" id="43"/>
+					<ExtendedTooltip name="OperationTypeExtendedTooltip" id="63"/>
+				</LabelField>
+				<LabelField name="Company" id="8">
+					<DataPath>List.Company</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<Width>20</Width>
+					<ContextMenu name="CounterpartyContextMenu" id="9"/>
+					<ExtendedTooltip name="CounterpartyExtendedTooltip" id="62"/>
+				</LabelField>
+				<LabelField name="Comment" id="36">
+					<DataPath>List.Comment</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<ContextMenu name="CommentContextMenu" id="37"/>
+					<ExtendedTooltip name="CommentExtendedTooltip" id="68"/>
+				</LabelField>
+				<LabelField name="Author" id="50">
+					<DataPath>List.Author</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<ContextMenu name="AuthorContextMenu" id="51"/>
+					<ExtendedTooltip name="AuthorExtendedTooltip" id="69"/>
+				</LabelField>
+				<LabelField name="Ref" id="102">
+					<DataPath>List.Ref</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<ContextMenu name="RefContextMenu" id="103"/>
+					<ExtendedTooltip name="RefExtendedTooltip" id="104"/>
+				</LabelField>
+			</ChildItems>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="List" id="1">
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<UseAlways>
+				<Field>List.Ref</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>SELECT
+	DocumentSetToWork.Ref,
+	DocumentSetToWork.DataVersion,
+	DocumentSetToWork.DeletionMark,
+	DocumentSetToWork.Number,
+	DocumentSetToWork.Date,
+	DocumentSetToWork.Posted,
+	DocumentSetToWork.Company,
+	DocumentSetToWork.OperationKind,
+	DocumentSetToWork.State,
+	DocumentSetToWork.WorkKind,
+	DocumentSetToWork.PriceKind,
+	DocumentSetToWork.Employee,
+	DocumentSetToWork.StructuralUnit,
+	DocumentSetToWork.DocumentAmount,
+	DocumentSetToWork.WorkKindPosition,
+	DocumentSetToWork.Event,
+	DocumentSetToWork.Comment,
+	DocumentSetToWork.Author,
+	DocumentSetToWork.Works.(
+		Ref,
+		LineNumber,
+		WorkKind,
+		Customer,
+		ProductsAndServices,
+		Characteristic,
+		Day,
+		BeginTime,
+		EndTime,
+		Duration,
+		DurationInHours,
+		Price,
+		Amount,
+		Comment
+	),
+	DocumentSetToWork.PointInTime,
+	CASE
+		WHEN Not DocumentSetToWork.Posted
+				AND (DocumentSetToWork.State = VALUE(Catalog.EventStates.Canceled)
+					OR DocumentSetToWork.State = VALUE(Catalog.EventStates.Completed))
+				AND &amp;PeriodOfEnd = DATETIME(1, 1, 1)
+			THEN FALSE
+		WHEN &amp;PeriodOfBegin = DATETIME(1, 1, 1)
+				AND 1 In
+					(SELECT TOP 1
+						1
+					FROM
+						AccumulationRegister.WorkOrders AS TableOverdue
+					WHERE
+						TableOverdue.Recorder = DocumentSetToWork.Ref
+						AND TableOverdue.EndTime &lt; &amp;PeriodOfEnd
+						AND TableOverdue.BeginTime &lt;&gt; DATETIME(1, 1, 1))
+			THEN TRUE
+		ELSE FALSE
+	END AS Overdue,
+	CASE
+		WHEN Not DocumentSetToWork.Posted
+				AND (DocumentSetToWork.State = VALUE(Catalog.EventStates.Canceled)
+					OR DocumentSetToWork.State = VALUE(Catalog.EventStates.Completed))
+				AND &amp;PeriodOfEnd = DATETIME(1, 1, 1)
+			THEN FALSE
+		WHEN &amp;PeriodOfBegin &lt;&gt; DATETIME(1, 1, 1)
+				AND 1 In
+					(SELECT TOP 1
+						1
+					FROM
+						AccumulationRegister.WorkOrders AS TableForToday
+					WHERE
+						TableForToday.Recorder = DocumentSetToWork.Ref
+						AND TableForToday.EndTime &gt;= &amp;PeriodOfEnd
+						AND TableForToday.BeginTime &lt;= &amp;PeriodOfBegin)
+			THEN TRUE
+		ELSE FALSE
+	END AS ForToday
+	FROM
+		Document.WorkOrder AS DocumentSetToWork</QueryText>
+				<MainTable>Document.WorkOrder</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+	</Attributes>
+	<CommandInterface>
+		<CommandBar>
+			<Item>
+				<Command>Document.Event.StandardCommand.CreateBasedOn</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormCommandBarCreateBasedOn</CommandGroup>
+				<Index>1</Index>
+			</Item>
+			<Item>
+				<Command>Document.WorkOrder.Command.CommandEventCreateBasedOn</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormCommandBarCreateBasedOn</CommandGroup>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+			<Item>
+				<Command>CommonCommand.CreatingLinkedObjects</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormCommandBarCreateBasedOn</CommandGroup>
+				<Index>3</Index>
+			</Item>
+			<Item>
+				<Command>Document.WorkOrder.Command.EnterTimeTracking</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormCommandBarCreateBasedOn</CommandGroup>
+				<Index>2</Index>
+			</Item>
+		</CommandBar>
+	</CommandInterface>
+</Form>

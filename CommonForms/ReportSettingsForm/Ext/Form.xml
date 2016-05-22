@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<CommandBarLocation>Bottom</CommandBarLocation>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<ReportResult/>
+	<DetailsData/>
+	<ReportFormType>Settings</ReportFormType>
+	<VariantAppearance/>
+	<AutoShowState>Auto</AutoShowState>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<HorizontalAlign>Right</HorizontalAlign>
+		<ChildItems>
+			<Button name="FinishEdit" id="4">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.FinishEdit</CommandName>
+				<ExtendedTooltip name="CompleteEditingExtendedTooltip" id="7"/>
+			</Button>
+			<Button name="FormEndEditing" id="5">
+				<Type>CommandBarButton</Type>
+				<Visible>false</Visible>
+				<CommandName>Form.StandardCommand.EndEdit</CommandName>
+				<ExtendedTooltip name="FormCompleteEditingExtendedTooltip" id="8"/>
+			</Button>
+			<Button name="FormCancel" id="6">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.CancelEdit</CommandName>
+				<ExtendedTooltip name="FormCancelExtendedTooltip" id="9"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<Table name="SettingsComposerUserSettings" id="1">
+			<CommandBarLocation>None</CommandBarLocation>
+			<Autofill>true</Autofill>
+			<DataPath>Report.SettingsComposer.UserSettings</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>User settings</v8:content>
+				</v8:item>
+			</Title>
+			<CommandSet>
+				<ExcludedCommand>HierarchicalList</ExcludedCommand>
+				<ExcludedCommand>Tree</ExcludedCommand>
+				<ExcludedCommand>List</ExcludedCommand>
+			</CommandSet>
+			<SearchStringLocation>None</SearchStringLocation>
+			<ViewStatusLocation>None</ViewStatusLocation>
+			<SearchControlLocation>None</SearchControlLocation>
+			<ViewMode>All</ViewMode>
+			<ContextMenu name="SettingsComposerUserSettingsContextMenu" id="2"/>
+			<AutoCommandBar name="SettingsComposerUserSettingsCommandPanel" id="3"/>
+			<ExtendedTooltip name="SettingsComposerUserSettingsExtendedTooltip" id="10"/>
+			<SearchStringAddition name="SettingComposerUserSettingsSearchString" id="11">
+				<AdditionSource>
+					<Item>SettingsComposerUserSettings</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="SettingComposerUserSettingsSearchStringContextMenu" id="12"/>
+				<ExtendedTooltip name="SettingComposerUserSettingsSearchStringExtendedTooltip" id="13"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="SettingComposerUserSettingsStatusView" id="14">
+				<AdditionSource>
+					<Item>SettingsComposerUserSettings</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="SettingComposerUserSettingsStatusViewContextMenu" id="15"/>
+				<ExtendedTooltip name="SettingComposerUserSettingsStatusViewExtendedTooltip" id="16"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="SettingComposerUserSettingsSearchManagement" id="17">
+				<AdditionSource>
+					<Item>SettingsComposerUserSettings</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="SettingComposerUserSettingsSearchManagementContextMenu" id="18"/>
+				<ExtendedTooltip name="SettingComposerUserSettingsSearchManagementExtendedTooltip" id="19"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="OnChange">SettingsComposerUserSettingsOnChange</Event>
+			</Events>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Report" id="1">
+			<Type>
+				<v8:Type>cfg:ReportObject</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="FinishEdit" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Exit</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Exit</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>FinishEdit</Action>
+		</Command>
+	</Commands>
+</Form>

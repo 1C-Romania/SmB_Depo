@@ -1,0 +1,590 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Title>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Field choice</v8:content>
+		</v8:item>
+	</Title>
+	<Width>30</Width>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<Table name="ImportFieldsTree" id="1">
+			<Representation>Tree</Representation>
+			<ChangeRowSet>false</ChangeRowSet>
+			<ChangeRowOrder>false</ChangeRowOrder>
+			<Height>13</Height>
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<InitialTreeView>ExpandAllLevels</InitialTreeView>
+			<EnableStartDrag>true</EnableStartDrag>
+			<EnableDrag>true</EnableDrag>
+			<DataPath>ImportFieldsTree</DataPath>
+			<ContextMenu name="ImportFieldsTreeContextMenu" id="2"/>
+			<AutoCommandBar name="ImportFieldsTreeCommandBar" id="3">
+				<Autofill>false</Autofill>
+			</AutoCommandBar>
+			<ExtendedTooltip name="ImportFieldsTreeExtendedTooltip" id="4"/>
+			<SearchStringAddition name="ImportFieldsTreeSearchString" id="5">
+				<AdditionSource>
+					<Item>ImportFieldsTree</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ImportFieldsTreeSearchStringContextMenu" id="8"/>
+				<ExtendedTooltip name="ImportFieldsTreeSearchStringExtendedTooltip" id="9"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ImportFieldsTreeViewStatus" id="10">
+				<AdditionSource>
+					<Item>ImportFieldsTree</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ImportFieldsTreeViewStatusContextMenu" id="13"/>
+				<ExtendedTooltip name="ImportFieldsTreeViewStatusExtendedTooltip" id="14"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ImportFieldsTreeSearchManagement" id="15">
+				<AdditionSource>
+					<Item>ImportFieldsTree</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ImportFieldsTreeSearchManagementContextMenu" id="18"/>
+				<ExtendedTooltip name="ImportFieldsTreeSearchManagementExtendedTooltip" id="19"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="Selection">ImportFiledsTableChoice</Event>
+			</Events>
+			<ChildItems>
+				<InputField name="GroupsAndFieldsFieldPresentation" id="32">
+					<DataPath>ImportFieldsTree.FieldPresentation</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="GroupsAndFieldsFieldPresentationContextMenu" id="33"/>
+					<ExtendedTooltip name="GroupsAndFieldsFieldPresentationExtendedTooltip" id="34"/>
+				</InputField>
+				<InputField name="GroupsAndFieldsFieldsGroupName" id="20">
+					<DataPath>ImportFieldsTree.FieldsGroupName</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="GroupsAndFieldsFieldsGroupNameContextMenu" id="21"/>
+					<ExtendedTooltip name="GroupsAndFieldsFieldsGroupNameExtendedTooltip" id="22"/>
+				</InputField>
+				<InputField name="GroupsAndFieldsDerivedValueType" id="26">
+					<DataPath>ImportFieldsTree.DerivedValueType</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="GroupsAndFieldsDerivedValueTypeContextMenu" id="27"/>
+					<ExtendedTooltip name="GroupsAndFieldsDerivedValueTypeExtendedTooltip" id="28"/>
+				</InputField>
+				<InputField name="GroupsAndFieldsFieldName" id="29">
+					<DataPath>ImportFieldsTree.FieldName</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="GroupsAndFieldsFieldNameContextMenu" id="30"/>
+					<ExtendedTooltip name="GroupsAndFieldsFieldNameExtendedTooltip" id="31"/>
+				</InputField>
+				<InputField name="GroupsAndFieldsColumnNumber" id="35">
+					<DataPath>ImportFieldsTree.ColumnNumber</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="GroupsAndFieldsColumnNumberContextMenu" id="36"/>
+					<ExtendedTooltip name="GroupsAndFieldsColumnNumberExtendedTooltip" id="37"/>
+				</InputField>
+			</ChildItems>
+		</Table>
+		<UsualGroup name="GroupLegend" id="38">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Legend</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group legend</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Behavior>Collapsible</Behavior>
+			<CollapsedRepresentationTitle>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Show legend</v8:content>
+				</v8:item>
+			</CollapsedRepresentationTitle>
+			<Collapsed>true</Collapsed>
+			<ControlRepresentation>Picture</ControlRepresentation>
+			<ExtendedTooltip name="GroupLegendExtendedTooltip" id="39"/>
+			<ChildItems>
+				<UsualGroup name="GroupLegendUsersGroups" id="49">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group legend user groups</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group legend user groups</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Horizontal</Group>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="GroupLegendUsersGroupsExtendedTooltip" id="50"/>
+					<ChildItems>
+						<InputField name="SampleColorUsersGroups2" id="67">
+							<DataPath>ColorSample</DataPath>
+							<SkipOnInput>true</SkipOnInput>
+							<TitleLocation>None</TitleLocation>
+							<Width>1</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<TextEdit>false</TextEdit>
+							<BackColor>#646400</BackColor>
+							<BorderColor>style:FormBackColor</BorderColor>
+							<ContextMenu name="SampleColorUsersGroups2ContextMenu" id="68"/>
+							<ExtendedTooltip name="SampleColorUsersGroups2ExtendedTooltip" id="69"/>
+						</InputField>
+						<LabelDecoration name="LegendCustomGroups" id="40">
+							<TextColor>#646400</TextColor>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Grouped data</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<ContextMenu name="LegendUsersGroupsContextMenu" id="41"/>
+							<ExtendedTooltip name="LegendUsersGroupsExtendedTooltip" id="42">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Fields groups are used to search and compare catalog items.</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="GroupLegendMandatoryFields" id="54">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group legend mandatory fields</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group legend mandatory fields</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Horizontal</Group>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="GroupLegendMandatoryFieldsExtendedTooltip" id="55"/>
+					<ChildItems>
+						<InputField name="SampleColorMandatoryFields" id="56">
+							<DataPath>ColorSample</DataPath>
+							<SkipOnInput>true</SkipOnInput>
+							<TitleLocation>None</TitleLocation>
+							<Width>1</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<TextEdit>false</TextEdit>
+							<BackColor>#963232</BackColor>
+							<BorderColor>style:FormBackColor</BorderColor>
+							<ContextMenu name="SampleColorMandatoryFieldsContextMenu" id="57"/>
+							<ExtendedTooltip name="SampleColorMandatoryFieldsExtendedTooltip" id="58"/>
+						</InputField>
+						<LabelDecoration name="LegendMandatoryFields" id="43">
+							<TextColor>#963232</TextColor>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Mandatory fields</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<ContextMenu name="LegendMandatoryFieldsContextMenu" id="44"/>
+							<ExtendedTooltip name="LegendMandatoryFieldsExtendedTooltip" id="45">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>These fields are critical and it is impossible to continue importing without indication of mandatory fields.</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="GroupLegendNonmandatoryFields" id="59">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group legend nonmandatory fields</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group legend nonmandatory fields</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Horizontal</Group>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="GroupLegendNonmandatoryFieldsExtendedTooltip" id="60"/>
+					<ChildItems>
+						<InputField name="SampleColorNonmandatoryFields" id="61">
+							<DataPath>ColorSample</DataPath>
+							<SkipOnInput>true</SkipOnInput>
+							<TitleLocation>None</TitleLocation>
+							<Width>1</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<TextEdit>false</TextEdit>
+							<BackColor>#646464</BackColor>
+							<BorderColor>style:FormBackColor</BorderColor>
+							<ContextMenu name="SampleColorNonmandatoryFieldsContextMenu" id="62"/>
+							<ExtendedTooltip name="SampleColorNonmandatoryFieldsExtendedTooltip" id="63"/>
+						</InputField>
+						<LabelDecoration name="LegendNonmandatoryFields" id="46">
+							<TextColor>#646464</TextColor>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Fields were selected earlier</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="LegendNonmandatoryFieldsContextMenu" id="47"/>
+							<ExtendedTooltip name="LegendNonmandatoryFieldsExtendedTooltip" id="48"/>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.DataImportFromExternalSources</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="ImportFieldsTree" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Import fields tree</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTree</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="FieldsGroupName" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>100</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="DerivedValueType" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Derived value type</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>v8:TypeDescription</v8:Type>
+					</Type>
+				</Column>
+				<Column name="FieldName" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Field</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>100</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="FieldPresentation" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Presentation</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>256</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ColumnNumber" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Column number</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>2</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="ColorNumber" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Color number</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>1</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ColorSample" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Sample color</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="SpreadsheetDocument" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Spreadsheet document</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type xmlns:mxl="http://v8.1c.ru/8.2/data/spreadsheet">mxl:SpreadsheetDocument</v8:Type>
+			</Type>
+		</Attribute>
+		<ConditionalAppearance>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>GroupsAndFieldsFieldsGroupName</dcsset:field>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:field>GroupsAndFieldsDerivedValueType</dcsset:field>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:field>GroupsAndFieldsFieldName</dcsset:field>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:field>GroupsAndFieldsFieldPresentation</dcsset:field>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:field>GroupsAndFieldsColumnNumber</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">ImportFieldsTree.ColorNumber</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:decimal">0</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:use>false</dcscor:use>
+						<dcscor:parameter>BackColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">auto</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>TextColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">auto</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+				<dcsset:presentation xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Regular fields</v8:content>
+					</v8:item>
+				</dcsset:presentation>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>GroupsAndFieldsFieldsGroupName</dcsset:field>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:field>GroupsAndFieldsDerivedValueType</dcsset:field>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:field>GroupsAndFieldsFieldName</dcsset:field>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:field>GroupsAndFieldsFieldPresentation</dcsset:field>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:field>GroupsAndFieldsColumnNumber</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">ImportFieldsTree.ColorNumber</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:decimal">1</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:use>false</dcscor:use>
+						<dcscor:parameter>BackColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">auto</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>TextColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">#FF6464</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+				<dcsset:presentation xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Mandatory fields</v8:content>
+					</v8:item>
+				</dcsset:presentation>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>GroupsAndFieldsFieldsGroupName</dcsset:field>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:field>GroupsAndFieldsDerivedValueType</dcsset:field>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:field>GroupsAndFieldsFieldName</dcsset:field>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:field>GroupsAndFieldsFieldPresentation</dcsset:field>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:field>GroupsAndFieldsColumnNumber</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">ImportFieldsTree.ColorNumber</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:decimal">2</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:use>false</dcscor:use>
+						<dcscor:parameter>BackColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">auto</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>TextColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">#646400</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+				<dcsset:presentation xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Grouped fields</v8:content>
+					</v8:item>
+				</dcsset:presentation>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>GroupsAndFieldsFieldsGroupName</dcsset:field>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:field>GroupsAndFieldsDerivedValueType</dcsset:field>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:field>GroupsAndFieldsFieldName</dcsset:field>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:field>GroupsAndFieldsFieldPresentation</dcsset:field>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:field>GroupsAndFieldsColumnNumber</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">ImportFieldsTree.ColorNumber</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:decimal">3</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:use>false</dcscor:use>
+						<dcscor:parameter>BackColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">auto</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>TextColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">#969696</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+				<dcsset:presentation xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Selected fields or group</v8:content>
+					</v8:item>
+				</dcsset:presentation>
+			</dcsset:item>
+		</ConditionalAppearance>
+	</Attributes>
+</Form>

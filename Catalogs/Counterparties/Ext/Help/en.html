@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"></meta><link rel="stylesheet" type="text/css" href="v8help://service_book/service_style"></link><meta name="GENERATOR" content="MSHTML 11.00.9600.18321"></meta></head><body>
+<h1>Counterparties catalog</h1>
+<p class="Usual">The catalog is designed to store a counterparty list. Counterparty is a general term that covers vendors and customers, companies and individuals.</p>
+<p class="Usual"></p>
+<p class="Usual">Counterparties are classified by groups, e.g. <strong>Suppliers, Customers, Retailers</strong>, etc. The list has no limitation for the number of hierarchy levels.</p>
+<p class="Usual"></p>
+<p class="Usual">To edit your counterparty information, open a separate dialog box from the catalog list form and specify the following counterparty characteristics:</p>
+<li>
+<div><strong>Short name </strong>is used for selection or quick search of a counterparty in lists.</div>
+</li><li>
+<div>
+<div><strong>Full name</strong> is used in document print forms.</div></div>
+</li><li>
+<div>
+<div><strong>Group</strong>. A link to the catalog group including the item. When manually editing the <strong>Group</strong>, you move the current item from the old group to a new one.</div></div>
+</li><li>
+<div>
+<div>
+<div><strong>Code. </strong>The counterparty item code. </div></div></div>
+<ul><li>
+<div>
+<div><strong>Counterparty kind</strong>. Specify one of two values: <strong>Company </strong>or <strong>Individual</strong>.</div></div>
+</li><li>
+<div>
+<div><strong>Individual </strong>is filled in only for an individual. Select the value from the <a href="Catalog.Individuals/Help"><font color="#0000ff">Individuals</font></a> catalog.</div></div></li></ul><ul><li>
+<div><strong>TIN</strong>, a taxpayer identification number, the numeric code regulating the tax collection from Russian Federation taxpayers (both companies and individuals). TIN is shown in print forms.</div>
+</li><li>
+<div><strong>KPP</strong>, a registration reason code used only for companies and supplements TIN when registering with tax bodies. KPP is shown in print forms. </div>
+</li><li>
+<div><strong>OKPO</strong>,<strong> </strong>a Russian business and organizations classifier code assigned when a company is registered. OKPO indicates a type of the company's activity and is shown in print forms.</div></li></ul><ul><li>
+<div><strong>Default values. </strong>A group of fields:</div>
+<ul><li>
+<div><strong>Bank account.</strong> Default bank account that is automatically displayed in documents; it is selected from the <a href="Catalog.BankAccounts/Help"><font color="#0000ff">Bank accounts</font></a> catalog.</div>
+</li><li>
+<div><strong>Contract</strong>. Default contract that is automatically displayed in documents; it is selected from the <a href="Catalog.CounterpartyContracts/Help"><font color="#0000ff">Counterparty contracts</font></a> catalog.</div></li></ul><div></div>
+</li><li>
+<div>
+<div><strong>Netting accounting. </strong>A group of fields<strong>:</strong></div></div>
+<ul><li>
+<div>
+<div><strong>Netting analytics </strong>for a counterparty. Possible values are "By counterparty in general", "By contracts", "By documents", "By orders" in basic mode, or by a combination of them in advanced mode.</div></div>
+</li><li>
+<div>
+<div><strong>Invoice payments accounting </strong>is selected to monitor invoice payments.</div></div></li></ul><div></div>
+</li><li>
+<div><strong>Financial accounts.</strong> A group of fields on the navigation panel:</div>
+<ul><li>
+<div><strong>Accounts receivable </strong>are selected from the <a href="ChartOfAccounts.Managerial/Help"><font color="#0000ff">Managerial</font></a> chart of accounts (a required field).</div>
+</li><li>
+<div><strong>Customer advances </strong>are selected from the <a href="ChartOfAccounts.Managerial/Help"><font color="#0000ff">Managerial</font></a> chart of accounts (a required field).</div>
+</li><li>
+<div><strong>Accounts payable </strong>are selected from the <a href="ChartOfAccounts.Managerial/Help"><font color="#0000ff">Managerial</font></a> chart of accounts (a required field).</div>
+</li><li>
+<div><strong>Supplier advances </strong>are selected from the <a href="ChartOfAccounts.Managerial/Help"><font color="#0000ff">Managerial</font></a> chart of accounts (a required field).</div></li></ul></li><li>
+<div><strong>Access group. </strong><a href="Catalog.CounterpartyAccessGroups/Help"><font color="#000080">The counterparty access group</font></a> defining user access restrictions to the list items and counterparty documents.</div></li></ul><p class="Usual">The counterparty contact information, such as email, phone, fax, legal address, and actual address, is entered on the <strong>Addresses, Phone numbers</strong> tab.</p>
+<p class="Usual">Additional information about the counterparty is specified on the <strong>Additional information </strong>tab.</p>
+<p class="Usual">Additional attributes defined by the user are specified on the <strong>Additional fields </strong>tab.</p>
+<p class="Usual"></p>
+<p class="Usual"><strong>Filling IN Counterparty Attributes with TIN</strong></p>
+<p class="Usual">Use the <strong>Fill in with TIN</strong> to fill in the counterparty attributes on the basis of EGRUL (Unified state register of companies) and EGRIP (Unified state register of individuals). If relevant information is available, the command will fill in the following fields </p>
+</li><li>
+<p class="Usual">For a legal entity:</p>
+<p class="Usual">- KPP<br>- short and full name<br>- director (a contact person will be created)<br>- legal address<br>- actual address (if it is not filled in)<br>- phone number<br><br>for an individual (entrepreneur):<br>- short and full name<br>- individual (it will be created)</p>
+<p class="Usual">You can also check your counterparties with the Federal tax service data. Configure the check in the <strong>Settings - Counterparty check settings </strong>section. For users of 1C:Enterprise on the Internet, this service is enabled automatically. </p>
+<p class="Usual"><strong>Advanced Counterparty Search</strong></p>
+</li><li>
+<p class="Usual">Forms of the list and counterparties selection can use advanced counterparty search if the service settings support full-text search.</p>
+</li><li>
+<p class="Usual"></p>
+<p class="Usual">Use advanced search to find a list of counterparties corresponding with the specified search line either in the form itself or in the counterparty-related  information.</p>
+<p class="Usual">The counterparty-related information includes the following catalogs: <a href="Catalog.ContactPersons/Help">Contact persons</a>, <a href="Catalog.Individuals/Help">Individuals</a>, <a href="Catalog.CounterpartyContracts/Help">Counterparty contracts</a> and <a href="Catalog.BankAccounts/Help">Bank accounts</a>. </p>
+<p class="Usual"></p>
+<p class="Usual"></p>
+<p class="Important">IMPORTANT. Note that some characters entered into the advanced search line will be treated as service characters of the query language of the full-text data search. Find the information about the list of such service characters in <strong>Help </strong>(<strong>1C:Enterprise - User operations  - Query language of full-text data search</strong>).</p>
+<p class="Usual"></p>
+<p class="Usual"></p>
+<p class="Usual">After the search, only the counterparties satisfying the search conditions remain in the list.</p>
+<p class="Usual"></p>
+<p class="Usual">When selecting, at the bottom of the counterparty form, you can read in what object a matching was found (important: it is the first found object that is shown) and how this object is linked to the counterparty. Click the hyperlink in the information line to open the form of the object with a matching.</p>
+<p class="Usual"></p>
+<p class="Usual">If no counterparty is found, the search line will be highlighted in red .</p>
+<p class="Usual"></p>
+<p class="Usual">To cancel the list of advanced search results, clear the search line.</p>
+<p class="Usual"></p></li></body></html>

@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<CommandBarLocation>Bottom</CommandBarLocation>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<HorizontalAlign>Right</HorizontalAlign>
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="FormSetExtension" id="15">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.SetExtension</CommandName>
+				<ExtendedTooltip name="FormSetExtensionExtendedTooltip" id="16"/>
+			</Button>
+			<Button name="FormGoToProramsSetup" id="11">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.GoToApllicationSetup</CommandName>
+				<ExtendedTooltip name="FormGoToProramsSetupExtendedTooltip" id="12"/>
+			</Button>
+			<Button name="FormClose" id="13">
+				<Type>CommandBarButton</Type>
+				<Representation>Text</Representation>
+				<DefaultButton>true</DefaultButton>
+				<DefaultItem>true</DefaultItem>
+				<CommandName>Form.StandardCommand.Close</CommandName>
+				<Title>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Close</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="FormCloseExtendedTooltip" id="14"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="Indent" id="29">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Indent</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Representation>NormalSeparation</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="IndentExtendedTooltip" id="30"/>
+			<ChildItems>
+				<LabelDecoration name="ErrorDescription" id="26">
+					<HorizontalStretch>true</HorizontalStretch>
+					<VerticalStretch>true</VerticalStretch>
+					<Font ref="style:NormalTextFont" kind="StyleItem"/>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Error description</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ErrorDescriptionContextMenu" id="27">
+						<ChildItems>
+							<Button name="ErrorDescriptionContextMenuCopyIntoExchangeBuffer" id="33">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.CopyIntoExchangeBuffer</CommandName>
+								<ExtendedTooltip name="ErrorDescriptionContextMenuCopyIntoBufferExchangeExtendedTooltip" id="34"/>
+							</Button>
+						</ChildItems>
+					</ContextMenu>
+					<ExtendedTooltip name="ErrorDescriptionExtendedTooltip" id="28"/>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="GroupInstruction" id="31">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Instruction group</v8:content>
+				</v8:item>
+			</Title>
+			<Width>53</Width>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="GroupInstructionExtendedTooltip" id="32"/>
+			<ChildItems>
+				<LabelDecoration name="HorizontalIndent" id="35">
+					<HorizontalStretch>true</HorizontalStretch>
+					<ContextMenu name="HorizontalIndentContexMenu" id="36"/>
+					<ExtendedTooltip name="HorizontalIndentExtendedTooltip" id="37"/>
+				</LabelDecoration>
+				<LabelDecoration name="Instruction" id="17">
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Instructions on how to work with digital signature and encryption applications</v8:content>
+						</v8:item>
+					</Title>
+					<Hyperlink>true</Hyperlink>
+					<ContextMenu name="InstructionContextMenu" id="18"/>
+					<ExtendedTooltip name="InstructionExtendedTooltip" id="19"/>
+					<Events>
+						<Event name="Click">InstructionClick</Event>
+					</Events>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes/>
+	<Commands>
+		<Command name="GoToApllicationSetup" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Go to applications setup</v8:content>
+				</v8:item>
+			</Title>
+			<Action>GoToApllicationSetup</Action>
+		</Command>
+		<Command name="SetExtension" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Set the extension</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Set the extension</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>SetExtension</Action>
+		</Command>
+		<Command name="CopyIntoExchangeBuffer" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Copy into exchange buffer</v8:content>
+				</v8:item>
+			</Title>
+			<Action>CopyIntoExchangeBuffer</Action>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="ErrorOnServer">
+			<Type/>
+		</Parameter>
+		<Parameter name="ExtensionAttached">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ErrorOnClient">
+			<Type/>
+		</Parameter>
+		<Parameter name="ShowInstruction">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ShowTransferToApplicationsSetup">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="FormTitle">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="ErrorTitle">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="ShowExtensionInstallation">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

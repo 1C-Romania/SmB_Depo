@@ -1,0 +1,3634 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Width>74</Width>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<CommandBarLocation>Bottom</CommandBarLocation>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<HorizontalAlign>Right</HorizontalAlign>
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="NotificationProcessing">NotificationProcessing</Event>
+		<Event name="OnOpen">OnOpen</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+		<Event name="OnClose">OnClose</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="Header" id="156">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Header</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="HeaderExtendedTooltip" id="157"/>
+			<ChildItems>
+				<Pages name="ProgressPages" id="578">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Progress pages</v8:content>
+						</v8:item>
+					</Title>
+					<PagesRepresentation>None</PagesRepresentation>
+					<ExtendedTooltip name="ProgressPagesExtendedTooltip" id="579"/>
+					<ChildItems>
+						<Page name="PageProgressAgreement" id="580">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Progress page agreement</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="ProgressPageAgreementExtendedTooltip" id="581"/>
+							<ChildItems>
+								<PictureDecoration name="DecorationStage1" id="575">
+									<Width>173</Width>
+									<Height>2</Height>
+									<HorizontalStretch>false</HorizontalStretch>
+									<VerticalStretch>false</VerticalStretch>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Stage 1</v8:content>
+										</v8:item>
+									</Title>
+									<Picture>
+										<xr:Abs>Picture.png</xr:Abs>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="DecorationStage1ContextMenu" id="576"/>
+									<ExtendedTooltip name="DecorationStage1ExtendedTooltip" id="577"/>
+								</PictureDecoration>
+							</ChildItems>
+						</Page>
+						<Page name="ProgressPageCompany" id="584">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Progress page company</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="ProgressPageCompanyExtendedTooltip" id="585"/>
+							<ChildItems>
+								<PictureDecoration name="DecorationStage2" id="596">
+									<Width>173</Width>
+									<Height>2</Height>
+									<HorizontalStretch>false</HorizontalStretch>
+									<VerticalStretch>false</VerticalStretch>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Stage 1</v8:content>
+										</v8:item>
+									</Title>
+									<Picture>
+										<xr:Abs>Picture.png</xr:Abs>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="DecorationStage2ContextMenu" id="597"/>
+									<ExtendedTooltip name="DecorationStage2ExtendedTooltip" id="598"/>
+								</PictureDecoration>
+							</ChildItems>
+						</Page>
+						<Page name="ProgressPageCertificateOwner" id="586">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Progress page certificate owner</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="ProgressPageCertificateOwnerExtendedTooltip" id="587"/>
+							<ChildItems>
+								<PictureDecoration name="DecorationStage3" id="599">
+									<Width>173</Width>
+									<Height>2</Height>
+									<HorizontalStretch>false</HorizontalStretch>
+									<VerticalStretch>false</VerticalStretch>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Stage 1</v8:content>
+										</v8:item>
+									</Title>
+									<Picture>
+										<xr:Abs>Picture.png</xr:Abs>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="DecorationStage3ContextMenu" id="600"/>
+									<ExtendedTooltip name="DecorationStage3ExtendedTooltip" id="601"/>
+								</PictureDecoration>
+							</ChildItems>
+						</Page>
+						<Page name="ProgressPagePreparationCertificateQuery" id="588">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Progress page certificate query initiation</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="ProgressPageCertificateRequestInitiationExtendedTooltip" id="589"/>
+							<ChildItems>
+								<PictureDecoration name="DecorationStage4" id="602">
+									<Width>173</Width>
+									<Height>2</Height>
+									<HorizontalStretch>false</HorizontalStretch>
+									<VerticalStretch>false</VerticalStretch>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Stage 1</v8:content>
+										</v8:item>
+									</Title>
+									<Picture>
+										<xr:Abs>Picture.png</xr:Abs>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="DecorationStage4ContextMenu" id="603"/>
+									<ExtendedTooltip name="DecorationStage4ExtendedTooltip" id="604"/>
+								</PictureDecoration>
+							</ChildItems>
+						</Page>
+						<Page name="ProgressPageRequestSending" id="590">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Progress page request sending</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="ProgressPageRequestSendingExtendedTooltip" id="591"/>
+							<ChildItems>
+								<PictureDecoration name="DecorationStage5" id="605">
+									<Width>173</Width>
+									<Height>2</Height>
+									<HorizontalStretch>false</HorizontalStretch>
+									<VerticalStretch>false</VerticalStretch>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Stage 1</v8:content>
+										</v8:item>
+									</Title>
+									<Picture>
+										<xr:Abs>Picture.png</xr:Abs>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="DecorationStage5ContextMenu" id="606"/>
+									<ExtendedTooltip name="DecorationStage5ExtendedTooltip" id="607"/>
+								</PictureDecoration>
+							</ChildItems>
+						</Page>
+						<Page name="ProgressPageWaitingForRequestProcessing" id="592">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Progress page waiting for request processing</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="ProgressPageWaitingForRequestProcessingExtendedTooltip" id="593"/>
+							<ChildItems>
+								<PictureDecoration name="DecorationStage6" id="608">
+									<Width>173</Width>
+									<Height>2</Height>
+									<HorizontalStretch>false</HorizontalStretch>
+									<VerticalStretch>false</VerticalStretch>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Stage 1</v8:content>
+										</v8:item>
+									</Title>
+									<Picture>
+										<xr:Abs>Picture.png</xr:Abs>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="DecorationStage6ContextMenu" id="609"/>
+									<ExtendedTooltip name="DecorationStage6ExtendedTooltip" id="610"/>
+								</PictureDecoration>
+							</ChildItems>
+						</Page>
+						<Page name="ProgressPageCertificateSetup" id="594">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Progress page certificate setup</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="ProgressPageCertificateSetupExtendedTooltip" id="595"/>
+							<ChildItems>
+								<PictureDecoration name="DecorationStage7" id="611">
+									<Width>173</Width>
+									<Height>2</Height>
+									<HorizontalStretch>false</HorizontalStretch>
+									<VerticalStretch>false</VerticalStretch>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Stage 1</v8:content>
+										</v8:item>
+									</Title>
+									<Picture>
+										<xr:Abs>Picture.png</xr:Abs>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="DecorationStage7ContextMenu" id="612"/>
+									<ExtendedTooltip name="DecorationStage7ExtendedTooltip" id="613"/>
+								</PictureDecoration>
+							</ChildItems>
+						</Page>
+						<Page name="ProgressPageProcessedRequest" id="614">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Progress page processed request</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="ProgressPageProcessedRequestExtendedTooltip" id="615"/>
+							<ChildItems>
+								<PictureDecoration name="DecorationStage8" id="616">
+									<Width>173</Width>
+									<Height>2</Height>
+									<HorizontalStretch>false</HorizontalStretch>
+									<VerticalStretch>false</VerticalStretch>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Stage 1</v8:content>
+										</v8:item>
+									</Title>
+									<Picture>
+										<xr:Abs>Picture.png</xr:Abs>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="DecorationStage8ContextMenu" id="617"/>
+									<ExtendedTooltip name="DecorationStage8ExtendedTooltip" id="618"/>
+								</PictureDecoration>
+							</ChildItems>
+						</Page>
+					</ChildItems>
+				</Pages>
+				<UsualGroup name="HorizontalGroup8" id="582">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Horizontal group 8</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="HorizontalGroup8ExtendedTooltip" id="583"/>
+					<ChildItems>
+						<LabelDecoration name="DecorationCertifyingCenterTitle" id="236">
+							<Font ref="style:NormalTextFont" kind="StyleItem"/>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Certifying center:</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="DecorationCertifyingCenterTitleContextMenu" id="237"/>
+							<ExtendedTooltip name="DecorationCertifyingCenterTitleExtendedTooltip" id="238"/>
+						</LabelDecoration>
+						<LabelDecoration name="DecorationCertifyingCenterBasicName" id="28">
+							<Font ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>LLC "SPC "1C"</v8:content>
+								</v8:item>
+							</Title>
+							<Hyperlink>true</Hyperlink>
+							<ContextMenu name="DecorationCertifyingCenterNameContextMenu" id="29"/>
+							<ExtendedTooltip name="DecorationCertifyingCenterNameExtendedTooltip" id="30"/>
+							<Events>
+								<Event name="Click">DecorationCertifyingCenterNameClick</Event>
+							</Events>
+						</LabelDecoration>
+						<LabelDecoration name="IndentDecoration" id="158">
+							<Width>15</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="IndentDecorationContextMenu" id="159"/>
+							<ExtendedTooltip name="DecorationIndentExtendedTooltip" id="160"/>
+						</LabelDecoration>
+						<InputField name="ObjectRequestStatus" id="161">
+							<DataPath>Object.RequestStatus</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<ToolTipRepresentation>None</ToolTipRepresentation>
+							<Width>15</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<DropListButton>false</DropListButton>
+							<BorderColor>style:FormBackColor</BorderColor>
+							<ContextMenu name="ObjectRequestStatusContextMenu" id="162"/>
+							<ExtendedTooltip name="ObjectRequestStatusExtendedTooltip" id="163"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<Pages name="Pages" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Pages</v8:content>
+				</v8:item>
+			</Title>
+			<PagesRepresentation>None</PagesRepresentation>
+			<ExtendedTooltip name="PagesExtendedTooltip" id="8"/>
+			<ChildItems>
+				<Page name="PageAgreement" id="34">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Page agreement</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="PageAgreementExtendedTooltip" id="35"/>
+					<ChildItems>
+						<FormattedDocumentField name="Agreement" id="39">
+							<DataPath>Agreement</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<TitleLocation>None</TitleLocation>
+							<ContextMenu name="AgreementContextMenu" id="40">
+								<Autofill>false</Autofill>
+								<ChildItems>
+									<Button name="AgreementContextMenuCopyToClipboard" id="427">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Item.Agreement.StandardCommand.CopyToClipboard</CommandName>
+										<ExtendedTooltip name="AgreementContextMenuCopyToClipboardExtendedTooltip" id="428"/>
+									</Button>
+									<Button name="AgreementContextMenuSelectAll" id="429">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Item.Agreement.StandardCommand.SelectAll</CommandName>
+										<ExtendedTooltip name="AgreementContextMenuSelectAllExtendedTooltip" id="430"/>
+									</Button>
+									<Button name="AgreementContextMenuSaveAs" id="431">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Item.Agreement.StandardCommand.SaveAs</CommandName>
+										<ExtendedTooltip name="AgreementContextMenuSaveAsExtendedTooltip" id="432"/>
+									</Button>
+									<Button name="AgreementContextMenuPreview" id="435">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Item.Agreement.StandardCommand.Preview</CommandName>
+										<ExtendedTooltip name="AgreementContextMenuPreviewExtendedTooltip" id="436"/>
+									</Button>
+									<Button name="AgreementContextMenuPrint" id="433">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Item.Agreement.StandardCommand.Print</CommandName>
+										<ExtendedTooltip name="AgreementContextMenuPrintExtendedTooltip" id="434"/>
+									</Button>
+								</ChildItems>
+							</ContextMenu>
+							<ExtendedTooltip name="AgreementExtendedTooltip" id="41"/>
+						</FormattedDocumentField>
+						<CheckBoxField name="AgreementApproval" id="36">
+							<DataPath>AgreementApproval</DataPath>
+							<DefaultItem>true</DefaultItem>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="AgreementApprovalContextMenu" id="37"/>
+							<ExtendedTooltip name="AgreementApprovalExtendedTooltip" id="38"/>
+							<Events>
+								<Event name="OnChange">AgreementApprovalOnChange</Event>
+							</Events>
+						</CheckBoxField>
+					</ChildItems>
+				</Page>
+				<Page name="PageCompany" id="48">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Page Company</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="PageCompanyExtendedTooltip" id="49"/>
+					<ChildItems>
+						<UsualGroup name="CounterpartyGroup" id="128">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Company</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<ExtendedTooltip name="GroupCompanyExtendedTooltip" id="129"/>
+							<ChildItems>
+								<InputField name="Company" id="50">
+									<DataPath>Company</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<Width>35</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<AutoMarkIncomplete>true</AutoMarkIncomplete>
+									<BackColor>style:ManagingFieldBackgroundColor</BackColor>
+									<ContextMenu name="CounterpartyContextMenu" id="51"/>
+									<ExtendedTooltip name="CompanyExtendedTooltip" id="52"/>
+									<Events>
+										<Event name="OnChange">CompanyOnChange</Event>
+										<Event name="Clearing">CompanyClearing</Event>
+									</Events>
+								</InputField>
+								<UsualGroup name="VerticalGroup" id="253">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Vertical group</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Vertical</Group>
+									<Representation>NormalSeparation</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="VerticalGroupExtendedTooltip" id="254"/>
+									<ChildItems>
+										<UsualGroup name="GroupCompanyMainInfo" id="53">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Basic information</v8:content>
+												</v8:item>
+											</Title>
+											<Group>Vertical</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="GroupCompanyMainInfoExtendedTooltip" id="54"/>
+											<ChildItems>
+												<InputField name="AbbreviatedName" id="55">
+													<DataPath>AbbreviatedName</DataPath>
+													<AutoMarkIncomplete>true</AutoMarkIncomplete>
+													<ContextMenu name="AbbreviatedNameContextMenu" id="56"/>
+													<ExtendedTooltip name="NameAbbreviatedExtendedTooltip" id="57"/>
+												</InputField>
+												<InputField name="DescriptionFull" id="58">
+													<DataPath>DescriptionFull</DataPath>
+													<AutoMarkIncomplete>true</AutoMarkIncomplete>
+													<ContextMenu name="FullNameContextMenu" id="59"/>
+													<ExtendedTooltip name="DescriptionFullExtendedTooltip" id="60"/>
+												</InputField>
+												<UsualGroup name="NumbersGroup" id="531">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Numbers group</v8:content>
+														</v8:item>
+													</Title>
+													<Group>Horizontal</Group>
+													<Representation>None</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="NumbersGroupExtendedTooltip" id="532"/>
+													<ChildItems>
+														<UsualGroup name="VerticalGroup1" id="533">
+															<Title>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Vertical group 1</v8:content>
+																</v8:item>
+															</Title>
+															<Group>Vertical</Group>
+															<Representation>None</Representation>
+															<ShowTitle>false</ShowTitle>
+															<ExtendedTooltip name="VerticalGroup1ExtendedTooltip" id="534"/>
+															<ChildItems>
+																<UsualGroup name="HorizontalGroup7" id="130">
+																	<Title>
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Horizontal group 7</v8:content>
+																		</v8:item>
+																	</Title>
+																	<Group>Horizontal</Group>
+																	<Representation>None</Representation>
+																	<ShowTitle>false</ShowTitle>
+																	<ExtendedTooltip name="HorizontalGroup7ExtendedTooltip" id="131"/>
+																	<ChildItems>
+																		<InputField name="TIN" id="61">
+																			<DataPath>TIN</DataPath>
+																			<AutoMarkIncomplete>true</AutoMarkIncomplete>
+																			<ContextMenu name="TINContextMenu" id="62"/>
+																			<ExtendedTooltip name="TINExtendedTooltip" id="63"/>
+																		</InputField>
+																		<InputField name="KPP" id="64">
+																			<DataPath>KPP</DataPath>
+																			<AutoMarkIncomplete>true</AutoMarkIncomplete>
+																			<ContextMenu name="KPPContextMenu" id="65"/>
+																			<ExtendedTooltip name="KPPExtendedTooltip" id="66"/>
+																		</InputField>
+																	</ChildItems>
+																</UsualGroup>
+																<InputField name="BankAccount" id="517">
+																	<DataPath>BankAccount</DataPath>
+																	<ToolTip>
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Default banking account to fill into the attributes of standard agreement.</v8:content>
+																		</v8:item>
+																	</ToolTip>
+																	<ToolTipRepresentation>Button</ToolTipRepresentation>
+																	<ContextMenu name="BankAccountContextMenu" id="518"/>
+																	<ExtendedTooltip name="BankAccountExtendedTooltip" id="519"/>
+																</InputField>
+																<InputField name="CorrespondentAccount" id="523">
+																	<DataPath>CorrespondentAccount</DataPath>
+																	<ContextMenu name="CorrespondentAccountContextMenu" id="524"/>
+																	<ExtendedTooltip name="CorrespondentAccountExtendedTooltip" id="525"/>
+																</InputField>
+															</ChildItems>
+														</UsualGroup>
+														<UsualGroup name="VerticalGroup2" id="535">
+															<Title>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Vertical group 2</v8:content>
+																</v8:item>
+															</Title>
+															<Group>Vertical</Group>
+															<Representation>None</Representation>
+															<ShowTitle>false</ShowTitle>
+															<ExtendedTooltip name="VerticalGroup2ExtendedTooltip" id="536"/>
+															<ChildItems>
+																<InputField name="OGRN" id="67">
+																	<DataPath>OGRN</DataPath>
+																	<HorizontalStretch>true</HorizontalStretch>
+																	<AutoMarkIncomplete>true</AutoMarkIncomplete>
+																	<ContextMenu name="OGRNContextMenu" id="68"/>
+																	<ExtendedTooltip name="OGRNExtendedTooltip" id="69"/>
+																</InputField>
+																<InputField name="BIN" id="520">
+																	<DataPath>BIN</DataPath>
+																	<Title>
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>BIN</v8:content>
+																		</v8:item>
+																	</Title>
+																	<HorizontalStretch>true</HorizontalStretch>
+																	<ContextMenu name="BINContextMenu" id="521"/>
+																	<ExtendedTooltip name="BINExtendedTooltip" id="522"/>
+																</InputField>
+															</ChildItems>
+														</UsualGroup>
+													</ChildItems>
+												</UsualGroup>
+											</ChildItems>
+										</UsualGroup>
+										<UsualGroup name="GroupCompanyContactInformation" id="70">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Contact information</v8:content>
+												</v8:item>
+											</Title>
+											<Group>Vertical</Group>
+											<Representation>None</Representation>
+											<ExtendedTooltip name="GroupCompanyContactInformationExtendedTooltip" id="71"/>
+											<ChildItems>
+												<UsualGroup name="GroupLegalAddress" id="457">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Group legal address</v8:content>
+														</v8:item>
+													</Title>
+													<Group>Horizontal</Group>
+													<Representation>None</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="GroupLegalAddressExtendedTooltip" id="458"/>
+													<ChildItems>
+														<InputField name="LegalAddress" id="72">
+															<DataPath>LegalAddress</DataPath>
+															<ChoiceButton>true</ChoiceButton>
+															<AutoMarkIncomplete>true</AutoMarkIncomplete>
+															<TextEdit>false</TextEdit>
+															<ContextMenu name="LegalAddressContextMenu" id="73"/>
+															<ExtendedTooltip name="LegalAddressExtendedTooltip" id="74"/>
+															<Events>
+																<Event name="StartChoice">LegalAddressStartChoice</Event>
+																<Event name="Clearing">LegalAddressClearing</Event>
+																<Event name="ChoiceProcessing">LegalAddressChoiceProcessing</Event>
+															</Events>
+														</InputField>
+														<PictureDecoration name="LegalAddressWarning" id="461">
+															<Width>3</Width>
+															<Height>1</Height>
+															<HorizontalStretch>false</HorizontalStretch>
+															<VerticalStretch>false</VerticalStretch>
+															<SkipOnInput>true</SkipOnInput>
+															<Title formatted="false">
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Legal address warning</v8:content>
+																</v8:item>
+															</Title>
+															<Hyperlink>true</Hyperlink>
+															<Picture>
+																<xr:Ref>CommonPicture.Warning</xr:Ref>
+																<xr:LoadTransparent>true</xr:LoadTransparent>
+															</Picture>
+															<ContextMenu name="LegalAddressWarningContextMenu" id="462"/>
+															<ExtendedTooltip name="LegalAddressWarningExtendedTooltip" id="463"/>
+															<Events>
+																<Event name="Click">AddressWarningClick</Event>
+															</Events>
+														</PictureDecoration>
+													</ChildItems>
+												</UsualGroup>
+												<UsualGroup name="GroupActualAddress" id="459">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Group actual address</v8:content>
+														</v8:item>
+													</Title>
+													<Group>Horizontal</Group>
+													<Representation>None</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="GroupActualAddressExtendedTooltip" id="460"/>
+													<ChildItems>
+														<InputField name="ActualAddress" id="75">
+															<DataPath>ActualAddress</DataPath>
+															<ChoiceButton>true</ChoiceButton>
+															<AutoMarkIncomplete>true</AutoMarkIncomplete>
+															<TextEdit>false</TextEdit>
+															<ContextMenu name="ActualAddressContextMenu" id="76"/>
+															<ExtendedTooltip name="ActualAddressExtendedTooltip" id="77"/>
+															<Events>
+																<Event name="StartChoice">ActualAddressStartChoice</Event>
+																<Event name="Clearing">ActualAddressClearing</Event>
+																<Event name="ChoiceProcessing">ActualAddressChoiceProcessing</Event>
+															</Events>
+														</InputField>
+														<PictureDecoration name="ActualAddressWarning" id="464">
+															<Width>3</Width>
+															<Height>1</Height>
+															<HorizontalStretch>false</HorizontalStretch>
+															<VerticalStretch>false</VerticalStretch>
+															<SkipOnInput>true</SkipOnInput>
+															<Title formatted="false">
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Actual address warning</v8:content>
+																</v8:item>
+															</Title>
+															<Hyperlink>true</Hyperlink>
+															<Picture>
+																<xr:Ref>CommonPicture.Warning</xr:Ref>
+																<xr:LoadTransparent>true</xr:LoadTransparent>
+															</Picture>
+															<ContextMenu name="ActualAddressWarningContextMenu" id="465"/>
+															<ExtendedTooltip name="ActualAddressWarningExtendedTooltip" id="466"/>
+															<Events>
+																<Event name="Click">AddressWarningClick</Event>
+															</Events>
+														</PictureDecoration>
+													</ChildItems>
+												</UsualGroup>
+												<InputField name="Phone" id="78">
+													<DataPath>Phone</DataPath>
+													<Width>25</Width>
+													<HorizontalStretch>false</HorizontalStretch>
+													<ChoiceButton>true</ChoiceButton>
+													<AutoMarkIncomplete>true</AutoMarkIncomplete>
+													<TextEdit>false</TextEdit>
+													<ContextMenu name="PhoneContextMenu" id="79"/>
+													<ExtendedTooltip name="PhoneExtendedTooltip" id="80"/>
+													<Events>
+														<Event name="StartChoice">PhoneStartChoice</Event>
+														<Event name="Clearing">PhoneClearing</Event>
+														<Event name="ChoiceProcessing">PhoneChoiceProcessing</Event>
+													</Events>
+												</InputField>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="PageCertificateOwner" id="81">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Page certificate owner</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="PageCertificateOwnerExtendedTooltip" id="82"/>
+					<ChildItems>
+						<UsualGroup name="GroupCertificateOwner" id="105">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Certificate owner</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<ExtendedTooltip name="GroupCertificateOwnerExtendedTooltip" id="106"/>
+							<ChildItems>
+								<UsualGroup name="SelectionCertificateOwner" id="258">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Selection of the certificate owner</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="SelectionCertificateOwnerExtendedTooltip" id="259"/>
+									<ChildItems>
+										<RadioButtonField name="OwnerKind" id="255">
+											<DataPath>OwnerKind</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<RadioButtonType>Auto</RadioButtonType>
+											<ColumnsCount>1</ColumnsCount>
+											<ChoiceList>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation>
+															<v8:item>
+																<v8:lang>en</v8:lang>
+																<v8:content>Chief executive officer</v8:content>
+															</v8:item>
+														</Presentation>
+														<Value xsi:type="xs:string">Chiefexecutive</Value>
+													</xr:Value>
+												</xr:Item>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation>
+															<v8:item>
+																<v8:lang>en</v8:lang>
+																<v8:content>Chief accountant</v8:content>
+															</v8:item>
+														</Presentation>
+														<Value xsi:type="xs:string">ChiefAccountant</Value>
+													</xr:Value>
+												</xr:Item>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation>
+															<v8:item>
+																<v8:lang>en</v8:lang>
+																<v8:content>Employee</v8:content>
+															</v8:item>
+														</Presentation>
+														<Value xsi:type="xs:string">Employee</Value>
+													</xr:Value>
+												</xr:Item>
+											</ChoiceList>
+											<ContextMenu name="OwnerTypeContextMenu" id="256"/>
+											<ExtendedTooltip name="OwnerKindExtendedTooltip" id="257"/>
+											<Events>
+												<Event name="OnChange">OwnerKindOnChange</Event>
+											</Events>
+										</RadioButtonField>
+										<UsualGroup name="VerticalGroup3" id="260">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Vertical group 3</v8:content>
+												</v8:item>
+											</Title>
+											<Group>Vertical</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="VerticalGroup3ExtendedTooltip" id="261"/>
+											<ChildItems>
+												<InputField name="Chiefexecutive" id="268">
+													<DataPath>Chiefexecutive</DataPath>
+													<ReadOnly>true</ReadOnly>
+													<TitleLocation>None</TitleLocation>
+													<Width>35</Width>
+													<HorizontalStretch>false</HorizontalStretch>
+													<ContextMenu name="ChiefexecutiveContextMenu" id="269"/>
+													<ExtendedTooltip name="DirectorExtendedTooltip" id="270"/>
+												</InputField>
+												<InputField name="ChiefAccountant" id="271">
+													<DataPath>ChiefAccountant</DataPath>
+													<ReadOnly>true</ReadOnly>
+													<TitleLocation>None</TitleLocation>
+													<Width>35</Width>
+													<HorizontalStretch>false</HorizontalStretch>
+													<ContextMenu name="ChiefAccountantContextMenu" id="272"/>
+													<ExtendedTooltip name="ChiefAccountantExtendedTooltip" id="273"/>
+												</InputField>
+												<InputField name="Employee" id="248">
+													<DataPath>Employee</DataPath>
+													<TitleLocation>None</TitleLocation>
+													<Width>35</Width>
+													<HorizontalStretch>false</HorizontalStretch>
+													<AvailableTypes>
+														<v8:Type>v8:TypeDescription</v8:Type>
+													</AvailableTypes>
+													<ContextMenu name="EmployeeContextMenu" id="249"/>
+													<ExtendedTooltip name="EmployeeExtendedTooltip" id="250"/>
+													<Events>
+														<Event name="StartChoice">EmployeeStartChoice</Event>
+														<Event name="Clearing">EmployeeClearing</Event>
+														<Event name="ChoiceProcessing">EmployeeSelectionDataProcessor</Event>
+													</Events>
+												</InputField>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="MainAttributes" id="251">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Main attributes</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Horizontal</Group>
+									<Representation>NormalSeparation</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="MainAttributesExtendedTooltip" id="252"/>
+									<ChildItems>
+										<UsualGroup name="FolderSNP" id="101">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Certificate owner</v8:content>
+												</v8:item>
+											</Title>
+											<Width>33</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<Group>Vertical</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="GroupDescriptionFullExtendedTooltip" id="102"/>
+											<ChildItems>
+												<InputField name="Surname" id="83">
+													<DataPath>Surname</DataPath>
+													<Width>20</Width>
+													<AutoMarkIncomplete>true</AutoMarkIncomplete>
+													<ContextMenu name="SurnameContextMenu" id="84"/>
+													<ExtendedTooltip name="SurnameExtendedTooltip" id="85"/>
+												</InputField>
+												<InputField name="Name" id="86">
+													<DataPath>Name</DataPath>
+													<Width>20</Width>
+													<AutoMarkIncomplete>true</AutoMarkIncomplete>
+													<ContextMenu name="NameContextMenu" id="87"/>
+													<ExtendedTooltip name="NameExtendedTooltip" id="88"/>
+												</InputField>
+												<InputField name="Patronymic" id="89">
+													<DataPath>Patronymic</DataPath>
+													<Width>20</Width>
+													<AutoMarkIncomplete>true</AutoMarkIncomplete>
+													<ContextMenu name="PatronymicContextMenu" id="90"/>
+													<ExtendedTooltip name="PatronymicExtendedTooltip" id="91"/>
+												</InputField>
+											</ChildItems>
+										</UsualGroup>
+										<UsualGroup name="AdditionalAttributes" id="103">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Additional attributes</v8:content>
+												</v8:item>
+											</Title>
+											<Group>Vertical</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="AdditionalAttributesExtendedTooltip" id="104"/>
+											<ChildItems>
+												<UsualGroup name="GroupInsuranceNumberRPF" id="494">
+													<Visible>false</Visible>
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Group INILA</v8:content>
+														</v8:item>
+													</Title>
+													<Group>Horizontal</Group>
+													<Representation>None</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="GroupSocialSecurityNumberPensionFundExtendedTooltip" id="495"/>
+													<ChildItems>
+														<LabelDecoration name="TitleSocialSecurityNumberPensionFund" id="496">
+															<Width>10</Width>
+															<HorizontalStretch>false</HorizontalStretch>
+															<Title formatted="false">
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>INILA:</v8:content>
+																</v8:item>
+															</Title>
+															<ContextMenu name="TitleSocialSecurityNumberPensionFundContextMenu" id="497"/>
+															<ExtendedTooltip name="TitleSocialSecurityNumberPensionFundExtendedTooltip" id="498"/>
+														</LabelDecoration>
+													</ChildItems>
+												</UsualGroup>
+												<Pages name="SelectedAttributes" id="476">
+													<Visible>false</Visible>
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Selected attributes</v8:content>
+														</v8:item>
+													</Title>
+													<PagesRepresentation>None</PagesRepresentation>
+													<ExtendedTooltip name="SelectiveAttributesExtendedTooltip" id="477"/>
+													<ChildItems>
+														<Page name="ForOfficial" id="469">
+															<Title>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>For official</v8:content>
+																</v8:item>
+															</Title>
+															<ExtendedTooltip name="ForOfficialExtendedTooltip" id="470"/>
+														</Page>
+														<Page name="ForIndividualEntrepreneur" id="471">
+															<Title>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>For individual entrepreneur</v8:content>
+																</v8:item>
+															</Title>
+															<ExtendedTooltip name="ForIndividualEntrepreneurExtendedTooltip" id="472"/>
+															<ChildItems>
+																<LabelDecoration name="Decoration1" id="491">
+																	<Width>20</Width>
+																	<HorizontalStretch>false</HorizontalStretch>
+																	<VerticalStretch>false</VerticalStretch>
+																	<ContextMenu name="Decoration1ContextMenu" id="492"/>
+																	<ExtendedTooltip name="Decoration1ExtendedTooltip" id="493"/>
+																</LabelDecoration>
+																<LabelDecoration name="Decoration2" id="499">
+																	<Width>20</Width>
+																	<HorizontalStretch>false</HorizontalStretch>
+																	<VerticalStretch>false</VerticalStretch>
+																	<ContextMenu name="Decoration2ContextMenu" id="500"/>
+																	<ExtendedTooltip name="Decoration2ExtendedTooltip" id="501"/>
+																</LabelDecoration>
+															</ChildItems>
+														</Page>
+													</ChildItems>
+												</Pages>
+												<InputField name="InsuranceNumberRPF" id="92">
+													<DataPath>InsuranceNumberRPF</DataPath>
+													<Width>20</Width>
+													<Mask>999-999-999 99</Mask>
+													<AutoMarkIncomplete>true</AutoMarkIncomplete>
+													<ContextMenu name="SocialSecurityNumberPensionFundContextMenu" id="93"/>
+													<ExtendedTooltip name="SocialSecurityNumberPensionFundExtendedTooltip" id="94"/>
+													<Events>
+														<Event name="OnChange">InsuranceNumberRPFOnChange</Event>
+													</Events>
+												</InputField>
+												<InputField name="Position" id="95">
+													<DataPath>Position</DataPath>
+													<Width>20</Width>
+													<AutoMarkIncomplete>true</AutoMarkIncomplete>
+													<ContextMenu name="AppointmentContextMenu" id="96"/>
+													<ExtendedTooltip name="PositionExtendedTooltip" id="97"/>
+												</InputField>
+												<InputField name="Division" id="98">
+													<DataPath>Division</DataPath>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Fill out if the owner of the
+certificate is in a separate subdivision with the actual address different from the actual address of the company.</v8:content>
+														</v8:item>
+													</ToolTip>
+													<ToolTipRepresentation>Button</ToolTipRepresentation>
+													<Width>15</Width>
+													<ContextMenu name="DivisionContextMenu" id="99"/>
+													<ExtendedTooltip name="DivisionExtendedTooltip" id="100"/>
+												</InputField>
+											</ChildItems>
+										</UsualGroup>
+										<Pages name="GroupForCompany" id="467">
+											<Visible>false</Visible>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group for company</v8:content>
+												</v8:item>
+											</Title>
+											<PagesRepresentation>None</PagesRepresentation>
+											<ExtendedTooltip name="GroupForCompanyExtendedTooltip" id="468"/>
+										</Pages>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="GroupDocument" id="107">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Personal identification document</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ExtendedTooltip name="GroupDocumentExtendedTooltip" id="108"/>
+									<ChildItems>
+										<UsualGroup name="GroupSeriesNumber" id="124">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group series number</v8:content>
+												</v8:item>
+											</Title>
+											<Group>Vertical</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="GroupSeriesNumberExtendedTooltip" id="125"/>
+											<ChildItems>
+												<InputField name="DocumentKind1" id="274">
+													<DataPath>DocumentKind1</DataPath>
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Document kind</v8:content>
+														</v8:item>
+													</Title>
+													<Width>45</Width>
+													<HorizontalStretch>true</HorizontalStretch>
+													<ListChoiceMode>true</ListChoiceMode>
+													<AutoMarkIncomplete>true</AutoMarkIncomplete>
+													<ChoiceList>
+														<xr:Item>
+															<xr:Presentation/>
+															<xr:CheckState>0</xr:CheckState>
+															<xr:Value xsi:type="FormChoiceListDesTimeValue">
+																<Presentation>
+																	<v8:item>
+																		<v8:lang>en</v8:lang>
+																		<v8:content>Passport of the citizen</v8:content>
+																	</v8:item>
+																</Presentation>
+																<Value xsi:type="xs:string">21</Value>
+															</xr:Value>
+														</xr:Item>
+														<xr:Item>
+															<xr:Presentation/>
+															<xr:CheckState>0</xr:CheckState>
+															<xr:Value xsi:type="FormChoiceListDesTimeValue">
+																<Presentation>
+																	<v8:item>
+																		<v8:lang>en</v8:lang>
+																		<v8:content>Other document required by the law</v8:content>
+																	</v8:item>
+																</Presentation>
+																<Value xsi:type="xs:string">91</Value>
+															</xr:Value>
+														</xr:Item>
+													</ChoiceList>
+													<ContextMenu name="DocumentTypeContextMenu" id="275"/>
+													<ExtendedTooltip name="DocumentKind1ExtendedTooltip" id="276"/>
+													<Events>
+														<Event name="OnChange">DocumentKindOnChange</Event>
+														<Event name="Clearing">DocumentKindClearing</Event>
+													</Events>
+												</InputField>
+												<InputField name="DocumentWhoIssued" id="118">
+													<DataPath>DocumentWhoIssued</DataPath>
+													<Width>45</Width>
+													<AutoMarkIncomplete>true</AutoMarkIncomplete>
+													<ContextMenu name="DocumentIssuedByContextMenu" id="119"/>
+													<ExtendedTooltip name="DocumentWhoIssuedExtendedTooltip" id="120"/>
+												</InputField>
+											</ChildItems>
+										</UsualGroup>
+										<UsualGroup name="GroupByWhomAndWhenIssued" id="126">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group by whom and when issued</v8:content>
+												</v8:item>
+											</Title>
+											<Group>Vertical</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="GroupByWhomAndWhenIssuedExtendedTooltip" id="127"/>
+											<ChildItems>
+												<InputField name="DocumentNumber" id="112">
+													<DataPath>DocumentNumber</DataPath>
+													<Width>13</Width>
+													<Mask>99 99 999999</Mask>
+													<AutoMarkIncomplete>true</AutoMarkIncomplete>
+													<ContextMenu name="DocumentNumberContextMenu" id="113"/>
+													<ExtendedTooltip name="DocumentNumberExtendedTooltip" id="114"/>
+													<Events>
+														<Event name="OnChange">DocumentNumberOnChange</Event>
+													</Events>
+												</InputField>
+												<InputField name="DocumentIssueDate" id="121">
+													<DataPath>DocumentIssueDate</DataPath>
+													<AutoMarkIncomplete>true</AutoMarkIncomplete>
+													<ContextMenu name="DocumentIssueDateContextMenu" id="122"/>
+													<ExtendedTooltip name="DocumentIssueDateExtendedTooltip" id="123"/>
+												</InputField>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="GroupContacts" id="540">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Contact information</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ExtendedTooltip name="GroupContactsExtendedTooltip" id="541"/>
+									<ChildItems>
+										<InputField name="Email" id="537">
+											<DataPath>Email</DataPath>
+											<Width>25</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ContextMenu name="EmailContextMenu" id="538"/>
+											<ExtendedTooltip name="EmailExtendedTooltip" id="539"/>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="PagePreparationCertificateQuery" id="132">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Page certificate query initiation</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="PageCertificateQueryInitiationExtendedTooltip" id="133"/>
+					<ChildItems>
+						<UsualGroup name="PreparationCertificateQuery" id="134">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Generation of digital signature key</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<ExtendedTooltip name="CertificateRequestInitiationExtendedTooltip" id="135"/>
+							<ChildItems>
+								<LabelDecoration name="DecorationRequestAttributes" id="148">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Request is filled. Check the entered data:</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="DecorationRequestAttributesContextMenu" id="149"/>
+									<ExtendedTooltip name="DecorationRequestAttributesExtendedTooltip" id="150"/>
+								</LabelDecoration>
+								<Table name="RequestAttributes" id="279">
+									<Representation>List</Representation>
+									<CommandBarLocation>None</CommandBarLocation>
+									<ReadOnly>true</ReadOnly>
+									<Header>false</Header>
+									<AutoInsertNewRow>true</AutoInsertNewRow>
+									<EnableStartDrag>true</EnableStartDrag>
+									<EnableDrag>true</EnableDrag>
+									<DataPath>RequestAttributes</DataPath>
+									<RowFilter xsi:nil="true"/>
+									<ContextMenu name="RequestAttributesContextMenu" id="280">
+										<Autofill>false</Autofill>
+									</ContextMenu>
+									<AutoCommandBar name="RequestAttributesCommandBar" id="281"/>
+									<ExtendedTooltip name="RequestAttributesExtendedTooltip" id="282"/>
+									<SearchStringAddition name="RequestAttributesSearchString" id="283">
+										<AdditionSource>
+											<Item>RequestAttributes</Item>
+											<Type>SearchStringRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="RequestAttributesSearchStringContextMenu" id="286"/>
+										<ExtendedTooltip name="RequestAttributesSearchStringExtendedTooltip" id="287"/>
+									</SearchStringAddition>
+									<ViewStatusAddition name="RequestAttributesViewStatus" id="288">
+										<AdditionSource>
+											<Item>RequestAttributes</Item>
+											<Type>ViewStatusRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="RequestAttributesViewStatusContextMenu" id="291"/>
+										<ExtendedTooltip name="RequestAttributesViewStatusExtendedTooltip" id="292"/>
+									</ViewStatusAddition>
+									<SearchControlAddition name="RequestAttributesSearchControl" id="293">
+										<AdditionSource>
+											<Item>RequestAttributes</Item>
+											<Type>SearchControl</Type>
+										</AdditionSource>
+										<ContextMenu name="RequestAttributesSearchControlContextMenu" id="296"/>
+										<ExtendedTooltip name="RequestAttributesSearchControlExtendedTooltip" id="297"/>
+									</SearchControlAddition>
+									<ChildItems>
+										<InputField name="RequestAttributesAttribute" id="298">
+											<DataPath>RequestAttributes.Attribute</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>16</Width>
+											<ContextMenu name="RequestAttributesAttributeContextMenu" id="299"/>
+											<ExtendedTooltip name="RequestAttributesAttributeExtendedTooltip" id="300"/>
+										</InputField>
+										<InputField name="RequestAttributesValue" id="301">
+											<DataPath>RequestAttributes.Value</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>25</Width>
+											<ContextMenu name="RequestAttributesValueContextMenu" id="302"/>
+											<ExtendedTooltip name="RequestAttributesValueExtendedTooltip" id="303"/>
+										</InputField>
+									</ChildItems>
+								</Table>
+								<LabelDecoration name="DecorationKeyGeneration" id="304">
+									<Title formatted="true">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Click &lt;b&gt;Next&lt;/&gt;, to create &lt;link DigitalSignatureKey&gt;electronic signature key &lt;/&gt; and &lt;link CertificateRequest&gt;request for certificate&lt;/&gt;</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="DecorationKeyGenerationContextMenu" id="305"/>
+									<ExtendedTooltip name="DecorationKeyGenerationExtendedTooltip" id="306"/>
+									<Events>
+										<Event name="URLProcessing">DecorationKeyGenerationNavigationRefProcessing</Event>
+									</Events>
+								</LabelDecoration>
+								<UsualGroup name="HorizontalGroup1" id="440">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Horizontal group 1</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="HorizontalGroup1ExtendedTooltip" id="441"/>
+									<ChildItems>
+										<InputField name="Application" id="1">
+											<DataPath>Object.Application</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>using application</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTipRepresentation>None</ToolTipRepresentation>
+											<Width>15</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ChoiceButton>false</ChoiceButton>
+											<OpenButton>false</OpenButton>
+											<CreateButton>false</CreateButton>
+											<AutoMarkIncomplete>true</AutoMarkIncomplete>
+											<ChoiceHistoryOnInput>DontUse</ChoiceHistoryOnInput>
+											<ContextMenu name="ApplicationContextMenu" id="2"/>
+											<ExtendedTooltip name="ApplicationExtendedTooltip" id="3"/>
+											<Events>
+												<Event name="AutoComplete">ApplicationAutoPick</Event>
+												<Event name="StartChoice">ApplicationStartChoice</Event>
+												<Event name="TextEditEnd">ApplicationTextInputEnd</Event>
+												<Event name="ChoiceProcessing">ApplicationChoiceProcessing</Event>
+											</Events>
+										</InputField>
+										<LabelDecoration name="HorizontalIndent1" id="446">
+											<Width>1</Width>
+											<ContextMenu name="HorizontalIndent1ContextMenu" id="447"/>
+											<ExtendedTooltip name="HorizontalIndent1ExtendedTooltip" id="448"/>
+										</LabelDecoration>
+										<LabelDecoration name="DecorationApplicationComment" id="307">
+											<Title formatted="true">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>For application operation issues refer to its documentation.
+&lt;link% 1 &gt; Or use the additional instructions on the 1C website &lt;/&gt;.</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="DecorationApplicationCommentContextMenu" id="308"/>
+											<ExtendedTooltip name="DecorationApplicationCommentExtendedTooltip" id="309"/>
+											<Events>
+												<Event name="URLProcessing">DecorationApplicationCommentNavigationRefProcessing</Event>
+											</Events>
+										</LabelDecoration>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="PageRequestSending" id="166">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Page request sending</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="PageRequestSendingExtendedTooltip" id="167"/>
+					<ChildItems>
+						<UsualGroup name="RequestSending" id="168">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Send request</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<ExtendedTooltip name="RequestSendingExtendedTooltip" id="169"/>
+							<ChildItems>
+								<LabelDecoration name="DecorationRequestPrepared1" id="323">
+									<HorizontalStretch>true</HorizontalStretch>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Statement prepared by.</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="DecorationRequestPrepared1ContextMenu" id="324"/>
+									<ExtendedTooltip name="DecorationRequestPrepared1ExtendedTooltip" id="325"/>
+								</LabelDecoration>
+								<UsualGroup name="VerticalGroup4" id="356">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Vertical group 4</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Vertical</Group>
+									<Representation>NormalSeparation</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="VerticalGroup4ExtendedTooltip" id="357"/>
+									<ChildItems>
+										<UsualGroup name="InstructionIE" id="551">
+											<Visible>false</Visible>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Instruction for individual entrepreneur</v8:content>
+												</v8:item>
+											</Title>
+											<Group>Vertical</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="InstructionIEExtendedTooltip" id="552"/>
+											<ChildItems>
+												<UsualGroup name="HorizontalGroup6" id="553">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Horizontal group 3</v8:content>
+														</v8:item>
+													</Title>
+													<Group>Horizontal</Group>
+													<Representation>None</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="HorizontalGroup6ExtendedTooltip" id="554"/>
+													<ChildItems>
+														<LabelDecoration name="InstructionIEPoint1" id="555">
+															<VerticalStretch>false</VerticalStretch>
+															<Title formatted="true">
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>1. Print application</v8:content>
+																</v8:item>
+															</Title>
+															<ContextMenu name="InstructionIEPoint1ContextMenu" id="556"/>
+															<ExtendedTooltip name="InstructionIEPoint1ExtendedTooltip" id="557"/>
+														</LabelDecoration>
+														<Button name="PrintDocuments1" id="558">
+															<Type>UsualButton</Type>
+															<CommandName>Form.Command.PrintDocuments</CommandName>
+															<Title>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Print ...</v8:content>
+																</v8:item>
+															</Title>
+															<ExtendedTooltip name="PrintDocuments1ExtendedTooltip" id="559"/>
+														</Button>
+														<LabelDecoration name="DecorationRequestPrepared9" id="560">
+															<VerticalStretch>false</VerticalStretch>
+															<Title formatted="true">
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Check.</v8:content>
+																</v8:item>
+															</Title>
+															<ContextMenu name="DecorationRequestPrepared9ContextMenu" id="561"/>
+															<ExtendedTooltip name="DecorationRequestPrepared9ExtendedTooltip" id="562"/>
+														</LabelDecoration>
+													</ChildItems>
+												</UsualGroup>
+												<LabelDecoration name="InstructionIEPoint2" id="563">
+													<VerticalStretch>false</VerticalStretch>
+													<Title formatted="true">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>2. Prepare and sign &lt;link SetDocuments&gt; the set of&lt;/&gt;&lt;link SetDocuments&gt;documents&lt;/&gt;.</v8:content>
+														</v8:item>
+													</Title>
+													<ContextMenu name="InstructionIEPoint2ContextMenu" id="564"/>
+													<ExtendedTooltip name="InstructionIEPoint2ExtendedTooltip" id="565"/>
+													<Events>
+														<Event name="URLProcessing">InstructionNavigationRefProcessing</Event>
+													</Events>
+												</LabelDecoration>
+												<LabelDecoration name="InstructionPointIP21" id="566">
+													<VerticalStretch>false</VerticalStretch>
+													<TextColor>style:ExplanationText</TextColor>
+													<Title formatted="true">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content> While the set of documents is being prepared you can close the request and open it later and continue.</v8:content>
+														</v8:item>
+													</Title>
+													<ContextMenu name="InstructionPointIP21ContextMenu" id="567"/>
+													<ExtendedTooltip name="InstructionPointIP21ExtendedTooltip" id="568"/>
+												</LabelDecoration>
+												<LabelDecoration name="InstructionIEPoint3" id="569">
+													<VerticalStretch>false</VerticalStretch>
+													<Title formatted="true">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>3. Hand over the signed &lt;link setdocuments=""&gt; set of documents to the authorized representative of your service provider.</v8:content>
+														</v8:item>
+													</Title>
+													<ContextMenu name="InstructionIEPoint3ContextMenu" id="570"/>
+													<ExtendedTooltip name="InstructionIEPoint3ExtendedTooltip" id="571"/>
+													<Events>
+														<Event name="URLProcessing">InstructionNavigationRefProcessing</Event>
+													</Events>
+												</LabelDecoration>
+											</ChildItems>
+										</UsualGroup>
+										<UsualGroup name="InstructionLE" id="549">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Instruction of legal entity</v8:content>
+												</v8:item>
+											</Title>
+											<Group>Vertical</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="InstructionLEExtendedTooltip" id="550"/>
+											<ChildItems>
+												<LabelDecoration name="InstructionLEPoint1" id="341">
+													<Title formatted="true">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>1. Prepare request for printing.</v8:content>
+														</v8:item>
+													</Title>
+													<ContextMenu name="InstructionLEPoint1ContextMenu" id="342"/>
+													<ExtendedTooltip name="InstructionLEPoint1ExtendedTooltip" id="343"/>
+												</LabelDecoration>
+												<UsualGroup name="VerticalGroup5" id="544">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Vertical group 5</v8:content>
+														</v8:item>
+													</Title>
+													<Group>Vertical</Group>
+													<Representation>None</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="VerticalGroup5ExtendedTooltip" id="545"/>
+													<ChildItems>
+														<UsualGroup name="GroupHead" id="326">
+															<Title>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Specify the manager who will sign the document:</v8:content>
+																</v8:item>
+															</Title>
+															<Group>Vertical</Group>
+															<Representation>None</Representation>
+															<ExtendedTooltip name="GroupTopManagerExtendedTooltip" id="327"/>
+															<ChildItems>
+																<UsualGroup name="HorizontalGroup" id="318">
+																	<Title>
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Horizontal group</v8:content>
+																		</v8:item>
+																	</Title>
+																	<Group>Horizontal</Group>
+																	<Representation>None</Representation>
+																	<ShowTitle>false</ShowTitle>
+																	<ExtendedTooltip name="HorizontalGroupExtendedTooltip" id="319"/>
+																	<ChildItems>
+																		<InputField name="DocumentsHead" id="315">
+																			<DataPath>DocumentsHead</DataPath>
+																			<TitleLocation>None</TitleLocation>
+																			<ChoiceButton>true</ChoiceButton>
+																			<OpenButton>true</OpenButton>
+																			<AutoMarkIncomplete>true</AutoMarkIncomplete>
+																			<InputHint>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Input head full name</v8:content>
+																				</v8:item>
+																			</InputHint>
+																			<ContextMenu name="DocumentsHeadContextMenu" id="316"/>
+																			<ExtendedTooltip name="DocumentsHeadExtendedTooltip" id="317"/>
+																			<Events>
+																				<Event name="OnChange">DocumentsHeadOnChange</Event>
+																				<Event name="StartChoice">DocumentsHeadStartChoice</Event>
+																				<Event name="Opening">DocumentsHeadOpen</Event>
+																				<Event name="Clearing">DocumentsHeadClearing</Event>
+																				<Event name="ChoiceProcessing">DocumentsHeadChoiceProcessing</Event>
+																			</Events>
+																		</InputField>
+																		<InputField name="DocumentsHeadPosition" id="320">
+																			<DataPath>DocumentsHeadPosition</DataPath>
+																			<HorizontalStretch>false</HorizontalStretch>
+																			<AutoMarkIncomplete>true</AutoMarkIncomplete>
+																			<InputHint>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Enter position of the manager</v8:content>
+																				</v8:item>
+																			</InputHint>
+																			<ContextMenu name="DocumentsManagerPositionContextMenu" id="321"/>
+																			<ExtendedTooltip name="DocumentsHeadPositionExtendedTooltip" id="322"/>
+																		</InputField>
+																	</ChildItems>
+																</UsualGroup>
+																<InputField name="DocumentsHeadBasis" id="546">
+																	<DataPath>DocumentsHeadBasis</DataPath>
+																	<AutoMarkIncomplete>true</AutoMarkIncomplete>
+																	<InputHint>
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Input the grounds: Items of Association, Leter of authority, order...</v8:content>
+																		</v8:item>
+																	</InputHint>
+																	<ContextMenu name="DocumentsManagerBasisContextMenu" id="547"/>
+																	<ExtendedTooltip name="DocumentsHeadGroundsExtendedTooltip" id="548"/>
+																</InputField>
+															</ChildItems>
+														</UsualGroup>
+													</ChildItems>
+												</UsualGroup>
+												<UsualGroup name="HorizontalGroup3" id="504">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Horizontal group 3</v8:content>
+														</v8:item>
+													</Title>
+													<Group>Horizontal</Group>
+													<Representation>None</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="HorizontalGroup3ExtendedTooltip" id="505"/>
+													<ChildItems>
+														<LabelDecoration name="InstructionPoint2" id="344">
+															<VerticalStretch>false</VerticalStretch>
+															<Title formatted="true">
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>2. Print application</v8:content>
+																</v8:item>
+															</Title>
+															<ContextMenu name="InstructionPoint2ContextMenu" id="345"/>
+															<ExtendedTooltip name="InstructionPoint2ExtendedTooltip" id="346"/>
+														</LabelDecoration>
+														<Button name="PrintDocuments" id="502">
+															<Type>UsualButton</Type>
+															<CommandName>Form.Command.PrintDocuments</CommandName>
+															<Title>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Print ...</v8:content>
+																</v8:item>
+															</Title>
+															<ExtendedTooltip name="PrintDocumentsExtendedTooltip" id="503"/>
+														</Button>
+														<LabelDecoration name="DecorationRequestPrepared8" id="506">
+															<VerticalStretch>false</VerticalStretch>
+															<Title formatted="true">
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Check.</v8:content>
+																</v8:item>
+															</Title>
+															<ContextMenu name="DecorationRequestPrepared8ContextMenu" id="507"/>
+															<ExtendedTooltip name="DecorationRequestPrepared8ExtendedTooltip" id="508"/>
+														</LabelDecoration>
+													</ChildItems>
+												</UsualGroup>
+												<LabelDecoration name="InstructionLEPoint3" id="347">
+													<VerticalStretch>false</VerticalStretch>
+													<Title formatted="true">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>3. Hand over &lt;link setdocuments=""&gt; the set &lt;link setdocuments=""&gt; of documents for signining to the manager selected above.</v8:content>
+														</v8:item>
+													</Title>
+													<ContextMenu name="InstructionLEPoint3ContextMenu" id="348"/>
+													<ExtendedTooltip name="InstructionLEPoint3ExtendedTooltip" id="349"/>
+													<Events>
+														<Event name="URLProcessing">InstructionNavigationRefProcessing</Event>
+													</Events>
+												</LabelDecoration>
+												<LabelDecoration name="InstructionLEPoint31" id="509">
+													<VerticalStretch>false</VerticalStretch>
+													<TextColor>style:ExplanationText</TextColor>
+													<Title formatted="true">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content> While the set of documents is being prepared you can close the request and open it later and continue.</v8:content>
+														</v8:item>
+													</Title>
+													<ContextMenu name="InstructionLEPoint31ContextMenu" id="510"/>
+													<ExtendedTooltip name="InstructionLEPoint31ExtendedTooltip" id="511"/>
+												</LabelDecoration>
+												<LabelDecoration name="InstructionLEPoint4" id="350">
+													<VerticalStretch>false</VerticalStretch>
+													<Title formatted="true">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>4. Hand over the signed &lt;link setdocuments=""&gt; set of documents to the authorized representative of your service provider.</v8:content>
+														</v8:item>
+													</Title>
+													<ContextMenu name="InstructionLEPoint4ContextMenu" id="351"/>
+													<ExtendedTooltip name="InstructionLEPoint4ExtendedTooltip" id="352"/>
+													<Events>
+														<Event name="URLProcessing">InstructionNavigationRefProcessing</Event>
+													</Events>
+												</LabelDecoration>
+											</ChildItems>
+										</UsualGroup>
+										<UsualGroup name="GroupVerticalIndent" id="542">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group vertical indent</v8:content>
+												</v8:item>
+											</Title>
+											<Group>Vertical</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="GroupVerticalIndentExtendedTooltip" id="543"/>
+											<ChildItems>
+												<UsualGroup name="GroupPartner" id="328">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Specify your service provider (1C company partner) that will process the request:</v8:content>
+														</v8:item>
+													</Title>
+													<Group>Vertical</Group>
+													<Representation>None</Representation>
+													<ExtendedTooltip name="GroupPartnerExtendedTooltip" id="329"/>
+													<ChildItems>
+														<UsualGroup name="HorizontalGroup2" id="333">
+															<Title>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Horizontal group 2</v8:content>
+																</v8:item>
+															</Title>
+															<Group>Horizontal</Group>
+															<Representation>None</Representation>
+															<ShowTitle>false</ShowTitle>
+															<ExtendedTooltip name="HorizontalGroup2ExtendedTooltip" id="334"/>
+															<ChildItems>
+																<InputField name="DocumentsPartner" id="512">
+																	<DataPath>DocumentsPartner</DataPath>
+																	<TitleLocation>None</TitleLocation>
+																	<ChoiceButton>true</ChoiceButton>
+																	<OpenButton>true</OpenButton>
+																	<InputHint>
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Enter partner name</v8:content>
+																		</v8:item>
+																	</InputHint>
+																	<ContextMenu name="DocumentsPartnerContextMenu" id="513"/>
+																	<ExtendedTooltip name="DocumentsPartnerExtendedTooltip" id="514"/>
+																	<Events>
+																		<Event name="OnChange">DocumentsPartnerOnChange</Event>
+																		<Event name="StartChoice">DocumentsPartnerStartChoice</Event>
+																		<Event name="Opening">DocumentsPartnerOpening</Event>
+																		<Event name="Clearing">DocumentsPartnerClearing</Event>
+																		<Event name="ChoiceProcessing">DocumentsPartnerChoiceProcessing</Event>
+																	</Events>
+																</InputField>
+																<InputField name="DocumentsPartnerTIN" id="335">
+																	<DataPath>DocumentsPartnerTIN</DataPath>
+																	<HorizontalStretch>false</HorizontalStretch>
+																	<InputHint>
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Input TIN of a partner</v8:content>
+																		</v8:item>
+																	</InputHint>
+																	<ContextMenu name="DocumentsPartnerTINContextMenu" id="336"/>
+																	<ExtendedTooltip name="DocumentsPartnerTINExtendedTooltip" id="337"/>
+																</InputField>
+																<InputField name="DocumentsPartnerKPP" id="338">
+																	<DataPath>DocumentsPartnerKPP</DataPath>
+																	<Width>14</Width>
+																	<HorizontalStretch>false</HorizontalStretch>
+																	<InputHint>
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Input KPP of a partner</v8:content>
+																		</v8:item>
+																	</InputHint>
+																	<ContextMenu name="DocumentsPartnerKPPContextMenu" id="339"/>
+																	<ExtendedTooltip name="DocumentsPartnerKPPExtendedTooltip" id="340"/>
+																</InputField>
+															</ChildItems>
+														</UsualGroup>
+													</ChildItems>
+												</UsualGroup>
+											</ChildItems>
+										</UsualGroup>
+										<LabelDecoration name="InstructionLEPoint5" id="353">
+											<VerticalStretch>false</VerticalStretch>
+											<Title formatted="true">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>5.Send the request for processing (Click &lt;b&gt;Next&lt;/&gt;).</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="InstructionLEPoint5ContextMenu" id="354"/>
+											<ExtendedTooltip name="InstructionLEPoint5ExtendedTooltip" id="355"/>
+										</LabelDecoration>
+										<LabelDecoration name="InstructionIEPoint4" id="572">
+											<Visible>false</Visible>
+											<VerticalStretch>false</VerticalStretch>
+											<Title formatted="true">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>4. Send the request for processing (Click &lt;b&gt;Next&lt;/&gt;).</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="InstructionIEPoint4ContextMenu" id="573"/>
+											<ExtendedTooltip name="InstructionIEPoint4ExtendedTooltip" id="574"/>
+										</LabelDecoration>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="PageRequestProcessingPending" id="180">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Page request processing pending</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="PageWaitingForRequestProcessingExtendedTooltip" id="181"/>
+					<ChildItems>
+						<UsualGroup name="WaitingForRequestProcessing" id="182">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Waiting for request processing</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<ExtendedTooltip name="WaitingForRequestProcessingExtendedTooltip" id="183"/>
+							<ChildItems>
+								<LabelField name="SendingDate" id="437">
+									<DataPath>SendingDate</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Sending date</v8:content>
+										</v8:item>
+									</Title>
+									<Format>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>DLF=DT</v8:content>
+										</v8:item>
+									</Format>
+									<ContextMenu name="SendingDateContextMenu" id="438"/>
+									<ExtendedTooltip name="SendingDateExtendedTooltip" id="439"/>
+								</LabelField>
+								<UsualGroup name="GroupLastCheckState" id="378">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group last check state</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group last check state</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupLastCheckStateExtendedTooltip" id="379"/>
+									<ChildItems>
+										<InputField name="RequestProcessingState" id="375">
+											<DataPath>RequestProcessingState</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Request processing state</v8:content>
+												</v8:item>
+											</Title>
+											<TitleLocation>Top</TitleLocation>
+											<MultiLine>true</MultiLine>
+											<ContextMenu name="RequestProcessingStateContextMenu" id="376"/>
+											<ExtendedTooltip name="RequestProcessingStateExtendedTooltip" id="377"/>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="HorizontalGroup10" id="635">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Horizontal group 10</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="HorizontalGroup10ExtendedTooltip" id="636"/>
+									<ChildItems>
+										<LabelDecoration name="DecorationRefreshStatus1" id="358">
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Press</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="RefreshStatusDecoration1ContextMenu" id="359"/>
+											<ExtendedTooltip name="RefreshStatusDecoration1ExtendedTooltip" id="360"/>
+										</LabelDecoration>
+										<Button name="RefreshStatus1" id="637">
+											<Type>UsualButton</Type>
+											<CommandName>Form.Command.Next</CommandName>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Update state</v8:content>
+												</v8:item>
+											</Title>
+											<ExtendedTooltip name="RefreshStatus1ExtendedTooltip" id="638"/>
+										</Button>
+										<LabelDecoration name="DecorationRefreshStatus2" id="639">
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>to refresh the request processing state or to get issued certificate.</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="DecorationRefreshStatus2ContextMenu" id="640"/>
+											<ExtendedTooltip name="RefreshStatusDecoration2ExtendedTooltip" id="641"/>
+										</LabelDecoration>
+									</ChildItems>
+								</UsualGroup>
+								<LabelDecoration name="VerticalIndent" id="649">
+									<ContextMenu name="VerticalIndentContextMenu" id="650"/>
+									<ExtendedTooltip name="VerticalIndentExtendedTooltip" id="651"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="PageCertificateSetup" id="204">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Page certificate setup</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="CertificateSetupPageExtendedTooltip" id="205"/>
+					<ChildItems>
+						<UsualGroup name="CertificateSetup" id="206">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Received certificate setup</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<ExtendedTooltip name="CertificateSetupExtendedTooltip" id="207"/>
+							<ChildItems>
+								<UsualGroup name="HorizontalGroup4" id="419">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Horizontal group 4</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="HorizontalGroup4ExtendedTooltip" id="420"/>
+									<ChildItems>
+										<LabelDecoration name="Decoration5" id="208">
+											<HorizontalStretch>true</HorizontalStretch>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Certificate is received.</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="Decoration5ContextMenu" id="209"/>
+											<ExtendedTooltip name="Decoration5ExtendedTooltip" id="210"/>
+										</LabelDecoration>
+										<Button name="ExportCertificate" id="421">
+											<Type>Hyperlink</Type>
+											<CommandName>Form.Command.ExportCertificate</CommandName>
+											<ToolTipRepresentation>Button</ToolTipRepresentation>
+											<ExtendedTooltip name="ExportCertificateExtendedTooltip" id="422">
+												<Title formatted="false">
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Write the received certificate into file.
+Required in rare cases if it is not possible to install the certificate automatically.</v8:content>
+													</v8:item>
+												</Title>
+											</ExtendedTooltip>
+										</Button>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="GroupCertificateSetupResult" id="380">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group certificate setup result</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupCertificateSetupResultExtendedTooltip" id="381"/>
+									<ChildItems>
+										<InputField name="ErrorCertificateSetup" id="382">
+											<DataPath>ErrorCertificateSetup</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Status of certificate setup</v8:content>
+												</v8:item>
+											</Title>
+											<MultiLine>true</MultiLine>
+											<ContextMenu name="CertificateSetupErrorContextMenu" id="383"/>
+											<ExtendedTooltip name="CertificateSetupErrorExtendedTooltip" id="384"/>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="HorizontalGroup11" id="642">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Horizontal group 11</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="HorizontalGroup11ExtendedTooltip" id="643"/>
+									<ChildItems>
+										<LabelDecoration name="DecorationApplicationCommentSetCertificate1" id="449">
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Press</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="DecorationApplicationCommentSetCertificate1ContextMenu" id="450"/>
+											<ExtendedTooltip name="DecorationApplicationCommentSetupCertificate1ExtendedTooltip" id="451"/>
+										</LabelDecoration>
+										<Button name="SetCertificate" id="647">
+											<Type>UsualButton</Type>
+											<CommandName>Form.Command.Next</CommandName>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Set certificate</v8:content>
+												</v8:item>
+											</Title>
+											<ExtendedTooltip name="SetupCertificateExtendedTooltip" id="648"/>
+										</Button>
+										<LabelDecoration name="DecorationApplicationCommentSetCertificate2" id="644">
+											<Title formatted="true">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>to repeat the certificate setup on computer</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="DecorationApplicationCommentSetCertificate2ContextMenu" id="645"/>
+											<ExtendedTooltip name="DecorationApplicationCommentSetupCertificate2ExtendedTooltip" id="646"/>
+										</LabelDecoration>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="HorizontalGroup5" id="452">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Horizontal group 5</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="HorizontalGroup5ExtendedTooltip" id="453"/>
+									<ChildItems>
+										<LabelField name="Application2" id="363">
+											<DataPath>Object.Application</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>using application</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTipRepresentation>None</ToolTipRepresentation>
+											<Width>15</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ContextMenu name="Application2ContextMenu" id="364"/>
+											<ExtendedTooltip name="Application2ExtendedTooltip" id="365"/>
+										</LabelField>
+										<LabelDecoration name="HorizontalIndent2" id="454">
+											<Width>1</Width>
+											<ContextMenu name="HorizontalIndent2ContextMenu" id="455"/>
+											<ExtendedTooltip name="HorizontalIndent2ExtendedTooltip" id="456"/>
+										</LabelDecoration>
+										<LabelDecoration name="DecorationApplicationComment2" id="369">
+											<Title formatted="true">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>For application operation issues refer to its documentation.
+&lt;link% 1 &gt; Or use the additional instructions on the 1C website &lt;/&gt;.</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="DecorationApplicationComment2ContextMenu" id="370"/>
+											<ExtendedTooltip name="DecorationApplicationComment2ExtendedTooltip" id="371"/>
+											<Events>
+												<Event name="URLProcessing">DecorationApplicationCommentNavigationRefProcessing</Event>
+											</Events>
+										</LabelDecoration>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="PageProcessedRequest" id="389">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Page processed request</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="PageProcessedRequestExtendedTooltip" id="390"/>
+					<ChildItems>
+						<UsualGroup name="HorizontalGroup9" id="619">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Horizontal group 9</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="HorizontalGroup9ExtendedTooltip" id="620"/>
+							<ChildItems>
+								<LabelDecoration name="Decoration3" id="621">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>All attributes of the request:</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="Decoration3ContextMenu" id="622"/>
+									<ExtendedTooltip name="Decoration3ExtendedTooltip" id="623"/>
+								</LabelDecoration>
+								<LabelDecoration name="Decoration4" id="624">
+									<Width>26</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="Decoration4ContextMenu" id="625"/>
+									<ExtendedTooltip name="Decoration4ExtendedTooltip" id="626"/>
+								</LabelDecoration>
+								<LabelField name="SendingDate2" id="627">
+									<DataPath>SendingDate</DataPath>
+									<Format>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>DLF=DT</v8:content>
+										</v8:item>
+									</Format>
+									<ContextMenu name="SendingDate2ContextMenu" id="628"/>
+									<ExtendedTooltip name="SendingDate2ExtendedTooltip" id="629"/>
+								</LabelField>
+							</ChildItems>
+						</UsualGroup>
+						<Table name="ApplicationAttributesAll" id="391">
+							<Representation>List</Representation>
+							<ReadOnly>true</ReadOnly>
+							<Header>false</Header>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>RequestAttributes</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>All attributes of application</v8:content>
+								</v8:item>
+							</Title>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="RequestAttributesAllContextMenu" id="392">
+								<Autofill>false</Autofill>
+							</ContextMenu>
+							<AutoCommandBar name="RequestAttributesAllCommandBar" id="393">
+								<Autofill>false</Autofill>
+							</AutoCommandBar>
+							<ExtendedTooltip name="RequestAttributesAllExtendedTooltip" id="394"/>
+							<SearchStringAddition name="RequestAttributesAllSearchString" id="395">
+								<AdditionSource>
+									<Item>ApplicationAttributesAll</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ReauestAttributesAllSearchStringContextMenu" id="398"/>
+								<ExtendedTooltip name="RequestAttributesAllSearchStringExtendedTooltip" id="399"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="RequestAttributesAllViewStatus" id="400">
+								<AdditionSource>
+									<Item>ApplicationAttributesAll</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="RequestAttributesAllViewStatusContextMenu" id="403"/>
+								<ExtendedTooltip name="RequestAttributesAllViewStatusExtendedTooltip" id="404"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="RequestAttributesAllSearchControl" id="405">
+								<AdditionSource>
+									<Item>ApplicationAttributesAll</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="RequestAttributesAllSearchControlContextMenu" id="408"/>
+								<ExtendedTooltip name="RequestAttributesAllSearchControlExtendedTooltip" id="409"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<InputField name="ApplicationAttributesAllAttribute" id="410">
+									<DataPath>RequestAttributes.Attribute</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>16</Width>
+									<ContextMenu name="RequestAttributesAllAttributeContextMenu" id="411"/>
+									<ExtendedTooltip name="RequestAttributesAllAttributeExtendedTooltip" id="412"/>
+								</InputField>
+								<InputField name="RequestAttributesAllValue" id="413">
+									<DataPath>RequestAttributes.Value</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>25</Width>
+									<ContextMenu name="RequestAttributesAllValueContextMenu" id="414"/>
+									<ExtendedTooltip name="RequestAttributesAllValueExtendedTooltip" id="415"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+		<UsualGroup name="GroupSupportService" id="630">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group support service</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="GroupSupportServiceExtendedTooltip" id="631"/>
+			<ChildItems>
+				<LabelDecoration name="Indent" id="31">
+					<Visible>false</Visible>
+					<VerticalStretch>true</VerticalStretch>
+					<ContextMenu name="IndentContextMenu" id="32"/>
+					<ExtendedTooltip name="IndentExtendedTooltip" id="33"/>
+				</LabelDecoration>
+				<LabelDecoration name="SupportService" id="632">
+					<VerticalStretch>true</VerticalStretch>
+					<TextColor>style:ExplanationText</TextColor>
+					<Title formatted="true">
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Support service: &lt;b&gt;8-800-333-9313 &lt;/&gt;&lt;b&gt;edo@1c.ru&lt;/&gt;</v8:content>
+						</v8:item>
+					</Title>
+					<VerticalAlign>Bottom</VerticalAlign>
+					<ContextMenu name="SupportServiceContextMenu" id="633"/>
+					<ExtendedTooltip name="SupportServiceExtendedTooltip" id="634"/>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="Commands" id="239">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Commands</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="CommandsExtendedTooltip" id="240"/>
+			<ChildItems>
+				<CommandBar name="CommandBack" id="241">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Command back</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="BackCommandExtendedTooltip" id="242"/>
+					<ChildItems>
+						<Button name="FormBack" id="230">
+							<Type>CommandBarButton</Type>
+							<Visible>false</Visible>
+							<CommandName>Form.Command.Back</CommandName>
+							<ExtendedTooltip name="FormBackExtendedTooltip" id="231"/>
+						</Button>
+					</ChildItems>
+				</CommandBar>
+				<LabelDecoration name="HorizontalIndent" id="243">
+					<HorizontalStretch>true</HorizontalStretch>
+					<ContextMenu name="HorizontalIndentContexMenu" id="244"/>
+					<ExtendedTooltip name="HorizontalIndentExtendedTooltip" id="245"/>
+				</LabelDecoration>
+				<CommandBar name="BasicCommands" id="246">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Basic commands</v8:content>
+						</v8:item>
+					</Title>
+					<HorizontalLocation>Right</HorizontalLocation>
+					<ExtendedTooltip name="BasicCommandsExtendedTooltip" id="247"/>
+					<ChildItems>
+						<Button name="FormExportRootCertificate" id="652">
+							<Type>CommandBarButton</Type>
+							<Visible>false</Visible>
+							<CommandName>Form.Command.ExportRootCertificate</CommandName>
+							<ExtendedTooltip name="FormExportRootCertificateExtendedTooltip" id="653">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Write the root certificate into file for manual setup on the computer.
+Required in cases of accidental deletion of root certificate.</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+						</Button>
+						<Button name="FormExportCertificateQuery" id="387">
+							<Type>CommandBarButton</Type>
+							<Visible>false</Visible>
+							<CommandName>Form.Command.ExportCertificateQuery</CommandName>
+							<ExtendedTooltip name="FormExportCertificateQueryExtendedTooltip" id="388">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Write the certificate request into file for viewing by external application.
+Required in rare cases to investigate mismatches in data.</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+						</Button>
+						<Button name="FormPrintDocuments" id="178">
+							<Type>CommandBarButton</Type>
+							<Visible>false</Visible>
+							<Width>10</Width>
+							<Height>2</Height>
+							<CommandName>Form.Command.PrintDocuments</CommandName>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Reprint documents</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="FormPrintDocumentsExtendedTooltip" id="179"/>
+						</Button>
+						<Button name="FormPrintAgreement" id="425">
+							<Type>CommandBarButton</Type>
+							<Representation>PictureAndText</Representation>
+							<CommandName>Form.Item.Agreement.StandardCommand.Print</CommandName>
+							<ExtendedTooltip name="FormPrintAgreementExtendedTooltip" id="426">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Print agreement</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+						</Button>
+						<Button name="FormNext" id="228">
+							<Type>CommandBarButton</Type>
+							<DefaultButton>true</DefaultButton>
+							<Enabled>false</Enabled>
+							<CommandName>Form.Command.Next</CommandName>
+							<ExtendedTooltip name="FormNextExtendedTooltip" id="229"/>
+						</Button>
+						<Button name="FormClose" id="234">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.StandardCommand.Close</CommandName>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Cancel</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTipRepresentation>None</ToolTipRepresentation>
+							<ExtendedTooltip name="FormCloseExtendedTooltip" id="235"/>
+						</Button>
+						<Button name="FormHelp" id="232">
+							<Type>CommandBarButton</Type>
+							<OnlyInAllActions>true</OnlyInAllActions>
+							<CommandName>Form.StandardCommand.Help</CommandName>
+							<ExtendedTooltip name="FormHelpExtendedTooltip" id="233"/>
+						</Button>
+					</ChildItems>
+				</CommandBar>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Type>
+				<v8:Type>cfg:CatalogObject.DigitalSignaturesAndEncryptionKeyCertificates</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="CertificateTemplate" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Certificate template</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Agreement" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Agreement</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type xmlns:fd="http://v8.1c.ru/8.2/data/formatted-document">fd:FormattedDocument</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="AgreementApproval" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>I confirm that I accept the conditions of the Agreement on accession to regulations of certification center</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Company" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Company</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Companies</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="AbbreviatedName" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Abbreviated name</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>64</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="DescriptionFull" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Full description</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="TIN" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>TIN</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>12</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="KPP" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>KPP</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>9</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="OGRN" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>OGRN</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>15</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="LegalAddress" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Legal address</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ActualAddress" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Actual address</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Phone" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Phone</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>64</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Surname" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Last name</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>64</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Name" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Name</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>64</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Patronymic" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Patronymic</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>64</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="InsuranceNumberRPF" id="17">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>INILA</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>14</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Position" id="18">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Position</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>64</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Division" id="19">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Division</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>64</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="DocumentNumber" id="21">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Series, number</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>25</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="DocumentIssueDate" id="23">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Issue date</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="DocumentWhoIssued" id="24">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Issued by</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>128</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ThisIsIndividualEntrepreneur" id="26">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>This is individual entrepreneur</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="LegalAddressXML" id="30">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Legal address XML</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ActualAddressXML" id="31">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Actual address XML</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Employee" id="32">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Employee</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:TypeSet>cfg:AnyRef</v8:TypeSet>
+			</Type>
+		</Attribute>
+		<Attribute name="OwnerKind" id="20">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Owner kind</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Chiefexecutive" id="35">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Chief executive officer</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:TypeSet>cfg:AnyRef</v8:TypeSet>
+			</Type>
+		</Attribute>
+		<Attribute name="ChiefAccountant" id="36">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Chief accountant</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:TypeSet>cfg:AnyRef</v8:TypeSet>
+			</Type>
+		</Attribute>
+		<Attribute name="DocumentKind1" id="37">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Document kind</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>2</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="AttributesHeaders" id="22">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Attributes headers</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="RequestAttributes" id="27">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Attributes of request</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Attribute" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Attribute</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Value" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Value</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ThisIsAttributesGroup" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>This is attributes group</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ApplicationsList" id="25">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>List of applicationmes</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Ref" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Ref</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.DigitalSignatureAndEncryptionApplications</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Presentation" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Presentation</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ID" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>ID</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ApplicationName" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Application name</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ApplicationType" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Application type</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="InfobaseUserWithFullAccess" id="28">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>This is a user with full access</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="IsSubordinateDIBNode" id="29">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>This is subordinate DIB node</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="DocumentsPrinted" id="38">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Documents were printed</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="DocumentsHead" id="39">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Manager</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="DocumentsHeadPosition" id="40">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Position</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="DocumentsPartnerTIN" id="41">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>TIN</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>12</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="DocumentsPartnerKPP" id="42">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>KPP</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>9</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="RequestProcessingState" id="43">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Request processing state</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ErrorCertificateSetup" id="44">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Certificate setup error</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="IsNew" id="45">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Is new</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="RequestAddressForCertificate" id="46">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Request address for certificate</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="CertificateAddress" id="47">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Certificate address</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ApplicationPresentation" id="48">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Application presentation</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="SendingDate" id="34">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Sending date</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>DateTime</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="AuthenticationParametersOnSite" id="50">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Authentication parameters on site</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="ActualAddressStructure" id="51">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Actual address structure</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="LegalAddressStructure" id="52">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Legal address structure</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="KeyContainerPath" id="53">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Key container path</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="KeyContainerName" id="54">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Key container name</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="DocumentsPartner" id="55">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Partner</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="DocumentsPartnerIsIE" id="57">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Documents partner is IE</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="DocumentsCertificateFields" id="58">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Documents certificate fields</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="DocumentManagementIdentifier" id="59">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Document management identifier</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="BIN" id="60">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>BIN</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>9</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="CorrespondentAccount" id="61">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Correspondent account</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>20</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="BankAccount" id="62">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Bank account</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>20</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="RequestDate" id="64">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Request date</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Email" id="65">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Email</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>128</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="DocumentsPartnerType" id="67">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Documents partner type</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="DocumentsHeadType" id="68">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Documents manager type</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="DocumentsHeadBasis" id="33">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>The basis for manager to take actions</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="EmployeeType" id="56">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Employee type</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="DocumentsHeadRef" id="69">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Documents manager ref</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:TypeSet>cfg:AnyRef</v8:TypeSet>
+			</Type>
+		</Attribute>
+		<Attribute name="DocumentsPartnerRef" id="70">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Documents partner ref</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:TypeSet>cfg:AnyRef</v8:TypeSet>
+			</Type>
+		</Attribute>
+		<Attribute name="UpdateDateConditions" id="49">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Update date of condition</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>DateTime</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="RequestLastStatus" id="63">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Request last status</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.CertificateIssueRequestState</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="SubscriberIdentifier" id="66">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Subscriber identifier</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="NotifyOnStatementsChange" id="71">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Notify on request change</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="RootCertificateAddress" id="72">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Root certificate address</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="CertificateText" id="73">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Certificate text</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="RootCertificateText" id="74">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Root certificate text</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="RootCertificateImprint" id="76">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Root certificate imprint</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="PhoneXML" id="78">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Phone XML</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="EmailXML" id="79">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>XML email</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="DateCertificateInstallation" id="80">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Date of certificate setup</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>DateTime</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="DSKeyPublicPart" id="81">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>DS key public part</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="SubjectKeyIdentifier" id="82">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Subject key identifier</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="Next" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Next &gt;</v8:content>
+				</v8:item>
+			</Title>
+			<Action>Next</Action>
+		</Command>
+		<Command name="Back" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>&lt; Back</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Back</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Back</Action>
+		</Command>
+		<Command name="PrintDocuments" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Print documents</v8:content>
+				</v8:item>
+			</Title>
+			<Picture>
+				<xr:Ref>StdPicture.Print</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>PrintDocuments</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="ExportCertificateQuery" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Export certificate query</v8:content>
+				</v8:item>
+			</Title>
+			<Action>ExportCertificateQuery</Action>
+		</Command>
+		<Command name="ExportCertificate" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Export certificate</v8:content>
+				</v8:item>
+			</Title>
+			<Action>ExportCertificate</Action>
+		</Command>
+		<Command name="ExportRootCertificate" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Export root certificate</v8:content>
+				</v8:item>
+			</Title>
+			<Action>ExportRootCertificate</Action>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="PersonalListOnAdd">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="CertificatRef">
+			<Type>
+				<v8:Type>cfg:CatalogRef.DigitalSignaturesAndEncryptionKeyCertificates</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="Company">
+			<Type>
+				<v8:Type>cfg:CatalogRef.Companies</v8:Type>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

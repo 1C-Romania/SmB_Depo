@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<MetaDataObject xmlns="http://v8.1c.ru/8.3/MDClasses" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:cmi="http://v8.1c.ru/8.2/managed-application/cmi" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xpr="http://v8.1c.ru/8.3/xcf/predef" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Subsystem uuid="f7201fd9-7048-4483-a261-a212bc4d8d42">
+		<Properties>
+			<Name>PickProductsAndServices</Name>
+			<Synonym>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Picking products and services</v8:content>
+				</v8:item>
+			</Synonym>
+			<Comment/>
+			<IncludeHelpInContents>true</IncludeHelpInContents>
+			<IncludeInCommandInterface>false</IncludeInCommandInterface>
+			<Explanation/>
+			<Picture/>
+			<Content>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.PickProductsAndServicesInDocumentsClientOverridable</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.PickProductsAndServicesInDocumentsOverridable</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.PickProductsAndServicesInDocumentsClientServer</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.PickProductsAndServicesInDocumentsReUse</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.PickProductsAndServicesInDocuments</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.PickProductsAndServicesInDocumentsClient</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonForm.MessageForm</xr:Item>
+			</Content>
+		</Properties>
+		<ChildObjects>
+			<Subsystem>Receipt</Subsystem>
+			<Subsystem>Implementation</Subsystem>
+			<Subsystem>Other</Subsystem>
+		</ChildObjects>
+	</Subsystem>
+</MetaDataObject>

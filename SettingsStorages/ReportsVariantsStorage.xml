@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<MetaDataObject xmlns="http://v8.1c.ru/8.3/MDClasses" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:cmi="http://v8.1c.ru/8.2/managed-application/cmi" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xpr="http://v8.1c.ru/8.3/xcf/predef" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<SettingsStorage uuid="14512818-58b0-44cc-b00d-d37913c57aad">
+		<InternalInfo>
+			<xr:GeneratedType name="SettingsStorageManager.ReportsVariantsStorage" category="Manager">
+				<xr:TypeId>0f091f86-6d07-446e-a3f9-26c3c9270324</xr:TypeId>
+				<xr:ValueId>df363d01-023f-40c3-a52d-c688434785ef</xr:ValueId>
+			</xr:GeneratedType>
+		</InternalInfo>
+		<Properties>
+			<Name>ReportsVariantsStorage</Name>
+			<Synonym>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Storage of reports variants</v8:content>
+				</v8:item>
+			</Synonym>
+			<Comment/>
+			<DefaultSaveForm>SettingsStorage.ReportsVariantsStorage.Form.SaveReportVariant</DefaultSaveForm>
+			<DefaultLoadForm>SettingsStorage.ReportsVariantsStorage.Form.ReportVariantChoice</DefaultLoadForm>
+			<AuxiliarySaveForm/>
+			<AuxiliaryLoadForm/>
+		</Properties>
+		<ChildObjects>
+			<Form>ReportSettings</Form>
+			<Form>ReportVariantChoice</Form>
+			<Form>SaveReportVariant</Form>
+			<Form>DescriptionNewOptionForDescriptionsOutput</Form>
+			<Form>OtherReportsPanel</Form>
+			<Form>ReportFieldSelection</Form>
+			<Form>SelectedFieldsGroup</Form>
+			<Form>ConditionalReportPreparationItem</Form>
+		</ChildObjects>
+	</SettingsStorage>
+</MetaDataObject>

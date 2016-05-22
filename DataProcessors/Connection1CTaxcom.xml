@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<MetaDataObject xmlns="http://v8.1c.ru/8.3/MDClasses" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:cmi="http://v8.1c.ru/8.2/managed-application/cmi" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xpr="http://v8.1c.ru/8.3/xcf/predef" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<DataProcessor uuid="66804708-5baf-462c-8e00-a4b718367b62">
+		<InternalInfo>
+			<xr:GeneratedType name="DataProcessorObject.Connection1CTaxcom" category="Object">
+				<xr:TypeId>5ffd54ab-b131-4a7d-accd-5325fbf902f9</xr:TypeId>
+				<xr:ValueId>43a7f7c6-bda3-4d89-ad14-eaac9646ed3a</xr:ValueId>
+			</xr:GeneratedType>
+			<xr:GeneratedType name="DataProcessorManager.Connection1CTaxcom" category="Manager">
+				<xr:TypeId>b26d032a-9a74-47ec-87a0-60122db9fc47</xr:TypeId>
+				<xr:ValueId>f92a8304-e524-46a7-810e-84f9255d8013</xr:ValueId>
+			</xr:GeneratedType>
+		</InternalInfo>
+		<Properties>
+			<Name>Connection1CTaxcom</Name>
+			<Synonym>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Connection1C-Taxcom</v8:content>
+				</v8:item>
+			</Synonym>
+			<Comment>Receiving Taxcom subscriber ID, subscriber personal account</Comment>
+			<UseStandardCommands>true</UseStandardCommands>
+			<DefaultForm>DataProcessor.Connection1CTaxcom.Form.Form</DefaultForm>
+			<AuxiliaryForm/>
+			<IncludeHelpInContents>false</IncludeHelpInContents>
+			<ExtendedPresentation/>
+			<Explanation/>
+		</Properties>
+		<ChildObjects>
+			<Form>EDExchangeParticipantAddress</Form>
+			<Form>ApplicationForSubscriberRegistration</Form>
+			<Form>ChangeTariff</Form>
+			<Form>SubscriberPersonalArea</Form>
+			<Form>UUIDManualInput</Form>
+			<Form>SubscriberUUID</Form>
+			<Form>Form</Form>
+		</ChildObjects>
+	</DataProcessor>
+</MetaDataObject>

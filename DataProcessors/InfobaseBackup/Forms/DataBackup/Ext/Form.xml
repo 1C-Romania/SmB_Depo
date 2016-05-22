@@ -1,0 +1,911 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Title>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Backup creation</v8:content>
+		</v8:item>
+	</Title>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<Customizable>false</Customizable>
+	<CommandBarLocation>Bottom</CommandBarLocation>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<HorizontalAlign>Right</HorizontalAlign>
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="Next" id="1">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.FormNext</CommandName>
+				<Title>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Next &gt;</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="NextExtendedTooltip" id="288"/>
+			</Button>
+			<Button name="Cancel" id="2">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.FormCancel</CommandName>
+				<Title>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Cancel</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="CancelExtendedTooltip" id="289"/>
+			</Button>
+			<Button name="Help" id="385">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.Help</CommandName>
+				<ExtendedTooltip name="HelpExtendedTooltip" id="386"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="NotificationProcessing">NotificationProcessing</Event>
+		<Event name="OnOpen">OnOpen</Event>
+		<Event name="BeforeClose">BeforeClose</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+		<Event name="OnClose">OnClose</Event>
+	</Events>
+	<ChildItems>
+		<Pages name="AssistantPages" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Assistant pages</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Assistant pages</v8:content>
+				</v8:item>
+			</ToolTip>
+			<PagesRepresentation>None</PagesRepresentation>
+			<ExtendedTooltip name="AssistantPagesExtendedTooltip" id="290"/>
+			<ChildItems>
+				<Page name="BackupExecutionPage" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Backup execution page</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Backup execution page</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="PageExecutionBackupExtendedTooltip" id="291"/>
+					<ChildItems>
+						<LabelDecoration name="LabelLastBackupExecutionDate" id="17">
+							<Height>1</Height>
+							<TextColor>style:ExplanationText</TextColor>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;Date of the last backup&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="LabelLastBackupExecutionDateContextMenu" id="18"/>
+							<ExtendedTooltip name="LabelDateOfLastBackupExtendedTooltip" id="293"/>
+						</LabelDecoration>
+						<InputField name="PathToArchivesDirectory" id="24">
+							<DataPath>Object.BackupDirectory</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Select folder to save the backup copy</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>Top</TitleLocation>
+							<ChoiceButton>true</ChoiceButton>
+							<ContextMenu name="PathToFilesDirectoryContextMenu" id="25"/>
+							<ExtendedTooltip name="PathToDirectoryArchivesExtendedTooltip" id="299"/>
+							<Events>
+								<Event name="StartChoice">PathToArchivesDirectoryStartChoice</Event>
+							</Events>
+						</InputField>
+						<LabelDecoration name="LabelPathChoiceReccomendations" id="139">
+							<TextColor>style:ExplanationText</TextColor>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>It is recommended to save the backup file on another computer or external storage device.</v8:content>
+								</v8:item>
+							</Title>
+							<VerticalAlign>Top</VerticalAlign>
+							<ContextMenu name="LabelRecommendationsOnChoosingWayOfContextMenu" id="140"/>
+							<ExtendedTooltip name="LabelRecommendationsOnChoosingWayExtendedTooltip" id="300"/>
+						</LabelDecoration>
+						<UsualGroup name="GroupAuthorization" id="263">
+							<Group>Vertical</Group>
+							<Representation>NormalSeparation</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupAuthorizationExtendedTooltip" id="303"/>
+							<ChildItems>
+								<InputField name="InfobaseAdministrator" id="264">
+									<DataPath>InfobaseAdministrator</DataPath>
+									<Enabled>false</Enabled>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Administrator name</v8:content>
+										</v8:item>
+									</Title>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="AdministratorIBContextMenu" id="265"/>
+									<ExtendedTooltip name="AdministratorIBExtendedTooltip" id="304"/>
+								</InputField>
+								<InputField name="IBAdministratorPassword" id="266">
+									<DataPath>IBAdministratorPassword</DataPath>
+									<HorizontalStretch>false</HorizontalStretch>
+									<PasswordMode>true</PasswordMode>
+									<ContextMenu name="PasswordAdministratorIBContextMenu" id="267"/>
+									<ExtendedTooltip name="PasswordAdministratorIBExtendedTooltip" id="305"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<Pages name="CopyStatusPages" id="392">
+							<PagesRepresentation>None</PagesRepresentation>
+							<ExtendedTooltip name="CopyStatusPagesExtendedTooltip" id="393"/>
+							<ChildItems>
+								<Page name="PageBlank" id="396">
+									<ExtendedTooltip name="PageBlankExtendedTooltip" id="397"/>
+									<ChildItems>
+										<LabelDecoration name="Decoration1" id="400">
+											<ContextMenu name="Decoration1ContextMenu" id="401"/>
+											<ExtendedTooltip name="Decoration1ExtendedTooltip" id="402"/>
+										</LabelDecoration>
+									</ChildItems>
+								</Page>
+								<Page name="ActiveUsersPage" id="394">
+									<Group>Horizontal</Group>
+									<ExtendedTooltip name="ActiveUsersPageExtendedTooltip" id="395"/>
+									<ChildItems>
+										<PictureDecoration name="WarningPicture" id="35">
+											<Width>6</Width>
+											<Height>2</Height>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Picture warning</v8:content>
+												</v8:item>
+											</Title>
+											<Picture>
+												<xr:Ref>CommonPicture.Warning32</xr:Ref>
+												<xr:LoadTransparent>true</xr:LoadTransparent>
+											</Picture>
+											<ContextMenu name="WarningPictureContextMenu" id="36"/>
+											<ExtendedTooltip name="WarningPictureExtendedTooltip" id="308"/>
+										</PictureDecoration>
+										<UsualGroup name="LabelsGroup" id="37">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group labels</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group labels</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Vertical</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="GroupInscriptionsExtendedTooltip" id="309"/>
+											<ChildItems>
+												<LabelDecoration name="LabelUsersWorks" id="38">
+													<SkipOnInput>false</SkipOnInput>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>At the moment other users are working in the application.
+Their work will be terminated when backup is running.</v8:content>
+														</v8:item>
+													</Title>
+													<TitleHeight>2</TitleHeight>
+													<ContextMenu name="LabelJobsUsersContextMenu" id="39"/>
+													<ExtendedTooltip name="LabelJobsUsersExtendedTooltip" id="310"/>
+												</LabelDecoration>
+												<LabelDecoration name="LabelActionsList" id="40">
+													<SkipOnInput>false</SkipOnInput>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>View the list of active sessions</v8:content>
+														</v8:item>
+													</Title>
+													<Hyperlink>true</Hyperlink>
+													<VerticalAlign>Top</VerticalAlign>
+													<ContextMenu name="LabelListActionsContextMenu" id="41"/>
+													<ExtendedTooltip name="LabelListActionsExtendedTooltip" id="311"/>
+													<Events>
+														<Event name="Click">UsersListClick</Event>
+													</Events>
+												</LabelDecoration>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</Page>
+								<Page name="ConnectionErrorPage" id="398">
+									<Group>Horizontal</Group>
+									<ExtendedTooltip name="ConnectionErrorPageExtendedTooltip" id="399"/>
+									<ChildItems>
+										<PictureDecoration name="Picture12" id="221">
+											<Width>6</Width>
+											<Height>2</Height>
+											<SkipOnInput>false</SkipOnInput>
+											<Picture>
+												<xr:Ref>CommonPicture.Warning32</xr:Ref>
+												<xr:LoadTransparent>true</xr:LoadTransparent>
+											</Picture>
+											<ContextMenu name="Picture12ContextMenu" id="222"/>
+											<ExtendedTooltip name="Picture12ExtendedTooltip" id="359"/>
+										</PictureDecoration>
+										<UsualGroup name="Group1" id="274">
+											<Group>Vertical</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="Group1ExtendedTooltip" id="360"/>
+											<ChildItems>
+												<InputField name="DetectedConnectionError" id="223">
+													<DataPath>DetectedConnectionError</DataPath>
+													<ReadOnly>true</ReadOnly>
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Connection verification error</v8:content>
+														</v8:item>
+													</Title>
+													<TitleLocation>None</TitleLocation>
+													<VerticalAlign>Center</VerticalAlign>
+													<Height>3</Height>
+													<MultiLine>true</MultiLine>
+													<ContextMenu name="DetectedErrorConnectionContextMenu" id="224"/>
+													<ExtendedTooltip name="DetectedConnectionErrorExtendedTooltip" id="361"/>
+												</InputField>
+												<Button name="GoToEventLogMonitor" id="403">
+													<Type>Hyperlink</Type>
+													<CommandName>Form.Command.GoToEventLogMonitor</CommandName>
+													<ExtendedTooltip name="GoToEventLogMonitorExtendedTooltip" id="404"/>
+												</Button>
+												<LabelDecoration name="UpdateComponentVersionLabel" id="226">
+													<SkipOnInput>false</SkipOnInput>
+													<Title formatted="true">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>When component version error 'comcntr' it
+is recommended to execute its &lt;link Re-registration&gt;re-registration&lt;/&gt; (session restart will be required).</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>It may be required to upgrade "comcntr" component version. IN this case it is required to restart 1C session. To do this click here</v8:content>
+														</v8:item>
+													</ToolTip>
+													<TitleHeight>2</TitleHeight>
+													<ContextMenu name="UpdateComponentVersionLabelContextMenu" id="227"/>
+													<ExtendedTooltip name="UpdateVersionLabelComponentsExtendedTooltip" id="369"/>
+													<Events>
+														<Event name="URLProcessing">UpdateVersionLabelComponentsNavigationRefDataProcessor</Event>
+													</Events>
+												</LabelDecoration>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</Page>
+							</ChildItems>
+						</Pages>
+					</ChildItems>
+				</Page>
+				<Page name="InformationAndBackupPerformingPage" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Information and backup execution page</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Information and backup execution page</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="PageInformationAndExecutionOfBackupExtendedTooltip" id="331"/>
+					<ChildItems>
+						<UsualGroup name="GroupExplanations" id="78">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group explanation</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group explanation</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupExplanationExtendedTooltip" id="332"/>
+							<ChildItems>
+								<LabelDecoration name="LabelExplanations" id="79">
+									<HorizontalStretch>true</HorizontalStretch>
+									<Font ref="style:TextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Preparation to backup create is executed.
+Please do not power off the computer.</v8:content>
+										</v8:item>
+									</Title>
+									<TitleHeight>2</TitleHeight>
+									<ContextMenu name="LabelExplanationsContextMenu" id="80"/>
+									<ExtendedTooltip name="LabelExplanationExtendedTooltip" id="333"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ActiveUsersGroup" id="81">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group active users</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<Representation>NormalSeparation</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ActiveUsersGroupExtendedTooltip" id="334"/>
+							<ChildItems>
+								<UsualGroup name="Group5" id="433">
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="Group5ExtendedTooltip" id="434"/>
+									<ChildItems>
+										<UsualGroup name="ActiveUsersGroupPictures" id="82">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group active users picture</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group active users picture</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Vertical</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="PicturesGroupActiveUsersExtendedTooltip" id="335"/>
+											<ChildItems>
+												<PictureDecoration name="Decoration5" id="83">
+													<Width>7</Width>
+													<Height>3</Height>
+													<Picture>
+														<xr:Ref>CommonPicture.LongOperation48</xr:Ref>
+														<xr:LoadTransparent>true</xr:LoadTransparent>
+													</Picture>
+													<ContextMenu name="Decoration5ContextMenu" id="84"/>
+													<ExtendedTooltip name="Decoration5ExtendedTooltip" id="336"/>
+												</PictureDecoration>
+											</ChildItems>
+										</UsualGroup>
+										<Pages name="GroupWait" id="373">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group wait</v8:content>
+												</v8:item>
+											</Title>
+											<PagesRepresentation>None</PagesRepresentation>
+											<ExtendedTooltip name="GroupWaitExtendedTooltip" id="374"/>
+											<ChildItems>
+												<Page name="ActiveUsersWaitPage" id="85">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Active users wait page</v8:content>
+														</v8:item>
+													</Title>
+													<ExtendedTooltip name="ActiveUsersWaitPageExtendedTooltip" id="337"/>
+													<ChildItems>
+														<LabelDecoration name="DisconnectUsersLabel" id="190">
+															<Height>2</Height>
+															<Title formatted="false">
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Sessions shutdown of
+other users working in the application is executed...</v8:content>
+																</v8:item>
+															</Title>
+															<VerticalAlign>Bottom</VerticalAlign>
+															<ContextMenu name="LabelExitUsersContextMenu" id="191"/>
+															<ExtendedTooltip name="LabelUsersDisableExtendedTooltip" id="340"/>
+														</LabelDecoration>
+														<UsualGroup name="ActiveUsersWaitGroup" id="375">
+															<Title>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Active users wait group</v8:content>
+																</v8:item>
+															</Title>
+															<Group>Horizontal</Group>
+															<Representation>None</Representation>
+															<ShowTitle>false</ShowTitle>
+															<ExtendedTooltip name="ActiveUsersWaitGroupExtendedTooltip" id="376"/>
+															<ChildItems>
+																<LabelDecoration name="UsersList" id="91">
+																	<Title formatted="false">
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Active sessions:</v8:content>
+																		</v8:item>
+																	</Title>
+																	<Hyperlink>true</Hyperlink>
+																	<VerticalAlign>Center</VerticalAlign>
+																	<ContextMenu name="UsersListContextMenu" id="92"/>
+																	<ExtendedTooltip name="UsersListExtendedTooltip" id="338"/>
+																	<Events>
+																		<Event name="Click">UsersListClick</Event>
+																	</Events>
+																</LabelDecoration>
+																<LabelDecoration name="ActiveUserCount" id="89">
+																	<VerticalAlign>Center</VerticalAlign>
+																	<ContextMenu name="ActiveUserCountContextMenu" id="90"/>
+																	<ExtendedTooltip name="ActiveUserCountExtendedTooltip" id="339"/>
+																</LabelDecoration>
+															</ChildItems>
+														</UsualGroup>
+													</ChildItems>
+												</Page>
+												<Page name="StartTimeWaitPage" id="377">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Start time wait page</v8:content>
+														</v8:item>
+													</Title>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="StartTimeWaitPageExtendedTooltip" id="378"/>
+													<ChildItems>
+														<LabelDecoration name="LabelBackupTimeout" id="117">
+															<Height>4</Height>
+															<Title formatted="false">
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Backup will begin in a scheduled time &lt;date time&gt;...</v8:content>
+																</v8:item>
+															</Title>
+															<VerticalAlign>Center</VerticalAlign>
+															<ContextMenu name="LabelBackupContextMenuTimeout" id="118"/>
+															<ExtendedTooltip name="LabelBackupExtendedTooltipTimeout" id="341"/>
+														</LabelDecoration>
+													</ChildItems>
+												</Page>
+											</ChildItems>
+										</Pages>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="ActiveSessionsGroup" id="420">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group active sessions</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group active sessions</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ActiveSessionsGroupExtendedTooltip" id="421"/>
+									<ChildItems>
+										<PictureDecoration name="Decoration4" id="427">
+											<Width>7</Width>
+											<Height>2</Height>
+											<ContextMenu name="Decoration4ContextMenu" id="428"/>
+											<ExtendedTooltip name="Decoration4ExtendedTooltip" id="429"/>
+										</PictureDecoration>
+										<LabelDecoration name="ActiveSessionsDecoration" id="430">
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>There are active user sessions that can not be terminated forcibly:</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="ActiveSessionsDecorationContextMenu" id="431"/>
+											<ExtendedTooltip name="ActiveSessionsDecorationExtendedTooltip" id="432"/>
+										</LabelDecoration>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="PageOfSucessfulCopyingCompletion" id="95">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Page of successfully completed copying</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Page of successfully completed copying</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="PageExecutionCopySuccessfullyExtendedTooltip" id="342"/>
+					<ChildItems>
+						<UsualGroup name="SuccessfulBackupAnnouncementsGroup" id="96">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Successful backup announcements group</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="SuccessfulBackupAnnouncementsGroupExtendedTooltip" id="343"/>
+							<ChildItems>
+								<LabelDecoration name="LabelCopySuccessfully" id="99">
+									<Height>2</Height>
+									<Font ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Backup has been successfully performed</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="LabelCopySuccessfullyContextMenu" id="100"/>
+									<ExtendedTooltip name="LabelCopySuccessfullyExtendedTooltip" id="344"/>
+								</LabelDecoration>
+								<InputField name="BackupFileName" id="260">
+									<DataPath>BackupFileName</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Saved backup file</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>Top</TitleLocation>
+									<OpenButton>true</OpenButton>
+									<ContextMenu name="BackupFileNameContextMenu" id="261"/>
+									<ExtendedTooltip name="BackupFileNameExtendedTooltip" id="345"/>
+									<Events>
+										<Event name="Opening">BackupFileNameOpen</Event>
+									</Events>
+								</InputField>
+								<LabelDecoration name="LabelInformationOnRestoration" id="285">
+									<TextColor>style:ExplanationText</TextColor>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>To recover data from the backup copy you can run the "Recover from the backup copy" command in the Administration section.</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="LabelInformationOnRestorationContextMenu" id="286"/>
+									<ExtendedTooltip name="LabelInformationOnRestorationOfExtendedTooltip" id="346"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="AutomaticBackupGroup" id="418">
+							<Group>Horizontal</Group>
+							<Representation>NormalSeparation</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="AutomaticBackupGroupExtendedTooltip" id="419"/>
+							<ChildItems>
+								<PictureDecoration name="DecorationIconInfo" id="415">
+									<Width>2</Width>
+									<Height>2</Height>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Decoration icon Info</v8:content>
+										</v8:item>
+									</Title>
+									<Picture>
+										<xr:Ref>CommonPicture.Information</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="DecorationIconInfoContextMenu" id="416"/>
+									<ExtendedTooltip name="DecorationIconInfoExtendedTooltip" id="417"/>
+								</PictureDecoration>
+								<LabelDecoration name="AutomaticBackupDecoration" id="409">
+									<Title formatted="true">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>For reliable protection against
+data loss it is recommended &lt;link Set&gt;to set automatic backup&lt;/&gt;.</v8:content>
+										</v8:item>
+									</Title>
+									<VerticalAlign>Center</VerticalAlign>
+									<ContextMenu name="AutomaticBackupDecorationContextMenu" id="410"/>
+									<ExtendedTooltip name="AutomaticBackupDecorationExtendedTooltip" id="411"/>
+									<Events>
+										<Event name="URLProcessing">AutomaticBackupDecorationNavigationRefDataProcessor</Event>
+									</Events>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="PageOfErrorsOnCopying" id="104">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Page of errors on copying</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Page of errors on copying</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="PageErrorsOnCopyExtendedTooltip" id="347"/>
+					<ChildItems>
+						<UsualGroup name="UnsuccessfulCopyGroup" id="105">
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="UnsuccessfulCopyGroupExtendedTooltip" id="348"/>
+							<ChildItems>
+								<LabelDecoration name="UnsuccessfulCopyLabel" id="108">
+									<Height>2</Height>
+									<Font ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Backup was not performed</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="UnsuccessfulCopyLabelContextMenu" id="109"/>
+									<ExtendedTooltip name="UnsuccessfulCopyLabelExtendedTooltip" id="349"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="GroupItWasNotPossible" id="110">
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupItWasNotPossibleExtendedTooltip" id="350"/>
+							<ChildItems>
+								<PictureDecoration name="WarningDecoration" id="111">
+									<Width>4</Width>
+									<Height>2</Height>
+									<Picture>
+										<xr:Ref>CommonPicture.Warning32</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="WarningDecorationContextMenu" id="112"/>
+									<ExtendedTooltip name="DecorationWarningExtendedTooltip" id="351"/>
+								</PictureDecoration>
+								<UsualGroup name="Groupdetails" id="407">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group details</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupdetailsExtendedTooltip" id="408"/>
+									<ChildItems>
+										<LabelDecoration name="LabelItWasNotPossible" id="113">
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Backup wasn't possible to perform.
+Technical information about the problem is written to the event log. 
+It is recommended to repeat backup manually.</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="LabelItWasNotPossibleContextMenu" id="114"/>
+											<ExtendedTooltip name="LabelItWasNotPossibleExtendedTooltip" id="352"/>
+										</LabelDecoration>
+										<Button name="GoToEventLogMonitor1" id="405">
+											<Type>Hyperlink</Type>
+											<CommandName>Form.Command.GoToEventLogMonitor</CommandName>
+											<ExtendedTooltip name="GoToEventLogMonitor1ExtendedTooltip" id="406"/>
+										</Button>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.InfobaseBackup</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="InfobaseAdministrator" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Name</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="IBAdministratorPassword" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Password</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<FillCheck>ShowError</FillCheck>
+		</Attribute>
+		<Attribute name="DetectedConnectionError" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Detected connection error</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="BackupFileName" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Backup attachment file name</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ForceCloseForm" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Force quit the form</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="PasswordEnterIsRequired" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>You have to enter password</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="FormNext" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Next &gt;</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Next &gt;&gt;</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Next</Action>
+		</Command>
+		<Command name="FormCancel" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Form cancel</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Cancel</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Cancel</Action>
+		</Command>
+		<Command name="GoToEventLogMonitor" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Technical Details of Error</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Go to event log</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>GoToEventLogMonitor</Action>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="RunMode">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<KeyParameter>true</KeyParameter>
+		</Parameter>
+		<Parameter name="BackupFileName">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="Explanation">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

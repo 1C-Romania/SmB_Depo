@@ -1,0 +1,3513 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Title>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Ideas center</v8:content>
+		</v8:item>
+	</Title>
+	<AutoTitle>false</AutoTitle>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="NotificationProcessing">NotificationProcessing</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="AllGroups" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>All groups</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>All groups</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="AllGroupsExtendedTooltip" id="2"/>
+			<ChildItems>
+				<UsualGroup name="LeftGroup" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Left group</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Left group</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="LeftGroupExtendedTooltip" id="4"/>
+					<ChildItems>
+						<Pages name="FiltersByStatus" id="7">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Filters by status</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Filters by status</v8:content>
+								</v8:item>
+							</ToolTip>
+							<PagesRepresentation>None</PagesRepresentation>
+							<ExtendedTooltip name="FiltersByStatusExtendedTooltip" id="8"/>
+							<ChildItems>
+								<Page name="FilterStatus_OnVote" id="9">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Filter status on vote</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Filter status on vote</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="FilterStatus_OnVoteExtendedTooltip" id="10"/>
+									<ChildItems>
+										<LabelDecoration name="OnVote_OnVote" id="11">
+											<Font ref="sys:DefaultGUIFont" height="10" bold="true" kind="WindowsFont"/>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>On vote</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="OnVote_OnVoteContextMenu" id="12"/>
+											<ExtendedTooltip name="OnVote_OnVoteExtendedTooltip" id="13"/>
+										</LabelDecoration>
+										<LabelDecoration name="OnVote_Planned" id="14">
+											<Font ref="sys:DefaultGUIFont" height="10" bold="true" kind="WindowsFont"/>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Planned</v8:content>
+												</v8:item>
+											</Title>
+											<Hyperlink>true</Hyperlink>
+											<ContextMenu name="OnVote_PlannedContextMenu" id="15"/>
+											<ExtendedTooltip name="OnVote_PlannedExtendedTooltip" id="16"/>
+											<Events>
+												<Event name="Click">PlannedClick</Event>
+											</Events>
+										</LabelDecoration>
+										<LabelDecoration name="OnVote_Realized" id="17">
+											<Font ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Realized</v8:content>
+												</v8:item>
+											</Title>
+											<Hyperlink>true</Hyperlink>
+											<ContextMenu name="OnVote_RealizedContextMenu" id="18"/>
+											<ExtendedTooltip name="OnVote_RealizedExtendedTooltip" id="19"/>
+											<Events>
+												<Event name="Click">RealizedClick</Event>
+											</Events>
+										</LabelDecoration>
+										<LabelDecoration name="OnVote_Rejected" id="20">
+											<Font ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Rejected</v8:content>
+												</v8:item>
+											</Title>
+											<Hyperlink>true</Hyperlink>
+											<ContextMenu name="OnVote_RejectedContextMenu" id="21"/>
+											<ExtendedTooltip name="OnVote_RejectedExtendedTooltip" id="22"/>
+											<Events>
+												<Event name="Click">RejectedClick</Event>
+											</Events>
+										</LabelDecoration>
+										<LabelDecoration name="OnVote_MyIdeas" id="23">
+											<Font ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>My ideas</v8:content>
+												</v8:item>
+											</Title>
+											<Hyperlink>true</Hyperlink>
+											<ContextMenu name="OnVote_MyIdeasContextMenu" id="24"/>
+											<ExtendedTooltip name="OnVote_MyIdeasExtendedTooltip" id="25"/>
+											<Events>
+												<Event name="Click">MyIdeasClick</Event>
+											</Events>
+										</LabelDecoration>
+									</ChildItems>
+								</Page>
+								<Page name="FilterStatus_Planned" id="26">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Filter status on vote</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Filter status on vote</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="FilterStatus_PlannedExtendedTooltip" id="27"/>
+									<ChildItems>
+										<LabelDecoration name="Planned_OnVote" id="28">
+											<Font ref="sys:DefaultGUIFont" height="10" bold="true" kind="WindowsFont"/>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>On vote</v8:content>
+												</v8:item>
+											</Title>
+											<Hyperlink>true</Hyperlink>
+											<ContextMenu name="Planned_OnVoteContextMenu" id="29"/>
+											<ExtendedTooltip name="Planned_OnVoteExtendedTooltip" id="30"/>
+											<Events>
+												<Event name="Click">OnVoteClick</Event>
+											</Events>
+										</LabelDecoration>
+										<LabelDecoration name="Planned_Planned" id="31">
+											<Font ref="sys:DefaultGUIFont" height="10" bold="true" kind="WindowsFont"/>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Planned</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="Planned_PlannedContextMenu" id="32"/>
+											<ExtendedTooltip name="Planned_PlannedExtendedTooltip" id="33"/>
+										</LabelDecoration>
+										<LabelDecoration name="Planned_Realized" id="34">
+											<Font ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Realized</v8:content>
+												</v8:item>
+											</Title>
+											<Hyperlink>true</Hyperlink>
+											<ContextMenu name="Planned_RealizedContextMenu" id="35"/>
+											<ExtendedTooltip name="Planned_RealizedExtendedTooltip" id="36"/>
+											<Events>
+												<Event name="Click">RealizedClick</Event>
+											</Events>
+										</LabelDecoration>
+										<LabelDecoration name="Planned_Rejected" id="37">
+											<Font ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Rejected</v8:content>
+												</v8:item>
+											</Title>
+											<Hyperlink>true</Hyperlink>
+											<ContextMenu name="Planned_RejectedContextMenu" id="38"/>
+											<ExtendedTooltip name="Planned_RejectedExtendedTooltip" id="39"/>
+											<Events>
+												<Event name="Click">RejectedClick</Event>
+											</Events>
+										</LabelDecoration>
+										<LabelDecoration name="Planned_MyIdeas" id="40">
+											<Font ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>My ideas</v8:content>
+												</v8:item>
+											</Title>
+											<Hyperlink>true</Hyperlink>
+											<ContextMenu name="Planned_MyIdeasContextMenu" id="41"/>
+											<ExtendedTooltip name="Planned_MyIdeasExtendedTooltip" id="42"/>
+											<Events>
+												<Event name="Click">MyIdeasClick</Event>
+											</Events>
+										</LabelDecoration>
+									</ChildItems>
+								</Page>
+								<Page name="FilterStatus_Realized" id="43">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Filter status on vote</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Filter status on vote</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="FilterStatus_RealizedExtendedTooltip" id="44"/>
+									<ChildItems>
+										<LabelDecoration name="Realized_OnVote" id="45">
+											<Font ref="sys:DefaultGUIFont" height="10" bold="true" kind="WindowsFont"/>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>On vote</v8:content>
+												</v8:item>
+											</Title>
+											<Hyperlink>true</Hyperlink>
+											<ContextMenu name="Realized_OnVoteContextMenu" id="46"/>
+											<ExtendedTooltip name="Realized_OnVoteExtendedTooltip" id="47"/>
+											<Events>
+												<Event name="Click">OnVoteClick</Event>
+											</Events>
+										</LabelDecoration>
+										<LabelDecoration name="Realized_Planned" id="48">
+											<Font ref="sys:DefaultGUIFont" height="10" bold="true" kind="WindowsFont"/>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Planned</v8:content>
+												</v8:item>
+											</Title>
+											<Hyperlink>true</Hyperlink>
+											<ContextMenu name="Realized_PlannedContextMenu" id="49"/>
+											<ExtendedTooltip name="Realized_PlannedExtendedTooltip" id="50"/>
+											<Events>
+												<Event name="Click">PlannedClick</Event>
+											</Events>
+										</LabelDecoration>
+										<LabelDecoration name="Realized_Realized" id="51">
+											<Font ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Realized</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="Realized_RealizedContextMenu" id="52"/>
+											<ExtendedTooltip name="Realized_RealizedExtendedTooltip" id="53"/>
+										</LabelDecoration>
+										<LabelDecoration name="Realized_Rejected" id="54">
+											<Font ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Rejected</v8:content>
+												</v8:item>
+											</Title>
+											<Hyperlink>true</Hyperlink>
+											<ContextMenu name="Realized_RejectedContextMenu" id="55"/>
+											<ExtendedTooltip name="Realized_RejectedExtendedTooltip" id="56"/>
+											<Events>
+												<Event name="Click">RejectedClick</Event>
+											</Events>
+										</LabelDecoration>
+										<LabelDecoration name="Realized_MyIdeas" id="57">
+											<Font ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>My ideas</v8:content>
+												</v8:item>
+											</Title>
+											<Hyperlink>true</Hyperlink>
+											<ContextMenu name="Realized_MyIdeasContextMenu" id="58"/>
+											<ExtendedTooltip name="Realized_MyIdeasExtendedTooltip" id="59"/>
+											<Events>
+												<Event name="Click">MyIdeasClick</Event>
+											</Events>
+										</LabelDecoration>
+									</ChildItems>
+								</Page>
+								<Page name="FilterStatus_Rejected" id="60">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Filter status on vote</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Filter status on vote</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="FilterStatus_RejectedExtendedTooltip" id="61"/>
+									<ChildItems>
+										<LabelDecoration name="Rejected_OnVote" id="62">
+											<Font ref="sys:DefaultGUIFont" height="10" bold="true" kind="WindowsFont"/>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>On vote</v8:content>
+												</v8:item>
+											</Title>
+											<Hyperlink>true</Hyperlink>
+											<ContextMenu name="Rejected_OnVoteContextMenu" id="63"/>
+											<ExtendedTooltip name="Rejected_OnVoteExtendedTooltip" id="64"/>
+											<Events>
+												<Event name="Click">OnVoteClick</Event>
+											</Events>
+										</LabelDecoration>
+										<LabelDecoration name="Rejected_Planned" id="65">
+											<Font ref="sys:DefaultGUIFont" height="10" bold="true" kind="WindowsFont"/>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Planned</v8:content>
+												</v8:item>
+											</Title>
+											<Hyperlink>true</Hyperlink>
+											<ContextMenu name="Rejected_PlannedContextMenu" id="66"/>
+											<ExtendedTooltip name="Rejected_PlannedExtendedTooltip" id="67"/>
+											<Events>
+												<Event name="Click">PlannedClick</Event>
+											</Events>
+										</LabelDecoration>
+										<LabelDecoration name="Rejected_Realized" id="68">
+											<Font ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Realized</v8:content>
+												</v8:item>
+											</Title>
+											<Hyperlink>true</Hyperlink>
+											<ContextMenu name="Rejected_RealizedContextMenu" id="69"/>
+											<ExtendedTooltip name="Rejected_RealizedExtendedTooltip" id="70"/>
+											<Events>
+												<Event name="Click">RealizedClick</Event>
+											</Events>
+										</LabelDecoration>
+										<LabelDecoration name="Rejected_Rejected" id="71">
+											<Font ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Rejected</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="Rejected_RejectedContextMenu" id="72"/>
+											<ExtendedTooltip name="Rejected_RejectedExtendedTooltip" id="73"/>
+										</LabelDecoration>
+										<LabelDecoration name="Rejected_MyIdeas" id="74">
+											<Font ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>My ideas</v8:content>
+												</v8:item>
+											</Title>
+											<Hyperlink>true</Hyperlink>
+											<ContextMenu name="Rejected_MyIdeasContextMenu" id="75"/>
+											<ExtendedTooltip name="Rejected_MyIdeasExtendedTooltip" id="76"/>
+											<Events>
+												<Event name="Click">MyIdeasClick</Event>
+											</Events>
+										</LabelDecoration>
+									</ChildItems>
+								</Page>
+								<Page name="FilterStatus_MyIdeas" id="77">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Filter status on vote</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Filter status on vote</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="FilterStatus_MyIdeasExtendedTooltip" id="78"/>
+									<ChildItems>
+										<LabelDecoration name="Favourite_OnVote" id="79">
+											<Font ref="sys:DefaultGUIFont" height="10" bold="true" kind="WindowsFont"/>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>On vote</v8:content>
+												</v8:item>
+											</Title>
+											<Hyperlink>true</Hyperlink>
+											<ContextMenu name="Favourite_OnVoteContextMenu" id="80"/>
+											<ExtendedTooltip name="Favourite_OnVoteExtendedTooltip" id="81"/>
+											<Events>
+												<Event name="Click">OnVoteClick</Event>
+											</Events>
+										</LabelDecoration>
+										<LabelDecoration name="Favourite_Planned" id="82">
+											<Font ref="sys:DefaultGUIFont" height="10" bold="true" kind="WindowsFont"/>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Planned</v8:content>
+												</v8:item>
+											</Title>
+											<Hyperlink>true</Hyperlink>
+											<ContextMenu name="Favourite_PlannedContextMenu" id="83"/>
+											<ExtendedTooltip name="Favourite_PlannedExtendedTooltip" id="84"/>
+											<Events>
+												<Event name="Click">PlannedClick</Event>
+											</Events>
+										</LabelDecoration>
+										<LabelDecoration name="Favourite_Realized" id="85">
+											<Font ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Realized</v8:content>
+												</v8:item>
+											</Title>
+											<Hyperlink>true</Hyperlink>
+											<ContextMenu name="Favourite_RealizedContextMenu" id="86"/>
+											<ExtendedTooltip name="Favourite_ImplementedExtendedTooltip" id="87"/>
+											<Events>
+												<Event name="Click">RealizedClick</Event>
+											</Events>
+										</LabelDecoration>
+										<LabelDecoration name="Favourite_Rejected" id="88">
+											<Font ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Rejected</v8:content>
+												</v8:item>
+											</Title>
+											<Hyperlink>true</Hyperlink>
+											<ContextMenu name="Favourite_RejectedContextMenu" id="89"/>
+											<ExtendedTooltip name="Favourite_RejectedExtendedTooltip" id="90"/>
+											<Events>
+												<Event name="Click">RejectedClick</Event>
+											</Events>
+										</LabelDecoration>
+										<LabelDecoration name="Favourite_MyIdeas" id="91">
+											<Font ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>My ideas</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="Favourite_MyIdeasContextMenu" id="92"/>
+											<ExtendedTooltip name="Favourite_MyIdeasExtendedTooltip" id="93"/>
+										</LabelDecoration>
+									</ChildItems>
+								</Page>
+								<Page name="FilterStatus_Search" id="4246">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Filter status search</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Filter status search</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<ExtendedTooltip name="FilterStatus_SearchExtendedTooltip" id="4247"/>
+									<ChildItems>
+										<LabelDecoration name="SearchResults" id="4248">
+											<Font ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Search results</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="SearchResultsContextMenu" id="4249"/>
+											<ExtendedTooltip name="SearchResultsExtendedTooltip" id="4250"/>
+										</LabelDecoration>
+										<LabelDecoration name="CancelSearch" id="4251">
+											<TextColor>#FF0000</TextColor>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Cancel search</v8:content>
+												</v8:item>
+											</Title>
+											<Hyperlink>true</Hyperlink>
+											<HorizontalAlign>Right</HorizontalAlign>
+											<ContextMenu name="CancelSearchContextMenu" id="4252"/>
+											<ExtendedTooltip name="CancelSearchExtendedTooltip" id="4253"/>
+											<Events>
+												<Event name="Click">CancelSearchClick</Event>
+											</Events>
+										</LabelDecoration>
+									</ChildItems>
+								</Page>
+							</ChildItems>
+						</Pages>
+						<UsualGroup name="Sort" id="94">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Sort</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Sort</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="SortExtendedTooltip" id="95"/>
+							<ChildItems>
+								<RadioButtonField name="SortOnVote" id="96">
+									<DataPath>SortOnVote</DataPath>
+									<RadioButtonType>Auto</RadioButtonType>
+									<ChoiceList>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>New</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:string">ByCreationDate</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Popular</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:string">ByVotesAmount</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Discussed</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:string">ByCommentsQuantity</Value>
+											</xr:Value>
+										</xr:Item>
+									</ChoiceList>
+									<ContextMenu name="SortOnVoteContextMenu" id="97"/>
+									<ExtendedTooltip name="SortOnVoteExtendedTooltip" id="98"/>
+									<Events>
+										<Event name="OnChange">SortOnVoteOnChange</Event>
+									</Events>
+								</RadioButtonField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="IdeasList" id="99">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Ideas list</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Ideas list</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="IdeasListExtendedTooltip" id="100"/>
+							<ChildItems>
+								<Pages name="Idea_1" id="5328">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Idea 1</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Idea 1</v8:content>
+										</v8:item>
+									</ToolTip>
+									<PagesRepresentation>None</PagesRepresentation>
+									<ExtendedTooltip name="Idea_1ExtendedTooltip" id="5329"/>
+									<ChildItems>
+										<Page name="FilledIdea_1" id="5326">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Filled idea 1</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Filled idea 1</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ExtendedTooltip name="FilledIdea_1ExtendedTooltip" id="5327"/>
+											<ChildItems>
+												<UsualGroup name="GroupIdeas_1" id="5809">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Group ideas 1</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Group ideas 1</v8:content>
+														</v8:item>
+													</ToolTip>
+													<Group>Vertical</Group>
+													<Representation>StrongSeparation</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="IdeaGroup_1ExtendedTooltip" id="5810"/>
+													<ChildItems>
+														<LabelDecoration name="Preheader_1" id="5301">
+															<HorizontalStretch>true</HorizontalStretch>
+															<TextColor>#999999</TextColor>
+															<Font italic="true" kind="AutoFont"/>
+															<ContextMenu name="Preheader_1ContextMenu" id="5302"/>
+															<ExtendedTooltip name="Preheader_1ExtendedTooltip" id="5303"/>
+														</LabelDecoration>
+														<UsualGroup name="Content_1" id="5304">
+															<Title>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Content 1</v8:content>
+																</v8:item>
+															</Title>
+															<ToolTip>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Content 1</v8:content>
+																</v8:item>
+															</ToolTip>
+															<Group>Horizontal</Group>
+															<Representation>None</Representation>
+															<ShowTitle>false</ShowTitle>
+															<ExtendedTooltip name="Content_1ExtendedTooltip" id="5305"/>
+															<ChildItems>
+																<Pages name="Representation_1" id="5306">
+																	<Title>
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Representation 1</v8:content>
+																		</v8:item>
+																	</Title>
+																	<ToolTip>
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Representation 1</v8:content>
+																		</v8:item>
+																	</ToolTip>
+																	<PagesRepresentation>None</PagesRepresentation>
+																	<ExtendedTooltip name="Representation_1ExtendedTooltip" id="5307"/>
+																	<ChildItems>
+																		<Page name="Added_1" id="5308">
+																			<Title>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Added coomand group 1</v8:content>
+																				</v8:item>
+																			</Title>
+																			<ToolTip>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Added coomand group 1</v8:content>
+																				</v8:item>
+																			</ToolTip>
+																			<ExtendedTooltip name="Added_1ExtendedTooltip" id="5309"/>
+																			<ChildItems>
+																				<PictureDecoration name="Added_Picture_1" id="5310">
+																					<Width>10</Width>
+																					<Height>3</Height>
+																					<Title formatted="false">
+																						<v8:item>
+																							<v8:lang>en</v8:lang>
+																							<v8:content>Added picture 1</v8:content>
+																						</v8:item>
+																					</Title>
+																					<PictureSize>AutoSize</PictureSize>
+																					<Picture>
+																						<xr:Ref>CommonPicture.NewIdea</xr:Ref>
+																						<xr:LoadTransparent>true</xr:LoadTransparent>
+																					</Picture>
+																					<ContextMenu name="Added_Picture_1ContextMenu" id="5311"/>
+																					<ExtendedTooltip name="Added_Picture_1ExtendedTooltip" id="5312"/>
+																				</PictureDecoration>
+																			</ChildItems>
+																		</Page>
+																		<Page name="Realized_1" id="4362">
+																			<Title>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Realized command group 1</v8:content>
+																				</v8:item>
+																			</Title>
+																			<ToolTip>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Realized command group 1</v8:content>
+																				</v8:item>
+																			</ToolTip>
+																			<ExtendedTooltip name="Realized_1ExtendedTooltip" id="4363"/>
+																			<ChildItems>
+																				<PictureDecoration name="Realized_Picture_1" id="4364">
+																					<Width>10</Width>
+																					<Height>3</Height>
+																					<Title formatted="false">
+																						<v8:item>
+																							<v8:lang>en</v8:lang>
+																							<v8:content>Realized picture 1</v8:content>
+																						</v8:item>
+																					</Title>
+																					<PictureSize>AutoSize</PictureSize>
+																					<Picture>
+																						<xr:Ref>CommonPicture.RealizedIdea</xr:Ref>
+																						<xr:LoadTransparent>true</xr:LoadTransparent>
+																					</Picture>
+																					<ContextMenu name="Realized_Picture_1ContextMenu" id="4365"/>
+																					<ExtendedTooltip name="Realized_Picture_1ExtendedTooltip" id="4366"/>
+																				</PictureDecoration>
+																			</ChildItems>
+																		</Page>
+																		<Page name="Rejected_1" id="5316">
+																			<Title>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Rejected command group 1</v8:content>
+																				</v8:item>
+																			</Title>
+																			<ToolTip>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Rejected command group 1</v8:content>
+																				</v8:item>
+																			</ToolTip>
+																			<ExtendedTooltip name="Rejected_1ExtendedTooltip" id="5317"/>
+																			<ChildItems>
+																				<PictureDecoration name="Rejected_Picture_1" id="5318">
+																					<Width>10</Width>
+																					<Height>3</Height>
+																					<Title formatted="false">
+																						<v8:item>
+																							<v8:lang>en</v8:lang>
+																							<v8:content>Rejected picture 1</v8:content>
+																						</v8:item>
+																					</Title>
+																					<Picture>
+																						<xr:Ref>CommonPicture.RejectedIdea</xr:Ref>
+																						<xr:LoadTransparent>true</xr:LoadTransparent>
+																					</Picture>
+																					<ContextMenu name="Rejected_Picture_1ContextMenu" id="5319"/>
+																					<ExtendedTooltip name="Rejected_Picture_1ExtendedTooltip" id="5320"/>
+																				</PictureDecoration>
+																			</ChildItems>
+																		</Page>
+																		<Page name="PageVotePlus_1" id="4305">
+																			<Title>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Page vote plus 1</v8:content>
+																				</v8:item>
+																			</Title>
+																			<ToolTip>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Page vote plus 1</v8:content>
+																				</v8:item>
+																			</ToolTip>
+																			<ExtendedTooltip name="PageVotePlus_1ExtendedTooltip" id="4306"/>
+																			<ChildItems>
+																				<Button name="OnPlus_PLUS_1" id="4307">
+																					<Type>UsualButton</Type>
+																					<Width>10</Width>
+																					<CommandName>Form.Command.PLUS</CommandName>
+																					<TextColor>#008000</TextColor>
+																					<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+																					<ExtendedTooltip name="OnPlus_Plus_1ExtendedTooltip" id="4308"/>
+																				</Button>
+																				<LabelDecoration name="OnPlus_Rating_1" id="4309">
+																					<Width>10</Width>
+																					<TextColor>#999999</TextColor>
+																					<Font ref="sys:DefaultGUIFont" height="14" kind="WindowsFont"/>
+																					<HorizontalAlign>Center</HorizontalAlign>
+																					<ContextMenu name="OnPlus_Rating_1ContextMenu" id="4310"/>
+																					<ExtendedTooltip name="OnPlus_Rating_1ExtendedTooltip" id="4311"/>
+																				</LabelDecoration>
+																				<LabelDecoration name="OnPlus_minus_1" id="4312">
+																					<Width>10</Width>
+																					<HorizontalStretch>false</HorizontalStretch>
+																					<TextColor>#FF0000</TextColor>
+																					<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+																					<Title formatted="false">
+																						<v8:item>
+																							<v8:lang>en</v8:lang>
+																							<v8:content>- 1</v8:content>
+																						</v8:item>
+																					</Title>
+																					<HorizontalAlign>Center</HorizontalAlign>
+																					<ContextMenu name="OnPlus_Minus_1ContextMenu" id="4313"/>
+																					<ExtendedTooltip name="OnPlus_Minus_1ExtendedTooltip" id="4314"/>
+																				</LabelDecoration>
+																			</ChildItems>
+																		</Page>
+																		<Page name="PageVoteMinus_1" id="4315">
+																			<Title>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Page vote plus 1</v8:content>
+																				</v8:item>
+																			</Title>
+																			<ToolTip>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Page vote plus 1</v8:content>
+																				</v8:item>
+																			</ToolTip>
+																			<ExtendedTooltip name="PageVoteMinus_1ExtendedTooltip" id="4316"/>
+																			<ChildItems>
+																				<LabelDecoration name="OnMinus_PLUS_1" id="4317">
+																					<Width>10</Width>
+																					<TextColor>#008000</TextColor>
+																					<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+																					<Title formatted="false">
+																						<v8:item>
+																							<v8:lang>en</v8:lang>
+																							<v8:content>+ 1</v8:content>
+																						</v8:item>
+																					</Title>
+																					<HorizontalAlign>Center</HorizontalAlign>
+																					<ContextMenu name="OnMinus_Plus_1ContextMenu" id="4318"/>
+																					<ExtendedTooltip name="OnMinus_Plus_1ExtendedTooltip" id="4319"/>
+																				</LabelDecoration>
+																				<LabelDecoration name="OnMinus_Rating_1" id="4320">
+																					<Width>10</Width>
+																					<TextColor>#999999</TextColor>
+																					<Font ref="sys:DefaultGUIFont" height="14" kind="WindowsFont"/>
+																					<HorizontalAlign>Center</HorizontalAlign>
+																					<ContextMenu name="OnMinus_Rating_1ContextMenu" id="4321"/>
+																					<ExtendedTooltip name="OnMinus_Rating_1ExtendedTooltip" id="4322"/>
+																				</LabelDecoration>
+																				<Button name="OnMinus_minus_1" id="4323">
+																					<Type>UsualButton</Type>
+																					<Width>10</Width>
+																					<CommandName>Form.Command.minus</CommandName>
+																					<TextColor>#FF0000</TextColor>
+																					<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+																					<ExtendedTooltip name="OnMinus_Minus_1ExtendedTooltip" id="4324"/>
+																				</Button>
+																			</ChildItems>
+																		</Page>
+																		<Page name="PageWithoutVote_1" id="4325">
+																			<Title>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Page vote plus 1</v8:content>
+																				</v8:item>
+																			</Title>
+																			<ToolTip>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Page vote plus 1</v8:content>
+																				</v8:item>
+																			</ToolTip>
+																			<ExtendedTooltip name="PageWithoutVote_1ExtendedTooltip" id="4326"/>
+																			<ChildItems>
+																				<Button name="WithoutVote_PLUS_1" id="4327">
+																					<Type>UsualButton</Type>
+																					<Width>10</Width>
+																					<CommandName>Form.Command.PLUS</CommandName>
+																					<TextColor>#008000</TextColor>
+																					<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+																					<ExtendedTooltip name="WithoutVote_Plus_1ExtendedTooltip" id="4328"/>
+																				</Button>
+																				<LabelDecoration name="WithoutVote_Rating_1" id="4329">
+																					<Width>10</Width>
+																					<TextColor>#999999</TextColor>
+																					<Font ref="sys:DefaultGUIFont" height="14" kind="WindowsFont"/>
+																					<HorizontalAlign>Center</HorizontalAlign>
+																					<ContextMenu name="WithoutVote_Rating_1ContextMenu" id="4330"/>
+																					<ExtendedTooltip name="WithoutVote_Rating_1ExtendedTooltip" id="4331"/>
+																				</LabelDecoration>
+																				<Button name="WithoutVote_minus_1" id="4332">
+																					<Type>UsualButton</Type>
+																					<Width>10</Width>
+																					<CommandName>Form.Command.minus</CommandName>
+																					<TextColor>#FF0000</TextColor>
+																					<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+																					<ExtendedTooltip name="WithoutVote_Minus_1ExtendedTooltip" id="4333"/>
+																				</Button>
+																			</ChildItems>
+																		</Page>
+																		<Page name="Planned_1" id="5321">
+																			<Title>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Planned command group 1</v8:content>
+																				</v8:item>
+																			</Title>
+																			<ToolTip>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Planned command group 1</v8:content>
+																				</v8:item>
+																			</ToolTip>
+																			<ExtendedTooltip name="Planned_1ExtendedTooltip" id="5322"/>
+																			<ChildItems>
+																				<PictureDecoration name="Planned_Picture_1" id="5323">
+																					<Width>10</Width>
+																					<Height>3</Height>
+																					<Title formatted="false">
+																						<v8:item>
+																							<v8:lang>en</v8:lang>
+																							<v8:content>Planned picture 1</v8:content>
+																						</v8:item>
+																					</Title>
+																					<PictureSize>AutoSize</PictureSize>
+																					<Picture>
+																						<xr:Ref>CommonPicture.PlannedIdea</xr:Ref>
+																						<xr:LoadTransparent>true</xr:LoadTransparent>
+																					</Picture>
+																					<ContextMenu name="Planned_Picture_1ContextMenu" id="5324"/>
+																					<ExtendedTooltip name="Planned_Picture_1ExtendedTooltip" id="5325"/>
+																				</PictureDecoration>
+																			</ChildItems>
+																		</Page>
+																	</ChildItems>
+																</Pages>
+																<UsualGroup name="Presentation_1" id="5337">
+																	<Title>
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Rejected group presentations 1</v8:content>
+																		</v8:item>
+																	</Title>
+																	<ToolTip>
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Rejected group presentations 1</v8:content>
+																		</v8:item>
+																	</ToolTip>
+																	<HorizontalStretch>true</HorizontalStretch>
+																	<Group>Vertical</Group>
+																	<Representation>None</Representation>
+																	<ShowTitle>false</ShowTitle>
+																	<ExtendedTooltip name="Presentation_1ExtendedTooltip" id="5338"/>
+																	<ChildItems>
+																		<LabelDecoration name="Title_1" id="5339">
+																			<HorizontalStretch>true</HorizontalStretch>
+																			<TextColor>style:FormTextColor</TextColor>
+																			<Font ref="sys:DefaultGUIFont" height="12" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+																			<Hyperlink>true</Hyperlink>
+																			<ContextMenu name="Title_1ContextMenu" id="5340"/>
+																			<ExtendedTooltip name="Title_1ExtendedTooltip" id="5341"/>
+																			<Events>
+																				<Event name="Click">ClickOnIdea</Event>
+																			</Events>
+																		</LabelDecoration>
+																		<LabelDecoration name="Text_1" id="5342">
+																			<Height>1</Height>
+																			<HorizontalStretch>true</HorizontalStretch>
+																			<VerticalAlign>Top</VerticalAlign>
+																			<ContextMenu name="Text_1ContextMenu" id="5343"/>
+																			<ExtendedTooltip name="Text_1ExtendedTooltip" id="5344"/>
+																		</LabelDecoration>
+																		<UsualGroup name="AdditionalParameters_1" id="5345">
+																			<Title>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Rejected group of the additional parameters 1</v8:content>
+																				</v8:item>
+																			</Title>
+																			<ToolTip>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Rejected group of the additional parameters 1</v8:content>
+																				</v8:item>
+																			</ToolTip>
+																			<Group>Horizontal</Group>
+																			<Representation>None</Representation>
+																			<ShowTitle>false</ShowTitle>
+																			<ExtendedTooltip name="AditionalParameters_1ExtendedTooltip" id="5346"/>
+																			<ChildItems>
+																				<LabelDecoration name="Comments_1" id="5356">
+																					<TextColor>#999999</TextColor>
+																					<ContextMenu name="Comments_1ContextMenu" id="5357"/>
+																					<ExtendedTooltip name="Comments_1ExtendedTooltip" id="5358"/>
+																				</LabelDecoration>
+																				<LabelDecoration name="Subject_1" id="5350">
+																					<TextColor>#999999</TextColor>
+																					<Hyperlink>true</Hyperlink>
+																					<ContextMenu name="Subject_1ContextMenu" id="5351"/>
+																					<ExtendedTooltip name="Subject_1ExtendedTooltip" id="5352"/>
+																					<Events>
+																						<Event name="Click">SubjectClick</Event>
+																					</Events>
+																				</LabelDecoration>
+																				<LabelDecoration name="AdditionalParameter_1" id="5353">
+																					<HorizontalStretch>true</HorizontalStretch>
+																					<TextColor>#999999</TextColor>
+																					<HorizontalAlign>Right</HorizontalAlign>
+																					<ContextMenu name="AdditionalParameter_1ContextMenu" id="5354"/>
+																					<ExtendedTooltip name="AdditionalParameter_1ExtendedTooltip" id="5355"/>
+																				</LabelDecoration>
+																			</ChildItems>
+																		</UsualGroup>
+																	</ChildItems>
+																</UsualGroup>
+															</ChildItems>
+														</UsualGroup>
+													</ChildItems>
+												</UsualGroup>
+											</ChildItems>
+										</Page>
+										<Page name="EmptyIdea_1" id="5330">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Empty idea 1</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Empty idea 1</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ExtendedTooltip name="EmptyIdea_1ExtendedTooltip" id="5331"/>
+											<ChildItems>
+												<LabelDecoration name="EmptyLabel_1" id="5332">
+													<ContextMenu name="BlankLabel_1ContextMenu" id="5333"/>
+													<ExtendedTooltip name="BlankLabel_1ExtendedTooltip" id="5334"/>
+												</LabelDecoration>
+											</ChildItems>
+										</Page>
+									</ChildItems>
+								</Pages>
+								<Pages name="Idea_2" id="6250">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Idea 1</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Idea 1</v8:content>
+										</v8:item>
+									</ToolTip>
+									<PagesRepresentation>None</PagesRepresentation>
+									<ExtendedTooltip name="Idea_2ExtendedTooltip" id="6251"/>
+									<ChildItems>
+										<Page name="FilledIdea_2" id="6252">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Filled idea 1</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Filled idea 1</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ExtendedTooltip name="FilledIdea_2ExtendedTooltip" id="6253"/>
+											<ChildItems>
+												<UsualGroup name="GroupIdeas_2" id="6254">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Group ideas 1</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Group ideas 1</v8:content>
+														</v8:item>
+													</ToolTip>
+													<Group>Vertical</Group>
+													<Representation>StrongSeparation</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="IdeaGroup_2ExtendedTooltip" id="6255"/>
+													<ChildItems>
+														<LabelDecoration name="Preheader_2" id="6256">
+															<HorizontalStretch>true</HorizontalStretch>
+															<TextColor>#999999</TextColor>
+															<Font italic="true" kind="AutoFont"/>
+															<ContextMenu name="Preheader_2ContextMenu" id="6257"/>
+															<ExtendedTooltip name="Preheader_2ExtendedTooltip" id="6258"/>
+														</LabelDecoration>
+														<UsualGroup name="Content_2" id="6259">
+															<Title>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Content 1</v8:content>
+																</v8:item>
+															</Title>
+															<ToolTip>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Content 1</v8:content>
+																</v8:item>
+															</ToolTip>
+															<Group>Horizontal</Group>
+															<Representation>None</Representation>
+															<ShowTitle>false</ShowTitle>
+															<ExtendedTooltip name="Content_2ExtendedTooltip" id="6260"/>
+															<ChildItems>
+																<Pages name="Representation_2" id="6261">
+																	<Title>
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Representation 1</v8:content>
+																		</v8:item>
+																	</Title>
+																	<ToolTip>
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Representation 1</v8:content>
+																		</v8:item>
+																	</ToolTip>
+																	<PagesRepresentation>None</PagesRepresentation>
+																	<ExtendedTooltip name="Representation_2ExtendedTooltip" id="6262"/>
+																	<ChildItems>
+																		<Page name="Added_2" id="6263">
+																			<Title>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Added coomand group 1</v8:content>
+																				</v8:item>
+																			</Title>
+																			<ToolTip>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Added coomand group 1</v8:content>
+																				</v8:item>
+																			</ToolTip>
+																			<ExtendedTooltip name="Added_2ExtendedTooltip" id="6264"/>
+																			<ChildItems>
+																				<PictureDecoration name="Added_Picture_2" id="6265">
+																					<Width>10</Width>
+																					<Height>3</Height>
+																					<Title formatted="false">
+																						<v8:item>
+																							<v8:lang>en</v8:lang>
+																							<v8:content>Added picture 1</v8:content>
+																						</v8:item>
+																					</Title>
+																					<PictureSize>AutoSize</PictureSize>
+																					<Picture>
+																						<xr:Ref>CommonPicture.NewIdea</xr:Ref>
+																						<xr:LoadTransparent>true</xr:LoadTransparent>
+																					</Picture>
+																					<ContextMenu name="Added_Picture_2ContextMenu" id="6266"/>
+																					<ExtendedTooltip name="Added_Picture_2ExtendedTooltip" id="6267"/>
+																				</PictureDecoration>
+																			</ChildItems>
+																		</Page>
+																		<Page name="Realized_2" id="6268">
+																			<Title>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Realized command group 1</v8:content>
+																				</v8:item>
+																			</Title>
+																			<ToolTip>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Realized command group 1</v8:content>
+																				</v8:item>
+																			</ToolTip>
+																			<ExtendedTooltip name="Realized_2ExtendedTooltip" id="6269"/>
+																			<ChildItems>
+																				<PictureDecoration name="Realized_Picture_2" id="6270">
+																					<Width>10</Width>
+																					<Height>3</Height>
+																					<Title formatted="false">
+																						<v8:item>
+																							<v8:lang>en</v8:lang>
+																							<v8:content>Realized picture 1</v8:content>
+																						</v8:item>
+																					</Title>
+																					<PictureSize>AutoSize</PictureSize>
+																					<Picture>
+																						<xr:Ref>CommonPicture.RealizedIdea</xr:Ref>
+																						<xr:LoadTransparent>true</xr:LoadTransparent>
+																					</Picture>
+																					<ContextMenu name="Realized_Picture_2ContextMenu" id="6271"/>
+																					<ExtendedTooltip name="Realized_Picture_2ExtendedTooltip" id="6272"/>
+																				</PictureDecoration>
+																			</ChildItems>
+																		</Page>
+																		<Page name="Rejected_2" id="6273">
+																			<Title>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Rejected command group 1</v8:content>
+																				</v8:item>
+																			</Title>
+																			<ToolTip>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Rejected command group 1</v8:content>
+																				</v8:item>
+																			</ToolTip>
+																			<ExtendedTooltip name="Rejected_2ExtendedTooltip" id="6274"/>
+																			<ChildItems>
+																				<PictureDecoration name="Rejected_Picture_2" id="6275">
+																					<Width>10</Width>
+																					<Height>3</Height>
+																					<Title formatted="false">
+																						<v8:item>
+																							<v8:lang>en</v8:lang>
+																							<v8:content>Rejected picture 1</v8:content>
+																						</v8:item>
+																					</Title>
+																					<Picture>
+																						<xr:Ref>CommonPicture.RejectedIdea</xr:Ref>
+																						<xr:LoadTransparent>true</xr:LoadTransparent>
+																					</Picture>
+																					<ContextMenu name="Rejected_Picture_2ContextMenu" id="6276"/>
+																					<ExtendedTooltip name="Rejected_Picture_2ExtendedTooltip" id="6277"/>
+																				</PictureDecoration>
+																			</ChildItems>
+																		</Page>
+																		<Page name="PageVotePlus_2" id="6278">
+																			<Title>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Page vote plus 1</v8:content>
+																				</v8:item>
+																			</Title>
+																			<ToolTip>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Page vote plus 1</v8:content>
+																				</v8:item>
+																			</ToolTip>
+																			<ExtendedTooltip name="PageVotePlus_2ExtendedTooltip" id="6279"/>
+																			<ChildItems>
+																				<Button name="OnPlus_PLUS_2" id="6280">
+																					<Type>UsualButton</Type>
+																					<Width>10</Width>
+																					<CommandName>Form.Command.PLUS</CommandName>
+																					<TextColor>#008000</TextColor>
+																					<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+																					<ExtendedTooltip name="OnPlus_Plus_2ExtendedTooltip" id="6281"/>
+																				</Button>
+																				<LabelDecoration name="OnPlus_Rating_2" id="6282">
+																					<Width>10</Width>
+																					<TextColor>#999999</TextColor>
+																					<Font ref="sys:DefaultGUIFont" height="14" kind="WindowsFont"/>
+																					<HorizontalAlign>Center</HorizontalAlign>
+																					<ContextMenu name="OnPlus_Rating_2ContextMenu" id="6283"/>
+																					<ExtendedTooltip name="OnPlus_Rating_2ExtendedTooltip" id="6284"/>
+																				</LabelDecoration>
+																				<LabelDecoration name="OnPlus_minus_2" id="6285">
+																					<Width>10</Width>
+																					<HorizontalStretch>false</HorizontalStretch>
+																					<TextColor>#FF0000</TextColor>
+																					<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+																					<Title formatted="false">
+																						<v8:item>
+																							<v8:lang>en</v8:lang>
+																							<v8:content>- 1</v8:content>
+																						</v8:item>
+																					</Title>
+																					<HorizontalAlign>Center</HorizontalAlign>
+																					<ContextMenu name="OnPlus_Minus_2ContextMenu" id="6286"/>
+																					<ExtendedTooltip name="OnPlus_Minus_2ExtendedTooltip" id="6287"/>
+																				</LabelDecoration>
+																			</ChildItems>
+																		</Page>
+																		<Page name="PageVoteMinus_2" id="6288">
+																			<Title>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Page vote plus 1</v8:content>
+																				</v8:item>
+																			</Title>
+																			<ToolTip>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Page vote plus 1</v8:content>
+																				</v8:item>
+																			</ToolTip>
+																			<ExtendedTooltip name="PageVoteMinus_2ExtendedTooltip" id="6289"/>
+																			<ChildItems>
+																				<LabelDecoration name="OnMinus_PLUS_2" id="6290">
+																					<Width>10</Width>
+																					<TextColor>#008000</TextColor>
+																					<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+																					<Title formatted="false">
+																						<v8:item>
+																							<v8:lang>en</v8:lang>
+																							<v8:content>+ 1</v8:content>
+																						</v8:item>
+																					</Title>
+																					<HorizontalAlign>Center</HorizontalAlign>
+																					<ContextMenu name="OnMinus_Plus_2ContextMenu" id="6291"/>
+																					<ExtendedTooltip name="OnMinus_Plus_2ExtendedTooltip" id="6292"/>
+																				</LabelDecoration>
+																				<LabelDecoration name="OnMinus_Rating_2" id="6293">
+																					<Width>10</Width>
+																					<TextColor>#999999</TextColor>
+																					<Font ref="sys:DefaultGUIFont" height="14" kind="WindowsFont"/>
+																					<HorizontalAlign>Center</HorizontalAlign>
+																					<ContextMenu name="OnMinus_Rating_2ContextMenu" id="6294"/>
+																					<ExtendedTooltip name="OnMinus_Rating_2ExtendedTooltip" id="6295"/>
+																				</LabelDecoration>
+																				<Button name="OnMinus_minus_2" id="6296">
+																					<Type>UsualButton</Type>
+																					<Width>10</Width>
+																					<CommandName>Form.Command.minus</CommandName>
+																					<TextColor>#FF0000</TextColor>
+																					<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+																					<ExtendedTooltip name="OnMinus_Minus_2ExtendedTooltip" id="6297"/>
+																				</Button>
+																			</ChildItems>
+																		</Page>
+																		<Page name="PageWithoutVote_2" id="6298">
+																			<Title>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Page vote plus 1</v8:content>
+																				</v8:item>
+																			</Title>
+																			<ToolTip>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Page vote plus 1</v8:content>
+																				</v8:item>
+																			</ToolTip>
+																			<ExtendedTooltip name="PageWithoutVote_2ExtendedTooltip" id="6299"/>
+																			<ChildItems>
+																				<Button name="WithoutVote_PLUS_2" id="6300">
+																					<Type>UsualButton</Type>
+																					<Width>10</Width>
+																					<CommandName>Form.Command.PLUS</CommandName>
+																					<TextColor>#008000</TextColor>
+																					<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+																					<ExtendedTooltip name="WithoutVote_Plus_2ExtendedTooltip" id="6301"/>
+																				</Button>
+																				<LabelDecoration name="WithoutVote_Rating_2" id="6302">
+																					<Width>10</Width>
+																					<TextColor>#999999</TextColor>
+																					<Font ref="sys:DefaultGUIFont" height="14" kind="WindowsFont"/>
+																					<HorizontalAlign>Center</HorizontalAlign>
+																					<ContextMenu name="WithoutVote_Rating_2ContextMenu" id="6303"/>
+																					<ExtendedTooltip name="WithoutVote_Rating_2ExtendedTooltip" id="6304"/>
+																				</LabelDecoration>
+																				<Button name="WithoutVote_minus_2" id="6305">
+																					<Type>UsualButton</Type>
+																					<Width>10</Width>
+																					<CommandName>Form.Command.minus</CommandName>
+																					<TextColor>#FF0000</TextColor>
+																					<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+																					<ExtendedTooltip name="WithoutVote_Minus_2ExtendedTooltip" id="6306"/>
+																				</Button>
+																			</ChildItems>
+																		</Page>
+																		<Page name="Planned_2" id="6307">
+																			<Title>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Planned command group 1</v8:content>
+																				</v8:item>
+																			</Title>
+																			<ToolTip>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Planned command group 1</v8:content>
+																				</v8:item>
+																			</ToolTip>
+																			<ExtendedTooltip name="Planned_2ExtendedTooltip" id="6308"/>
+																			<ChildItems>
+																				<PictureDecoration name="Planned_Picture_2" id="6309">
+																					<Width>10</Width>
+																					<Height>3</Height>
+																					<Title formatted="false">
+																						<v8:item>
+																							<v8:lang>en</v8:lang>
+																							<v8:content>Planned picture 1</v8:content>
+																						</v8:item>
+																					</Title>
+																					<PictureSize>AutoSize</PictureSize>
+																					<Picture>
+																						<xr:Ref>CommonPicture.PlannedIdea</xr:Ref>
+																						<xr:LoadTransparent>true</xr:LoadTransparent>
+																					</Picture>
+																					<ContextMenu name="Planned_Picture_2ContextMenu" id="6310"/>
+																					<ExtendedTooltip name="Planned_Picture_2ExtendedTooltip" id="6311"/>
+																				</PictureDecoration>
+																			</ChildItems>
+																		</Page>
+																	</ChildItems>
+																</Pages>
+																<UsualGroup name="Presentation_2" id="6312">
+																	<Title>
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Rejected group presentations 1</v8:content>
+																		</v8:item>
+																	</Title>
+																	<ToolTip>
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Rejected group presentations 1</v8:content>
+																		</v8:item>
+																	</ToolTip>
+																	<HorizontalStretch>true</HorizontalStretch>
+																	<Group>Vertical</Group>
+																	<Representation>None</Representation>
+																	<ShowTitle>false</ShowTitle>
+																	<ExtendedTooltip name="Presentation_2ExtendedTooltip" id="6313"/>
+																	<ChildItems>
+																		<LabelDecoration name="Title_2" id="6314">
+																			<HorizontalStretch>true</HorizontalStretch>
+																			<TextColor>style:FormTextColor</TextColor>
+																			<Font ref="sys:DefaultGUIFont" height="12" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+																			<Hyperlink>true</Hyperlink>
+																			<ContextMenu name="Title_2ContextMenu" id="6315"/>
+																			<ExtendedTooltip name="Title_2ExtendedTooltip" id="6316"/>
+																			<Events>
+																				<Event name="Click">ClickOnIdea</Event>
+																			</Events>
+																		</LabelDecoration>
+																		<LabelDecoration name="Text_2" id="6317">
+																			<Height>1</Height>
+																			<HorizontalStretch>true</HorizontalStretch>
+																			<VerticalAlign>Top</VerticalAlign>
+																			<ContextMenu name="Text_2ContextMenu" id="6318"/>
+																			<ExtendedTooltip name="Text_2ExtendedTooltip" id="6319"/>
+																		</LabelDecoration>
+																		<UsualGroup name="AdditionalParameters_2" id="6320">
+																			<Title>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Rejected group of the additional parameters 1</v8:content>
+																				</v8:item>
+																			</Title>
+																			<ToolTip>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Rejected group of the additional parameters 1</v8:content>
+																				</v8:item>
+																			</ToolTip>
+																			<Group>Horizontal</Group>
+																			<Representation>None</Representation>
+																			<ShowTitle>false</ShowTitle>
+																			<ExtendedTooltip name="AditionalParameters_2ExtendedTooltip" id="6321"/>
+																			<ChildItems>
+																				<LabelDecoration name="Comments_2" id="6322">
+																					<TextColor>#999999</TextColor>
+																					<ContextMenu name="Comments_2ContextMenu" id="6323"/>
+																					<ExtendedTooltip name="Comments_2ExtendedTooltip" id="6324"/>
+																				</LabelDecoration>
+																				<LabelDecoration name="Subject_2" id="6325">
+																					<TextColor>#999999</TextColor>
+																					<Hyperlink>true</Hyperlink>
+																					<ContextMenu name="Subject_2ContextMenu" id="6326"/>
+																					<ExtendedTooltip name="Subject_2ExtendedTooltip" id="6327"/>
+																					<Events>
+																						<Event name="Click">SubjectClick</Event>
+																					</Events>
+																				</LabelDecoration>
+																				<LabelDecoration name="AdditionalParameter_2" id="6328">
+																					<HorizontalStretch>true</HorizontalStretch>
+																					<TextColor>#999999</TextColor>
+																					<HorizontalAlign>Right</HorizontalAlign>
+																					<ContextMenu name="AdditionalParameter_2ContextMenu" id="6329"/>
+																					<ExtendedTooltip name="AdditionalParameter_2ExtendedTooltip" id="6330"/>
+																				</LabelDecoration>
+																			</ChildItems>
+																		</UsualGroup>
+																	</ChildItems>
+																</UsualGroup>
+															</ChildItems>
+														</UsualGroup>
+													</ChildItems>
+												</UsualGroup>
+											</ChildItems>
+										</Page>
+										<Page name="EmptyIdea_2" id="6331">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Empty idea 1</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Empty idea 1</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ExtendedTooltip name="EmptyIdea_2ExtendedTooltip" id="6332"/>
+											<ChildItems>
+												<LabelDecoration name="EmptyLabel_2" id="6333">
+													<ContextMenu name="BlankLabel_2ContextMenu" id="6334"/>
+													<ExtendedTooltip name="BlankLabel_2ExtendedTooltip" id="6335"/>
+												</LabelDecoration>
+											</ChildItems>
+										</Page>
+									</ChildItems>
+								</Pages>
+								<Pages name="Idea_3" id="6336">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Idea 1</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Idea 1</v8:content>
+										</v8:item>
+									</ToolTip>
+									<PagesRepresentation>None</PagesRepresentation>
+									<ExtendedTooltip name="Idea_3ExtendedTooltip" id="6337"/>
+									<ChildItems>
+										<Page name="FilledIdea_3" id="6338">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Filled idea 1</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Filled idea 1</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ExtendedTooltip name="FilledIdea_3ExtendedTooltip" id="6339"/>
+											<ChildItems>
+												<UsualGroup name="GroupIdeas_3" id="6340">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Group ideas 1</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Group ideas 1</v8:content>
+														</v8:item>
+													</ToolTip>
+													<Group>Vertical</Group>
+													<Representation>StrongSeparation</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="IdeaGroup_3ExtendedTooltip" id="6341"/>
+													<ChildItems>
+														<LabelDecoration name="Preheader_3" id="6342">
+															<HorizontalStretch>true</HorizontalStretch>
+															<TextColor>#999999</TextColor>
+															<Font italic="true" kind="AutoFont"/>
+															<ContextMenu name="Preheader_3ContextMenu" id="6343"/>
+															<ExtendedTooltip name="Preheader_3ExtendedTooltip" id="6344"/>
+														</LabelDecoration>
+														<UsualGroup name="Content_3" id="6345">
+															<Title>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Content 1</v8:content>
+																</v8:item>
+															</Title>
+															<ToolTip>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Content 1</v8:content>
+																</v8:item>
+															</ToolTip>
+															<Group>Horizontal</Group>
+															<Representation>None</Representation>
+															<ShowTitle>false</ShowTitle>
+															<ExtendedTooltip name="Content_3ExtendedTooltip" id="6346"/>
+															<ChildItems>
+																<Pages name="Representation_3" id="6347">
+																	<Title>
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Representation 1</v8:content>
+																		</v8:item>
+																	</Title>
+																	<ToolTip>
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Representation 1</v8:content>
+																		</v8:item>
+																	</ToolTip>
+																	<PagesRepresentation>None</PagesRepresentation>
+																	<ExtendedTooltip name="Representation_3ExtendedTooltip" id="6348"/>
+																	<ChildItems>
+																		<Page name="Added_3" id="6349">
+																			<Title>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Added coomand group 1</v8:content>
+																				</v8:item>
+																			</Title>
+																			<ToolTip>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Added coomand group 1</v8:content>
+																				</v8:item>
+																			</ToolTip>
+																			<ExtendedTooltip name="Added_3ExtendedTooltip" id="6350"/>
+																			<ChildItems>
+																				<PictureDecoration name="Added_Picture_3" id="6351">
+																					<Width>10</Width>
+																					<Height>3</Height>
+																					<Title formatted="false">
+																						<v8:item>
+																							<v8:lang>en</v8:lang>
+																							<v8:content>Added picture 1</v8:content>
+																						</v8:item>
+																					</Title>
+																					<PictureSize>AutoSize</PictureSize>
+																					<Picture>
+																						<xr:Ref>CommonPicture.NewIdea</xr:Ref>
+																						<xr:LoadTransparent>true</xr:LoadTransparent>
+																					</Picture>
+																					<ContextMenu name="Added_Picture_3ContextMenu" id="6352"/>
+																					<ExtendedTooltip name="Added_Picture_3ExtendedTooltip" id="6353"/>
+																				</PictureDecoration>
+																			</ChildItems>
+																		</Page>
+																		<Page name="Realized_3" id="6354">
+																			<Title>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Realized command group 1</v8:content>
+																				</v8:item>
+																			</Title>
+																			<ToolTip>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Realized command group 1</v8:content>
+																				</v8:item>
+																			</ToolTip>
+																			<ExtendedTooltip name="Realized_3ExtendedTooltip" id="6355"/>
+																			<ChildItems>
+																				<PictureDecoration name="Realized_Picture_3" id="6356">
+																					<Width>10</Width>
+																					<Height>3</Height>
+																					<Title formatted="false">
+																						<v8:item>
+																							<v8:lang>en</v8:lang>
+																							<v8:content>Realized picture 1</v8:content>
+																						</v8:item>
+																					</Title>
+																					<PictureSize>AutoSize</PictureSize>
+																					<Picture>
+																						<xr:Ref>CommonPicture.RealizedIdea</xr:Ref>
+																						<xr:LoadTransparent>true</xr:LoadTransparent>
+																					</Picture>
+																					<ContextMenu name="Realized_Picture_3ContextMenu" id="6357"/>
+																					<ExtendedTooltip name="Realized_Picture_3ExtendedTooltip" id="6358"/>
+																				</PictureDecoration>
+																			</ChildItems>
+																		</Page>
+																		<Page name="Rejected_3" id="6359">
+																			<Title>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Rejected command group 1</v8:content>
+																				</v8:item>
+																			</Title>
+																			<ToolTip>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Rejected command group 1</v8:content>
+																				</v8:item>
+																			</ToolTip>
+																			<ExtendedTooltip name="Rejected_3ExtendedTooltip" id="6360"/>
+																			<ChildItems>
+																				<PictureDecoration name="Rejected_Picture_3" id="6361">
+																					<Width>10</Width>
+																					<Height>3</Height>
+																					<Title formatted="false">
+																						<v8:item>
+																							<v8:lang>en</v8:lang>
+																							<v8:content>Rejected picture 1</v8:content>
+																						</v8:item>
+																					</Title>
+																					<Picture>
+																						<xr:Ref>CommonPicture.RejectedIdea</xr:Ref>
+																						<xr:LoadTransparent>true</xr:LoadTransparent>
+																					</Picture>
+																					<ContextMenu name="Rejected_Picture_3ContextMenu" id="6362"/>
+																					<ExtendedTooltip name="Rejected_Picture_3ExtendedTooltip" id="6363"/>
+																				</PictureDecoration>
+																			</ChildItems>
+																		</Page>
+																		<Page name="PageVotePlus_3" id="6364">
+																			<Title>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Page vote plus 1</v8:content>
+																				</v8:item>
+																			</Title>
+																			<ToolTip>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Page vote plus 1</v8:content>
+																				</v8:item>
+																			</ToolTip>
+																			<ExtendedTooltip name="PageVotePlus_3ExtendedTooltip" id="6365"/>
+																			<ChildItems>
+																				<Button name="OnPlus_PLUS_3" id="6366">
+																					<Type>UsualButton</Type>
+																					<Width>10</Width>
+																					<CommandName>Form.Command.PLUS</CommandName>
+																					<TextColor>#008000</TextColor>
+																					<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+																					<ExtendedTooltip name="OnPlus_Plus_3ExtendedTooltip" id="6367"/>
+																				</Button>
+																				<LabelDecoration name="OnPlus_Rating_3" id="6368">
+																					<Width>10</Width>
+																					<TextColor>#999999</TextColor>
+																					<Font ref="sys:DefaultGUIFont" height="14" kind="WindowsFont"/>
+																					<HorizontalAlign>Center</HorizontalAlign>
+																					<ContextMenu name="OnPlus_Rating_3ContextMenu" id="6369"/>
+																					<ExtendedTooltip name="OnPlus_Rating_3ExtendedTooltip" id="6370"/>
+																				</LabelDecoration>
+																				<LabelDecoration name="OnPlus_minus_3" id="6371">
+																					<Width>10</Width>
+																					<HorizontalStretch>false</HorizontalStretch>
+																					<TextColor>#FF0000</TextColor>
+																					<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+																					<Title formatted="false">
+																						<v8:item>
+																							<v8:lang>en</v8:lang>
+																							<v8:content>- 1</v8:content>
+																						</v8:item>
+																					</Title>
+																					<HorizontalAlign>Center</HorizontalAlign>
+																					<ContextMenu name="OnPlus_Minus_3ContextMenu" id="6372"/>
+																					<ExtendedTooltip name="OnPlus_Minus_3ExtendedTooltip" id="6373"/>
+																				</LabelDecoration>
+																			</ChildItems>
+																		</Page>
+																		<Page name="PageVoteMinus_3" id="6374">
+																			<Title>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Page vote plus 1</v8:content>
+																				</v8:item>
+																			</Title>
+																			<ToolTip>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Page vote plus 1</v8:content>
+																				</v8:item>
+																			</ToolTip>
+																			<ExtendedTooltip name="PageVoteMinus_3ExtendedTooltip" id="6375"/>
+																			<ChildItems>
+																				<LabelDecoration name="OnMinus_PLUS_3" id="6376">
+																					<Width>10</Width>
+																					<TextColor>#008000</TextColor>
+																					<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+																					<Title formatted="false">
+																						<v8:item>
+																							<v8:lang>en</v8:lang>
+																							<v8:content>+ 1</v8:content>
+																						</v8:item>
+																					</Title>
+																					<HorizontalAlign>Center</HorizontalAlign>
+																					<ContextMenu name="OnMinus_Plus_3ContextMenu" id="6377"/>
+																					<ExtendedTooltip name="OnMinus_Plus_3ExtendedTooltip" id="6378"/>
+																				</LabelDecoration>
+																				<LabelDecoration name="OnMinus_Rating_3" id="6379">
+																					<Width>10</Width>
+																					<TextColor>#999999</TextColor>
+																					<Font ref="sys:DefaultGUIFont" height="14" kind="WindowsFont"/>
+																					<HorizontalAlign>Center</HorizontalAlign>
+																					<ContextMenu name="OnMinus_Rating_3ContextMenu" id="6380"/>
+																					<ExtendedTooltip name="OnMinus_Rating_3ExtendedTooltip" id="6381"/>
+																				</LabelDecoration>
+																				<Button name="OnMinus_minus_3" id="6382">
+																					<Type>UsualButton</Type>
+																					<Width>10</Width>
+																					<CommandName>Form.Command.minus</CommandName>
+																					<TextColor>#FF0000</TextColor>
+																					<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+																					<ExtendedTooltip name="OnMinus_Minus_3ExtendedTooltip" id="6383"/>
+																				</Button>
+																			</ChildItems>
+																		</Page>
+																		<Page name="PageWithoutVote_3" id="6384">
+																			<Title>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Page vote plus 1</v8:content>
+																				</v8:item>
+																			</Title>
+																			<ToolTip>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Page vote plus 1</v8:content>
+																				</v8:item>
+																			</ToolTip>
+																			<ExtendedTooltip name="PageWithoutVote_3ExtendedTooltip" id="6385"/>
+																			<ChildItems>
+																				<Button name="WithoutVote_PLUS_3" id="6386">
+																					<Type>UsualButton</Type>
+																					<Width>10</Width>
+																					<CommandName>Form.Command.PLUS</CommandName>
+																					<TextColor>#008000</TextColor>
+																					<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+																					<ExtendedTooltip name="WithoutVote_Plus_3ExtendedTooltip" id="6387"/>
+																				</Button>
+																				<LabelDecoration name="WithoutVote_Rating_3" id="6388">
+																					<Width>10</Width>
+																					<TextColor>#999999</TextColor>
+																					<Font ref="sys:DefaultGUIFont" height="14" kind="WindowsFont"/>
+																					<HorizontalAlign>Center</HorizontalAlign>
+																					<ContextMenu name="WithoutVote_Rating_3ContextMenu" id="6389"/>
+																					<ExtendedTooltip name="WithoutVote_Rating_3ExtendedTooltip" id="6390"/>
+																				</LabelDecoration>
+																				<Button name="WithoutVote_minus_3" id="6391">
+																					<Type>UsualButton</Type>
+																					<Width>10</Width>
+																					<CommandName>Form.Command.minus</CommandName>
+																					<TextColor>#FF0000</TextColor>
+																					<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+																					<ExtendedTooltip name="WithoutVote_Minus_3ExtendedTooltip" id="6392"/>
+																				</Button>
+																			</ChildItems>
+																		</Page>
+																		<Page name="Planned_3" id="6393">
+																			<Title>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Planned command group 1</v8:content>
+																				</v8:item>
+																			</Title>
+																			<ToolTip>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Planned command group 1</v8:content>
+																				</v8:item>
+																			</ToolTip>
+																			<ExtendedTooltip name="Planned_3ExtendedTooltip" id="6394"/>
+																			<ChildItems>
+																				<PictureDecoration name="Planned_Picture_3" id="6395">
+																					<Width>10</Width>
+																					<Height>3</Height>
+																					<Title formatted="false">
+																						<v8:item>
+																							<v8:lang>en</v8:lang>
+																							<v8:content>Planned picture 1</v8:content>
+																						</v8:item>
+																					</Title>
+																					<PictureSize>AutoSize</PictureSize>
+																					<Picture>
+																						<xr:Ref>CommonPicture.PlannedIdea</xr:Ref>
+																						<xr:LoadTransparent>true</xr:LoadTransparent>
+																					</Picture>
+																					<ContextMenu name="Planned_Picture_3ContextMenu" id="6396"/>
+																					<ExtendedTooltip name="Planned_Picture_3ExtendedTooltip" id="6397"/>
+																				</PictureDecoration>
+																			</ChildItems>
+																		</Page>
+																	</ChildItems>
+																</Pages>
+																<UsualGroup name="Presentation_3" id="6398">
+																	<Title>
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Rejected group presentations 1</v8:content>
+																		</v8:item>
+																	</Title>
+																	<ToolTip>
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Rejected group presentations 1</v8:content>
+																		</v8:item>
+																	</ToolTip>
+																	<HorizontalStretch>true</HorizontalStretch>
+																	<Group>Vertical</Group>
+																	<Representation>None</Representation>
+																	<ShowTitle>false</ShowTitle>
+																	<ExtendedTooltip name="Presentation_3ExtendedTooltip" id="6399"/>
+																	<ChildItems>
+																		<LabelDecoration name="Title_3" id="6400">
+																			<HorizontalStretch>true</HorizontalStretch>
+																			<TextColor>style:FormTextColor</TextColor>
+																			<Font ref="sys:DefaultGUIFont" height="12" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+																			<Hyperlink>true</Hyperlink>
+																			<ContextMenu name="Title_3ContextMenu" id="6401"/>
+																			<ExtendedTooltip name="Title_3ExtendedTooltip" id="6402"/>
+																			<Events>
+																				<Event name="Click">ClickOnIdea</Event>
+																			</Events>
+																		</LabelDecoration>
+																		<LabelDecoration name="Text_3" id="6403">
+																			<Height>1</Height>
+																			<HorizontalStretch>true</HorizontalStretch>
+																			<VerticalAlign>Top</VerticalAlign>
+																			<ContextMenu name="Text_3ContextMenu" id="6404"/>
+																			<ExtendedTooltip name="Text_3ExtendedTooltip" id="6405"/>
+																		</LabelDecoration>
+																		<UsualGroup name="AdditionalParameters_3" id="6406">
+																			<Title>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Rejected group of the additional parameters 1</v8:content>
+																				</v8:item>
+																			</Title>
+																			<ToolTip>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Rejected group of the additional parameters 1</v8:content>
+																				</v8:item>
+																			</ToolTip>
+																			<Group>Horizontal</Group>
+																			<Representation>None</Representation>
+																			<ShowTitle>false</ShowTitle>
+																			<ExtendedTooltip name="AditionalParameters_3ExtendedTooltip" id="6407"/>
+																			<ChildItems>
+																				<LabelDecoration name="Comments_3" id="6408">
+																					<TextColor>#999999</TextColor>
+																					<ContextMenu name="Comments_3ContextMenu" id="6409"/>
+																					<ExtendedTooltip name="Comments_3ExtendedTooltip" id="6410"/>
+																				</LabelDecoration>
+																				<LabelDecoration name="Subject_3" id="6411">
+																					<TextColor>#999999</TextColor>
+																					<Hyperlink>true</Hyperlink>
+																					<ContextMenu name="Subject_3ContextMenu" id="6412"/>
+																					<ExtendedTooltip name="Subject_3ExtendedTooltip" id="6413"/>
+																					<Events>
+																						<Event name="Click">SubjectClick</Event>
+																					</Events>
+																				</LabelDecoration>
+																				<LabelDecoration name="AdditionalParameter_3" id="6414">
+																					<HorizontalStretch>true</HorizontalStretch>
+																					<TextColor>#999999</TextColor>
+																					<HorizontalAlign>Right</HorizontalAlign>
+																					<ContextMenu name="AdditionalParameter_3ContextMenu" id="6415"/>
+																					<ExtendedTooltip name="AdditionalParameter_3ExtendedTooltip" id="6416"/>
+																				</LabelDecoration>
+																			</ChildItems>
+																		</UsualGroup>
+																	</ChildItems>
+																</UsualGroup>
+															</ChildItems>
+														</UsualGroup>
+													</ChildItems>
+												</UsualGroup>
+											</ChildItems>
+										</Page>
+										<Page name="EmptyIdea_3" id="6417">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Empty idea 1</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Empty idea 1</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ExtendedTooltip name="EmptyIdea_3ExtendedTooltip" id="6418"/>
+											<ChildItems>
+												<LabelDecoration name="EmptyLabel_3" id="6419">
+													<ContextMenu name="BlankLabel_3ContextMenu" id="6420"/>
+													<ExtendedTooltip name="BlankLabel_3ExtendedTooltip" id="6421"/>
+												</LabelDecoration>
+											</ChildItems>
+										</Page>
+									</ChildItems>
+								</Pages>
+								<Pages name="Idea_4" id="6422">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Idea 1</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Idea 1</v8:content>
+										</v8:item>
+									</ToolTip>
+									<PagesRepresentation>None</PagesRepresentation>
+									<ExtendedTooltip name="Idea_4ExtendedTooltip" id="6423"/>
+									<ChildItems>
+										<Page name="FilledIdea_4" id="6424">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Filled idea 1</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Filled idea 1</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ExtendedTooltip name="FilledIdea_4ExtendedTooltip" id="6425"/>
+											<ChildItems>
+												<UsualGroup name="GroupIdeas_4" id="6426">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Group ideas 1</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Group ideas 1</v8:content>
+														</v8:item>
+													</ToolTip>
+													<Group>Vertical</Group>
+													<Representation>StrongSeparation</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="IdeaGroup_4ExtendedTooltip" id="6427"/>
+													<ChildItems>
+														<LabelDecoration name="Preheader_4" id="6428">
+															<HorizontalStretch>true</HorizontalStretch>
+															<TextColor>#999999</TextColor>
+															<Font italic="true" kind="AutoFont"/>
+															<ContextMenu name="Preheader_4ContextMenu" id="6429"/>
+															<ExtendedTooltip name="Preheader_4ExtendedTooltip" id="6430"/>
+														</LabelDecoration>
+														<UsualGroup name="Content_4" id="6431">
+															<Title>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Content 1</v8:content>
+																</v8:item>
+															</Title>
+															<ToolTip>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Content 1</v8:content>
+																</v8:item>
+															</ToolTip>
+															<Group>Horizontal</Group>
+															<Representation>None</Representation>
+															<ShowTitle>false</ShowTitle>
+															<ExtendedTooltip name="Content_4ExtendedTooltip" id="6432"/>
+															<ChildItems>
+																<Pages name="Representation_4" id="6433">
+																	<Title>
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Representation 1</v8:content>
+																		</v8:item>
+																	</Title>
+																	<ToolTip>
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Representation 1</v8:content>
+																		</v8:item>
+																	</ToolTip>
+																	<PagesRepresentation>None</PagesRepresentation>
+																	<ExtendedTooltip name="Representation_4ExtendedTooltip" id="6434"/>
+																	<ChildItems>
+																		<Page name="Added_4" id="6435">
+																			<Title>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Added coomand group 1</v8:content>
+																				</v8:item>
+																			</Title>
+																			<ToolTip>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Added coomand group 1</v8:content>
+																				</v8:item>
+																			</ToolTip>
+																			<ExtendedTooltip name="Added_4ExtendedTooltip" id="6436"/>
+																			<ChildItems>
+																				<PictureDecoration name="Added_Picture_4" id="6437">
+																					<Width>10</Width>
+																					<Height>3</Height>
+																					<Title formatted="false">
+																						<v8:item>
+																							<v8:lang>en</v8:lang>
+																							<v8:content>Added picture 1</v8:content>
+																						</v8:item>
+																					</Title>
+																					<PictureSize>AutoSize</PictureSize>
+																					<Picture>
+																						<xr:Ref>CommonPicture.NewIdea</xr:Ref>
+																						<xr:LoadTransparent>true</xr:LoadTransparent>
+																					</Picture>
+																					<ContextMenu name="Added_Picture_4ContextMenu" id="6438"/>
+																					<ExtendedTooltip name="Added_Picture_4ExtendedTooltip" id="6439"/>
+																				</PictureDecoration>
+																			</ChildItems>
+																		</Page>
+																		<Page name="Realized_4" id="6440">
+																			<Title>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Realized command group 1</v8:content>
+																				</v8:item>
+																			</Title>
+																			<ToolTip>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Realized command group 1</v8:content>
+																				</v8:item>
+																			</ToolTip>
+																			<ExtendedTooltip name="Realized_4ExtendedTooltip" id="6441"/>
+																			<ChildItems>
+																				<PictureDecoration name="Realized_Picture_4" id="6442">
+																					<Width>10</Width>
+																					<Height>3</Height>
+																					<Title formatted="false">
+																						<v8:item>
+																							<v8:lang>en</v8:lang>
+																							<v8:content>Realized picture 1</v8:content>
+																						</v8:item>
+																					</Title>
+																					<PictureSize>AutoSize</PictureSize>
+																					<Picture>
+																						<xr:Ref>CommonPicture.RealizedIdea</xr:Ref>
+																						<xr:LoadTransparent>true</xr:LoadTransparent>
+																					</Picture>
+																					<ContextMenu name="Realized_Picture_4ContextMenu" id="6443"/>
+																					<ExtendedTooltip name="Realized_Picture_4ExtendedTooltip" id="6444"/>
+																				</PictureDecoration>
+																			</ChildItems>
+																		</Page>
+																		<Page name="Rejected_4" id="6445">
+																			<Title>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Rejected command group 1</v8:content>
+																				</v8:item>
+																			</Title>
+																			<ToolTip>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Rejected command group 1</v8:content>
+																				</v8:item>
+																			</ToolTip>
+																			<ExtendedTooltip name="Rejected_4ExtendedTooltip" id="6446"/>
+																			<ChildItems>
+																				<PictureDecoration name="Rejected_Picture_4" id="6447">
+																					<Width>10</Width>
+																					<Height>3</Height>
+																					<Title formatted="false">
+																						<v8:item>
+																							<v8:lang>en</v8:lang>
+																							<v8:content>Rejected picture 1</v8:content>
+																						</v8:item>
+																					</Title>
+																					<Picture>
+																						<xr:Ref>CommonPicture.RejectedIdea</xr:Ref>
+																						<xr:LoadTransparent>true</xr:LoadTransparent>
+																					</Picture>
+																					<ContextMenu name="Rejected_Picture_4ContextMenu" id="6448"/>
+																					<ExtendedTooltip name="Rejected_Picture_4ExtendedTooltip" id="6449"/>
+																				</PictureDecoration>
+																			</ChildItems>
+																		</Page>
+																		<Page name="PageVotePlus_4" id="6450">
+																			<Title>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Page vote plus 1</v8:content>
+																				</v8:item>
+																			</Title>
+																			<ToolTip>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Page vote plus 1</v8:content>
+																				</v8:item>
+																			</ToolTip>
+																			<ExtendedTooltip name="PageVotePlus_4ExtendedTooltip" id="6451"/>
+																			<ChildItems>
+																				<Button name="OnPlus_PLUS_4" id="6452">
+																					<Type>UsualButton</Type>
+																					<Width>10</Width>
+																					<CommandName>Form.Command.PLUS</CommandName>
+																					<TextColor>#008000</TextColor>
+																					<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+																					<ExtendedTooltip name="OnPlus_Plus_4ExtendedTooltip" id="6453"/>
+																				</Button>
+																				<LabelDecoration name="OnPlus_Rating_4" id="6454">
+																					<Width>10</Width>
+																					<TextColor>#999999</TextColor>
+																					<Font ref="sys:DefaultGUIFont" height="14" kind="WindowsFont"/>
+																					<HorizontalAlign>Center</HorizontalAlign>
+																					<ContextMenu name="OnPlus_Rating_4ContextMenu" id="6455"/>
+																					<ExtendedTooltip name="OnPlus_Rating_4ExtendedTooltip" id="6456"/>
+																				</LabelDecoration>
+																				<LabelDecoration name="OnPlus_minus_4" id="6457">
+																					<Width>10</Width>
+																					<HorizontalStretch>false</HorizontalStretch>
+																					<TextColor>#FF0000</TextColor>
+																					<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+																					<Title formatted="false">
+																						<v8:item>
+																							<v8:lang>en</v8:lang>
+																							<v8:content>- 1</v8:content>
+																						</v8:item>
+																					</Title>
+																					<HorizontalAlign>Center</HorizontalAlign>
+																					<ContextMenu name="OnPlus_Minus_4ContextMenu" id="6458"/>
+																					<ExtendedTooltip name="OnPlus_Minus_4ExtendedTooltip" id="6459"/>
+																				</LabelDecoration>
+																			</ChildItems>
+																		</Page>
+																		<Page name="PageVoteMinus_4" id="6460">
+																			<Title>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Page vote plus 1</v8:content>
+																				</v8:item>
+																			</Title>
+																			<ToolTip>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Page vote plus 1</v8:content>
+																				</v8:item>
+																			</ToolTip>
+																			<ExtendedTooltip name="PageVoteMinus_4ExtendedTooltip" id="6461"/>
+																			<ChildItems>
+																				<LabelDecoration name="OnMinus_PLUS_4" id="6462">
+																					<Width>10</Width>
+																					<TextColor>#008000</TextColor>
+																					<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+																					<Title formatted="false">
+																						<v8:item>
+																							<v8:lang>en</v8:lang>
+																							<v8:content>+ 1</v8:content>
+																						</v8:item>
+																					</Title>
+																					<HorizontalAlign>Center</HorizontalAlign>
+																					<ContextMenu name="OnMinus_Plus_4ContextMenu" id="6463"/>
+																					<ExtendedTooltip name="OnMinus_Plus_4ExtendedTooltip" id="6464"/>
+																				</LabelDecoration>
+																				<LabelDecoration name="OnMinus_Rating_4" id="6465">
+																					<Width>10</Width>
+																					<TextColor>#999999</TextColor>
+																					<Font ref="sys:DefaultGUIFont" height="14" kind="WindowsFont"/>
+																					<HorizontalAlign>Center</HorizontalAlign>
+																					<ContextMenu name="OnMinus_Rating_4ContextMenu" id="6466"/>
+																					<ExtendedTooltip name="OnMinus_Rating_4ExtendedTooltip" id="6467"/>
+																				</LabelDecoration>
+																				<Button name="OnMinus_minus_4" id="6468">
+																					<Type>UsualButton</Type>
+																					<Width>10</Width>
+																					<CommandName>Form.Command.minus</CommandName>
+																					<TextColor>#FF0000</TextColor>
+																					<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+																					<ExtendedTooltip name="OnMinus_Minus_4ExtendedTooltip" id="6469"/>
+																				</Button>
+																			</ChildItems>
+																		</Page>
+																		<Page name="PageWithoutVote_4" id="6470">
+																			<Title>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Page vote plus 1</v8:content>
+																				</v8:item>
+																			</Title>
+																			<ToolTip>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Page vote plus 1</v8:content>
+																				</v8:item>
+																			</ToolTip>
+																			<ExtendedTooltip name="PageWithoutVote_4ExtendedTooltip" id="6471"/>
+																			<ChildItems>
+																				<Button name="WithoutVote_PLUS_4" id="6472">
+																					<Type>UsualButton</Type>
+																					<Width>10</Width>
+																					<CommandName>Form.Command.PLUS</CommandName>
+																					<TextColor>#008000</TextColor>
+																					<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+																					<ExtendedTooltip name="WithoutVote_Plus_4ExtendedTooltip" id="6473"/>
+																				</Button>
+																				<LabelDecoration name="WithoutVote_Rating_4" id="6474">
+																					<Width>10</Width>
+																					<TextColor>#999999</TextColor>
+																					<Font ref="sys:DefaultGUIFont" height="14" kind="WindowsFont"/>
+																					<HorizontalAlign>Center</HorizontalAlign>
+																					<ContextMenu name="WithoutVote_Rating_4ContextMenu" id="6475"/>
+																					<ExtendedTooltip name="WithoutVote_Rating_4ExtendedTooltip" id="6476"/>
+																				</LabelDecoration>
+																				<Button name="WithoutVote_minus_4" id="6477">
+																					<Type>UsualButton</Type>
+																					<Width>10</Width>
+																					<CommandName>Form.Command.minus</CommandName>
+																					<TextColor>#FF0000</TextColor>
+																					<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+																					<ExtendedTooltip name="WithoutVote_Minus_4ExtendedTooltip" id="6478"/>
+																				</Button>
+																			</ChildItems>
+																		</Page>
+																		<Page name="Planned_4" id="6479">
+																			<Title>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Planned command group 1</v8:content>
+																				</v8:item>
+																			</Title>
+																			<ToolTip>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Planned command group 1</v8:content>
+																				</v8:item>
+																			</ToolTip>
+																			<ExtendedTooltip name="Planned_4ExtendedTooltip" id="6480"/>
+																			<ChildItems>
+																				<PictureDecoration name="Planned_Picture_4" id="6481">
+																					<Width>10</Width>
+																					<Height>3</Height>
+																					<Title formatted="false">
+																						<v8:item>
+																							<v8:lang>en</v8:lang>
+																							<v8:content>Planned picture 1</v8:content>
+																						</v8:item>
+																					</Title>
+																					<PictureSize>AutoSize</PictureSize>
+																					<Picture>
+																						<xr:Ref>CommonPicture.PlannedIdea</xr:Ref>
+																						<xr:LoadTransparent>true</xr:LoadTransparent>
+																					</Picture>
+																					<ContextMenu name="Planned_Picture_4ContextMenu" id="6482"/>
+																					<ExtendedTooltip name="Planned_Picture_4ExtendedTooltip" id="6483"/>
+																				</PictureDecoration>
+																			</ChildItems>
+																		</Page>
+																	</ChildItems>
+																</Pages>
+																<UsualGroup name="Presentation_4" id="6484">
+																	<Title>
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Rejected group presentations 1</v8:content>
+																		</v8:item>
+																	</Title>
+																	<ToolTip>
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Rejected group presentations 1</v8:content>
+																		</v8:item>
+																	</ToolTip>
+																	<HorizontalStretch>true</HorizontalStretch>
+																	<Group>Vertical</Group>
+																	<Representation>None</Representation>
+																	<ShowTitle>false</ShowTitle>
+																	<ExtendedTooltip name="Presentation_4ExtendedTooltip" id="6485"/>
+																	<ChildItems>
+																		<LabelDecoration name="Title_4" id="6486">
+																			<HorizontalStretch>true</HorizontalStretch>
+																			<TextColor>style:FormTextColor</TextColor>
+																			<Font ref="sys:DefaultGUIFont" height="12" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+																			<Hyperlink>true</Hyperlink>
+																			<ContextMenu name="Title_4ContextMenu" id="6487"/>
+																			<ExtendedTooltip name="Title_4ExtendedTooltip" id="6488"/>
+																			<Events>
+																				<Event name="Click">ClickOnIdea</Event>
+																			</Events>
+																		</LabelDecoration>
+																		<LabelDecoration name="Text_4" id="6489">
+																			<Height>1</Height>
+																			<HorizontalStretch>true</HorizontalStretch>
+																			<VerticalAlign>Top</VerticalAlign>
+																			<ContextMenu name="Text_4ContextMenu" id="6490"/>
+																			<ExtendedTooltip name="Text_4ExtendedTooltip" id="6491"/>
+																		</LabelDecoration>
+																		<UsualGroup name="AdditionalParameters_4" id="6492">
+																			<Title>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Rejected group of the additional parameters 1</v8:content>
+																				</v8:item>
+																			</Title>
+																			<ToolTip>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Rejected group of the additional parameters 1</v8:content>
+																				</v8:item>
+																			</ToolTip>
+																			<Group>Horizontal</Group>
+																			<Representation>None</Representation>
+																			<ShowTitle>false</ShowTitle>
+																			<ExtendedTooltip name="AdditionalParameters_4ExtendedTooltip" id="6493"/>
+																			<ChildItems>
+																				<LabelDecoration name="Comments_4" id="6494">
+																					<TextColor>#999999</TextColor>
+																					<ContextMenu name="Comments_4ContextMenu" id="6495"/>
+																					<ExtendedTooltip name="Comments_4ExtendedTooltip" id="6496"/>
+																				</LabelDecoration>
+																				<LabelDecoration name="Subject_4" id="6497">
+																					<TextColor>#999999</TextColor>
+																					<Hyperlink>true</Hyperlink>
+																					<ContextMenu name="Subject_4ContextMenu" id="6498"/>
+																					<ExtendedTooltip name="Subject_4ExtendedTooltip" id="6499"/>
+																					<Events>
+																						<Event name="Click">SubjectClick</Event>
+																					</Events>
+																				</LabelDecoration>
+																				<LabelDecoration name="AdditionalParameter_4" id="6500">
+																					<HorizontalStretch>true</HorizontalStretch>
+																					<TextColor>#999999</TextColor>
+																					<HorizontalAlign>Right</HorizontalAlign>
+																					<ContextMenu name="AdditionalParameter_4ContextMenu" id="6501"/>
+																					<ExtendedTooltip name="AdditionalParameter_4ExtendedTooltip" id="6502"/>
+																				</LabelDecoration>
+																			</ChildItems>
+																		</UsualGroup>
+																	</ChildItems>
+																</UsualGroup>
+															</ChildItems>
+														</UsualGroup>
+													</ChildItems>
+												</UsualGroup>
+											</ChildItems>
+										</Page>
+										<Page name="EmptyIdea_4" id="6503">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Empty idea 1</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Empty idea 1</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ExtendedTooltip name="EmptyIdea_4ExtendedTooltip" id="6504"/>
+											<ChildItems>
+												<LabelDecoration name="EmptyLabel_4" id="6505">
+													<ContextMenu name="BlankLabel_4ContextMenu" id="6506"/>
+													<ExtendedTooltip name="BlankLabel_4ExtendedTooltip" id="6507"/>
+												</LabelDecoration>
+											</ChildItems>
+										</Page>
+									</ChildItems>
+								</Pages>
+								<Pages name="Idea_5" id="6508">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Idea 1</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Idea 1</v8:content>
+										</v8:item>
+									</ToolTip>
+									<PagesRepresentation>None</PagesRepresentation>
+									<ExtendedTooltip name="Idea_5ExtendedTooltip" id="6509"/>
+									<ChildItems>
+										<Page name="FilledIdea_5" id="6510">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Filled idea 1</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Filled idea 1</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ExtendedTooltip name="FilledIdea_5ExtendedTooltip" id="6511"/>
+											<ChildItems>
+												<UsualGroup name="GroupIdeas_5" id="6512">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Group ideas 1</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Group ideas 1</v8:content>
+														</v8:item>
+													</ToolTip>
+													<Group>Vertical</Group>
+													<Representation>StrongSeparation</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="IdeaGroup_5ExtendedTooltip" id="6513"/>
+													<ChildItems>
+														<LabelDecoration name="Preheader_5" id="6514">
+															<HorizontalStretch>true</HorizontalStretch>
+															<TextColor>#999999</TextColor>
+															<Font italic="true" kind="AutoFont"/>
+															<ContextMenu name="Preheader_5ContextMenu" id="6515"/>
+															<ExtendedTooltip name="Preheader_5ExtendedTooltip" id="6516"/>
+														</LabelDecoration>
+														<UsualGroup name="Content_5" id="6517">
+															<Title>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Content 1</v8:content>
+																</v8:item>
+															</Title>
+															<ToolTip>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Content 1</v8:content>
+																</v8:item>
+															</ToolTip>
+															<Group>Horizontal</Group>
+															<Representation>None</Representation>
+															<ShowTitle>false</ShowTitle>
+															<ExtendedTooltip name="Content_5ExtendedTooltip" id="6518"/>
+															<ChildItems>
+																<Pages name="Representation_5" id="6519">
+																	<Title>
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Representation 1</v8:content>
+																		</v8:item>
+																	</Title>
+																	<ToolTip>
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Representation 1</v8:content>
+																		</v8:item>
+																	</ToolTip>
+																	<PagesRepresentation>None</PagesRepresentation>
+																	<ExtendedTooltip name="Representation_5ExtendedTooltip" id="6520"/>
+																	<ChildItems>
+																		<Page name="Added_5" id="6521">
+																			<Title>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Added coomand group 1</v8:content>
+																				</v8:item>
+																			</Title>
+																			<ToolTip>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Added coomand group 1</v8:content>
+																				</v8:item>
+																			</ToolTip>
+																			<ExtendedTooltip name="Added_5ExtendedTooltip" id="6522"/>
+																			<ChildItems>
+																				<PictureDecoration name="Added_Picture_5" id="6523">
+																					<Width>10</Width>
+																					<Height>3</Height>
+																					<Title formatted="false">
+																						<v8:item>
+																							<v8:lang>en</v8:lang>
+																							<v8:content>Added picture 1</v8:content>
+																						</v8:item>
+																					</Title>
+																					<PictureSize>AutoSize</PictureSize>
+																					<Picture>
+																						<xr:Ref>CommonPicture.NewIdea</xr:Ref>
+																						<xr:LoadTransparent>true</xr:LoadTransparent>
+																					</Picture>
+																					<ContextMenu name="Added_Picture_5ContextMenu" id="6524"/>
+																					<ExtendedTooltip name="Added_Picture_5ExtendedTooltip" id="6525"/>
+																				</PictureDecoration>
+																			</ChildItems>
+																		</Page>
+																		<Page name="Realized_5" id="6526">
+																			<Title>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Realized command group 1</v8:content>
+																				</v8:item>
+																			</Title>
+																			<ToolTip>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Realized command group 1</v8:content>
+																				</v8:item>
+																			</ToolTip>
+																			<ExtendedTooltip name="Realized_5ExtendedTooltip" id="6527"/>
+																			<ChildItems>
+																				<PictureDecoration name="Realized_Picture_5" id="6528">
+																					<Width>10</Width>
+																					<Height>3</Height>
+																					<Title formatted="false">
+																						<v8:item>
+																							<v8:lang>en</v8:lang>
+																							<v8:content>Realized picture 1</v8:content>
+																						</v8:item>
+																					</Title>
+																					<PictureSize>AutoSize</PictureSize>
+																					<Picture>
+																						<xr:Ref>CommonPicture.RealizedIdea</xr:Ref>
+																						<xr:LoadTransparent>true</xr:LoadTransparent>
+																					</Picture>
+																					<ContextMenu name="Realized_Picture_5ContextMenu" id="6529"/>
+																					<ExtendedTooltip name="Realized_Picture_5ExtendedTooltip" id="6530"/>
+																				</PictureDecoration>
+																			</ChildItems>
+																		</Page>
+																		<Page name="Rejected_5" id="6531">
+																			<Title>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Rejected command group 1</v8:content>
+																				</v8:item>
+																			</Title>
+																			<ToolTip>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Rejected command group 1</v8:content>
+																				</v8:item>
+																			</ToolTip>
+																			<ExtendedTooltip name="Rejected_5ExtendedTooltip" id="6532"/>
+																			<ChildItems>
+																				<PictureDecoration name="Rejected_Picture_5" id="6533">
+																					<Width>10</Width>
+																					<Height>3</Height>
+																					<Title formatted="false">
+																						<v8:item>
+																							<v8:lang>en</v8:lang>
+																							<v8:content>Rejected picture 1</v8:content>
+																						</v8:item>
+																					</Title>
+																					<Picture>
+																						<xr:Ref>CommonPicture.RejectedIdea</xr:Ref>
+																						<xr:LoadTransparent>true</xr:LoadTransparent>
+																					</Picture>
+																					<ContextMenu name="Rejected_Picture_5ContextMenu" id="6534"/>
+																					<ExtendedTooltip name="Rejected_Picture_5ExtendedTooltip" id="6535"/>
+																				</PictureDecoration>
+																			</ChildItems>
+																		</Page>
+																		<Page name="PageVotePlus_5" id="6536">
+																			<Title>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Page vote plus 1</v8:content>
+																				</v8:item>
+																			</Title>
+																			<ToolTip>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Page vote plus 1</v8:content>
+																				</v8:item>
+																			</ToolTip>
+																			<ExtendedTooltip name="PageVotePlus_5ExtendedTooltip" id="6537"/>
+																			<ChildItems>
+																				<Button name="OnPlus_PLUS_5" id="6538">
+																					<Type>UsualButton</Type>
+																					<Width>10</Width>
+																					<CommandName>Form.Command.PLUS</CommandName>
+																					<TextColor>#008000</TextColor>
+																					<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+																					<ExtendedTooltip name="OnPlus_Plus_5ExtendedTooltip" id="6539"/>
+																				</Button>
+																				<LabelDecoration name="OnPlus_Rating_5" id="6540">
+																					<Width>10</Width>
+																					<TextColor>#999999</TextColor>
+																					<Font ref="sys:DefaultGUIFont" height="14" kind="WindowsFont"/>
+																					<HorizontalAlign>Center</HorizontalAlign>
+																					<ContextMenu name="OnPlus_Rating_5ContextMenu" id="6541"/>
+																					<ExtendedTooltip name="OnPlus_Rating_5ExtendedTooltip" id="6542"/>
+																				</LabelDecoration>
+																				<LabelDecoration name="OnPlus_minus_5" id="6543">
+																					<Width>10</Width>
+																					<HorizontalStretch>false</HorizontalStretch>
+																					<TextColor>#FF0000</TextColor>
+																					<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+																					<Title formatted="false">
+																						<v8:item>
+																							<v8:lang>en</v8:lang>
+																							<v8:content>- 1</v8:content>
+																						</v8:item>
+																					</Title>
+																					<HorizontalAlign>Center</HorizontalAlign>
+																					<ContextMenu name="OnPlus_Minus_5ContextMenu" id="6544"/>
+																					<ExtendedTooltip name="OnPlus_Minus_5ExtendedTooltip" id="6545"/>
+																				</LabelDecoration>
+																			</ChildItems>
+																		</Page>
+																		<Page name="PageVoteMinus_5" id="6546">
+																			<Title>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Page vote plus 1</v8:content>
+																				</v8:item>
+																			</Title>
+																			<ToolTip>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Page vote plus 1</v8:content>
+																				</v8:item>
+																			</ToolTip>
+																			<ExtendedTooltip name="PageVoteMinus_5ExtendedTooltip" id="6547"/>
+																			<ChildItems>
+																				<LabelDecoration name="OnMinus_PLUS_5" id="6548">
+																					<Width>10</Width>
+																					<TextColor>#008000</TextColor>
+																					<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+																					<Title formatted="false">
+																						<v8:item>
+																							<v8:lang>en</v8:lang>
+																							<v8:content>+ 1</v8:content>
+																						</v8:item>
+																					</Title>
+																					<HorizontalAlign>Center</HorizontalAlign>
+																					<ContextMenu name="OnMinus_Plus_5ContextMenu" id="6549"/>
+																					<ExtendedTooltip name="OnMinus_Plus_5ExtendedTooltip" id="6550"/>
+																				</LabelDecoration>
+																				<LabelDecoration name="OnMinus_Rating_5" id="6551">
+																					<Width>10</Width>
+																					<TextColor>#999999</TextColor>
+																					<Font ref="sys:DefaultGUIFont" height="14" kind="WindowsFont"/>
+																					<HorizontalAlign>Center</HorizontalAlign>
+																					<ContextMenu name="OnMinus_Rating_5ContextMenu" id="6552"/>
+																					<ExtendedTooltip name="OnMinus_Rating_5ExtendedTooltip" id="6553"/>
+																				</LabelDecoration>
+																				<Button name="OnMinus_minus_5" id="6554">
+																					<Type>UsualButton</Type>
+																					<Width>10</Width>
+																					<CommandName>Form.Command.minus</CommandName>
+																					<TextColor>#FF0000</TextColor>
+																					<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+																					<ExtendedTooltip name="OnMinus_Minus_5ExtendedTooltip" id="6555"/>
+																				</Button>
+																			</ChildItems>
+																		</Page>
+																		<Page name="PageWithoutVote_5" id="6556">
+																			<Title>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Page vote plus 1</v8:content>
+																				</v8:item>
+																			</Title>
+																			<ToolTip>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Page vote plus 1</v8:content>
+																				</v8:item>
+																			</ToolTip>
+																			<ExtendedTooltip name="PageWithoutVote_5ExtendedTooltip" id="6557"/>
+																			<ChildItems>
+																				<Button name="WithoutVote_PLUS_5" id="6558">
+																					<Type>UsualButton</Type>
+																					<Width>10</Width>
+																					<CommandName>Form.Command.PLUS</CommandName>
+																					<TextColor>#008000</TextColor>
+																					<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+																					<ExtendedTooltip name="WithoutVote_Plus_5ExtendedTooltip" id="6559"/>
+																				</Button>
+																				<LabelDecoration name="WithoutVote_Rating_5" id="6560">
+																					<Width>10</Width>
+																					<TextColor>#999999</TextColor>
+																					<Font ref="sys:DefaultGUIFont" height="14" kind="WindowsFont"/>
+																					<HorizontalAlign>Center</HorizontalAlign>
+																					<ContextMenu name="WithoutVote_Rating_5ContextMenu" id="6561"/>
+																					<ExtendedTooltip name="WithoutVote_Rating_5ExtendedTooltip" id="6562"/>
+																				</LabelDecoration>
+																				<Button name="WithoutVote_minus_5" id="6563">
+																					<Type>UsualButton</Type>
+																					<Width>10</Width>
+																					<CommandName>Form.Command.minus</CommandName>
+																					<TextColor>#FF0000</TextColor>
+																					<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+																					<ExtendedTooltip name="WithoutVote_Minus_5ExtendedTooltip" id="6564"/>
+																				</Button>
+																			</ChildItems>
+																		</Page>
+																		<Page name="Planned_5" id="6565">
+																			<Title>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Planned command group 1</v8:content>
+																				</v8:item>
+																			</Title>
+																			<ToolTip>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Planned command group 1</v8:content>
+																				</v8:item>
+																			</ToolTip>
+																			<ExtendedTooltip name="Planned_5ExtendedTooltip" id="6566"/>
+																			<ChildItems>
+																				<PictureDecoration name="Planned_Picture_5" id="6567">
+																					<Width>10</Width>
+																					<Height>3</Height>
+																					<Title formatted="false">
+																						<v8:item>
+																							<v8:lang>en</v8:lang>
+																							<v8:content>Planned picture 1</v8:content>
+																						</v8:item>
+																					</Title>
+																					<PictureSize>AutoSize</PictureSize>
+																					<Picture>
+																						<xr:Ref>CommonPicture.PlannedIdea</xr:Ref>
+																						<xr:LoadTransparent>true</xr:LoadTransparent>
+																					</Picture>
+																					<ContextMenu name="Planned_Picture_5ContextMenu" id="6568"/>
+																					<ExtendedTooltip name="Planned_Picture_5ExtendedTooltip" id="6569"/>
+																				</PictureDecoration>
+																			</ChildItems>
+																		</Page>
+																	</ChildItems>
+																</Pages>
+																<UsualGroup name="Presentation_5" id="6570">
+																	<Title>
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Rejected group presentations 1</v8:content>
+																		</v8:item>
+																	</Title>
+																	<ToolTip>
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Rejected group presentations 1</v8:content>
+																		</v8:item>
+																	</ToolTip>
+																	<HorizontalStretch>true</HorizontalStretch>
+																	<Group>Vertical</Group>
+																	<Representation>None</Representation>
+																	<ShowTitle>false</ShowTitle>
+																	<ExtendedTooltip name="Presentation_5ExtendedTooltip" id="6571"/>
+																	<ChildItems>
+																		<LabelDecoration name="Title_5" id="6572">
+																			<HorizontalStretch>true</HorizontalStretch>
+																			<TextColor>style:FormTextColor</TextColor>
+																			<Font ref="sys:DefaultGUIFont" height="12" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+																			<Hyperlink>true</Hyperlink>
+																			<ContextMenu name="Title_5ContextMenu" id="6573"/>
+																			<ExtendedTooltip name="Title_5ExtendedTooltip" id="6574"/>
+																			<Events>
+																				<Event name="Click">ClickOnIdea</Event>
+																			</Events>
+																		</LabelDecoration>
+																		<LabelDecoration name="Text_5" id="6575">
+																			<Height>1</Height>
+																			<HorizontalStretch>true</HorizontalStretch>
+																			<VerticalAlign>Top</VerticalAlign>
+																			<ContextMenu name="Text_5ContextMenu" id="6576"/>
+																			<ExtendedTooltip name="Text_5ExtendedTooltip" id="6577"/>
+																		</LabelDecoration>
+																		<UsualGroup name="AdditionalParameters_5" id="6578">
+																			<Title>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Rejected group of the additional parameters 1</v8:content>
+																				</v8:item>
+																			</Title>
+																			<ToolTip>
+																				<v8:item>
+																					<v8:lang>en</v8:lang>
+																					<v8:content>Rejected group of the additional parameters 1</v8:content>
+																				</v8:item>
+																			</ToolTip>
+																			<Group>Horizontal</Group>
+																			<Representation>None</Representation>
+																			<ShowTitle>false</ShowTitle>
+																			<ExtendedTooltip name="AdditionalParameters_5ExtendedTooltip" id="6579"/>
+																			<ChildItems>
+																				<LabelDecoration name="Comments_5" id="6580">
+																					<TextColor>#999999</TextColor>
+																					<ContextMenu name="Comments_5ContextMenu" id="6581"/>
+																					<ExtendedTooltip name="Comments_5ExtendedTooltip" id="6582"/>
+																				</LabelDecoration>
+																				<LabelDecoration name="Subject_5" id="6583">
+																					<TextColor>#999999</TextColor>
+																					<Hyperlink>true</Hyperlink>
+																					<ContextMenu name="Subject_5ContextMenu" id="6584"/>
+																					<ExtendedTooltip name="Subject_5ExtendedTooltip" id="6585"/>
+																					<Events>
+																						<Event name="Click">SubjectClick</Event>
+																					</Events>
+																				</LabelDecoration>
+																				<LabelDecoration name="AdditionalParameter_5" id="6586">
+																					<HorizontalStretch>true</HorizontalStretch>
+																					<TextColor>#999999</TextColor>
+																					<HorizontalAlign>Right</HorizontalAlign>
+																					<ContextMenu name="AdditionalParameter_5ContextMenu" id="6587"/>
+																					<ExtendedTooltip name="AdditionalParameter_5ExtendedTooltip" id="6588"/>
+																				</LabelDecoration>
+																			</ChildItems>
+																		</UsualGroup>
+																	</ChildItems>
+																</UsualGroup>
+															</ChildItems>
+														</UsualGroup>
+													</ChildItems>
+												</UsualGroup>
+											</ChildItems>
+										</Page>
+										<Page name="EmptyIdea_5" id="6589">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Empty idea 1</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Empty idea 1</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ExtendedTooltip name="EmptyIdea_5ExtendedTooltip" id="6590"/>
+											<ChildItems>
+												<LabelDecoration name="EmptyLabel_5" id="6591">
+													<ContextMenu name="BlankLabel_5ContextMenu" id="6592"/>
+													<ExtendedTooltip name="BlankLabel_5ExtendedTooltip" id="6593"/>
+												</LabelDecoration>
+											</ChildItems>
+										</Page>
+									</ChildItems>
+								</Pages>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="Footer" id="1082">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Footer</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Footer</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="FooterExtendedTooltip" id="1083"/>
+							<ChildItems>
+								<LabelDecoration name="FooterDecorationLeft" id="1084">
+									<HorizontalStretch>true</HorizontalStretch>
+									<ContextMenu name="FooterDecorationLeftContextMenu" id="1085"/>
+									<ExtendedTooltip name="FooterDecorationLeftExtendedTooltip" id="1086"/>
+								</LabelDecoration>
+								<PictureDecoration name="ButtonToLeft" id="1090">
+									<Width>2</Width>
+									<Height>1</Height>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Button to the left</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<PictureSize>Proportionally</PictureSize>
+									<ContextMenu name="ButtonToLeftContextMenu" id="1091"/>
+									<ExtendedTooltip name="ButtonToLeftExtendedTooltip" id="1092"/>
+									<Events>
+										<Event name="Click">ButtonToLeftClick</Event>
+									</Events>
+								</PictureDecoration>
+								<LabelDecoration name="PageNumber" id="1093">
+									<Font ref="sys:DefaultGUIFont" height="12" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content> </v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="PageNumberContextMenu" id="1094"/>
+									<ExtendedTooltip name="PageNumberExtendedTooltip" id="1095"/>
+								</LabelDecoration>
+								<PictureDecoration name="ButtonToRight" id="1096">
+									<Width>2</Width>
+									<Height>1</Height>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Button to the right</v8:content>
+										</v8:item>
+									</Title>
+									<Hyperlink>true</Hyperlink>
+									<PictureSize>Proportionally</PictureSize>
+									<ContextMenu name="ButtonToRightContextMenu" id="1097"/>
+									<ExtendedTooltip name="ButtonToRightExtendedTooltip" id="1098"/>
+									<Events>
+										<Event name="Click">ButtonToRightClick</Event>
+									</Events>
+								</PictureDecoration>
+								<LabelDecoration name="FooterDecorationRight" id="1087">
+									<HorizontalStretch>true</HorizontalStretch>
+									<ContextMenu name="FooterDecorationRightContextMenu" id="1088"/>
+									<ExtendedTooltip name="FooterDecorationRightExtendedTooltip" id="1089"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="RightGroup" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Right group</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Right group</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Width>26</Width>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="RightGroupExtendedTooltip" id="6"/>
+					<ChildItems>
+						<UsualGroup name="GroupSearch" id="1039">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Search group</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Search group</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="SearchGroupExtendedTooltip" id="1040"/>
+							<ChildItems>
+								<InputField name="SearchText" id="1041">
+									<DataPath>SearchText</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<ContextMenu name="SearchTextContextMenu" id="1042"/>
+									<ExtendedTooltip name="SearchTextExtendedTooltip" id="1043"/>
+									<Events>
+										<Event name="OnChange">SearchTextOnChange</Event>
+									</Events>
+								</InputField>
+								<Button name="Find" id="1044">
+									<Type>UsualButton</Type>
+									<CommandName>Form.Command.FindIdeas</CommandName>
+									<ExtendedTooltip name="SearchExtendedTooltip" id="1045"/>
+								</Button>
+							</ChildItems>
+						</UsualGroup>
+						<Button name="AddIdea" id="1046">
+							<Type>UsualButton</Type>
+							<DefaultButton>true</DefaultButton>
+							<CommandName>Form.Command.AddIdea</CommandName>
+							<ExtendedTooltip name="AddIdeaExtendedTooltip" id="1047"/>
+						</Button>
+						<UsualGroup name="GroupSelectAll" id="2162">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group select all</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group select all</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupSelectAllExtendedTooltip" id="2163"/>
+							<ChildItems>
+								<CheckBoxField name="ChooseAll" id="1052">
+									<DataPath>ChooseAll</DataPath>
+									<TitleFont ref="sys:DefaultGUIFont" height="10" bold="false" italic="false" underline="true" strikeout="false" kind="WindowsFont"/>
+									<TitleLocation>Right</TitleLocation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="ChooseAllContextMenu" id="1053"/>
+									<ExtendedTooltip name="SelectAllExtendedTooltip" id="1054"/>
+									<Events>
+										<Event name="OnChange">SelectAllOnChange</Event>
+									</Events>
+								</CheckBoxField>
+							</ChildItems>
+						</UsualGroup>
+						<Table name="FilterBySubjects" id="2164">
+							<Representation>List</Representation>
+							<Header>false</Header>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>CurrentFilterBySubjects</DataPath>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="FilterBySubjectContextMenu" id="2165"/>
+							<AutoCommandBar name="FilterBySubjectCommandBar" id="2166">
+								<Autofill>false</Autofill>
+							</AutoCommandBar>
+							<ExtendedTooltip name="FilterBySubjectsExtendedTooltip" id="2167"/>
+							<SearchStringAddition name="FilterBySubjectSearchString" id="6241">
+								<AdditionSource>
+									<Item>FilterBySubjects</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="FilterBySubjectSearchStringContextMenu" id="6242"/>
+								<ExtendedTooltip name="FilterBySubjectSearchStringExtendedTooltip" id="6243"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="FilterBySubjectsViewStatus" id="6244">
+								<AdditionSource>
+									<Item>FilterBySubjects</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="FilterBySubjectsViewStatusContextMenu" id="6245"/>
+								<ExtendedTooltip name="FilterBySubjectViewStatusExtendedTooltip" id="6246"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="FilterBySubjectSearchControl" id="6247">
+								<AdditionSource>
+									<Item>FilterBySubjects</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="FilterBySubjectsSearchControlContextMenu" id="6248"/>
+								<ExtendedTooltip name="FilterBySubjectSearchControlExtendedTooltip" id="6249"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<ColumnGroup name="FilterBySubjectGroup1" id="2174">
+									<Group>InCell</Group>
+									<ExtendedTooltip name="FilterBySubjectGroup1ExtendedTooltip" id="2175"/>
+									<ChildItems>
+										<CheckBoxField name="FilterBySubjectsUse" id="2168">
+											<DataPath>CurrentFilterBySubjects.Use</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<EditMode>EnterOnInput</EditMode>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="FilterBySubjectUseContextMenu" id="2169"/>
+											<ExtendedTooltip name="FilterBySubjectUseExtendedTooltip" id="2170"/>
+											<Events>
+												<Event name="OnChange">FilterBySubjectsUseOnChange</Event>
+											</Events>
+										</CheckBoxField>
+										<InputField name="FilterBySubjectSubject" id="2171">
+											<DataPath>CurrentFilterBySubjects.Subject</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="FilterBySubjectSubjectContextMenu" id="2172"/>
+											<ExtendedTooltip name="FilterBySubjectsSubjectExtendedTooltip" id="2173"/>
+										</InputField>
+									</ChildItems>
+								</ColumnGroup>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.InformationCenter</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="SortOnVote" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Sort</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ChooseAll" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Select All</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="SearchText" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Search text</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="CurrentSorting" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Current sorting</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="CurrentIdeasFilter" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Current ideas filter</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="UserID" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>User identifier</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:UUID</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="IdeasQuantityOnPage" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Ideas quantity on page</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="CurrentFilterBySubjects" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Current filter by subjects</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Use" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Use</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Subject" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Subject</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="CurrentPage" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Current page</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Ideas" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Ideas</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="ID" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>ID</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="minus" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>- 1</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>minus</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>minus</Action>
+		</Command>
+		<Command name="PLUS" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>+ 1</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>First idea on vote plus</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>PLUS</Action>
+		</Command>
+		<Command name="FindIdeas" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Find ideas</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Find ideas</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>FindIdeas</Action>
+			<Representation>Text</Representation>
+		</Command>
+		<Command name="AddIdea" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Add idea</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Add idea</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.CreateListItem</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>AddIdea</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+	</Commands>
+</Form>

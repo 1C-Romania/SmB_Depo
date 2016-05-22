@@ -1,0 +1,1954 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Title>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Assistant for data exchange with the Web site</v8:content>
+		</v8:item>
+	</Title>
+	<Width>80</Width>
+	<AutoTitle>false</AutoTitle>
+	<Customizable>false</Customizable>
+	<CommandBarLocation>None</CommandBarLocation>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<CommandSet>
+		<ExcludedCommand>No</ExcludedCommand>
+		<ExcludedCommand>SaveValues</ExcludedCommand>
+		<ExcludedCommand>Close</ExcludedCommand>
+		<ExcludedCommand>Help</ExcludedCommand>
+		<ExcludedCommand>Abort</ExcludedCommand>
+		<ExcludedCommand>Retry</ExcludedCommand>
+		<ExcludedCommand>Yes</ExcludedCommand>
+		<ExcludedCommand>Cancel</ExcludedCommand>
+		<ExcludedCommand>RestoreValues</ExcludedCommand>
+		<ExcludedCommand>Ignore</ExcludedCommand>
+		<ExcludedCommand>OK</ExcludedCommand>
+	</CommandSet>
+	<AutoCommandBar name="FormCommandBar" id="-1"/>
+	<Events>
+		<Event name="OnOpen">OnOpen</Event>
+		<Event name="BeforeClose">BeforeClose</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<Pages name="AssistantPages" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Assistant pages</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Assistant pages</v8:content>
+				</v8:item>
+			</ToolTip>
+			<PagesRepresentation>None</PagesRepresentation>
+			<ExtendedTooltip name="AssistantPagesExtendedTooltip" id="955"/>
+			<ChildItems>
+				<Page name="AssistantPageStart" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Assistant page beginning</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Assistant page beginning</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="AssistantPageStartExtendedTooltip" id="956"/>
+					<ChildItems>
+						<UsualGroup name="HeaderGroupBegin" id="829">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group title begin</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group title begin</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Representation>NormalSeparation</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="HeaderGroupBeginExtendedTooltip" id="957"/>
+							<ChildItems>
+								<LabelDecoration name="BeginAssistantPageTitle" id="140">
+									<Height>1</Height>
+									<HorizontalStretch>true</HorizontalStretch>
+									<VerticalStretch>false</VerticalStretch>
+									<SkipOnInput>false</SkipOnInput>
+									<Font ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Welcome to the assistant wich helps to exchange data with the website!</v8:content>
+										</v8:item>
+									</Title>
+									<VerticalAlign>Top</VerticalAlign>
+									<ContextMenu name="BeginAssistantPageTitleContextMenu" id="141"/>
+									<ExtendedTooltip name="BeginAssistantPageTitleExtendedTooltip" id="958"/>
+								</LabelDecoration>
+								<LabelDecoration name="AssistantStartPageDescription" id="145">
+									<Height>1</Height>
+									<HorizontalStretch>true</HorizontalStretch>
+									<VerticalStretch>false</VerticalStretch>
+									<SkipOnInput>false</SkipOnInput>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>This assistant will help you to create new data exchange.</v8:content>
+										</v8:item>
+									</Title>
+									<VerticalAlign>Top</VerticalAlign>
+									<ContextMenu name="AssistantStartPageDescriptionContextMenu" id="146"/>
+									<ExtendedTooltip name="AssistantStartPageDescriptionExtendedTooltip" id="959"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="SelectModeDataExchangeGroup" id="144">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Specify any required data exchange</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group data exchange mode choice</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Representation>NormalSeparation</Representation>
+							<ExtendedTooltip name="SelectModeDataExchangeGroupExtendedTooltip" id="961"/>
+							<ChildItems>
+								<UsualGroup name="ProductsExchangeModeGroup" id="1098">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group goods exchange mode</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group goods exchange mode</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Vertical</Group>
+									<Representation>StrongSeparation</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ProductsExchangeModeGroupExtendedTooltip" id="1099"/>
+									<ChildItems>
+										<CheckBoxField name="ProductsExchange" id="757">
+											<DataPath>Object.ProductsExchange</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Export products</v8:content>
+												</v8:item>
+											</Title>
+											<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+											<TitleLocation>Right</TitleLocation>
+											<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+											<EditMode>EnterOnInput</EditMode>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="ProductsExchangeContextMenu" id="758"/>
+											<ExtendedTooltip name="ProductsExchangeExtendedTooltip" id="963">
+												<Title formatted="false">
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>You can import information on goods, balances and prices to the website.</v8:content>
+													</v8:item>
+												</Title>
+											</ExtendedTooltip>
+										</CheckBoxField>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="OrdersExchsngeModeGroup" id="1100">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group orders exchange mode</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group orders exchange mode</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Vertical</Group>
+									<Representation>StrongSeparation</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="OrdersExchangeModeGroupExtendedTooltip" id="1101"/>
+									<ChildItems>
+										<CheckBoxField name="OrdersExchange" id="759">
+											<DataPath>Object.OrdersExchange</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Orders exchange</v8:content>
+												</v8:item>
+											</Title>
+											<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+											<TitleLocation>Right</TitleLocation>
+											<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+											<EditMode>EnterOnInput</EditMode>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="OrdersExchangeContextMenu" id="760"/>
+											<ExtendedTooltip name="OrdersExchangeExtendedTooltip" id="966">
+												<Title formatted="false">
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Customer orders you've made on the website are imported to the infobase on change. After the orders you've made are processed the information on changes is exported into the website.</v8:content>
+													</v8:item>
+												</Title>
+											</ExtendedTooltip>
+										</CheckBoxField>
+									</ChildItems>
+								</UsualGroup>
+								<LabelDecoration name="Decoration1" id="1102">
+									<VerticalStretch>true</VerticalStretch>
+									<ContextMenu name="Decoration1ContextMenu" id="1103"/>
+									<ExtendedTooltip name="Decoration1ExtendedTooltip" id="1104"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+						<LabelDecoration name="LabelTypeChoiceNextStepDataExchange" id="123">
+							<Height>1</Height>
+							<SkipOnInput>false</SkipOnInput>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Click Next to go to website connection settings.</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="TitleNextStepTypeSelectOfDataExchangeContextMenu" id="124"/>
+							<ExtendedTooltip name="TitleNextStepTypeSelectOfDataExchangeExtendedTooltip" id="969"/>
+						</LabelDecoration>
+					</ChildItems>
+				</Page>
+				<Page name="AssistantPageMessagesTransportSettings" id="694">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Messages transport assistant setting page</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Messages transport assistant setting page</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="SettingsAssistantPageTransportMessageExtendedTooltip" id="970"/>
+					<ChildItems>
+						<UsualGroup name="GroupHeaderSettingsOfTranprortMessages" id="834">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group title messages transport settings</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group title messages transport settings</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Representation>NormalSeparation</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupHeaderSettingsOfTranprortMessagesExtendedTooltip" id="971"/>
+							<ChildItems>
+								<LabelDecoration name="PageTitleMessageTransportSettingsAssistant" id="695">
+									<Height>1</Height>
+									<HorizontalStretch>true</HorizontalStretch>
+									<VerticalStretch>false</VerticalStretch>
+									<SkipOnInput>false</SkipOnInput>
+									<Font ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Configure connection to website settings</v8:content>
+										</v8:item>
+									</Title>
+									<VerticalAlign>Top</VerticalAlign>
+									<ContextMenu name="PageTitleMessageTransportSettingsAssistantContextMenu" id="696"/>
+									<ExtendedTooltip name="PageTitleMessageTransportSettingsAssistantExtendedTooltip" id="972"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ExchangeTypeSelectionGroup" id="840">
+							<Group>Vertical</Group>
+							<Representation>NormalSeparation</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ExchangeTypeSelectionGroupExtendedTooltip" id="974"/>
+							<ChildItems>
+								<UsualGroup name="ThroughInternetExchangeGroup" id="928">
+									<Group>Vertical</Group>
+									<Representation>StrongSeparation</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ThroughInternetExchangeGroupExtendedTooltip" id="975"/>
+									<ChildItems>
+										<RadioButtonField name="RadioButtonExchangePurposeImportToSite" id="761">
+											<DataPath>RadioButtonExchangePurpose</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+											<RadioButtonType>Auto</RadioButtonType>
+											<ChoiceList>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation>
+															<v8:item>
+																<v8:lang>en</v8:lang>
+																<v8:content>Exchange via the Internet</v8:content>
+															</v8:item>
+														</Presentation>
+														<Value xsi:type="xs:decimal">0</Value>
+													</xr:Value>
+												</xr:Item>
+											</ChoiceList>
+											<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+											<ContextMenu name="RadioButtonOnImportSiteExchangePurposeContextMenu" id="762"/>
+											<ExtendedTooltip name="RadioButtonOnImportSiteExchangePurposeExtendedTooltip" id="976">
+												<Title formatted="false">
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>You should specify website address, user name and password of administrative rights user to set connection to the website. By pressing the "Verify connection" button it is possible to verify the correctness of the settings installed.</v8:content>
+													</v8:item>
+												</Title>
+											</ExtendedTooltip>
+											<Events>
+												<Event name="OnChange">RadioButtonExchangePurposeImportToSiteOnChange</Event>
+											</Events>
+										</RadioButtonField>
+										<UsualGroup name="ConnectionSettingsGroup" id="767">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group of connection settings</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group of connection settings</v8:content>
+												</v8:item>
+											</ToolTip>
+											<HorizontalStretch>true</HorizontalStretch>
+											<Group>Vertical</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="SetupConnectionsGroupExtendedTooltip" id="977"/>
+											<ChildItems>
+												<InputField name="SiteAddress" id="775">
+													<DataPath>Object.SiteAddress</DataPath>
+													<AutoMarkIncomplete>true</AutoMarkIncomplete>
+													<ContextMenu name="SiteAddressContextMenu" id="776"/>
+													<ExtendedTooltip name="SiteAddressExtendedTooltip" id="979"/>
+												</InputField>
+												<UsualGroup name="UserPasswordHorisontallyGroup" id="823">
+													<Group>Horizontal</Group>
+													<Representation>None</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="GroupUserPasswordHorizontalExtendedTooltip" id="980"/>
+													<ChildItems>
+														<InputField name="UserName" id="824">
+															<DataPath>Object.UserName</DataPath>
+															<Width>1</Width>
+															<VerticalStretch>false</VerticalStretch>
+															<AutoMarkIncomplete>true</AutoMarkIncomplete>
+															<ContextMenu name="UserNameContextMenu" id="825"/>
+															<ExtendedTooltip name="UserNameExtendedTooltip" id="981"/>
+														</InputField>
+														<InputField name="Password" id="826">
+															<DataPath>Object.Password</DataPath>
+															<Width>1</Width>
+															<VerticalStretch>false</VerticalStretch>
+															<ContextMenu name="PasswordContextMenu" id="827"/>
+															<ExtendedTooltip name="PasswordExtendedTooltip" id="982"/>
+														</InputField>
+														<Button name="CommandCheckConnection" id="828">
+															<Type>UsualButton</Type>
+															<CommandName>Form.Command.CommandCheckConnection</CommandName>
+															<Title>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Check connection...</v8:content>
+																</v8:item>
+															</Title>
+															<ExtendedTooltip name="CommandValidateConnectionExtendedTooltip" id="983"/>
+														</Button>
+													</ChildItems>
+												</UsualGroup>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="GroupSharingDirectoryOnHardDrive" id="841">
+									<Group>Vertical</Group>
+									<Representation>StrongSeparation</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupSharingDirectoryOnHardDriveExtendedTooltip" id="984"/>
+									<ChildItems>
+										<RadioButtonField name="RadioButtonExchangePurposeExportToDirectoryAtDisc" id="837">
+											<DataPath>RadioButtonExchangePurpose</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+											<RadioButtonType>Auto</RadioButtonType>
+											<ChoiceList>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation>
+															<v8:item>
+																<v8:lang>en</v8:lang>
+																<v8:content>Using an exchange with Catalog on disk</v8:content>
+															</v8:item>
+														</Presentation>
+														<Value xsi:type="xs:decimal">1</Value>
+													</xr:Value>
+												</xr:Item>
+											</ChoiceList>
+											<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+											<ContextMenu name="RadioButtonPurposeExchangeImportInDirectoryOnHardDriveContextMenu" id="838"/>
+											<ExtendedTooltip name="RadioButtonPurposeExchangeImportInDirectoryOnHardDriveExtendedTooltip" id="985">
+												<Title formatted="false">
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>The data on products and customer orders are exported to the directory which transfers it to the website. Customer orders from the website are imported from import directory.
+</v8:content>
+													</v8:item>
+												</Title>
+											</ExtendedTooltip>
+											<Events>
+												<Event name="OnChange">RadioButtonExchangePurposeExportToDirectoryAtDiscOnChange</Event>
+											</Events>
+										</RadioButtonField>
+										<UsualGroup name="GroupChoiceOfDirectoriesOnDisc" id="620">
+											<Enabled>false</Enabled>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Directories at disc selection group</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Directories at disc selection group</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Vertical</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="GroupSelectCatalogOnHardDriveExtendedTooltip" id="986"/>
+											<ChildItems>
+												<InputField name="ExportDirectory" id="763">
+													<DataPath>Object.ExportDirectory</DataPath>
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Exporting folder</v8:content>
+														</v8:item>
+													</Title>
+													<ChoiceButton>true</ChoiceButton>
+													<OpenButton>false</OpenButton>
+													<AutoMarkIncomplete>true</AutoMarkIncomplete>
+													<ContextMenu name="ExportDirectoryContextMenu" id="764"/>
+													<ExtendedTooltip name="ExportDirectoryExtendedTooltip" id="988"/>
+													<Events>
+														<Event name="StartChoice">ExportDirectoryStartChoice</Event>
+														<Event name="Opening">ExportDirectoryOpening</Event>
+													</Events>
+												</InputField>
+												<InputField name="ImportingDirectory" id="765">
+													<DataPath>Object.ImportingDirectory</DataPath>
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Importing folder</v8:content>
+														</v8:item>
+													</Title>
+													<ChoiceButton>true</ChoiceButton>
+													<OpenButton>false</OpenButton>
+													<AutoMarkIncomplete>true</AutoMarkIncomplete>
+													<ContextMenu name="ImportingDirectoryContextMenu" id="766"/>
+													<ExtendedTooltip name="ImportingDirectoryExtendedTooltip" id="989"/>
+													<Events>
+														<Event name="StartChoice">ImportingDirectoryStartChoice</Event>
+														<Event name="Opening">ImportingDirectoryOpening</Event>
+													</Events>
+												</InputField>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="ExchngeOverWebServiceGroup" id="937">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group of exchange through the web service</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group of exchange through the web service</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Vertical</Group>
+									<Representation>StrongSeparation</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ExchngeOverWebServiceGroupExtendedTooltip" id="990"/>
+									<ChildItems>
+										<RadioButtonField name="SwitchExchangePurposeExchangeThroughWebService" id="938">
+											<DataPath>RadioButtonExchangePurpose</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+											<RadioButtonType>Auto</RadioButtonType>
+											<ChoiceList>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation>
+															<v8:item>
+																<v8:lang>en</v8:lang>
+																<v8:content>Exchange via Web-service</v8:content>
+															</v8:item>
+														</Presentation>
+														<Value xsi:type="xs:decimal">2</Value>
+													</xr:Value>
+												</xr:Item>
+											</ChoiceList>
+											<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+											<ContextMenu name="SwitchExchangePurposeExchangeThroughWebServiceContextMenu" id="939"/>
+											<ExtendedTooltip name="SwitchExchangePurposeExchangeThroughWebServiceExtendedTooltip" id="991">
+												<Title formatted="false">
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>If you use the web service the exchange must be initialized and performed from the website.
+</v8:content>
+													</v8:item>
+												</Title>
+											</ExtendedTooltip>
+											<Events>
+												<Event name="OnChange">SwitchExchangePurposeExchangeThroughWebServiceOnChange</Event>
+											</Events>
+										</RadioButtonField>
+										<Pages name="PagesInformationAboutExchangeThroughWebService" id="947">
+											<Enabled>false</Enabled>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Pages information on the exchange through the web service</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Pages information on the exchange through the web service</v8:content>
+												</v8:item>
+											</ToolTip>
+											<PagesRepresentation>None</PagesRepresentation>
+											<ExtendedTooltip name="PagesInformationAboutExchangeThroughWebServiceExtendedTooltip" id="992"/>
+											<ChildItems>
+												<Page name="PageExchangeInformationThroughWebServiceLocal" id="940">
+													<Enabled>false</Enabled>
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Page of information on exchange through the web service</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Page of information on exchange through the web service</v8:content>
+														</v8:item>
+													</ToolTip>
+													<ExtendedTooltip name="PageExchangeInformationThroughWebServiceLocalExtendedTooltip" id="993"/>
+													<ChildItems>
+														<Button name="HowToPublishWebService" id="943">
+															<Type>Hyperlink</Type>
+															<CommandName>Form.Command.HowToPublishWebService</CommandName>
+															<Title>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>How to post web service on web server</v8:content>
+																</v8:item>
+															</Title>
+															<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+															<ExtendedTooltip name="PublishWebServiceMethodExtendedTooltip" id="995">
+																<Title formatted="false">
+																	<v8:item>
+																		<v8:lang>en</v8:lang>
+																		<v8:content>To use web service you should post it on a web server.</v8:content>
+																	</v8:item>
+																</Title>
+															</ExtendedTooltip>
+														</Button>
+													</ChildItems>
+												</Page>
+												<Page name="PageExchangeInformationThroughWebServiceSaaS" id="944">
+													<Enabled>false</Enabled>
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Information page on the exchange through the web service in the service mode</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Information page on the exchange through the web service in the service mode</v8:content>
+														</v8:item>
+													</ToolTip>
+													<ExtendedTooltip name="PageExchangeInformationThroughWebServiceSaaSExtendedTooltip" id="996"/>
+													<ChildItems>
+														<InputField name="WebServiceAddress" id="948">
+															<DataPath>WebServiceAddress</DataPath>
+															<ReadOnly>true</ReadOnly>
+															<Title>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Address to connect to the web service</v8:content>
+																</v8:item>
+															</Title>
+															<Width>50</Width>
+															<TextEdit>false</TextEdit>
+															<TextColor>style:ExplanationText</TextColor>
+															<ContextMenu name="AddressWebServiceContextMenu" id="949"/>
+															<ExtendedTooltip name="AddressWebServiceExtendedTooltip" id="998"/>
+														</InputField>
+													</ChildItems>
+												</Page>
+											</ChildItems>
+										</Pages>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+						<LabelDecoration name="Decoration2" id="1105">
+							<VerticalStretch>true</VerticalStretch>
+							<ContextMenu name="Decoration2ContextMenu" id="1106"/>
+							<ExtendedTooltip name="Decoration2ExtendedTooltip" id="1107"/>
+						</LabelDecoration>
+						<LabelDecoration name="TitleNextProductsExport" id="699">
+							<Height>1</Height>
+							<SkipOnInput>false</SkipOnInput>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Press "Next" button to specify items export settings.</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="GoodsExportTitleNextContextMenu" id="700"/>
+							<ExtendedTooltip name="GoodsExportTitleNextExtendedTooltip" id="1000"/>
+						</LabelDecoration>
+					</ChildItems>
+				</Page>
+				<Page name="AssistantPageProductsAndServicesExportSettings" id="701">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Assistant page of the products and services export settings</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Assistant page of the products and services export settings</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="SettingsAssistantPageExportProductsAndServicesExtendedTooltip" id="1001"/>
+					<ChildItems>
+						<UsualGroup name="GroupProductsAndServicesExportHeaderSetup" id="842">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group of the title of the products and services export settings</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group of the title of the products and services export settings</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Representation>NormalSeparation</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupHeaderSetupOfProductsAndServicesExportExtendedTooltip" id="1002"/>
+							<ChildItems>
+								<LabelDecoration name="PageTitleExportProductsAndServicesSettingsAssistant" id="702">
+									<Height>1</Height>
+									<HorizontalStretch>true</HorizontalStretch>
+									<VerticalStretch>false</VerticalStretch>
+									<SkipOnInput>false</SkipOnInput>
+									<Font ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Specify settings for ProductsAndServices export</v8:content>
+										</v8:item>
+									</Title>
+									<VerticalAlign>Top</VerticalAlign>
+									<ContextMenu name="PageTitleExportProductsAndServicesSettingsAssistantContextMenu" id="703"/>
+									<ExtendedTooltip name="PageTitleExportProductsAndServicesSettingsAssistantExtendedTooltip" id="1003"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ProductsAndServicesFilterGroup" id="895">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group items filter</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group items filter</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Representation>NormalSeparation</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ProductsAndServicesFilterGroupExtendedTooltip" id="1005"/>
+							<ChildItems>
+								<Button name="ChooseProductsAndServicesPriceKinds" id="887">
+									<Type>Hyperlink</Type>
+									<CommandName>Form.Command.ChooseProductsAndServicesPriceKinds</CommandName>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Select price kinds of products and services..</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+									<ExtendedTooltip name="SelectPriceKindsOfProductsAndServicesExtendedTooltip" id="1008">
+										<Title formatted="false">
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Price kinds define the products and services prices that will be transferred to the site.</v8:content>
+											</v8:item>
+										</Title>
+									</ExtendedTooltip>
+								</Button>
+								<Button name="ChooseProductsAndServicesGroups" id="894">
+									<Type>Hyperlink</Type>
+									<CommandName>Form.Command.ChooseProductsAndServicesGroups</CommandName>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Select products and services groups...</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+									<ExtendedTooltip name="ChooseProductsAndServicesGroupsExtendedTooltip" id="1011">
+										<Title formatted="false">
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>If you specify a group list, then the products and services being loaded are limited by the items that belong to the selected groups.</v8:content>
+											</v8:item>
+										</Title>
+									</ExtendedTooltip>
+								</Button>
+								<CheckBoxField name="ExportBalanceForWarehouses" id="1076">
+									<DataPath>Object.ExportBalanceForWarehouses</DataPath>
+									<TitleLocation>Right</TitleLocation>
+									<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="ExportBalanceForWarehousesContextMenu" id="1077"/>
+									<ExtendedTooltip name="ExportBalanceForWarehousesExtendedTooltip" id="1078">
+										<Title formatted="false">
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Determines the possibility to transfer information on the availability of products in warehouses of the enterprise to the website.</v8:content>
+											</v8:item>
+										</Title>
+									</ExtendedTooltip>
+								</CheckBoxField>
+								<CheckBoxField name="ExportPictures" id="781">
+									<DataPath>Object.ExportPictures</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Export the ProductsAndServices pictures</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>Right</TitleLocation>
+									<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="ExportPicturesContextMenu" id="782"/>
+									<ExtendedTooltip name="ExportPicturesExtendedTooltip" id="1012">
+										<Title formatted="false">
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>If you set the option, the images attached to the products and services will be imported to the website.</v8:content>
+											</v8:item>
+										</Title>
+									</ExtendedTooltip>
+								</CheckBoxField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="GroupAdditionalSelections" id="911">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Additional filters</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<Group>Vertical</Group>
+							<Representation>NormalSeparation</Representation>
+							<ExtendedTooltip name="GroupAdditionalSelectionsExtendedTooltip" id="1013">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Additional filters allow you to set additional restriction on the exported products and services. For example you can restrict the content of exported products and services only with those products that are among the remainigs of the retail warehouse.</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+							<ChildItems>
+								<Table name="CompositionSettingsTable" id="785">
+									<CommandBarLocation>None</CommandBarLocation>
+									<Autofill>true</Autofill>
+									<Height>6</Height>
+									<DataPath>Object.DataCompositionSettingsComposer.UserSettings</DataPath>
+									<CommandSet>
+										<ExcludedCommand>HierarchicalList</ExcludedCommand>
+										<ExcludedCommand>Tree</ExcludedCommand>
+										<ExcludedCommand>List</ExcludedCommand>
+									</CommandSet>
+									<SearchStringLocation>None</SearchStringLocation>
+									<ViewStatusLocation>None</ViewStatusLocation>
+									<SearchControlLocation>None</SearchControlLocation>
+									<ViewMode>All</ViewMode>
+									<ContextMenu name="TableOfCompositionsSettingsContextMenu" id="786"/>
+									<AutoCommandBar name="TableOfCompositionsSettingsCommandPanel" id="787">
+										<Autofill>false</Autofill>
+									</AutoCommandBar>
+									<ExtendedTooltip name="TableOfCompositionsSettingsExtendedTooltip" id="1016"/>
+									<SearchStringAddition name="CompositionSettingsTableSearchString" id="1082">
+										<AdditionSource>
+											<Item>CompositionSettingsTable</Item>
+											<Type>SearchStringRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="CompositionSettingsTableSearchStringContextMenu" id="1083"/>
+										<ExtendedTooltip name="CompositionSettingsTableSearchStringExtendedTooltip" id="1084"/>
+									</SearchStringAddition>
+									<ViewStatusAddition name="CompositionSettingsTableViewStatus" id="1085">
+										<AdditionSource>
+											<Item>CompositionSettingsTable</Item>
+											<Type>ViewStatusRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="CompositionSettingsTableStatusViewContextMenu" id="1086"/>
+										<ExtendedTooltip name="CompositionSettingsTableViewStatusExtendedTooltip" id="1087"/>
+									</ViewStatusAddition>
+									<SearchControlAddition name="CompositionSettingsTableSearchManagement" id="1088">
+										<AdditionSource>
+											<Item>CompositionSettingsTable</Item>
+											<Type>SearchControl</Type>
+										</AdditionSource>
+										<ContextMenu name="CompositionSettingsTableSearchManagementContextMenu" id="1089"/>
+										<ExtendedTooltip name="CompositionSettingsTableSearchManagementExtendedTooltip" id="1090"/>
+									</SearchControlAddition>
+								</Table>
+							</ChildItems>
+						</UsualGroup>
+						<LabelDecoration name="Decoration4" id="1108">
+							<VerticalStretch>true</VerticalStretch>
+							<ContextMenu name="Decoration4ContextMenu" id="1109"/>
+							<ExtendedTooltip name="Decoration4ExtendedTooltip" id="1110"/>
+						</LabelDecoration>
+						<LabelDecoration name="OrdersExchangeLabelNext" id="706">
+							<Height>1</Height>
+							<SkipOnInput>false</SkipOnInput>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Press "Next" button to specify orders exchange settings.</v8:content>
+								</v8:item>
+							</Title>
+							<VerticalAlign>Bottom</VerticalAlign>
+							<ContextMenu name="LabelNextStepOrdersExchangeContextMenu" id="707"/>
+							<ExtendedTooltip name="LabelNextStepOrdersExchangeExtendedTooltip" id="1018"/>
+						</LabelDecoration>
+					</ChildItems>
+				</Page>
+				<Page name="AssistantPageOrdersExchangeSettings" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Assistant page orders exchange settings</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Assistant page orders exchange settings</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="PageOfOrdersExchangeSettingsAssistantExtendedTooltip" id="1019"/>
+					<ChildItems>
+						<UsualGroup name="OrdersExchangeSettingsHeaderTitleGroup" id="871">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group title settings exchange</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<Representation>NormalSeparation</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="OrdersExchangeSettingsTitleOfGroupExtendedTooltip" id="1020"/>
+							<ChildItems>
+								<LabelDecoration name="OrdersExchangeSettingsAssistantPageTitle" id="174">
+									<Height>1</Height>
+									<HorizontalStretch>true</HorizontalStretch>
+									<VerticalStretch>false</VerticalStretch>
+									<SkipOnInput>false</SkipOnInput>
+									<Font ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Specify settings for orders exchange</v8:content>
+										</v8:item>
+									</Title>
+									<VerticalAlign>Top</VerticalAlign>
+									<ContextMenu name="TitleOfSettingsAssistantPageOfExchangeOrdersContextMenu" id="175"/>
+									<ExtendedTooltip name="TitleOfSettingsAssistantPageOfExchangeOrdersExtendedTooltip" id="1021"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="GroupSelectCounterpartyIdentificationMethod" id="855">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Choose counterparties import method</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<Group>Vertical</Group>
+							<Representation>NormalSeparation</Representation>
+							<ExtendedTooltip name="GroupSelectCounterpartyIdentificationMethodExtendedTooltip" id="1023">
+								<Height>3</Height>
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Counterparties import method determines their search mode in the infobase when you import orders. Counterparties which were not found will be created. If you select Do not create the preset content will be substituted to the imported orders and all contact information will be written to the document.</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+							<ChildItems>
+								<InputField name="CounterpartiesIdentificationMethod" id="788">
+									<DataPath>Object.CounterpartiesIdentificationMethod</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Counterparties identification method</v8:content>
+										</v8:item>
+									</Title>
+									<AutoMarkIncomplete>true</AutoMarkIncomplete>
+									<ContextMenu name="CounterpartyIdentificationMethodContextMenu" id="789"/>
+									<ExtendedTooltip name="CounterpartyIdentificationMethodExtendedTooltip" id="1025"/>
+									<Events>
+										<Event name="OnChange">CounterpartyIdentificationMethodOnChange</Event>
+									</Events>
+								</InputField>
+								<InputField name="CounterpartyToSubstituteIntoOrders" id="926">
+									<DataPath>Object.CounterpartyToSubstituteIntoOrders</DataPath>
+									<AutoMarkIncomplete>true</AutoMarkIncomplete>
+									<ContextMenu name="CounterpartyForOrdersSubstitutionContextMenu" id="927"/>
+									<ExtendedTooltip name="CounterpartyForOrdersSubstitutionExtendedTooltip" id="1026"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="DefaultValueGroup" id="1091">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Specify values to fill new items</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Specify values to fill new items</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Representation>NormalSeparation</Representation>
+							<ExtendedTooltip name="DefaultValueGroupExtendedTooltip" id="1092"/>
+							<ChildItems>
+								<UsualGroup name="GroupCompanyByDefault" id="1093">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Company group by default</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+									<Height>2</Height>
+									<Group>Vertical</Group>
+									<Representation>NormalSeparation</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupCompanyByDefaultExtendedTooltip" id="1094">
+										<Title formatted="false">
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>The company you've selected is substituted with customer orders imported from the site. If the value is not specified the organization will be used by default from user settings.</v8:content>
+											</v8:item>
+										</Title>
+									</ExtendedTooltip>
+									<ChildItems>
+										<InputField name="CompanyToSubstituteIntoOrders" id="1095">
+											<DataPath>Object.CompanyToSubstituteIntoOrders</DataPath>
+											<ContextMenu name="CompanyToSubstituteIntoOrdersContextMenu" id="1096"/>
+											<ExtendedTooltip name="CompanyToSubstituteIntoOrdersExtendedTooltip" id="1097"/>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="SelectGroupOfGroupsForNewElements" id="919">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group choice group for new item</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group choice group for new item</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+									<Group>Vertical</Group>
+									<Representation>NormalSeparation</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="SelectGroupOfGroupsForNewElementsExtendedTooltip" id="1027">
+										<Title formatted="false">
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>If necessary you can specify groups to which products and services and counterparties not present in the infobase should be imported. If the groups have not been selected then the new items will be imported to the common list.</v8:content>
+											</v8:item>
+										</Title>
+									</ExtendedTooltip>
+									<ChildItems>
+										<InputField name="GroupForNewProductsAndServices" id="922">
+											<DataPath>Object.GroupForNewProductsAndServices</DataPath>
+											<ContextMenu name="GroupForNewProductsAndServicesContextMenu" id="923"/>
+											<ExtendedTooltip name="GroupForNewProductsAndServicesExtendedTooltip" id="1029"/>
+										</InputField>
+										<InputField name="GroupForNewCounterparties" id="924">
+											<DataPath>Object.GroupForNewCounterparties</DataPath>
+											<ContextMenu name="GroupForNewCounterpartiesContextMenu" id="925"/>
+											<ExtendedTooltip name="GroupForNewCounterpartiesExtendedTooltip" id="1030"/>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+						<LabelDecoration name="Decoration5" id="1111">
+							<VerticalStretch>true</VerticalStretch>
+							<ContextMenu name="Decoration5ContextMenu" id="1112"/>
+							<ExtendedTooltip name="Decoration5ExtendedTooltip" id="1113"/>
+						</LabelDecoration>
+						<LabelDecoration name="LabelNextStepSettingPeriodicalExchange" id="131">
+							<Height>1</Height>
+							<SkipOnInput>false</SkipOnInput>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Press "Next" button to go to automatic exchange settings.</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="LabelNextStepSettingPeriodicalExchangeContextMenu" id="132"/>
+							<ExtendedTooltip name="LabelNextStepSettingPeriodicalExchangeExtendedTooltip" id="1032"/>
+						</LabelDecoration>
+					</ChildItems>
+				</Page>
+				<Page name="AssistantPagesAutomaticExchangeSettings" id="794">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Automatic exchange setting assistant pages</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Automatic exchange setting assistant pages</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="SettingsAssistantPagesAutomaticExchangeExtendedTooltip" id="1033"/>
+					<ChildItems>
+						<UsualGroup name="GroupAutoExchangeSetupHeader" id="874">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group title settings auto exchange</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<Representation>NormalSeparation</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="TitleGroupAutoExchangeSetupExtendedTooltip" id="1034"/>
+							<ChildItems>
+								<LabelDecoration name="AutoExchangeSetupTitle" id="795">
+									<Height>1</Height>
+									<HorizontalStretch>true</HorizontalStretch>
+									<VerticalStretch>false</VerticalStretch>
+									<SkipOnInput>false</SkipOnInput>
+									<Font ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Final step - setting of automatic exchange on schedule</v8:content>
+										</v8:item>
+									</Title>
+									<VerticalAlign>Top</VerticalAlign>
+									<ContextMenu name="AutoExchangeSetupTitleContextMenu" id="796"/>
+									<ExtendedTooltip name="AutoExchangeSetupTitleExtendedTooltip" id="1035"/>
+								</LabelDecoration>
+								<LabelDecoration name="AssistantOfAutomaticExchangeSettingsPageDescription" id="875">
+									<Height>2</Height>
+									<HorizontalStretch>true</HorizontalStretch>
+									<VerticalStretch>false</VerticalStretch>
+									<SkipOnInput>false</SkipOnInput>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>This setting is not necessary. 
+If you select it the exchange with the website will be executed automatically according to a schedule.
+</v8:content>
+										</v8:item>
+									</Title>
+									<VerticalAlign>Top</VerticalAlign>
+									<ContextMenu name="AssistantOfAutomaticExchangeSettingsPageDescriptionContextMenu" id="876"/>
+									<ExtendedTooltip name="AssistantOfAutomaticExchangeSettingsPageDescriptionExtendedTooltip" id="1036"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="GroupAutoExchangeSettingsDescription" id="856">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group explanation auto settings</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group explanation auto settings</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<Group>Vertical</Group>
+							<Representation>NormalSeparation</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="DescriptionGroupAutoExchangeSettingsExtendedTooltip" id="1038">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>For automatic exchange mode activation set flag "Use automatic data exchange" and set schedule.</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+							<ChildItems>
+								<UsualGroup name="SettingsGroupAutoExchange" id="899">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group settings auto exchange</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group settings auto exchange</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="SettingsGroupAutoExchangeExtendedTooltip" id="1040"/>
+									<ChildItems>
+										<CheckBoxField name="UseAutomaticDataExchange" id="805">
+											<DataPath>Object.UseScheduledJobs</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Use auto data exchange</v8:content>
+												</v8:item>
+											</Title>
+											<TitleLocation>Right</TitleLocation>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="UseAutomaticDataExchangeContextMenu" id="806"/>
+											<ExtendedTooltip name="UseAutomaticDataExchangeExtendedTooltip" id="1041"/>
+											<Events>
+												<Event name="OnChange">UseAutomaticDataExchangeOnChange</Event>
+											</Events>
+										</CheckBoxField>
+										<Pages name="SettingsGroupAutoExchangePages" id="950">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group of settings for the automatic page exchange</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group of settings for the automatic page exchange</v8:content>
+												</v8:item>
+											</ToolTip>
+											<PagesRepresentation>None</PagesRepresentation>
+											<ExtendedTooltip name="GroupSettingsAutoExchangePagesExtendedTooltip" id="1042"/>
+											<ChildItems>
+												<Page name="SettingsGroupAutoExchangePage1" id="951">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Settings group of the automatic exchange page1</v8:content>
+														</v8:item>
+													</Title>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="SettingsGroupAutoExchangePage1ExtendedTooltip" id="1043"/>
+													<ChildItems>
+														<Button name="ConfigureScheduleJobSchedule" id="807">
+															<Type>Hyperlink</Type>
+															<Representation>PictureAndText</Representation>
+															<CommandName>Form.Command.ConfigureScheduleJobSchedule</CommandName>
+															<Title>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Schedule not specified</v8:content>
+																</v8:item>
+															</Title>
+															<ExtendedTooltip name="ConfigureScheduleJobScheduleExtendedTooltip" id="1044"/>
+														</Button>
+													</ChildItems>
+												</Page>
+												<Page name="SettingsGroupAutoExchangePage2" id="952">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Settings group of the automatic exchange page2</v8:content>
+														</v8:item>
+													</Title>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="SettingsGroupAutoExchangePage2ExtendedTooltip" id="1045"/>
+													<ChildItems>
+														<InputField name="SiteEchangeInterval" id="953">
+															<DataPath>SiteEchangeInterval</DataPath>
+															<Title>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Site exchange interval</v8:content>
+																</v8:item>
+															</Title>
+															<HorizontalStretch>false</HorizontalStretch>
+															<DropListButton>true</DropListButton>
+															<QuickChoice>true</QuickChoice>
+															<ChooseType>false</ChooseType>
+															<TextEdit>false</TextEdit>
+															<ChoiceList>
+																<xr:Item>
+																	<xr:Presentation/>
+																	<xr:CheckState>0</xr:CheckState>
+																	<xr:Value xsi:type="FormChoiceListDesTimeValue">
+																		<Presentation>
+																			<v8:item>
+																				<v8:lang>en</v8:lang>
+																				<v8:content>Once every 5 minutes</v8:content>
+																			</v8:item>
+																		</Presentation>
+																		<Value xsi:type="xs:string">Once every 5 minutes</Value>
+																	</xr:Value>
+																</xr:Item>
+																<xr:Item>
+																	<xr:Presentation/>
+																	<xr:CheckState>0</xr:CheckState>
+																	<xr:Value xsi:type="FormChoiceListDesTimeValue">
+																		<Presentation>
+																			<v8:item>
+																				<v8:lang>en</v8:lang>
+																				<v8:content>Once every 15 minutes</v8:content>
+																			</v8:item>
+																		</Presentation>
+																		<Value xsi:type="xs:string">Once every 15 minutes</Value>
+																	</xr:Value>
+																</xr:Item>
+																<xr:Item>
+																	<xr:Presentation/>
+																	<xr:CheckState>0</xr:CheckState>
+																	<xr:Value xsi:type="FormChoiceListDesTimeValue">
+																		<Presentation>
+																			<v8:item>
+																				<v8:lang>en</v8:lang>
+																				<v8:content>Once every 30 minutes</v8:content>
+																			</v8:item>
+																		</Presentation>
+																		<Value xsi:type="xs:string">Once every 30 minutes</Value>
+																	</xr:Value>
+																</xr:Item>
+																<xr:Item>
+																	<xr:Presentation/>
+																	<xr:CheckState>0</xr:CheckState>
+																	<xr:Value xsi:type="FormChoiceListDesTimeValue">
+																		<Presentation>
+																			<v8:item>
+																				<v8:lang>en</v8:lang>
+																				<v8:content>Once an hour</v8:content>
+																			</v8:item>
+																		</Presentation>
+																		<Value xsi:type="xs:string">Once an hour</Value>
+																	</xr:Value>
+																</xr:Item>
+																<xr:Item>
+																	<xr:Presentation/>
+																	<xr:CheckState>0</xr:CheckState>
+																	<xr:Value xsi:type="FormChoiceListDesTimeValue">
+																		<Presentation>
+																			<v8:item>
+																				<v8:lang>en</v8:lang>
+																				<v8:content>Once in 3 hours</v8:content>
+																			</v8:item>
+																		</Presentation>
+																		<Value xsi:type="xs:string">Once in 3 hours</Value>
+																	</xr:Value>
+																</xr:Item>
+																<xr:Item>
+																	<xr:Presentation/>
+																	<xr:CheckState>0</xr:CheckState>
+																	<xr:Value xsi:type="FormChoiceListDesTimeValue">
+																		<Presentation>
+																			<v8:item>
+																				<v8:lang>en</v8:lang>
+																				<v8:content>Once every 6 hours</v8:content>
+																			</v8:item>
+																		</Presentation>
+																		<Value xsi:type="xs:string">Once every 6 hours</Value>
+																	</xr:Value>
+																</xr:Item>
+																<xr:Item>
+																	<xr:Presentation/>
+																	<xr:CheckState>0</xr:CheckState>
+																	<xr:Value xsi:type="FormChoiceListDesTimeValue">
+																		<Presentation>
+																			<v8:item>
+																				<v8:lang>en</v8:lang>
+																				<v8:content>Once every 12 hours</v8:content>
+																			</v8:item>
+																		</Presentation>
+																		<Value xsi:type="xs:string">Once every 12 hours</Value>
+																	</xr:Value>
+																</xr:Item>
+															</ChoiceList>
+															<ChoiceListButton>true</ChoiceListButton>
+															<ContextMenu name="SiteExchangeIntervalContextMenu" id="954"/>
+															<ExtendedTooltip name="SiteExchangeIntervalExtendedTooltip" id="1046"/>
+															<Events>
+																<Event name="OnChange">SiteEchangeIntervalOnChange</Event>
+															</Events>
+														</InputField>
+													</ChildItems>
+												</Page>
+											</ChildItems>
+										</Pages>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+						<CheckBoxField name="ExecuteDataExchangeNow" id="885">
+							<DataPath>ExecuteDataExchangeNow</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Exchange with the Web site when you click Finish</v8:content>
+								</v8:item>
+							</Title>
+							<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ExecuteDataExchangeNowContextMenu" id="886"/>
+							<ExtendedTooltip name="ExecuteDataExchangeNowExtendedTooltip" id="1047"/>
+						</CheckBoxField>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+		<UsualGroup name="ButtonsGrouping" id="451">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Button grouping</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Button grouping</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ButtonsGroupingExtendedTooltip" id="1052"/>
+			<ChildItems>
+				<Pages name="ButtonsAssistant" id="9">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Assistant buttons</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Assistant buttons</v8:content>
+						</v8:item>
+					</ToolTip>
+					<PagesRepresentation>None</PagesRepresentation>
+					<ExtendedTooltip name="AssistantButtonsExtendedTooltip" id="1053"/>
+					<ChildItems>
+						<Page name="BeginButtons" id="12">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Start buttons</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Start buttons</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<ExtendedTooltip name="BeginButtonExtendedTooltip" id="1054"/>
+							<ChildItems>
+								<LabelDecoration name="Decoration3" id="38">
+									<HorizontalStretch>true</HorizontalStretch>
+									<SkipOnInput>false</SkipOnInput>
+									<ContextMenu name="Decoration3ContextMenu" id="39"/>
+									<ExtendedTooltip name="Decoration3ExtendedTooltip" id="1055"/>
+								</LabelDecoration>
+								<CommandBar name="Group1" id="1114">
+									<HorizontalLocation>Right</HorizontalLocation>
+									<ExtendedTooltip name="Group1ExtendedTooltip" id="1115"/>
+									<ChildItems>
+										<Button name="CommandBack" id="232">
+											<Type>CommandBarButton</Type>
+											<Representation>PictureAndText</Representation>
+											<SkipOnInput>false</SkipOnInput>
+											<Enabled>false</Enabled>
+											<CommandName>Form.Command.CommandBack</CommandName>
+											<Picture>
+												<xr:Abs>Picture.png</xr:Abs>
+												<xr:LoadTransparent>true</xr:LoadTransparent>
+											</Picture>
+											<ExtendedTooltip name="BackCommandExtendedTooltip" id="1056"/>
+										</Button>
+										<Button name="CommandNext" id="13">
+											<Type>CommandBarButton</Type>
+											<Representation>PictureAndText</Representation>
+											<DefaultButton>true</DefaultButton>
+											<SkipOnInput>false</SkipOnInput>
+											<CommandName>Form.Command.CommandNext</CommandName>
+											<Picture>
+												<xr:Abs>Picture.png</xr:Abs>
+												<xr:LoadTransparent>true</xr:LoadTransparent>
+											</Picture>
+											<ExtendedTooltip name="NextCommandExtendedTooltip" id="1057"/>
+										</Button>
+										<Button name="CommandCancel" id="14">
+											<Type>CommandBarButton</Type>
+											<SkipOnInput>false</SkipOnInput>
+											<CommandName>Form.Command.CommandCancel</CommandName>
+											<ExtendedTooltip name="CancelCommandExtendedTooltip" id="1058"/>
+										</Button>
+									</ChildItems>
+								</CommandBar>
+							</ChildItems>
+						</Page>
+						<Page name="ContinuationButtons" id="10">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Application buttons</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Application buttons</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<ExtendedTooltip name="ButtonsContinueExtendedTooltip" id="1059"/>
+							<ChildItems>
+								<LabelDecoration name="Decoration31" id="40">
+									<HorizontalStretch>true</HorizontalStretch>
+									<SkipOnInput>false</SkipOnInput>
+									<ContextMenu name="Decoration31ContextMenu" id="41"/>
+									<ExtendedTooltip name="Decoration31ExtendedTooltip" id="1060"/>
+								</LabelDecoration>
+								<CommandBar name="Group2" id="1116">
+									<HorizontalLocation>Right</HorizontalLocation>
+									<ExtendedTooltip name="Group2ExtendedTooltip" id="1117"/>
+									<ChildItems>
+										<Button name="CommandBack1" id="18">
+											<Type>CommandBarButton</Type>
+											<Representation>PictureAndText</Representation>
+											<SkipOnInput>false</SkipOnInput>
+											<CommandName>Form.Command.CommandBack</CommandName>
+											<Picture>
+												<xr:Abs>Picture.png</xr:Abs>
+												<xr:LoadTransparent>true</xr:LoadTransparent>
+											</Picture>
+											<ExtendedTooltip name="CommandBack1ExtendedTooltip" id="1061"/>
+										</Button>
+										<Button name="CommandNext1" id="17">
+											<Type>CommandBarButton</Type>
+											<Representation>PictureAndText</Representation>
+											<SkipOnInput>false</SkipOnInput>
+											<CommandName>Form.Command.CommandNext</CommandName>
+											<Picture>
+												<xr:Abs>Picture.png</xr:Abs>
+												<xr:LoadTransparent>true</xr:LoadTransparent>
+											</Picture>
+											<ExtendedTooltip name="CommandNext1ExtendedTooltip" id="1062"/>
+										</Button>
+										<Button name="CancelCommand1" id="15">
+											<Type>CommandBarButton</Type>
+											<SkipOnInput>false</SkipOnInput>
+											<CommandName>Form.Command.CommandCancel</CommandName>
+											<ExtendedTooltip name="CancelCommand1ExtendedTooltip" id="1063"/>
+										</Button>
+									</ChildItems>
+								</CommandBar>
+							</ChildItems>
+						</Page>
+						<Page name="ReturnButton" id="525">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Buttons return</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Application buttons</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<ExtendedTooltip name="ReturnButtonExtendedTooltip" id="1064"/>
+							<ChildItems>
+								<LabelDecoration name="Decoration312" id="527">
+									<HorizontalStretch>true</HorizontalStretch>
+									<SkipOnInput>false</SkipOnInput>
+									<ContextMenu name="Decoration312ContextMenu" id="528"/>
+									<ExtendedTooltip name="Decoration312ExtendedTooltip" id="1065"/>
+								</LabelDecoration>
+								<CommandBar name="Group3" id="1118">
+									<HorizontalLocation>Right</HorizontalLocation>
+									<ExtendedTooltip name="Group3ExtendedTooltip" id="1119"/>
+									<ChildItems>
+										<Button name="CommandBack2" id="529">
+											<Type>CommandBarButton</Type>
+											<Representation>PictureAndText</Representation>
+											<SkipOnInput>false</SkipOnInput>
+											<CommandName>Form.Command.CommandBack</CommandName>
+											<Picture>
+												<xr:Abs>Picture.png</xr:Abs>
+												<xr:LoadTransparent>true</xr:LoadTransparent>
+											</Picture>
+											<ExtendedTooltip name="CommandBack2ExtendedTooltip" id="1066"/>
+										</Button>
+										<Button name="CommandNext2" id="530">
+											<Type>CommandBarButton</Type>
+											<Representation>PictureAndText</Representation>
+											<SkipOnInput>false</SkipOnInput>
+											<Enabled>false</Enabled>
+											<CommandName>Form.Command.CommandNext</CommandName>
+											<Picture>
+												<xr:Abs>Picture.png</xr:Abs>
+												<xr:LoadTransparent>true</xr:LoadTransparent>
+											</Picture>
+											<ExtendedTooltip name="CommandNext2ExtendedTooltip" id="1067"/>
+										</Button>
+										<Button name="CancelCommand2" id="531">
+											<Type>CommandBarButton</Type>
+											<SkipOnInput>false</SkipOnInput>
+											<CommandName>Form.Command.CommandCancel</CommandName>
+											<ExtendedTooltip name="CancelCommand2ExtendedTooltip" id="1068"/>
+										</Button>
+									</ChildItems>
+								</CommandBar>
+							</ChildItems>
+						</Page>
+						<Page name="EndingButtons" id="11">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Ending buttons</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Ending buttons</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<ExtendedTooltip name="ButtonsEndExtendedTooltip" id="1069"/>
+							<ChildItems>
+								<LabelDecoration name="Decoration311" id="42">
+									<HorizontalStretch>true</HorizontalStretch>
+									<SkipOnInput>false</SkipOnInput>
+									<ContextMenu name="Decoration311ContextMenu" id="43"/>
+									<ExtendedTooltip name="Decoration311ExtendedTooltip" id="1070"/>
+								</LabelDecoration>
+								<CommandBar name="Group4" id="1120">
+									<HorizontalLocation>Right</HorizontalLocation>
+									<ExtendedTooltip name="Group4ExtendedTooltip" id="1121"/>
+									<ChildItems>
+										<Button name="CommandBack3" id="816">
+											<Type>CommandBarButton</Type>
+											<Representation>PictureAndText</Representation>
+											<SkipOnInput>false</SkipOnInput>
+											<CommandName>Form.Command.CommandBack</CommandName>
+											<Picture>
+												<xr:Abs>Picture.png</xr:Abs>
+												<xr:LoadTransparent>true</xr:LoadTransparent>
+											</Picture>
+											<ExtendedTooltip name="CommandBack3ExtendedTooltip" id="1071"/>
+										</Button>
+										<Button name="CommandDone" id="20">
+											<Type>CommandBarButton</Type>
+											<SkipOnInput>false</SkipOnInput>
+											<CommandName>Form.Command.CommandDone</CommandName>
+											<ExtendedTooltip name="DoneCommandExtendedTooltip" id="1072"/>
+										</Button>
+										<Button name="CancelCommand3" id="16">
+											<Type>CommandBarButton</Type>
+											<SkipOnInput>false</SkipOnInput>
+											<CommandName>Form.Command.CommandCancel</CommandName>
+											<ExtendedTooltip name="CancelCommand3ExtendedTooltip" id="1073"/>
+										</Button>
+									</ChildItems>
+								</CommandBar>
+							</ChildItems>
+						</Page>
+					</ChildItems>
+				</Pages>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.DataExchangeWithSiteCreationAssistant</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="RadioButtonExchangePurpose" id="24">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Radio button exchange purpose</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="PriceKindsList" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>List of price kinds</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+			<Settings xsi:type="v8:TypeDescription">
+				<v8:Type>cfg:CatalogRef.PriceKinds</v8:Type>
+			</Settings>
+		</Attribute>
+		<Attribute name="ListProductsAndServicesGroups" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>List of ProductsAndServices groups</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+			<Settings xsi:type="v8:TypeDescription">
+				<v8:Type>cfg:CatalogRef.ProductsAndServices</v8:Type>
+			</Settings>
+		</Attribute>
+		<Attribute name="ExecuteDataExchangeNow" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Perform data exchange right now</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="AdditionalAttributesTable" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Table of additional attributes</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Attribute" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Attribute</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:ChartOfCharacteristicTypesRef.AdditionalAttributesAndInformation</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ComparisonType" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Comparison kind</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>30</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Value" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Value</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:TypeSet>cfg:Characteristic.AdditionalAttributesAndInformation</v8:TypeSet>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="WebServiceAddress" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Web service address</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="IsLocalMode" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>It is local mode</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="SiteEchangeInterval" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Site exchange interval</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="DataSeparationEnabled" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Separation enabled</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="CommandNext" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Further</v8:content>
+				</v8:item>
+			</Title>
+			<Action>CommandNext</Action>
+		</Command>
+		<Command name="CommandBack" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Back</v8:content>
+				</v8:item>
+			</Title>
+			<Action>CommandBack</Action>
+		</Command>
+		<Command name="CommandCancel" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Cancel</v8:content>
+				</v8:item>
+			</Title>
+			<Action>CommandCancel</Action>
+		</Command>
+		<Command name="CommandDone" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Done</v8:content>
+				</v8:item>
+			</Title>
+			<Action>CommandDone</Action>
+		</Command>
+		<Command name="ConfigureScheduleJobSchedule" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Configure scheduled job schedule</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Configure scheduled job schedule</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.SetTime</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ConfigureScheduleJobSchedule</Action>
+		</Command>
+		<Command name="CommandCheckConnection" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Check connection</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Check connection</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>CommandCheckConnection</Action>
+		</Command>
+		<Command name="ChooseProductsAndServicesPriceKinds" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Choose ProductsAndServices price kinds</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Choose ProductsAndServices price kinds</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ChooseProductsAndServicesPriceKinds</Action>
+		</Command>
+		<Command name="ChooseProductsAndServicesGroups" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Choose ProductsAndServices groups</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Choose groups of ProductsAndServices</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ChooseProductsAndServicesGroups</Action>
+		</Command>
+		<Command name="HowToPublishWebService" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>How to publish the web service on the web server</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>How to publish web service</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.Information</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>HowToPublishWebService</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+	</Commands>
+</Form>

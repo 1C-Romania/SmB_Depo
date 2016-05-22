@@ -1,0 +1,1154 @@
+﻿<package xmlns="http://v8.1c.ru/8.1/xdto" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://v8.1c.ru/edi/edi_stnd">
+	<property xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd" name="ActAboutAcceptance" type="d2p1:ActAboutAcceptance"/>
+	<property xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd" name="CustomerOrder" type="d2p1:CustomerOrder"/>
+	<property xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd" name="Directory" type="d2p1:Directory"/>
+	<property xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd" name="ComissionGoodsSalesReport" type="d2p1:ComissionGoodsSalesReport"/>
+	<property xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd" name="ComissionGoodsWriteOffReport" type="d2p1:ComissionGoodsWriteOffReport"/>
+	<property xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd" name="PriceList" type="d2p1:PriceList"/>
+	<property name="InvoiceForPayment"/>
+	<property xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd" name="TORG12" type="d2p1:TORG12"/>
+	<valueType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd" name="GLN" base="d2p1:IdentifierValue" variety="Atomic">
+		<pattern>\d{13}</pattern>
+	</valueType>
+	<valueType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd" name="GTIN" base="d2p1:IdentifierValue" variety="Atomic">
+		<pattern>\d{14}</pattern>
+		<pattern>\d{13}</pattern>
+	</valueType>
+	<valueType name="AddressType" base="xs:string" variety="Atomic" maxLength="255">
+		<enumeration>Postal index</enumeration>
+		<enumeration>Country</enumeration>
+		<enumeration>Region</enumeration>
+		<enumeration>District</enumeration>
+		<enumeration>Settlement</enumeration>
+		<enumeration>City</enumeration>
+		<enumeration>Street</enumeration>
+		<enumeration>Building</enumeration>
+		<enumeration>Section</enumeration>
+		<enumeration>Apartment</enumeration>
+	</valueType>
+	<valueType name="IdentifierValue" base="xs:normalizedString" variety="Atomic" maxLength="255"/>
+	<valueType name="IdentifierGlobalType" base="xs:normalizedString" variety="Atomic" maxLength="110"/>
+	<valueType name="QuantityType" base="xs:decimal" variety="Atomic" fractionDigits="4"/>
+	<valueType name="ContactType" base="xs:string" variety="Atomic" maxLength="255">
+		<enumeration>Phone internal</enumeration>
+		<enumeration>Work phone</enumeration>
+		<enumeration>Phone mobile</enumeration>
+		<enumeration>Phone home</enumeration>
+		<enumeration>Pager</enumeration>
+		<enumeration>Fax</enumeration>
+		<enumeration>Mail</enumeration>
+		<enumeration>ICQ</enumeration>
+		<enumeration>WebSite</enumeration>
+	</valueType>
+	<valueType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd" name="CounterpartyID" base="d2p1:IdentifierValue" variety="Atomic">
+		<pattern>[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}</pattern>
+	</valueType>
+	<valueType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd" name="OKEI" base="d2p1:IdentifierValue" variety="Atomic">
+		<pattern>[0-9]{3,4}</pattern>
+	</valueType>
+	<valueType name="RoleType" base="xs:string" variety="Atomic">
+		<enumeration>Seller</enumeration>
+		<enumeration>Customer</enumeration>
+		<enumeration>Payer</enumeration>
+		<enumeration>Recipient</enumeration>
+		<enumeration>Consignor</enumeration>
+		<enumeration>Agent</enumeration>
+		<enumeration>Trading point</enumeration>
+	</valueType>
+	<valueType name="StatusType" base="xs:string" variety="Atomic">
+		<enumeration>New</enumeration>
+		<enumeration>Changed</enumeration>
+		<enumeration>Removed</enumeration>
+	</valueType>
+	<valueType name="AmountType" base="xs:decimal" variety="Atomic" totalDigits="18" fractionDigits="2"/>
+	<valueType name="ValuesTypeType" base="xs:string" variety="Atomic">
+		<enumeration>String</enumeration>
+		<enumeration>Number</enumeration>
+		<enumeration>Time</enumeration>
+		<enumeration>Catalog</enumeration>
+	</valueType>
+	<valueType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd" name="ProductID" base="d2p1:IdentifierValue" variety="Atomic">
+		<pattern>[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}</pattern>
+	</valueType>
+	<valueType name="BusinessTransactionType" base="xs:string" variety="Atomic">
+		<enumeration>Services acceptance certificate</enumeration>
+		<enumeration>Non cash return</enumeration>
+		<enumeration>Commission goods return</enumeration>
+		<enumeration>Goods return</enumeration>
+		<enumeration>Cash return</enumeration>
+		<enumeration>Cash payment</enumeration>
+		<enumeration>Non cash payment</enumeration>
+		<enumeration>Product order</enumeration>
+		<enumeration>Response for order</enumeration>
+		<enumeration>Goods issue</enumeration>
+		<enumeration>Report on the commission goods sales</enumeration>
+		<enumeration>Report on the commission goods depreciation</enumeration>
+		<enumeration>Product transfer to the commission</enumeration>
+		<enumeration>Revaluation of products</enumeration>
+		<enumeration>Invoice for payment</enumeration>
+		<enumeration>Customer invoice note</enumeration>
+		<enumeration>Other</enumeration>
+		<enumeration/>
+	</valueType>
+	<objectType name="Address">
+		<property name="Presentation">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="3000" whiteSpace="preserve"/>
+		</property>
+		<property name="Comment" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="3000" whiteSpace="preserve"/>
+		</property>
+		<property name="AddressField" lowerBound="0" upperBound="-1">
+			<typeDef xsi:type="ObjectType">
+				<property xmlns:d5p1="http://v8.1c.ru/edi/edi_stnd" name="Type" type="d5p1:AddressType"/>
+				<property name="Value">
+					<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255" whiteSpace="preserve"/>
+				</property>
+			</typeDef>
+		</property>
+	</objectType>
+	<objectType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd" name="ActAboutAcceptance" base="d2p1:BusinessInformation">
+		<property name="ID" type="d2p1:IdentifierGlobalType"/>
+		<property name="Number">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255" whiteSpace="collapse"/>
+		</property>
+		<property name="Date" type="xs:dateTime"/>
+		<property name="DocumentText">
+			<typeDef xsi:type="ObjectType">
+				<property name="Title">
+					<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="3000" whiteSpace="preserve"/>
+				</property>
+				<property name="PerformedWorksDescription" lowerBound="0">
+					<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="5000" whiteSpace="preserve"/>
+				</property>
+				<property name="Claims">
+					<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="3000" whiteSpace="preserve"/>
+				</property>
+			</typeDef>
+		</property>
+		<property name="Products">
+			<typeDef xsi:type="ObjectType">
+				<property name="Product" upperBound="-1">
+					<typeDef xsi:type="ObjectType" base="d2p1:Product">
+						<property name="MeasurementUnit" type="d2p1:MeasurementUnit" lowerBound="0"/>
+						<property name="Quantity" type="d2p1:QuantityType"/>
+						<property name="Price" type="d2p1:AmountType"/>
+						<property name="AmountsByProduct" type="d2p1:Cost"/>
+						<property name="Discounts" lowerBound="0">
+							<typeDef xsi:type="ObjectType">
+								<property name="Discount" type="d2p1:Discount" upperBound="-1"/>
+								<property name="DiscountsAmount" type="d2p1:AmountType" lowerBound="0"/>
+								<property name="AmountWithoutDiscounts" type="d2p1:AmountType" lowerBound="0"/>
+							</typeDef>
+						</property>
+						<property name="BasisDocuments" type="d2p1:BasisDocuments" lowerBound="0" upperBound="-1"/>
+					</typeDef>
+				</property>
+			</typeDef>
+		</property>
+		<property name="TotalByDocument">
+			<typeDef xsi:type="ObjectType">
+				<property name="AmountTotal" type="d2p1:AmountType"/>
+				<property name="AmountWithoutTax" type="d2p1:AmountType"/>
+				<property name="PriceIncludesTax" type="xs:boolean" lowerBound="0"/>
+				<property name="TaxAmount" type="d2p1:AmountType" lowerBound="0"/>
+				<property name="Quantity" type="d2p1:QuantityType" lowerBound="0"/>
+				<property name="DiscountAmount" type="d2p1:AmountType" lowerBound="0"/>
+			</typeDef>
+		</property>
+		<property name="TotalsInWords">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="5000" whiteSpace="preserve"/>
+		</property>
+		<property name="Performer" type="d2p1:Counterparty"/>
+		<property name="Customer" type="d2p1:Counterparty"/>
+		<property name="Currency" type="d2p1:Currency" lowerBound="0"/>
+		<property name="Delivered" lowerBound="0">
+			<typeDef xsi:type="ObjectType" base="d2p1:IndividualAttributes">
+				<property name="PowerOfAttorney" type="d2p1:PowerOfAttorney" lowerBound="0"/>
+			</typeDef>
+		</property>
+		<property name="Accepted" lowerBound="0">
+			<typeDef xsi:type="ObjectType" base="d2p1:IndividualAttributes">
+				<property name="PowerOfAttorney" type="d2p1:PowerOfAttorney" lowerBound="0"/>
+			</typeDef>
+		</property>
+	</objectType>
+	<objectType name="BaseUnit">
+		<property name="Code">
+			<typeDef xmlns:d4p1="http://v8.1c.ru/edi/edi_stnd" xsi:type="ValueType" base="d4p1:OKEI" variety="Atomic" maxLength="4"/>
+		</property>
+		<property name="Description" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255"/>
+		</property>
+		<property name="DescriptionFull" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255" whiteSpace="preserve"/>
+		</property>
+		<property name="InternationalAbbreviation" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255"/>
+		</property>
+	</objectType>
+	<objectType name="Bank">
+		<property name="BIN">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" length="9"/>
+		</property>
+		<property name="SWIFT" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255" whiteSpace="preserve"/>
+		</property>
+		<property name="AccountCorrespondent" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" length="20"/>
+		</property>
+		<property name="Description" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255" whiteSpace="preserve"/>
+		</property>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd" name="Address" type="d3p1:Address" lowerBound="0"/>
+		<property name="Contacts" lowerBound="0">
+			<typeDef xsi:type="ObjectType">
+				<property xmlns:d5p1="http://v8.1c.ru/edi/edi_stnd" name="Contact" type="d5p1:ContactInformation" upperBound="-1"/>
+			</typeDef>
+		</property>
+	</objectType>
+	<objectType name="Currency">
+		<property name="CodeRCC">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" length="3"/>
+		</property>
+		<property name="ShortDescriptionGCC" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255" whiteSpace="preserve"/>
+		</property>
+		<property name="DescriptionFullOfGCC" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255" whiteSpace="preserve"/>
+		</property>
+		<property name="KoдМKB" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:decimal" variety="Atomic" totalDigits="3"/>
+		</property>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd" name="ExchangeRate" type="d3p1:QuantityType" lowerBound="0"/>
+	</objectType>
+	<objectType name="PaymentSchedule">
+		<property name="PaymentDate" type="xs:date"/>
+		<property name="PaymentPercent">
+			<typeDef xsi:type="ValueType" base="xs:decimal" variety="Atomic" totalDigits="10" fractionDigits="2"/>
+		</property>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd" name="PaymentAmount" type="d3p1:AmountType"/>
+		<property name="PayKind" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255" whiteSpace="preserve">
+				<enumeration>Advance</enumeration>
+				<enumeration>Prepayment</enumeration>
+				<enumeration>Credit</enumeration>
+			</typeDef>
+		</property>
+		<property name="Taxes" lowerBound="0" upperBound="-1">
+			<typeDef xmlns:d4p1="http://v8.1c.ru/edi/edi_stnd" xsi:type="ObjectType" base="d4p1:Tax"/>
+		</property>
+	</objectType>
+	<objectType name="Group">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd" name="ID" type="d3p1:IdentifierGlobalType"/>
+		<property name="Description">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255" whiteSpace="preserve"/>
+		</property>
+		<property name="Definition" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="3000" whiteSpace="preserve"/>
+		</property>
+		<property name="Properties" lowerBound="0">
+			<typeDef xsi:type="ObjectType">
+				<property xmlns:d5p1="http://v8.1c.ru/edi/edi_stnd" name="Property" type="d5p1:Property" upperBound="-1"/>
+			</typeDef>
+		</property>
+		<property name="Groups" lowerBound="0">
+			<typeDef xsi:type="ObjectType">
+				<property xmlns:d5p1="http://v8.1c.ru/edi/edi_stnd" name="Group" type="d5p1:Group" upperBound="-1"/>
+			</typeDef>
+		</property>
+	</objectType>
+	<objectType name="PowerOfAttorney">
+		<property name="Number">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255" whiteSpace="preserve"/>
+		</property>
+		<property name="Date" type="xs:date"/>
+		<property name="Issued">
+			<typeDef xsi:type="ObjectType">
+				<property name="ByWhom">
+					<typeDef xsi:type="ObjectType">
+						<property xmlns:d7p1="http://v8.1c.ru/edi/edi_stnd" name="Company" type="d7p1:Counterparty"/>
+						<property name="Position">
+							<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255" whiteSpace="preserve"/>
+						</property>
+						<property name="Initials">
+							<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255" whiteSpace="preserve"/>
+						</property>
+					</typeDef>
+				</property>
+				<property name="Whom">
+					<typeDef xsi:type="ObjectType">
+						<property xmlns:d7p1="http://v8.1c.ru/edi/edi_stnd" name="Company" type="d7p1:Counterparty"/>
+						<property name="Position">
+							<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255" whiteSpace="preserve"/>
+						</property>
+						<property name="Initials">
+							<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255" whiteSpace="preserve"/>
+						</property>
+					</typeDef>
+				</property>
+			</typeDef>
+		</property>
+	</objectType>
+	<objectType name="BasisDocuments">
+		<property name="BasisDocumentNumber">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255" whiteSpace="preserve"/>
+		</property>
+		<property name="BasisDocumentDate" type="xs:dateTime"/>
+		<property name="BasisDocumentDescription">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255" whiteSpace="preserve"/>
+		</property>
+		<property name="Comment" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255" whiteSpace="preserve"/>
+		</property>
+	</objectType>
+	<objectType name="AdditExpense">
+		<property name="Description">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255" whiteSpace="preserve"/>
+		</property>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd" name="Amount" type="d3p1:AmountType"/>
+		<property name="Percent" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:decimal" variety="Atomic" totalDigits="5" fractionDigits="2"/>
+		</property>
+		<property name="IncludedInAmount" type="xs:boolean" lowerBound="0"/>
+		<property name="Comment" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="3000" whiteSpace="preserve"/>
+		</property>
+	</objectType>
+	<objectType name="MeasurementUnit">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd" name="Code" type="d3p1:OKEI"/>
+		<property name="Factor" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:decimal" variety="Atomic" fractionDigits="4"/>
+		</property>
+		<property name="Description" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255" whiteSpace="preserve"/>
+		</property>
+		<property name="AdditionalInformation" lowerBound="0">
+			<typeDef xsi:type="ObjectType">
+				<property xmlns:d5p1="http://v8.1c.ru/edi/edi_stnd" name="AttributeValue" type="d5p1:AttributeValue" upperBound="-1"/>
+			</typeDef>
+		</property>
+	</objectType>
+	<objectType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd" name="CustomerOrder" base="d2p1:BusinessInformation">
+		<property name="ID" type="d2p1:IdentifierGlobalType"/>
+		<property name="Number">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255" whiteSpace="collapse"/>
+		</property>
+		<property name="Date" type="xs:date"/>
+		<property name="Role" type="d2p1:RoleType"/>
+		<property name="Performer">
+			<typeDef xsi:type="ObjectType" base="d2p1:Counterparty"/>
+		</property>
+		<property name="Customer" type="d2p1:Counterparty"/>
+		<property name="Products">
+			<typeDef xsi:type="ObjectType">
+				<property name="Product" upperBound="-1">
+					<typeDef xsi:type="ObjectType" base="d2p1:Product">
+						<property name="Quantity" type="d2p1:QuantityType"/>
+						<property name="MeasurementUnit" type="d2p1:MeasurementUnit"/>
+						<property name="Price" type="d2p1:AmountType"/>
+						<property name="AmountsByProduct" type="d2p1:Cost"/>
+						<property name="Discounts" lowerBound="0">
+							<typeDef xsi:type="ObjectType">
+								<property name="Discount" type="d2p1:Discount" upperBound="-1"/>
+								<property name="DiscountsAmount" type="d2p1:AmountType" lowerBound="0"/>
+								<property name="AmountWithoutDiscounts" type="d2p1:AmountType" lowerBound="0"/>
+							</typeDef>
+						</property>
+					</typeDef>
+				</property>
+			</typeDef>
+		</property>
+		<property name="TotalByDocument">
+			<typeDef xsi:type="ObjectType">
+				<property name="AmountTotal" type="d2p1:AmountType"/>
+				<property name="TaxAmountTotal" type="d2p1:AmountType" lowerBound="0"/>
+				<property name="PriceIncludesTax" type="xs:boolean" lowerBound="0"/>
+				<property name="AmountWithoutDiscountTotal" type="d2p1:AmountType" lowerBound="0"/>
+				<property name="DiscountAmountTotal" type="d2p1:AmountType" lowerBound="0"/>
+			</typeDef>
+		</property>
+		<property name="TotalsInWords">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="3000" whiteSpace="preserve"/>
+		</property>
+		<property name="BasisDocuments" type="d2p1:BasisDocuments" lowerBound="0" upperBound="-1"/>
+		<property name="Currency" type="d2p1:Currency" lowerBound="0"/>
+		<property name="Consignee" type="d2p1:Counterparty" lowerBound="0"/>
+		<property name="ShippingAddressWarehouse" type="d2p1:Warehouse" lowerBound="0"/>
+		<property name="PaymentStage" type="d2p1:PaymentSchedule" lowerBound="0" upperBound="-1"/>
+		<property name="Comment" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="3000" whiteSpace="preserve"/>
+		</property>
+		<property name="Manager" type="d2p1:IndividualAttributes" lowerBound="0"/>
+	</objectType>
+	<objectType name="AttributeValue">
+		<property name="Description">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255" whiteSpace="preserve"/>
+		</property>
+		<property name="Value" upperBound="-1">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255" whiteSpace="preserve"/>
+		</property>
+	</objectType>
+	<objectType name="PropertyValues">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd" name="ID" type="d3p1:IdentifierGlobalType"/>
+		<property name="Description" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255" whiteSpace="preserve"/>
+		</property>
+		<property name="Values" lowerBound="0" upperBound="-1">
+			<typeDef xsi:type="ObjectType">
+				<property xmlns:d5p1="http://v8.1c.ru/edi/edi_stnd" name="ValueIdentifier" type="d5p1:IdentifierGlobalType"/>
+				<property name="Value">
+					<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255" whiteSpace="preserve"/>
+				</property>
+			</typeDef>
+		</property>
+	</objectType>
+	<objectType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd" name="Directory" base="d2p1:BusinessInformation" open="true" sequenced="true">
+		<property name="ID" type="d2p1:IdentifierGlobalType"/>
+		<property name="ClassifierIdentifier" type="d2p1:IdentifierGlobalType" lowerBound="0"/>
+		<property name="Description" type="xs:string" lowerBound="0"/>
+		<property name="Owner" type="d2p1:Counterparty"/>
+		<property name="Products">
+			<typeDef xsi:type="ObjectType">
+				<property name="Product" upperBound="-1">
+					<typeDef xsi:type="ObjectType" base="d2p1:Product">
+						<property name="Status" type="d2p1:StatusType" lowerBound="0" form="Attribute"/>
+						<property name="ProductIdOfCounterparty" type="d2p1:IdentifierGlobalType" lowerBound="0"/>
+						<property name="Groups" lowerBound="0">
+							<typeDef xsi:type="ObjectType">
+								<property name="ID" type="d2p1:IdentifierGlobalType" upperBound="-1"/>
+							</typeDef>
+						</property>
+						<property name="Picture" lowerBound="0" upperBound="-1">
+							<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="100"/>
+						</property>
+						<property name="Country" type="xs:anyType" lowerBound="0"/>
+						<property name="TradingMark" type="xs:anyType" lowerBound="0"/>
+						<property name="TradeMarkOwner" type="d2p1:Counterparty" lowerBound="0"/>
+						<property name="Manufacturer" type="d2p1:Counterparty" lowerBound="0"/>
+						<property name="PropertyValues" lowerBound="0">
+							<typeDef xsi:type="ObjectType">
+								<property name="PropertyValues" type="d2p1:PropertyValues" upperBound="-1"/>
+							</typeDef>
+						</property>
+						<property name="TaxesRates" lowerBound="0">
+							<typeDef xsi:type="ObjectType">
+								<property name="TaxRate" upperBound="-1">
+									<typeDef xsi:type="ObjectType" base="d2p1:Tax">
+										<property name="Rate">
+											<typeDef xsi:type="ValueType" base="xs:decimal" variety="Atomic" totalDigits="5" fractionDigits="2"/>
+										</property>
+									</typeDef>
+								</property>
+							</typeDef>
+						</property>
+						<property name="ExciseDuties" lowerBound="0">
+							<typeDef xsi:type="ObjectType">
+								<property name="Excise" upperBound="-1">
+									<typeDef xsi:type="ObjectType">
+										<property name="Description">
+											<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255"/>
+										</property>
+										<property name="AmountPerUnit" type="d2p1:AmountType"/>
+										<property name="Currency">
+											<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" length="3"/>
+										</property>
+									</typeDef>
+								</property>
+							</typeDef>
+						</property>
+						<property name="Accessories" lowerBound="0">
+							<typeDef xsi:type="ObjectType">
+								<property name="Accessory" type="d2p1:Product" upperBound="-1"/>
+							</typeDef>
+						</property>
+						<property name="Analogs" lowerBound="0">
+							<typeDef xsi:type="ObjectType">
+								<property name="Analog" type="d2p1:Product" upperBound="-1"/>
+							</typeDef>
+						</property>
+						<property name="ProductCharacteristics" lowerBound="0">
+							<typeDef xsi:type="ObjectType">
+								<property name="ProductCharacteristic" type="d2p1:ProductCharacteristic" upperBound="-1"/>
+							</typeDef>
+						</property>
+						<property name="AttributeValues" lowerBound="0">
+							<typeDef xsi:type="ObjectType">
+								<property name="AttributeValue" type="d2p1:AttributeValue" upperBound="-1"/>
+							</typeDef>
+						</property>
+					</typeDef>
+				</property>
+			</typeDef>
+		</property>
+		<property name="Definition" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="3000"/>
+		</property>
+	</objectType>
+	<objectType name="BusinessInformation" abstract="true">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd" name="ExecutantId" type="d3p1:IdentifierGlobalType"/>
+		<property name="GeneratingDate" type="xs:dateTime"/>
+		<property name="SchemaVersion">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255" whiteSpace="preserve"/>
+		</property>
+	</objectType>
+	<objectType name="ContactInformation">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd" name="Type" type="d3p1:ContactType"/>
+		<property name="Value">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255" whiteSpace="preserve"/>
+		</property>
+		<property name="Comment" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="3000" whiteSpace="preserve"/>
+		</property>
+	</objectType>
+	<objectType name="Counterparty">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd" name="ID" type="d3p1:IdentifierGlobalType"/>
+		<property name="Description" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255" whiteSpace="preserve"/>
+		</property>
+		<property name="Comment" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="3000" whiteSpace="preserve"/>
+		</property>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd" name="LegalEntity" type="d3p1:DetailsOfLegalEntity" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd" name="Ind" type="d3p1:IndividualAttributes" lowerBound="0"/>
+		<property name="BankAccounts" lowerBound="0">
+			<typeDef xsi:type="ObjectType">
+				<property xmlns:d5p1="http://v8.1c.ru/edi/edi_stnd" name="BankAccount" type="d5p1:BankAccount" upperBound="-1"/>
+			</typeDef>
+		</property>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd" name="Address" type="d3p1:Address" lowerBound="0"/>
+		<property name="Contacts" lowerBound="0">
+			<typeDef xsi:type="ObjectType">
+				<property xmlns:d5p1="http://v8.1c.ru/edi/edi_stnd" name="Contact" type="d5p1:ContactInformation" upperBound="-1"/>
+			</typeDef>
+		</property>
+		<property name="Representatives" lowerBound="0">
+			<typeDef xsi:type="ObjectType">
+				<property xmlns:d5p1="http://v8.1c.ru/edi/edi_stnd" name="Representative" type="d5p1:Counterparty" upperBound="-1"/>
+			</typeDef>
+		</property>
+	</objectType>
+	<objectType name="Tax">
+		<property name="TaxType">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255" whiteSpace="preserve"/>
+		</property>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd" name="TaxRateAmount" type="d3p1:QuantityType" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd" name="Amount" type="d3p1:AmountType" lowerBound="0"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd" name="ComissionGoodsSalesReport" base="d2p1:BusinessInformation">
+		<property name="ID" type="d2p1:IdentifierGlobalType"/>
+		<property name="Number">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255" whiteSpace="collapse"/>
+		</property>
+		<property name="Date" type="xs:date"/>
+		<property name="Consignor" type="d2p1:Counterparty"/>
+		<property name="Agent" type="d2p1:Counterparty"/>
+		<property name="Products">
+			<typeDef xsi:type="ObjectType">
+				<property name="Product" upperBound="-1">
+					<typeDef xsi:type="ObjectType" base="d2p1:Product">
+						<property name="Quantity" type="d2p1:QuantityType"/>
+						<property name="MeasurementUnit" type="d2p1:MeasurementUnit"/>
+						<property name="Price" type="d2p1:AmountType"/>
+						<property name="AmountsByProduct" type="d2p1:Cost"/>
+						<property name="PrincipalPrice" type="d2p1:AmountType"/>
+						<property name="PrincipalAmount" type="d2p1:AmountType"/>
+						<property name="BrokerageAmount" type="d2p1:AmountType" lowerBound="0"/>
+						<property name="Discounts" lowerBound="0">
+							<typeDef xsi:type="ObjectType">
+								<property name="Discount" type="d2p1:Discount" upperBound="-1"/>
+							</typeDef>
+						</property>
+					</typeDef>
+				</property>
+			</typeDef>
+		</property>
+		<property name="TotalByDocument">
+			<typeDef xsi:type="ObjectType">
+				<property name="PrincipalAmountTotal" type="d2p1:AmountType"/>
+				<property name="SalesAmountTotal" type="d2p1:AmountType"/>
+				<property name="TotalAmountRemuneration" type="d2p1:AmountType" lowerBound="0"/>
+				<property name="Percent" type="d2p1:AmountType" lowerBound="0"/>
+			</typeDef>
+		</property>
+		<property name="TotalsInWords">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="3000" whiteSpace="preserve"/>
+		</property>
+		<property name="Service" lowerBound="0">
+			<typeDef xsi:type="ObjectType" base="d2p1:Product">
+				<property name="Tax" type="d2p1:Tax" lowerBound="0"/>
+			</typeDef>
+		</property>
+		<property name="StartDate" type="xs:dateTime" lowerBound="0"/>
+		<property name="EndDate" type="xs:dateTime" lowerBound="0"/>
+		<property name="Currency" type="d2p1:Currency" lowerBound="0"/>
+		<property name="PaymentForm" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic">
+				<enumeration>Cashless</enumeration>
+				<enumeration>Cash</enumeration>
+			</typeDef>
+		</property>
+		<property name="PaymentStage" type="d2p1:PaymentSchedule" lowerBound="0" upperBound="-1"/>
+		<property name="CalculationMethod" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic">
+				<enumeration>From amount</enumeration>
+				<enumeration>From difference</enumeration>
+			</typeDef>
+		</property>
+		<property name="PayDate" type="xs:dateTime" lowerBound="0"/>
+		<property name="FromPrincipal" type="d2p1:IndividualAttributes" lowerBound="0"/>
+		<property name="FromAgent" type="d2p1:IndividualAttributes" lowerBound="0"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd" name="ComissionGoodsWriteOffReport" base="d2p1:BusinessInformation">
+		<property name="ID" type="d2p1:IdentifierGlobalType"/>
+		<property name="Number">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255" whiteSpace="collapse"/>
+		</property>
+		<property name="Date" type="xs:date"/>
+		<property name="Consignor" type="d2p1:Counterparty"/>
+		<property name="Agent" type="d2p1:Counterparty"/>
+		<property name="Products">
+			<typeDef xsi:type="ObjectType">
+				<property name="Product" upperBound="-1">
+					<typeDef xsi:type="ObjectType" base="d2p1:Product">
+						<property name="Quantity" type="d2p1:QuantityType"/>
+						<property name="MeasurementUnit" type="d2p1:MeasurementUnit"/>
+						<property name="Price" type="d2p1:AmountType"/>
+						<property name="Amount" type="d2p1:AmountType"/>
+					</typeDef>
+				</property>
+			</typeDef>
+		</property>
+		<property name="TotalByDocument" type="d2p1:AmountType"/>
+		<property name="TotalsInWords">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="3000" whiteSpace="preserve"/>
+		</property>
+		<property name="StartDate" type="xs:dateTime" lowerBound="0"/>
+		<property name="EndDate" type="xs:dateTime" lowerBound="0"/>
+		<property name="Currency" type="d2p1:Currency" lowerBound="0"/>
+		<property name="FromPrincipal" type="d2p1:IndividualAttributes" lowerBound="0"/>
+		<property name="FromAgent" type="d2p1:IndividualAttributes" lowerBound="0"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd" name="PriceList" base="d2p1:BusinessInformation" open="true" sequenced="true">
+		<property name="ID" type="d2p1:IdentifierGlobalType"/>
+		<property name="Owner" type="d2p1:Counterparty"/>
+		<property name="Offers">
+			<typeDef xsi:type="ObjectType">
+				<property name="Offer" upperBound="-1">
+					<typeDef xsi:type="ObjectType" base="d2p1:Product">
+						<property name="Prices">
+							<typeDef xsi:type="ObjectType">
+								<property name="Price" type="d2p1:ProductPrice" upperBound="-1"/>
+							</typeDef>
+						</property>
+						<property name="Quantity" type="d2p1:QuantityType" lowerBound="0"/>
+						<property name="QuantityByWarehouses" lowerBound="0">
+							<typeDef xsi:type="ObjectType">
+								<property name="QuantityInStock" upperBound="-1">
+									<typeDef xsi:type="ObjectType">
+										<property name="Warehouse" type="d2p1:Warehouse"/>
+										<property name="Quantity" type="d2p1:QuantityType" lowerBound="0"/>
+									</typeDef>
+								</property>
+							</typeDef>
+						</property>
+						<property name="ProductIdOfCounterparty" type="d2p1:IdentifierGlobalType" lowerBound="0"/>
+						<property name="Groups" lowerBound="0">
+							<typeDef xsi:type="ObjectType">
+								<property name="ID" type="d2p1:IdentifierGlobalType" upperBound="-1"/>
+							</typeDef>
+						</property>
+						<property name="Picture" lowerBound="0" upperBound="-1">
+							<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="100"/>
+						</property>
+						<property name="Country" lowerBound="0">
+							<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255" whiteSpace="preserve"/>
+						</property>
+						<property name="TradingMark" lowerBound="0">
+							<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="3000" whiteSpace="preserve"/>
+						</property>
+						<property name="TradeMarkOwner" type="d2p1:Counterparty" lowerBound="0"/>
+						<property name="Manufacturer" type="d2p1:Counterparty" lowerBound="0"/>
+						<property name="PropertyValues" lowerBound="0">
+							<typeDef xsi:type="ObjectType">
+								<property name="PropertyValues" type="d2p1:PropertyValues" upperBound="-1"/>
+							</typeDef>
+						</property>
+						<property name="TaxesRates" lowerBound="0">
+							<typeDef xsi:type="ObjectType">
+								<property name="TaxRate" upperBound="-1">
+									<typeDef xsi:type="ObjectType">
+										<property name="TaxType" type="xs:anyType"/>
+										<property name="Rate">
+											<typeDef xsi:type="ValueType" base="xs:decimal" variety="Atomic" totalDigits="5" fractionDigits="2"/>
+										</property>
+									</typeDef>
+								</property>
+							</typeDef>
+						</property>
+						<property name="ExciseDuties" lowerBound="0">
+							<typeDef xsi:type="ObjectType">
+								<property name="Excise" upperBound="-1">
+									<typeDef xsi:type="ObjectType">
+										<property name="Description">
+											<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255"/>
+										</property>
+										<property name="AmountPerUnit" type="d2p1:AmountType"/>
+										<property name="Currency">
+											<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" length="3"/>
+										</property>
+									</typeDef>
+								</property>
+							</typeDef>
+						</property>
+						<property name="Accessories" lowerBound="0">
+							<typeDef xsi:type="ObjectType">
+								<property name="Accessory" type="d2p1:Product" upperBound="-1"/>
+							</typeDef>
+						</property>
+						<property name="Analogs" lowerBound="0">
+							<typeDef xsi:type="ObjectType">
+								<property name="Analog" type="d2p1:Product" upperBound="-1"/>
+							</typeDef>
+						</property>
+						<property name="ProductCharacteristics" lowerBound="0">
+							<typeDef xsi:type="ObjectType">
+								<property name="ProductCharacteristic" type="d2p1:ProductCharacteristic" upperBound="-1"/>
+							</typeDef>
+						</property>
+						<property name="AttributeValues" lowerBound="0">
+							<typeDef xsi:type="ObjectType">
+								<property name="AttributeValue" type="d2p1:AttributeValue" upperBound="-1"/>
+							</typeDef>
+						</property>
+					</typeDef>
+				</property>
+			</typeDef>
+		</property>
+		<property name="Description" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255" whiteSpace="collapse"/>
+		</property>
+		<property name="DirectoryId" type="d2p1:IdentifierGlobalType" lowerBound="0"/>
+		<property name="ClassifierIdentifier" type="d2p1:IdentifierGlobalType" lowerBound="0"/>
+		<property name="ValidFrom" type="xs:dateTime" lowerBound="0"/>
+		<property name="ValidUntil" type="xs:dateTime" lowerBound="0"/>
+		<property name="Definition" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="3000" whiteSpace="collapse"/>
+		</property>
+		<property name="PriceTypes" lowerBound="0">
+			<typeDef xsi:type="ObjectType">
+				<property name="ClassifierIdentifier" type="d2p1:IdentifierGlobalType" lowerBound="0"/>
+				<property name="PriceType" type="d2p1:PriceType" upperBound="-1"/>
+			</typeDef>
+		</property>
+		<property name="PropertyValues" lowerBound="0">
+			<typeDef xsi:type="ObjectType">
+				<property name="PropertyValues" type="d2p1:PropertyValues" upperBound="-1"/>
+			</typeDef>
+		</property>
+	</objectType>
+	<objectType name="BankAccount">
+		<property name="AccountNo">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" length="20"/>
+		</property>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd" name="Bank" type="d3p1:Bank"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd" name="CorrespondentBank" type="d3p1:Bank" lowerBound="0"/>
+		<property name="Comment" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="3000" whiteSpace="preserve"/>
+		</property>
+	</objectType>
+	<objectType name="IndividualAttributes">
+		<property name="FullDescr">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="3000" whiteSpace="preserve"/>
+		</property>
+		<property name="Appeal" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="100" whiteSpace="preserve"/>
+		</property>
+		<property name="Surname" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255" whiteSpace="preserve"/>
+		</property>
+		<property name="Name" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255" whiteSpace="preserve"/>
+		</property>
+		<property name="Patronymic" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255" whiteSpace="preserve"/>
+		</property>
+		<property name="BirthDate" type="xs:date" lowerBound="0"/>
+		<property name="BirthPlace" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255" whiteSpace="preserve"/>
+		</property>
+		<property name="Gender" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="1">
+				<pattern>M</pattern>
+				<pattern>F</pattern>
+			</typeDef>
+		</property>
+		<property name="TIN" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="10" maxLength="12"/>
+		</property>
+		<property name="IdentityCard" lowerBound="0">
+			<typeDef xsi:type="ObjectType">
+				<property name="DocumentKind">
+					<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255" whiteSpace="preserve"/>
+				</property>
+				<property name="Series" lowerBound="0">
+					<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255" whiteSpace="preserve"/>
+				</property>
+				<property name="Number">
+					<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255" whiteSpace="preserve"/>
+				</property>
+				<property name="IssueDate" type="xs:date"/>
+				<property name="WhoIssued">
+					<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255" whiteSpace="preserve"/>
+				</property>
+			</typeDef>
+		</property>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd" name="RegistrationAddress" type="d3p1:Address" lowerBound="0"/>
+		<property name="OKPO" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255" whiteSpace="preserve">
+				<pattern>[0-9]{10}</pattern>
+				<pattern>[0-9]{8}</pattern>
+			</typeDef>
+		</property>
+		<property name="Certificate" lowerBound="0">
+			<typeDef xsi:type="ObjectType">
+				<property name="Number">
+					<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255"/>
+				</property>
+				<property name="IssueDate" type="xs:date"/>
+			</typeDef>
+		</property>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd" name="Company" type="d3p1:Counterparty" lowerBound="0"/>
+		<property name="Position" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255" whiteSpace="preserve"/>
+		</property>
+	</objectType>
+	<objectType name="DetailsOfLegalEntity">
+		<property name="OfficialName">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="3000" whiteSpace="preserve"/>
+		</property>
+		<property name="TIN" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="10" maxLength="12"/>
+		</property>
+		<property name="KPP" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" length="9"/>
+		</property>
+		<property name="DefaultActivityKind" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="3000" whiteSpace="preserve"/>
+		</property>
+		<property name="EGRPO" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255" whiteSpace="preserve"/>
+		</property>
+		<property name="OKVED" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255" whiteSpace="preserve">
+				<pattern>[0-9]{2}.[0-9]{2}.[0-9]{2}</pattern>
+			</typeDef>
+		</property>
+		<property name="RCEAP" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="7" whiteSpace="preserve">
+				<pattern>[0-9]{7}</pattern>
+			</typeDef>
+		</property>
+		<property name="RCOLF" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255" whiteSpace="preserve">
+				<pattern>[0-9]{2}-[0-9A-Z]</pattern>
+			</typeDef>
+		</property>
+		<property name="OKFS" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255" whiteSpace="preserve">
+				<pattern>[0-9]{2}</pattern>
+			</typeDef>
+		</property>
+		<property name="OKPO" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255" whiteSpace="preserve">
+				<pattern>[0-9]{10}</pattern>
+				<pattern>[0-9]{8}</pattern>
+			</typeDef>
+		</property>
+		<property name="RegistrationDate" type="xs:date" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd" name="LegalAddress" type="d3p1:Address" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd" name="Head" type="d3p1:Counterparty" lowerBound="0"/>
+	</objectType>
+	<objectType name="Property">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd" name="ID" type="d3p1:IdentifierGlobalType"/>
+		<property name="Description">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255" whiteSpace="preserve"/>
+		</property>
+		<property name="Definition" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="3000" whiteSpace="preserve"/>
+		</property>
+		<property name="Required" type="xs:boolean" lowerBound="0"/>
+		<property name="Multiple" type="xs:boolean" lowerBound="0"/>
+		<property name="ValuesType" lowerBound="0" upperBound="-1">
+			<typeDef xsi:type="ObjectType">
+				<property xmlns:d5p1="http://v8.1c.ru/edi/edi_stnd" name="Type" type="d5p1:ValuesTypeType"/>
+				<property name="Definition" lowerBound="0">
+					<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="3000" whiteSpace="preserve"/>
+				</property>
+				<property name="ValueVariants" lowerBound="0" upperBound="-1">
+					<typeDef xsi:type="ObjectType">
+						<property xmlns:d7p1="http://v8.1c.ru/edi/edi_stnd" name="ValueIdentifier" type="d7p1:IdentifierGlobalType"/>
+						<property name="Value">
+							<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255" whiteSpace="preserve"/>
+						</property>
+					</typeDef>
+				</property>
+			</typeDef>
+		</property>
+		<property name="ForGoods" type="xs:boolean" lowerBound="0"/>
+		<property name="ForProposals" type="xs:boolean" lowerBound="0"/>
+		<property name="ForDocuments" type="xs:boolean" lowerBound="0"/>
+	</objectType>
+	<objectType name="Discount">
+		<property name="Description">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255" whiteSpace="preserve"/>
+		</property>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd" name="Amount" type="d3p1:AmountType"/>
+		<property name="Percent" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:decimal" variety="Atomic" totalDigits="5" fractionDigits="2"/>
+		</property>
+		<property name="IncludedInAmount" type="xs:boolean" lowerBound="0"/>
+		<property name="Comment" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="3000" whiteSpace="preserve"/>
+		</property>
+	</objectType>
+	<objectType name="Warehouse">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd" name="ID" type="d3p1:IdentifierGlobalType"/>
+		<property name="Description">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255" whiteSpace="preserve"/>
+		</property>
+		<property name="Comment" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="3000" whiteSpace="preserve"/>
+		</property>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd" name="Address" type="d3p1:Address" lowerBound="0"/>
+		<property name="Contacts" lowerBound="0">
+			<typeDef xsi:type="ObjectType">
+				<property xmlns:d5p1="http://v8.1c.ru/edi/edi_stnd" name="Contact" type="d5p1:ContactInformation" upperBound="-1"/>
+			</typeDef>
+		</property>
+	</objectType>
+	<objectType name="Cost">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd" name="AmountTotal" type="d3p1:AmountType"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd" name="Tax" type="d3p1:Tax" lowerBound="0" upperBound="-1"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd" name="TaxAmount" type="d3p1:AmountType" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd" name="AmountWithoutTax" type="d3p1:AmountType" lowerBound="0"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd" name="InvoiceForPayment" base="d2p1:BusinessInformation">
+		<property name="ID" type="d2p1:IdentifierGlobalType"/>
+		<property name="Number">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255" whiteSpace="collapse"/>
+		</property>
+		<property name="Date" type="xs:date"/>
+		<property name="RecipientAttributes" type="d2p1:BankAccount"/>
+		<property name="PaymentDestination">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="3000" whiteSpace="preserve"/>
+		</property>
+		<property name="AccountExpirationDate" type="xs:date"/>
+		<property name="Vendor">
+			<typeDef xsi:type="ObjectType" base="d2p1:Counterparty"/>
+		</property>
+		<property name="Customer" type="d2p1:Counterparty"/>
+		<property name="TotalByDocument">
+			<typeDef xsi:type="ObjectType">
+				<property name="AmountTotal" type="d2p1:AmountType"/>
+				<property name="TaxAmountTotal" type="d2p1:AmountType" lowerBound="0"/>
+				<property name="PriceIncludesTax" type="xs:boolean" lowerBound="0"/>
+				<property name="AmountWithoutDiscountTotal" type="d2p1:AmountType" lowerBound="0"/>
+				<property name="DiscountAmountTotal" type="d2p1:AmountType" lowerBound="0"/>
+			</typeDef>
+		</property>
+		<property name="TotalsInWords">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="3000" whiteSpace="preserve"/>
+		</property>
+		<property name="Head" type="d2p1:IndividualAttributes" lowerBound="0"/>
+		<property name="Accountant" type="d2p1:IndividualAttributes" lowerBound="0"/>
+		<property name="BasisDocuments" type="d2p1:BasisDocuments" lowerBound="0" upperBound="-1"/>
+		<property name="Currency" type="d2p1:Currency" lowerBound="0"/>
+		<property name="Products" lowerBound="0">
+			<typeDef xsi:type="ObjectType">
+				<property name="Product" upperBound="-1">
+					<typeDef xsi:type="ObjectType" base="d2p1:Product">
+						<property name="Quantity" type="d2p1:QuantityType"/>
+						<property name="MeasurementUnit" type="d2p1:MeasurementUnit"/>
+						<property name="Price" type="d2p1:AmountType"/>
+						<property name="AmountsByProduct" type="d2p1:Cost"/>
+						<property name="Discounts" lowerBound="0">
+							<typeDef xsi:type="ObjectType">
+								<property name="Discount" type="d2p1:Discount" upperBound="-1"/>
+								<property name="DiscountsAmount" type="d2p1:AmountType" lowerBound="0"/>
+								<property name="AmountWithoutDiscounts" type="d2p1:AmountType" lowerBound="0"/>
+							</typeDef>
+						</property>
+					</typeDef>
+				</property>
+			</typeDef>
+		</property>
+		<property name="PaymentStage" type="d2p1:PaymentSchedule" lowerBound="0" upperBound="-1"/>
+		<property name="Responsible" type="d2p1:IndividualAttributes" lowerBound="0"/>
+		<property name="Comment" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="3000" whiteSpace="preserve"/>
+		</property>
+	</objectType>
+	<objectType xmlns:d2p1="http://v8.1c.ru/edi/edi_stnd" name="TORG12" base="d2p1:BusinessInformation">
+		<property name="ID" type="d2p1:IdentifierGlobalType"/>
+		<property name="Number">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255" whiteSpace="collapse"/>
+		</property>
+		<property name="Date" type="xs:dateTime"/>
+		<property name="OKUD">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic">
+				<enumeration>0330212</enumeration>
+			</typeDef>
+		</property>
+		<property name="Consignor">
+			<typeDef xsi:type="ObjectType" base="d2p1:Counterparty">
+				<property name="OrganizationDivision" lowerBound="0">
+					<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255"/>
+				</property>
+			</typeDef>
+		</property>
+		<property name="Consignee" type="d2p1:Counterparty"/>
+		<property name="ShippingAddress" type="d2p1:Address" lowerBound="0"/>
+		<property name="Vendor" type="d2p1:Counterparty"/>
+		<property name="Payer" type="d2p1:Counterparty"/>
+		<property name="Basis" type="d2p1:BasisDocuments" lowerBound="0"/>
+		<property name="WayBill" lowerBound="0">
+			<typeDef xsi:type="ObjectType">
+				<property name="Number">
+					<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255" whiteSpace="collapse"/>
+				</property>
+				<property name="Date" type="xs:date"/>
+			</typeDef>
+		</property>
+		<property name="OperationKind" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255"/>
+		</property>
+		<property name="Products">
+			<typeDef xsi:type="ObjectType">
+				<property name="Product" upperBound="-1">
+					<typeDef xsi:type="ObjectType" base="d2p1:Product" open="true" sequenced="true">
+						<property name="SerialNumber" type="xs:integer"/>
+						<property name="MeasurementUnit" type="d2p1:MeasurementUnit"/>
+						<property name="Quantity" type="d2p1:QuantityType"/>
+						<property name="Price" type="d2p1:AmountType"/>
+						<property name="AmountWithoutVAT" type="d2p1:AmountType"/>
+						<property name="AmountWithVAT" type="d2p1:AmountType"/>
+						<property name="PackagingKind" lowerBound="0">
+							<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255" whiteSpace="collapse"/>
+						</property>
+						<property name="GrossWeight" type="d2p1:QuantityType" lowerBound="0"/>
+						<property name="NetWeight" type="d2p1:QuantityType" lowerBound="0"/>
+						<property name="Tax" type="d2p1:Tax" lowerBound="0"/>
+					</typeDef>
+				</property>
+			</typeDef>
+		</property>
+		<property name="Currency" type="d2p1:Currency" lowerBound="0"/>
+		<property name="TotalByDocument">
+			<typeDef xsi:type="ObjectType">
+				<property name="RecCount">
+					<typeDef xsi:type="ValueType" base="xs:decimal" variety="Atomic" minInclusive="1"/>
+				</property>
+				<property name="PlacesQuantity" type="d2p1:QuantityType"/>
+				<property name="AmountWithVAT" type="d2p1:AmountType"/>
+				<property name="AmountWithoutVAT" type="d2p1:AmountType"/>
+				<property name="VATAmount" type="d2p1:AmountType" lowerBound="0"/>
+				<property name="NetWeight" type="d2p1:QuantityType" lowerBound="0"/>
+				<property name="GrossWeight" type="d2p1:QuantityType" lowerBound="0"/>
+			</typeDef>
+		</property>
+		<property name="TotalsInWords">
+			<typeDef xsi:type="ObjectType">
+				<property name="RecordsCountInWords">
+					<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255"/>
+				</property>
+				<property name="PlacesCountInWords">
+					<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255"/>
+				</property>
+				<property name="AmountTotalInWords">
+					<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255"/>
+				</property>
+				<property name="NetWeightInWords" lowerBound="0">
+					<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255"/>
+				</property>
+				<property name="GrossWeightInWords" lowerBound="0">
+					<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255"/>
+				</property>
+				<property name="Application" lowerBound="0">
+					<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="3000" whiteSpace="preserve"/>
+				</property>
+			</typeDef>
+		</property>
+		<property name="ReleasePermitted" type="d2p1:IndividualAttributes" lowerBound="0"/>
+		<property name="ChiefAccountant" type="d2p1:IndividualAttributes" lowerBound="0"/>
+		<property name="ReleaseMade" lowerBound="0">
+			<typeDef xsi:type="ObjectType" base="d2p1:IndividualAttributes">
+				<property name="PowerOfAttorney" type="d2p1:PowerOfAttorney" lowerBound="0"/>
+			</typeDef>
+		</property>
+		<property name="ShipmentDate" type="xs:dateTime" lowerBound="0"/>
+		<property name="CargoReceived" lowerBound="0">
+			<typeDef xsi:type="ObjectType" base="d2p1:IndividualAttributes">
+				<property name="PowerOfAttorney" type="d2p1:PowerOfAttorney" lowerBound="0"/>
+			</typeDef>
+		</property>
+		<property name="CargoTaken" lowerBound="0">
+			<typeDef xsi:type="ObjectType" base="d2p1:IndividualAttributes">
+				<property name="PowerOfAttorney" type="d2p1:PowerOfAttorney" lowerBound="0"/>
+			</typeDef>
+		</property>
+	</objectType>
+	<objectType name="PriceType">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd" name="ID" type="d3p1:IdentifierGlobalType"/>
+		<property name="Description" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255" whiteSpace="preserve"/>
+		</property>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd" name="Currency" type="d3p1:Currency" lowerBound="0"/>
+		<property name="Definition" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="3000" whiteSpace="preserve"/>
+		</property>
+	</objectType>
+	<objectType name="Product">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd" name="ID" type="d3p1:IdentifierGlobalType"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd" name="Barcode" type="d3p1:GTIN" lowerBound="0"/>
+		<property name="SKU" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255" whiteSpace="preserve"/>
+		</property>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd" name="ProductId" type="d3p1:ProductID" lowerBound="0"/>
+		<property name="Description">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="1" maxLength="255" whiteSpace="preserve"/>
+		</property>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd" name="BaseUnit" type="d3p1:BaseUnit"/>
+		<property name="Definition" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="3000" whiteSpace="preserve"/>
+		</property>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd" name="AdditionalAttributes" type="d3p1:AttributeValue" lowerBound="0" upperBound="-1"/>
+	</objectType>
+	<objectType name="ProductCharacteristic">
+		<property name="Description">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255" whiteSpace="preserve"/>
+		</property>
+		<property name="Value">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255" whiteSpace="preserve"/>
+		</property>
+	</objectType>
+	<objectType name="ProductPrice">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd" name="PriceTypeIdentifier" type="d3p1:IdentifierGlobalType"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd" name="MeasurementUnit" type="d3p1:MeasurementUnit"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd" name="Price" type="d3p1:AmountType"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd" name="Currency" type="d3p1:Currency" lowerBound="0"/>
+		<property name="MinQuantity" lowerBound="0">
+			<typeDef xmlns:d4p1="http://v8.1c.ru/edi/edi_stnd" xsi:type="ValueType" base="d4p1:QuantityType" variety="Atomic" fractionDigits="3"/>
+		</property>
+		<property name="Taxes" lowerBound="0">
+			<typeDef xsi:type="ObjectType">
+				<property name="Tax" upperBound="-1">
+					<typeDef xmlns:d6p1="http://v8.1c.ru/edi/edi_stnd" xsi:type="ObjectType" base="d6p1:Tax"/>
+				</property>
+				<property xmlns:d5p1="http://v8.1c.ru/edi/edi_stnd" name="TaxAmount" type="d5p1:AmountType" lowerBound="0"/>
+			</typeDef>
+		</property>
+		<property name="Presentation" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="3000" whiteSpace="preserve"/>
+		</property>
+	</objectType>
+</package>

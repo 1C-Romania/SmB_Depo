@@ -1,0 +1,1438 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<ChildItems>
+			<Button name="DataRequestStartDate" id="478">
+				<Type>CommandBarButton</Type>
+				<OnlyInAllActions>false</OnlyInAllActions>
+				<CommandName>Form.Command.DataRequestStartDate</CommandName>
+				<Title>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Last ED receiving date</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="DataRequestStartDateExtendedTooltip" id="479"/>
+			</Button>
+			<Button name="SettingsTest" id="367">
+				<Type>CommandBarButton</Type>
+				<Representation>PictureAndText</Representation>
+				<CommandName>Form.Command.SettingsTest</CommandName>
+				<Picture>
+					<xr:Ref>CommonPicture.Information</xr:Ref>
+					<xr:LoadTransparent>true</xr:LoadTransparent>
+				</Picture>
+				<ExtendedTooltip name="SettingsTestExtendedTooltip" id="368"/>
+			</Button>
+			<Button name="AuditLog" id="324">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.AuditLog</CommandName>
+				<ExtendedTooltip name="AuditLogExtendedTooltip" id="369"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="AfterWrite">AfterWrite</Event>
+		<Event name="AfterWriteAtServer">AfterWriteAtServer</Event>
+		<Event name="OnReadAtServer">OnReadAtServer</Event>
+		<Event name="OnOpen">OnOpen</Event>
+		<Event name="8a5894c9-d2ff-4c1d-b433-89cc352bbfbc">BeforeWrite</Event>
+		<Event name="BeforeWrite">BeforeWrite</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="HeaderGroup" id="76">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group header</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group header</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="HeaderGroupExtendedTooltip" id="370"/>
+			<ChildItems>
+				<UsualGroup name="HorizontalHeadersGroup" id="86">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Horizontal headers group</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Horizontal headers group</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="HorizontalGroupHeadersExtendedTooltip" id="371"/>
+					<ChildItems>
+						<UsualGroup name="GroupHeaderLeft" id="78">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group header left</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group header left</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupHeaderLeftExtendedTooltip" id="372"/>
+							<ChildItems>
+								<UsualGroup name="NumberDateGroup" id="77">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group number date</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group number date</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="NumberDateGroupExtendedTooltip" id="373"/>
+								</UsualGroup>
+								<InputField name="Description" id="189">
+									<DataPath>Object.Description</DataPath>
+									<ContextMenu name="DescriptionContextMenu" id="190"/>
+									<ExtendedTooltip name="DescriptionExtendedTooltip" id="376"/>
+								</InputField>
+								<InputField name="CompanySender" id="5">
+									<DataPath>Object.Company</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoMarkIncomplete>true</AutoMarkIncomplete>
+									<ContextMenu name="CompanySenderContextMenu" id="6"/>
+									<ExtendedTooltip name="CompanySenderExtendedTooltip" id="377"/>
+								</InputField>
+								<InputField name="TypeOfBankingSystem" id="308">
+									<DataPath>Object.BankApplication</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Connection variant</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Connection variant</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ListChoiceMode>true</ListChoiceMode>
+									<AutoMarkIncomplete>true</AutoMarkIncomplete>
+									<ChoiceList>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.BankApplications.EnumValue.AsynchronousExchange</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.BankApplications.EnumValue.AlphaBankOnline</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.BankApplications.EnumValue.ExchangeThroughTheAdditionalInformationProcessor</Value>
+											</xr:Value>
+										</xr:Item>
+									</ChoiceList>
+									<BackColor>style:ManagingFieldBackgroundColor</BackColor>
+									<ContextMenu name="TypeOfBankingSystemContextMenu" id="309"/>
+									<ExtendedTooltip name="TypeOfBankingSystemExtendedTooltip" id="378"/>
+									<Events>
+										<Event name="OnChange">TypeOfBankingSystemOnChange</Event>
+									</Events>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="GroupHeaderRight" id="79">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group header right</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group header right</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="HeaderGroupRightExtendedTooltip" id="379"/>
+							<ChildItems>
+								<InputField name="Status" id="70">
+									<DataPath>Object.AgreementStatus</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Status</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="StateContextMenu" id="71"/>
+									<ExtendedTooltip name="StateExtendedTooltip" id="380"/>
+								</InputField>
+								<InputField name="Bank" id="7">
+									<DataPath>Object.Counterparty</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Bank</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Bank the agreement is concluded with.</v8:content>
+										</v8:item>
+									</ToolTip>
+									<EditMode>EnterOnInput</EditMode>
+									<ChoiceButton>true</ChoiceButton>
+									<AutoMarkIncomplete>true</AutoMarkIncomplete>
+									<ChooseType>false</ChooseType>
+									<ChoiceListButton>false</ChoiceListButton>
+									<ContextMenu name="BankContextMenu" id="8"/>
+									<ExtendedTooltip name="BankExtendedTooltip" id="382"/>
+									<Events>
+										<Event name="OnChange">BankOnChange</Event>
+									</Events>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="DataExchangeSettings" id="330">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Data exchange settings</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Data exchange settings</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<ExtendedTooltip name="DataExchangeSettingsExtendedTooltip" id="401"/>
+			<ChildItems>
+				<Pages name="PagesKindsOfBankingSystems" id="331">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Pages banking system types</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Pages banking system types</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="PagesKindsOfBankingSystemsExtendedTooltip" id="402"/>
+					<ChildItems>
+						<Page name="PageAsynchronous" id="530">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Asynchronous</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Page asynchronous</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ExtendedTooltip name="AsynchronousPageExtendedTooltip" id="531"/>
+							<ChildItems>
+								<InputField name="CompanyIDAsynchronous" id="532">
+									<DataPath>Object.CompanyID</DataPath>
+									<Width>52</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<AutoMarkIncomplete>true</AutoMarkIncomplete>
+									<ContextMenu name="CompanyIDAsynchronousContextMenu" id="533"/>
+									<ExtendedTooltip name="CompanyIDAsynchronousExtendedTooltip" id="534"/>
+								</InputField>
+								<UsualGroup name="GroupExplanationsIDAsynchronous" id="535">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group explanations bank server addresses</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group explanations bank server addresses</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupClarificationsIDAsynchronousExtendedTooltip" id="536"/>
+									<ChildItems>
+										<LabelDecoration name="DecorationEmptyIndentIdentifierAsynchronous" id="537">
+											<Width>19</Width>
+											<ContextMenu name="DecorationEmptyIndentIdentifierAsynchronousContextMenu" id="538"/>
+											<ExtendedTooltip name="DecorationEmptyIndentIdentifierAsynchronousExtendedTooltip" id="539"/>
+										</LabelDecoration>
+										<LabelDecoration name="ExplanationAsynchronousID" id="540">
+											<TextColor>style:ExplanationText</TextColor>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Specifies a unique ID issued by the bank</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="ClarificationAsynchronousContextMenuID" id="541"/>
+											<ExtendedTooltip name="ClarificationIDAsynchronousExtendedTooltip" id="542"/>
+										</LabelDecoration>
+									</ChildItems>
+								</UsualGroup>
+								<InputField name="AsynchronousServerAddress" id="543">
+									<DataPath>Object.ServerAddress</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Bank server address</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Bank server address, the electronic documents exchange is carried through</v8:content>
+										</v8:item>
+									</ToolTip>
+									<HorizontalStretch>false</HorizontalStretch>
+									<AutoMarkIncomplete>true</AutoMarkIncomplete>
+									<ContextMenu name="AsynchronousServerAddressContextMenu" id="544"/>
+									<ExtendedTooltip name="ServerAddressAsynchronousExtendedTooltip" id="545"/>
+								</InputField>
+								<UsualGroup name="GroupClarificationsBankServerAddressAsynchronous" id="546">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group explanations bank server addresses</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group explanations bank server addresses</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupClarificationsBankServerAddressAsynchronousExtendedTooltip" id="547"/>
+									<ChildItems>
+										<LabelDecoration name="EmptyDecorationIndentBank1ServerAddress" id="548">
+											<Width>19</Width>
+											<ContextMenu name="DecorationEmptyIndentBank1ServerAddressContextMenu" id="549"/>
+											<ExtendedTooltip name="DecorationEmptyIndentBank1ServerAddressExtendedTooltip" id="550"/>
+										</LabelDecoration>
+										<LabelDecoration name="ExplanationBank1ServerAddress" id="551">
+											<TextColor>style:ExplanationText</TextColor>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Specifies bank server address, for example: https://mybank.com</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="ClarificationBank1ServerAddressContextMenu" id="552"/>
+											<ExtendedTooltip name="ClarificationBank1ServerAddressExtendedTooltip" id="553"/>
+										</LabelDecoration>
+									</ChildItems>
+								</UsualGroup>
+								<InputField name="User" id="525">
+									<DataPath>Object.User</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Login</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Customer account used for authentication on the bank resource</v8:content>
+										</v8:item>
+									</ToolTip>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="UserContextMenu" id="526"/>
+									<ExtendedTooltip name="UserExtendedTooltip" id="527"/>
+								</InputField>
+							</ChildItems>
+						</Page>
+						<Page name="PageSynchronous" id="332">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Synchronous</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Page synchronous</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ExtendedTooltip name="PageSynchronousExtendedTooltip" id="403"/>
+							<ChildItems>
+								<UsualGroup name="ServerAddressGroup" id="427">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Settings for data exchange</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Server address group</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ServerAddressGroupExtendedTooltip" id="428"/>
+									<ChildItems>
+										<Pages name="SettingPages" id="429">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Setting pages</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Setting pages</v8:content>
+												</v8:item>
+											</ToolTip>
+											<PagesRepresentation>None</PagesRepresentation>
+											<ExtendedTooltip name="SettingPagesExtendedTooltip" id="430"/>
+											<ChildItems>
+												<Page name="Resources" id="431">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Resources</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Resources</v8:content>
+														</v8:item>
+													</ToolTip>
+													<ExtendedTooltip name="ResourcesExtendedTooltip" id="432"/>
+													<ChildItems>
+														<InputField name="ServerAddress" id="433">
+															<DataPath>Object.ServerAddress</DataPath>
+															<Title>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Bank server address</v8:content>
+																</v8:item>
+															</Title>
+															<ToolTip>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Bank server address, the electronic documents exchange is carried through</v8:content>
+																</v8:item>
+															</ToolTip>
+															<Width>56</Width>
+															<HorizontalStretch>false</HorizontalStretch>
+															<AutoMarkIncomplete>true</AutoMarkIncomplete>
+															<ContextMenu name="ServerAddressContextMenu" id="434"/>
+															<ExtendedTooltip name="ServerAddressExtendedTooltip" id="435"/>
+														</InputField>
+														<UsualGroup name="GroupExplanationsBankServerAddresses" id="447">
+															<Title>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Group explanations bank server addresses</v8:content>
+																</v8:item>
+															</Title>
+															<ToolTip>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Group explanations bank server addresses</v8:content>
+																</v8:item>
+															</ToolTip>
+															<Group>Horizontal</Group>
+															<Representation>None</Representation>
+															<ShowTitle>false</ShowTitle>
+															<ExtendedTooltip name="GroupClarificationsBankServerAddressesExtendedTooltip" id="448"/>
+															<ChildItems>
+																<LabelDecoration name="EmptyDecorationIndentBankServerAddress" id="449">
+																	<Width>15</Width>
+																	<ContextMenu name="DecorationEmptyIndentBankServerAddressContextMenu" id="450"/>
+																	<ExtendedTooltip name="DecorationEmptyIndentBankServerAddressExtendedTooltip" id="451"/>
+																</LabelDecoration>
+																<LabelDecoration name="ExplanationBankServerAddress" id="452">
+																	<TextColor>style:ExplanationText</TextColor>
+																	<Title formatted="false">
+																		<v8:item>
+																			<v8:lang>en</v8:lang>
+																			<v8:content>Specifies bank server address, for example: https://mybank.com</v8:content>
+																		</v8:item>
+																	</Title>
+																	<ContextMenu name="ExplanationBankServerAddressContextMenu" id="453"/>
+																	<ExtendedTooltip name="ExplanationBankServerAddressExtendedTooltip" id="454"/>
+																</LabelDecoration>
+															</ChildItems>
+														</UsualGroup>
+														<InputField name="ResourceReceiver" id="436">
+															<DataPath>Object.OutgoingDocumentsResource</DataPath>
+															<Title>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Resource for sending</v8:content>
+																</v8:item>
+															</Title>
+															<Width>56</Width>
+															<HorizontalStretch>false</HorizontalStretch>
+															<AutoMarkIncomplete>true</AutoMarkIncomplete>
+															<ContextMenu name="ResourceReceiverContextMenu" id="437"/>
+															<ExtendedTooltip name="ResourceReceiverExtendedTooltip" id="438"/>
+														</InputField>
+														<InputField name="ResourceSource" id="439">
+															<DataPath>Object.IncomingDocumentsResource</DataPath>
+															<Title>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Resource for receiving</v8:content>
+																</v8:item>
+															</Title>
+															<Width>56</Width>
+															<HorizontalStretch>false</HorizontalStretch>
+															<ChoiceButton>false</ChoiceButton>
+															<AutoMarkIncomplete>true</AutoMarkIncomplete>
+															<ChooseType>false</ChooseType>
+															<ContextMenu name="ResourceSourceContextMenu" id="440"/>
+															<ExtendedTooltip name="ResourceSourceExtendedTooltip" id="441"/>
+														</InputField>
+													</ChildItems>
+												</Page>
+											</ChildItems>
+										</Pages>
+										<UsualGroup name="GroupAuthorization" id="466">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Authorization group</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Authorization group</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Horizontal</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="GroupAuthorizationExtendedTooltip" id="467"/>
+											<ChildItems>
+												<RadioButtonField name="AuthorizationVariant" id="468">
+													<DataPath>AuthorizationVariant</DataPath>
+													<TitleLocation>Left</TitleLocation>
+													<RadioButtonType>Auto</RadioButtonType>
+													<ColumnsCount>1</ColumnsCount>
+													<ChoiceList>
+														<xr:Item>
+															<xr:Presentation/>
+															<xr:CheckState>0</xr:CheckState>
+															<xr:Value xsi:type="FormChoiceListDesTimeValue">
+																<Presentation>
+																	<v8:item>
+																		<v8:lang>en</v8:lang>
+																		<v8:content>Through login and password</v8:content>
+																	</v8:item>
+																</Presentation>
+																<Value xsi:type="xs:decimal">0</Value>
+															</xr:Value>
+														</xr:Item>
+														<xr:Item>
+															<xr:Presentation/>
+															<xr:CheckState>0</xr:CheckState>
+															<xr:Value xsi:type="FormChoiceListDesTimeValue">
+																<Presentation>
+																	<v8:item>
+																		<v8:lang>en</v8:lang>
+																		<v8:content>Through the signature certificate</v8:content>
+																	</v8:item>
+																</Presentation>
+																<Value xsi:type="xs:decimal">1</Value>
+															</xr:Value>
+														</xr:Item>
+													</ChoiceList>
+													<ContextMenu name="AuthorizationVariantContextMenu" id="469"/>
+													<ExtendedTooltip name="AuthorizationVariantExtendedTooltip" id="470"/>
+													<Events>
+														<Event name="OnChange">AuthorizationVariantOnChange</Event>
+													</Events>
+												</RadioButtonField>
+												<InputField name="Login" id="475">
+													<DataPath>Object.User</DataPath>
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Login</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Customer account used for authentication on the bank resource</v8:content>
+														</v8:item>
+													</ToolTip>
+													<Width>26</Width>
+													<HorizontalStretch>false</HorizontalStretch>
+													<ContextMenu name="LoginContextMenu" id="476"/>
+													<ExtendedTooltip name="LoginExtendedTooltip" id="477"/>
+												</InputField>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="GroupCertificates" id="528">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>ES key certificates</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group certificates</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Vertical</Group>
+									<ExtendedTooltip name="GroupCertificatesExtendedTooltip" id="529"/>
+									<ChildItems>
+										<Table name="CertificatesRequiredSignaturesModel" id="251">
+											<Representation>List</Representation>
+											<AutoAddIncomplete>false</AutoAddIncomplete>
+											<AutoMarkIncomplete>true</AutoMarkIncomplete>
+											<EnableStartDrag>true</EnableStartDrag>
+											<EnableDrag>true</EnableDrag>
+											<DataPath>Object.CompanySignatureCertificates</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>ES key certificates</v8:content>
+												</v8:item>
+											</Title>
+											<CommandSet>
+												<ExcludedCommand>Copy</ExcludedCommand>
+											</CommandSet>
+											<SearchStringLocation>None</SearchStringLocation>
+											<ViewStatusLocation>None</ViewStatusLocation>
+											<SearchControlLocation>None</SearchControlLocation>
+											<RowFilter xsi:nil="true"/>
+											<ContextMenu name="CertificatesRequiredSignaturesStandardContextMenu" id="252"/>
+											<AutoCommandBar name="CertificatesRequiredSignaturesTypicalCommandBar" id="253"/>
+											<ExtendedTooltip name="CertificatesRequiredSignaturesTypicalExtendedTooltip" id="422"/>
+											<SearchStringAddition name="CertificatesRequiredSignaturesTypicalSearchString" id="516">
+												<AdditionSource>
+													<Item>CertificatesRequiredSignaturesModel</Item>
+													<Type>SearchStringRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="CertificatesRequiredSignaturesTypicalSearchStringContextMenu" id="517"/>
+												<ExtendedTooltip name="CertificatesRequiredSignaturesTypicalSearchStringExtendedTooltip" id="518"/>
+											</SearchStringAddition>
+											<ViewStatusAddition name="CertificatesRequiredSignaturesTypicalStatusView" id="519">
+												<AdditionSource>
+													<Item>CertificatesRequiredSignaturesModel</Item>
+													<Type>ViewStatusRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="CertificatesRequiredSignaturesTypicalStatusViewContextMenu" id="520"/>
+												<ExtendedTooltip name="CertificatesRequiredSignaturesTypicalStatusViewExtendedTooltip" id="521"/>
+											</ViewStatusAddition>
+											<SearchControlAddition name="CertificatesRequiredSignaturesTypicalSearchControl" id="522">
+												<AdditionSource>
+													<Item>CertificatesRequiredSignaturesModel</Item>
+													<Type>SearchControl</Type>
+												</AdditionSource>
+												<ContextMenu name="CertificatesRequiredSignaturesTypicalSearchControlContextMenu" id="523"/>
+												<ExtendedTooltip name="CertificatesRequiredSignaturesTypicalSearchControlExtendedTooltip" id="524"/>
+											</SearchControlAddition>
+											<ChildItems>
+												<LabelField name="NecessarySignaturesCertificatesLineNumber" id="297">
+													<DataPath>Object.CompanySignatureCertificates.LineNumber</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="CertificatesRequiredSignaturesLineNumberContextMenu" id="298"/>
+													<ExtendedTooltip name="CertificatesRequiredSignaturesLineNumberExtendedTooltip" id="423"/>
+												</LabelField>
+												<InputField name="NecessarySignaturesCertificatesCertificate" id="299">
+													<DataPath>Object.CompanySignatureCertificates.Certificate</DataPath>
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Company certificate</v8:content>
+														</v8:item>
+													</Title>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="CertificatesRequiredSignaturesCertificateContextMenu" id="300"/>
+													<ExtendedTooltip name="CertificatesRequiredSignaturesCertificateExtendedTooltip" id="425"/>
+												</InputField>
+											</ChildItems>
+										</Table>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</Page>
+						<Page name="SberBankPage" id="352">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Sberbank</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Sberbank Page</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ExtendedTooltip name="SberBankPageExtendedTooltip" id="416"/>
+							<ChildItems>
+								<InputField name="CompanyID" id="354">
+									<DataPath>Object.CompanyID</DataPath>
+									<Mask>hhhhhhhh-hhhh-hhhh-hhhh-hhhhhhhhhhhh</Mask>
+									<AutoMarkIncomplete>true</AutoMarkIncomplete>
+									<ContextMenu name="CompanyIDContextMenu" id="355"/>
+									<ExtendedTooltip name="CompanyIDExtendedTooltip" id="418"/>
+								</InputField>
+								<UsualGroup name="GroupExplanationsSberbankID" id="611">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group explanations bank server addresses</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group explanations bank server addresses</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupClarificationsIDSberbankExtendedTooltip" id="612"/>
+									<ChildItems>
+										<LabelDecoration name="EmptyDecorationIndentExternalIdentifierSberbank" id="613">
+											<Width>19</Width>
+											<ContextMenu name="DecorationEmptyIndentIdentifierSberbankContextMenu" id="614"/>
+											<ExtendedTooltip name="DecorationEmptyIndentIdentifierSberbankExtendedTooltip" id="615"/>
+										</LabelDecoration>
+										<LabelDecoration name="ExplanationSberbankID" id="616">
+											<TextColor>style:ExplanationText</TextColor>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Specifies a unique ID issued by the bank</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="ClarificationSberbankIDContextMenu" id="617"/>
+											<ExtendedTooltip name="ClarificationSberbankIDExtendedTooltip" id="618"/>
+										</LabelDecoration>
+									</ChildItems>
+								</UsualGroup>
+								<InputField name="BankSertificates" id="356">
+									<DataPath>BankSertificates</DataPath>
+									<ChoiceButton>true</ChoiceButton>
+									<ClearButton>true</ClearButton>
+									<AutoMarkIncomplete>true</AutoMarkIncomplete>
+									<ContextMenu name="BankSertificatesContextMenu" id="357"/>
+									<ExtendedTooltip name="BankSertificatesExtendedTooltip" id="419"/>
+									<Events>
+										<Event name="OnChange">BankSertificatesOnChange</Event>
+										<Event name="StartChoice">BankSertificatesStartChoice</Event>
+										<Event name="Clearing">BankSertificateClear</Event>
+									</Events>
+								</InputField>
+								<UsualGroup name="GroupExplanationsSberbankCertificate" id="619">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group explanations bank server addresses</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group explanations bank server addresses</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupClarificationsSberbankCertificateExtendedTooltip" id="620"/>
+									<ChildItems>
+										<LabelDecoration name="EmptyDecorationIndentCertificateSberbank" id="621">
+											<Width>19</Width>
+											<ContextMenu name="DecorationEmptyIndentCertificateSberbankContextMenu" id="622"/>
+											<ExtendedTooltip name="DecorationEmptyIndentCertificateSberbankExtendedTooltip" id="623"/>
+										</LabelDecoration>
+										<LabelDecoration name="ExplanationCertificateSberbank" id="624">
+											<TextColor>style:ExplanationText</TextColor>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Sberbank certificate to verify the validity of account statements Digital signatures</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="ClarificationCertificateSberankContextMenu" id="625"/>
+											<ExtendedTooltip name="ClarificationCertificateSberankExtendedTooltip" id="626"/>
+										</LabelDecoration>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="GroupCertificatesSberbank" id="582">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>ES key certificates</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group certificates sberbank</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Vertical</Group>
+									<ExtendedTooltip name="GroupCertificatesSberbankExtendedTooltip" id="583"/>
+									<ChildItems>
+										<Table name="CompanySignatureCertificates" id="554">
+											<AutoInsertNewRow>true</AutoInsertNewRow>
+											<AutoMarkIncomplete>true</AutoMarkIncomplete>
+											<EnableStartDrag>true</EnableStartDrag>
+											<EnableDrag>true</EnableDrag>
+											<DataPath>Object.CompanySignatureCertificates</DataPath>
+											<RowFilter xsi:nil="true"/>
+											<ContextMenu name="CompanySignatureCertificatesContextMenu" id="555"/>
+											<AutoCommandBar name="CompanySignatureCertificatesCommandPanel" id="556">
+												<ChildItems>
+													<Button name="ImportCertificateFromStore" id="325">
+														<Type>CommandBarButton</Type>
+														<CommandName>Form.Command.ImportCertificate</CommandName>
+														<ExtendedTooltip name="ImportCertificateFromStoreExtendedTooltip" id="421"/>
+													</Button>
+												</ChildItems>
+											</AutoCommandBar>
+											<ExtendedTooltip name="CertificatesCompanySignaturesExtendedTooltip" id="557"/>
+											<SearchStringAddition name="CompanySignatureCertificatesSearchString" id="558">
+												<AdditionSource>
+													<Item>CompanySignatureCertificates</Item>
+													<Type>SearchStringRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="CompanySignatureCertificatesSearchStringContextMenu" id="561"/>
+												<ExtendedTooltip name="CompanySignatureCertificatesSearchStringExtendedTooltip" id="562"/>
+											</SearchStringAddition>
+											<ViewStatusAddition name="CompanySignatureCertificatesViewStatus" id="563">
+												<AdditionSource>
+													<Item>CompanySignatureCertificates</Item>
+													<Type>ViewStatusRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="CompanySignatureCertificatesViewStatusContextMenu" id="566"/>
+												<ExtendedTooltip name="CompanySignatureCertificatesViewStatusExtendedTooltip" id="567"/>
+											</ViewStatusAddition>
+											<SearchControlAddition name="CompanySignatureCertificatesSearchControl" id="568">
+												<AdditionSource>
+													<Item>CompanySignatureCertificates</Item>
+													<Type>SearchControl</Type>
+												</AdditionSource>
+												<ContextMenu name="CompanySignatureCertificatesSearchControlContextMenu" id="571"/>
+												<ExtendedTooltip name="CompanySignatureCertificatesSearchControlExtendedTooltip" id="572"/>
+											</SearchControlAddition>
+											<ChildItems>
+												<InputField name="CertificatesCompanySignaturesContainerNumber" id="579">
+													<DataPath>Object.CompanySignatureCertificates.NumberContainer</DataPath>
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>PIN</v8:content>
+														</v8:item>
+													</Title>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="CertificatesCompanySignaturesContainerNumberContextMenu" id="580"/>
+													<ExtendedTooltip name="CertificatesCompanySignaturesContainerNumberExtendedTooltip" id="581"/>
+												</InputField>
+												<InputField name="CompaniesSignaturesCertificatesCertificate" id="576">
+													<DataPath>Object.CompanySignatureCertificates.Certificate</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="ContextMenu" id="577"/>
+													<ExtendedTooltip name="CertificatesCompanySignaturesCertificateExtendedTooltip" id="578"/>
+												</InputField>
+											</ChildItems>
+										</Table>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</Page>
+						<Page name="PageDataProcessor" id="627">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Through the data processor</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Data page processor</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ExtendedTooltip name="PageDataProcessorExtendedTooltip" id="628"/>
+							<ChildItems>
+								<InputField name="AdditionalInformationProcessor" id="360">
+									<DataPath>Object.AdditionalInformationProcessor</DataPath>
+									<AutoMarkIncomplete>true</AutoMarkIncomplete>
+									<ContextMenu name="AdditionalInformationProcessorContextMenu" id="361"/>
+									<ExtendedTooltip name="AdditionalInformationProcessorExtendedTooltip" id="385"/>
+								</InputField>
+								<UsualGroup name="GroupCertificatesDataProcessor" id="629">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>ES key certificates</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group certificates sberbank</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Vertical</Group>
+									<ExtendedTooltip name="GroupCertificatesDataProcessorExtendedTooltip" id="630"/>
+									<ChildItems>
+										<Table name="CompanySignatureCertificatesDataProcessor" id="631">
+											<AutoInsertNewRow>true</AutoInsertNewRow>
+											<AutoMarkIncomplete>true</AutoMarkIncomplete>
+											<EnableStartDrag>true</EnableStartDrag>
+											<EnableDrag>true</EnableDrag>
+											<DataPath>Object.CompanySignatureCertificates</DataPath>
+											<RowFilter xsi:nil="true"/>
+											<ContextMenu name="CertificatesCompanySignaturesDataProcessorContextMenu" id="632"/>
+											<AutoCommandBar name="CertificatesCompanySignaturesDataProcessorCommandBar" id="633">
+												<ChildItems>
+													<Button name="ImportCertificateFromStoreDataProcessor" id="659">
+														<Type>CommandBarButton</Type>
+														<CommandName>Form.Command.ImportCertificate</CommandName>
+														<ExtendedTooltip name="ImportCertificateFromStoreDataProcessorExtendedTooltip" id="660"/>
+													</Button>
+												</ChildItems>
+											</AutoCommandBar>
+											<ExtendedTooltip name="CertificatesCompanySignaturesDataProcessorExtendedTooltip" id="634"/>
+											<SearchStringAddition name="CertificatesCompanySignatureDataProcessorSearchString" id="635">
+												<AdditionSource>
+													<Item>CompanySignatureCertificatesDataProcessor</Item>
+													<Type>SearchStringRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="CertificatesCompanySignatureDataProcessorSearchStringContextMenu" id="638"/>
+												<ExtendedTooltip name="CertificatesCompanySignaturesDataProcessorSearchStringExtendedTooltip" id="639"/>
+											</SearchStringAddition>
+											<ViewStatusAddition name="CertificatesCompanySignaturesDataProcessorStatusView" id="640">
+												<AdditionSource>
+													<Item>CompanySignatureCertificatesDataProcessor</Item>
+													<Type>ViewStatusRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="CertificatesCompanySignaturesDataProcessorStatusViewContextMenu" id="643"/>
+												<ExtendedTooltip name="CertificatesCompanySignaturesDataProcessorStatusViewExtendedTooltip" id="644"/>
+											</ViewStatusAddition>
+											<SearchControlAddition name="CertificatesCompanySignaturesDataProcessorSearchControl" id="645">
+												<AdditionSource>
+													<Item>CompanySignatureCertificatesDataProcessor</Item>
+													<Type>SearchControl</Type>
+												</AdditionSource>
+												<ContextMenu name="CertificatesCompanySignaturesDataProcessorSearchControlContextMenu" id="648"/>
+												<ExtendedTooltip name="CertificatesCompanySignaturesDataProcessorSearchControlExtendedTooltip" id="649"/>
+											</SearchControlAddition>
+											<Events>
+												<Event name="ChoiceProcessing">CertificatesCompanySignatureDataProcessorChoiceProcessing</Event>
+											</Events>
+											<ChildItems>
+												<LabelField name="CertificatesCompanySignaturesLineNumberDataProcessor" id="650">
+													<DataPath>Object.CompanySignatureCertificates.LineNumber</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="CertificatesCompanySignaturesLineNumberDataProcessorContextMenu" id="651"/>
+													<ExtendedTooltip name="CertificatesCompanySignaturesLineNumberDataProcessorExtendedTooltip" id="652"/>
+												</LabelField>
+												<InputField name="CertificatesCompanySignaturesCertificateDataProcessor" id="656">
+													<DataPath>Object.CompanySignatureCertificates.Certificate</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="CertificatesCompanySignaturesCertificateDataProcessorContextMenu" id="657"/>
+													<ExtendedTooltip name="CertificatesCompanySignaturesCertificateDataProcessorExtendedTooltip" id="658"/>
+												</InputField>
+											</ChildItems>
+										</Table>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</Page>
+						<Page name="PageComponent" id="661">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Through the component</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Data page processor</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ExtendedTooltip name="PageComponentExtendedTooltip" id="662"/>
+							<ChildItems>
+								<UsualGroup name="GroupComponentCertificates" id="666">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>ES key certificates</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group certificates sberbank</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Vertical</Group>
+									<ExtendedTooltip name="GroupCertificatesComponentExtendedTooltip" id="667"/>
+									<ChildItems>
+										<Table name="CompanySignatureCertificatesComponent" id="668">
+											<AutoInsertNewRow>true</AutoInsertNewRow>
+											<AutoMarkIncomplete>true</AutoMarkIncomplete>
+											<EnableStartDrag>true</EnableStartDrag>
+											<EnableDrag>true</EnableDrag>
+											<DataPath>Object.CompanySignatureCertificates</DataPath>
+											<RowFilter xsi:nil="true"/>
+											<ContextMenu name="CertificatesCompanySignaturesComponentContextMenu" id="669"/>
+											<AutoCommandBar name="CertificatesCompanySignaturesComponentCommandBar" id="670">
+												<ChildItems>
+													<Button name="ImportCertificateFromStoreComponent" id="693">
+														<Type>CommandBarButton</Type>
+														<CommandName>Form.Command.ImportCertificate</CommandName>
+														<ExtendedTooltip name="ImportCertificateFromStoreComponentExtendedTooltip" id="694"/>
+													</Button>
+												</ChildItems>
+											</AutoCommandBar>
+											<ExtendedTooltip name="CertificatesCompanySignaturesComponentExtendedTooltip" id="671"/>
+											<SearchStringAddition name="CertificatesCompanySignaturesComponentSearchString" id="672">
+												<AdditionSource>
+													<Item>CompanySignatureCertificatesComponent</Item>
+													<Type>SearchStringRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="CertificatesCompanySignaturesComponentSearchStringContextMenu" id="675"/>
+												<ExtendedTooltip name="CertificatesCompanySignaturesComponentSearchStringExtendedTooltip" id="676"/>
+											</SearchStringAddition>
+											<ViewStatusAddition name="CertificatesCompanySignaturesComponentStatusView" id="677">
+												<AdditionSource>
+													<Item>CompanySignatureCertificatesComponent</Item>
+													<Type>ViewStatusRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="CertificatesCompanySignaturesComponentStatusViewContextMenu" id="680"/>
+												<ExtendedTooltip name="CertificatesCompanySignaturesComponentStatusViewExtendedTooltip" id="681"/>
+											</ViewStatusAddition>
+											<SearchControlAddition name="CertificatesCompanySignaturesComponentSearchControl" id="682">
+												<AdditionSource>
+													<Item>CompanySignatureCertificatesComponent</Item>
+													<Type>SearchControl</Type>
+												</AdditionSource>
+												<ContextMenu name="CertificatesCompanySignaturesComponentSearchControlContextMenu" id="685"/>
+												<ExtendedTooltip name="CertificatesCompanySignaturesComponentSearchControlExtendedTooltip" id="686"/>
+											</SearchControlAddition>
+											<Events>
+												<Event name="ChoiceProcessing">CertificatesCompanySignaturesComponentChoiceDataProcessor</Event>
+											</Events>
+											<ChildItems>
+												<LabelField name="CertificatesCompanySignaturesLineNumberComponenet" id="687">
+													<DataPath>Object.CompanySignatureCertificates.LineNumber</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="CertificatesCompanySignaturesLineNumberComponenetContextMenu" id="688"/>
+													<ExtendedTooltip name="CertificatesCompanySignaturesLineNumberComponentExtendedTooltip" id="689"/>
+												</LabelField>
+												<InputField name="CertificatesCompanySignaturesCertificateComponent" id="690">
+													<DataPath>Object.CompanySignatureCertificates.Certificate</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="CertificatesCompanySignaturesCertificateComponentContextMenu" id="691"/>
+													<ExtendedTooltip name="CertificatesCompanySignaturesCertificateComponentExtendedTooltip" id="692"/>
+												</InputField>
+											</ChildItems>
+										</Table>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</Page>
+					</ChildItems>
+				</Pages>
+			</ChildItems>
+		</UsualGroup>
+		<InputField name="Comment" id="136">
+			<DataPath>Object.Comment</DataPath>
+			<ContextMenu name="CommentContextMenu" id="137"/>
+			<ExtendedTooltip name="CommentExtendedTooltip" id="426"/>
+		</InputField>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Type>
+				<v8:Type>cfg:CatalogObject.EDUsageAgreements</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+			<UseAlways>
+				<Field>Object.Ref</Field>
+			</UseAlways>
+			<Columns>
+				<AdditionalColumns table="Object.OutgoingDocuments">
+					<Column name="CounterpartyCertificatePresentation" id="1">
+						<Title>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Counterparty certificate presentation</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:string</v8:Type>
+							<v8:StringQualifiers>
+								<v8:Length>0</v8:Length>
+								<v8:AllowedLength>Variable</v8:AllowedLength>
+							</v8:StringQualifiers>
+						</Type>
+					</Column>
+				</AdditionalColumns>
+				<AdditionalColumns table="Object.CounterpartySignaturesCertificates">
+					<Column name="CounterpartyCertificatePresentation" id="1">
+						<Title>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Counterparty certificate presentation</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:string</v8:Type>
+							<v8:StringQualifiers>
+								<v8:Length>0</v8:Length>
+								<v8:AllowedLength>Variable</v8:AllowedLength>
+							</v8:StringQualifiers>
+						</Type>
+					</Column>
+				</AdditionalColumns>
+				<AdditionalColumns table="Object.IncomingDocuments">
+					<Column name="CounterpartyCertificatePresentation" id="1">
+						<Title>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Counterparty certificate presentation</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:string</v8:Type>
+							<v8:StringQualifiers>
+								<v8:Length>0</v8:Length>
+								<v8:AllowedLength>Variable</v8:AllowedLength>
+							</v8:StringQualifiers>
+						</Type>
+					</Column>
+				</AdditionalColumns>
+			</Columns>
+		</Attribute>
+		<Attribute name="StagesTableOutgoing" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Stages table outgoing</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="CatalogRefCopying" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Catalog reference copying</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.EDUsageAgreements</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="StagesTableIncoming" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Stages table incoming</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="BankSertificates" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Bank sertificate</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="UsingSubsystemSberbank" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Sberbank subsystem is used</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="AuthorizationVariant" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Authorization method</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>1</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="IsUsedES" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>ES are used</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="IsNew" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Is new</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<ConditionalAppearance>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>CompanySender</dcsset:field>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:field>ResourceReceiver</dcsset:field>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:field>ResourceSource</dcsset:field>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:field>Bank</dcsset:field>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:field>ServerAddress</dcsset:field>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:field>BankSertificates</dcsset:field>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:field>CompanyID</dcsset:field>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:field>AsynchronousServerAddress</dcsset:field>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:field>CompanyIDAsynchronous</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Object.AgreementStatus</dcsset:left>
+						<dcsset:comparisonType>NotEqual</dcsset:comparisonType>
+						<dcsset:right xsi:type="dcscor:DesignTimeValue">Enum.EDAgreementsStatuses.Acts</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>MarkIncomplete</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+		</ConditionalAppearance>
+	</Attributes>
+	<Commands>
+		<Command name="AuditLog" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Audit logbook</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Audit logbook</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>AuditLog</Action>
+		</Command>
+		<Command name="ImportCertificate" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Import certificate from store</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Import certificate from the electronic key, token, smart card, or another external media</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ImportCertificate</Action>
+		</Command>
+		<Command name="SettingsTest" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Test settings</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Test settings</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>SettingsTest</Action>
+		</Command>
+		<Command name="DataRequestStartDate" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Data request start date</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Data request start date</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Change</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>DataRequestStartDate</Action>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="CompletingSettings">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<KeyParameter>true</KeyParameter>
+		</Parameter>
+	</Parameters>
+	<CommandInterface>
+		<CommandBar>
+			<Item>
+				<Command>DataProcessor.ElectronicDocuments.Command.ResendED</Command>
+				<Type>Auto</Type>
+				<CommandGroup>CommandGroup.ED</CommandGroup>
+				<Index>3</Index>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+			<Item>
+				<Command>DataProcessor.ElectronicDocuments.Command.GenerateSignSendED</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+			<Item>
+				<Command>Catalog.EDUsageAgreements.Command.SendCatalogByAgreement</Command>
+				<Type>Auto</Type>
+				<CommandGroup>CommandGroup.ED</CommandGroup>
+				<Index>1</Index>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+			<Item>
+				<Command>0:f23cbc33-9c7c-4f54-97b7-53b9231a1c6d</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+		</CommandBar>
+	</CommandInterface>
+</Form>

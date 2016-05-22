@@ -1,0 +1,1648 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<CommandBarLocation>None</CommandBarLocation>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<CommandSet>
+		<ExcludedCommand>No</ExcludedCommand>
+		<ExcludedCommand>CustomizeForm</ExcludedCommand>
+		<ExcludedCommand>SaveValues</ExcludedCommand>
+		<ExcludedCommand>Close</ExcludedCommand>
+		<ExcludedCommand>Abort</ExcludedCommand>
+		<ExcludedCommand>Retry</ExcludedCommand>
+		<ExcludedCommand>Yes</ExcludedCommand>
+		<ExcludedCommand>Cancel</ExcludedCommand>
+		<ExcludedCommand>RestoreValues</ExcludedCommand>
+		<ExcludedCommand>Ignore</ExcludedCommand>
+		<ExcludedCommand>OK</ExcludedCommand>
+	</CommandSet>
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="FormCommandBar" id="-1"/>
+	<Events>
+		<Event name="OnOpen">OnOpen</Event>
+		<Event name="BeforeClose">BeforeClose</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="CompositionGroup" id="46">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Composition group</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="CompositionGroupExtendedTooltip" id="95"/>
+			<ChildItems>
+				<Pages name="DecorationPanel" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Decoration panel</v8:content>
+						</v8:item>
+					</Title>
+					<Width>3</Width>
+					<Height>2</Height>
+					<PagesRepresentation>None</PagesRepresentation>
+					<ExtendedTooltip name="DecorationPanelExtendedTooltip" id="96"/>
+					<ChildItems>
+						<Page name="DecorationPageStart" id="4">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Start decoration page</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="DecorationPageStartExtendedTooltip" id="97"/>
+							<ChildItems>
+								<PictureDecoration name="StartDecoration" id="44">
+									<Picture>
+										<xr:Ref>CommonPicture.ReportsVariantsAvailableToAllUsers</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="StartDecorationContextMenu" id="45"/>
+									<ExtendedTooltip name="StartDecorationExtendedTooltip" id="98"/>
+								</PictureDecoration>
+							</ChildItems>
+						</Page>
+						<Page name="DecorationPageContinuation" id="5">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Decoration page continuation</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="DecorationPageContinuationExtendedTooltip" id="99"/>
+							<ChildItems>
+								<PictureDecoration name="ContinuationDecoration" id="47">
+									<Picture>
+										<xr:Ref>CommonPicture.ReportsVariantsAvailableToAllUsers</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="ContinuationDecorationContextMenu" id="48"/>
+									<ExtendedTooltip name="ContinuationDecorationExtendedTooltip" id="100"/>
+								</PictureDecoration>
+							</ChildItems>
+						</Page>
+						<Page name="DecorationPageEnd" id="6">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>End decoration page</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="DecorationPageEndExtendedTooltip" id="101"/>
+							<ChildItems>
+								<PictureDecoration name="FinishDecoration" id="49">
+									<Picture>
+										<xr:Ref>CommonPicture.ReportsVariantsAvailableToAllUsers</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="FinishDecorationContextMenu" id="50"/>
+									<ExtendedTooltip name="FinishDecorationExtendedTooltip" id="102"/>
+								</PictureDecoration>
+							</ChildItems>
+						</Page>
+					</ChildItems>
+				</Pages>
+				<Pages name="MainPanel" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Main panel</v8:content>
+						</v8:item>
+					</Title>
+					<HorizontalStretch>true</HorizontalStretch>
+					<VerticalStretch>true</VerticalStretch>
+					<PagesRepresentation>None</PagesRepresentation>
+					<ExtendedTooltip name="MainPanelExtendedTooltip" id="103"/>
+					<ChildItems>
+						<Page name="PageEmployee1" id="10">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Page employee1</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Page employee1</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ExtendedTooltip name="PageEmployee1ExtendedTooltip" id="104"/>
+							<ChildItems>
+								<LabelDecoration name="DecorationOne" id="21">
+									<Font ref="sys:DefaultGUIFont" height="12" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Employee data (creating)</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="DecorationOneContextMenu" id="22"/>
+									<ExtendedTooltip name="DecorationOneExtendedTooltip" id="105"/>
+								</LabelDecoration>
+								<UsualGroup name="GroupHeaderEmployee" id="173">
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group employee header</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ExtendedTooltip name="GroupHeaderEmployeeExtendedTooltip" id="174"/>
+									<ChildItems>
+										<InputField name="Description" id="167">
+											<DataPath>Object.Description</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Initials</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="DescriptionContextMenu" id="168"/>
+											<ExtendedTooltip name="DescriptionExtendedTooltip" id="169"/>
+										</InputField>
+										<InputField name="Code" id="170">
+											<DataPath>Object.Code</DataPath>
+											<ContextMenu name="CodeContextMenu" id="171"/>
+											<ExtendedTooltip name="CodeExtendedTooltip" id="172"/>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+								<RadioButtonField name="OccupationType" id="175">
+									<DataPath>Object.OccupationType</DataPath>
+									<RadioButtonType>Tumbler</RadioButtonType>
+									<ChoiceList>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.OccupationTypes.EnumValue.MainWorkplace</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.OccupationTypes.EnumValue.Jobsharing</Value>
+											</xr:Value>
+										</xr:Item>
+									</ChoiceList>
+									<ContextMenu name="OccupationTypeContextMenu" id="176"/>
+									<ExtendedTooltip name="OccupationTypeExtendedTooltip" id="177"/>
+								</RadioButtonField>
+								<UsualGroup name="GroupAssistantActions" id="181">
+									<Group>Vertical</Group>
+									<ExtendedTooltip name="GroupAssistantActionsExtendedTooltip" id="182"/>
+									<ChildItems>
+										<CheckBoxField name="AssociateEmployeeWithIndividual" id="178">
+											<DataPath>AssociateWithIndividual</DataPath>
+											<TitleLocation>Right</TitleLocation>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="EmployeeAssociateWithIndividualContextMenu" id="179"/>
+											<ExtendedTooltip name="AssociateEmployeeWithIndividualExtendedTooltip" id="180"/>
+										</CheckBoxField>
+										<CheckBoxField name="AcceptEmployee" id="183">
+											<DataPath>AcceptForEmploymentContract</DataPath>
+											<TitleLocation>Right</TitleLocation>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="AcceptEmployeeContextMenu" id="184"/>
+											<ExtendedTooltip name="EmployeeAcceptExtendedTooltip" id="185"/>
+										</CheckBoxField>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</Page>
+						<Page name="PageEmployee2" id="324">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Page employee</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Page employee</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ExtendedTooltip name="PageEmployee2ExtendedTooltip" id="325"/>
+							<ChildItems>
+								<LabelDecoration name="DecorationOne1" id="326">
+									<Font ref="sys:DefaultGUIFont" height="12" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Employee data (GL accounts)</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="DecorationOne1ContextMenu" id="327"/>
+									<ExtendedTooltip name="DecorationOne1ExtendedTooltip" id="328"/>
+								</LabelDecoration>
+								<InputField name="SettlementsHumanResourcesGLAccount" id="329">
+									<DataPath>Object.SettlementsHumanResourcesGLAccount</DataPath>
+									<ContextMenu name="AccountAccountingWithStaffContextMenu" id="330"/>
+									<ExtendedTooltip name="SettlementsHumanResourcesGLAccountExtendedTooltip" id="331"/>
+								</InputField>
+								<InputField name="AdvanceHoldersGLAccount" id="332">
+									<DataPath>Object.AdvanceHoldersGLAccount</DataPath>
+									<ContextMenu name="AdvanceHoldersGLAccountContextMenu" id="333"/>
+									<ExtendedTooltip name="AdvanceHoldersGLAccountExtendedTooltip" id="334"/>
+								</InputField>
+								<InputField name="OverrunGLAccount" id="335">
+									<DataPath>Object.OverrunGLAccount</DataPath>
+									<ContextMenu name="OverrunGlAccountContextMenu" id="336"/>
+									<ExtendedTooltip name="OverrunGLAccountExtendedTooltip" id="337"/>
+								</InputField>
+							</ChildItems>
+						</Page>
+						<Page name="PageFL" id="11">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>FL Page</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>FL Page</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ExtendedTooltip name="PageFLExtendedTooltip" id="106"/>
+							<ChildItems>
+								<LabelDecoration name="DecorationTwo" id="23">
+									<Font ref="sys:DefaultGUIFont" height="12" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Individual employee</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="DecorationTwoContextMenu" id="24"/>
+									<ExtendedTooltip name="DecorationTwoExtendedTooltip" id="107"/>
+								</LabelDecoration>
+								<InputField name="FLDescription" id="344">
+									<DataPath>Object.Description</DataPath>
+									<Enabled>false</Enabled>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Initials</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="FLDescriptionContextMenu" id="345"/>
+									<ExtendedTooltip name="FLDescriptionExtendedTooltip" id="346"/>
+								</InputField>
+								<RadioButtonField name="FillVariant" id="189">
+									<DataPath>FillVariant</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<RadioButtonType>Auto</RadioButtonType>
+									<ItemHeight>1</ItemHeight>
+									<ColumnsCount>1</ColumnsCount>
+									<ChoiceList>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Create individual</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:decimal">1</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Associate employee with individual</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:decimal">2</Value>
+											</xr:Value>
+										</xr:Item>
+									</ChoiceList>
+									<ContextMenu name="FillVariantContextMenu" id="190"/>
+									<ExtendedTooltip name="FillVariantExtendedTooltip" id="191"/>
+									<Events>
+										<Event name="OnChange">FillVariantOnChange</Event>
+									</Events>
+								</RadioButtonField>
+								<LabelDecoration name="Decoration1" id="217">
+									<ContextMenu name="Decoration1ContextMenu" id="218"/>
+									<ExtendedTooltip name="Decoration1ExtendedTooltip" id="219"/>
+								</LabelDecoration>
+								<Pages name="PagesFL" id="205">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>FL Pages</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>FL Pages</v8:content>
+										</v8:item>
+									</ToolTip>
+									<PagesRepresentation>None</PagesRepresentation>
+									<ExtendedTooltip name="PagesFLExtendedTooltip" id="206"/>
+									<ChildItems>
+										<Page name="NewFL" id="207">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>New FL</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>New FL</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ExtendedTooltip name="NewFLExtendedTooltip" id="208"/>
+											<ChildItems>
+												<InputField name="NewFLBirthDate" id="214">
+													<DataPath>NewFLBirthDate</DataPath>
+													<ContextMenu name="NewFLDateOfBirthContextMenu" id="215"/>
+													<ExtendedTooltip name="NewFLBirthDateExtendedTooltip" id="216"/>
+												</InputField>
+												<InputField name="NewFLGender" id="211">
+													<DataPath>NewFLGender</DataPath>
+													<HorizontalStretch>false</HorizontalStretch>
+													<ContextMenu name="NewFLGenderContextMenu" id="212"/>
+													<ExtendedTooltip name="NewFLGenderExtendedTooltip" id="213"/>
+												</InputField>
+											</ChildItems>
+										</Page>
+										<Page name="CurrentFL" id="209">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Current FL</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Current FL</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ExtendedTooltip name="CurrentFLExtendedTooltip" id="210"/>
+											<ChildItems>
+												<InputField name="Ind" id="194">
+													<DataPath>Object.Ind</DataPath>
+													<ContextMenu name="IndividualContextMenu" id="195"/>
+													<ExtendedTooltip name="IndividualExtendedTooltip" id="196"/>
+												</InputField>
+												<UsualGroup name="GroupIndDetails" id="197">
+													<Enabled>false</Enabled>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Group individual details</v8:content>
+														</v8:item>
+													</ToolTip>
+													<Group>Vertical</Group>
+													<Representation>None</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="GroupIndDetailsExtendedTooltip" id="198"/>
+													<ChildItems>
+														<LabelField name="IndividualDateOfBirth" id="199">
+															<DataPath>Object.Ind.BirthDate</DataPath>
+															<ContextMenu name="IndividualDateOfBirthContextMenu" id="200"/>
+															<ExtendedTooltip name="IndBirthDateExtendedTooltip" id="201"/>
+														</LabelField>
+														<LabelField name="IndividualPersonGender" id="202">
+															<DataPath>Object.Ind.Gender</DataPath>
+															<HorizontalStretch>false</HorizontalStretch>
+															<ContextMenu name="IndividualGenderContextMenu" id="203"/>
+															<ExtendedTooltip name="IndividualGenderExtendedTooltip" id="204"/>
+														</LabelField>
+													</ChildItems>
+												</UsualGroup>
+											</ChildItems>
+										</Page>
+									</ChildItems>
+								</Pages>
+							</ChildItems>
+						</Page>
+						<Page name="PageEmploymentContract1" id="12">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Page employment1</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Page employment1</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ExtendedTooltip name="PageEmploymentContract1ExtendedTooltip" id="108"/>
+							<ChildItems>
+								<LabelDecoration name="DecorationThree" id="38">
+									<Font ref="sys:DefaultGUIFont" height="12" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>EmploymentContract</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="DecorationThreeContextMenu" id="39"/>
+									<ExtendedTooltip name="DecorationThreeExtendedTooltip" id="109"/>
+								</LabelDecoration>
+								<UsualGroup name="GroupDateCurrency" id="350">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group date currency</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group date currency</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupDateCurrencyExtendedTooltip" id="351"/>
+									<ChildItems>
+										<InputField name="EmploymentContractEmploymentContractDate" id="223">
+											<DataPath>EmploymentContractEmploymentContractDate</DataPath>
+											<AutoMarkIncomplete>true</AutoMarkIncomplete>
+											<ContextMenu name="EmploymentContractEmploymentContractDateContextMenu" id="224"/>
+											<ExtendedTooltip name="EmploymentContractEmploymentContractDateExtendedTooltip" id="225"/>
+										</InputField>
+										<InputField name="EmploymentContractCurrency" id="347">
+											<DataPath>EmploymentContractCurrency</DataPath>
+											<HorizontalStretch>false</HorizontalStretch>
+											<AutoMarkIncomplete>true</AutoMarkIncomplete>
+											<ContextMenu name="EmploymentContractCurrencyContextMenu" id="348"/>
+											<ExtendedTooltip name="EmploymentContractCurrencyExtendedTooltip" id="349"/>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+								<InputField name="EmploymentContractCompany" id="229">
+									<DataPath>EmploymentContractCompany</DataPath>
+									<AutoMarkIncomplete>true</AutoMarkIncomplete>
+									<ContextMenu name="EmploymentContractCompanyContextMenu" id="230"/>
+									<ExtendedTooltip name="EmploymentContractCompanyExtendedTooltip" id="231"/>
+								</InputField>
+								<InputField name="EmploymentContractStructuralUnit" id="232">
+									<DataPath>EmploymentContractStructuralUnit</DataPath>
+									<AutoMarkIncomplete>true</AutoMarkIncomplete>
+									<ChoiceParameters>
+										<app:item name="Filter.StructuralUnitType">
+											<app:value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.StructuralUnitsTypes.EnumValue.Division</Value>
+											</app:value>
+										</app:item>
+									</ChoiceParameters>
+									<ContextMenu name="EmploymentContractStructuralUnitContextMenu" id="233"/>
+									<ExtendedTooltip name="EmploymentContractStructuralUnitExtendedTooltip" id="234"/>
+								</InputField>
+								<InputField name="EmploymentContractPosition" id="226">
+									<DataPath>EmploymentContractPosition</DataPath>
+									<AutoMarkIncomplete>true</AutoMarkIncomplete>
+									<ContextMenu name="EmploymentContractPositionContextMenu" id="227"/>
+									<ExtendedTooltip name="EmploymentContractPositionExtendedTooltip" id="228"/>
+								</InputField>
+								<InputField name="EmploymentContractWorkSchedule" id="220">
+									<DataPath>EmploymentContractWorkSchedule</DataPath>
+									<ContextMenu name="EmploymentContractWorkScheduleContextMenu" id="221"/>
+									<ExtendedTooltip name="EmploymentContractWorkScheduleExtendedTooltip" id="222"/>
+								</InputField>
+								<UsualGroup name="RateGroup" id="238">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Rate group</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Rate group</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="RateGroupExtendedTooltip" id="239"/>
+									<ChildItems>
+										<InputField name="EmploymentContractOccupiedRates" id="235">
+											<DataPath>EmploymentContractOccupiedRates</DataPath>
+											<AutoMarkIncomplete>true</AutoMarkIncomplete>
+											<ContextMenu name="EmploymentContractOccupiedRatesContextMenu" id="236"/>
+											<ExtendedTooltip name="EmploymentContractOccupiedRatesExtendedTooltip" id="237"/>
+										</InputField>
+										<CheckBoxField name="EmploymentContractAddRates" id="240">
+											<DataPath>EmploymentContractAddRates</DataPath>
+											<TitleLocation>Right</TitleLocation>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="EmploymentContractAddRatesContextMenu" id="241"/>
+											<ExtendedTooltip name="EmploymentContractAddRatesExtendedTooltip" id="242"/>
+										</CheckBoxField>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</Page>
+						<Page name="PageEmploymentContract2" id="13">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Page employment2</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Page employment2</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ExtendedTooltip name="PageEmploymentContract2ExtendedTooltip" id="110"/>
+							<ChildItems>
+								<LabelDecoration name="DecorationFour" id="40">
+									<Font ref="sys:DefaultGUIFont" height="12" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>EmploymentContract (accruals/deductions)</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="DecorationFourContextMenu" id="41"/>
+									<ExtendedTooltip name="DecorationFourExtendedTooltip" id="111"/>
+								</LabelDecoration>
+								<Table name="AccrualsAndDeductions" id="288">
+									<Representation>List</Representation>
+									<AutoInsertNewRow>true</AutoInsertNewRow>
+									<EnableStartDrag>true</EnableStartDrag>
+									<EnableDrag>true</EnableDrag>
+									<DataPath>AccrualsAndDeductions</DataPath>
+									<RowFilter xsi:nil="true"/>
+									<ContextMenu name="AccrualsAndDeductionsContextMenu" id="289"/>
+									<AutoCommandBar name="AccrualsAndDeductionsCommandPanel" id="290"/>
+									<ExtendedTooltip name="AccrualsAndDeductionsExtendedTooltip" id="291"/>
+									<SearchStringAddition name="AccrualsAndDeductionsSearchString" id="292">
+										<AdditionSource>
+											<Item>AccrualsAndDeductions</Item>
+											<Type>SearchStringRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="AccrualsAndDeductionsSearchStringContextMenu" id="295"/>
+										<ExtendedTooltip name="AccrualsAndDeductionsSearchStringExtendedTooltip" id="296"/>
+									</SearchStringAddition>
+									<ViewStatusAddition name="AccrualsAndDeductionsStatusView" id="297">
+										<AdditionSource>
+											<Item>AccrualsAndDeductions</Item>
+											<Type>ViewStatusRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="AccrualsAndDeductionsStatusViewContextMenu" id="300"/>
+										<ExtendedTooltip name="AccrualsAndDeductionsStatusViewExtendedTooltip" id="301"/>
+									</ViewStatusAddition>
+									<SearchControlAddition name="AccrualsAndDeductionsSearchControl" id="302">
+										<AdditionSource>
+											<Item>AccrualsAndDeductions</Item>
+											<Type>SearchControl</Type>
+										</AdditionSource>
+										<ContextMenu name="AccrualsAndDeductionsSearchControlContextMenu" id="305"/>
+										<ExtendedTooltip name="AccrualsAndDeductionsSearchControlExtendedTooltip" id="306"/>
+									</SearchControlAddition>
+									<ChildItems>
+										<InputField name="AccrualsAndDeductionsAccrualDeductionKind" id="307">
+											<DataPath>AccrualsAndDeductions.AccrualDeductionKind</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="AccrualsAndDeductionsKindOfAccrualDeductionContextMenu" id="308"/>
+											<ExtendedTooltip name="AccrualsAndDeductionsAccrualDeductionKindExtendedTooltip" id="309"/>
+										</InputField>
+										<InputField name="AccrualsAndDeductionsAmount" id="310">
+											<DataPath>AccrualsAndDeductions.Amount</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="AccrualsAndDeductionsAmountContextMenu" id="311"/>
+											<ExtendedTooltip name="AccrualsAndDeductionsAmountExtendedTooltip" id="312"/>
+										</InputField>
+										<InputField name="AccrualsAndDeductionsGlExpenseAccount" id="316">
+											<DataPath>AccrualsAndDeductions.GLExpenseAccount</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="AccrualsAndDeductionsGlExpenseAccountContextMenu" id="317"/>
+											<ExtendedTooltip name="AccrualsAndDeductionsExpenseGlAccountExtendedTooltip" id="318"/>
+										</InputField>
+									</ChildItems>
+								</Table>
+							</ChildItems>
+						</Page>
+						<Page name="WaitPage" id="53">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Page of expectation</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="WaitPageExtendedTooltip" id="114"/>
+							<ChildItems>
+								<LabelDecoration name="PageTitle" id="54">
+									<Height>2</Height>
+									<HorizontalStretch>true</HorizontalStretch>
+									<VerticalStretch>false</VerticalStretch>
+									<SkipOnInput>false</SkipOnInput>
+									<Font ref="sys:DefaultGUIFont" height="12" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Checking</v8:content>
+										</v8:item>
+									</Title>
+									<VerticalAlign>Top</VerticalAlign>
+									<ContextMenu name="PageTitleContextMenu" id="55"/>
+									<ExtendedTooltip name="PageTitleExtendedTooltip" id="115"/>
+								</LabelDecoration>
+								<UsualGroup name="MessageGrouping" id="56">
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Message grouping</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<Representation>NormalSeparation</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="MessageGroupingExtendedTooltip" id="116"/>
+									<ChildItems>
+										<UsualGroup name="PictureGroup" id="57">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group images</v8:content>
+												</v8:item>
+											</Title>
+											<Group>Vertical</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="PictureGroupExtendedTooltip" id="117"/>
+											<ChildItems>
+												<PictureDecoration name="DecorationFourteen" id="58">
+													<Width>5</Width>
+													<Height>2</Height>
+													<SkipOnInput>false</SkipOnInput>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Decoration fourteen</v8:content>
+														</v8:item>
+													</Title>
+													<Picture>
+														<xr:Ref>CommonPicture.Information32</xr:Ref>
+														<xr:LoadTransparent>true</xr:LoadTransparent>
+													</Picture>
+													<ContextMenu name="DecorationFourteenContextMenu" id="59"/>
+													<ExtendedTooltip name="DecorationFourteenExtendedTooltip" id="118"/>
+												</PictureDecoration>
+											</ChildItems>
+										</UsualGroup>
+										<UsualGroup name="MessageGroup" id="60">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Message group</v8:content>
+												</v8:item>
+											</Title>
+											<Group>Vertical</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="MessageGroupExtendedTooltip" id="119"/>
+											<ChildItems>
+												<LabelDecoration name="DecorationFifteen" id="61">
+													<Height>2</Height>
+													<HorizontalStretch>true</HorizontalStretch>
+													<SkipOnInput>false</SkipOnInput>
+													<Font ref="sys:DefaultGUIFont" height="10" kind="WindowsFont"/>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Running verification.
+Please wait...</v8:content>
+														</v8:item>
+													</Title>
+													<ContextMenu name="DecorationFifteenContextMenu" id="62"/>
+													<ExtendedTooltip name="DecorationFifteenExtendedTooltip" id="120"/>
+												</LabelDecoration>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</Page>
+						<Page name="PageWritten" id="319">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Page written</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Page employee</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ExtendedTooltip name="PageWrittenExtendedTooltip" id="320"/>
+							<ChildItems>
+								<LabelDecoration name="DecorationSix" id="321">
+									<Font ref="sys:DefaultGUIFont" height="12" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Data written</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="DecorationSixContextMenu" id="322"/>
+									<ExtendedTooltip name="DecorationSixExtendedTooltip" id="323"/>
+								</LabelDecoration>
+								<LabelDecoration name="Decoration2" id="341">
+									<ContextMenu name="Decoration2ContextMenu" id="342"/>
+									<ExtendedTooltip name="Decoration2ExtendedTooltip" id="343"/>
+								</LabelDecoration>
+								<LabelDecoration name="InformationDecoration" id="338">
+									<Width>40</Width>
+									<Height>7</Height>
+									<TextColor>style:ExplanationText</TextColor>
+									<Title formatted="true">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>For this user to access the application, set &lt;b&gt;Create application user&lt;/&gt; flag. 
+
+After pressing &lt;b&gt;Ready&lt;/&gt; button, a dialog to create user is called, where you should indicate login name and password, as well as set other parameters, for example, user rights.
+</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="InformationDecorationContextMenu" id="339"/>
+									<ExtendedTooltip name="DecorationInformationExtendedTooltip" id="340"/>
+								</LabelDecoration>
+								<CheckBoxField name="CreateApplicationUser" id="186">
+									<DataPath>CreateApplicationUser</DataPath>
+									<TitleLocation>Right</TitleLocation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="CreateApplicationUserContextMenu" id="187"/>
+									<ExtendedTooltip name="CreateApplicationUserExtendedTooltip" id="188"/>
+								</CheckBoxField>
+							</ChildItems>
+						</Page>
+					</ChildItems>
+				</Pages>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="NavigationPanelBorder" id="51">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Navigation panel border</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="NavigationPanelBorderExtendedTooltip" id="121"/>
+			<ChildItems>
+				<Pages name="NavigationPanel" id="1">
+					<EnableContentChange>true</EnableContentChange>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Navigation panel</v8:content>
+						</v8:item>
+					</Title>
+					<PagesRepresentation>None</PagesRepresentation>
+					<ExtendedTooltip name="NavigationPanelExtendedTooltip" id="122"/>
+					<ChildItems>
+						<Page name="NavigationPageStart" id="7">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Navigation page start</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Horizontal</Group>
+							<ExtendedTooltip name="NavigationPageStartExtendedTooltip" id="123"/>
+							<ChildItems>
+								<CommandBar name="CommandBarLeft1" id="150">
+									<ExtendedTooltip name="CommandBarLeft1ExtendedTooltip" id="151"/>
+									<ChildItems>
+										<Button name="CommandBack" id="72">
+											<Type>CommandBarButton</Type>
+											<Visible>false</Visible>
+											<CommandName>Form.Command.CommandBack</CommandName>
+											<ExtendedTooltip name="BackCommandExtendedTooltip" id="125"/>
+										</Button>
+									</ChildItems>
+								</CommandBar>
+								<LabelDecoration name="IndentCommandPanel1" id="147">
+									<HorizontalStretch>true</HorizontalStretch>
+									<ContextMenu name="IndentCommandPanel1ContextMenu" id="148"/>
+									<ExtendedTooltip name="IndentCommandPanel1ExtendedTooltip" id="149"/>
+								</LabelDecoration>
+								<CommandBar name="CommandBarRight1" id="70">
+									<EnableContentChange>true</EnableContentChange>
+									<HorizontalLocation>Right</HorizontalLocation>
+									<ExtendedTooltip name="CommandBarRight1ExtendedTooltip" id="124"/>
+									<ChildItems>
+										<Button name="CommandNext" id="71">
+											<Type>CommandBarButton</Type>
+											<DefaultButton>true</DefaultButton>
+											<DefaultItem>true</DefaultItem>
+											<CommandName>Form.Command.CommandNext</CommandName>
+											<ExtendedTooltip name="NextCommandExtendedTooltip" id="126"/>
+										</Button>
+										<Button name="CommandCancel" id="73">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.CommandCancel</CommandName>
+											<ExtendedTooltip name="CancelCommandExtendedTooltip" id="127"/>
+										</Button>
+										<Button name="Help" id="91">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.StandardCommand.Help</CommandName>
+											<ExtendedTooltip name="HelpExtendedTooltip" id="128"/>
+										</Button>
+									</ChildItems>
+								</CommandBar>
+							</ChildItems>
+						</Page>
+						<Page name="NavigationPageContinuation" id="8">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Navigation page continuation</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Horizontal</Group>
+							<ExtendedTooltip name="NavigationPageContinuationExtendedTooltip" id="129"/>
+							<ChildItems>
+								<CommandBar name="CommandBarLeft2" id="155">
+									<ExtendedTooltip name="CommandBarLeft2ExtendedTooltip" id="156"/>
+									<ChildItems>
+										<Button name="CommandBack1" id="76">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.CommandBack</CommandName>
+											<ExtendedTooltip name="CommandBack1ExtendedTooltip" id="131"/>
+										</Button>
+									</ChildItems>
+								</CommandBar>
+								<LabelDecoration name="IndentCommandBar2" id="152">
+									<HorizontalStretch>true</HorizontalStretch>
+									<ContextMenu name="IndentCommandBar2ContextMenu" id="153"/>
+									<ExtendedTooltip name="IndentCommandBar2ExtendedTooltip" id="154"/>
+								</LabelDecoration>
+								<CommandBar name="CommandBarRight2" id="75">
+									<EnableContentChange>true</EnableContentChange>
+									<HorizontalLocation>Right</HorizontalLocation>
+									<ExtendedTooltip name="CommandBarRight2ExtendedTooltip" id="130"/>
+									<ChildItems>
+										<Button name="CommandNext1" id="77">
+											<Type>CommandBarButton</Type>
+											<DefaultItem>true</DefaultItem>
+											<CommandName>Form.Command.CommandNext</CommandName>
+											<ExtendedTooltip name="CommandNext1ExtendedTooltip" id="132"/>
+										</Button>
+										<Button name="CancelCommand1" id="78">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.CommandCancel</CommandName>
+											<ExtendedTooltip name="CancelCommand1ExtendedTooltip" id="133"/>
+										</Button>
+										<Button name="Help1" id="92">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.StandardCommand.Help</CommandName>
+											<ExtendedTooltip name="Help1ExtendedTooltip" id="134"/>
+										</Button>
+									</ChildItems>
+								</CommandBar>
+							</ChildItems>
+						</Page>
+						<Page name="NavigationPageEnd" id="9">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Navigation page end</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Horizontal</Group>
+							<ExtendedTooltip name="NavigationPageEndExtendedTooltip" id="135"/>
+							<ChildItems>
+								<CommandBar name="CommandBarLeft3" id="160">
+									<ExtendedTooltip name="CommandBarLeft3ExtendedTooltip" id="161"/>
+									<ChildItems>
+										<Button name="CommandBack2" id="81">
+											<Type>CommandBarButton</Type>
+											<Enabled>false</Enabled>
+											<CommandName>Form.Command.CommandBack</CommandName>
+											<ExtendedTooltip name="CommandBack2ExtendedTooltip" id="137"/>
+										</Button>
+									</ChildItems>
+								</CommandBar>
+								<LabelDecoration name="IndentCommandBar3" id="157">
+									<HorizontalStretch>true</HorizontalStretch>
+									<ContextMenu name="IndentCommandBar3ContextMenu" id="158"/>
+									<ExtendedTooltip name="IndentCommandBar3ExtendedTooltip" id="159"/>
+								</LabelDecoration>
+								<CommandBar name="CommandBarRight3" id="80">
+									<EnableContentChange>true</EnableContentChange>
+									<HorizontalLocation>Right</HorizontalLocation>
+									<ExtendedTooltip name="CommandBarRight3ExtendedTooltip" id="136"/>
+									<ChildItems>
+										<Button name="CommandDone" id="90">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.CommandDone</CommandName>
+											<ExtendedTooltip name="DoneCommandExtendedTooltip" id="138"/>
+										</Button>
+										<Button name="CancelCommand2" id="83">
+											<Type>CommandBarButton</Type>
+											<Enabled>false</Enabled>
+											<CommandName>Form.Command.CommandCancel</CommandName>
+											<ExtendedTooltip name="CancelCommand2ExtendedTooltip" id="139"/>
+										</Button>
+										<Button name="Help2" id="93">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.StandardCommand.Help</CommandName>
+											<ExtendedTooltip name="Help2ExtendedTooltip" id="140"/>
+										</Button>
+									</ChildItems>
+								</CommandBar>
+							</ChildItems>
+						</Page>
+						<Page name="NavigationPageWait" id="63">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Navigation page wait</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Horizontal</Group>
+							<ExtendedTooltip name="NavigationPageWaitExtendedTooltip" id="141"/>
+							<ChildItems>
+								<CommandBar name="CommanBarLeft4" id="165">
+									<ExtendedTooltip name="CommanBarLeft4ExtendedTooltip" id="166"/>
+									<ChildItems>
+										<Button name="CommandBack3" id="86">
+											<Type>CommandBarButton</Type>
+											<Enabled>false</Enabled>
+											<CommandName>Form.Command.CommandBack</CommandName>
+											<ExtendedTooltip name="CommandBack3ExtendedTooltip" id="143"/>
+										</Button>
+									</ChildItems>
+								</CommandBar>
+								<LabelDecoration name="IndentCommandBar4" id="162">
+									<HorizontalStretch>true</HorizontalStretch>
+									<ContextMenu name="IndentCommandBar4ContextMenu" id="163"/>
+									<ExtendedTooltip name="IndentCommandBar4ExtendedTooltip" id="164"/>
+								</LabelDecoration>
+								<CommandBar name="CommandBarRight4" id="85">
+									<EnableContentChange>true</EnableContentChange>
+									<HorizontalLocation>Right</HorizontalLocation>
+									<ExtendedTooltip name="CommandBarRight4ExtendedTooltip" id="142"/>
+									<ChildItems>
+										<Button name="CommandNext3" id="87">
+											<Type>CommandBarButton</Type>
+											<Enabled>false</Enabled>
+											<DefaultItem>true</DefaultItem>
+											<CommandName>Form.Command.CommandBack</CommandName>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Next &gt;</v8:content>
+												</v8:item>
+											</Title>
+											<ExtendedTooltip name="CommandNext3ExtendedTooltip" id="144"/>
+										</Button>
+										<Button name="CancelCommand3" id="88">
+											<Type>CommandBarButton</Type>
+											<Enabled>false</Enabled>
+											<CommandName>Form.Command.CommandCancel</CommandName>
+											<ExtendedTooltip name="CancelCommand3ExtendedTooltip" id="145"/>
+										</Button>
+										<Button name="Help3" id="94">
+											<Type>CommandBarButton</Type>
+											<Enabled>false</Enabled>
+											<CommandName>Form.StandardCommand.Help</CommandName>
+											<ExtendedTooltip name="Help3ExtendedTooltip" id="146"/>
+										</Button>
+									</ChildItems>
+								</CommandBar>
+							</ChildItems>
+						</Page>
+					</ChildItems>
+				</Pages>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Type>
+				<v8:Type>cfg:CatalogObject.Employees</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="GoToNumber" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Sequence number of jump</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>3</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="GoToTable" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Jump table</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="GoToNumber" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Sequence number of jump</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>3</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="MainPageName" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Main page name</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="DecorationPageName" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Decoration page name</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="NavigationPageName" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Navigation page name</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="OnOpenHandlerName" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>On open handler name</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="GoNextHandlerName" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Go to next handler name</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="GoBackHandlerName" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Go back handler name</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="LongOperation" id="8">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Long operation</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="LongOperationHandlerName" id="9">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Long operation handler name</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ForceCloseForm" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Force quit the form</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="AssociateWithIndividual" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Associate employee with individual</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="AcceptForEmploymentContract" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Draft employment for the current employee</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<FunctionalOptions>
+				<Item>FunctionalOption.UseSubsystemPayroll</Item>
+			</FunctionalOptions>
+		</Attribute>
+		<Attribute name="CreateApplicationUser" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Create application user</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="FillVariant" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Fill variant</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="NewFLGender" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Gender</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.IndividualGender</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="NewFLBirthDate" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Birth date</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="EmploymentContractPosition" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Position</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Positions</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="EmploymentContractCompany" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Company</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Companies</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="EmploymentContractEmploymentContractDate" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Employment date</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="EmploymentContractStructuralUnit" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Division</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.StructuralUnits</v8:Type>
+			</Type>
+			<FunctionalOptions>
+				<Item>FunctionalOption.AccountingBySeveralDivisions</Item>
+			</FunctionalOptions>
+		</Attribute>
+		<Attribute name="EmploymentContractWorkSchedule" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Work schedule</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.WorkSchedules</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="EmploymentContractOccupiedRates" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Occupies rates</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>15</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+			<FunctionalOptions>
+				<Item>FunctionalOption.DoStaffSchedule</Item>
+			</FunctionalOptions>
+		</Attribute>
+		<Attribute name="EmploymentContractAddRates" id="17">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Add rates automatically</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="AccrualsAndDeductions" id="18">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Accruals and deductions</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="AccrualDeductionKind" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Accrual kind (deduction)</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.AccrualAndDeductionKinds</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Amount" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Amount</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="GLExpenseAccount" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>GL expense account</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:ChartOfAccountsRef.Managerial</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="InfobaseUserName" id="19">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Login (to enter)</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="InfobaseUserPassword" id="20">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Password</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="UsedStaffSchedule" id="21">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Used staff schedule</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="RatesFree" id="22">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Rates free</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="DivisionsAreUsed" id="23">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Divisions are used</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="EmploymentContractCurrency" id="24">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Currency</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Currencies</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Iterator" id="25">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Iterator</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Parent" id="26">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Parent</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Employees</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="CommandNext" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Next &gt;</v8:content>
+				</v8:item>
+			</Title>
+			<Action>CommandNext</Action>
+		</Command>
+		<Command name="CommandBack" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>&lt; Back</v8:content>
+				</v8:item>
+			</Title>
+			<Action>CommandBack</Action>
+		</Command>
+		<Command name="CommandCancel" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Cancel</v8:content>
+				</v8:item>
+			</Title>
+			<Action>CommandCancel</Action>
+		</Command>
+		<Command name="CommandDone" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Done</v8:content>
+				</v8:item>
+			</Title>
+			<Action>CommandDone</Action>
+		</Command>
+	</Commands>
+	<CommandInterface>
+		<NavigationPanel>
+			<Item>
+				<Command>InformationRegister.UserEmployees.StandardCommand.OpenByValue.Employee</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormNavigationPanelGoTo</CommandGroup>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+			<Item>
+				<Command>InformationRegister.Employees.StandardCommand.OpenByValue.Employee</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormNavigationPanelGoTo</CommandGroup>
+				<Index>2</Index>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+			<Item>
+				<Command>0:496cbc49-08fe-4d38-afce-e8777c31ef8e</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormNavigationPanelGoTo</CommandGroup>
+				<Index>1</Index>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+			<Item>
+				<Command>InformationRegister.AccrualsAndDeductionsPlan.StandardCommand.OpenByValue.Employee</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormNavigationPanelGoTo</CommandGroup>
+				<Index>3</Index>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+			<Item>
+				<Command>0:5940de4c-7f85-4623-8ace-39c7ddf878a7</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormNavigationPanelSeeAlso</CommandGroup>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+		</NavigationPanel>
+		<CommandBar>
+			<Item>
+				<Command>CommonCommand.ObjectReports</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormCommandBarImportant</CommandGroup>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+			<Item>
+				<Command>CommonCommand.CreatingLinkedObjects</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormCommandBarCreateBasedOn</CommandGroup>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+			<Item>
+				<Command>CommonCommand.ObjectAdditionalPrintForms</Command>
+				<Type>Auto</Type>
+				<CommandGroup>CommandGroup.Print</CommandGroup>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+		</CommandBar>
+	</CommandInterface>
+</Form>

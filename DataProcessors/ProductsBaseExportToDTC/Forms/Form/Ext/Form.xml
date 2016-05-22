@@ -1,0 +1,205 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<ChildItems>
+			<Button name="Fill" id="1">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<SkipOnInput>false</SkipOnInput>
+				<CommandName>Form.Command.Fill</CommandName>
+				<ExtendedTooltip name="FillExtendedTooltip" id="14"/>
+			</Button>
+			<Button name="Export" id="2">
+				<Type>CommandBarButton</Type>
+				<SkipOnInput>false</SkipOnInput>
+				<CommandName>Form.Command.Export</CommandName>
+				<ExtendedTooltip name="ExportExtendedTooltip" id="15"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<ChildItems>
+		<Table name="ExportingTable" id="3">
+			<Representation>List</Representation>
+			<ReadOnly>true</ReadOnly>
+			<SkipOnInput>false</SkipOnInput>
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<DataPath>ExportingTable</DataPath>
+			<SearchStringLocation>None</SearchStringLocation>
+			<ViewStatusLocation>None</ViewStatusLocation>
+			<SearchControlLocation>None</SearchControlLocation>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="ExportTableContextMenu" id="4"/>
+			<AutoCommandBar name="ExportTableCommandBar" id="5">
+				<Autofill>false</Autofill>
+			</AutoCommandBar>
+			<ExtendedTooltip name="ExportingTableExtendedTooltip" id="16"/>
+			<SearchStringAddition name="ExportingTableSearchString" id="17">
+				<AdditionSource>
+					<Item>ExportingTable</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ExportingTableSearchStringContextMenu" id="18"/>
+				<ExtendedTooltip name="ExportingTableSearchStringExtendedTooltip" id="19"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ExportingTableViewStatus" id="20">
+				<AdditionSource>
+					<Item>ExportingTable</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ExportingTableViewStatusContextMenu" id="21"/>
+				<ExtendedTooltip name="ExportingTableViewStatusExtendedTooltip" id="22"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ExportingTableSearchControl" id="23">
+				<AdditionSource>
+					<Item>ExportingTable</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ExportingTableSearchControlContextMenu" id="24"/>
+				<ExtendedTooltip name="ExportingTableSearchControlExtendedTooltip" id="25"/>
+			</SearchControlAddition>
+			<ChildItems>
+				<InputField name="Barcode" id="12">
+					<DataPath>ExportingTable.Barcode</DataPath>
+					<Wrap>false</Wrap>
+					<ContextMenu name="BarCodeContextMenu" id="13"/>
+					<ExtendedTooltip name="BarcodeExtendedTooltip" id="26"/>
+				</InputField>
+				<InputField name="ProductsAndServices" id="6">
+					<DataPath>ExportingTable.ProductsAndServices</DataPath>
+					<Wrap>false</Wrap>
+					<ContextMenu name="ProductsAndServicesContextMenu" id="7"/>
+					<ExtendedTooltip name="ProductsAndServicesExtendedTooltip" id="27"/>
+				</InputField>
+				<InputField name="Characteristic" id="8">
+					<DataPath>ExportingTable.Characteristic</DataPath>
+					<Wrap>false</Wrap>
+					<ContextMenu name="CharacteristicContextMenu" id="9"/>
+					<ExtendedTooltip name="CharacteristicExtendedTooltip" id="28"/>
+				</InputField>
+				<InputField name="Batch" id="10">
+					<DataPath>ExportingTable.Batch</DataPath>
+					<Wrap>false</Wrap>
+					<ContextMenu name="BatchContextMenu" id="11"/>
+					<ExtendedTooltip name="BatchExtendedTooltip" id="29"/>
+				</InputField>
+			</ChildItems>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.ProductsBaseExportToDTC</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="ExportingTable" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Dump table</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="ProductsAndServices" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Products and services</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Characteristic" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Characteristic</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Batch" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Batch</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Barcode" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Barcode</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="Fill" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Fill</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Fill</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>FillExecute</Action>
+		</Command>
+		<Command name="Export" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Export</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Export</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ExportExecute</Action>
+			<FunctionalOptions>
+				<Item>FunctionalOption.UsePeripherals</Item>
+			</FunctionalOptions>
+		</Command>
+	</Commands>
+</Form>

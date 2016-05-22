@@ -1,0 +1,15 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"></meta><link rel="stylesheet" type="text/css" href="V8help://service_book/service_style"></link><meta name="GENERATOR" content="MSHTML 11.00.9600.18321"></meta></head><body>
+<p>It is intended for indication of access parameters for servers cluster.</p>
+<p>You can open it from the User locking window by clicking link Enable management of scheduled jobs locking. </p>
+<p>Parameters required to perform various administrative actions with client-server infobase:</p>
+<ul><li>name and password of <strong>infobase Administrator</strong> to <a href="DataProcessor.UserWorkBlocking/Help">lock scheduled and background jobs</a> on his or her behalf. IN the simplest case it can be your name and password which you use to access the application. For security reasons it is recommended to create a separate user with administrative rights. It should be noted that name and password are stored in the base itself and can be read if an attacker gains full access to the base. 
+</li><li><strong>Cluster administration parameters</strong>: 
+<ul><li>name and password of a servers<strong> cluster administrator</strong> on the part of whom forced termination of users sessions is executed. If is not specified if no administrator is configured in the servers cluster; 
+</li><li>Port numbers for access to the cluster of servers and server agent if they are not standard. As a rule, the port number of server agent differs from the port of servers cluster per unit, for example: 3040 and 3041. 
+</li><li><strong>Connection to the servers </strong>cluster - choose an option from the list: 
+<ul><li>COM-connection with server agent 
+</li><li>Through administration server (ras).</li></ul></li><li><strong>Address</strong> - for example, "demo". 
+</li><li><strong>Port</strong> - for example, "3040".</li></ul></li></ul><h3>See also</h3>
+<ul><li><a href="DataProcessor.UserWorkBlocking/Help">User session locking </a>
+</li><li><u><font color="#0000ff">Active users</font></u> 
+</li><li>Documentation for 1C:Enterprise platform. "Client-server option. Administrator Guide".</li></ul></body></html>

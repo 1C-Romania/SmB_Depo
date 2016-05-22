@@ -1,0 +1,2491 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<ChildItems>
+			<Button name="RecallPredefinedFormDefault" id="272">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.RecallPredefinedFormDefault</CommandName>
+				<Title>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Restore default</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="RecallPredefinedFormDefaultExtendedTooltip" id="273"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+		<Event name="BeforeWriteAtServer">BeforeWriteAtServer</Event>
+		<Event name="OnClose">OnClose</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="DescriptionCode" id="348">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Description code</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Description code</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="DescriptionCodeExtendedTooltip" id="349"/>
+			<ChildItems>
+				<InputField name="Description" id="70">
+					<DataPath>Object.Description</DataPath>
+					<DropListWidth>1</DropListWidth>
+					<ContextMenu name="DescriptionContextMenu" id="71"/>
+					<ExtendedTooltip name="DescriptionExtendedTooltip" id="72"/>
+				</InputField>
+				<InputField name="Code" id="345">
+					<DataPath>Object.Code</DataPath>
+					<ContextMenu name="CodeContextMenu" id="346"/>
+					<ExtendedTooltip name="CodeExtendedTooltip" id="347"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<LabelDecoration name="DecorationSplitter1" id="350">
+			<Font ref="sys:DefaultGUIFont" height="1" kind="WindowsFont"/>
+			<ContextMenu name="DecorationSplitter1ContextMenu" id="351"/>
+			<ExtendedTooltip name="DecorationSplitter1ExtendedTooltip" id="352"/>
+		</LabelDecoration>
+		<CommandBar name="CommandBarGroup" id="73">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group command bar</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group command bar</v8:content>
+				</v8:item>
+			</ToolTip>
+			<ExtendedTooltip name="CommandBarGroupExtendedTooltip" id="74"/>
+			<ChildItems>
+				<Popup name="AddParameterGroup" id="175">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Insert parameter</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Add parameter group</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="AddParameterGroupExtendedTooltip" id="176"/>
+					<ChildItems>
+						<Popup name="CompanySettingsGroup" id="220">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Company</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Company settings group</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ExtendedTooltip name="GroupCompanySettingsExtendedTooltip" id="221"/>
+							<ChildItems>
+								<Button name="InsertCompanyEmailAddress" id="232">
+									<Type>CommandBarButton</Type>
+									<CommandName>Form.Command.InsertCompanyEmailAddress</CommandName>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Email</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="InsertCompanyEmailAddressExtendedTooltip" id="233"/>
+								</Button>
+								<Popup name="GroupCompanyBankDetails" id="353">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Bank details</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Company bank details group</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="GroupCompanyBankDetailsExtendedTooltip" id="354"/>
+									<ChildItems>
+										<Button name="InsertBank" id="190">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.InsertCompanyBank</CommandName>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Bank</v8:content>
+												</v8:item>
+											</Title>
+											<ExtendedTooltip name="InsertBankExtendedTooltip" id="191"/>
+										</Button>
+										<Button name="InsertCompanyBIK" id="355">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.InsertCompanyBIK</CommandName>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>BIN</v8:content>
+												</v8:item>
+											</Title>
+											<ExtendedTooltip name="InsertCompanyBIKExtendedTooltip" id="356"/>
+										</Button>
+										<Button name="InsertCompanyCorrespondentAccount" id="357">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.InsertCompanyCorrespondentAccount</CommandName>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Correspondent account</v8:content>
+												</v8:item>
+											</Title>
+											<ExtendedTooltip name="InsertCompanyCorrespondentAccountExtendedTooltip" id="358"/>
+										</Button>
+										<Button name="InsertBankAccount" id="208">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.InsertCompanyBankAcc</CommandName>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Bank account</v8:content>
+												</v8:item>
+											</Title>
+											<ExtendedTooltip name="InsertBankAccountExtendedTooltip" id="209"/>
+										</Button>
+									</ChildItems>
+								</Popup>
+								<Popup name="CompanyCodesGroup" id="248">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Codes</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Company Codes group</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="CompanyCodesGroupExtendedTooltip" id="249"/>
+									<ChildItems>
+										<Button name="InsertTIN" id="250">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.InsertCompanyTIN</CommandName>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>TIN</v8:content>
+												</v8:item>
+											</Title>
+											<ExtendedTooltip name="InsertTINExtendedTooltip" id="251"/>
+										</Button>
+										<Button name="InsertCompanyKPPCode" id="252">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.InsertCompanyKPPCode</CommandName>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>KPP</v8:content>
+												</v8:item>
+											</Title>
+											<ExtendedTooltip name="InsertCompanyKPPCodeExtendedTooltip" id="253"/>
+										</Button>
+										<Button name="InsertCompanyOKATO" id="254">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.InsertCompanyOKATO</CommandName>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>OKATO</v8:content>
+												</v8:item>
+											</Title>
+											<ExtendedTooltip name="InsertCompanyOKATOExtendedTooltip" id="255"/>
+										</Button>
+										<Button name="InsertCompanyOKPO" id="256">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.InsertCompanyOKPO</CommandName>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>OKPO</v8:content>
+												</v8:item>
+											</Title>
+											<ExtendedTooltip name="InsertCompanyOKPOExtendedTooltip" id="257"/>
+										</Button>
+										<Button name="InsertCompanyOKTMO" id="258">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.InsertCompanyOKTMO</CommandName>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>OKTMO</v8:content>
+												</v8:item>
+											</Title>
+											<ExtendedTooltip name="InsertCompanyOKTMOExtendedTooltip" id="259"/>
+										</Button>
+									</ChildItems>
+								</Popup>
+								<Button name="InsertLogo" id="383">
+									<Type>CommandBarButton</Type>
+									<CommandName>Form.Command.InsertLogo</CommandName>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Logo</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="InsertLogoExtendedTooltip" id="384"/>
+								</Button>
+								<Button name="InsertCompanyName" id="202">
+									<Type>CommandBarButton</Type>
+									<CommandName>Form.Command.InsertCompanyName</CommandName>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Company name</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="InsertCompanyNameExtendedTooltip" id="203"/>
+								</Button>
+								<Button name="InsertCompanyPostalAddress" id="234">
+									<Type>CommandBarButton</Type>
+									<CommandName>Form.Command.InsertCompanyPostalAddress</CommandName>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Postal address</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="InsertCompanyPostalAddressExtendedTooltip" id="235"/>
+								</Button>
+								<Popup name="GroupHead" id="449">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Manager</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Head group</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="GroupTopManagerExtendedTooltip" id="450"/>
+									<ChildItems>
+										<Popup name="GroupDeclensionTopManagerFull" id="393">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Full name</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group declensions top manager full name</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ExtendedTooltip name="GroupDeclensionTopManagerFullExtendedTooltip" id="394"/>
+											<ChildItems>
+												<Button name="InsertHeadCompaniesNominative" id="399">
+													<Type>CommandBarButton</Type>
+													<CommandName>Form.Command.InsertHeadCompaniesNominative</CommandName>
+													<ExtendedTooltip name="InsertCompanyTopManagerSubjectiveExtendedTooltip" id="400"/>
+												</Button>
+												<Button name="InsertCompanyTopManagerGenitive" id="403">
+													<Type>CommandBarButton</Type>
+													<CommandName>Form.Command.InsertCompanyTopManagerGenitive</CommandName>
+													<ExtendedTooltip name="InsertCompanyTopManagerGenitiveExtendedTooltip" id="404"/>
+												</Button>
+												<Button name="InsertCompanyTopManagerDative" id="397">
+													<Type>CommandBarButton</Type>
+													<CommandName>Form.Command.InsertCompanyTopManagerDative</CommandName>
+													<ExtendedTooltip name="InsertCompanyTopManagerDativeExtendedTooltip" id="398"/>
+												</Button>
+												<Button name="InsertCompanyTopManagerAccusative" id="395">
+													<Type>CommandBarButton</Type>
+													<CommandName>Form.Command.InsertCompanyTopManagerAccusative</CommandName>
+													<ExtendedTooltip name="InsertCompanyTopManagerAccusativeExtendedTooltip" id="396"/>
+												</Button>
+												<Button name="InsertCompanyTopManagerAblative" id="405">
+													<Type>CommandBarButton</Type>
+													<CommandName>Form.Command.InsertCompanyTopManagerAblative</CommandName>
+													<ExtendedTooltip name="InsertCompanyTopManagerAblativeExtendedPopupHelp" id="406"/>
+												</Button>
+												<Button name="InsertCompanyTopManagerLocative" id="401">
+													<Type>CommandBarButton</Type>
+													<CommandName>Form.Command.InsertCompanyTopManagerLocative</CommandName>
+													<ExtendedTooltip name="InsertCompanyTopManagerLocativeExtendedTooltip" id="402"/>
+												</Button>
+											</ChildItems>
+										</Popup>
+										<Popup name="GroupDeclensionTopManagerInitials" id="435">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Last name, initials</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group declensions top manager initials</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ExtendedTooltip name="GroupDeclensionTopManagerInitialsExtendedTooltip" id="436"/>
+											<ChildItems>
+												<Button name="InsertCompanyTopManagerDescriptionFullSubjective" id="441">
+													<Type>CommandBarButton</Type>
+													<CommandName>Form.Command.InsertCompanyTopManagerDescriptionFullSubjective</CommandName>
+													<ExtendedTooltip name="InsertCompanyTopManagerDescriptionFullSubjectiveExtendedTooltip" id="442"/>
+												</Button>
+												<Button name="InsertCompanyTopManagerDescriptionFullGenitive" id="445">
+													<Type>CommandBarButton</Type>
+													<CommandName>Form.Command.InsertCompanyTopManagerDescriptionFullGenitive</CommandName>
+													<ExtendedTooltip name="InsertCompanyTopManagerDescriptionFullGenitiveExtendedTooltip" id="446"/>
+												</Button>
+												<Button name="InsertCompanyTopManagerNameDative" id="439">
+													<Type>CommandBarButton</Type>
+													<CommandName>Form.Command.InsertCompanyTopManagerNameDative</CommandName>
+													<ExtendedTooltip name="InsertCompanyTopManagerNameDativeExtendedTooltip" id="440"/>
+												</Button>
+												<Button name="InsertCompanyTopManagerDescriptionFullAccusative" id="437">
+													<Type>CommandBarButton</Type>
+													<CommandName>Form.Command.InsertCompanyTopManagerDescriptionFullAccusative</CommandName>
+													<ExtendedTooltip name="InsertCompanyTopManagerDescriptionFullAccusativeExtendedTooltip" id="438"/>
+												</Button>
+												<Button name="InsertCompanyTopManagerDescriptionFullAblative" id="447">
+													<Type>CommandBarButton</Type>
+													<CommandName>Form.Command.InsertCompanyTopManagerDescriptionFullAblative</CommandName>
+													<ExtendedTooltip name="InsertCompanyTopManagerDescriptionFullAblativeExtendedTooltip" id="448"/>
+												</Button>
+												<Button name="InsertCompanyTopManagerDescriptionFullLocative" id="443">
+													<Type>CommandBarButton</Type>
+													<CommandName>Form.Command.InsertCompanyTopManagerDescriptionFullLocative</CommandName>
+													<ExtendedTooltip name="InsertCompanyTopManagerDescriptionFullLocativeExtendedTooltip" id="444"/>
+												</Button>
+											</ChildItems>
+										</Popup>
+									</ChildItems>
+								</Popup>
+								<Button name="InsertCompanyPhone" id="228">
+									<Type>CommandBarButton</Type>
+									<CommandName>Form.Command.InsertCompanyPhone</CommandName>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Phone</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="InsertCompanyPhoneExtendedTooltip" id="229"/>
+								</Button>
+								<Button name="InsertCompanyFax" id="230">
+									<Type>CommandBarButton</Type>
+									<CommandName>Form.Command.InsertCompanyFax</CommandName>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Fax</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="InsertCompanyFaxExtendedTooltip" id="231"/>
+								</Button>
+								<Button name="InsertFacsimile" id="379">
+									<Type>CommandBarButton</Type>
+									<CommandName>Form.Command.InsertFacsimile</CommandName>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Facsimile</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="InsertFacsimileExtendedTooltip" id="380"/>
+								</Button>
+								<Button name="InsertCompanyFactAddress" id="226">
+									<Type>CommandBarButton</Type>
+									<CommandName>Form.Command.InsertCompanyFactAddress</CommandName>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Actual address</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="InsertCompanyFactAddressExtendedTooltip" id="227"/>
+								</Button>
+								<Button name="InsertCompanyAddress" id="186">
+									<Type>CommandBarButton</Type>
+									<CommandName>Form.Command.InsertCompanyLegalAddress</CommandName>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Legal address</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="InsertCompanyAddressExtendedTooltip" id="187"/>
+								</Button>
+							</ChildItems>
+						</Popup>
+						<Popup name="CounterpartySettingsGroup" id="222">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Counterparty</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Counteparty settings group</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ExtendedTooltip name="CounterpartySettingsGroupExtendedTooltip" id="223"/>
+							<ChildItems>
+								<Button name="InsertCounterpartyEMailAddress" id="244">
+									<Type>CommandBarButton</Type>
+									<CommandName>Form.Command.InsertCounterpartyEMailAddress</CommandName>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Email</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="InsertCounterpartyEMailAddressExtendedTooltip" id="245"/>
+								</Button>
+								<Popup name="GroupCounterpartyBankDetails" id="359">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Bank details</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Counterparty bank details group</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="GroupCounterpartyBankDetailsExtendedTooltip" id="360"/>
+									<ChildItems>
+										<Button name="InsertCounterpartyBank" id="192">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.InsertCounterpartyBank</CommandName>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Counterparty's Bank</v8:content>
+												</v8:item>
+											</Title>
+											<ExtendedTooltip name="InsertCounterpartyBankExtendedTooltip" id="193"/>
+										</Button>
+										<Button name="InsertCounterpartyBIK" id="361">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.InsertCounterpartyBIK</CommandName>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>BIN</v8:content>
+												</v8:item>
+											</Title>
+											<ExtendedTooltip name="InsertCounterpartyBIKExtendedTooltip" id="362"/>
+										</Button>
+										<Button name="InsertCounterpartyCorrespondentAccount" id="363">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.InsertCounterpartyCorrespondentAccount</CommandName>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Correspondent account</v8:content>
+												</v8:item>
+											</Title>
+											<ExtendedTooltip name="InsertCounterpartyCorrespondentAccountExtendedTooltip" id="364"/>
+										</Button>
+										<Button name="InsertCounterpartyBankAcc" id="210">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.InsertCounterpartyBankAcc</CommandName>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Bank account</v8:content>
+												</v8:item>
+											</Title>
+											<ExtendedTooltip name="InsertCounterpartyBankAccExtendedTooltip" id="211"/>
+										</Button>
+									</ChildItems>
+								</Popup>
+								<Popup name="GroupCounterpartyContactPersonPosition" id="407">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Contact person position</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Counterparty contact person position group</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="GroupCounterpartyContactPersonPositionExtendedTooltip" id="408"/>
+									<ChildItems>
+										<Button name="InsertCounterpartyContactPersonPositionSubjective" id="413">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.InsertCounterpartyContactPersonPositionSubjective</CommandName>
+											<ExtendedTooltip name="InsertCounterpartyContactPersonPositionSubjectiveExtendedTooltip" id="414"/>
+										</Button>
+										<Button name="InsertCounterpartyContactPersonPositionGenitive" id="417">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.InsertCounterpartyContactPersonPositionGenitive</CommandName>
+											<ExtendedTooltip name="InsertCounterpartyContactPersonPositionGenitiveExtendedTooltip" id="418"/>
+										</Button>
+										<Button name="InsertCounterpartyContactPersonPositionDative" id="411">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.InsertCounterpartyContactPersonPositionDative</CommandName>
+											<ExtendedTooltip name="InsertCounterpartyContactPersonPositionDativeExtendedTooltip" id="412"/>
+										</Button>
+										<Button name="InsertCounterpartyContactPersonPositionAccusative" id="409">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.InsertCounterpartyContactPersonPositionAccusative</CommandName>
+											<ExtendedTooltip name="InsertCounterpartyContactPersonPositionAccusativeExtendedTooltip" id="410"/>
+										</Button>
+										<Button name="InsertCounterpartyContactPersonPositionAblative" id="419">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.InsertCounterpartyContactPersonPositionAblative</CommandName>
+											<ExtendedTooltip name="InsertCounterpartyContactPersonPositionAblativeExtendedTooltip" id="420"/>
+										</Button>
+										<Button name="InsertCounterpartyContactPersonPositionLocative" id="415">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.InsertCounterpartyContactPersonPositionLocative</CommandName>
+											<ExtendedTooltip name="InsertCounterpartyContactPersonPositionLocativeExtendedTooltip" id="416"/>
+										</Button>
+									</ChildItems>
+								</Popup>
+								<Popup name="CounterpartyCodesGroup" id="260">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Codes</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Counteparty Codes group</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="CounterpartyCodesGroupExtendedTooltip" id="261"/>
+									<ChildItems>
+										<Button name="InsertCounterpartyTIN" id="266">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.InsertCounterpartyTIN</CommandName>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>TIN</v8:content>
+												</v8:item>
+											</Title>
+											<ExtendedTooltip name="InsertCounterpartyTINExtendedPopupHelp" id="267"/>
+										</Button>
+										<Button name="InsertCounterpartyKPPCode" id="264">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.InsertCounterpartyKPPCode</CommandName>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>KPP</v8:content>
+												</v8:item>
+											</Title>
+											<ExtendedTooltip name="InsertCounterpartyKPPCodeExtendedTooltip" id="265"/>
+										</Button>
+										<Button name="InsertCounterpartyOKPO" id="262">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.InsertCounterpartyOKPO</CommandName>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>OKPO</v8:content>
+												</v8:item>
+											</Title>
+											<ExtendedTooltip name="InsertCounterpartyOKPOExtendedTooltip" id="263"/>
+										</Button>
+									</ChildItems>
+								</Popup>
+								<Popup name="CounterpartyContactPersonGroup" id="451">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Contact person</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Counterparty contact person group</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="CounterpartyContactPersonGroupExtendedTooltip" id="452"/>
+									<ChildItems>
+										<Popup name="CounterpartyContactPersonGroupFull" id="421">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Full name</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group counterparty contact person full name</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ExtendedTooltip name="CounterpartyContactPersonGroupFullExtendedTooltip" id="422"/>
+											<ChildItems>
+												<Button name="InsertCounterpartyContactPersonSubjenctive" id="429">
+													<Type>CommandBarButton</Type>
+													<CommandName>Form.Command.InsertCounterpartyContactPersonSubjenctive</CommandName>
+													<ExtendedTooltip name="InsertCounterpartyContactPersonSubjenctiveExtendedTooltip" id="430"/>
+												</Button>
+												<Button name="InsertCounterpartyContactPersonGenitive" id="425">
+													<Type>CommandBarButton</Type>
+													<CommandName>Form.Command.InsertCounterpartyContactPersonGenitive</CommandName>
+													<ExtendedTooltip name="InsertCounterpartyContactPersonGenitiveExtendedTooltip" id="426"/>
+												</Button>
+												<Button name="InsertContactPersonOfCounterpartyDating" id="431">
+													<Type>CommandBarButton</Type>
+													<CommandName>Form.Command.InsertContactPersonOfCounterpartyDating</CommandName>
+													<ExtendedTooltip name="InsertCounterpartyContactPersonDativeExtendedTooltip" id="432"/>
+												</Button>
+												<Button name="InsertCounterpartyContactPersonAccusative" id="433">
+													<Type>CommandBarButton</Type>
+													<CommandName>Form.Command.InsertCounterpartyContactPersonAccusative</CommandName>
+													<ExtendedTooltip name="InsertCounterpartyContactPersonAccusativeExtendedTooltip" id="434"/>
+												</Button>
+												<Button name="InsertCounterpartyContactPersonAblative" id="423">
+													<Type>CommandBarButton</Type>
+													<CommandName>Form.Command.InsertCounterpartyContactPersonAblative</CommandName>
+													<ExtendedTooltip name="InsertCounterpartyContactPersonAblativeExtendedTooltip" id="424"/>
+												</Button>
+												<Button name="InsertCounterpartyContactPersonLocative" id="427">
+													<Type>CommandBarButton</Type>
+													<CommandName>Form.Command.InsertCounterpartyContactPersonLocative</CommandName>
+													<ExtendedTooltip name="InsertCounterpartyContactPersonLocativeExtendedTooltip" id="428"/>
+												</Button>
+											</ChildItems>
+										</Popup>
+										<Popup name="GroupCounterpartyContactPersonInitials" id="453">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Last name, initials</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group counterparty contact person initials</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ExtendedTooltip name="GroupCounterpartyContactPersonInitialsExtendedTooltip" id="454"/>
+											<ChildItems>
+												<Button name="InsertCounterpartyContactPersonPositionDescriptionFullSubjective" id="459">
+													<Type>CommandBarButton</Type>
+													<CommandName>Form.Command.InsertCounterpartyContactPersonPositionDescriptionFullSubjective</CommandName>
+													<ExtendedTooltip name="InsertCounterpartyContactPersonPositionDescriptionFullSubjectiveExtendedTooltip" id="460"/>
+												</Button>
+												<Button name="InsertCounterpartyContactPersonPositionDescriptionFullGenitive" id="463">
+													<Type>CommandBarButton</Type>
+													<CommandName>Form.Command.InsertCounterpartyContactPersonPositionDescriptionFullGenitive</CommandName>
+													<ExtendedTooltip name="InsertCounterpartyContactPersonPositionDescriptionFullGenitiveExtendedTooltip" id="464"/>
+												</Button>
+												<Button name="InsertCounterpartyContactPersonPositionDescriptionFullDative" id="457">
+													<Type>CommandBarButton</Type>
+													<CommandName>Form.Command.InsertCounterpartyContactPersonPositionDescriptionFullDative</CommandName>
+													<ExtendedTooltip name="InsertCounterpartyContactPersonPositionDescriptionFullDativeExtendedTooltip" id="458"/>
+												</Button>
+												<Button name="InsertCounterpartyContactPersonPositionDescriptionFullAccusative" id="455">
+													<Type>CommandBarButton</Type>
+													<CommandName>Form.Command.InsertCounterpartyContactPersonPositionDescriptionFullAccusative</CommandName>
+													<ExtendedTooltip name="InsertCounterpartyContactPersonPositionDescriptionFullAccusativeExtendedTooltip" id="456"/>
+												</Button>
+												<Button name="InsertCounterpartyContactPersonPositionDescriptionFullAblative" id="465">
+													<Type>CommandBarButton</Type>
+													<CommandName>Form.Command.InsertCounterpartyContactPersonPositionDescriptionFullAblative</CommandName>
+													<ExtendedTooltip name="InsertCounterpartyContactPersonPositionDescriptionFullAblativeExtendedTooltip" id="466"/>
+												</Button>
+												<Button name="InsertCounterpartyContactPersonPositionDescriptionFullLocative" id="461">
+													<Type>CommandBarButton</Type>
+													<CommandName>Form.Command.InsertCounterpartyContactPersonPositionDescriptionFullLocative</CommandName>
+													<ExtendedTooltip name="InsertCounterpartyContactPersonPositionDescriptionFullLocativeExtendedTooltip" id="462"/>
+												</Button>
+											</ChildItems>
+										</Popup>
+									</ChildItems>
+								</Popup>
+								<Button name="InsertCounterpartyName" id="204">
+									<Type>CommandBarButton</Type>
+									<CommandName>Form.Command.InsertCounterpartyName</CommandName>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Company name</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="InsertCounterpartyNameExtendedTooltip" id="205"/>
+								</Button>
+								<Popup name="PassportDataGroup" id="365">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Passport data</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Passport data group</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="PassportDataGroupExtendedTooltip" id="366"/>
+									<ChildItems>
+										<Button name="InsertPassportDataIssueDate" id="367">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.InsertPassportDataIssueDate</CommandName>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Issue date</v8:content>
+												</v8:item>
+											</Title>
+											<ExtendedTooltip name="InsertPassportDataIssueDateExtendedTooltip" id="368"/>
+										</Button>
+										<Button name="InsertPassportDataIssuingAuthority" id="369">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.InsertPassportDataIssuingAuthority</CommandName>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Issued by</v8:content>
+												</v8:item>
+											</Title>
+											<ExtendedTooltip name="InsertPassportDataIssuingAuthorityExtendedTooltip" id="370"/>
+										</Button>
+										<Button name="InsertPassportDataDivisionCode" id="371">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.InsertPassportDataDivisionCode</CommandName>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Division code</v8:content>
+												</v8:item>
+											</Title>
+											<ExtendedTooltip name="InsertPassportDataDivisionCodeExtendedTooltip" id="372"/>
+										</Button>
+										<Button name="InsertPassportDataNumber" id="373">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.InsertPassportDataNumber</CommandName>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Number</v8:content>
+												</v8:item>
+											</Title>
+											<ExtendedTooltip name="InsertPassportDataNumberExtendedTooltip" id="374"/>
+										</Button>
+										<Button name="InsertPassportDataSeries" id="375">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.InsertPassportDataSeries</CommandName>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Series</v8:content>
+												</v8:item>
+											</Title>
+											<ExtendedTooltip name="InsertPassportDataSeriesExtendedTooltip" id="376"/>
+										</Button>
+										<Button name="InsertPassportDataValidityPeriod" id="377">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.InsertPassportDataValidityPeriod</CommandName>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Expiration date</v8:content>
+												</v8:item>
+											</Title>
+											<ExtendedTooltip name="InsertPassportDataValidityPeriodExtendedTooltip" id="378"/>
+										</Button>
+									</ChildItems>
+								</Popup>
+								<Button name="InsertCounterpartyPostalAddress" id="246">
+									<Type>CommandBarButton</Type>
+									<CommandName>Form.Command.InsertCounterpartyPostalAddress</CommandName>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Postal address</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="InsertCounterpartyPostalAddressExtendedTooltip" id="247"/>
+								</Button>
+								<Button name="InsertCounterpartyPhone" id="240">
+									<Type>CommandBarButton</Type>
+									<CommandName>Form.Command.InsertCounterpartyPhone</CommandName>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Phone</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="InsertCounterpartyPhoneExtendedTooltip" id="241"/>
+								</Button>
+								<Button name="InsertCounterpartyFax" id="242">
+									<Type>CommandBarButton</Type>
+									<CommandName>Form.Command.InsertCounterpartyFax</CommandName>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Fax</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="InsertCounterpartyFaxExtendedTooltip" id="243"/>
+								</Button>
+								<Button name="InsertCounterpartyFactAddress" id="238">
+									<Type>CommandBarButton</Type>
+									<CommandName>Form.Command.InsertCounterpartyFactAddress</CommandName>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Actual address</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="InsertCounterpartyFactAddressExtendedTooltip" id="239"/>
+								</Button>
+								<Button name="InsertCounterpartyLegalAddress" id="188">
+									<Type>CommandBarButton</Type>
+									<CommandName>Form.Command.InsertCounterpartyLegalAddress</CommandName>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Legal address</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="InsertCounterpartyLegalAddressExtendedTooltip" id="189"/>
+								</Button>
+							</ChildItems>
+						</Popup>
+						<Popup name="ContractSettingsGroup" id="236">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Contract parameters</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Contract settings group</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ExtendedTooltip name="ContractSettingsGroupExtendedTooltip" id="237"/>
+							<ChildItems>
+								<Button name="InsertContractDate" id="194">
+									<Type>CommandBarButton</Type>
+									<CommandName>Form.Command.InsertContractDate</CommandName>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Contract date</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="InsertContractDateExtendedTooltip" id="195"/>
+								</Button>
+								<Button name="InsertContractNo" id="206">
+									<Type>CommandBarButton</Type>
+									<CommandName>Form.Command.InsertContractNo</CommandName>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Contract number</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="InsertContractNoExtendedTooltip" id="207"/>
+								</Button>
+								<Button name="InsertCustomerPaymentDueDate" id="212">
+									<Type>CommandBarButton</Type>
+									<CommandName>Form.Command.InsertCustomerPaymentDueDate</CommandName>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Customer payment due date</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="InsertCustomerPaymentDueDateExtendedPopupHelp" id="213"/>
+								</Button>
+								<Button name="InsertSupplierPaymentDueDate" id="214">
+									<Type>CommandBarButton</Type>
+									<CommandName>Form.Command.InsertSupplierPaymentDueDate</CommandName>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Payment to supplier due date</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="InsertSupplierPaymentDueDateExtendedPopupHelp" id="215"/>
+								</Button>
+							</ChildItems>
+						</Popup>
+						<Popup name="DocumentSettingsGroup" id="343">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Document settings</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Document settings group</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ExtendedTooltip name="DocumentSettingsGroupExtendedTooltip" id="344"/>
+							<ChildItems>
+								<Button name="InsertDocumentDate" id="387">
+									<Type>CommandBarButton</Type>
+									<CommandName>Form.Command.InsertDocumentDate</CommandName>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Date</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="InsertDocumentDateExtendedTooltip" id="388"/>
+								</Button>
+								<Button name="InsertDocumentNumber" id="385">
+									<Type>CommandBarButton</Type>
+									<CommandName>Form.Command.InsertDocumentNumber</CommandName>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Number</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="InsertDocumentNumberExtendedTooltip" id="386"/>
+								</Button>
+								<Button name="InsertDocumentAmount" id="270">
+									<Type>CommandBarButton</Type>
+									<CommandName>Form.Command.InsertDocumentAmount</CommandName>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Amount</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="InsertDocumentAmountExtendedTooltip" id="271"/>
+								</Button>
+								<Popup name="GroupAdditionalAttributesCustomerOrder" id="389">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Customer order</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group of customer order additional attributes</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="GroupCustomerOrderAdditionalAttributesExtendedTooltip" id="390"/>
+								</Popup>
+								<Popup name="GroupInvoiceAdditionalAttributes" id="391">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Invoice for payment</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Invoice additional attributes group</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="GroupInvoiceAdditionalAttributesExtendedTooltip" id="392"/>
+								</Popup>
+							</ChildItems>
+						</Popup>
+						<Button name="InsertEditableParameter" id="341">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Command.InsertEditableParameter</CommandName>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Field filled manually</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="InsertEditableParameterExtendedTooltip" id="342"/>
+						</Button>
+					</ChildItems>
+				</Popup>
+				<ButtonGroup name="GroupStandardCommands" id="339">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Standard commands group</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Standard commands group</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="GroupStandardCommandsExtendedTooltip" id="340"/>
+					<ChildItems>
+						<Button name="InsertPageBreak" id="381">
+							<Type>CommandBarButton</Type>
+							<OnlyInAllActions>false</OnlyInAllActions>
+							<CommandName>Form.Command.InsertPageBreak</CommandName>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Page break</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="InsertPageBreakExtendedTooltip" id="382"/>
+						</Button>
+						<Button name="Bold" id="279">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Item.FormattedDocument.StandardCommand.Bold</CommandName>
+							<ExtendedTooltip name="BoldExtendedTooltip" id="280"/>
+						</Button>
+						<Button name="Italic" id="281">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Item.FormattedDocument.StandardCommand.Italic</CommandName>
+							<ExtendedTooltip name="ItalicExtendedTooltip" id="282"/>
+						</Button>
+						<Button name="Underline" id="283">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Item.FormattedDocument.StandardCommand.Underline</CommandName>
+							<ExtendedTooltip name="UnderlineExtendedTooltip" id="284"/>
+						</Button>
+						<Button name="Strikeout" id="285">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Item.FormattedDocument.StandardCommand.Strikeout</CommandName>
+							<ExtendedTooltip name="StrikeoutExtendedTooltip" id="286"/>
+						</Button>
+						<Button name="IncreaseIndent" id="287">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Item.FormattedDocument.StandardCommand.IncreaseIndent</CommandName>
+							<ExtendedTooltip name="IncreaseIndentExtendedTooltip" id="288"/>
+						</Button>
+						<Button name="ReduceIndent" id="289">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Item.FormattedDocument.StandardCommand.DecreaseIndent</CommandName>
+							<ExtendedTooltip name="ReduceIndentExtendedTooltip" id="290"/>
+						</Button>
+						<Button name="TaggedList" id="291">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Item.FormattedDocument.StandardCommand.BulletedList</CommandName>
+							<ExtendedTooltip name="TaggedListExtendedTooltip" id="292"/>
+						</Button>
+						<Button name="NumberedList" id="293">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Item.FormattedDocument.StandardCommand.NumberedList</CommandName>
+							<ExtendedTooltip name="NumberedListExtendedTooltip" id="294"/>
+						</Button>
+						<Button name="Char" id="299">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Item.FormattedDocument.StandardCommand.Char</CommandName>
+							<ExtendedTooltip name="SymbolExtendedTooltip" id="300"/>
+						</Button>
+						<Button name="AlignLeft" id="301">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Item.FormattedDocument.StandardCommand.AlignLeft</CommandName>
+							<ExtendedTooltip name="AlignLeftExtendedTooltip" id="302"/>
+						</Button>
+						<Button name="AlignCenter" id="303">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Item.FormattedDocument.StandardCommand.AlignCenter</CommandName>
+							<ExtendedTooltip name="AlignCenterExtendedTooltip" id="304"/>
+						</Button>
+						<Button name="AlignRight" id="305">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Item.FormattedDocument.StandardCommand.AlignRight</CommandName>
+							<ExtendedTooltip name="AlignRightExtendedTooltip" id="306"/>
+						</Button>
+						<Button name="Justify" id="307">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Item.FormattedDocument.StandardCommand.AlignJustify</CommandName>
+							<ExtendedTooltip name="JustifyExtendedTooltip" id="308"/>
+						</Button>
+						<Button name="LineSpacing" id="309">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Item.FormattedDocument.StandardCommand.LineSpacing</CommandName>
+							<ExtendedTooltip name="LineSpacingExtendedTooltip" id="310"/>
+						</Button>
+						<Button name="Font" id="311">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Item.FormattedDocument.StandardCommand.Font</CommandName>
+							<ExtendedTooltip name="FontExtendedTooltip" id="312"/>
+						</Button>
+						<Button name="IncreaseFontSize" id="313">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Item.FormattedDocument.StandardCommand.IncreaseFontSize</CommandName>
+							<ExtendedTooltip name="IncreaseFontSizeExtendedTooltip" id="314"/>
+						</Button>
+						<Button name="DecreaseFontSize" id="315">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Item.FormattedDocument.StandardCommand.DecreaseFontSize</CommandName>
+							<ExtendedTooltip name="DecreaseFontSizeExtendedTooltip" id="316"/>
+						</Button>
+						<Button name="BackColor" id="317">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Item.FormattedDocument.StandardCommand.BackColor</CommandName>
+							<ExtendedTooltip name="BackColorExtendedTooltip" id="318"/>
+						</Button>
+						<Button name="TextColor" id="319">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Item.FormattedDocument.StandardCommand.TextColor</CommandName>
+							<ExtendedTooltip name="TextColorExtendedTooltip" id="320"/>
+						</Button>
+						<Button name="Cancel" id="321">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Item.FormattedDocument.StandardCommand.Undo</CommandName>
+							<ExtendedTooltip name="CancelExtendedTooltip" id="322"/>
+						</Button>
+						<Button name="Back" id="323">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Item.FormattedDocument.StandardCommand.Redo</CommandName>
+							<ExtendedTooltip name="BackExtendedTooltip" id="324"/>
+						</Button>
+						<Button name="CopyToClipboard" id="325">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Item.FormattedDocument.StandardCommand.CopyToClipboard</CommandName>
+							<ExtendedTooltip name="CopyToClipboardExtendedTooltip" id="326"/>
+						</Button>
+						<Button name="InsertFromClipboard" id="327">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Item.FormattedDocument.StandardCommand.PasteFromClipboard</CommandName>
+							<ExtendedTooltip name="InsertFromClipboardExtendedTooltip" id="328"/>
+						</Button>
+						<Button name="CutToClipboard" id="329">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Item.FormattedDocument.StandardCommand.CutToClipboard</CommandName>
+							<ExtendedTooltip name="CutToClipboardExtendedTooltip" id="330"/>
+						</Button>
+						<Button name="Print" id="331">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Item.FormattedDocument.StandardCommand.Print</CommandName>
+							<ExtendedTooltip name="PrintExtendedTooltip" id="332"/>
+						</Button>
+						<Button name="Preview" id="333">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Item.FormattedDocument.StandardCommand.Preview</CommandName>
+							<ExtendedTooltip name="PreviewExtendedTooltip" id="334"/>
+						</Button>
+						<Button name="SelectAll" id="335">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Item.FormattedDocument.StandardCommand.SelectAll</CommandName>
+							<ExtendedTooltip name="SelectAllExtendedTooltip" id="336"/>
+						</Button>
+						<Button name="SaveAs" id="337">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Item.FormattedDocument.StandardCommand.SaveAs</CommandName>
+							<ExtendedTooltip name="SaveAsExtendedTooltip" id="338"/>
+						</Button>
+					</ChildItems>
+				</ButtonGroup>
+			</ChildItems>
+		</CommandBar>
+		<FormattedDocumentField name="FormattedDocument" id="276">
+			<DataPath>FormattedDocument</DataPath>
+			<DefaultItem>true</DefaultItem>
+			<TitleLocation>None</TitleLocation>
+			<Width>1</Width>
+			<ContextMenu name="RichDocumentContextMenu" id="277"/>
+			<ExtendedTooltip name="FormattedDocumentExtendedTooltip" id="278"/>
+			<Events>
+				<Event name="OnChange">FormattedDocumentOnChange</Event>
+			</Events>
+		</FormattedDocumentField>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Type>
+				<v8:Type>cfg:CatalogObject.ContractForms</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="FormattedDocument" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Formatted document</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type xmlns:fd="http://v8.1c.ru/8.2/data/formatted-document">fd:FormattedDocument</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="AdditionalAttributes" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Additional attributes</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="FormTextAtOpening" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Form text at opening</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="AdditionalAttributes" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Additional attributes</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="CommandName" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Command name</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Attribute" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Attribute</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:ChartOfCharacteristicTypesRef.AdditionalAttributesAndInformation</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="InsertContractNo" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Contract number</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert Contract number</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertContractNo</Action>
+		</Command>
+		<Command name="InsertCompanyLegalAddress" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert company legal address</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert company legal address</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertCompanyLegalAddress</Action>
+		</Command>
+		<Command name="InsertCounterpartyLegalAddress" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert counterparty legal address</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert counterparty legal address</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertCounterpartyLegalAddress</Action>
+		</Command>
+		<Command name="InsertCompanyBank" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert company bank</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert company bank</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertCompanyBank</Action>
+		</Command>
+		<Command name="InsertCounterpartyBank" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert counterparty bank</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert counterparty bank</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertCounterpartyBank</Action>
+		</Command>
+		<Command name="InsertContractDate" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert Contract date</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert Contract date</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertContractDate</Action>
+		</Command>
+		<Command name="InsertCounterpartyContactPersonPositionSubjective" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Subjective case (who?)</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert counterparty contact person position subjective</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertCounterpartyContactPersonPositionSubjective</Action>
+		</Command>
+		<Command name="InsertCompanyName" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert company name</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert company name</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertCompanyName</Action>
+		</Command>
+		<Command name="InsertCounterpartyName" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert counterparty name</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert counterparty name</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertCounterpartyName</Action>
+		</Command>
+		<Command name="InsertCompanyBankAcc" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert company bank account</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert company bank account</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertCompanyBankAcc</Action>
+		</Command>
+		<Command name="InsertCounterpartyBankAcc" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert counterparty bank account</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert counterparty bank account</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertCounterpartyBankAcc</Action>
+		</Command>
+		<Command name="InsertCustomerPaymentDueDate" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert Customer payment due date</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert Customer payment due date</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertCustomerPaymentDueDate</Action>
+		</Command>
+		<Command name="InsertSupplierPaymentDueDate" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert supplier payment due date</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert supplier payment due date</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertSupplierPaymentDueDate</Action>
+		</Command>
+		<Command name="InsertCompanyFactAddress" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert company actual address</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert company actual address</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertCompanyFactAddress</Action>
+		</Command>
+		<Command name="InsertCompanyPhone" id="17">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert company phone number</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert company phone number</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertCompanyPhone</Action>
+		</Command>
+		<Command name="InsertCompanyFax" id="18">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert company fax</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert company fax</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertCompanyFax</Action>
+		</Command>
+		<Command name="InsertCompanyEmailAddress" id="19">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert company email address</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert company email address</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertCompanyEmailAddress</Action>
+		</Command>
+		<Command name="InsertCompanyPostalAddress" id="20">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert company postal address</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert company postal address</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertCompanyPostalAddress</Action>
+		</Command>
+		<Command name="InsertCounterpartyFactAddress" id="21">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert counterparty actual address</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert counterparty actual address</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertCounterpartyFactAddress</Action>
+		</Command>
+		<Command name="InsertCounterpartyPhone" id="22">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert counterparty phone number</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert counterparty phone number</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertCounterpartyPhone</Action>
+		</Command>
+		<Command name="InsertCounterpartyFax" id="23">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert counterparty fax</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert counterparty fax</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertCounterpartyFax</Action>
+		</Command>
+		<Command name="InsertCounterpartyEMailAddress" id="24">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert counterparty email address</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert counterparty email address</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertCounterpartyEMailAddress</Action>
+		</Command>
+		<Command name="InsertCounterpartyPostalAddress" id="25">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert counterparty postal address</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert counterparty postal address</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertCounterpartyPostalAddress</Action>
+		</Command>
+		<Command name="InsertCompanyTIN" id="26">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert CompanyTIN</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert CompanyTIN</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertCompanyTIN</Action>
+		</Command>
+		<Command name="InsertCompanyKPPCode" id="27">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert companyKPP</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert companyKPP</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertCompanyKPPCode</Action>
+		</Command>
+		<Command name="InsertCompanyOKATO" id="28">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert CompanyOKATO</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert CompanyOKATO</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertCompanyOKATO</Action>
+		</Command>
+		<Command name="InsertCompanyOKPO" id="29">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert CompanyOKPO</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert CompanyOKPO</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertCompanyOKPO</Action>
+		</Command>
+		<Command name="InsertCompanyOKTMO" id="30">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert CompanyOKTMO</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert CompanyOKTMO</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertCompanyOKTMO</Action>
+		</Command>
+		<Command name="InsertCounterpartyTIN" id="31">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert CompanyTIN</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert CompanyTIN</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertCounterpartyTIN</Action>
+		</Command>
+		<Command name="InsertCounterpartyKPPCode" id="32">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert companyKPP</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert companyKPP</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertCounterpartyKPPCode</Action>
+		</Command>
+		<Command name="InsertCounterpartyOKPO" id="34">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert CompanyOKPO</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert CompanyOKPO</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertCounterpartyOKPO</Action>
+		</Command>
+		<Command name="InsertCounterpartyContactPersonAccusative" id="33">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Accusative case (whom?)</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert counterparty contact person accusative</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertCounterpartyContactPersonAccusative</Action>
+		</Command>
+		<Command name="InsertDocumentAmount" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert document amount</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert document amount</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertDocumentAmount</Action>
+		</Command>
+		<Command name="RecallPredefinedFormDefault" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Recall predefined form by default</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Recall predefined form by default</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>RecallPredefinedFormDefault</Action>
+		</Command>
+		<Command name="InsertHeadCompaniesNominative" id="35">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Subjective case (who?)</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert company top manager subjective</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertHeadCompaniesNominative</Action>
+		</Command>
+		<Command name="InsertEditableParameter" id="36">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert editable parameter</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert editable parameter</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertEditableParameter</Action>
+		</Command>
+		<Command name="InsertCompanyBIK" id="37">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert company BIK code</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert company BIK code</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertCompanyBIK</Action>
+		</Command>
+		<Command name="InsertCounterpartyBIK" id="38">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert counterparty BIK code</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert counterparty BIK code</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertCounterpartyBIK</Action>
+		</Command>
+		<Command name="InsertCompanyCorrespondentAccount" id="39">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert company correspondent account</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert company correspondent account</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertCompanyCorrespondentAccount</Action>
+		</Command>
+		<Command name="InsertCounterpartyCorrespondentAccount" id="40">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert counterparty correspondent account</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert counterparty correspondent account</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertCounterpartyCorrespondentAccount</Action>
+		</Command>
+		<Command name="InsertPassportDataIssueDate" id="41">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert passport data Date of issue</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert passport data</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertPassportDataIssueDate</Action>
+		</Command>
+		<Command name="InsertPassportDataIssuingAuthority" id="42">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert passport data issuing authority</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert passport data</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertPassportDataIssuingAuthority</Action>
+		</Command>
+		<Command name="InsertPassportDataDivisionCode" id="43">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert passport data Division code</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert passport data</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertPassportDataDivisionCode</Action>
+		</Command>
+		<Command name="InsertPassportDataNumber" id="44">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert passport data Number</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert passport data</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertPassportDataNumber</Action>
+		</Command>
+		<Command name="InsertPassportDataSeries" id="45">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert passport data Series</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert passport data Series</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertPassportDataSeries</Action>
+		</Command>
+		<Command name="InsertPassportDataValidityPeriod" id="46">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert passport data Validity period</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert passport data</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertPassportDataValidityPeriod</Action>
+		</Command>
+		<Command name="InsertFacsimile" id="47">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert facsimile</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert facsimile</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertFacsimile</Action>
+		</Command>
+		<Command name="InsertPageBreak" id="48">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert page break</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert page break</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertPageBreak</Action>
+		</Command>
+		<Command name="InsertLogo" id="49">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert logo</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert logo</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertLogo</Action>
+		</Command>
+		<Command name="InsertDocumentNumber" id="50">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert document number</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert document number</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertDocumentNumber</Action>
+		</Command>
+		<Command name="InsertDocumentDate" id="51">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert document date</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert document date</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertDocumentDate</Action>
+		</Command>
+		<Command name="InsertCompanyTopManagerGenitive" id="52">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Genitive case (whom?)</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert company top manager</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertCompanyTopManagerGenitive</Action>
+		</Command>
+		<Command name="InsertCompanyTopManagerLocative" id="53">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Prepositional case (about whom?)</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert company top manager</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertCompanyTopManagerLocative</Action>
+		</Command>
+		<Command name="InsertCompanyTopManagerAblative" id="54">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Ablative case (by whom?)</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert company top manager</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertCompanyTopManagerAblative</Action>
+		</Command>
+		<Command name="InsertCompanyTopManagerAccusative" id="55">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Accusative case (whom?)</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert company top manager</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertCompanyTopManagerAccusative</Action>
+		</Command>
+		<Command name="InsertCompanyTopManagerDative" id="56">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Dative case (to whom?)</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert company top manager</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertCompanyTopManagerDative</Action>
+		</Command>
+		<Command name="InsertCounterpartyContactPersonPositionLocative" id="57">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Prepositional case (about whom?)</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert counterparty contact person position</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertCounterpartyContactPersonPositionLocative</Action>
+		</Command>
+		<Command name="InsertCounterpartyContactPersonPositionAblative" id="58">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Ablative case (by whom?)</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert counterparty contact person position</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertCounterpartyContactPersonPositionAblative</Action>
+		</Command>
+		<Command name="InsertCounterpartyContactPersonPositionDative" id="59">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Dative case (to whom?)</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert counterparty contact person position</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertCounterpartyContactPersonPositionDative</Action>
+		</Command>
+		<Command name="InsertCounterpartyContactPersonPositionAccusative" id="60">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Accusative case (whom?)</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert counterparty contact person position</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertCounterpartyContactPersonPositionAccusative</Action>
+		</Command>
+		<Command name="InsertCounterpartyContactPersonPositionGenitive" id="61">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Genitive case (whom?)</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert counterparty contact person position</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertCounterpartyContactPersonPositionGenitive</Action>
+		</Command>
+		<Command name="InsertCounterpartyContactPersonLocative" id="62">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Prepositional case (about whom?)</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert counterparty contact person</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertCounterpartyContactPersonLocative</Action>
+		</Command>
+		<Command name="InsertContactPersonOfCounterpartyDating" id="63">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Dative case (to whom?)</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert counterparty contact person</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertContactPersonOfCounterpartyDating</Action>
+		</Command>
+		<Command name="InsertCounterpartyContactPersonGenitive" id="64">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Genitive case (whom?)</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert counterparty contact person</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertCounterpartyContactPersonGenitive</Action>
+		</Command>
+		<Command name="InsertCounterpartyContactPersonSubjenctive" id="65">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Subjective case (who?)</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert counterparty contact person</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertCounterpartyContactPersonSubjenctive</Action>
+		</Command>
+		<Command name="InsertCounterpartyContactPersonAblative" id="66">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Ablative case (by whom?)</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert counterparty contact person</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertCounterpartyContactPersonAblative</Action>
+		</Command>
+		<Command name="InsertCompanyTopManagerDescriptionFullAccusative" id="68">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Accusative case (whom?)</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert company top manager</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertCompanyTopManagerDescriptionFullAccusative</Action>
+		</Command>
+		<Command name="InsertCompanyTopManagerNameDative" id="69">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Dative case (to whom?)</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert company top manager</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertCompanyTopManagerNameDative</Action>
+		</Command>
+		<Command name="InsertCompanyTopManagerDescriptionFullSubjective" id="70">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Subjective case (who?)</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert company top manager subjective</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertCompanyTopManagerDescriptionFullSubjective</Action>
+		</Command>
+		<Command name="InsertCompanyTopManagerDescriptionFullLocative" id="71">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Prepositional case (about whom?)</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert company top manager</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertCompanyTopManagerDescriptionFullLocative</Action>
+		</Command>
+		<Command name="InsertCompanyTopManagerDescriptionFullGenitive" id="72">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Genitive case (whom?)</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert company top manager</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertCompanyTopManagerDescriptionFullGenitive</Action>
+		</Command>
+		<Command name="InsertCompanyTopManagerDescriptionFullAblative" id="73">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Ablative case (by whom?)</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert company top manager</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertCompanyTopManagerDescriptionFullAblative</Action>
+		</Command>
+		<Command name="InsertCounterpartyContactPersonPositionDescriptionFullAccusative" id="67">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Accusative case (whom?)</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert counterparty contact person position</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertCounterpartyContactPersonPositionDescriptionFullAccusative</Action>
+		</Command>
+		<Command name="InsertCounterpartyContactPersonPositionDescriptionFullDative" id="74">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Dative case (to whom?)</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert counterparty contact person position</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertCounterpartyContactPersonPositionDescriptionFullDative</Action>
+		</Command>
+		<Command name="InsertCounterpartyContactPersonPositionDescriptionFullSubjective" id="75">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Subjective case (who?)</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert counterparty contact person position subjective</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertCounterpartyContactPersonPositionDescriptionFullSubjective</Action>
+		</Command>
+		<Command name="InsertCounterpartyContactPersonPositionDescriptionFullLocative" id="76">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Prepositional case (about whom?)</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert counterparty contact person position</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertCounterpartyContactPersonPositionDescriptionFullLocative</Action>
+		</Command>
+		<Command name="InsertCounterpartyContactPersonPositionDescriptionFullAblative" id="77">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Ablative case (by whom?)</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert counterparty contact person position</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertCounterpartyContactPersonPositionDescriptionFullAblative</Action>
+		</Command>
+		<Command name="InsertCounterpartyContactPersonPositionDescriptionFullGenitive" id="78">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Genitive case (whom?)</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Insert counterparty contact person position</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InsertCounterpartyContactPersonPositionDescriptionFullGenitive</Action>
+		</Command>
+	</Commands>
+</Form>

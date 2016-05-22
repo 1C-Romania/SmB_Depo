@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Width>50</Width>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<CommandBarLocation>None</CommandBarLocation>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="FormCommandBar" id="-1"/>
+	<Events>
+		<Event name="ChoiceProcessing">ChoiceProcessing</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<Table name="ProductsAndServices" id="1">
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<EnableStartDrag>true</EnableStartDrag>
+			<EnableDrag>true</EnableDrag>
+			<DataPath>Object.ProductsAndServices</DataPath>
+			<SearchStringLocation>None</SearchStringLocation>
+			<ViewStatusLocation>None</ViewStatusLocation>
+			<SearchControlLocation>None</SearchControlLocation>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="ProductsAndServicesContextMenu" id="2"/>
+			<AutoCommandBar name="ProductsAndServicesCommandBar" id="3">
+				<ChildItems>
+					<Button name="ProductsAndServicesSelection" id="15">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.Pick</CommandName>
+						<ExtendedTooltip name="ProductsAndServicesPickupExtendedTooltip" id="21"/>
+					</Button>
+				</ChildItems>
+			</AutoCommandBar>
+			<ExtendedTooltip name="ProductsAndServicesExtendedTooltip" id="22"/>
+			<SearchStringAddition name="ProductsAndServicesSearchString" id="28">
+				<AdditionSource>
+					<Item>ProductsAndServices</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ProductsAndServicesSearchStringContextMenu" id="29"/>
+				<ExtendedTooltip name="ProductsAndServicesSearchStringExtendedTooltip" id="30"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ProductsAndServicesViewStatus" id="31">
+				<AdditionSource>
+					<Item>ProductsAndServices</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ProductsAndServicesViewStatusContextMenu" id="32"/>
+				<ExtendedTooltip name="ProductsAndServicesViewStatusExtendedTooltip" id="33"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ProductsAndServicesSearchControl" id="34">
+				<AdditionSource>
+					<Item>ProductsAndServices</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ProductsAndServicesSearchControlContextMenu" id="35"/>
+				<ExtendedTooltip name="ProductsAndServicesSearchControlExtendedTooltip" id="36"/>
+			</SearchControlAddition>
+			<ChildItems>
+				<LabelField name="ProductsAndServicesLineNumber" id="17">
+					<DataPath>Object.ProductsAndServices.LineNumber</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ProductsAndServicesLineNumberContextMenu" id="18"/>
+					<ExtendedTooltip name="ProductsAndServicesLineNumberExtendedTooltip" id="23"/>
+				</LabelField>
+				<InputField name="ProductsAndServicesRef" id="19">
+					<DataPath>Object.ProductsAndServices.Ref</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ProductsAndServicesRefContextMenu" id="20"/>
+					<ExtendedTooltip name="ProductsAndServicesRefExtendedTooltip" id="24"/>
+				</InputField>
+			</ChildItems>
+		</Table>
+		<CommandBar name="CommandGroup" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Command group</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Command group</v8:content>
+				</v8:item>
+			</ToolTip>
+			<HorizontalLocation>Right</HorizontalLocation>
+			<ExtendedTooltip name="CommandGroupExtendedTooltip" id="25"/>
+			<ChildItems>
+				<Button name="OK" id="14">
+					<Type>CommandBarButton</Type>
+					<DefaultButton>true</DefaultButton>
+					<CommandName>Form.Command.OK</CommandName>
+					<ExtendedTooltip name="OKExtendedTooltip" id="26"/>
+				</Button>
+				<Button name="Close" id="16">
+					<Type>CommandBarButton</Type>
+					<Representation>Text</Representation>
+					<CommandName>Form.StandardCommand.Close</CommandName>
+					<ExtendedTooltip name="CloseExtendedTooltip" id="27"/>
+				</Button>
+			</ChildItems>
+		</CommandBar>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.PriceList</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="OK" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>OK</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>OK</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>OK</Action>
+		</Command>
+		<Command name="Pick" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Pick</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Pick</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Pick</Action>
+		</Command>
+	</Commands>
+</Form>

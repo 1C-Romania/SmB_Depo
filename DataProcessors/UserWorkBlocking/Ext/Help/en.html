@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"></meta><link rel="stylesheet" type="text/css" href="v8help://service_book/service_style"></link><meta name="GENERATOR" content="MSHTML 11.00.9600.18321"></meta></head><body>
+<p>In the application the administrator is provided an option to stop operation of all active <a href="Catalog.Users/Help">users</a> (including the <a href="Catalog.Users.Form.ItemForm/Help">user</a> who initiated the lock) and to lock the application entry for a certain time period.</p>
+<p>Such option is necessary to carry out preventive or urgent operations in the application. Such operations are usually carried out during night time not to impede other users' operation in the application. However, there occur unscheduled situations. For example, it is necessary to update the application version, restore the application after power supply failure, backup information database, or the chief accountant must draw complicated report up with a time limit set. You can not perform most of these operations if users continue to work in the application.</p>
+<p>For operation in client-server mode there is an option to lock <a href="DataProcessor.ScheduledAndBackgroundJobs/Help">Scheduled tasks</a>. </p>
+<p><strong>Users Operation Lock </strong>is activated by the relevant command of the <strong>Administration </strong>section<strong> - Support and service.</strong> </p>
+<h3>Go to Active Users List </h3>
+<ul><li>Click <a href="DataProcessor.ActiveUsers/Help">Active users</a> to view all users operating in the application at the moment. </li></ul><h3>Lock state</h3>
+<ul><li>A message showing the lock status: "User operation in the application is permitted (prohibited)" is displayed over the lock parameters. IN the latter case the message is red in color. </li></ul><h3>User operation locking</h3>
+<ul><li>
+<div>When locking the following parameters shall be set: </div>
+<ul><li>
+<div><strong>Message for the users </strong>- write a text messages displayed to the users as a warning of the planned connections lock. Indicate when it is recommended to exit the application, describe the reason and the expected lock period. For example: "Please finish operation in the application before 30:00 for preventive maintenance reasons. Database won't be available about 30 minutes". </div>
+</li><li><strong>Lock period</strong> (Date and time of the lock start and finish). End of lock period may be left blank, in this case you can not enter the application, until the administrator releases lock. 
+</li><li><strong>Code for unlock - </strong>arbitrary string using which as a startup option <strong>/UC </strong>you can enter the application in the future despite the locking. 
+</li><li><strong>Enable management of scheduled task locking</strong> - click on the link to prohibit scheduled tasks run for the locking period in client-server version of the application. IN most cases it is recommended to use this option.</li></ul></li><li>
+<div>To lock users operation click <strong>Set lock</strong>. First the application requests confirmation of the administrator. For confirmation<strong> </strong>click <strong>OK.</strong> </div>
+</li><li>
+<div>Before locking during preparation to user logout you can click <strong>Stop,</strong> and cancel locking.</div></li></ul><h3>Actions to logout in client application</h3>
+<ul><li>
+<div>Approximately 15 minutes before locking all active users recieve a warning specifying planned time of connections locking and a certain text of locking message. </div>
+</li><li>
+<div>At specified locking time the system will automatically make an attempt to terminate all sessions of users connected to database displaying corresponding enquiry messages to save data and exit. From this moment it will be impossible to enter the application, it will be locked until time specified by administrator. At that all standard operations at logout - logout request (if the user has customized logout confirmation), switching off in-Save equipment, etc. will be completed. </div>
+</li><li>
+<div>It is neccessary to keep in mind that when locking starts, there might be "hung" sessions in the application (for example, users have forgotten to exit the application at the end of the working day, application has hung, or complex report is being processing). To view data of the current sessions click <a href="DataProcessor.ActiveUsers/Help">Active users</a>. Guaranteed exit from all user sessions is only possible in client-server version of the application. IN file version of the application it is required to terminate "hung" sessions of the users at their working places and also to terminate other applications connected to database by external connection (COM) or using web services if necesary.</div>
+</li><li>
+<div>If forced end of sessions is impossible for some reasons (for example, one of the users works in Configurator), error message is displayed including the list of users and lock can not be set.</div>
+</li><li>
+<div>After all active users have logged out at the specified time, the application provides the administrator with the message recommending to end the session. To stay in application and to carry out all planned works, click <strong>No</strong><strong>.</strong> </div>
+</li><li>
+<div>
+<div>At any attempt to log in the application during locking a warning with some instructions for the administrator will be displayed. To allow user operation the administrator is offered to run the application with <a href="#1">options</a> as follows:</div>
+<ul><li>
+<div>
+<div>New connection to the infobase starting from this moment to the end of locking period will be possible only in case the access authorization code is entered in the command line option <strong>/UC</strong> or connection line option <strong>UC</strong>.</div></div></li></ul></div></li></ul><h3>Unlocking Users Operation </h3>
+<ul><li>
+<div>Users operation lock is automatically released at the specified end of lock time. </div>
+</li><li>
+<div>To release the lock before the period expiration, you shall do the following:</div>
+<ul><li>
+<div>Without application termination after finishing all planned work before end of locking period, click <strong>Users operation lock </strong>of <strong>Administration </strong>section<strong> - Support</strong> <strong>and service,</strong> open this window and click <strong>Unlock</strong><strong>;</strong> </div>
+</li><li>
+<div>Enter the application and unlock all users using setup options specified in the warning <strong>"/C Allow Users Operation"</strong> and <strong>/UC</strong> with access authorization code specified before locking;</div>
+<ul><li>
+<div>Note: client application startup with <strong>Allow Users Operation </strong>option is intended only to unlock and not to run the application. </div></li></ul></li><li>
+<div>Enter the application without unlock and unlock after finishing all planned work: </div>
+<ul><li>
+<div>to enter the application, use startup paramaters specified in the message but without <strong>/C</strong> option. </div>
+</li><li>
+<div>In /<strong>UC</strong> option enter the access authorization code specified at lock setting.</div>
+</li><li>
+<div>After finishing all planned work before the end of lock period select <strong>Lock users operation</strong> command in <strong>Administration </strong>section <strong>- Support and service </strong>and click <strong>Unlock</strong>.</div></li></ul></li></ul></li></ul><h3><a name="#1">Using the application startup parameters </a></h3>
+<p>Different options may be used at the application startup. For more details see manuals on the platform.</p>
+<ul><li>
+<div>The following options may be used for the application startup line:</div>
+<ul><li>
+<div>For <strong>/F</strong> option enter database path ("C:\Documents and Settings\....\1C\DemoSSL")</div>
+</li><li>
+<div>For <strong>/N</strong> option enter user name</div>
+</li><li>
+<div>For <strong>/P</strong> option enter password</div>
+</li><li>
+<div>For <strong>/C</strong> option settings-commands are entered, for example <strong>AllowUserOperation</strong>. </div>
+</li><li>
+<div>For <strong>/UC </strong>option enter access code entered when locking users opeartion.</div></li></ul></li><li>
+<div>To set the lock you can also use application startup with <strong>TerminateUserSessions</strong> option: 
+<ul><li>
+<div>"C:\Application Files\1cv8\bin\1cv8.exe" ENTERPRISE /F"C:\Documents and Settings\Admin\My documents\1C\DemoSSL" /NAdministrator /Pxxxxx /CTerminateUserSessions</div></li></ul></div>
+</li><li>
+<div>To release the lock you can start the application with <strong>AllowUserOperation</strong> option. 
+<ul><li>
+<div>"C:\Application Files\1cv8\bin\1cv8.exe" ENTERPRISE \F"C:\Documents and Settings\Admin\My documents\1C\DemoSSL" /CAllowUserOperation /UC &lt;authorization code&gt;</div>
+</li><li>
+<div>client application startup with <strong>AllowUsersOperation</strong> option is intended only for lock release and not for the application running i.e. this option is only for the batch mode - client application running with this option will be terminated immediately after startup.</div></li></ul></div></li></ul><h3>Additional options and restrictions</h3>
+<ul><li>
+<div>In client-server operation mode there is also a possibility to lock scheduled and background jobs. To do this, it can be required to enter additional <a href="CommonForm.AdministrationParametersApplication/Help">options</a> for server cluster connection using <strong>Application Administration Options</strong> command. Moreover, to set and release the user operation lock you can use the utility of 1C:Enterprise servers cluster administration. </div>
+</li><li>
+<div>
+<div>In client-server mode termination of all scheduled and background jobs is not guaranteed (in that rare cases when they can not be terminated forcefully).</div></div>
+</li><li>
+<div>In file mode you can not set the connections locking if at this particular moment the base is addressed using COM (external connection), web services or Designer is opened. </div></li></ul><h3></h3><br></body></html>

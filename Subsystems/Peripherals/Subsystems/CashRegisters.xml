@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<MetaDataObject xmlns="http://v8.1c.ru/8.3/MDClasses" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:cmi="http://v8.1c.ru/8.2/managed-application/cmi" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xpr="http://v8.1c.ru/8.3/xcf/predef" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Subsystem uuid="36e9ecb9-6cbf-4ece-9408-632f3ba6c341">
+		<Properties>
+			<Name>CashRegisters</Name>
+			<Synonym>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Fiscal cash registers</v8:content>
+				</v8:item>
+			</Synonym>
+			<Comment/>
+			<IncludeHelpInContents>true</IncludeHelpInContents>
+			<IncludeInCommandInterface>false</IncludeInCommandInterface>
+			<Explanation/>
+			<Picture/>
+			<Content>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonPicture.PeripheralsFiscalRegister16</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonPicture.PeripheralsFiscalRegister32</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonCommand.FiscalRegisterManagement</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonTemplate.DriverShtrikhMFiscalRegisters</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonTemplate.DriverORIONFiscalRegisters</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonTemplate.DriverKKSFiscalRegisters</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonTemplate.DriverVersionTFiscalRegisters</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonTemplate.Driver1CRarusFiscalRegistersFelix</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonTemplate.Driver1CFiscalRegister</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonForm.SettingsFormAtolFiscalRegisters</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonForm.SettingsFormVersionTFiscalRegisters</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonForm.SettingsFormKKSFiscalRegisters</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonForm.SettingsFormORIONFiscalRegisters</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonForm.SettingsFormShtrikhMFiscalRegisters</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.PeripheralsAtolFiscalRegistersClient</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.PeripheralsVersionTCashRegistersClient</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.PeripheralsKKSCashRegistersClient</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.PeripheralsORIONFiscalRegistersClient</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.PeripheralsShtrikhMFiscalRegistersClient</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonTemplate.DriverATOLFiscalRegisters</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">21965060-f772-4170-8e1b-43d312d96a37</xr:Item>
+			</Content>
+		</Properties>
+		<ChildObjects/>
+	</Subsystem>
+</MetaDataObject>

@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html xmlns:o=""><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"></meta><link rel="stylesheet" type="text/css" href="v8help://service_book/service_style"></link><meta name="GENERATOR" content="MSHTML 11.00.9600.18321"></meta></head><body>
+<p style="MARGIN-LEFT: 0px">The Russian Bank Classifier stores data of Russian banks. This data is used for filling in bank account details, in documents and other application objects. </p>
+<p style="MARGIN-LEFT: 0px">You can fill in the Classifier automatically - with the Russian Bank Classifier. Automatic loading of the Bank Classifier greatly simplifies entering information. You can enter bank information into various documents by simply selecting items from the Classifier. It minimizes accounting errors and involves a constantly updated classifier.  </p>
+<p style="MARGIN-LEFT: 0px">Dissolved banks are inactive in the list.</p>
+<p style="MARGIN-LEFT: 0px">Use the <strong>Banks </strong>command of the <strong>Catalogs </strong>section.</p>
+<p style="MARGIN-LEFT: 0px">The Classifier indicates: </p>
+<ul><li>
+<div style="MARGIN-LEFT: 0px"><strong>Bank name</strong> - a full name of the <a href="Catalog.RFBankClassifier.Form.ItemForm/Help"><font color="#000080">bank</font></a></div>
+</li><li>
+<div style="MARGIN-LEFT: 0px"><strong>BIC </strong>- the Russian Central Bank Identifier Code</div>
+</li><li>
+<div style="MARGIN-LEFT: 0px"><strong>Corr. account </strong>- correspondence account</div>
+</li><li>
+<div style="MARGIN-LEFT: 0px"><strong>City </strong>- a city where the bank is located</div>
+</li><li>
+<div style="MARGIN-LEFT: 0px"><strong>Address </strong>- a full address of the bank</div></li></ul><p style="MARGIN-LEFT: 0px">Remember that the bank addresses and phone numbers are loaded only from the 1C:ITS disk.</p>
+<p style="MARGIN-LEFT: 0px">Use the <strong>More - Change form </strong>command to display additional information:</p>
+<ul><li>
+<div style="MARGIN-LEFT: 0px"><strong>Bank dissolved</strong> - the application register dissolved banks and automatically selects a check box for such banks. You can also select it manually, when you are informed that a bank is dissolved.</div>
+</li><li>
+<div style="MARGIN-LEFT: 0px"><strong>Bank group </strong>- by default, the region where the bank is located. </div>
+</li><li>
+<div style="MARGIN-LEFT: 0px"><strong>Phone numbers </strong>- banks addresses and phone numbers can be loaded only from the 1C:ITS disk.</div></li></ul><h3 style="MARGIN-LEFT: 0px">Grouping banks</h3>
+<ul><li>
+<div style="MARGIN-LEFT: 0px">Banks in the list are grouped by regions. When you open the list, you see only bank regions. Select a necessary region to view its banks.  </div>
+</li><li>
+<div style="MARGIN-LEFT: 0px">You can create your own groups in the regions. Click <strong>Create group</strong> and drag necessary banks there. </div></li></ul><h3 style="MARGIN-LEFT: 0px">Importing bank classifier</h3>
+<p style="MARGIN-LEFT: 0px">The application is delivered with a loaded bank classifier.</p>
+<ul><li>
+<div style="MARGIN-LEFT: 0px">When the application is started, you can check the relevance of the bank classifier. If it is outdated (not updated for more than 30 days), you will see a message prompting you to update the classifier. Follow the <strong>Update bank classifier </strong>link.</div>
+</li><li>
+<div style="MARGIN-LEFT: 0px">
+<p style="MARGIN-LEFT: 0px">Use the <strong>Import classifier</strong> command to <a href="Catalog.RFBankClassifier.Form.ImportClassifier/Help"><font color="#000080">update</font></a> the bank data.  </p></div>
+</li><li>
+<div style="MARGIN-LEFT: 0px">Configure automatic classifier update from the RBC website with the <a href="DataProcessor.ScheduledAndBackgroundJobs/Help"><font color="#000080">scheduled job</font></a> "Import bank classifier".</div>
+</li><li>
+<div style="MARGIN-LEFT: 0px">Sometimes, you do not have to fill in all the fields of a bank card.  You do not fill in the <strong>Address </strong>and <strong>Phone numbers</strong>, when the classifier is loaded from the RBC website.</div>
+</li><li>
+<div style="MARGIN-LEFT: 0px">When you update data, only edited properties of the classifier are loaded. If the bank BIC is edited, a new entry for this bank will be created. If other fields are edited, they will be overwritten (except for <strong>Address </strong>and <strong>Phone number</strong> when the classifier is loaded from the RBC website).</div></li></ul><h3 style="MARGIN-LEFT: 0px">Adding bank</h3>
+<ul><li>
+<div style="MARGIN-LEFT: 0px">If necessary, you can add a bank by clicking <strong>Create</strong>. Fill in required <a href="Catalog.RFBankClassifier.Form.ItemForm/Help"><font color="#000080">parameters</font></a>.</div></li></ul><h3 style="MARGIN-LEFT: 0px">See also:</h3>
+<ul><li>
+<div style="MARGIN-LEFT: 0px"><a href="v8help://frame/form_common"><font color="#000080">Working with forms</font></a></div></li></ul></body></html>

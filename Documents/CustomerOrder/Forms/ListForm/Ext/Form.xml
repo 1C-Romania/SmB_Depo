@@ -1,0 +1,1723 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Title>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Customer orders</v8:content>
+		</v8:item>
+	</Title>
+	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
+	<AutoTitle>false</AutoTitle>
+	<CommandBarLocation>None</CommandBarLocation>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<CommandSet>
+		<ExcludedCommand>Create</ExcludedCommand>
+	</CommandSet>
+	<AutoCommandBar name="FormCommandBar" id="-1"/>
+	<Events>
+		<Event name="NotificationProcessing">NotificationProcessing</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+		<Event name="BeforeLoadDataFromSettingsAtServer">OnLoadDataFromSettingsAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="QuickFilters" id="46">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Quick filters</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Quick filters</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="FastFiltersExtendedTooltip" id="132"/>
+			<ChildItems>
+				<InputField name="FilterCounterparty" id="47">
+					<DataPath>FilterCounterparty</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<OpenButton>false</OpenButton>
+					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+					<InputHint>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Counterparty</v8:content>
+						</v8:item>
+					</InputHint>
+					<ContextMenu name="FilterCounterpartyContextMenu" id="48"/>
+					<ExtendedTooltip name="FilterCounterpartyExtendedTooltip" id="133"/>
+					<Events>
+						<Event name="OnChange">FilterCounterpartyOnChange</Event>
+					</Events>
+				</InputField>
+				<InputField name="FilterResponsible" id="49">
+					<DataPath>FilterResponsible</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<OpenButton>false</OpenButton>
+					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+					<InputHint>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Responsible</v8:content>
+						</v8:item>
+					</InputHint>
+					<ContextMenu name="FilterResponsibleContextMenu" id="50"/>
+					<ExtendedTooltip name="FilterResponsibleExtendedTooltip" id="134"/>
+					<Events>
+						<Event name="OnChange">FilterResponsibleOnChange</Event>
+					</Events>
+				</InputField>
+				<InputField name="FilterState" id="56">
+					<DataPath>FilterState</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<OpenButton>false</OpenButton>
+					<InputHint>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Status</v8:content>
+						</v8:item>
+					</InputHint>
+					<ContextMenu name="StateFilterContextMenu" id="57"/>
+					<ExtendedTooltip name="StateFilterExtendedTooltip" id="135"/>
+					<Events>
+						<Event name="OnChange">FilterStateOnChange</Event>
+					</Events>
+				</InputField>
+				<InputField name="FilterStatus" id="117">
+					<DataPath>FilterStatus</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<ListChoiceMode>true</ListChoiceMode>
+					<InputHint>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Status</v8:content>
+						</v8:item>
+					</InputHint>
+					<ContextMenu name="FilterStatusContextMenu" id="118"/>
+					<ExtendedTooltip name="FilterStatusExtendedTooltip" id="136"/>
+					<Events>
+						<Event name="OnChange">FilterStatusOnChange</Event>
+					</Events>
+				</InputField>
+				<InputField name="FilterCompany" id="51">
+					<DataPath>FilterCompany</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<OpenButton>false</OpenButton>
+					<InputHint>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Company</v8:content>
+						</v8:item>
+					</InputHint>
+					<ContextMenu name="FilterCompanyContextMenu" id="52"/>
+					<ExtendedTooltip name="FilterCompanyExtendedTooltip" id="137"/>
+					<Events>
+						<Event name="OnChange">FilterCompanyOnChange</Event>
+					</Events>
+				</InputField>
+				<InputField name="FilterActuality" id="53">
+					<DataPath>FilterActuality</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<DropListButton>true</DropListButton>
+					<TextEdit>false</TextEdit>
+					<ChoiceListButton>true</ChoiceListButton>
+					<InputHint>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Actuality</v8:content>
+						</v8:item>
+					</InputHint>
+					<ContextMenu name="FilterActualityContextMenu" id="54"/>
+					<ExtendedTooltip name="FilterActualityExtendedTooltip" id="138"/>
+					<Events>
+						<Event name="OnChange">FilterActualityOnChange</Event>
+					</Events>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ListsGroup" id="77">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Order list</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>List</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="FolderListsExtendedTooltip" id="140"/>
+			<ChildItems>
+				<CommandBar name="CommandBarGroup" id="241">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group command bar</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group command bar</v8:content>
+						</v8:item>
+					</ToolTip>
+					<CommandSource>Form</CommandSource>
+					<ExtendedTooltip name="CommandBarGroupExtendedTooltip" id="242"/>
+					<ChildItems>
+						<Button name="ListCreate" id="68">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Command.CreateCustomerOrder</CommandName>
+							<ExtendedTooltip name="ListCreateExtendedTooltip" id="141"/>
+						</Button>
+						<ButtonGroup name="GroupImportantCommandsCustomerOrder" id="237">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Important commands</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Important commands</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ExtendedTooltip name="GroupImportantCommandsCustomerOrderExtendedTooltip" id="238"/>
+							<ChildItems>
+								<Button name="FormCommonCommandRemind" id="263">
+									<Type>CommandBarButton</Type>
+									<CommandName>CommonCommand.Remind</CommandName>
+									<DataPath>Items.List.CurrentData.Ref</DataPath>
+									<ExtendedTooltip name="FormCommonCommandRemindExtendedTooltip" id="264"/>
+								</Button>
+							</ChildItems>
+						</ButtonGroup>
+						<ButtonGroup name="GroupImportantCommandsJobOrder" id="245">
+							<Visible>false</Visible>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Important commands</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Important commands</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ExtendedTooltip name="GroupImportantCommandsJobOrderExtendedTooltip" id="246"/>
+						</ButtonGroup>
+						<ButtonGroup name="GroupGlobalCustomerOrderCommands" id="239">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group global commands customer order</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group global commands customer order</v8:content>
+								</v8:item>
+							</ToolTip>
+							<CommandSource>FormCommandPanelGlobalCommands</CommandSource>
+							<ExtendedTooltip name="GroupGlobalCommandsCustomerOrderExtendedTooltip" id="240"/>
+							<ChildItems>
+								<Button name="CommonCommandDependencies" id="261">
+									<Type>CommandBarButton</Type>
+									<CommandName>CommonCommand.Dependencies</CommandName>
+									<DataPath>Items.List.CurrentData.Ref</DataPath>
+									<ExtendedTooltip name="CommonCommandDependenciesExtendedTooltip" id="262"/>
+								</Button>
+								<Button name="CommonCommandReportByMovements" id="257">
+									<Type>CommandBarButton</Type>
+									<OnlyInAllActions>false</OnlyInAllActions>
+									<CommandName>CommonCommand.ReportByMovements</CommandName>
+									<DataPath>Items.List.CurrentData.Ref</DataPath>
+									<ExtendedTooltip name="CommonCommandReportByMovementsExtendedTooltip" id="258"/>
+								</Button>
+								<Button name="CommonCommandObjectFilling" id="253">
+									<Type>CommandBarButton</Type>
+									<CommandName>CommonCommand.ObjectFilling</CommandName>
+									<DataPath>Items.List.CurrentData.Ref</DataPath>
+									<ExtendedTooltip name="CommonCommandObjectFillingExtendedTooltip" id="254"/>
+								</Button>
+								<Button name="CommonCommandObjectReports" id="259">
+									<Type>CommandBarButton</Type>
+									<CommandName>CommonCommand.ObjectReports</CommandName>
+									<DataPath>Items.List.CurrentData.Ref</DataPath>
+									<ExtendedTooltip name="CommonCommandObjectReportsExtendedTooltip" id="260"/>
+								</Button>
+								<Button name="CommonCommandChangesHistory" id="255">
+									<Type>CommandBarButton</Type>
+									<OnlyInAllActions>false</OnlyInAllActions>
+									<CommandName>CommonCommand.ChangesHistory</CommandName>
+									<DataPath>Items.List.CurrentData.Ref</DataPath>
+									<ExtendedTooltip name="CommonCommandChangesHistoryExtendedTooltip" id="256"/>
+								</Button>
+								<Button name="CommonCommandAdditionalInformationCommandBar" id="251">
+									<Type>CommandBarButton</Type>
+									<OnlyInAllActions>false</OnlyInAllActions>
+									<CommandName>CommonCommand.AdditionalInformationCommandBar</CommandName>
+									<DataPath>Items.List.CurrentData.Ref</DataPath>
+									<ExtendedTooltip name="CommonCommandAdditionalInformationCommandBarExtendedTooltip" id="252"/>
+								</Button>
+							</ChildItems>
+						</ButtonGroup>
+						<Button name="FormChangeForm" id="279">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
+							<ExtendedTooltip name="FormChangeFormExtendedTooltip" id="280"/>
+						</Button>
+						<Button name="FormHelp" id="281">
+							<Type>CommandBarButton</Type>
+							<OnlyInAllActions>false</OnlyInAllActions>
+							<CommandName>Form.StandardCommand.Help</CommandName>
+							<ExtendedTooltip name="FormHelpExtendedTooltip" id="282"/>
+						</Button>
+					</ChildItems>
+				</CommandBar>
+				<Table name="List" id="1">
+					<Representation>List</Representation>
+					<CommandBarLocation>None</CommandBarLocation>
+					<SkipOnInput>false</SkipOnInput>
+					<DefaultItem>true</DefaultItem>
+					<UseAlternationRowColor>true</UseAlternationRowColor>
+					<EnableStartDrag>true</EnableStartDrag>
+					<DataPath>List</DataPath>
+					<RowPictureDataPath>List.DefaultPicture</RowPictureDataPath>
+					<SearchStringLocation>CommandBar</SearchStringLocation>
+					<ViewStatusLocation>Top</ViewStatusLocation>
+					<SearchControlLocation>CommandBar</SearchControlLocation>
+					<AutoRefresh>false</AutoRefresh>
+					<AutoRefreshPeriod>60</AutoRefreshPeriod>
+					<Period>
+						<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+						<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+						<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+					</Period>
+					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+					<RestoreCurrentRow>false</RestoreCurrentRow>
+					<TopLevelParent xsi:nil="true"/>
+					<ShowRoot>false</ShowRoot>
+					<AllowRootChoice>false</AllowRootChoice>
+					<UpdateOnDataChange>Auto</UpdateOnDataChange>
+					<ContextMenu name="ListContextMenu" id="2"/>
+					<AutoCommandBar name="ListCommandBar" id="3">
+						<Autofill>false</Autofill>
+					</AutoCommandBar>
+					<ExtendedTooltip name="ListExtendedTooltip" id="159"/>
+					<SearchStringAddition name="SearchStringList" id="212">
+						<AdditionSource>
+							<Item>List</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="ListSearchStringContextMenu" id="213"/>
+						<ExtendedTooltip name="ListSearchStringExtendedTooltip" id="214"/>
+					</SearchStringAddition>
+					<ViewStatusAddition name="ListViewStatus" id="215">
+						<AdditionSource>
+							<Item>List</Item>
+							<Type>ViewStatusRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="ListViewStatusContextMenu" id="216"/>
+						<ExtendedTooltip name="ListViewStatusExtendedTooltip" id="217"/>
+					</ViewStatusAddition>
+					<SearchControlAddition name="ListSearchControl" id="218">
+						<AdditionSource>
+							<Item>List</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<ContextMenu name="ListSearchControlContextMenu" id="219"/>
+						<ExtendedTooltip name="ListSearchControlExtendedTooltip" id="220"/>
+					</SearchControlAddition>
+					<Events>
+						<Event name="BeforeAddRow">ListBeforeAddRow</Event>
+						<Event name="OnActivateRow">ListOnActivateRow</Event>
+						<Event name="BeforeRowChange">ListBeforeRowChange</Event>
+					</Events>
+					<ChildItems>
+						<PictureField name="ShipmentPictureNumber" id="115">
+							<DataPath>List.ShipmentPictureNumber</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Shipment state</v8:content>
+								</v8:item>
+							</ToolTip>
+							<HeaderPicture>
+								<xr:Ref>CommonPicture.ForShipment</xr:Ref>
+								<xr:LoadTransparent>true</xr:LoadTransparent>
+							</HeaderPicture>
+							<Width>2</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<VerticalStretch>false</VerticalStretch>
+							<ValuesPicture>
+								<xr:Ref>CommonPicture.OrderState</xr:Ref>
+								<xr:LoadTransparent>true</xr:LoadTransparent>
+							</ValuesPicture>
+							<ContextMenu name="ShipmentPictureNumberContextMenu" id="116"/>
+							<ExtendedTooltip name="ShipmentPictureNumberExtendedTooltip" id="160"/>
+						</PictureField>
+						<PictureField name="PaymentPictureNumber" id="113">
+							<DataPath>List.PaymentPictureNumber</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Payment state</v8:content>
+								</v8:item>
+							</ToolTip>
+							<HeaderPicture>
+								<xr:Ref>CommonPicture.ForPayment</xr:Ref>
+								<xr:LoadTransparent>true</xr:LoadTransparent>
+							</HeaderPicture>
+							<Width>2</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<VerticalStretch>false</VerticalStretch>
+							<ValuesPicture>
+								<xr:Ref>CommonPicture.OrderState</xr:Ref>
+								<xr:LoadTransparent>true</xr:LoadTransparent>
+							</ValuesPicture>
+							<ContextMenu name="PictureNumberPaymentContextMenu" id="114"/>
+							<ExtendedTooltip name="PictureNumberPaymentsExtendedTooltip" id="161"/>
+						</PictureField>
+						<LabelField name="Date" id="4">
+							<DataPath>List.Date</DataPath>
+							<DefaultItem>true</DefaultItem>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Date</v8:content>
+								</v8:item>
+							</Title>
+							<Width>10</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Format>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>DLF=D</v8:content>
+								</v8:item>
+							</Format>
+							<ContextMenu name="DateContextMenu" id="5"/>
+							<ExtendedTooltip name="DateExtendedTooltip" id="163"/>
+						</LabelField>
+						<LabelField name="Number" id="6">
+							<DataPath>List.Number</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Number</v8:content>
+								</v8:item>
+							</Title>
+							<Width>11</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="NumberContextMenu" id="7"/>
+							<ExtendedTooltip name="NumberExtendedTooltip" id="164"/>
+						</LabelField>
+						<LabelField name="OrderState" id="38">
+							<DataPath>List.OrderState</DataPath>
+							<Width>12</Width>
+							<ContextMenu name="OrderStateContextMenu" id="39"/>
+							<ExtendedTooltip name="OrderStateExtendedTooltip" id="165"/>
+						</LabelField>
+						<LabelField name="OrderStatus" id="119">
+							<DataPath>List.OrderState</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Status</v8:content>
+								</v8:item>
+							</Title>
+							<Width>12</Width>
+							<ContextMenu name="OrderStatusContextMenu" id="120"/>
+							<ExtendedTooltip name="OrderStatusExtendedTooltip" id="166"/>
+						</LabelField>
+						<LabelField name="Counterparty" id="12">
+							<DataPath>List.Counterparty</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Counterparty</v8:content>
+								</v8:item>
+							</Title>
+							<Width>30</Width>
+							<ContextMenu name="CounterpartyContextMenu" id="13"/>
+							<ExtendedTooltip name="CounterpartyExtendedTooltip" id="169"/>
+						</LabelField>
+						<LabelField name="Contract" id="14">
+							<DataPath>List.Contract</DataPath>
+							<UserVisible>
+								<xr:Common>false</xr:Common>
+							</UserVisible>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Contract</v8:content>
+								</v8:item>
+							</Title>
+							<Width>20</Width>
+							<ContextMenu name="ContractContextMenu" id="15"/>
+							<ExtendedTooltip name="ContractExtendedTooltip" id="174"/>
+						</LabelField>
+						<ColumnGroup name="GroupAmount" id="229">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Amount</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Amount</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>InCell</Group>
+							<ExtendedTooltip name="GroupAmountExtendedTooltip" id="230"/>
+							<ChildItems>
+								<LabelField name="DocumentAmount" id="36">
+									<DataPath>List.DocumentAmount</DataPath>
+									<Width>10</Width>
+									<ContextMenu name="DocumentAmountContextMenu" id="37"/>
+									<ExtendedTooltip name="DocumentAmountExtendedTooltip" id="170"/>
+								</LabelField>
+								<LabelField name="DocumentCurrency" id="20">
+									<DataPath>List.DocumentCurrency</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Currency</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>None</TitleLocation>
+									<ContextMenu name="DocumentCurrencyContextMenu" id="21"/>
+									<ExtendedTooltip name="DocumentCurrencyExtendedTooltip" id="171"/>
+								</LabelField>
+							</ChildItems>
+						</ColumnGroup>
+						<LabelField name="PaymentAmountTurnover" id="44">
+							<DataPath>List.PaymentAmountTurnover</DataPath>
+							<UserVisible>
+								<xr:Common>false</xr:Common>
+							</UserVisible>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Paid</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Amount of the order payment in the contract currency</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Width>12</Width>
+							<Format>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>NFD=2</v8:content>
+								</v8:item>
+							</Format>
+							<ContextMenu name="PaymentAmountTurnoverContextMenu" id="45"/>
+							<ExtendedTooltip name="PaymentAmountTurnoverExtendedTooltip" id="172"/>
+						</LabelField>
+						<LabelField name="PaymentPercentage" id="74">
+							<DataPath>List.PaymentPercentage</DataPath>
+							<UserVisible>
+								<xr:Common>false</xr:Common>
+							</UserVisible>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>payment %</v8:content>
+								</v8:item>
+							</Title>
+							<Width>11</Width>
+							<ContextMenu name="PaymentPercentContextMenu" id="75"/>
+							<ExtendedTooltip name="PaymentPercentExtendedTooltip" id="173"/>
+						</LabelField>
+						<LabelField name="ShipmentDate" id="16">
+							<DataPath>List.ShipmentDate</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Shipping date</v8:content>
+								</v8:item>
+							</Title>
+							<Width>11</Width>
+							<ContextMenu name="DispatchDateContextMenu" id="17"/>
+							<ExtendedTooltip name="DispatchDateExtendedTooltip" id="175"/>
+						</LabelField>
+						<LabelField name="OperationKind" id="10">
+							<DataPath>List.OperationKind</DataPath>
+							<Width>22</Width>
+							<ContextMenu name="OperationTypeContextMenu" id="11"/>
+							<ExtendedTooltip name="OperationTypeExtendedTooltip" id="168"/>
+						</LabelField>
+						<LabelField name="Company" id="8">
+							<DataPath>List.Company</DataPath>
+							<UserVisible>
+								<xr:Common>false</xr:Common>
+							</UserVisible>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Company</v8:content>
+								</v8:item>
+							</Title>
+							<Width>20</Width>
+							<ContextMenu name="CompanyContextMenu" id="9"/>
+							<ExtendedTooltip name="CompanyExtendedTooltip" id="167"/>
+						</LabelField>
+						<CheckBoxField name="Closed" id="40">
+							<DataPath>List.Closed</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<HeaderPicture>
+								<xr:Ref>CommonPicture.LockFile</xr:Ref>
+								<xr:LoadTransparent>true</xr:LoadTransparent>
+							</HeaderPicture>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="CloseContextMenu" id="41"/>
+							<ExtendedTooltip name="ClosedExtendedTooltip" id="162"/>
+						</CheckBoxField>
+						<LabelField name="Project" id="26">
+							<DataPath>List.Project</DataPath>
+							<UserVisible>
+								<xr:Common>false</xr:Common>
+							</UserVisible>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Project</v8:content>
+								</v8:item>
+							</Title>
+							<Width>20</Width>
+							<ContextMenu name="ProjectContextMenu" id="27"/>
+							<ExtendedTooltip name="ProjectExtendedTooltip" id="176"/>
+						</LabelField>
+						<LabelField name="SalesStructuralUnit" id="30">
+							<DataPath>List.SalesStructuralUnit</DataPath>
+							<UserVisible>
+								<xr:Common>false</xr:Common>
+							</UserVisible>
+							<ContextMenu name="SalesStructuralUnitContextMenu" id="31"/>
+							<ExtendedTooltip name="SalesStructuralUnitExtendedTooltip" id="177"/>
+						</LabelField>
+						<LabelField name="Responsible" id="32">
+							<DataPath>List.Responsible</DataPath>
+							<UserVisible>
+								<xr:Common>false</xr:Common>
+							</UserVisible>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Responsible</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ResponsibleContextMenu" id="33"/>
+							<ExtendedTooltip name="ResponsibleExtendedTooltip" id="178"/>
+						</LabelField>
+						<LabelField name="Comment" id="34">
+							<DataPath>List.Comment</DataPath>
+							<UserVisible>
+								<xr:Common>false</xr:Common>
+							</UserVisible>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Comment</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="CommentContextMenu" id="35"/>
+							<ExtendedTooltip name="CommentExtendedTooltip" id="179"/>
+						</LabelField>
+						<LabelField name="Author" id="42">
+							<DataPath>List.Author</DataPath>
+							<UserVisible>
+								<xr:Common>false</xr:Common>
+							</UserVisible>
+							<ContextMenu name="AuthorContextMenu" id="43"/>
+							<ExtendedTooltip name="AuthorExtendedTooltip" id="180"/>
+						</LabelField>
+						<LabelField name="Ref" id="283">
+							<DataPath>List.Ref</DataPath>
+							<UserVisible>
+								<xr:Common>false</xr:Common>
+							</UserVisible>
+							<ContextMenu name="RefContextMenu" id="284"/>
+							<ExtendedTooltip name="RefExtendedTooltip" id="285"/>
+						</LabelField>
+					</ChildItems>
+				</Table>
+				<UsualGroup name="GroupInformationAboutCounterparty" id="78">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Additional information</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Counterparty information</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Behavior>Collapsible</Behavior>
+					<Collapsed>true</Collapsed>
+					<ControlRepresentation>Picture</ControlRepresentation>
+					<ExtendedTooltip name="GroupInformationAboutCounterpartyExtendedTooltip" id="181"/>
+					<ChildItems>
+						<UsualGroup name="ListDetailsDefaultInformation" id="235">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>List details main information</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>List details main information</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ListDetailsDefaultInformationExtendedTooltip" id="236"/>
+							<ChildItems>
+								<UsualGroup name="ListDetailsCounterparty1" id="79">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Counterparty</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Counterparty</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ListDetailsCounterpartyExtendedTooltip" id="182"/>
+									<ChildItems>
+										<LabelField name="DetailsListCounterparty" id="80">
+											<DataPath>Items.List.CurrentData.Counterparty</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Counterparty</v8:content>
+												</v8:item>
+											</Title>
+											<TitleLocation>None</TitleLocation>
+											<BackColor>style:FormBackColor</BackColor>
+											<ContextMenu name="DetailsListCounterpartyContextMenu" id="81"/>
+											<ExtendedTooltip name="DetailsListCounterpartyExtendedTooltip" id="183"/>
+										</LabelField>
+										<InputField name="ListDetailsCounterpartyPhone" id="82">
+											<DataPath>CounterpartyPhoneInformation</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Phone</v8:content>
+												</v8:item>
+											</Title>
+											<TitleTextColor>style:UnavailableCellTextColor</TitleTextColor>
+											<BackColor>style:FormBackColor</BackColor>
+											<BorderColor>style:FormBackColor</BorderColor>
+											<ContextMenu name="DetailsListCounterpartyPhoneContextMenu" id="83"/>
+											<ExtendedTooltip name="DetailsListCounterpartyPhoneExtendedTooltip" id="185"/>
+										</InputField>
+										<LabelField name="ListDetailsEmailAddress" id="87">
+											<DataPath>CounterpartyInformationES</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Email</v8:content>
+												</v8:item>
+											</Title>
+											<TitleTextColor>style:UnavailableCellTextColor</TitleTextColor>
+											<Hiperlink>true</Hiperlink>
+											<BackColor>style:FormBackColor</BackColor>
+											<ContextMenu name="ListDetailsEmailAddressContextMenu" id="88"/>
+											<ExtendedTooltip name="ListDetailsEmailAddressExtendedTooltip" id="188"/>
+											<Events>
+												<Event name="Click">SendEmailToCounterparty</Event>
+											</Events>
+										</LabelField>
+										<InputField name="ListDetailsCounterpartyFax" id="84">
+											<DataPath>CounterpartyFaxInformation</DataPath>
+											<UserVisible>
+												<xr:Common>false</xr:Common>
+											</UserVisible>
+											<ReadOnly>true</ReadOnly>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Fax</v8:content>
+												</v8:item>
+											</Title>
+											<TitleTextColor>style:UnavailableCellTextColor</TitleTextColor>
+											<BackColor>style:FormBackColor</BackColor>
+											<BorderColor>style:FormBackColor</BorderColor>
+											<ContextMenu name="DetailsListCounterpartyFaxContextMenu" id="85"/>
+											<ExtendedTooltip name="DetailsListCounterpartyFaxExtendedTooltip" id="186"/>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="ContactPersonListDetails" id="98">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Contact person</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Counterparty</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ListDetailsContactPersonExtendedTooltip" id="194"/>
+									<ChildItems>
+										<LabelField name="ListDetailsContactPerson" id="99">
+											<DataPath>Items.List.CurrentData.ContactPerson</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Contact person</v8:content>
+												</v8:item>
+											</Title>
+											<TitleLocation>None</TitleLocation>
+											<BackColor>style:FormBackColor</BackColor>
+											<ContextMenu name="DetailsListContactPersonContextMenu" id="100"/>
+											<ExtendedTooltip name="DetailsListContactPersonExtendedTooltip" id="196"/>
+										</LabelField>
+										<InputField name="ListDetailsContactPersonPhone" id="101">
+											<DataPath>InformationContactPhone</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Phone</v8:content>
+												</v8:item>
+											</Title>
+											<TitleTextColor>style:UnavailableCellTextColor</TitleTextColor>
+											<BackColor>style:FormBackColor</BackColor>
+											<BorderColor>style:FormBackColor</BorderColor>
+											<ContextMenu name="ListDetailsContactPersonPhoneContextMenu" id="102"/>
+											<ExtendedTooltip name="ListDetailsContactPersonPhoneExtendedTooltip" id="197"/>
+										</InputField>
+										<LabelField name="ListDetailsContactPersonEmailAddress" id="104">
+											<DataPath>ContactPersonESInformation</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Email</v8:content>
+												</v8:item>
+											</Title>
+											<TitleTextColor>style:UnavailableCellTextColor</TitleTextColor>
+											<Hiperlink>true</Hiperlink>
+											<BackColor>style:FormBackColor</BackColor>
+											<ContextMenu name="ListDetailsContactPersonEmailAddressContextMenu" id="105"/>
+											<ExtendedTooltip name="ListDetailsContactPersonEmailAddressExtendedTooltip" id="199"/>
+											<Events>
+												<Event name="Click">SendEmailToContactPerson</Event>
+											</Events>
+										</LabelField>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="DetailsDocuments" id="123">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Related documents</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Related documents</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<BackColor>style:BackgroundRelatedDocuments</BackColor>
+									<ExtendedTooltip name="DetailsDocumentsExtendedTooltip" id="201"/>
+									<ChildItems>
+										<Button name="CatalogCounterpartiesOpenContactInformationForm" id="231">
+											<Type>Hyperlink</Type>
+											<CommandName>Catalog.Counterparties.Command.OpenContactInformationForm</CommandName>
+											<DataPath>Items.List.CurrentData.Counterparty</DataPath>
+											<TextColor>style:RelatedInformationTextColor</TextColor>
+											<ExtendedTooltip name="CatalogCounterpartiesOpenContactInformationFormExtendedTooltip" id="232"/>
+										</Button>
+										<Button name="OpenDocumentsByOrder" id="124">
+											<Type>Hyperlink</Type>
+											<CommandName>DataProcessor.DocumentsByCounterparty.Command.CustomerOrderDocuments</CommandName>
+											<DataPath>Items.List.CurrentData.Ref</DataPath>
+											<TextColor>style:RelatedInformationTextColor</TextColor>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Documents by order</v8:content>
+												</v8:item>
+											</Title>
+											<ExtendedTooltip name="OpenDocumentsByOrderExtendedTooltip" id="202"/>
+										</Button>
+										<Button name="OpenEventsByOrder" id="125">
+											<Type>Hyperlink</Type>
+											<CommandName>Document.Event.Command.OpenEventByBasis</CommandName>
+											<DataPath>Items.List.CurrentData.Ref</DataPath>
+											<TextColor>style:RelatedInformationTextColor</TextColor>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Events</v8:content>
+												</v8:item>
+											</Title>
+											<ExtendedTooltip name="OpenEventsByOrderExtendedTooltip" id="203"/>
+										</Button>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+						<InputField name="DetailsListCounterpartyShippingAddress" id="207">
+							<DataPath>InformationCounterpartyShippingAddress</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Shipping address</v8:content>
+								</v8:item>
+							</Title>
+							<TitleTextColor>style:UnavailableCellTextColor</TitleTextColor>
+							<BackColor>style:FormBackColor</BackColor>
+							<BorderColor>style:FormBackColor</BorderColor>
+							<ContextMenu name="DetailsListCounterpartyShippingAddressContextMenu" id="208"/>
+							<ExtendedTooltip name="DetailsListCounterpartyShippingAddressExtendedTooltip" id="209"/>
+						</InputField>
+						<UsualGroup name="AddressListDetails" id="233">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Address list details</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Address list details</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="AddressListDetailsExtendedTooltip" id="234"/>
+							<ChildItems>
+								<InputField name="ListDetailsCounterpartyFactAddress" id="90">
+									<DataPath>CounterpartyFactAddressInformation</DataPath>
+									<UserVisible>
+										<xr:Common>false</xr:Common>
+									</UserVisible>
+									<ReadOnly>true</ReadOnly>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Actual address</v8:content>
+										</v8:item>
+									</Title>
+									<TitleTextColor>style:UnavailableCellTextColor</TitleTextColor>
+									<TitleLocation>Top</TitleLocation>
+									<Height>2</Height>
+									<VerticalStretch>false</VerticalStretch>
+									<MultiLine>true</MultiLine>
+									<BackColor>style:FormBackColor</BackColor>
+									<BorderColor>style:FormBackColor</BorderColor>
+									<ContextMenu name="DetailsListCounterpartyFactAddressContextMenu" id="91"/>
+									<ExtendedTooltip name="DetailsListCounterpartyFactAddressExtendedTooltip" id="190"/>
+								</InputField>
+								<InputField name="ListDetailsCounterpartyLegalAddress" id="92">
+									<DataPath>CounterpartyLegalAddressInformation</DataPath>
+									<UserVisible>
+										<xr:Common>false</xr:Common>
+									</UserVisible>
+									<ReadOnly>true</ReadOnly>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Legal address</v8:content>
+										</v8:item>
+									</Title>
+									<TitleTextColor>style:UnavailableCellTextColor</TitleTextColor>
+									<TitleLocation>Top</TitleLocation>
+									<Height>2</Height>
+									<VerticalStretch>false</VerticalStretch>
+									<MultiLine>true</MultiLine>
+									<BackColor>style:FormBackColor</BackColor>
+									<BorderColor>style:FormBackColor</BorderColor>
+									<ContextMenu name="DetailsListCounterpartyLegalAddressContextMenu" id="93"/>
+									<ExtendedTooltip name="DetailsListCounterpartyLegalAddressExtendedTooltip" id="191"/>
+								</InputField>
+								<InputField name="ListDetailsCounterpartyPostalAddress" id="94">
+									<DataPath>InformationCounterpartyPostalAddress</DataPath>
+									<UserVisible>
+										<xr:Common>false</xr:Common>
+									</UserVisible>
+									<ReadOnly>true</ReadOnly>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Postal address</v8:content>
+										</v8:item>
+									</Title>
+									<TitleTextColor>style:UnavailableCellTextColor</TitleTextColor>
+									<TitleLocation>Top</TitleLocation>
+									<Height>2</Height>
+									<VerticalStretch>false</VerticalStretch>
+									<MultiLine>true</MultiLine>
+									<BackColor>style:FormBackColor</BackColor>
+									<BorderColor>style:FormBackColor</BorderColor>
+									<ContextMenu name="DetailsListCounterpartyPostalAddressContextMenu" id="95"/>
+									<ExtendedTooltip name="DetailsListCounterpartyPostalAddressExtendedTooltip" id="192"/>
+								</InputField>
+								<InputField name="ListDetailsCounterpartyOtherInformation" id="96">
+									<DataPath>InformationCounterpartyAnotherInformation</DataPath>
+									<UserVisible>
+										<xr:Common>false</xr:Common>
+									</UserVisible>
+									<ReadOnly>true</ReadOnly>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Other info</v8:content>
+										</v8:item>
+									</Title>
+									<TitleTextColor>style:UnavailableCellTextColor</TitleTextColor>
+									<TitleLocation>Top</TitleLocation>
+									<Height>2</Height>
+									<VerticalStretch>false</VerticalStretch>
+									<MultiLine>true</MultiLine>
+									<BackColor>style:FormBackColor</BackColor>
+									<BorderColor>style:FormBackColor</BorderColor>
+									<ContextMenu name="DetailsListCounterpartyAnotherInformationContextMenu" id="97"/>
+									<ExtendedTooltip name="DetailsListCounterpartyAnotherInformationExtendedTooltip" id="193"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="InformationReferences" id="128">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Information references</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Information references</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<ExtendedTooltip name="InformationLinksExtendedTooltip" id="131"/>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="List" id="1">
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<UseAlways>
+				<Field>List.Ref</Field>
+				<Field>List.OrderState</Field>
+				<Field>List.Counterparty</Field>
+				<Field>List.ContactPerson</Field>
+				<Field>List.Closed</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>SELECT
+	CASE
+		WHEN DocumentCustomerOrder.Posted
+				AND DocumentCustomerOrder.OrderState.OrderStatus &lt;&gt; VALUE(Enum.OrderStatuses.Open)
+			THEN CASE
+					WHEN RunSchedule.Order IS NULL 
+							AND TimeSchedulePlan.Order IS NULL 
+						THEN CASE
+								WHEN DocumentCustomerOrder.OrderState.OrderStatus = VALUE(Enum.OrderStatuses.InProcess)
+										AND DocumentCustomerOrder.Closed
+									THEN 2
+								ELSE 0
+							END
+					ELSE CASE
+							WHEN ISNULL(RunSchedule.Completed, 0) = 0
+									AND ISNULL(TimeSchedulePlan.Completed, 0) = 0
+								THEN CASE
+										WHEN DocumentCustomerOrder.OrderState.OrderStatus = VALUE(Enum.OrderStatuses.InProcess)
+												AND Not DocumentCustomerOrder.Closed
+											THEN CASE
+													WHEN Not RunSchedule.Order IS NULL 
+															AND RunSchedule.Period &lt; &amp;CurrentDateSession
+														THEN 6
+													WHEN Not RunSchedule.Order IS NULL 
+															AND RunSchedule.Period = &amp;CurrentDateSession
+														THEN 4
+													ELSE 2
+												END
+										ELSE 2
+									END
+							ELSE CASE
+									WHEN DocumentCustomerOrder.OrderState.OrderStatus = VALUE(Enum.OrderStatuses.InProcess)
+											AND Not DocumentCustomerOrder.Closed
+										THEN CASE
+												WHEN Not RunSchedule.Order IS NULL 
+														AND RunSchedule.Period &lt; &amp;CurrentDateSession
+													THEN 5
+												WHEN Not RunSchedule.Order IS NULL 
+														AND RunSchedule.Period = &amp;CurrentDateSession
+													THEN 3
+												ELSE 1
+											END
+									ELSE 1
+								END
+						END
+				END
+		ELSE 2
+	END AS ShipmentPictureNumber,
+	CASE
+		WHEN DocumentCustomerOrder.Posted
+			THEN CASE
+					WHEN (DocumentCustomerOrder.OrderState.OrderStatus = VALUE(Enum.OrderStatuses.Open)
+							OR ISNULL(PaymentEvent.Amount, 0) &lt;&gt; 0)
+							AND ISNULL(PaymentEvent.PaymentAmount, 0) + ISNULL(PaymentEvent.AdvanceAmount, 0) = 0
+						THEN CASE
+								WHEN DocumentCustomerOrder.SchedulePayment
+										AND DocumentCustomerOrder.OrderState.OrderStatus = VALUE(Enum.OrderStatuses.InProcess)
+										AND Not DocumentCustomerOrder.Closed
+										AND Not PaymentSchedule.InvoiceForPayment IS NULL 
+									THEN CASE
+											WHEN PaymentSchedule.Period &lt; &amp;CurrentDateSession
+												THEN 6
+											WHEN PaymentSchedule.Period = &amp;CurrentDateSession
+												THEN 4
+											ELSE 2
+										END
+								ELSE 2
+							END
+					WHEN ISNULL(PaymentEvent.Amount, 0) &lt;= ISNULL(PaymentEvent.PaymentAmount, 0) + ISNULL(PaymentEvent.AdvanceAmount, 0)
+						THEN CASE
+								WHEN DocumentCustomerOrder.OrderState.OrderStatus = VALUE(Enum.OrderStatuses.InProcess)
+										AND DocumentCustomerOrder.Closed
+									THEN 2
+								ELSE 0
+							END
+					ELSE CASE
+							WHEN DocumentCustomerOrder.SchedulePayment
+									AND DocumentCustomerOrder.OrderState.OrderStatus = VALUE(Enum.OrderStatuses.InProcess)
+									AND Not DocumentCustomerOrder.Closed
+									AND Not PaymentSchedule.InvoiceForPayment IS NULL 
+								THEN CASE
+										WHEN PaymentSchedule.Period &lt; &amp;CurrentDateSession
+											THEN 5
+										WHEN PaymentSchedule.Period = &amp;CurrentDateSession
+											THEN 3
+										ELSE 1
+									END
+							ELSE 1
+						END
+				END
+		ELSE 2
+	END AS PaymentPictureNumber,
+	CASE
+		WHEN DocumentCustomerOrder.Posted
+				AND Not DocumentCustomerOrder.Closed
+				AND DocumentCustomerOrder.OrderState.OrderStatus = VALUE(Enum.OrderStatuses.InProcess)
+				AND (NOT RunSchedule.Order IS NULL 
+					AND RunSchedule.Period &lt; &amp;CurrentDateSession)
+			THEN TRUE
+		ELSE FALSE
+	END AS PastPerformance,
+	CASE
+		WHEN DocumentCustomerOrder.Posted
+				AND Not DocumentCustomerOrder.Closed
+				AND DocumentCustomerOrder.SchedulePayment
+				AND DocumentCustomerOrder.OrderState.OrderStatus = VALUE(Enum.OrderStatuses.InProcess)
+				AND Not PaymentSchedule.InvoiceForPayment IS NULL 
+				AND PaymentSchedule.Period &lt; &amp;CurrentDateSession
+			THEN TRUE
+		ELSE FALSE
+	END AS OverduePayment,
+	CASE
+		WHEN DocumentCustomerOrder.Posted
+				AND Not DocumentCustomerOrder.Closed
+				AND DocumentCustomerOrder.OrderState.OrderStatus = VALUE(Enum.OrderStatuses.InProcess)
+				AND (NOT RunSchedule.Order IS NULL 
+					AND RunSchedule.Period = &amp;CurrentDateSession)
+			THEN TRUE
+		WHEN DocumentCustomerOrder.Posted
+				AND Not DocumentCustomerOrder.Closed
+				AND DocumentCustomerOrder.SchedulePayment
+				AND DocumentCustomerOrder.OrderState.OrderStatus = VALUE(Enum.OrderStatuses.InProcess)
+				AND Not PaymentSchedule.InvoiceForPayment IS NULL 
+				AND PaymentSchedule.Period = &amp;CurrentDateSession
+			THEN TRUE
+		ELSE FALSE
+	END AS ForToday,
+	CASE
+		WHEN DocumentCustomerOrder.Posted
+				AND Not DocumentCustomerOrder.Closed
+				AND DocumentCustomerOrder.OrderState.OrderStatus = VALUE(Enum.OrderStatuses.InProcess)
+			THEN TRUE
+		ELSE FALSE
+	END AS OrderInProcess,
+	CASE
+		WHEN RunSchedule.Order IS NULL 
+				AND TimeSchedulePlan.Order IS NULL 
+			THEN 0
+		ELSE 1
+	END AS ForShipment,
+	ISNULL(PaymentEvent.Amount, 0) - ISNULL(PaymentEvent.PaymentAmount, 0) - ISNULL(PaymentEvent.AdvanceAmount, 0) AS ForPayment,
+	DocumentCustomerOrder.Ref,
+	DocumentCustomerOrder.DeletionMark,
+	DocumentCustomerOrder.Number,
+	DocumentCustomerOrder.Date,
+	DocumentCustomerOrder.Posted,
+	DocumentCustomerOrder.Author,
+	DocumentCustomerOrder.BankAccount,
+	DocumentCustomerOrder.DocumentCurrency,
+	DocumentCustomerOrder.OperationKind,
+	DocumentCustomerOrder.WorkKind,
+	DocumentCustomerOrder.DiscountMarkupKind,
+	DocumentCustomerOrder.PriceKind,
+	DocumentCustomerOrder.ShipmentDate,
+	DocumentCustomerOrder.Contract,
+	DocumentCustomerOrder.Closed,
+	DocumentCustomerOrder.SchedulePayment,
+	DocumentCustomerOrder.PettyCash,
+	DocumentCustomerOrder.Comment,
+	DocumentCustomerOrder.Counterparty,
+	DocumentCustomerOrder.Counterparty.ContactPerson AS ContactPerson,
+	DocumentCustomerOrder.Multiplicity,
+	DocumentCustomerOrder.ExchangeRate,
+	DocumentCustomerOrder.IncludeVATInPrice,
+	DocumentCustomerOrder.Company,
+	DocumentCustomerOrder.Responsible,
+	DocumentCustomerOrder.Project,
+	DocumentCustomerOrder.Event,
+	DocumentCustomerOrder.OrderState,
+	DocumentCustomerOrder.OrderState.OrderStatus AS OrderStateState,
+	CASE
+		WHEN (DocumentCustomerOrder.OrderState.OrderStatus = VALUE(Enum.OrderStatuses.Open)
+				OR DocumentCustomerOrder.OrderState.OrderStatus = VALUE(Enum.OrderStatuses.InProcess))
+				AND Not DocumentCustomerOrder.Closed
+			THEN "In process"
+		ELSE CASE
+				WHEN DocumentCustomerOrder.OrderState.OrderStatus = VALUE(Enum.OrderStatuses.Completed)
+					THEN "Completed"
+				ELSE "Canceled"
+			END
+	END AS OrderStatus,
+	DocumentCustomerOrder.SalesStructuralUnit,
+	DocumentCustomerOrder.StructuralUnitReserve,
+	DocumentCustomerOrder.AmountIncludesVAT,
+	DocumentCustomerOrder.DocumentAmount,
+	DocumentCustomerOrder.CashAssetsType,
+	DocumentCustomerOrder.Cell,
+	DocumentCustomerOrder.PointInTime,
+	CASE
+		WHEN DocumentCustomerOrder.Posted
+				AND DocumentCustomerOrder.DocumentAmount &gt; 0
+			THEN CAST((ISNULL(PaymentEvent.PaymentAmount, 0) + ISNULL(PaymentEvent.AdvanceAmount, 0)) * 100 / DocumentCustomerOrder.DocumentAmount AS NUMBER(15, 2))
+		ELSE 0
+	END AS PaymentPercentage,
+	ISNULL(PaymentEvent.PaymentAmount, 0) + ISNULL(PaymentEvent.AdvanceAmount, 0) AS PaymentAmountTurnover
+FROM
+	Document.CustomerOrder AS DocumentCustomerOrder
+		LEFT JOIN InformationRegister.OrderFulfillmentSchedule AS RunSchedule
+		ON DocumentCustomerOrder.Ref = RunSchedule.Order
+			AND (RunSchedule.Period &lt;= &amp;CurrentDateSession)
+		LEFT JOIN InformationRegister.OrderFulfillmentSchedule AS TimeSchedulePlan
+		ON DocumentCustomerOrder.Ref = TimeSchedulePlan.Order
+			AND (TimeSchedulePlan.Period &gt; &amp;CurrentDateSession)
+		{LEFT JOIN InformationRegister.OrdersPaymentSchedule AS PaymentSchedule
+		ON DocumentCustomerOrder.Ref = PaymentSchedule.InvoiceForPayment
+			AND (PaymentSchedule.Period &lt;= &amp;CurrentDateSession)}
+		LEFT JOIN InformationRegister.OrdersPaymentFact AS PaymentEvent
+			ON DocumentCustomerOrder.Ref = PaymentEvent.InvoiceForPayment</QueryText>
+				<MainTable>Document.CustomerOrder</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="FilterActuality" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Actuality</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<Save>
+				<Field>FilterActuality</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="FilterCounterparty" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Counterparty</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Counterparties</v8:Type>
+			</Type>
+			<Save>
+				<Field>FilterCounterparty</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="FilterCompany" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Company</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Companies</v8:Type>
+			</Type>
+			<Save>
+				<Field>FilterCompany</Field>
+			</Save>
+			<FunctionalOptions>
+				<Item>FunctionalOption.MultipleCompaniesAccounting</Item>
+			</FunctionalOptions>
+		</Attribute>
+		<Attribute name="FilterResponsible" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Responsible</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Employees</v8:Type>
+			</Type>
+			<Save>
+				<Field>FilterResponsible</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="FilterState" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Status</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.CustomerOrderStates</v8:Type>
+			</Type>
+			<Save>
+				<Field>FilterState</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="FilterStatus" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Status</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<Save>
+				<Field>FilterStatus</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="InformationContactPhone" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Phone</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>100</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ContactPersonESInformation" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Email</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>100</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="InformationCounterpartyAnotherInformation" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Other info</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>500</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="InformationCounterpartyPostalAddress" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Postal address</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>500</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="CounterpartyPhoneInformation" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Phone</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>100</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="CounterpartyFaxInformation" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Fax</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>100</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="CounterpartyFactAddressInformation" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Actual address</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>500</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="CounterpartyInformationES" id="17">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Email</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>100</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="CounterpartyLegalAddressInformation" id="18">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Legal address</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>500</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ReferenceInformation" id="20">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Reference information</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Counterparties</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="InformationCounterpartyShippingAddress" id="22">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Shipping address</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>500</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="CreateCustomerOrder" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Create</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Create a customer order</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>CreateCustomerOrder</Action>
+		</Command>
+	</Commands>
+	<CommandInterface>
+		<CommandBar>
+			<Item>
+				<Command>0:9cabd1c2-51be-41d2-b0ac-d02bed78d12e</Command>
+				<Type>Auto</Type>
+				<CommandGroup>CommandGroup.Print</CommandGroup>
+			</Item>
+			<Item>
+				<Command>0:dd863e14-c929-4258-b0be-11f0bb378d11</Command>
+				<Type>Auto</Type>
+				<CommandGroup>CommandGroup.Print</CommandGroup>
+				<Index>3</Index>
+			</Item>
+			<Item>
+				<Command>0:3226fe56-00a1-4d33-a13d-23aed179e543</Command>
+				<Type>Auto</Type>
+				<CommandGroup>CommandGroup.Print</CommandGroup>
+				<Index>4</Index>
+			</Item>
+			<Item>
+				<Command>0:c4ea117f-4ac3-4c75-8003-25d76871b623</Command>
+				<Type>Auto</Type>
+				<CommandGroup>CommandGroup.Print</CommandGroup>
+				<Index>5</Index>
+			</Item>
+			<Item>
+				<Command>0:15cd7538-e632-4481-98cb-10d1474abc67</Command>
+				<Type>Auto</Type>
+				<CommandGroup>CommandGroup.Print</CommandGroup>
+				<Index>9</Index>
+			</Item>
+			<Item>
+				<Command>0</Command>
+				<Type>Auto</Type>
+				<CommandGroup>CommandGroup.Print</CommandGroup>
+				<Index>12</Index>
+			</Item>
+			<Item>
+				<Command>0:21453878-68dd-479b-ae1a-c3a981567a85</Command>
+				<Type>Auto</Type>
+				<CommandGroup>CommandGroup.Print</CommandGroup>
+				<Index>2</Index>
+			</Item>
+			<Item>
+				<Command>0:bfe15ef0-36cf-4edd-9a32-ece7828a23ab</Command>
+				<Type>Auto</Type>
+				<CommandGroup>CommandGroup.Print</CommandGroup>
+				<Index>6</Index>
+			</Item>
+			<Item>
+				<Command>0:26642481-b79f-41d3-85c3-927f30e9b77c</Command>
+				<Type>Auto</Type>
+				<CommandGroup>CommandGroup.Print</CommandGroup>
+				<Index>7</Index>
+			</Item>
+			<Item>
+				<Command>0:bd6a72d5-322b-48da-8b35-9a1fea6acfd0</Command>
+				<Type>Auto</Type>
+				<CommandGroup>CommandGroup.Print</CommandGroup>
+				<Index>10</Index>
+			</Item>
+			<Item>
+				<Command>CommonCommand.ObjectAdditionalPrintForms</Command>
+				<Type>Auto</Type>
+				<CommandGroup>CommandGroup.Print</CommandGroup>
+				<Index>13</Index>
+			</Item>
+			<Item>
+				<Command>0:aab42af8-55a1-4215-b39a-ce434fd2ddf1</Command>
+				<Type>Auto</Type>
+				<CommandGroup>CommandGroup.Print</CommandGroup>
+				<Index>1</Index>
+			</Item>
+			<Item>
+				<Command>0:d5a8c6dc-eeaa-4104-bcb7-cd81023b5548</Command>
+				<Type>Auto</Type>
+				<CommandGroup>CommandGroup.Print</CommandGroup>
+				<Index>11</Index>
+			</Item>
+			<Item>
+				<Command>0:d1567ff0-fb53-46c7-9066-a896930ceb68</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormCommandBarCreateBasedOn</CommandGroup>
+				<Index>1</Index>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+			<Item>
+				<Command>Document.CustomerOrder.Command.CommandJobOrderCreateBasedOn</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormCommandBarCreateBasedOn</CommandGroup>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+			<Item>
+				<Command>Document.InventoryReservation.StandardCommand.CreateBasedOn</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormCommandBarCreateBasedOn</CommandGroup>
+				<Index>2</Index>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+			<Item>
+				<Command>DataProcessor.ElectronicDocuments.Command.GenerateSignSendED</Command>
+				<Type>Auto</Type>
+				<CommandGroup>CommandGroup.ED</CommandGroup>
+			</Item>
+			<Item>
+				<Command>DataProcessor.ElectronicDocuments.Command.RefillDocument</Command>
+				<Type>Auto</Type>
+				<CommandGroup>CommandGroup.ED</CommandGroup>
+				<Index>3</Index>
+			</Item>
+			<Item>
+				<Command>DataProcessor.ElectronicDocuments.Command.GenerateED</Command>
+				<Type>Auto</Type>
+				<CommandGroup>CommandGroup.ED</CommandGroup>
+				<Index>1</Index>
+			</Item>
+			<Item>
+				<Command>DataProcessor.ElectronicDocuments.Command.OpenActualED</Command>
+				<Type>Auto</Type>
+				<CommandGroup>CommandGroup.ED</CommandGroup>
+				<Index>2</Index>
+			</Item>
+			<Item>
+				<Command>DataProcessor.ElectronicDocuments.Command.SendAndReceiveED</Command>
+				<Type>Auto</Type>
+				<CommandGroup>CommandGroup.ED</CommandGroup>
+				<Index>4</Index>
+			</Item>
+			<Item>
+				<Command>Document.GoodsExpense.StandardCommand.CreateBasedOn</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormCommandBarCreateBasedOn</CommandGroup>
+				<Index>3</Index>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+			<Item>
+				<Command>Document.CustomerInvoiceNote.StandardCommand.CreateBasedOn</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormCommandBarCreateBasedOn</CommandGroup>
+				<Index>5</Index>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+			<Item>
+				<Command>Document.CustomerOrder.Command.InvoiceWithCCDCreateBasedOn</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormCommandBarCreateBasedOn</CommandGroup>
+				<Index>4</Index>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+		</CommandBar>
+	</CommandInterface>
+</Form>

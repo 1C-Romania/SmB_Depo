@@ -1,0 +1,384 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="Sender" id="52">
+			<DataPath>Sender</DataPath>
+			<ReadOnly>true</ReadOnly>
+			<Font ref="sys:DefaultGUIFont" kind="WindowsFont"/>
+			<ContextMenu name="SenderContextMenu" id="53"/>
+			<ExtendedTooltip name="SenderExtendedTooltip" id="57"/>
+		</InputField>
+		<InputField name="ID" id="48">
+			<DataPath>CounterpartyID</DataPath>
+			<ReadOnly>true</ReadOnly>
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>ID</v8:content>
+				</v8:item>
+			</Title>
+			<BorderColor>style:FormBackColor</BorderColor>
+			<ContextMenu name="IDContextMenu" id="49"/>
+			<ExtendedTooltip name="IDExtendedTooltip" id="58"/>
+		</InputField>
+		<InputField name="Recipient" id="50">
+			<DataPath>Recipient</DataPath>
+			<ReadOnly>true</ReadOnly>
+			<ContextMenu name="RecipientContextMenu" id="51"/>
+			<ExtendedTooltip name="RecipientExtendedTooltip" id="59"/>
+		</InputField>
+		<InputField name="Email" id="5">
+			<DataPath>Email</DataPath>
+			<ContextMenu name="EmailContextMenu" id="6"/>
+			<ExtendedTooltip name="EmailExtendedTooltip" id="60"/>
+		</InputField>
+		<InputField name="InvitationText" id="7">
+			<DataPath>InvitationText</DataPath>
+			<TitleLocation>Left</TitleLocation>
+			<Height>2</Height>
+			<MultiLine>true</MultiLine>
+			<ChoiceButton>true</ChoiceButton>
+			<ContextMenu name="InvitationTextContextMenu" id="8"/>
+			<ExtendedTooltip name="InvitationTextExtendedTooltip" id="61"/>
+			<Events>
+				<Event name="StartChoice">InvitationTextStartChoice</Event>
+			</Events>
+		</InputField>
+		<LabelDecoration name="DecorationEDFSetup" id="21">
+			<Hyperlink>true</Hyperlink>
+			<ContextMenu name="DecorationEDFSetupContextMenu" id="22"/>
+			<ExtendedTooltip name="DecorationEDFSetupExtendedTooltip" id="62"/>
+			<Events>
+				<Event name="Click">DecorationEDFSetupClick</Event>
+			</Events>
+		</LabelDecoration>
+		<CommandBar name="ButtonGroupCommandBar" id="55">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Command bar button group</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Command bar button group</v8:content>
+				</v8:item>
+			</ToolTip>
+			<HorizontalLocation>Right</HorizontalLocation>
+			<ExtendedTooltip name="ButtonGroupCommandBarExtendedTooltip" id="63"/>
+			<ChildItems>
+				<ButtonGroup name="ButtonGroupInvitationRequired" id="36">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Button group invitation required</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Button group invitation required</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="ButtonGroupInvitationRequiredExtendedTooltip" id="64"/>
+					<ChildItems>
+						<Button name="ButtonSend" id="13">
+							<Type>CommandBarButton</Type>
+							<DefaultButton>true</DefaultButton>
+							<CommandName>Form.Command.SendInvitation</CommandName>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Send</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="ButtonSendExtendedTooltip" id="65"/>
+						</Button>
+					</ChildItems>
+				</ButtonGroup>
+				<ButtonGroup name="ButtonGroupApprovalRequired" id="56">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Button group consent required</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Button group consent required</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="ButtonGroupApprovalRequiredExtendedTooltip" id="66"/>
+					<ChildItems>
+						<Button name="AcceptButton" id="29">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Command.AcceptInvitation</CommandName>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Accept</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="AcceptButtonExtendedTooltip" id="67"/>
+						</Button>
+						<Button name="RejectButton" id="30">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Command.RejectInvitation</CommandName>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Reject</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="RejectButtonExtendedTooltip" id="68"/>
+						</Button>
+					</ChildItems>
+				</ButtonGroup>
+				<ButtonGroup name="ButtonGroupCancel" id="54">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Button group cancel</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Button group cancel</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="ButtonGroupCancelExtendedTooltip" id="69"/>
+					<ChildItems>
+						<Button name="ButtonCancel" id="14">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Command.Cancel</CommandName>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Cancel</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="CalcelButtonExtendedTooltip" id="70"/>
+						</Button>
+					</ChildItems>
+				</ButtonGroup>
+			</ChildItems>
+		</CommandBar>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Email" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Email</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<FillCheck>ShowError</FillCheck>
+		</Attribute>
+		<Attribute name="InvitationText" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Invitation text</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<FillCheck>ShowError</FillCheck>
+		</Attribute>
+		<Attribute name="Sender" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Sender</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Companies</v8:Type>
+				<v8:Type>cfg:CatalogRef.Counterparties</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="EDFSetup" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>EDF setup</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.EDUsageAgreements</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Recipient" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Recipient</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Companies</v8:Type>
+				<v8:Type>cfg:CatalogRef.Counterparties</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="EDFProfileSettings" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>EDF settings profile</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.EDFProfileSettings</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ConnectionStatus" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Connection status</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.EDExchangeMemberStatuses</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="FormIsOpenableFromEDFSetup" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Form opened from EDF setup</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="CounterpartyID" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Counterparty ID</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Accept" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Accept</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Reject" id="11">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="AgreementState" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Agreement state</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.EDAgreementStates</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="SendInvitation" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Send invitation</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Send invitation</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>SendInvitation</Action>
+		</Command>
+		<Command name="Cancel" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Cancel</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Cancel</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Cancel</Action>
+		</Command>
+		<Command name="AcceptInvitation" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Accept invitation</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Accept invitation</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>AcceptInvitation</Action>
+		</Command>
+		<Command name="RejectInvitation" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Reject invitation</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Reject invitation</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>RejectInvitation</Action>
+		</Command>
+	</Commands>
+</Form>

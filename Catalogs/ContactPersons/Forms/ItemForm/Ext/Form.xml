@@ -1,0 +1,390 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<ChildItems>
+			<ButtonGroup name="ImportantCommandsGroup" id="65">
+				<Title>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Important commands group</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTip>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Important commands group</v8:content>
+					</v8:item>
+				</ToolTip>
+				<ExtendedTooltip name="ImportantCommandsGroupExtendedTooltip" id="66"/>
+				<ChildItems>
+					<Button name="FormCommonCommandRemind" id="71">
+						<Type>CommandBarButton</Type>
+						<CommandName>CommonCommand.Remind</CommandName>
+						<DataPath>Object.Ref</DataPath>
+						<ExtendedTooltip name="FormCommonCommandRemindExtendedTooltip" id="72"/>
+					</Button>
+					<Button name="FormSendEmailToContactPerson" id="34">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.SendEmailToContactPerson</CommandName>
+						<Picture>
+							<xr:Ref>CommonPicture.Email</xr:Ref>
+							<xr:LoadTransparent>true</xr:LoadTransparent>
+						</Picture>
+						<Title>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Send email</v8:content>
+							</v8:item>
+						</Title>
+						<ExtendedTooltip name="FormSendEmailToContactPersonExtendedTooltip" id="35"/>
+					</Button>
+				</ChildItems>
+			</ButtonGroup>
+			<ButtonGroup name="GroupGlobalCommands" id="69">
+				<Title>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Global commands group</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTip>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Global commands group</v8:content>
+					</v8:item>
+				</ToolTip>
+				<CommandSource>FormCommandPanelGlobalCommands</CommandSource>
+				<ExtendedTooltip name="GroupGlobalCommandsExtendedTooltip" id="70"/>
+				<ChildItems>
+					<Button name="CommonCommandObjectReports" id="77">
+						<Type>CommandBarButton</Type>
+						<CommandName>CommonCommand.ObjectReports</CommandName>
+						<DataPath>Object.Ref</DataPath>
+						<ExtendedTooltip name="CommonCommandObjectReportsExtendedTooltip" id="78"/>
+					</Button>
+					<Button name="CommonCommandChangesHistory" id="75">
+						<Type>CommandBarButton</Type>
+						<OnlyInAllActions>false</OnlyInAllActions>
+						<CommandName>CommonCommand.ChangesHistory</CommandName>
+						<DataPath>Object.Ref</DataPath>
+						<ExtendedTooltip name="CommonCommandChangesHistoryExtendedTooltip" id="76"/>
+					</Button>
+					<Button name="CommonCommandAdditionalInformationCommandBar" id="73">
+						<Type>CommandBarButton</Type>
+						<OnlyInAllActions>false</OnlyInAllActions>
+						<CommandName>CommonCommand.AdditionalInformationCommandBar</CommandName>
+						<DataPath>Object.Ref</DataPath>
+						<ExtendedTooltip name="CommonCommandAdditionalInformationCommandBarExtendedTooltip" id="74"/>
+					</Button>
+				</ChildItems>
+			</ButtonGroup>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="NotificationProcessing">NotificationProcessing</Event>
+		<Event name="OnReadAtServer">OnReadAtServer</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+		<Event name="BeforeWriteAtServer">BeforeWriteAtServer</Event>
+		<Event name="FillCheckProcessingAtServer">FillCheckProcessingAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="CodeOwner" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Owner code</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="CodeOwnerExtendedTooltip" id="38"/>
+			<ChildItems>
+				<InputField name="Owner" id="5">
+					<DataPath>Object.Owner</DataPath>
+					<SkipOnInput>true</SkipOnInput>
+					<EditMode>EnterOnInput</EditMode>
+					<OpenButton>false</OpenButton>
+					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+					<ContextMenu name="OwnerContextMenu" id="6"/>
+					<ExtendedTooltip name="OwnerExtendedTooltip" id="39"/>
+				</InputField>
+				<InputField name="Code" id="1">
+					<DataPath>Object.Code</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="CodeContextMenu" id="2"/>
+					<ExtendedTooltip name="CodeExtendedTooltip" id="40"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<InputField name="Description" id="3">
+			<DataPath>Object.Description</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<ContextMenu name="DescriptionContextMenu" id="4"/>
+			<ExtendedTooltip name="DescriptionExtendedTooltip" id="41"/>
+		</InputField>
+		<InputField name="Position" id="79">
+			<DataPath>Object.Position</DataPath>
+			<ContextMenu name="AppointmentContextMenu" id="80"/>
+			<ExtendedTooltip name="PositionExtendedTooltip" id="81"/>
+		</InputField>
+		<Pages name="FormPagesGroup" id="22">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group form pages</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Form pages</v8:content>
+				</v8:item>
+			</ToolTip>
+			<ExtendedTooltip name="GroupFormPagesExtendedTooltip" id="36"/>
+			<ChildItems>
+				<Page name="GroupContactInformation" id="14">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Addresses</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group contact information</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="ContactInformationGroupExtendedTooltip" id="50"/>
+				</Page>
+				<Page name="FolderContactRoles" id="24">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Roles</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Contact person roles</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="FolderContactRolesExtendedTooltip" id="47"/>
+					<ChildItems>
+						<Table name="ContactPersonRoles" id="25">
+							<SkipOnInput>false</SkipOnInput>
+							<HeightInTableRows>3</HeightInTableRows>
+							<Header>false</Header>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>Object.ContactPersonRoles</DataPath>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="RolesOfContactPersonContextMenu" id="26"/>
+							<AutoCommandBar name="RolesOfContactPersonCommandBar" id="27"/>
+							<ExtendedTooltip name="RolesOfContactPersonExtendedTooltip" id="48"/>
+							<SearchStringAddition name="ContactPersonRolesSearchString" id="54">
+								<AdditionSource>
+									<Item>ContactPersonRoles</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ContactPersonRolesSearchStringContextMenu" id="55"/>
+								<ExtendedTooltip name="ContactPersonRolesSearchStringExtendedTooltip" id="56"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ContactPersonRolesViewStatus" id="57">
+								<AdditionSource>
+									<Item>ContactPersonRoles</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ContactPersonRolesViewStatusContextMenu" id="58"/>
+								<ExtendedTooltip name="ContactPersonRolesViewStatusExtendedTooltip" id="59"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ContactPersonRolesSearchManagement" id="60">
+								<AdditionSource>
+									<Item>ContactPersonRoles</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ContactPersonRolesSearchManagementContextMenu" id="61"/>
+								<ExtendedTooltip name="ContactPersonRolesSearchManagementExtendedTooltip" id="62"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<InputField name="RolesOfContactPersonForRoleOfContactPerson" id="30">
+									<DataPath>Object.ContactPersonRoles.ContactPersonRole</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="RolesOfContactPersonForRoleOfContactPersonContextMenu" id="31"/>
+									<ExtendedTooltip name="RolesOfContactPersonForRoleOfContactPersonExtendedTooltip" id="49"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="GroupAdditional" id="32">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Additionally</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Comment</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="GroupAdditionalExtendedTooltip" id="52"/>
+					<ChildItems>
+						<InputField name="Comment" id="11">
+							<DataPath>Object.Comment</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<EditMode>EnterOnInput</EditMode>
+							<InputHint>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Comment</v8:content>
+								</v8:item>
+							</InputHint>
+							<ContextMenu name="CommentContextMenu" id="12"/>
+							<ExtendedTooltip name="CommentExtendedTooltip" id="53"/>
+						</InputField>
+						<InputField name="Ind" id="9">
+							<DataPath>Object.Ind</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="IndividualContextMenu" id="10"/>
+							<ExtendedTooltip name="IndividualExtendedTooltip" id="42"/>
+						</InputField>
+						<InputField name="Responsible" id="15">
+							<DataPath>Object.Responsible</DataPath>
+							<ContextMenu name="ResponsibleContextMenu" id="16"/>
+							<ExtendedTooltip name="ResponsibleExtendedTooltip" id="43"/>
+						</InputField>
+						<UsualGroup name="Footer" id="63">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Footer</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Footer</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="FooterExtendedTooltip" id="64"/>
+							<ChildItems>
+								<InputField name="ConnectionRegistrationDate" id="18">
+									<DataPath>Object.ConnectionRegistrationDate</DataPath>
+									<Width>10</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="RelationRegistrationDateContextMenu" id="19"/>
+									<ExtendedTooltip name="RelationRegistrationDateExtendedTooltip" id="45"/>
+								</InputField>
+								<InputField name="ConnectionStopDate" id="20">
+									<DataPath>Object.ConnectionStopDate</DataPath>
+									<Width>10</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="RelationEndDateContextMenu" id="21"/>
+									<ExtendedTooltip name="RelationEndDateExtendedTooltip" id="46"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="AdditionalAttributesPage" id="33">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Additional attributes</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Additional attributes</v8:content>
+						</v8:item>
+					</ToolTip>
+					<HorizontalStretch>true</HorizontalStretch>
+					<ExtendedTooltip name="AdditionalAttributesPageExtendedTooltip" id="51"/>
+				</Page>
+			</ChildItems>
+		</Pages>
+		<UsualGroup name="GroupLinkWithCounterparty" id="17">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Connection with counterparty</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Connection with counterparty</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="GroupLinkWithCounterpartyExtendedTooltip" id="44"/>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Type>
+				<v8:Type>cfg:CatalogObject.ContactPersons</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="SystemEmailAccount" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>System account of email</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.EmailAccounts</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="SendEmailToContactPerson" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Send email to contact person</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Send email to contact person</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>SendEmailToContactPerson</Action>
+		</Command>
+	</Commands>
+	<CommandInterface>
+		<NavigationPanel>
+			<Item>
+				<Command>0:89fd8a3b-10d4-4980-8c14-59f978858bbf</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormNavigationPanelGoTo</CommandGroup>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+		</NavigationPanel>
+	</CommandInterface>
+</Form>

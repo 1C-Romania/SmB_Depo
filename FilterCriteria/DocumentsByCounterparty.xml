@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<MetaDataObject xmlns="http://v8.1c.ru/8.3/MDClasses" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:cmi="http://v8.1c.ru/8.2/managed-application/cmi" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xpr="http://v8.1c.ru/8.3/xcf/predef" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<FilterCriterion uuid="b95c267b-9be6-4225-85d4-205540438f0c">
+		<InternalInfo>
+			<xr:GeneratedType name="FilterCriterionManager.DocumentsByCounterparty" category="Manager">
+				<xr:TypeId>b83702ee-5de3-40b0-be18-91fb5adc0afc</xr:TypeId>
+				<xr:ValueId>0a512257-9e1d-41c7-bccb-1433a246c745</xr:ValueId>
+			</xr:GeneratedType>
+			<xr:GeneratedType name="FilterCriterionList.DocumentsByCounterparty" category="List">
+				<xr:TypeId>27e32232-719e-4422-8f78-88956b6a941a</xr:TypeId>
+				<xr:ValueId>16e1d324-24a6-44c6-9de6-a6da87b0d5a3</xr:ValueId>
+			</xr:GeneratedType>
+		</InternalInfo>
+		<Properties>
+			<Name>DocumentsByCounterparty</Name>
+			<Synonym>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Counterparty's documents</v8:content>
+				</v8:item>
+			</Synonym>
+			<Comment/>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Counterparties</v8:Type>
+			</Type>
+			<UseStandardCommands>false</UseStandardCommands>
+			<Content>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.ExpenseReport.TabularSection.Payments.Attribute.Counterparty</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.AcceptanceCertificate.Attribute.Counterparty</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.EnterOpeningBalance.TabularSection.InventoryTransferred.Attribute.Counterparty</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.EnterOpeningBalance.TabularSection.InventoryReceived.Attribute.Counterparty</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.EnterOpeningBalance.TabularSection.AccountsReceivable.Attribute.Counterparty</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.EnterOpeningBalance.TabularSection.AccountsPayable.Attribute.Counterparty</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.Netting.Attribute.Counterparty</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.Netting.Attribute.CounterpartySource</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.PowerOfAttorney.Attribute.Counterparty</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.AdditionalCosts.Attribute.Counterparty</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.WorkOrder.TabularSection.Works.Attribute.Customer</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.CustomerOrder.Attribute.Counterparty</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.PurchaseOrder.Attribute.Counterparty</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.AgentReport.Attribute.Counterparty</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.AgentReport.TabularSection.Customers.Attribute.Customer</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.ReportToPrincipal.Attribute.Counterparty</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.ReportToPrincipal.TabularSection.Inventory.Attribute.Customer</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.ProcessingReport.Attribute.Counterparty</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.SubcontractorReport.Attribute.Counterparty</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.FixedAssetsTransfer.Attribute.Counterparty</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.PaymentOrder.Attribute.Counterparty</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.CashReceipt.Attribute.Counterparty</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.PaymentReceiptPlan.Attribute.Counterparty</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.PaymentReceipt.Attribute.Counterparty</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoice.Attribute.Counterparty</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.CashOutflowPlan.Attribute.Counterparty</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.CashPayment.Attribute.Counterparty</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.CustomerInvoice.Attribute.Consignor</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.CustomerInvoice.Attribute.Consignee</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.CustomerInvoice.Attribute.Counterparty</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.PaymentExpense.Attribute.Counterparty</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.SettlementsReconciliation.Attribute.Counterparty</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.Event.TabularSection.Parties.Attribute.Contact</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.InvoiceForPayment.Attribute.Counterparty</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoiceForPayment.Attribute.Counterparty</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.CustomerInvoiceNote.Attribute.Counterparty</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.CustomerInvoiceNote.Attribute.Consignor</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.CustomerInvoiceNote.Attribute.Consignee</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoiceNote.Attribute.Counterparty</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.TimeTracking.TabularSection.Operations.Attribute.Customer</xr:Item>
+			</Content>
+			<DefaultForm/>
+			<AuxiliaryForm/>
+			<ListPresentation/>
+			<ExtendedListPresentation/>
+			<Explanation>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>List of documents by counterparty</v8:content>
+				</v8:item>
+			</Explanation>
+		</Properties>
+		<ChildObjects/>
+	</FilterCriterion>
+</MetaDataObject>

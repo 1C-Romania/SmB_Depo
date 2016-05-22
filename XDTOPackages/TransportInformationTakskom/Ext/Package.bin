@@ -1,0 +1,76 @@
+﻿<package xmlns="http://v8.1c.ru/8.1/xdto" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://api-invoice.taxcom.ru/meta">
+	<import namespace="http://api-invoice.taxcom.ru/card"/>
+	<property xmlns:d2p1="http://api-invoice.taxcom.ru/meta" name="ContainerDescription" type="d2p1:ContainerDescription"/>
+	<objectType name="ContainerDescription">
+		<property name="RequestDateTime" lowerBound="0" form="Attribute"/>
+		<property name="IsLast" lowerBound="0" form="Attribute">
+			<typeDef xsi:type="ValueType" base="xs:boolean" variety="Atomic"/>
+		</property>
+		<property name="LastRecordDateTime" lowerBound="0" form="Attribute"/>
+		<property name="DocFlow" upperBound="-1">
+			<typeDef xsi:type="ObjectType">
+				<property xmlns:d5p1="http://api-invoice.taxcom.ru/card" name="Id" type="d5p1:IdentifierGuid" lowerBound="0" form="Attribute"/>
+				<property name="Status" lowerBound="0" form="Attribute">
+					<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic">
+						<enumeration>InProgress</enumeration>
+						<enumeration>Succeed</enumeration>
+						<enumeration>Warning</enumeration>
+						<enumeration>Error</enumeration>
+					</typeDef>
+				</property>
+				<property name="ErrorType" lowerBound="0" form="Attribute">
+					<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic">
+						<enumeration>ImportFailed</enumeration>
+						<enumeration>VerificationError</enumeration>
+						<enumeration>SignaturesCheckFailed</enumeration>
+						<enumeration>SendingError</enumeration>
+						<enumeration>DocflowError</enumeration>
+						<enumeration>Unknown</enumeration>
+					</typeDef>
+				</property>
+				<property name="StatusChangeDateTime" lowerBound="0" form="Attribute"/>
+				<property xmlns:d5p1="http://api-invoice.taxcom.ru/card" name="Description" type="d5p1:Description" lowerBound="0"/>
+				<property name="Documents">
+					<typeDef xsi:type="ObjectType">
+						<property name="Document" upperBound="-1">
+							<typeDef xsi:type="ObjectType" ordered="false" sequenced="true">
+								<property name="ReglamentCode" lowerBound="0" form="Attribute"/>
+								<property name="TransactionCode" lowerBound="0" form="Attribute"/>
+								<property xmlns:d9p1="http://api-invoice.taxcom.ru/card" name="Definition" type="d9p1:Definition" lowerBound="0"/>
+								<property xmlns:d9p1="http://api-invoice.taxcom.ru/card" name="Card" type="d9p1:Card" lowerBound="0"/>
+								<property name="Status" lowerBound="0">
+									<typeDef xsi:type="ObjectType">
+										<property name="OrderInDocFlow" type="xs:integer" lowerBound="1" form="Attribute"/>
+										<property name="Direction" lowerBound="1" form="Attribute">
+											<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic">
+												<enumeration>Incoming</enumeration>
+												<enumeration>Outgoing</enumeration>
+											</typeDef>
+										</property>
+										<property name="TransactionResultType" lowerBound="1" form="Attribute">
+											<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic">
+												<enumeration>InProgress</enumeration>
+												<enumeration>Executed</enumeration>
+												<enumeration>Error</enumeration>
+												<enumeration>Warning</enumeration>
+											</typeDef>
+										</property>
+									</typeDef>
+								</property>
+								<property name="Files" lowerBound="0">
+									<typeDef xsi:type="ObjectType">
+										<property xmlns:d11p1="http://api-invoice.taxcom.ru/card" name="MainImage" type="d11p1:FileInfo" lowerBound="0"/>
+										<property xmlns:d11p1="http://api-invoice.taxcom.ru/card" name="MainImageSignature" type="d11p1:FileInfo" lowerBound="0" upperBound="-1"/>
+										<property xmlns:d11p1="http://api-invoice.taxcom.ru/card" name="DataImage" type="d11p1:FileInfo" lowerBound="0"/>
+										<property xmlns:d11p1="http://api-invoice.taxcom.ru/card" name="DataImageSignature" type="d11p1:FileInfo" lowerBound="0" upperBound="-1"/>
+										<property xmlns:d11p1="http://api-invoice.taxcom.ru/card" name="ExternalCard" type="d11p1:FileInfo" lowerBound="0"/>
+									</typeDef>
+								</property>
+							</typeDef>
+						</property>
+					</typeDef>
+				</property>
+			</typeDef>
+		</property>
+	</objectType>
+</package>

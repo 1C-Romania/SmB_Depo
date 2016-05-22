@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<CommandSet>
+		<ExcludedCommand>Copy</ExcludedCommand>
+		<ExcludedCommand>SetDeletionMark</ExcludedCommand>
+		<ExcludedCommand>Delete</ExcludedCommand>
+	</CommandSet>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<ChildItems>
+			<Button name="FormCommonCommandSetupExchangeMessageTransportParameters" id="11">
+				<Type>CommandBarButton</Type>
+				<Representation>PictureAndText</Representation>
+				<CommandName>CommonCommand.ConfigureExchangeMessagesTransportParameters</CommandName>
+				<DataPath>Object.Ref</DataPath>
+				<Picture>
+					<xr:Ref>CommonPicture.DataSynchronizationSetting</xr:Ref>
+					<xr:LoadTransparent>true</xr:LoadTransparent>
+				</Picture>
+				<ExtendedTooltip name="FormCommonCommandSetupExchangeMessageTransportParametersExtendedTooltip" id="12"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="NotificationProcessing">NotificationProcessing</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+		<Event name="OnClose">OnClose</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="Description" id="3">
+			<DataPath>Object.Description</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<ContextMenu name="DescriptionContextMenu" id="4"/>
+			<ExtendedTooltip name="DescriptionExtendedTooltip" id="13"/>
+		</InputField>
+		<UsualGroup name="InfoMessageGroup" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Information messages group</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Representation>NormalSeparation</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="InfoMessageGroupExtendedTooltip" id="14"/>
+			<ChildItems>
+				<LabelDecoration name="InfoMessage" id="7">
+					<TextColor>style:ExplanationText</TextColor>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>This end point is slave which means that it sends and receives exchange messages only upon the request of the current information system.</v8:content>
+						</v8:item>
+					</Title>
+					<TitleHeight>2</TitleHeight>
+					<ContextMenu name="InfoMessageContextMenu" id="8"/>
+					<ExtendedTooltip name="InfoMessageExtendedTooltip" id="15"/>
+				</LabelDecoration>
+				<Button name="MakeThisEndPointSubordinate" id="9">
+					<Type>UsualButton</Type>
+					<CommandName>Form.Command.MakeThisEndPointSubordinate</CommandName>
+					<ExtendedTooltip name="MakeThisEndPointSubordinateExtendedTooltip" id="16"/>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="GroupService" id="17">
+			<UserVisible>
+				<xr:Common>false</xr:Common>
+			</UserVisible>
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Office parameters</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<ExtendedTooltip name="GroupServiceExtendedTooltip" id="18"/>
+			<ChildItems>
+				<UsualGroup name="GroupServiceTop" id="36">
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="GroupServiceTopExtendedTooltip" id="37"/>
+					<ChildItems>
+						<CheckBoxField name="Leading" id="28">
+							<DataPath>Object.Leading</DataPath>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="LeadingContextMenu" id="29"/>
+							<ExtendedTooltip name="LeadingExtendedTooltip" id="30"/>
+						</CheckBoxField>
+						<CheckBoxField name="Blocked" id="31">
+							<DataPath>Object.Blocked</DataPath>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="BlockedContextMenu" id="32"/>
+							<ExtendedTooltip name="BlockedExtendedTooltip" id="33"/>
+						</CheckBoxField>
+						<InputField name="Code" id="19">
+							<DataPath>Object.Code</DataPath>
+							<Width>20</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="CodeContextMenu" id="20"/>
+							<ExtendedTooltip name="CodeExtendedTooltip" id="21"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="GroupServiceBottom" id="34">
+					<Shortcut>Ctrl+S</Shortcut>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="GroupServiceBottomExtendedTooltip" id="35"/>
+					<ChildItems>
+						<InputField name="SentNo" id="22">
+							<DataPath>Object.SentNo</DataPath>
+							<ContextMenu name="SentNoContextMenu" id="23"/>
+							<ExtendedTooltip name="SentNoExtendedTooltip" id="24"/>
+						</InputField>
+						<InputField name="ReceivedNo" id="25">
+							<DataPath>Object.ReceivedNo</DataPath>
+							<ContextMenu name="ReceivedNoContextMenu" id="26"/>
+							<ExtendedTooltip name="ReceivedNoExtendedTooltip" id="27"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Type>
+				<v8:Type>cfg:ExchangePlanObject.MessageExchange</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="MakeThisEndPointSubordinate" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Make this final point slave...</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Make this end point a slave one with respect to current information system.</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>MakeThisEndPointSubordinate</Action>
+		</Command>
+	</Commands>
+</Form>

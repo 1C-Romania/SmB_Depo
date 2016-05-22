@@ -1,0 +1,2880 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Title>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Accounts receivable</v8:content>
+		</v8:item>
+	</Title>
+	<AutoTitle>false</AutoTitle>
+	<CommandBarLocation>None</CommandBarLocation>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="FormCommandBar" id="-1"/>
+	<Events>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+		<Event name="OnClose">OnClose</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="Header" id="61">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Header</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Header</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="HeaderExtendedTooltip" id="65"/>
+			<ChildItems>
+				<UsualGroup name="Filters" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Filters</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Filters</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="FiltersExtendedTooltip" id="66"/>
+					<ChildItems>
+						<InputField name="Period" id="4">
+							<DataPath>Period</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>As of</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Width>10</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Wrap>false</Wrap>
+							<ContextMenu name="PeriodContextMenu" id="5"/>
+							<ExtendedTooltip name="PeriodExtendedTooltip" id="68"/>
+							<Events>
+								<Event name="OnChange">PeriodOnChange</Event>
+							</Events>
+						</InputField>
+						<InputField name="Company" id="8">
+							<DataPath>Company</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Company</v8:content>
+								</v8:item>
+							</ToolTip>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Wrap>false</Wrap>
+							<ContextMenu name="CounterpartyContextMenu" id="9"/>
+							<ExtendedTooltip name="CounterpartyExtendedTooltip" id="70"/>
+							<Events>
+								<Event name="OnChange">CompanyOnChange</Event>
+							</Events>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<CommandBar name="CommandBar" id="58">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Command bar</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Command bar</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="CommandBarExtendedTooltip" id="71"/>
+					<ChildItems>
+						<Button name="Refresh" id="294">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Command.Refresh</CommandName>
+							<ExtendedTooltip name="RefreshExtendedTooltip" id="295"/>
+						</Button>
+						<Button name="ChangeForm" id="59">
+							<Type>CommandBarButton</Type>
+							<SkipOnInput>false</SkipOnInput>
+							<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
+							<ExtendedTooltip name="ChangeFormExtendedTooltip" id="72"/>
+						</Button>
+						<Button name="Help" id="60">
+							<Type>CommandBarButton</Type>
+							<SkipOnInput>false</SkipOnInput>
+							<OnlyInAllActions>false</OnlyInAllActions>
+							<CommandName>Form.StandardCommand.Help</CommandName>
+							<ExtendedTooltip name="HelpExtendedTooltip" id="73"/>
+						</Button>
+					</ChildItems>
+				</CommandBar>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="Indicators" id="64">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Indicators</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Indicators</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ChildItemsWidth>Equal</ChildItemsWidth>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="IndicatorsExtendedTooltip" id="74"/>
+			<ChildItems>
+				<UsualGroup name="Diagrams" id="62">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Diagrams</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Diagrams</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Width>39</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ChartsExtendedTooltip" id="75"/>
+					<ChildItems>
+						<UsualGroup name="ChartWidgetDebitors" id="145">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Chart widget debitors</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Chart widget debitors</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<BackColor>#D6FBD3</BackColor>
+							<ExtendedTooltip name="ChartWidgetDebitorsExtendedTooltip" id="146"/>
+							<ChildItems>
+								<ChartField name="ChartDebitors" id="11">
+									<DataPath>ChartDebitors</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Debitors</v8:content>
+										</v8:item>
+									</Title>
+									<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+									<TitleLocation>None</TitleLocation>
+									<Width>35</Width>
+									<Height>8</Height>
+									<VerticalStretch>false</VerticalStretch>
+									<ContextMenu name="ChartDebitorsContextMenu" id="12"/>
+									<ExtendedTooltip name="ChartDebitorsExtendedTooltip" id="76"/>
+								</ChartField>
+							</ChildItems>
+						</UsualGroup>
+						<LabelDecoration name="DecorationIndentVertical" id="282">
+							<Height>1</Height>
+							<HorizontalStretch>true</HorizontalStretch>
+							<Font ref="style:SmallTextFont" height="1" kind="StyleItem"/>
+							<ContextMenu name="DecorationIndentVerticalContextMenu" id="283"/>
+							<ExtendedTooltip name="DecorationIndentVerticalExtendedTooltip" id="284"/>
+						</LabelDecoration>
+						<UsualGroup name="ChartWidgetDebitorsOnTerms" id="206">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Widget chart debitors on terms</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Widget chart debitors on terms</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<BackColor>#FFFFC0</BackColor>
+							<ExtendedTooltip name="ChartWidgetDebitorsOnTermsExtendedTooltip" id="207"/>
+							<ChildItems>
+								<ChartField name="ChartDebitorsOnTerms" id="25">
+									<DataPath>ChartDebitorsOnTerms</DataPath>
+									<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+									<TitleLocation>None</TitleLocation>
+									<Width>35</Width>
+									<Height>8</Height>
+									<VerticalStretch>false</VerticalStretch>
+									<ContextMenu name="ChartDebitorsOnTermsContextMenu" id="26"/>
+									<ExtendedTooltip name="ChartDebitorsOnTermsExtendedTooltip" id="77"/>
+								</ChartField>
+							</ChildItems>
+						</UsualGroup>
+						<LabelDecoration name="DecorationIndentVertical2" id="285">
+							<Height>1</Height>
+							<HorizontalStretch>true</HorizontalStretch>
+							<Font ref="style:SmallTextFont" height="1" kind="StyleItem"/>
+							<ContextMenu name="DecorationIndentVertical2ContextMenu" id="286"/>
+							<ExtendedTooltip name="DecorationIndentVertical2ExtendedTooltip" id="287"/>
+						</LabelDecoration>
+						<UsualGroup name="WidgetChartDebtDynamics" id="208">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Chart widget debt dynamics</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Chart widget debt dynamics</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<BackColor>#D6FBD3</BackColor>
+							<ExtendedTooltip name="ChartWidgetDebtDynamicsExtendedTooltip" id="209"/>
+							<ChildItems>
+								<ChartField name="ChartDebtDynamics" id="41">
+									<DataPath>ChartDebtDynamics</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Dynamics of accounts receivable</v8:content>
+										</v8:item>
+									</Title>
+									<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+									<TitleLocation>None</TitleLocation>
+									<Width>35</Width>
+									<Height>8</Height>
+									<VerticalStretch>false</VerticalStretch>
+									<ContextMenu name="DebtDynamicsChartContextMenu" id="42"/>
+									<ExtendedTooltip name="ChartDebtDynamicsExtendedTooltip" id="78"/>
+								</ChartField>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="Tables" id="63">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Tables</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Tables</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Width>39</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="TablesExtendedTooltip" id="79"/>
+					<ChildItems>
+						<UsualGroup name="Debitors" id="80">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Debitors</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Balances creditors</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<BackColor>#D6FBD3</BackColor>
+							<ExtendedTooltip name="DebitorsExtendedTooltip" id="81"/>
+							<ChildItems>
+								<UsualGroup name="DebitorsHeader" id="82">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Debitors header</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group common creditors</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="DebitorsHeaderExtendedTooltip" id="83"/>
+									<ChildItems>
+										<UsualGroup name="DebitorsHeaderLeft" id="84">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Debitors header left</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group number of creditors</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Vertical</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="DebitorsHeaderLeftExtendedTooltip" id="85"/>
+											<ChildItems>
+												<LabelDecoration name="DecorationDebitors" id="86">
+													<Width>11</Width>
+													<HorizontalStretch>false</HorizontalStretch>
+													<TextColor>style:ButtonTextColor</TextColor>
+													<Font ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Debitors</v8:content>
+														</v8:item>
+													</Title>
+													<HorizontalAlign>Center</HorizontalAlign>
+													<BorderColor>#CDCDCD</BorderColor>
+													<Border width="1">
+														<v8ui:style xsi:type="v8ui:ControlBorderType">Underline</v8ui:style>
+													</Border>
+													<ContextMenu name="DecorationDebitorsContextMenu" id="87"/>
+													<ExtendedTooltip name="DecorationDebitorsExtendedTooltip" id="88"/>
+												</LabelDecoration>
+												<LabelDecoration name="DecorationDebitorsQuantity" id="89">
+													<Width>11</Width>
+													<Height>1</Height>
+													<HorizontalStretch>false</HorizontalStretch>
+													<TextColor>#10CF42</TextColor>
+													<Font ref="style:ExtraLargeTextFont" kind="StyleItem"/>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>0</v8:content>
+														</v8:item>
+													</Title>
+													<HorizontalAlign>Center</HorizontalAlign>
+													<VerticalAlign>Top</VerticalAlign>
+													<BorderColor>#CDCDCD</BorderColor>
+													<Border width="1">
+														<v8ui:style xsi:type="v8ui:ControlBorderType">Underline</v8ui:style>
+													</Border>
+													<ContextMenu name="DecorationDebitorsQuantityContextMenu" id="90"/>
+													<ExtendedTooltip name="DecorationDebitorsQuantityExtendedTooltip" id="91"/>
+												</LabelDecoration>
+											</ChildItems>
+										</UsualGroup>
+										<UsualGroup name="DebitorsHeaderRight" id="92">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Debitors header right</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Debitors header right</v8:content>
+												</v8:item>
+											</ToolTip>
+											<HorizontalStretch>true</HorizontalStretch>
+											<Group>Horizontal</Group>
+											<Representation>None</Representation>
+											<ChildItemsWidth>Equal</ChildItemsWidth>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="DebitorsHeaderRightExtendedTooltip" id="93"/>
+											<ChildItems>
+												<UsualGroup name="DebitorsDebtTotal" id="94">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Debitors debt total</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Group creditors all arrear</v8:content>
+														</v8:item>
+													</ToolTip>
+													<Group>Vertical</Group>
+													<Representation>None</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="DebitorsDebtTotalExtendedTooltip" id="95"/>
+													<ChildItems>
+														<LabelDecoration name="DecorationDebitorsDebt" id="96">
+															<HorizontalStretch>true</HorizontalStretch>
+															<TextColor>style:ButtonTextColor</TextColor>
+															<Font ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+															<Title formatted="false">
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Debt</v8:content>
+																</v8:item>
+															</Title>
+															<HorizontalAlign>Center</HorizontalAlign>
+															<BorderColor>#CDCDCD</BorderColor>
+															<Border width="1">
+																<v8ui:style xsi:type="v8ui:ControlBorderType">Underline</v8ui:style>
+															</Border>
+															<ContextMenu name="DecorationDebitorsDebtContextMenu" id="97"/>
+															<ExtendedTooltip name="DecorationDebitorsDebtExtendedTooltip" id="98"/>
+														</LabelDecoration>
+														<LabelDecoration name="DecorationDebitorsDebtTotal" id="99">
+															<Height>1</Height>
+															<HorizontalStretch>true</HorizontalStretch>
+															<Font ref="style:ExtraLargeTextFont" kind="StyleItem"/>
+															<Title formatted="true">
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>&lt;fontstyle -33&gt;1 000 &lt;/&gt;&lt;fontstyle -31&gt;000,00&lt;/&gt;</v8:content>
+																</v8:item>
+															</Title>
+															<HorizontalAlign>Center</HorizontalAlign>
+															<VerticalAlign>Top</VerticalAlign>
+															<BorderColor>#CDCDCD</BorderColor>
+															<Border width="1">
+																<v8ui:style xsi:type="v8ui:ControlBorderType">Underline</v8ui:style>
+															</Border>
+															<ContextMenu name="DecorationDebitorsDebtTotalContextMenu" id="100"/>
+															<ExtendedTooltip name="DecorationDebitorsDebtTotalExtendedTooltip" id="101"/>
+														</LabelDecoration>
+													</ChildItems>
+												</UsualGroup>
+												<UsualGroup name="DebitorsAdvanceTotal" id="102">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Debitors advance total</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Group creditors arrear</v8:content>
+														</v8:item>
+													</ToolTip>
+													<Group>Vertical</Group>
+													<Representation>None</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="DebitorsTotalAdvanceExtendedTooltip" id="103"/>
+													<ChildItems>
+														<LabelDecoration name="DecorationDebitorsAdvance" id="104">
+															<HorizontalStretch>true</HorizontalStretch>
+															<TextColor>style:ButtonTextColor</TextColor>
+															<Font ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+															<Title formatted="false">
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Advance</v8:content>
+																</v8:item>
+															</Title>
+															<HorizontalAlign>Center</HorizontalAlign>
+															<BorderColor>#CDCDCD</BorderColor>
+															<Border width="1">
+																<v8ui:style xsi:type="v8ui:ControlBorderType">Underline</v8ui:style>
+															</Border>
+															<ContextMenu name="DecorationDebitorsAdvanceContextMenu" id="105"/>
+															<ExtendedTooltip name="DecorationDebitorsAdvanceExtendedTooltip" id="106"/>
+														</LabelDecoration>
+														<LabelDecoration name="DecorationDebitorsAdvanceTotal" id="107">
+															<Height>1</Height>
+															<HorizontalStretch>true</HorizontalStretch>
+															<Font ref="style:ExtraLargeTextFont" kind="StyleItem"/>
+															<Title formatted="true">
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>&lt;fontstyle -33&gt;1 000 &lt;/&gt;&lt;fontstyle -31&gt;000,00&lt;/&gt;</v8:content>
+																</v8:item>
+															</Title>
+															<HorizontalAlign>Center</HorizontalAlign>
+															<VerticalAlign>Top</VerticalAlign>
+															<BorderColor>#CDCDCD</BorderColor>
+															<Border width="1">
+																<v8ui:style xsi:type="v8ui:ControlBorderType">Underline</v8ui:style>
+															</Border>
+															<ContextMenu name="DecorationDebitorsTotalAdvanceContextMenu" id="108"/>
+															<ExtendedTooltip name="DecorationDebitorsTotalAdvanceExtendedTooltip" id="109"/>
+														</LabelDecoration>
+													</ChildItems>
+												</UsualGroup>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="DebitorsInformation" id="110">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Debitors information</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group details creditors</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="DebitorsInformationExtendedTooltip" id="111"/>
+									<ChildItems>
+										<UsualGroup name="DebitorsInformationHeader" id="112">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Debitors header information</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Debitors header information</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Horizontal</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="DebitorsInformationHeaderExtendedTooltip" id="113"/>
+											<ChildItems>
+												<LabelDecoration name="DebitorsCounterpartyTitle" id="114">
+													<HorizontalStretch>true</HorizontalStretch>
+													<Font ref="style:SmallTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Counterparty</v8:content>
+														</v8:item>
+													</Title>
+													<HorizontalAlign>Center</HorizontalAlign>
+													<ContextMenu name="DebitorsCounterpartyHeaderContextMenu" id="115"/>
+													<ExtendedTooltip name="DebitorsCounterpartyTitleExtendedTooltip" id="116"/>
+												</LabelDecoration>
+												<LabelDecoration name="DecorationDebtTitle" id="117">
+													<Width>7</Width>
+													<Font ref="style:SmallTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Debt</v8:content>
+														</v8:item>
+													</Title>
+													<HorizontalAlign>Center</HorizontalAlign>
+													<ContextMenu name="DecorationDebtHeaderContextMenu" id="118"/>
+													<ExtendedTooltip name="DecorationDebtTitleExtendedTooltip" id="119"/>
+												</LabelDecoration>
+												<LabelDecoration name="DecorationAdvanceTitle" id="123">
+													<Width>7</Width>
+													<Font ref="style:SmallTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Advance</v8:content>
+														</v8:item>
+													</Title>
+													<HorizontalAlign>Center</HorizontalAlign>
+													<ContextMenu name="DecorationAdvanceHeaderContextMenu" id="124"/>
+													<ExtendedTooltip name="DecorationAdvanceTitleExtendedTooltip" id="125"/>
+												</LabelDecoration>
+											</ChildItems>
+										</UsualGroup>
+										<UsualGroup name="DebitorsData" id="126">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Debitors data</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Debitors data</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Horizontal</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="DebitorsDataExtendedTooltip" id="127"/>
+											<ChildItems>
+												<LabelDecoration name="DebitorsCounterparty" id="128">
+													<Height>4</Height>
+													<HorizontalStretch>true</HorizontalStretch>
+													<VerticalStretch>false</VerticalStretch>
+													<Font ref="style:SmallTextFont" kind="StyleItem"/>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Counterparty
+1 Counterparty
+2 Counterparty
+3 Counterparty
+4 Counterparty
+5 Counterparty 6</v8:content>
+														</v8:item>
+													</Title>
+													<VerticalAlign>Top</VerticalAlign>
+													<ContextMenu name="DebitorsCounterpartyContextMenu" id="129"/>
+													<ExtendedTooltip name="DebitorsCounterpartyExtendedTooltip" id="130"/>
+												</LabelDecoration>
+												<LabelDecoration name="DebitorsDebt" id="131">
+													<Width>7</Width>
+													<Height>4</Height>
+													<VerticalStretch>false</VerticalStretch>
+													<Font ref="style:SmallTextFont" kind="StyleItem"/>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>1
+000,00 1
+000,00 1
+000,00 1
+000,00 1
+000,00 1 000,00</v8:content>
+														</v8:item>
+													</Title>
+													<HorizontalAlign>Right</HorizontalAlign>
+													<VerticalAlign>Top</VerticalAlign>
+													<ContextMenu name="DebitorsDebtContextMenu" id="132"/>
+													<ExtendedTooltip name="DebitorsDebtExtendedTooltip" id="133"/>
+												</LabelDecoration>
+												<LabelDecoration name="DebitorsAdvance" id="137">
+													<Width>7</Width>
+													<Height>4</Height>
+													<VerticalStretch>false</VerticalStretch>
+													<Font ref="style:SmallTextFont" kind="StyleItem"/>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>1
+000,00 1
+000,00 1
+000,00 1
+000,00 1
+000,00 1 000,00</v8:content>
+														</v8:item>
+													</Title>
+													<HorizontalAlign>Right</HorizontalAlign>
+													<VerticalAlign>Top</VerticalAlign>
+													<ContextMenu name="DebitorsAdvanceContextMenu" id="138"/>
+													<ExtendedTooltip name="DebitorsAdvanceExtendedTooltip" id="139"/>
+												</LabelDecoration>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="DebitorsFooter" id="140">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Debitors footer</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Cash balance additionally</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="DebitorsFooterExtendedTooltip" id="141"/>
+									<ChildItems>
+										<LabelDecoration name="DebitorsDetails" id="142">
+											<HorizontalStretch>true</HorizontalStretch>
+											<Font ref="style:SmallTextFont" kind="StyleItem"/>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Details</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Customers settlements (man. cur.)</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Hyperlink>true</Hyperlink>
+											<HorizontalAlign>Right</HorizontalAlign>
+											<BorderColor>#CDCDCD</BorderColor>
+											<Border width="1">
+												<v8ui:style xsi:type="v8ui:ControlBorderType">Overline</v8ui:style>
+											</Border>
+											<ContextMenu name="DebitorsDetailsContextMenu" id="143"/>
+											<ExtendedTooltip name="DebitorsDetailsExtendedTooltip" id="144"/>
+											<Events>
+												<Event name="Click">DebitorsDetailsClick</Event>
+											</Events>
+										</LabelDecoration>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+						<LabelDecoration name="DecorationIndentVertical3" id="288">
+							<Font ref="sys:DefaultGUIFont" height="1" kind="WindowsFont"/>
+							<ContextMenu name="DecorationIndentVertical3ContextMenu" id="289"/>
+							<ExtendedTooltip name="DecorationIndentVertical3ExtendedTooltip" id="290"/>
+						</LabelDecoration>
+						<UsualGroup name="DebitorsOnTerms" id="147">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Debitors on terms</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Balances creditors</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<BackColor>#FFFFC0</BackColor>
+							<ExtendedTooltip name="DebitorsOnTermsExtendedTooltip" id="148"/>
+							<ChildItems>
+								<UsualGroup name="DebitorsOnTermsHeader" id="149">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Debitors on terms header</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group common creditors</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ChildItemsWidth>Equal</ChildItemsWidth>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="DebitorsOnTermsHeaderExtendedTooltip" id="150"/>
+									<ChildItems>
+										<UsualGroup name="DebitorsLessThan7Total" id="151">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Debitors less than 7 total</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group number of creditors</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Vertical</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="DebitorsLessThan7TotalExtendedTooltip" id="152"/>
+											<ChildItems>
+												<LabelDecoration name="DecorationDebitorsLessThan7" id="153">
+													<HorizontalStretch>true</HorizontalStretch>
+													<TextColor>style:ButtonTextColor</TextColor>
+													<Font ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Up to 7 days</v8:content>
+														</v8:item>
+													</Title>
+													<HorizontalAlign>Center</HorizontalAlign>
+													<BorderColor>#CDCDCD</BorderColor>
+													<Border width="1">
+														<v8ui:style xsi:type="v8ui:ControlBorderType">Underline</v8ui:style>
+													</Border>
+													<ContextMenu name="DecorationDebitorsLessThan7ContextMenu" id="154"/>
+													<ExtendedTooltip name="DecorationDebitorsLessThan7ExtendedTooltip" id="155"/>
+												</LabelDecoration>
+												<LabelDecoration name="DecorationDebitorsLessThan7Total" id="156">
+													<Height>1</Height>
+													<HorizontalStretch>true</HorizontalStretch>
+													<TextColor>#10CF42</TextColor>
+													<Font ref="style:ExtraLargeTextFont" kind="StyleItem"/>
+													<Title formatted="true">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>&lt;fontstyle -33&gt;1 000 &lt;/&gt;&lt;fontstyle -31&gt;000,00&lt;/&gt;</v8:content>
+														</v8:item>
+													</Title>
+													<HorizontalAlign>Center</HorizontalAlign>
+													<VerticalAlign>Top</VerticalAlign>
+													<BorderColor>#CDCDCD</BorderColor>
+													<Border width="1">
+														<v8ui:style xsi:type="v8ui:ControlBorderType">Underline</v8ui:style>
+													</Border>
+													<ContextMenu name="DecorationDebitorsLessThan7TotalContextMenu" id="157"/>
+													<ExtendedTooltip name="DecorationDebitorsLessThan7TotalExtendedTooltip" id="158"/>
+												</LabelDecoration>
+											</ChildItems>
+										</UsualGroup>
+										<UsualGroup name="DebitorsLessThan30Total" id="161">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Debitors less than 30 total</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group creditors all arrear</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Vertical</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="DebitorsLessThan30TotalExtendedTooltip" id="162"/>
+											<ChildItems>
+												<LabelDecoration name="DecorationDebitorsLessThan30" id="163">
+													<HorizontalStretch>true</HorizontalStretch>
+													<TextColor>style:ButtonTextColor</TextColor>
+													<Font ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>8-30 days</v8:content>
+														</v8:item>
+													</Title>
+													<HorizontalAlign>Center</HorizontalAlign>
+													<BorderColor>#CDCDCD</BorderColor>
+													<Border width="1">
+														<v8ui:style xsi:type="v8ui:ControlBorderType">Underline</v8ui:style>
+													</Border>
+													<ContextMenu name="DecorationDebitorsLessThan30ContextMenu" id="164"/>
+													<ExtendedTooltip name="DecorationDebitorsLessThan30ExtendedTooltip" id="165"/>
+												</LabelDecoration>
+												<LabelDecoration name="DecorationDebitorsLessThan30Total" id="166">
+													<Height>1</Height>
+													<HorizontalStretch>true</HorizontalStretch>
+													<TextColor>web:DarkOrange</TextColor>
+													<Font ref="style:ExtraLargeTextFont" kind="StyleItem"/>
+													<Title formatted="true">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>&lt;fontstyle -33&gt;1 000 &lt;/&gt;&lt;fontstyle -31&gt;000,00&lt;/&gt;</v8:content>
+														</v8:item>
+													</Title>
+													<HorizontalAlign>Center</HorizontalAlign>
+													<VerticalAlign>Top</VerticalAlign>
+													<BorderColor>#CDCDCD</BorderColor>
+													<Border width="1">
+														<v8ui:style xsi:type="v8ui:ControlBorderType">Underline</v8ui:style>
+													</Border>
+													<ContextMenu name="DecorationDebitorsLessThan30TotalContextMenu" id="167"/>
+													<ExtendedTooltip name="DecorationDebitorsLessThan30TotalExtendedTooltip" id="168"/>
+												</LabelDecoration>
+											</ChildItems>
+										</UsualGroup>
+										<UsualGroup name="MoreThan30TotalDebitors" id="169">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Debitors more than 30 total</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group creditors arrear</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Vertical</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="MoreThan30TotalDebitorsExtendedTooltip" id="170"/>
+											<ChildItems>
+												<LabelDecoration name="DecorationDebitorsMoreThan31" id="171">
+													<HorizontalStretch>true</HorizontalStretch>
+													<TextColor>style:ButtonTextColor</TextColor>
+													<Font ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>from 31 day</v8:content>
+														</v8:item>
+													</Title>
+													<HorizontalAlign>Center</HorizontalAlign>
+													<BorderColor>#CDCDCD</BorderColor>
+													<Border width="1">
+														<v8ui:style xsi:type="v8ui:ControlBorderType">Underline</v8ui:style>
+													</Border>
+													<ContextMenu name="DecorationDebitorsMoreThan31ContextMenu" id="172"/>
+													<ExtendedTooltip name="DecorationDebitorsMoreThan31ExtendedTooltip" id="173"/>
+												</LabelDecoration>
+												<LabelDecoration name="DecorationDebitorsMoreThan31Total" id="174">
+													<Height>1</Height>
+													<HorizontalStretch>true</HorizontalStretch>
+													<TextColor>#C1272D</TextColor>
+													<Font ref="style:ExtraLargeTextFont" kind="StyleItem"/>
+													<Title formatted="true">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>&lt;fontstyle -33&gt;1 000 &lt;/&gt;&lt;fontstyle -31&gt;000,00&lt;/&gt;</v8:content>
+														</v8:item>
+													</Title>
+													<HorizontalAlign>Center</HorizontalAlign>
+													<VerticalAlign>Top</VerticalAlign>
+													<BorderColor>#CDCDCD</BorderColor>
+													<Border width="1">
+														<v8ui:style xsi:type="v8ui:ControlBorderType">Underline</v8ui:style>
+													</Border>
+													<ContextMenu name="DecorationDebitorsMoreThan31TotalContextMenu" id="175"/>
+													<ExtendedTooltip name="DecorationDebitorsMoreThan31TotalExtendedTooltip" id="176"/>
+												</LabelDecoration>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="DebitorsOnTermsInformation" id="177">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Debitors on terms information</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group details creditors</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="DebitorsOnTermsInformationExtendedTooltip" id="178"/>
+									<ChildItems>
+										<UsualGroup name="DebitorsOnTermsInformationHeader" id="179">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Debitors on terms information header</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Debitors header information</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Horizontal</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="DebitorsOnTermsInformationHeaderExtendedTooltip" id="180"/>
+											<ChildItems>
+												<LabelDecoration name="DebitorsOnTermsCounterparty" id="181">
+													<HorizontalStretch>true</HorizontalStretch>
+													<Font ref="style:SmallTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Counterparty</v8:content>
+														</v8:item>
+													</Title>
+													<HorizontalAlign>Center</HorizontalAlign>
+													<ContextMenu name="DebitorsOnTermsCounterpartyContextMenu" id="182"/>
+													<ExtendedTooltip name="DebitorsOnTermsCounterpartyExtendedTooltip" id="183"/>
+												</LabelDecoration>
+												<LabelDecoration name="DecorationLessThan7" id="184">
+													<Width>6</Width>
+													<Font ref="style:SmallTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Up to 7 days</v8:content>
+														</v8:item>
+													</Title>
+													<HorizontalAlign>Center</HorizontalAlign>
+													<ContextMenu name="DecorationLessThan7ContextMenu" id="185"/>
+													<ExtendedTooltip name="DecorationLessThan7ExtendedTooltip" id="186"/>
+												</LabelDecoration>
+												<LabelDecoration name="DecorationLessThan30" id="267">
+													<Width>6</Width>
+													<Font ref="style:SmallTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>8 - 30</v8:content>
+														</v8:item>
+													</Title>
+													<HorizontalAlign>Center</HorizontalAlign>
+													<ContextMenu name="DecorationLessThan30ContextMenu" id="268"/>
+													<ExtendedTooltip name="DecorationLessThan30ExtendedTooltip" id="269"/>
+												</LabelDecoration>
+												<LabelDecoration name="DecorationMoreThan31" id="187">
+													<Width>6</Width>
+													<Font ref="style:SmallTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>over 31</v8:content>
+														</v8:item>
+													</Title>
+													<HorizontalAlign>Center</HorizontalAlign>
+													<ContextMenu name="DecorationMoreThan31ContextMenu" id="188"/>
+													<ExtendedTooltip name="DecorationMoreThan31ExtendedTooltip" id="189"/>
+												</LabelDecoration>
+											</ChildItems>
+										</UsualGroup>
+										<UsualGroup name="DebitorsOnTermsData" id="190">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Debitors on terms data</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Debitors data</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Horizontal</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="DebitorsOnTermsDataExtendedTooltip" id="191"/>
+											<ChildItems>
+												<LabelDecoration name="CounterpartiesOnTerms" id="192">
+													<Height>4</Height>
+													<HorizontalStretch>true</HorizontalStretch>
+													<VerticalStretch>false</VerticalStretch>
+													<Font ref="style:SmallTextFont" kind="StyleItem"/>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Counterparty
+1 Counterparty
+2 Counterparty
+3 Counterparty
+4 Counterparty
+5 Counterparty 6</v8:content>
+														</v8:item>
+													</Title>
+													<VerticalAlign>Top</VerticalAlign>
+													<ContextMenu name="CounterpartiesOnTermsContextMenu" id="193"/>
+													<ExtendedTooltip name="CounterpartiesOnTermsExtendedTooltip" id="194"/>
+												</LabelDecoration>
+												<LabelDecoration name="DebitorsLessThan7" id="270">
+													<Width>6</Width>
+													<Height>4</Height>
+													<VerticalStretch>false</VerticalStretch>
+													<Font ref="style:SmallTextFont" kind="StyleItem"/>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>1
+000,00 1
+000,00 1
+000,00 1
+000,00 1
+000,00 1 000,00</v8:content>
+														</v8:item>
+													</Title>
+													<HorizontalAlign>Right</HorizontalAlign>
+													<VerticalAlign>Top</VerticalAlign>
+													<ContextMenu name="DebitorsLessThan7ContextMenu" id="271"/>
+													<ExtendedTooltip name="DebitorsLessThan7ExtendedTooltip" id="272"/>
+												</LabelDecoration>
+												<LabelDecoration name="DebitorsLessThan30" id="195">
+													<Width>6</Width>
+													<Height>4</Height>
+													<VerticalStretch>false</VerticalStretch>
+													<Font ref="style:SmallTextFont" kind="StyleItem"/>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>1
+000,00 1
+000,00 1
+000,00 1
+000,00 1
+000,00 1 000,00</v8:content>
+														</v8:item>
+													</Title>
+													<HorizontalAlign>Right</HorizontalAlign>
+													<VerticalAlign>Top</VerticalAlign>
+													<ContextMenu name="DebitorsLessThan30ContextMenu" id="196"/>
+													<ExtendedTooltip name="DebitorsLessThan30ExtendedTooltip" id="197"/>
+												</LabelDecoration>
+												<LabelDecoration name="DebitorsMoreThan31" id="198">
+													<Width>6</Width>
+													<Height>4</Height>
+													<VerticalStretch>false</VerticalStretch>
+													<Font ref="style:SmallTextFont" kind="StyleItem"/>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>1
+000,00 1
+000,00 1
+000,00 1
+000,00 1
+000,00 1 000,00</v8:content>
+														</v8:item>
+													</Title>
+													<HorizontalAlign>Right</HorizontalAlign>
+													<VerticalAlign>Top</VerticalAlign>
+													<ContextMenu name="DebitorsMoreThan31ContextMenu" id="199"/>
+													<ExtendedTooltip name="DebitorsMoreThan31ExtendedTooltip" id="200"/>
+												</LabelDecoration>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="DebitorsOnTermsFooter" id="201">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Debitors on terms footer</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Cash balance additionally</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="DebitorsOnTermsExtendedFooterToolTip" id="202"/>
+									<ChildItems>
+										<LabelDecoration name="DebitorsOnTermsDetails" id="203">
+											<HorizontalStretch>true</HorizontalStretch>
+											<Font ref="style:SmallTextFont" kind="StyleItem"/>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Details</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Debt of customers by debt due dates</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Hyperlink>true</Hyperlink>
+											<HorizontalAlign>Right</HorizontalAlign>
+											<BorderColor>#CDCDCD</BorderColor>
+											<Border width="1">
+												<v8ui:style xsi:type="v8ui:ControlBorderType">Overline</v8ui:style>
+											</Border>
+											<ContextMenu name="DebitorsOnTermsDetailsContextMenu" id="204"/>
+											<ExtendedTooltip name="DebitorsOnTermsDetailsExtendedTooltip" id="205"/>
+											<Events>
+												<Event name="Click">DebitorsOnTermsDetailsClick</Event>
+											</Events>
+										</LabelDecoration>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+						<LabelDecoration name="DecorationIndentVertical4" id="291">
+							<Font ref="sys:DefaultGUIFont" height="1" kind="WindowsFont"/>
+							<ContextMenu name="DecorationIndent4VerticalContextMenu" id="292"/>
+							<ExtendedTooltip name="DecorationIndentVertical4ExtendedTooltip" id="293"/>
+						</LabelDecoration>
+						<UsualGroup name="DebitorsArrear" id="210">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Debitors arrear</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Balances creditors</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<BackColor>#D6FBD3</BackColor>
+							<ExtendedTooltip name="DebitorsArrearExtendedTooltip" id="211"/>
+							<ChildItems>
+								<UsualGroup name="OverdueDebitorsHeader" id="212">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Debitors arrear header</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group common creditors</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ChildItemsWidth>Equal</ChildItemsWidth>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="DebitorsArrearHeaderExtendedTooltip" id="213"/>
+									<ChildItems>
+										<UsualGroup name="DebitorsArrearHeaderLeft" id="214">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Debitors arrear header right</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group number of creditors</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Vertical</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="DebitorsArrearHeaderLeftExtendedTooltip" id="215"/>
+											<ChildItems>
+												<LabelDecoration name="DecorationDebitorsArrear" id="216">
+													<HorizontalStretch>true</HorizontalStretch>
+													<TextColor>style:ButtonTextColor</TextColor>
+													<Font ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Debitors with arrear</v8:content>
+														</v8:item>
+													</Title>
+													<HorizontalAlign>Center</HorizontalAlign>
+													<BorderColor>#CDCDCD</BorderColor>
+													<Border width="1">
+														<v8ui:style xsi:type="v8ui:ControlBorderType">Underline</v8ui:style>
+													</Border>
+													<ContextMenu name="DecorationDebitorsArrearContextMenu" id="217"/>
+													<ExtendedTooltip name="DecorationDebitorsArrearExtendedTooltip" id="218"/>
+												</LabelDecoration>
+												<LabelDecoration name="DecorationDebitorsArrearQuantity" id="219">
+													<Height>1</Height>
+													<HorizontalStretch>true</HorizontalStretch>
+													<TextColor>#10CF42</TextColor>
+													<Font ref="style:ExtraLargeTextFont" kind="StyleItem"/>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>0</v8:content>
+														</v8:item>
+													</Title>
+													<HorizontalAlign>Center</HorizontalAlign>
+													<VerticalAlign>Top</VerticalAlign>
+													<BorderColor>#CDCDCD</BorderColor>
+													<Border width="1">
+														<v8ui:style xsi:type="v8ui:ControlBorderType">Underline</v8ui:style>
+													</Border>
+													<ContextMenu name="DecorationDebitorsArrearQuantityContextMenu" id="220"/>
+													<ExtendedTooltip name="DecorationDebitorsArrearQuantityExtendedTooltip" id="221"/>
+												</LabelDecoration>
+											</ChildItems>
+										</UsualGroup>
+										<UsualGroup name="DebitorsArrearHeaderRight" id="222">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Debitors arrear header right</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group creditors all arrear</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Vertical</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="DebitorsArrearHeaderRightExtendedTooltip" id="223"/>
+											<ChildItems>
+												<LabelDecoration name="DecorationDebitorsArrearTitle" id="224">
+													<HorizontalStretch>true</HorizontalStretch>
+													<TextColor>style:ButtonTextColor</TextColor>
+													<Font ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Amount</v8:content>
+														</v8:item>
+													</Title>
+													<HorizontalAlign>Center</HorizontalAlign>
+													<BorderColor>#CDCDCD</BorderColor>
+													<Border width="1">
+														<v8ui:style xsi:type="v8ui:ControlBorderType">Underline</v8ui:style>
+													</Border>
+													<ContextMenu name="DecorationDebitorsArrearTitleContextMenu" id="225"/>
+													<ExtendedTooltip name="DecorationDebitorsArrearTitleExtendedTooltip" id="226"/>
+												</LabelDecoration>
+												<LabelDecoration name="DecorationDebitorsArrearTotal" id="227">
+													<Height>1</Height>
+													<HorizontalStretch>true</HorizontalStretch>
+													<Font ref="style:ExtraLargeTextFont" kind="StyleItem"/>
+													<Title formatted="true">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>&lt;fontstyle -33&gt;1 000 &lt;/&gt;&lt;fontstyle -31&gt;000,00&lt;/&gt;</v8:content>
+														</v8:item>
+													</Title>
+													<HorizontalAlign>Center</HorizontalAlign>
+													<VerticalAlign>Top</VerticalAlign>
+													<BorderColor>#CDCDCD</BorderColor>
+													<Border width="1">
+														<v8ui:style xsi:type="v8ui:ControlBorderType">Underline</v8ui:style>
+													</Border>
+													<ContextMenu name="DecorationDebitorsArrearTotalContextMenu" id="228"/>
+													<ExtendedTooltip name="DecorationDebitorsArrearTotalExtendedTooltip" id="229"/>
+												</LabelDecoration>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="DebitorsArrearInformation" id="238">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Debitors arrear information</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group details creditors</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="DebitorsArrearInformationExtendedTooltip" id="239"/>
+									<ChildItems>
+										<UsualGroup name="DebitorsArrearInformationHeader" id="240">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Debitors arrear information header</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Debitors header information</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Horizontal</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="DebitorsArrearInformationHeaderExtendedTooltip" id="241"/>
+											<ChildItems>
+												<LabelDecoration name="DebitorsArrearCounterpartyTitle" id="242">
+													<HorizontalStretch>true</HorizontalStretch>
+													<Font ref="style:SmallTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Counterparty</v8:content>
+														</v8:item>
+													</Title>
+													<HorizontalAlign>Center</HorizontalAlign>
+													<ContextMenu name="DebitorsArrearCounterpartyTitleContextMenu" id="243"/>
+													<ExtendedTooltip name="DebitorsArrearCounterpartyTitleExtendedTooltip" id="244"/>
+												</LabelDecoration>
+												<LabelDecoration name="DecorationArrearTitle" id="245">
+													<Width>8</Width>
+													<Font ref="style:SmallTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Overdue</v8:content>
+														</v8:item>
+													</Title>
+													<HorizontalAlign>Center</HorizontalAlign>
+													<ContextMenu name="DecorationArrearTitleContextMenu" id="246"/>
+													<ExtendedTooltip name="DecorationArrearTitleExtendedTooltip" id="247"/>
+												</LabelDecoration>
+											</ChildItems>
+										</UsualGroup>
+										<UsualGroup name="OverdueDebitorsData" id="251">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Debitors arrear data</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Debitors data</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Horizontal</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="DebitorsArrearDataExtendedTooltip" id="252"/>
+											<ChildItems>
+												<LabelDecoration name="DebitorsArrearCounterparty" id="253">
+													<Height>4</Height>
+													<HorizontalStretch>true</HorizontalStretch>
+													<VerticalStretch>false</VerticalStretch>
+													<Font ref="style:SmallTextFont" kind="StyleItem"/>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Counterparty
+1 Counterparty
+2 Counterparty
+3 Counterparty
+4 Counterparty
+5 Counterparty 6</v8:content>
+														</v8:item>
+													</Title>
+													<VerticalAlign>Top</VerticalAlign>
+													<ContextMenu name="DebitorsArrearCounterpartyContextMenu" id="254"/>
+													<ExtendedTooltip name="DebitorsArrearCounterpartyExtendedTooltip" id="255"/>
+												</LabelDecoration>
+												<LabelDecoration name="OverdueDebitors" id="256">
+													<Width>8</Width>
+													<Height>4</Height>
+													<VerticalStretch>false</VerticalStretch>
+													<Font ref="style:SmallTextFont" kind="StyleItem"/>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>1
+000,00 1
+000,00 1
+000,00 1
+000,00 1
+000,00 1 000,00</v8:content>
+														</v8:item>
+													</Title>
+													<HorizontalAlign>Right</HorizontalAlign>
+													<VerticalAlign>Top</VerticalAlign>
+													<ContextMenu name="DebitorsArrearContextMenu" id="257"/>
+													<ExtendedTooltip name="DebitorsArrearExtendedTooltip" id="258"/>
+												</LabelDecoration>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="DebitorsArrearFooter" id="262">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Debitors arrear footer</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Cash balance additionally</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="OverdueDebitorsFooterExtendedTooltip" id="263"/>
+									<ChildItems>
+										<LabelField name="PresentationPeriodArrear" id="279">
+											<DataPath>PeriodPresentation</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<Width>28</Width>
+											<Height>1</Height>
+											<Border width="1">
+												<v8ui:style xsi:type="v8ui:ControlBorderType">Overline</v8ui:style>
+											</Border>
+											<BorderColor>#CDCDCD</BorderColor>
+											<Font ref="style:SmallTextFont" kind="StyleItem"/>
+											<ContextMenu name="PresentationPeriodArrearContextMenu" id="280"/>
+											<ExtendedTooltip name="PresentationPeriodArrearExtendedTooltip" id="281"/>
+										</LabelField>
+										<LabelDecoration name="DebitorsArrearDetails" id="264">
+											<HorizontalStretch>true</HorizontalStretch>
+											<Font ref="style:SmallTextFont" kind="StyleItem"/>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Details</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Debt of customers by debt due dates</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Hyperlink>true</Hyperlink>
+											<HorizontalAlign>Right</HorizontalAlign>
+											<BorderColor>#CDCDCD</BorderColor>
+											<Border width="1">
+												<v8ui:style xsi:type="v8ui:ControlBorderType">Overline</v8ui:style>
+											</Border>
+											<ContextMenu name="DebitorsArrearDetailsContextMenu" id="265"/>
+											<ExtendedTooltip name="DebitorsArrearDetailsExtendedTooltip" id="266"/>
+											<Events>
+												<Event name="Click">DebitorsArrearDetailsClick</Event>
+											</Events>
+										</LabelDecoration>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.ManagerMonitors</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="Company" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Company</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Companies</v8:Type>
+			</Type>
+			<FunctionalOptions>
+				<Item>FunctionalOption.MultipleCompaniesAccounting</Item>
+			</FunctionalOptions>
+		</Attribute>
+		<Attribute name="Period" id="4">
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ChartDebitors" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Debitors</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.2/data/chart">d5p1:Chart</v8:Type>
+			</Type>
+			<Settings xmlns:d4p1="http://v8.1c.ru/8.2/data/chart" xsi:type="d4p1:Chart">
+				<d4p1:seriesCurId>105</d4p1:seriesCurId>
+				<d4p1:pointsCurId>4</d4p1:pointsCurId>
+				<d4p1:isSeriesDesign>true</d4p1:isSeriesDesign>
+				<d4p1:realSeriesCount>4</d4p1:realSeriesCount>
+				<d4p1:realSeriesData>
+					<d4p1:id>2</d4p1:id>
+					<d4p1:color>#D02A35</d4p1:color>
+					<d4p1:line width="2" gap="false">
+						<v8ui:style xsi:type="v8ui:ChartLineType">Solid</v8ui:style>
+					</d4p1:line>
+					<d4p1:marker>Rhomb</d4p1:marker>
+					<d4p1:text>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Series 1</v8:content>
+						</v8:item>
+					</d4p1:text>
+					<d4p1:strIsChanged>false</d4p1:strIsChanged>
+					<d4p1:isExpand>false</d4p1:isExpand>
+					<d4p1:isIndicator>false</d4p1:isIndicator>
+					<d4p1:colorPriority>false</d4p1:colorPriority>
+				</d4p1:realSeriesData>
+				<d4p1:realSeriesData>
+					<d4p1:id>3</d4p1:id>
+					<d4p1:color>#FEE101</d4p1:color>
+					<d4p1:line width="2" gap="false">
+						<v8ui:style xsi:type="v8ui:ChartLineType">Solid</v8ui:style>
+					</d4p1:line>
+					<d4p1:marker>Rect</d4p1:marker>
+					<d4p1:text>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Series 2</v8:content>
+						</v8:item>
+					</d4p1:text>
+					<d4p1:strIsChanged>false</d4p1:strIsChanged>
+					<d4p1:isExpand>false</d4p1:isExpand>
+					<d4p1:isIndicator>false</d4p1:isIndicator>
+					<d4p1:colorPriority>false</d4p1:colorPriority>
+				</d4p1:realSeriesData>
+				<d4p1:realSeriesData>
+					<d4p1:id>4</d4p1:id>
+					<d4p1:color>#19CC19</d4p1:color>
+					<d4p1:line width="2" gap="false">
+						<v8ui:style xsi:type="v8ui:ChartLineType">Solid</v8ui:style>
+					</d4p1:line>
+					<d4p1:marker>Circle</d4p1:marker>
+					<d4p1:text>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Series 3</v8:content>
+						</v8:item>
+					</d4p1:text>
+					<d4p1:strIsChanged>false</d4p1:strIsChanged>
+					<d4p1:isExpand>false</d4p1:isExpand>
+					<d4p1:isIndicator>false</d4p1:isIndicator>
+					<d4p1:colorPriority>false</d4p1:colorPriority>
+				</d4p1:realSeriesData>
+				<d4p1:realSeriesData>
+					<d4p1:id>5</d4p1:id>
+					<d4p1:color>#19B2E5</d4p1:color>
+					<d4p1:line width="2" gap="false">
+						<v8ui:style xsi:type="v8ui:ChartLineType">Solid</v8ui:style>
+					</d4p1:line>
+					<d4p1:marker>Rhomb</d4p1:marker>
+					<d4p1:text>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Series 4</v8:content>
+						</v8:item>
+					</d4p1:text>
+					<d4p1:strIsChanged>false</d4p1:strIsChanged>
+					<d4p1:isExpand>false</d4p1:isExpand>
+					<d4p1:isIndicator>false</d4p1:isIndicator>
+					<d4p1:colorPriority>false</d4p1:colorPriority>
+				</d4p1:realSeriesData>
+				<d4p1:realExSeriesData>
+					<d4p1:id>1</d4p1:id>
+					<d4p1:color>#991919</d4p1:color>
+					<d4p1:line width="2" gap="false">
+						<v8ui:style xsi:type="v8ui:ChartLineType">Solid</v8ui:style>
+					</d4p1:line>
+					<d4p1:marker>Rhomb</d4p1:marker>
+					<d4p1:text>
+						<v8:item>
+							<v8:lang>#</v8:lang>
+							<v8:content>Composite</v8:content>
+						</v8:item>
+					</d4p1:text>
+					<d4p1:strIsChanged>false</d4p1:strIsChanged>
+					<d4p1:isExpand>false</d4p1:isExpand>
+					<d4p1:isIndicator>false</d4p1:isIndicator>
+					<d4p1:colorPriority>false</d4p1:colorPriority>
+				</d4p1:realExSeriesData>
+				<d4p1:isPointsDesign>true</d4p1:isPointsDesign>
+				<d4p1:realPointCount>0</d4p1:realPointCount>
+				<d4p1:curSeries>3</d4p1:curSeries>
+				<d4p1:curPoint>0</d4p1:curPoint>
+				<d4p1:chartType>Pie3D</d4p1:chartType>
+				<d4p1:circleLabelType>Percent</d4p1:circleLabelType>
+				<d4p1:labelsDelimiter>, </d4p1:labelsDelimiter>
+				<d4p1:labelsLocation>Edge</d4p1:labelsLocation>
+				<d4p1:lbFormat/>
+				<d4p1:lbpFormat/>
+				<d4p1:labelsColor>style:FormTextColor</d4p1:labelsColor>
+				<d4p1:labelsFont kind="AutoFont"/>
+				<d4p1:transparentLabelsBkg>true</d4p1:transparentLabelsBkg>
+				<d4p1:labelsBkgColor>auto</d4p1:labelsBkgColor>
+				<d4p1:labelsBorder width="1">
+					<v8ui:style xsi:type="v8ui:ControlBorderType">Single</v8ui:style>
+				</d4p1:labelsBorder>
+				<d4p1:labelsBorderColor>auto</d4p1:labelsBorderColor>
+				<d4p1:circleExpandMode>All</d4p1:circleExpandMode>
+				<d4p1:chart3Dcrd>SouthWest</d4p1:chart3Dcrd>
+				<d4p1:title>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Customers debt</v8:content>
+					</v8:item>
+				</d4p1:title>
+				<d4p1:isShowTitle>true</d4p1:isShowTitle>
+				<d4p1:isShowLegend>true</d4p1:isShowLegend>
+				<d4p1:ttlBorder width="0">
+					<v8ui:style xsi:type="v8ui:ControlBorderType">WithoutBorder</v8ui:style>
+				</d4p1:ttlBorder>
+				<d4p1:ttlBorderColor>style:BorderColor</d4p1:ttlBorderColor>
+				<d4p1:lgBorder width="0">
+					<v8ui:style xsi:type="v8ui:ControlBorderType">WithoutBorder</v8ui:style>
+				</d4p1:lgBorder>
+				<d4p1:lgBorderColor>style:BorderColor</d4p1:lgBorderColor>
+				<d4p1:chBorder width="0">
+					<v8ui:style xsi:type="v8ui:ControlBorderType">WithoutBorder</v8ui:style>
+				</d4p1:chBorder>
+				<d4p1:chBorderColor>style:BorderColor</d4p1:chBorderColor>
+				<d4p1:transparent>true</d4p1:transparent>
+				<d4p1:bkgColor>style:FieldBackColor</d4p1:bkgColor>
+				<d4p1:isTrnspTtl>false</d4p1:isTrnspTtl>
+				<d4p1:ttlColor>#D6FBD3</d4p1:ttlColor>
+				<d4p1:isTrnspLeg>false</d4p1:isTrnspLeg>
+				<d4p1:legColor>#D6FBD3</d4p1:legColor>
+				<d4p1:isTrnspCh>false</d4p1:isTrnspCh>
+				<d4p1:chColor>#D6FBD3</d4p1:chColor>
+				<d4p1:ttlTxtColor>style:ButtonTextColor</d4p1:ttlTxtColor>
+				<d4p1:legTxtColor>style:FormTextColor</d4p1:legTxtColor>
+				<d4p1:chTxtColor>style:FormTextColor</d4p1:chTxtColor>
+				<d4p1:ttlFont ref="style:NormalTextFont" height="8" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+				<d4p1:legFont ref="style:SmallTextFont" height="6" kind="StyleItem"/>
+				<d4p1:chFont ref="style:SmallTextFont" kind="StyleItem"/>
+				<d4p1:isShowScale>true</d4p1:isShowScale>
+				<d4p1:isShowScaleVL>true</d4p1:isShowScaleVL>
+				<d4p1:isShowSeriesScale>true</d4p1:isShowSeriesScale>
+				<d4p1:isShowPointsScale>true</d4p1:isShowPointsScale>
+				<d4p1:isShowValuesScale>true</d4p1:isShowValuesScale>
+				<d4p1:vsFormat/>
+				<d4p1:xLabelsOrientation>Auto</d4p1:xLabelsOrientation>
+				<d4p1:scaleLine width="1" gap="false">
+					<v8ui:style xsi:type="v8ui:ChartLineType">Solid</v8ui:style>
+				</d4p1:scaleLine>
+				<d4p1:scaleColor>#A9A9A9</d4p1:scaleColor>
+				<d4p1:isAutoSeriesName>true</d4p1:isAutoSeriesName>
+				<d4p1:isAutoPointName>true</d4p1:isAutoPointName>
+				<d4p1:maxMode>NotDefined</d4p1:maxMode>
+				<d4p1:maxSeries>4</d4p1:maxSeries>
+				<d4p1:maxSeriesPrc>30</d4p1:maxSeriesPrc>
+				<d4p1:spaceMode>Half</d4p1:spaceMode>
+				<d4p1:baseVal>0</d4p1:baseVal>
+				<d4p1:isOutline>false</d4p1:isOutline>
+				<d4p1:realPiePoint>0</d4p1:realPiePoint>
+				<d4p1:realStockSeries>0</d4p1:realStockSeries>
+				<d4p1:isLight>true</d4p1:isLight>
+				<d4p1:isGradient>false</d4p1:isGradient>
+				<d4p1:isTransposition>false</d4p1:isTransposition>
+				<d4p1:hideBaseVal>false</d4p1:hideBaseVal>
+				<d4p1:dataTable>false</d4p1:dataTable>
+				<d4p1:dtVerLines>true</d4p1:dtVerLines>
+				<d4p1:dtHorLines>true</d4p1:dtHorLines>
+				<d4p1:dtHAlign>Right</d4p1:dtHAlign>
+				<d4p1:dtFormat/>
+				<d4p1:dtKeys>true</d4p1:dtKeys>
+				<d4p1:paletteKind>Palette32</d4p1:paletteKind>
+				<d4p1:animation>Auto</d4p1:animation>
+				<d4p1:rebuildTime>10116847</d4p1:rebuildTime>
+				<d4p1:isTransposed>false</d4p1:isTransposed>
+				<d4p1:autoTransposition>true</d4p1:autoTransposition>
+				<d4p1:legendScrollEnable>false</d4p1:legendScrollEnable>
+				<d4p1:surfaceColor>#A90000</d4p1:surfaceColor>
+				<d4p1:radarScaleType>Circle</d4p1:radarScaleType>
+				<d4p1:gaugeValuesPresentation>Needle</d4p1:gaugeValuesPresentation>
+				<d4p1:gaugeQualityBands useTextStr="false" useTooltipStr="false"/>
+				<d4p1:beginGaugeAngle>0</d4p1:beginGaugeAngle>
+				<d4p1:endGaugeAngle>180</d4p1:endGaugeAngle>
+				<d4p1:gaugeThickness>5</d4p1:gaugeThickness>
+				<d4p1:gaugeLabelsLocation>InsideScale</d4p1:gaugeLabelsLocation>
+				<d4p1:gaugeLabelsArcDirection>false</d4p1:gaugeLabelsArcDirection>
+				<d4p1:gaugeBushThickness>4</d4p1:gaugeBushThickness>
+				<d4p1:gaugeBushColor>#A9A9A9</d4p1:gaugeBushColor>
+				<d4p1:autoMaxValue>true</d4p1:autoMaxValue>
+				<d4p1:userMaxValue>0</d4p1:userMaxValue>
+				<d4p1:autoMinValue>true</d4p1:autoMinValue>
+				<d4p1:userMinValue>0</d4p1:userMinValue>
+				<d4p1:elementsIsInit>true</d4p1:elementsIsInit>
+				<d4p1:titleIsInit>true</d4p1:titleIsInit>
+				<d4p1:legendIsInit>true</d4p1:legendIsInit>
+				<d4p1:chartIsInit>true</d4p1:chartIsInit>
+				<d4p1:elementsChart>
+					<d4p1:left>0</d4p1:left>
+					<d4p1:right>0</d4p1:right>
+					<d4p1:top>0.04054054054054054</d4p1:top>
+					<d4p1:bottom>0.222972972972973</d4p1:bottom>
+				</d4p1:elementsChart>
+				<d4p1:elementsLegend>
+					<d4p1:left>0</d4p1:left>
+					<d4p1:right>0</d4p1:right>
+					<d4p1:top>0.7118279569892471</d4p1:top>
+					<d4p1:bottom>0</d4p1:bottom>
+				</d4p1:elementsLegend>
+				<d4p1:elementsTitle>
+					<d4p1:left>0</d4p1:left>
+					<d4p1:right>0</d4p1:right>
+					<d4p1:top>0</d4p1:top>
+					<d4p1:bottom>0.934684684684684</d4p1:bottom>
+				</d4p1:elementsTitle>
+				<d4p1:borderColor>style:BorderColor</d4p1:borderColor>
+				<d4p1:border width="1">
+					<v8ui:style xsi:type="v8ui:ControlBorderType">Single</v8ui:style>
+				</d4p1:border>
+				<d4p1:dataSourceDescription/>
+				<d4p1:isDataSourceMode>false</d4p1:isDataSourceMode>
+				<d4p1:isRandomizedNewValues>true</d4p1:isRandomizedNewValues>
+				<d4p1:splineStrain>95</d4p1:splineStrain>
+				<d4p1:translucencePercent>0</d4p1:translucencePercent>
+				<d4p1:funnelNeckHeightPercent>10</d4p1:funnelNeckHeightPercent>
+				<d4p1:funnelNeckWidthPercent>10</d4p1:funnelNeckWidthPercent>
+				<d4p1:funnelGapSumPercent>3</d4p1:funnelGapSumPercent>
+				<d4p1:multiStageLinkLine width="1" gap="false">
+					<v8ui:style xsi:type="v8ui:ChartLineType">Solid</v8ui:style>
+				</d4p1:multiStageLinkLine>
+				<d4p1:multiStageLinkColor>#000000</d4p1:multiStageLinkColor>
+			</Settings>
+		</Attribute>
+		<Attribute name="ChartDebitorsOnTerms" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Accounts receivable by periods</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.2/data/chart">d5p1:Chart</v8:Type>
+			</Type>
+			<Settings xmlns:d4p1="http://v8.1c.ru/8.2/data/chart" xsi:type="d4p1:Chart">
+				<d4p1:seriesCurId>205</d4p1:seriesCurId>
+				<d4p1:pointsCurId>0</d4p1:pointsCurId>
+				<d4p1:isSeriesDesign>true</d4p1:isSeriesDesign>
+				<d4p1:realSeriesCount>3</d4p1:realSeriesCount>
+				<d4p1:realSeriesData>
+					<d4p1:id>2</d4p1:id>
+					<d4p1:color>#19CC19</d4p1:color>
+					<d4p1:line width="2" gap="false">
+						<v8ui:style xsi:type="v8ui:ChartLineType">Solid</v8ui:style>
+					</d4p1:line>
+					<d4p1:marker>Rhomb</d4p1:marker>
+					<d4p1:text>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Up to 7 days</v8:content>
+						</v8:item>
+					</d4p1:text>
+					<d4p1:strIsChanged>true</d4p1:strIsChanged>
+					<d4p1:isExpand>false</d4p1:isExpand>
+					<d4p1:isIndicator>false</d4p1:isIndicator>
+					<d4p1:colorPriority>false</d4p1:colorPriority>
+				</d4p1:realSeriesData>
+				<d4p1:realSeriesData>
+					<d4p1:id>3</d4p1:id>
+					<d4p1:color>#FEE101</d4p1:color>
+					<d4p1:line width="2" gap="false">
+						<v8ui:style xsi:type="v8ui:ChartLineType">Solid</v8ui:style>
+					</d4p1:line>
+					<d4p1:marker>Rect</d4p1:marker>
+					<d4p1:text>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>8 - 30 days</v8:content>
+						</v8:item>
+					</d4p1:text>
+					<d4p1:strIsChanged>true</d4p1:strIsChanged>
+					<d4p1:isExpand>false</d4p1:isExpand>
+					<d4p1:isIndicator>false</d4p1:isIndicator>
+					<d4p1:colorPriority>false</d4p1:colorPriority>
+				</d4p1:realSeriesData>
+				<d4p1:realSeriesData>
+					<d4p1:id>4</d4p1:id>
+					<d4p1:color>#D02A35</d4p1:color>
+					<d4p1:line width="2" gap="false">
+						<v8ui:style xsi:type="v8ui:ChartLineType">Solid</v8ui:style>
+					</d4p1:line>
+					<d4p1:marker>Circle</d4p1:marker>
+					<d4p1:text>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>from 31 day</v8:content>
+						</v8:item>
+					</d4p1:text>
+					<d4p1:strIsChanged>true</d4p1:strIsChanged>
+					<d4p1:isExpand>false</d4p1:isExpand>
+					<d4p1:isIndicator>false</d4p1:isIndicator>
+					<d4p1:colorPriority>false</d4p1:colorPriority>
+				</d4p1:realSeriesData>
+				<d4p1:realExSeriesData>
+					<d4p1:id>1</d4p1:id>
+					<d4p1:color>#991919</d4p1:color>
+					<d4p1:line width="2" gap="false">
+						<v8ui:style xsi:type="v8ui:ChartLineType">Solid</v8ui:style>
+					</d4p1:line>
+					<d4p1:marker>Rhomb</d4p1:marker>
+					<d4p1:text>
+						<v8:item>
+							<v8:lang>#</v8:lang>
+							<v8:content>Composite</v8:content>
+						</v8:item>
+					</d4p1:text>
+					<d4p1:strIsChanged>false</d4p1:strIsChanged>
+					<d4p1:isExpand>false</d4p1:isExpand>
+					<d4p1:isIndicator>false</d4p1:isIndicator>
+					<d4p1:colorPriority>false</d4p1:colorPriority>
+				</d4p1:realExSeriesData>
+				<d4p1:isPointsDesign>true</d4p1:isPointsDesign>
+				<d4p1:realPointCount>0</d4p1:realPointCount>
+				<d4p1:curSeries>1</d4p1:curSeries>
+				<d4p1:curPoint>0</d4p1:curPoint>
+				<d4p1:chartType>Pie3D</d4p1:chartType>
+				<d4p1:circleLabelType>Percent</d4p1:circleLabelType>
+				<d4p1:labelsDelimiter>, </d4p1:labelsDelimiter>
+				<d4p1:labelsLocation>Edge</d4p1:labelsLocation>
+				<d4p1:lbFormat/>
+				<d4p1:lbpFormat/>
+				<d4p1:labelsColor>style:FormTextColor</d4p1:labelsColor>
+				<d4p1:labelsFont kind="AutoFont"/>
+				<d4p1:transparentLabelsBkg>true</d4p1:transparentLabelsBkg>
+				<d4p1:labelsBkgColor>auto</d4p1:labelsBkgColor>
+				<d4p1:labelsBorder width="1">
+					<v8ui:style xsi:type="v8ui:ControlBorderType">Single</v8ui:style>
+				</d4p1:labelsBorder>
+				<d4p1:labelsBorderColor>auto</d4p1:labelsBorderColor>
+				<d4p1:circleExpandMode>All</d4p1:circleExpandMode>
+				<d4p1:chart3Dcrd>SouthWest</d4p1:chart3Dcrd>
+				<d4p1:title>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Creditors debt by deadlines</v8:content>
+					</v8:item>
+				</d4p1:title>
+				<d4p1:isShowTitle>true</d4p1:isShowTitle>
+				<d4p1:isShowLegend>true</d4p1:isShowLegend>
+				<d4p1:ttlBorder width="0">
+					<v8ui:style xsi:type="v8ui:ControlBorderType">WithoutBorder</v8ui:style>
+				</d4p1:ttlBorder>
+				<d4p1:ttlBorderColor>style:BorderColor</d4p1:ttlBorderColor>
+				<d4p1:lgBorder width="0">
+					<v8ui:style xsi:type="v8ui:ControlBorderType">WithoutBorder</v8ui:style>
+				</d4p1:lgBorder>
+				<d4p1:lgBorderColor>style:BorderColor</d4p1:lgBorderColor>
+				<d4p1:chBorder width="0">
+					<v8ui:style xsi:type="v8ui:ControlBorderType">WithoutBorder</v8ui:style>
+				</d4p1:chBorder>
+				<d4p1:chBorderColor>style:BorderColor</d4p1:chBorderColor>
+				<d4p1:transparent>true</d4p1:transparent>
+				<d4p1:bkgColor>style:FieldBackColor</d4p1:bkgColor>
+				<d4p1:isTrnspTtl>false</d4p1:isTrnspTtl>
+				<d4p1:ttlColor>#FFFFC0</d4p1:ttlColor>
+				<d4p1:isTrnspLeg>false</d4p1:isTrnspLeg>
+				<d4p1:legColor>#FFFFC0</d4p1:legColor>
+				<d4p1:isTrnspCh>false</d4p1:isTrnspCh>
+				<d4p1:chColor>#FFFFC0</d4p1:chColor>
+				<d4p1:ttlTxtColor>style:ButtonTextColor</d4p1:ttlTxtColor>
+				<d4p1:legTxtColor>style:FormTextColor</d4p1:legTxtColor>
+				<d4p1:chTxtColor>style:FormTextColor</d4p1:chTxtColor>
+				<d4p1:ttlFont ref="style:NormalTextFont" height="8" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+				<d4p1:legFont ref="style:SmallTextFont" kind="StyleItem"/>
+				<d4p1:chFont ref="style:SmallTextFont" kind="StyleItem"/>
+				<d4p1:isShowScale>true</d4p1:isShowScale>
+				<d4p1:isShowScaleVL>true</d4p1:isShowScaleVL>
+				<d4p1:isShowSeriesScale>true</d4p1:isShowSeriesScale>
+				<d4p1:isShowPointsScale>true</d4p1:isShowPointsScale>
+				<d4p1:isShowValuesScale>true</d4p1:isShowValuesScale>
+				<d4p1:vsFormat/>
+				<d4p1:xLabelsOrientation>Auto</d4p1:xLabelsOrientation>
+				<d4p1:scaleLine width="1" gap="false">
+					<v8ui:style xsi:type="v8ui:ChartLineType">Solid</v8ui:style>
+				</d4p1:scaleLine>
+				<d4p1:scaleColor>#A9A9A9</d4p1:scaleColor>
+				<d4p1:isAutoSeriesName>true</d4p1:isAutoSeriesName>
+				<d4p1:isAutoPointName>true</d4p1:isAutoPointName>
+				<d4p1:maxMode>Limited</d4p1:maxMode>
+				<d4p1:maxSeries>3</d4p1:maxSeries>
+				<d4p1:maxSeriesPrc>30</d4p1:maxSeriesPrc>
+				<d4p1:spaceMode>Half</d4p1:spaceMode>
+				<d4p1:baseVal>0</d4p1:baseVal>
+				<d4p1:isOutline>false</d4p1:isOutline>
+				<d4p1:realPiePoint>0</d4p1:realPiePoint>
+				<d4p1:realStockSeries>0</d4p1:realStockSeries>
+				<d4p1:isLight>true</d4p1:isLight>
+				<d4p1:isGradient>false</d4p1:isGradient>
+				<d4p1:isTransposition>false</d4p1:isTransposition>
+				<d4p1:hideBaseVal>false</d4p1:hideBaseVal>
+				<d4p1:dataTable>false</d4p1:dataTable>
+				<d4p1:dtVerLines>true</d4p1:dtVerLines>
+				<d4p1:dtHorLines>true</d4p1:dtHorLines>
+				<d4p1:dtHAlign>Right</d4p1:dtHAlign>
+				<d4p1:dtFormat/>
+				<d4p1:dtKeys>true</d4p1:dtKeys>
+				<d4p1:paletteKind>Palette32</d4p1:paletteKind>
+				<d4p1:animation>Auto</d4p1:animation>
+				<d4p1:rebuildTime>10588329</d4p1:rebuildTime>
+				<d4p1:isTransposed>false</d4p1:isTransposed>
+				<d4p1:autoTransposition>true</d4p1:autoTransposition>
+				<d4p1:legendScrollEnable>false</d4p1:legendScrollEnable>
+				<d4p1:surfaceColor>#A90000</d4p1:surfaceColor>
+				<d4p1:radarScaleType>Circle</d4p1:radarScaleType>
+				<d4p1:gaugeValuesPresentation>Needle</d4p1:gaugeValuesPresentation>
+				<d4p1:gaugeQualityBands useTextStr="false" useTooltipStr="false"/>
+				<d4p1:beginGaugeAngle>0</d4p1:beginGaugeAngle>
+				<d4p1:endGaugeAngle>180</d4p1:endGaugeAngle>
+				<d4p1:gaugeThickness>5</d4p1:gaugeThickness>
+				<d4p1:gaugeLabelsLocation>InsideScale</d4p1:gaugeLabelsLocation>
+				<d4p1:gaugeLabelsArcDirection>false</d4p1:gaugeLabelsArcDirection>
+				<d4p1:gaugeBushThickness>4</d4p1:gaugeBushThickness>
+				<d4p1:gaugeBushColor>#A9A9A9</d4p1:gaugeBushColor>
+				<d4p1:autoMaxValue>true</d4p1:autoMaxValue>
+				<d4p1:userMaxValue>0</d4p1:userMaxValue>
+				<d4p1:autoMinValue>true</d4p1:autoMinValue>
+				<d4p1:userMinValue>0</d4p1:userMinValue>
+				<d4p1:elementsIsInit>true</d4p1:elementsIsInit>
+				<d4p1:titleIsInit>true</d4p1:titleIsInit>
+				<d4p1:legendIsInit>true</d4p1:legendIsInit>
+				<d4p1:chartIsInit>true</d4p1:chartIsInit>
+				<d4p1:elementsChart>
+					<d4p1:left>0</d4p1:left>
+					<d4p1:right>0</d4p1:right>
+					<d4p1:top>0.045045045045045</d4p1:top>
+					<d4p1:bottom>0.1554054054054054</d4p1:bottom>
+				</d4p1:elementsChart>
+				<d4p1:elementsLegend>
+					<d4p1:left>0</d4p1:left>
+					<d4p1:right>0</d4p1:right>
+					<d4p1:top>0.8172043010752681</d4p1:top>
+					<d4p1:bottom>0</d4p1:bottom>
+				</d4p1:elementsLegend>
+				<d4p1:elementsTitle>
+					<d4p1:left>0</d4p1:left>
+					<d4p1:right>0</d4p1:right>
+					<d4p1:top>0</d4p1:top>
+					<d4p1:bottom>0.9324324324324321</d4p1:bottom>
+				</d4p1:elementsTitle>
+				<d4p1:borderColor>style:BorderColor</d4p1:borderColor>
+				<d4p1:border width="1">
+					<v8ui:style xsi:type="v8ui:ControlBorderType">Single</v8ui:style>
+				</d4p1:border>
+				<d4p1:dataSourceDescription/>
+				<d4p1:isDataSourceMode>false</d4p1:isDataSourceMode>
+				<d4p1:isRandomizedNewValues>true</d4p1:isRandomizedNewValues>
+				<d4p1:splineStrain>95</d4p1:splineStrain>
+				<d4p1:translucencePercent>0</d4p1:translucencePercent>
+				<d4p1:funnelNeckHeightPercent>10</d4p1:funnelNeckHeightPercent>
+				<d4p1:funnelNeckWidthPercent>10</d4p1:funnelNeckWidthPercent>
+				<d4p1:funnelGapSumPercent>3</d4p1:funnelGapSumPercent>
+				<d4p1:multiStageLinkLine width="1" gap="false">
+					<v8ui:style xsi:type="v8ui:ChartLineType">Solid</v8ui:style>
+				</d4p1:multiStageLinkLine>
+				<d4p1:multiStageLinkColor>#000000</d4p1:multiStageLinkColor>
+			</Settings>
+		</Attribute>
+		<Attribute name="ChartDebtDynamics" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Accounts receivable dynamics</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.2/data/chart">d5p1:Chart</v8:Type>
+			</Type>
+			<Settings xmlns:d4p1="http://v8.1c.ru/8.2/data/chart" xsi:type="d4p1:Chart">
+				<d4p1:seriesCurId>65</d4p1:seriesCurId>
+				<d4p1:pointsCurId>1984</d4p1:pointsCurId>
+				<d4p1:isSeriesDesign>true</d4p1:isSeriesDesign>
+				<d4p1:realSeriesCount>1</d4p1:realSeriesCount>
+				<d4p1:realSeriesData>
+					<d4p1:id>2</d4p1:id>
+					<d4p1:color>#D02A35</d4p1:color>
+					<d4p1:line width="2" gap="false">
+						<v8ui:style xsi:type="v8ui:ChartLineType">Solid</v8ui:style>
+					</d4p1:line>
+					<d4p1:marker>None</d4p1:marker>
+					<d4p1:text>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Balance</v8:content>
+						</v8:item>
+					</d4p1:text>
+					<d4p1:strIsChanged>true</d4p1:strIsChanged>
+					<d4p1:isExpand>false</d4p1:isExpand>
+					<d4p1:isIndicator>false</d4p1:isIndicator>
+					<d4p1:colorPriority>false</d4p1:colorPriority>
+				</d4p1:realSeriesData>
+				<d4p1:realExSeriesData>
+					<d4p1:id>1</d4p1:id>
+					<d4p1:color>#991919</d4p1:color>
+					<d4p1:line width="2" gap="false">
+						<v8ui:style xsi:type="v8ui:ChartLineType">Solid</v8ui:style>
+					</d4p1:line>
+					<d4p1:marker>Rhomb</d4p1:marker>
+					<d4p1:text>
+						<v8:item>
+							<v8:lang>#</v8:lang>
+							<v8:content>Composite</v8:content>
+						</v8:item>
+					</d4p1:text>
+					<d4p1:strIsChanged>false</d4p1:strIsChanged>
+					<d4p1:isExpand>false</d4p1:isExpand>
+					<d4p1:isIndicator>false</d4p1:isIndicator>
+					<d4p1:colorPriority>false</d4p1:colorPriority>
+				</d4p1:realExSeriesData>
+				<d4p1:isPointsDesign>true</d4p1:isPointsDesign>
+				<d4p1:realPointCount>31</d4p1:realPointCount>
+				<d4p1:realPointData>
+					<d4p1:id>1</d4p1:id>
+					<d4p1:color>#D02A35</d4p1:color>
+					<d4p1:line width="2" gap="false">
+						<v8ui:style xsi:type="v8ui:ChartLineType">Solid</v8ui:style>
+					</d4p1:line>
+					<d4p1:marker>Rhomb</d4p1:marker>
+					<d4p1:text/>
+					<d4p1:strIsChanged>false</d4p1:strIsChanged>
+					<d4p1:isExpand>false</d4p1:isExpand>
+					<d4p1:isIndicator>false</d4p1:isIndicator>
+					<d4p1:colorPriority>false</d4p1:colorPriority>
+				</d4p1:realPointData>
+				<d4p1:realPointData>
+					<d4p1:id>2</d4p1:id>
+					<d4p1:color>#FEE101</d4p1:color>
+					<d4p1:line width="2" gap="false">
+						<v8ui:style xsi:type="v8ui:ChartLineType">Solid</v8ui:style>
+					</d4p1:line>
+					<d4p1:marker>Rect</d4p1:marker>
+					<d4p1:text/>
+					<d4p1:strIsChanged>false</d4p1:strIsChanged>
+					<d4p1:isExpand>false</d4p1:isExpand>
+					<d4p1:isIndicator>false</d4p1:isIndicator>
+					<d4p1:colorPriority>false</d4p1:colorPriority>
+				</d4p1:realPointData>
+				<d4p1:realPointData>
+					<d4p1:id>3</d4p1:id>
+					<d4p1:color>#19CC19</d4p1:color>
+					<d4p1:line width="2" gap="false">
+						<v8ui:style xsi:type="v8ui:ChartLineType">Solid</v8ui:style>
+					</d4p1:line>
+					<d4p1:marker>Circle</d4p1:marker>
+					<d4p1:text/>
+					<d4p1:strIsChanged>false</d4p1:strIsChanged>
+					<d4p1:isExpand>false</d4p1:isExpand>
+					<d4p1:isIndicator>false</d4p1:isIndicator>
+					<d4p1:colorPriority>false</d4p1:colorPriority>
+				</d4p1:realPointData>
+				<d4p1:realPointData>
+					<d4p1:id>4</d4p1:id>
+					<d4p1:color>#19B2E5</d4p1:color>
+					<d4p1:line width="2" gap="false">
+						<v8ui:style xsi:type="v8ui:ChartLineType">Solid</v8ui:style>
+					</d4p1:line>
+					<d4p1:marker>Rhomb</d4p1:marker>
+					<d4p1:text/>
+					<d4p1:strIsChanged>false</d4p1:strIsChanged>
+					<d4p1:isExpand>false</d4p1:isExpand>
+					<d4p1:isIndicator>false</d4p1:isIndicator>
+					<d4p1:colorPriority>false</d4p1:colorPriority>
+				</d4p1:realPointData>
+				<d4p1:realPointData>
+					<d4p1:id>5</d4p1:id>
+					<d4p1:color>#1919CC</d4p1:color>
+					<d4p1:line width="2" gap="false">
+						<v8ui:style xsi:type="v8ui:ChartLineType">Solid</v8ui:style>
+					</d4p1:line>
+					<d4p1:marker>Rect</d4p1:marker>
+					<d4p1:text/>
+					<d4p1:strIsChanged>false</d4p1:strIsChanged>
+					<d4p1:isExpand>false</d4p1:isExpand>
+					<d4p1:isIndicator>false</d4p1:isIndicator>
+					<d4p1:colorPriority>false</d4p1:colorPriority>
+				</d4p1:realPointData>
+				<d4p1:realPointData>
+					<d4p1:id>6</d4p1:id>
+					<d4p1:color>#CC19FF</d4p1:color>
+					<d4p1:line width="2" gap="false">
+						<v8ui:style xsi:type="v8ui:ChartLineType">Solid</v8ui:style>
+					</d4p1:line>
+					<d4p1:marker>Circle</d4p1:marker>
+					<d4p1:text/>
+					<d4p1:strIsChanged>false</d4p1:strIsChanged>
+					<d4p1:isExpand>false</d4p1:isExpand>
+					<d4p1:isIndicator>false</d4p1:isIndicator>
+					<d4p1:colorPriority>false</d4p1:colorPriority>
+				</d4p1:realPointData>
+				<d4p1:realPointData>
+					<d4p1:id>7</d4p1:id>
+					<d4p1:color>#991919</d4p1:color>
+					<d4p1:line width="2" gap="false">
+						<v8ui:style xsi:type="v8ui:ChartLineType">Solid</v8ui:style>
+					</d4p1:line>
+					<d4p1:marker>Rhomb</d4p1:marker>
+					<d4p1:text/>
+					<d4p1:strIsChanged>false</d4p1:strIsChanged>
+					<d4p1:isExpand>false</d4p1:isExpand>
+					<d4p1:isIndicator>false</d4p1:isIndicator>
+					<d4p1:colorPriority>false</d4p1:colorPriority>
+				</d4p1:realPointData>
+				<d4p1:realPointData>
+					<d4p1:id>8</d4p1:id>
+					<d4p1:color>#FFCC19</d4p1:color>
+					<d4p1:line width="2" gap="false">
+						<v8ui:style xsi:type="v8ui:ChartLineType">Solid</v8ui:style>
+					</d4p1:line>
+					<d4p1:marker>Rect</d4p1:marker>
+					<d4p1:text/>
+					<d4p1:strIsChanged>false</d4p1:strIsChanged>
+					<d4p1:isExpand>false</d4p1:isExpand>
+					<d4p1:isIndicator>false</d4p1:isIndicator>
+					<d4p1:colorPriority>false</d4p1:colorPriority>
+				</d4p1:realPointData>
+				<d4p1:realPointData>
+					<d4p1:id>9</d4p1:id>
+					<d4p1:color>#199919</d4p1:color>
+					<d4p1:line width="2" gap="false">
+						<v8ui:style xsi:type="v8ui:ChartLineType">Solid</v8ui:style>
+					</d4p1:line>
+					<d4p1:marker>Rhomb</d4p1:marker>
+					<d4p1:text/>
+					<d4p1:strIsChanged>false</d4p1:strIsChanged>
+					<d4p1:isExpand>false</d4p1:isExpand>
+					<d4p1:isIndicator>false</d4p1:isIndicator>
+					<d4p1:colorPriority>false</d4p1:colorPriority>
+				</d4p1:realPointData>
+				<d4p1:realPointData>
+					<d4p1:id>10</d4p1:id>
+					<d4p1:color>#197FE5</d4p1:color>
+					<d4p1:line width="2" gap="false">
+						<v8ui:style xsi:type="v8ui:ChartLineType">Solid</v8ui:style>
+					</d4p1:line>
+					<d4p1:marker>Rect</d4p1:marker>
+					<d4p1:text/>
+					<d4p1:strIsChanged>false</d4p1:strIsChanged>
+					<d4p1:isExpand>false</d4p1:isExpand>
+					<d4p1:isIndicator>false</d4p1:isIndicator>
+					<d4p1:colorPriority>false</d4p1:colorPriority>
+				</d4p1:realPointData>
+				<d4p1:realPointData>
+					<d4p1:id>11</d4p1:id>
+					<d4p1:color>#191999</d4p1:color>
+					<d4p1:line width="2" gap="false">
+						<v8ui:style xsi:type="v8ui:ChartLineType">Solid</v8ui:style>
+					</d4p1:line>
+					<d4p1:marker>Circle</d4p1:marker>
+					<d4p1:text/>
+					<d4p1:strIsChanged>false</d4p1:strIsChanged>
+					<d4p1:isExpand>false</d4p1:isExpand>
+					<d4p1:isIndicator>false</d4p1:isIndicator>
+					<d4p1:colorPriority>false</d4p1:colorPriority>
+				</d4p1:realPointData>
+				<d4p1:realPointData>
+					<d4p1:id>12</d4p1:id>
+					<d4p1:color>#9919E5</d4p1:color>
+					<d4p1:line width="2" gap="false">
+						<v8ui:style xsi:type="v8ui:ChartLineType">Solid</v8ui:style>
+					</d4p1:line>
+					<d4p1:marker>Rhomb</d4p1:marker>
+					<d4p1:text/>
+					<d4p1:strIsChanged>false</d4p1:strIsChanged>
+					<d4p1:isExpand>false</d4p1:isExpand>
+					<d4p1:isIndicator>false</d4p1:isIndicator>
+					<d4p1:colorPriority>false</d4p1:colorPriority>
+				</d4p1:realPointData>
+				<d4p1:realPointData>
+					<d4p1:id>13</d4p1:id>
+					<d4p1:color>#7F1919</d4p1:color>
+					<d4p1:line width="2" gap="false">
+						<v8ui:style xsi:type="v8ui:ChartLineType">Solid</v8ui:style>
+					</d4p1:line>
+					<d4p1:marker>Rect</d4p1:marker>
+					<d4p1:text/>
+					<d4p1:strIsChanged>false</d4p1:strIsChanged>
+					<d4p1:isExpand>false</d4p1:isExpand>
+					<d4p1:isIndicator>false</d4p1:isIndicator>
+					<d4p1:colorPriority>false</d4p1:colorPriority>
+				</d4p1:realPointData>
+				<d4p1:realPointData>
+					<d4p1:id>14</d4p1:id>
+					<d4p1:color>#FFB219</d4p1:color>
+					<d4p1:line width="2" gap="false">
+						<v8ui:style xsi:type="v8ui:ChartLineType">Solid</v8ui:style>
+					</d4p1:line>
+					<d4p1:marker>Circle</d4p1:marker>
+					<d4p1:text/>
+					<d4p1:strIsChanged>false</d4p1:strIsChanged>
+					<d4p1:isExpand>false</d4p1:isExpand>
+					<d4p1:isIndicator>false</d4p1:isIndicator>
+					<d4p1:colorPriority>false</d4p1:colorPriority>
+				</d4p1:realPointData>
+				<d4p1:realPointData>
+					<d4p1:id>15</d4p1:id>
+					<d4p1:color>#197F19</d4p1:color>
+					<d4p1:line width="2" gap="false">
+						<v8ui:style xsi:type="v8ui:ChartLineType">Solid</v8ui:style>
+					</d4p1:line>
+					<d4p1:marker>Rhomb</d4p1:marker>
+					<d4p1:text/>
+					<d4p1:strIsChanged>false</d4p1:strIsChanged>
+					<d4p1:isExpand>false</d4p1:isExpand>
+					<d4p1:isIndicator>false</d4p1:isIndicator>
+					<d4p1:colorPriority>false</d4p1:colorPriority>
+				</d4p1:realPointData>
+				<d4p1:realPointData>
+					<d4p1:id>16</d4p1:id>
+					<d4p1:color>#194CE5</d4p1:color>
+					<d4p1:line width="2" gap="false">
+						<v8ui:style xsi:type="v8ui:ChartLineType">Solid</v8ui:style>
+					</d4p1:line>
+					<d4p1:marker>Rect</d4p1:marker>
+					<d4p1:text/>
+					<d4p1:strIsChanged>false</d4p1:strIsChanged>
+					<d4p1:isExpand>false</d4p1:isExpand>
+					<d4p1:isIndicator>false</d4p1:isIndicator>
+					<d4p1:colorPriority>false</d4p1:colorPriority>
+				</d4p1:realPointData>
+				<d4p1:realPointData>
+					<d4p1:id>17</d4p1:id>
+					<d4p1:color>#191966</d4p1:color>
+					<d4p1:line width="2" gap="false">
+						<v8ui:style xsi:type="v8ui:ChartLineType">Solid</v8ui:style>
+					</d4p1:line>
+					<d4p1:marker>Rhomb</d4p1:marker>
+					<d4p1:text/>
+					<d4p1:strIsChanged>false</d4p1:strIsChanged>
+					<d4p1:isExpand>false</d4p1:isExpand>
+					<d4p1:isIndicator>false</d4p1:isIndicator>
+					<d4p1:colorPriority>false</d4p1:colorPriority>
+				</d4p1:realPointData>
+				<d4p1:realPointData>
+					<d4p1:id>18</d4p1:id>
+					<d4p1:color>#7F19B2</d4p1:color>
+					<d4p1:line width="2" gap="false">
+						<v8ui:style xsi:type="v8ui:ChartLineType">Solid</v8ui:style>
+					</d4p1:line>
+					<d4p1:marker>Rect</d4p1:marker>
+					<d4p1:text/>
+					<d4p1:strIsChanged>false</d4p1:strIsChanged>
+					<d4p1:isExpand>false</d4p1:isExpand>
+					<d4p1:isIndicator>false</d4p1:isIndicator>
+					<d4p1:colorPriority>false</d4p1:colorPriority>
+				</d4p1:realPointData>
+				<d4p1:realPointData>
+					<d4p1:id>19</d4p1:id>
+					<d4p1:color>#661919</d4p1:color>
+					<d4p1:line width="2" gap="false">
+						<v8ui:style xsi:type="v8ui:ChartLineType">Solid</v8ui:style>
+					</d4p1:line>
+					<d4p1:marker>Circle</d4p1:marker>
+					<d4p1:text/>
+					<d4p1:strIsChanged>false</d4p1:strIsChanged>
+					<d4p1:isExpand>false</d4p1:isExpand>
+					<d4p1:isIndicator>false</d4p1:isIndicator>
+					<d4p1:colorPriority>false</d4p1:colorPriority>
+				</d4p1:realPointData>
+				<d4p1:realPointData>
+					<d4p1:id>20</d4p1:id>
+					<d4p1:color>#F52B41</d4p1:color>
+					<d4p1:line width="2" gap="false">
+						<v8ui:style xsi:type="v8ui:ChartLineType">Solid</v8ui:style>
+					</d4p1:line>
+					<d4p1:marker>Rhomb</d4p1:marker>
+					<d4p1:text/>
+					<d4p1:strIsChanged>false</d4p1:strIsChanged>
+					<d4p1:isExpand>false</d4p1:isExpand>
+					<d4p1:isIndicator>false</d4p1:isIndicator>
+					<d4p1:colorPriority>false</d4p1:colorPriority>
+				</d4p1:realPointData>
+				<d4p1:realPointData>
+					<d4p1:id>21</d4p1:id>
+					<d4p1:color>#FFFF2A</d4p1:color>
+					<d4p1:line width="2" gap="false">
+						<v8ui:style xsi:type="v8ui:ChartLineType">Solid</v8ui:style>
+					</d4p1:line>
+					<d4p1:marker>Rect</d4p1:marker>
+					<d4p1:text/>
+					<d4p1:strIsChanged>false</d4p1:strIsChanged>
+					<d4p1:isExpand>false</d4p1:isExpand>
+					<d4p1:isIndicator>false</d4p1:isIndicator>
+					<d4p1:colorPriority>false</d4p1:colorPriority>
+				</d4p1:realPointData>
+				<d4p1:realPointData>
+					<d4p1:id>22</d4p1:id>
+					<d4p1:color>#19E519</d4p1:color>
+					<d4p1:line width="2" gap="false">
+						<v8ui:style xsi:type="v8ui:ChartLineType">Solid</v8ui:style>
+					</d4p1:line>
+					<d4p1:marker>Circle</d4p1:marker>
+					<d4p1:text/>
+					<d4p1:strIsChanged>false</d4p1:strIsChanged>
+					<d4p1:isExpand>false</d4p1:isExpand>
+					<d4p1:isIndicator>false</d4p1:isIndicator>
+					<d4p1:colorPriority>false</d4p1:colorPriority>
+				</d4p1:realPointData>
+				<d4p1:realPointData>
+					<d4p1:id>23</d4p1:id>
+					<d4p1:color>#19FFE5</d4p1:color>
+					<d4p1:line width="2" gap="false">
+						<v8ui:style xsi:type="v8ui:ChartLineType">Solid</v8ui:style>
+					</d4p1:line>
+					<d4p1:marker>Rhomb</d4p1:marker>
+					<d4p1:text/>
+					<d4p1:strIsChanged>false</d4p1:strIsChanged>
+					<d4p1:isExpand>false</d4p1:isExpand>
+					<d4p1:isIndicator>false</d4p1:isIndicator>
+					<d4p1:colorPriority>false</d4p1:colorPriority>
+				</d4p1:realPointData>
+				<d4p1:realPointData>
+					<d4p1:id>24</d4p1:id>
+					<d4p1:color>#1919FF</d4p1:color>
+					<d4p1:line width="2" gap="false">
+						<v8ui:style xsi:type="v8ui:ChartLineType">Solid</v8ui:style>
+					</d4p1:line>
+					<d4p1:marker>Rect</d4p1:marker>
+					<d4p1:text/>
+					<d4p1:strIsChanged>false</d4p1:strIsChanged>
+					<d4p1:isExpand>false</d4p1:isExpand>
+					<d4p1:isIndicator>false</d4p1:isIndicator>
+					<d4p1:colorPriority>false</d4p1:colorPriority>
+				</d4p1:realPointData>
+				<d4p1:realPointData>
+					<d4p1:id>25</d4p1:id>
+					<d4p1:color>#E519FF</d4p1:color>
+					<d4p1:line width="2" gap="false">
+						<v8ui:style xsi:type="v8ui:ChartLineType">Solid</v8ui:style>
+					</d4p1:line>
+					<d4p1:marker>Rhomb</d4p1:marker>
+					<d4p1:text/>
+					<d4p1:strIsChanged>false</d4p1:strIsChanged>
+					<d4p1:isExpand>false</d4p1:isExpand>
+					<d4p1:isIndicator>false</d4p1:isIndicator>
+					<d4p1:colorPriority>false</d4p1:colorPriority>
+				</d4p1:realPointData>
+				<d4p1:realPointData>
+					<d4p1:id>26</d4p1:id>
+					<d4p1:color>#FFB219</d4p1:color>
+					<d4p1:line width="2" gap="false">
+						<v8ui:style xsi:type="v8ui:ChartLineType">Solid</v8ui:style>
+					</d4p1:line>
+					<d4p1:marker>Rect</d4p1:marker>
+					<d4p1:text/>
+					<d4p1:strIsChanged>false</d4p1:strIsChanged>
+					<d4p1:isExpand>false</d4p1:isExpand>
+					<d4p1:isIndicator>false</d4p1:isIndicator>
+					<d4p1:colorPriority>false</d4p1:colorPriority>
+				</d4p1:realPointData>
+				<d4p1:realPointData>
+					<d4p1:id>27</d4p1:id>
+					<d4p1:color>#196619</d4p1:color>
+					<d4p1:line width="2" gap="false">
+						<v8ui:style xsi:type="v8ui:ChartLineType">Solid</v8ui:style>
+					</d4p1:line>
+					<d4p1:marker>Circle</d4p1:marker>
+					<d4p1:text/>
+					<d4p1:strIsChanged>false</d4p1:strIsChanged>
+					<d4p1:isExpand>false</d4p1:isExpand>
+					<d4p1:isIndicator>false</d4p1:isIndicator>
+					<d4p1:colorPriority>false</d4p1:colorPriority>
+				</d4p1:realPointData>
+				<d4p1:realPointData>
+					<d4p1:id>28</d4p1:id>
+					<d4p1:color>#191999</d4p1:color>
+					<d4p1:line width="2" gap="false">
+						<v8ui:style xsi:type="v8ui:ChartLineType">Solid</v8ui:style>
+					</d4p1:line>
+					<d4p1:marker>Rhomb</d4p1:marker>
+					<d4p1:text/>
+					<d4p1:strIsChanged>false</d4p1:strIsChanged>
+					<d4p1:isExpand>false</d4p1:isExpand>
+					<d4p1:isIndicator>false</d4p1:isIndicator>
+					<d4p1:colorPriority>false</d4p1:colorPriority>
+				</d4p1:realPointData>
+				<d4p1:realPointData>
+					<d4p1:id>29</d4p1:id>
+					<d4p1:color>#19194C</d4p1:color>
+					<d4p1:line width="2" gap="false">
+						<v8ui:style xsi:type="v8ui:ChartLineType">Solid</v8ui:style>
+					</d4p1:line>
+					<d4p1:marker>Rect</d4p1:marker>
+					<d4p1:text/>
+					<d4p1:strIsChanged>false</d4p1:strIsChanged>
+					<d4p1:isExpand>false</d4p1:isExpand>
+					<d4p1:isIndicator>false</d4p1:isIndicator>
+					<d4p1:colorPriority>false</d4p1:colorPriority>
+				</d4p1:realPointData>
+				<d4p1:realPointData>
+					<d4p1:id>30</d4p1:id>
+					<d4p1:color>#7F19B2</d4p1:color>
+					<d4p1:line width="2" gap="false">
+						<v8ui:style xsi:type="v8ui:ChartLineType">Solid</v8ui:style>
+					</d4p1:line>
+					<d4p1:marker>Circle</d4p1:marker>
+					<d4p1:text/>
+					<d4p1:strIsChanged>false</d4p1:strIsChanged>
+					<d4p1:isExpand>false</d4p1:isExpand>
+					<d4p1:isIndicator>false</d4p1:isIndicator>
+					<d4p1:colorPriority>false</d4p1:colorPriority>
+				</d4p1:realPointData>
+				<d4p1:realPointData>
+					<d4p1:id>31</d4p1:id>
+					<d4p1:color>#4C1919</d4p1:color>
+					<d4p1:line width="2" gap="false">
+						<v8ui:style xsi:type="v8ui:ChartLineType">Solid</v8ui:style>
+					</d4p1:line>
+					<d4p1:marker>Rhomb</d4p1:marker>
+					<d4p1:text/>
+					<d4p1:strIsChanged>false</d4p1:strIsChanged>
+					<d4p1:isExpand>false</d4p1:isExpand>
+					<d4p1:isIndicator>false</d4p1:isIndicator>
+					<d4p1:colorPriority>false</d4p1:colorPriority>
+				</d4p1:realPointData>
+				<d4p1:curSeries>0</d4p1:curSeries>
+				<d4p1:curPoint>30</d4p1:curPoint>
+				<d4p1:chartType>Line</d4p1:chartType>
+				<d4p1:circleLabelType>None</d4p1:circleLabelType>
+				<d4p1:labelsDelimiter>, </d4p1:labelsDelimiter>
+				<d4p1:labelsLocation>Edge</d4p1:labelsLocation>
+				<d4p1:lbFormat/>
+				<d4p1:lbpFormat/>
+				<d4p1:labelsColor>style:FormTextColor</d4p1:labelsColor>
+				<d4p1:labelsFont kind="AutoFont"/>
+				<d4p1:transparentLabelsBkg>true</d4p1:transparentLabelsBkg>
+				<d4p1:labelsBkgColor>auto</d4p1:labelsBkgColor>
+				<d4p1:labelsBorder width="1">
+					<v8ui:style xsi:type="v8ui:ControlBorderType">Single</v8ui:style>
+				</d4p1:labelsBorder>
+				<d4p1:labelsBorderColor>auto</d4p1:labelsBorderColor>
+				<d4p1:circleExpandMode>None</d4p1:circleExpandMode>
+				<d4p1:chart3Dcrd>SouthWest</d4p1:chart3Dcrd>
+				<d4p1:title>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Dynamics of the debt </v8:content>
+					</v8:item>
+				</d4p1:title>
+				<d4p1:isShowTitle>true</d4p1:isShowTitle>
+				<d4p1:isShowLegend>false</d4p1:isShowLegend>
+				<d4p1:ttlBorder width="0">
+					<v8ui:style xsi:type="v8ui:ControlBorderType">WithoutBorder</v8ui:style>
+				</d4p1:ttlBorder>
+				<d4p1:ttlBorderColor>style:BorderColor</d4p1:ttlBorderColor>
+				<d4p1:lgBorder width="0">
+					<v8ui:style xsi:type="v8ui:ControlBorderType">WithoutBorder</v8ui:style>
+				</d4p1:lgBorder>
+				<d4p1:lgBorderColor>style:BorderColor</d4p1:lgBorderColor>
+				<d4p1:chBorder width="0">
+					<v8ui:style xsi:type="v8ui:ControlBorderType">WithoutBorder</v8ui:style>
+				</d4p1:chBorder>
+				<d4p1:chBorderColor>style:BorderColor</d4p1:chBorderColor>
+				<d4p1:transparent>true</d4p1:transparent>
+				<d4p1:bkgColor>style:FieldBackColor</d4p1:bkgColor>
+				<d4p1:isTrnspTtl>false</d4p1:isTrnspTtl>
+				<d4p1:ttlColor>#D6FBD3</d4p1:ttlColor>
+				<d4p1:isTrnspLeg>false</d4p1:isTrnspLeg>
+				<d4p1:legColor>style:FieldBackColor</d4p1:legColor>
+				<d4p1:isTrnspCh>false</d4p1:isTrnspCh>
+				<d4p1:chColor>#D6FBD3</d4p1:chColor>
+				<d4p1:ttlTxtColor>style:ButtonTextColor</d4p1:ttlTxtColor>
+				<d4p1:legTxtColor>style:FormTextColor</d4p1:legTxtColor>
+				<d4p1:chTxtColor>style:FormTextColor</d4p1:chTxtColor>
+				<d4p1:ttlFont ref="style:NormalTextFont" height="8" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+				<d4p1:legFont ref="style:TextFont" kind="StyleItem"/>
+				<d4p1:chFont ref="style:TextFont" kind="StyleItem"/>
+				<d4p1:isShowScale>false</d4p1:isShowScale>
+				<d4p1:isShowScaleVL>true</d4p1:isShowScaleVL>
+				<d4p1:isShowSeriesScale>true</d4p1:isShowSeriesScale>
+				<d4p1:isShowPointsScale>true</d4p1:isShowPointsScale>
+				<d4p1:isShowValuesScale>true</d4p1:isShowValuesScale>
+				<d4p1:vsFormat/>
+				<d4p1:xLabelsOrientation>Auto</d4p1:xLabelsOrientation>
+				<d4p1:scaleLine width="1" gap="false">
+					<v8ui:style xsi:type="v8ui:ChartLineType">Solid</v8ui:style>
+				</d4p1:scaleLine>
+				<d4p1:scaleColor>#A9A9A9</d4p1:scaleColor>
+				<d4p1:isAutoSeriesName>false</d4p1:isAutoSeriesName>
+				<d4p1:isAutoPointName>false</d4p1:isAutoPointName>
+				<d4p1:maxMode>Limited</d4p1:maxMode>
+				<d4p1:maxSeries>1</d4p1:maxSeries>
+				<d4p1:maxSeriesPrc>30</d4p1:maxSeriesPrc>
+				<d4p1:spaceMode>Half</d4p1:spaceMode>
+				<d4p1:baseVal>0</d4p1:baseVal>
+				<d4p1:isOutline>false</d4p1:isOutline>
+				<d4p1:realPiePoint>0</d4p1:realPiePoint>
+				<d4p1:realStockSeries>0</d4p1:realStockSeries>
+				<d4p1:isLight>true</d4p1:isLight>
+				<d4p1:isGradient>false</d4p1:isGradient>
+				<d4p1:isTransposition>false</d4p1:isTransposition>
+				<d4p1:hideBaseVal>false</d4p1:hideBaseVal>
+				<d4p1:dataTable>false</d4p1:dataTable>
+				<d4p1:dtVerLines>true</d4p1:dtVerLines>
+				<d4p1:dtHorLines>true</d4p1:dtHorLines>
+				<d4p1:dtHAlign>Right</d4p1:dtHAlign>
+				<d4p1:dtFormat/>
+				<d4p1:dtKeys>true</d4p1:dtKeys>
+				<d4p1:paletteKind>Palette32</d4p1:paletteKind>
+				<d4p1:animation>Auto</d4p1:animation>
+				<d4p1:rebuildTime>21157116</d4p1:rebuildTime>
+				<d4p1:isTransposed>false</d4p1:isTransposed>
+				<d4p1:autoTransposition>false</d4p1:autoTransposition>
+				<d4p1:legendScrollEnable>false</d4p1:legendScrollEnable>
+				<d4p1:surfaceColor>#A90000</d4p1:surfaceColor>
+				<d4p1:radarScaleType>Circle</d4p1:radarScaleType>
+				<d4p1:gaugeValuesPresentation>Needle</d4p1:gaugeValuesPresentation>
+				<d4p1:gaugeQualityBands useTextStr="false" useTooltipStr="false"/>
+				<d4p1:beginGaugeAngle>0</d4p1:beginGaugeAngle>
+				<d4p1:endGaugeAngle>180</d4p1:endGaugeAngle>
+				<d4p1:gaugeThickness>5</d4p1:gaugeThickness>
+				<d4p1:gaugeLabelsLocation>InsideScale</d4p1:gaugeLabelsLocation>
+				<d4p1:gaugeLabelsArcDirection>false</d4p1:gaugeLabelsArcDirection>
+				<d4p1:gaugeBushThickness>4</d4p1:gaugeBushThickness>
+				<d4p1:gaugeBushColor>#A9A9A9</d4p1:gaugeBushColor>
+				<d4p1:autoMaxValue>false</d4p1:autoMaxValue>
+				<d4p1:userMaxValue>0</d4p1:userMaxValue>
+				<d4p1:autoMinValue>false</d4p1:autoMinValue>
+				<d4p1:userMinValue>0</d4p1:userMinValue>
+				<d4p1:elementsIsInit>true</d4p1:elementsIsInit>
+				<d4p1:titleIsInit>true</d4p1:titleIsInit>
+				<d4p1:legendIsInit>true</d4p1:legendIsInit>
+				<d4p1:chartIsInit>true</d4p1:chartIsInit>
+				<d4p1:elementsChart>
+					<d4p1:left>0</d4p1:left>
+					<d4p1:right>0</d4p1:right>
+					<d4p1:top>0.054054054054054</d4p1:top>
+					<d4p1:bottom>0</d4p1:bottom>
+				</d4p1:elementsChart>
+				<d4p1:elementsLegend>
+					<d4p1:left>0.8328025477707001</d4p1:left>
+					<d4p1:right>0</d4p1:right>
+					<d4p1:top>0.0405982905982906</d4p1:top>
+					<d4p1:bottom>0</d4p1:bottom>
+				</d4p1:elementsLegend>
+				<d4p1:elementsTitle>
+					<d4p1:left>0</d4p1:left>
+					<d4p1:right>0</d4p1:right>
+					<d4p1:top>0</d4p1:top>
+					<d4p1:bottom>0.934684684684684</d4p1:bottom>
+				</d4p1:elementsTitle>
+				<d4p1:borderColor>style:BorderColor</d4p1:borderColor>
+				<d4p1:border width="1">
+					<v8ui:style xsi:type="v8ui:ControlBorderType">Single</v8ui:style>
+				</d4p1:border>
+				<d4p1:dataSourceDescription/>
+				<d4p1:isDataSourceMode>false</d4p1:isDataSourceMode>
+				<d4p1:isRandomizedNewValues>true</d4p1:isRandomizedNewValues>
+				<d4p1:realDataItems>
+					<d4p1:item>
+						<d4p1:valData xsi:type="xs:decimal">13.48</d4p1:valData>
+						<d4p1:valInfo xsi:nil="true"/>
+						<d4p1:toolTip/>
+					</d4p1:item>
+					<d4p1:item>
+						<d4p1:valData xsi:type="xs:decimal">7.18</d4p1:valData>
+						<d4p1:valInfo xsi:nil="true"/>
+						<d4p1:toolTip/>
+					</d4p1:item>
+					<d4p1:item>
+						<d4p1:valData xsi:type="xs:decimal">15.15</d4p1:valData>
+						<d4p1:valInfo xsi:nil="true"/>
+						<d4p1:toolTip/>
+					</d4p1:item>
+					<d4p1:item>
+						<d4p1:valData xsi:type="xs:decimal">1.89</d4p1:valData>
+						<d4p1:valInfo xsi:nil="true"/>
+						<d4p1:toolTip/>
+					</d4p1:item>
+					<d4p1:item>
+						<d4p1:valData xsi:type="xs:decimal">6.13</d4p1:valData>
+						<d4p1:valInfo xsi:nil="true"/>
+						<d4p1:toolTip/>
+					</d4p1:item>
+					<d4p1:item>
+						<d4p1:valData xsi:type="xs:decimal">0.62</d4p1:valData>
+						<d4p1:valInfo xsi:nil="true"/>
+						<d4p1:toolTip/>
+					</d4p1:item>
+					<d4p1:item>
+						<d4p1:valData xsi:type="xs:decimal">3.83</d4p1:valData>
+						<d4p1:valInfo xsi:nil="true"/>
+						<d4p1:toolTip/>
+					</d4p1:item>
+					<d4p1:item>
+						<d4p1:valData xsi:type="xs:decimal">19.31</d4p1:valData>
+						<d4p1:valInfo xsi:nil="true"/>
+						<d4p1:toolTip/>
+					</d4p1:item>
+					<d4p1:item>
+						<d4p1:valData xsi:type="xs:decimal">12</d4p1:valData>
+						<d4p1:valInfo xsi:nil="true"/>
+						<d4p1:toolTip/>
+					</d4p1:item>
+					<d4p1:item>
+						<d4p1:valData xsi:type="xs:decimal">3.23</d4p1:valData>
+						<d4p1:valInfo xsi:nil="true"/>
+						<d4p1:toolTip/>
+					</d4p1:item>
+					<d4p1:item>
+						<d4p1:valData xsi:type="xs:decimal">11.66</d4p1:valData>
+						<d4p1:valInfo xsi:nil="true"/>
+						<d4p1:toolTip/>
+					</d4p1:item>
+					<d4p1:item>
+						<d4p1:valData xsi:type="xs:decimal">19.99</d4p1:valData>
+						<d4p1:valInfo xsi:nil="true"/>
+						<d4p1:toolTip/>
+					</d4p1:item>
+					<d4p1:item>
+						<d4p1:valData xsi:type="xs:decimal">4</d4p1:valData>
+						<d4p1:valInfo xsi:nil="true"/>
+						<d4p1:toolTip/>
+					</d4p1:item>
+					<d4p1:item>
+						<d4p1:valData xsi:type="xs:decimal">5.25</d4p1:valData>
+						<d4p1:valInfo xsi:nil="true"/>
+						<d4p1:toolTip/>
+					</d4p1:item>
+					<d4p1:item>
+						<d4p1:valData xsi:type="xs:decimal">10.88</d4p1:valData>
+						<d4p1:valInfo xsi:nil="true"/>
+						<d4p1:toolTip/>
+					</d4p1:item>
+					<d4p1:item>
+						<d4p1:valData xsi:type="xs:decimal">8.19</d4p1:valData>
+						<d4p1:valInfo xsi:nil="true"/>
+						<d4p1:toolTip/>
+					</d4p1:item>
+					<d4p1:item>
+						<d4p1:valData xsi:type="xs:decimal">16.55</d4p1:valData>
+						<d4p1:valInfo xsi:nil="true"/>
+						<d4p1:toolTip/>
+					</d4p1:item>
+					<d4p1:item>
+						<d4p1:valData xsi:type="xs:decimal">11.99</d4p1:valData>
+						<d4p1:valInfo xsi:nil="true"/>
+						<d4p1:toolTip/>
+					</d4p1:item>
+					<d4p1:item>
+						<d4p1:valData xsi:type="xs:decimal">10.05</d4p1:valData>
+						<d4p1:valInfo xsi:nil="true"/>
+						<d4p1:toolTip/>
+					</d4p1:item>
+					<d4p1:item>
+						<d4p1:valData xsi:type="xs:decimal">14.97</d4p1:valData>
+						<d4p1:valInfo xsi:nil="true"/>
+						<d4p1:toolTip/>
+					</d4p1:item>
+					<d4p1:item>
+						<d4p1:valData xsi:type="xs:decimal">16.27</d4p1:valData>
+						<d4p1:valInfo xsi:nil="true"/>
+						<d4p1:toolTip/>
+					</d4p1:item>
+					<d4p1:item>
+						<d4p1:valData xsi:type="xs:decimal">14.14</d4p1:valData>
+						<d4p1:valInfo xsi:nil="true"/>
+						<d4p1:toolTip/>
+					</d4p1:item>
+					<d4p1:item>
+						<d4p1:valData xsi:type="xs:decimal">15.38</d4p1:valData>
+						<d4p1:valInfo xsi:nil="true"/>
+						<d4p1:toolTip/>
+					</d4p1:item>
+					<d4p1:item>
+						<d4p1:valData xsi:type="xs:decimal">16.66</d4p1:valData>
+						<d4p1:valInfo xsi:nil="true"/>
+						<d4p1:toolTip/>
+					</d4p1:item>
+					<d4p1:item>
+						<d4p1:valData xsi:type="xs:decimal">19.12</d4p1:valData>
+						<d4p1:valInfo xsi:nil="true"/>
+						<d4p1:toolTip/>
+					</d4p1:item>
+					<d4p1:item>
+						<d4p1:valData xsi:type="xs:decimal">18.86</d4p1:valData>
+						<d4p1:valInfo xsi:nil="true"/>
+						<d4p1:toolTip/>
+					</d4p1:item>
+					<d4p1:item>
+						<d4p1:valData xsi:type="xs:decimal">10.13</d4p1:valData>
+						<d4p1:valInfo xsi:nil="true"/>
+						<d4p1:toolTip/>
+					</d4p1:item>
+					<d4p1:item>
+						<d4p1:valData xsi:type="xs:decimal">19.28</d4p1:valData>
+						<d4p1:valInfo xsi:nil="true"/>
+						<d4p1:toolTip/>
+					</d4p1:item>
+					<d4p1:item>
+						<d4p1:valData xsi:type="xs:decimal">9.68</d4p1:valData>
+						<d4p1:valInfo xsi:nil="true"/>
+						<d4p1:toolTip/>
+					</d4p1:item>
+					<d4p1:item>
+						<d4p1:valData xsi:type="xs:decimal">14.6</d4p1:valData>
+						<d4p1:valInfo xsi:nil="true"/>
+						<d4p1:toolTip/>
+					</d4p1:item>
+					<d4p1:item>
+						<d4p1:valData xsi:type="xs:decimal">12.59</d4p1:valData>
+						<d4p1:valInfo xsi:nil="true"/>
+						<d4p1:toolTip/>
+					</d4p1:item>
+				</d4p1:realDataItems>
+				<d4p1:splineMode>SmoothCurve</d4p1:splineMode>
+				<d4p1:splineStrain>95</d4p1:splineStrain>
+				<d4p1:translucencePercent>0</d4p1:translucencePercent>
+				<d4p1:funnelNeckHeightPercent>10</d4p1:funnelNeckHeightPercent>
+				<d4p1:funnelNeckWidthPercent>10</d4p1:funnelNeckWidthPercent>
+				<d4p1:funnelGapSumPercent>3</d4p1:funnelGapSumPercent>
+				<d4p1:multiStageLinkLine width="1" gap="false">
+					<v8ui:style xsi:type="v8ui:ChartLineType">Solid</v8ui:style>
+				</d4p1:multiStageLinkLine>
+				<d4p1:multiStageLinkColor>#000000</d4p1:multiStageLinkColor>
+			</Settings>
+		</Attribute>
+		<Attribute name="PeriodPresentation" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Period presentation</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>50</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="Refresh" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Refresh</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Refresh</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Shortcut>F5</Shortcut>
+			<Picture>
+				<xr:Ref>StdPicture.Refresh</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Refresh</Action>
+			<Representation>Picture</Representation>
+		</Command>
+	</Commands>
+</Form>

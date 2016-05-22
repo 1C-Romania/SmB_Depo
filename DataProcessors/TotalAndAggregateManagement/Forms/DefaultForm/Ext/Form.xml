@@ -1,0 +1,2136 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Title>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Totals management</v8:content>
+		</v8:item>
+	</Title>
+	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
+	<AutoTitle>false</AutoTitle>
+	<Customizable>false</Customizable>
+	<CommandBarLocation>None</CommandBarLocation>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<HorizontalAlign>Right</HorizontalAlign>
+	</AutoCommandBar>
+	<Events>
+		<Event name="ChoiceProcessing">ChoiceProcessing</Event>
+		<Event name="OnLoadDataFromSettingsAtServer">OnLoadDataFromSettingsAtServer</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<Pages name="Operations" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Operations</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Operations</v8:content>
+				</v8:item>
+			</ToolTip>
+			<ExtendedTooltip name="OperationsExtendedTooltip" id="330"/>
+			<ChildItems>
+				<Page name="QuickAccess" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Typical operations</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Typical operations</v8:content>
+						</v8:item>
+					</ToolTip>
+					<VerticalStretch>true</VerticalStretch>
+					<ExtendedTooltip name="QuickAccessExtendedTooltip" id="331"/>
+					<ChildItems>
+						<UsualGroup name="QuickAccessTotals" id="212">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Totals</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Quick access totals</v8:content>
+								</v8:item>
+							</ToolTip>
+							<HorizontalStretch>true</HorizontalStretch>
+							<Group>Vertical</Group>
+							<Representation>NormalSeparation</Representation>
+							<ExtendedTooltip name="QuickAccessTotalsExtendedTooltip" id="332"/>
+							<ChildItems>
+								<UsualGroup name="GroupSetCalculatedTotalsPeriod" id="278">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Set calculated totals period group</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Set calculated totals period group</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupSetCalculatedTotalsPeriodExtendedTooltip" id="333"/>
+									<ChildItems>
+										<Button name="SetTotalsPeriod" id="219">
+											<Type>UsualButton</Type>
+											<SkipOnInput>false</SkipOnInput>
+											<Width>25</Width>
+											<Height>2</Height>
+											<CommandName>Form.Command.SetTotalsPeriod</CommandName>
+											<ExtendedTooltip name="SetCalculatedTotalsPeriodExtendedTooltip" id="334"/>
+										</Button>
+										<LabelDecoration name="DescriptionSettingPeriod" id="328">
+											<Width>55</Width>
+											<Height>4</Height>
+											<HorizontalStretch>true</HorizontalStretch>
+											<VerticalStretch>false</VerticalStretch>
+											<SkipOnInput>true</SkipOnInput>
+											<TextColor>style:ExplanationText</TextColor>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Set the calculated totals period for all accumulation and accounting registers for which totals usage is enabled. 
+For accumulation registers - by %1.
+For accounting registers - by %2.</v8:content>
+												</v8:item>
+											</Title>
+											<VerticalAlign>Top</VerticalAlign>
+											<ContextMenu name="DescriptionOfPeriodSettingContextMenu" id="329"/>
+											<ExtendedTooltip name="DetailsInstallationPeriodExtendedTooltip" id="335"/>
+										</LabelDecoration>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="GroupTotalsEnabling" id="279">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Enable totals group</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Enable totals group</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupEnablingTotalsExtendedTooltip" id="336"/>
+									<ChildItems>
+										<Button name="EnableTotalsUsage" id="220">
+											<Type>UsualButton</Type>
+											<SkipOnInput>false</SkipOnInput>
+											<Width>25</Width>
+											<Height>2</Height>
+											<CommandName>Form.Command.EnableTotalsUsageQuickAccess</CommandName>
+											<ExtendedTooltip name="EnableUsingTotalsExtendedTooltip" id="337"/>
+										</Button>
+										<LabelDecoration name="SimpleTotalsDescription" id="282">
+											<Width>55</Width>
+											<Height>2</Height>
+											<HorizontalStretch>true</HorizontalStretch>
+											<VerticalStretch>false</VerticalStretch>
+											<SkipOnInput>true</SkipOnInput>
+											<TextColor>style:ExplanationText</TextColor>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Enable totals usage mode for all the registers for which the totals usage is enabled at the moment.</v8:content>
+												</v8:item>
+											</Title>
+											<VerticalAlign>Top</VerticalAlign>
+											<ContextMenu name="SimpleTotalsDescriptionContextMenu" id="283"/>
+											<ExtendedTooltip name="SimpleTotalsDescriptionExtendedTooltip" id="338"/>
+										</LabelDecoration>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="GroupQuickAccessAggregates" id="214">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Aggregates</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Quick access aggregates group</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Representation>NormalSeparation</Representation>
+							<ExtendedTooltip name="GroupQuickAccessAggregatesExtendedTooltip" id="339"/>
+							<ChildItems>
+								<UsualGroup name="GroupRebuildAndPopulateAggregates" id="289">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Rebuild and populate aggregates group</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Rebuild and populate aggregates group</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupRebuildingAndPopulatingAggregatesExtendedTooltip" id="340"/>
+									<ChildItems>
+										<Button name="RebuildAndPopulateAggregates" id="222">
+											<Type>UsualButton</Type>
+											<SkipOnInput>false</SkipOnInput>
+											<Width>25</Width>
+											<Height>2</Height>
+											<CommandName>Form.Command.FillAggregatesAndExecuteRebuild</CommandName>
+											<ExtendedTooltip name="RebuildAndPopulateAggregatesExtendedTooltip" id="341"/>
+										</Button>
+										<LabelDecoration name="SimpleBuildingAndFillingSpecification" id="292">
+											<Width>55</Width>
+											<Height>2</Height>
+											<HorizontalStretch>true</HorizontalStretch>
+											<VerticalStretch>false</VerticalStretch>
+											<SkipOnInput>true</SkipOnInput>
+											<TextColor>style:ExplanationText</TextColor>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Run rebuilding and populating of aggregates for all registers for which the aggregates mode and aggregates usage are enabled.</v8:content>
+												</v8:item>
+											</Title>
+											<VerticalAlign>Top</VerticalAlign>
+											<ContextMenu name="SimpleBuildingAndPopulatingDescriptionContextMenu" id="293"/>
+											<ExtendedTooltip name="SimpleBuildingAndPopulatingDescriptionExtendedTooltip" id="342"/>
+										</LabelDecoration>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="GroupGettingOptimalAggregates" id="288">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Getting optimal aggregates group</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Getting optimal aggregates group</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GetOptimalAggregatesGroupExtendedTooltip" id="343"/>
+									<ChildItems>
+										<Button name="ReceiveOptimalAggregates" id="223">
+											<Type>UsualButton</Type>
+											<SkipOnInput>false</SkipOnInput>
+											<Width>25</Width>
+											<Height>2</Height>
+											<CommandName>Form.Command.ReceiveOptimalAggregates</CommandName>
+											<ExtendedTooltip name="GetOptimalAggregatesExtendedTooltip" id="344"/>
+										</Button>
+										<LabelDecoration name="SimpleOptimalAggregatesReceiving" id="290">
+											<Width>55</Width>
+											<Height>2</Height>
+											<HorizontalStretch>true</HorizontalStretch>
+											<VerticalStretch>false</VerticalStretch>
+											<SkipOnInput>true</SkipOnInput>
+											<TextColor>style:ExplanationText</TextColor>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Calculate optimal aggregate list for all registers for which aggregates are specified in the Designer.</v8:content>
+												</v8:item>
+											</Title>
+											<VerticalAlign>Top</VerticalAlign>
+											<ContextMenu name="SimpleGettingOptimalAggregatesContextMenu" id="291"/>
+											<ExtendedTooltip name="SimpleGettingOptimalAggregatesExtendedTooltip" id="345"/>
+										</LabelDecoration>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="AdvancedAbilities" id="208">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Extended</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Advanced abilities</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="AdvancedAbilitiesExtendedTooltip" id="346"/>
+					<ChildItems>
+						<Pages name="AdvancedTools" id="209">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Advanced tools</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Advanced tools</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ExtendedTooltip name="ExtendedToolsExtendedTooltip" id="347"/>
+							<ChildItems>
+								<Page name="GroupTotals" id="2">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Totals</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Totals control</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="TotalsGroupExtendedTooltip" id="348"/>
+									<ChildItems>
+										<Table name="TotalsList" id="9">
+											<Representation>List</Representation>
+											<ReadOnly>true</ReadOnly>
+											<SkipOnInput>false</SkipOnInput>
+											<ChangeRowSet>false</ChangeRowSet>
+											<ChangeRowOrder>false</ChangeRowOrder>
+											<HeightInTableRows>5</HeightInTableRows>
+											<AutoInsertNewRow>true</AutoInsertNewRow>
+											<DataPath>TotalsList</DataPath>
+											<RowPictureDataPath>TotalsList.Picture</RowPictureDataPath>
+											<CommandSet>
+												<ExcludedCommand>Copy</ExcludedCommand>
+												<ExcludedCommand>MoveUp</ExcludedCommand>
+												<ExcludedCommand>OutputList</ExcludedCommand>
+												<ExcludedCommand>CopyToClipboard</ExcludedCommand>
+												<ExcludedCommand>Delete</ExcludedCommand>
+												<ExcludedCommand>EndEdit</ExcludedCommand>
+												<ExcludedCommand>Add</ExcludedCommand>
+												<ExcludedCommand>Change</ExcludedCommand>
+												<ExcludedCommand>MoveDown</ExcludedCommand>
+											</CommandSet>
+											<SearchStringLocation>None</SearchStringLocation>
+											<ViewStatusLocation>None</ViewStatusLocation>
+											<SearchControlLocation>None</SearchControlLocation>
+											<RowFilter xsi:nil="true"/>
+											<ContextMenu name="ListTotalsContextMenu" id="10">
+												<Autofill>false</Autofill>
+												<ChildItems>
+													<Button name="ContextMenuTotalsSetTotalPeriod" id="307">
+														<Type>CommandBarButton</Type>
+														<SkipOnInput>false</SkipOnInput>
+														<CommandName>Form.Command.SetTotalPeriod</CommandName>
+														<ExtendedTooltip name="ContextMenuTotalsSetTotalsPeriodExtendedTooltip" id="349"/>
+													</Button>
+													<Button name="ContextMenuRecalculateTotals" id="308">
+														<Type>CommandBarButton</Type>
+														<SkipOnInput>false</SkipOnInput>
+														<CommandName>Form.Command.RecalcTotals</CommandName>
+														<ExtendedTooltip name="ContextMenuTotalsRecalculateTotalsExtendedTooltip" id="350"/>
+													</Button>
+													<Button name="ContextMenuRecalculateCurrentTotals" id="309">
+														<Type>CommandBarButton</Type>
+														<SkipOnInput>false</SkipOnInput>
+														<CommandName>Form.Command.RecalcPresentTotals</CommandName>
+														<ExtendedTooltip name="ContextMenuTotalsRecalculateCurrentTotalsExtendedTooltip" id="351"/>
+													</Button>
+													<Button name="ContextMenuTotalsSelectAll" id="306">
+														<Type>CommandBarButton</Type>
+														<SkipOnInput>false</SkipOnInput>
+														<CommandName>Form.Item.TotalsList.StandardCommand.SelectAll</CommandName>
+														<ExtendedTooltip name="ContextMenuTotalsSelectAllExtendedTooltip" id="352"/>
+													</Button>
+												</ChildItems>
+											</ContextMenu>
+											<AutoCommandBar name="TotalsListCommandBar" id="11">
+												<Autofill>false</Autofill>
+												<ChildItems>
+													<Button name="UpdateTotalState" id="42">
+														<Type>CommandBarButton</Type>
+														<Representation>Text</Representation>
+														<SkipOnInput>false</SkipOnInput>
+														<CommandName>Form.Command.UpdateTotalState</CommandName>
+														<ExtendedTooltip name="UpdateTotalsStateExtendedTooltip" id="353"/>
+													</Button>
+													<Popup name="TotalsGroup" id="202">
+														<Title>
+															<v8:item>
+																<v8:lang>en</v8:lang>
+																<v8:content>Totals</v8:content>
+															</v8:item>
+														</Title>
+														<ToolTip>
+															<v8:item>
+																<v8:lang>en</v8:lang>
+																<v8:content>Enabling/disabling totals usage</v8:content>
+															</v8:item>
+														</ToolTip>
+														<ExtendedTooltip name="TotalsGroupExtendedTooltip" id="354"/>
+														<ChildItems>
+															<Button name="TotalsEnableTotalsUsage" id="204">
+																<Type>CommandBarButton</Type>
+																<SkipOnInput>false</SkipOnInput>
+																<CommandName>Form.Command.EnableTotalsUsage</CommandName>
+																<ExtendedTooltip name="TotalsEnableTotalsUsageExtendedTooltip" id="355"/>
+															</Button>
+															<Button name="TotalsDisableTotalsUsage" id="205">
+																<Type>CommandBarButton</Type>
+																<SkipOnInput>false</SkipOnInput>
+																<CommandName>Form.Command.DisableTotalsUsage</CommandName>
+																<ExtendedTooltip name="TotalsDisableTotalsUsageExtendedTooltip" id="356"/>
+															</Button>
+														</ChildItems>
+													</Popup>
+													<Popup name="GroupCurrentTotals" id="203">
+														<Title>
+															<v8:item>
+																<v8:lang>en</v8:lang>
+																<v8:content>Current totals</v8:content>
+															</v8:item>
+														</Title>
+														<ToolTip>
+															<v8:item>
+																<v8:lang>en</v8:lang>
+																<v8:content>Enabling/disabling usage of current totals</v8:content>
+															</v8:item>
+														</ToolTip>
+														<ExtendedTooltip name="GroupCurrentTotalsExtendedTooltip" id="357"/>
+														<ChildItems>
+															<Button name="EnableUsingCurrentTotals" id="206">
+																<Type>CommandBarButton</Type>
+																<SkipOnInput>false</SkipOnInput>
+																<CommandName>Form.Command.EnableUsingCurrentTotals</CommandName>
+																<ExtendedTooltip name="EnableCurrentTotalsUsageExtendedTooltip" id="358"/>
+															</Button>
+															<Button name="DisableCurrentTotalsUsage" id="207">
+																<Type>CommandBarButton</Type>
+																<SkipOnInput>false</SkipOnInput>
+																<CommandName>Form.Command.DisableCurrentTotalsUsage</CommandName>
+																<ExtendedTooltip name="DisableCurrentTotalsUsageExtendedTooltip" id="359"/>
+															</Button>
+														</ChildItems>
+													</Popup>
+													<Popup name="GroupTotalsDivision" id="294">
+														<Title>
+															<v8:item>
+																<v8:lang>en</v8:lang>
+																<v8:content>Totals division</v8:content>
+															</v8:item>
+														</Title>
+														<ToolTip>
+															<v8:item>
+																<v8:lang>en</v8:lang>
+																<v8:content>Enabling/disabling split of totals</v8:content>
+															</v8:item>
+														</ToolTip>
+														<ExtendedTooltip name="GroupSplitTotalsExtendedTooltip" id="360"/>
+														<ChildItems>
+															<Button name="TurnOnDataSeparationTotals" id="295">
+																<Type>CommandBarButton</Type>
+																<SkipOnInput>false</SkipOnInput>
+																<CommandName>Form.Command.TurnOnDataSeparationTotals</CommandName>
+																<ExtendedTooltip name="EnableTotalsSplitExtendedTooltip" id="361"/>
+															</Button>
+															<Button name="DisableTotalsDivision" id="296">
+																<Type>CommandBarButton</Type>
+																<SkipOnInput>false</SkipOnInput>
+																<CommandName>Form.Command.DisableTotalsDivision</CommandName>
+																<ExtendedTooltip name="DisableTotalsSplitExtendedTooltip" id="362"/>
+															</Button>
+														</ChildItems>
+													</Popup>
+													<Button name="SetTotalPeriod" id="45">
+														<Type>CommandBarButton</Type>
+														<SkipOnInput>false</SkipOnInput>
+														<CommandName>Form.Command.SetTotalPeriod</CommandName>
+														<ExtendedTooltip name="SetTotalsPeriodExtendedTooltip" id="363"/>
+													</Button>
+													<Popup name="GroupRecalculation" id="299">
+														<Title>
+															<v8:item>
+																<v8:lang>en</v8:lang>
+																<v8:content>Recalculation</v8:content>
+															</v8:item>
+														</Title>
+														<ToolTip>
+															<v8:item>
+																<v8:lang>en</v8:lang>
+																<v8:content>Recalculation of totals</v8:content>
+															</v8:item>
+														</ToolTip>
+														<ExtendedTooltip name="GroupRecalculationExtendedTooltip" id="364"/>
+														<ChildItems>
+															<Button name="RecalcTotals" id="300">
+																<Type>CommandBarButton</Type>
+																<SkipOnInput>false</SkipOnInput>
+																<CommandName>Form.Command.RecalcTotals</CommandName>
+																<ExtendedTooltip name="RecalculateTotalsExtendedTooltip" id="365"/>
+															</Button>
+															<Button name="RecalcPresentTotals" id="301">
+																<Type>CommandBarButton</Type>
+																<SkipOnInput>false</SkipOnInput>
+																<CommandName>Form.Command.RecalcPresentTotals</CommandName>
+																<ExtendedTooltip name="RecalculateCurrentTotalsExtendedTooltip" id="366"/>
+															</Button>
+															<Button name="RecalcTotalsForPeriod" id="302">
+																<Type>CommandBarButton</Type>
+																<SkipOnInput>false</SkipOnInput>
+																<CommandName>Form.Command.RecalcTotalsForPeriod</CommandName>
+																<ExtendedTooltip name="RecalcTotalsForPeriodExtendedTooltip" id="367"/>
+															</Button>
+														</ChildItems>
+													</Popup>
+													<Button name="Find" id="303">
+														<Type>CommandBarButton</Type>
+														<SkipOnInput>false</SkipOnInput>
+														<CommandName>Form.Item.TotalsList.StandardCommand.Find</CommandName>
+														<ExtendedTooltip name="FindExtendedTooltip" id="368"/>
+													</Button>
+													<Button name="CancelSearch" id="304">
+														<Type>CommandBarButton</Type>
+														<SkipOnInput>false</SkipOnInput>
+														<CommandName>Form.Item.TotalsList.StandardCommand.CancelSearch</CommandName>
+														<ExtendedTooltip name="CancelSearchExtendedTooltip" id="369"/>
+													</Button>
+													<Button name="SelectAll" id="305">
+														<Type>CommandBarButton</Type>
+														<SkipOnInput>false</SkipOnInput>
+														<OnlyInAllActions>true</OnlyInAllActions>
+														<CommandName>Form.Item.TotalsList.StandardCommand.SelectAll</CommandName>
+														<ExtendedTooltip name="SelectAllExtendedTooltip" id="370"/>
+													</Button>
+												</ChildItems>
+											</AutoCommandBar>
+											<ExtendedTooltip name="ListTotalsExtendedTooltip" id="371"/>
+											<SearchStringAddition name="TotalsListSearchString" id="424">
+												<AdditionSource>
+													<Item>TotalsList</Item>
+													<Type>SearchStringRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="TotalsListSearchStringContextMenu" id="425"/>
+												<ExtendedTooltip name="TotalsListSearchStringExtendedTooltip" id="426"/>
+											</SearchStringAddition>
+											<ViewStatusAddition name="TotalsListViewState" id="427">
+												<AdditionSource>
+													<Item>TotalsList</Item>
+													<Type>ViewStatusRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="TotalsListViewStatusContextMenu" id="428"/>
+												<ExtendedTooltip name="TotalsListViewStateExtendedTooltip" id="429"/>
+											</ViewStatusAddition>
+											<SearchControlAddition name="TotalsListSearchControl" id="430">
+												<AdditionSource>
+													<Item>TotalsList</Item>
+													<Type>SearchControl</Type>
+												</AdditionSource>
+												<ContextMenu name="TotalsListSearchControlContextMenu" id="431"/>
+												<ExtendedTooltip name="TotalsListSearchControlExtendedTooltip" id="432"/>
+											</SearchControlAddition>
+											<Events>
+												<Event name="Selection">TotalListChoice</Event>
+												<Event name="OnActivateRow">TotalsListOnActivateRow</Event>
+											</Events>
+											<ChildItems>
+												<CheckBoxField name="TotalsUseTotals" id="14">
+													<DataPath>TotalsList.UseTotals</DataPath>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Shows that the totals are used by this register.</v8:content>
+														</v8:item>
+													</ToolTip>
+													<EditMode>EnterOnInput</EditMode>
+													<CheckBoxType>Auto</CheckBoxType>
+													<ContextMenu name="TotalsUseTotalsContextMenu" id="15"/>
+													<ExtendedTooltip name="TotalsUseTotalsExtendedTooltip" id="373"/>
+												</CheckBoxField>
+												<ColumnGroup name="TotalsListNameAndMode" id="414">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Totals list description and mode</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Totals list description and mode</v8:content>
+														</v8:item>
+													</ToolTip>
+													<ExtendedTooltip name="TotalsListDescriptionAndModeExtendedTooltip" id="415"/>
+													<ChildItems>
+														<InputField name="TotalsDescription" id="12">
+															<DataPath>TotalsList.Description</DataPath>
+															<ReadOnly>true</ReadOnly>
+															<EditMode>EnterOnInput</EditMode>
+															<Wrap>false</Wrap>
+															<ContextMenu name="TotalsNameContextMenu" id="13"/>
+															<ExtendedTooltip name="TotalsNameExtendedTooltip" id="372"/>
+														</InputField>
+														<InputField name="TotalsAggregatesTotals" id="71">
+															<DataPath>TotalsList.AggregatesTotals</DataPath>
+															<ReadOnly>true</ReadOnly>
+															<ToolTip>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>The mode used by the register: totals or aggregates</v8:content>
+																</v8:item>
+															</ToolTip>
+															<HorizontalAlign>Left</HorizontalAlign>
+															<EditMode>EnterOnInput</EditMode>
+															<ShowInHeader>false</ShowInHeader>
+															<Wrap>false</Wrap>
+															<Font ref="sys:DefaultGUIFont" bold="false" italic="true" underline="false" strikeout="false" kind="WindowsFont"/>
+															<ContextMenu name="TotalsAggregatesTotalsContextMenu" id="72"/>
+															<ExtendedTooltip name="TotalsAggregatesTotalsExtendedTooltip" id="377"/>
+														</InputField>
+													</ChildItems>
+												</ColumnGroup>
+												<InputField name="TotalsTotalsPeriod" id="18">
+													<DataPath>TotalsList.TotalsPeriod</DataPath>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Current date of totals actuality</v8:content>
+														</v8:item>
+													</ToolTip>
+													<EditMode>EnterOnInput</EditMode>
+													<Wrap>false</Wrap>
+													<Format>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>DLF=DD</v8:content>
+														</v8:item>
+													</Format>
+													<EditFormat>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>DLF=D</v8:content>
+														</v8:item>
+													</EditFormat>
+													<ContextMenu name="TotalsPeriodTotalsContextMenu" id="19"/>
+													<ExtendedTooltip name="TotalsPeriodTotalsExtendedTooltip" id="375"/>
+												</InputField>
+												<CheckBoxField name="TotalsUseCurrentTotals" id="16">
+													<DataPath>TotalsList.UseCurrentTotals</DataPath>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Shows that the current totals are used by this register.</v8:content>
+														</v8:item>
+													</ToolTip>
+													<EditMode>EnterOnInput</EditMode>
+													<CheckBoxType>Auto</CheckBoxType>
+													<ContextMenu name="TotalsUseCurrentTotalsContextMenu" id="17"/>
+													<ExtendedTooltip name="TotalsUseCurrentTotalsExtendedTooltip" id="374"/>
+												</CheckBoxField>
+												<CheckBoxField name="TotalsTotalsDivision" id="185">
+													<DataPath>TotalsList.TotalsDivision</DataPath>
+													<ReadOnly>true</ReadOnly>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Option to split the totals</v8:content>
+														</v8:item>
+													</ToolTip>
+													<EditMode>EnterOnInput</EditMode>
+													<CheckBoxType>Auto</CheckBoxType>
+													<ContextMenu name="TotalsSplitTotalsContextMenu" id="186"/>
+													<ExtendedTooltip name="TotalsSplitTotalsExtendedTooltip" id="376"/>
+												</CheckBoxField>
+											</ChildItems>
+										</Table>
+										<CheckBoxField name="AbortOnError" id="264">
+											<DataPath>AbortOnError</DataPath>
+											<Visible>false</Visible>
+											<UserVisible>
+												<xr:Common>false</xr:Common>
+											</UserVisible>
+											<TitleLocation>Right</TitleLocation>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="InterruptOnErrorContextMenu" id="265"/>
+											<ExtendedTooltip name="InterruptOnErrorExtendedTooltip" id="378"/>
+										</CheckBoxField>
+									</ChildItems>
+								</Page>
+								<Page name="GroupAggregates" id="5">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Aggregates</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Aggregates management</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="GroupAggregatesExtendedTooltip" id="379"/>
+									<ChildItems>
+										<Table name="AggregatesByRegisters" id="56">
+											<Representation>List</Representation>
+											<ReadOnly>true</ReadOnly>
+											<SkipOnInput>false</SkipOnInput>
+											<HeightInTableRows>1</HeightInTableRows>
+											<AutoInsertNewRow>true</AutoInsertNewRow>
+											<DataPath>AggregatesByRegisters</DataPath>
+											<RowPictureDataPath>AggregatesByRegisters.Picture</RowPictureDataPath>
+											<SearchStringLocation>None</SearchStringLocation>
+											<ViewStatusLocation>None</ViewStatusLocation>
+											<SearchControlLocation>None</SearchControlLocation>
+											<RowFilter xsi:nil="true"/>
+											<ContextMenu name="AggregatesOnRegistersContextMenu" id="57">
+												<Autofill>false</Autofill>
+												<ChildItems>
+													<Button name="MenuAggregatesEnableAggregatesMode" id="313">
+														<Type>CommandBarButton</Type>
+														<SkipOnInput>false</SkipOnInput>
+														<CommandName>Form.Command.EnableAggregateMode</CommandName>
+														<ExtendedTooltip name="MenuAggregatesEnableAggregatesModeExtendedTooltip" id="380"/>
+													</Button>
+													<Button name="MenuAggregatesRebuildAggregates" id="314">
+														<Type>CommandBarButton</Type>
+														<SkipOnInput>false</SkipOnInput>
+														<CommandName>Form.Command.RebuildAggregates</CommandName>
+														<ExtendedTooltip name="MenuAggregatesRebuildAggregatesExtendedTooltip" id="381"/>
+													</Button>
+													<Button name="MenuAggregatesOptimalAggregates" id="315">
+														<Type>CommandBarButton</Type>
+														<SkipOnInput>false</SkipOnInput>
+														<CommandName>Form.Command.OptimalAggregates</CommandName>
+														<ExtendedTooltip name="MenuAggregatesOptimalAggregatesExtendedTooltip" id="382"/>
+													</Button>
+													<Button name="MenuAggregatesSelectAll" id="312">
+														<Type>CommandBarButton</Type>
+														<SkipOnInput>false</SkipOnInput>
+														<CommandName>Form.Item.AggregatesByRegisters.StandardCommand.SelectAll</CommandName>
+														<ExtendedTooltip name="MenuAggregatesSelectAllExtendedTooltip" id="383"/>
+													</Button>
+												</ChildItems>
+											</ContextMenu>
+											<AutoCommandBar name="AggregatesOnRegistersCommandBar" id="58">
+												<Autofill>false</Autofill>
+												<ChildItems>
+													<Button name="AggregatesButtonUpdateAggregatesData" id="109">
+														<Type>CommandBarButton</Type>
+														<SkipOnInput>false</SkipOnInput>
+														<CommandName>Form.Command.UpdateAggregatesData</CommandName>
+														<ExtendedTooltip name="AggregatesButtonUpdateAggregatesDataExtendedTooltip" id="384"/>
+													</Button>
+													<Popup name="ModeGroup" id="297">
+														<Title>
+															<v8:item>
+																<v8:lang>en</v8:lang>
+																<v8:content>Mode</v8:content>
+															</v8:item>
+														</Title>
+														<ToolTip>
+															<v8:item>
+																<v8:lang>en</v8:lang>
+																<v8:content>Changing register usage mode</v8:content>
+															</v8:item>
+														</ToolTip>
+														<ExtendedTooltip name="ModeGroupExtendedTooltip" id="385"/>
+														<ChildItems>
+															<Button name="AggregatesButtonEnableAggregatesMode" id="193">
+																<Type>CommandBarButton</Type>
+																<SkipOnInput>false</SkipOnInput>
+																<CommandName>Form.Command.EnableAggregateMode</CommandName>
+																<ExtendedTooltip name="AggregatesButtonEnableAggregatesModeExtendedTooltip" id="386"/>
+															</Button>
+															<Button name="AggregatesButtonEnableTotalsMode" id="195">
+																<Type>CommandBarButton</Type>
+																<SkipOnInput>false</SkipOnInput>
+																<CommandName>Form.Command.EnableTotalsMode</CommandName>
+																<ExtendedTooltip name="AggregatesButtonEnableTotalsModeExtendedTooltip" id="387"/>
+															</Button>
+														</ChildItems>
+													</Popup>
+													<Popup name="GroupUsing" id="298">
+														<Title>
+															<v8:item>
+																<v8:lang>en</v8:lang>
+																<v8:content>Use</v8:content>
+															</v8:item>
+														</Title>
+														<ToolTip>
+															<v8:item>
+																<v8:lang>en</v8:lang>
+																<v8:content>Changing aggregates usage mode</v8:content>
+															</v8:item>
+														</ToolTip>
+														<ExtendedTooltip name="GroupUsageExtendedTooltip" id="388"/>
+														<ChildItems>
+															<Button name="AggregatesButtonEnableAggregatesUsage" id="194">
+																<Type>CommandBarButton</Type>
+																<SkipOnInput>false</SkipOnInput>
+																<CommandName>Form.Command.EnableAggregatesUsage</CommandName>
+																<ExtendedTooltip name="AggregatesButtonEnableAggregatesUsageExtendedTooltip" id="389"/>
+															</Button>
+															<Button name="AggregatesButtonDisableAggregatesUsage" id="196">
+																<Type>CommandBarButton</Type>
+																<SkipOnInput>false</SkipOnInput>
+																<CommandName>Form.Command.DisableAggregatesUsage</CommandName>
+																<ExtendedTooltip name="AggregatesButtonDisableAggregatesUsageExtendedTooltip" id="390"/>
+															</Button>
+														</ChildItems>
+													</Popup>
+													<Button name="AggregatesButtonRebuild" id="198">
+														<Type>CommandBarButton</Type>
+														<SkipOnInput>false</SkipOnInput>
+														<CommandName>Form.Command.RebuildAggregates</CommandName>
+														<ExtendedTooltip name="AggregatesButtonRebuildExtendedTooltip" id="391"/>
+													</Button>
+													<Button name="AggregatesButtonPopulateAggregatesByRegisters" id="200">
+														<Type>CommandBarButton</Type>
+														<SkipOnInput>false</SkipOnInput>
+														<CommandName>Form.Command.FillAggregatesOnRegisters</CommandName>
+														<ExtendedTooltip name="AggregatesButtonPopulateAggregatesByRegistersExtendedTooltip" id="392"/>
+													</Button>
+													<Button name="AggregatesButtonClearAggregatesByRegisters" id="199">
+														<Type>CommandBarButton</Type>
+														<SkipOnInput>false</SkipOnInput>
+														<CommandName>Form.Command.ClearAggregatesByRegisters</CommandName>
+														<ExtendedTooltip name="AggregatesButtonClearAggregatesByRegistersExtendedTooltip" id="393"/>
+													</Button>
+													<Button name="AggregatesButtonOptimal" id="201">
+														<Type>CommandBarButton</Type>
+														<SkipOnInput>false</SkipOnInput>
+														<CommandName>Form.Command.OptimalAggregates</CommandName>
+														<ExtendedTooltip name="AggregatesButtonBestExtendedTooltip" id="394"/>
+													</Button>
+													<Button name="AggregatesButtonSelectAll" id="317">
+														<Type>CommandBarButton</Type>
+														<SkipOnInput>false</SkipOnInput>
+														<OnlyInAllActions>true</OnlyInAllActions>
+														<CommandName>Form.Item.AggregatesByRegisters.StandardCommand.SelectAll</CommandName>
+														<ExtendedTooltip name="AggregatesButtonSelectAllExtendedTooltip" id="395"/>
+													</Button>
+												</ChildItems>
+											</AutoCommandBar>
+											<ExtendedTooltip name="AggregatesOnRegistersExtendedTooltip" id="396"/>
+											<SearchStringAddition name="AggregatesByRegistersSearchString" id="433">
+												<AdditionSource>
+													<Item>AggregatesByRegisters</Item>
+													<Type>SearchStringRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="AggregatesByRegistersSearchStringContextMenu" id="434"/>
+												<ExtendedTooltip name="AggregatesByRegistersSearchStringExtendedTooltip" id="435"/>
+											</SearchStringAddition>
+											<ViewStatusAddition name="AggregatesByRegistersViewState" id="436">
+												<AdditionSource>
+													<Item>AggregatesByRegisters</Item>
+													<Type>ViewStatusRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="AggregatesByRegistersViewStateContextMenu" id="437"/>
+												<ExtendedTooltip name="AggregatesByRegistersViewStateExtendedTooltip" id="438"/>
+											</ViewStatusAddition>
+											<SearchControlAddition name="AggregatesByRegistersSearchControl" id="439">
+												<AdditionSource>
+													<Item>AggregatesByRegisters</Item>
+													<Type>SearchControl</Type>
+												</AdditionSource>
+												<ContextMenu name="AggregatesByRegistersSearchControlContextMenu" id="440"/>
+												<ExtendedTooltip name="AggregatesByRegistersSearchControlExtendedTooltip" id="441"/>
+											</SearchControlAddition>
+											<Events>
+												<Event name="OnActivateRow">AggregatesByRegistersOnActivateRow</Event>
+											</Events>
+											<ChildItems>
+												<CheckBoxField name="AggregatesByRegistersAggregatesUsage" id="63">
+													<DataPath>AggregatesByRegisters.AggregatesUsage</DataPath>
+													<ReadOnly>true</ReadOnly>
+													<TitleLocation>None</TitleLocation>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Shows that the aggregates are used for the register.</v8:content>
+														</v8:item>
+													</ToolTip>
+													<EditMode>EnterOnInput</EditMode>
+													<HeaderPicture>
+														<xr:Ref>CommonPicture.Successfully</xr:Ref>
+														<xr:LoadTransparent>true</xr:LoadTransparent>
+													</HeaderPicture>
+													<CheckBoxType>Auto</CheckBoxType>
+													<ContextMenu name="AggregatesByRegistersAggregatesUsageContextMenu" id="64"/>
+													<ExtendedTooltip name="AggregatesByRegistersAggregatesUsageExtendedTooltip" id="399"/>
+												</CheckBoxField>
+												<ColumnGroup name="AggregatesByRegistersDescriptionAndMode" id="420">
+													<ExtendedTooltip name="AggregatesByRegistersDescriptionAndModeExtendedTooltip" id="421"/>
+													<ChildItems>
+														<InputField name="AggregatesByRegistersDescription" id="59">
+															<DataPath>AggregatesByRegisters.Description</DataPath>
+															<ReadOnly>true</ReadOnly>
+															<EditMode>EnterOnInput</EditMode>
+															<Wrap>false</Wrap>
+															<ContextMenu name="AggregatesByRegistersDescriptionContextMenu" id="60"/>
+															<ExtendedTooltip name="AggregatesByRegistersDescriptionExtendedTooltip" id="397"/>
+														</InputField>
+														<InputField name="AggregatesByRegistersAggregatesMode" id="61">
+															<DataPath>AggregatesByRegisters.AggregatesMode</DataPath>
+															<ReadOnly>true</ReadOnly>
+															<EditMode>EnterOnInput</EditMode>
+															<ShowInHeader>false</ShowInHeader>
+															<Wrap>false</Wrap>
+															<Format>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>BF='Totals data is used'; BT='Aggregates data is used'</v8:content>
+																</v8:item>
+															</Format>
+															<EditFormat>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>BF='Totals data is used'; BT='Aggregates data is used'</v8:content>
+																</v8:item>
+															</EditFormat>
+															<Font ref="sys:DefaultGUIFont" bold="false" italic="true" underline="false" strikeout="false" kind="WindowsFont"/>
+															<ContextMenu name="AggregatesByRegistersAggregatesModeContextMenu" id="62"/>
+															<ExtendedTooltip name="AggregatesByRegistersAggregatesModeExtendedTooltip" id="398"/>
+														</InputField>
+													</ChildItems>
+												</ColumnGroup>
+												<ColumnGroup name="AggregatesByRegistersGroupDateAndEffect" id="422">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Aggregates by registers date and effect group</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Aggregates by registers date and effect group</v8:content>
+														</v8:item>
+													</ToolTip>
+													<ExtendedTooltip name="AggregatesByRegistersGroupDateAndEffectExtendedTooltip" id="423"/>
+													<ChildItems>
+														<InputField name="AggregatesByRegistersBuildDate" id="69">
+															<DataPath>AggregatesByRegisters.BuildDate</DataPath>
+															<ReadOnly>true</ReadOnly>
+															<EditMode>EnterOnInput</EditMode>
+															<Width>13</Width>
+															<Wrap>false</Wrap>
+															<ContextMenu name="AggregatesByRegistersBuildDateContextMenu" id="70"/>
+															<ExtendedTooltip name="AggregatesByRegistersBuildDateExtendedTooltip" id="400"/>
+														</InputField>
+														<InputField name="AggregatesByRegistersEffect" id="91">
+															<DataPath>AggregatesByRegisters.Effect</DataPath>
+															<ReadOnly>true</ReadOnly>
+															<ToolTip>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Expected mean time reduction for query execution when using the aggregates</v8:content>
+																</v8:item>
+															</ToolTip>
+															<EditMode>EnterOnInput</EditMode>
+															<Wrap>false</Wrap>
+															<ContextMenu name="AggregatesByRegistersEffectContextMenu" id="92"/>
+															<ExtendedTooltip name="AggregatesByRegistersEffectExtendedTooltip" id="401"/>
+														</InputField>
+													</ChildItems>
+												</ColumnGroup>
+												<ColumnGroup name="AggregatesByRegistersGroupSize" id="418">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Aggregates by registers size group</v8:content>
+														</v8:item>
+													</Title>
+													<ExtendedTooltip name="AggregatesByRegistersGroupSizeExtendedTooltip" id="419"/>
+													<ChildItems>
+														<InputField name="AggregatesByRegistersSize" id="89">
+															<DataPath>AggregatesByRegisters.Size</DataPath>
+															<ReadOnly>true</ReadOnly>
+															<ToolTip>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Aggregate table size (estimated value)</v8:content>
+																</v8:item>
+															</ToolTip>
+															<EditMode>EnterOnInput</EditMode>
+															<Wrap>false</Wrap>
+															<ContextMenu name="AggregatesByRegistersSizeContextMenu" id="90"/>
+															<ExtendedTooltip name="AggregatesByRegistersSizeExtendedTooltip" id="402"/>
+														</InputField>
+														<InputField name="AggregatesByRegistersSizeLimitation" id="107">
+															<DataPath>AggregatesByRegisters.SizeLimitation</DataPath>
+															<ReadOnly>true</ReadOnly>
+															<EditMode>EnterOnInput</EditMode>
+															<Width>17</Width>
+															<Wrap>false</Wrap>
+															<ContextMenu name="AggregatesByRegistersSizeLimitationContextMenu" id="108"/>
+															<ExtendedTooltip name="AggregatesByRegistersSizeLimitationExtendedTooltip" id="403"/>
+														</InputField>
+													</ChildItems>
+												</ColumnGroup>
+											</ChildItems>
+										</Table>
+										<Table name="AggregatesList" id="73">
+											<Representation>List</Representation>
+											<TitleLocation>Top</TitleLocation>
+											<CommandBarLocation>None</CommandBarLocation>
+											<ReadOnly>true</ReadOnly>
+											<SkipOnInput>false</SkipOnInput>
+											<ChangeRowSet>false</ChangeRowSet>
+											<ChangeRowOrder>false</ChangeRowOrder>
+											<HeightInTableRows>3</HeightInTableRows>
+											<AutoInsertNewRow>true</AutoInsertNewRow>
+											<DataPath>RegisterAggregatesList</DataPath>
+											<CommandSet>
+												<ExcludedCommand>Copy</ExcludedCommand>
+												<ExcludedCommand>SortListAsc</ExcludedCommand>
+												<ExcludedCommand>MoveUp</ExcludedCommand>
+												<ExcludedCommand>CancelSearch</ExcludedCommand>
+												<ExcludedCommand>OutputList</ExcludedCommand>
+												<ExcludedCommand>SelectAll</ExcludedCommand>
+												<ExcludedCommand>SortListDesc</ExcludedCommand>
+												<ExcludedCommand>CopyToClipboard</ExcludedCommand>
+												<ExcludedCommand>Delete</ExcludedCommand>
+												<ExcludedCommand>EndEdit</ExcludedCommand>
+												<ExcludedCommand>Add</ExcludedCommand>
+												<ExcludedCommand>Change</ExcludedCommand>
+												<ExcludedCommand>Find</ExcludedCommand>
+												<ExcludedCommand>MoveDown</ExcludedCommand>
+											</CommandSet>
+											<SearchStringLocation>None</SearchStringLocation>
+											<ViewStatusLocation>None</ViewStatusLocation>
+											<SearchControlLocation>None</SearchControlLocation>
+											<RowFilter xsi:nil="true"/>
+											<ContextMenu name="AggregatesListContextMenu" id="74"/>
+											<AutoCommandBar name="AggregatesListCommandBar" id="75">
+												<Autofill>false</Autofill>
+											</AutoCommandBar>
+											<ExtendedTooltip name="AggregatesListExtendedTooltip" id="404"/>
+											<SearchStringAddition name="AggregatesListSearchString" id="442">
+												<AdditionSource>
+													<Item>AggregatesList</Item>
+													<Type>SearchStringRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="AggregatesListSearchStringContextMenu" id="443"/>
+												<ExtendedTooltip name="AggregatesListSearchStringExtendedTooltip" id="444"/>
+											</SearchStringAddition>
+											<ViewStatusAddition name="AggregatesListViewState" id="445">
+												<AdditionSource>
+													<Item>AggregatesList</Item>
+													<Type>ViewStatusRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="AggregatesListViewStateContextMenu" id="446"/>
+												<ExtendedTooltip name="ListAggregatesViewStateExtendedTooltip" id="447"/>
+											</ViewStatusAddition>
+											<SearchControlAddition name="AggregatesListSearchControl" id="448">
+												<AdditionSource>
+													<Item>AggregatesList</Item>
+													<Type>SearchControl</Type>
+												</AdditionSource>
+												<ContextMenu name="AggregatesListSearchControlContextMenu" id="449"/>
+												<ExtendedTooltip name="AggregatesListSearchControlExtendedTooltip" id="450"/>
+											</SearchControlAddition>
+											<ChildItems>
+												<ColumnGroup name="AggregatesRegisterPeriodicityAndUse" id="416">
+													<Group>InCell</Group>
+													<ExtendedTooltip name="RegisterAggregatesPeriodicityAndUseExtendedTooltip" id="417"/>
+													<ChildItems>
+														<CheckBoxField name="AggregatesListUsage" id="97">
+															<DataPath>RegisterAggregatesList.Use</DataPath>
+															<EditMode>EnterOnInput</EditMode>
+															<ShowInHeader>false</ShowInHeader>
+															<CheckBoxType>Auto</CheckBoxType>
+															<ContextMenu name="AggregatesListUsageContextMenu" id="98"/>
+															<ExtendedTooltip name="AggregatesListUsageExtendedTooltip" id="405"/>
+														</CheckBoxField>
+														<InputField name="AggregatesListPeriodicity" id="322">
+															<DataPath>RegisterAggregatesList.Periodicity</DataPath>
+															<EditMode>EnterOnInput</EditMode>
+															<Width>15</Width>
+															<Wrap>false</Wrap>
+															<ContextMenu name="AggregatesListEndTimeContextMenu" id="323"/>
+															<ExtendedTooltip name="AggregatesListPeriodicityExtendedTooltip" id="406"/>
+														</InputField>
+													</ChildItems>
+												</ColumnGroup>
+												<InputField name="AggregatesListDimensions" id="95">
+													<DataPath>RegisterAggregatesList.Dimensions</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<Width>15</Width>
+													<Wrap>false</Wrap>
+													<ContextMenu name="AggregatesDimensionsListContextMenu" id="96"/>
+													<ExtendedTooltip name="AggregatesListDimensionsExtendedTooltip" id="407"/>
+												</InputField>
+												<InputField name="AggregatesListBeginPeriod" id="101">
+													<DataPath>RegisterAggregatesList.BeginOfPeriod</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<Width>10</Width>
+													<Wrap>false</Wrap>
+													<ContextMenu name="AggregatesListBeginPeriodContextMenu" id="102"/>
+													<ExtendedTooltip name="AggregatesListBeginPeriodExtendedTooltip" id="408"/>
+												</InputField>
+												<InputField name="AggregatesListEndPeriod" id="99">
+													<DataPath>RegisterAggregatesList.EndOfPeriod</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<Width>10</Width>
+													<Wrap>false</Wrap>
+													<ContextMenu name="AggregatesListEndPeriodContextMenu" id="100"/>
+													<ExtendedTooltip name="AggregatesListEndPeriodExtendedTooltip" id="409"/>
+												</InputField>
+												<InputField name="AggregatesListSize" id="105">
+													<DataPath>RegisterAggregatesList.Size</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<Width>10</Width>
+													<Wrap>false</Wrap>
+													<ContextMenu name="AggregatesListSizeContextMenu" id="106"/>
+													<ExtendedTooltip name="AggregatesListSizeExtendedTooltip" id="410"/>
+												</InputField>
+											</ChildItems>
+										</Table>
+									</ChildItems>
+								</Page>
+							</ChildItems>
+						</Pages>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+		<UsualGroup name="Footer" id="320">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Footer</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Footer</v8:content>
+				</v8:item>
+			</ToolTip>
+			<HorizontalStretch>true</HorizontalStretch>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="FooterExtendedTooltip" id="411"/>
+			<ChildItems>
+				<LabelField name="HyperlinkWithText" id="326">
+					<DataPath>HyperlinkText</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<HorizontalAlign>Right</HorizontalAlign>
+					<Width>25</Width>
+					<HorizontalStretch>true</HorizontalStretch>
+					<Hiperlink>true</Hiperlink>
+					<ContextMenu name="HyperlinkWithTextContextMenu" id="327"/>
+					<ExtendedTooltip name="HyperlinkWithTextExtendedTooltip" id="412"/>
+					<Events>
+						<Event name="Click">HyperLinkWithTextOnClick</Event>
+					</Events>
+				</LabelField>
+				<Button name="Help" id="321">
+					<Type>UsualButton</Type>
+					<Representation>Picture</Representation>
+					<SkipOnInput>false</SkipOnInput>
+					<CommandName>Form.StandardCommand.Help</CommandName>
+					<ExtendedTooltip name="HelpExtendedTooltip" id="413"/>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Object</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.TotalAndAggregateManagement</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="TotalsList" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Totals list</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Description" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Register and usage mode</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="UseTotals" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Totals</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="UseCurrentTotals" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Current</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="TotalsPeriod" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Totals period</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>Date</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+				<Column name="Picture" id="8">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Picture</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>v8ui:Picture</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Type" id="9">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Type</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>1</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="NameMetadata" id="10">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Metadata name</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="BalanceAndTurnovers" id="11">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Balance and turnovers</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="AggregatesTotals" id="12">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Aggregates/Totals</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>1</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="TotalsDivision" id="13">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Split</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="EnableTotalsSplitting" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Allow totals splitting</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="AggregatesByRegisters" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Aggregates by registers</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Description" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Register</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="NameMetadata" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Metadata name</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="AggregatesMode" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Aggregates/Totals</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="AggregatesUsage" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Use</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="BuildDate" id="10">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Building date</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>Date</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+				<Column name="Picture" id="11">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Picture</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>v8ui:Picture</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Size" id="8">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Size</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="Effect" id="9">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Effect</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="SizeLimitation" id="12">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Size limit</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="OptimalBuilding" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Optimal building</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="AbortOnError" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Terminate the processing when there is an error with one register</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<Save>
+				<Field>AbortOnError</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="RegisterAggregatesList" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Register aggregates</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="NameMetadata" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Metadata name</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Dimensions" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Dimensions</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Use" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Use</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="EndOfPeriod" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>End of period</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>DateTime</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+				<Column name="BeginOfPeriod" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Period start</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>DateTime</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+				<Column name="Periodicity" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Periodicity</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Size" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Size</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="FullAbilities" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Full abilities</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<Save>
+				<Field>FullAbilities</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="CalculateTotalsOn" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Calculate totals on</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="PathToMetadataObject" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Path to metadata object</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="PathToOptimalAggregates" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Path to the optimal aggregates</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<Save>
+				<Field>PathToOptimalAggregates</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="RelativeSize" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Relative size</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+			<Save>
+				<Field>RelativeSize</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="MinimalEffect" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Minimal effect</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+			<Save>
+				<Field>MinimalEffect</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="OptimalRelativeSize" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Optimal relative size</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+			<Save>
+				<Field>OptimalRelativeSize</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="RegistersRecalculationPeriod" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Registers recalculation period</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:StandardPeriod</v8:Type>
+			</Type>
+			<Save>
+				<Field>RegistersRecalculationPeriod</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="HyperlinkText" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Hyperlink text</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="EnableTotalsUsage" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Enable totals usage</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Enable totals usage</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>EnableTotalsUsage</Action>
+		</Command>
+		<Command name="EnableUsingCurrentTotals" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Enable current totals usage</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Enable current totals usage</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>EnableUsingCurrentTotals</Action>
+		</Command>
+		<Command name="DisableTotalsUsage" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Disable totals usage</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Disable totals usage</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>DisableTotalsUsage</Action>
+		</Command>
+		<Command name="DisableCurrentTotalsUsage" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Disable current totals usage</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Disable current totals usage</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>DisableCurrentTotalsUsage</Action>
+		</Command>
+		<Command name="UpdateTotalState" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Refresh</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Update information on the totals state</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Shortcut>F5</Shortcut>
+			<Picture>
+				<xr:Ref>StdPicture.Refresh</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>UpdateTotalState</Action>
+			<Representation>Text</Representation>
+		</Command>
+		<Command name="SetTotalPeriod" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Set totals period...</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Set calculated totals period</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>SetTotalPeriod</Action>
+		</Command>
+		<Command name="TurnOnDataSeparationTotals" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Enable totals splitting</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Enable totals splitting</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>TurnOnDataSeparationTotals</Action>
+		</Command>
+		<Command name="DisableTotalsDivision" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Disable totals division</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Disable totals division</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>DisableTotalsDivision</Action>
+		</Command>
+		<Command name="UpdateAggregatesData" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Refresh</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Update aggregates data</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Shortcut>F5</Shortcut>
+			<Picture>
+				<xr:Ref>StdPicture.Refresh</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>UpdateAggregatesData</Action>
+			<Representation>Picture</Representation>
+		</Command>
+		<Command name="EnableAggregateMode" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Enable aggregates mode</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Enable aggregates mode</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>EnableAggregateMode</Action>
+		</Command>
+		<Command name="EnableAggregatesUsage" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Enable aggregates usage</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Enable aggregates usage</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>EnableAggregatesUsage</Action>
+		</Command>
+		<Command name="EnableTotalsMode" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Enable totals mode</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Enable totals mode</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>EnableTotalsMode</Action>
+		</Command>
+		<Command name="DisableAggregatesUsage" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Disable aggregates usage</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Disable aggregates usage</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>DisableAggregatesUsage</Action>
+		</Command>
+		<Command name="RebuildAggregates" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Rebuild ...</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Rebuild aggregates usage</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>RebuildAggregates</Action>
+		</Command>
+		<Command name="ClearAggregatesByRegisters" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Clear</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Clear aggregates</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ClearAggregatesByRegisters</Action>
+			<Representation>Text</Representation>
+		</Command>
+		<Command name="FillAggregatesOnRegisters" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Refresh</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Update aggregates</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>FillAggregatesOnRegisters</Action>
+		</Command>
+		<Command name="OptimalAggregates" id="17">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Optimal ...</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Calculate the optimal aggregates</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>OptimalAggregates</Action>
+		</Command>
+		<Command name="SetTotalsPeriod" id="18">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Set calculated totals period</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Set the period of the calculated totals by all registers</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>SetTotalsPeriod</Action>
+		</Command>
+		<Command name="EnableTotalsUsageQuickAccess" id="19">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Enable totals usage</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Enable usage of totals for all registers for which totals usage is disabled</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>EnableTotalsUsageQuickAccess</Action>
+		</Command>
+		<Command name="FillAggregatesAndExecuteRebuild" id="20">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Rebuild and populate</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Populate aggregates and rebuild</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>FillAggregatesAndExecuteRebuild</Action>
+		</Command>
+		<Command name="ReceiveOptimalAggregates" id="21">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Get optimal aggregates</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Calculate the optimal aggregates for all the registers</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ReceiveOptimalAggregates</Action>
+		</Command>
+		<Command name="RecalcTotals" id="22">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Recalculate totals</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Run totals recalculation</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>RecalcTotals</Action>
+		</Command>
+		<Command name="RecalcTotalsForPeriod" id="23">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Recalculate totals for the period...</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Recalculate totals for the period</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>RecalcTotalsForPeriod</Action>
+		</Command>
+		<Command name="RecalcPresentTotals" id="24">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Recalculate current totals</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Run current totals recalculation</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>RecalcPresentTotals</Action>
+		</Command>
+	</Commands>
+</Form>

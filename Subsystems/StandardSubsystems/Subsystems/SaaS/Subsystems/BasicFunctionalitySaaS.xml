@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<MetaDataObject xmlns="http://v8.1c.ru/8.3/MDClasses" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:cmi="http://v8.1c.ru/8.2/managed-application/cmi" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xpr="http://v8.1c.ru/8.3/xcf/predef" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Subsystem uuid="2fd1287d-d96d-4480-baf7-8815ae5ffbfb">
+		<Properties>
+			<Name>BasicFunctionalitySaaS</Name>
+			<Synonym>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Basic functionality in the service model</v8:content>
+				</v8:item>
+			</Synonym>
+			<Comment/>
+			<IncludeHelpInContents>false</IncludeHelpInContents>
+			<IncludeInCommandInterface>false</IncludeInCommandInterface>
+			<Explanation/>
+			<Picture/>
+			<Content>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.SaaSOperations</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.SaaSOverridable</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Constant.CopyDataAreasFromPrototype</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Constant.InfobaseUsageMode</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Constant.LockMessageOnConfigurationUpdate</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Enum.InfobaseUsageModes</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Enum.DataAreaStatuses</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">SessionParameter.DataAreaValue</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">SessionParameter.DataAreasUse</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonAttribute.DataAreaBasicData</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">ScheduledJob.DataAreasMaintenance</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonForm.DataAreaInput</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">ScheduledJob.DataAreasUpdate</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.SaaSReUse</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Constant.FileTransferBlockSize</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Constant.FilesExchangeDirectorySaaS</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Constant.FilesExchangeDirectoryInLinuxSaaS</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">XDTOPackage.AgentScripts</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">XDTOPackage.Messages</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.MessagesSaaSReUse</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Constant.DataAreaKey</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">XDTOPackage.RemoteAdministrationSaaS_1_0_3_1</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">XDTOPackage.ApplicationsManagement</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.DeleteDataAreasActivityRating</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">XDTOPackage.RemoteAdministrationSaaS_1_0_3_2</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">XDTOPackage.RemoteAdministrationSaaS_1_0_3_3</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.DeleteDataAreas</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Constant.DataAreaPresentation</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Constant.DataAreaTimeZone</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Constant.DataAreasPrefix</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.JobQueueServiceDataSeparation</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Catalog.JobQueueDataAreas</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">EventSubscription.UndividedObjectsControlOnWrite</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">EventSubscription.UndividedRecordSetsControlOnWrite</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Catalog.DataAreasMessages</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">XDTOPackage.RemoteAdministrationSaaS_1_0_3_4</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonAttribute.DataAreaAuxiliaryData</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.DataAreas</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">XDTOPackage.RemoteAdministrationSaaS_1_0_3_5</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.SaaSClient</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.DataAreasActivityRating</xr:Item>
+			</Content>
+		</Properties>
+		<ChildObjects/>
+	</Subsystem>
+</MetaDataObject>

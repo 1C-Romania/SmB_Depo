@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"></meta><link rel="stylesheet" type="text/css" href="v8help://service_book/service_style"></link><meta name="GENERATOR" content="MSHTML 11.00.9600.18321"></meta></head><body>
+<p>Description of properties of a file storage volume.</p>
+<p>Whenever you create a new volume, access to the catalog specified in the <strong>Full path</strong> field is automatically checked. If an error occurs, the relevant message appears. You can not change paths to the volume you have already created.</p>
+<p>For each volume, specify:</p>
+<ul><li><strong>Name</strong> - a full name of the volume for file storage 
+</li><li><strong>Code </strong>- it is completed automatically 
+</li><li><strong>Full path for 1C:Enterprise server under Microsoft Windows </strong>- a path to the catalog of the volume server under Microsoft Windows in the UNC format - \\Computer name\Folder name\File name\ </li></ul><p>or</p>
+<ul><ul><li><strong>Full path for 1C:Enterprise server under </strong><strong>Linux</strong> - a path to the catalog of the volume server under Linux. </li></ul><li><strong>Sequence</strong>- enter an integer; by default, 1. A volume is filled out in ascending order until it is full. You can use this option, for example, for temporary disabling of the volume by increasing the filling order. 
+</li><li><strong>Limit, MB</strong> - you can use the maximum size of all the files in the volume (volume quota). If the total file size in the volume exceeds the quota, the successive volume is used. If no available volume has enough space to store a file, the information about it will be recorded in the <a href="DataProcessor.EventLogMonitor/Help">event log</a>. An error message will appear. If the quota is null, it is not checked when files are stored. 
+</li><li><strong>Current size, MB</strong> - it is populated automatically while filling out the volume and shows the volume occupancy. 
+</li><li>Write detailed information about the volume on the <strong>Comment</strong> tab. </li></ul><h3>More about filling in full path field for Linux</h3>
+<ul><li>If the 1C:Enterprise server works under Linux, you can specify only a local path to the file storage volume, e.g. <strong>/home/path</strong>. To use the UNC path, create a link to it. Use the administrator rights to do the following: 
+<ul><li>Run a command like <strong>mkdir folder</strong>, where specify a name of your directory instead of "folder". For example, in the <strong>/home</strong> directory run the <strong>mkdir shared</strong> command - a shared directory will be created with the full path <strong>/home/shared</strong>. 
+</li><li>Run a command like <strong>mount -t cifs //server/share folder -o //domain/user, password=pwd</strong>, where<br><strong>//server/share</strong> - is the UNC path to another computer, <strong>folder</strong> - path to the directory on a Linux computer. For example, <strong>\home\shared</strong>, <strong>//domain/user</strong> - a name of the domain/user if necessary, <strong>pwd</strong> - a user password (if necessary). 
+</li><li>If the name and password are not necessary, the command looks like this: <strong>mount -t cifs //server/share folder</strong>.</li></ul></li><li>After it, specify <strong>folder</strong>, e.g. <strong>/home/shared</strong>.</li></ul><h3>Viewing file list in volume</h3>
+<ul><li>In each volume, files are stored in subdirectories. An individual subdirectory is created for each file version creation date. All files are stored with their original names and extensions between them is the version number, e.g. "Order.2.txt". 
+</li><li>To view a <a href="CommonForm.FilesInVolume/Help">list of files in the volume</a>, click <strong>Files in volume</strong> in the volume navigation panel.</li></ul><h3>See also</h3>
+<ul><li>
+<div><a href="Catalog.FileStorageVolumes/Help">File storage volumes</a></div>
+</li><li>
+<div><a href="Catalog.Files/Help">General file information</a></div>
+</li><li>
+<div><a href="v8help://frame/form_common">Working with forms</a></div></li></ul></body></html>

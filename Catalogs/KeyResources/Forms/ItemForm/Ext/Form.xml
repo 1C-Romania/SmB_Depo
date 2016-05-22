@@ -1,0 +1,955 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="FormCommandBar" id="-1"/>
+	<Events>
+		<Event name="AfterWrite">AfterWrite</Event>
+		<Event name="ChoiceProcessing">ChoiceProcessing</Event>
+		<Event name="OnOpen">OnOpen</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+		<Event name="OnClose">OnClose</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ResourceDetails" id="45">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Resource description</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Resource description</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ResourceDescriptionExtendedTooltip" id="70"/>
+			<ChildItems>
+				<UsualGroup name="ResourceDetailsLeft" id="46">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Resource description left</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Resource description left</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ResourceDetailsLeftExtendedTooltip" id="71"/>
+					<ChildItems>
+						<InputField name="Description" id="3">
+							<DataPath>Object.Description</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="DescriptionContextMenu" id="4"/>
+							<ExtendedTooltip name="DescriptionExtendedTooltip" id="73"/>
+						</InputField>
+						<InputField name="ResourceValue" id="14">
+							<DataPath>Object.ResourceValue</DataPath>
+							<OpenButton>true</OpenButton>
+							<ContextMenu name="ResourceValueContextMenu" id="15"/>
+							<ExtendedTooltip name="ResourceValueExtendedTooltip" id="77"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ResourceDetailsRight" id="47">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Resource description right</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Resource description right</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ResourceDetailsRightExtendedTooltip" id="78"/>
+					<ChildItems>
+						<InputField name="Code" id="1">
+							<DataPath>Object.Code</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<InputHint>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;Auto&gt;</v8:content>
+								</v8:item>
+							</InputHint>
+							<ContextMenu name="CodeContextMenu" id="2"/>
+							<ExtendedTooltip name="CodeExtendedTooltip" id="74"/>
+						</InputField>
+						<InputField name="Capacity" id="5">
+							<DataPath>Object.Capacity</DataPath>
+							<ChoiceButton>true</ChoiceButton>
+							<ContextMenu name="PowerContextMenu" id="6"/>
+							<ExtendedTooltip name="CapacityExtendedTooltip" id="76"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ResourceWorkSchedule" id="49">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Schedule of work</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Resource work schedule</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Representation>None</Representation>
+			<ExtendedTooltip name="ResourcesWorkScheduleExtendedTooltip" id="79"/>
+			<ChildItems>
+				<UsualGroup name="ResourcesWorkSchedulePanel" id="42">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Resource work schedule panel</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Resource work schedule panel</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ResourcesWorkSchedulePanelExtendedTooltip" id="80"/>
+					<ChildItems>
+						<UsualGroup name="ResourcesWorkSchedulePanelLeft" id="43">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Resource work schedule panel left</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Resource work schedule panel left</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ResourcesWorkSchedulePanelLeftExtendedTooltip" id="81"/>
+							<ChildItems>
+								<UsualGroup name="WorkScheduleSetupPeriod" id="24">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Period, settings</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Work schedule setup period</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="WorkScheduleSetupPeriodExtendedTooltip" id="82"/>
+									<ChildItems>
+										<RadioButtonField name="RadioButton" id="111">
+											<DataPath>RadioButton</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Timetable for</v8:content>
+												</v8:item>
+											</Title>
+											<TitleLocation>None</TitleLocation>
+											<RadioButtonType>Tumbler</RadioButtonType>
+											<ChoiceList>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation>
+															<v8:item>
+																<v8:lang>en</v8:lang>
+																<v8:content>Day</v8:content>
+															</v8:item>
+														</Presentation>
+														<Value xsi:type="xs:string">Day</Value>
+													</xr:Value>
+												</xr:Item>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation>
+															<v8:item>
+																<v8:lang>en</v8:lang>
+																<v8:content>Year</v8:content>
+															</v8:item>
+														</Presentation>
+														<Value xsi:type="xs:string">Year</Value>
+													</xr:Value>
+												</xr:Item>
+											</ChoiceList>
+											<ContextMenu name="RadioButtonContextMenu" id="112"/>
+											<ExtendedTooltip name="RadioButtonExtendedTooltip" id="113"/>
+											<Events>
+												<Event name="OnChange">RadioButtonOnChange</Event>
+											</Events>
+										</RadioButtonField>
+										<LabelDecoration name="DecorationSplitter1" id="120">
+											<HorizontalStretch>true</HorizontalStretch>
+											<ContextMenu name="DecorationSplitter1ContextMenu" id="121"/>
+											<ExtendedTooltip name="DecorationSplitter1ExtendedTooltip" id="122"/>
+										</LabelDecoration>
+										<Button name="TimetableScheduleShortenPeriod" id="33">
+											<Type>UsualButton</Type>
+											<CommandName>Form.Command.TimetableScheduleShortenPeriod</CommandName>
+											<ExtendedTooltip name="ScheduleOnScheduleToReducePeriodExtendedTooltip" id="87"/>
+										</Button>
+										<InputField name="TimetableSchedulePresentationPeriod" id="31">
+											<DataPath>TimetableSchedulePresentationPeriod</DataPath>
+											<SkipOnInput>true</SkipOnInput>
+											<TitleLocation>None</TitleLocation>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Graphic period</v8:content>
+												</v8:item>
+											</ToolTip>
+											<HorizontalAlign>Center</HorizontalAlign>
+											<Width>15</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ChoiceButton>true</ChoiceButton>
+											<TextEdit>false</TextEdit>
+											<ChoiceButtonPicture>
+												<xr:Ref>StdPicture.Calendar</xr:Ref>
+												<xr:LoadTransparent>true</xr:LoadTransparent>
+											</ChoiceButtonPicture>
+											<ContextMenu name="ScheduleOnSchedulePeriodPresentationContextMenu" id="32"/>
+											<ExtendedTooltip name="ScheduleOnSchedulePeriodPresentationExtendedTooltip" id="88"/>
+											<Events>
+												<Event name="StartChoice">TimetableSchedulePresentationPeriodStartChoice</Event>
+											</Events>
+										</InputField>
+										<Button name="TimetableScheduleExtendPeriod" id="34">
+											<Type>UsualButton</Type>
+											<CommandName>Form.Command.TimetableScheduleExtendPeriod</CommandName>
+											<ExtendedTooltip name="ScheduleOnScheduleToIncreasePeriodExtendedTooltip" id="89"/>
+										</Button>
+										<Button name="Settings" id="66">
+											<Type>UsualButton</Type>
+											<Representation>Picture</Representation>
+											<CommandName>Form.Command.Settings</CommandName>
+											<ExtendedTooltip name="SettingsExtendedTooltip" id="104"/>
+										</Button>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="WorkTimetableMarkSelectedSetTimetable" id="37">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Mark selected, set up a schedule</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Work schedule mark selected set a schedule</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="WorkTimetableMarkSelectedSetTimetableExtendedTooltip" id="90"/>
+									<ChildItems>
+										<LabelDecoration name="MarkSelectedAs" id="38">
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Mark as:</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="MarkSelectedAsContextMenu" id="39"/>
+											<ExtendedTooltip name="MarkSelectedAsExtendedTooltip" id="91"/>
+										</LabelDecoration>
+										<CommandBar name="PanelMark" id="109">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Panel mark</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Panel mark</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ExtendedTooltip name="PanelMarkExtendedTooltip" id="110"/>
+											<ChildItems>
+												<Button name="MarkSelectedAsWorking" id="40">
+													<Type>CommandBarButton</Type>
+													<Width>19</Width>
+													<CommandName>Form.Command.MarkSelectedAsWorking</CommandName>
+													<ExtendedTooltip name="MarkSelectedAsWorkingExtendedTooltip" id="92"/>
+												</Button>
+												<Button name="MarkSelectedAsNonWorking" id="41">
+													<Type>CommandBarButton</Type>
+													<Width>19</Width>
+													<CommandName>Form.Command.MarkSelectedAsNonWorking</CommandName>
+													<ExtendedTooltip name="MarkSelectedAsNonWorkingToolTipNotWorking" id="93"/>
+												</Button>
+												<ButtonGroup name="GroupCancel" id="116">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Group cancel</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Group cancel</v8:content>
+														</v8:item>
+													</ToolTip>
+													<ExtendedTooltip name="GroupCancelExtendedTooltip" id="117"/>
+													<ChildItems>
+														<Button name="CancelAllChangesOfSchedule" id="69">
+															<Type>CommandBarButton</Type>
+															<Width>29</Width>
+															<CommandName>Form.Command.CancelAllChangesOfSchedule</CommandName>
+															<ExtendedTooltip name="CancelAllChangesGraphicsExtendedTooltip" id="101"/>
+														</Button>
+													</ChildItems>
+												</ButtonGroup>
+											</ChildItems>
+										</CommandBar>
+										<UsualGroup name="GroupSetTimetable" id="64">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group set a schedule</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group set a schedule</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Horizontal</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="GroupSetTimetableExtendedTooltip" id="95"/>
+											<ChildItems>
+												<LabelField name="Schedule" id="35">
+													<DataPath>Schedule</DataPath>
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Schedule</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Current shedule of selected area.
+Also using this attribute it is possible to install the new schedule for the selected area</v8:content>
+														</v8:item>
+													</ToolTip>
+													<HorizontalAlign>Right</HorizontalAlign>
+													<Width>8</Width>
+													<HorizontalStretch>false</HorizontalStretch>
+													<Hiperlink>true</Hiperlink>
+													<TextColor>style:ExplanationText</TextColor>
+													<ContextMenu name="LineContextMenu" id="36"/>
+													<ExtendedTooltip name="TimetableExtendedTooltip" id="96"/>
+												</LabelField>
+												<CommandBar name="SetTimetableBar" id="123">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Set schedule bar</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Set schedule bar</v8:content>
+														</v8:item>
+													</ToolTip>
+													<Width>19</Width>
+													<HorizontalStretch>false</HorizontalStretch>
+													<HorizontalLocation>Right</HorizontalLocation>
+													<ExtendedTooltip name="PanelSetTimetableExtendedTooltip" id="124"/>
+													<ChildItems>
+														<Button name="SetTimetable" id="50">
+															<Type>CommandBarButton</Type>
+															<CommandName>Form.Command.SetTimetable</CommandName>
+															<Title>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Set new</v8:content>
+																</v8:item>
+															</Title>
+															<ExtendedTooltip name="SetTimetableExtendedTooltip" id="97"/>
+														</Button>
+														<Button name="History" id="125">
+															<Type>CommandBarButton</Type>
+															<CommandName>Form.Command.History</CommandName>
+															<ExtendedTooltip name="HistoryExtendedTooltip" id="126"/>
+														</Button>
+													</ChildItems>
+												</CommandBar>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+				<SpreadSheetDocumentField name="TimetableSchedule" id="20">
+					<DataPath>TimetableSchedule</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<SelectionShowMode>WhenActive</SelectionShowMode>
+					<ViewScalingMode>Normal</ViewScalingMode>
+					<ContextMenu name="ScheduleOnScheduleContextMenu" id="21"/>
+					<ExtendedTooltip name="ScheduleOnScheduleExtendedTooltip" id="102"/>
+					<Events>
+						<Event name="OnActivateArea">TimetableScheduleOnActivateArea</Event>
+						<Event name="Selection">TimetableScheduleSelection</Event>
+					</Events>
+				</SpreadSheetDocumentField>
+				<UsualGroup name="ResourcesWorkScheduleFooter" id="53">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Resource work schedule footer</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Resource work schedule footer</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ResourcesWorkScheduleFooterExtendedTooltip" id="103"/>
+					<ChildItems>
+						<LabelDecoration name="DecorationSplitter" id="60">
+							<HorizontalStretch>true</HorizontalStretch>
+							<ContextMenu name="DecorationSplitterContextMenu" id="61"/>
+							<ExtendedTooltip name="DecorationSplitterExtendedTooltip" id="105"/>
+						</LabelDecoration>
+						<UsualGroup name="Totals" id="118">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Totals</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Totals</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<BackColor>style:TotalsGroupBackground</BackColor>
+							<ExtendedTooltip name="TotalsExtendedTooltip" id="119"/>
+							<ChildItems>
+								<InputField name="WorkingDaysTotal" id="56">
+									<DataPath>WorkingDaysTotal</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<HorizontalAlign>Right</HorizontalAlign>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="TotalWorkingDaysContextMenu" id="57"/>
+									<ExtendedTooltip name="TotalWorkingDaysExtendedTooltip" id="106"/>
+								</InputField>
+								<InputField name="NonworkingDaysTotal" id="54">
+									<DataPath>NonworkingDaysTotal</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<HorizontalAlign>Right</HorizontalAlign>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="TotalNonBusinessDaysContextMenu" id="55"/>
+									<ExtendedTooltip name="TotalNonBusinessDaysExtendedTooltip" id="107"/>
+								</InputField>
+								<InputField name="WorkingHoursTotal" id="58">
+									<DataPath>WorkingHoursTotal</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<HorizontalAlign>Right</HorizontalAlign>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="TotalWorkingHoursContextMenu" id="59"/>
+									<ExtendedTooltip name="TotalWorkingHoursExtendedTooltip" id="108"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Type>
+				<v8:Type>cfg:CatalogObject.KeyResources</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="TimetableSchedule" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Timetable schedule</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type xmlns:mxl="http://v8.1c.ru/8.2/data/spreadsheet">mxl:SpreadsheetDocument</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="TimetableSchedulePresentationPeriod" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Resources work by schedule period presentation</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>45</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ScheduleDate" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Schedule date</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>DateTime</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="TableOfSchedules" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Table of schedules</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Period" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Period</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>Date</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+				<Column name="EnterpriseResource" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Enterprise resource</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.KeyResources</v8:Type>
+					</Type>
+				</Column>
+				<Column name="WorkSchedule" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Work schedule</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.WorkSchedules</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Color" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Color</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>v8ui:Color</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="Schedule" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Schedule</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.WorkSchedules</v8:Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="TableSelected" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Table selected</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Left" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Left</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Top" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Top</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="BusyPeriodColor" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Busy period color</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8ui:Color</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ColorOfFreePeriod" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Color of free period</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8ui:Color</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="WorkingDaysTotal" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Working days</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>3</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="NonworkingDaysTotal" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Non-working days</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>3</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="WorkingHoursTotal" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Working hours</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>4</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="RepetitionFactorOFDay" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Repetition factor of day</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>2</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ThisIsWebClient" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>This is web client</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="RadioButton" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>RadioButton</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="TimetableScheduleExtendPeriod" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Timetable schedule extend period</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Extend period</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.MoveRight</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>TimetableScheduleExtendPeriod</Action>
+			<Representation>Picture</Representation>
+		</Command>
+		<Command name="TimetableScheduleShortenPeriod" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Timetable schedule shortened period</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Shorten period</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.MoveLeft</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>TimetableScheduleShortenPeriod</Action>
+			<Representation>Picture</Representation>
+		</Command>
+		<Command name="MarkSelectedAsNonWorking" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Non-working</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Mark selected as non working</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>MarkSelectedAsNonWorking</Action>
+		</Command>
+		<Command name="MarkSelectedAsWorking" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Working</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Mark selected as working</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>MarkSelectedAsWorking</Action>
+		</Command>
+		<Command name="SetTimetable" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Set timetable for selected area</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Set new timetable for selected area for selected area</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>SetTimetable</Action>
+		</Command>
+		<Command name="Settings" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Settings</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Settings</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.DocumentSetting</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Settings</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="CancelAllChangesOfSchedule" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Cancel all</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Cancel all changes of schedule</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>CancelAllChangesOfSchedule</Action>
+		</Command>
+		<Command name="History" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>History</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>History</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.VersionHistory</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>History</Action>
+		</Command>
+	</Commands>
+	<CommandInterface>
+		<NavigationPanel>
+			<Item>
+				<Command>InformationRegister.ResourcesWorkSchedules.StandardCommand.OpenByValue.EnterpriseResource</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormNavigationPanelGoTo</CommandGroup>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+			<Item>
+				<Command>InformationRegister.DeviationFromResourcesWorkSchedules.StandardCommand.OpenByValue.EnterpriseResource</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormNavigationPanelGoTo</CommandGroup>
+				<Index>1</Index>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+		</NavigationPanel>
+	</CommandInterface>
+</Form>

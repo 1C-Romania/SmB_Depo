@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<MetaDataObject xmlns="http://v8.1c.ru/8.3/MDClasses" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:cmi="http://v8.1c.ru/8.2/managed-application/cmi" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xpr="http://v8.1c.ru/8.3/xcf/predef" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Subsystem uuid="fe585261-6143-441b-a870-a229966313e4">
+		<Properties>
+			<Name>ElectronicDocuments</Name>
+			<Synonym>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Electronic documents</v8:content>
+				</v8:item>
+			</Synonym>
+			<Comment/>
+			<IncludeHelpInContents>true</IncludeHelpInContents>
+			<IncludeInCommandInterface>false</IncludeInCommandInterface>
+			<Explanation/>
+			<Picture>
+				<xr:Ref>CommonPicture.ElectronicDocuments</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Content>
+				<xr:Item xsi:type="xr:MDObjectRef">Constant.UseEDExchange</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Role.EDExchangeExecution</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Enum.EDExchangeMethods</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.ElectronicDocuments</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.ElectronicDocumentsOverridable</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.ElectronicDocumentsServiceCallServer</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommandGroup.ED</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.ElectronicDocumentsClient</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">ScheduledJob.ReceivingNewED</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Catalog.DeleteDSCertificates</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">6366c7e1-f4ba-4e2e-aee0-f46f3932085f</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Enum.EDVersionsStates</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Enum.EDStatuses</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Enum.EDDirections</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Catalog.EDAttachedFiles</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">EventSubscription.SetNewVersionEDOnOwnerWrite</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">f4e9fb52-a0aa-4f17-ba33-d04614bd6e25</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Enum.EDKinds</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.EDStates</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">EventSubscription.CheckChangeBeforeEDOwnerWrite</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Enum.EDPackagesStatuses</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Enum.EDAgreementsStatuses</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Enum.EDAgreementStates</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.ElectronicDocuments</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.ElectronicDocumentsInternal</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">EventSubscription.ProcessWriteED</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">EventSubscription.ChangeStateVersionsBeforeWriteED</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Enum.EDExchangeFileFormats</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonPicture.ElectronicDocuments</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">ScheduledJob.SendingComposedED</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Catalog.EDUsageAgreements</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonPicture.HierarchicalList</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonPicture.IncomingEmail</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonPicture.SetApprovedStatus</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonPicture.OutgoingEmail</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">FunctionalOption.UseEDExchange</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonPicture.ElectronicDocumentsWrongSignature</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Enum.EDVersionElementTypes</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonPicture.AddAdditionalPropertyToKit</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonPicture.StopSign</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonPicture.SetClientOrderStatusAgreed</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonPicture.ExportFile</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonPicture.ImportXMLFileIntoInfobase</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">FunctionalOption.UseEDExchangeBetweenCompanies</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonPicture.ExportDataFromInfobaseIntoXMLFile</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Constant.UseEDExchangeBetweenCompanies</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.ElectronicDocumentsClientOverridable</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Role.EDReading</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Role.EDParametersSetting</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Enum.EDExpectedAction</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Enum.EDExchangeMemberStatuses</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.ElectronicDocumentsClientServer</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Enum.EDConsolidatedStates</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.ElectronicDocumentsReUse</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.ElectronicDocumentsServiceClient</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.ElectronicDocumentsService</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Constant.UseElectronicDocumentsDelayedSending</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.EDEventsLog</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.InfobaseUpdateED</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.EDPackage</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.RemovingUsedEDPackagesFiles</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonPicture.Information02</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">FunctionalOption.UseEDExchangeWithBanks</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Constant.UseEDExchangeWithBanks</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Constant.AuthorizationContext</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Constant.DeleteCryptographyContext</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Enum.WorkContextsWithED</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.CommonUseED</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonTemplate.SystemChangesDescription</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.AdministrationPanelED</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Report.EDFStateChart</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">DataProcessor.CurrentWorksOnEDF</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonCommand.EDFSettingsWithFilter</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonPicture.Approve</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Enum.EDTypes</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Catalog.EDFProfileSettings</xr:Item>
+			</Content>
+		</Properties>
+		<ChildObjects>
+			<Subsystem>ExchangeWithBanks</Subsystem>
+			<Subsystem>ExchangeWithCounterparties</Subsystem>
+		</ChildObjects>
+	</Subsystem>
+</MetaDataObject>

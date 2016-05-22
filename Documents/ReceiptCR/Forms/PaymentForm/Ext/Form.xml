@@ -1,0 +1,1874 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<CommandBarLocation>Bottom</CommandBarLocation>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoTime>CurrentOrLast</AutoTime>
+	<UsePostingMode>Auto</UsePostingMode>
+	<RepostOnWrite>true</RepostOnWrite>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<HorizontalAlign>Center</HorizontalAlign>
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnOpen">OnOpen</Event>
+		<Event name="BeforeClose">BeforeClose</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="GroupDocumentAmount" id="226">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group cash received</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group cash received</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<BackColor>style:UnselectedImageTextColor</BackColor>
+			<ExtendedTooltip name="GroupDocumentAmountExtendedTooltip" id="227"/>
+			<ChildItems>
+				<LabelField name="DocumentAmount" id="41">
+					<DataPath>DocumentAmount</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Amount</v8:content>
+						</v8:item>
+					</Title>
+					<TitleTextColor>style:FormTextColor</TitleTextColor>
+					<TitleFont ref="style:ExtraLargeTextFont" kind="StyleItem"/>
+					<HorizontalAlign>Left</HorizontalAlign>
+					<Width>27</Width>
+					<HorizontalStretch>true</HorizontalStretch>
+					<TextColor>style:FormTextColor</TextColor>
+					<Font ref="style:ExtraLargeTextFont" bold="false" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+					<ContextMenu name="DocumentAmountContextMenu" id="42"/>
+					<ExtendedTooltip name="DocumentAmountExtendedTooltip" id="43"/>
+				</LabelField>
+			</ChildItems>
+		</UsualGroup>
+		<Pages name="GroupPayment" id="141">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group payment</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group payment</v8:content>
+				</v8:item>
+			</ToolTip>
+			<HorizontalStretch>true</HorizontalStretch>
+			<ExtendedTooltip name="GroupPaymentExtendedTooltip" id="142"/>
+			<Events>
+				<Event name="OnCurrentPageChange">GroupPaymentOnCurrentPageChange</Event>
+			</Events>
+			<ChildItems>
+				<Page name="GroupPaymentByCash" id="58">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Payment by cash</v8:content>
+						</v8:item>
+					</Title>
+					<TitleFont ref="sys:DefaultGUIFont" kind="WindowsFont"/>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group payment in cash</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Horizontal</Group>
+					<BackColor>style:FormBackColor</BackColor>
+					<ExtendedTooltip name="GroupPaymentByCashExtendedTooltip" id="59"/>
+					<ChildItems>
+						<UsualGroup name="Cash" id="8">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Cash</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Cash</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ToolTipRepresentation>None</ToolTipRepresentation>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="CashExtendedTooltip" id="9"/>
+							<ChildItems>
+								<InputField name="CashReceived" id="12">
+									<DataPath>CashReceived</DataPath>
+									<DefaultItem>true</DefaultItem>
+									<SkipOnInput>true</SkipOnInput>
+									<TitleLocation>None</TitleLocation>
+									<Width>30</Width>
+									<Height>1</Height>
+									<DropListButton>true</DropListButton>
+									<ChoiceButton>false</ChoiceButton>
+									<Font ref="style:LargeTextFont" kind="StyleItem"/>
+									<ContextMenu name="ReceivedCashContextMenu" id="13"/>
+									<ExtendedTooltip name="CashReceivedExtendedTooltip" id="14"/>
+									<Events>
+										<Event name="OnChange">DocumentReceiptCRCashReceivedOnChange</Event>
+									</Events>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<LabelField name="DocumentCurrency" id="148">
+							<DataPath>DocumentCurrency</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="DocumentCurrencyContextMenu" id="149"/>
+							<ExtendedTooltip name="DocumentCurrencyExtendedTooltip" id="150"/>
+						</LabelField>
+						<LabelDecoration name="DecorationSplitter" id="132">
+							<HorizontalStretch>true</HorizontalStretch>
+							<ContextMenu name="DecorationSplitterContextMenu" id="133"/>
+							<ExtendedTooltip name="DecorationSeparatorExtendedTooltip" id="134"/>
+						</LabelDecoration>
+						<UsualGroup name="GroupRightColumn" id="102">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group right column</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group right column</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupRightColumnExtendedTooltip" id="103"/>
+							<ChildItems>
+								<UsualGroup name="GroupCalculator" id="104">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group calculator</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group calculator</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<BackColor>style:UnselectedImageTextColor</BackColor>
+									<ExtendedTooltip name="GroupCalculatorExtendedTooltip" id="105"/>
+									<ChildItems>
+										<UsualGroup name="GroupButtonsColumn1" id="110">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group buttons column 1</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group buttons column 1</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Vertical</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="GroupColumnButtons1ExtendedTooltip" id="111"/>
+											<ChildItems>
+												<Button name="Button7" id="118">
+													<Type>UsualButton</Type>
+													<Height>1</Height>
+													<CommandName>Form.Command.Button7</CommandName>
+													<Font ref="style:LargeTextFont" kind="StyleItem"/>
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>7</v8:content>
+														</v8:item>
+													</Title>
+													<ExtendedTooltip name="Button7ExtendedTooltip" id="119"/>
+												</Button>
+												<Button name="Button4" id="116">
+													<Type>UsualButton</Type>
+													<CommandName>Form.Command.Button4</CommandName>
+													<Font ref="style:LargeTextFont" kind="StyleItem"/>
+													<ExtendedTooltip name="Button4ExtendedTooltip" id="117"/>
+												</Button>
+												<Button name="Button1" id="112">
+													<Type>UsualButton</Type>
+													<CommandName>Form.Command.Button1</CommandName>
+													<Font ref="style:LargeTextFont" kind="StyleItem"/>
+													<ExtendedTooltip name="Button1ExtendedTooltip" id="113"/>
+												</Button>
+												<Button name="Button0" id="114">
+													<Type>UsualButton</Type>
+													<CommandName>Form.Command.Button0</CommandName>
+													<Font ref="style:LargeTextFont" kind="StyleItem"/>
+													<ExtendedTooltip name="Button0ExtendedTooltip" id="115"/>
+												</Button>
+											</ChildItems>
+										</UsualGroup>
+										<UsualGroup name="GroupButtonsColumn2" id="108">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group buttons column 2</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group buttons column 2</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Vertical</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="GroupColumnExtended2ButtonsToolTip" id="109"/>
+											<ChildItems>
+												<Button name="Button8" id="124">
+													<Type>UsualButton</Type>
+													<CommandName>Form.Command.Button8</CommandName>
+													<Font ref="style:LargeTextFont" kind="StyleItem"/>
+													<ExtendedTooltip name="Button8ExtendedTooltip" id="125"/>
+												</Button>
+												<Button name="Button5" id="122">
+													<Type>UsualButton</Type>
+													<CommandName>Form.Command.Button5</CommandName>
+													<Font ref="style:LargeTextFont" kind="StyleItem"/>
+													<ExtendedTooltip name="Button5ExtendedTooltip" id="123"/>
+												</Button>
+												<Button name="Button2" id="120">
+													<Type>UsualButton</Type>
+													<CommandName>Form.Command.Button2</CommandName>
+													<Font ref="style:LargeTextFont" kind="StyleItem"/>
+													<ExtendedTooltip name="Button2ExtendedTooltip" id="121"/>
+												</Button>
+												<Button name="DelimiterFractionalParts" id="137">
+													<Type>UsualButton</Type>
+													<CommandName>Form.Command.DelimiterFractionalParts</CommandName>
+													<Font ref="style:LargeTextFont" kind="StyleItem"/>
+													<ExtendedTooltip name="FractionalPartDelimiterExtendedTooltip" id="138"/>
+												</Button>
+											</ChildItems>
+										</UsualGroup>
+										<UsualGroup name="GroupButtonsColumn3" id="106">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group buttons column 3</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group buttons column 3</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Vertical</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="GroupColumn3ButtonsExtendedTooltip" id="107"/>
+											<ChildItems>
+												<Button name="Button9" id="130">
+													<Type>UsualButton</Type>
+													<CommandName>Form.Command.Button9</CommandName>
+													<Font ref="style:LargeTextFont" kind="StyleItem"/>
+													<ExtendedTooltip name="Button9ExtendedTooltip" id="131"/>
+												</Button>
+												<Button name="Button6" id="128">
+													<Type>UsualButton</Type>
+													<CommandName>Form.Command.Button6</CommandName>
+													<Font ref="style:LargeTextFont" kind="StyleItem"/>
+													<ExtendedTooltip name="Button6ExtendedTooltip" id="129"/>
+												</Button>
+												<Button name="Button3" id="126">
+													<Type>UsualButton</Type>
+													<CommandName>Form.Command.Button3</CommandName>
+													<Font ref="style:LargeTextFont" kind="StyleItem"/>
+													<ExtendedTooltip name="Button3ExtendedTooltip" id="127"/>
+												</Button>
+												<Button name="Reset" id="135">
+													<Type>UsualButton</Type>
+													<CommandName>Form.Command.Reset</CommandName>
+													<Font ref="style:LargeTextFont" kind="StyleItem"/>
+													<ExtendedTooltip name="ResetExtendedTooltip" id="136"/>
+												</Button>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="GroupCashlessPayment" id="143">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group Cashless payment</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group cashless payment</v8:content>
+						</v8:item>
+					</ToolTip>
+					<TitleDataPath>CardsAmountForTitle</TitleDataPath>
+					<BackColor>style:FormBackColor</BackColor>
+					<ExtendedTooltip name="GroupCashlessPaymentExtendedTooltip" id="144"/>
+					<ChildItems>
+						<UsualGroup name="Group2" id="183">
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="Group2ExtendedTooltip" id="184"/>
+							<ChildItems>
+								<UsualGroup name="GroupPaymentCards" id="51">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group payment cards</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group payment cards</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupCardsPaymentExtendedTooltip" id="52"/>
+									<ChildItems>
+										<UsualGroup name="GroupPatternCardPayments" id="188">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group payment card pattern</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group payment card pattern</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Width>46</Width>
+											<Group>Vertical</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<BackColor>#EBEBEB</BackColor>
+											<ExtendedTooltip name="GroupCardPaymentPatternExtendedTooltip" id="189"/>
+											<ChildItems>
+												<UsualGroup name="GroupAmount" id="192">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Group amount</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Group amount</v8:content>
+														</v8:item>
+													</ToolTip>
+													<Group>Horizontal</Group>
+													<Representation>None</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="GroupAmountExtendedTooltip" id="193"/>
+													<ChildItems>
+														<InputField name="FIELDAMOUNT" id="194">
+															<DataPath>Object.PaymentWithPaymentCards[0].Amount</DataPath>
+															<TitleLocation>None</TitleLocation>
+															<ToolTip>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Calculator changes data in the Amount low field or Amount last changed field
+If you need to attach calculator to another field you should click the button with calculator picture in this field</v8:content>
+																</v8:item>
+															</ToolTip>
+															<ToolTipRepresentation>Button</ToolTipRepresentation>
+															<Width>35</Width>
+															<HorizontalStretch>false</HorizontalStretch>
+															<ChoiceButton>true</ChoiceButton>
+															<IncompleteChoiceMode>OnActivate</IncompleteChoiceMode>
+															<ContextMenu name="FieldAmountContextMenu" id="195"/>
+															<ExtendedTooltip name="FieldAmountExtendedTooltip" id="196"/>
+														</InputField>
+														<LabelField name="DocumentCurrencyPattern" id="197">
+															<DataPath>DocumentCurrency</DataPath>
+															<TitleLocation>None</TitleLocation>
+															<ContextMenu name="DocumentCurrencyTemplateContextMenu" id="198"/>
+															<ExtendedTooltip name="DocumentCurrencyPatternExtendedTooltip" id="199"/>
+														</LabelField>
+														<Button name="DeletePaymentByCardPattern" id="299">
+															<Type>UsualButton</Type>
+															<Width>4</Width>
+															<CommandName>Form.Command.ChooseCashToDeletePayment</CommandName>
+															<ExtendedTooltip name="DeletePaymentByCardPatternExtendedTooltip" id="300"/>
+														</Button>
+													</ChildItems>
+												</UsualGroup>
+												<UsualGroup name="GroupAttributesP1" id="200">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Group attributes p.1</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Group attributes P1</v8:content>
+														</v8:item>
+													</ToolTip>
+													<Group>Horizontal</Group>
+													<Representation>None</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="GroupAttributesP1ExtendedTooltip" id="201"/>
+													<ChildItems>
+														<InputField name="FieldCardKind" id="205">
+															<DataPath>Object.PaymentWithPaymentCards[0].ChargeCardKind</DataPath>
+															<TitleLocation>None</TitleLocation>
+															<Width>16</Width>
+															<HorizontalStretch>false</HorizontalStretch>
+															<ContextMenu name="FieldCardTypeContextMenu" id="206"/>
+															<ExtendedTooltip name="FieldCardKindExtendedTooltip" id="207"/>
+														</InputField>
+														<InputField name="FieldCardNumber" id="202">
+															<DataPath>Object.PaymentWithPaymentCards[0].ChargeCardNo</DataPath>
+															<TitleLocation>None</TitleLocation>
+															<Width>27</Width>
+															<HorizontalStretch>false</HorizontalStretch>
+															<ContextMenu name="FieldCardNumberContextMenu" id="203"/>
+															<ExtendedTooltip name="FieldCardNumberExtendedTooltip" id="204"/>
+														</InputField>
+													</ChildItems>
+												</UsualGroup>
+												<UsualGroup name="GroupAttributesP2" id="208">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Group attributes p.2</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Group attributes P1</v8:content>
+														</v8:item>
+													</ToolTip>
+													<Group>Horizontal</Group>
+													<Representation>None</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="GroupAttributesP2ExtendedTooltip" id="209"/>
+													<ChildItems>
+														<InputField name="FieldETReceiptNo" id="210">
+															<DataPath>Object.PaymentWithPaymentCards[0].ETReceiptNo</DataPath>
+															<TitleLocation>None</TitleLocation>
+															<Width>16</Width>
+															<HorizontalStretch>false</HorizontalStretch>
+															<ContextMenu name="FieldETReceiptNoContextMenu" id="211"/>
+															<ExtendedTooltip name="FieldETReceiptNoExtendedTooltip" id="212"/>
+														</InputField>
+														<InputField name="FieldRefNo" id="213">
+															<DataPath>Object.PaymentWithPaymentCards[0].RefNo</DataPath>
+															<TitleLocation>None</TitleLocation>
+															<Width>27</Width>
+															<HorizontalStretch>false</HorizontalStretch>
+															<ContextMenu name="FieldReferenceNumberContextMenu" id="214"/>
+															<ExtendedTooltip name="FieldReferenceNumberExtendedTooltip" id="215"/>
+														</InputField>
+													</ChildItems>
+												</UsualGroup>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</UsualGroup>
+								<LabelDecoration name="DecorationDelimiter_2" id="185">
+									<HorizontalStretch>true</HorizontalStretch>
+									<ContextMenu name="AttributeDelimiter_2ContextMenu" id="186"/>
+									<ExtendedTooltip name="DecorationDelimiter_2ExtendedTooltip" id="187"/>
+								</LabelDecoration>
+								<UsualGroup name="GroupCalculatorAndCardNumber" id="216">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group calculator and card number</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group calculator and card number</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<BackColor>style:UnselectedImageTextColor</BackColor>
+									<ExtendedTooltip name="GroupCalculatorAndCardNumberExtendedTooltip" id="217"/>
+									<ChildItems>
+										<UsualGroup name="GroupCalculator_2" id="151">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group calculator</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group calculator</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Horizontal</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<BackColor>style:UnselectedImageTextColor</BackColor>
+											<ExtendedTooltip name="GroupCalculator_2ExtendedTooltip" id="152"/>
+											<ChildItems>
+												<UsualGroup name="GroupButtonsColumn1_2" id="153">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Group buttons column 1</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Group buttons column1 2</v8:content>
+														</v8:item>
+													</ToolTip>
+													<Group>Vertical</Group>
+													<Representation>None</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="GroupButtonsColumn1_2ExtendedTooltip" id="154"/>
+													<ChildItems>
+														<Button name="Button7_2" id="155">
+															<Type>UsualButton</Type>
+															<Height>1</Height>
+															<CommandName>Form.Command.Button7_2</CommandName>
+															<Font ref="style:LargeTextFont" kind="StyleItem"/>
+															<Title>
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>7</v8:content>
+																</v8:item>
+															</Title>
+															<ExtendedTooltip name="Button7_2ExtendedTooltip" id="156"/>
+														</Button>
+														<Button name="Button4_2" id="157">
+															<Type>UsualButton</Type>
+															<CommandName>Form.Command.Button4_2</CommandName>
+															<Font ref="style:LargeTextFont" kind="StyleItem"/>
+															<ExtendedTooltip name="Button4_2ExtendedTooltip" id="158"/>
+														</Button>
+														<Button name="Button1_2" id="159">
+															<Type>UsualButton</Type>
+															<CommandName>Form.Command.Button1_2</CommandName>
+															<Font ref="style:LargeTextFont" kind="StyleItem"/>
+															<ExtendedTooltip name="Button1_2ExtendedTooltip" id="160"/>
+														</Button>
+														<Button name="Button0_2" id="171">
+															<Type>UsualButton</Type>
+															<CommandName>Form.Command.Button0_2</CommandName>
+															<Font ref="style:LargeTextFont" kind="StyleItem"/>
+															<ExtendedTooltip name="Button0_2ExtendedTooltip" id="172"/>
+														</Button>
+													</ChildItems>
+												</UsualGroup>
+												<UsualGroup name="GroupButtonsColumn2_2" id="163">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Group buttons column 2</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Group buttons column2 2</v8:content>
+														</v8:item>
+													</ToolTip>
+													<Group>Vertical</Group>
+													<Representation>None</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="GroupButtonsColumn2_2ExtendedTooltip" id="164"/>
+													<ChildItems>
+														<Button name="Button8_2" id="165">
+															<Type>UsualButton</Type>
+															<CommandName>Form.Command.Button8_2</CommandName>
+															<Font ref="style:LargeTextFont" kind="StyleItem"/>
+															<ExtendedTooltip name="Button8_2ExtendedTooltip" id="166"/>
+														</Button>
+														<Button name="Button5_2" id="167">
+															<Type>UsualButton</Type>
+															<CommandName>Form.Command.Button5_2</CommandName>
+															<Font ref="style:LargeTextFont" kind="StyleItem"/>
+															<ExtendedTooltip name="Button5_2ExtendedTooltip" id="168"/>
+														</Button>
+														<Button name="Button2_2" id="169">
+															<Type>UsualButton</Type>
+															<CommandName>Form.Command.Button2_2</CommandName>
+															<Font ref="style:LargeTextFont" kind="StyleItem"/>
+															<ExtendedTooltip name="Button2_2ExtendedTooltip" id="170"/>
+														</Button>
+														<Button name="DelimiterFractionalParts_2" id="181">
+															<Type>UsualButton</Type>
+															<CommandName>Form.Command.DelimiterFractionalParts_2</CommandName>
+															<Font ref="style:LargeTextFont" kind="StyleItem"/>
+															<ExtendedTooltip name="DelimiterFractionalParts_2ExtendedTooltip" id="182"/>
+														</Button>
+													</ChildItems>
+												</UsualGroup>
+												<UsualGroup name="GroupButtonsColumn3_2" id="173">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Group buttons column 3</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Group buttons column3 2</v8:content>
+														</v8:item>
+													</ToolTip>
+													<Group>Vertical</Group>
+													<Representation>None</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="GroupButtonsColumn3_2ExtendedTooltip" id="174"/>
+													<ChildItems>
+														<Button name="Button9_2" id="175">
+															<Type>UsualButton</Type>
+															<CommandName>Form.Command.Button9_2</CommandName>
+															<Font ref="style:LargeTextFont" kind="StyleItem"/>
+															<ExtendedTooltip name="Button9_2ExtendedTooltip" id="176"/>
+														</Button>
+														<Button name="Button6_2" id="177">
+															<Type>UsualButton</Type>
+															<CommandName>Form.Command.Button6_2</CommandName>
+															<Font ref="style:LargeTextFont" kind="StyleItem"/>
+															<ExtendedTooltip name="Button6_2ExtendedTooltip" id="178"/>
+														</Button>
+														<Button name="Button3_2" id="179">
+															<Type>UsualButton</Type>
+															<CommandName>Form.Command.Button3_2</CommandName>
+															<Font ref="style:LargeTextFont" kind="StyleItem"/>
+															<ExtendedTooltip name="Button3_2ExtendedTooltip" id="180"/>
+														</Button>
+														<Button name="Reset_2" id="161">
+															<Type>UsualButton</Type>
+															<CommandName>Form.Command.Reset_2</CommandName>
+															<Font ref="style:LargeTextFont" kind="StyleItem"/>
+															<ExtendedTooltip name="Reset_2ExtendedTooltip" id="162"/>
+														</Button>
+													</ChildItems>
+												</UsualGroup>
+											</ChildItems>
+										</UsualGroup>
+										<InputField name="CurrentInputFieldLabel" id="223">
+											<DataPath>CurrentInputFieldLabel</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<TitleLocation>None</TitleLocation>
+											<HorizontalAlign>Center</HorizontalAlign>
+											<Width>13</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ContextMenu name="CurrentInputFieldLabelContextMenu" id="224"/>
+											<ExtendedTooltip name="CurrentInputFieldLabelExtendedTooltip" id="225"/>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+						<Button name="AddCard" id="47">
+							<Type>UsualButton</Type>
+							<CommandName>Form.Command.AddCard</CommandName>
+							<Font ref="style:LargeTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Add card</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="AddCardExtendedTooltip" id="48"/>
+						</Button>
+						<InputField name="POSTerminal" id="233">
+							<DataPath>Object.POSTerminal</DataPath>
+							<HorizontalStretch>false</HorizontalStretch>
+							<AutoMarkIncomplete>true</AutoMarkIncomplete>
+							<ChoiceParameterLinks>
+								<xr:Link>
+									<xr:Name>Filter.PettyCash</xr:Name>
+									<xr:DataPath xsi:type="xs:string">CashCR</xr:DataPath>
+									<xr:ValueChange>Clear</xr:ValueChange>
+								</xr:Link>
+							</ChoiceParameterLinks>
+							<ContextMenu name="POSTerminalContextMenu" id="234"/>
+							<ExtendedTooltip name="POSTerminalExtendedTooltip" id="235"/>
+							<Events>
+								<Event name="OnChange">POSTerminalOnChange</Event>
+							</Events>
+						</InputField>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+		<UsualGroup name="GroupAmountDeposit" id="100">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group change amount</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group change amount</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<BackColor>style:UnselectedImageTextColor</BackColor>
+			<ExtendedTooltip name="GroupChangeAmountExtendedTooltip" id="101"/>
+			<ChildItems>
+				<LabelField name="AmountShortChange" id="31">
+					<DataPath>AmountShortChange</DataPath>
+					<SkipOnInput>true</SkipOnInput>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Change</v8:content>
+						</v8:item>
+					</Title>
+					<TitleTextColor>style:FormTextColor</TitleTextColor>
+					<TitleFont ref="style:ExtraLargeTextFont" bold="false" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+					<ToolTipRepresentation>None</ToolTipRepresentation>
+					<HorizontalAlign>Left</HorizontalAlign>
+					<Width>27</Width>
+					<HorizontalStretch>true</HorizontalStretch>
+					<MarkNegatives>true</MarkNegatives>
+					<Format>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>ND=15; NFD=2; NZ=</v8:content>
+						</v8:item>
+					</Format>
+					<TextColor>style:FormTextColor</TextColor>
+					<Font ref="style:ExtraLargeTextFont" bold="false" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+					<ContextMenu name="ChangeAmountContextMenu" id="32"/>
+					<ExtendedTooltip name="ChangeAmountExtendedTooltip" id="33"/>
+				</LabelField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="FooterGroup" id="36">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group footer</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group footer</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="FooterGroupExtendedTooltip" id="37"/>
+			<ChildItems>
+				<UsualGroup name="GroupPrintSalesReceipt" id="231">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group print sales receipt</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group print sales receipt</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="GroupPrintSalesReceiptExtendedTooltip" id="232"/>
+					<ChildItems>
+						<PictureDecoration name="PicturePrinter" id="228">
+							<Width>2</Width>
+							<Height>1</Height>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Picture printer</v8:content>
+								</v8:item>
+							</Title>
+							<Picture>
+								<xr:Ref>StdPicture.Print</xr:Ref>
+								<xr:LoadTransparent>true</xr:LoadTransparent>
+							</Picture>
+							<ContextMenu name="PicturePrinterContextMenu" id="229"/>
+							<ExtendedTooltip name="PicturePrinterExtendedTooltip" id="230"/>
+						</PictureDecoration>
+						<CheckBoxField name="GenerateSalesReceipt" id="145">
+							<DataPath>GenerateSalesReceipt</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Sales receipt</v8:content>
+								</v8:item>
+							</Title>
+							<TitleTextColor>style:FormTextColor</TitleTextColor>
+							<TitleFont ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="GenerateSalesReceiptContextMenu" id="146"/>
+							<ExtendedTooltip name="GenerateSalesReceiptExtendedTooltip" id="147"/>
+						</CheckBoxField>
+					</ChildItems>
+				</UsualGroup>
+				<CommandBar name="GroupFooterButtons" id="98">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group footer buttons</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group footer buttons</v8:content>
+						</v8:item>
+					</ToolTip>
+					<HorizontalLocation>Right</HorizontalLocation>
+					<ExtendedTooltip name="GroupFooterButtonsExtendedTooltip" id="99"/>
+					<ChildItems>
+						<Button name="OK" id="34">
+							<Type>CommandBarButton</Type>
+							<DefaultButton>true</DefaultButton>
+							<CommandName>Form.Command.OK</CommandName>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Issue receipt</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="OKExtendedTooltip" id="35"/>
+						</Button>
+						<Button name="FormUndo" id="139">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Command.Cancel</CommandName>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Cancel</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="FormCancelExtendedTooltip" id="140"/>
+						</Button>
+					</ChildItems>
+				</CommandBar>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="CashReceived" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Cash Received</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>15</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ReceivedPaymentCards" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Received by payment cards</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>15</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="AmountShortChange" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Change Amount</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>15</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="DocumentAmount" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Document amount</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>15</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="GenerateSalesReceipt" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Generate sales receipt</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="DocumentCurrency" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Currency</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Currencies</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="CardsAmount" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Cards amount</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>3</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="FirstEntry" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>First entry</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="SymbolsCountAfterComma" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Number of characters after comma</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="CashReceivedRow" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Cash received (row)</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="CurrentFieldEnterAmounts" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Current field of amount entry</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ToolTip" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>ToolTip</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="CurrentInputFieldLabel" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Current input field label</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="PaymentCardKinds" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Kinds of payment cards</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="CashCR" id="17">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Cash register</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.CashRegisters</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="UsePeripherals" id="18">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Use peripherals</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="FiscalRegister" id="19">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Fiscal register</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Peripherals</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="POSTerminal" id="20">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>POS terminal</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Peripherals</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="CashCRUseWithoutEquipmentConnection" id="21">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Cash register use without equipment connection</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="WriteDocument" id="22">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Write document</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Object" id="23">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Object</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DocumentObject.ReceiptCR</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<UseAlways>
+				<Field>Object.RegisterRecords</Field>
+			</UseAlways>
+			<Columns>
+				<AdditionalColumns table="Object.PaymentWithPaymentCards">
+					<Column name="AmountRow" id="1">
+						<Title>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Amount row</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:string</v8:Type>
+							<v8:StringQualifiers>
+								<v8:Length>0</v8:Length>
+								<v8:AllowedLength>Variable</v8:AllowedLength>
+							</v8:StringQualifiers>
+						</Type>
+					</Column>
+					<Column name="FirstEntry" id="2">
+						<Title>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>First entry</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:boolean</v8:Type>
+						</Type>
+					</Column>
+					<Column name="PaymentDeleted" id="3">
+						<Title>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Payment deleted</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:boolean</v8:Type>
+						</Type>
+					</Column>
+					<Column name="PaymentAmountDeleted" id="4">
+						<Title>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Amount (del.)</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:string</v8:Type>
+							<v8:StringQualifiers>
+								<v8:Length>0</v8:Length>
+								<v8:AllowedLength>Variable</v8:AllowedLength>
+							</v8:StringQualifiers>
+						</Type>
+					</Column>
+					<Column name="CommandName" id="5">
+						<Title>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Command name</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:string</v8:Type>
+							<v8:StringQualifiers>
+								<v8:Length>0</v8:Length>
+								<v8:AllowedLength>Variable</v8:AllowedLength>
+							</v8:StringQualifiers>
+						</Type>
+					</Column>
+				</AdditionalColumns>
+			</Columns>
+		</Attribute>
+		<Attribute name="ControlAtWarehouseDisabled" id="24">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Control at warehouse disabled</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="TemporaryCardsTable" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Temporary cards table</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="LineNumber" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Line number</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>5</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="ChargeCardKind" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Kind of payment card</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ChargeCardNo" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Credit Card Number</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Amount" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Amount</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="RefNo" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Ref #</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ETReceiptNo" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>POS terminal receipt No.</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="AmountRow" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Amount row</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="FirstEntry" id="8">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>First entry</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="PaymentDeleted" id="9">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Payment deleted</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="PaymentAmountDeleted" id="10">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Payment amount deleted</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="CommandName" id="11">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Command name</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="CardsAmountForTitle" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Cards amount for title</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ButtonPressedCancel" id="25">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Button pressed cancel</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="PressedButtonIssueReceipt" id="26">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Pressed button issue receipt</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="OK" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>OK</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>OK</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>OK</Action>
+		</Command>
+		<Command name="AddCard" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Add card</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Add card</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.CreateListItem</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>AddCard</Action>
+			<Representation>Text</Representation>
+		</Command>
+		<Command name="Button0" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>0</v8:content>
+				</v8:item>
+			</Title>
+			<Action>Button0</Action>
+		</Command>
+		<Command name="Button1" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>1</v8:content>
+				</v8:item>
+			</Title>
+			<Action>Button1</Action>
+		</Command>
+		<Command name="Button2" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>2</v8:content>
+				</v8:item>
+			</Title>
+			<Action>Button2</Action>
+		</Command>
+		<Command name="Button3" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>3</v8:content>
+				</v8:item>
+			</Title>
+			<Action>Button3</Action>
+		</Command>
+		<Command name="Button4" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>4</v8:content>
+				</v8:item>
+			</Title>
+			<Action>Button4</Action>
+		</Command>
+		<Command name="Button5" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>5</v8:content>
+				</v8:item>
+			</Title>
+			<Action>Button5</Action>
+		</Command>
+		<Command name="Button6" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>6</v8:content>
+				</v8:item>
+			</Title>
+			<Action>Button6</Action>
+		</Command>
+		<Command name="Button7" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>1</v8:content>
+				</v8:item>
+			</Title>
+			<Action>Button7</Action>
+		</Command>
+		<Command name="Button8" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>8</v8:content>
+				</v8:item>
+			</Title>
+			<Action>Button8</Action>
+		</Command>
+		<Command name="Button9" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>9</v8:content>
+				</v8:item>
+			</Title>
+			<Action>Button9</Action>
+		</Command>
+		<Command name="Reset" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>From</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Reset</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>CommandClear</Action>
+		</Command>
+		<Command name="DelimiterFractionalParts" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>.</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Delimiter fractional parts</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>CommandPoint</Action>
+		</Command>
+		<Command name="Cancel" id="17">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Cancel</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Cancel payment by cards in the POS terminal</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Cancel</Action>
+		</Command>
+		<Command name="Button0_2" id="19">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>0</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Button0 2</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Shortcut>Alt+Num 0</Shortcut>
+			<Action>Button0</Action>
+		</Command>
+		<Command name="Button1_2" id="20">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>1</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Button1 2</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Shortcut>Alt+Num 1</Shortcut>
+			<Action>Button1</Action>
+		</Command>
+		<Command name="Button2_2" id="21">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>2</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Button2 2</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Shortcut>Alt+Num 2</Shortcut>
+			<Action>Button2</Action>
+		</Command>
+		<Command name="Button3_2" id="22">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>3</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Button3 2</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Shortcut>Alt+Num 3</Shortcut>
+			<Action>Button3</Action>
+		</Command>
+		<Command name="Button4_2" id="23">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>4</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Button4 2</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Shortcut>Alt+Num 4</Shortcut>
+			<Action>Button4</Action>
+		</Command>
+		<Command name="Button5_2" id="24">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>5</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Button5 2</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Shortcut>Alt+Num 5</Shortcut>
+			<Action>Button5</Action>
+		</Command>
+		<Command name="Button6_2" id="25">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>6</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Button6 2</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Shortcut>Alt+Num 6</Shortcut>
+			<Action>Button6</Action>
+		</Command>
+		<Command name="Button7_2" id="26">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>7</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Button7 2</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Shortcut>Alt+Num 7</Shortcut>
+			<Action>Button7</Action>
+		</Command>
+		<Command name="Button8_2" id="27">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>8</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Button8 2</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Shortcut>Alt+Num 8</Shortcut>
+			<Action>Button8</Action>
+		</Command>
+		<Command name="Button9_2" id="28">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>9</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Button9 2</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Shortcut>Alt+Num 9</Shortcut>
+			<Action>Button9</Action>
+		</Command>
+		<Command name="DelimiterFractionalParts_2" id="29">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>.</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Delimiter fractional parts</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Shortcut>Alt+Num .</Shortcut>
+			<Action>CommandPoint</Action>
+		</Command>
+		<Command name="Reset_2" id="30">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>From</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Reset</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Shortcut>Alt+BackSpace</Shortcut>
+			<Action>CommandClear</Action>
+		</Command>
+		<Command name="ChooseCashToDeletePayment" id="34">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Choose card</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Choose card to delete payment</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.MarkToDelete</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ChooseCashToDeletePayment</Action>
+			<Representation>Picture</Representation>
+		</Command>
+	</Commands>
+	<CommandInterface>
+		<NavigationPanel>
+			<Item>
+				<Command>Report.DiscountsAppliedInDocument.Command.AppliedDiscounts</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+		</NavigationPanel>
+	</CommandInterface>
+</Form>

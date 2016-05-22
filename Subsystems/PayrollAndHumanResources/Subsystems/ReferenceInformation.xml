@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<MetaDataObject xmlns="http://v8.1c.ru/8.3/MDClasses" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:cmi="http://v8.1c.ru/8.2/managed-application/cmi" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xpr="http://v8.1c.ru/8.3/xcf/predef" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Subsystem uuid="385aaa75-c39c-48c8-8ee8-6ae8e680c4ba">
+		<Properties>
+			<Name>ReferenceInformation</Name>
+			<Synonym>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Catalogs</v8:content>
+				</v8:item>
+			</Synonym>
+			<Comment/>
+			<IncludeHelpInContents>true</IncludeHelpInContents>
+			<IncludeInCommandInterface>true</IncludeInCommandInterface>
+			<Explanation/>
+			<Picture/>
+			<Content>
+				<xr:Item xsi:type="xr:MDObjectRef">Catalog.Positions</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Catalog.AccrualAndDeductionKinds</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Catalog.CalculationsParameters</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Role.ReadIndividualsPersonalData</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Role.ReadIndividuals</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Role.AddChangeIndividualsPersonalData</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Role.AddChangeIndividuals</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Enum.IndividualGender</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.IndividualsDocuments</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.IndividualsDescriptionFull</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.IndividualsDocumentsClientServer</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Catalog.Individuals</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Catalog.IndividualsDocumentsKinds</xr:Item>
+			</Content>
+		</Properties>
+		<ChildObjects/>
+	</Subsystem>
+</MetaDataObject>

@@ -1,0 +1,362 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Title>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Online user support</v8:content>
+		</v8:item>
+	</Title>
+	<Width>57</Width>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<ChildItemsWidth>Equal</ChildItemsWidth>
+	<Customizable>false</Customizable>
+	<CommandBarLocation>Bottom</CommandBarLocation>
+	<CommandSet>
+		<ExcludedCommand>No</ExcludedCommand>
+		<ExcludedCommand>SaveValues</ExcludedCommand>
+		<ExcludedCommand>Help</ExcludedCommand>
+		<ExcludedCommand>Abort</ExcludedCommand>
+		<ExcludedCommand>Retry</ExcludedCommand>
+		<ExcludedCommand>Yes</ExcludedCommand>
+		<ExcludedCommand>Cancel</ExcludedCommand>
+		<ExcludedCommand>RestoreValues</ExcludedCommand>
+		<ExcludedCommand>Ignore</ExcludedCommand>
+		<ExcludedCommand>OK</ExcludedCommand>
+	</CommandSet>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<HorizontalAlign>Right</HorizontalAlign>
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="RetryConnectionAttempt" id="19">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.RetryConnectionAttempt</CommandName>
+				<ExtendedTooltip name="RetryConnectionAttemptExtendedTooltip" id="58"/>
+			</Button>
+			<Button name="FormClose" id="69">
+				<Type>CommandBarButton</Type>
+				<Representation>Text</Representation>
+				<CommandName>Form.StandardCommand.Close</CommandName>
+				<ExtendedTooltip name="FormCloseExtendedTooltip" id="70"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnOpen">OnOpen</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="GroupHeader" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Header group</v8:content>
+				</v8:item>
+			</Title>
+			<TitleFont ref="sys:DefaultGUIFont" height="14" kind="WindowsFont"/>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Header group</v8:content>
+				</v8:item>
+			</ToolTip>
+			<HorizontalStretch>true</HorizontalStretch>
+			<VerticalStretch>false</VerticalStretch>
+			<Group>Horizontal</Group>
+			<Representation>StrongSeparation</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="GroupHeaderExtendedTooltip" id="42"/>
+			<ChildItems>
+				<PictureDecoration name="OnlineUserSupportIcon" id="2">
+					<Width>4</Width>
+					<Height>3</Height>
+					<HorizontalStretch>false</HorizontalStretch>
+					<VerticalStretch>false</VerticalStretch>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Online user support icon</v8:content>
+						</v8:item>
+					</Title>
+					<Picture>
+						<xr:Ref>CommonPicture.OnlineUserSupport</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</Picture>
+					<ContextMenu name="OnlineUserSupportIconContextMenu" id="3"/>
+					<ExtendedTooltip name="OnlineUserSupportIconExtendedTooltip" id="43"/>
+				</PictureDecoration>
+				<LabelDecoration name="TitleExplanation" id="7">
+					<Height>3</Height>
+					<HorizontalStretch>true</HorizontalStretch>
+					<VerticalStretch>false</VerticalStretch>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>With online user support, you can always receive updates, export extras and stay informed.</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="TitleExplanationContextMenu" id="8"/>
+					<ExtendedTooltip name="TitleExplanationExtendedTooltip" id="46"/>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="DetailsGroup" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Details group</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Details group</v8:content>
+				</v8:item>
+			</ToolTip>
+			<HorizontalStretch>true</HorizontalStretch>
+			<Group>Vertical</Group>
+			<Representation>StrongSeparation</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="DetailsGroupExtendedTooltip" id="47"/>
+			<ChildItems>
+				<UsualGroup name="GroupHeaderInformationParts" id="10">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Details title group</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Details title group</v8:content>
+						</v8:item>
+					</ToolTip>
+					<HorizontalStretch>true</HorizontalStretch>
+					<VerticalStretch>false</VerticalStretch>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="DetailsTitleGroupExtendedTooltip" id="48"/>
+					<ChildItems>
+						<PictureDecoration name="IconWarnings" id="11">
+							<Width>4</Width>
+							<Height>2</Height>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Warning icon</v8:content>
+								</v8:item>
+							</Title>
+							<Picture>
+								<xr:Ref>CommonPicture.OnlineUserSupportAttention</xr:Ref>
+								<xr:LoadTransparent>true</xr:LoadTransparent>
+							</Picture>
+							<ContextMenu name="WarningIconContextMenu" id="12"/>
+							<ExtendedTooltip name="WarningIconExtendedTooltip" id="49"/>
+						</PictureDecoration>
+						<LabelDecoration name="InformationComponentTitle" id="13">
+							<VerticalStretch>true</VerticalStretch>
+							<Font height="14" kind="AutoFont"/>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Online support request error</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="InformationComponentTitleContextMenu" id="14"/>
+							<ExtendedTooltip name="InformationComponentTitleExtendedTooltip" id="50"/>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<LabelField name="ErrorDescription" id="66">
+					<DataPath>ErrorDescription</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<ContextMenu name="ErrorDescriptionContextMenu" id="67"/>
+					<ExtendedTooltip name="ErrorDescriptionExtendedTooltip" id="68"/>
+				</LabelField>
+				<UsualGroup name="Details" id="15">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Details</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Details</v8:content>
+						</v8:item>
+					</ToolTip>
+					<HorizontalStretch>true</HorizontalStretch>
+					<Group>Vertical</Group>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="DetailsExtendedTooltip" id="51"/>
+					<ChildItems>
+						<LabelDecoration name="DetailsInformation" id="16">
+							<HorizontalStretch>true</HorizontalStretch>
+							<VerticalStretch>false</VerticalStretch>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Attempt to connect the online user support service failed. Try to configure connection, and then try to connect again.
+
+Possible causes: 
+• No Internet connection 
+• Firewall blocks the application attempts to connect to the Internet 
+• Web site problems
+
+For more information on the error, see the log file.</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="DetailsInformationContextMenu" id="17"/>
+							<ExtendedTooltip name="DetailsInformationExtendedTooltip" id="52"/>
+						</LabelDecoration>
+						<LabelDecoration name="DecorationParameters" id="38">
+							<HorizontalStretch>false</HorizontalStretch>
+							<VerticalStretch>false</VerticalStretch>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>If required, configure the &lt;link WebITSParams&gt; parameters to access &lt;/&gt;&lt;link WebITSParams&gt;online&lt;/&gt;&lt;link WebITSParams&gt; support&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="DecorationParametersContextMenu" id="39"/>
+							<ExtendedTooltip name="DecorationParametersExtendedTooltip" id="54"/>
+							<Events>
+								<Event name="URLProcessing">DecorationParametersURLProcessing</Event>
+							</Events>
+						</LabelDecoration>
+						<LabelDecoration name="SupportMessagesLabel" id="29">
+							<HorizontalStretch>true</HorizontalStretch>
+							<VerticalStretch>false</VerticalStretch>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>If you have any questions or concerns, write an email to &lt;link SendMail&gt;webits-info@1c.ru&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="SupportMessageLabelContextMenu" id="30"/>
+							<ExtendedTooltip name="SupportMessageLabelExtendedTooltip" id="63"/>
+							<Events>
+								<Event name="URLProcessing">SupportMessageLabelURLProcessing</Event>
+							</Events>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<CheckBoxField name="LaunchOnStart" id="40">
+			<DataPath>LaunchOnStart</DataPath>
+			<TitleLocation>Right</TitleLocation>
+			<CheckBoxType>Auto</CheckBoxType>
+			<ContextMenu name="LaunchOnStartContextMenu" id="41"/>
+			<ExtendedTooltip name="LaunchOnStartExtendedTooltip" id="65"/>
+			<Events>
+				<Event name="OnChange">LaunchOnStartOnChange</Event>
+			</Events>
+		</CheckBoxField>
+		<LabelDecoration name="IndentDecoration" id="71">
+			<ContextMenu name="IndentDecorationContextMenu" id="72"/>
+			<ExtendedTooltip name="DecorationIndentExtendedTooltip" id="73"/>
+		</LabelDecoration>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="LaunchLocation" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Launch location</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="LaunchParameters" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Launch parameters</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="LaunchOnStart" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Run online support when launching the application</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ErrorDescription" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Error description</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="RetryConnectionAttempt" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Retry connection attempt</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Retry connection attempt</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>RetryConnectionAttempt</Action>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="LaunchLocation">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="LaunchParameters">
+			<Type/>
+		</Parameter>
+		<Parameter name="ErrorDescription">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="OnStart">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

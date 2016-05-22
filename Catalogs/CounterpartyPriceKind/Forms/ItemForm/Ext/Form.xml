@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="FormCommandBar" id="-1"/>
+	<Events>
+		<Event name="BeforeWrite">BeforeWrite</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="DescriptionCode" id="39">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Description code</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Description code</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="DescriptionCodeExtendedTooltip" id="40"/>
+			<ChildItems>
+				<InputField name="Description" id="5">
+					<DataPath>Object.Description</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<Wrap>false</Wrap>
+					<ContextMenu name="DescriptionContextMenu" id="6"/>
+					<ExtendedTooltip name="DescriptionExtendedTooltip" id="27"/>
+				</InputField>
+				<InputField name="Code" id="3">
+					<DataPath>Object.Code</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<Wrap>false</Wrap>
+					<ContextMenu name="CodeContextMenu" id="4"/>
+					<ExtendedTooltip name="CodeExtendedTooltip" id="30"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<InputField name="Owner" id="22">
+			<DataPath>Object.Owner</DataPath>
+			<ContextMenu name="OwnerContextMenu" id="23"/>
+			<ExtendedTooltip name="OwnerExtendedTooltip" id="24"/>
+		</InputField>
+		<LabelDecoration name="Decoration1" id="41">
+			<Font ref="sys:DefaultGUIFont" height="1" kind="WindowsFont"/>
+			<ContextMenu name="Decoration1ContextMenu" id="42"/>
+			<ExtendedTooltip name="Decoration1ExtendedTooltip" id="43"/>
+		</LabelDecoration>
+		<UsualGroup name="CurrencyVAT" id="37">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Currency, VAT</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Currency VAT</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="CurrencyVATExtendedTooltip" id="38"/>
+			<ChildItems>
+				<InputField name="PriceCurrency" id="7">
+					<DataPath>Object.PriceCurrency</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<Wrap>false</Wrap>
+					<ContextMenu name="PriceCurrencyContextMenu" id="8"/>
+					<ExtendedTooltip name="PriceCurrencyExtendedTooltip" id="28"/>
+				</InputField>
+				<InputField name="PriceIncludesVAT" id="9">
+					<DataPath>Object.PriceIncludesVAT</DataPath>
+					<TitleLocation>Left</TitleLocation>
+					<EditMode>EnterOnInput</EditMode>
+					<Width>11</Width>
+					<ContextMenu name="PriceIncludedVATContextMenu" id="10"/>
+					<ExtendedTooltip name="PriceIncludedVATExtendedTooltip" id="31"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<LabelDecoration name="DecorationSplitter1" id="44">
+			<Font ref="sys:DefaultGUIFont" height="1" kind="WindowsFont"/>
+			<ContextMenu name="DecorationSplitter1ContextMenu" id="45"/>
+			<ExtendedTooltip name="DecorationSplitter1ExtendedTooltip" id="46"/>
+		</LabelDecoration>
+		<InputField name="Comment" id="16">
+			<DataPath>Object.Comment</DataPath>
+			<TitleLocation>Left</TitleLocation>
+			<EditMode>EnterOnInput</EditMode>
+			<Height>2</Height>
+			<Wrap>false</Wrap>
+			<MultiLine>true</MultiLine>
+			<ContextMenu name="CommentContextMenu" id="17"/>
+			<ExtendedTooltip name="CommentExtendedTooltip" id="33"/>
+		</InputField>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Type>
+				<v8:Type>cfg:CatalogObject.CounterpartyPriceKind</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+	</Attributes>
+</Form>

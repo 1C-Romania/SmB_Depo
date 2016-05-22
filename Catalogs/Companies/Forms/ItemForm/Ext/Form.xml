@@ -1,0 +1,1365 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<ChildItems>
+			<ButtonGroup name="GroupGlobalCommands" id="191">
+				<Title>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Global commands group</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTip>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Global commands group</v8:content>
+					</v8:item>
+				</ToolTip>
+				<CommandSource>FormCommandPanelGlobalCommands</CommandSource>
+				<ExtendedTooltip name="GroupGlobalCommandsExtendedTooltip" id="192"/>
+				<ChildItems>
+					<Button name="CommonCommandObjectReports" id="193">
+						<Type>CommandBarButton</Type>
+						<CommandName>CommonCommand.ObjectReports</CommandName>
+						<DataPath>Object.Ref</DataPath>
+						<ExtendedTooltip name="CommonCommandObjectReportsExtendedTooltip" id="194"/>
+					</Button>
+					<Button name="CatalogCompaniesExportAttributes" id="195">
+						<Type>CommandBarButton</Type>
+						<CommandName>Catalog.Companies.Command.ExportAttributes</CommandName>
+						<DataPath>Object.Ref</DataPath>
+						<ExtendedTooltip name="CatalogCompaniesExportAttributesExtendedTooltip" id="196"/>
+					</Button>
+					<Button name="CommonCommandAdditionalInformationCommandBar" id="197">
+						<Type>CommandBarButton</Type>
+						<OnlyInAllActions>false</OnlyInAllActions>
+						<CommandName>CommonCommand.AdditionalInformationCommandBar</CommandName>
+						<DataPath>Object.Ref</DataPath>
+						<ExtendedTooltip name="CommonCommandAdditionalInformationCommandBarExtendedTooltip" id="198"/>
+					</Button>
+				</ChildItems>
+			</ButtonGroup>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="ChoiceProcessing">ChoiceProcessing</Event>
+		<Event name="NotificationProcessing">NotificationProcessing</Event>
+		<Event name="OnReadAtServer">OnReadAtServer</Event>
+		<Event name="OnOpen">OnOpen</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+		<Event name="BeforeWriteAtServer">BeforeWriteAtServer</Event>
+		<Event name="FillCheckProcessingAtServer">FillCheckProcessingAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="StandardAttributes" id="36">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Standard attributes</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Standard attributes</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="StandardAttributesExtendedTooltip" id="105"/>
+			<ChildItems>
+				<InputField name="Description" id="3">
+					<DataPath>Object.Description</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<Wrap>false</Wrap>
+					<ContextMenu name="DescriptionContextMenu" id="4"/>
+					<ExtendedTooltip name="DescriptionExtendedTooltip" id="106"/>
+					<Events>
+						<Event name="OnChange">DescriptionOnChange</Event>
+					</Events>
+				</InputField>
+				<InputField name="Prefix" id="9">
+					<DataPath>Object.Prefix</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<Wrap>false</Wrap>
+					<ContextMenu name="PrefixContextMenu" id="10"/>
+					<ExtendedTooltip name="PrefixExtendedTooltip" id="107"/>
+				</InputField>
+				<InputField name="Code" id="1">
+					<DataPath>Object.Code</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<Wrap>false</Wrap>
+					<ContextMenu name="CodeContextMenu" id="2"/>
+					<ExtendedTooltip name="CodeExtendedTooltip" id="108"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<InputField name="DescriptionFull" id="38">
+			<DataPath>Object.DescriptionFull</DataPath>
+			<TitleLocation>Left</TitleLocation>
+			<Height>2</Height>
+			<VerticalStretch>false</VerticalStretch>
+			<Wrap>false</Wrap>
+			<MultiLine>true</MultiLine>
+			<ContextMenu name="FullNameContextMenu" id="39"/>
+			<ExtendedTooltip name="FullNameExtendedTooltip" id="116"/>
+		</InputField>
+		<InputField name="PayerDescriptionOnTaxTransfer" id="59">
+			<DataPath>Object.PayerDescriptionOnTaxTransfer</DataPath>
+			<TitleLocation>Left</TitleLocation>
+			<TitleHeight>2</TitleHeight>
+			<ContextMenu name="PayerDescriptionOnTaxTransferContextMenu" id="60"/>
+			<ExtendedTooltip name="PayerDescriptionOnTaxTransferExtendedTooltip" id="117"/>
+		</InputField>
+		<UsualGroup name="LegalEntityIndividualGroup" id="88">
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Legal entity individual group</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="LegalIndividualGroupExtendedTooltip" id="109"/>
+			<ChildItems>
+				<RadioButtonField name="LegalEntityIndividual" id="11">
+					<DataPath>Object.LegalEntityIndividual</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<RadioButtonType>Tumbler</RadioButtonType>
+					<ChoiceList>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Legal entity</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xr:DesignTimeRef">Enum.LegalEntityIndividual.EnumValue.LegalEntity</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Individual</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xr:DesignTimeRef">Enum.LegalEntityIndividual.EnumValue.Ind</Value>
+							</xr:Value>
+						</xr:Item>
+					</ChoiceList>
+					<ContextMenu name="LegalEntityIndividualContextMenu" id="12"/>
+					<ExtendedTooltip name="LegalEntityIndividualExtendedTooltip" id="110"/>
+					<Events>
+						<Event name="OnChange">LegalEntityIndividualOnChange</Event>
+					</Events>
+				</RadioButtonField>
+				<Pages name="PagesGroup" id="89">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Page group</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Page group</v8:content>
+						</v8:item>
+					</ToolTip>
+					<PagesRepresentation>None</PagesRepresentation>
+					<ExtendedTooltip name="PagesGroupExtendedTooltip" id="111"/>
+					<ChildItems>
+						<Page name="GroupIndividualAvailable" id="90">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Individual available group</v8:content>
+								</v8:item>
+							</Title>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupIndividualAvailableExtendedTooltip" id="112"/>
+							<ChildItems>
+								<InputField name="Individual" id="25">
+									<DataPath>Object.Individual</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<EditMode>EnterOnInput</EditMode>
+									<Wrap>false</Wrap>
+									<ContextMenu name="IndividualContextMenu" id="26"/>
+									<ExtendedTooltip name="IndividualExtendedTooltip" id="113"/>
+								</InputField>
+							</ChildItems>
+						</Page>
+						<Page name="IndividualGroupUnavailable" id="91">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group individual is unavailable</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group individual is unavailable</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ExtendedTooltip name="IndividualGroupUnavailableExtendedTooltip" id="114"/>
+							<ChildItems>
+								<LabelDecoration name="IndividualPerson1" id="188">
+									<ContextMenu name="IndividualPerson1ContextMenu" id="189"/>
+									<ExtendedTooltip name="IndividualPerson1ExtendedTooltip" id="190"/>
+								</LabelDecoration>
+							</ChildItems>
+						</Page>
+					</ChildItems>
+				</Pages>
+			</ChildItems>
+		</UsualGroup>
+		<Pages name="Pages" id="53">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Pages</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Pages</v8:content>
+				</v8:item>
+			</ToolTip>
+			<ExtendedTooltip name="PagesExtendedTooltip" id="118"/>
+			<ChildItems>
+				<Page name="Attributes" id="48">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Attributes</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Attributes</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="AttributesExtendedTooltip" id="119"/>
+					<ChildItems>
+						<UsualGroup name="Codes" id="40">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Codes</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Codes</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="CodesExtendedTooltip" id="121"/>
+							<ChildItems>
+								<Pages name="GroupTINKPP" id="94">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>TINKPP group</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>TINKPP group</v8:content>
+										</v8:item>
+									</ToolTip>
+									<PagesRepresentation>None</PagesRepresentation>
+									<ExtendedTooltip name="TINKPPGroupExtendedTooltip" id="122"/>
+									<ChildItems>
+										<Page name="PageCRRVisible" id="95">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Page CRRVisible</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Page CRRVisible</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Horizontal</Group>
+											<ExtendedTooltip name="PageKPPShowenExtendedTooltip" id="123"/>
+											<ChildItems>
+												<LabelDecoration name="TINHeader" id="99">
+													<Width>4</Width>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>TIN:</v8:content>
+														</v8:item>
+													</Title>
+													<ContextMenu name="TINHeaderContextMenu" id="100"/>
+													<ExtendedTooltip name="TINHeaderExtendedTooltip" id="124"/>
+												</LabelDecoration>
+												<InputField name="TIN" id="43">
+													<DataPath>Object.TIN</DataPath>
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>TIN</v8:content>
+														</v8:item>
+													</Title>
+													<TitleLocation>None</TitleLocation>
+													<Width>18</Width>
+													<HorizontalStretch>false</HorizontalStretch>
+													<Wrap>false</Wrap>
+													<ContextMenu name="TINContextMenu" id="44"/>
+													<ExtendedTooltip name="TINExtendedTooltip" id="125"/>
+												</InputField>
+												<InputField name="KPP" id="15">
+													<DataPath>Object.KPP</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<Width>18</Width>
+													<HorizontalStretch>false</HorizontalStretch>
+													<Wrap>false</Wrap>
+													<ContextMenu name="KPPContextMenu" id="16"/>
+													<ExtendedTooltip name="KPPExtendedTooltip" id="126"/>
+												</InputField>
+											</ChildItems>
+										</Page>
+										<Page name="HiddenKPPPage" id="96">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>HiddenKPP page</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>HiddenKPP page</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Horizontal</Group>
+											<ExtendedTooltip name="HiddenKPPPageExtendedTooltip" id="127"/>
+											<ChildItems>
+												<LabelDecoration name="TINHeader1" id="101">
+													<Width>4</Width>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>TIN:</v8:content>
+														</v8:item>
+													</Title>
+													<ContextMenu name="TINHeader1ContextMenu" id="102"/>
+													<ExtendedTooltip name="TINHeader1ExtendedTooltip" id="128"/>
+												</LabelDecoration>
+												<InputField name="TIN1" id="97">
+													<DataPath>Object.TIN</DataPath>
+													<TitleLocation>None</TitleLocation>
+													<Width>18</Width>
+													<HorizontalStretch>false</HorizontalStretch>
+													<Wrap>false</Wrap>
+													<ContextMenu name="TIN1ContextMenu" id="98"/>
+													<ExtendedTooltip name="TIN1ExtendedTooltip" id="129"/>
+												</InputField>
+											</ChildItems>
+										</Page>
+									</ChildItems>
+								</Pages>
+								<UsualGroup name="OKPOOKATO" id="50">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>OKPO,OKATO</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>OKPOOKATO</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="RBOCRCPSExtendedTooltip" id="130"/>
+									<ChildItems>
+										<InputField name="CodeByOKPO" id="17">
+											<DataPath>Object.CodeByOKPO</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>18</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<Wrap>false</Wrap>
+											<ContextMenu name="NCBOCodeContextMenu" id="18"/>
+											<ExtendedTooltip name="NCBOCodeExtendedTooltip" id="131"/>
+										</InputField>
+										<InputField name="OKATOCode" id="51">
+											<DataPath>Object.CodeByOKATO</DataPath>
+											<Width>18</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<Wrap>false</Wrap>
+											<ContextMenu name="OKATOCodeContextMenu" id="52"/>
+											<ExtendedTooltip name="OKATOCodeExtendedTooltip" id="132"/>
+										</InputField>
+										<InputField name="CodebyOKTMO" id="185">
+											<DataPath>Object.CodebyOKTMO</DataPath>
+											<Width>18</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ContextMenu name="CodebyOKTMOContextMenu" id="186"/>
+											<ExtendedTooltip name="CodebyOKTMOExtendedTooltip" id="187"/>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="DefaultValues" id="46">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Used as basic</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Default values</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<ExtendedTooltip name="DefaultValuesExtendedTooltip" id="133"/>
+							<ChildItems>
+								<InputField name="BusinessCalendar" id="57">
+									<DataPath>Object.BusinessCalendar</DataPath>
+									<Width>35</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<Wrap>false</Wrap>
+									<ContextMenu name="BusinessCalendarContextMenu" id="58"/>
+									<ExtendedTooltip name="BusinessCalendarExtendedTooltip" id="120"/>
+								</InputField>
+								<UsualGroup name="BankPettyCashByDefault" id="41">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Bank, petty cash by default</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Bank cash by default</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="BankPettyCashByDefaultExtendedTooltip" id="134"/>
+									<ChildItems>
+										<InputField name="BankAccountByDefault" id="19">
+											<DataPath>Object.BankAccountByDefault</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>35</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<Wrap>false</Wrap>
+											<ContextMenu name="BankAccountDefaultContextMenu" id="20"/>
+											<ExtendedTooltip name="BankAccountDefaultExtendedTooltip" id="135"/>
+											<Events>
+												<Event name="StartChoice">BankAccountByDefaultStartChoice</Event>
+											</Events>
+										</InputField>
+										<InputField name="PettyCashByDefault" id="5">
+											<DataPath>Object.PettyCashByDefault</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>35</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<Wrap>false</Wrap>
+											<ContextMenu name="PettyCashByDefaultContextMenu" id="6"/>
+											<ExtendedTooltip name="PettyCashByDefaultExtendedTooltip" id="136"/>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="StrVATDefaultAttributes" id="45">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Attributes VAT by default</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Attributes VAT by default</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="StrVATDefaultAttributesExtendedTooltip" id="137"/>
+									<ChildItems>
+										<InputField name="DefaultVATRate" id="7">
+											<DataPath>Object.DefaultVATRate</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>15</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<Wrap>false</Wrap>
+											<ContextMenu name="DefaultVATRateContextMenu" id="8"/>
+											<ExtendedTooltip name="DefaultVATRateExtendedTooltip" id="138"/>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="FolderCertificate" id="61">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Certificate of tax payer registration</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Certificate</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<ExtendedTooltip name="FolderCertificateExtendedTooltip" id="139"/>
+							<ChildItems>
+								<InputField name="CertificateSeriesNumber" id="64">
+									<DataPath>Object.CertificateSeriesNumber</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Series and No.</v8:content>
+										</v8:item>
+									</Title>
+									<Width>38</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="CertificateSeriesNumberContextMenu" id="65"/>
+									<ExtendedTooltip name="CertificateSeriesNumberExtendedTooltip" id="141"/>
+								</InputField>
+								<InputField name="CertificateIssueDate" id="62">
+									<DataPath>Object.CertificateIssueDate</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Issue date</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="CertificateIssuanceDateContextMenu" id="63"/>
+									<ExtendedTooltip name="CertificateIssuanceDateExtendedTooltip" id="140"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="GroupContactInformation" id="54">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Addresses</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Contact information</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="ContactInformationGroupExtendedTooltip" id="157"/>
+				</Page>
+				<Page name="LogoForPrintOptions" id="66">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Print settings</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Logo setup for printing</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="LogoForPrintOptionsExtendedTooltip" id="142"/>
+					<ChildItems>
+						<CommandBar name="PrintCommands" id="199">
+							<Visible>false</Visible>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Print commands</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Print commands</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ExtendedTooltip name="PrintCommandsExtendedTooltip" id="200"/>
+						</CommandBar>
+						<UsualGroup name="GroupVerticalTemplate" id="159">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group vertical template</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group vertical template</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ChildItemsWidth>Equal</ChildItemsWidth>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupVerticalTemplateEnhancedToolTip" id="160"/>
+							<ChildItems>
+								<UsualGroup name="GroupLogo" id="67">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group logo</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group logo</v8:content>
+										</v8:item>
+									</ToolTip>
+									<HorizontalStretch>false</HorizontalStretch>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupLogoExtendedTooltip" id="143"/>
+									<ChildItems>
+										<LabelDecoration name="ShowHelpBootLogo" id="71">
+											<HorizontalStretch>false</HorizontalStretch>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>How to load our logo?</v8:content>
+												</v8:item>
+											</Title>
+											<Hyperlink>true</Hyperlink>
+											<ContextMenu name="ShowHelpBootLogoContextMenu" id="72"/>
+											<ExtendedTooltip name="ShowHelpBootLogoExtendedTooltip" id="146"/>
+											<Events>
+												<Event name="Click">ShowHelpBootLogoClick</Event>
+											</Events>
+										</LabelDecoration>
+										<CommandBar name="GroupCommandBarLogo" id="161">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group command panel logo</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group command panel logo</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ExtendedTooltip name="GroupCommandBarLogoExtendedTooltip" id="162"/>
+											<ChildItems>
+												<Button name="AddImageLogo" id="163">
+													<Type>CommandBarButton</Type>
+													<CommandName>Form.Command.AddImageLogo</CommandName>
+													<ExtendedTooltip name="AddImageLogoExtendedTooltip" id="164"/>
+												</Button>
+												<Button name="ChangeImage" id="165">
+													<Type>CommandBarButton</Type>
+													<CommandName>Form.Command.ChangeImageLogo</CommandName>
+													<ExtendedTooltip name="ChangeImageExtendedTooltip" id="166"/>
+												</Button>
+												<Button name="ClearImage" id="167">
+													<Type>CommandBarButton</Type>
+													<CommandName>Form.Command.ClearImageLogo</CommandName>
+													<ExtendedTooltip name="ClearImageExtendedTooltip" id="168"/>
+												</Button>
+												<Button name="SeeImage" id="169">
+													<Type>CommandBarButton</Type>
+													<CommandName>Form.Command.ViewImageLogo</CommandName>
+													<ExtendedTooltip name="SeeImageExtendedTooltip" id="170"/>
+												</Button>
+												<Button name="PictureFromAttachedFiles" id="171">
+													<Type>CommandBarButton</Type>
+													<CommandName>Form.Command.LogoOfAttachedFiles</CommandName>
+													<ExtendedTooltip name="PictureFromAttachedFilesExtendedTooltip" id="172"/>
+												</Button>
+											</ChildItems>
+										</CommandBar>
+										<PictureField name="AddressLogo" id="68">
+											<DataPath>AddressLogo</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<Width>38</Width>
+											<Height>7</Height>
+											<HorizontalStretch>false</HorizontalStretch>
+											<VerticalStretch>false</VerticalStretch>
+											<PictureSize>Proportionally</PictureSize>
+											<Hyperlink>true</Hyperlink>
+											<NonselectedPictureText>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Add logo</v8:content>
+												</v8:item>
+											</NonselectedPictureText>
+											<TextColor>style:UnselectedImageTextColor</TextColor>
+											<ContextMenu name="AddressLogoContextMenu" id="69"/>
+											<ExtendedTooltip name="AddressLogoExtendedTooltip" id="144"/>
+											<Events>
+												<Event name="Click">AddressLogoClick</Event>
+											</Events>
+										</PictureField>
+										<UsualGroup name="FolderAddressLogoDescription" id="70">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group logo address explanation</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group logo address explanation</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Vertical</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="FolderAddressLogoDescriptionExtendedTooltip" id="145"/>
+											<ChildItems>
+												<LabelDecoration name="ExplanationLogo" id="73">
+													<Width>38</Width>
+													<Height>3</Height>
+													<HorizontalStretch>false</HorizontalStretch>
+													<TextColor>style:ExplanationText</TextColor>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Logo will be used in the print form of the "Invoice for payment" document and price lists which are generated out of the counterparties cards.</v8:content>
+														</v8:item>
+													</Title>
+													<VerticalAlign>Top</VerticalAlign>
+													<ContextMenu name="ExplanationLogoContextMenu" id="74"/>
+													<ExtendedTooltip name="ExplanationLogoExtendedTooltip" id="147"/>
+												</LabelDecoration>
+												<InputField name="LogoFile" id="75">
+													<DataPath>Object.LogoFile</DataPath>
+													<Visible>false</Visible>
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Logo</v8:content>
+														</v8:item>
+													</Title>
+													<TitleLocation>Top</TitleLocation>
+													<HorizontalStretch>true</HorizontalStretch>
+													<VerticalStretch>false</VerticalStretch>
+													<DropListButton>false</DropListButton>
+													<ChoiceButton>true</ChoiceButton>
+													<ChoiceButtonRepresentation>ShowInInputField</ChoiceButtonRepresentation>
+													<OpenButton>true</OpenButton>
+													<ContextMenu name="FileLogoContextMenu" id="76"/>
+													<ExtendedTooltip name="FileLogoExtendedTooltip" id="148"/>
+													<Events>
+														<Event name="OnChange">PictureFileOnChange</Event>
+													</Events>
+												</InputField>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="GroupFaxPrint" id="77">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group print</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group logo</v8:content>
+										</v8:item>
+									</ToolTip>
+									<HorizontalStretch>false</HorizontalStretch>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupFaxPrintExtendedTooltip" id="149"/>
+									<ChildItems>
+										<Button name="PrintCatalogAssistantWorkFaxPrint" id="81">
+											<Type>Hyperlink</Type>
+											<CommandName>Form.Command.PrintFaxPrintWorkAssistant0</CommandName>
+											<ExtendedTooltip name="PrintCatalogAssistantWorkFaxPrintExtendedTooltip" id="152"/>
+										</Button>
+										<CommandBar name="GroupCommandBarFacsimile" id="173">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group command panel logo</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group command panel logo</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ExtendedTooltip name="GroupCommandBarFacsimileExtendedTooltip" id="174"/>
+											<ChildItems>
+												<Button name="AddImageFacsimile" id="175">
+													<Type>CommandBarButton</Type>
+													<CommandName>Form.Command.AddImageFacsimile</CommandName>
+													<ExtendedTooltip name="AddImageFacsimileExtendedTooltip" id="176"/>
+												</Button>
+												<Button name="ChangeImageFacsimile" id="177">
+													<Type>CommandBarButton</Type>
+													<CommandName>Form.Command.ChangeImageFacsimile</CommandName>
+													<ExtendedTooltip name="ChangeImageFacsimileExtendedTooltip" id="178"/>
+												</Button>
+												<Button name="ClearImageFacsimile" id="179">
+													<Type>CommandBarButton</Type>
+													<CommandName>Form.Command.ClearImageFacsimile</CommandName>
+													<ExtendedTooltip name="ClearImageFacsimileExtendedTooltip" id="180"/>
+												</Button>
+												<Button name="ViewPictureFacsimile" id="181">
+													<Type>CommandBarButton</Type>
+													<CommandName>Form.Command.ViewPictureFacsimile</CommandName>
+													<ExtendedTooltip name="ViewPictureFacsimileExtendedTooltip" id="182"/>
+												</Button>
+												<Button name="FacsimileOfAttachedFiles" id="183">
+													<Type>CommandBarButton</Type>
+													<CommandName>Form.Command.FacsimileOfAttachedFiles</CommandName>
+													<ExtendedTooltip name="FacsimileOfAttachedFilesEnhancedToolTip" id="184"/>
+												</Button>
+											</ChildItems>
+										</CommandBar>
+										<PictureField name="AddressFaxPrinting" id="78">
+											<DataPath>AddressFaxPrinting</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<Width>38</Width>
+											<Height>7</Height>
+											<HorizontalStretch>false</HorizontalStretch>
+											<VerticalStretch>false</VerticalStretch>
+											<PictureSize>Proportionally</PictureSize>
+											<Hyperlink>true</Hyperlink>
+											<NonselectedPictureText>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Add the facsimile print</v8:content>
+												</v8:item>
+											</NonselectedPictureText>
+											<TextColor>style:UnselectedImageTextColor</TextColor>
+											<ContextMenu name="AddressFaxPrintingContextMenu" id="79"/>
+											<ExtendedTooltip name="AddressFaxPrintingExtendedTooltip" id="150"/>
+											<Events>
+												<Event name="Click">AddressFaxPrintingClick</Event>
+											</Events>
+										</PictureField>
+										<UsualGroup name="GroupAddressPrintDescription" id="80">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group picture address explanation</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group picture address explanation</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Vertical</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="GroupAddressPrintDescriptionExtendedTooltip" id="151"/>
+											<ChildItems>
+												<LabelDecoration name="ExplanationPrint" id="82">
+													<Width>38</Width>
+													<Height>3</Height>
+													<HorizontalStretch>false</HorizontalStretch>
+													<VerticalStretch>false</VerticalStretch>
+													<TextColor>style:ExplanationText</TextColor>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Facsimile printing will be used in the print form of the "Account for payment" document issued for the customer.</v8:content>
+														</v8:item>
+													</Title>
+													<VerticalAlign>Top</VerticalAlign>
+													<ContextMenu name="ExplanationPrintContextMenu" id="83"/>
+													<ExtendedTooltip name="ExplanationPrintExtendedTooltip" id="153"/>
+												</LabelDecoration>
+												<InputField name="FileFacsimilePrinting" id="84">
+													<DataPath>Object.FileFacsimilePrinting</DataPath>
+													<Visible>false</Visible>
+													<TitleLocation>Top</TitleLocation>
+													<HorizontalStretch>true</HorizontalStretch>
+													<VerticalStretch>false</VerticalStretch>
+													<DropListButton>false</DropListButton>
+													<ChoiceButtonRepresentation>ShowInInputField</ChoiceButtonRepresentation>
+													<ContextMenu name="FileFacsimilePrintContextMenu" id="85"/>
+													<ExtendedTooltip name="FileFacsimilePrintExtendedTooltip" id="154"/>
+													<Events>
+														<Event name="OnChange">FilePrintToFaxOnChange</Event>
+													</Events>
+												</InputField>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="GroupChecking" id="86">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group checking</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupChecksExtendedTooltip" id="155"/>
+							<ChildItems>
+								<Button name="CatalogOfPrintPreviewAccount" id="87">
+									<Type>Hyperlink</Type>
+									<CommandName>Form.Command.PreviewPrintedFormsInvoiceForPayment1</CommandName>
+									<ExtendedTooltip name="CatalogOfPrintPreviewAccountExtendedTooltip" id="156"/>
+								</Button>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="AdditionalAttributesPage" id="55">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Additional attributes</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Additional attributes</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="AdditionalAttributesPageExtendedTooltip" id="158"/>
+				</Page>
+			</ChildItems>
+		</Pages>
+		<UsualGroup name="InformationReferences" id="103">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Information references</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Information references</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="InformationLinksExtendedTooltip" id="104"/>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Type>
+				<v8:Type>cfg:CatalogObject.Companies</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="LegalEntity" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Legal entity</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.LegalEntityIndividual</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="FunctionalOptionAccountingByMultipleCompanies" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Functional option accounting by multiple Companies</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="AddressLogo" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Address logo</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="AddressFaxPrinting" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Fax printing address</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="UpdateAvailable" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Update available</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="WorkWithLogo" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Work with logo</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="WorkWithFacsimile" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Work with facsimile</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="AddImageLogo" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Add the logo picture</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Add the logo picture</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.CreateListItem</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>AddImageLogo</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="ChangeImageLogo" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Change the logo picture</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Change the logo picture</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Change</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ChangeImageLogo</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="LogoOfAttachedFiles" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Choose from attached</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Select logo from attached files</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>LogoOfAttachedFiles</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="ClearImageLogo" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Clear the logo picture</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Clear the logo picture</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Delete</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ClearImageLogo</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="ViewImageLogo" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>View the logo picture</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>View the logo picture</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Magnifier</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ViewImageLogo</Action>
+		</Command>
+		<Command name="AddImageFacsimile" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Add the facsimile picture</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Add the facsimile picture</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.CreateListItem</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>AddImageFacsimile</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="ChangeImageFacsimile" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Change the facsimile picture</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Change the facsimile picture</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Change</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ChangeImageFacsimile</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="ClearImageFacsimile" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Clear the facsimile picture</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Clear the facsimile picture</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Delete</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ClearImageFacsimile</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="ViewPictureFacsimile" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>View facsimile picture</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>View the logo picture</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Magnifier</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ViewPictureFacsimile</Action>
+		</Command>
+		<Command name="FacsimileOfAttachedFiles" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Choose from attached</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Select facsimile from attached files</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>FacsimileOfAttachedFiles</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="PrintFaxPrintWorkAssistant0" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>How to create facsimile fast and easy?</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Print fax print work assistant0</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Attachable_ExecutePrintCommand</Action>
+		</Command>
+		<Command name="PreviewPrintedFormsInvoiceForPayment1" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Preview of the "Account for payment" print form</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Preview printed from of invoice for payment1</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Attachable_ExecutePrintCommand</Action>
+		</Command>
+	</Commands>
+	<CommandInterface>
+		<NavigationPanel>
+			<Item>
+				<Command>InformationRegister.AccrualsAndDeductionsPlan.StandardCommand.OpenByValue.Company</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormNavigationPanelGoTo</CommandGroup>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+			<Item>
+				<Command>InformationRegister.Employees.StandardCommand.OpenByValue.Company</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormNavigationPanelGoTo</CommandGroup>
+				<Index>1</Index>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+			<Item>
+				<Command>InformationRegister.FixedAssetsParameters.StandardCommand.OpenByValue.Company</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormNavigationPanelGoTo</CommandGroup>
+				<Index>2</Index>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+			<Item>
+				<Command>InformationRegister.FixedAssetsStates.StandardCommand.OpenByValue.Company</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormNavigationPanelGoTo</CommandGroup>
+				<Index>3</Index>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+			<Item>
+				<Command>InformationRegister.StaffList.StandardCommand.OpenByValue.Company</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormNavigationPanelGoTo</CommandGroup>
+				<Index>4</Index>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+			<Item>
+				<Command>Catalog.CashRegisters.StandardCommand.OpenByValue</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormNavigationPanelGoTo</CommandGroup>
+				<Index>5</Index>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+			<Item>
+				<Command>0:236ac797-a9d4-460f-99da-dcc1dffaf493</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormNavigationPanelSeeAlso</CommandGroup>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+			<Item>
+				<Command>0:48865d24-6634-494d-9eb4-a06f8fc92a11</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormNavigationPanelSeeAlso</CommandGroup>
+				<Index>1</Index>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+		</NavigationPanel>
+	</CommandInterface>
+</Form>

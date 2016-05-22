@@ -1,0 +1,509 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Title>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>New user registration</v8:content>
+		</v8:item>
+	</Title>
+	<Width>55</Width>
+	<AutoTitle>false</AutoTitle>
+	<AutoFillCheck>false</AutoFillCheck>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnOpen">OnOpen</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+		<Event name="OnClose">OnClose</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="GroupHeaderExplanations" id="40">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group header explanations</v8:content>
+				</v8:item>
+			</Title>
+			<HorizontalStretch>true</HorizontalStretch>
+			<VerticalStretch>false</VerticalStretch>
+			<Group>Horizontal</Group>
+			<Representation>StrongSeparation</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="GroupHeaderExplanationsExtendedTooltip" id="111"/>
+			<ChildItems>
+				<PictureDecoration name="PictureHeaderExplanations" id="41">
+					<Width>4</Width>
+					<Height>2</Height>
+					<HorizontalStretch>false</HorizontalStretch>
+					<VerticalStretch>false</VerticalStretch>
+					<Picture>
+						<xr:Ref>CommonPicture.OnlineUserSupport</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</Picture>
+					<ContextMenu name="PictureHeaderExplanationsContextMenu" id="42"/>
+					<ExtendedTooltip name="PictureHeaderExplanationsExtendedTooltip" id="112"/>
+				</PictureDecoration>
+				<UsualGroup name="GroupHeaderVerticalGroup" id="43">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group header vertical group</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="GroupHeaderVerticalGroupExtendedTooltip" id="113"/>
+					<ChildItems>
+						<LabelDecoration name="HeaderExplanationTwo" id="46">
+							<HorizontalStretch>true</HorizontalStretch>
+							<VerticalStretch>true</VerticalStretch>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Enter information about yourself. If problem occurs please contact &lt;link TechSupport&gt;technical support&lt;/&gt;.</v8:content>
+								</v8:item>
+							</Title>
+							<VerticalAlign>Center</VerticalAlign>
+							<ContextMenu name="HeaderExplanationTwoContextMenu" id="47"/>
+							<ExtendedTooltip name="HeaderExplanationTwoExtendedTooltip" id="114"/>
+							<Events>
+								<Event name="URLProcessing">HeaderExplanationTwoNavigationRefProcessing</Event>
+							</Events>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="GroupContent" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group content</v8:content>
+				</v8:item>
+			</Title>
+			<HorizontalStretch>true</HorizontalStretch>
+			<Group>Vertical</Group>
+			<Representation>StrongSeparation</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="GroupContentExtendedTooltip" id="115"/>
+			<ChildItems>
+				<InputField name="Login" id="71">
+					<DataPath>Login</DataPath>
+					<Width>20</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<AutoMarkIncomplete>true</AutoMarkIncomplete>
+					<ContextMenu name="LoginContextMenu" id="72"/>
+					<ExtendedTooltip name="LoginExtendedTooltip" id="116"/>
+					<Events>
+						<Event name="OnChange">LoginOnChange</Event>
+					</Events>
+				</InputField>
+				<InputField name="Password" id="74">
+					<DataPath>Password</DataPath>
+					<Width>20</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<PasswordMode>true</PasswordMode>
+					<AutoMarkIncomplete>true</AutoMarkIncomplete>
+					<ContextMenu name="PasswordContextMenu" id="75"/>
+					<ExtendedTooltip name="PasswordExtendedTooltip" id="117"/>
+				</InputField>
+				<UsualGroup name="PasswordGroup" id="80">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Password group</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="PasswordGroupExtendedTooltip" id="118"/>
+					<ChildItems>
+						<InputField name="PasswordConfirmation" id="77">
+							<DataPath>PasswordConfirmation</DataPath>
+							<Width>20</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<PasswordMode>true</PasswordMode>
+							<AutoMarkIncomplete>true</AutoMarkIncomplete>
+							<ContextMenu name="PasswordConfirmationContextMenu" id="78"/>
+							<ExtendedTooltip name="PasswordConfirmationExtendedTooltip" id="119"/>
+						</InputField>
+						<LabelDecoration name="DecorationPassword" id="82">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>(Confirmation)</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="DecorationPasswordContextMenu" id="83"/>
+							<ExtendedTooltip name="DecorationPasswordExtendedTooltip" id="120"/>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<InputField name="Email" id="16">
+					<DataPath>Email</DataPath>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Counterparty email address</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Width>20</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<AutoMarkIncomplete>true</AutoMarkIncomplete>
+					<ContextMenu name="EmailContextMenu" id="17"/>
+					<ExtendedTooltip name="EmailExtendedTooltip" id="121"/>
+					<Events>
+						<Event name="OnChange">EmailOnChange</Event>
+					</Events>
+				</InputField>
+				<InputField name="Surname" id="85">
+					<DataPath>Surname</DataPath>
+					<HorizontalStretch>true</HorizontalStretch>
+					<ContextMenu name="SurnameContextMenu" id="86"/>
+					<ExtendedTooltip name="LastNameExtendedTooltip" id="122"/>
+				</InputField>
+				<UsualGroup name="GroupNamePatronymic" id="88">
+					<EnableContentChange>true</EnableContentChange>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group name patronymic</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="GroupNamePatronymicExtendedTooltip" id="123"/>
+					<ChildItems>
+						<LabelDecoration name="DecorationHeaderName" id="103">
+							<Width>9</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Name:</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="DecorationHeaderNameContextMenu" id="104"/>
+							<ExtendedTooltip name="DecorationHeaderNameExtendedTooltip" id="124"/>
+						</LabelDecoration>
+						<InputField name="Name" id="90">
+							<DataPath>Name</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<ContextMenu name="NameContextMenu" id="91"/>
+							<ExtendedTooltip name="NameExtendedTooltip" id="125"/>
+						</InputField>
+						<LabelDecoration name="DecorationHeaderPatronymic" id="107">
+							<Width>7</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Patronymic:</v8:content>
+								</v8:item>
+							</Title>
+							<HorizontalAlign>Right</HorizontalAlign>
+							<ContextMenu name="DecorationHeaderPatronymicContextMenu" id="108"/>
+							<ExtendedTooltip name="DecorationHeaderPatronymicExtendedTooltip" id="126"/>
+						</LabelDecoration>
+						<InputField name="Patronymic" id="93">
+							<DataPath>Patronymic</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<ContextMenu name="PatronymicContextMenu" id="94"/>
+							<ExtendedTooltip name="PatronymicExtendedTooltip" id="127"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="GroupCityPhone" id="96">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group city phone</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="GroupCityPhoneExtendedTooltip" id="128"/>
+					<ChildItems>
+						<LabelDecoration name="DecorationHeaderCity" id="105">
+							<Width>9</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>City:</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="DecorationHeaderCityContextMenu" id="106"/>
+							<ExtendedTooltip name="DecorationHeaderCityExtendedTooltip" id="129"/>
+						</LabelDecoration>
+						<InputField name="City" id="98">
+							<DataPath>City</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<ContextMenu name="CityContextMenu" id="99"/>
+							<ExtendedTooltip name="CityExtendedTooltip" id="130"/>
+						</InputField>
+						<LabelDecoration name="DecorationHeaderPhone" id="109">
+							<Width>7</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Phone:</v8:content>
+								</v8:item>
+							</Title>
+							<HorizontalAlign>Right</HorizontalAlign>
+							<ContextMenu name="DecorationHeaderPhoneContextMenu" id="110"/>
+							<ExtendedTooltip name="DecorationHeaderPhoneExtendedTooltip" id="131"/>
+						</LabelDecoration>
+						<InputField name="Phone" id="14">
+							<DataPath>Phone</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Company's phone</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ContextMenu name="PhoneContextMenu" id="15"/>
+							<ExtendedTooltip name="PhoneExtendedTooltip" id="132"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<InputField name="Workplace" id="101">
+					<DataPath>Workplace</DataPath>
+					<ContextMenu name="WorkplaceContextMenu" id="102"/>
+					<ExtendedTooltip name="WorkplaceExtendedTooltip" id="133"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ButtonGroup" id="25">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Button group</v8:content>
+				</v8:item>
+			</Title>
+			<HorizontalStretch>true</HorizontalStretch>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ButtonGroupExtendedTooltip" id="134"/>
+			<ChildItems>
+				<LabelDecoration name="EmptyLabelButtons" id="29">
+					<HorizontalStretch>true</HorizontalStretch>
+					<ContextMenu name="EmptyLabelButtonsContextMenu" id="30"/>
+					<ExtendedTooltip name="EmptyLabelButtonsExtendedTooltip" id="136"/>
+				</LabelDecoration>
+				<Button name="RegisterAndLogin" id="31">
+					<Type>UsualButton</Type>
+					<DefaultButton>true</DefaultButton>
+					<CommandName>Form.Command.RegisterAndLogin</CommandName>
+					<ExtendedTooltip name="RegisterAndLoginExtendedTooltip" id="137"/>
+				</Button>
+				<Button name="Close" id="32">
+					<Type>UsualButton</Type>
+					<Width>7</Width>
+					<CommandName>Form.StandardCommand.Close</CommandName>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Cancel</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="CloseExtendedTooltip" id="138"/>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.OnlineSupportBasicFunctions</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="Phone" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Phone</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Email" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Email</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="SoftwareClosing" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Software closing</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Login" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Login</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Password" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Password</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="PasswordConfirmation" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Password</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Surname" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Last name</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Name" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Name</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Patronymic" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Patronymic</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="City" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>City</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Workplace" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Workplace</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="RegisterAndLogin" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Register and login</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Register and login</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>RegisterAndLogin</Action>
+		</Command>
+	</Commands>
+</Form>

@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head><meta name="GENERATOR" content="MSHTML 11.00.9600.18321"></meta></head><body>
+<h1>Universal data exchange in XML format</h1>
+<p class="Usual"> </p>
+<p class="Usual">The "Universal Data Exchange in XML Format" data processor is used for data export and import to and from file from any configuration, Creatingd on the 1C:Enterprise 8 platform.</p>
+<p> </p>
+<h3>Data export</h3>
+<p>To perform data export it is required to specify the attachment file name, where data will be exported, and select a file with exchange rules. Exchange rules for any configuration can be configured in the "Data conversion 3" configuration. </p>
+<p>It is required to specify a period - "Start date" and "End date" for export of documents and independent periodic information registers. A resultant file containing exported data can be compressed.</p>
+<p>On the "Data export rules" tab it is possible: to select the object types that have to be exported; to configure filter for selection of objects or to specify the data exchange node, for which data has to be exported.</p>
+<p>On the "Dump parameters" tab it is possible to specify addition data export parameters.</p>
+<p>On the "Notes" tab it is possible to write some text that will be included into the exchange file.</p>
+<h3>Data import</h3>
+<p>To perform data import it is required to specify the attachment file name, from which data will be imported. </p>
+<p>There exists an option to configure data import in transaction. To do this it is required to mark the "Use transactions" flag and specify number of items in one transaction.</p>
+<p>"Import data in exchange mode (DataExchange.Load = True)" – if flag is marked, then objects will be imported with defined "load" flag. This means that all platform and applied verifications will be disabled when objects are recorded into infobase. Exception are the documents, which are recorded in posting or undo-posting modes. Posting and undo-posting are always performed defining of the "load" mode, i.e. all checks will be done.</p>
+<h3>Additional settings</h3>
+<p>This tab is used for detailed configuration of data export and import.</p>
+<p>"Debug mode" – flag that enables exchange debug mode. If the flag is marked, then data exchange process will not be aborted when some error occurs. Exchange will be completed with output of the debug messages into the exchange protocol file. This mode should be used for debugging of the exchange rules.</p>
+<p>"Output information messages into messages window" – if the flag is marked, then the data exchange protocol will be output into service window.</p>
+<p>"Number of the processed objects for status update" – the parameter is used to define number of the processed before update of the status bar.</p>
+<p>"Data export settings" – these settings allow: to define number of items being processed in one transaction when data is exported; to export and process only those objects, for which access rights exist; to configure the type of registration change for the exported objects via exchange plans.</p>
+<p>"Use optimized format for data exchange (V8 - V8, data processor version 2.0.18 or higher)" – an optimized format of exchange message implies that the "InformationAboutDataTypes" node exists in a message header, where information about the data types is exported. This option allows to fasten data import operation.</p>
+<p>"Use transactions during dump from exchange plans" – the flag defines transaction use mode for data export when changes are selected on the exchange plans' nodes. If the flag is marked, then data will be exported in transaction.</p>
+<p>"Number of items in transaction" – defines maximum number of data items that are placed in the message within one database transaction. If the parameter value is zero (default value), then all data is placed into a single transaction. This is a recommended mode, because it provides conformity of data, placed into message. There also may happen lock contentions between transactions when message is being Creatingd in multiuser mode. Value of this parameter may be adjusted to reduce probability of such conflicts. The less the parameter value, the less transaction conflict probability, but higher probability of placing of unconformed data in the message.</p>
+<p>"Export objects for which there are the access rights" – if the flag is marked, then infobase objects will be selected by taking into account access rights of the current user. This option implies use of "ALLOWED" literal in the query text when data is selected.</p>
+<p>"Automatically delete disallowed characters from string for recording to XML" – if the flag is marked, then disallowed chars will be deleted before writing data into the exchange message. Chars are verified for compatibility with the XML 1.0 recommendation.</p>
+<p>"Changes of registration for exchange nodes after dump" – the field defines how data changes will be registered after dump is completed. Possible values:</p>
+<ul><li>
+<div>Do not delete registration – after the dump is done registration of changes on the node will not be deleted.</div>
+</li><li>
+<div>Completely delete registration for the exchange node – after the dump is done registration of changes on the node will be deleted completely.</div>
+</li><li>
+<div>deletion registration only for dumped metadata – after the dump is done registration of changes on the node will be deleted only for the metadata objects that were specified for export.</div></li></ul><p><br>"Exchange protocol" – controls output of information messages into the messages windows, creating and writing of exchange protocol into a separate file.</p>
+<p>"Exchange protocol attachment file name" – attachment file name where the exchange process protocol should be written.</p>
+<p>"Import protocol (for COM connection)" – attachment file name for output of the data protocol of exchange process in receiver database when the exchange is performed via COM-connection. Important: path to the file should be accessible from the computer, where base-receiver is Seted.</p>
+<p>"Append data to exchange protocol"  – if the flag is marked, then content of the exchange protocol file is preserved in case if file already exists.</p>
+<p>"Output info messages into protocol" – if the flag is marked, then information messages will be written into the protocol file in addition to error messages.</p>
+<p>"Automatically open exchange protocol files after operation is completed" – if the flag is marked, then the exchange protocol files will automatically be opened for preview as soon as exchange is completed.</p>
+<h3>Data deletion</h3>
+<p>The tab is used by developers of the exchange rules. It provides tools for deletion of any objects from the infobase.</p>
+<h3>Debugging of the export / import procedure </h3>
+<p>The data processor provides tools to perform debug of event handlers and generation of the debug module from the rules' file or data file.</p>
+<p>The debug mode of the dump handlers may be enabled on the "Data dump" tab by raising the "Export handlers debugging mode" flag. Respectively, the debug mode of the load handlers may be enabled on the "Data load" tab by raising the "Import handlers debugging mode" flag. </p>
+<p>After the debug mode is enabled, the debug settings button will become accessible. The settings window will open via this button.</p>
+<p>The debug configuration is performed in four steps:</p>
+<h3>Step 1: Select algorithms debug mode</h3>
+<p><br>Three options are available:</p>
+<ul><li>
+<div><font size="1">Without debugging of algorithms</font></div>
+</li><li>
+<div><font size="1">Call algorithms as procedures</font></div>
+</li><li>
+<div><font size="1">Substitute algorithm code by the call location<br></font></div></li></ul><p>First mode may be used when we are sure that error in handler is not related to algorithm's code. IN this mode the code of algorithms is not dumped into the debug module. The algorithms are executed in context of the "Execute()" operand and their code is not available for debug.</p>
+<p>Second mode may be used in cases when error is inside the code of algorithms. IN this mode algorithms will be dumped as separate procedures. At the moment when algorithm is called from some handler, a call to the respective procedure of the data processor occurs. This mode is useful when the global variable "Parameters" is used to pass parameters into algorithms. Weakness of this mode is that local variables of the handlers, from which the algorithms was called, are not accessible during debugging. </p>
+<p>Third debug mode is similar to the second mode but also can be used there where second mode will not work. IN this mode algorithms will be dumped as integrated code in handlers. That is the entire code of algorithm including nested algorithms is inserted instead of the calling operand. There is no restrictions for using local variables of the handler in this mode, but there exist restrictions for debugging of the algorithms with recursive application code. </p>
+<h3>Step 3: Generate debug module</h3>
+<p><br>At second step it is required to dump the handlers via the "Generate module of dump (load) debugging". The generated handlers and algorithms will be displayed in a separate window. Content of the debug module should be copied to clipboard by pressing the "Copy to clipboard" button.</p>
+<h3>Step 3: Create external data processor</h3>
+<p><br>At this step it is required to run the designer, Creating a new data processor, paste content of the clipboard (debug module) into the module of the Creatingd data processor, and save the data processor under any name. </p>
+<h3>Step 4: Connect external data processor</h3>
+<p><br>The external data processor name has to be specified in the input field. The application verifies data processor file Creating (update) time. If the data processor is newer then version of the debug module file, then warning will be displayed and settings' form will be closed.</p>
+<p>Note: The global conversion handler "After exchange rules load" can not be debugged.</p></body></html>

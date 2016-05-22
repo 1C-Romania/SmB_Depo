@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"></meta><link rel="stylesheet" type="text/css" href="v8help://service_book/service_style"></link><meta name="GENERATOR" content="MSHTML 11.00.9600.18321"></meta></head><body>
+<h1>Customer invoice document</h1>
+<p class="Usual"></p>
+<p class="Usual">The document registers sales of inventory to customers in the database.</p>
+<p class="Usual"></p>
+<p class="Usual">Document transaction types:</p>
+<ul><li>
+<p class="Usual">Customer Sale.</p>
+</li><li>
+<p class="Usual">Transfer to Consignment.</p>
+</li><li>
+<p class="Usual">Transfer to processing.</p>
+</li><li>
+<p class="Usual">Transfer for Safe Custody.</p>
+</li><li>
+<p class="Usual">Return to vendor.</p>
+</li><li>
+<p class="Usual">Return to principal.</p>
+</li><li>
+<p class="Usual">Return from processing.</p>
+</li><li>
+<p class="Usual">Return from Safe Custody.</p></li></ul><p class="Usual"></p>
+<p class="Usual">Document attributes:</p>
+<ul style="MARGIN-RIGHT: 0px" dir="ltr"><li>
+<div><strong>Company -</strong> company, for which the document is Creatingd. It is selected from the <a href="Catalog.Companies/Help"><font color="#0000ff">Companies</font></a> list. The attribute is displayed on the form if Accounting by Multiple Companies is enabled in accounting options.</div>
+</li><li>
+<div><strong>Transaction kind -</strong> of the document.</div>
+</li><li><strong>Counterparty - </strong>customer selected from the <a href="Catalog.Counterparties/Help"><font color="#0066cc">Counterparties</font></a> list. 
+</li><li>
+<p class="Usual"><strong>Company contract - </strong>agreement between company and company. It is selected from the list of <a href="Catalog.CounterpartyContracts/Help"><font color="#0066cc">Counterparty Company contracts</font></a>.</p>
+</li><li>
+<p class="Usual"><strong>Basis - </strong>one of the following documents:<strong> </strong><a href="Document.SupplierInvoice/Help"><font color="#0000ff">Supplier invoice</font></a> or <a href="Document.InvoiceForPayments/Help"><font color="#0000ff">Invoice For payments</font></a>. The attribute is mandatory for the transactions of type Return to vendor, Return to principal or Return from Safe Custody.</p>
+</li><li>
+<p class="Usual"><strong>Order -</strong> of a sale transaction. Document <a href="Document.CustomerOrder/Help"><font color="#0000ff">Customer order</font></a> is selected for the following types of transactions: Customer Sale, Consignment or Return from processing. Document <a href="Document.PurchaseOrder/Help"><font color="#0000ff">Purchase order</font></a> is selected for the following transaction types: Return to vendor, Return to principal or Transfer to processing. The attribute is displayed on the form if <strong>order is enabled for the entire document</strong> in the accounting options. The attribute is optional. Note: the attribute is not displayed on the form for the transaction types of Transfer for Safe Custody or Return from Safe Custody.</p>
+</li><li>
+<p class="Usual"><strong>Structural unit, warehouse</strong> - warehouse which is selected from the <a href="Catalog.StructuralUnits/Help"><font color="#0000ff">Structural units</font></a> list from items of the Structural unit, warehouse type.</p>
+</li><li>
+<p class="Usual"><strong>Cell</strong> - cell of the warehouse from which the inventory is being WrittenOff. It is selected from the <a href="Catalog.Cells/Help"><font color="#0000ff">Structural unit, warehouse Cells</font></a> list. The attribute is displayed on the form if warehouses having cells are enabled in the accounting options and warehouse does not have the order flag.</p></li></ul><p class="Usual"></p>
+<p class="Usual">To change the price types, discounts and currencies, click on the <a href="CommonForm.PricesAndCurrencyForm/Help"><font color="#0000ff">Edit Prices and Currencies</font></a> button.</p>
+<ul><li>
+<p class="Usual"><strong>Inventory and toolss.</strong> Document table can be filled using pick method (button <a href="CommonForm.PickForm/Help"><font color="#0000ff">Pick</font></a> on the command bar), or data can be entered manually. Table fields:</p>
+<ul><li><strong>ProductsAndServices </strong>- item, being sold, selected from the <a href="Catalog.ProductsAndServices/Help"><font color="#0000ff">ProductsAndServices</font></a> list with the Inventory item type. 
+</li><li>
+<p class="Usual"><strong>Characteristic</strong> - if necessary, characteristic of the item may be selected in this field. It is selected from the <a href="Catalog.ProductsAndServicesCharacteristics/Help"><font color="#0000ff">Products and services characteristics</font></a> list. The attribute is displayed on the form if characteristics are enabled for the items in accounting options.</p>
+</li><li>
+<p class="Usual"><strong>Batch</strong> - if necessary, batch of the item may be selected in this field. It is selected from the <a href="Catalog.ProductsAndServicesBatches/Help"><font color="#0066cc">Products and services batches</font></a> list. The attribute is displayed on the form if batches are enabled for the items in accounting options.</p>
+</li><li>
+<p class="Usual"><strong>Quantity</strong> - COUNT of items sold. </p>
+</li><li>
+<p class="Usual"><strong>Reserve</strong> - COUNT of items in reserve.</p>
+</li><li>
+<p class="Usual"><strong>UOM</strong> - unit of measure. It is selected from the <a href="Catalog.UOMClassifier/Help"><font color="#0000ff">UOM Classifier</font></a> list or from the <a href="Catalog.UOM/Help"><font color="#0000ff">Units of Measure</font></a> list.</p>
+</li><li>
+<p class="Usual"><strong>Price</strong> - price of item sold.</p>
+</li><li>
+<p class="Usual"><strong>Discount, %</strong> - discount (markup) rate.</p>
+</li><li>
+<p class="Usual"><strong>Amount</strong> - cost of item sold.</p>
+</li><li>
+<p class="Usual"><strong>VAT rate</strong> - VAT rate selected from the <a href="Catalog.VATrates/Help"><font color="#0000ff">VAT rates</font></a> list.</p>
+</li><li>
+<p class="Usual"><strong>Including VAT</strong> - Amount of VAT.</p>
+</li><li>
+<p class="Usual"><strong>Total</strong> - total Amount calculated according to the price and currency settings. To change the settings click on the <a href="CommonForm.PricesAndCurrencyForm/Help"><font color="#0000ff">Edit Prices and Currencies</font></a> button.</p>
+</li><li><strong>Order </strong>- of a sale transaction. Document <a href="Document.CustomerOrder/Help"><font color="#0000ff">Customer order</font></a> is selected for the following types of transactions: Customer Sale, Consignment or Return from processing. Document <a href="Document.PurchaseOrder/Help"><font color="#0000ff">Purchase order</font></a> is selected for the following transaction types: Return to vendor, Return to principal or Transfer to processing. The attribute is displayed on the form if <strong>order is enabled for each document line</strong> in the accounting options. The attribute is optional. Note: the attribute is not displayed on the form for the transaction types of Transfer for Safe Custody or Return from Safe Custody. 
+</li><li><strong>Content</strong> - text of the item in the print form. To enable the attribute go to <strong>All actions - Change form...</strong> and check the flag.</li></ul></li><li>
+<p class="Usual"><strong>Setoff of advance payment.</strong> The table contains prepayments received from customers earlier. To edit data in Prepayment table, click on the <a href="CommonForm.CustomerAdvancesPickForm/Help"><font color="#0000ff">Edit Setoff of advance payment</font></a> button. Table fields:</p>
+<ul><li>
+<p class="Usual"><strong>Document</strong> - document with customer prepayment: <a href="Document.PettyBankingReceipt/Help"><font color="#0000ff">Petty Banking Receipt</font></a>, <a href="Document.PaymentReceipt/Help"><font color="#0000ff">Payment receipt</font></a>. </p>
+</li><li>
+<p class="Usual"><strong>Amount of settlements</strong> - Amount in contract currency.</p>
+</li><li>
+<p class="Usual"><strong>Rate</strong> - rate used to recalculate Amount to document currency.</p>
+</li><li>
+<p class="Usual"><strong>Factor</strong> - factor used to recalculate Amount to document currency.</p>
+</li><li>
+<p class="Usual"><strong>Payments Amount</strong> - Amount of prepayment in document currency.</p></li></ul></li><li>
+<p class="Usual"><strong>Additional datarmation.</strong> Belongs to group of attributes:</p>
+<ul><li>
+<p class="Usual"><strong>Structural unit </strong>- division, responsible for transaction, which is selected from the <a href="Catalog.StructuralUnits/Help"><font color="#0000ff">Structural units</font></a> list from items of the Structural unit type.</p>
+<div></div>
+</li><li>
+<p class="Usual"><strong>Responsible</strong> - information about the employee who enters current document. It is selected from the <a href="Catalog.Performers/Help"><font color="#0000ff">Performers</font></a> list. The attribute is optional.</p>
+</li><li>
+<p class="Usual"><strong>Consignee</strong> - company to which items will be shipped. It is selected from the <a href="Catalog.Counterparties/Help"><font color="#0000ff">Counterparties</font></a> list.</p>
+</li><li>
+<p class="Usual"><strong>Counterparty </strong>- company which ships items to consignee. It is selected from the <a href="Catalog.Counterparties/Help"><font color="#0000ff">Counterparties</font></a> list. </p>
+</li><li>
+<p class="Usual"><strong>Note</strong> - any additional information.</p></li></ul></li></ul><p class="Usual"></p>
+<p class="Usual">The Customer invoice document can be entered on the basis of the following documents:</p>
+<ul><li>
+<div><a href="Document.SupplierInvoice/Help"><font color="#0000ff">Supplier invoice</font></a>.</div>
+</li><li>
+<div><a href="Document.InvoiceForPayments/Help"><font color="#0000ff">Invoice for Payments</font></a>.</div>
+</li><li>
+<div><a href="Document.CustomerOrder/Help"><font color="#0000ff">Customer Order</font></a>.</div>
+</li><li>
+<div><a href="Document.PurchaseOrder/Help"><font color="#0000ff">Work order</font></a>.</div></li></ul><p class="Usual"></p></body></html>

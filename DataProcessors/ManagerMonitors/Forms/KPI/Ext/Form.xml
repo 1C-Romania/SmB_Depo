@@ -1,0 +1,1408 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Title>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Key performance indicators</v8:content>
+		</v8:item>
+	</Title>
+	<AutoTitle>false</AutoTitle>
+	<CommandBarLocation>None</CommandBarLocation>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="FormCommandBar" id="-1"/>
+	<Events>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+		<Event name="OnClose">OnClose</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="Header" id="61">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Header</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Header</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="HeaderExtendedTooltip" id="65"/>
+			<ChildItems>
+				<UsualGroup name="Filters" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Filters</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Filters</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="FiltersExtendedTooltip" id="66"/>
+					<ChildItems>
+						<InputField name="Period" id="4">
+							<DataPath>Period</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>As of</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Width>10</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Wrap>false</Wrap>
+							<ContextMenu name="PeriodContextMenu" id="5"/>
+							<ExtendedTooltip name="PeriodExtendedTooltip" id="68"/>
+							<Events>
+								<Event name="OnChange">PeriodOnChange</Event>
+							</Events>
+						</InputField>
+						<InputField name="Company" id="8">
+							<DataPath>Company</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Company</v8:content>
+								</v8:item>
+							</ToolTip>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Wrap>false</Wrap>
+							<ContextMenu name="CounterpartyContextMenu" id="9"/>
+							<ExtendedTooltip name="CounterpartyExtendedTooltip" id="70"/>
+							<Events>
+								<Event name="OnChange">CompanyOnChange</Event>
+							</Events>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<CommandBar name="CommandBar" id="58">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Command bar</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Command bar</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="CommandBarExtendedTooltip" id="71"/>
+					<ChildItems>
+						<Button name="Refresh" id="723">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Command.Refresh</CommandName>
+							<ExtendedTooltip name="RefreshExtendedTooltip" id="724"/>
+						</Button>
+						<Button name="ChangeForm" id="59">
+							<Type>CommandBarButton</Type>
+							<SkipOnInput>false</SkipOnInput>
+							<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
+							<ExtendedTooltip name="ChangeFormExtendedTooltip" id="72"/>
+						</Button>
+						<Button name="Help" id="60">
+							<Type>CommandBarButton</Type>
+							<SkipOnInput>false</SkipOnInput>
+							<OnlyInAllActions>false</OnlyInAllActions>
+							<CommandName>Form.StandardCommand.Help</CommandName>
+							<ExtendedTooltip name="HelpExtendedTooltip" id="73"/>
+						</Button>
+					</ChildItems>
+				</CommandBar>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="Indicators" id="74">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Indicators</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Indicators</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="IndicatorsExtendedTooltip" id="75"/>
+			<ChildItems>
+				<UsualGroup name="Month" id="111">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Month</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Month</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="MonthExtendedTooltip" id="112"/>
+					<ChildItems>
+						<LabelDecoration name="MonthTitle" id="93">
+							<Width>6</Width>
+							<Height>2</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Month</v8:content>
+								</v8:item>
+							</Title>
+							<BackColor>web:Gainsboro</BackColor>
+							<ContextMenu name="MonthHeaderContextMenu" id="94"/>
+							<ExtendedTooltip name="MonthTitleExtendedTooltip" id="95"/>
+						</LabelDecoration>
+						<LabelDecoration name="Month1" id="720">
+							<Width>6</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<TextColor>style:FormTextColor</TextColor>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>January 2014</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Month1ContextMenu" id="721"/>
+							<ExtendedTooltip name="Month1ExtendedTooltip" id="722"/>
+						</LabelDecoration>
+						<LabelDecoration name="Month2" id="519">
+							<Width>6</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<TextColor>style:FormTextColor</TextColor>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>February 2014</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Month2ContextMenu" id="520"/>
+							<ExtendedTooltip name="Month2ExtendedTooltip" id="521"/>
+						</LabelDecoration>
+						<LabelDecoration name="Month3" id="522">
+							<Width>6</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<TextColor>style:FormTextColor</TextColor>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>March 2014</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Month3ContextMenu" id="523"/>
+							<ExtendedTooltip name="Month3ExtendedTooltip" id="524"/>
+						</LabelDecoration>
+						<LabelDecoration name="Month4" id="525">
+							<Width>6</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<TextColor>style:FormTextColor</TextColor>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>April 2014</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Month4ContextMenu" id="526"/>
+							<ExtendedTooltip name="Month4ExtendedTooltip" id="527"/>
+						</LabelDecoration>
+						<LabelDecoration name="Month5" id="528">
+							<Width>6</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<TextColor>style:FormTextColor</TextColor>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>May 2014</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Month5ContextMenu" id="529"/>
+							<ExtendedTooltip name="Month5ExtendedTooltip" id="530"/>
+						</LabelDecoration>
+						<LabelDecoration name="Month6" id="531">
+							<Width>6</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<TextColor>style:FormTextColor</TextColor>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>June 2014</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Month6ContextMenu" id="532"/>
+							<ExtendedTooltip name="Month6ExtendedTooltip" id="533"/>
+						</LabelDecoration>
+						<LabelDecoration name="Month7" id="534">
+							<Width>6</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<TextColor>style:FormTextColor</TextColor>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>July 2014</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Month7ContextMenu" id="535"/>
+							<ExtendedTooltip name="Month7ExtendedTooltip" id="536"/>
+						</LabelDecoration>
+						<LabelDecoration name="Month8" id="537">
+							<Width>6</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<TextColor>style:FormTextColor</TextColor>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>August 2014</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Month8ContextMenu" id="538"/>
+							<ExtendedTooltip name="Month8ExtendedTooltip" id="539"/>
+						</LabelDecoration>
+						<LabelDecoration name="Month9" id="540">
+							<Width>6</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<TextColor>style:FormTextColor</TextColor>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>September 2014</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Month9ContextMenu" id="541"/>
+							<ExtendedTooltip name="Month9ExtendedTooltip" id="542"/>
+						</LabelDecoration>
+						<LabelDecoration name="Month10" id="543">
+							<Width>6</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<TextColor>style:FormTextColor</TextColor>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>October 2014</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Month10ContextMenu" id="544"/>
+							<ExtendedTooltip name="Month10ExtendedTooltip" id="545"/>
+						</LabelDecoration>
+						<LabelDecoration name="Month11" id="546">
+							<Width>6</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<TextColor>style:FormTextColor</TextColor>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>November 2014</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Month11ContextMenu" id="547"/>
+							<ExtendedTooltip name="Month11ExtendedTooltip" id="548"/>
+						</LabelDecoration>
+						<LabelDecoration name="Month12" id="549">
+							<Width>6</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<TextColor>style:FormTextColor</TextColor>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>December 2014</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Month12ContextMenu" id="550"/>
+							<ExtendedTooltip name="Month12ExtendedTooltip" id="551"/>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="Income" id="116">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Income</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Income</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="IncomeExtendedTooltip" id="117"/>
+					<ChildItems>
+						<LabelDecoration name="IncomeTitle" id="96">
+							<Width>13</Width>
+							<Height>2</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Income</v8:content>
+								</v8:item>
+							</Title>
+							<BackColor>web:Gainsboro</BackColor>
+							<ContextMenu name="IncomeHeaderContextMenu" id="97"/>
+							<ExtendedTooltip name="IncomeTitleExtendedTooltip" id="98"/>
+						</LabelDecoration>
+						<LabelDecoration name="Income1" id="384">
+							<Width>13</Width>
+							<Height>2</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;font @Arial Unicode MS&gt;&lt;color LimeGreen&gt;▄▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color LimeGreen&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color LimeGreen&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color LimeGreen&gt;▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;
+&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt; &lt;/&gt;&lt;/&gt;&lt;fontstyle -30&gt;&lt;color #c0c0c0&gt;1 000 000,00&lt;/&gt;&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Income1ContextMenu" id="385"/>
+							<ExtendedTooltip name="Income1ExtendedTooltip" id="386"/>
+						</LabelDecoration>
+						<LabelDecoration name="Income2" id="552">
+							<Width>13</Width>
+							<Height>2</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;font @Arial Unicode MS&gt;&lt;color LimeGreen&gt;▄▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color LimeGreen&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color LimeGreen&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color LimeGreen&gt;▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;
+&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt; &lt;/&gt;&lt;/&gt;&lt;fontstyle -30&gt;&lt;color #c0c0c0&gt;1 000 000,00&lt;/&gt;&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Income2ContextMenu" id="553"/>
+							<ExtendedTooltip name="Income2ExtendedTooltip" id="554"/>
+						</LabelDecoration>
+						<LabelDecoration name="Income3" id="555">
+							<Width>13</Width>
+							<Height>2</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;font @Arial Unicode MS&gt;&lt;color LimeGreen&gt;▄▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color LimeGreen&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color LimeGreen&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color LimeGreen&gt;▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;
+&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt; &lt;/&gt;&lt;/&gt;&lt;fontstyle -30&gt;&lt;color #c0c0c0&gt;1 000 000,00&lt;/&gt;&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Income3ContextMenu" id="556"/>
+							<ExtendedTooltip name="Income3ExtendedTooltip" id="557"/>
+						</LabelDecoration>
+						<LabelDecoration name="Income4" id="558">
+							<Width>13</Width>
+							<Height>2</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;font @Arial Unicode MS&gt;&lt;color LimeGreen&gt;▄▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color LimeGreen&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color LimeGreen&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color LimeGreen&gt;▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;
+&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt; &lt;/&gt;&lt;/&gt;&lt;fontstyle -30&gt;&lt;color #c0c0c0&gt;1 000 000,00&lt;/&gt;&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Income4ContextMenu" id="559"/>
+							<ExtendedTooltip name="Income4ExtendedTooltip" id="560"/>
+						</LabelDecoration>
+						<LabelDecoration name="Income5" id="561">
+							<Width>13</Width>
+							<Height>2</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;font @Arial Unicode MS&gt;&lt;color LimeGreen&gt;▄▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color LimeGreen&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color LimeGreen&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color LimeGreen&gt;▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;
+&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt; &lt;/&gt;&lt;/&gt;&lt;fontstyle -30&gt;&lt;color #c0c0c0&gt;1 000 000,00&lt;/&gt;&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Income5ContextMenu" id="562"/>
+							<ExtendedTooltip name="Income5ExtendedTooltip" id="563"/>
+						</LabelDecoration>
+						<LabelDecoration name="Income6" id="564">
+							<Width>13</Width>
+							<Height>2</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;font @Arial Unicode MS&gt;&lt;color LimeGreen&gt;▄▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color LimeGreen&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color LimeGreen&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color LimeGreen&gt;▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;
+&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt; &lt;/&gt;&lt;/&gt;&lt;fontstyle -30&gt;&lt;color #c0c0c0&gt;1 000 000,00&lt;/&gt;&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Income6ContextMenu" id="565"/>
+							<ExtendedTooltip name="Income6ExtendedTooltip" id="566"/>
+						</LabelDecoration>
+						<LabelDecoration name="Income7" id="567">
+							<Width>13</Width>
+							<Height>2</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;font @Arial Unicode MS&gt;&lt;color LimeGreen&gt;▄▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color LimeGreen&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color LimeGreen&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color LimeGreen&gt;▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;
+&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt; &lt;/&gt;&lt;/&gt;&lt;fontstyle -30&gt;&lt;color #c0c0c0&gt;1 000 000,00&lt;/&gt;&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Income7ContextMenu" id="568"/>
+							<ExtendedTooltip name="Income7ExtendedTooltip" id="569"/>
+						</LabelDecoration>
+						<LabelDecoration name="Income8" id="570">
+							<Width>13</Width>
+							<Height>2</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;font @Arial Unicode MS&gt;&lt;color LimeGreen&gt;▄▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color LimeGreen&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color LimeGreen&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color LimeGreen&gt;▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;
+&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt; &lt;/&gt;&lt;/&gt;&lt;fontstyle -30&gt;&lt;color #c0c0c0&gt;1 000 000,00&lt;/&gt;&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Income8ContextMenu" id="571"/>
+							<ExtendedTooltip name="Income8ExtendedTooltip" id="572"/>
+						</LabelDecoration>
+						<LabelDecoration name="Income9" id="573">
+							<Width>13</Width>
+							<Height>2</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;font @Arial Unicode MS&gt;&lt;color LimeGreen&gt;▄▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color LimeGreen&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color LimeGreen&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color LimeGreen&gt;▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;
+&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt; &lt;/&gt;&lt;/&gt;&lt;fontstyle -30&gt;&lt;color #c0c0c0&gt;1 000 000,00&lt;/&gt;&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Income9ContextMenu" id="574"/>
+							<ExtendedTooltip name="Income9ExtendedTooltip" id="575"/>
+						</LabelDecoration>
+						<LabelDecoration name="Income10" id="576">
+							<Width>13</Width>
+							<Height>2</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;font @Arial Unicode MS&gt;&lt;color LimeGreen&gt;▄▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color LimeGreen&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color LimeGreen&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color LimeGreen&gt;▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;
+&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt; &lt;/&gt;&lt;/&gt;&lt;fontstyle -30&gt;&lt;color #c0c0c0&gt;1 000 000,00&lt;/&gt;&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Income10ContextMenu" id="577"/>
+							<ExtendedTooltip name="Income10ExtendedTooltip" id="578"/>
+						</LabelDecoration>
+						<LabelDecoration name="Income11" id="579">
+							<Width>13</Width>
+							<Height>2</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;font @Arial Unicode MS&gt;&lt;color LimeGreen&gt;▄▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color LimeGreen&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color LimeGreen&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color LimeGreen&gt;▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;
+&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt; &lt;/&gt;&lt;/&gt;&lt;fontstyle -30&gt;&lt;color #c0c0c0&gt;1 000 000,00&lt;/&gt;&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Income11ContextMenu" id="580"/>
+							<ExtendedTooltip name="Income11ExtendedTooltip" id="581"/>
+						</LabelDecoration>
+						<LabelDecoration name="Income12" id="582">
+							<Width>13</Width>
+							<Height>2</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;font @Arial Unicode MS&gt;&lt;color LimeGreen&gt;▄▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color LimeGreen&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color LimeGreen&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color LimeGreen&gt;▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;
+&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt; &lt;/&gt;&lt;/&gt;&lt;fontstyle -30&gt;&lt;color #c0c0c0&gt;1 000 000,00&lt;/&gt;&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Income12ContextMenu" id="583"/>
+							<ExtendedTooltip name="Income12ExtendedTooltip" id="584"/>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="Cost" id="121">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Cost</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Cost</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="CostExtendedTooltip" id="122"/>
+					<ChildItems>
+						<LabelDecoration name="CostTitle" id="99">
+							<Width>13</Width>
+							<Height>2</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Cost of goods sold</v8:content>
+								</v8:item>
+							</Title>
+							<BackColor>web:Gainsboro</BackColor>
+							<ContextMenu name="CostHeaderContextMenu" id="100"/>
+							<ExtendedTooltip name="CostTitleExtendedTooltip" id="101"/>
+						</LabelDecoration>
+						<LabelDecoration name="Cost1" id="417">
+							<Width>13</Width>
+							<Height>2</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;font @Arial Unicode MS&gt;&lt;color DeepSkyBlue&gt;▄▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color DeepSkyBlue&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color DeepSkyBlue&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color DeepSkyBlue&gt;▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;
+&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt; &lt;/&gt;&lt;/&gt;&lt;fontstyle -30&gt;&lt;color #c0c0c0&gt;1 000 000,00&lt;/&gt;&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Cost1ContextMenu" id="418"/>
+							<ExtendedTooltip name="Cost1ExtendedTooltip" id="419"/>
+						</LabelDecoration>
+						<LabelDecoration name="Cost2" id="585">
+							<Width>13</Width>
+							<Height>2</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;font @Arial Unicode MS&gt;&lt;color DeepSkyBlue&gt;▄▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color DeepSkyBlue&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color DeepSkyBlue&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color DeepSkyBlue&gt;▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;
+&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt; &lt;/&gt;&lt;/&gt;&lt;fontstyle -30&gt;&lt;color #c0c0c0&gt;1 000 000,00&lt;/&gt;&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Cost2ContextMenu" id="586"/>
+							<ExtendedTooltip name="Cost2ExtendedTooltip" id="587"/>
+						</LabelDecoration>
+						<LabelDecoration name="Cost3" id="588">
+							<Width>13</Width>
+							<Height>2</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;font @Arial Unicode MS&gt;&lt;color DeepSkyBlue&gt;▄▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color DeepSkyBlue&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color DeepSkyBlue&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color DeepSkyBlue&gt;▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;
+&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt; &lt;/&gt;&lt;/&gt;&lt;fontstyle -30&gt;&lt;color #c0c0c0&gt;1 000 000,00&lt;/&gt;&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Cost3ContextMenu" id="589"/>
+							<ExtendedTooltip name="Cost3ExtendedTooltip" id="590"/>
+						</LabelDecoration>
+						<LabelDecoration name="Cost4" id="591">
+							<Width>13</Width>
+							<Height>2</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;font @Arial Unicode MS&gt;&lt;color DeepSkyBlue&gt;▄▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color DeepSkyBlue&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color DeepSkyBlue&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color DeepSkyBlue&gt;▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;
+&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt; &lt;/&gt;&lt;/&gt;&lt;fontstyle -30&gt;&lt;color #c0c0c0&gt;1 000 000,00&lt;/&gt;&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Cost4ContextMenu" id="592"/>
+							<ExtendedTooltip name="Cost4ExtendedTooltip" id="593"/>
+						</LabelDecoration>
+						<LabelDecoration name="Cost5" id="594">
+							<Width>13</Width>
+							<Height>2</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;font @Arial Unicode MS&gt;&lt;color DeepSkyBlue&gt;▄▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color DeepSkyBlue&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color DeepSkyBlue&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color DeepSkyBlue&gt;▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;
+&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt; &lt;/&gt;&lt;/&gt;&lt;fontstyle -30&gt;&lt;color #c0c0c0&gt;1 000 000,00&lt;/&gt;&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Cost5ContextMenu" id="595"/>
+							<ExtendedTooltip name="Cost5ExtendedTooltip" id="596"/>
+						</LabelDecoration>
+						<LabelDecoration name="Cost6" id="597">
+							<Width>13</Width>
+							<Height>2</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;font @Arial Unicode MS&gt;&lt;color DeepSkyBlue&gt;▄▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color DeepSkyBlue&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color DeepSkyBlue&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color DeepSkyBlue&gt;▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;
+&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt; &lt;/&gt;&lt;/&gt;&lt;fontstyle -30&gt;&lt;color #c0c0c0&gt;1 000 000,00&lt;/&gt;&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Cost6ContextMenu" id="598"/>
+							<ExtendedTooltip name="Cost6ExtendedTooltip" id="599"/>
+						</LabelDecoration>
+						<LabelDecoration name="Cost7" id="600">
+							<Width>13</Width>
+							<Height>2</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;font @Arial Unicode MS&gt;&lt;color DeepSkyBlue&gt;▄▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color DeepSkyBlue&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color DeepSkyBlue&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color DeepSkyBlue&gt;▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;
+&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt; &lt;/&gt;&lt;/&gt;&lt;fontstyle -30&gt;&lt;color #c0c0c0&gt;1 000 000,00&lt;/&gt;&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Cost7ContextMenu" id="601"/>
+							<ExtendedTooltip name="Cost7ExtendedTooltip" id="602"/>
+						</LabelDecoration>
+						<LabelDecoration name="Cost8" id="603">
+							<Width>13</Width>
+							<Height>2</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;font @Arial Unicode MS&gt;&lt;color DeepSkyBlue&gt;▄▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color DeepSkyBlue&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color DeepSkyBlue&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color DeepSkyBlue&gt;▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;
+&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt; &lt;/&gt;&lt;/&gt;&lt;fontstyle -30&gt;&lt;color #c0c0c0&gt;1 000 000,00&lt;/&gt;&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Cost8ContextMenu" id="604"/>
+							<ExtendedTooltip name="Cost8ExtendedTooltip" id="605"/>
+						</LabelDecoration>
+						<LabelDecoration name="Cost9" id="606">
+							<Width>13</Width>
+							<Height>2</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;font @Arial Unicode MS&gt;&lt;color DeepSkyBlue&gt;▄▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color DeepSkyBlue&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color DeepSkyBlue&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color DeepSkyBlue&gt;▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;
+&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt; &lt;/&gt;&lt;/&gt;&lt;fontstyle -30&gt;&lt;color #c0c0c0&gt;1 000 000,00&lt;/&gt;&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Cost9ContextMenu" id="607"/>
+							<ExtendedTooltip name="Cost9ExtendedTooltip" id="608"/>
+						</LabelDecoration>
+						<LabelDecoration name="Cost10" id="609">
+							<Width>13</Width>
+							<Height>2</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;font @Arial Unicode MS&gt;&lt;color DeepSkyBlue&gt;▄▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color DeepSkyBlue&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color DeepSkyBlue&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color DeepSkyBlue&gt;▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;
+&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt; &lt;/&gt;&lt;/&gt;&lt;fontstyle -30&gt;&lt;color #c0c0c0&gt;1 000 000,00&lt;/&gt;&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Cost10ContextMenu" id="610"/>
+							<ExtendedTooltip name="Cost10ExtendedTooltip" id="611"/>
+						</LabelDecoration>
+						<LabelDecoration name="Cost11" id="612">
+							<Width>13</Width>
+							<Height>2</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;font @Arial Unicode MS&gt;&lt;color DeepSkyBlue&gt;▄▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color DeepSkyBlue&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color DeepSkyBlue&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color DeepSkyBlue&gt;▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;
+&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt; &lt;/&gt;&lt;/&gt;&lt;fontstyle -30&gt;&lt;color #c0c0c0&gt;1 000 000,00&lt;/&gt;&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Cost11ContextMenu" id="613"/>
+							<ExtendedTooltip name="Cost11ExtendedTooltip" id="614"/>
+						</LabelDecoration>
+						<LabelDecoration name="Cost12" id="615">
+							<Width>13</Width>
+							<Height>2</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;font @Arial Unicode MS&gt;&lt;color DeepSkyBlue&gt;▄▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color DeepSkyBlue&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color DeepSkyBlue&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color DeepSkyBlue&gt;▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;
+&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt; &lt;/&gt;&lt;/&gt;&lt;fontstyle -30&gt;&lt;color #c0c0c0&gt;1 000 000,00&lt;/&gt;&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Cost12ContextMenu" id="616"/>
+							<ExtendedTooltip name="Cost12ExtendedTooltip" id="617"/>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="GrossProfit" id="126">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Gross profit</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Cost</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="GrossProfitExtendedTooltip" id="127"/>
+					<ChildItems>
+						<LabelDecoration name="GrossProfitTitle" id="102">
+							<Width>13</Width>
+							<Height>2</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Gross profit</v8:content>
+								</v8:item>
+							</Title>
+							<BackColor>web:Gainsboro</BackColor>
+							<ContextMenu name="GrossProfitHeaderContextMenu" id="103"/>
+							<ExtendedTooltip name="GrossProfitTitleExtendedTooltip" id="104"/>
+						</LabelDecoration>
+						<LabelDecoration name="GrossProfit1" id="450">
+							<Width>13</Width>
+							<Height>2</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;font @Arial Unicode MS&gt;&lt;color Coral&gt;▄▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Coral&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Coral&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Coral&gt;▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;
+&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt; &lt;/&gt;&lt;/&gt;&lt;fontstyle -30&gt;&lt;color #c0c0c0&gt;1 000 000,00&lt;/&gt;&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="GrossProfit1ContextMenu" id="451"/>
+							<ExtendedTooltip name="GrossProfit1ExtendedTooltip" id="452"/>
+						</LabelDecoration>
+						<LabelDecoration name="GrossProfit2" id="618">
+							<Width>13</Width>
+							<Height>2</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;font @Arial Unicode MS&gt;&lt;color Coral&gt;▄▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Coral&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Coral&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Coral&gt;▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;
+&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt; &lt;/&gt;&lt;/&gt;&lt;fontstyle -30&gt;&lt;color #c0c0c0&gt;1 000 000,00&lt;/&gt;&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="GrossProfit2ContextMenu" id="619"/>
+							<ExtendedTooltip name="GrossProfit2ExtendedTooltip" id="620"/>
+						</LabelDecoration>
+						<LabelDecoration name="GrossProfit3" id="621">
+							<Width>13</Width>
+							<Height>2</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;font @Arial Unicode MS&gt;&lt;color Coral&gt;▄▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Coral&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Coral&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Coral&gt;▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;
+&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt; &lt;/&gt;&lt;/&gt;&lt;fontstyle -30&gt;&lt;color #c0c0c0&gt;1 000 000,00&lt;/&gt;&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="GrossProfit3ContextMenu" id="622"/>
+							<ExtendedTooltip name="GrossProfit3ExtendedTooltip" id="623"/>
+						</LabelDecoration>
+						<LabelDecoration name="GrossProfit4" id="624">
+							<Width>13</Width>
+							<Height>2</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;font @Arial Unicode MS&gt;&lt;color Coral&gt;▄▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Coral&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Coral&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Coral&gt;▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;
+&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt; &lt;/&gt;&lt;/&gt;&lt;fontstyle -30&gt;&lt;color #c0c0c0&gt;1 000 000,00&lt;/&gt;&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="GrossProfit4ContextMenu" id="625"/>
+							<ExtendedTooltip name="GrossProfit4ExtendedTooltip" id="626"/>
+						</LabelDecoration>
+						<LabelDecoration name="GrossProfit5" id="627">
+							<Width>13</Width>
+							<Height>2</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;font @Arial Unicode MS&gt;&lt;color Coral&gt;▄▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Coral&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Coral&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Coral&gt;▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;
+&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt; &lt;/&gt;&lt;/&gt;&lt;fontstyle -30&gt;&lt;color #c0c0c0&gt;1 000 000,00&lt;/&gt;&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="GrossProfit5ContextMenu" id="628"/>
+							<ExtendedTooltip name="GrossProfit5ExtendedTooltip" id="629"/>
+						</LabelDecoration>
+						<LabelDecoration name="GrossProfit6" id="630">
+							<Width>13</Width>
+							<Height>2</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;font @Arial Unicode MS&gt;&lt;color Coral&gt;▄▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Coral&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Coral&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Coral&gt;▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;
+&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt; &lt;/&gt;&lt;/&gt;&lt;fontstyle -30&gt;&lt;color #c0c0c0&gt;1 000 000,00&lt;/&gt;&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="GrossProfit6ContextMenu" id="631"/>
+							<ExtendedTooltip name="GrossProfit6ExtendedTooltip" id="632"/>
+						</LabelDecoration>
+						<LabelDecoration name="GrossProfit7" id="633">
+							<Width>13</Width>
+							<Height>2</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;font @Arial Unicode MS&gt;&lt;color Coral&gt;▄▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Coral&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Coral&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Coral&gt;▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;
+&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt; &lt;/&gt;&lt;/&gt;&lt;fontstyle -30&gt;&lt;color #c0c0c0&gt;1 000 000,00&lt;/&gt;&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="GrossProfit7ContextMenu" id="634"/>
+							<ExtendedTooltip name="GrossProfit7ExtendedTooltip" id="635"/>
+						</LabelDecoration>
+						<LabelDecoration name="GrossProfit8" id="636">
+							<Width>13</Width>
+							<Height>2</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;font @Arial Unicode MS&gt;&lt;color Coral&gt;▄▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Coral&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Coral&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Coral&gt;▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;
+&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt; &lt;/&gt;&lt;/&gt;&lt;fontstyle -30&gt;&lt;color #c0c0c0&gt;1 000 000,00&lt;/&gt;&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="GrossProfit8ContextMenu" id="637"/>
+							<ExtendedTooltip name="GrossProfit8ExtendedTooltip" id="638"/>
+						</LabelDecoration>
+						<LabelDecoration name="GrossProfit9" id="639">
+							<Width>13</Width>
+							<Height>2</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;font @Arial Unicode MS&gt;&lt;color Coral&gt;▄▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Coral&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Coral&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Coral&gt;▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;
+&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt; &lt;/&gt;&lt;/&gt;&lt;fontstyle -30&gt;&lt;color #c0c0c0&gt;1 000 000,00&lt;/&gt;&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="GrossProfit9ContextMenu" id="640"/>
+							<ExtendedTooltip name="GrossProfit9ExtendedTooltip" id="641"/>
+						</LabelDecoration>
+						<LabelDecoration name="GrossProfit10" id="642">
+							<Width>13</Width>
+							<Height>2</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;font @Arial Unicode MS&gt;&lt;color Coral&gt;▄▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Coral&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Coral&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Coral&gt;▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;
+&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt; &lt;/&gt;&lt;/&gt;&lt;fontstyle -30&gt;&lt;color #c0c0c0&gt;1 000 000,00&lt;/&gt;&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="GrossProfit10ContextMenu" id="643"/>
+							<ExtendedTooltip name="GrossProfit10ExtendedTooltip" id="644"/>
+						</LabelDecoration>
+						<LabelDecoration name="GrossProfit11" id="645">
+							<Width>13</Width>
+							<Height>2</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;font @Arial Unicode MS&gt;&lt;color Coral&gt;▄▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Coral&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Coral&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Coral&gt;▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;
+&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt; &lt;/&gt;&lt;/&gt;&lt;fontstyle -30&gt;&lt;color #c0c0c0&gt;1 000 000,00&lt;/&gt;&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="GrossProfit11ContextMenu" id="646"/>
+							<ExtendedTooltip name="GrossProfit11ExtendedTooltip" id="647"/>
+						</LabelDecoration>
+						<LabelDecoration name="GrossProfit12" id="648">
+							<Width>13</Width>
+							<Height>2</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;font @Arial Unicode MS&gt;&lt;color Coral&gt;▄▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Coral&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Coral&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Coral&gt;▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;
+&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt; &lt;/&gt;&lt;/&gt;&lt;fontstyle -30&gt;&lt;color #c0c0c0&gt;1 000 000,00&lt;/&gt;&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="GrossProfit12ContextMenu" id="649"/>
+							<ExtendedTooltip name="GrossProfit12ExtendedTooltip" id="650"/>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="Expenses" id="131">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Expenses</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Cost</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ExpensesExtendedTooltip" id="132"/>
+					<ChildItems>
+						<LabelDecoration name="ExpensesTitle" id="105">
+							<Width>13</Width>
+							<Height>2</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Expenses on sales</v8:content>
+								</v8:item>
+							</Title>
+							<BackColor>web:Gainsboro</BackColor>
+							<ContextMenu name="ExpensesHeaderContextMenu" id="106"/>
+							<ExtendedTooltip name="ExpensesTitleExtendedTooltip" id="107"/>
+						</LabelDecoration>
+						<LabelDecoration name="Expenses1" id="483">
+							<Width>13</Width>
+							<Height>2</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;font @Arial Unicode MS&gt;&lt;color Orange&gt;▄▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Orange&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Orange&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Orange&gt;▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;
+&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt; &lt;/&gt;&lt;/&gt;&lt;fontstyle -30&gt;&lt;color #c0c0c0&gt;1 000 000,00&lt;/&gt;&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Expenses1ContextMenu" id="484"/>
+							<ExtendedTooltip name="Expenses1ExtendedTooltip" id="485"/>
+						</LabelDecoration>
+						<LabelDecoration name="Expenses2" id="651">
+							<Width>13</Width>
+							<Height>2</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;font @Arial Unicode MS&gt;&lt;color Orange&gt;▄▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Orange&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Orange&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Orange&gt;▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;
+&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt; &lt;/&gt;&lt;/&gt;&lt;fontstyle -30&gt;&lt;color #c0c0c0&gt;1 000 000,00&lt;/&gt;&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Expenses2ContextMenu" id="652"/>
+							<ExtendedTooltip name="Expenses2ExtendedTooltip" id="653"/>
+						</LabelDecoration>
+						<LabelDecoration name="Expenses3" id="654">
+							<Width>13</Width>
+							<Height>2</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;font @Arial Unicode MS&gt;&lt;color Orange&gt;▄▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Orange&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Orange&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Orange&gt;▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;
+&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt; &lt;/&gt;&lt;/&gt;&lt;fontstyle -30&gt;&lt;color #c0c0c0&gt;1 000 000,00&lt;/&gt;&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Expenses3ContextMenu" id="655"/>
+							<ExtendedTooltip name="Expenses3ExtendedTooltip" id="656"/>
+						</LabelDecoration>
+						<LabelDecoration name="Expenses4" id="657">
+							<Width>13</Width>
+							<Height>2</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;font @Arial Unicode MS&gt;&lt;color Orange&gt;▄▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Orange&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Orange&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Orange&gt;▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;
+&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt; &lt;/&gt;&lt;/&gt;&lt;fontstyle -30&gt;&lt;color #c0c0c0&gt;1 000 000,00&lt;/&gt;&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Expenses4ContextMenu" id="658"/>
+							<ExtendedTooltip name="Expenses4ExtendedTooltip" id="659"/>
+						</LabelDecoration>
+						<LabelDecoration name="Expenses5" id="660">
+							<Width>13</Width>
+							<Height>2</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;font @Arial Unicode MS&gt;&lt;color Orange&gt;▄▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Orange&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Orange&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Orange&gt;▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;
+&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt; &lt;/&gt;&lt;/&gt;&lt;fontstyle -30&gt;&lt;color #c0c0c0&gt;1 000 000,00&lt;/&gt;&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Expenses5ContextMenu" id="661"/>
+							<ExtendedTooltip name="Expenses5ExtendedTooltip" id="662"/>
+						</LabelDecoration>
+						<LabelDecoration name="Expenses6" id="663">
+							<Width>13</Width>
+							<Height>2</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;font @Arial Unicode MS&gt;&lt;color Orange&gt;▄▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Orange&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Orange&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Orange&gt;▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;
+&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt; &lt;/&gt;&lt;/&gt;&lt;fontstyle -30&gt;&lt;color #c0c0c0&gt;1 000 000,00&lt;/&gt;&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Expenses6ContextMenu" id="664"/>
+							<ExtendedTooltip name="Expenses6ExtendedTooltip" id="665"/>
+						</LabelDecoration>
+						<LabelDecoration name="Expenses7" id="666">
+							<Width>13</Width>
+							<Height>2</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;font @Arial Unicode MS&gt;&lt;color Orange&gt;▄▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Orange&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Orange&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Orange&gt;▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;
+&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt; &lt;/&gt;&lt;/&gt;&lt;fontstyle -30&gt;&lt;color #c0c0c0&gt;1 000 000,00&lt;/&gt;&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Expenses7ContextMenu" id="667"/>
+							<ExtendedTooltip name="Expenses7ExtendedTooltip" id="668"/>
+						</LabelDecoration>
+						<LabelDecoration name="Expenses8" id="717">
+							<Width>13</Width>
+							<Height>2</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;font @Arial Unicode MS&gt;&lt;color Orange&gt;▄▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Orange&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Orange&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Orange&gt;▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;
+&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt; &lt;/&gt;&lt;/&gt;&lt;fontstyle -30&gt;&lt;color #c0c0c0&gt;1 000 000,00&lt;/&gt;&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Expenses8ContextMenu" id="718"/>
+							<ExtendedTooltip name="Expenses8ExtendedTooltip" id="719"/>
+						</LabelDecoration>
+						<LabelDecoration name="Expenses9" id="672">
+							<Width>13</Width>
+							<Height>2</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;font @Arial Unicode MS&gt;&lt;color Orange&gt;▄▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Orange&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Orange&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Orange&gt;▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;
+&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt; &lt;/&gt;&lt;/&gt;&lt;fontstyle -30&gt;&lt;color #c0c0c0&gt;1 000 000,00&lt;/&gt;&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Expenses9ContextMenu" id="673"/>
+							<ExtendedTooltip name="Expenses9ExtendedTooltip" id="674"/>
+						</LabelDecoration>
+						<LabelDecoration name="Expenses10" id="675">
+							<Width>13</Width>
+							<Height>2</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;font @Arial Unicode MS&gt;&lt;color Orange&gt;▄▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Orange&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Orange&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Orange&gt;▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;
+&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt; &lt;/&gt;&lt;/&gt;&lt;fontstyle -30&gt;&lt;color #c0c0c0&gt;1 000 000,00&lt;/&gt;&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Expenses10ContextMenu" id="676"/>
+							<ExtendedTooltip name="Expenses10ExtendedTooltip" id="677"/>
+						</LabelDecoration>
+						<LabelDecoration name="Expenses11" id="678">
+							<Width>13</Width>
+							<Height>2</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;font @Arial Unicode MS&gt;&lt;color Orange&gt;▄▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Orange&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Orange&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Orange&gt;▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;
+&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt; &lt;/&gt;&lt;/&gt;&lt;fontstyle -30&gt;&lt;color #c0c0c0&gt;1 000 000,00&lt;/&gt;&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Expenses11ContextMenu" id="679"/>
+							<ExtendedTooltip name="Expenses11ExtendedTooltip" id="680"/>
+						</LabelDecoration>
+						<LabelDecoration name="Expenses12" id="681">
+							<Width>13</Width>
+							<Height>2</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;font @Arial Unicode MS&gt;&lt;color Orange&gt;▄▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Orange&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Orange&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color Orange&gt;▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;
+&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt; &lt;/&gt;&lt;/&gt;&lt;fontstyle -30&gt;&lt;color #c0c0c0&gt;1 000 000,00&lt;/&gt;&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Expenses12ContextMenu" id="682"/>
+							<ExtendedTooltip name="Expenses12ExtendedTooltip" id="683"/>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="Profit" id="136">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Profit</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Cost</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ProfitExtendedTooltip" id="137"/>
+					<ChildItems>
+						<LabelDecoration name="ProfitTitle" id="108">
+							<Width>13</Width>
+							<Height>2</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Profit from sales</v8:content>
+								</v8:item>
+							</Title>
+							<BackColor>web:Gainsboro</BackColor>
+							<ContextMenu name="ProfitHeaderContextMenu" id="109"/>
+							<ExtendedTooltip name="ProfitTitleExtendedTooltip" id="110"/>
+						</LabelDecoration>
+						<LabelDecoration name="Profit1" id="516">
+							<Width>13</Width>
+							<Height>2</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;font @Arial Unicode MS&gt;&lt;color MediumPurple&gt;▄▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color MediumPurple&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color MediumPurple&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color MediumPurple&gt;▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;
+&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt; &lt;/&gt;&lt;/&gt;&lt;fontstyle -30&gt;&lt;color #c0c0c0&gt;1 000 000,00&lt;/&gt;&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Profit1ContextMenu" id="517"/>
+							<ExtendedTooltip name="Profit1ExtendedTooltip" id="518"/>
+						</LabelDecoration>
+						<LabelDecoration name="Profit2" id="684">
+							<Width>13</Width>
+							<Height>2</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;font @Arial Unicode MS&gt;&lt;color MediumPurple&gt;▄▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color MediumPurple&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color MediumPurple&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color MediumPurple&gt;▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;
+&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt; &lt;/&gt;&lt;/&gt;&lt;fontstyle -30&gt;&lt;color #c0c0c0&gt;1 000 000,00&lt;/&gt;&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Profit2ContextMenu" id="685"/>
+							<ExtendedTooltip name="Profit2ExtendedTooltip" id="686"/>
+						</LabelDecoration>
+						<LabelDecoration name="Profit3" id="687">
+							<Width>13</Width>
+							<Height>2</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;font @Arial Unicode MS&gt;&lt;color MediumPurple&gt;▄▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color MediumPurple&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color MediumPurple&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color MediumPurple&gt;▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;
+&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt; &lt;/&gt;&lt;/&gt;&lt;fontstyle -30&gt;&lt;color #c0c0c0&gt;1 000 000,00&lt;/&gt;&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Profit3ContextMenu" id="688"/>
+							<ExtendedTooltip name="Profit3ExtendedTooltip" id="689"/>
+						</LabelDecoration>
+						<LabelDecoration name="Profit4" id="690">
+							<Width>13</Width>
+							<Height>2</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;font @Arial Unicode MS&gt;&lt;color MediumPurple&gt;▄▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color MediumPurple&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color MediumPurple&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color MediumPurple&gt;▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;
+&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt; &lt;/&gt;&lt;/&gt;&lt;fontstyle -30&gt;&lt;color #c0c0c0&gt;1 000 000,00&lt;/&gt;&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Profit4ContextMenu" id="691"/>
+							<ExtendedTooltip name="Profit4ExtendedTooltip" id="692"/>
+						</LabelDecoration>
+						<LabelDecoration name="Profit5" id="693">
+							<Width>13</Width>
+							<Height>2</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;font @Arial Unicode MS&gt;&lt;color MediumPurple&gt;▄▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color MediumPurple&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color MediumPurple&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color MediumPurple&gt;▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;
+&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt; &lt;/&gt;&lt;/&gt;&lt;fontstyle -30&gt;&lt;color #c0c0c0&gt;1 000 000,00&lt;/&gt;&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Profit5ContextMenu" id="694"/>
+							<ExtendedTooltip name="Profit5ExtendedTooltip" id="695"/>
+						</LabelDecoration>
+						<LabelDecoration name="Profit6" id="696">
+							<Width>13</Width>
+							<Height>2</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;font @Arial Unicode MS&gt;&lt;color MediumPurple&gt;▄▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color MediumPurple&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color MediumPurple&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color MediumPurple&gt;▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;
+&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt; &lt;/&gt;&lt;/&gt;&lt;fontstyle -30&gt;&lt;color #c0c0c0&gt;1 000 000,00&lt;/&gt;&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Profit6ContextMenu" id="697"/>
+							<ExtendedTooltip name="Profit6ExtendedTooltip" id="698"/>
+						</LabelDecoration>
+						<LabelDecoration name="Profit7" id="699">
+							<Width>13</Width>
+							<Height>2</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;font @Arial Unicode MS&gt;&lt;color MediumPurple&gt;▄▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color MediumPurple&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color MediumPurple&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color MediumPurple&gt;▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;
+&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt; &lt;/&gt;&lt;/&gt;&lt;fontstyle -30&gt;&lt;color #c0c0c0&gt;1 000 000,00&lt;/&gt;&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Profit7ContextMenu" id="700"/>
+							<ExtendedTooltip name="Profit7ExtendedTooltip" id="701"/>
+						</LabelDecoration>
+						<LabelDecoration name="Profit8" id="702">
+							<Width>13</Width>
+							<Height>2</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;font @Arial Unicode MS&gt;&lt;color MediumPurple&gt;▄▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color MediumPurple&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color MediumPurple&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color MediumPurple&gt;▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;
+&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt; &lt;/&gt;&lt;/&gt;&lt;fontstyle -30&gt;&lt;color #c0c0c0&gt;1 000 000,00&lt;/&gt;&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Profit8ContextMenu" id="703"/>
+							<ExtendedTooltip name="Profit8ExtendedTooltip" id="704"/>
+						</LabelDecoration>
+						<LabelDecoration name="Profit9" id="705">
+							<Width>13</Width>
+							<Height>2</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;font @Arial Unicode MS&gt;&lt;color MediumPurple&gt;▄▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color MediumPurple&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color MediumPurple&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color MediumPurple&gt;▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;
+&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt; &lt;/&gt;&lt;/&gt;&lt;fontstyle -30&gt;&lt;color #c0c0c0&gt;1 000 000,00&lt;/&gt;&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Profit9ContextMenu" id="706"/>
+							<ExtendedTooltip name="Profit9ExtendedTooltip" id="707"/>
+						</LabelDecoration>
+						<LabelDecoration name="Profit10" id="708">
+							<Width>13</Width>
+							<Height>2</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;font @Arial Unicode MS&gt;&lt;color MediumPurple&gt;▄▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color MediumPurple&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color MediumPurple&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color MediumPurple&gt;▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;
+&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt; &lt;/&gt;&lt;/&gt;&lt;fontstyle -30&gt;&lt;color #c0c0c0&gt;1 000 000,00&lt;/&gt;&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Profit10ContextMenu" id="709"/>
+							<ExtendedTooltip name="Profit10ExtendedTooltip" id="710"/>
+						</LabelDecoration>
+						<LabelDecoration name="Profit11" id="711">
+							<Width>13</Width>
+							<Height>2</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;font @Arial Unicode MS&gt;&lt;color MediumPurple&gt;▄▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color MediumPurple&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color MediumPurple&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color MediumPurple&gt;▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;
+&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt; &lt;/&gt;&lt;/&gt;&lt;fontstyle -30&gt;&lt;color #c0c0c0&gt;1 000 000,00&lt;/&gt;&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Profit11ContextMenu" id="712"/>
+							<ExtendedTooltip name="Profit11ExtendedTooltip" id="713"/>
+						</LabelDecoration>
+						<LabelDecoration name="Profit12" id="714">
+							<Width>13</Width>
+							<Height>2</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Title formatted="true">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>&lt;font @Arial Unicode MS&gt;&lt;color MediumPurple&gt;▄▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color MediumPurple&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color MediumPurple&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color MediumPurple&gt;▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄▄▄▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt;▄&lt;/&gt;&lt;/&gt;
+&lt;font @Arial Unicode MS&gt;&lt;color #c0c0c0&gt; &lt;/&gt;&lt;/&gt;&lt;fontstyle -30&gt;&lt;color #c0c0c0&gt;1 000 000,00&lt;/&gt;&lt;/&gt;</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Profit12ContextMenu" id="715"/>
+							<ExtendedTooltip name="Profit12ExtendedTooltip" id="716"/>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.ManagerMonitors</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="Company" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Company</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Companies</v8:Type>
+			</Type>
+			<FunctionalOptions>
+				<Item>FunctionalOption.MultipleCompaniesAccounting</Item>
+			</FunctionalOptions>
+		</Attribute>
+		<Attribute name="Period" id="4">
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="Refresh" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Refresh</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Refresh</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Shortcut>F5</Shortcut>
+			<Picture>
+				<xr:Ref>StdPicture.Refresh</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Refresh</Action>
+			<Representation>Picture</Representation>
+		</Command>
+	</Commands>
+</Form>

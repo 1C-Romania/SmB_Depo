@@ -1,0 +1,743 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Customizable>false</Customizable>
+	<CommandBarLocation>None</CommandBarLocation>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="FormCommandBar" id="-1"/>
+	<Events>
+		<Event name="NotificationProcessing">NotificationProcessing</Event>
+		<Event name="OnOpen">OnOpen</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<Pages name="OfflineWork" id="3">
+			<EnableContentChange>true</EnableContentChange>
+			<PagesRepresentation>None</PagesRepresentation>
+			<ExtendedTooltip name="WorkOfflineExtendedTooltip" id="116"/>
+			<ChildItems>
+				<Page name="OfflineWorkIsNotCustomized" id="52">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Offline work is not configured</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Offline work is not configured</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="WorkOfflineIsNotConfiguredExtendedTooltip" id="117"/>
+					<ChildItems>
+						<UsualGroup name="Group1" id="53">
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="Group1ExtendedTooltip" id="118"/>
+							<ChildItems>
+								<PictureDecoration name="Decoration2" id="54">
+									<Width>5</Width>
+									<Height>2</Height>
+									<Picture>
+										<xr:Ref>CommonPicture.Information32</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="Decoration2ContextMenu" id="55"/>
+									<ExtendedTooltip name="Decoration2ExtendedTooltip" id="119"/>
+								</PictureDecoration>
+								<UsualGroup name="Group4" id="100">
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="Group4ExtendedTooltip" id="120"/>
+									<ChildItems>
+										<LabelDecoration name="Decoration1" id="56">
+											<Width>75</Width>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Offline work is not configured.
+If the internet connection is not stable the user can import data to the computer and continue working offline. For example for a business trip period. Data can be synchronized at any moment upon availability of the connection to the Internet.</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="Decoration1ContextMenu" id="57"/>
+											<ExtendedTooltip name="Decoration1ExtendedTooltip" id="121"/>
+										</LabelDecoration>
+										<LabelDecoration name="Decoration4" id="101">
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>For the offline work it is necessary to install 1C:Enterprise platform to on the computer.</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="Decoration4ContextMenu" id="102"/>
+											<ExtendedTooltip name="Decoration4ExtendedTooltip" id="122"/>
+										</LabelDecoration>
+										<Button name="HowToInstallOrUpdate1CEnterprisePlatformVersion" id="99">
+											<Type>Hyperlink</Type>
+											<CommandName>Form.Command.HowToInstallOrUpdate1CEnterprisePlatformVersion</CommandName>
+											<ExtendedTooltip name="HowToSetOrUpdate1CEnterprisePlatformVersionExtendedTooltip" id="123"/>
+										</Button>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="Group8" id="58">
+							<Group>Horizontal</Group>
+							<Representation>NormalSeparation</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="Group8ExtendedTooltip" id="124"/>
+							<ChildItems>
+								<Button name="CreateOfflineWorkplace" id="59">
+									<Type>UsualButton</Type>
+									<CommandName>Form.Command.CreateOfflineWorkplace</CommandName>
+									<ExtendedTooltip name="CreateStandAloneWorkingPlaceExtendedTooltip" id="125"/>
+								</Button>
+								<LabelDecoration name="Decoration3" id="60">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Create the offline workplace to work without connection to the Internet.</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="Decoration3ContextMenu" id="61"/>
+									<ExtendedTooltip name="Decoration3ExtendedTooltip" id="126"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+						<Button name="HowToSetOfflineWorkplace" id="110">
+							<Type>Hyperlink</Type>
+							<CommandName>Form.Command.HowToSetOfflineWorkplace</CommandName>
+							<ExtendedTooltip name="HowToConfigureOfflineWorkplaceExtendedTooltip" id="127"/>
+						</Button>
+					</ChildItems>
+				</Page>
+				<Page name="OneOfflineWorkplace" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>One offline workplace</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>One offline workplace</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="OneOfflineWorkplaceExtendedTooltip" id="128"/>
+					<ChildItems>
+						<UsualGroup name="Group9" id="113">
+							<Group>Vertical</Group>
+							<Representation>NormalSeparation</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="Group9ExtendedTooltip" id="129"/>
+							<ChildItems>
+								<UsualGroup name="Group5" id="5">
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="Group5ExtendedTooltip" id="130"/>
+									<ChildItems>
+										<LabelDecoration name="Decoration5" id="72">
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Offline working place:</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="Decoration5ContextMenu" id="73"/>
+											<ExtendedTooltip name="Decoration5ExtendedTooltip" id="131"/>
+										</LabelDecoration>
+										<LabelField name="OfflineWorkplace" id="67">
+											<DataPath>OfflineWorkplace</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<HorizontalAlign>Left</HorizontalAlign>
+											<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+											<ContextMenu name="StandAloneWorkingPlaceContextMenu" id="68"/>
+											<ExtendedTooltip name="StandAloneWorkingPlaceExtendedTooltip" id="132"/>
+										</LabelField>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="Group3" id="76">
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="Group3ExtendedTooltip" id="133"/>
+									<ChildItems>
+										<LabelDecoration name="InformationAboutLastSynchronization" id="10">
+											<TextColor>style:ExplanationText</TextColor>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Last synchronization: &lt;Date&gt;.</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="InformationAboutLastSynchronizationContextMenu" id="11"/>
+											<ExtendedTooltip name="InformationAboutLastSynchronizationExtendedTooltip" id="134"/>
+										</LabelDecoration>
+										<Button name="GoToConflicts" id="114">
+											<Type>Hyperlink</Type>
+											<CommandName>Form.Command.GoToConflicts</CommandName>
+											<ExtendedTooltip name="GoToConflictsExtendedTooltip" id="135"/>
+										</Button>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="Group2" id="14">
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="Group2ExtendedTooltip" id="136"/>
+									<ChildItems>
+										<UsualGroup name="Group10" id="183">
+											<Group>Horizontal</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="Group10ExtendedTooltip" id="184"/>
+											<ChildItems>
+												<Button name="ChangeOfflineWorkplace" id="15">
+													<Type>UsualButton</Type>
+													<Width>12</Width>
+													<CommandName>Form.Command.ChangeOfflineWorkplace</CommandName>
+													<ExtendedTooltip name="ChangeOfflineWorkplaceExtendedTooltip" id="137"/>
+												</Button>
+												<Button name="SentDataContent" id="181">
+													<Type>UsualButton</Type>
+													<Representation>Picture</Representation>
+													<Width>3</Width>
+													<CommandName>Form.Command.SentDataContent</CommandName>
+													<ExtendedTooltip name="OutgoingDataContentExtendedTooltip" id="182"/>
+												</Button>
+											</ChildItems>
+										</UsualGroup>
+										<LabelDecoration name="DataTransferRestrictionsDescriptionFull" id="74">
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>&lt;Data transfer restrictions description&gt;</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="DataTransferRestrictionDescriptionContextMenu" id="75"/>
+											<ExtendedTooltip name="DataTransferRestrictionDescriptionExtendedTooltip" id="138"/>
+										</LabelDecoration>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="Group6" id="16">
+									<Group>Horizontal</Group>
+									<Representation>NormalSeparation</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="Group6ExtendedTooltip" id="139"/>
+									<ChildItems>
+										<Button name="StopSynchronizationWithOfflineWorkplace" id="69">
+											<Type>UsualButton</Type>
+											<Width>16</Width>
+											<CommandName>Form.Command.StopSynchronizationWithOfflineWorkplace</CommandName>
+											<ExtendedTooltip name="StopSynchronizationWithOfflineWorkplaceExtendedTooltip" id="140"/>
+										</Button>
+										<LabelDecoration name="Decoration8" id="18">
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Stop synchronization with this offline workplace.</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="Decoration8ContextMenu" id="19"/>
+											<ExtendedTooltip name="Decoration8ExtendedTooltip" id="141"/>
+										</LabelDecoration>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="Group7" id="20">
+							<Group>Horizontal</Group>
+							<Representation>NormalSeparation</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="Group7ExtendedTooltip" id="142"/>
+							<ChildItems>
+								<Button name="CreateOfflineWorkplace1" id="21">
+									<Type>UsualButton</Type>
+									<CommandName>Form.Command.CreateOfflineWorkplace</CommandName>
+									<ExtendedTooltip name="CreateOfflineWorkplace1ExtendedTooltip" id="143"/>
+								</Button>
+								<LabelDecoration name="Decoration7" id="22">
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Creat one more offline workplace for the work without the connection to the Internet.</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="Decoration7ContextMenu" id="23"/>
+									<ExtendedTooltip name="Decoration7ExtendedTooltip" id="144"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+						<Button name="HowToSetOfflineWorkplace1" id="111">
+							<Type>Hyperlink</Type>
+							<CommandName>Form.Command.HowToSetOfflineWorkplace</CommandName>
+							<ExtendedTooltip name="HowToConfigureOfflineWorkplace1ExtendedTooltip" id="145"/>
+						</Button>
+					</ChildItems>
+				</Page>
+				<Page name="SeveralOfflineWorkplaces" id="24">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Several offline worplaces</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Several offline worplaces</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="FewOfflineWorkplacesExtendedTooltip" id="146"/>
+					<ChildItems>
+						<Button name="GoToConflicts1" id="115">
+							<Type>Hyperlink</Type>
+							<CommandName>Form.Command.GoToConflicts</CommandName>
+							<ExtendedTooltip name="GoToConflicts1ExtendedTooltip" id="147"/>
+						</Button>
+						<Table name="OfflineWorkplacesList" id="78">
+							<Representation>List</Representation>
+							<ReadOnly>true</ReadOnly>
+							<ChangeRowSet>false</ChangeRowSet>
+							<ChangeRowOrder>false</ChangeRowOrder>
+							<SelectionMode>SingleRow</SelectionMode>
+							<RowSelectionMode>Row</RowSelectionMode>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>OfflineWorkplacesList</DataPath>
+							<CommandSet>
+								<ExcludedCommand>Copy</ExcludedCommand>
+								<ExcludedCommand>SortListAsc</ExcludedCommand>
+								<ExcludedCommand>MoveUp</ExcludedCommand>
+								<ExcludedCommand>SortListDesc</ExcludedCommand>
+								<ExcludedCommand>Delete</ExcludedCommand>
+								<ExcludedCommand>EndEdit</ExcludedCommand>
+								<ExcludedCommand>Add</ExcludedCommand>
+								<ExcludedCommand>Change</ExcludedCommand>
+								<ExcludedCommand>MoveDown</ExcludedCommand>
+							</CommandSet>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="OfflineWorkplacesListContextMenu" id="79">
+								<Autofill>false</Autofill>
+								<ChildItems>
+									<Button name="OfflineWorkplacesListCreateOfflineWorkplace1" id="103">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.CreateOfflineWorkplace</CommandName>
+										<ExtendedTooltip name="OfflineWorkplacesListCreateOfflineWorkplace1ExtendedTooltip" id="148"/>
+									</Button>
+									<Button name="OfflineWorkplacesListChangeOfflineWorkplaceInList1" id="104">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.ChangeOfflineWorkplaceInList</CommandName>
+										<ExtendedTooltip name="OfflineWorkplacesListChangeOfflineWorkplaceInList1ExtendedTooltip" id="149"/>
+									</Button>
+									<Button name="OfflineWorkplacesListStopSynchronizationWithOfflineWorkplaceInList1" id="105">
+										<Type>CommandBarButton</Type>
+										<OnlyInAllActions>false</OnlyInAllActions>
+										<CommandName>Form.Command.StopSynchronizationWithOfflineWorkplaceInList</CommandName>
+										<Picture>
+											<xr:Ref>StdPicture.Delete</xr:Ref>
+											<xr:LoadTransparent>true</xr:LoadTransparent>
+										</Picture>
+										<Title>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Stop synchronization</v8:content>
+											</v8:item>
+										</Title>
+										<ExtendedTooltip name="OfflineWorkplacesListStopSynchronizationWithOfflineWorkplaceInList1ExtendedTooltip" id="150"/>
+									</Button>
+									<Button name="OfflineWorkplacesListContextMenuOutgoingDataContent" id="172">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.SentDataContent</CommandName>
+										<ExtendedTooltip name="OfflineWorkplacesListContextMenuOutgoingDataContentExtendedTooltip" id="173"/>
+									</Button>
+									<ButtonGroup name="OfflineWorkplacesListGroup4" id="106">
+										<ExtendedTooltip name="OfflineWorkplacesListGroup4ExtendedTooltip" id="151"/>
+										<ChildItems>
+											<Button name="OfflineWorkplacesListCopyToClipboard1" id="107">
+												<Type>CommandBarButton</Type>
+												<OnlyInAllActions>false</OnlyInAllActions>
+												<CommandName>Form.Item.OfflineWorkplacesList.StandardCommand.CopyToClipboard</CommandName>
+												<ExtendedTooltip name="OfflineWorkplacesListCopyToClipboard1ExtendedTooltip" id="152"/>
+											</Button>
+											<Button name="OfflineWorkplacesListOutputList1" id="108">
+												<Type>CommandBarButton</Type>
+												<OnlyInAllActions>false</OnlyInAllActions>
+												<CommandName>Form.Item.OfflineWorkplacesList.StandardCommand.OutputList</CommandName>
+												<ExtendedTooltip name="OfflineWorkplacesListOutputList1ExtendedTooltip" id="153"/>
+											</Button>
+										</ChildItems>
+									</ButtonGroup>
+								</ChildItems>
+							</ContextMenu>
+							<AutoCommandBar name="OfflineWorkplacesListCommandBar" id="80">
+								<Autofill>false</Autofill>
+								<ChildItems>
+									<Button name="OfflineWorkplacesListCreateOfflineWorkplace" id="85">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.CreateOfflineWorkplace</CommandName>
+										<ExtendedTooltip name="OfflineWorkplacesListCreateOfflineWorkplaceExtendedTooltip" id="154"/>
+									</Button>
+									<Button name="OfflineWorkplacesListChangeOfflineWorkplaceInList" id="98">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.ChangeOfflineWorkplaceInList</CommandName>
+										<ExtendedTooltip name="OfflineWorkplacesListChangeOfflineWorkplaceInListExtendedTooltip" id="155"/>
+									</Button>
+									<Button name="OfflineWorkplacesListStopSynchronizationWithOfflineWorkplaceInList" id="87">
+										<Type>CommandBarButton</Type>
+										<OnlyInAllActions>false</OnlyInAllActions>
+										<CommandName>Form.Command.StopSynchronizationWithOfflineWorkplaceInList</CommandName>
+										<Picture>
+											<xr:Ref>StdPicture.Delete</xr:Ref>
+											<xr:LoadTransparent>true</xr:LoadTransparent>
+										</Picture>
+										<Title>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Stop synchronization</v8:content>
+											</v8:item>
+										</Title>
+										<ExtendedTooltip name="OfflineWorkplacesListStopSynchronizationWithOfflineWorkplaceInListExtendedTooltip" id="156"/>
+									</Button>
+									<Button name="OfflineWorkplacesListOutgoingDataContent" id="170">
+										<Type>CommandBarButton</Type>
+										<OnlyInAllActions>false</OnlyInAllActions>
+										<CommandName>Form.Command.SentDataContent</CommandName>
+										<ExtendedTooltip name="OfflineWorkplacesListOutgoingDataContentExtendedTooltip" id="171"/>
+									</Button>
+									<ButtonGroup name="OfflineWorkplacesListGroup3" id="95">
+										<ExtendedTooltip name="OfflineWorkplacesListGroup3ExtendedTooltip" id="157"/>
+										<ChildItems>
+											<Button name="OfflineWorkplacesListUpdate" id="88">
+												<Type>CommandBarButton</Type>
+												<OnlyInAllActions>false</OnlyInAllActions>
+												<CommandName>Form.Command.Refresh</CommandName>
+												<ExtendedTooltip name="OfflineWorkplacesListUpdateExtendedTooltip" id="158"/>
+											</Button>
+										</ChildItems>
+									</ButtonGroup>
+									<ButtonGroup name="OfflineWorkplacesListGroup1" id="93">
+										<ExtendedTooltip name="OfflineWorkplacesListGroup1ExtendedTooltip" id="159"/>
+										<ChildItems>
+											<Button name="OfflineWorkplacesListFind" id="89">
+												<Type>CommandBarButton</Type>
+												<OnlyInAllActions>false</OnlyInAllActions>
+												<CommandName>Form.Item.OfflineWorkplacesList.StandardCommand.Find</CommandName>
+												<ExtendedTooltip name="OfflineWorkplacesListFindExtendedTooltip" id="160"/>
+											</Button>
+											<Button name="OfflineWorkplacesListCancelSearch" id="90">
+												<Type>CommandBarButton</Type>
+												<OnlyInAllActions>false</OnlyInAllActions>
+												<CommandName>Form.Item.OfflineWorkplacesList.StandardCommand.CancelSearch</CommandName>
+												<ExtendedTooltip name="OfflineWorkplacesListCancelSearchExtendedTooltip" id="161"/>
+											</Button>
+										</ChildItems>
+									</ButtonGroup>
+									<ButtonGroup name="OfflineWorkplacesListGroup2" id="94">
+										<ExtendedTooltip name="OfflineWorkplacesListGroup2ExtendedTooltip" id="162"/>
+										<ChildItems>
+											<Button name="OfflineWorkplacesListCopyToClipboard" id="92">
+												<Type>CommandBarButton</Type>
+												<OnlyInAllActions>false</OnlyInAllActions>
+												<CommandName>Form.Item.OfflineWorkplacesList.StandardCommand.CopyToClipboard</CommandName>
+												<ExtendedTooltip name="OfflineWorkplacesListCopyToClipboardExtendedTooltip" id="163"/>
+											</Button>
+											<Button name="OfflineWorkplacesListOutputList" id="91">
+												<Type>CommandBarButton</Type>
+												<OnlyInAllActions>false</OnlyInAllActions>
+												<CommandName>Form.Item.OfflineWorkplacesList.StandardCommand.OutputList</CommandName>
+												<ExtendedTooltip name="OfflineWorkplacesListOutputListExtendedTooltip" id="164"/>
+											</Button>
+										</ChildItems>
+									</ButtonGroup>
+									<Button name="OfflineWorkplaceListButton1" id="109">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.StandardCommand.Help</CommandName>
+										<ExtendedTooltip name="OfflineWorkplaceListButton1ExtendedTooltip" id="165"/>
+									</Button>
+								</ChildItems>
+							</AutoCommandBar>
+							<ExtendedTooltip name="OfflineWorkplacesListExtendedTooltip" id="166"/>
+							<SearchStringAddition name="OfflineWorkplacesListSearchString" id="185">
+								<AdditionSource>
+									<Item>OfflineWorkplacesList</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="OfflineWorkplacesListSearchStringContextMenu" id="186"/>
+								<ExtendedTooltip name="OfflineWorkplacesListSearchStringExtendedTooltip" id="187"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="OfflineWorkplacesListViewStatus" id="188">
+								<AdditionSource>
+									<Item>OfflineWorkplacesList</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="OfflineWorkplacesListViewStatusContextMenu" id="189"/>
+								<ExtendedTooltip name="OfflineWorkplacesListViewStatusExtendedTooltip" id="190"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="OfflineWorkplacesListSearchControl" id="191">
+								<AdditionSource>
+									<Item>OfflineWorkplacesList</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="OfflineWorkplacesListSearchControlContextMenu" id="192"/>
+								<ExtendedTooltip name="OfflineWorkplacesListSearchControlExtendedTooltip" id="193"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="Selection">OfflineWorkplacesListChoice</Event>
+							</Events>
+							<ChildItems>
+								<InputField name="OfflineWorkplacesListOfflineWorkplace" id="81">
+									<DataPath>OfflineWorkplacesList.OfflineWorkplace</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="OfflineWorkplacesListOfflineWorkplaceContextMenu" id="82"/>
+									<ExtendedTooltip name="OfflineWorkplacesListOfflineWorkplaceExtendedTooltip" id="167"/>
+								</InputField>
+								<InputField name="OfflineWorkplacesListSynchronizationDatePresentation" id="96">
+									<DataPath>OfflineWorkplacesList.SynchronizationDatePresentation</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Format>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>DLF=DDT</v8:content>
+										</v8:item>
+									</Format>
+									<EditFormat>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>DLF=DDT</v8:content>
+										</v8:item>
+									</EditFormat>
+									<ContextMenu name="OfflineWorkplacesListSynchronizationDatePresentationContextMenu" id="97"/>
+									<ExtendedTooltip name="OfflineWorkplacesListSynchronizationDatePresentationExtendedTooltip" id="168"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+						<Button name="HowToSetOfflineWorkplace2" id="112">
+							<Type>Hyperlink</Type>
+							<CommandName>Form.Command.HowToSetOfflineWorkplace</CommandName>
+							<ExtendedTooltip name="HowToConfigureOfflineWorkplace2ExtendedTooltip" id="169"/>
+						</Button>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="OfflineWorkplace" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Offline working place</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:TypeSet>cfg:ExchangePlanRef</v8:TypeSet>
+			</Type>
+		</Attribute>
+		<Attribute name="OfflineWorkplacesList" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Offline workplaces list</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="OfflineWorkplace" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Offline working place</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:TypeSet>cfg:ExchangePlanRef</v8:TypeSet>
+					</Type>
+				</Column>
+				<Column name="SynchronizationDatePresentation" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Last synchronization</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ChangeOfflineWorkplace" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Configure...</v8:content>
+				</v8:item>
+			</Title>
+			<Picture>
+				<xr:Ref>StdPicture.Change</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ChangeOfflineWorkplace</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="StopSynchronizationWithOfflineWorkplace" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Stop</v8:content>
+				</v8:item>
+			</Title>
+			<Picture>
+				<xr:Ref>StdPicture.Stop</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>StopSynchronizationWithOfflineWorkplace</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="CreateOfflineWorkplace" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Create...</v8:content>
+				</v8:item>
+			</Title>
+			<Picture>
+				<xr:Ref>StdPicture.CreateListItem</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>CreateOfflineWorkplace</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="Refresh" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Refresh</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Refresh</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Shortcut>F5</Shortcut>
+			<Picture>
+				<xr:Ref>StdPicture.Refresh</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Refresh</Action>
+			<Representation>Picture</Representation>
+		</Command>
+		<Command name="ChangeOfflineWorkplaceInList" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Change</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Change offline workplace in the list</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Change</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ChangeOfflineWorkplaceInList</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="StopSynchronizationWithOfflineWorkplaceInList" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Stop synchronization</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Stop synchronization with the offline workplace in the list</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>StopSynchronizationWithOfflineWorkplaceInList</Action>
+		</Command>
+		<Command name="HowToInstallOrUpdate1CEnterprisePlatformVersion" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>How to install or update the 1C:Enterprise platform version</v8:content>
+				</v8:item>
+			</Title>
+			<Action>HowToInstallOrUpdate1CEnterprisePlatformVersion</Action>
+		</Command>
+		<Command name="HowToSetOfflineWorkplace" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Hot to configure the offline workplace</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Hot to configure the offline workplace</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>HowToSetOfflineWorkplace</Action>
+		</Command>
+		<Command name="GoToConflicts" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>No warnings</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Proceed to the data synchronization conflicts</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>GoToConflicts</Action>
+		</Command>
+		<Command name="SentDataContent" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Content of data being sent</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Content of data being sent</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Magnifier</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>SentDataContent</Action>
+		</Command>
+	</Commands>
+</Form>

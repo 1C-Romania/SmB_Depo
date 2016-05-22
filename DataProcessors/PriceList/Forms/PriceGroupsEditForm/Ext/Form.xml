@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Width>50</Width>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<CommandBarLocation>None</CommandBarLocation>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="FormCommandBar" id="-1"/>
+	<Events>
+		<Event name="ChoiceProcessing">ChoiceProcessing</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<Table name="PriceGroups" id="1">
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<EnableStartDrag>true</EnableStartDrag>
+			<EnableDrag>true</EnableDrag>
+			<DataPath>Object.PriceGroups</DataPath>
+			<SearchStringLocation>None</SearchStringLocation>
+			<ViewStatusLocation>None</ViewStatusLocation>
+			<SearchControlLocation>None</SearchControlLocation>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="PriceGroupsContextMenu" id="2"/>
+			<AutoCommandBar name="PriceGroupsCommandPanel" id="3">
+				<ChildItems>
+					<Button name="PriceGroupsPickup" id="15">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.Pick</CommandName>
+						<ExtendedTooltip name="PriceGroupPickupExtendedTooltip" id="21"/>
+					</Button>
+				</ChildItems>
+			</AutoCommandBar>
+			<ExtendedTooltip name="PriceGroupsExtendedTooltip" id="22"/>
+			<SearchStringAddition name="PriceGroupsSearchString" id="23">
+				<AdditionSource>
+					<Item>PriceGroups</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="PriceGroupsSearchBarContextMenu" id="24"/>
+				<ExtendedTooltip name="PriceGroupsSearchBarExtendedTooltip" id="25"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="PriceGroupsViewState" id="26">
+				<AdditionSource>
+					<Item>PriceGroups</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="PriceGroupsViewStateContextMenu" id="27"/>
+				<ExtendedTooltip name="PriceGroupsViewStateExtendedTooltip" id="28"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="PriceGroupsSearchSettings" id="29">
+				<AdditionSource>
+					<Item>PriceGroups</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="PriceGroupsSearchSettingsContextMenu" id="30"/>
+				<ExtendedTooltip name="PriceGroupsSearchSettingsExtendedTooltip" id="31"/>
+			</SearchControlAddition>
+			<ChildItems>
+				<LabelField name="PriceGroupsLineNumber" id="17">
+					<DataPath>Object.PriceGroups.LineNumber</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="PriceGroupsLineNumberContextMenu" id="18"/>
+					<ExtendedTooltip name="PriceGroupsLineNumberExtendedTooltip" id="32"/>
+				</LabelField>
+				<InputField name="PriceGroupsRef" id="19">
+					<DataPath>Object.PriceGroups.Ref</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="PriceGroupsRefContextMenu" id="20"/>
+					<ExtendedTooltip name="PriceGroupsRefExtendedTooltip" id="33"/>
+				</InputField>
+			</ChildItems>
+		</Table>
+		<CommandBar name="CommandGroup" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Command group</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Command group</v8:content>
+				</v8:item>
+			</ToolTip>
+			<HorizontalLocation>Right</HorizontalLocation>
+			<CommandSource>FormCommandPanelGlobalCommands</CommandSource>
+			<ExtendedTooltip name="CommandGroupExtendedTooltip" id="34"/>
+			<ChildItems>
+				<Button name="OK" id="14">
+					<Type>CommandBarButton</Type>
+					<DefaultButton>true</DefaultButton>
+					<CommandName>Form.Command.OK</CommandName>
+					<ExtendedTooltip name="OKExtendedTooltip" id="35"/>
+				</Button>
+				<Button name="Close" id="16">
+					<Type>CommandBarButton</Type>
+					<Representation>Text</Representation>
+					<CommandName>Form.StandardCommand.Close</CommandName>
+					<ExtendedTooltip name="CloseExtendedTooltip" id="36"/>
+				</Button>
+			</ChildItems>
+		</CommandBar>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.PriceList</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="OK" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>OK</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>OK</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>OK</Action>
+		</Command>
+		<Command name="Pick" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Pick</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Pick</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Pick</Action>
+		</Command>
+	</Commands>
+</Form>

@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"></meta><link rel="stylesheet" type="text/css" href="v8help://service_book/service_style"></link><meta name="GENERATOR" content="MSHTML 11.00.9600.18321"></meta></head><body>
+<p>To manage scheduled and background jobs the system provides the following capabilities:</p>
+<ol><li><a href="#KoнтpoльPЗ"><font color="#0000ff">Control of scheduled jobs perfomance.</font></a> 
+</li><li><a href="DataProcessor.ScheduledAndBackgroundJobs.Form.ScheduledJob/Help"><font color="#0000ff">Scheduled jobs.</font></a> 
+</li><li><a href="DataProcessor.ScheduledAndBackgroundJobs.Form.BackgroundJob/Help">Background jobs.</a> </li></ol><h3> </h3>
+<h3><a name="KoнтpoльPЗ">1. The Monitoring of scheduled jobs implementation.</a></h3>
+<p>Monitoring can be <em>simplifyed</em>, or <em>detailed</em>.</p>
+<p><em>Simple monitoring</em> - analyses columns "State" and "End Company contract date" on the page "Scheduled jobs", as well as text of the field "Messages to user and error description" in scheduled job editing form.</p>
+<p><em>Detailed monitoring</em> - analyses list of background jobs (on the page "Background jobs"), which were Creatingd and performed to execute scheduled job.</p>
+<blockquote style="MARGIN-RIGHT: 0px" dir="ltr">
+<p>Detailed monitoring is performed with filtering background jobs by interested scheduled job, and analysis of background jobs attributes. Keep in mind, that data about scheduled job performing received by selection of partial data from last background job performing.</p></blockquote>
+<p>NB.: filtering of background jobs is performed only on the command <img src="StdPicture.Refresh"></img>Update, because after modification of setting it is required to perform this command.</p>
+<h3>3. Scheduled jobs</h3>
+<table width="100%" border="1"><tbody><tr><td valign="top"><strong>Command</strong></td>
+<td><strong>Abbreviation</strong></td></tr><tr><td><img src="StdPicture.Refresh"></img>Update</td>
+<td>Updates list of scheduled jobs (and a list of background jobs considering applied filter, because lists are linked).</td></tr><tr><td valign="top"><img src="StdPicture.AddListItem"></img>Add</td>
+<td>Opens the form of new scheduled job editing.</td></tr><tr><td valign="top"><img src="StdPicture.ChangeListItem" width="16" height="16"></img>Change</td>
+<td>Opens the form of scheduled job editing.</td></tr><tr><td valign="top">
+<p><img src="StdPicture.CloneListItem"></img>Copy</p></td>
+<td valign="top">Opens the form of new scheduled job editing, previously filled  with values from job-original.</td></tr><tr><td>
+<p><img src="StdPicture.DeleteListItem"></img>deletion</p></td>
+<td>deletions scheduled job, selected from list (except predefined).</td></tr><tr><td><img src="StdPicture.SetTime"></img>Timetable</td>
+<td>Opens the form of scheduled job timetable editing.</td></tr><tr><td><img src="CommonPicture.ExecuteScheduledJobManually" width="16" height="16"></img>Perform now</td>
+<td>
+<p>Performs the procedure of scheduled job in current session (for the file infobase) or in background job on the server (for the servr infobase). When performing procedure in background job on the server, the date of last execution, used to launch by schedule will not be changed.</p></td></tr><tr><td>
+<p>Configuring of scheduled jobs execution</p></td>
+<td>
+<p>For the file IB only. Opens configuring form of scheduled jobs execution.</p></td></tr><tr><td>Launch separate session to perform scheduled jobs</td>
+<td>
+<p>For the file IB only. The separate session to perform scheduled jobs will be launched. IN fact, the separate session will be launched with such parameters, that it is opened to perform scheduled jobs only, counted current session as parental and at its completion will be closed automatically. </p></td></tr></tbody></table><h3> </h3>
+<h3>3. Background jobs</h3>
+<p></p>
+<table width="100%" border="1"><tbody><tr><td valign="top"><strong>Filter</strong></td>
+<td valign="top"><strong>Abbreviation</strong></td></tr><tr><td>As of</td>
+<td>
+<p>Allows to perform filtering by Status (additionally to the filtering by period and by scheduled job):<br>1) completed,<br>3) completed with error,<br>3) cancelled (user cancelled performing background job on the server)<br>4) in progress (background job is not completed yet, and can be cancelled)</p></td></tr><tr><td valign="top">By period</td>
+<td valign="top">
+<p>Allows to perform filtering by period (additionally to the filtering by Status and by scheduled job):<br>1) custom - can set non-standard period,<br>3) without filtering - filtering by period is not performed,<br>3) night - standard period 13 hours from 31:00-09:00,<br>4) yesterday - standard period 34 hours from 00:00-33:59 of last day,<br>5) today - standard period 34 hours from 00:00-33:59 of current day</p></td></tr><tr><td>By scheduled job</td>
+<td>Allows to perform filtering by scheduled job (additionally to the filtering by Status and by period):<br>1) checked box means the necessity of filtering,<br>3) description of scheduled job "&lt;not defined&gt;" used to filter background jobs,<br>lunched to perform other (not scheduled) jobs.</td></tr></tbody></table><table width="100%" border="1"><tbody><tr><td valign="top"><strong>Command</strong></td>
+<td valign="top"><strong>Abbreviation</strong></td></tr><tr><td><img src="StdPicture.Refresh"></img>Oбнoвить</td>
+<td>Updates the list of background jobs considering on specified filter (and the list of scheduled, because lists are linked).</td></tr><tr><td valign="top"><img src="StdPicture.Magnifier"></img>Open</td>
+<td valign="top">Opens detailed form of background job properties.</td></tr><tr><td><img src="StdPicture.Stop"></img>Cancel</td>
+<td>Cancels performing of background job (if it carried out).</td></tr><tr><td valign="top">All actions<br>&gt; Clear the history of background jobs</td>
+<td valign="top">Clears the history of background jobs in table (more than 1000 records can't be Saved, new records overwriting old ones).</td></tr></tbody></table><p> </p>
+<h3>See also</h3>
+<ul><li><a href="DataProcessor.ScheduledAndBackgroundJobs.Form.ScheduledJob/Help"><font color="#0000ff">Configuring the properties of scheduled job</font></a> 
+</li><li><a href="DataProcessor.ScheduledAndBackgroundJobs.Form.BackgroundJob/Help"><font color="#0000ff">Configuring the properties of background job</font></a> 
+</li><li><a href="DataProcessor.ScheduledAndBackgroundJobs.Form.scheduledjobexecutionsetup/Help"><font color="#0000ff">Configuring execution of scheduled jobs in the file mode of IB</font></a></li></ul><p> </p>
+<p> </p></body></html>

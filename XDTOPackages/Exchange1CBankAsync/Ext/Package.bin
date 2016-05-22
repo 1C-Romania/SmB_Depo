@@ -1,0 +1,461 @@
+﻿<package xmlns="http://v8.1c.ru/8.1/xdto" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://bank.1c.ru/XMLSchema">
+	<property xmlns:d2p1="http://bank.1c.ru/XMLSchema" name="Packet" type="d2p1:Packet"/>
+	<property xmlns:d2p1="http://bank.1c.ru/XMLSchema" name="ResultBank" type="d2p1:ResultBank"/>
+	<property xmlns:d2p1="http://bank.1c.ru/XMLSchema" name="Probe" type="d2p1:Probe"/>
+	<property xmlns:d2p1="http://bank.1c.ru/XMLSchema" name="PayDocRu" type="d2p1:PayDocRu"/>
+	<property xmlns:d2p1="http://bank.1c.ru/XMLSchema" name="StatusDocNotice" type="d2p1:StatusDocNotice"/>
+	<property xmlns:d2p1="http://bank.1c.ru/XMLSchema" name="StatusPacketNotice" type="d2p1:StatusPacketNotice"/>
+	<property xmlns:d2p1="http://bank.1c.ru/XMLSchema" name="StatementRequest" type="d2p1:StatementRequest"/>
+	<property xmlns:d2p1="http://bank.1c.ru/XMLSchema" name="Statement" type="d2p1:Statement"/>
+	<property xmlns:d2p1="http://bank.1c.ru/XMLSchema" name="CancelationRequest" type="d2p1:CancelationRequest"/>
+	<property xmlns:d2p1="http://bank.1c.ru/XMLSchema" name="StatusRequest" type="d2p1:StatusRequest"/>
+	<property xmlns:d2p1="http://bank.1c.ru/XMLSchema" name="Settings" type="d2p1:Settings"/>
+	<valueType name="AccNumType" base="xs:string" variety="Atomic" length="20">
+		<pattern>[0-9]{20}</pattern>
+	</valueType>
+	<valueType name="DateString" base="xs:string" variety="Atomic"/>
+	<valueType name="DocKindType" base="xs:string" variety="Atomic" length="2"/>
+	<valueType name="FormatVersionType" base="xs:string" variety="Atomic" maxLength="4"/>
+	<valueType name="IDCustomerType" base="xs:string" variety="Atomic" minLength="1" maxLength="50"/>
+	<valueType name="IDType" base="xs:string" variety="Atomic"/>
+	<valueType name="StatementKindType" base="xs:string" variety="Atomic" length="1">
+		<enumeration>0</enumeration>
+		<enumeration>1</enumeration>
+		<enumeration>2</enumeration>
+	</valueType>
+	<valueType name="SumType" base="xs:decimal" variety="Atomic" totalDigits="18" fractionDigits="2"/>
+	<valueType name="UserAgentType" base="xs:string" variety="Atomic" maxLength="100"/>
+	<valueType name="ContentType" base="xs:string" variety="Atomic">
+		<enumeration>application/xml</enumeration>
+		<enumeration>application/octet-stream</enumeration>
+		<enumeration>text/plain</enumeration>
+		<enumeration>text/xml</enumeration>
+	</valueType>
+	<objectType name="BankPartyType">
+		<property name="bic" lowerBound="1" form="Attribute">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" length="9"/>
+		</property>
+		<property name="name" lowerBound="0" form="Attribute">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="160"/>
+		</property>
+	</objectType>
+	<objectType name="BankType">
+		<property name="BIC">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" length="9">
+				<pattern>[0-9]{9}</pattern>
+			</typeDef>
+		</property>
+		<property name="Name" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="160"/>
+		</property>
+		<property name="City" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="30"/>
+		</property>
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="CorrespAcc" type="d3p1:AccNumType" lowerBound="0"/>
+	</objectType>
+	<objectType name="CustomerDetailsType">
+		<property name="Name" type="xs:string"/>
+		<property name="TIN" type="xs:string" lowerBound="0"/>
+		<property name="KPP" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="1" maxLength="9"/>
+		</property>
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="Account" type="d3p1:AccNumType"/>
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="Bank" type="d3p1:BankType"/>
+	</objectType>
+	<objectType name="CustomerPartyType">
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="id" type="d3p1:IDCustomerType" lowerBound="1" form="Attribute"/>
+		<property name="name" lowerBound="0" form="Attribute">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="160"/>
+		</property>
+		<property name="tin" lowerBound="0" form="Attribute">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="10" maxLength="12"/>
+		</property>
+		<property name="kpp" lowerBound="0" form="Attribute">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" length="9"/>
+		</property>
+	</objectType>
+	<objectType name="DigestType">
+		<property name="Data">
+			<typeDef xsi:type="ObjectType">
+				<property name="algorithmVersion" lowerBound="1" form="Attribute">
+					<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="4"/>
+				</property>
+				<property name="__content" type="xs:base64Binary" form="Text"/>
+			</typeDef>
+		</property>
+	</objectType>
+	<objectType name="ErrorType">
+		<property name="Code">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" length="4"/>
+		</property>
+		<property name="Description">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255"/>
+		</property>
+		<property name="MoreInfo" type="xs:string" lowerBound="0"/>
+	</objectType>
+	<objectType name="ParticipantType" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="Customer" type="d3p1:CustomerPartyType" lowerBound="0"/>
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="Bank" type="d3p1:BankPartyType" lowerBound="0"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://bank.1c.ru/XMLSchema" name="PayDocRuApp" base="d2p1:PaymentDataType">
+		<property name="BankPayerIndirectAcc" type="d2p1:BankType" lowerBound="0"/>
+		<property name="BankPayeeIndirectAcc" type="d2p1:BankType" lowerBound="0"/>
+	</objectType>
+	<objectType name="PaymentDataType">
+		<property name="DocNo" type="xs:string"/>
+		<property name="DocDate" type="xs:date"/>
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="Sum" type="d3p1:SumType"/>
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="Payer" type="d3p1:CustomerDetailsType"/>
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="Payee" type="d3p1:CustomerDetailsType"/>
+		<property name="PaymentKind" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="15"/>
+		</property>
+		<property name="TransitionKind" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" length="2"/>
+		</property>
+		<property name="Priority">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" length="1"/>
+		</property>
+		<property name="Code" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="25"/>
+		</property>
+		<property name="Purpose">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="210"/>
+		</property>
+		<property name="BudgetPaymentInfo" lowerBound="0">
+			<typeDef xsi:type="ObjectType">
+				<property name="DrawerStatus">
+					<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="1" maxLength="2"/>
+				</property>
+				<property name="CBC">
+					<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="20"/>
+				</property>
+				<property name="OKTMO">
+					<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="1" maxLength="11"/>
+				</property>
+				<property name="Reason">
+					<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="1" maxLength="2"/>
+				</property>
+				<property name="TaxPeriod">
+					<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="1" maxLength="10"/>
+				</property>
+				<property name="DocNo">
+					<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="15"/>
+				</property>
+				<property name="DocDate">
+					<typeDef xmlns:d6p1="http://bank.1c.ru/XMLSchema" xsi:type="ValueType" base="d6p1:DateString" variety="Atomic" minLength="1" maxLength="10"/>
+				</property>
+				<property name="PayType">
+					<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="1" maxLength="2"/>
+				</property>
+			</typeDef>
+		</property>
+	</objectType>
+	<objectType name="ResultStatusType" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="Error" type="d3p1:ErrorType" lowerBound="0"/>
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="Status" type="d3p1:StatusType" lowerBound="0"/>
+	</objectType>
+	<objectType name="StatusType">
+		<property name="Code">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" length="2"/>
+		</property>
+		<property name="Name" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="25"/>
+		</property>
+		<property name="MoreInfo" type="xs:string" lowerBound="0"/>
+	</objectType>
+	<objectType name="DocumentType">
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="id" type="d3p1:IDType" lowerBound="1" form="Attribute"/>
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="dockind" type="d3p1:DocKindType" lowerBound="1" form="Attribute"/>
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="formatVersion" type="d3p1:FormatVersionType" lowerBound="1" form="Attribute"/>
+		<property name="testOnly" type="xs:boolean" lowerBound="0" form="Attribute"/>
+		<property name="compressed" type="xs:boolean" lowerBound="0" form="Attribute"/>
+		<property name="encrypted" type="xs:boolean" lowerBound="0" form="Attribute"/>
+		<property name="signResponse" type="xs:boolean" lowerBound="0" form="Attribute"/>
+		<property name="notifyRequired" type="xs:boolean" lowerBound="0" form="Attribute"/>
+		<property name="Data">
+			<typeDef xsi:type="ObjectType">
+				<property name="fileName" type="xs:string" lowerBound="0" form="Attribute"/>
+				<property xmlns:d5p1="http://bank.1c.ru/XMLSchema" name="contentType" type="d5p1:ContentType" lowerBound="0" form="Attribute"/>
+				<property name="__content" type="xs:base64Binary" form="Text"/>
+			</typeDef>
+		</property>
+		<property name="Signature" lowerBound="0" upperBound="-1">
+			<typeDef xsi:type="ObjectType">
+				<property name="x509SerialNumber" type="xs:string" lowerBound="1" form="Attribute"/>
+				<property name="x509Issue" type="xs:string" lowerBound="1" form="Attribute"/>
+				<property name="x509SubjectOwner" type="xs:string" lowerBound="0" form="Attribute"/>
+				<property name="x509SubjectPosition" type="xs:string" lowerBound="0" form="Attribute"/>
+				<property name="SignedData" type="xs:base64Binary"/>
+			</typeDef>
+		</property>
+	</objectType>
+	<objectType name="Packet">
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="id" type="d3p1:IDType" lowerBound="1" form="Attribute"/>
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="formatVersion" type="d3p1:FormatVersionType" lowerBound="1" form="Attribute"/>
+		<property name="creationDate" type="xs:dateTime" lowerBound="1" form="Attribute"/>
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="userAgent" type="d3p1:UserAgentType" lowerBound="0" form="Attribute"/>
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="Sender" type="d3p1:ParticipantType"/>
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="Recipient" type="d3p1:ParticipantType"/>
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="Document" type="d3p1:DocumentType" upperBound="-1"/>
+	</objectType>
+	<objectType name="GetPacketListResponseType">
+		<property name="TimeStampLastPacket" type="xs:dateTime" lowerBound="0" form="Attribute"/>
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="PacketID" type="d3p1:IDType" lowerBound="0" upperBound="-1"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://bank.1c.ru/XMLSchema" name="GetPacketResponseType" base="d2p1:Packet"/>
+	<objectType name="LogonCertResponseType">
+		<property name="EncryptedSID">
+			<typeDef xsi:type="ObjectType">
+				<property name="__content" type="xs:base64Binary" form="Text"/>
+			</typeDef>
+		</property>
+	</objectType>
+	<objectType name="LogonResponseType">
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="SID" type="d3p1:IDType"/>
+		<property name="ExtraAuth" lowerBound="0">
+			<typeDef xsi:type="ObjectType" ordered="false" sequenced="true">
+				<property name="OTP" lowerBound="0">
+					<typeDef xsi:type="ObjectType">
+						<property name="phoneMask" lowerBound="0" form="Attribute">
+							<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="12"/>
+						</property>
+					</typeDef>
+				</property>
+			</typeDef>
+		</property>
+	</objectType>
+	<objectType name="ResultBank" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="Success" type="d3p1:SuccessResultType" lowerBound="0"/>
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="Error" type="d3p1:ErrorType" lowerBound="0"/>
+	</objectType>
+	<objectType name="SendPacketResponseType">
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="ID" type="d3p1:IDType"/>
+	</objectType>
+	<objectType name="SuccessResultType" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="SendPacketResponse" type="d3p1:SendPacketResponseType" lowerBound="0"/>
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="GetPacketListResponse" type="d3p1:GetPacketListResponseType" lowerBound="0"/>
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="GetPacketResponse" type="d3p1:GetPacketResponseType" lowerBound="0"/>
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="LogonResponse" type="d3p1:LogonResponseType" lowerBound="0"/>
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="LogonCertResponse" type="d3p1:LogonCertResponseType" lowerBound="0"/>
+	</objectType>
+	<objectType name="Probe">
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="id" type="d3p1:IDType" lowerBound="1" form="Attribute"/>
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="formatVersion" type="d3p1:FormatVersionType" lowerBound="1" form="Attribute"/>
+		<property name="creationDate" type="xs:dateTime" lowerBound="1" form="Attribute"/>
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="userAgent" type="d3p1:UserAgentType" lowerBound="0" form="Attribute"/>
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="Sender" type="d3p1:CustomerPartyType"/>
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="Recipient" type="d3p1:BankPartyType"/>
+	</objectType>
+	<objectType name="PayDocRu">
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="id" type="d3p1:IDType" lowerBound="1" form="Attribute"/>
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="formatVersion" type="d3p1:FormatVersionType" lowerBound="1" form="Attribute"/>
+		<property name="creationDate" type="xs:dateTime" lowerBound="1" form="Attribute"/>
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="userAgent" type="d3p1:UserAgentType" lowerBound="0" form="Attribute"/>
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="Sender" type="d3p1:CustomerPartyType"/>
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="Recipient" type="d3p1:BankPartyType"/>
+		<property name="Digest" type="xs:anyType" lowerBound="0"/>
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="Data" type="d3p1:PayDocRuApp"/>
+	</objectType>
+	<objectType name="StatusDocNotice">
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="id" type="d3p1:IDType" lowerBound="1" form="Attribute"/>
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="formatVersion" type="d3p1:FormatVersionType" lowerBound="1" form="Attribute"/>
+		<property name="creationDate" type="xs:dateTime" lowerBound="1" form="Attribute"/>
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="userAgent" type="d3p1:UserAgentType" lowerBound="0" form="Attribute"/>
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="Sender" type="d3p1:ParticipantType"/>
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="Recipient" type="d3p1:ParticipantType"/>
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="ExtID" type="d3p1:IDType"/>
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="Result" type="d3p1:ResultStatusType"/>
+		<property name="ExtIDStatusRequest" type="xs:anyType" lowerBound="0"/>
+	</objectType>
+	<objectType name="StatusPacketNotice">
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="id" type="d3p1:IDType" lowerBound="1" form="Attribute"/>
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="formatVersion" type="d3p1:FormatVersionType" lowerBound="1" form="Attribute"/>
+		<property name="creationDate" type="xs:dateTime" lowerBound="1" form="Attribute"/>
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="userAgent" type="d3p1:UserAgentType" lowerBound="0" form="Attribute"/>
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="Sender" type="d3p1:ParticipantType"/>
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="Recipient" type="d3p1:ParticipantType"/>
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="IDResultSuccessResponse" type="d3p1:IDType"/>
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="Result" type="d3p1:ResultStatusType"/>
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="ExtIDPacket" type="d3p1:IDType" lowerBound="0"/>
+	</objectType>
+	<objectType name="StatementRequest">
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="id" type="d3p1:IDType" lowerBound="1" form="Attribute"/>
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="formatVersion" type="d3p1:FormatVersionType" lowerBound="1" form="Attribute"/>
+		<property name="creationDate" type="xs:dateTime" lowerBound="1" form="Attribute"/>
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="userAgent" type="d3p1:UserAgentType" lowerBound="0" form="Attribute"/>
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="Sender" type="d3p1:CustomerPartyType"/>
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="Recipient" type="d3p1:BankPartyType"/>
+		<property name="Data">
+			<typeDef xsi:type="ObjectType">
+				<property xmlns:d5p1="http://bank.1c.ru/XMLSchema" name="StatementType" type="d5p1:StatementKindType"/>
+				<property name="DateFrom" type="xs:dateTime"/>
+				<property name="DateTo" type="xs:dateTime"/>
+				<property xmlns:d5p1="http://bank.1c.ru/XMLSchema" name="Account" type="d5p1:AccNumType"/>
+				<property xmlns:d5p1="http://bank.1c.ru/XMLSchema" name="Bank" type="d5p1:BankType"/>
+			</typeDef>
+		</property>
+	</objectType>
+	<objectType name="Statement">
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="id" type="d3p1:IDType" lowerBound="1" form="Attribute"/>
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="formatVersion" type="d3p1:FormatVersionType" lowerBound="1" form="Attribute"/>
+		<property name="creationDate" type="xs:dateTime" lowerBound="1" form="Attribute"/>
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="userAgent" type="d3p1:UserAgentType" lowerBound="0" form="Attribute"/>
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="Sender" type="d3p1:BankPartyType"/>
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="Recipient" type="d3p1:CustomerPartyType"/>
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="Digest" type="d3p1:DigestType" lowerBound="0"/>
+		<property name="Data">
+			<typeDef xsi:type="ObjectType">
+				<property xmlns:d5p1="http://bank.1c.ru/XMLSchema" name="StatementType" type="d5p1:StatementKindType"/>
+				<property name="DateFrom" type="xs:dateTime" lowerBound="0"/>
+				<property name="DateTo" type="xs:dateTime"/>
+				<property xmlns:d5p1="http://bank.1c.ru/XMLSchema" name="Account" type="d5p1:AccNumType"/>
+				<property xmlns:d5p1="http://bank.1c.ru/XMLSchema" name="Bank" type="d5p1:BankType"/>
+				<property xmlns:d5p1="http://bank.1c.ru/XMLSchema" name="OpeningBalance" type="d5p1:SumType" lowerBound="0"/>
+				<property xmlns:d5p1="http://bank.1c.ru/XMLSchema" name="TotalDebits" type="d5p1:SumType" lowerBound="0"/>
+				<property xmlns:d5p1="http://bank.1c.ru/XMLSchema" name="TotalCredits" type="d5p1:SumType" lowerBound="0"/>
+				<property xmlns:d5p1="http://bank.1c.ru/XMLSchema" name="ClosingBalance" type="d5p1:SumType"/>
+				<property name="OperationInfo" lowerBound="0" upperBound="-1">
+					<typeDef xsi:type="ObjectType">
+						<property name="PayDoc">
+							<typeDef xsi:type="ObjectType" ordered="false" sequenced="true">
+								<property xmlns:d9p1="http://bank.1c.ru/XMLSchema" name="id" type="d9p1:IDType" lowerBound="1" form="Attribute"/>
+								<property xmlns:d9p1="http://bank.1c.ru/XMLSchema" name="docKind" type="d9p1:DocKindType" lowerBound="1" form="Attribute"/>
+								<property xmlns:d9p1="http://bank.1c.ru/XMLSchema" name="PayDocRu" type="d9p1:PayDocRuApp" lowerBound="0"/>
+							</typeDef>
+						</property>
+						<property name="DC">
+							<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" length="1">
+								<enumeration>1</enumeration>
+								<enumeration>2</enumeration>
+							</typeDef>
+						</property>
+						<property name="Date" type="xs:date"/>
+						<property xmlns:d7p1="http://bank.1c.ru/XMLSchema" name="ExtID" type="d7p1:IDType" lowerBound="0"/>
+						<property name="Stamp" lowerBound="0">
+							<typeDef xmlns:d8p1="http://bank.1c.ru/XMLSchema" xsi:type="ObjectType" base="d8p1:BankType">
+								<property name="Branch" lowerBound="0">
+									<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255"/>
+								</property>
+								<property name="Status" type="d8p1:StatusType"/>
+							</typeDef>
+						</property>
+					</typeDef>
+				</property>
+				<property name="Stamp" lowerBound="0">
+					<typeDef xmlns:d6p1="http://bank.1c.ru/XMLSchema" xsi:type="ObjectType" base="d6p1:BankType">
+						<property name="Branch" lowerBound="0">
+							<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255"/>
+						</property>
+					</typeDef>
+				</property>
+			</typeDef>
+		</property>
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="ExtIDStatementRequest" type="d3p1:IDType" lowerBound="0"/>
+	</objectType>
+	<objectType name="CancelationRequest">
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="id" type="d3p1:IDType" lowerBound="1" form="Attribute"/>
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="formatVersion" type="d3p1:FormatVersionType" lowerBound="1" form="Attribute"/>
+		<property name="creationDate" type="xs:dateTime" lowerBound="1" form="Attribute"/>
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="userAgent" type="d3p1:UserAgentType" lowerBound="0" form="Attribute"/>
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="Sender" type="d3p1:CustomerPartyType"/>
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="Recipient" type="d3p1:BankPartyType"/>
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="ExtID" type="d3p1:IDType"/>
+		<property name="Reason" type="xs:anyType" lowerBound="0"/>
+	</objectType>
+	<objectType name="StatusRequest">
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="id" type="d3p1:IDType" lowerBound="1" form="Attribute"/>
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="formatVersion" type="d3p1:FormatVersionType" lowerBound="1" form="Attribute"/>
+		<property name="creationDate" type="xs:dateTime" lowerBound="1" form="Attribute"/>
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="userAgent" type="d3p1:UserAgentType" lowerBound="0" form="Attribute"/>
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="Sender" type="d3p1:CustomerPartyType"/>
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="Recipient" type="d3p1:BankPartyType"/>
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="ExtID" type="d3p1:IDType"/>
+	</objectType>
+	<objectType name="Settings">
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="id" type="d3p1:IDType" lowerBound="1" form="Attribute"/>
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="formatVersion" type="d3p1:FormatVersionType" lowerBound="1" form="Attribute"/>
+		<property name="creationDate" type="xs:dateTime" lowerBound="1" form="Attribute"/>
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="userAgent" type="d3p1:UserAgentType" lowerBound="0" form="Attribute"/>
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="Sender" type="d3p1:BankPartyType"/>
+		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="Recipient" type="d3p1:CustomerPartyType"/>
+		<property name="Data">
+			<typeDef xsi:type="ObjectType">
+				<property xmlns:d5p1="http://bank.1c.ru/XMLSchema" name="CustomerID" type="d5p1:IDCustomerType"/>
+				<property name="BankServerAddress" type="xs:string"/>
+				<property xmlns:d5p1="http://bank.1c.ru/XMLSchema" name="FormatVersion" type="d5p1:FormatVersionType"/>
+				<property name="Encoding" fixed="false" default="UTF-8">
+					<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic">
+						<enumeration>UTF-8</enumeration>
+					</typeDef>
+				</property>
+				<property name="Logon">
+					<typeDef xsi:type="ObjectType" ordered="false" sequenced="true">
+						<property name="Login" lowerBound="0">
+							<typeDef xsi:type="ObjectType">
+								<property name="User">
+									<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="50"/>
+								</property>
+							</typeDef>
+						</property>
+						<property name="Certificate" lowerBound="0">
+							<typeDef xsi:type="ObjectType">
+								<property name="EncryptingAlgorithm" fixed="false" default="GOST 28147-89">
+									<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic">
+										<enumeration>GOST 28147-89</enumeration>
+									</typeDef>
+								</property>
+							</typeDef>
+						</property>
+					</typeDef>
+				</property>
+				<property name="SignatureParameters" lowerBound="0">
+					<typeDef xsi:type="ObjectType">
+						<property name="SignatureAlgorithm" fixed="false" default="GOST R 34.10-2001">
+							<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic">
+								<enumeration>GOST R 34.10-2001</enumeration>
+							</typeDef>
+						</property>
+						<property name="SignatureHashAlgorithm" fixed="false" default="GOST R 34.11-94">
+							<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic">
+								<enumeration>GOST R 34.11-94</enumeration>
+							</typeDef>
+						</property>
+						<property name="BankTrustedRootCertificate" type="xs:base64Binary"/>
+						<property name="BankCertificate" type="xs:base64Binary"/>
+						<property name="CustomerSignature">
+							<typeDef xsi:type="ObjectType">
+								<property name="FirstSignature">
+									<typeDef xsi:type="ObjectType">
+										<property name="Certificate" type="xs:base64Binary" upperBound="-1"/>
+									</typeDef>
+								</property>
+								<property name="SecondSignature" lowerBound="0">
+									<typeDef xsi:type="ObjectType">
+										<property name="Certificate" type="xs:base64Binary" upperBound="-1"/>
+									</typeDef>
+								</property>
+							</typeDef>
+						</property>
+					</typeDef>
+				</property>
+				<property name="Document" upperBound="-1">
+					<typeDef xsi:type="ObjectType">
+						<property xmlns:d7p1="http://bank.1c.ru/XMLSchema" name="docKind" type="d7p1:DocKindType" lowerBound="1" form="Attribute"/>
+						<property name="Signed" lowerBound="0">
+							<typeDef xsi:type="ObjectType">
+								<property name="SignatureRequired">
+									<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic">
+										<enumeration>0</enumeration>
+										<enumeration>1</enumeration>
+										<enumeration>2</enumeration>
+									</typeDef>
+								</property>
+							</typeDef>
+						</property>
+					</typeDef>
+				</property>
+			</typeDef>
+		</property>
+	</objectType>
+</package>

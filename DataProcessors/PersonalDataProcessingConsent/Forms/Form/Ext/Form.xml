@@ -1,0 +1,529 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<ChildItems>
+			<Button name="PrintForm" id="29">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.Print</CommandName>
+				<ExtendedTooltip name="PrintFormExtendedTooltip" id="37"/>
+			</Button>
+			<Button name="MSWordPrintForm" id="30">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.PrintMSWord</CommandName>
+				<ExtendedTooltip name="FormPrintMSWordExtendedTooltip" id="38"/>
+			</Button>
+			<Button name="FormPrintOOWritter" id="31">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.PrintOOWritter</CommandName>
+				<ExtendedTooltip name="FormPrintOOWritterExtendedTooltip" id="39"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnOpen">OnOpen</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ConsentParametersGroup" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Parameters handlers</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Parameters handlers</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ParametersGroupConsentExtendedTooltip" id="40"/>
+			<ChildItems>
+				<InputField name="ConformityDate" id="27">
+					<DataPath>ConformityDate</DataPath>
+					<ContextMenu name="ConformityDateContextMenu" id="28"/>
+					<ExtendedTooltip name="ConformityDateExtendedTooltip" id="41"/>
+				</InputField>
+				<UsualGroup name="GroupOperatorPersonalData" id="22">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group personal data operator</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group personal data operator</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<ExtendedTooltip name="GroupOperatorPersonalDataExtendedTooltip" id="42"/>
+					<ChildItems>
+						<InputField name="Company" id="14">
+							<DataPath>Company</DataPath>
+							<ContextMenu name="CounterpartyContextMenu" id="15"/>
+							<ExtendedTooltip name="CounterpartyExtendedTooltip" id="43"/>
+							<Events>
+								<Event name="OnChange">CompanyOnChange</Event>
+							</Events>
+						</InputField>
+						<InputField name="CompanyAddress" id="23">
+							<DataPath>CompanyAddress</DataPath>
+							<ContextMenu name="AddressCompaniesContextMenu" id="24"/>
+							<ExtendedTooltip name="CompaniesAddressExtendedTooltip" id="44"/>
+						</InputField>
+						<InputField name="ResponsibleForPersonalDataProcessing" id="25">
+							<DataPath>ResponsibleForPersonalDataProcessing</DataPath>
+							<ContextMenu name="ResponsibleForPersonalDataProcessingContextMenu" id="26"/>
+							<ExtendedTooltip name="ResponsibleForPersonalDataProcessingExtendedTooltip" id="45"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="GroupPersonalDataSubjects" id="13">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Personal data subjects</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Personal data owners for whom personal data processing consent must be issued</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<ExtendedTooltip name="GroupPersonalDataSubjectsExtendedTooltip" id="46"/>
+					<ChildItems>
+						<RadioButtonField name="AgreementPrintVariant" id="1">
+							<DataPath>AgreementPrintVariant</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Personal data</v8:content>
+								</v8:item>
+							</Title>
+							<RadioButtonType>Auto</RadioButtonType>
+							<ColumnsCount>1</ColumnsCount>
+							<ChoiceList>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>still not in the infobase</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:string">DisplayForm</Value>
+									</xr:Value>
+								</xr:Item>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>use from the infobase</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:string">OutputBySubjects</Value>
+									</xr:Value>
+								</xr:Item>
+							</ChoiceList>
+							<ContextMenu name="AgreementPrintVariantContextMenu" id="2"/>
+							<ExtendedTooltip name="AgreementPrintVariantExtendedTooltip" id="47"/>
+							<Events>
+								<Event name="OnChange">AgreementPrintVariantOnChange</Event>
+							</Events>
+						</RadioButtonField>
+						<Pages name="FolderAgreementPrintData" id="32">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Agreement print data</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Agreement print data</v8:content>
+								</v8:item>
+							</ToolTip>
+							<PagesRepresentation>None</PagesRepresentation>
+							<ExtendedTooltip name="FolderAgreementPrintDataExtendedTooltip" id="48"/>
+							<ChildItems>
+								<Page name="DisplayForm" id="33">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Display form</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Display form</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="OutputBlankExtendedTooltip" id="49"/>
+									<ChildItems>
+										<LabelDecoration name="InformativeLabelSubjectsData" id="35">
+											<TextColor>style:ExplanationText</TextColor>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>There will be an option to enter personal data directly on the print form</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="InformationLabelDataSubjectsContextMenu" id="36"/>
+											<ExtendedTooltip name="InformationLabelDataSubjectsExtendedTooltip" id="50"/>
+										</LabelDecoration>
+									</ChildItems>
+								</Page>
+								<Page name="OutputBySubjects" id="34">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Output by subjects</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Output by subjects</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="OutputBySubjectsExtendedTooltip" id="51"/>
+									<ChildItems>
+										<Table name="PersonalDataSubjects" id="3">
+											<Representation>List</Representation>
+											<HorizontalLines>false</HorizontalLines>
+											<VerticalLines>false</VerticalLines>
+											<AutoInsertNewRow>true</AutoInsertNewRow>
+											<DataPath>PersonalDataSubjects</DataPath>
+											<SearchStringLocation>None</SearchStringLocation>
+											<ViewStatusLocation>None</ViewStatusLocation>
+											<SearchControlLocation>None</SearchControlLocation>
+											<RowFilter xsi:nil="true"/>
+											<ContextMenu name="PersonalDataSubjectsContextMenu" id="4"/>
+											<AutoCommandBar name="PersonalDataSubjectsCommandBar" id="5"/>
+											<ExtendedTooltip name="PersonalDataSubjectsExtendedTooltip" id="52"/>
+											<SearchStringAddition name="PersonalDataSubjectsSearchString" id="60">
+												<AdditionSource>
+													<Item>PersonalDataSubjects</Item>
+													<Type>SearchStringRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="PersonalDataSubjectsSearchStringContextMenu" id="61"/>
+												<ExtendedTooltip name="PersonalDataSubjectsSearchStringExtendedTooltip" id="62"/>
+											</SearchStringAddition>
+											<ViewStatusAddition name="PersonalDataSubjectsViewStatus" id="63">
+												<AdditionSource>
+													<Item>PersonalDataSubjects</Item>
+													<Type>ViewStatusRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="PersonalDataSubjectsViewStatusContextMenu" id="64"/>
+												<ExtendedTooltip name="PersonalDataSubjectsViewStatusExtendedTooltip" id="65"/>
+											</ViewStatusAddition>
+											<SearchControlAddition name="PersonalDataSubjectsSearchControl" id="66">
+												<AdditionSource>
+													<Item>PersonalDataSubjects</Item>
+													<Type>SearchControl</Type>
+												</AdditionSource>
+												<ContextMenu name="PersonalDataSubjectsSearchControlContextMenu" id="67"/>
+												<ExtendedTooltip name="PersonalDataSubjectsSearchControlExtendedTooltip" id="68"/>
+											</SearchControlAddition>
+											<ChildItems>
+												<InputField name="PersonalDataSubjectsSNP" id="16">
+													<DataPath>PersonalDataSubjects.Initials</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="PersonalDataSubjectsSNPContextMenu" id="17"/>
+													<ExtendedTooltip name="PersonalDataSubjectsSNPExtendedTooltip" id="53"/>
+												</InputField>
+												<InputField name="PersonalDataSubjectsAddress" id="18">
+													<DataPath>PersonalDataSubjects.Address</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="PersonalDataSubjectsAddressContextMenu" id="19"/>
+													<ExtendedTooltip name="PersonalDataSubjectsAddressExtendedTooltip" id="54"/>
+												</InputField>
+												<InputField name="PersonalDataSubjectsPassportData" id="20">
+													<DataPath>PersonalDataSubjects.PassportData</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<ContextMenu name="PersonalDataSubjectsPassportDataContextMenu" id="21"/>
+													<ExtendedTooltip name="PersonalDataSubjectsPassportDataExtendedTooltip" id="55"/>
+												</InputField>
+											</ChildItems>
+										</Table>
+									</ChildItems>
+								</Page>
+							</ChildItems>
+						</Pages>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="GroupPrintButtons" id="8">
+			<Visible>false</Visible>
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group print buttons</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group print buttons</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ButtonsGroupPrintExtendedTooltip" id="56"/>
+			<ChildItems>
+				<Button name="Print" id="9">
+					<Type>UsualButton</Type>
+					<CommandName>Form.Command.Print</CommandName>
+					<ExtendedTooltip name="PrintExtendedTooltip" id="57"/>
+				</Button>
+				<Button name="PrintMSWord" id="10">
+					<Type>UsualButton</Type>
+					<CommandName>Form.Command.PrintMSWord</CommandName>
+					<ExtendedTooltip name="PrintMSWordExtendedTooltip" id="58"/>
+				</Button>
+				<Button name="PrintOOWritter" id="11">
+					<Type>UsualButton</Type>
+					<CommandName>Form.Command.PrintOOWritter</CommandName>
+					<ExtendedTooltip name="PrintOOWritterExtendedTooltip" id="59"/>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="PersonalDataSubjects" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Personal data subjects</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Initials" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Full name</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>50</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Address" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Address</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="PassportData" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Passport data</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Subject" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Subject</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:TypeSet>cfg:CatalogRef</v8:TypeSet>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="AgreementPrintVariant" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Consent print option</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>100</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Company" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Company</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Companies</v8:Type>
+			</Type>
+			<Save>
+				<Field>Company</Field>
+			</Save>
+			<FunctionalOptions>
+				<Item>FunctionalOption.UseSeveralCompanies</Item>
+			</FunctionalOptions>
+		</Attribute>
+		<Attribute name="ConformityDate" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Date of consent</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ResponsibleForPersonalDataProcessing" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>The person responsible for processing of personal data</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<Save>
+				<Field>ResponsibleForPersonalDataProcessing</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="CompanyAddress" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Company's address</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<Save>
+				<Field>CompanyAddress</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="Object" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Object</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.PersonalDataProcessingConsent</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="Print" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Print</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Print</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Print</Action>
+		</Command>
+		<Command name="PrintMSWord" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Open in Microsoft Word</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Document opening in Microsoft Word</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>PrintMSWord</Action>
+		</Command>
+		<Command name="PrintOOWritter" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Open in OpenOffice.org Writer</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Opening of the document in OpenOffice.org Writer</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>PrintOOWritter</Action>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="Subjects">
+			<Type/>
+		</Parameter>
+	</Parameters>
+</Form>

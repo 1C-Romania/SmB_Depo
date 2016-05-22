@@ -1,0 +1,2080 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Title>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Import data from external sources</v8:content>
+		</v8:item>
+	</Title>
+	<Width>82</Width>
+	<Height>17</Height>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<CommandBarLocation>None</CommandBarLocation>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="FormCommandBar" id="-1"/>
+	<Events>
+		<Event name="OnOpen">OnOpen</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="CompositionGroup" id="46">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Composition group</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="CompositionGroupExtendedTooltip" id="95"/>
+			<ChildItems>
+				<Pages name="MainPanel" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Main panel</v8:content>
+						</v8:item>
+					</Title>
+					<HorizontalStretch>true</HorizontalStretch>
+					<VerticalStretch>true</VerticalStretch>
+					<PagesRepresentation>None</PagesRepresentation>
+					<ExtendedTooltip name="MainPanelExtendedTooltip" id="103"/>
+					<ChildItems>
+						<Page name="PageFileSelection" id="12">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Select file</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Page file selection</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ExtendedTooltip name="PageFileSelectionExtendedTooltip" id="108"/>
+							<ChildItems>
+								<PictureDecoration name="PictureToolTipForFilling1" id="178">
+									<Width>5</Width>
+									<Height>2</Height>
+									<HorizontalStretch>false</HorizontalStretch>
+									<VerticalStretch>false</VerticalStretch>
+									<ToolTipRepresentation>ShowRight</ToolTipRepresentation>
+									<Picture>
+										<xr:Ref>CommonPicture.Information32</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="PictureToolTipForFilling1ContextMenu" id="179"/>
+									<ExtendedTooltip name="PictureToolTipForFilling1ExtendedTooltip" id="180">
+										<Height>2</Height>
+										<Title formatted="false">
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>It is required to select external file to import data. Import of the following types is supported: Excel spreadsheet (xlsx), 1c spreadsheet (mxl), text files with delimiters (csv).</v8:content>
+											</v8:item>
+										</Title>
+										<VerticalAlign>Center</VerticalAlign>
+									</ExtendedTooltip>
+								</PictureDecoration>
+								<UsualGroup name="GroupFileChoice" id="184">
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group file selection</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<ExtendedTooltip name="GroupFileSelectionExtendedTooltip" id="185"/>
+									<ChildItems>
+										<LabelDecoration name="IndentDecoration" id="181">
+											<Width>4</Width>
+											<ContextMenu name="IndentDecorationContextMenu" id="182"/>
+											<ExtendedTooltip name="DecorationIndentExtendedTooltip" id="183"/>
+										</LabelDecoration>
+										<UsualGroup name="Group2" id="193">
+											<Group>Vertical</Group>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="Group2ExtendedTooltip" id="194"/>
+											<ChildItems>
+												<UsualGroup name="Group1" id="186">
+													<Group>Horizontal</Group>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="Group1ExtendedTooltip" id="187"/>
+													<ChildItems>
+														<PictureDecoration name="DecorationInformationFileSelection" id="38">
+															<Width>2</Width>
+															<Height>1</Height>
+															<Font ref="sys:DefaultGUIFont" height="12" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+															<ToolTipRepresentation>None</ToolTipRepresentation>
+															<Picture>
+																<xr:Ref>CommonPicture.PaperClip</xr:Ref>
+																<xr:LoadTransparent>true</xr:LoadTransparent>
+															</Picture>
+															<ContextMenu name="DecorationInformationFileSelectionContextMenu" id="39"/>
+															<ExtendedTooltip name="DecorationInformationFileSelectionExtendedTooltip" id="109"/>
+														</PictureDecoration>
+														<Button name="ChooseFileWithData" id="188">
+															<Type>Hyperlink</Type>
+															<CommandName>Form.Command.ChooseExternalFile</CommandName>
+															<ExtendedTooltip name="ChooseFileWithDataExtendedTooltip" id="189"/>
+														</Button>
+													</ChildItems>
+												</UsualGroup>
+												<UsualGroup name="Group3" id="195">
+													<Group>Horizontal</Group>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="Group3ExtendedTooltip" id="196"/>
+													<ChildItems>
+														<PictureDecoration name="DecorationGap1" id="197">
+															<Width>2</Width>
+															<Height>1</Height>
+															<ContextMenu name="DecorationIndent1ContextMenu" id="198"/>
+															<ExtendedTooltip name="DecorationIndent1ExtendedTooltip" id="199"/>
+														</PictureDecoration>
+														<LabelDecoration name="HeaderExamples" id="190">
+															<Title formatted="false">
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>Samples of data for import:</v8:content>
+																</v8:item>
+															</Title>
+															<ContextMenu name="HeaderExamplesContextMenu" id="191"/>
+															<ExtendedTooltip name="HeaderExamplesExtendedTooltip" id="192"/>
+														</LabelDecoration>
+														<Button name="FormatSample_xlsx" id="200">
+															<Type>Hyperlink</Type>
+															<Width>3</Width>
+															<CommandName>Form.Command.FormatSample_xlsx</CommandName>
+															<ExtendedTooltip name="FormatSample_xlsxExtendedTooltip" id="201"/>
+														</Button>
+														<Button name="FormatSample_mxl" id="202">
+															<Type>Hyperlink</Type>
+															<Width>3</Width>
+															<CommandName>Form.Command.FormatSample_mxl</CommandName>
+															<ExtendedTooltip name="FormatSample_mxlExtendedTooltip" id="203"/>
+														</Button>
+														<Button name="FormatSample_csv" id="204">
+															<Type>Hyperlink</Type>
+															<CommandName>Form.Command.FormatSample_csv</CommandName>
+															<ExtendedTooltip name="FormatSample_csvExtendedTooltip" id="205"/>
+														</Button>
+													</ChildItems>
+												</UsualGroup>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</Page>
+						<Page name="PageDataImport" id="53">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Page data import</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Page data import</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ExtendedTooltip name="PageDataImportExtendedTooltip" id="114"/>
+							<ChildItems>
+								<UsualGroup name="MessageGrouping" id="56">
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Message grouping</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<Representation>NormalSeparation</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="MessageGroupingExtendedTooltip" id="116"/>
+									<ChildItems>
+										<UsualGroup name="PictureGroup" id="57">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group images</v8:content>
+												</v8:item>
+											</Title>
+											<Group>Vertical</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="PictureGroupExtendedTooltip" id="117"/>
+											<ChildItems>
+												<PictureDecoration name="DecorationFourteen" id="58">
+													<Width>5</Width>
+													<Height>2</Height>
+													<SkipOnInput>false</SkipOnInput>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Decoration fourteen</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTipRepresentation>ShowRight</ToolTipRepresentation>
+													<PictureSize>Proportionally</PictureSize>
+													<Picture>
+														<xr:Ref>CommonPicture.LongOperation48</xr:Ref>
+														<xr:LoadTransparent>true</xr:LoadTransparent>
+													</Picture>
+													<ContextMenu name="DecorationFourteenContextMenu" id="59"/>
+													<ExtendedTooltip name="DecorationFourteenExtendedTooltip" id="118">
+														<Title formatted="false">
+															<v8:item>
+																<v8:lang>en</v8:lang>
+																<v8:content>Data import in progress.
+Please wait...</v8:content>
+															</v8:item>
+														</Title>
+													</ExtendedTooltip>
+												</PictureDecoration>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</Page>
+						<Page name="PagesReceivedData" id="10">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Pages received data</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Pages received data</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ExtendedTooltip name="PagesReceivedDataExtendedTooltip" id="104"/>
+							<ChildItems>
+								<PictureDecoration name="PictureToolTipForFilling" id="167">
+									<Width>5</Width>
+									<Height>2</Height>
+									<HorizontalStretch>false</HorizontalStretch>
+									<VerticalStretch>false</VerticalStretch>
+									<ToolTipRepresentation>ShowRight</ToolTipRepresentation>
+									<Picture>
+										<xr:Ref>CommonPicture.Information32</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="PictureToolTipForFillingContextMenu" id="168"/>
+									<ExtendedTooltip name="PictureToolTipForFillingExtendedTooltip" id="169">
+										<Height>2</Height>
+										<Title formatted="false">
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Specify type of data for fields that is required to import.</v8:content>
+											</v8:item>
+										</Title>
+										<VerticalAlign>Center</VerticalAlign>
+									</ExtendedTooltip>
+								</PictureDecoration>
+								<SpreadSheetDocumentField name="SpreadsheetDocument" id="170">
+									<DataPath>SpreadsheetDocument</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<Width>1</Width>
+									<Height>1</Height>
+									<ShowHeaders>true</ShowHeaders>
+									<ContextMenu name="SpreadsheetDocumentContextMenu" id="171"/>
+									<ExtendedTooltip name="SpreadsheetDocumentExtendedTooltip" id="172"/>
+									<Events>
+										<Event name="DetailProcessing">SpreadsheetDocumentDetailProcessing</Event>
+									</Events>
+								</SpreadSheetDocumentField>
+							</ChildItems>
+						</Page>
+						<Page name="PagesDataCheck" id="13">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Pages data check</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Pages data check</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ExtendedTooltip name="PagesDataCheckExtendedTooltip" id="110"/>
+							<ChildItems>
+								<PictureDecoration name="PictureToolTipDataChecks" id="206">
+									<Width>5</Width>
+									<Height>2</Height>
+									<HorizontalStretch>false</HorizontalStretch>
+									<VerticalStretch>false</VerticalStretch>
+									<ToolTipRepresentation>ShowRight</ToolTipRepresentation>
+									<Picture>
+										<xr:Ref>CommonPicture.Information32</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="PictureToolTipDataChecksContextMenu" id="207"/>
+									<ExtendedTooltip name="PictureToolTipDataChecksExtendedTooltip" id="208">
+										<Height>2</Height>
+										<Title formatted="true">
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>When verifying how spreadsheet document was completed &lt;b&gt;the following errors &lt;/&gt;&lt;b&gt;were detected:&lt;/&gt;</v8:content>
+											</v8:item>
+										</Title>
+										<VerticalAlign>Center</VerticalAlign>
+									</ExtendedTooltip>
+								</PictureDecoration>
+								<SpreadSheetDocumentField name="SpreadsheetDocumentMessages" id="209">
+									<DataPath>SpreadsheetDocumentMessages</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<TitleLocation>None</TitleLocation>
+									<ContextMenu name="SpreadsheetDocumentMessagesContextMenu" id="210"/>
+									<ExtendedTooltip name="SpreadsheetDocumentMessagesExtendedTooltip" id="211"/>
+								</SpreadSheetDocumentField>
+							</ChildItems>
+						</Page>
+						<Page name="PageMatching" id="11">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Page matching</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Page matching</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ExtendedTooltip name="PageMatchingExtendedTooltip" id="106"/>
+							<ChildItems>
+								<PictureDecoration name="PictureDataMatchingPageHeader" id="212">
+									<Width>5</Width>
+									<Height>2</Height>
+									<HorizontalStretch>false</HorizontalStretch>
+									<VerticalStretch>false</VerticalStretch>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Picture data matching page header</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTipRepresentation>ShowRight</ToolTipRepresentation>
+									<Picture>
+										<xr:Ref>CommonPicture.Information32</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="PictureDataMatchingPageHeaderContextMenu" id="213"/>
+									<ExtendedTooltip name="PictureDataMatchingPageHeaderExtendedTooltip" id="214">
+										<Height>2</Height>
+										<Title formatted="false">
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Data matching table</v8:content>
+											</v8:item>
+										</Title>
+										<VerticalAlign>Center</VerticalAlign>
+									</ExtendedTooltip>
+								</PictureDecoration>
+								<InputField name="FilterComparisonTable" id="262">
+									<DataPath>FilterComparisonTable</DataPath>
+									<SkipOnInput>true</SkipOnInput>
+									<HorizontalStretch>true</HorizontalStretch>
+									<Wrap>false</Wrap>
+									<ListChoiceMode>true</ListChoiceMode>
+									<ChooseType>false</ChooseType>
+									<TextEdit>false</TextEdit>
+									<ChoiceList>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>All data</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:string">WithoutFilter</Value>
+											</xr:Value>
+										</xr:Item>
+									</ChoiceList>
+									<ContextMenu name="FilterComparisonTableContextMenu" id="263"/>
+									<ExtendedTooltip name="FilterMatchingTableExtendedTooltip" id="264"/>
+									<Events>
+										<Event name="OnChange">FilterComparisonTableOnChange</Event>
+									</Events>
+								</InputField>
+								<Table name="DataMatchingTable" id="238">
+									<Representation>List</Representation>
+									<Height>3</Height>
+									<HeightInTableRows>2</HeightInTableRows>
+									<UseAlternationRowColor>true</UseAlternationRowColor>
+									<DataPath>DataMatchingTable</DataPath>
+									<CommandSet>
+										<ExcludedCommand>Copy</ExcludedCommand>
+										<ExcludedCommand>Delete</ExcludedCommand>
+										<ExcludedCommand>EndEdit</ExcludedCommand>
+										<ExcludedCommand>Add</ExcludedCommand>
+										<ExcludedCommand>Change</ExcludedCommand>
+									</CommandSet>
+									<SearchStringLocation>None</SearchStringLocation>
+									<ViewStatusLocation>None</ViewStatusLocation>
+									<SearchControlLocation>None</SearchControlLocation>
+									<RowFilter xsi:nil="true"/>
+									<ContextMenu name="DataMatchingTableContextMenu" id="239"/>
+									<AutoCommandBar name="DataMatchingTableCommandBar" id="240">
+										<Autofill>false</Autofill>
+									</AutoCommandBar>
+									<ExtendedTooltip name="DataMatchingTableExtendedTooltip" id="241"/>
+									<SearchStringAddition name="DataMatchingTableSearchString" id="242">
+										<AdditionSource>
+											<Item>DataMatchingTable</Item>
+											<Type>SearchStringRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="DataMatchingTableSearchStringContextMenu" id="245"/>
+										<ExtendedTooltip name="DataMatchingTableSearchStringExtendedTooltip" id="246"/>
+									</SearchStringAddition>
+									<ViewStatusAddition name="DataMatchingTableViewStatus" id="247">
+										<AdditionSource>
+											<Item>DataMatchingTable</Item>
+											<Type>ViewStatusRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="DataMatchingTableViewStatusContextMenu" id="250"/>
+										<ExtendedTooltip name="DataMatchingTableViewStatusExtendedTooltip" id="251"/>
+									</ViewStatusAddition>
+									<SearchControlAddition name="DataMatchingTableSearchManagement" id="252">
+										<AdditionSource>
+											<Item>DataMatchingTable</Item>
+											<Type>SearchControl</Type>
+										</AdditionSource>
+										<ContextMenu name="DataMatchingTableSearchManagementContextMenu" id="255"/>
+										<ExtendedTooltip name="DataMatchingTableSearchManagementExtendedTooltip" id="256"/>
+									</SearchControlAddition>
+									<Events>
+										<Event name="OnChange">DataMatchingTableOnChange</Event>
+									</Events>
+								</Table>
+								<LabelDecoration name="DecorationLineCount" id="277">
+									<HorizontalStretch>true</HorizontalStretch>
+									<Font bold="true" kind="AutoFont"/>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>In table matched lines N</v8:content>
+										</v8:item>
+									</Title>
+									<HorizontalAlign>Right</HorizontalAlign>
+									<ContextMenu name="DecorationLineCountContextMenu" id="278"/>
+									<ExtendedTooltip name="DecorationLineCountExtendedTooltip" id="279"/>
+								</LabelDecoration>
+							</ChildItems>
+						</Page>
+						<Page name="PagePreliminarilyTS" id="14">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Page preliminarily for TS</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Page preliminarily TS</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ExtendedTooltip name="PagePreliminarilyTSExtendedTooltip" id="112"/>
+							<ChildItems>
+								<PictureDecoration name="PicturePageHeaderImportSetup" id="265">
+									<Width>5</Width>
+									<Height>2</Height>
+									<HorizontalStretch>false</HorizontalStretch>
+									<VerticalStretch>false</VerticalStretch>
+									<ToolTipRepresentation>ShowRight</ToolTipRepresentation>
+									<Picture>
+										<xr:Ref>CommonPicture.Information32</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="PicturePageHeaderImportSetupContextMenu" id="266"/>
+									<ExtendedTooltip name="PicturePageHeaderImportSetupExtendedTooltip" id="267">
+										<Height>2</Height>
+										<Title formatted="false">
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Spreadsheet import. Preliminary analysis and setup.</v8:content>
+											</v8:item>
+										</Title>
+										<VerticalAlign>Center</VerticalAlign>
+									</ExtendedTooltip>
+								</PictureDecoration>
+								<UsualGroup name="GroupPreliminaryAnalysis" id="280">
+									<Height>10</Height>
+									<Group>Vertical</Group>
+									<ExtendedTooltip name="GroupPreliminaryAnalysisExtendedTooltip" id="281"/>
+									<ChildItems>
+										<UsualGroup name="GroupCorrectData" id="285">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group correct data</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group correct data</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Horizontal</Group>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="GroupCorrectDataExtendedTooltip" id="286"/>
+											<ChildItems>
+												<LabelDecoration name="DecorationWillBeImportedHeader" id="282">
+													<TextColor>style:CompletedJob</TextColor>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>To tabular section lines will be added:</v8:content>
+														</v8:item>
+													</Title>
+													<ContextMenu name="DecorationWillBeImportedHeaderContextMenu" id="283"/>
+													<ExtendedTooltip name="DecorationWillBeImportedHeaderExtendedTooltip" id="284"/>
+												</LabelDecoration>
+												<LabelDecoration name="DecorationWillBeImportedCount" id="289">
+													<TextColor>style:CompletedJob</TextColor>
+													<Font ref="sys:DefaultGUIFont" height="12" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>N</v8:content>
+														</v8:item>
+													</Title>
+													<VerticalAlign>Top</VerticalAlign>
+													<ContextMenu name="DecorationWillBeImportedCountContextMenu" id="290"/>
+													<ExtendedTooltip name="DecorationWillBeImportedCountExtendedTooltip" id="291"/>
+												</LabelDecoration>
+												<Button name="ShowMatchingTableWithSelection" id="287">
+													<Type>Hyperlink</Type>
+													<CommandName>Form.Command.ShowMatchingTable_FilterNoErrors</CommandName>
+													<ExtendedTooltip name="ShowMatchingTableWithSelectionExtendedTooltip" id="288"/>
+												</Button>
+											</ChildItems>
+										</UsualGroup>
+										<UsualGroup name="GroupInvalidData" id="292">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group correct data</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group correct data</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Horizontal</Group>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="GroupInvalidDataExtendedTooltip" id="293"/>
+											<ChildItems>
+												<LabelDecoration name="DecorationWillBeSkippedHeader" id="294">
+													<TextColor>style:ExplanationTextError</TextColor>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>The following number of rows will be skipped when imported to the tabular section:</v8:content>
+														</v8:item>
+													</Title>
+													<ContextMenu name="DecorationWillBeSkippedHeaderContextMenu" id="295"/>
+													<ExtendedTooltip name="DecorationWillBeSkippedHeaderExtendedTooltip" id="296"/>
+												</LabelDecoration>
+												<LabelDecoration name="DecorationWillBeSkippedCount" id="297">
+													<TextColor>style:ExplanationTextError</TextColor>
+													<Font ref="sys:DefaultGUIFont" height="12" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>K</v8:content>
+														</v8:item>
+													</Title>
+													<VerticalAlign>Top</VerticalAlign>
+													<ContextMenu name="DecorationWillBeSkippedCountContextMenu" id="298"/>
+													<ExtendedTooltip name="DecorationWillBeSkippedCountExtendedTooltip" id="299"/>
+												</LabelDecoration>
+												<Button name="ShowMatchingTableWithSelection1" id="300">
+													<Type>Hyperlink</Type>
+													<CommandName>Form.Command.ShowMatchingTable_FilterErrors</CommandName>
+													<ExtendedTooltip name="ShowMatchingTableWithSelection1ExtendedTooltip" id="301"/>
+												</Button>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</Page>
+						<Page name="PagePreliminaryCatalog" id="302">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Page preliminarily for catalog</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Page preliminarily TS</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ExtendedTooltip name="PagePreliminaryCatalogExtendedTooltip" id="303"/>
+							<ChildItems>
+								<PictureDecoration name="PicturePageHeaderImportSetup1" id="304">
+									<Width>5</Width>
+									<Height>2</Height>
+									<HorizontalStretch>false</HorizontalStretch>
+									<VerticalStretch>false</VerticalStretch>
+									<ToolTipRepresentation>ShowRight</ToolTipRepresentation>
+									<Picture>
+										<xr:Ref>CommonPicture.Information32</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="PicturePageHeaderImportSetup1ContextMenu" id="305"/>
+									<ExtendedTooltip name="PicturePageHeaderImportSetup1ExtendedTooltip" id="306">
+										<Height>2</Height>
+										<Title formatted="false">
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Catalog import. Preliminary analysis and setup.</v8:content>
+											</v8:item>
+										</Title>
+										<VerticalAlign>Center</VerticalAlign>
+									</ExtendedTooltip>
+								</PictureDecoration>
+								<UsualGroup name="GroupPreliminaryAnalysisCatalog" id="307">
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group preliminary analysis catalog</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Height>10</Height>
+									<Group>Vertical</Group>
+									<ExtendedTooltip name="GroupPreliminaryAnalysisCatalogExtendedTooltip" id="308"/>
+									<ChildItems>
+										<UsualGroup name="GroupCorrectDataObject" id="309">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group correct data</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group correct data</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Horizontal</Group>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="GroupCorrectDataObjectExtendedTooltip" id="310"/>
+											<ChildItems>
+												<LabelDecoration name="DecorationReceivedDataHeader" id="311">
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Received lines:
+
+</v8:content>
+														</v8:item>
+													</Title>
+													<ContextMenu name="DecorationReceivedDataHeaderContextMenu" id="312"/>
+													<ExtendedTooltip name="DecorationReceivedDataHeaderExtendedTooltip" id="313"/>
+												</LabelDecoration>
+												<LabelDecoration name="DecorationReceivedDataCount" id="314">
+													<Font ref="sys:DefaultGUIFont" height="12" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>N</v8:content>
+														</v8:item>
+													</Title>
+													<VerticalAlign>Top</VerticalAlign>
+													<ContextMenu name="DecorationReceivedDataCountContextMenu" id="315"/>
+													<ExtendedTooltip name="DecorationReceivedDataCountExtendedTooltip" id="316"/>
+												</LabelDecoration>
+												<Button name="ShowMatchingTableWithSelection2" id="317">
+													<Type>Hyperlink</Type>
+													<CommandName>Form.Command.ShowMatchingTable_WithoutFilter</CommandName>
+													<ExtendedTooltip name="ShowMatchingTableWithSelection2ExtendedTooltip" id="318"/>
+												</Button>
+											</ChildItems>
+										</UsualGroup>
+										<UsualGroup name="GroupMatchedData" id="319">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group matched data</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group correct data</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Horizontal</Group>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="GroupMatchedDataExtendedTooltip" id="320"/>
+											<ChildItems>
+												<LabelDecoration name="DecorationMatchedHeaderObject" id="321">
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>from them matched</v8:content>
+														</v8:item>
+													</Title>
+													<ContextMenu name="DecorationMatchedHeaderObjectContextMenu" id="322"/>
+													<ExtendedTooltip name="DecorationMatchedHeaderObjectExtendedTooltip" id="323"/>
+												</LabelDecoration>
+												<LabelDecoration name="DecorationMatchedCountObject" id="324">
+													<Font ref="sys:DefaultGUIFont" height="12" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>N</v8:content>
+														</v8:item>
+													</Title>
+													<VerticalAlign>Top</VerticalAlign>
+													<ContextMenu name="DecorationMatchedCountObjectContextMenu" id="325"/>
+													<ExtendedTooltip name="DecorationMatchedCountObjectExtendedTooltip" id="326"/>
+												</LabelDecoration>
+												<Button name="ShowMatchingTableWithSelection3" id="327">
+													<Type>Hyperlink</Type>
+													<CommandName>Form.Command.ShowMatchingTable_Mapped</CommandName>
+													<ExtendedTooltip name="ShowMatchingTableWithSelection3ExtendedTooltip" id="328"/>
+												</Button>
+											</ChildItems>
+										</UsualGroup>
+										<CheckBoxField name="UpdateExisting" id="338">
+											<DataPath>UpdateExisting</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Update matched items with received data</v8:content>
+												</v8:item>
+											</Title>
+											<TitleLocation>Right</TitleLocation>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="UpdateExistingContextMenu" id="339"/>
+											<ExtendedTooltip name="UpdateExistingExtendedTooltip" id="340"/>
+											<Events>
+												<Event name="OnChange">UpdateExistingOnChange</Event>
+											</Events>
+										</CheckBoxField>
+										<LabelDecoration name="Decoration1" id="367">
+											<ContextMenu name="Decoration1ContextMenu" id="368"/>
+											<ExtendedTooltip name="Decoration1ExtendedTooltip" id="369"/>
+										</LabelDecoration>
+										<CheckBoxField name="CreateIfNotMatched" id="349">
+											<DataPath>CreateIfNotMatched</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Create new items if received data is unmapped</v8:content>
+												</v8:item>
+											</Title>
+											<TitleLocation>Right</TitleLocation>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="CreateIfNotMatchedContextMenu" id="350"/>
+											<ExtendedTooltip name="CreateIfNotMatchedExtendedTooltip" id="351"/>
+											<Events>
+												<Event name="OnChange">CreateIfNotMatchedOnChange</Event>
+											</Events>
+										</CheckBoxField>
+										<UsualGroup name="GroupUnmatchedData" id="352">
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group correct data</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Horizontal</Group>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="GroupUnmatchedDataExtendedTooltip" id="353"/>
+											<ChildItems>
+												<LabelDecoration name="DecorationUnmatchedRowsHeaderObject" id="354">
+													<ContextMenu name="DecorationUnmatchedRowsHeaderObjectContextMenu" id="355"/>
+													<ExtendedTooltip name="DecorationUnmatchedRowsHeaderObjectExtendedTooltip" id="356"/>
+												</LabelDecoration>
+												<LabelDecoration name="DecorationUnmatchedRowsCountObject" id="357">
+													<Font ref="sys:DefaultGUIFont" height="12" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>N</v8:content>
+														</v8:item>
+													</Title>
+													<VerticalAlign>Top</VerticalAlign>
+													<ContextMenu name="DecorationUnmatchedRowsCountObjectContextMenu" id="358"/>
+													<ExtendedTooltip name="DecorationUnmatchedRowsCountObjectExtendedTooltip" id="359"/>
+												</LabelDecoration>
+												<Button name="ShowMatchingTableWithSelection4" id="360">
+													<Type>Hyperlink</Type>
+													<CommandName>Form.Command.ShowMatchingTable_WillBeCreated</CommandName>
+													<ExtendedTooltip name="ShowMatchingTableWithSelection4ExtendedTooltip" id="361"/>
+												</Button>
+												<LabelDecoration name="DecorationCatalogParentHeader" id="362">
+													<HorizontalStretch>false</HorizontalStretch>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>New items will be imported to the group</v8:content>
+														</v8:item>
+													</Title>
+													<HorizontalAlign>Right</HorizontalAlign>
+													<ContextMenu name="DecorationCatalogParentHeaderContextMenu" id="363"/>
+													<ExtendedTooltip name="DecorationCatalogParentHeaderExtendedTooltip" id="364"/>
+												</LabelDecoration>
+												<Button name="CommonValueCatalog" id="365">
+													<Type>Hyperlink</Type>
+													<CommandName>Form.Command.CommonValue</CommandName>
+													<ExtendedTooltip name="CommonValueCatalogExtendedTooltip" id="366"/>
+												</Button>
+												<Button name="ClearCatalogCommonValue" id="426">
+													<Type>Hyperlink</Type>
+													<CommandName>Form.Command.ClearCommonValue</CommandName>
+													<ExtendedTooltip name="ClearCatalogCommonValueExtendedTooltip" id="427"/>
+												</Button>
+											</ChildItems>
+										</UsualGroup>
+										<UsualGroup name="GroupIncorrectDataObject" id="435">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group incorrect data</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group incorrect data</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Horizontal</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="GroupIncorrectDataObjectExtendedTooltip" id="436"/>
+											<ChildItems>
+												<LabelDecoration name="DecorationIncorrectRowsHeaderObjects" id="437">
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>items import to the application is not possible for</v8:content>
+														</v8:item>
+													</Title>
+													<ContextMenu name="DecorationIncorrectRowsHeaderObjectsContextMenu" id="438"/>
+													<ExtendedTooltip name="DecorationIncorrectRowsHeaderObjectsExtendedTooltip" id="439"/>
+												</LabelDecoration>
+												<LabelDecoration name="DecorationIncorrectRowsCountObjects" id="440">
+													<Font ref="sys:DefaultGUIFont" height="12" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>N</v8:content>
+														</v8:item>
+													</Title>
+													<VerticalAlign>Top</VerticalAlign>
+													<ContextMenu name="DecorationIncorrectRowsCountObjectsContextMenu" id="441"/>
+													<ExtendedTooltip name="DecorationIncorrectRowsCountObjectsExtendedTooltip" id="442"/>
+												</LabelDecoration>
+												<Button name="ShowMatchingTable_InconsistentLines" id="443">
+													<Type>Hyperlink</Type>
+													<CommandName>Form.Command.ShowMatchingTable_Inconsistent</CommandName>
+													<ExtendedTooltip name="ShowMatchingTable_InconsistentLinesEnhancedToolTip" id="444"/>
+												</Button>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</Page>
+						<Page name="PagePreliminarilyInformationRegister" id="370">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Page preliminary for IR</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Page preliminarily TS</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ExtendedTooltip name="PagePreliminarilyInformationRegisterExtendedTooltip" id="371"/>
+							<ChildItems>
+								<PictureDecoration name="PictureHeaderPagesImportSetup2" id="372">
+									<Width>5</Width>
+									<Height>2</Height>
+									<HorizontalStretch>false</HorizontalStretch>
+									<VerticalStretch>false</VerticalStretch>
+									<ToolTipRepresentation>ShowRight</ToolTipRepresentation>
+									<Picture>
+										<xr:Ref>CommonPicture.Information32</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="PictureHeaderPagesImportSetup2ContextMenu" id="373"/>
+									<ExtendedTooltip name="PicturePageHeaderImportSetup2ExtendedTooltip" id="374">
+										<Height>2</Height>
+										<Title formatted="false">
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Information import. Preliminary analysis and setup.</v8:content>
+											</v8:item>
+										</Title>
+										<VerticalAlign>Center</VerticalAlign>
+									</ExtendedTooltip>
+								</PictureDecoration>
+								<UsualGroup name="GroupPreliminaryAnalysisInformationRegister" id="375">
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group preliminary analysis of TP</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Height>10</Height>
+									<Group>Vertical</Group>
+									<ExtendedTooltip name="GroupPreliminaryAnalysisInformationRegisterExtendedTooltip" id="376"/>
+									<ChildItems>
+										<UsualGroup name="GroupCorrectDataInformationRegister" id="377">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group correct data</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group correct data</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Horizontal</Group>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="GroupCorrectDataInformationRegisterExtendedTooltip" id="378"/>
+											<ChildItems>
+												<LabelDecoration name="DecorationReceivedDataHeaderIR" id="379">
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Received lines:
+
+</v8:content>
+														</v8:item>
+													</Title>
+													<ContextMenu name="DecorationReceivedDataHeaderIRContextMenu" id="380"/>
+													<ExtendedTooltip name="DecorationReceivedDataHeaderIRExtendedTooltip" id="381"/>
+												</LabelDecoration>
+												<LabelDecoration name="DecorationReceivedDataCountRS" id="382">
+													<Font ref="sys:DefaultGUIFont" height="12" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>N</v8:content>
+														</v8:item>
+													</Title>
+													<VerticalAlign>Top</VerticalAlign>
+													<ContextMenu name="DecorationReceivedDataCountIRContextMenu" id="383"/>
+													<ExtendedTooltip name="DecorationReceivedDataCountIRExtendedTooltip" id="384"/>
+												</LabelDecoration>
+												<Button name="ShowMatchingTableWithSelection5" id="385">
+													<Type>Hyperlink</Type>
+													<CommandName>Form.Command.ShowMatchingTable_WithoutFilter</CommandName>
+													<ExtendedTooltip name="ShowMatchingTableWithSelection5ExtendedTooltip" id="386"/>
+												</Button>
+											</ChildItems>
+										</UsualGroup>
+										<UsualGroup name="GroupMatchedDataInformationRegister" id="387">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group matched data</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group correct data</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Horizontal</Group>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="GroupMatchedDataInformationRegisterExtendedTooltip" id="388"/>
+											<ChildItems>
+												<LabelDecoration name="DecorationMatchedHeaderIR" id="389">
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>from them matched</v8:content>
+														</v8:item>
+													</Title>
+													<ContextMenu name="DecorationMatchedHeaderIRContextMenu" id="390"/>
+													<ExtendedTooltip name="DecorationMatchedHeaderIRExtendedTooltip" id="391"/>
+												</LabelDecoration>
+												<LabelDecoration name="DecorationMatchedCountIR" id="392">
+													<Font ref="sys:DefaultGUIFont" height="12" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>N</v8:content>
+														</v8:item>
+													</Title>
+													<VerticalAlign>Top</VerticalAlign>
+													<ContextMenu name="DecorationMatchedCountIRContextMenu" id="393"/>
+													<ExtendedTooltip name="DecorationMatchedCountIRExtendedTooltip" id="394"/>
+												</LabelDecoration>
+												<Button name="ShowMatchingTableWithSelection6" id="395">
+													<Type>Hyperlink</Type>
+													<CommandName>Form.Command.ShowMatchingTable_Mapped</CommandName>
+													<ExtendedTooltip name="ShowMatchingTableWithSelection6ExtendedTooltip" id="396"/>
+												</Button>
+											</ChildItems>
+										</UsualGroup>
+										<CheckBoxField name="UpdateExistingInformationRegister" id="397">
+											<DataPath>UpdateExisting</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Update matched records with received data</v8:content>
+												</v8:item>
+											</Title>
+											<TitleLocation>Right</TitleLocation>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="UpdateExistingInformationRegisterContextMenu" id="398"/>
+											<ExtendedTooltip name="UpdateExistingInformationRegisterExtendedTooltip" id="399"/>
+											<Events>
+												<Event name="OnChange">UpdateExistingOnChange</Event>
+											</Events>
+										</CheckBoxField>
+										<LabelDecoration name="Decoration2" id="400">
+											<ContextMenu name="Decoration2ContextMenu" id="401"/>
+											<ExtendedTooltip name="Decoration2ExtendedTooltip" id="402"/>
+										</LabelDecoration>
+										<CheckBoxField name="CreateIfNotMatchedInformationRegister" id="403">
+											<DataPath>CreateIfNotMatched</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Create new entries if received data is unmapped</v8:content>
+												</v8:item>
+											</Title>
+											<TitleLocation>Right</TitleLocation>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="CreateIfNotMatchedInformationRegisterContextMenu" id="404"/>
+											<ExtendedTooltip name="CreateIfNotMatchedInformationRegisterExtendedTooltip" id="405"/>
+											<Events>
+												<Event name="OnChange">CreateIfNotMatchedOnChange</Event>
+											</Events>
+										</CheckBoxField>
+										<UsualGroup name="GroupUnmatchedDataInformationRegister" id="406">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group unmatched data information register</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group correct data</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Horizontal</Group>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="GroupUnmatchedDataInformationRegisterExtendedTooltip" id="407"/>
+											<ChildItems>
+												<LabelDecoration name="DecorationUnmatchedRowsHeaderIR" id="408">
+													<ContextMenu name="DecorationUnmatchedRowsHeaderIRContextMenu" id="409"/>
+													<ExtendedTooltip name="DecorationUnmatchedRowsHeaderIRExtendedTooltip" id="410"/>
+												</LabelDecoration>
+												<LabelDecoration name="DecorationUnmatchedRowsCountIR" id="411">
+													<Font ref="sys:DefaultGUIFont" height="12" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>N</v8:content>
+														</v8:item>
+													</Title>
+													<VerticalAlign>Top</VerticalAlign>
+													<ContextMenu name="DecorationUnmatchedRowsCountIRContextMenu" id="412"/>
+													<ExtendedTooltip name="DecorationUnmatchedRowsCountIRExtendedTooltip" id="413"/>
+												</LabelDecoration>
+												<Button name="ShowMatchingTableWithSelection7" id="414">
+													<Type>Hyperlink</Type>
+													<CommandName>Form.Command.ShowMatchingTable_WillBeCreated</CommandName>
+													<ExtendedTooltip name="ShowMatchingTableWithSelection7ExtendedTooltip" id="415"/>
+												</Button>
+												<LabelDecoration name="DecorationKeyValueIRHeader" id="428">
+													<HorizontalStretch>false</HorizontalStretch>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>For all records</v8:content>
+														</v8:item>
+													</Title>
+													<HorizontalAlign>Right</HorizontalAlign>
+													<ContextMenu name="DecorationKeyValueIRHeaderContextMenu" id="429"/>
+													<ExtendedTooltip name="DecorationKeyValueIRHeaderExtendedTooltip" id="430"/>
+												</LabelDecoration>
+												<Button name="CommonValueIR" id="431">
+													<Type>Hyperlink</Type>
+													<CommandName>Form.Command.CommonValue</CommandName>
+													<ExtendedTooltip name="CommonValueIRExtendedTooltip" id="432"/>
+												</Button>
+												<Button name="ClearCommonValueIR" id="433">
+													<Type>Hyperlink</Type>
+													<CommandName>Form.Command.ClearCommonValue</CommandName>
+													<ExtendedTooltip name="ClearCommonValueIRExtendedTooltip" id="434"/>
+												</Button>
+											</ChildItems>
+										</UsualGroup>
+										<UsualGroup name="GroupIncorrectData" id="416">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group incorrect data</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Group incorrect data</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Horizontal</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="GroupIncorrectDataExtendedTooltip" id="417"/>
+											<ChildItems>
+												<LabelDecoration name="DecorationIncorrectRowsHeaderIR" id="418">
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>records import to the application is not possible for</v8:content>
+														</v8:item>
+													</Title>
+													<ContextMenu name="DecorationIncorrectRowsHeaderIRContextMenu" id="419"/>
+													<ExtendedTooltip name="DecorationIncorrectRowsHeaderIRExtendedTooltip" id="420"/>
+												</LabelDecoration>
+												<LabelDecoration name="DecorationIncorrectRowsCountIR" id="421">
+													<Font ref="sys:DefaultGUIFont" height="12" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>N</v8:content>
+														</v8:item>
+													</Title>
+													<VerticalAlign>Top</VerticalAlign>
+													<ContextMenu name="DecorationIncorrectRowsCountIRContextMenu" id="422"/>
+													<ExtendedTooltip name="DecorationIncorrectRowsCountIRExtendedTooltip" id="423"/>
+												</LabelDecoration>
+												<Button name="ShowMatchingTable_Inconsistent" id="424">
+													<Type>Hyperlink</Type>
+													<CommandName>Form.Command.ShowMatchingTable_Inconsistent</CommandName>
+													<ExtendedTooltip name="ShowMatchingTable_InconsistentEnhancedToolTip" id="425"/>
+												</Button>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</Page>
+					</ChildItems>
+				</Pages>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="NavigationPanelBorder" id="51">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Navigation panel border</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="NavigationPanelBorderExtendedTooltip" id="121"/>
+			<ChildItems>
+				<Pages name="NavigationPanel" id="1">
+					<EnableContentChange>true</EnableContentChange>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Navigation panel</v8:content>
+						</v8:item>
+					</Title>
+					<PagesRepresentation>None</PagesRepresentation>
+					<ExtendedTooltip name="NavigationPanelExtendedTooltip" id="122"/>
+					<ChildItems>
+						<Page name="NavigationPageStart" id="7">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Navigation page start</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Horizontal</Group>
+							<ExtendedTooltip name="NavigationPageStartExtendedTooltip" id="123"/>
+							<ChildItems>
+								<Button name="AnotherWayToImportData" id="173">
+									<Type>Hyperlink</Type>
+									<CommandName>Form.Command.AnotherWayToImportData</CommandName>
+									<ExtendedTooltip name="ImportDataWithOtherMethodExtendedTooltip" id="174"/>
+								</Button>
+								<CommandBar name="CommandBarLeft1" id="150">
+									<ExtendedTooltip name="CommandBarLeft1ExtendedTooltip" id="151"/>
+									<ChildItems>
+										<Button name="CommandBack" id="72">
+											<Type>CommandBarButton</Type>
+											<Visible>false</Visible>
+											<CommandName>Form.Command.CommandBack</CommandName>
+											<ExtendedTooltip name="BackCommandExtendedTooltip" id="125"/>
+										</Button>
+									</ChildItems>
+								</CommandBar>
+								<LabelDecoration name="IndentCommandPanel1" id="147">
+									<HorizontalStretch>true</HorizontalStretch>
+									<ContextMenu name="IndentCommandPanel1ContextMenu" id="148"/>
+									<ExtendedTooltip name="IndentCommandPanel1ExtendedTooltip" id="149"/>
+								</LabelDecoration>
+								<CommandBar name="CommandBarRight1" id="70">
+									<EnableContentChange>true</EnableContentChange>
+									<HorizontalLocation>Right</HorizontalLocation>
+									<ExtendedTooltip name="CommandBarRight1ExtendedTooltip" id="124"/>
+									<ChildItems>
+										<Button name="CommandNext" id="71">
+											<Type>CommandBarButton</Type>
+											<Enabled>false</Enabled>
+											<DefaultItem>true</DefaultItem>
+											<CommandName>Form.Command.CommandNext</CommandName>
+											<ExtendedTooltip name="NextCommandExtendedTooltip" id="126"/>
+										</Button>
+										<Button name="CommandCancel" id="73">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.CommandCancel</CommandName>
+											<ExtendedTooltip name="CancelCommandExtendedTooltip" id="127"/>
+										</Button>
+										<Button name="Help" id="91">
+											<Type>CommandBarButton</Type>
+											<OnlyInAllActions>true</OnlyInAllActions>
+											<CommandName>Form.StandardCommand.Help</CommandName>
+											<ExtendedTooltip name="HelpExtendedTooltip" id="128"/>
+										</Button>
+									</ChildItems>
+								</CommandBar>
+							</ChildItems>
+						</Page>
+						<Page name="NavigationPageContinuation" id="8">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Navigation page continuation</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Horizontal</Group>
+							<ExtendedTooltip name="NavigationPageContinuationExtendedTooltip" id="129"/>
+							<ChildItems>
+								<CommandBar name="CommandBarLeft2" id="155">
+									<ExtendedTooltip name="CommandBarLeft2ExtendedTooltip" id="156"/>
+									<ChildItems>
+										<Button name="CommandBack1" id="76">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.CommandBack</CommandName>
+											<ExtendedTooltip name="CommandBack1ExtendedTooltip" id="131"/>
+										</Button>
+									</ChildItems>
+								</CommandBar>
+								<LabelDecoration name="IndentCommandBar2" id="152">
+									<HorizontalStretch>true</HorizontalStretch>
+									<ContextMenu name="IndentCommandBar2ContextMenu" id="153"/>
+									<ExtendedTooltip name="IndentCommandBar2ExtendedTooltip" id="154"/>
+								</LabelDecoration>
+								<CommandBar name="CommandBarRight2" id="75">
+									<EnableContentChange>true</EnableContentChange>
+									<HorizontalLocation>Right</HorizontalLocation>
+									<ExtendedTooltip name="CommandBarRight2ExtendedTooltip" id="130"/>
+									<ChildItems>
+										<Button name="CommandNext1" id="77">
+											<Type>CommandBarButton</Type>
+											<DefaultItem>true</DefaultItem>
+											<CommandName>Form.Command.CommandNext</CommandName>
+											<ExtendedTooltip name="CommandNext1ExtendedTooltip" id="132"/>
+										</Button>
+										<Button name="CancelCommand1" id="78">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.CommandCancel</CommandName>
+											<ExtendedTooltip name="CancelCommand1ExtendedTooltip" id="133"/>
+										</Button>
+										<Button name="Help1" id="92">
+											<Type>CommandBarButton</Type>
+											<OnlyInAllActions>true</OnlyInAllActions>
+											<CommandName>Form.StandardCommand.Help</CommandName>
+											<ExtendedTooltip name="Help1ExtendedTooltip" id="134"/>
+										</Button>
+									</ChildItems>
+								</CommandBar>
+							</ChildItems>
+						</Page>
+						<Page name="NavigationPageEnd" id="9">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Navigation page end</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Horizontal</Group>
+							<ExtendedTooltip name="NavigationPageEndExtendedTooltip" id="135"/>
+							<ChildItems>
+								<CommandBar name="CommandBarLeft3" id="160">
+									<ExtendedTooltip name="CommandBarLeft3ExtendedTooltip" id="161"/>
+									<ChildItems>
+										<Button name="CommandBack2" id="81">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.CommandBack</CommandName>
+											<ExtendedTooltip name="CommandBack2ExtendedTooltip" id="137"/>
+										</Button>
+									</ChildItems>
+								</CommandBar>
+								<LabelDecoration name="IndentCommandBar3" id="157">
+									<HorizontalStretch>true</HorizontalStretch>
+									<ContextMenu name="IndentCommandBar3ContextMenu" id="158"/>
+									<ExtendedTooltip name="IndentCommandBar3ExtendedTooltip" id="159"/>
+								</LabelDecoration>
+								<CommandBar name="CommandBarRight3" id="80">
+									<EnableContentChange>true</EnableContentChange>
+									<HorizontalLocation>Right</HorizontalLocation>
+									<ExtendedTooltip name="CommandBarRight3ExtendedTooltip" id="136"/>
+									<ChildItems>
+										<Button name="CommandDone" id="90">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.CommandDone</CommandName>
+											<ExtendedTooltip name="DoneCommandExtendedTooltip" id="138"/>
+										</Button>
+										<Button name="CancelCommand2" id="83">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.CommandCancel</CommandName>
+											<ExtendedTooltip name="CancelCommand2ExtendedTooltip" id="139"/>
+										</Button>
+										<Button name="Help2" id="93">
+											<Type>CommandBarButton</Type>
+											<OnlyInAllActions>true</OnlyInAllActions>
+											<CommandName>Form.StandardCommand.Help</CommandName>
+											<ExtendedTooltip name="Help2ExtendedTooltip" id="140"/>
+										</Button>
+									</ChildItems>
+								</CommandBar>
+							</ChildItems>
+						</Page>
+						<Page name="NavigationPageWait" id="63">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Navigation page wait</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Horizontal</Group>
+							<ExtendedTooltip name="NavigationPageWaitExtendedTooltip" id="141"/>
+							<ChildItems>
+								<CommandBar name="CommanBarLeft4" id="165">
+									<ExtendedTooltip name="CommanBarLeft4ExtendedTooltip" id="166"/>
+									<ChildItems>
+										<Button name="CommandBack3" id="86">
+											<Type>CommandBarButton</Type>
+											<Enabled>false</Enabled>
+											<CommandName>Form.Command.CommandBack</CommandName>
+											<ExtendedTooltip name="CommandBack3ExtendedTooltip" id="143"/>
+										</Button>
+									</ChildItems>
+								</CommandBar>
+								<LabelDecoration name="IndentCommandBar4" id="162">
+									<HorizontalStretch>true</HorizontalStretch>
+									<ContextMenu name="IndentCommandBar4ContextMenu" id="163"/>
+									<ExtendedTooltip name="IndentCommandBar4ExtendedTooltip" id="164"/>
+								</LabelDecoration>
+								<CommandBar name="CommandBarRight4" id="85">
+									<EnableContentChange>true</EnableContentChange>
+									<HorizontalLocation>Right</HorizontalLocation>
+									<ExtendedTooltip name="CommandBarRight4ExtendedTooltip" id="142"/>
+									<ChildItems>
+										<Button name="CommandNext3" id="87">
+											<Type>CommandBarButton</Type>
+											<Enabled>false</Enabled>
+											<DefaultItem>true</DefaultItem>
+											<CommandName>Form.Command.CommandNext</CommandName>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Next &gt;</v8:content>
+												</v8:item>
+											</Title>
+											<ExtendedTooltip name="CommandNext3ExtendedTooltip" id="144"/>
+										</Button>
+										<Button name="CancelCommand3" id="88">
+											<Type>CommandBarButton</Type>
+											<Enabled>false</Enabled>
+											<CommandName>Form.Command.CommandCancel</CommandName>
+											<ExtendedTooltip name="CancelCommand3ExtendedTooltip" id="145"/>
+										</Button>
+										<Button name="Help3" id="94">
+											<Type>CommandBarButton</Type>
+											<Enabled>false</Enabled>
+											<OnlyInAllActions>true</OnlyInAllActions>
+											<CommandName>Form.StandardCommand.Help</CommandName>
+											<ExtendedTooltip name="Help3ExtendedTooltip" id="146"/>
+										</Button>
+									</ChildItems>
+								</CommandBar>
+							</ChildItems>
+						</Page>
+					</ChildItems>
+				</Pages>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="GoToNumber" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Sequence number of jump</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>3</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="GoToTable" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Jump table</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="GoToNumber" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Sequence number of jump</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>3</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="MainPageName" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Main page name</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="DecorationPageName" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Decoration page name</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="NavigationPageName" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Navigation page name</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="OnOpenHandlerName" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>On open handler name</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="GoNextHandlerName" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Go to next handler name</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="GoBackHandlerName" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Go back handler name</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="LongOperation" id="8">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Long operation</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="LongOperationHandlerName" id="9">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Long operation handler name</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ForceCloseForm" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Force quit the form</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="SpreadsheetDocument" id="5">
+			<Type>
+				<v8:Type xmlns:mxl="http://v8.1c.ru/8.2/data/spreadsheet">mxl:SpreadsheetDocument</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="NameOfSelectedFile" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Name of selected file</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="TemporaryStorageAddress" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Temporary storage address</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="SpreadsheetDocumentMessages" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Spreadsheet document messages</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type xmlns:mxl="http://v8.1c.ru/8.2/data/spreadsheet">mxl:SpreadsheetDocument</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="UpdateExisting" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Update existing</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="CreateIfNotMatched" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Create if unmapped</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="FilterComparisonTable" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Show in table</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>100</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="DataMatchingTable" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Data matching table</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ServiceFieldName" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Service field name</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="BackgroundJobID" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Background job ID</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:UUID</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="BackgroundJobStorageAddress" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Background job storage address</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="BackgroundJobIntervalChecks" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Verification interval background job</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>2</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<ConditionalAppearance>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>DecorationUnmatchedRowsHeaderObject</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">CreateIfNotMatched</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>TextColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:CompletedJob</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+				<dcsset:presentation xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Matched items</v8:content>
+					</v8:item>
+				</dcsset:presentation>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>DecorationUnmatchedRowsHeaderObject</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">CreateIfNotMatched</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>TextColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:BusinessCalendarDayTypeSaturdayColor</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+				<dcsset:presentation xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Unmatched items</v8:content>
+					</v8:item>
+				</dcsset:presentation>
+			</dcsset:item>
+		</ConditionalAppearance>
+	</Attributes>
+	<Commands>
+		<Command name="CommandNext" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Next &gt;</v8:content>
+				</v8:item>
+			</Title>
+			<Action>CommandNext</Action>
+		</Command>
+		<Command name="CommandBack" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>&lt; Back</v8:content>
+				</v8:item>
+			</Title>
+			<Action>CommandBack</Action>
+		</Command>
+		<Command name="CommandCancel" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Cancel</v8:content>
+				</v8:item>
+			</Title>
+			<Action>CommandCancel</Action>
+		</Command>
+		<Command name="CommandDone" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Import data to application</v8:content>
+				</v8:item>
+			</Title>
+			<Action>CommandDone</Action>
+		</Command>
+		<Command name="AnotherWayToImportData" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Import data with other method</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Import data with other method</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ImportDataWithOtherMethodClick</Action>
+		</Command>
+		<Command name="ChooseExternalFile" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Select external file...</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Choose external file</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ChooseExternalFile</Action>
+		</Command>
+		<Command name="FormatSample_xlsx" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>xlsx</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Format sample xlsx</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>FormatSample_xlsx</Action>
+		</Command>
+		<Command name="FormatSample_mxl" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>mxl</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Format sample mxl</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>FormatSample_mxl</Action>
+		</Command>
+		<Command name="FormatSample_csv" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>csv</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Data sample xlsx</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>FormatSample_csv</Action>
+		</Command>
+		<Command name="ShowMatchingTable_FilterErrors" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>show lines...</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Show matching table error filter</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ShowMatchingTable_FilterErrors</Action>
+		</Command>
+		<Command name="ShowMatchingTable_FilterNoErrors" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>show lines...</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Show matching table error filter</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ShowMatchingTable_FilterNoErrors</Action>
+		</Command>
+		<Command name="CommonValue" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>&lt; not indicated &gt;</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Common value</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>CommonValue</Action>
+		</Command>
+		<Command name="ShowMatchingTable_WithoutFilter" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>show lines...</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Show matching table without selection</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ShowMatchingTable_WithoutFilter</Action>
+		</Command>
+		<Command name="ShowMatchingTable_Mapped" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>show lines...</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Show matching table matched</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ShowMatchingTable_Mapped</Action>
+		</Command>
+		<Command name="ShowMatchingTable_WillBeCreated" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>show lines...</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Show matching table will be created</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ShowMatchingTable_WillBeCreated</Action>
+		</Command>
+		<Command name="ShowMatchingTable_Inconsistent" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Lines...</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Show table mapping inconsistent</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ShowMatchingTable_InconsistentData</Action>
+		</Command>
+		<Command name="ClearCommonValue" id="17">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Clear common value</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Clear common value</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Clear</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ClearCommonValue</Action>
+			<Representation>Picture</Representation>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="DataLoadSettings">
+			<Type/>
+			<KeyParameter>true</KeyParameter>
+		</Parameter>
+	</Parameters>
+</Form>

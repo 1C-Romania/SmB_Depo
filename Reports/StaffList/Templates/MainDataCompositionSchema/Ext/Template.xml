@@ -1,0 +1,343 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>DataSource1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>DataSet1</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Vacant</dataPath>
+			<field>Vacant</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Vacant</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>TariffRateCurrency</dataPath>
+			<field>TariffRateCurrency</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>AccrualDeductionKind</dataPath>
+			<field>AccrualDeductionKind</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Position</dataPath>
+			<field>Position</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>BusyOfRates</dataPath>
+			<field>BusyOfRates</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Rates Covered</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>NumberOfRates</dataPath>
+			<field>NumberOfRates</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>MaximumTariffRate</dataPath>
+			<field>MaximumTariffRate</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>MinimumTariffRate</dataPath>
+			<field>MinimumTariffRate</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Company</dataPath>
+			<field>Company</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Division</dataPath>
+			<field>Division</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Division</v8:content>
+				</v8:item>
+			</title>
+			<inputParameters>
+				<dcscor:item>
+					<dcscor:parameter>ChoiceParameters</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:ChoiceParameters">
+						<dcscor:item>
+							<dcscor:choiceParameter>Filter.StructuralUnitType</dcscor:choiceParameter>
+							<dcscor:value xsi:type="dcscor:DesignTimeValue">Enum.StructuralUnitsTypes.Division</dcscor:value>
+						</dcscor:item>
+					</dcscor:value>
+				</dcscor:item>
+			</inputParameters>
+		</field>
+		<dataSource>DataSource1</dataSource>
+		<query>SELECT ALLOWED
+	CASE
+		WHEN StaffScheduleSliceLast.Company IS NULL 
+			THEN NestedSelect.Company
+		ELSE StaffScheduleSliceLast.Company
+	END AS Company,
+	CASE
+		WHEN StaffScheduleSliceLast.StructuralUnit IS NULL 
+			THEN NestedSelect.StructuralUnit
+		ELSE StaffScheduleSliceLast.StructuralUnit
+	END AS Division,
+	CASE
+		WHEN StaffScheduleSliceLast.Position IS NULL 
+			THEN NestedSelect.Position
+		ELSE StaffScheduleSliceLast.Position
+	END AS Position,
+	SUM(StaffScheduleSliceLast.NumberOfRates) AS NumberOfRates,
+	StaffScheduleSliceLast.MinimumTariffRate,
+	StaffScheduleSliceLast.MaximumTariffRate,
+	StaffScheduleSliceLast.AccrualDeductionKind,
+	StaffScheduleSliceLast.TariffRateCurrency,
+	SUM(NestedSelect.BusyOfRates) AS BusyOfRates,
+	SUM(ISNULL(StaffScheduleSliceLast.NumberOfRates, 0) - ISNULL(NestedSelect.BusyOfRates, 0)) AS Vacant
+	FROM
+	InformationRegister.StaffList.SliceLast AS StaffScheduleSliceLast
+		Full JOIN (SELECT
+			EmployeesSliceLast.Company AS Company,
+			EmployeesSliceLast.StructuralUnit AS StructuralUnit,
+			EmployeesSliceLast.Position AS Position,
+			SUM(EmployeesSliceLast.OccupiedRates) AS BusyOfRates
+		FROM
+			InformationRegister.Employees.SliceLast AS EmployeesSliceLast
+		WHERE
+			EmployeesSliceLast.StructuralUnit &lt;&gt; VALUE(Catalog.StructuralUnits.EmptyRef)
+		
+		GROUP BY
+			EmployeesSliceLast.Position,
+			EmployeesSliceLast.Company,
+			EmployeesSliceLast.StructuralUnit) AS NestedSelect
+		ON StaffScheduleSliceLast.Company = NestedSelect.Company
+			AND StaffScheduleSliceLast.StructuralUnit = NestedSelect.StructuralUnit
+			AND StaffScheduleSliceLast.Position = NestedSelect.Position
+
+	GROUP BY
+	StaffScheduleSliceLast.TariffRateCurrency,
+	StaffScheduleSliceLast.AccrualDeductionKind,
+	StaffScheduleSliceLast.MinimumTariffRate,
+	StaffScheduleSliceLast.MaximumTariffRate,
+	CASE
+		WHEN StaffScheduleSliceLast.Company IS NULL 
+			THEN NestedSelect.Company
+		ELSE StaffScheduleSliceLast.Company
+	END,
+	CASE
+		WHEN StaffScheduleSliceLast.StructuralUnit IS NULL 
+			THEN NestedSelect.StructuralUnit
+		ELSE StaffScheduleSliceLast.StructuralUnit
+	END,
+	CASE
+		WHEN StaffScheduleSliceLast.Position IS NULL 
+			THEN NestedSelect.Position
+		ELSE StaffScheduleSliceLast.Position
+		END</query>
+	</dataSet>
+	<totalField>
+		<dataPath>Vacant</dataPath>
+		<expression>SUM(Vacant)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>BusyOfRates</dataPath>
+		<expression>SUM(BusyOfRates)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>NumberOfRates</dataPath>
+		<expression>SUM(RatesQuantity)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>MaximumTariffRate</dataPath>
+		<expression>SUM(MaxTariffRate)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>MinimumTariffRate</dataPath>
+		<expression>SUM(MinTariffRate)</expression>
+	</totalField>
+	<parameter>
+		<name>Period</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>As of</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>Date</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>false</useRestriction>
+		<expression>CASE WHEN &amp;Period = Undefined OR &amp;Period = NULL OR &amp;Period = DateTime(1,1,1) THEN DateTime(3999,12,31) ELSE EndOfPeriod(&amp;Period, "Day") END</expression>
+	</parameter>
+	<parameter>
+		<name>TitleOutput</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Output title</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:boolean</v8:Type>
+		</valueType>
+		<value xsi:type="xs:boolean">false</value>
+		<useRestriction>false</useRestriction>
+		<availableAsField>false</availableAsField>
+		<use>Always</use>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>Default</dcsset:name>
+		<dcsset:presentation xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Staff list</v8:content>
+			</v8:item>
+		</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Division</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Position</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>NumberOfRates</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>BusyOfRates</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Vacant</dcsset:field>
+				</dcsset:item>
+				<dcsset:viewMode>Normal</dcsset:viewMode>
+				<dcsset:userSettingID>16f10c74-6ca9-4076-aa44-d2c9bc420319</dcsset:userSettingID>
+			</dcsset:selection>
+			<dcsset:filter>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Company</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="dcscor:DesignTimeValue">Catalog.Companies.EmptyRef</dcsset:right>
+					<dcsset:userSettingID>ed312e32-e732-40ac-bc98-1a74cefbaebf</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Division</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="dcscor:DesignTimeValue">Catalog.StructuralUnits.EmptyRef</dcsset:right>
+					<dcsset:userSettingID>b0b8fa97-ca6b-4c9f-b76f-0ced6bb527f8</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Position</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="dcscor:DesignTimeValue">Catalog.Positions.EmptyRef</dcsset:right>
+					<dcsset:userSettingID>cf486ce9-ee96-47df-afed-a93660312aaa</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:viewMode>Normal</dcsset:viewMode>
+				<dcsset:userSettingID>4595fe27-ff55-4dd0-9a10-68595cd5a611</dcsset:userSettingID>
+			</dcsset:filter>
+			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>Period</dcscor:parameter>
+					<dcscor:value xsi:type="xs:dateTime">0001-01-01T00:00:00</dcscor:value>
+					<dcsset:userSettingID>20d4bd38-f706-4a2b-a8bf-ac5220920e18</dcsset:userSettingID>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>TitleOutput</dcscor:parameter>
+					<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+					<dcsset:viewMode>Normal</dcsset:viewMode>
+					<dcsset:userSettingID>15825932-9f47-40e9-9784-cbf51a5ee4b5</dcsset:userSettingID>
+				</dcscor:item>
+			</dcsset:dataParameters>
+			<dcsset:order>
+				<dcsset:item xsi:type="dcsset:OrderItemField">
+					<dcsset:field>Division</dcsset:field>
+					<dcsset:orderType>Asc</dcsset:orderType>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:OrderItemField">
+					<dcsset:field>Position</dcsset:field>
+					<dcsset:orderType>Asc</dcsset:orderType>
+				</dcsset:item>
+				<dcsset:viewMode>Normal</dcsset:viewMode>
+				<dcsset:userSettingID>c3371406-f148-4829-a522-546c7a58cbdb</dcsset:userSettingID>
+			</dcsset:order>
+			<dcsset:conditionalAppearance>
+				<dcsset:viewMode>Normal</dcsset:viewMode>
+			</dcsset:conditionalAppearance>
+			<dcsset:outputParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>TitleOutput</dcscor:parameter>
+					<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">DontOutput</dcscor:value>
+					<dcsset:viewMode>Normal</dcsset:viewMode>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Title</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Staff list</v8:content>
+						</v8:item>
+					</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>DataParametersOutput</dcscor:parameter>
+					<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">DontOutput</dcscor:value>
+					<dcsset:viewMode>Normal</dcsset:viewMode>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>FilterOutput</dcscor:parameter>
+					<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">DontOutput</dcscor:value>
+					<dcsset:viewMode>Normal</dcsset:viewMode>
+				</dcscor:item>
+			</dcsset:outputParameters>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>Division</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+				<dcsset:item xsi:type="dcsset:StructureItemGroup">
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>Position</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+				</dcsset:item>
+			</dcsset:item>
+			<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+			<dcsset:itemsUserSettingID>11195bbe-b02b-4a55-a0cc-3e5646f23cfe</dcsset:itemsUserSettingID>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

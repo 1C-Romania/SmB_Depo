@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Width>34</Width>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
+	<CommandBarLocation>Bottom</CommandBarLocation>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<HorizontalAlign>Center</HorizontalAlign>
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnSaveDataInSettingsAtServer">OnSaveDataInSettingsAtServer</Event>
+		<Event name="OnOpen">OnOpen</Event>
+		<Event name="OnLoadDataFromSettingsAtServer">OnLoadDataFromSettingsAtServer</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<LabelDecoration name="Decoration1" id="45">
+			<ContextMenu name="Decoration1ContextMenu" id="46"/>
+			<ExtendedTooltip name="Decoration1ExtendedTooltip" id="47"/>
+		</LabelDecoration>
+		<InputField name="CashCR" id="4">
+			<DataPath>CashCR</DataPath>
+			<TitleLocation>Top</TitleLocation>
+			<EditMode>EnterOnInput</EditMode>
+			<AutoMarkIncomplete>true</AutoMarkIncomplete>
+			<ChoiceParameters>
+				<app:item name="Filter.CashCRType">
+					<app:value xsi:type="FormChoiceListDesTimeValue">
+						<Presentation/>
+						<Value xsi:type="xr:DesignTimeRef">Enum.CashCRTypes.EnumValue.FiscalRegister</Value>
+					</app:value>
+				</app:item>
+			</ChoiceParameters>
+			<ContextMenu name="CashCRContextMenu" id="5"/>
+			<ExtendedTooltip name="CashCRExtendedTooltip" id="6"/>
+			<Events>
+				<Event name="OnChange">CashCROnChange</Event>
+			</Events>
+		</InputField>
+		<InputField name="POSTerminal" id="42">
+			<DataPath>POSTerminal</DataPath>
+			<TitleLocation>Top</TitleLocation>
+			<ChoiceParameterLinks>
+				<xr:Link>
+					<xr:Name>Filter.PettyCash</xr:Name>
+					<xr:DataPath xsi:type="xs:string">CashCR</xr:DataPath>
+					<xr:ValueChange>Clear</xr:ValueChange>
+				</xr:Link>
+			</ChoiceParameterLinks>
+			<ContextMenu name="POSTerminalContextMenu" id="43"/>
+			<ExtendedTooltip name="POSTerminalExtendedTooltip" id="44"/>
+			<Events>
+				<Event name="OnChange">POSTerminalOnChange</Event>
+			</Events>
+		</InputField>
+		<CheckBoxField name="DontShowOnOpenCashdeskChoiceForm" id="36">
+			<DataPath>DontShowOnOpenCashdeskChoiceForm</DataPath>
+			<CheckBoxType>Auto</CheckBoxType>
+			<ContextMenu name="DontShowOnOpenCashdeskChoiceFormContextMenu" id="37"/>
+			<ExtendedTooltip name="DontShowOnOpenCashdeskChoiceFormExtendedTooltip" id="38"/>
+		</CheckBoxField>
+		<LabelDecoration name="LabelSettingsOpenWindows" id="39">
+			<TextColor>style:MinorInscriptionText</TextColor>
+			<Title formatted="false">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>You can enable the window in the cashier workplace by clicking the My petty cash button</v8:content>
+				</v8:item>
+			</Title>
+			<VerticalAlign>Top</VerticalAlign>
+			<ContextMenu name="LabelThisWindowOpeningSettingsContextMenu" id="40"/>
+			<ExtendedTooltip name="LabelSettingsOpenWindowsExtendedTooltip" id="41"/>
+		</LabelDecoration>
+		<LabelDecoration name="IndentDecoration_1" id="48">
+			<HorizontalStretch>true</HorizontalStretch>
+			<ContextMenu name="IndentDecoration_1ContextMenu" id="49"/>
+			<ExtendedTooltip name="IndentDecoration_1ExtendedTooltip" id="50"/>
+		</LabelDecoration>
+		<UsualGroup name="GroupCWPOpenButton" id="51">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group CWP open button</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group CWP open button</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="GroupCWPOpenButtonExtendedTooltip" id="52"/>
+			<ChildItems>
+				<LabelDecoration name="IndentDecoration_2" id="53">
+					<HorizontalStretch>true</HorizontalStretch>
+					<ContextMenu name="IndentDecoration_2ContextMenu" id="54"/>
+					<ExtendedTooltip name="IndentDecoration_2ExtendedTooltip" id="55"/>
+				</LabelDecoration>
+				<Button name="FormOpenWorkplaceCashier" id="34">
+					<Type>UsualButton</Type>
+					<DefaultButton>true</DefaultButton>
+					<CommandName>Form.Command.OpenWorkplaceOfCashier</CommandName>
+					<ExtendedTooltip name="FormOpenCashierWorkplaceExtendedTooltip" id="35"/>
+				</Button>
+				<LabelDecoration name="IndentDecoration_3" id="56">
+					<HorizontalStretch>true</HorizontalStretch>
+					<ContextMenu name="IndentDecoration_3ContextMenu" id="57"/>
+					<ExtendedTooltip name="IndentDecoration_3ExtendedTooltip" id="58"/>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+		<LabelDecoration name="IndentDecoration_4" id="59">
+			<HorizontalStretch>true</HorizontalStretch>
+			<ContextMenu name="IndentDecoration_4ContextMenu" id="60"/>
+			<ExtendedTooltip name="IndentDecoration_4ExtendedTooltip" id="61"/>
+		</LabelDecoration>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Type>
+				<v8:Type>cfg:DocumentObject.ReceiptCR</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+			<UseAlways>
+				<Field>Object.RegisterRecords</Field>
+			</UseAlways>
+		</Attribute>
+		<Attribute name="PostingIsAllowed" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Posting is allowed</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="DontShowOnOpenCashdeskChoiceForm" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Do not show this window</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="CWPSetting" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>CWP setup</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.SettingsCWP</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="CashCR" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Cash register</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.CashRegisters</v8:Type>
+			</Type>
+			<Save>
+				<Field>CashCR</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="POSTerminal" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>POS terminal</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.POSTerminals</v8:Type>
+			</Type>
+			<Save>
+				<Field>POSTerminal</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="CloseFormAfterOpeningCWP" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Close form after opening CWP</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="OpenWorkplaceOfCashier" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Open workplace of cashier (Ctrl+Enter)</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Open workplace of cashier</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>OpenWorkplaceOfCashier</Action>
+		</Command>
+	</Commands>
+</Form>

@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<MetaDataObject xmlns="http://v8.1c.ru/8.3/MDClasses" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:cmi="http://v8.1c.ru/8.2/managed-application/cmi" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xpr="http://v8.1c.ru/8.3/xcf/predef" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Subsystem uuid="6f7c6c31-206b-4010-bdad-1ad2e304f154">
+		<Properties>
+			<Name>ReportsVariants</Name>
+			<Synonym>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Reports variants</v8:content>
+				</v8:item>
+			</Synonym>
+			<Comment/>
+			<IncludeHelpInContents>false</IncludeHelpInContents>
+			<IncludeInCommandInterface>false</IncludeInCommandInterface>
+			<Explanation/>
+			<Picture/>
+			<Content>
+				<xr:Item xsi:type="xr:MDObjectRef">SettingsStorage.ReportsVariantsStorage</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.ReportsVariants</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Catalog.ReportsVariants</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Subsystem.StandardSubsystems.Subsystem.ReportsVariants</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Enum.ReportsTypes</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.ReportsVariantsOverridable</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.ReportsVariantsClient</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Role.AddChangeReportsVariants</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Role.ReportsVariantsUsage</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.ReportsVariantsClientServer</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.ReportsVariantsReUse</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.ReportsVariantsSettings</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonPicture.QuickAccess</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonPicture.QuickAccessAdd</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonPicture.QuickAccessDelete</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">StyleItem.HiddenReportOptionColor</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">StyleItem.VisibleReportOptionColor</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonForm.ReportsPanel</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">StyleItem.ReportsVariantsGroupColor82</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Enum.AvailableReportPeriods</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.ReportsClientOverridable</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.ReportsOverridable</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.ReportsClientServer</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonForm.ReportForm</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonForm.ReportVariantForm</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonPicture.QuickReportSettings</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonForm.RandomPeriodSelection</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonForm.SendingSpreadsheetDocumentsByEmail</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonPicture.Email</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonPicture.ReportsVariantsAvailableToAllUsers</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">StyleItem.MyReportsVariantsColor</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Catalog.PredefinedReportsVariants</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">EventSubscription.ReportsVariantsWhenUserDelete</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Constant.ReportVariantParameters</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">EventSubscription.ReportsVariantsBeforeMetadataObjectIdentificatorDelete</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonPicture.Amount</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Catalog.UserReportsSettings</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonCommand.ReportsPanelAdministration</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonForm.EnterValuesListWithCheckBoxes</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">StyleItem.ReportsVariantsGroupColor</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonPicture.ChooseReportVariant</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonPicture.SaveReportVariant</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.ReportsServer</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonModule.ReportsClient</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonPicture.Reports</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonForm.ReportSettingsForm</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonPicture.AccessIconsToReportSettings</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonPicture.ParametersAndFiltersIcons</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonPicture.MoveToLeftUp</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonPicture.MoveToRightDown</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonPicture.AddAttached</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonPicture.AddParent</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonPicture.ReportStructuresIcons</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonPicture.RapidAccessWithCheckBox</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonPicture.UsualAccessWithCheckBox</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonPicture.PredefinedItem</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonPicture.ReportHiddenSetting</xr:Item>
+			</Content>
+		</Properties>
+		<ChildObjects/>
+	</Subsystem>
+</MetaDataObject>

@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head><style>TABLE {
+	BORDER-TOP: 0px; BORDER-RIGHT: 0px; WIDTH: 98%; BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; CellSpacing: 4; CellPadding: 0
+}
+TD {
+	VERTICAL-ALIGN: top
+}
+</style><meta content="text/html; charset=utf-8" http-equiv="Content-Type"></meta><link rel="stylesheet" type="text/css" href="V8help://service_book/service_style"></link><meta name="GENERATOR" content="MSHTML 11.00.9600.18321"></meta></head><body>
+<p>With the help of this toolbox you can configure the use of <a href="DataProcessor.PermissionSettingsForExternalResourcesUse/Help">security profiles </a>of the 1C:Enterprise servers cluster for the infobase. Security profiles are intended to control use of external resources by the application (relative to the 1C:Enterprise servers cluster).</p>
+<p>It is located in the <strong>Administration - Support and servicing - Security </strong>section. </p>
+<h3>Security profiles use mode</h3>
+<p>Using an option button you can select a mode of using security profiles for the application:</p>
+<ul><li><strong>No security profiles used for this infobase</strong><strong> </strong>
+</li><li>The application does not inform the administrator of the need to add external resources into security profiles 
+<ul><li>If you set the use of security profiles in the servers cluster and do not change this setting, then any attempt to call external resources not authorized in the servers cluster would lead to errors in application operation 
+</li><li>If in a security profile the <strong>Full access to external reports and data processors </strong>checkbox is cleared, the application start will be impossible</li></ul></li></ul><li><strong>Security profiles for this infobase are configured by the administrator in the cluster console </strong>
+</li><li>The application does not inform the administrator of the need to add external resources into security profiles 
+</li><li>The administrator configures authorizations in security profiles using the cluster console 
+<ul><li>Whereas the administrator may study the list of authorizations that have to be made in a security profile using a report which is opened when following the <strong>Required authorizations</strong> link in the toolbox 
+</li><li>For an infobase profile, the <strong>Safe mode profile </strong>checkbox<strong> </strong>has to be selected 
+</li><li>In the <strong>Infobase security profile</strong> field, specify the name of the security profile set for the infobase 
+</li><li>If the <strong>Full access to external reports and data processor</strong> checkbox is cleared in the security profile, you have to select the<strong> Can be used as safe mode profile</strong> checkbox for it and specify the name of this security profile in the <strong>Infobase security profile </strong>field in this toolbox (otherwise application start will be impossible) </li></ul><ul></ul></li><li><strong>To offer to set up authorizations automatically in security profiles when necessary (directly from the application) </strong>
+</li><li>When switching to this mode, a new security profile will be created (and assigned for the infobase) in which all external resources required for correct operation of the application will be authorized 
+</li><li>The application itself manages authorizations in security profiles 
+</li><li>The application itself manages profiles 
+</li><li>If when editing any settings of the application it becomes necessary to provide access to a new external resource, the administrator views a dialog with the <a href="DataProcessor.PermissionSettingsForExternalResourcesUse.Form.PermissionSettingsForExternalResourcesUse/Help">list of authorizations </a>
+</li><li>If the administrator agrees - he enters authentication parameters in the cluster and clicks<strong> Next </strong>
+</li><li>Authorisations in security profiles are provided automatically 
+<ul></ul><ul></ul><ul></ul><h3>Required authorizations</h3>
+<p>The command is not accessible if <strong>Security profiles use mode </strong>is set to <strong>For this infobase no s</strong><strong>ecurity profiles is used</strong><strong>. </strong></p>
+<ul><li>Click<strong> </strong><strong>Required</strong> a<strong>uthorizations</strong> to display the report on external resources which shall be authorized in security profiles for correct operation of the application </li></ul><h3>Infobase security profile</h3>
+<p>The field is not available for editing if <strong>Security profiles use mode</strong> is set to <strong>To offer to set up authorizations automatically in security profiles when necessary (directly from the application)</strong><strong>.</strong> </p>
+<p>If <strong>Security profiles use mode</strong> is set to <strong>Security profiles for this infobase are configured by the administrator in the cluster console</strong> and the <strong>Full access to external reports and data processors </strong>checkbox is cleared in a security profile, then you should select the <strong>Can be used as safe mode profile</strong> checkbox for the security profile and specify the name of this security profile in this field (otherwise application start will be impossible). </p>
+<ul><li>
+<div>In the <strong>Infobase security profile </strong>field,<strong> </strong>enter the name the security profile used (in the 1C:Enterprise servers cluster) </div></li></ul><h3>Restorring security profiles settings</h3>
+<p>The command is available only if the <strong>Security profiles use mode</strong> is set to <strong>To offer to set up authorizations automatically in security profiles when necessary (directly from the application)</strong><strong>.</strong> </p>
+<p>It completely re-establishes security profiles for the infobase with account for external resources that may be required for application operation and taking into account current settings of the application. It can be used, for example, after transfer of the infobase to another servers cluster. </p>
+<ul><li>Click<strong> Restore security profiles settings</strong></li></ul><h3>See also </h3>
+<ul><li><a href="DataProcessor.AdministrationPanelSSL/Help">Application settings</a></li></ul></li></body></html>

@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="FormCommandBar" id="-1"/>
+	<Events>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="Header" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Header</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="HeaderExtendedTooltip" id="23"/>
+			<ChildItems>
+				<UsualGroup name="LeftColumn" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Left column</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="LeftColumnExtendedTooltip" id="24"/>
+					<ChildItems>
+						<InputField name="Company" id="3">
+							<DataPath>Record.Company</DataPath>
+							<Wrap>false</Wrap>
+							<ContextMenu name="CounterpartyContextMenu" id="4"/>
+							<ExtendedTooltip name="CounterpartyExtendedTooltip" id="25"/>
+						</InputField>
+						<InputField name="StructuralUnit" id="5">
+							<DataPath>Record.StructuralUnit</DataPath>
+							<Wrap>false</Wrap>
+							<AutoMarkIncomplete>true</AutoMarkIncomplete>
+							<ContextMenu name="StructuralUnitContextMenu" id="6"/>
+							<ExtendedTooltip name="StructuralUnitExtendedTooltip" id="26"/>
+						</InputField>
+						<InputField name="Position" id="7">
+							<DataPath>Record.Position</DataPath>
+							<Wrap>false</Wrap>
+							<ContextMenu name="AppointmentContextMenu" id="8"/>
+							<ExtendedTooltip name="PositionExtendedTooltip" id="27"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="RightColumn" id="22">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Right column</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Right column</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="RightColumnExtendedTooltip" id="28"/>
+					<ChildItems>
+						<InputField name="Period" id="20">
+							<DataPath>Record.Period</DataPath>
+							<Width>13</Width>
+							<Wrap>false</Wrap>
+							<ContextMenu name="PeriodContextMenu" id="21"/>
+							<ExtendedTooltip name="PeriodExtendedTooltip" id="29"/>
+						</InputField>
+						<InputField name="NumberOfRates" id="9">
+							<DataPath>Record.NumberOfRates</DataPath>
+							<Wrap>false</Wrap>
+							<ContextMenu name="CountOfRatesContextMenu" id="10"/>
+							<ExtendedTooltip name="CountOfRatesExtendedTooltip" id="30"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="Tariff" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Tariff</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Tariff</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<ExtendedTooltip name="RateExtendedTooltip" id="31"/>
+			<ChildItems>
+				<InputField name="AccrualDeductionKind" id="16">
+					<DataPath>Record.AccrualDeductionKind</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<Wrap>false</Wrap>
+					<ContextMenu name="AccrualsDeductionsTypeContextMenu" id="17"/>
+					<ExtendedTooltip name="AccrualsDeductionsTypeExtendedTooltip" id="32"/>
+				</InputField>
+				<InputField name="MinimumTariffRate" id="12">
+					<DataPath>Record.MinimumTariffRate</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>from</v8:content>
+						</v8:item>
+					</Title>
+					<Width>13</Width>
+					<Wrap>false</Wrap>
+					<ContextMenu name="MinimalTarifRateContextMenu" id="13"/>
+					<ExtendedTooltip name="MinimalTarifRateExtendedTooltip" id="33"/>
+				</InputField>
+				<InputField name="MaximumTariffRate" id="14">
+					<DataPath>Record.MaximumTariffRate</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>to</v8:content>
+						</v8:item>
+					</Title>
+					<Width>13</Width>
+					<Wrap>false</Wrap>
+					<ContextMenu name="MaximalTarifRateContextMenu" id="15"/>
+					<ExtendedTooltip name="MaximalTarifRateExtendedTooltip" id="34"/>
+				</InputField>
+				<InputField name="TariffRateCurrency" id="18">
+					<DataPath>Record.TariffRateCurrency</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<Width>13</Width>
+					<Wrap>false</Wrap>
+					<ContextMenu name="TarifRateCurrencyContextMenu" id="19"/>
+					<ExtendedTooltip name="TarifRateCurrencyExtendedTooltip" id="35"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Record" id="1">
+			<Type>
+				<v8:Type>cfg:InformationRegisterRecordManager.StaffList</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+	</Attributes>
+</Form>

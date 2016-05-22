@@ -1,0 +1,508 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<AutoTitle>false</AutoTitle>
+	<Customizable>false</Customizable>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<CommandSet>
+		<ExcludedCommand>SaveValues</ExcludedCommand>
+		<ExcludedCommand>RestoreValues</ExcludedCommand>
+	</CommandSet>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="Help" id="289">
+				<Type>CommandBarButton</Type>
+				<SkipOnInput>false</SkipOnInput>
+				<CommandName>Form.StandardCommand.Help</CommandName>
+				<ExtendedTooltip name="HelpExtendedTooltip" id="335"/>
+			</Button>
+			<Popup name="WorkplacesManagement" id="319">
+				<Title>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Workplace management</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTip>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Workplace management</v8:content>
+					</v8:item>
+				</ToolTip>
+				<ExtendedTooltip name="WorkplacesManagementExtendedTooltip" id="336"/>
+				<ChildItems>
+					<Button name="ChoiceOfWorkplace" id="317">
+						<Type>CommandBarButton</Type>
+						<SkipOnInput>false</SkipOnInput>
+						<CommandName>Form.Command.ChoiceOfWorkplace</CommandName>
+						<ExtendedTooltip name="ChoiceOfWorkplaceExtendedTooltip" id="337"/>
+					</Button>
+					<Button name="ListOfWorkplaces" id="333">
+						<Type>CommandBarButton</Type>
+						<SkipOnInput>false</SkipOnInput>
+						<CommandName>Form.Command.ListOfWorkplaces</CommandName>
+						<ExtendedTooltip name="WorkplacesListExtendedTooltip" id="338"/>
+					</Button>
+				</ChildItems>
+			</Popup>
+			<Button name="FormHardwareDrivers" id="358">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.HardwareDrivers</CommandName>
+				<ExtendedTooltip name="FormHardwareDriversExtendedTooltip" id="359"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="NotificationProcessing">NotificationProcessing</Event>
+		<Event name="BeforeClose">BeforeClose</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="FormPanels" id="71">
+			<EnableContentChange>true</EnableContentChange>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Name of the current page</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="FormPanelsExtendedTooltip" id="340"/>
+			<ChildItems>
+				<UsualGroup name="LeftPanel" id="325">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Left bar</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Left bar</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="LeftPanelExtendedTooltip" id="341"/>
+					<ChildItems>
+						<CheckBoxField name="AllTypesOfEquipment" id="323">
+							<DataPath>AllTypesOfEquipment</DataPath>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="AllTypesOfEquipmentContextMenu" id="324"/>
+							<ExtendedTooltip name="AllTypesOfEquipmentExtendedTooltip" id="342"/>
+							<Events>
+								<Event name="OnChange">AllTypesOfEquipmentOnChange</Event>
+							</Events>
+						</CheckBoxField>
+						<UsualGroup name="PeripheralTypesRadioButtonGroup" id="308">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Peripherals types radio buttons group</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Peripherals types radio buttons group</v8:content>
+								</v8:item>
+							</ToolTip>
+							<HorizontalStretch>true</HorizontalStretch>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="PeripheralTypesRadioButtonGroupExtendedTooltip" id="343"/>
+							<ChildItems>
+								<UsualGroup name="PeripheralsPicturesGroup" id="322">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Peripherals pictures group</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Peripherals pictures group</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="PeripheralsPicturesGroupExtendedTooltip" id="344"/>
+								</UsualGroup>
+								<RadioButtonField name="PeripheralTypesRadioButton" id="290">
+									<DataPath>PeripheralTypesRadioButton</DataPath>
+									<TitleFont ref="sys:DefaultGUIFont" bold="false" italic="false" underline="true" strikeout="false" kind="WindowsFont"/>
+									<TitleLocation>None</TitleLocation>
+									<VerticalAlign>Center</VerticalAlign>
+									<RadioButtonType>Auto</RadioButtonType>
+									<ItemHeight>2</ItemHeight>
+									<ColumnsCount>1</ColumnsCount>
+									<ContextMenu name="PeripheralTypesRadioButtonContextMenu" id="291"/>
+									<ExtendedTooltip name="PeripheralTypesRadioButtonExtendedTooltip" id="345"/>
+									<Events>
+										<Event name="OnChange">RadioButtonPagesOnChange</Event>
+									</Events>
+								</RadioButtonField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="Group" id="332">
+							<Group>Vertical</Group>
+							<ExtendedTooltip name="GroupExtendedTooltip" id="346"/>
+							<ChildItems>
+								<CheckBoxField name="AllWorkplaces" id="330">
+									<DataPath>AllWorkplaces</DataPath>
+									<TitleLocation>Right</TitleLocation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="AllWorkplacesContextMenu" id="331"/>
+									<ExtendedTooltip name="AllWorkplacesExtendedTooltip" id="347"/>
+									<Events>
+										<Event name="OnChange">AllWorkplacesOnChange</Event>
+									</Events>
+								</CheckBoxField>
+								<CheckBoxField name="GroupByWorkplace" id="328">
+									<DataPath>GroupByWorkplace</DataPath>
+									<Enabled>false</Enabled>
+									<TitleLocation>Right</TitleLocation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="GroupByWorkplaceContextMenu" id="329"/>
+									<ExtendedTooltip name="GroupByWorkplaceExtendedTooltip" id="348"/>
+									<Events>
+										<Event name="OnChange">GroupByWorkplaceOnChange</Event>
+									</Events>
+								</CheckBoxField>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+				<Table name="DeviceList" id="292">
+					<Representation>Tree</Representation>
+					<SkipOnInput>false</SkipOnInput>
+					<SelectionMode>SingleRow</SelectionMode>
+					<UseAlternationRowColor>true</UseAlternationRowColor>
+					<InitialTreeView>ExpandAllLevels</InitialTreeView>
+					<DataPath>DeviceList</DataPath>
+					<RowPictureDataPath>DeviceList.DefaultPicture</RowPictureDataPath>
+					<CommandSet>
+						<ExcludedCommand>ListSettings</ExcludedCommand>
+						<ExcludedCommand>LoadDynamicListSettings</ExcludedCommand>
+						<ExcludedCommand>DynamicListStandardSettings</ExcludedCommand>
+						<ExcludedCommand>Refresh</ExcludedCommand>
+						<ExcludedCommand>CancelSearch</ExcludedCommand>
+						<ExcludedCommand>OutputList</ExcludedCommand>
+						<ExcludedCommand>CopyToClipboard</ExcludedCommand>
+						<ExcludedCommand>Choose</ExcludedCommand>
+						<ExcludedCommand>SaveDynamicListSettings</ExcludedCommand>
+						<ExcludedCommand>Find</ExcludedCommand>
+						<ExcludedCommand>Delete</ExcludedCommand>
+					</CommandSet>
+					<SearchStringLocation>None</SearchStringLocation>
+					<ViewStatusLocation>None</ViewStatusLocation>
+					<SearchControlLocation>None</SearchControlLocation>
+					<AutoRefresh>false</AutoRefresh>
+					<AutoRefreshPeriod>60</AutoRefreshPeriod>
+					<Period>
+						<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+						<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+						<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+					</Period>
+					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+					<RestoreCurrentRow>false</RestoreCurrentRow>
+					<TopLevelParent xsi:nil="true"/>
+					<ShowRoot>false</ShowRoot>
+					<AllowRootChoice>false</AllowRootChoice>
+					<UpdateOnDataChange>Auto</UpdateOnDataChange>
+					<ContextMenu name="DeviceListContextMenu" id="293"/>
+					<AutoCommandBar name="DeviceListCommandBar" id="294">
+						<ChildItems>
+							<Button name="Configure" id="305">
+								<Type>CommandBarButton</Type>
+								<UserVisible>
+									<xr:Common>false</xr:Common>
+									<xr:Value name="Role.FullRights">true</xr:Value>
+									<xr:Value name="Role.SaveUserData">true</xr:Value>
+								</UserVisible>
+								<SkipOnInput>false</SkipOnInput>
+								<CommandName>Form.Command.Configure</CommandName>
+								<Title>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Configure...</v8:content>
+									</v8:item>
+								</Title>
+								<ExtendedTooltip name="SetupExtendedTooltip" id="349"/>
+							</Button>
+						</ChildItems>
+					</AutoCommandBar>
+					<ExtendedTooltip name="DeviceListExtendedTooltip" id="350"/>
+					<SearchStringAddition name="DeviceListSearchString" id="360">
+						<AdditionSource>
+							<Item>DeviceList</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="DeviceListSearchStringContextMenu" id="361"/>
+						<ExtendedTooltip name="DeviceListSearchStringExtendedTooltip" id="362"/>
+					</SearchStringAddition>
+					<ViewStatusAddition name="DeviceListViewStatus" id="363">
+						<AdditionSource>
+							<Item>DeviceList</Item>
+							<Type>ViewStatusRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="DeviceListViewStatusContextMenu" id="364"/>
+						<ExtendedTooltip name="DeviceListViewStatusExtendedTooltip" id="365"/>
+					</ViewStatusAddition>
+					<SearchControlAddition name="DeviceListSearchControl" id="366">
+						<AdditionSource>
+							<Item>DeviceList</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<ContextMenu name="DeviceListSearchControlContextMenu" id="367"/>
+						<ExtendedTooltip name="DeviceListSearchControlExtendedTooltip" id="368"/>
+					</SearchControlAddition>
+					<Events>
+						<Event name="Selection">DeviceListChoice</Event>
+						<Event name="OnActivateRow">DeviceListOnActivateRow</Event>
+						<Event name="NewWriteProcessing">DeviceListNewWriteProcessing</Event>
+						<Event name="AfterDeleteRow">DeviceListAfterDeleteRow</Event>
+					</Events>
+					<ChildItems>
+						<CheckBoxField name="Used" id="311">
+							<DataPath>DeviceList.Used</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Device is in use</v8:content>
+								</v8:item>
+							</ToolTip>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="UsedContextMenu" id="312"/>
+							<ExtendedTooltip name="UsedExtendedTooltip" id="351"/>
+						</CheckBoxField>
+						<LabelField name="Ref" id="309">
+							<DataPath>DeviceList.Ref</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Description</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="RefContextMenu" id="310"/>
+							<ExtendedTooltip name="RefExtendedTooltip" id="352"/>
+						</LabelField>
+						<LabelField name="HardwareDriver" id="355">
+							<DataPath>DeviceList.HardwareDriver</DataPath>
+							<ContextMenu name="HardwareDriverContextMenu" id="356"/>
+							<ExtendedTooltip name="HardwareDriverExtendedTooltip" id="357"/>
+						</LabelField>
+						<LabelField name="Workplace" id="326">
+							<DataPath>DeviceList.Workplace</DataPath>
+							<ContextMenu name="WorkplaceContextMenu" id="327"/>
+							<ExtendedTooltip name="WorkplaceExtendedTooltip" id="354"/>
+						</LabelField>
+					</ChildItems>
+				</Table>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="PeripheralTypesRadioButton" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Supported types of equipment</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.PeripheralTypes</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="DeviceList" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Device list</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<UseAlways>
+				<Field>DeviceList.Workplace</Field>
+				<Field>DeviceList.Used</Field>
+				<Field>DeviceList.Ref</Field>
+				<Field>DeviceList.HardwareDriver</Field>
+				<Field>DeviceList.EquipmentType</Field>
+				<Field>DeviceList.Description</Field>
+				<Field>9/3</Field>
+				<Field>9/10</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>SELECT
+	CatalogPeripherals.Ref,
+	CatalogPeripherals.Description,
+	CatalogPeripherals.DeviceIsInUse AS Used,
+	CatalogPeripherals.HardwareDriver,
+	CatalogPeripherals.Workplace,
+	CatalogPeripherals.EquipmentType
+FROM
+	Catalog.Peripherals AS CatalogPeripherals</QueryText>
+				<MainTable>Catalog.Peripherals</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemField">
+							<dcsset:field>Workplace</dcsset:field>
+							<dcsset:orderType>Asc</dcsset:orderType>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:OrderItemField">
+							<dcsset:field>EquipmentType</dcsset:field>
+							<dcsset:orderType>Asc</dcsset:orderType>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:OrderItemField">
+							<dcsset:field>Description</dcsset:field>
+							<dcsset:orderType>Asc</dcsset:orderType>
+						</dcsset:item>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="AllTypesOfEquipment" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>All types of equipment</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="GroupByWorkplace" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group by workplace</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="AllWorkplaces" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>All workplaces</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="CurrentWorksPlace" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Current workplace</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Workplaces</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="PeripheralTypesList" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>List of periprerals</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="Configure" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Configure</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Configure</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Use>
+				<xr:Common>false</xr:Common>
+				<xr:Value name="Role.FullRights">true</xr:Value>
+				<xr:Value name="Role.SaveUserData">true</xr:Value>
+			</Use>
+			<Action>ConfigureExecute</Action>
+		</Command>
+		<Command name="ChoiceOfWorkplace" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Select a workplace</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Select a workplace</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ChoiceOfWorkplace</Action>
+		</Command>
+		<Command name="ListOfWorkplaces" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>List of work places</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>List of work places</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ListOfWorkplaces</Action>
+		</Command>
+		<Command name="HardwareDrivers" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Hardware drivers</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Hardware drivers</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>HardwareDrivers</Action>
+		</Command>
+	</Commands>
+</Form>

@@ -1,0 +1,401 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Title>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Exchange with bank</v8:content>
+		</v8:item>
+	</Title>
+	<Width>112</Width>
+	<AutoTitle>false</AutoTitle>
+	<CommandBarLocation>None</CommandBarLocation>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="FormCommandBar" id="-1"/>
+	<Events>
+		<Event name="ChoiceProcessing">ChoiceProcessing</Event>
+		<Event name="NotificationProcessing">NotificationProcessing</Event>
+		<Event name="NewWriteProcessing">NewWriteProcessing</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="GroupFilter" id="217">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group filter</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group filter</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="GroupFilterExtendedTooltip" id="225"/>
+			<ChildItems>
+				<LabelDecoration name="FilterByAccount" id="214">
+					<Height>1</Height>
+					<HorizontalStretch>true</HorizontalStretch>
+					<Font ref="sys:DefaultGUIFont" height="10" kind="WindowsFont"/>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Information by account...</v8:content>
+						</v8:item>
+					</Title>
+					<Hyperlink>true</Hyperlink>
+					<HorizontalAlign>Right</HorizontalAlign>
+					<ContextMenu name="FilterByAccountContextMenu" id="215"/>
+					<ExtendedTooltip name="FilterByAccountExtendedTooltip" id="226"/>
+					<Events>
+						<Event name="Click">FilterByAccountClick</Event>
+					</Events>
+				</LabelDecoration>
+				<Button name="ByAllAccounts" id="216">
+					<Type>Hyperlink</Type>
+					<Representation>Picture</Representation>
+					<Width>1</Width>
+					<CommandName>Form.Command.ByAllAccounts</CommandName>
+					<TextColor>web:Seagreen</TextColor>
+					<Font ref="sys:DefaultGUIFont" height="10" kind="WindowsFont"/>
+					<ExtendedTooltip name="ByAllAccountsExtendedTooltip" id="227"/>
+				</Button>
+				<LabelDecoration name="Decoration1" id="223">
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="Decoration1ContextMenu" id="224"/>
+					<ExtendedTooltip name="Decoration1ExtendedTooltip" id="228"/>
+				</LabelDecoration>
+				<Button name="Settings" id="222">
+					<Type>UsualButton</Type>
+					<Representation>Picture</Representation>
+					<CommandName>Form.Command.Settings</CommandName>
+					<ExtendedTooltip name="SettingsExtendedTooltip" id="229"/>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="GroupFormattingCommands" id="93">
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="GroupFormattingCommandsExtendedTooltip" id="230"/>
+			<ChildItems>
+				<LabelDecoration name="Decoration5" id="95">
+					<Width>1</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="Decoration5ContextMenu" id="96"/>
+					<ExtendedTooltip name="Decoration5ExtendedTooltip" id="231"/>
+				</LabelDecoration>
+				<UsualGroup name="CommandGroupClientBank" id="94">
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ExtendedTooltip name="CommandGroupClientBankExtendedTooltip" id="232"/>
+					<ChildItems>
+						<Button name="LoadFromFile" id="87">
+							<Type>UsualButton</Type>
+							<Width>31</Width>
+							<Height>2</Height>
+							<CommandName>Form.Command.LoadFromFile</CommandName>
+							<Font ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Import bank statement</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="LoadFromFileExtendedTooltip" id="233"/>
+						</Button>
+						<LabelDecoration name="Decoration4" id="91">
+							<ContextMenu name="Decoration4ContextMenu" id="92"/>
+							<ExtendedTooltip name="Decoration4ExtendedTooltip" id="234"/>
+						</LabelDecoration>
+						<Button name="SaveNewTasks" id="88">
+							<Type>UsualButton</Type>
+							<Width>31</Width>
+							<Height>2</Height>
+							<CommandName>Form.Command.SaveNewTasks</CommandName>
+							<Font ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Export payment orders</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="SaveNewTasksExtendedTooltip" id="235"/>
+						</Button>
+						<LabelDecoration name="Decoration9" id="170">
+							<ContextMenu name="Decoration9ContextMenu" id="171"/>
+							<ExtendedTooltip name="Decoration9ExtendedTooltip" id="236"/>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="Group1" id="208">
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="Group1ExtendedTooltip" id="237"/>
+					<ChildItems>
+						<LabelDecoration name="Decoration6" id="102">
+							<Width>3</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="Decoration6ContextMenu" id="103"/>
+							<ExtendedTooltip name="Decoration6ExtendedTooltip" id="238"/>
+						</LabelDecoration>
+						<UsualGroup name="Group3" id="211">
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="Group3ExtendedTooltip" id="239"/>
+							<ChildItems>
+								<LabelDecoration name="Decoration10" id="212">
+									<Width>3</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="Decoration10ContextMenu" id="213"/>
+									<ExtendedTooltip name="Decoration10ExtendedTooltip" id="240"/>
+								</LabelDecoration>
+								<PictureDecoration name="Decoration2" id="209">
+									<Width>3</Width>
+									<Height>1</Height>
+									<Picture>
+										<xr:Ref>CommonPicture.Information</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="Decoration2ContextMenu" id="210"/>
+									<ExtendedTooltip name="Decoration2ExtendedTooltip" id="241"/>
+								</PictureDecoration>
+							</ChildItems>
+						</UsualGroup>
+						<LabelDecoration name="Decoration8" id="253">
+							<Height>4</Height>
+							<ContextMenu name="Decoration8ContextMenu" id="254"/>
+							<ExtendedTooltip name="Decoration8ExtendedTooltip" id="255"/>
+						</LabelDecoration>
+						<UsualGroup name="Group2" id="245">
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="Group2ExtendedTooltip" id="246"/>
+							<ChildItems>
+								<LabelDecoration name="Decoration11" id="247">
+									<Width>3</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="Decoration11ContextMenu" id="248"/>
+									<ExtendedTooltip name="Decoration11ExtendedTooltip" id="249"/>
+								</LabelDecoration>
+								<PictureDecoration name="WarningDecoration" id="250">
+									<Width>3</Width>
+									<Height>1</Height>
+									<Picture>
+										<xr:Ref>CommonPicture.Warning</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="WarningDecorationContextMenu" id="251"/>
+									<ExtendedTooltip name="DecorationWarningExtendedTooltip" id="252"/>
+								</PictureDecoration>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="GroupSceneryDescription" id="97">
+					<HorizontalStretch>true</HorizontalStretch>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="GroupExtendedTooltipDescriptionsDecorations" id="242"/>
+					<ChildItems>
+						<LabelDecoration name="Decoration7" id="106">
+							<Width>1</Width>
+							<Height>1</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="Decoration7ContextMenu" id="107"/>
+							<ExtendedTooltip name="Decoration7ExtendedTooltip" id="243"/>
+						</LabelDecoration>
+						<LabelDecoration name="DecorationDescriptionExchangeWithBank" id="104">
+							<Width>40</Width>
+							<Height>5</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<VerticalStretch>false</VerticalStretch>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>The exchange with the bank allows receiving statements of accounts from the bank and sending payment orders to the bank. You can interact with the bank using the "Client-Bank" application or through direct channel with the bank. To use direct exchange it is necessary to enable electronic documents exchange with the banks and to create settings of EDF with the bank.</v8:content>
+								</v8:item>
+							</Title>
+							<VerticalAlign>Top</VerticalAlign>
+							<ContextMenu name="DecorationDescriptionExchangeWithBankContextMenu" id="105"/>
+							<ExtendedTooltip name="DecorationDescriptionExchangeWithBankExtendedTooltip" id="244"/>
+						</LabelDecoration>
+						<LabelDecoration name="DecorationDescriptionWarningsExchangeWithBank" id="256">
+							<Width>40</Width>
+							<Height>3</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<VerticalStretch>false</VerticalStretch>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Selected bank account defines exchange variant with bank. If the account is not specified, the "Client-Bank" application is used for exchange by default.</v8:content>
+								</v8:item>
+							</Title>
+							<VerticalAlign>Top</VerticalAlign>
+							<ContextMenu name="DecorationDescriptionWarningsExchangeWithBankContextMenu" id="257"/>
+							<ExtendedTooltip name="DecorationDescriptionWarningsExchangeWithBankExtendedTooltip" id="258"/>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<LabelDecoration name="Decoration3" id="259">
+			<Height>1</Height>
+			<VerticalStretch>true</VerticalStretch>
+			<ContextMenu name="Decoration3ContextMenu" id="260"/>
+			<ExtendedTooltip name="Decoration3ExtendedTooltip" id="261"/>
+		</LabelDecoration>
+		<UsualGroup name="AdditionalInformation" id="262">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Additional information</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Additional information</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="AdditionalInformationExtendedTooltip" id="263"/>
+			<ChildItems>
+				<LabelDecoration name="InformationDecorationOnDirectExchangeWithBank" id="264">
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Details of direct exchange with the bank</v8:content>
+						</v8:item>
+					</Title>
+					<Hyperlink>true</Hyperlink>
+					<ContextMenu name="InformationDecorationOnDirectExchangeWithBankContextMenu" id="265"/>
+					<ExtendedTooltip name="InformationDecorationOnDirectExchangeWithBankExtendedTooltip" id="266"/>
+					<Events>
+						<Event name="Click">InformationDecorationOnDirectExchangeWithBankClick</Event>
+					</Events>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Object</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.ClientBank</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="DirectExchangeWithBanksAgreement" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Direct exchange with banks agreement</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.EDUsageAgreements</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="LoadFromFile" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Import statement from file</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Import write-offs for the account </v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>LoadFromFile</Action>
+		</Command>
+		<Command name="SaveNewTasks" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Save payment orders to the file</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Save the new outgoing instructions to the file of exchange with the bank client</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>SaveNewTasks</Action>
+		</Command>
+		<Command name="ByAllAccounts" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>By all</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>By all bank accounts</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Clear</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ByAllAccounts</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="Settings" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Settings</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Settings</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.DocumentSetting</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Settings</Action>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="OpenFromFoldersOfDocuments">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="FoldersDocumentsParameters">
+			<Type/>
+		</Parameter>
+		<Parameter name="ExchangeBank">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

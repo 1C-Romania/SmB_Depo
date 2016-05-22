@@ -1,0 +1,947 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>DataSource1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>DataSet1</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Document</dataPath>
+			<field>Document</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>MeasurementUnit</dataPath>
+			<field>MeasurementUnit</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Unit of measure</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>QuantityRejection</dataPath>
+			<field>QuantityRejection</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Quantity discrepancy</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>CountRejectionPercent</dataPath>
+			<field>CountRejectionPercent</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Quantity discrepancy</v8:content>
+				</v8:item>
+			</title>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Format</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">NFD=2</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>QuantityPlan</dataPath>
+			<field>QuantityPlan</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Quantity plan</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>QuantityFact</dataPath>
+			<field>QuantityFact</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Quantity fact</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ProductsAndServices</dataPath>
+			<field>ProductsAndServices</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Company</dataPath>
+			<field>Company</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Batch</dataPath>
+			<field>Batch</field>
+			<inputParameters>
+				<dcscor:item>
+					<dcscor:parameter>ChoiceParameterLinks</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:ChoiceParameterLinks">
+						<dcscor:item>
+							<dcscor:choiceParameter>Filter.Owner</dcscor:choiceParameter>
+							<dcscor:value>ProductsAndServices</dcscor:value>
+							<dcscor:mode xmlns:d8p1="http://v8.1c.ru/8.1/data/enterprise" xsi:type="d8p1:LinkedValueChangeMode">Clear</dcscor:mode>
+						</dcscor:item>
+					</dcscor:value>
+				</dcscor:item>
+			</inputParameters>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>YearPeriod</dataPath>
+			<field>YearPeriod</field>
+			<role>
+				<dcscom:periodNumber>11</dcscom:periodNumber>
+				<dcscom:periodType>Additional</dcscom:periodType>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>TenDaysPeriod</dataPath>
+			<field>TenDaysPeriod</field>
+			<role>
+				<dcscom:periodNumber>7</dcscom:periodNumber>
+				<dcscom:periodType>Additional</dcscom:periodType>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>DayPeriod</dataPath>
+			<field>DayPeriod</field>
+			<role>
+				<dcscom:periodNumber>5</dcscom:periodNumber>
+				<dcscom:periodType>Additional</dcscom:periodType>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>QuarterPeriod</dataPath>
+			<field>QuarterPeriod</field>
+			<role>
+				<dcscom:periodNumber>9</dcscom:periodNumber>
+				<dcscom:periodType>Additional</dcscom:periodType>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>MonthPeriod</dataPath>
+			<field>MonthPeriod</field>
+			<role>
+				<dcscom:periodNumber>8</dcscom:periodNumber>
+				<dcscom:periodType>Additional</dcscom:periodType>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>MinutePeriod</dataPath>
+			<field>MinutePeriod</field>
+			<role>
+				<dcscom:periodNumber>3</dcscom:periodNumber>
+				<dcscom:periodType>Additional</dcscom:periodType>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>WeekPeriod</dataPath>
+			<field>WeekPeriod</field>
+			<role>
+				<dcscom:periodNumber>6</dcscom:periodNumber>
+				<dcscom:periodType>Additional</dcscom:periodType>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>PlanningPeriod</dataPath>
+			<field>PlanningPeriod</field>
+			<useRestriction>
+				<field>true</field>
+				<condition>true</condition>
+				<group>true</group>
+				<order>true</order>
+			</useRestriction>
+			<attributeUseRestriction>
+				<field>true</field>
+				<condition>true</condition>
+				<group>true</group>
+				<order>true</order>
+			</attributeUseRestriction>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>HalfYearPeriod</dataPath>
+			<field>HalfYearPeriod</field>
+			<role>
+				<dcscom:periodNumber>10</dcscom:periodNumber>
+				<dcscom:periodType>Additional</dcscom:periodType>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>SecondPeriod</dataPath>
+			<field>SecondPeriod</field>
+			<role>
+				<dcscom:periodNumber>2</dcscom:periodNumber>
+				<dcscom:periodType>Main</dcscom:periodType>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>HourPeriod</dataPath>
+			<field>HourPeriod</field>
+			<role>
+				<dcscom:periodNumber>4</dcscom:periodNumber>
+				<dcscom:periodType>Additional</dcscom:periodType>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Recorder</dataPath>
+			<field>Recorder</field>
+			<role>
+				<dcscom:periodNumber>1</dcscom:periodNumber>
+				<dcscom:periodType>Main</dcscom:periodType>
+				<dcscom:ignoreNullValues>true</dcscom:ignoreNullValues>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>VATRate</dataPath>
+			<field>VATRate</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>StructuralUnit</dataPath>
+			<field>StructuralUnit</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>AmountWithoutVATRejection</dataPath>
+			<field>AmountWithoutVATRejection</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Amount Excl. VAT variation</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>AmountWithoutVATRejectionPercent</dataPath>
+			<field>AmountWithoutVATRejectionPercent</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Amount without VAT, percent rejection</v8:content>
+				</v8:item>
+			</title>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Format</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">NFD=2</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>AmountWithoutVATPlan</dataPath>
+			<field>AmountWithoutVATPlan</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Amount Excl. VAT plan</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>AmountWithoutVATFact</dataPath>
+			<field>AmountWithoutVATFact</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Amount Excl. VAT fact</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>VATAmountRejection</dataPath>
+			<field>VATAmountRejection</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>VAT amount discrepancy</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>VATAmountRejectionPercent</dataPath>
+			<field>VATAmountRejectionPercent</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>VAT amount discrepancy percent</v8:content>
+				</v8:item>
+			</title>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Format</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">NFD=2</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>AmountVATPlan</dataPath>
+			<field>AmountVATPlan</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>VAT amount plan</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>AmountVATFact</dataPath>
+			<field>AmountVATFact</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>VAT amount, fact</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>AmountRejection</dataPath>
+			<field>AmountRejection</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Amount discrepancy</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>AmountRejectionPercent</dataPath>
+			<field>AmountRejectionPercent</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Amount discrepancy percent</v8:content>
+				</v8:item>
+			</title>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Format</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">NFD=2</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>AmountPlan</dataPath>
+			<field>AmountPlan</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Amount plan</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>AmountFact</dataPath>
+			<field>AmountFact</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Amount fact</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Characteristic</dataPath>
+			<field>Characteristic</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+			<inputParameters>
+				<dcscor:item>
+					<dcscor:parameter>ChoiceParameterLinks</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:ChoiceParameterLinks">
+						<dcscor:item>
+							<dcscor:choiceParameter>ProductsAndServices</dcscor:choiceParameter>
+							<dcscor:value>ProductsAndServices</dcscor:value>
+							<dcscor:mode xmlns:d8p1="http://v8.1c.ru/8.1/data/enterprise" xsi:type="d8p1:LinkedValueChangeMode">Clear</dcscor:mode>
+						</dcscor:item>
+					</dcscor:value>
+				</dcscor:item>
+			</inputParameters>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>CustomerOrder</dataPath>
+			<field>CustomerOrder</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>PlanningDocument</dataPath>
+			<field>PlanningDocument</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Responsible</dataPath>
+			<field>Responsible</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Division</dataPath>
+			<field>Division</field>
+		</field>
+		<dataSource>DataSource1</dataSource>
+		<query>SELECT ALLOWED
+	CASE
+		WHEN NestedSelect.Recorder = UNDEFINED
+			THEN NULL
+		ELSE NestedSelect.Recorder
+	END AS Recorder,
+	NestedSelect.SecondPeriod,
+	NestedSelect.MinutePeriod,
+	NestedSelect.HourPeriod,
+	NestedSelect.DayPeriod,
+	NestedSelect.WeekPeriod,
+	NestedSelect.TenDaysPeriod,
+	NestedSelect.MonthPeriod,
+	NestedSelect.QuarterPeriod,
+	NestedSelect.HalfYearPeriod,
+	NestedSelect.YearPeriod,
+	NestedSelect.Company,
+	NestedSelect.PlanningPeriod,
+	NestedSelect.ProductsAndServices,
+	NestedSelect.Characteristic,
+	NestedSelect.CustomerOrder,
+	NestedSelect.MeasurementUnit,
+	NestedSelect.QuantityPlan,
+	NestedSelect.AmountPlan,
+	NestedSelect.AmountVATPlan,
+	NestedSelect.AmountWithoutVATPlan,
+	NestedSelect.QuantityFact,
+	NestedSelect.AmountFact,
+	NestedSelect.AmountVATFact,
+	NestedSelect.AmountWithoutVATFact,
+	ISNULL(NestedSelect.QuantityFact, 0) - ISNULL(NestedSelect.QuantityPlan, 0) AS QuantityRejection,
+	ISNULL(NestedSelect.AmountFact, 0) - ISNULL(NestedSelect.AmountPlan, 0) AS AmountRejection,
+	ISNULL(NestedSelect.AmountVATFact, 0) - ISNULL(NestedSelect.AmountVATPlan, 0) AS VATAmountRejection,
+	ISNULL(NestedSelect.AmountWithoutVATFact, 0) - ISNULL(NestedSelect.AmountWithoutVATPlan, 0) AS AmountWithoutVATRejection,
+	0 AS CountRejectionPercent,
+	0 AS AmountRejectionPercent,
+	0 AS VATAmountRejectionPercent,
+	0 AS AmountWithoutVATRejectionPercent,
+	NestedSelect.Responsible
+	FROM
+	(SELECT
+		SUM(SalesTargetsTurnovers.LineNumber) AS LineNumber,
+		SalesTargetsTurnovers.Recorder AS Recorder,
+		SalesTargetsTurnovers.SecondPeriod AS SecondPeriod,
+		SalesTargetsTurnovers.MinutePeriod AS MinutePeriod,
+		SalesTargetsTurnovers.HourPeriod AS HourPeriod,
+		SalesTargetsTurnovers.DayPeriod AS DayPeriod,
+		SalesTargetsTurnovers.WeekPeriod AS WeekPeriod,
+		SalesTargetsTurnovers.TenDaysPeriod AS TenDaysPeriod,
+		SalesTargetsTurnovers.MonthPeriod AS MonthPeriod,
+		SalesTargetsTurnovers.QuarterPeriod AS QuarterPeriod,
+		SalesTargetsTurnovers.HalfYearPeriod AS HalfYearPeriod,
+		SalesTargetsTurnovers.YearPeriod AS YearPeriod,
+		SalesTargetsTurnovers.Company AS Company,
+		SalesTargetsTurnovers.PlanningPeriod AS PlanningPeriod,
+		SalesTargetsTurnovers.ProductsAndServices AS ProductsAndServices,
+		SalesTargetsTurnovers.Characteristic AS Characteristic,
+		SalesTargetsTurnovers.CustomerOrder AS CustomerOrder,
+		SalesTargetsTurnovers.ProductsAndServices.MeasurementUnit AS MeasurementUnit,
+		SUM(SalesTargetsTurnovers.QuantityTurnover) AS QuantityPlan,
+		SUM(SalesTargetsTurnovers.AmountTurnover) AS AmountPlan,
+		SUM(SalesTargetsTurnovers.VATAmountTurnover) AS AmountVATPlan,
+		SUM(SalesTargetsTurnovers.AmountTurnover - SalesTargetsTurnovers.VATAmountTurnover) AS AmountWithoutVATPlan,
+		0 AS QuantityFact,
+		0 AS AmountVATFact,
+		0 AS AmountFact,
+		0 AS AmountWithoutVATFact,
+		SalesTargetsTurnovers.PlanningDocument.Responsible AS Responsible
+	FROM
+		AccumulationRegister.SalesTargets.Turnovers(, , Auto, PlanningPeriod = &amp;PlanningPeriod
+					OR &amp;PlanningPeriod = VALUE(Catalog.PlanningPeriods.EmptyRef)) AS SalesTargetsTurnovers
+	
+	GROUP BY
+		SalesTargetsTurnovers.SecondPeriod,
+		SalesTargetsTurnovers.Recorder,
+		SalesTargetsTurnovers.MinutePeriod,
+		SalesTargetsTurnovers.HourPeriod,
+		SalesTargetsTurnovers.DayPeriod,
+		SalesTargetsTurnovers.WeekPeriod,
+		SalesTargetsTurnovers.TenDaysPeriod,
+		SalesTargetsTurnovers.MonthPeriod,
+		SalesTargetsTurnovers.QuarterPeriod,
+		SalesTargetsTurnovers.HalfYearPeriod,
+		SalesTargetsTurnovers.YearPeriod,
+		SalesTargetsTurnovers.Company,
+		SalesTargetsTurnovers.PlanningPeriod,
+		SalesTargetsTurnovers.ProductsAndServices,
+		SalesTargetsTurnovers.Characteristic,
+		SalesTargetsTurnovers.CustomerOrder,
+		SalesTargetsTurnovers.ProductsAndServices.MeasurementUnit,
+		SalesTargetsTurnovers.PlanningDocument.Responsible
+	
+	UNION ALL
+	
+	SELECT
+		SUM(SalesTurnovers.LineNumber),
+		SalesTurnovers.Recorder,
+		SalesTurnovers.SecondPeriod,
+		SalesTurnovers.MinutePeriod,
+		SalesTurnovers.HourPeriod,
+		SalesTurnovers.DayPeriod,
+		SalesTurnovers.WeekPeriod,
+		SalesTurnovers.TenDaysPeriod,
+		SalesTurnovers.MonthPeriod,
+		SalesTurnovers.QuarterPeriod,
+		SalesTurnovers.HalfYearPeriod,
+		SalesTurnovers.YearPeriod,
+		SalesTurnovers.Company,
+		NULL,
+		SalesTurnovers.ProductsAndServices,
+		SalesTurnovers.Characteristic,
+		SalesTurnovers.CustomerOrder,
+		SalesTurnovers.ProductsAndServices.MeasurementUnit,
+		0,
+		0,
+		0,
+		0,
+		SUM(SalesTurnovers.QuantityTurnover),
+		SUM(SalesTurnovers.VATAmountTurnover),
+		SUM(SalesTurnovers.AmountTurnover),
+		SUM(SalesTurnovers.AmountTurnover - SalesTurnovers.VATAmountTurnover),
+		SalesTurnovers.Recorder.Responsible
+	FROM
+		AccumulationRegister.Sales.Turnovers(, , Auto, ) AS SalesTurnovers
+	
+	GROUP BY
+		SalesTurnovers.SecondPeriod,
+		SalesTurnovers.Recorder,
+		SalesTurnovers.MinutePeriod,
+		SalesTurnovers.HourPeriod,
+		SalesTurnovers.DayPeriod,
+		SalesTurnovers.WeekPeriod,
+		SalesTurnovers.TenDaysPeriod,
+		SalesTurnovers.MonthPeriod,
+		SalesTurnovers.QuarterPeriod,
+		SalesTurnovers.HalfYearPeriod,
+		SalesTurnovers.YearPeriod,
+		SalesTurnovers.Company,
+		SalesTurnovers.CustomerOrder,
+		SalesTurnovers.ProductsAndServices,
+		SalesTurnovers.Characteristic,
+		SalesTurnovers.ProductsAndServices.MeasurementUnit,
+			SalesTurnovers.Recorder.Responsible) AS NestedSelect</query>
+	</dataSet>
+	<totalField>
+		<dataPath>QuantityRejection</dataPath>
+		<expression>SUM(QuantityRejection)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>CountRejectionPercent</dataPath>
+		<expression>CASE
+		WHEN SUM(QuantityPlan) IS NULL OR SUM(QuantityPlan)
+		= 0
+		THEN "-" ELSE (ISNULL (SUM(QuantityFact) , 0) - ISNULL ( SUM(QuantityPlan) , 0) ) * 100 / ISNULL ( SUM(QuantityPlan) , 0) END</expression>
+	</totalField>
+	<totalField>
+		<dataPath>QuantityPlan</dataPath>
+		<expression>SUM(QuantityPlan)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>QuantityFact</dataPath>
+		<expression>SUM(QuantityFact)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>AmountWithoutVATRejection</dataPath>
+		<expression>SUM(AmountWithoutVATRejection)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>AmountWithoutVATRejectionPercent</dataPath>
+		<expression>CASE
+		WHEN SUM(AmountWithoutVATPlan) IS NULL OR Amount
+		(AmountWithoutVATPlan) =
+		0 THEN "-" ELSE (ISNULL (SUM(AmountWithoutVATFact), 0) - ISNULL( SUM(AmountWithoutVATPlan) , 0) ) * 100 / ISNULL (SUM(AmountWithoutVATPlan) , 0) END</expression>
+	</totalField>
+	<totalField>
+		<dataPath>AmountWithoutVATPlan</dataPath>
+		<expression>SUM(AmountWithoutVATPlan)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>AmountWithoutVATFact</dataPath>
+		<expression>SUM(AmountWithoutVATFact)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>VATAmountRejection</dataPath>
+		<expression>SUM(VATAmountRejection)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>VATAmountRejectionPercent</dataPath>
+		<expression>CASE
+		WHEN SUM(AmountVATPlan) IS NULL OR Amount
+		(AmountVATPlan) =
+		0 THEN "-" ELSE (ISNULL (SUM(AmountVATFact), 0) - ISNULL( SUM(AmountVATPlan) , 0) ) * 100 / ISNULL ( SUM(AmountVATPlan) , 0) END</expression>
+	</totalField>
+	<totalField>
+		<dataPath>AmountVATPlan</dataPath>
+		<expression>SUM(AmountVATPlan)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>AmountVATFact</dataPath>
+		<expression>SUM(AmountVATFact)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>AmountRejection</dataPath>
+		<expression>SUM(AmountRejection)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>AmountRejectionPercent</dataPath>
+		<expression>CASE
+		WHEN SUM(AmountPlan) IS NULL OR SUM(AmountPlan)
+		= 0
+		THEN "-" ELSE (ISNULL ( SUM(AmountFact), 0) - ISNULL( SUM(AmountPlan) , 0) ) * 100 / ISNULL ( SUM(AmountPlan) , 0) END</expression>
+	</totalField>
+	<totalField>
+		<dataPath>AmountPlan</dataPath>
+		<expression>SUM(AmountPlan)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>AmountFact</dataPath>
+		<expression>SUM(AmountFact)</expression>
+	</totalField>
+	<parameter>
+		<name>BeginOfPeriod</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Begin of period</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>Date</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;ItmPeriod.StartDate</expression>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>EndOfPeriod</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>End of period</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>Date</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;ItmPeriod.EndDate</expression>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>PlanningPeriod</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Planning period</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef.PlanningPeriods</v8:Type>
+		</valueType>
+		<value xsi:type="dcscor:DesignTimeValue">Catalog.PlanningPeriods.EmptyRef</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;ProfitPlanningPeriod</expression>
+	</parameter>
+	<parameter>
+		<name>PlanningPeriodUser</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Planning period</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef.PlanningPeriods</v8:Type>
+		</valueType>
+		<value xsi:type="dcscor:DesignTimeValue">Catalog.PlanningPeriods.EmptyRef</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<parameter>
+		<name>ItmPeriod</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Period</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>v8:StandardPeriod</v8:Type>
+		</valueType>
+		<value xsi:type="v8:StandardPeriod">
+			<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+			<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+			<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+		</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<parameter>
+		<name>TitleOutput</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Output title</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:boolean</v8:Type>
+		</valueType>
+		<value xsi:type="xs:boolean">false</value>
+		<useRestriction>false</useRestriction>
+		<availableAsField>false</availableAsField>
+		<use>Always</use>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>Default</dcsset:name>
+		<dcsset:presentation xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Sales plan-actual analysis</v8:content>
+			</v8:item>
+		</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>CustomerOrder</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ProductsAndServices</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemFolder">
+					<dcsset:title>Quantity</dcsset:title>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>QuantityPlan</dcsset:field>
+						<dcsset:title>Plan</dcsset:title>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>QuantityFact</dcsset:field>
+						<dcsset:title>Fact</dcsset:title>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>QuantityRejection</dcsset:field>
+						<dcsset:title>rejection</dcsset:title>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>CountRejectionPercent</dcsset:field>
+						<dcsset:title>%</dcsset:title>
+					</dcsset:item>
+					<dcsset:placement>Auto</dcsset:placement>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemFolder">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:title>Amount without VAT</dcsset:title>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:use>false</dcsset:use>
+						<dcsset:field>AmountWithoutVATPlan</dcsset:field>
+						<dcsset:title>Plan</dcsset:title>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:use>false</dcsset:use>
+						<dcsset:field>AmountWithoutVATFact</dcsset:field>
+						<dcsset:title>Fact</dcsset:title>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:use>false</dcsset:use>
+						<dcsset:field>AmountWithoutVATRejection</dcsset:field>
+						<dcsset:title>rejection</dcsset:title>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:use>false</dcsset:use>
+						<dcsset:field>AmountWithoutVATRejectionPercent</dcsset:field>
+						<dcsset:title>%</dcsset:title>
+					</dcsset:item>
+					<dcsset:placement>Auto</dcsset:placement>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemFolder">
+					<dcsset:title>VAT amount</dcsset:title>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>AmountVATPlan</dcsset:field>
+						<dcsset:title>Plan</dcsset:title>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>AmountVATFact</dcsset:field>
+						<dcsset:title>Fact</dcsset:title>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>VATAmountRejection</dcsset:field>
+						<dcsset:title>rejection</dcsset:title>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>VATAmountRejectionPercent</dcsset:field>
+						<dcsset:title>%</dcsset:title>
+					</dcsset:item>
+					<dcsset:placement>Auto</dcsset:placement>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemFolder">
+					<dcsset:title>Amount</dcsset:title>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>AmountPlan</dcsset:field>
+						<dcsset:title>Plan</dcsset:title>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>AmountFact</dcsset:field>
+						<dcsset:title>Fact</dcsset:title>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>AmountRejection</dcsset:field>
+						<dcsset:title>rejection</dcsset:title>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>AmountRejectionPercent</dcsset:field>
+						<dcsset:title>%</dcsset:title>
+					</dcsset:item>
+					<dcsset:placement>Auto</dcsset:placement>
+				</dcsset:item>
+				<dcsset:viewMode>Normal</dcsset:viewMode>
+				<dcsset:userSettingID>627a3ba5-1c10-41f3-a14b-75b1af3e5e57</dcsset:userSettingID>
+			</dcsset:selection>
+			<dcsset:filter>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Company</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="dcscor:DesignTimeValue">Catalog.Companies.EmptyRef</dcsset:right>
+					<dcsset:userSettingID>b134ddf4-ee5f-432b-8bd6-9584a65fbc32</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">CustomerOrder</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="dcscor:DesignTimeValue">Document.CustomerOrder.EmptyRef</dcsset:right>
+					<dcsset:userSettingID>f44b6168-81c6-47ca-9c7b-c83fdfc5acca</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:viewMode>Normal</dcsset:viewMode>
+				<dcsset:userSettingID>b5cb38cd-7a99-4cf2-931b-f14383e41e59</dcsset:userSettingID>
+			</dcsset:filter>
+			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>BeginOfPeriod</dcscor:parameter>
+					<dcscor:value xsi:type="xs:dateTime">0001-01-01T00:00:00</dcscor:value>
+					<dcsset:userSettingID>fa60cd92-1904-42ba-b6bf-1df21b857eb1</dcsset:userSettingID>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>EndOfPeriod</dcscor:parameter>
+					<dcscor:value xsi:type="xs:dateTime">0001-01-01T00:00:00</dcscor:value>
+					<dcsset:userSettingID>edb56107-e359-43c6-97a7-06bbf0d6a1b1</dcsset:userSettingID>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>PlanningPeriodUser</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:DesignTimeValue">Catalog.PlanningPeriods.EmptyRef</dcscor:value>
+					<dcsset:userSettingID>f44510dd-5508-4e01-a15b-a8f95e6f3129</dcsset:userSettingID>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ItmPeriod</dcscor:parameter>
+					<dcscor:value xsi:type="v8:StandardPeriod">
+						<v8:variant xsi:type="v8:StandardPeriodVariant">ThisMonth</v8:variant>
+					</dcscor:value>
+					<dcsset:userSettingID>035105ef-991c-4405-8c48-1c4385440437</dcsset:userSettingID>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>TitleOutput</dcscor:parameter>
+					<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+					<dcsset:viewMode>Normal</dcsset:viewMode>
+					<dcsset:userSettingID>8c8c6bf9-f6bf-4ef7-aa1d-c5ec1098456a</dcsset:userSettingID>
+				</dcscor:item>
+			</dcsset:dataParameters>
+			<dcsset:order>
+				<dcsset:item xsi:type="dcsset:OrderItemField">
+					<dcsset:field>CustomerOrder</dcsset:field>
+					<dcsset:orderType>Asc</dcsset:orderType>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:OrderItemField">
+					<dcsset:field>ProductsAndServices</dcsset:field>
+					<dcsset:orderType>Asc</dcsset:orderType>
+				</dcsset:item>
+				<dcsset:viewMode>Normal</dcsset:viewMode>
+				<dcsset:userSettingID>91c4ab5e-8325-4079-844e-e86a5f061e6a</dcsset:userSettingID>
+			</dcsset:order>
+			<dcsset:conditionalAppearance>
+				<dcsset:viewMode>Normal</dcsset:viewMode>
+			</dcsset:conditionalAppearance>
+			<dcsset:outputParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>TitleOutput</dcscor:parameter>
+					<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">DontOutput</dcscor:value>
+					<dcsset:viewMode>Normal</dcsset:viewMode>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Title</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Sales plan-actual analysis</v8:content>
+						</v8:item>
+					</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>DataParametersOutput</dcscor:parameter>
+					<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">DontOutput</dcscor:value>
+					<dcsset:viewMode>Normal</dcsset:viewMode>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>FilterOutput</dcscor:parameter>
+					<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">DontOutput</dcscor:value>
+					<dcsset:viewMode>Normal</dcsset:viewMode>
+				</dcscor:item>
+			</dcsset:outputParameters>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>ProductsAndServices</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+				<dcsset:item xsi:type="dcsset:StructureItemGroup">
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>CustomerOrder</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+				</dcsset:item>
+			</dcsset:item>
+			<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+			<dcsset:itemsUserSettingID>d1207132-267f-422c-9fcc-9e31c576a745</dcsset:itemsUserSettingID>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

@@ -1,0 +1,880 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Title>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Importing address classifier</v8:content>
+		</v8:item>
+	</Title>
+	<Height>20</Height>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
+	<SaveDataInSettings>UseList</SaveDataInSettings>
+	<AutoTitle>false</AutoTitle>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnOpen">OnOpen</Event>
+		<Event name="BeforeClose">BeforeClose</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+		<Event name="OnClose">OnClose</Event>
+		<Event name="BeforeLoadDataFromSettingsAtServer">BeforeImportDataFromSettingsAtServer</Event>
+	</Events>
+	<ChildItems>
+		<Pages name="ImportSteps" id="59">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Importing steps</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Importing steps</v8:content>
+				</v8:item>
+			</ToolTip>
+			<PagesRepresentation>None</PagesRepresentation>
+			<ExtendedTooltip name="ImportingStepsExtendedTooltip" id="60"/>
+			<ChildItems>
+				<Page name="ImportingStatesChoice" id="61">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Importing states choice</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Importing states choice</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="ImportingStatesChoiceExtendedTooltip" id="62"/>
+					<ChildItems>
+						<Table name="RFTerritorialEntities" id="1">
+							<Representation>List</Representation>
+							<ChangeRowSet>false</ChangeRowSet>
+							<ChangeRowOrder>false</ChangeRowOrder>
+							<SelectionMode>SingleRow</SelectionMode>
+							<Header>false</Header>
+							<HorizontalLines>false</HorizontalLines>
+							<VerticalLines>false</VerticalLines>
+							<SearchOnInput>Use</SearchOnInput>
+							<DataPath>RFTerritorialEntities</DataPath>
+							<RowPictureDataPath>RFTerritorialEntities.Exported</RowPictureDataPath>
+							<CommandSet>
+								<ExcludedCommand>Copy</ExcludedCommand>
+								<ExcludedCommand>MoveUp</ExcludedCommand>
+								<ExcludedCommand>Delete</ExcludedCommand>
+								<ExcludedCommand>EndEdit</ExcludedCommand>
+								<ExcludedCommand>Add</ExcludedCommand>
+								<ExcludedCommand>Change</ExcludedCommand>
+								<ExcludedCommand>MoveDown</ExcludedCommand>
+							</CommandSet>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="RFTerritorialEntitiesContextMenu" id="2"/>
+							<AutoCommandBar name="RFTerritorialEntitiesCommandBar" id="3">
+								<Autofill>false</Autofill>
+								<ChildItems>
+									<Button name="RFTerritorialEntitiesSelectCheckboxes" id="47">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.CheckAll</CommandName>
+										<ExtendedTooltip name="RFTerritorialEntitiesSelectCheckboxesExtendedTooltip" id="48"/>
+									</Button>
+									<Button name="RFTerritorialEntitiesUncheckAll" id="49">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.UncheckAll</CommandName>
+										<ExtendedTooltip name="RFTerritorialEntitiesUncheckAllExtendedTooltip" id="50"/>
+									</Button>
+									<Button name="RFTerritorialEntitiesFind" id="43">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Item.RFTerritorialEntities.StandardCommand.Find</CommandName>
+										<ExtendedTooltip name="RFTerritorialEntitiesSearchExtendedTooltip" id="44"/>
+									</Button>
+									<Button name="RFTerritorialEntitiesCancelSearch" id="45">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Item.RFTerritorialEntities.StandardCommand.CancelSearch</CommandName>
+										<ExtendedTooltip name="RFTerritorialEntitiesCancelSearchExtendedTooltip" id="46"/>
+									</Button>
+								</ChildItems>
+							</AutoCommandBar>
+							<ExtendedTooltip name="RFTerritorialEntitiesExtendedTooltip" id="4"/>
+							<SearchStringAddition name="RFTerritorialEntitiesSearchString" id="135">
+								<AdditionSource>
+									<Item>RFTerritorialEntities</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="RFTerritorialEntitiesSearchStringContextMenu" id="136"/>
+								<ExtendedTooltip name="RFTerritorialEntitiesSearchStringExtendedTooltip" id="137"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="RFTerritorialEntitiesStatusView" id="138">
+								<AdditionSource>
+									<Item>RFTerritorialEntities</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="RFTerritorialEntitiesViewStatusContextMenu" id="139"/>
+								<ExtendedTooltip name="RFTerritorialEntitiesViewStatusExtendedTooltip" id="140"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="RFTerritorialEntitiesSearchManagement" id="141">
+								<AdditionSource>
+									<Item>RFTerritorialEntities</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="RFTerritorialEntitiesSearchManagementContextMenu" id="142"/>
+								<ExtendedTooltip name="RFTerritorialEntitiesSearchManagementExtendedTooltip" id="143"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="Selection">RFTerritorialEntitiesSelection</Event>
+							</Events>
+							<ChildItems>
+								<ColumnGroup name="RFTerritorialEntitiesGroup" id="151">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>RF territorial entities</v8:content>
+										</v8:item>
+									</Title>
+									<Group>InCell</Group>
+									<ExtendedTooltip name="RFTerritorialEntitiesGroupExtendedTooltip" id="152"/>
+									<ChildItems>
+										<CheckBoxField name="ImportRFTerritorialEntities" id="20">
+											<DataPath>RFTerritorialEntities.Import</DataPath>
+											<SkipOnInput>true</SkipOnInput>
+											<TitleLocation>None</TitleLocation>
+											<EditMode>EnterOnInput</EditMode>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="RFTerritorialEntitiesImportContextMenu" id="21"/>
+											<ExtendedTooltip name="ImportRFTerritorialEntitiesExtendedTooltip" id="22"/>
+											<Events>
+												<Event name="OnChange">ImportRFTerritorialEntitiesOnChange</Event>
+											</Events>
+										</CheckBoxField>
+										<LabelField name="RFTerritorialEntitiesRepresentation" id="17">
+											<DataPath>RFTerritorialEntities.Presentation</DataPath>
+											<HorizontalAlign>Left</HorizontalAlign>
+											<EditMode>EnterOnInput</EditMode>
+											<FooterHorizontalAlign>Left</FooterHorizontalAlign>
+											<ContextMenu name="RFTerritorialEntitiesPresentationContextMenu" id="18"/>
+											<ExtendedTooltip name="RFTerritorialEntitiesPresentationExtendedTooltip" id="19"/>
+										</LabelField>
+									</ChildItems>
+								</ColumnGroup>
+							</ChildItems>
+						</Table>
+						<UsualGroup name="GroupSubjectsFooter" id="116">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group subjects footer</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group subjects footer</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupFooterSubjectsExtendedTooltip" id="117"/>
+							<ChildItems>
+								<LabelField name="ChosenStatesForExport" id="51">
+									<DataPath>ChosenStatesForExport</DataPath>
+									<HorizontalAlign>Left</HorizontalAlign>
+									<Width>2</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<Format>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>NZ=-</v8:content>
+										</v8:item>
+									</Format>
+									<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+									<ContextMenu name="StatesChosenForExportContextMenu" id="52"/>
+									<ExtendedTooltip name="StatesChosenForImportingExtendedTooltip" id="53"/>
+								</LabelField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="GroupImportingSources" id="126">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Importing options:</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Horizontal</Group>
+							<Representation>NormalSeparation</Representation>
+							<ExtendedTooltip name="GroupImportingSourcesExtendedTooltip" id="127"/>
+							<ChildItems>
+								<RadioButtonField name="AvailableImportingSources" id="121">
+									<DataPath>ImportingSourceCode</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<RadioButtonType>Auto</RadioButtonType>
+									<ItemHeight>1</ItemHeight>
+									<ColumnsCount>1</ColumnsCount>
+									<ChoiceList>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>From website 1C</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:string">Site</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>From folder on disk:</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:string">DIRECTORY</Value>
+											</xr:Value>
+										</xr:Item>
+									</ChoiceList>
+									<ContextMenu name="AvailableImportingSourcesContextMenu" id="122"/>
+									<ExtendedTooltip name="AvailableImportingsSourcesExtendedTooltip" id="123"/>
+									<Events>
+										<Event name="OnChange">ImportingAvailableSourcesOnChange</Event>
+									</Events>
+								</RadioButtonField>
+								<UsualGroup name="GroupImportingParameters" id="128">
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupImportingParametersExtendedTooltip" id="129"/>
+									<ChildItems>
+										<UsualGroup name="GroupAuthorization" id="149">
+											<Group>Horizontal</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="GroupAuthorizationExtendedTooltip" id="150"/>
+											<ChildItems>
+												<Button name="AuthorizationOnUsersSupportSite" id="144">
+													<Type>Hyperlink</Type>
+													<CommandName>Form.Command.EnterLoginAndPassword</CommandName>
+													<ToolTipRepresentation>Button</ToolTipRepresentation>
+													<ExtendedTooltip name="AuthorizationOnUsersSupportSiteExtendedTooltip" id="145">
+														<Title formatted="false">
+															<v8:item>
+																<v8:lang>en</v8:lang>
+																<v8:content>To load address data from 1C website, you should enter your login and password which you were given after registration on the user support site.</v8:content>
+															</v8:item>
+														</Title>
+													</ExtendedTooltip>
+												</Button>
+												<LabelDecoration name="Indent" id="146">
+													<ContextMenu name="IndentContextMenu" id="147"/>
+													<ExtendedTooltip name="IndentExtendedTooltip" id="148"/>
+												</LabelDecoration>
+											</ChildItems>
+										</UsualGroup>
+										<InputField name="ImportAddress" id="28">
+											<DataPath>ImportAddress</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<HorizontalStretch>true</HorizontalStretch>
+											<ChoiceButton>true</ChoiceButton>
+											<ChoiceButtonRepresentation>ShowInInputField</ChoiceButtonRepresentation>
+											<ChoiceButtonPicture>
+												<xr:Ref>StdPicture.OpenFile</xr:Ref>
+												<xr:LoadTransparent>true</xr:LoadTransparent>
+											</ChoiceButtonPicture>
+											<ContextMenu name="ImportingAddressContextMenu" id="29"/>
+											<ExtendedTooltip name="ImportingAddressExtendedTooltip" id="30"/>
+											<Events>
+												<Event name="OnChange">ImportingAddressOnChange</Event>
+												<Event name="StartChoice">ImportingAddressStartChoice</Event>
+											</Events>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ImportingCommandsGroup" id="8">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Importing commands group</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Importing commands group</v8:content>
+								</v8:item>
+							</ToolTip>
+							<HorizontalStretch>true</HorizontalStretch>
+							<Group>Horizontal</Group>
+							<Representation>NormalSeparation</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ImportingCommandsGroupExtendedTooltip" id="9"/>
+							<ChildItems>
+								<LabelDecoration name="IndentDecoration" id="118">
+									<HorizontalStretch>true</HorizontalStretch>
+									<ContextMenu name="IndentDecorationContextMenu" id="119"/>
+									<ExtendedTooltip name="DecorationIndentExtendedTooltip" id="120"/>
+								</LabelDecoration>
+								<CommandBar name="ImportingGroupCommandsBar" id="153">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Importing group commands bar</v8:content>
+										</v8:item>
+									</Title>
+									<HorizontalLocation>Right</HorizontalLocation>
+									<ExtendedTooltip name="ImportingGroupCommandsBarExtendedTooltip" id="154"/>
+									<ChildItems>
+										<Button name="Import" id="10">
+											<Type>CommandBarButton</Type>
+											<DefaultButton>true</DefaultButton>
+											<CommandName>Form.Command.Import</CommandName>
+											<ExtendedTooltip name="ImportExtendedTooltip" id="11"/>
+										</Button>
+										<Button name="Cancel" id="133">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.Cancel</CommandName>
+											<ExtendedTooltip name="CancelExtendedTooltip" id="134"/>
+										</Button>
+									</ChildItems>
+								</CommandBar>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="ImportingWait" id="63">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Importing waiting</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Importing waiting</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="ImportingWaitExtendedTooltip" id="64"/>
+					<ChildItems>
+						<UsualGroup name="DetailsGroup" id="65">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group description</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group description</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupDescriptionExtendedTooltip" id="66"/>
+							<ChildItems>
+								<PictureDecoration name="LongOperationPicture" id="67">
+									<Width>10</Width>
+									<Height>4</Height>
+									<HorizontalStretch>false</HorizontalStretch>
+									<VerticalStretch>false</VerticalStretch>
+									<Picture>
+										<xr:Ref>CommonPicture.LongOperation48</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="LongOperationPictureContextMenu" id="68"/>
+									<ExtendedTooltip name="LongOperationPictureExtendedTooltip" id="69"/>
+								</PictureDecoration>
+								<LabelField name="ImportingDescriptionText" id="73">
+									<DataPath>ImportingDescriptionText</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+									<ContextMenu name="ImportingDescriptionTextContextMenu" id="74"/>
+									<ExtendedTooltip name="ImportingDescriptionTextExtendedTooltip" id="75">
+										<Title formatted="false">
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Address classifier loading may take a
+long time which depends on the number of the selected regions.</v8:content>
+											</v8:item>
+										</Title>
+									</ExtendedTooltip>
+								</LabelField>
+							</ChildItems>
+						</UsualGroup>
+						<LabelDecoration name="Decoration2" id="80">
+							<VerticalStretch>true</VerticalStretch>
+							<ContextMenu name="Decoration2ContextMenu" id="81"/>
+							<ExtendedTooltip name="Decoration2ExtendedTooltip" id="82"/>
+						</LabelDecoration>
+						<LabelField name="ImportingStatusText" id="88">
+							<DataPath>ImportingStatusText</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<ContextMenu name="ImportingStatusTextContextMenu" id="89"/>
+							<ExtendedTooltip name="ImportingStatusTextExtendedTooltip" id="90"/>
+						</LabelField>
+						<UsualGroup name="CancelCommandsGroup" id="76">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Cancel commands group</v8:content>
+								</v8:item>
+							</Title>
+							<HorizontalStretch>true</HorizontalStretch>
+							<VerticalStretch>true</VerticalStretch>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="CancelCommandsGroupExtendedTooltip" id="77"/>
+							<ChildItems>
+								<LabelDecoration name="Decoration3" id="85">
+									<HorizontalStretch>true</HorizontalStretch>
+									<ContextMenu name="Decoration3ContextMenu" id="86"/>
+									<ExtendedTooltip name="Decoration3ExtendedTooltip" id="87"/>
+								</LabelDecoration>
+								<CommandBar name="CancelCommandsGroupBar" id="155">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Cancel commands group bar</v8:content>
+										</v8:item>
+									</Title>
+									<HorizontalLocation>Right</HorizontalLocation>
+									<ExtendedTooltip name="CancelCommandsGroupBarExtendedTooltip" id="156"/>
+									<ChildItems>
+										<Button name="BreakImport" id="78">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.BreakImport</CommandName>
+											<ExtendedTooltip name="BreakImportExtendedTooltip" id="79"/>
+										</Button>
+									</ChildItems>
+								</CommandBar>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="SuccessfulCompletion" id="91">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Successful completion</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Successful completion</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="SuccessfulCompletionExtendedTooltip" id="92"/>
+					<ChildItems>
+						<UsualGroup name="GroupCompletionDetails" id="93">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group description</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group description</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupCompletionDescriptionExtendedTooltip" id="94"/>
+							<ChildItems>
+								<PictureDecoration name="PictureSuccessfulCompletion" id="95">
+									<Width>10</Width>
+									<Height>2</Height>
+									<HorizontalStretch>false</HorizontalStretch>
+									<VerticalStretch>false</VerticalStretch>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Long operation</v8:content>
+										</v8:item>
+									</Title>
+									<Picture>
+										<xr:Ref>CommonPicture.Successfully32</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="PictureSuccessfulCompletionContextMenu" id="96"/>
+									<ExtendedTooltip name="PictureSuccessfulCompletionExtendedTooltip" id="97"/>
+								</PictureDecoration>
+								<LabelField name="ImportingDescriptionTextCompletion" id="98">
+									<DataPath>ImportingDescriptionText</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<TitleLocation>None</TitleLocation>
+									<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+									<ContextMenu name="ImportingDescriptionCompletionTextContextMenu" id="99"/>
+									<ExtendedTooltip name="ImportingCompletionDescriptionTextExtendedTooltip" id="100"/>
+								</LabelField>
+							</ChildItems>
+						</UsualGroup>
+						<LabelDecoration name="Decoration4" id="103">
+							<VerticalStretch>true</VerticalStretch>
+							<ContextMenu name="Decoration4ContextMenu" id="104"/>
+							<ExtendedTooltip name="Decoration4ExtendedTooltip" id="105"/>
+						</LabelDecoration>
+						<UsualGroup name="CompletionCommandsGroup" id="101">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Completion commands group</v8:content>
+								</v8:item>
+							</Title>
+							<HorizontalStretch>true</HorizontalStretch>
+							<VerticalStretch>true</VerticalStretch>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="CompletionCommandsGroupExtendedTooltip" id="102"/>
+							<ChildItems>
+								<LabelDecoration name="Decoration5" id="111">
+									<HorizontalStretch>true</HorizontalStretch>
+									<ContextMenu name="Decoration5ContextMenu" id="112"/>
+									<ExtendedTooltip name="Decoration5ExtendedTooltip" id="113"/>
+								</LabelDecoration>
+								<CommandBar name="CompletionCommandsGroupPanel" id="157">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Completion commands group panel</v8:content>
+										</v8:item>
+									</Title>
+									<HorizontalLocation>Right</HorizontalLocation>
+									<ExtendedTooltip name="CompletionCommandsGroupPanelExtendedTooltip" id="158"/>
+									<ChildItems>
+										<Button name="Close" id="114">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.Cancel</CommandName>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Close</v8:content>
+												</v8:item>
+											</Title>
+											<ExtendedTooltip name="CloseExtendedTooltip" id="115"/>
+										</Button>
+									</ChildItems>
+								</CommandBar>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="RFTerritorialEntities" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>RF territorial entities</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="RFTerritorialEntityCode" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>RF territorial entity code</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>2</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="Presentation" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>RFTerritorialEntity</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Exported" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Exported</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Import" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Import</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ImportingSourceCode" id="2">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<Save>
+				<Field>ImportingSourceCode</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="ImportAddress" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Importing address</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<Save>
+				<Field>ImportAddress</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="PresentationImportingSource" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Presentation loading source</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8ui:FormattedString</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ChosenStatesForExport" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>States</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>2</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ImportingDescriptionText" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Importing description text</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ImportingStatusText" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Importing status text</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ParametersOfLongOperation" id="10">
+			<Type/>
+		</Attribute>
+		<Attribute name="WarningOnOpening" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Warning on opening</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="AvailableImportingSources" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Available loading sources</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="NumberOfUpdates" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Number of updates</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="Import" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Import address info</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Import address information for selected states</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Import</Action>
+		</Command>
+		<Command name="CheckAll" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Check all</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Select all states for exporting</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.CheckAll</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>CheckAll</Action>
+		</Command>
+		<Command name="UncheckAll" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Uncheck all</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Clear mark for export from all states</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.UncheckAll</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>UncheckAll</Action>
+		</Command>
+		<Command name="BreakImport" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Break</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Break Importing</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>BreakImport</Action>
+		</Command>
+		<Command name="EnterLoginAndPassword" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Enter login and password</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Enter login and password of access to users support site</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>AuthorizationOnUsersSupportSite</Action>
+		</Command>
+		<Command name="Cancel" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Cancel</v8:content>
+				</v8:item>
+			</Title>
+			<Action>CloseWithoutConfirmation</Action>
+		</Command>
+	</Commands>
+</Form>

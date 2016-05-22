@@ -1,0 +1,182 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<CommandSet>
+		<ExcludedCommand>Delete</ExcludedCommand>
+	</CommandSet>
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="FormCommandBar" id="-1"/>
+	<Events>
+		<Event name="NotificationProcessing">NotificationProcessing</Event>
+		<Event name="OnReadAtServer">OnReadAtServer</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+		<Event name="BeforeWriteAtServer">BeforeWriteAtServer</Event>
+		<Event name="FillCheckProcessingAtServer">FillCheckProcessingAtServer</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="Description" id="4">
+			<DataPath>Object.Description</DataPath>
+			<Enabled>false</Enabled>
+			<EditMode>EnterOnInput</EditMode>
+			<InputHint>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>&lt;Auto&gt;</v8:content>
+				</v8:item>
+			</InputHint>
+			<ContextMenu name="DescriptionContextMenu" id="5"/>
+			<ExtendedTooltip name="DescriptionExtendedTooltip" id="6"/>
+		</InputField>
+		<Pages name="Pages" id="28">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Pages</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Pages</v8:content>
+				</v8:item>
+			</ToolTip>
+			<ExtendedTooltip name="PagesExtendedTooltip" id="29"/>
+			<ChildItems>
+				<Page name="VehiclePage" id="30">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Automotive vehicle</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Vehicle page</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="VehiclePageExtendedTooltip" id="31"/>
+					<ChildItems>
+						<UsualGroup name="Group1" id="16">
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="Group1ExtendedTooltip" id="17"/>
+							<ChildItems>
+								<InputField name="Code" id="1">
+									<DataPath>Object.Code</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="CodeContextMenu" id="2"/>
+									<ExtendedTooltip name="CodeExtendedTooltip" id="3"/>
+									<Events>
+										<Event name="OnChange">CodeOnChange</Event>
+									</Events>
+								</InputField>
+								<InputField name="Brand" id="7">
+									<DataPath>Object.Brand</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="BrandContextMenu" id="8"/>
+									<ExtendedTooltip name="BrandExtendedTooltip" id="9"/>
+									<Events>
+										<Event name="OnChange">BrandOnChange</Event>
+									</Events>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<InputField name="VehicleType" id="20">
+							<DataPath>Object.VehicleType</DataPath>
+							<HorizontalStretch>true</HorizontalStretch>
+							<ContextMenu name="VehicleTypeContextMenu" id="21"/>
+							<ExtendedTooltip name="VehicleTypeExtendedTooltip" id="22"/>
+							<Events>
+								<Event name="OnChange">VehicleTypeOnChange</Event>
+							</Events>
+						</InputField>
+						<InputField name="CurrentLicenseCard" id="25">
+							<DataPath>Object.CurrentLicenseCard</DataPath>
+							<ContextMenu name="CurrentLicenseCardContextMenu" id="26"/>
+							<ExtendedTooltip name="CurrentLicenseCardExtendedTooltip" id="27"/>
+						</InputField>
+						<UsualGroup name="Group2" id="23">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Help information</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group2</v8:content>
+								</v8:item>
+							</ToolTip>
+							<HorizontalStretch>true</HorizontalStretch>
+							<Group>Vertical</Group>
+							<Behavior>Collapsible</Behavior>
+							<Collapsed>true</Collapsed>
+							<Representation>None</Representation>
+							<ExtendedTooltip name="Group2ExtendedTooltip" id="24"/>
+							<ChildItems>
+								<InputField name="ImportingCapacityInTonnes" id="10">
+									<DataPath>Object.ImportingCapacityInTonnes</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ImportingCapacityInTonnesContextMenu" id="11"/>
+									<ExtendedTooltip name="ImportingCapacityInTonnesExtendedTooltip" id="12"/>
+								</InputField>
+								<InputField name="CapacityInCubicMeters" id="13">
+									<DataPath>Object.CapacityInCubicMeters</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="CapacityInCubicMetersContextMenu" id="14"/>
+									<ExtendedTooltip name="CapacityInCubicMetersExtendedTooltip" id="15"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="AdvancedPage" id="51">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Additionally</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Advanced page</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="AdvancedPageExtendedTooltip" id="52"/>
+					<ChildItems>
+						<UsualGroup name="AdditionalAttributesGroup" id="53">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Additional attribute group</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Additional attribute group</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="AdditionalAttributesGroupExtendedTooltip" id="54"/>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Type>
+				<v8:Type>cfg:CatalogObject.Vehicles</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+	</Attributes>
+</Form>

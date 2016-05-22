@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<MetaDataObject xmlns="http://v8.1c.ru/8.3/MDClasses" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:cmi="http://v8.1c.ru/8.2/managed-application/cmi" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xpr="http://v8.1c.ru/8.3/xcf/predef" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Enum uuid="4289ff00-22fc-4615-a5bf-52bc5ffffa90">
+		<InternalInfo>
+			<xr:GeneratedType name="EnumRef.RoundingMethods" category="Ref">
+				<xr:TypeId>ac6dd0c9-7567-486a-b3dd-db00f6d7c264</xr:TypeId>
+				<xr:ValueId>f4d552ae-8fcd-465e-b2ae-38e2aa752d8d</xr:ValueId>
+			</xr:GeneratedType>
+			<xr:GeneratedType name="EnumManager.RoundingMethods" category="Manager">
+				<xr:TypeId>704c3f9a-d2c6-4908-abb4-7f81eb913600</xr:TypeId>
+				<xr:ValueId>11a3aa68-faa8-4c15-89f9-6a1b4c035e19</xr:ValueId>
+			</xr:GeneratedType>
+			<xr:GeneratedType name="EnumList.RoundingMethods" category="List">
+				<xr:TypeId>5ad6f121-a577-40cb-b095-8cbec7427594</xr:TypeId>
+				<xr:ValueId>562caffa-0373-4d69-bf50-0a5047190ed8</xr:ValueId>
+			</xr:GeneratedType>
+		</InternalInfo>
+		<Properties>
+			<Name>RoundingMethods</Name>
+			<Synonym>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Rounding Methods</v8:content>
+				</v8:item>
+			</Synonym>
+			<Comment/>
+			<UseStandardCommands>true</UseStandardCommands>
+			<StandardAttributes>
+				<xr:StandardAttribute name="Order">
+					<xr:LinkByType/>
+					<xr:FillChecking>DontCheck</xr:FillChecking>
+					<xr:MultiLine>false</xr:MultiLine>
+					<xr:FillFromFillingValue>false</xr:FillFromFillingValue>
+					<xr:CreateOnInput>Auto</xr:CreateOnInput>
+					<xr:MaxValue xsi:nil="true"/>
+					<xr:ToolTip/>
+					<xr:ExtendedEdit>false</xr:ExtendedEdit>
+					<xr:Format/>
+					<xr:ChoiceForm/>
+					<xr:QuickChoice>Auto</xr:QuickChoice>
+					<xr:ChoiceHistoryOnInput>Auto</xr:ChoiceHistoryOnInput>
+					<xr:EditFormat/>
+					<xr:PasswordMode>false</xr:PasswordMode>
+					<xr:MarkNegatives>false</xr:MarkNegatives>
+					<xr:MinValue xsi:nil="true"/>
+					<xr:Synonym/>
+					<xr:Comment/>
+					<xr:FullTextSearch>Use</xr:FullTextSearch>
+					<xr:ChoiceParameterLinks/>
+					<xr:FillValue xsi:nil="true"/>
+					<xr:Mask/>
+					<xr:ChoiceParameters/>
+				</xr:StandardAttribute>
+				<xr:StandardAttribute name="Ref">
+					<xr:LinkByType/>
+					<xr:FillChecking>DontCheck</xr:FillChecking>
+					<xr:MultiLine>false</xr:MultiLine>
+					<xr:FillFromFillingValue>false</xr:FillFromFillingValue>
+					<xr:CreateOnInput>Auto</xr:CreateOnInput>
+					<xr:MaxValue xsi:nil="true"/>
+					<xr:ToolTip/>
+					<xr:ExtendedEdit>false</xr:ExtendedEdit>
+					<xr:Format/>
+					<xr:ChoiceForm/>
+					<xr:QuickChoice>Auto</xr:QuickChoice>
+					<xr:ChoiceHistoryOnInput>Auto</xr:ChoiceHistoryOnInput>
+					<xr:EditFormat/>
+					<xr:PasswordMode>false</xr:PasswordMode>
+					<xr:MarkNegatives>false</xr:MarkNegatives>
+					<xr:MinValue xsi:nil="true"/>
+					<xr:Synonym/>
+					<xr:Comment/>
+					<xr:FullTextSearch>Use</xr:FullTextSearch>
+					<xr:ChoiceParameterLinks/>
+					<xr:FillValue xsi:nil="true"/>
+					<xr:Mask/>
+					<xr:ChoiceParameters/>
+				</xr:StandardAttribute>
+			</StandardAttributes>
+			<Characteristics/>
+			<QuickChoice>true</QuickChoice>
+			<ChoiceMode>BothWays</ChoiceMode>
+			<DefaultListForm/>
+			<DefaultChoiceForm/>
+			<AuxiliaryListForm/>
+			<AuxiliaryChoiceForm/>
+			<ListPresentation/>
+			<ExtendedListPresentation/>
+			<Explanation/>
+			<ChoiceHistoryOnInput>Auto</ChoiceHistoryOnInput>
+		</Properties>
+		<ChildObjects>
+			<EnumValue uuid="56f1c426-0cdb-4a99-994b-3e3eb63b4078">
+				<Properties>
+					<Name>Round0_01</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>0.01</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>0.01</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="02026323-fa74-4a52-b7a0-3c0ae0dbdd25">
+				<Properties>
+					<Name>Round0_05</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>0.05</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>0.05</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="0552deae-01b0-4caa-ac08-6cbfa2b51486">
+				<Properties>
+					<Name>Round1</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>1</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>1</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="b76667da-3781-4ec6-ac85-5916d9198bc2">
+				<Properties>
+					<Name>Round5</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>5</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>5</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="f53cbd2f-7f3a-45b3-811a-d4a699fbcad1">
+				<Properties>
+					<Name>Round10</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>10</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>10</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="60d2b43b-48f9-48f2-afb5-87c47a1cc4da">
+				<Properties>
+					<Name>Round50</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>50</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>50</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="f4dd4e60-14c1-40f0-b5b0-a6e8bbc4ecf6">
+				<Properties>
+					<Name>Round100</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>100</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>100</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="db1ea3e6-e688-42d3-a177-3307859a3d2d">
+				<Properties>
+					<Name>Round0_1</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>0.1</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>0.1</Comment>
+				</Properties>
+			</EnumValue>
+			<EnumValue uuid="a0aa3b79-ec6d-4ea7-a89c-d843cf4f0677">
+				<Properties>
+					<Name>Round0_5</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>0.5</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment>0.5</Comment>
+				</Properties>
+			</EnumValue>
+		</ChildObjects>
+	</Enum>
+</MetaDataObject>

@@ -1,0 +1,860 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Width>84</Width>
+	<Customizable>false</Customizable>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<CommandSet>
+		<ExcludedCommand>No</ExcludedCommand>
+		<ExcludedCommand>SaveValues</ExcludedCommand>
+		<ExcludedCommand>WriteAndClose</ExcludedCommand>
+		<ExcludedCommand>Abort</ExcludedCommand>
+		<ExcludedCommand>Retry</ExcludedCommand>
+		<ExcludedCommand>Yes</ExcludedCommand>
+		<ExcludedCommand>Cancel</ExcludedCommand>
+		<ExcludedCommand>RestoreValues</ExcludedCommand>
+		<ExcludedCommand>Ignore</ExcludedCommand>
+		<ExcludedCommand>OK</ExcludedCommand>
+		<ExcludedCommand>Write</ExcludedCommand>
+	</CommandSet>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+		<Event name="OnClose">OnClose</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="GroupTitle" id="1762">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content> </v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content> </v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="GroupHeaderExtendedTooltip" id="1829"/>
+			<ChildItems>
+				<LabelDecoration name="SectionDescription" id="1763">
+					<Width>70</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<VerticalStretch>false</VerticalStretch>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Use this section to change the application title, object versioning, additional attributes and other general settings.</v8:content>
+						</v8:item>
+					</Title>
+					<VerticalAlign>Top</VerticalAlign>
+					<ContextMenu name="SectionDescriptionContextMenu" id="1764"/>
+					<ExtendedTooltip name="SectionDescriptionExtendedTooltip" id="1830"/>
+				</LabelDecoration>
+				<LabelDecoration name="Decoration" id="1793">
+					<HorizontalStretch>true</HorizontalStretch>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content> </v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content> </v8:content>
+						</v8:item>
+					</ToolTip>
+					<ContextMenu name="DecorationContextMenu" id="1794"/>
+					<ExtendedTooltip name="DecorationExtendedTooltip" id="1831"/>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="GroupApplicationSettings" id="612">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content> </v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content> </v8:content>
+				</v8:item>
+			</ToolTip>
+			<Width>80</Width>
+			<HorizontalStretch>false</HorizontalStretch>
+			<Group>Vertical</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="GroupApplicationSettingsExtendedTooltip" id="1834"/>
+			<ChildItems>
+				<InputField name="ApplicationTitle" id="1785">
+					<DataPath>ConstantsSet.SystemTitle</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Application title</v8:content>
+						</v8:item>
+					</Title>
+					<TitleLocation>None</TitleLocation>
+					<InputHint>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Application title</v8:content>
+						</v8:item>
+					</InputHint>
+					<ContextMenu name="ApplicationTitleContextMenu" id="1786"/>
+					<ExtendedTooltip name="ApplicationTitleExtendedTooltip" id="1835"/>
+					<Events>
+						<Event name="OnChange">ApplicationTitleOnChange</Event>
+					</Events>
+				</InputField>
+				<UsualGroup name="GroupApplicationTimeZone" id="1696">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group application time zone</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group application time zone</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="GroupTimezoneApplicationExtendedTooltip" id="1836"/>
+					<ChildItems>
+						<InputField name="ApplicationTimeZone" id="1693">
+							<DataPath>ApplicationTimeZone</DataPath>
+							<TitleLocation>Left</TitleLocation>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ListChoiceMode>true</ListChoiceMode>
+							<TextEdit>false</TextEdit>
+							<EditTextUpdate>OnValueChange</EditTextUpdate>
+							<ContextMenu name="ApplicationTimeZoneContextMenu" id="1694"/>
+							<ExtendedTooltip name="ApplicationTimeZoneExtendedTooltip" id="1837"/>
+							<Events>
+								<Event name="OnChange">ApplicationTimeZoneOnChange</Event>
+								<Event name="StartChoice">ApplicationTimeZoneStartChoice</Event>
+							</Events>
+						</InputField>
+						<Button name="CurrentSessionTime" id="1695">
+							<Type>Hyperlink</Type>
+							<CommandName>Form.Command.CurrentSessionTime</CommandName>
+							<ExtendedTooltip name="TimeCurrentSessionExtendedTooltip" id="1838"/>
+						</Button>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="GroupOpenContactInformationTypes" id="1642">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Contact information</v8:content>
+				</v8:item>
+			</Title>
+			<TitleTextColor>style:TitleColorSettingsGroup</TitleTextColor>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group open the contact information types</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Width>80</Width>
+			<HorizontalStretch>false</HorizontalStretch>
+			<Group>Horizontal</Group>
+			<Representation>NormalSeparation</Representation>
+			<ChildItemsWidth>Equal</ChildItemsWidth>
+			<ExtendedTooltip name="GroupOpenContactInformationTypesExtendedTooltip" id="1865"/>
+			<ChildItems>
+				<Button name="OpenContactInformationTypes" id="1640">
+					<Type>Hyperlink</Type>
+					<CommandName>Catalog.ContactInformationTypes.StandardCommand.OpenList</CommandName>
+					<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+					<ExtendedTooltip name="OpenContactInformationTypesExtendedTooltip" id="1866">
+						<Title formatted="false">
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Contact information classification of system objects, e.g. partners, counterparties, employees, etc.</v8:content>
+							</v8:item>
+						</Title>
+					</ExtendedTooltip>
+				</Button>
+				<LabelDecoration name="Decoration1" id="1970">
+					<ContextMenu name="Decoration1ContextMenu" id="1971"/>
+					<ExtendedTooltip name="Decoration1ExtendedTooltip" id="1972"/>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="GroupVersioning" id="877">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Object versioning</v8:content>
+				</v8:item>
+			</Title>
+			<TitleTextColor>style:TitleColorSettingsGroup</TitleTextColor>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Object versioning </v8:content>
+				</v8:item>
+			</ToolTip>
+			<Width>80</Width>
+			<HorizontalStretch>false</HorizontalStretch>
+			<Group>Horizontal</Group>
+			<Representation>NormalSeparation</Representation>
+			<ChildItemsWidth>Equal</ChildItemsWidth>
+			<ExtendedTooltip name="GroupVersioningExtendedTooltip" id="1839"/>
+			<ChildItems>
+				<CheckBoxField name="UseObjectVersioning" id="1779">
+					<DataPath>ConstantsSet.UseObjectVersioning</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Object versioning</v8:content>
+						</v8:item>
+					</Title>
+					<TitleLocation>Right</TitleLocation>
+					<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="UseObjectVersioningContextMenu" id="1780"/>
+					<ExtendedTooltip name="UseObjectVersioningExtendedTooltip" id="1841">
+						<Title formatted="false">
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Store and view the application document and catalog versions.</v8:content>
+							</v8:item>
+						</Title>
+					</ExtendedTooltip>
+					<Events>
+						<Event name="OnChange">UseObjectVersioningOnChange</Event>
+					</Events>
+				</CheckBoxField>
+				<Button name="InformationRegisterSettingsObjectVersioning" id="1800">
+					<Type>Hyperlink</Type>
+					<CommandName>Form.Command.InformationRegisterSettingsObjectVersioning</CommandName>
+					<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+					<ExtendedTooltip name="InformationRegisterObjectVersioningSettingsExtendedTooltip" id="1844">
+						<Title formatted="false">
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Versioning variants setup for the documents and catalogs.</v8:content>
+							</v8:item>
+						</Title>
+					</ExtendedTooltip>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="GroupAdditionalAttributesAndInformation" id="1801">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Additional attributes and information</v8:content>
+				</v8:item>
+			</Title>
+			<TitleTextColor>style:TitleColorSettingsGroup</TitleTextColor>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Additional attributes and information</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Width>80</Width>
+			<HorizontalStretch>false</HorizontalStretch>
+			<Group>Horizontal</Group>
+			<Representation>NormalSeparation</Representation>
+			<ChildItemsWidth>Equal</ChildItemsWidth>
+			<ExtendedTooltip name="GroupAdditionalAttributesAndInformationExtendedTooltip" id="1846"/>
+			<ChildItems>
+				<UsualGroup name="GroupUseAdditionalAttributesAndInformation" id="1802">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group use additional attributes and information</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group use additional attributes and information</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ChildItemsWidth>Equal</ChildItemsWidth>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="GroupUseAdditionalAttributesAndInformationExtendedTooltip" id="1847"/>
+					<ChildItems>
+						<CheckBoxField name="UseAdditionalAttributesAndInformation" id="1803">
+							<DataPath>ConstantsSet.UseAdditionalAttributesAndInformation</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Additional attributes and information</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>Right</TitleLocation>
+							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="UseAdditionalAttributesAndInformationContextMenu" id="1804"/>
+							<ExtendedTooltip name="UseAdditionalAttributesAndInformationExtendedTooltip" id="1848">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Add attributes and information to the application objects.</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+							<Events>
+								<Event name="OnChange">UseAdditionalAttributesAndInformationOnChange</Event>
+							</Events>
+						</CheckBoxField>
+						<UsualGroup name="GroupAdditionalAttributesAndInformationOtherSettings" id="1807">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group additional attributes and information other settings</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group additional attributes and information other settings</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupAdditionalAttributesAndInformationOtherSettingsExtendedTooltip" id="1850"/>
+							<ChildItems>
+								<LabelDecoration name="Decoration2" id="1973">
+									<ContextMenu name="Decoration2ContextMenu" id="1974"/>
+									<ExtendedTooltip name="Decoration2ExtendedTooltip" id="1975"/>
+								</LabelDecoration>
+								<UsualGroup name="GroupAdditionalAttributesAndInformationOtherSettingsContent" id="1811">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group additional attributes and information other settings content</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupAdditionalAttributesAndInformationOtherSettingsContentExtendedTooltip" id="1853"/>
+									<ChildItems>
+										<CheckBoxField name="UseCommonAdditionalValues" id="1812">
+											<DataPath>ConstantsSet.UseCommonAdditionalValues</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Attributes and information with common value list </v8:content>
+												</v8:item>
+											</Title>
+											<TitleLocation>Right</TitleLocation>
+											<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="UseCommonAdditionalValuesContextMenu" id="1813"/>
+											<ExtendedTooltip name="UseCommonAdditionalValuesExtendedTooltip" id="1854">
+												<Height>3</Height>
+												<Title formatted="false">
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Allow to add the attributes which have the list of values common with other attributes (the "Add - By template" command).</v8:content>
+													</v8:item>
+												</Title>
+											</ExtendedTooltip>
+											<Events>
+												<Event name="OnChange">UseAdditionalAttributesAndInformationOnChange</Event>
+											</Events>
+										</CheckBoxField>
+										<CheckBoxField name="UseCommonAdditionalAttributesAndInformation" id="1816">
+											<DataPath>ConstantsSet.UseAdditionalAttributesAndInformation</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Common attributes and information</v8:content>
+												</v8:item>
+											</Title>
+											<TitleLocation>Right</TitleLocation>
+											<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="UseCommonAdditionalAttributesAndInformationContextMenu" id="1817"/>
+											<ExtendedTooltip name="UseCommonAdditionalAttributesAndInformationExtendedTooltip" id="1856">
+												<Height>3</Height>
+												<Title formatted="false">
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Enable this option to add attributes to several application objects simultaneously (click "Add - Common").</v8:content>
+													</v8:item>
+												</Title>
+											</ExtendedTooltip>
+											<Events>
+												<Event name="OnChange">UseAdditionalAttributesAndInformationOnChange</Event>
+											</Events>
+										</CheckBoxField>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="AdditionalAttributesOrGroupAdditionalInformation" id="1820">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group additional attributes and information</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group additional attributes and information</v8:content>
+						</v8:item>
+					</ToolTip>
+					<HorizontalStretch>false</HorizontalStretch>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ChildItemsWidth>Equal</ChildItemsWidth>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="AdditionalAttributesOrGroupAdditionalInformationExtendedTooltip" id="1858"/>
+					<ChildItems>
+						<LabelDecoration name="Decoration3" id="1976">
+							<Height>2</Height>
+							<ContextMenu name="Decoration3ContextMenu" id="1977"/>
+							<ExtendedTooltip name="Decoration3ExtendedTooltip" id="1978"/>
+						</LabelDecoration>
+						<Button name="AdditionalAttributes" id="1822">
+							<Type>Hyperlink</Type>
+							<CommandName>Form.Command.AdditionalAttributes</CommandName>
+							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<ExtendedTooltip name="AdditionalAttributesExtendedTooltip" id="1860">
+								<Height>3</Height>
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Creating and changing the attributes, properties description.
+These attributes are displayed in the form.</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+						</Button>
+						<Button name="AdditionalInformation" id="1826">
+							<Type>Hyperlink</Type>
+							<CommandName>Form.Command.AdditionalInformation</CommandName>
+							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<ExtendedTooltip name="AdditionalInformationDataExtendedTooltip" id="1863">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Creating and changing the data, properties description.
+This information is displayed in
+a separate form that is opened by a special command.</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+						</Button>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="SB_Group7" id="1949">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Control</v8:content>
+				</v8:item>
+			</Title>
+			<TitleTextColor>style:TitleColorSettingsGroup</TitleTextColor>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>SB group7</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Width>80</Width>
+			<HorizontalStretch>false</HorizontalStretch>
+			<Group>Horizontal</Group>
+			<Representation>NormalSeparation</Representation>
+			<ChildItemsWidth>Equal</ChildItemsWidth>
+			<ExtendedTooltip name="SB_Group7ExtendedTooltip" id="1950"/>
+			<ChildItems>
+				<CheckBoxField name="ControlBalancesOnPosting" id="1964">
+					<DataPath>ConstantsSet.ControlBalancesOnPosting</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Control balances </v8:content>
+						</v8:item>
+					</Title>
+					<TitleLocation>Right</TitleLocation>
+					<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ControlBalancesOnPostingContextMenu" id="1965"/>
+					<ExtendedTooltip name="ControlBalancesOnPostingExtendedTooltip" id="1966">
+						<Title formatted="false">
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Control balances when posting and undo posting of documents</v8:content>
+							</v8:item>
+						</Title>
+					</ExtendedTooltip>
+					<Events>
+						<Event name="OnChange">ControlBalancesOnPostingOnChange</Event>
+					</Events>
+				</CheckBoxField>
+				<RadioButtonField name="PostponeEditProhibitionDate" id="1953">
+					<DataPath>ConstantsSet.PostponeEditProhibitionDate</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+					<RadioButtonType>Auto</RadioButtonType>
+					<ChoiceList>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation/>
+								<Value xsi:type="xr:DesignTimeRef">Enum.YesNo.EnumValue.Yes</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation/>
+								<Value xsi:type="xr:DesignTimeRef">Enum.YesNo.EnumValue.No</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Ask</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xr:DesignTimeRef">Enum.YesNo.EmptyRef</Value>
+							</xr:Value>
+						</xr:Item>
+					</ChoiceList>
+					<ContextMenu name="PostponeEditProhibitionDateContextMenu" id="1954"/>
+					<ExtendedTooltip name="PostponeEditProhibitionDateExtendedTooltip" id="1955">
+						<Title formatted="false">
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Settings of the prohibition date editing automatic transfer</v8:content>
+							</v8:item>
+						</Title>
+					</ExtendedTooltip>
+					<Events>
+						<Event name="OnChange">PostponeEditProhibitionDateOnChange</Event>
+					</Events>
+				</RadioButtonField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="GroupIntegrationWith1CBuhphone" id="1979">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>1CBuhphone</v8:content>
+				</v8:item>
+			</Title>
+			<TitleTextColor>style:TitleColorSettingsGroup</TitleTextColor>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Usage settings of the 1C-Buhphone button</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Width>80</Width>
+			<Group>Horizontal</Group>
+			<Representation>NormalSeparation</Representation>
+			<ChildItemsWidth>Equal</ChildItemsWidth>
+			<ExtendedTooltip name="GroupIntegrationWith1CBuhphoneExtendedTooltip" id="1980"/>
+			<ChildItems>
+				<CheckBoxField name="IntegrationWith1CBuhphone" id="1983">
+					<DataPath>ConstantsSet.UseIntegrationWith1CBuhphone</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Start 1C-Buhphone</v8:content>
+						</v8:item>
+					</Title>
+					<TitleLocation>Right</TitleLocation>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Allow to start 1C-Buhphone to contact a support specialist.</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="IntegrationWith1CBuhphoneContextMenu" id="1984"/>
+					<ExtendedTooltip name="IntegrationWith1CBuhphoneExtendedTooltip" id="1985"/>
+					<Events>
+						<Event name="OnChange">IntegrationWith1CBuhphoneOnChange</Event>
+					</Events>
+				</CheckBoxField>
+				<Button name="Setting1CBuhphon" id="1991">
+					<Type>Hyperlink</Type>
+					<CommandName>Form.Command.Setting1CBuhphon</CommandName>
+					<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+					<ExtendedTooltip name="1CBuhfoneConfigurationExtendedTooltip" id="1992">
+						<Title formatted="false">
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>1C-Buhphone launch settings on this computer.</v8:content>
+							</v8:item>
+						</Title>
+					</ExtendedTooltip>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="GroupParametersServerIBClient" id="1532">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Parameters of server Info Base</v8:content>
+				</v8:item>
+			</Title>
+			<TitleTextColor>style:TitleColorSettingsGroup</TitleTextColor>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content> </v8:content>
+				</v8:item>
+			</ToolTip>
+			<Width>80</Width>
+			<HorizontalStretch>false</HorizontalStretch>
+			<Group>Horizontal</Group>
+			<Representation>NormalSeparation</Representation>
+			<ChildItemsWidth>Equal</ChildItemsWidth>
+			<ExtendedTooltip name="GroupParametersServerIBClientExtendedTooltip" id="1868"/>
+			<ChildItems>
+				<Button name="OpenProxyServerParameters" id="1686">
+					<Type>Hyperlink</Type>
+					<CommandName>CommonForm.ProxyServerParameters.StandardCommand.Open</CommandName>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Access parameters to the Internet</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+					<ExtendedTooltip name="OpenProxyServerParametersExtendedTooltip" id="1870">
+						<Title formatted="false">
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Proxy server parameter settings on the 1C:Enterprise server</v8:content>
+							</v8:item>
+						</Title>
+					</ExtendedTooltip>
+				</Button>
+				<Button name="OpenSecurityProfilesUseSettings" id="1936">
+					<Type>Hyperlink</Type>
+					<CommandName>Form.Command.UseSecurityProfiles</CommandName>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Use security profiles</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+					<ExtendedTooltip name="OpenSecurityProfilesUseSettingsExtendedTooltip" id="1937">
+						<Title formatted="false">
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Use security profiles to monitor external (relative to 1C:Enterprise servers cluster) resources application by application.</v8:content>
+							</v8:item>
+						</Title>
+					</ExtendedTooltip>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="GroupProxyServerSettingIsNotAvailableatServerWhenUseSecurityProfiles" id="1941">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group proxy server configuration is not available at server when security profiles are used</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group backup recovery</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Width>80</Width>
+			<HorizontalStretch>false</HorizontalStretch>
+			<Group>Horizontal</Group>
+			<Representation>StrongSeparation</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="GroupProxyServerSettingIsUnavailableAtServerWhenUseSecurityProfilesExtendedTooltip" id="1942"/>
+			<ChildItems>
+				<PictureDecoration name="DecorationProxyServerSettingAtServerIsUnavailableWhenUseSecurityProfiles" id="1943">
+					<Width>2</Width>
+					<Height>1</Height>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Decoration proxy server configuration at server is unavailable when use security profiles</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTipRepresentation>ShowRight</ToolTipRepresentation>
+					<Picture>
+						<xr:Ref>CommonPicture.UnavailableFieldsInformtion</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</Picture>
+					<ContextMenu name="DecorationProxyServerSettingIsUnavailableAtServerWhenUseSecurityProfilesContextMenu" id="1944"/>
+					<ExtendedTooltip name="DecorationProxyServerSettingIsUnavailableAtServerWhenUseSecurityProfilesExtendedTooltip" id="1945">
+						<Title formatted="false">
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>The Internet access settings on the 1C:Enterprise server are not available as the use of security profiles is enabled for the infobase. When security profiles are enabled parameters of access to Internet at 1C:Enterprises server configuring can be done only by editing the inetcfg service file.xml (for more details see the administrator guide for 1C:Enterprise platform).</v8:content>
+							</v8:item>
+						</Title>
+					</ExtendedTooltip>
+				</PictureDecoration>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="ConstantsSet" id="1">
+			<Type>
+				<v8:Type>cfg:ConstantsSet</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<UseAlways>
+				<Field>ConstantsSet.UseObjectVersioning</Field>
+				<Field>ConstantsSet.UseIntegrationWith1CBuhphone</Field>
+				<Field>ConstantsSet.UseCommonAdditionalValues</Field>
+				<Field>ConstantsSet.UseAdditionalAttributesAndInformation</Field>
+				<Field>ConstantsSet.SMSProvider.Ref</Field>
+				<Field>ConstantsSet.PriceListShowFullDescr.Ref</Field>
+				<Field>ConstantsSet.PriceListShowCode.Ref</Field>
+				<Field>ConstantsSet.PostponeEditProhibitionDate.Ref</Field>
+				<Field>ConstantsSet.PostponeEditProhibitionDate</Field>
+				<Field>ConstantsSet.OffsetAdvancesDebtsAutomatically.Ref</Field>
+				<Field>ConstantsSet.InfobaseUsageMode.Ref</Field>
+				<Field>ConstantsSet.ExchangeRateDifferencesCalculationFrequency.Ref</Field>
+				<Field>ConstantsSet.DiscountsMarkupsSharedUsageOptions.Ref</Field>
+				<Field>ConstantsSet.DeleteCryptographyContext.Ref</Field>
+				<Field>ConstantsSet.DeleteContractControllingOnPosting.Ref</Field>
+				<Field>ConstantsSet.AuthorizationContext.Ref</Field>
+				<Field>ConstantsSet.ActivityKind.Ref</Field>
+			</UseAlways>
+		</Attribute>
+		<Attribute name="ApplicationTimeZone" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Timezone</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="RunMode" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Work mode</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="CurrentSessionTime" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Current session time</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Current session time</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ShowCurrentSessionTime</Action>
+		</Command>
+		<Command name="InformationRegisterSettingsObjectVersioning" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Object versioning settings</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>"Object versioning settings" information register</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>InformationRegisterSettingsObjectVersioning</Action>
+		</Command>
+		<Command name="AdditionalInformation" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Additional data</v8:content>
+				</v8:item>
+			</Title>
+			<Action>AdditionalInformation</Action>
+		</Command>
+		<Command name="AdditionalAttributes" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Additional attributes</v8:content>
+				</v8:item>
+			</Title>
+			<Action>AdditionalAttributes</Action>
+		</Command>
+		<Command name="UseSecurityProfiles" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Use security profiles</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Use security profiles</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>UseSecurityProfiles</Action>
+		</Command>
+		<Command name="Setting1CBuhphon" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>1C-Buhphone settings</v8:content>
+				</v8:item>
+			</Title>
+			<Action>Setting1CBuhphon</Action>
+		</Command>
+	</Commands>
+</Form>
