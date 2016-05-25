@@ -1042,3 +1042,17 @@ Procedure MyRemindersTotalRemindersClick(Item, StandardProcessing)
 	OpenForm("InformationRegister.UserReminders.Form.MyReminders");
 	
 EndProcedure // MyRemindersTotalRemindersClick()
+
+
+
+// Rise { Popov N 2016-05-25
+&AtClient
+Function RiseGetFormInterfaceClient() Export
+	Return RiseGetFormInterface();
+EndFunction
+
+&AtServer
+Function RiseGetFormInterface()
+	Return RiseTranslation.GetFormInterface(ThisForm);
+EndFunction
+// Rise } Popov N 2016-05-25

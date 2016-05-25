@@ -99,3 +99,17 @@ Procedure Pick(Command)
 	OpenForm("Catalog.ProductsAndServices.ChoiceForm", New Structure("Multiselect, ChoiceFoldersAndItems, ChoiceMode, CloseOnChoice", True, FoldersAndItemsUse.FoldersAndItems, True, False), ThisForm);
 	
 EndProcedure // Pick()
+
+
+
+// Rise { Popov N 2016-05-25
+&AtClient
+Function RiseGetFormInterfaceClient() Export
+	Return RiseGetFormInterface();
+EndFunction
+
+&AtServer
+Function RiseGetFormInterface()
+	Return RiseTranslation.GetFormInterface(ThisForm);
+EndFunction
+// Rise } Popov N 2016-05-25

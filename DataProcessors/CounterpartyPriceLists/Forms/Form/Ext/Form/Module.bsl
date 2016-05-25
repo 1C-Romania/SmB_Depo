@@ -1463,3 +1463,17 @@ Procedure MultipleFilterByProductsAndServicesClick(Item)
 	OpenForm("DataProcessor.CounterpartyPriceLists.Form.ProductsAndServicesEditForm", New Structure("ProductsAndServicesArray", FillArrayByTabularSectionAtClient("ProductsAndServices")), ThisForm);
 	
 EndProcedure // MultipleFilterByProductsAndServicesClick()
+
+
+
+// Rise { Popov N 2016-05-25
+&AtClient
+Function RiseGetFormInterfaceClient() Export
+	Return RiseGetFormInterface();
+EndFunction
+
+&AtServer
+Function RiseGetFormInterface()
+	Return RiseTranslation.GetFormInterface(ThisForm);
+EndFunction
+// Rise } Popov N 2016-05-25

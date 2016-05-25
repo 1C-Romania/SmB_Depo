@@ -107,3 +107,17 @@ Procedure Pick(Command)
 	OpenForm("Catalog.CounterpartyPriceKind.Form.QuickChoiceForm", New Structure("Multiselect, ChoiceMode, CloseOnChoice", True, True, False), ThisForm);
 	
 EndProcedure //Pick()
+
+
+
+// Rise { Popov N 2016-05-25
+&AtClient
+Function RiseGetFormInterfaceClient() Export
+	Return RiseGetFormInterface();
+EndFunction
+
+&AtServer
+Function RiseGetFormInterface()
+	Return RiseTranslation.GetFormInterface(ThisForm);
+EndFunction
+// Rise } Popov N 2016-05-25

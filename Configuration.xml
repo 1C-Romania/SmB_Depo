@@ -521,6 +521,7 @@
 			<Language>Russian</Language>
 			<Language>Slovenian</Language>
 			<Language>Turkish</Language>
+			<Language>Русский</Language>
 			<Subsystem>Analysis</Subsystem>
 			<Subsystem>AttachedFilesService</Subsystem>
 			<Subsystem>CashAssets</Subsystem>
@@ -542,6 +543,7 @@
 			<Subsystem>SetupAndAdministration</Subsystem>
 			<Subsystem>SmallBusinessObjectVersioning</Subsystem>
 			<Subsystem>StandardSubsystems</Subsystem>
+			<Subsystem>RiseTranslation</Subsystem>
 			<StyleItem>AddedAttributeBackground</StyleItem>
 			<StyleItem>AmountReceivedColor</StyleItem>
 			<StyleItem>BackgroundRelatedDocuments</StyleItem>
@@ -1050,6 +1052,9 @@
 			<SessionParameter>UsedExchangePlans</SessionParameter>
 			<SessionParameter>UsedExchangeWithSiteNodes</SessionParameter>
 			<SessionParameter>VersionsDifferenceErrorOnReceivingData</SessionParameter>
+			<SessionParameter>RiseSourceLanguage</SessionParameter>
+			<SessionParameter>RiseTargetLanguage</SessionParameter>
+			<SessionParameter>RiseAdditionalLanguage</SessionParameter>
 			<Role>AddChangeAdditionalReportsAndDataProcessors</Role>
 			<Role>AddChangeBankAccounts</Role>
 			<Role>AddChangeBankSubsystem</Role>
@@ -1167,6 +1172,7 @@
 			<Role>UseUOSMonitor</Role>
 			<Role>ViewApplicationChangesDescription</Role>
 			<Role>ViewEventLogMonitor</Role>
+			<Role>RiseTranslation</Role>
 			<CommonTemplate>BarcodePrintingComponent</CommonTemplate>
 			<CommonTemplate>Dependencies</CommonTemplate>
 			<CommonTemplate>DescriptionFullDeclinationComponent</CommonTemplate>
@@ -1774,6 +1780,8 @@
 			<CommonModule>WorkWithCurrencyRatesOverridable</CommonModule>
 			<CommonModule>WorkWithCurrencyRatesServerCall</CommonModule>
 			<CommonModule>WorkWithScannerClient</CommonModule>
+			<CommonModule>RiseTranslation</CommonModule>
+			<CommonModule>RiseConnection</CommonModule>
 			<CommonAttribute>DataAreaAuxiliaryData</CommonAttribute>
 			<CommonAttribute>DataAreaBasicData</CommonAttribute>
 			<ExchangePlan>ExchangeRetailSmallBusiness</ExchangePlan>
@@ -2259,6 +2267,8 @@
 			<CommonCommand>UserInfo</CommonCommand>
 			<CommonCommand>WhatNewsPageInVideoVersion</CommonCommand>
 			<CommonCommand>WriteCertificatePassword</CommonCommand>
+			<CommonCommand>RiseCheckFormTranslation</CommonCommand>
+			<CommonCommand>RiseGetInterfaceTextsMXL</CommonCommand>
 			<CommandGroup>DataExchangeExecution</CommandGroup>
 			<CommandGroup>DataExchangeParameters</CommandGroup>
 			<CommandGroup>ED</CommandGroup>
@@ -2488,6 +2498,10 @@
 			<Constant>UseUsersGroups</Constant>
 			<Constant>VendorPaymentDueDate</Constant>
 			<Constant>VerifyDigitalSignaturesAtServer</Constant>
+			<Constant>RiseTranslatorConnectionString</Constant>
+			<Constant>RiseTranslatorUser</Constant>
+			<Constant>RiseTranslatorPassword</Constant>
+			<Constant>RiseInterfaceFileLanguage</Constant>
 			<CommonForm>AccessRights</CommonForm>
 			<CommonForm>AccessRightsSimplified</CommonForm>
 			<CommonForm>AccessToPersonalDataEventsRegistrationSettings</CommonForm>
@@ -2633,6 +2647,9 @@
 			<CommonForm>VendorsAdvancesAndDebtsPickForm</CommonForm>
 			<CommonForm>VolumesFileArchivePathSelection</CommonForm>
 			<CommonForm>WriteCertificatePassword</CommonForm>
+			<CommonForm>RiseTranslationChecking</CommonForm>
+			<CommonForm>RiseTranslationSettings</CommonForm>
+			<CommonForm>RiseGetInterfaceTextsMXL</CommonForm>
 			<Catalog>AccessGroups</Catalog>
 			<Catalog>AccessGroupsProfiles</Catalog>
 			<Catalog>AccrualAndDeductionKinds</Catalog>
@@ -3390,6 +3407,7 @@
 			<InformationRegister>WorkSchedulesManualChanges</InformationRegister>
 			<InformationRegister>WorkTimeStandards</InformationRegister>
 			<InformationRegister>WriteOffCostsCorrectionNodes</InformationRegister>
+			<InformationRegister>RiseTranslatorsSettings</InformationRegister>
 			<AccumulationRegister>AccountsPayable</AccumulationRegister>
 			<AccumulationRegister>AccountsReceivable</AccumulationRegister>
 			<AccumulationRegister>AccrualsAndDeductions</AccumulationRegister>

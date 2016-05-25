@@ -12,6 +12,11 @@ Procedure SessionParametersSetting(SessionParameterNames)
 	ServiceTechnology.PerformActionsAtSettingSessionParameters(SessionParameterNames);
 	// End ServiceTechnology
 	
+	// Rise { Popov N 2016-05-26
+	RiseTranslation.SessionParametersSetting();
+	// Rise } Popov N 2016-05-26
+
+	
 EndProcedure
 
 #EndRegion
