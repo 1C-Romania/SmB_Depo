@@ -15219,7 +15219,7 @@ Procedure ReadAccountInvoiceXDTO(ED, ParseTree, NewED, Error)
 		PaymentDocuments = "";
 		FirstItem = True;
 		For Each RowOfPayment IN ED.Document.PrInvoice.PrIND Do
-			PaymentDocuments = PaymentDocuments + ?(FirstItem,"",", No ") + RowOfPayment.NumberPRD + " from " + RowOfPayment.DatePRD;
+			PaymentDocuments = PaymentDocuments + ?(FirstItem,"",", No ") + RowOfPayment.NumberPRD + " dated " + RowOfPayment.DatePRD;
 			FirstItem = False;
 		EndDo;
 		AddObjectHeaderAttribute(NewED, "PaymentDocument", PaymentDocuments);
@@ -20328,7 +20328,7 @@ Procedure FillInHeaderAttributesCostCorrection(PrintInfo, Template, SpreadsheetD
 	TemplateArea.Parameters.Basis = 
 		?(ValueIsFilled(PrintInfo.BasisDescription), PrintInfo.BasisDescription, "")
 		+ ?(ValueIsFilled(PrintInfo.BasisNumber), " # " + PrintInfo.BasisNumber, "")
-		+ ?(ValueIsFilled(PrintInfo.BasisDate), " from " + Format(PrintInfo.BasisDate, "DLF=D"), "");
+		+ ?(ValueIsFilled(PrintInfo.BasisDate), " dated " + Format(PrintInfo.BasisDate, "DLF=D"), "");
 		
 	TemplateArea.Parameters.VendorPresentation = ElectronicDocumentsOverridable.CompaniesDescriptionFull(
 		PrintInfo.InfoAboutVendor,
@@ -20763,7 +20763,7 @@ Procedure FillHeaderAttributesTORG12(PrintInfo, Template, SpreadsheetDocument)
 	TemplateArea.Parameters.Basis = 
 		?(ValueIsFilled(PrintInfo.BasisDescription), PrintInfo.BasisDescription, "")
 		+ ?(ValueIsFilled(PrintInfo.BasisNumber), " # " + PrintInfo.BasisNumber, "")
-		+ ?(ValueIsFilled(PrintInfo.BasisDate), " from " + Format(PrintInfo.BasisDate, "DLF=D"), "");
+		+ ?(ValueIsFilled(PrintInfo.BasisDate), " dated " + Format(PrintInfo.BasisDate, "DLF=D"), "");
 	
 	TemplateArea.Parameters.CompanyPresentation = ElectronicDocumentsOverridable.CompaniesDescriptionFull(
 		PrintInfo.InfoAboutShipper,
@@ -21871,14 +21871,14 @@ Function GetInvoiceDataToPrint(ObjectString, ParseTree)
 	DocumentDate = GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Date");
 	DocumentNumber = GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Number");
 	
-	FillingDataHeader.Insert("Number", NStr(" en = 'Invoice No.'") + DocumentNumber +" "+ NStr("en = 'from'")
+	FillingDataHeader.Insert("Number", NStr(" en = 'Invoice #'") + DocumentNumber +" "+ NStr("en = 'dated'")
 		+" "+ Format(DocumentDate,"DLF=DD"));
 	
 	DateFixedLine = GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "DateOfCorrection");
 	CorrectionNumber = GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "CorrectionNumber");
 	
-	FillingDataHeader.Insert("CorrectionNumber", NStr(" en = 'Fix No.'")
-		+ ?(ValueIsFilled(CorrectionNumber), CorrectionNumber, "--") + " " + NStr("en = 'from'") + " "
+	FillingDataHeader.Insert("CorrectionNumber", NStr(" en = 'Fix #'")
+		+ ?(ValueIsFilled(CorrectionNumber), CorrectionNumber, "--") + " " + NStr("en = 'dated'") + " "
 		+ ?(ValueIsFilled(DateFixedLine), Format(DateFixedLine, "DLF=DD"), "--"));
 	
 	InfoAboutCounterparty = New Structure;
@@ -23635,7 +23635,7 @@ Procedure FillInTabularDocumentAcceptanceCertificate_ED(SpreadsheetDocument, Pri
 	// Display act header
 	TemplateArea = Template.GetArea("Title");
 	
-	HeaderText = NStr("en='Act No. %DocumentNumber% as of %DocumentDate%'");
+	HeaderText = NStr("en='Act # %DocumentNumber% dated %DocumentDate%'");
 	HeaderText = StrReplace(HeaderText, "%DocumentNumber%", PrintInfo.Header.Number);
 	HeaderText = StrReplace(HeaderText, "%DocumentDate%",  Format(PrintInfo.Header.Date, "DF=dd MMMM yyyy'"));
 	
@@ -23942,7 +23942,7 @@ Procedure FillTableDocumentAct501(SpreadsheetDocument, PrintInfo, ConsumerData)
 	// Display act header
 	TemplateArea = Template.GetArea("Header");
 	
-	CaptionPattern = NStr("en='Act No. %1 as of %2 year'");
+	CaptionPattern = NStr("en='Act # %1 dated %2 year'");
 	HeaderText = StringFunctionsClientServer.PlaceParametersIntoString(CaptionPattern, PrintInfo.Header.Number,
 		Format(PrintInfo.Header.Date, "DF=dd MMMM yyyy'"));
 	TemplateArea.Parameters.HeaderText = HeaderText;

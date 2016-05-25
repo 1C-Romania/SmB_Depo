@@ -123,7 +123,7 @@ Procedure GenerateCashOutflowPlanning(SpreadsheetDocument, ObjectsArray, PrintOb
 		
 		DocumentNumber = SmallBusinessServer.GetNumberForPrintingConsideringDocumentDate(DocumentData.DocumentDate, DocumentData.Number, DocumentData.Prefix);
 		DocumentDate = Format(DocumentData.DocumentDate, "DF=dd MMMM yyyy'");
-		Title = NStr("en ='Planning of the cash assets outflow No. '") + DocumentNumber + NStr("en =' from '") + DocumentDate;
+		Title = NStr("en ='Planning of the cash assets outflow # '") + DocumentNumber + NStr("en =' dated '") + DocumentDate;
 		FillStructureSection.Insert("Title", Title);
 		TemplateArea.Parameters.Fill(FillStructureSection);
 		SpreadsheetDocument.Put(TemplateArea);

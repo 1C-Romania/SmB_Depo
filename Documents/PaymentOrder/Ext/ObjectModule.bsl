@@ -25,7 +25,7 @@ Procedure FillPaymentDestination()
 		PaymentText = NStr("en='Payment against the invoice for payment No.%AccountNumber%'");
 		PaymentText = StrReplace(PaymentText, "%AccountNo%", TrimAll(String(BasisDocument.IncomingDocumentNumber)));
 		If ValueIsFilled(BasisDocument.IncomingDocumentDate) Then
-			PaymentText = PaymentText + " from " + TrimAll(String(Format(BasisDocument.IncomingDocumentDate, "DF=dd MMMM yyyy'"))) + " g.";
+			PaymentText = PaymentText + " dated " + TrimAll(String(Format(BasisDocument.IncomingDocumentDate, "DF=dd MMMM yyyy'"))) + " g.";
 		EndIf;
 	EndIf;
 	

@@ -566,64 +566,6 @@ a separate form that is opened by a special command.</v8:content>
 				</RadioButtonField>
 			</ChildItems>
 		</UsualGroup>
-		<UsualGroup name="GroupIntegrationWith1CBuhphone" id="1979">
-			<Title>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>1CBuhphone</v8:content>
-				</v8:item>
-			</Title>
-			<TitleTextColor>style:TitleColorSettingsGroup</TitleTextColor>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Usage settings of the 1C-Buhphone button</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Width>80</Width>
-			<Group>Horizontal</Group>
-			<Representation>NormalSeparation</Representation>
-			<ChildItemsWidth>Equal</ChildItemsWidth>
-			<ExtendedTooltip name="GroupIntegrationWith1CBuhphoneExtendedTooltip" id="1980"/>
-			<ChildItems>
-				<CheckBoxField name="IntegrationWith1CBuhphone" id="1983">
-					<DataPath>ConstantsSet.UseIntegrationWith1CBuhphone</DataPath>
-					<Title>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>Start 1C-Buhphone</v8:content>
-						</v8:item>
-					</Title>
-					<TitleLocation>Right</TitleLocation>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>Allow to start 1C-Buhphone to contact a support specialist.</v8:content>
-						</v8:item>
-					</ToolTip>
-					<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
-					<CheckBoxType>Auto</CheckBoxType>
-					<ContextMenu name="IntegrationWith1CBuhphoneContextMenu" id="1984"/>
-					<ExtendedTooltip name="IntegrationWith1CBuhphoneExtendedTooltip" id="1985"/>
-					<Events>
-						<Event name="OnChange">IntegrationWith1CBuhphoneOnChange</Event>
-					</Events>
-				</CheckBoxField>
-				<Button name="Setting1CBuhphon" id="1991">
-					<Type>Hyperlink</Type>
-					<CommandName>Form.Command.Setting1CBuhphon</CommandName>
-					<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
-					<ExtendedTooltip name="1CBuhfoneConfigurationExtendedTooltip" id="1992">
-						<Title formatted="false">
-							<v8:item>
-								<v8:lang>en</v8:lang>
-								<v8:content>1C-Buhphone launch settings on this computer.</v8:content>
-							</v8:item>
-						</Title>
-					</ExtendedTooltip>
-				</Button>
-			</ChildItems>
-		</UsualGroup>
 		<UsualGroup name="GroupParametersServerIBClient" id="1532">
 			<Title>
 				<v8:item>

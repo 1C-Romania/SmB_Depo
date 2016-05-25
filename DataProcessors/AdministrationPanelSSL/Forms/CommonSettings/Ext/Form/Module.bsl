@@ -78,13 +78,6 @@ EndProcedure
 
 #Region FormCommandsHandlers
 
-// StandardSubsystems.IntegrationWith1CBuhphone
-&AtClient
-Procedure Setting1CBuhphon(Command)
-	OpenForm("CommonForm.Setting1CBuhphon");
-EndProcedure
-// End StandardSubsystems.1CBuhfonIntegration
-
 // StandardSubsystems.ObjectVersioning
 &AtClient
 Procedure InformationRegisterSettingsObjectVersioning(Command)
@@ -141,13 +134,6 @@ Procedure UseSecurityProfiles(Command)
 	
 EndProcedure
 // End of StandardSubsystems BasicFunctionality
-
-// StandardSubsystems.IntegrationWith1CBuhphone
-&AtClient
-Procedure IntegrationWith1CBuhphoneOnChange(Item)
-	Attachable_OnAttributeChange(Item);
-EndProcedure
-// End StandardSubsystems.1CBuhfonIntegration
 
 #EndRegion
 

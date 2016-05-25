@@ -260,18 +260,16 @@
 							</ToolTip>
 							<ExtendedTooltip name="GroupTemplateEditingExtendedTooltip" id="163"/>
 							<ChildItems>
+								<Button name="ButtonGoToTemplatesManagement" id="209">
+									<Type>CommandBarButton</Type>
+									<CommandName>Form.Command.GoToTemplatesManagement</CommandName>
+									<ExtendedTooltip name="ButtonGoToTemplatesManagementExtendedTooltip" id="210"/>
+								</Button>
 								<Button name="ButtonChangeTemplate" id="138">
 									<Type>CommandBarButton</Type>
 									<OnlyInAllActions>false</OnlyInAllActions>
 									<CommandName>Form.Command.ChangeTemplate</CommandName>
 									<ExtendedTooltip name="ButtonChangeTemplateExtendedTooltip" id="164"/>
-								</Button>
-								<Button name="ButtonGoToTemplatesManagement" id="81">
-									<Type>CommandBarButton</Type>
-									<SkipOnInput>false</SkipOnInput>
-									<OnlyInAllActions>false</OnlyInAllActions>
-									<CommandName>Form.Command.GoToTemplatesManagement</CommandName>
-									<ExtendedTooltip name="ButtonGoToTemplatesManagementExtendedTooltip" id="165"/>
 								</Button>
 							</ChildItems>
 						</ButtonGroup>

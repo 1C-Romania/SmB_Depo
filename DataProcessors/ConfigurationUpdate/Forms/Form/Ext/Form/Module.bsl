@@ -1962,9 +1962,9 @@ Function GenerateUpdateScriptFiles(Val InteractiveMode)
 	
 	TemplateNames = "AdditFileOfUpdateOfConfiguration";
 	If InteractiveMode Then
-		TemplateNames = TemplateNames + ",ConfigurationUpdateSplashScreen";
+		TemplateNames = TemplateNames + ",SplashOfConfigurationUpdate";
 	Else
-		TemplateNames = TemplateNames + ",NoninteractiveConfigurationUpdate";
+		TemplateNames = TemplateNames + ",OfflineConfigurationUpdate";
 	EndIf;
 	TemplateTexts = GetTextsOfTemplates(TemplateNames, ParametersStructure, ApplicationParameters["StandardSubsystems.MessagesForEventLogMonitor"]);
 	

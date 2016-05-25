@@ -521,7 +521,7 @@ Procedure AfterSessionEnd(Result, AdditionalParameters) Export
 			
 			NotificationText = NStr("en = 'The %1 session is completed.'");
 			NotificationText = StringFunctionsClientServer.PlaceParametersIntoString(NotificationText,
-			AdditionalParameters.SessionNumber);
+			AdditionalParameters.SessionNumbers);
 			ShowUserNotification(NStr("en = 'Terminate session'"),, NotificationText);
 			
 		EndIf;

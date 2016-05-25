@@ -289,7 +289,7 @@ Procedure CheckFileBaseAdministrationParameters()
 		
 		Result = CommonUseClientServer.InstallOuterDatabaseJoin(ConnectionParameters);
 		
-		If Result.Join = Undefined Then
+		If Result.Connection = Undefined Then
 			
 			Raise Result.ErrorShortInfo;
 			

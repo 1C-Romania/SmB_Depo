@@ -1,4 +1,4 @@
-﻿#Region ParameterArea
+﻿#Area ParameterArea
 // Update procedure parameters
 var now = new Date();
 var outFileName = "log" + now.valueOf() + ".txt"; // Path to log-file
@@ -20,9 +20,9 @@ var useComConnector = [UseCOMConnector];  // flag of using the COM connection fo
 var startEnterprise = [SessionLaunchAfterUpdate]; // perform enterprise run after update
 var makeCompression = [PerformIBTableCompression];  // run infobase table compression
 var tempLogFileName = "templog.txt";
-#EndRegion
+#EndArea
 
-#Region AreaUpdateConfiguration
+#Area AreaUpdateConfiguration
 // Initialization
 var oFileSystemObject = new ActiveXObject("Scripting.FileSystemObject");
 
@@ -603,12 +603,4 @@ function runEnterprise() {
         return runApp(v8client, format('ENTERPRISE {0} {1}', infoBasePath, infoBaseAuthorization), SW_SHOW, false);
     return 0;
 }
-#EndRegion
-
-function runEnterprise() {
-    if (startEnterprise)
-        return runApp(v8client, format('ENTERPRISE {0} {1}', infoBasePath, infoBaseAuthorization), SW_SHOW, false);
-    return 0;
-}
-#EndRegion
-
+#EndArea

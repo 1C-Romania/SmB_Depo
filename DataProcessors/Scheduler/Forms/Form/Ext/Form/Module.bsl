@@ -446,7 +446,7 @@ Procedure UpdateScheduleChart()
 		
 		DotValue = NStr("en='" + Format(Selection.Start, "DF=""HH:mm""") + " - "
 							+ Format(Selection.Finish, "DF=""HH:mm""") + " (# "
-							+ ObjectPrefixationClientServer.GetNumberForPrinting(Selection.Number, True, True) + " from " 
+							+ ObjectPrefixationClientServer.GetNumberForPrinting(Selection.Number, True, True) + " dated " 
 							+ Format(Selection.Date, "DF=dd.MM.yy") + ") '");
 		
 		Point = GanttChartPlanLine.SetPoint(DotValue);
@@ -2211,7 +2211,7 @@ Procedure RefreshChartOfResources()
 			Point = GanttChartResourcesImport.SetPoint(DotValue, SelectionResource.Resource);
 			Point.Text = NStr("en='" + Format(Selection.Start, "DF=""HH:mm""") + " - "
 							+ Format(Selection.Finish, "DF=""HH:mm""") + " (# "
-							+ ObjectPrefixationClientServer.GetNumberForPrinting(Selection.Number, True, True) + " from " 
+							+ ObjectPrefixationClientServer.GetNumberForPrinting(Selection.Number, True, True) + " dated " 
 							+ Format(Selection.Date, "DF=dd.MM.yy") + ") '");
 			Point.Details = Selection.Ref;
 			

@@ -231,15 +231,6 @@ EndProcedure // ImportDataFromService()
 // Procedure - command handler DataImportFromTM103
 //
 &AtClient
-Procedure DataImportFromTM103(Command)
-	
-	OpenForm("DataProcessor.DataImportFromTM103.Form");
-	
-EndProcedure // DataImportFromTM103()
-
-// Procedure - command handler DataImportFromTM103
-//
-&AtClient
 Procedure DataImportFromExternalSources(Command)
 	
 	OpenForm("DataProcessor.DataImportFromExternalSources.Form.ShortDescription");

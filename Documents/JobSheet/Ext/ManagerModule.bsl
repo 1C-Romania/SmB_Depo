@@ -501,7 +501,7 @@ Function PrintForm(ObjectsArray, PrintObjects)
 		RegionFooter		= Template.GetArea("Footer");
 		
 		RegHeader.Parameters.Fill(Header);
-		RegHeader.Parameters.DocumentTitle = "Job sheet No. " + Header.Number + " from " + Format(Header.DocumentDate, "DLF=DD");
+		RegHeader.Parameters.DocumentTitle = "Job sheet # " + Header.Number + " dated " + Format(Header.DocumentDate, "DLF=DD");
 		SpreadsheetDocument.Put(RegHeader);
 		
 		OblTableHeader.Parameters.Cost = "Cost (" + Header.DocumentCurrency + ")";

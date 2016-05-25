@@ -566,18 +566,18 @@ AS T1 ON T.Ref = T1.Ref",
 // Modifier - changes template.
 // 1-st modifier - the NotRestrictAccessToGroups
 // row directs to unconditionally select groups of the hierarchical log. 
-// Other modifiers in this version of the template are Не expected.
+// Other modifiers in this version of the template are НЕ expected.
 // K(n) - Access kind - name of access kind, for example, "Companies" It's a good idea to specify
 // several names for fields of a composite
 // type for productivity increase, for example, Companies,PrivateIndividualsGroups, by specifying several parameters blocks with the same field name.
 // You can use special kinds of
 // access Condition, RightsSettings,ReadRight, ChangeRight only separately.
-// When K(n) = Condition (Или ""), then P(n) contains a condition row on
+// When K(n) = Condition (ИЛИ ""), then P(n) contains a condition row on
 // language of query,
 // for example, T.Author = &amp;AuthorizedUser, VALUETYPE (T.Owner) = TYPE (Catalog.Organization), where T - current table alias.
 // When K(n) = ReadRight
-// Или ChangeRight checking if you have rights for value table T.P(n) is performed.
-// F(n) - Field of verified value, except of K(n) case = Condition (Или "").
+// ИЛИ ChangeRight checking if you have rights for value table T.P(n) is performed.
+// F(n) - Field of verified value, except of K(n) case = Condition (ИЛИ "").
 // Note: you can increase the maximum quantity of simultaneously checked fields
 // values by changing the template; but you should also specify all parameters of the pattern, namely specify empty rows, when the quantity of fields is less than maximum.
 // can by editing the template but will specify all Required Parameters of the template ie to specify empty strings When quantity fields Less maximum.
@@ -589,10 +589,10 @@ AS T1 ON T.Ref = T1.Ref",
 // "Vendors","Counterparty", "","", ...)
 
 // Verification of the Right parameter.
-#If Не ("#Parameter(2)" = "Read" Или "#Parameter(2)" = "Insert" Или
- "#Parameter(2)" = "Update" Или "#Parameter(2)" = "Delete" Или "#Parameter(2)" = "")
- Или #CurrentAccessRightName &lt;&gt; "Read" И "#Parameter(2)" = "Read"
- Или #CurrentAccessRightName = "Read" И "#Parameter(2)" &lt;&gt; "Read" И "#Parameter(2)" &lt;&gt; "" #Then
+#If НЕ ("#Parameter(2)" = "Read" ИЛИ "#Parameter(2)" = "Insert" ИЛИ
+ "#Parameter(2)" = "Update" ИЛИ "#Parameter(2)" = "Delete" ИЛИ "#Parameter(2)" = "")
+ ИЛИ #CurrentAccessRightName &lt;&gt; "Read" И "#Parameter(2)" = "Read"
+ ИЛИ #CurrentAccessRightName = "Read" И "#Parameter(2)" &lt;&gt; "Read" И "#Parameter(2)" &lt;&gt; "" #Then
  // When the parameter is set incorrectly, a row is inserted to create an error of access restriction build.
  InvalidRight: #Parameter(2)
 #EndIf
@@ -604,7 +604,7 @@ AS T1 ON T.Ref = T1.Ref",
 #EndIf
 
 // Verification of the Modifier parameter.
-#If Не ("#Parameter(3)" = "DontLimitAccessToGroups" Или "#Parameter(3)" = "") #Then
+#If НЕ ("#Parameter(3)" = "DontLimitAccessToGroups" ИЛИ "#Parameter(3)" = "") #Then
 	// When the parameter is set incorrectly, a row is inserted to create an error of access restriction build.
 	InvalidModifier: #Parameter(3)
 #EndIf
@@ -612,78 +612,78 @@ AS T1 ON T.Ref = T1.Ref",
 // General checking of access restriction on record level
 // И checking of usage at least of one restriction from listed access kinds.
 #If &amp;LimitAccessOnRecordsLevel
- И Не (истина
+ И НЕ (истина
  И ("#Parameter(4)" = "" И "#Parameter(5)" = ""
- Или &amp;AccessKindsWithDisabledUse = "All"
- И Не StrContains(",Condition,,RightsSettings,Object, ,ReadRight,ChangeRight,", ",#Parameter(4),")
- Или StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(4),"))
+ ИЛИ &amp;AccessKindsWithDisabledUse = "All"
+ И НЕ StrContains(",Condition,,RightsSettings,Object, ,ReadRight,ChangeRight,", ",#Parameter(4),")
+ ИЛИ StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(4),"))
  И ("#Parameter(6)" = "" И "#Parameter(7)" = ""
- Или &amp;AccessKindsWithDisabledUse = "All"
- И Не StrContains(",Condition,,RightsSettings,Object, ,ReadRight,ChangeRight,", ",#Parameter(6),")
- Или StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(6),"))
+ ИЛИ &amp;AccessKindsWithDisabledUse = "All"
+ И НЕ StrContains(",Condition,,RightsSettings,Object, ,ReadRight,ChangeRight,", ",#Parameter(6),")
+ ИЛИ StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(6),"))
  И ("#Parameter(8)" = "" И "#Parameter(9)" = ""
- Или &amp;AccessKindsWithDisabledUse = "All"
- И Не StrContains(",Condition,,RightsSettings,Object, ,ReadRight,ChangeRight,", ",#Parameter(8),")
- Или StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(8),"))
+ ИЛИ &amp;AccessKindsWithDisabledUse = "All"
+ И НЕ StrContains(",Condition,,RightsSettings,Object, ,ReadRight,ChangeRight,", ",#Parameter(8),")
+ ИЛИ StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(8),"))
  И ("#Parameter(10)" = "" И "#Parameter(11)" = ""
- Или &amp;AccessKindsWithDisabledUse = "All"
- И Не StrContains(",Condition,,RightsSettings,Object, ,ReadRight,ChangeRight,", ",#Parameter(10),")
- Или StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(10),"))
+ ИЛИ &amp;AccessKindsWithDisabledUse = "All"
+ И НЕ StrContains(",Condition,,RightsSettings,Object, ,ReadRight,ChangeRight,", ",#Parameter(10),")
+ ИЛИ StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(10),"))
  И ("#Parameter(12)" = "" И "#Parameter(13)" = ""
- Или &amp;AccessKindsWithDisabledUse = "All"
- И Не StrContains(",Condition,,RightsSettings,Object, ,ReadRight,ChangeRight,", ",#Parameter(12),")
- Или StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(12),"))
+ ИЛИ &amp;AccessKindsWithDisabledUse = "All"
+ И НЕ StrContains(",Condition,,RightsSettings,Object, ,ReadRight,ChangeRight,", ",#Parameter(12),")
+ ИЛИ StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(12),"))
  И ("#Parameter(14)" = "" И "#Parameter(15)" = ""
- Или &amp;AccessKindsWithDisabledUse = "All"
- И Не StrContains(",Condition,,RightsSettings,Object, ,ReadRight,ChangeRight,", ",#Parameter(14),")
- Или StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(14),"))
+ ИЛИ &amp;AccessKindsWithDisabledUse = "All"
+ И НЕ StrContains(",Condition,,RightsSettings,Object, ,ReadRight,ChangeRight,", ",#Parameter(14),")
+ ИЛИ StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(14),"))
  И ("#Parameter(16)" = "" И "#Parameter(17)" = ""
- Или &amp;AccessKindsWithDisabledUse = "All"
- И Не StrContains(",Condition,,RightsSettings,Object, ,ReadRight,ChangeRight,", ",#Parameter(16),")
- Или StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(16),"))
+ ИЛИ &amp;AccessKindsWithDisabledUse = "All"
+ И НЕ StrContains(",Condition,,RightsSettings,Object, ,ReadRight,ChangeRight,", ",#Parameter(16),")
+ ИЛИ StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(16),"))
  И ("#Parameter(18)" = "" И "#Parameter(19)" = ""
- Или &amp;AccessKindsWithDisabledUse = "All"
- И Не StrContains(",Condition,,RightsSettings,Object, ,ReadRight,ChangeRight,", ",#Parameter(18),")
- Или StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(18),"))
+ ИЛИ &amp;AccessKindsWithDisabledUse = "All"
+ И НЕ StrContains(",Condition,,RightsSettings,Object, ,ReadRight,ChangeRight,", ",#Parameter(18),")
+ ИЛИ StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(18),"))
  И ("#Parameter(20)" = "" И "#Parameter(21)" = ""
- Или &amp;AccessKindsWithDisabledUse = "All"
- И Не StrContains(",Condition,,RightsSettings,Object, ,ReadRight,ChangeRight,", ",#Parameter(20),")
- Или StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(20),"))
+ ИЛИ &amp;AccessKindsWithDisabledUse = "All"
+ И НЕ StrContains(",Condition,,RightsSettings,Object, ,ReadRight,ChangeRight,", ",#Parameter(20),")
+ ИЛИ StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(20),"))
  И ("#Parameter(22)" = "" И "#Parameter(23)" = ""
- Или &amp;AccessKindsWithDisabledUse = "All"
- И Не StrContains(",Condition,,RightsSettings,Object, ,ReadRight,ChangeRight,", ",#Parameter(22),")
- Или StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(22),"))
+ ИЛИ &amp;AccessKindsWithDisabledUse = "All"
+ И НЕ StrContains(",Condition,,RightsSettings,Object, ,ReadRight,ChangeRight,", ",#Parameter(22),")
+ ИЛИ StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(22),"))
  И ("#Parameter(24)" = "" И "#Parameter(25)" = ""
- Или &amp;AccessKindsWithDisabledUse = "All"
- И Не StrContains(",Condition,,RightsSettings,Object, ,ReadRight,ChangeRight,", ",#Parameter(24),")
- Или StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(24),"))
+ ИЛИ &amp;AccessKindsWithDisabledUse = "All"
+ И НЕ StrContains(",Condition,,RightsSettings,Object, ,ReadRight,ChangeRight,", ",#Parameter(24),")
+ ИЛИ StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(24),"))
  И ("#Parameter(26)" = "" И "#Parameter(27)" = ""
- Или &amp;AccessKindsWithDisabledUse = "All"
- И Не StrContains(",Condition,,RightsSettings,Object, ,ReadRight,ChangeRight,", ",#Parameter(26),")
- Или StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(26),"))
+ ИЛИ &amp;AccessKindsWithDisabledUse = "All"
+ И НЕ StrContains(",Condition,,RightsSettings,Object, ,ReadRight,ChangeRight,", ",#Parameter(26),")
+ ИЛИ StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(26),"))
  И ("#Parameter(28)" = "" И "#Parameter(29)" = ""
- Или &amp;AccessKindsWithDisabledUse = "All"
- И Не StrContains(",Condition,,RightsSettings,Object, ,ReadRight,ChangeRight,", ",#Parameter(28),")
- Или StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(28),"))
+ ИЛИ &amp;AccessKindsWithDisabledUse = "All"
+ И НЕ StrContains(",Condition,,RightsSettings,Object, ,ReadRight,ChangeRight,", ",#Parameter(28),")
+ ИЛИ StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(28),"))
  И ("#Parameter(30)" = "" И "#Parameter(31)" = ""
- Или &amp;AccessKindsWithDisabledUse = "All"
- И Не StrContains(",Condition,,RightsSettings,Object, ,ReadRight,ChangeRight,", ",#Parameter(30),")
- Или StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(30),"))
+ ИЛИ &amp;AccessKindsWithDisabledUse = "All"
+ И НЕ StrContains(",Condition,,RightsSettings,Object, ,ReadRight,ChangeRight,", ",#Parameter(30),")
+ ИЛИ StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(30),"))
  И ("#Parameter(32)" = "" И "#Parameter(33)" = ""
- Или &amp;AccessKindsWithDisabledUse = "All"
- И Не StrContains(",Condition,,RightsSettings,Object, ,ReadRight,ChangeRight,", ",#Parameter(32),")
- Или StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(32),"))
+ ИЛИ &amp;AccessKindsWithDisabledUse = "All"
+ И НЕ StrContains(",Condition,,RightsSettings,Object, ,ReadRight,ChangeRight,", ",#Parameter(32),")
+ ИЛИ StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(32),"))
  И ("#Parameter(34)" = "" И "#Parameter(35)" = ""
- Или &amp;AccessKindsWithDisabledUse = "All"
- И Не StrContains(",Condition,,RightsSettings,Object, ,ReadRight,ChangeRight,", ",#Parameter(34),")
- Или StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(34),"))
+ ИЛИ &amp;AccessKindsWithDisabledUse = "All"
+ И НЕ StrContains(",Condition,,RightsSettings,Object, ,ReadRight,ChangeRight,", ",#Parameter(34),")
+ ИЛИ StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(34),"))
  ) #Then
 
 T WHERE // T - alias of the current table (selected short to reduce the quantity of characters in the parameter text - conditions on language of requests).
 
 // Unconditionally select groups in the hierarchical metadata object (if needed).
 #If "#Parameter(3)" = "DontLimitAccessToGroups" #Then
-	T.IsFolder Или
+	T.IsFolder ИЛИ
 #EndIf
 
 истина In
@@ -694,7 +694,7 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 		Catalog.MetadataObjectIDs AS PropertiesCurrentTable
 		INNER JOIN Catalog.AccessGroups AS AccessGroups
 		ON
-			 PropertiesCurrentTable.DescriptionFull = "#Parameter(1)"
+			 PropertiesCurrentTable.FullName = "#Parameter(1)"
 			И истина In
 			 (
 				SELECT TOP 1 истина
@@ -703,7 +703,7 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 					WHERE
 						 AccessGroupsTables.Table = PropertiesCurrentTable.Ref
 						И AccessGroupsTables.AccessGroup = AccessGroups.Ref
-					#If Не #CurrentAccessRightName = "Read" #Then
+					#If НЕ #CurrentAccessRightName = "Read" #Then
 						И AccessGroupsTables.Update
 					#EndIf
 			 )
@@ -722,10 +722,10 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
  ( // Search values of specified fields in the allowed access groups values (of users).
 
 //// Value verification of parameters group field 1.
-#If "#Parameter(4)" = "Condition" Или "#Parameter(4)" = "" #Then
-	// When the Condition access kind name (Или ""), then instead of field name condition is specified.
+#If "#Parameter(4)" = "Condition" ИЛИ "#Parameter(4)" = "" #Then
+	// When the Condition access kind name (ИЛИ ""), then instead of field name condition is specified.
 	( #Parameter(5) )
-#ElseIf "#Parameter(4)" = "ReadRight" Или "#Parameter(4)" = "EditRight" #Then
+#ElseIf "#Parameter(4)" = "ReadRight" ИЛИ "#Parameter(4)" = "EditRight" #Then
 	 T.#Parameter(5) &lt;&gt; НЕОПРЕДЕЛЕНО
 	И истина In
 	 (	// Verification of user's right for the Values table set in the field.
@@ -734,14 +734,14 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 		WHERE
 			 AccessGroupTablesRightCheck.AccessGroup = AccessGroups.Ref
 			И VALUETYPE(AccessGroupTablesRightCheck.TableType) = VALUETYPE(T.#Parameter(5))
-		#If Не "#Parameter(4)" = "ReadRight" #Then
+		#If НЕ "#Parameter(4)" = "ReadRight" #Then
 			И AccessGroupTablesRightCheck.Update
 		#EndIf
 	 )
 #ElseIf "#Parameter(4)" = "RightSettings" #Then
 	
 	 (
-		истина IN // Verifying that right is allowed for user Или a user group.
+		истина IN // Verifying that right is allowed for user ИЛИ a user group.
 			(
 			SELECT TOP 1 истина
 			FROM InformationRegister.ObjectRightsSettings AS RightSettings
@@ -764,7 +764,7 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 					 UsersGroupsContents.User = &amp;AuthorizedUser
 					И UsersGroupsContents.UsersGroup = RightSettings.User
 			)
-		 И Не false IN // Verifying that right is Не allowed for user Или a user group.
+		 И НЕ false IN // Verifying that right is НЕ allowed for user ИЛИ a user group.
 			(
 			SELECT TOP 1 false
 			FROM InformationRegister.ObjectRightsSettings AS RightSettings
@@ -788,24 +788,24 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 					И UsersGroupsContents.UsersGroup = RightSettings.User
 			)
 	 )
-#ElseIf Не StrContains(&amp;AllAccessKindsExceptSpecial, ",#Parameter(4),") #Then
+#ElseIf НЕ StrContains(&amp;AllAccessKindsExceptSpecial, ",#Parameter(4),") #Then
 	// When the parameter is set incorrectly, a row is inserted to create an error of access restriction build.
 	#If StrContains("#Parameter(4)", ",") #Then
-		InvalidAccessKind: "#Parameter(4)" - "The list of access type names is Не found"
+		InvalidAccessKind: "#Parameter(4)" - "The list of access type names is НЕ found"
 	#Else
-		InvalidAccessKind: "#Parameter(4)" - "Access type name is Не found"
+		InvalidAccessKind: "#Parameter(4)" - "Access type name is НЕ found"
 	#EndIf
 #ElseIf &amp;AccessKindsWithDisabledUse &lt;&gt; "All"
- И Не StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(4),") #Then
+ И НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(4),") #Then
 	
 	 (
 			ISNULL(T.#Parameter(5), НЕОПРЕДЕЛЕНО) &lt;&gt; НЕОПРЕДЕЛЕНО
 			И
-		#If (Не StrContains(&amp;AccessKindsWithDisabledUse, ",Users,") И StrContains(",#Parameter(4),", ",Users,"))
-		 Или (Не StrContains(&amp;AccessKindsWithDisabledUse, ",ExternalUsers,") И StrContains(",#Parameter(4),", ",ExternalUsers,")) #Then
-			Не
+		#If (НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",Users,") И StrContains(",#Parameter(4),", ",Users,"))
+		 ИЛИ (НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",ExternalUsers,") И StrContains(",#Parameter(4),", ",ExternalUsers,")) #Then
+			НЕ
 			(
-			Не истина In
+			НЕ истина In
 				(
 				SELECT TOP 1 истина
 				FROM InformationRegister.AccessValuesGroups AS AccessValuesGroups
@@ -813,7 +813,7 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 					 AccessValuesGroups.AccessValue = T.#Parameter(5)
 					И AccessValuesGroups.AccessValuesGroup = &amp;AuthorizedUser
 				)
-			И Не
+			И НЕ
 		#Else
 			(
 		#EndIf
@@ -880,11 +880,11 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 
 //// Value verification of parameters group field 2.
 #If "#Parameter(6)" = "" И "#Parameter(7)" = "" #Then
-	// Parameters group is Не used.
-#ElseIf "#Parameter(6)" = "Condition" Или "#Parameter(6)" = "" #Then
-	// When the Condition access kind name (Или ""), then instead of field name condition is specified.
+	// Parameters group is НЕ used.
+#ElseIf "#Parameter(6)" = "Condition" ИЛИ "#Parameter(6)" = "" #Then
+	// When the Condition access kind name (ИЛИ ""), then instead of field name condition is specified.
 	И ( #Parameter(7) )
-#ElseIf "#Parameter(6)" = "ReadRight" Или "#Parameter(6)" = "EditRight" #Then
+#ElseIf "#Parameter(6)" = "ReadRight" ИЛИ "#Parameter(6)" = "EditRight" #Then
 	И T.#Parameter(7) &lt;&gt; НЕОПРЕДЕЛЕНО
 	И истина In
 	 (	// Verification of user's right for the Values table set in the field.
@@ -893,14 +893,14 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 		WHERE
 			 AccessGroupTablesRightCheck.AccessGroup = AccessGroups.Ref
 			И VALUETYPE(AccessGroupTablesRightCheck.TableType) = VALUETYPE(T.#Parameter(7))
-		#If Не "#Parameter(6)" = "ReadRight" #Then
+		#If НЕ "#Parameter(6)" = "ReadRight" #Then
 			И AccessGroupTablesRightCheck.Update
 		#EndIf
 	 )
 #ElseIf "#Parameter(6)" = "RightSettings" #Then
 	И
 	 (
-		истина IN // Verifying that right is allowed for user Или a user group.
+		истина IN // Verifying that right is allowed for user ИЛИ a user group.
 			(
 			SELECT TOP 1 истина
 			FROM InformationRegister.ObjectRightsSettings AS RightSettings
@@ -923,7 +923,7 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 					 UsersGroupsContents.User = &amp;AuthorizedUser
 					И UsersGroupsContents.UsersGroup = RightSettings.User
 			)
-		 И Не false IN // Verifying that right is Не allowed for user Или a user group.
+		 И НЕ false IN // Verifying that right is НЕ allowed for user ИЛИ a user group.
 			(
 			SELECT TOP 1 false
 			FROM InformationRegister.ObjectRightsSettings AS RightSettings
@@ -947,24 +947,24 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 					И UsersGroupsContents.UsersGroup = RightSettings.User
 			)
 	 )
-#ElseIf Не StrContains(&amp;AllAccessKindsExceptSpecial, ",#Parameter(6),") #Then
+#ElseIf НЕ StrContains(&amp;AllAccessKindsExceptSpecial, ",#Parameter(6),") #Then
 	// When the parameter is set incorrectly, a row is inserted to create an error of access restriction build.
 	#If StrContains("#Parameter(6)", ",") #Then
-		InvalidAccessKind: "#Parameter(6)" - "The list of access type names is Не found"
+		InvalidAccessKind: "#Parameter(6)" - "The list of access type names is НЕ found"
 	#Else
-		InvalidAccessKind: "#Parameter(6)" - "Access type name is Не found"
+		InvalidAccessKind: "#Parameter(6)" - "Access type name is НЕ found"
 	#EndIf
 #ElseIf &amp;AccessKindsWithDisabledUse &lt;&gt; "All"
- И Не StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(6),") #Then
+ И НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(6),") #Then
 	И
 	 (
 			ISNULL(T.#Parameter(7), НЕОПРЕДЕЛЕНО) &lt;&gt; НЕОПРЕДЕЛЕНО
 			И
-		#If (Не StrContains(&amp;AccessKindsWithDisabledUse, ",Users,") И StrContains(",#Parameter(6),", ",Users,"))
-		 Или (Не StrContains(&amp;AccessKindsWithDisabledUse, ",ExternalUsers,") И StrContains(",#Parameter(6),", ",ExternalUsers,")) #Then
-			Не
+		#If (НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",Users,") И StrContains(",#Parameter(6),", ",Users,"))
+		 ИЛИ (НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",ExternalUsers,") И StrContains(",#Parameter(6),", ",ExternalUsers,")) #Then
+			НЕ
 			(
-			Не истина In
+			НЕ истина In
 				(
 				SELECT TOP 1 истина
 				FROM InformationRegister.AccessValuesGroups AS AccessValuesGroups
@@ -972,7 +972,7 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 					 AccessValuesGroups.AccessValue = T.#Parameter(7)
 					И AccessValuesGroups.AccessValuesGroup = &amp;AuthorizedUser
 				)
-			И Не
+			И НЕ
 		#Else
 			(
 		#EndIf
@@ -1037,11 +1037,11 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 
 //// Value verification of parameters group field 3.
 #If "#Parameter(8)" = "" И "#Parameter(9)" = "" #Then
-	// Parameters group is Не used.
-#ElseIf "#Parameter(8)" = "Condition" Или "#Parameter(8)" = "" #Then
-	// When the Condition access kind name (Или ""), then instead of field name condition is specified.
+	// Parameters group is НЕ used.
+#ElseIf "#Parameter(8)" = "Condition" ИЛИ "#Parameter(8)" = "" #Then
+	// When the Condition access kind name (ИЛИ ""), then instead of field name condition is specified.
 	И ( #Parameter(9) )
-#ElseIf "#Parameter(8)" = "ReadRight" Или "#Parameter(8)" = "EditRight" #Then
+#ElseIf "#Parameter(8)" = "ReadRight" ИЛИ "#Parameter(8)" = "EditRight" #Then
 	И T.#Parameter(9) &lt;&gt; НЕОПРЕДЕЛЕНО
 	И истина In
 	 (	// Verification of user's right for the Values table set in the field.
@@ -1050,14 +1050,14 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 		WHERE
 			 AccessGroupTablesRightCheck.AccessGroup = AccessGroups.Ref
 			И VALUETYPE(AccessGroupTablesRightCheck.TableType) = VALUETYPE(T.#Parameter(9))
-		#If Не "#Parameter(8)" = "ReadRight" #Then
+		#If НЕ "#Parameter(8)" = "ReadRight" #Then
 			И AccessGroupTablesRightCheck.Update
 		#EndIf
 	 )
 #ElseIf "#Parameter(8)" = "RightSettings" #Then
 	И
 	 (
-		истина IN // Verifying that right is allowed for user Или a user group.
+		истина IN // Verifying that right is allowed for user ИЛИ a user group.
 			(
 			SELECT TOP 1 истина
 			FROM InformationRegister.ObjectRightsSettings AS RightSettings
@@ -1080,7 +1080,7 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 					 UsersGroupsContents.User = &amp;AuthorizedUser
 					И UsersGroupsContents.UsersGroup = RightSettings.User
 			)
-		 И Не false IN // Verifying that right is Не allowed for user Или a user group.
+		 И НЕ false IN // Verifying that right is НЕ allowed for user ИЛИ a user group.
 			(
 			SELECT TOP 1 false
 			FROM InformationRegister.ObjectRightsSettings AS RightSettings
@@ -1104,24 +1104,24 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 					И UsersGroupsContents.UsersGroup = RightSettings.User
 			)
 	 )
-#ElseIf Не StrContains(&amp;AllAccessKindsExceptSpecial, ",#Parameter(8),") #Then
+#ElseIf НЕ StrContains(&amp;AllAccessKindsExceptSpecial, ",#Parameter(8),") #Then
 	// When the parameter is set incorrectly, a row is inserted to create an error of access restriction build.
 	#If StrContains("#Parameter(8)", ",") #Then
-		InvalidAccessKind: "#Parameter(8)" - "The list of access type names is Не found"
+		InvalidAccessKind: "#Parameter(8)" - "The list of access type names is НЕ found"
 	#Else
-		InvalidAccessKind: "#Parameter(8)" - "Access type name is Не found"
+		InvalidAccessKind: "#Parameter(8)" - "Access type name is НЕ found"
 	#EndIf
 #ElseIf &amp;AccessKindsWithDisabledUse &lt;&gt; "All"
- И Не StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(8),") #Then
+ И НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(8),") #Then
 	И
 	 (
 			ISNULL(T.#Parameter(9), НЕОПРЕДЕЛЕНО) &lt;&gt; НЕОПРЕДЕЛЕНО
 			И
-		#If (Не StrContains(&amp;AccessKindsWithDisabledUse, ",Users,") И StrContains(",#Parameter(8),", ",Users,"))
-		 Или (Не StrContains(&amp;AccessKindsWithDisabledUse, ",ExternalUsers,") И StrContains(",#Parameter(8),", ",ExternalUsers,")) #Then
-			Не
+		#If (НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",Users,") И StrContains(",#Parameter(8),", ",Users,"))
+		 ИЛИ (НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",ExternalUsers,") И StrContains(",#Parameter(8),", ",ExternalUsers,")) #Then
+			НЕ
 			(
-			Не истина In
+			НЕ истина In
 				(
 				SELECT TOP 1 истина
 				FROM InformationRegister.AccessValuesGroups AS AccessValuesGroups
@@ -1129,7 +1129,7 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 					 AccessValuesGroups.AccessValue = T.#Parameter(9)
 					И AccessValuesGroups.AccessValuesGroup = &amp;AuthorizedUser
 				)
-			И Не
+			И НЕ
 		#Else
 			(
 		#EndIf
@@ -1194,11 +1194,11 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 
 //// Value verification of parameters group field 4.
 #If "#Parameter(10)" = "" И "#Parameter(11)" = "" #Then
-	// Parameters group is Не used.
-#ElseIf "#Parameter(10)" = "Condition" Или "#Parameter(10)" = "" #Then
-	// When the Condition access kind name (Или ""), then instead of field name condition is specified.
+	// Parameters group is НЕ used.
+#ElseIf "#Parameter(10)" = "Condition" ИЛИ "#Parameter(10)" = "" #Then
+	// When the Condition access kind name (ИЛИ ""), then instead of field name condition is specified.
 	И ( #Parameter(11) )
-#ElseIf "#Parameter(10)" = "ReadRight" Или "#Parameter(10)" = "EditRight" #Then
+#ElseIf "#Parameter(10)" = "ReadRight" ИЛИ "#Parameter(10)" = "EditRight" #Then
 	И T.#Parameter(11) &lt;&gt; НЕОПРЕДЕЛЕНО
 	И истина In
 	 (	// Verification of user's right for the Values table set in the field.
@@ -1207,14 +1207,14 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 		WHERE
 			 AccessGroupTablesRightCheck.AccessGroup = AccessGroups.Ref
 			И VALUETYPE(AccessGroupTablesRightCheck.TableType) = VALUETYPE(T.#Parameter(11))
-		#If Не "#Parameter(10)" = "ReadRight" #Then
+		#If НЕ "#Parameter(10)" = "ReadRight" #Then
 			И AccessGroupTablesRightCheck.Update
 		#EndIf
 	 )
 #ElseIf "#Parameter(10)" = "RightSettings" #Then
 	И
 	 (
-		истина IN // Verifying that right is allowed for user Или a user group.
+		истина IN // Verifying that right is allowed for user ИЛИ a user group.
 			(
 			SELECT TOP 1 истина
 			FROM InformationRegister.ObjectRightsSettings AS RightSettings
@@ -1237,7 +1237,7 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 					 UsersGroupsContents.User = &amp;AuthorizedUser
 					И UsersGroupsContents.UsersGroup = RightSettings.User
 			)
-		 И Не false IN // Verifying that right is Не allowed for user Или a user group.
+		 И НЕ false IN // Verifying that right is НЕ allowed for user ИЛИ a user group.
 			(
 			SELECT TOP 1 false
 			FROM InformationRegister.ObjectRightsSettings AS RightSettings
@@ -1261,24 +1261,24 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 					И UsersGroupsContents.UsersGroup = RightSettings.User
 			)
 	 )
-#ElseIf Не StrContains(&amp;AllAccessKindsExceptSpecial, ",#Parameter(10),") #Then
+#ElseIf НЕ StrContains(&amp;AllAccessKindsExceptSpecial, ",#Parameter(10),") #Then
 	// When the parameter is set incorrectly, a row is inserted to create an error of access restriction build.
 	#If StrContains("#Parameter(10)", ",") #Then
-		InvalidAccessKind: "#Parameter(10)" - "The list of access type names is Не found"
+		InvalidAccessKind: "#Parameter(10)" - "The list of access type names is НЕ found"
 	#Else
-		InvalidAccessKind: "#Parameter(10)" - "Access type name is Не found"
+		InvalidAccessKind: "#Parameter(10)" - "Access type name is НЕ found"
 	#EndIf
 #ElseIf &amp;AccessKindsWithDisabledUse &lt;&gt; "All"
- И Не StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(10),") #Then
+ И НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(10),") #Then
 	И
 	 (
 			ISNULL(T.#Parameter(11), НЕОПРЕДЕЛЕНО) &lt;&gt; НЕОПРЕДЕЛЕНО
 			И
-		#If (Не StrContains(&amp;AccessKindsWithDisabledUse, ",Users,") И StrContains(",#Parameter(10),", ",Users,"))
-		 Или (Не StrContains(&amp;AccessKindsWithDisabledUse, ",ExternalUsers,") И StrContains(",#Parameter(10),", ",ExternalUsers,")) #Then
-			Не
+		#If (НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",Users,") И StrContains(",#Parameter(10),", ",Users,"))
+		 ИЛИ (НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",ExternalUsers,") И StrContains(",#Parameter(10),", ",ExternalUsers,")) #Then
+			НЕ
 			(
-			Не истина In
+			НЕ истина In
 				(
 				SELECT TOP 1 истина
 				FROM InformationRegister.AccessValuesGroups AS AccessValuesGroups
@@ -1286,7 +1286,7 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 					 AccessValuesGroups.AccessValue = T.#Parameter(11)
 					И AccessValuesGroups.AccessValuesGroup = &amp;AuthorizedUser
 				)
-			И Не
+			И НЕ
 		#Else
 			(
 		#EndIf
@@ -1351,11 +1351,11 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 
 //// Value verification of parameters group field 5.
 #If "#Parameter(12)" = "" И "#Parameter(13)" = "" #Then
-	// Parameters group is Не used.
-#ElseIf "#Parameter(12)" = "Condition" Или "#Parameter(12)" = "" #Then
-	// When the Condition access kind name (Или ""), then instead of field name condition is specified.
+	// Parameters group is НЕ used.
+#ElseIf "#Parameter(12)" = "Condition" ИЛИ "#Parameter(12)" = "" #Then
+	// When the Condition access kind name (ИЛИ ""), then instead of field name condition is specified.
 	И ( #Parameter(13) )
-#ElseIf "#Parameter(12)" = "ReadRight" Или "#Parameter(12)" = "EditRight" #Then
+#ElseIf "#Parameter(12)" = "ReadRight" ИЛИ "#Parameter(12)" = "EditRight" #Then
 	И T.#Parameter(13) &lt;&gt; НЕОПРЕДЕЛЕНО
 	И истина In
 	 (	// Verification of user's right for the Values table set in the field.
@@ -1364,14 +1364,14 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 		WHERE
 			 AccessGroupTablesRightCheck.AccessGroup = AccessGroups.Ref
 			И VALUETYPE(AccessGroupTablesRightCheck.TableType) = VALUETYPE(T.#Parameter(13))
-		#If Не "#Parameter(12)" = "ReadRight" #Then
+		#If НЕ "#Parameter(12)" = "ReadRight" #Then
 			И AccessGroupTablesRightCheck.Update
 		#EndIf
 	 )
 #ElseIf "#Parameter(12)" = "RightSettings" #Then
 	И
 	 (
-		истина IN // Verifying that right is allowed for user Или a user group.
+		истина IN // Verifying that right is allowed for user ИЛИ a user group.
 			(
 			SELECT TOP 1 истина
 			FROM InformationRegister.ObjectRightsSettings AS RightSettings
@@ -1394,7 +1394,7 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 					 UsersGroupsContents.User = &amp;AuthorizedUser
 					И UsersGroupsContents.UsersGroup = RightSettings.User
 			)
-		 И Не false IN // Verifying that right is Не allowed for user Или a user group.
+		 И НЕ false IN // Verifying that right is НЕ allowed for user ИЛИ a user group.
 			(
 			SELECT TOP 1 false
 			FROM InformationRegister.ObjectRightsSettings AS RightSettings
@@ -1418,24 +1418,24 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 					И UsersGroupsContents.UsersGroup = RightSettings.User
 			)
 	 )
-#ElseIf Не StrContains(&amp;AllAccessKindsExceptSpecial, ",#Parameter(12),") #Then
+#ElseIf НЕ StrContains(&amp;AllAccessKindsExceptSpecial, ",#Parameter(12),") #Then
 	// When the parameter is set incorrectly, a row is inserted to create an error of access restriction build.
 	#If StrContains("#Parameter(12)", ",") #Then
-		InvalidAccessKind: "#Parameter(12)" - "The list of access type names is Не found"
+		InvalidAccessKind: "#Parameter(12)" - "The list of access type names is НЕ found"
 	#Else
-		InvalidAccessKind: "#Parameter(12)" - "Access type name is Не found"
+		InvalidAccessKind: "#Parameter(12)" - "Access type name is НЕ found"
 	#EndIf
 #ElseIf &amp;AccessKindsWithDisabledUse &lt;&gt; "All"
- И Не StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(12),") #Then
+ И НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(12),") #Then
 	И
 	 (
 			ISNULL(T.#Parameter(13), НЕОПРЕДЕЛЕНО) &lt;&gt; НЕОПРЕДЕЛЕНО
 			И
-		#If (Не StrContains(&amp;AccessKindsWithDisabledUse, ",Users,") И StrContains(",#Parameter(12),", ",Users,"))
-		 Или (Не StrContains(&amp;AccessKindsWithDisabledUse, ",ExternalUsers,") И StrContains(",#Parameter(12),", ",ExternalUsers,")) #Then
-			Не
+		#If (НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",Users,") И StrContains(",#Parameter(12),", ",Users,"))
+		 ИЛИ (НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",ExternalUsers,") И StrContains(",#Parameter(12),", ",ExternalUsers,")) #Then
+			НЕ
 			(
-			Не истина In
+			НЕ истина In
 				(
 				SELECT TOP 1 истина
 				FROM InformationRegister.AccessValuesGroups AS AccessValuesGroups
@@ -1443,7 +1443,7 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 					 AccessValuesGroups.AccessValue = T.#Parameter(13)
 					И AccessValuesGroups.AccessValuesGroup = &amp;AuthorizedUser
 				)
-			И Не
+			И НЕ
 		#Else
 			(
 		#EndIf
@@ -1508,11 +1508,11 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 
 //// Value verification of parameters group field 6.
 #If "#Parameter(14)" = "" И "#Parameter(15)" = "" #Then
-	// Parameters group is Не used.
-#ElseIf "#Parameter(14)" = "Condition" Или "#Parameter(14)" = "" #Then
-	// When the Condition access kind name (Или ""), then instead of field name condition is specified.
+	// Parameters group is НЕ used.
+#ElseIf "#Parameter(14)" = "Condition" ИЛИ "#Parameter(14)" = "" #Then
+	// When the Condition access kind name (ИЛИ ""), then instead of field name condition is specified.
 	И ( #Parameter(15) )
-#ElseIf "#Parameter(14)" = "ReadRight" Или "#Parameter(14)" = "EditRight" #Then
+#ElseIf "#Parameter(14)" = "ReadRight" ИЛИ "#Parameter(14)" = "EditRight" #Then
 	И T.#Parameter(15) &lt;&gt; НЕОПРЕДЕЛЕНО
 	И истина In
 	 (	// Verification of user's right for the Values table set in the field.
@@ -1521,14 +1521,14 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 		WHERE
 			 AccessGroupTablesRightCheck.AccessGroup = AccessGroups.Ref
 			И VALUETYPE(AccessGroupTablesRightCheck.TableType) = VALUETYPE(T.#Parameter(15))
-		#If Не "#Parameter(14)" = "ReadRight" #Then
+		#If НЕ "#Parameter(14)" = "ReadRight" #Then
 			И AccessGroupTablesRightCheck.Update
 		#EndIf
 	 )
 #ElseIf "#Parameter(14)" = "RightSettings" #Then
 	И
 	 (
-		истина IN // Verifying that right is allowed for user Или a user group.
+		истина IN // Verifying that right is allowed for user ИЛИ a user group.
 			(
 			SELECT TOP 1 истина
 			FROM InformationRegister.ObjectRightsSettings AS RightSettings
@@ -1551,7 +1551,7 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 					 UsersGroupsContents.User = &amp;AuthorizedUser
 					И UsersGroupsContents.UsersGroup = RightSettings.User
 			)
-		 И Не false IN // Verifying that right is Не allowed for user Или a user group.
+		 И НЕ false IN // Verifying that right is НЕ allowed for user ИЛИ a user group.
 			(
 			SELECT TOP 1 false
 			FROM InformationRegister.ObjectRightsSettings AS RightSettings
@@ -1575,24 +1575,24 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 					И UsersGroupsContents.UsersGroup = RightSettings.User
 			)
 	 )
-#ElseIf Не StrContains(&amp;AllAccessKindsExceptSpecial, ",#Parameter(14),") #Then
+#ElseIf НЕ StrContains(&amp;AllAccessKindsExceptSpecial, ",#Parameter(14),") #Then
 	// When the parameter is set incorrectly, a row is inserted to create an error of access restriction build.
 	#If StrContains("#Parameter(14)", ",") #Then
-		InvalidAccessKind: "#Parameter(14)" - "The list of access type names is Не found"
+		InvalidAccessKind: "#Parameter(14)" - "The list of access type names is НЕ found"
 	#Else
-		InvalidAccessKind: "#Parameter(14)" - "Access type name is Не found"
+		InvalidAccessKind: "#Parameter(14)" - "Access type name is НЕ found"
 	#EndIf
 #ElseIf &amp;AccessKindsWithDisabledUse &lt;&gt; "All"
- И Не StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(14),") #Then
+ И НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(14),") #Then
 	И
 	 (
 			ISNULL(T.#Parameter(15), НЕОПРЕДЕЛЕНО) &lt;&gt; НЕОПРЕДЕЛЕНО
 			И
-		#If (Не StrContains(&amp;AccessKindsWithDisabledUse, ",Users,") И StrContains(",#Parameter(14),", ",Users,"))
-		 Или (Не StrContains(&amp;AccessKindsWithDisabledUse, ",ExternalUsers,") И StrContains(",#Parameter(14),", ",ExternalUsers,")) #Then
-			Не
+		#If (НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",Users,") И StrContains(",#Parameter(14),", ",Users,"))
+		 ИЛИ (НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",ExternalUsers,") И StrContains(",#Parameter(14),", ",ExternalUsers,")) #Then
+			НЕ
 			(
-			Не истина In
+			НЕ истина In
 				(
 				SELECT TOP 1 истина
 				FROM InformationRegister.AccessValuesGroups AS AccessValuesGroups
@@ -1600,7 +1600,7 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 					 AccessValuesGroups.AccessValue = T.#Parameter(15)
 					И AccessValuesGroups.AccessValuesGroup = &amp;AuthorizedUser
 				)
-			И Не
+			И НЕ
 		#Else
 			(
 		#EndIf
@@ -1665,11 +1665,11 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 
 //// Value verification of parameters group field 7.
 #If "#Parameter(16)" = "" И "#Parameter(17)" = "" #Then
-	// Parameters group is Не used.
-#ElseIf "#Parameter(16)" = "Condition" Или "#Parameter(16)" = "" #Then
-	// When the Condition access kind name (Или ""), then instead of field name condition is specified.
+	// Parameters group is НЕ used.
+#ElseIf "#Parameter(16)" = "Condition" ИЛИ "#Parameter(16)" = "" #Then
+	// When the Condition access kind name (ИЛИ ""), then instead of field name condition is specified.
 	И ( #Parameter(17) )
-#ElseIf "#Parameter(16)" = "ReadRight" Или "#Parameter(16)" = "EditRight" #Then
+#ElseIf "#Parameter(16)" = "ReadRight" ИЛИ "#Parameter(16)" = "EditRight" #Then
 	И T.#Parameter(17) &lt;&gt; НЕОПРЕДЕЛЕНО
 	И истина In
 	 (	// Verification of user's right for the Values table set in the field.
@@ -1678,14 +1678,14 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 		WHERE
 			 AccessGroupTablesRightCheck.AccessGroup = AccessGroups.Ref
 			И VALUETYPE(AccessGroupTablesRightCheck.TableType) = VALUETYPE(T.#Parameter(17))
-		#If Не "#Parameter(16)" = "ReadRight" #Then
+		#If НЕ "#Parameter(16)" = "ReadRight" #Then
 			И AccessGroupTablesRightCheck.Update
 		#EndIf
 	 )
 #ElseIf "#Parameter(16)" = "RightSettings" #Then
 	И
 	 (
-		истина IN // Verifying that right is allowed for user Или a user group.
+		истина IN // Verifying that right is allowed for user ИЛИ a user group.
 			(
 			SELECT TOP 1 истина
 			FROM InformationRegister.ObjectRightsSettings AS RightSettings
@@ -1708,7 +1708,7 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 					 UsersGroupsContents.User = &amp;AuthorizedUser
 					И UsersGroupsContents.UsersGroup = RightSettings.User
 			)
-		 И Не false IN // Verifying that right is Не allowed for user Или a user group.
+		 И НЕ false IN // Verifying that right is НЕ allowed for user ИЛИ a user group.
 			(
 			SELECT TOP 1 false
 			FROM InformationRegister.ObjectRightsSettings AS RightSettings
@@ -1732,24 +1732,24 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 					И UsersGroupsContents.UsersGroup = RightSettings.User
 			)
 	 )
-#ElseIf Не StrContains(&amp;AllAccessKindsExceptSpecial, ",#Parameter(16),") #Then
+#ElseIf НЕ StrContains(&amp;AllAccessKindsExceptSpecial, ",#Parameter(16),") #Then
 	// When the parameter is set incorrectly, a row is inserted to create an error of access restriction build.
 	#If StrContains("#Parameter(16)", ",") #Then
-		InvalidAccessKind: "#Parameter(16)" - "The list of access type names is Не found"
+		InvalidAccessKind: "#Parameter(16)" - "The list of access type names is НЕ found"
 	#Else
-		InvalidAccessKind: "#Parameter(16)" - "Access type name is Не found"
+		InvalidAccessKind: "#Parameter(16)" - "Access type name is НЕ found"
 	#EndIf
 #ElseIf &amp;AccessKindsWithDisabledUse &lt;&gt; "All"
- И Не StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(16),") #Then
+ И НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(16),") #Then
 	И
 	 (
 			ISNULL(T.#Parameter(17), НЕОПРЕДЕЛЕНО) &lt;&gt; НЕОПРЕДЕЛЕНО
 			И
-		#If (Не StrContains(&amp;AccessKindsWithDisabledUse, ",Users,") И StrContains(",#Parameter(16),", ",Users,"))
-		 Или (Не StrContains(&amp;AccessKindsWithDisabledUse, ",ExternalUsers,") И StrContains(",#Parameter(16),", ",ExternalUsers,")) #Then
-			Не
+		#If (НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",Users,") И StrContains(",#Parameter(16),", ",Users,"))
+		 ИЛИ (НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",ExternalUsers,") И StrContains(",#Parameter(16),", ",ExternalUsers,")) #Then
+			НЕ
 			(
-			Не истина In
+			НЕ истина In
 				(
 				SELECT TOP 1 истина
 				FROM InformationRegister.AccessValuesGroups AS AccessValuesGroups
@@ -1757,7 +1757,7 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 					 AccessValuesGroups.AccessValue = T.#Parameter(17)
 					И AccessValuesGroups.AccessValuesGroup = &amp;AuthorizedUser
 				)
-			И Не
+			И НЕ
 		#Else
 			(
 		#EndIf
@@ -1822,11 +1822,11 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 
 //// Value verification of parameters group field 8.
 #If "#Parameter(18)" = "" И "#Parameter(19)" = "" #Then
-	// Parameters group is Не used.
-#ElseIf "#Parameter(18)" = "Condition" Или "#Parameter(18)" = "" #Then
-	// When the Condition access kind name (Или ""), then instead of field name condition is specified.
+	// Parameters group is НЕ used.
+#ElseIf "#Parameter(18)" = "Condition" ИЛИ "#Parameter(18)" = "" #Then
+	// When the Condition access kind name (ИЛИ ""), then instead of field name condition is specified.
 	И ( #Parameter(19) )
-#ElseIf "#Parameter(18)" = "ReadRight" Или "#Parameter(18)" = "EditRight" #Then
+#ElseIf "#Parameter(18)" = "ReadRight" ИЛИ "#Parameter(18)" = "EditRight" #Then
 	И T.#Parameter(19) &lt;&gt; НЕОПРЕДЕЛЕНО
 	И истина In
 	 (	// Verification of user's right for the Values table set in the field.
@@ -1835,14 +1835,14 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 		WHERE
 			 AccessGroupTablesRightCheck.AccessGroup = AccessGroups.Ref
 			И VALUETYPE(AccessGroupTablesRightCheck.TableType) = VALUETYPE(T.#Parameter(19))
-		#If Не "#Parameter(18)" = "ReadRight" #Then
+		#If НЕ "#Parameter(18)" = "ReadRight" #Then
 			И AccessGroupTablesRightCheck.Update
 		#EndIf
 	 )
 #ElseIf "#Parameter(18)" = "RightSettings" #Then
 	И
 	 (
-		истина IN // Verifying that right is allowed for user Или a user group.
+		истина IN // Verifying that right is allowed for user ИЛИ a user group.
 			(
 			SELECT TOP 1 истина
 			FROM InformationRegister.ObjectRightsSettings AS RightSettings
@@ -1865,7 +1865,7 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 					 UsersGroupsContents.User = &amp;AuthorizedUser
 					И UsersGroupsContents.UsersGroup = RightSettings.User
 			)
-		 И Не false IN // Verifying that right is Не allowed for user Или a user group.
+		 И НЕ false IN // Verifying that right is НЕ allowed for user ИЛИ a user group.
 			(
 			SELECT TOP 1 false
 			FROM InformationRegister.ObjectRightsSettings AS RightSettings
@@ -1889,24 +1889,24 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 					И UsersGroupsContents.UsersGroup = RightSettings.User
 			)
 	 )
-#ElseIf Не StrContains(&amp;AllAccessKindsExceptSpecial, ",#Parameter(18),") #Then
+#ElseIf НЕ StrContains(&amp;AllAccessKindsExceptSpecial, ",#Parameter(18),") #Then
 	// When the parameter is set incorrectly, a row is inserted to create an error of access restriction build.
 	#If StrContains("#Parameter(18)", ",") #Then
-		InvalidAccessKind: "#Parameter(18)" - "The list of access type names is Не found"
+		InvalidAccessKind: "#Parameter(18)" - "The list of access type names is НЕ found"
 	#Else
-		InvalidAccessKind: "#Parameter(18)" - "Access type name is Не found"
+		InvalidAccessKind: "#Parameter(18)" - "Access type name is НЕ found"
 	#EndIf
 #ElseIf &amp;AccessKindsWithDisabledUse &lt;&gt; "All"
- И Не StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(18),") #Then
+ И НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(18),") #Then
 	И
 	 (
 			ISNULL(T.#Parameter(19), НЕОПРЕДЕЛЕНО) &lt;&gt; НЕОПРЕДЕЛЕНО
 			И
-		#If (Не StrContains(&amp;AccessKindsWithDisabledUse, ",Users,") И StrContains(",#Parameter(18),", ",Users,"))
-		 Или (Не StrContains(&amp;AccessKindsWithDisabledUse, ",ExternalUsers,") И StrContains(",#Parameter(18),", ",ExternalUsers,")) #Then
-			Не
+		#If (НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",Users,") И StrContains(",#Parameter(18),", ",Users,"))
+		 ИЛИ (НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",ExternalUsers,") И StrContains(",#Parameter(18),", ",ExternalUsers,")) #Then
+			НЕ
 			(
-			Не истина In
+			НЕ истина In
 				(
 				SELECT TOP 1 истина
 				FROM InformationRegister.AccessValuesGroups AS AccessValuesGroups
@@ -1914,7 +1914,7 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 					 AccessValuesGroups.AccessValue = T.#Parameter(19)
 					И AccessValuesGroups.AccessValuesGroup = &amp;AuthorizedUser
 				)
-			И Не
+			И НЕ
 		#Else
 			(
 		#EndIf
@@ -1979,11 +1979,11 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 
 //// Value verification of parameters group field 9.
 #If "#Parameter(20)" = "" И "#Parameter(21)" = "" #Then
-	// Parameters group is Не used.
-#ElseIf "#Parameter(20)" = "Condition" Или "#Parameter(20)" = "" #Then
-	// When the Condition access kind name (Или ""), then instead of field name condition is specified.
+	// Parameters group is НЕ used.
+#ElseIf "#Parameter(20)" = "Condition" ИЛИ "#Parameter(20)" = "" #Then
+	// When the Condition access kind name (ИЛИ ""), then instead of field name condition is specified.
 	И ( #Parameter(21) )
-#ElseIf "#Parameter(20)" = "ReadRight" Или "#Parameter(20)" = "EditRight" #Then
+#ElseIf "#Parameter(20)" = "ReadRight" ИЛИ "#Parameter(20)" = "EditRight" #Then
 	И T.#Parameter(21) &lt;&gt; НЕОПРЕДЕЛЕНО
 	И истина In
 	 (	// Verification of user's right for the Values table set in the field.
@@ -1992,14 +1992,14 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 		WHERE
 			 AccessGroupTablesRightCheck.AccessGroup = AccessGroups.Ref
 			И VALUETYPE(AccessGroupTablesRightCheck.TableType) = VALUETYPE(T.#Parameter(21))
-		#If Не "#Parameter(20)" = "ReadRight" #Then
+		#If НЕ "#Parameter(20)" = "ReadRight" #Then
 			И AccessGroupTablesRightCheck.Update
 		#EndIf
 	 )
 #ElseIf "#Parameter(20)" = "RightSettings" #Then
 	И
 	 (
-		истина IN // Verifying that right is allowed for user Или a user group.
+		истина IN // Verifying that right is allowed for user ИЛИ a user group.
 			(
 			SELECT TOP 1 истина
 			FROM InformationRegister.ObjectRightsSettings AS RightSettings
@@ -2022,7 +2022,7 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 					 UsersGroupsContents.User = &amp;AuthorizedUser
 					И UsersGroupsContents.UsersGroup = RightSettings.User
 			)
-		 И Не false IN // Verifying that right is Не allowed for user Или a user group.
+		 И НЕ false IN // Verifying that right is НЕ allowed for user ИЛИ a user group.
 			(
 			SELECT TOP 1 false
 			FROM InformationRegister.ObjectRightsSettings AS RightSettings
@@ -2046,24 +2046,24 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 					И UsersGroupsContents.UsersGroup = RightSettings.User
 			)
 	 )
-#ElseIf Не StrContains(&amp;AllAccessKindsExceptSpecial, ",#Parameter(20),") #Then
+#ElseIf НЕ StrContains(&amp;AllAccessKindsExceptSpecial, ",#Parameter(20),") #Then
 	// When the parameter is set incorrectly, a row is inserted to create an error of access restriction build.
 	#If StrContains("#Parameter(20)", ",") #Then
-		InvalidAccessKind: "#Parameter(20)" - "The list of access type names is Не found"
+		InvalidAccessKind: "#Parameter(20)" - "The list of access type names is НЕ found"
 	#Else
-		InvalidAccessKind: "#Parameter(20)" - "Access type name is Не found"
+		InvalidAccessKind: "#Parameter(20)" - "Access type name is НЕ found"
 	#EndIf
 #ElseIf &amp;AccessKindsWithDisabledUse &lt;&gt; "All"
- И Не StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(20),") #Then
+ И НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(20),") #Then
 	И
 	 (
 			ISNULL(T.#Parameter(21), НЕОПРЕДЕЛЕНО) &lt;&gt; НЕОПРЕДЕЛЕНО
 			И
-		#If (Не StrContains(&amp;AccessKindsWithDisabledUse, ",Users,") И StrContains(",#Parameter(20),", ",Users,"))
-		 Или (Не StrContains(&amp;AccessKindsWithDisabledUse, ",ExternalUsers,") И StrContains(",#Parameter(20),", ",ExternalUsers,")) #Then
-			Не
+		#If (НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",Users,") И StrContains(",#Parameter(20),", ",Users,"))
+		 ИЛИ (НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",ExternalUsers,") И StrContains(",#Parameter(20),", ",ExternalUsers,")) #Then
+			НЕ
 			(
-			Не истина In
+			НЕ истина In
 				(
 				SELECT TOP 1 истина
 				FROM InformationRegister.AccessValuesGroups AS AccessValuesGroups
@@ -2071,7 +2071,7 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 					 AccessValuesGroups.AccessValue = T.#Parameter(21)
 					И AccessValuesGroups.AccessValuesGroup = &amp;AuthorizedUser
 				)
-			И Не
+			И НЕ
 		#Else
 			(
 		#EndIf
@@ -2136,11 +2136,11 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 
 //// Value verification of parameters group field 10.
 #If "#Parameter(22)" = "" И "#Parameter(23)" = "" #Then
-	// Parameters group is Не used.
-#ElseIf "#Parameter(22)" = "Condition" Или "#Parameter(22)" = "" #Then
-	// When the Condition access kind name (Или ""), then instead of field name condition is specified.
+	// Parameters group is НЕ used.
+#ElseIf "#Parameter(22)" = "Condition" ИЛИ "#Parameter(22)" = "" #Then
+	// When the Condition access kind name (ИЛИ ""), then instead of field name condition is specified.
 	И ( #Parameter(23) )
-#ElseIf "#Parameter(22)" = "ReadRight" Или "#Parameter(22)" = "EditRight" #Then
+#ElseIf "#Parameter(22)" = "ReadRight" ИЛИ "#Parameter(22)" = "EditRight" #Then
 	И T.#Parameter(23) &lt;&gt; НЕОПРЕДЕЛЕНО
 	И истина In
 	 (	// Verification of user's right for the Values table set in the field.
@@ -2149,14 +2149,14 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 		WHERE
 			 AccessGroupTablesRightCheck.AccessGroup = AccessGroups.Ref
 			И VALUETYPE(AccessGroupTablesRightCheck.TableType) = VALUETYPE(T.#Parameter(23))
-		#If Не "#Parameter(22)" = "ReadRight" #Then
+		#If НЕ "#Parameter(22)" = "ReadRight" #Then
 			И AccessGroupTablesRightCheck.Update
 		#EndIf
 	 )
 #ElseIf "#Parameter(22)" = "RightSettings" #Then
 	И
 	 (
-		истина IN // Verifying that right is allowed for user Или a user group.
+		истина IN // Verifying that right is allowed for user ИЛИ a user group.
 			(
 			SELECT TOP 1 истина
 			FROM InformationRegister.ObjectRightsSettings AS RightSettings
@@ -2179,7 +2179,7 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 					 UsersGroupsContents.User = &amp;AuthorizedUser
 					И UsersGroupsContents.UsersGroup = RightSettings.User
 			)
-		 И Не false IN // Verifying that right is Не allowed for user Или a user group.
+		 И НЕ false IN // Verifying that right is НЕ allowed for user ИЛИ a user group.
 			(
 			SELECT TOP 1 false
 			FROM InformationRegister.ObjectRightsSettings AS RightSettings
@@ -2203,24 +2203,24 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 					И UsersGroupsContents.UsersGroup = RightSettings.User
 			)
 	 )
-#ElseIf Не StrContains(&amp;AllAccessKindsExceptSpecial, ",#Parameter(22),") #Then
+#ElseIf НЕ StrContains(&amp;AllAccessKindsExceptSpecial, ",#Parameter(22),") #Then
 	// When the parameter is set incorrectly, a row is inserted to create an error of access restriction build.
 	#If StrContains("#Parameter(22)", ",") #Then
-		InvalidAccessKind: "#Parameter(22)" - "The list of access type names is Не found"
+		InvalidAccessKind: "#Parameter(22)" - "The list of access type names is НЕ found"
 	#Else
-		InvalidAccessKind: "#Parameter(22)" - "Access type name is Не found"
+		InvalidAccessKind: "#Parameter(22)" - "Access type name is НЕ found"
 	#EndIf
 #ElseIf &amp;AccessKindsWithDisabledUse &lt;&gt; "All"
- И Не StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(22),") #Then
+ И НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(22),") #Then
 	И
 	 (
 			ISNULL(T.#Parameter(23), НЕОПРЕДЕЛЕНО) &lt;&gt; НЕОПРЕДЕЛЕНО
 			И
-		#If (Не StrContains(&amp;AccessKindsWithDisabledUse, ",Users,") И StrContains(",#Parameter(22),", ",Users,"))
-		 Или (Не StrContains(&amp;AccessKindsWithDisabledUse, ",ExternalUsers,") И StrContains(",#Parameter(22),", ",ExternalUsers,")) #Then
-			Не
+		#If (НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",Users,") И StrContains(",#Parameter(22),", ",Users,"))
+		 ИЛИ (НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",ExternalUsers,") И StrContains(",#Parameter(22),", ",ExternalUsers,")) #Then
+			НЕ
 			(
-			Не истина In
+			НЕ истина In
 				(
 				SELECT TOP 1 истина
 				FROM InformationRegister.AccessValuesGroups AS AccessValuesGroups
@@ -2228,7 +2228,7 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 					 AccessValuesGroups.AccessValue = T.#Parameter(23)
 					И AccessValuesGroups.AccessValuesGroup = &amp;AuthorizedUser
 				)
-			И Не
+			И НЕ
 		#Else
 			(
 		#EndIf
@@ -2293,11 +2293,11 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 
 //// Value verification of parameters group field 11.
 #If "#Parameter(24)" = "" И "#Parameter(25)" = "" #Then
-	// Parameters group is Не used.
-#ElseIf "#Parameter(24)" = "Condition" Или "#Parameter(24)" = "" #Then
-	// When the Condition access kind name (Или ""), then instead of field name condition is specified.
+	// Parameters group is НЕ used.
+#ElseIf "#Parameter(24)" = "Condition" ИЛИ "#Parameter(24)" = "" #Then
+	// When the Condition access kind name (ИЛИ ""), then instead of field name condition is specified.
 	И ( #Parameter(25) )
-#ElseIf "#Parameter(24)" = "ReadRight" Или "#Parameter(24)" = "EditRight" #Then
+#ElseIf "#Parameter(24)" = "ReadRight" ИЛИ "#Parameter(24)" = "EditRight" #Then
 	И T.#Parameter(25) &lt;&gt; НЕОПРЕДЕЛЕНО
 	И истина In
 	 (	// Verification of user's right for the Values table set in the field.
@@ -2306,14 +2306,14 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 		WHERE
 			 AccessGroupTablesRightCheck.AccessGroup = AccessGroups.Ref
 			И VALUETYPE(AccessGroupTablesRightCheck.TableType) = VALUETYPE(T.#Parameter(25))
-		#If Не "#Parameter(24)" = "ReadRight" #Then
+		#If НЕ "#Parameter(24)" = "ReadRight" #Then
 			И AccessGroupTablesRightCheck.Update
 		#EndIf
 	 )
 #ElseIf "#Parameter(24)" = "RightSettings" #Then
 	И
 	 (
-		истина IN // Verifying that right is allowed for user Или a user group.
+		истина IN // Verifying that right is allowed for user ИЛИ a user group.
 			(
 			SELECT TOP 1 истина
 			FROM InformationRegister.ObjectRightsSettings AS RightSettings
@@ -2336,7 +2336,7 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 					 UsersGroupsContents.User = &amp;AuthorizedUser
 					И UsersGroupsContents.UsersGroup = RightSettings.User
 			)
-		 И Не false IN // Verifying that right is Не allowed for user Или a user group.
+		 И НЕ false IN // Verifying that right is НЕ allowed for user ИЛИ a user group.
 			(
 			SELECT TOP 1 false
 			FROM InformationRegister.ObjectRightsSettings AS RightSettings
@@ -2360,24 +2360,24 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 					И UsersGroupsContents.UsersGroup = RightSettings.User
 			)
 	 )
-#ElseIf Не StrContains(&amp;AllAccessKindsExceptSpecial, ",#Parameter(24),") #Then
+#ElseIf НЕ StrContains(&amp;AllAccessKindsExceptSpecial, ",#Parameter(24),") #Then
 	// When the parameter is set incorrectly, a row is inserted to create an error of access restriction build.
 	#If StrContains("#Parameter(24)", ",") #Then
-		InvalidAccessKind: "#Parameter(24)" - "The list of access type names is Не found"
+		InvalidAccessKind: "#Parameter(24)" - "The list of access type names is НЕ found"
 	#Else
-		InvalidAccessKind: "#Parameter(24)" - "Access type name is Не found"
+		InvalidAccessKind: "#Parameter(24)" - "Access type name is НЕ found"
 	#EndIf
 #ElseIf &amp;AccessKindsWithDisabledUse &lt;&gt; "All"
- И Не StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(24),") #Then
+ И НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(24),") #Then
 	И
 	 (
 			ISNULL(T.#Parameter(25), НЕОПРЕДЕЛЕНО) &lt;&gt; НЕОПРЕДЕЛЕНО
 			И
-		#If (Не StrContains(&amp;AccessKindsWithDisabledUse, ",Users,") И StrContains(",#Parameter(24),", ",Users,"))
-		 Или (Не StrContains(&amp;AccessKindsWithDisabledUse, ",ExternalUsers,") И StrContains(",#Parameter(24),", ",ExternalUsers,")) #Then
-			Не
+		#If (НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",Users,") И StrContains(",#Parameter(24),", ",Users,"))
+		 ИЛИ (НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",ExternalUsers,") И StrContains(",#Parameter(24),", ",ExternalUsers,")) #Then
+			НЕ
 			(
-			Не истина In
+			НЕ истина In
 				(
 				SELECT TOP 1 истина
 				FROM InformationRegister.AccessValuesGroups AS AccessValuesGroups
@@ -2385,7 +2385,7 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 					 AccessValuesGroups.AccessValue = T.#Parameter(25)
 					И AccessValuesGroups.AccessValuesGroup = &amp;AuthorizedUser
 				)
-			И Не
+			И НЕ
 		#Else
 			(
 		#EndIf
@@ -2450,11 +2450,11 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 
 //// Value verification of parameters group field 12.
 #If "#Parameter(26)" = "" И "#Parameter(27)" = "" #Then
-	// Parameters group is Не used.
-#ElseIf "#Parameter(26)" = "Condition" Или "#Parameter(26)" = "" #Then
-	// When the Condition access kind name (Или ""), then instead of field name condition is specified.
+	// Parameters group is НЕ used.
+#ElseIf "#Parameter(26)" = "Condition" ИЛИ "#Parameter(26)" = "" #Then
+	// When the Condition access kind name (ИЛИ ""), then instead of field name condition is specified.
 	И ( #Parameter(27) )
-#ElseIf "#Parameter(26)" = "ReadRight" Или "#Parameter(26)" = "EditRight" #Then
+#ElseIf "#Parameter(26)" = "ReadRight" ИЛИ "#Parameter(26)" = "EditRight" #Then
 	И T.#Parameter(27) &lt;&gt; НЕОПРЕДЕЛЕНО
 	И истина In
 	 (	// Verification of user's right for the Values table set in the field.
@@ -2463,14 +2463,14 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 		WHERE
 			 AccessGroupTablesRightCheck.AccessGroup = AccessGroups.Ref
 			И VALUETYPE(AccessGroupTablesRightCheck.TableType) = VALUETYPE(T.#Parameter(27))
-		#If Не "#Parameter(26)" = "ReadRight" #Then
+		#If НЕ "#Parameter(26)" = "ReadRight" #Then
 			И AccessGroupTablesRightCheck.Update
 		#EndIf
 	 )
 #ElseIf "#Parameter(26)" = "RightSettings" #Then
 	И
 	 (
-		истина IN // Verifying that right is allowed for user Или a user group.
+		истина IN // Verifying that right is allowed for user ИЛИ a user group.
 			(
 			SELECT TOP 1 истина
 			FROM InformationRegister.ObjectRightsSettings AS RightSettings
@@ -2493,7 +2493,7 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 					 UsersGroupsContents.User = &amp;AuthorizedUser
 					И UsersGroupsContents.UsersGroup = RightSettings.User
 			)
-		 И Не false IN // Verifying that right is Не allowed for user Или a user group.
+		 И НЕ false IN // Verifying that right is НЕ allowed for user ИЛИ a user group.
 			(
 			SELECT TOP 1 false
 			FROM InformationRegister.ObjectRightsSettings AS RightSettings
@@ -2517,24 +2517,24 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 					И UsersGroupsContents.UsersGroup = RightSettings.User
 			)
 	 )
-#ElseIf Не StrContains(&amp;AllAccessKindsExceptSpecial, ",#Parameter(26),") #Then
+#ElseIf НЕ StrContains(&amp;AllAccessKindsExceptSpecial, ",#Parameter(26),") #Then
 	// When the parameter is set incorrectly, a row is inserted to create an error of access restriction build.
 	#If StrContains("#Parameter(26)", ",") #Then
-		InvalidAccessKind: "#Parameter(26)" - "The list of access type names is Не found"
+		InvalidAccessKind: "#Parameter(26)" - "The list of access type names is НЕ found"
 	#Else
-		InvalidAccessKind: "#Parameter(26)" - "Access type name is Не found"
+		InvalidAccessKind: "#Parameter(26)" - "Access type name is НЕ found"
 	#EndIf
 #ElseIf &amp;AccessKindsWithDisabledUse &lt;&gt; "All"
- И Не StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(26),") #Then
+ И НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(26),") #Then
 	И
 	 (
 			ISNULL(T.#Parameter(27), НЕОПРЕДЕЛЕНО) &lt;&gt; НЕОПРЕДЕЛЕНО
 			И
-		#If (Не StrContains(&amp;AccessKindsWithDisabledUse, ",Users,") И StrContains(",#Parameter(26),", ",Users,"))
-		 Или (Не StrContains(&amp;AccessKindsWithDisabledUse, ",ExternalUsers,") И StrContains(",#Parameter(26),", ",ExternalUsers,")) #Then
-			Не
+		#If (НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",Users,") И StrContains(",#Parameter(26),", ",Users,"))
+		 ИЛИ (НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",ExternalUsers,") И StrContains(",#Parameter(26),", ",ExternalUsers,")) #Then
+			НЕ
 			(
-			Не истина In
+			НЕ истина In
 				(
 				SELECT TOP 1 истина
 				FROM InformationRegister.AccessValuesGroups AS AccessValuesGroups
@@ -2542,7 +2542,7 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 					 AccessValuesGroups.AccessValue = T.#Parameter(27)
 					И AccessValuesGroups.AccessValuesGroup = &amp;AuthorizedUser
 				)
-			И Не
+			И НЕ
 		#Else
 			(
 		#EndIf
@@ -2607,11 +2607,11 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 
 //// Value verification of parameters group field 13.
 #If "#Parameter(28)" = "" И "#Parameter(29)" = "" #Then
-	// Parameters group is Не used.
-#ElseIf "#Parameter(28)" = "Condition" Или "#Parameter(28)" = "" #Then
-	// When the Condition access kind name (Или ""), then instead of field name condition is specified.
+	// Parameters group is НЕ used.
+#ElseIf "#Parameter(28)" = "Condition" ИЛИ "#Parameter(28)" = "" #Then
+	// When the Condition access kind name (ИЛИ ""), then instead of field name condition is specified.
 	И ( #Parameter(29) )
-#ElseIf "#Parameter(28)" = "ReadRight" Или "#Parameter(28)" = "EditRight" #Then
+#ElseIf "#Parameter(28)" = "ReadRight" ИЛИ "#Parameter(28)" = "EditRight" #Then
 	И T.#Parameter(29) &lt;&gt; НЕОПРЕДЕЛЕНО
 	И истина In
 	 (	// Verification of user's right for the Values table set in the field.
@@ -2620,14 +2620,14 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 		WHERE
 			 AccessGroupTablesRightCheck.AccessGroup = AccessGroups.Ref
 			И VALUETYPE(AccessGroupTablesRightCheck.TableType) = VALUETYPE(T.#Parameter(29))
-		#If Не "#Parameter(28)" = "ReadRight" #Then
+		#If НЕ "#Parameter(28)" = "ReadRight" #Then
 			И AccessGroupTablesRightCheck.Update
 		#EndIf
 	 )
 #ElseIf "#Parameter(28)" = "RightSettings" #Then
 	И
 	 (
-		истина IN // Verifying that right is allowed for user Или a user group.
+		истина IN // Verifying that right is allowed for user ИЛИ a user group.
 			(
 			SELECT TOP 1 истина
 			FROM InformationRegister.ObjectRightsSettings AS RightSettings
@@ -2650,7 +2650,7 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 					 UsersGroupsContents.User = &amp;AuthorizedUser
 					И UsersGroupsContents.UsersGroup = RightSettings.User
 			)
-		 И Не false IN // Verifying that right is Не allowed for user Или a user group.
+		 И НЕ false IN // Verifying that right is НЕ allowed for user ИЛИ a user group.
 			(
 			SELECT TOP 1 false
 			FROM InformationRegister.ObjectRightsSettings AS RightSettings
@@ -2674,24 +2674,24 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 					И UsersGroupsContents.UsersGroup = RightSettings.User
 			)
 	 )
-#ElseIf Не StrContains(&amp;AllAccessKindsExceptSpecial, ",#Parameter(28),") #Then
+#ElseIf НЕ StrContains(&amp;AllAccessKindsExceptSpecial, ",#Parameter(28),") #Then
 	// When the parameter is set incorrectly, a row is inserted to create an error of access restriction build.
 	#If StrContains("#Parameter(28)", ",") #Then
-		InvalidAccessKind: "#Parameter(28)" - "The list of access type names is Не found"
+		InvalidAccessKind: "#Parameter(28)" - "The list of access type names is НЕ found"
 	#Else
-		InvalidAccessKind: "#Parameter(28)" - "Access type name is Не found"
+		InvalidAccessKind: "#Parameter(28)" - "Access type name is НЕ found"
 	#EndIf
 #ElseIf &amp;AccessKindsWithDisabledUse &lt;&gt; "All"
- И Не StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(28),") #Then
+ И НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(28),") #Then
 	И
 	 (
 			ISNULL(T.#Parameter(29), НЕОПРЕДЕЛЕНО) &lt;&gt; НЕОПРЕДЕЛЕНО
 			И
-		#If (Не StrContains(&amp;AccessKindsWithDisabledUse, ",Users,") И StrContains(",#Parameter(28),", ",Users,"))
-		 Или (Не StrContains(&amp;AccessKindsWithDisabledUse, ",ExternalUsers,") И StrContains(",#Parameter(28),", ",ExternalUsers,")) #Then
-			Не
+		#If (НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",Users,") И StrContains(",#Parameter(28),", ",Users,"))
+		 ИЛИ (НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",ExternalUsers,") И StrContains(",#Parameter(28),", ",ExternalUsers,")) #Then
+			НЕ
 			(
-			Не истина In
+			НЕ истина In
 				(
 				SELECT TOP 1 истина
 				FROM InformationRegister.AccessValuesGroups AS AccessValuesGroups
@@ -2699,7 +2699,7 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 					 AccessValuesGroups.AccessValue = T.#Parameter(29)
 					И AccessValuesGroups.AccessValuesGroup = &amp;AuthorizedUser
 				)
-			И Не
+			И НЕ
 		#Else
 			(
 		#EndIf
@@ -2764,11 +2764,11 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 
 //// Value verification of parameters group field 14.
 #If "#Parameter(30)" = "" И "#Parameter(31)" = "" #Then
-	// Parameters group is Не used.
-#ElseIf "#Parameter(30)" = "Condition" Или "#Parameter(30)" = "" #Then
-	// When the Condition access kind name (Или ""), then instead of field name condition is specified.
+	// Parameters group is НЕ used.
+#ElseIf "#Parameter(30)" = "Condition" ИЛИ "#Parameter(30)" = "" #Then
+	// When the Condition access kind name (ИЛИ ""), then instead of field name condition is specified.
 	И ( #Parameter(31) )
-#ElseIf "#Parameter(30)" = "ReadRight" Или "#Parameter(30)" = "EditRight" #Then
+#ElseIf "#Parameter(30)" = "ReadRight" ИЛИ "#Parameter(30)" = "EditRight" #Then
 	И T.#Parameter(31) &lt;&gt; НЕОПРЕДЕЛЕНО
 	И истина In
 	 (	// Verification of user's right for the Values table set in the field.
@@ -2777,14 +2777,14 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 		WHERE
 			 AccessGroupTablesRightCheck.AccessGroup = AccessGroups.Ref
 			И VALUETYPE(AccessGroupTablesRightCheck.TableType) = VALUETYPE(T.#Parameter(31))
-		#If Не "#Parameter(30)" = "ReadRight" #Then
+		#If НЕ "#Parameter(30)" = "ReadRight" #Then
 			И AccessGroupTablesRightCheck.Update
 		#EndIf
 	 )
 #ElseIf "#Parameter(30)" = "RightSettings" #Then
 	И
 	 (
-		истина IN // Verifying that right is allowed for user Или a user group.
+		истина IN // Verifying that right is allowed for user ИЛИ a user group.
 			(
 			SELECT TOP 1 истина
 			FROM InformationRegister.ObjectRightsSettings AS RightSettings
@@ -2807,7 +2807,7 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 					 UsersGroupsContents.User = &amp;AuthorizedUser
 					И UsersGroupsContents.UsersGroup = RightSettings.User
 			)
-		 И Не false IN // Verifying that right is Не allowed for user Или a user group.
+		 И НЕ false IN // Verifying that right is НЕ allowed for user ИЛИ a user group.
 			(
 			SELECT TOP 1 false
 			FROM InformationRegister.ObjectRightsSettings AS RightSettings
@@ -2831,24 +2831,24 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 					И UsersGroupsContents.UsersGroup = RightSettings.User
 			)
 	 )
-#ElseIf Не StrContains(&amp;AllAccessKindsExceptSpecial, ",#Parameter(30),") #Then
+#ElseIf НЕ StrContains(&amp;AllAccessKindsExceptSpecial, ",#Parameter(30),") #Then
 	// When the parameter is set incorrectly, a row is inserted to create an error of access restriction build.
 	#If StrContains("#Parameter(30)", ",") #Then
-		InvalidAccessKind: "#Parameter(30)" - "The list of access type names is Не found"
+		InvalidAccessKind: "#Parameter(30)" - "The list of access type names is НЕ found"
 	#Else
-		InvalidAccessKind: "#Parameter(30)" - "Access type name is Не found"
+		InvalidAccessKind: "#Parameter(30)" - "Access type name is НЕ found"
 	#EndIf
 #ElseIf &amp;AccessKindsWithDisabledUse &lt;&gt; "All"
- И Не StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(30),") #Then
+ И НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(30),") #Then
 	И
 	 (
 			ISNULL(T.#Parameter(31), НЕОПРЕДЕЛЕНО) &lt;&gt; НЕОПРЕДЕЛЕНО
 			И
-		#If (Не StrContains(&amp;AccessKindsWithDisabledUse, ",Users,") И StrContains(",#Parameter(30),", ",Users,"))
-		 Или (Не StrContains(&amp;AccessKindsWithDisabledUse, ",ExternalUsers,") И StrContains(",#Parameter(30),", ",ExternalUsers,")) #Then
-			Не
+		#If (НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",Users,") И StrContains(",#Parameter(30),", ",Users,"))
+		 ИЛИ (НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",ExternalUsers,") И StrContains(",#Parameter(30),", ",ExternalUsers,")) #Then
+			НЕ
 			(
-			Не истина In
+			НЕ истина In
 				(
 				SELECT TOP 1 истина
 				FROM InformationRegister.AccessValuesGroups AS AccessValuesGroups
@@ -2856,7 +2856,7 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 					 AccessValuesGroups.AccessValue = T.#Parameter(31)
 					И AccessValuesGroups.AccessValuesGroup = &amp;AuthorizedUser
 				)
-			И Не
+			И НЕ
 		#Else
 			(
 		#EndIf
@@ -2921,11 +2921,11 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 
 //// Value verification of parameters group field 15.
 #If "#Parameter(32)" = "" И "#Parameter(33)" = "" #Then
-	// Parameters group is Не used.
-#ElseIf "#Parameter(32)" = "Condition" Или "#Parameter(32)" = "" #Then
-	// When the Condition access kind name (Или ""), then instead of field name condition is specified.
+	// Parameters group is НЕ used.
+#ElseIf "#Parameter(32)" = "Condition" ИЛИ "#Parameter(32)" = "" #Then
+	// When the Condition access kind name (ИЛИ ""), then instead of field name condition is specified.
 	И ( #Parameter(33) )
-#ElseIf "#Parameter(32)" = "ReadRight" Или "#Parameter(32)" = "EditRight" #Then
+#ElseIf "#Parameter(32)" = "ReadRight" ИЛИ "#Parameter(32)" = "EditRight" #Then
 	И T.#Parameter(33) &lt;&gt; НЕОПРЕДЕЛЕНО
 	И истина In
 	 (	// Verification of user's right for the Values table set in the field.
@@ -2934,14 +2934,14 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 		WHERE
 			 AccessGroupTablesRightCheck.AccessGroup = AccessGroups.Ref
 			И VALUETYPE(AccessGroupTablesRightCheck.TableType) = VALUETYPE(T.#Parameter(33))
-		#If Не "#Parameter(32)" = "ReadRight" #Then
+		#If НЕ "#Parameter(32)" = "ReadRight" #Then
 			И AccessGroupTablesRightCheck.Update
 		#EndIf
 	 )
 #ElseIf "#Parameter(32)" = "RightSettings" #Then
 	И
 	 (
-		истина IN // Verifying that right is allowed for user Или a user group.
+		истина IN // Verifying that right is allowed for user ИЛИ a user group.
 			(
 			SELECT TOP 1 истина
 			FROM InformationRegister.ObjectRightsSettings AS RightSettings
@@ -2964,7 +2964,7 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 					 UsersGroupsContents.User = &amp;AuthorizedUser
 					И UsersGroupsContents.UsersGroup = RightSettings.User
 			)
-		 И Не false IN // Verifying that right is Не allowed for user Или a user group.
+		 И НЕ false IN // Verifying that right is НЕ allowed for user ИЛИ a user group.
 			(
 			SELECT TOP 1 false
 			FROM InformationRegister.ObjectRightsSettings AS RightSettings
@@ -2988,24 +2988,24 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 					И UsersGroupsContents.UsersGroup = RightSettings.User
 			)
 	 )
-#ElseIf Не StrContains(&amp;AllAccessKindsExceptSpecial, ",#Parameter(32),") #Then
+#ElseIf НЕ StrContains(&amp;AllAccessKindsExceptSpecial, ",#Parameter(32),") #Then
 	// When the parameter is set incorrectly, a row is inserted to create an error of access restriction build.
 	#If StrContains("#Parameter(32)", ",") #Then
-		InvalidAccessKind: "#Parameter(32)" - "The list of access type names is Не found"
+		InvalidAccessKind: "#Parameter(32)" - "The list of access type names is НЕ found"
 	#Else
-		InvalidAccessKind: "#Parameter(32)" - "Access type name is Не found"
+		InvalidAccessKind: "#Parameter(32)" - "Access type name is НЕ found"
 	#EndIf
 #ElseIf &amp;AccessKindsWithDisabledUse &lt;&gt; "All"
- И Не StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(32),") #Then
+ И НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(32),") #Then
 	И
 	 (
 			ISNULL(T.#Parameter(33), НЕОПРЕДЕЛЕНО) &lt;&gt; НЕОПРЕДЕЛЕНО
 			И
-		#If (Не StrContains(&amp;AccessKindsWithDisabledUse, ",Users,") И StrContains(",#Parameter(32),", ",Users,"))
-		 Или (Не StrContains(&amp;AccessKindsWithDisabledUse, ",ExternalUsers,") И StrContains(",#Parameter(32),", ",ExternalUsers,")) #Then
-			Не
+		#If (НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",Users,") И StrContains(",#Parameter(32),", ",Users,"))
+		 ИЛИ (НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",ExternalUsers,") И StrContains(",#Parameter(32),", ",ExternalUsers,")) #Then
+			НЕ
 			(
-			Не истина In
+			НЕ истина In
 				(
 				SELECT TOP 1 истина
 				FROM InformationRegister.AccessValuesGroups AS AccessValuesGroups
@@ -3013,7 +3013,7 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 					 AccessValuesGroups.AccessValue = T.#Parameter(33)
 					И AccessValuesGroups.AccessValuesGroup = &amp;AuthorizedUser
 				)
-			И Не
+			И НЕ
 		#Else
 			(
 		#EndIf
@@ -3078,11 +3078,11 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 
 //// Value verification of parameters group field 16.
 #If "#Parameter(34)" = "" И "#Parameter(35)" = "" #Then
-	// Parameters group is Не used.
-#ElseIf "#Parameter(34)" = "Condition" Или "#Parameter(34)" = "" #Then
-	// When the Condition access kind name (Или ""), then instead of field name condition is specified.
+	// Parameters group is НЕ used.
+#ElseIf "#Parameter(34)" = "Condition" ИЛИ "#Parameter(34)" = "" #Then
+	// When the Condition access kind name (ИЛИ ""), then instead of field name condition is specified.
 	И ( #Parameter(35) )
-#ElseIf "#Parameter(34)" = "ReadRight" Или "#Parameter(34)" = "EditRight" #Then
+#ElseIf "#Parameter(34)" = "ReadRight" ИЛИ "#Parameter(34)" = "EditRight" #Then
 	И T.#Parameter(35) &lt;&gt; НЕОПРЕДЕЛЕНО
 	И истина In
 	 (	// Verification of user's right for the Values table set in the field.
@@ -3091,14 +3091,14 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 		WHERE
 			 AccessGroupTablesRightCheck.AccessGroup = AccessGroups.Ref
 			И VALUETYPE(AccessGroupTablesRightCheck.TableType) = VALUETYPE(T.#Parameter(35))
-		#If Не "#Parameter(34)" = "ReadRight" #Then
+		#If НЕ "#Parameter(34)" = "ReadRight" #Then
 			И AccessGroupTablesRightCheck.Update
 		#EndIf
 	 )
 #ElseIf "#Parameter(34)" = "RightSettings" #Then
 	И
 	 (
-		истина IN // Verifying that right is allowed for user Или a user group.
+		истина IN // Verifying that right is allowed for user ИЛИ a user group.
 			(
 			SELECT TOP 1 истина
 			FROM InformationRegister.ObjectRightsSettings AS RightSettings
@@ -3121,7 +3121,7 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 					 UsersGroupsContents.User = &amp;AuthorizedUser
 					И UsersGroupsContents.UsersGroup = RightSettings.User
 			)
-		 И Не false IN // Verifying that right is Не allowed for user Или a user group.
+		 И НЕ false IN // Verifying that right is НЕ allowed for user ИЛИ a user group.
 			(
 			SELECT TOP 1 false
 			FROM InformationRegister.ObjectRightsSettings AS RightSettings
@@ -3145,24 +3145,24 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 					И UsersGroupsContents.UsersGroup = RightSettings.User
 			)
 	 )
-#ElseIf Не StrContains(&amp;AllAccessKindsExceptSpecial, ",#Parameter(34),") #Then
+#ElseIf НЕ StrContains(&amp;AllAccessKindsExceptSpecial, ",#Parameter(34),") #Then
 	// When the parameter is set incorrectly, a row is inserted to create an error of access restriction build.
 	#If StrContains("#Parameter(34)", ",") #Then
-		InvalidAccessKind: "#Parameter(34)" - "The list of access type names is Не found"
+		InvalidAccessKind: "#Parameter(34)" - "The list of access type names is НЕ found"
 	#Else
-		InvalidAccessKind: "#Parameter(34)" - "Access type name is Не found"
+		InvalidAccessKind: "#Parameter(34)" - "Access type name is НЕ found"
 	#EndIf
 #ElseIf &amp;AccessKindsWithDisabledUse &lt;&gt; "All"
- И Не StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(34),") #Then
+ И НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(34),") #Then
 	И
 	 (
 			ISNULL(T.#Parameter(35), НЕОПРЕДЕЛЕНО) &lt;&gt; НЕОПРЕДЕЛЕНО
 			И
-		#If (Не StrContains(&amp;AccessKindsWithDisabledUse, ",Users,") И StrContains(",#Parameter(34),", ",Users,"))
-		 Или (Не StrContains(&amp;AccessKindsWithDisabledUse, ",ExternalUsers,") И StrContains(",#Parameter(34),", ",ExternalUsers,")) #Then
-			Не
+		#If (НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",Users,") И StrContains(",#Parameter(34),", ",Users,"))
+		 ИЛИ (НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",ExternalUsers,") И StrContains(",#Parameter(34),", ",ExternalUsers,")) #Then
+			НЕ
 			(
-			Не истина In
+			НЕ истина In
 				(
 				SELECT TOP 1 истина
 				FROM InformationRegister.AccessValuesGroups AS AccessValuesGroups
@@ -3170,7 +3170,7 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 					 AccessValuesGroups.AccessValue = T.#Parameter(35)
 					И AccessValuesGroups.AccessValuesGroup = &amp;AuthorizedUser
 				)
-			И Не
+			И НЕ
 		#Else
 			(
 		#EndIf
@@ -3249,46 +3249,46 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 // Modifier - changes template.
 // 1-st modifier - the NotRestrictAccessToGroups
 // row directs to unconditionally select groups of the hierarchical log. 
-// Other modifiers in this version of the template are Не expected.
+// Other modifiers in this version of the template are НЕ expected.
 // JoinedTables - the text of joining additional tables in
 // the query language such as
 // "INNER JOIN Document.ExpenseReport.PaymentToVendor AS T1 On T.Ref = T1.Ref".
 // Joining allows to specify the fields of PaymentToVendor table,
 // as the fields of the main table for verifying their values, as the main table values.
 // You should remember that in case of multiplication of the
-// lines in the result of connection, it is enough that the only one line pass the verification conditions, in other words the lines verification results unite on "Или".
+// lines in the result of connection, it is enough that the only one line pass the verification conditions, in other words the lines verification results unite on "ИЛИ".
 // O - Initial brackets "(".
 // K(n) - Access kind - name of access kind, for example, "Companies" It's a good idea to specify
 // several names for fields of a composite
 // type for productivity increase, for example, Companies,PrivateIndividualsGroups, by specifying several parameters blocks with the same field name.
 // You can use special kinds of
 // access Condition, RightsSettings,ReadRight, ChangeRight only separately.
-// When K(n) = Condition (Или ""), then P(n) contains a condition row on
+// When K(n) = Condition (ИЛИ ""), then P(n) contains a condition row on
 // language of query,
 // for example, T.Author = &amp;AuthorizedUser, VALUETYPE (T.Owner) = TYPE (Catalog.Organization), where T - current table alias.
 // When K(n) = ReadRight
-// Или ChangeRight checking if you have rights for value table T.P(n) is performed.
+// ИЛИ ChangeRight checking if you have rights for value table T.P(n) is performed.
 // F(n) - Field of verified value with an
-// alias such as "T.Organization except the case of K(n) = "Condition" (Или "").
-// O(n) - Logical operations "И", "Или" in combination with brackets "(", ")".
+// alias such as "T.Organization except the case of K(n) = "Condition" (ИЛИ "").
+// O(n) - Logical operations "И", "ИЛИ" in combination with brackets "(", ")".
 // Note: you can increase the maximum quantity of simultaneously checked fields
 // values by changing the template; but you should also specify all parameters of the pattern, namely specify empty rows, when the quantity of fields is less than maximum.
 // can by editing the template but will specify all Required Parameters of the template ie to specify empty strings When quantity fields Less maximum.
 // The pattern has the following structure:
-// &lt;Conditions common part&gt; &lt;Condition by parameters group 1&gt; И/Или &lt;Condition by parameters group 2&gt; И/Или ... &lt;Condition by
+// &lt;Conditions common part&gt; &lt;Condition by parameters group 1&gt; И/ИЛИ &lt;Condition by parameters group 2&gt; И/ИЛИ ... &lt;Condition by
 // parameters group(n)&gt; Example:
 // ByValuesEx("Document.ProductTransfer", "", "",
 // "",
 // "",
 // "Companies","T.Company","И(",
-// "Warehouses","T.SourceWarehouse","Или",
+// "Warehouses","T.SourceWarehouse","ИЛИ",
 // "Warehouses","T.WarehouseRecipient",")", "","","", ...)
 
 // Verification of the Right parameter.
-#If Не ("#Parameter(2)" = "Read" Или "#Parameter(2)" = "Insert" Или
- "#Parameter(2)" = "Update" Или "#Parameter(2)" = "Delete" Или "#Parameter(2)" = "")
- Или #CurrentAccessRightName &lt;&gt; "Read" И "#Parameter(2)" = "Read"
- Или #CurrentAccessRightName = "Read" И "#Parameter(2)" &lt;&gt; "Read" И "#Parameter(2)" &lt;&gt; "" #Then
+#If НЕ ("#Parameter(2)" = "Read" ИЛИ "#Parameter(2)" = "Insert" ИЛИ
+ "#Parameter(2)" = "Update" ИЛИ "#Parameter(2)" = "Delete" ИЛИ "#Parameter(2)" = "")
+ ИЛИ #CurrentAccessRightName &lt;&gt; "Read" И "#Parameter(2)" = "Read"
+ ИЛИ #CurrentAccessRightName = "Read" И "#Parameter(2)" &lt;&gt; "Read" И "#Parameter(2)" &lt;&gt; "" #Then
  // When the parameter is set incorrectly, a row is inserted to create an error of access restriction build.
  InvalidRight: #Parameter(2)
 #EndIf
@@ -3300,7 +3300,7 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 #EndIf
 
 // Verification of the Modifier parameter.
-#If Не ("#Parameter(3)" = "DontLimitAccessToGroups" Или "#Parameter(3)" = "") #Then
+#If НЕ ("#Parameter(3)" = "DontLimitAccessToGroups" ИЛИ "#Parameter(3)" = "") #Then
 	// When the parameter is set incorrectly, a row is inserted to create an error of access restriction build.
 	InvalidModifier: #Parameter(3)
 #EndIf
@@ -3308,71 +3308,71 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 // General checking of access restriction on record level
 // И checking of usage at least of one restriction from listed access kinds.
 #If &amp;LimitAccessOnRecordsLevel
- И Не (истина
+ И НЕ (истина
  И ("#Parameter(6)" = "" И "#Parameter(7)" = ""
- Или &amp;AccessKindsWithDisabledUse = "All"
- И Не StrContains(",Condition,,RightsSettings,Object, ,ReadRight,ChangeRight,", ",#Parameter(6),")
- Или StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(6),"))
+ ИЛИ &amp;AccessKindsWithDisabledUse = "All"
+ И НЕ StrContains(",Condition,,RightsSettings,Object, ,ReadRight,ChangeRight,", ",#Parameter(6),")
+ ИЛИ StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(6),"))
  И ("#Parameter(9)" = "" И "#Parameter(10)" = ""
- Или &amp;AccessKindsWithDisabledUse = "All"
- И Не StrContains(",Condition,,RightsSettings,Object, ,ReadRight,ChangeRight,", ",#Parameter(9),")
- Или StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(9),"))
+ ИЛИ &amp;AccessKindsWithDisabledUse = "All"
+ И НЕ StrContains(",Condition,,RightsSettings,Object, ,ReadRight,ChangeRight,", ",#Parameter(9),")
+ ИЛИ StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(9),"))
  И ("#Parameter(12)" = "" И "#Parameter(13)" = ""
- Или &amp;AccessKindsWithDisabledUse = "All"
- И Не StrContains(",Condition,,RightsSettings,Object, ,ReadRight,ChangeRight,", ",#Parameter(12),")
- Или StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(12),"))
+ ИЛИ &amp;AccessKindsWithDisabledUse = "All"
+ И НЕ StrContains(",Condition,,RightsSettings,Object, ,ReadRight,ChangeRight,", ",#Parameter(12),")
+ ИЛИ StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(12),"))
  И ("#Parameter(15)" = "" И "#Parameter(16)" = ""
- Или &amp;AccessKindsWithDisabledUse = "All"
- И Не StrContains(",Condition,,RightsSettings,Object, ,ReadRight,ChangeRight,", ",#Parameter(15),")
- Или StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(15),"))
+ ИЛИ &amp;AccessKindsWithDisabledUse = "All"
+ И НЕ StrContains(",Condition,,RightsSettings,Object, ,ReadRight,ChangeRight,", ",#Parameter(15),")
+ ИЛИ StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(15),"))
  И ("#Parameter(18)" = "" И "#Parameter(19)" = ""
- Или &amp;AccessKindsWithDisabledUse = "All"
- И Не StrContains(",Condition,,RightsSettings,Object, ,ReadRight,ChangeRight,", ",#Parameter(18),")
- Или StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(18),"))
+ ИЛИ &amp;AccessKindsWithDisabledUse = "All"
+ И НЕ StrContains(",Condition,,RightsSettings,Object, ,ReadRight,ChangeRight,", ",#Parameter(18),")
+ ИЛИ StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(18),"))
  И ("#Parameter(21)" = "" И "#Parameter(22)" = ""
- Или &amp;AccessKindsWithDisabledUse = "All"
- И Не StrContains(",Condition,,RightsSettings,Object, ,ReadRight,ChangeRight,", ",#Parameter(21),")
- Или StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(21),"))
+ ИЛИ &amp;AccessKindsWithDisabledUse = "All"
+ И НЕ StrContains(",Condition,,RightsSettings,Object, ,ReadRight,ChangeRight,", ",#Parameter(21),")
+ ИЛИ StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(21),"))
  И ("#Parameter(24)" = "" И "#Parameter(25)" = ""
- Или &amp;AccessKindsWithDisabledUse = "All"
- И Не StrContains(",Condition,,RightsSettings,Object, ,ReadRight,ChangeRight,", ",#Parameter(24),")
- Или StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(24),"))
+ ИЛИ &amp;AccessKindsWithDisabledUse = "All"
+ И НЕ StrContains(",Condition,,RightsSettings,Object, ,ReadRight,ChangeRight,", ",#Parameter(24),")
+ ИЛИ StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(24),"))
  И ("#Parameter(27)" = "" И "#Parameter(28)" = ""
- Или &amp;AccessKindsWithDisabledUse = "All"
- И Не StrContains(",Condition,,RightsSettings,Object, ,ReadRight,ChangeRight,", ",#Parameter(27),")
- Или StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(27),"))
+ ИЛИ &amp;AccessKindsWithDisabledUse = "All"
+ И НЕ StrContains(",Condition,,RightsSettings,Object, ,ReadRight,ChangeRight,", ",#Parameter(27),")
+ ИЛИ StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(27),"))
  И ("#Parameter(30)" = "" И "#Parameter(31)" = ""
- Или &amp;AccessKindsWithDisabledUse = "All"
- И Не StrContains(",Condition,,RightsSettings,Object, ,ReadRight,ChangeRight,", ",#Parameter(30),")
- Или StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(30),"))
+ ИЛИ &amp;AccessKindsWithDisabledUse = "All"
+ И НЕ StrContains(",Condition,,RightsSettings,Object, ,ReadRight,ChangeRight,", ",#Parameter(30),")
+ ИЛИ StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(30),"))
  И ("#Parameter(33)" = "" И "#Parameter(34)" = ""
- Или &amp;AccessKindsWithDisabledUse = "All"
- И Не StrContains(",Condition,,RightsSettings,Object, ,ReadRight,ChangeRight,", ",#Parameter(33),")
- Или StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(33),"))
+ ИЛИ &amp;AccessKindsWithDisabledUse = "All"
+ И НЕ StrContains(",Condition,,RightsSettings,Object, ,ReadRight,ChangeRight,", ",#Parameter(33),")
+ ИЛИ StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(33),"))
  И ("#Parameter(36)" = "" И "#Parameter(37)" = ""
- Или &amp;AccessKindsWithDisabledUse = "All"
- И Не StrContains(",Condition,,RightsSettings,Object, ,ReadRight,ChangeRight,", ",#Parameter(36),")
- Или StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(36),"))
+ ИЛИ &amp;AccessKindsWithDisabledUse = "All"
+ И НЕ StrContains(",Condition,,RightsSettings,Object, ,ReadRight,ChangeRight,", ",#Parameter(36),")
+ ИЛИ StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(36),"))
  И ("#Parameter(39)" = "" И "#Parameter(40)" = ""
- Или &amp;AccessKindsWithDisabledUse = "All"
- И Не StrContains(",Condition,,RightsSettings,Object, ,ReadRight,ChangeRight,", ",#Parameter(39),")
- Или StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(39),"))
+ ИЛИ &amp;AccessKindsWithDisabledUse = "All"
+ И НЕ StrContains(",Condition,,RightsSettings,Object, ,ReadRight,ChangeRight,", ",#Parameter(39),")
+ ИЛИ StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(39),"))
  И ("#Parameter(42)" = "" И "#Parameter(43)" = ""
- Или &amp;AccessKindsWithDisabledUse = "All"
- И Не StrContains(",Condition,,RightsSettings,Object, ,ReadRight,ChangeRight,", ",#Parameter(42),")
- Или StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(42),"))
+ ИЛИ &amp;AccessKindsWithDisabledUse = "All"
+ И НЕ StrContains(",Condition,,RightsSettings,Object, ,ReadRight,ChangeRight,", ",#Parameter(42),")
+ ИЛИ StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(42),"))
  И ("#Parameter(45)" = "" И "#Parameter(46)" = ""
- Или &amp;AccessKindsWithDisabledUse = "All"
- И Не StrContains(",Condition,,RightsSettings,Object, ,ReadRight,ChangeRight,", ",#Parameter(45),")
- Или StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(45),"))
+ ИЛИ &amp;AccessKindsWithDisabledUse = "All"
+ И НЕ StrContains(",Condition,,RightsSettings,Object, ,ReadRight,ChangeRight,", ",#Parameter(45),")
+ ИЛИ StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(45),"))
  И ("#Parameter(48)" = "" И "#Parameter(49)" = ""
- Или &amp;AccessKindsWithDisabledUse = "All"
- И Не StrContains(",Condition,,RightsSettings,Object, ,ReadRight,ChangeRight,", ",#Parameter(48),")
- Или StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(48),"))
+ ИЛИ &amp;AccessKindsWithDisabledUse = "All"
+ И НЕ StrContains(",Condition,,RightsSettings,Object, ,ReadRight,ChangeRight,", ",#Parameter(48),")
+ ИЛИ StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(48),"))
  И ("#Parameter(51)" = "" И "#Parameter(52)" = ""
- Или &amp;AccessKindsWithDisabledUse = "All"
- И Не StrContains(",Condition,,RightsSettings,Object, ,ReadRight,ChangeRight,", ",#Parameter(51),")
- Или StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(51),"))
+ ИЛИ &amp;AccessKindsWithDisabledUse = "All"
+ И НЕ StrContains(",Condition,,RightsSettings,Object, ,ReadRight,ChangeRight,", ",#Parameter(51),")
+ ИЛИ StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(51),"))
  ) #Then
 
 T FROM T // T - alias of the current table (selected short to reduce the quantity of characters in the parameter text - conditions on language of requests).
@@ -3384,7 +3384,7 @@ WHERE
 
 // Unconditionally select groups in the hierarchical metadata object (if needed).
 #If "#Parameter(3)" = "DontLimitAccessToGroups" #Then
-	T.IsFolder Или
+	T.IsFolder ИЛИ
 #EndIf
 
 истина In
@@ -3395,7 +3395,7 @@ WHERE
 		Catalog.MetadataObjectIDs AS PropertiesCurrentTable
 		INNER JOIN Catalog.AccessGroups AS AccessGroups
 		ON
-			 PropertiesCurrentTable.DescriptionFull = "#Parameter(1)"
+			 PropertiesCurrentTable.FullName = "#Parameter(1)"
 			И истина In
 			 (
 				SELECT TOP 1 истина
@@ -3404,7 +3404,7 @@ WHERE
 					WHERE
 						 AccessGroupsTables.Table = PropertiesCurrentTable.Ref
 						И AccessGroupsTables.AccessGroup = AccessGroups.Ref
-					#If Не #CurrentAccessRightName = "Read" #Then
+					#If НЕ #CurrentAccessRightName = "Read" #Then
 						И AccessGroupsTables.Update
 					#EndIf
 			 )
@@ -3425,10 +3425,10 @@ WHERE
 	#Parameter(5) // [([(][(]...] 0-n opening brackets.
 
 //// Value verification of parameters group field 1.
-#If "#Parameter(6)" = "Condition" Или "#Parameter(6)" = "" #Then
-	// When the Condition access kind name (Или ""), then instead of field name condition is specified.
+#If "#Parameter(6)" = "Condition" ИЛИ "#Parameter(6)" = "" #Then
+	// When the Condition access kind name (ИЛИ ""), then instead of field name condition is specified.
 	( #Parameter(7) )
-#ElseIf "#Parameter(6)" = "ReadRight" Или "#Parameter(6)" = "EditRight" #Then
+#ElseIf "#Parameter(6)" = "ReadRight" ИЛИ "#Parameter(6)" = "EditRight" #Then
 	 #Parameter(7) &lt;&gt; НЕОПРЕДЕЛЕНО
 	И истина In
 	 (	// Verification of user's right for the Values table set in the field.
@@ -3437,14 +3437,14 @@ WHERE
 		WHERE
 			 AccessGroupTablesRightCheck.AccessGroup = AccessGroups.Ref
 			И VALUETYPE(AccessGroupTablesRightCheck.TableType) = VALUETYPE(#Parameter(7))
-		#If Не "#Parameter(6)" = "ReadRight" #Then
+		#If НЕ "#Parameter(6)" = "ReadRight" #Then
 			И AccessGroupTablesRightCheck.Update
 		#EndIf
 	 )
 #ElseIf "#Parameter(6)" = "RightSettings" #Then
 	
 	 (
-		истина IN // Verifying that right is allowed for user Или a user group.
+		истина IN // Verifying that right is allowed for user ИЛИ a user group.
 			(
 			SELECT TOP 1 истина
 			FROM InformationRegister.ObjectRightsSettings AS RightSettings
@@ -3467,7 +3467,7 @@ WHERE
 					 UsersGroupsContents.User = &amp;AuthorizedUser
 					И UsersGroupsContents.UsersGroup = RightSettings.User
 			)
-		 И Не false IN // Verifying that right is Не allowed for user Или a user group.
+		 И НЕ false IN // Verifying that right is НЕ allowed for user ИЛИ a user group.
 			(
 			SELECT TOP 1 false
 			FROM InformationRegister.ObjectRightsSettings AS RightSettings
@@ -3491,24 +3491,24 @@ WHERE
 					И UsersGroupsContents.UsersGroup = RightSettings.User
 			)
 	 )
-#ElseIf Не StrContains(&amp;AllAccessKindsExceptSpecial, ",#Parameter(6),") #Then
+#ElseIf НЕ StrContains(&amp;AllAccessKindsExceptSpecial, ",#Parameter(6),") #Then
 	// When the parameter is set incorrectly, a row is inserted to create an error of access restriction build.
 	#If StrContains("#Parameter(6)", ",") #Then
-		InvalidAccessKind: "#Parameter(6)" - "The list of access type names is Не found"
+		InvalidAccessKind: "#Parameter(6)" - "The list of access type names is НЕ found"
 	#Else
-		InvalidAccessKind: "#Parameter(6)" - "Access type name is Не found"
+		InvalidAccessKind: "#Parameter(6)" - "Access type name is НЕ found"
 	#EndIf
 #ElseIf &amp;AccessKindsWithDisabledUse &lt;&gt; "All"
- И Не StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(6),") #Then
+ И НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(6),") #Then
 	
 	 (
 			ISNULL(#Parameter(7), НЕОПРЕДЕЛЕНО) &lt;&gt; НЕОПРЕДЕЛЕНО
 			И
-		#If (Не StrContains(&amp;AccessKindsWithDisabledUse, ",Users,") И StrContains(",#Parameter(6),", ",Users,"))
-		 Или (Не StrContains(&amp;AccessKindsWithDisabledUse, ",ExternalUsers,") И StrContains(",#Parameter(6),", ",ExternalUsers,")) #Then
-			Не
+		#If (НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",Users,") И StrContains(",#Parameter(6),", ",Users,"))
+		 ИЛИ (НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",ExternalUsers,") И StrContains(",#Parameter(6),", ",ExternalUsers,")) #Then
+			НЕ
 			(
-			Не истина In
+			НЕ истина In
 				(
 				SELECT TOP 1 истина
 				FROM InformationRegister.AccessValuesGroups AS AccessValuesGroups
@@ -3516,7 +3516,7 @@ WHERE
 					 AccessValuesGroups.AccessValue = #Parameter(7)
 					И AccessValuesGroups.AccessValuesGroup = &amp;AuthorizedUser
 				)
-			И Не
+			И НЕ
 		#Else
 			(
 		#EndIf
@@ -3581,15 +3581,15 @@ WHERE
 	истина
 #EndIf
 
-	#Parameter(8) // [)[)][)]...] [Или|И] [([(][(]...] operator И/Или with/without brackets.
+	#Parameter(8) // [)[)][)]...] [ИЛИ|И] [([(][(]...] operator И/ИЛИ with/without brackets.
 
 //// Value verification of parameters group field 2.
 #If "#Parameter(9)" = "" И "#Parameter(10)" = "" #Then
-	// Parameters group is Не used.
-#ElseIf "#Parameter(9)" = "Condition" Или "#Parameter(9)" = "" #Then
-	// When the Condition access kind name (Или ""), then instead of field name condition is specified.
+	// Parameters group is НЕ used.
+#ElseIf "#Parameter(9)" = "Condition" ИЛИ "#Parameter(9)" = "" #Then
+	// When the Condition access kind name (ИЛИ ""), then instead of field name condition is specified.
 	 ( #Parameter(10) )
-#ElseIf "#Parameter(9)" = "ReadRight" Или "#Parameter(9)" = "EditRight" #Then
+#ElseIf "#Parameter(9)" = "ReadRight" ИЛИ "#Parameter(9)" = "EditRight" #Then
 	 #Parameter(10) &lt;&gt; НЕОПРЕДЕЛЕНО
 	И истина In
 	 (	// Verification of user's right for the Values table set in the field.
@@ -3598,14 +3598,14 @@ WHERE
 		WHERE
 			 AccessGroupTablesRightCheck.AccessGroup = AccessGroups.Ref
 			И VALUETYPE(AccessGroupTablesRightCheck.TableType) = VALUETYPE(#Parameter(10))
-		#If Не "#Parameter(9)" = "ReadRight" #Then
+		#If НЕ "#Parameter(9)" = "ReadRight" #Then
 			И AccessGroupTablesRightCheck.Update
 		#EndIf
 	 )
 #ElseIf "#Parameter(9)" = "RightSettings" #Then
 	
 	 (
-		истина IN // Verifying that right is allowed for user Или a user group.
+		истина IN // Verifying that right is allowed for user ИЛИ a user group.
 			(
 			SELECT TOP 1 истина
 			FROM InformationRegister.ObjectRightsSettings AS RightSettings
@@ -3628,7 +3628,7 @@ WHERE
 					 UsersGroupsContents.User = &amp;AuthorizedUser
 					И UsersGroupsContents.UsersGroup = RightSettings.User
 			)
-		 И Не false IN // Verifying that right is Не allowed for user Или a user group.
+		 И НЕ false IN // Verifying that right is НЕ allowed for user ИЛИ a user group.
 			(
 			SELECT TOP 1 false
 			FROM InformationRegister.ObjectRightsSettings AS RightSettings
@@ -3652,24 +3652,24 @@ WHERE
 					И UsersGroupsContents.UsersGroup = RightSettings.User
 			)
 	 )
-#ElseIf Не StrContains(&amp;AllAccessKindsExceptSpecial, ",#Parameter(9),") #Then
+#ElseIf НЕ StrContains(&amp;AllAccessKindsExceptSpecial, ",#Parameter(9),") #Then
 	// When the parameter is set incorrectly, a row is inserted to create an error of access restriction build.
 	#If StrContains("#Parameter(9)", ",") #Then
-		InvalidAccessKind: "#Parameter(9)" - "The list of access type names is Не found"
+		InvalidAccessKind: "#Parameter(9)" - "The list of access type names is НЕ found"
 	#Else
-		InvalidAccessKind: "#Parameter(9)" - "Access type name is Не found"
+		InvalidAccessKind: "#Parameter(9)" - "Access type name is НЕ found"
 	#EndIf
 #ElseIf &amp;AccessKindsWithDisabledUse &lt;&gt; "All"
- И Не StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(9),") #Then
+ И НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(9),") #Then
 	
 	 (
 			ISNULL(#Parameter(10), НЕОПРЕДЕЛЕНО) &lt;&gt; НЕОПРЕДЕЛЕНО
 			И
-		#If (Не StrContains(&amp;AccessKindsWithDisabledUse, ",Users,") И StrContains(",#Parameter(9),", ",Users,"))
-		 Или (Не StrContains(&amp;AccessKindsWithDisabledUse, ",ExternalUsers,") И StrContains(",#Parameter(9),", ",ExternalUsers,")) #Then
-			Не
+		#If (НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",Users,") И StrContains(",#Parameter(9),", ",Users,"))
+		 ИЛИ (НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",ExternalUsers,") И StrContains(",#Parameter(9),", ",ExternalUsers,")) #Then
+			НЕ
 			(
-			Не истина In
+			НЕ истина In
 				(
 				SELECT TOP 1 истина
 				FROM InformationRegister.AccessValuesGroups AS AccessValuesGroups
@@ -3677,7 +3677,7 @@ WHERE
 					 AccessValuesGroups.AccessValue = #Parameter(10)
 					И AccessValuesGroups.AccessValuesGroup = &amp;AuthorizedUser
 				)
-			И Не
+			И НЕ
 		#Else
 			(
 		#EndIf
@@ -3742,15 +3742,15 @@ WHERE
 	истина
 #EndIf
 
-	#Parameter(11) // [)[)][)]...] [Или|И] [([(][(]...] operator И/Или with/without brackets.
+	#Parameter(11) // [)[)][)]...] [ИЛИ|И] [([(][(]...] operator И/ИЛИ with/without brackets.
 
 //// Value verification of parameters group field 3.
 #If "#Parameter(12)" = "" И "#Parameter(13)" = "" #Then
-	// Parameters group is Не used.
-#ElseIf "#Parameter(12)" = "Condition" Или "#Parameter(12)" = "" #Then
-	// When the Condition access kind name (Или ""), then instead of field name condition is specified.
+	// Parameters group is НЕ used.
+#ElseIf "#Parameter(12)" = "Condition" ИЛИ "#Parameter(12)" = "" #Then
+	// When the Condition access kind name (ИЛИ ""), then instead of field name condition is specified.
 	 ( #Parameter(13) )
-#ElseIf "#Parameter(12)" = "ReadRight" Или "#Parameter(12)" = "EditRight" #Then
+#ElseIf "#Parameter(12)" = "ReadRight" ИЛИ "#Parameter(12)" = "EditRight" #Then
 	 #Parameter(13) &lt;&gt; НЕОПРЕДЕЛЕНО
 	И истина In
 	 (	// Verification of user's right for the Values table set in the field.
@@ -3759,14 +3759,14 @@ WHERE
 		WHERE
 			 AccessGroupTablesRightCheck.AccessGroup = AccessGroups.Ref
 			И VALUETYPE(AccessGroupTablesRightCheck.TableType) = VALUETYPE(#Parameter(13))
-		#If Не "#Parameter(12)" = "ReadRight" #Then
+		#If НЕ "#Parameter(12)" = "ReadRight" #Then
 			И AccessGroupTablesRightCheck.Update
 		#EndIf
 	 )
 #ElseIf "#Parameter(12)" = "RightSettings" #Then
 	
 	 (
-		истина IN // Verifying that right is allowed for user Или a user group.
+		истина IN // Verifying that right is allowed for user ИЛИ a user group.
 			(
 			SELECT TOP 1 истина
 			FROM InformationRegister.ObjectRightsSettings AS RightSettings
@@ -3789,7 +3789,7 @@ WHERE
 					 UsersGroupsContents.User = &amp;AuthorizedUser
 					И UsersGroupsContents.UsersGroup = RightSettings.User
 			)
-		 И Не false IN // Verifying that right is Не allowed for user Или a user group.
+		 И НЕ false IN // Verifying that right is НЕ allowed for user ИЛИ a user group.
 			(
 			SELECT TOP 1 false
 			FROM InformationRegister.ObjectRightsSettings AS RightSettings
@@ -3813,24 +3813,24 @@ WHERE
 					И UsersGroupsContents.UsersGroup = RightSettings.User
 			)
 	 )
-#ElseIf Не StrContains(&amp;AllAccessKindsExceptSpecial, ",#Parameter(12),") #Then
+#ElseIf НЕ StrContains(&amp;AllAccessKindsExceptSpecial, ",#Parameter(12),") #Then
 	// When the parameter is set incorrectly, a row is inserted to create an error of access restriction build.
 	#If StrContains("#Parameter(12)", ",") #Then
-		InvalidAccessKind: "#Parameter(12)" - "The list of access type names is Не found"
+		InvalidAccessKind: "#Parameter(12)" - "The list of access type names is НЕ found"
 	#Else
-		InvalidAccessKind: "#Parameter(12)" - "Access type name is Не found"
+		InvalidAccessKind: "#Parameter(12)" - "Access type name is НЕ found"
 	#EndIf
 #ElseIf &amp;AccessKindsWithDisabledUse &lt;&gt; "All"
- И Не StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(12),") #Then
+ И НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(12),") #Then
 	
 	 (
 			ISNULL(#Parameter(13), НЕОПРЕДЕЛЕНО) &lt;&gt; НЕОПРЕДЕЛЕНО
 			И
-		#If (Не StrContains(&amp;AccessKindsWithDisabledUse, ",Users,") И StrContains(",#Parameter(12),", ",Users,"))
-		 Или (Не StrContains(&amp;AccessKindsWithDisabledUse, ",ExternalUsers,") И StrContains(",#Parameter(12),", ",ExternalUsers,")) #Then
-			Не
+		#If (НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",Users,") И StrContains(",#Parameter(12),", ",Users,"))
+		 ИЛИ (НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",ExternalUsers,") И StrContains(",#Parameter(12),", ",ExternalUsers,")) #Then
+			НЕ
 			(
-			Не истина In
+			НЕ истина In
 				(
 				SELECT TOP 1 истина
 				FROM InformationRegister.AccessValuesGroups AS AccessValuesGroups
@@ -3838,7 +3838,7 @@ WHERE
 					 AccessValuesGroups.AccessValue = #Parameter(13)
 					И AccessValuesGroups.AccessValuesGroup = &amp;AuthorizedUser
 				)
-			И Не
+			И НЕ
 		#Else
 			(
 		#EndIf
@@ -3903,15 +3903,15 @@ WHERE
 	истина
 #EndIf
 
-	#Parameter(14) // [)[)][)]...] [Или|И] [([(][(]...] operator И/Или with/without brackets.
+	#Parameter(14) // [)[)][)]...] [ИЛИ|И] [([(][(]...] operator И/ИЛИ with/without brackets.
 
 //// Value verification of parameters group field 4.
 #If "#Parameter(15)" = "" И "#Parameter(16)" = "" #Then
-	// Parameters group is Не used.
-#ElseIf "#Parameter(15)" = "Condition" Или "#Parameter(15)" = "" #Then
-	// When the Condition access kind name (Или ""), then instead of field name condition is specified.
+	// Parameters group is НЕ used.
+#ElseIf "#Parameter(15)" = "Condition" ИЛИ "#Parameter(15)" = "" #Then
+	// When the Condition access kind name (ИЛИ ""), then instead of field name condition is specified.
 	 ( #Parameter(16) )
-#ElseIf "#Parameter(15)" = "ReadRight" Или "#Parameter(15)" = "EditRight" #Then
+#ElseIf "#Parameter(15)" = "ReadRight" ИЛИ "#Parameter(15)" = "EditRight" #Then
 	 #Parameter(16) &lt;&gt; НЕОПРЕДЕЛЕНО
 	И истина In
 	 (	// Verification of user's right for the Values table set in the field.
@@ -3920,14 +3920,14 @@ WHERE
 		WHERE
 			 AccessGroupTablesRightCheck.AccessGroup = AccessGroups.Ref
 			И VALUETYPE(AccessGroupTablesRightCheck.TableType) = VALUETYPE(#Parameter(16))
-		#If Не "#Parameter(15)" = "ReadRight" #Then
+		#If НЕ "#Parameter(15)" = "ReadRight" #Then
 			И AccessGroupTablesRightCheck.Update
 		#EndIf
 	 )
 #ElseIf "#Parameter(15)" = "RightSettings" #Then
 	
 	 (
-		истина IN // Verifying that right is allowed for user Или a user group.
+		истина IN // Verifying that right is allowed for user ИЛИ a user group.
 			(
 			SELECT TOP 1 истина
 			FROM InformationRegister.ObjectRightsSettings AS RightSettings
@@ -3950,7 +3950,7 @@ WHERE
 					 UsersGroupsContents.User = &amp;AuthorizedUser
 					И UsersGroupsContents.UsersGroup = RightSettings.User
 			)
-		 И Не false IN // Verifying that right is Не allowed for user Или a user group.
+		 И НЕ false IN // Verifying that right is НЕ allowed for user ИЛИ a user group.
 			(
 			SELECT TOP 1 false
 			FROM InformationRegister.ObjectRightsSettings AS RightSettings
@@ -3974,24 +3974,24 @@ WHERE
 					И UsersGroupsContents.UsersGroup = RightSettings.User
 			)
 	 )
-#ElseIf Не StrContains(&amp;AllAccessKindsExceptSpecial, ",#Parameter(15),") #Then
+#ElseIf НЕ StrContains(&amp;AllAccessKindsExceptSpecial, ",#Parameter(15),") #Then
 	// When the parameter is set incorrectly, a row is inserted to create an error of access restriction build.
 	#If StrContains("#Parameter(15)", ",") #Then
-		InvalidAccessKind: "#Parameter(15)" - "The list of access type names is Не found"
+		InvalidAccessKind: "#Parameter(15)" - "The list of access type names is НЕ found"
 	#Else
-		InvalidAccessKind: "#Parameter(15)" - "Access type name is Не found"
+		InvalidAccessKind: "#Parameter(15)" - "Access type name is НЕ found"
 	#EndIf
 #ElseIf &amp;AccessKindsWithDisabledUse &lt;&gt; "All"
- И Не StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(15),") #Then
+ И НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(15),") #Then
 	
 	 (
 			ISNULL(#Parameter(16), НЕОПРЕДЕЛЕНО) &lt;&gt; НЕОПРЕДЕЛЕНО
 			И
-		#If (Не StrContains(&amp;AccessKindsWithDisabledUse, ",Users,") И StrContains(",#Parameter(15),", ",Users,"))
-		 Или (Не StrContains(&amp;AccessKindsWithDisabledUse, ",ExternalUsers,") И StrContains(",#Parameter(15),", ",ExternalUsers,")) #Then
-			Не
+		#If (НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",Users,") И StrContains(",#Parameter(15),", ",Users,"))
+		 ИЛИ (НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",ExternalUsers,") И StrContains(",#Parameter(15),", ",ExternalUsers,")) #Then
+			НЕ
 			(
-			Не истина In
+			НЕ истина In
 				(
 				SELECT TOP 1 истина
 				FROM InformationRegister.AccessValuesGroups AS AccessValuesGroups
@@ -3999,7 +3999,7 @@ WHERE
 					 AccessValuesGroups.AccessValue = #Parameter(16)
 					И AccessValuesGroups.AccessValuesGroup = &amp;AuthorizedUser
 				)
-			И Не
+			И НЕ
 		#Else
 			(
 		#EndIf
@@ -4064,15 +4064,15 @@ WHERE
 	истина
 #EndIf
 
-	#Parameter(17) // [)[)][)]...] [Или|И] [([(][(]...] operator И/Или with/without brackets.
+	#Parameter(17) // [)[)][)]...] [ИЛИ|И] [([(][(]...] operator И/ИЛИ with/without brackets.
 
 //// Value verification of parameters group field 5.
 #If "#Parameter(18)" = "" И "#Parameter(19)" = "" #Then
-	// Parameters group is Не used.
-#ElseIf "#Parameter(18)" = "Condition" Или "#Parameter(18)" = "" #Then
-	// When the Condition access kind name (Или ""), then instead of field name condition is specified.
+	// Parameters group is НЕ used.
+#ElseIf "#Parameter(18)" = "Condition" ИЛИ "#Parameter(18)" = "" #Then
+	// When the Condition access kind name (ИЛИ ""), then instead of field name condition is specified.
 	 ( #Parameter(19) )
-#ElseIf "#Parameter(18)" = "ReadRight" Или "#Parameter(18)" = "EditRight" #Then
+#ElseIf "#Parameter(18)" = "ReadRight" ИЛИ "#Parameter(18)" = "EditRight" #Then
 	 #Parameter(19) &lt;&gt; НЕОПРЕДЕЛЕНО
 	И истина In
 	 (	// Verification of user's right for the Values table set in the field.
@@ -4081,14 +4081,14 @@ WHERE
 		WHERE
 			 AccessGroupTablesRightCheck.AccessGroup = AccessGroups.Ref
 			И VALUETYPE(AccessGroupTablesRightCheck.TableType) = VALUETYPE(#Parameter(19))
-		#If Не "#Parameter(18)" = "ReadRight" #Then
+		#If НЕ "#Parameter(18)" = "ReadRight" #Then
 			И AccessGroupTablesRightCheck.Update
 		#EndIf
 	 )
 #ElseIf "#Parameter(18)" = "RightSettings" #Then
 	
 	 (
-		истина IN // Verifying that right is allowed for user Или a user group.
+		истина IN // Verifying that right is allowed for user ИЛИ a user group.
 			(
 			SELECT TOP 1 истина
 			FROM InformationRegister.ObjectRightsSettings AS RightSettings
@@ -4111,7 +4111,7 @@ WHERE
 					 UsersGroupsContents.User = &amp;AuthorizedUser
 					И UsersGroupsContents.UsersGroup = RightSettings.User
 			)
-		 И Не false IN // Verifying that right is Не allowed for user Или a user group.
+		 И НЕ false IN // Verifying that right is НЕ allowed for user ИЛИ a user group.
 			(
 			SELECT TOP 1 false
 			FROM InformationRegister.ObjectRightsSettings AS RightSettings
@@ -4135,24 +4135,24 @@ WHERE
 					И UsersGroupsContents.UsersGroup = RightSettings.User
 			)
 	 )
-#ElseIf Не StrContains(&amp;AllAccessKindsExceptSpecial, ",#Parameter(18),") #Then
+#ElseIf НЕ StrContains(&amp;AllAccessKindsExceptSpecial, ",#Parameter(18),") #Then
 	// When the parameter is set incorrectly, a row is inserted to create an error of access restriction build.
 	#If StrContains("#Parameter(18)", ",") #Then
-		InvalidAccessKind: "#Parameter(18)" - "The list of access type names is Не found"
+		InvalidAccessKind: "#Parameter(18)" - "The list of access type names is НЕ found"
 	#Else
-		InvalidAccessKind: "#Parameter(18)" - "Access type name is Не found"
+		InvalidAccessKind: "#Parameter(18)" - "Access type name is НЕ found"
 	#EndIf
 #ElseIf &amp;AccessKindsWithDisabledUse &lt;&gt; "All"
- И Не StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(18),") #Then
+ И НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(18),") #Then
 	
 	 (
 			ISNULL(#Parameter(19), НЕОПРЕДЕЛЕНО) &lt;&gt; НЕОПРЕДЕЛЕНО
 			И
-		#If (Не StrContains(&amp;AccessKindsWithDisabledUse, ",Users,") И StrContains(",#Parameter(18),", ",Users,"))
-		 Или (Не StrContains(&amp;AccessKindsWithDisabledUse, ",ExternalUsers,") И StrContains(",#Parameter(18),", ",ExternalUsers,")) #Then
-			Не
+		#If (НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",Users,") И StrContains(",#Parameter(18),", ",Users,"))
+		 ИЛИ (НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",ExternalUsers,") И StrContains(",#Parameter(18),", ",ExternalUsers,")) #Then
+			НЕ
 			(
-			Не истина In
+			НЕ истина In
 				(
 				SELECT TOP 1 истина
 				FROM InformationRegister.AccessValuesGroups AS AccessValuesGroups
@@ -4160,7 +4160,7 @@ WHERE
 					 AccessValuesGroups.AccessValue = #Parameter(19)
 					И AccessValuesGroups.AccessValuesGroup = &amp;AuthorizedUser
 				)
-			И Не
+			И НЕ
 		#Else
 			(
 		#EndIf
@@ -4225,15 +4225,15 @@ WHERE
 	истина
 #EndIf
 
-	#Parameter(20) // [)[)][)]...] [Или|И] [([(][(]...] operator И/Или with/without brackets.
+	#Parameter(20) // [)[)][)]...] [ИЛИ|И] [([(][(]...] operator И/ИЛИ with/without brackets.
 
 //// Value verification of parameters group field 6.
 #If "#Parameter(21)" = "" И "#Parameter(22)" = "" #Then
-	// Parameters group is Не used.
-#ElseIf "#Parameter(21)" = "Condition" Или "#Parameter(21)" = "" #Then
-	// When the Condition access kind name (Или ""), then instead of field name condition is specified.
+	// Parameters group is НЕ used.
+#ElseIf "#Parameter(21)" = "Condition" ИЛИ "#Parameter(21)" = "" #Then
+	// When the Condition access kind name (ИЛИ ""), then instead of field name condition is specified.
 	 ( #Parameter(22) )
-#ElseIf "#Parameter(21)" = "ReadRight" Или "#Parameter(21)" = "EditRight" #Then
+#ElseIf "#Parameter(21)" = "ReadRight" ИЛИ "#Parameter(21)" = "EditRight" #Then
 	 #Parameter(22) &lt;&gt; НЕОПРЕДЕЛЕНО
 	И истина In
 	 (	// Verification of user's right for the Values table set in the field.
@@ -4242,14 +4242,14 @@ WHERE
 		WHERE
 			 AccessGroupTablesRightCheck.AccessGroup = AccessGroups.Ref
 			И VALUETYPE(AccessGroupTablesRightCheck.TableType) = VALUETYPE(#Parameter(22))
-		#If Не "#Parameter(21)" = "ReadRight" #Then
+		#If НЕ "#Parameter(21)" = "ReadRight" #Then
 			И AccessGroupTablesRightCheck.Update
 		#EndIf
 	 )
 #ElseIf "#Parameter(21)" = "RightSettings" #Then
 	
 	 (
-		истина IN // Verifying that right is allowed for user Или a user group.
+		истина IN // Verifying that right is allowed for user ИЛИ a user group.
 			(
 			SELECT TOP 1 истина
 			FROM InformationRegister.ObjectRightsSettings AS RightSettings
@@ -4272,7 +4272,7 @@ WHERE
 					 UsersGroupsContents.User = &amp;AuthorizedUser
 					И UsersGroupsContents.UsersGroup = RightSettings.User
 			)
-		 И Не false IN // Verifying that right is Не allowed for user Или a user group.
+		 И НЕ false IN // Verifying that right is НЕ allowed for user ИЛИ a user group.
 			(
 			SELECT TOP 1 false
 			FROM InformationRegister.ObjectRightsSettings AS RightSettings
@@ -4296,24 +4296,24 @@ WHERE
 					И UsersGroupsContents.UsersGroup = RightSettings.User
 			)
 	 )
-#ElseIf Не StrContains(&amp;AllAccessKindsExceptSpecial, ",#Parameter(21),") #Then
+#ElseIf НЕ StrContains(&amp;AllAccessKindsExceptSpecial, ",#Parameter(21),") #Then
 	// When the parameter is set incorrectly, a row is inserted to create an error of access restriction build.
 	#If StrContains("#Parameter(21)", ",") #Then
-		InvalidAccessKind: "#Parameter(21)" - "The list of access type names is Не found"
+		InvalidAccessKind: "#Parameter(21)" - "The list of access type names is НЕ found"
 	#Else
-		InvalidAccessKind: "#Parameter(21)" - "Access type name is Не found"
+		InvalidAccessKind: "#Parameter(21)" - "Access type name is НЕ found"
 	#EndIf
 #ElseIf &amp;AccessKindsWithDisabledUse &lt;&gt; "All"
- И Не StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(21),") #Then
+ И НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(21),") #Then
 	
 	 (
 			ISNULL(#Parameter(22), НЕОПРЕДЕЛЕНО) &lt;&gt; НЕОПРЕДЕЛЕНО
 			И
-		#If (Не StrContains(&amp;AccessKindsWithDisabledUse, ",Users,") И StrContains(",#Parameter(21),", ",Users,"))
-		 Или (Не StrContains(&amp;AccessKindsWithDisabledUse, ",ExternalUsers,") И StrContains(",#Parameter(21),", ",ExternalUsers,")) #Then
-			Не
+		#If (НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",Users,") И StrContains(",#Parameter(21),", ",Users,"))
+		 ИЛИ (НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",ExternalUsers,") И StrContains(",#Parameter(21),", ",ExternalUsers,")) #Then
+			НЕ
 			(
-			Не истина In
+			НЕ истина In
 				(
 				SELECT TOP 1 истина
 				FROM InformationRegister.AccessValuesGroups AS AccessValuesGroups
@@ -4321,7 +4321,7 @@ WHERE
 					 AccessValuesGroups.AccessValue = #Parameter(22)
 					И AccessValuesGroups.AccessValuesGroup = &amp;AuthorizedUser
 				)
-			И Не
+			И НЕ
 		#Else
 			(
 		#EndIf
@@ -4386,15 +4386,15 @@ WHERE
 	истина
 #EndIf
 
-	#Parameter(23) // [)[)][)]...] [Или|И] [([(][(]...] operator И/Или with/without brackets.
+	#Parameter(23) // [)[)][)]...] [ИЛИ|И] [([(][(]...] operator И/ИЛИ with/without brackets.
 
 //// Value verification of parameters group field 7.
 #If "#Parameter(24)" = "" И "#Parameter(25)" = "" #Then
-	// Parameters group is Не used.
-#ElseIf "#Parameter(24)" = "Condition" Или "#Parameter(24)" = "" #Then
-	// When the Condition access kind name (Или ""), then instead of field name condition is specified.
+	// Parameters group is НЕ used.
+#ElseIf "#Parameter(24)" = "Condition" ИЛИ "#Parameter(24)" = "" #Then
+	// When the Condition access kind name (ИЛИ ""), then instead of field name condition is specified.
 	 ( #Parameter(25) )
-#ElseIf "#Parameter(24)" = "ReadRight" Или "#Parameter(24)" = "EditRight" #Then
+#ElseIf "#Parameter(24)" = "ReadRight" ИЛИ "#Parameter(24)" = "EditRight" #Then
 	 #Parameter(25) &lt;&gt; НЕОПРЕДЕЛЕНО
 	И истина In
 	 (	// Verification of user's right for the Values table set in the field.
@@ -4403,14 +4403,14 @@ WHERE
 		WHERE
 			 AccessGroupTablesRightCheck.AccessGroup = AccessGroups.Ref
 			И VALUETYPE(AccessGroupTablesRightCheck.TableType) = VALUETYPE(#Parameter(25))
-		#If Не "#Parameter(24)" = "ReadRight" #Then
+		#If НЕ "#Parameter(24)" = "ReadRight" #Then
 			И AccessGroupTablesRightCheck.Update
 		#EndIf
 	 )
 #ElseIf "#Parameter(24)" = "RightSettings" #Then
 	
 	 (
-		истина IN // Verifying that right is allowed for user Или a user group.
+		истина IN // Verifying that right is allowed for user ИЛИ a user group.
 			(
 			SELECT TOP 1 истина
 			FROM InformationRegister.ObjectRightsSettings AS RightSettings
@@ -4433,7 +4433,7 @@ WHERE
 					 UsersGroupsContents.User = &amp;AuthorizedUser
 					И UsersGroupsContents.UsersGroup = RightSettings.User
 			)
-		 И Не false IN // Verifying that right is Не allowed for user Или a user group.
+		 И НЕ false IN // Verifying that right is НЕ allowed for user ИЛИ a user group.
 			(
 			SELECT TOP 1 false
 			FROM InformationRegister.ObjectRightsSettings AS RightSettings
@@ -4457,24 +4457,24 @@ WHERE
 					И UsersGroupsContents.UsersGroup = RightSettings.User
 			)
 	 )
-#ElseIf Не StrContains(&amp;AllAccessKindsExceptSpecial, ",#Parameter(24),") #Then
+#ElseIf НЕ StrContains(&amp;AllAccessKindsExceptSpecial, ",#Parameter(24),") #Then
 	// When the parameter is set incorrectly, a row is inserted to create an error of access restriction build.
 	#If StrContains("#Parameter(24)", ",") #Then
-		InvalidAccessKind: "#Parameter(24)" - "The list of access type names is Не found"
+		InvalidAccessKind: "#Parameter(24)" - "The list of access type names is НЕ found"
 	#Else
-		InvalidAccessKind: "#Parameter(24)" - "Access type name is Не found"
+		InvalidAccessKind: "#Parameter(24)" - "Access type name is НЕ found"
 	#EndIf
 #ElseIf &amp;AccessKindsWithDisabledUse &lt;&gt; "All"
- И Не StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(24),") #Then
+ И НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(24),") #Then
 	
 	 (
 			ISNULL(#Parameter(25), НЕОПРЕДЕЛЕНО) &lt;&gt; НЕОПРЕДЕЛЕНО
 			И
-		#If (Не StrContains(&amp;AccessKindsWithDisabledUse, ",Users,") И StrContains(",#Parameter(24),", ",Users,"))
-		 Или (Не StrContains(&amp;AccessKindsWithDisabledUse, ",ExternalUsers,") И StrContains(",#Parameter(24),", ",ExternalUsers,")) #Then
-			Не
+		#If (НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",Users,") И StrContains(",#Parameter(24),", ",Users,"))
+		 ИЛИ (НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",ExternalUsers,") И StrContains(",#Parameter(24),", ",ExternalUsers,")) #Then
+			НЕ
 			(
-			Не истина In
+			НЕ истина In
 				(
 				SELECT TOP 1 истина
 				FROM InformationRegister.AccessValuesGroups AS AccessValuesGroups
@@ -4482,7 +4482,7 @@ WHERE
 					 AccessValuesGroups.AccessValue = #Parameter(25)
 					И AccessValuesGroups.AccessValuesGroup = &amp;AuthorizedUser
 				)
-			И Не
+			И НЕ
 		#Else
 			(
 		#EndIf
@@ -4547,15 +4547,15 @@ WHERE
 	истина
 #EndIf
 
-	#Parameter(26) // [)[)][)]...] [Или|И] [([(][(]...] operator И/Или with/without brackets.
+	#Parameter(26) // [)[)][)]...] [ИЛИ|И] [([(][(]...] operator И/ИЛИ with/without brackets.
 
 //// Value verification of parameters group field 8.
 #If "#Parameter(27)" = "" И "#Parameter(28)" = "" #Then
-	// Parameters group is Не used.
-#ElseIf "#Parameter(27)" = "Condition" Или "#Parameter(27)" = "" #Then
-	// When the Condition access kind name (Или ""), then instead of field name condition is specified.
+	// Parameters group is НЕ used.
+#ElseIf "#Parameter(27)" = "Condition" ИЛИ "#Parameter(27)" = "" #Then
+	// When the Condition access kind name (ИЛИ ""), then instead of field name condition is specified.
 	 ( #Parameter(28) )
-#ElseIf "#Parameter(27)" = "ReadRight" Или "#Parameter(27)" = "EditRight" #Then
+#ElseIf "#Parameter(27)" = "ReadRight" ИЛИ "#Parameter(27)" = "EditRight" #Then
 	 #Parameter(28) &lt;&gt; НЕОПРЕДЕЛЕНО
 	И истина In
 	 (	// Verification of user's right for the Values table set in the field.
@@ -4564,14 +4564,14 @@ WHERE
 		WHERE
 			 AccessGroupTablesRightCheck.AccessGroup = AccessGroups.Ref
 			И VALUETYPE(AccessGroupTablesRightCheck.TableType) = VALUETYPE(#Parameter(28))
-		#If Не "#Parameter(27)" = "ReadRight" #Then
+		#If НЕ "#Parameter(27)" = "ReadRight" #Then
 			И AccessGroupTablesRightCheck.Update
 		#EndIf
 	 )
 #ElseIf "#Parameter(27)" = "RightSettings" #Then
 	
 	 (
-		истина IN // Verifying that right is allowed for user Или a user group.
+		истина IN // Verifying that right is allowed for user ИЛИ a user group.
 			(
 			SELECT TOP 1 истина
 			FROM InformationRegister.ObjectRightsSettings AS RightSettings
@@ -4594,7 +4594,7 @@ WHERE
 					 UsersGroupsContents.User = &amp;AuthorizedUser
 					И UsersGroupsContents.UsersGroup = RightSettings.User
 			)
-		 И Не false IN // Verifying that right is Не allowed for user Или a user group.
+		 И НЕ false IN // Verifying that right is НЕ allowed for user ИЛИ a user group.
 			(
 			SELECT TOP 1 false
 			FROM InformationRegister.ObjectRightsSettings AS RightSettings
@@ -4618,24 +4618,24 @@ WHERE
 					И UsersGroupsContents.UsersGroup = RightSettings.User
 			)
 	 )
-#ElseIf Не StrContains(&amp;AllAccessKindsExceptSpecial, ",#Parameter(27),") #Then
+#ElseIf НЕ StrContains(&amp;AllAccessKindsExceptSpecial, ",#Parameter(27),") #Then
 	// When the parameter is set incorrectly, a row is inserted to create an error of access restriction build.
 	#If StrContains("#Parameter(27)", ",") #Then
-		InvalidAccessKind: "#Parameter(27)" - "The list of access type names is Не found"
+		InvalidAccessKind: "#Parameter(27)" - "The list of access type names is НЕ found"
 	#Else
-		InvalidAccessKind: "#Parameter(27)" - "Access type name is Не found"
+		InvalidAccessKind: "#Parameter(27)" - "Access type name is НЕ found"
 	#EndIf
 #ElseIf &amp;AccessKindsWithDisabledUse &lt;&gt; "All"
- И Не StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(27),") #Then
+ И НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(27),") #Then
 	
 	 (
 			ISNULL(#Parameter(28), НЕОПРЕДЕЛЕНО) &lt;&gt; НЕОПРЕДЕЛЕНО
 			И
-		#If (Не StrContains(&amp;AccessKindsWithDisabledUse, ",Users,") И StrContains(",#Parameter(27),", ",Users,"))
-		 Или (Не StrContains(&amp;AccessKindsWithDisabledUse, ",ExternalUsers,") И StrContains(",#Parameter(27),", ",ExternalUsers,")) #Then
-			Не
+		#If (НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",Users,") И StrContains(",#Parameter(27),", ",Users,"))
+		 ИЛИ (НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",ExternalUsers,") И StrContains(",#Parameter(27),", ",ExternalUsers,")) #Then
+			НЕ
 			(
-			Не истина In
+			НЕ истина In
 				(
 				SELECT TOP 1 истина
 				FROM InformationRegister.AccessValuesGroups AS AccessValuesGroups
@@ -4643,7 +4643,7 @@ WHERE
 					 AccessValuesGroups.AccessValue = #Parameter(28)
 					И AccessValuesGroups.AccessValuesGroup = &amp;AuthorizedUser
 				)
-			И Не
+			И НЕ
 		#Else
 			(
 		#EndIf
@@ -4708,15 +4708,15 @@ WHERE
 	истина
 #EndIf
 
-	#Parameter(29) // [)[)][)]...] [Или|И] [([(][(]...] operator И/Или with/without brackets.
+	#Parameter(29) // [)[)][)]...] [ИЛИ|И] [([(][(]...] operator И/ИЛИ with/without brackets.
 
 //// Value verification of parameters group field 9.
 #If "#Parameter(30)" = "" И "#Parameter(31)" = "" #Then
-	// Parameters group is Не used.
-#ElseIf "#Parameter(30)" = "Condition" Или "#Parameter(30)" = "" #Then
-	// When the Condition access kind name (Или ""), then instead of field name condition is specified.
+	// Parameters group is НЕ used.
+#ElseIf "#Parameter(30)" = "Condition" ИЛИ "#Parameter(30)" = "" #Then
+	// When the Condition access kind name (ИЛИ ""), then instead of field name condition is specified.
 	 ( #Parameter(31) )
-#ElseIf "#Parameter(30)" = "ReadRight" Или "#Parameter(30)" = "EditRight" #Then
+#ElseIf "#Parameter(30)" = "ReadRight" ИЛИ "#Parameter(30)" = "EditRight" #Then
 	 #Parameter(31) &lt;&gt; НЕОПРЕДЕЛЕНО
 	И истина In
 	 (	// Verification of user's right for the Values table set in the field.
@@ -4725,14 +4725,14 @@ WHERE
 		WHERE
 			 AccessGroupTablesRightCheck.AccessGroup = AccessGroups.Ref
 			И VALUETYPE(AccessGroupTablesRightCheck.TableType) = VALUETYPE(#Parameter(31))
-		#If Не "#Parameter(30)" = "ReadRight" #Then
+		#If НЕ "#Parameter(30)" = "ReadRight" #Then
 			И AccessGroupTablesRightCheck.Update
 		#EndIf
 	 )
 #ElseIf "#Parameter(30)" = "RightSettings" #Then
 	
 	 (
-		истина IN // Verifying that right is allowed for user Или a user group.
+		истина IN // Verifying that right is allowed for user ИЛИ a user group.
 			(
 			SELECT TOP 1 истина
 			FROM InformationRegister.ObjectRightsSettings AS RightSettings
@@ -4755,7 +4755,7 @@ WHERE
 					 UsersGroupsContents.User = &amp;AuthorizedUser
 					И UsersGroupsContents.UsersGroup = RightSettings.User
 			)
-		 И Не false IN // Verifying that right is Не allowed for user Или a user group.
+		 И НЕ false IN // Verifying that right is НЕ allowed for user ИЛИ a user group.
 			(
 			SELECT TOP 1 false
 			FROM InformationRegister.ObjectRightsSettings AS RightSettings
@@ -4779,24 +4779,24 @@ WHERE
 					И UsersGroupsContents.UsersGroup = RightSettings.User
 			)
 	 )
-#ElseIf Не StrContains(&amp;AllAccessKindsExceptSpecial, ",#Parameter(30),") #Then
+#ElseIf НЕ StrContains(&amp;AllAccessKindsExceptSpecial, ",#Parameter(30),") #Then
 	// When the parameter is set incorrectly, a row is inserted to create an error of access restriction build.
 	#If StrContains("#Parameter(30)", ",") #Then
-		InvalidAccessKind: "#Parameter(30)" - "The list of access type names is Не found"
+		InvalidAccessKind: "#Parameter(30)" - "The list of access type names is НЕ found"
 	#Else
-		InvalidAccessKind: "#Parameter(30)" - "Access type name is Не found"
+		InvalidAccessKind: "#Parameter(30)" - "Access type name is НЕ found"
 	#EndIf
 #ElseIf &amp;AccessKindsWithDisabledUse &lt;&gt; "All"
- И Не StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(30),") #Then
+ И НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(30),") #Then
 	
 	 (
 			ISNULL(#Parameter(31), НЕОПРЕДЕЛЕНО) &lt;&gt; НЕОПРЕДЕЛЕНО
 			И
-		#If (Не StrContains(&amp;AccessKindsWithDisabledUse, ",Users,") И StrContains(",#Parameter(30),", ",Users,"))
-		 Или (Не StrContains(&amp;AccessKindsWithDisabledUse, ",ExternalUsers,") И StrContains(",#Parameter(30),", ",ExternalUsers,")) #Then
-			Не
+		#If (НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",Users,") И StrContains(",#Parameter(30),", ",Users,"))
+		 ИЛИ (НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",ExternalUsers,") И StrContains(",#Parameter(30),", ",ExternalUsers,")) #Then
+			НЕ
 			(
-			Не истина In
+			НЕ истина In
 				(
 				SELECT TOP 1 истина
 				FROM InformationRegister.AccessValuesGroups AS AccessValuesGroups
@@ -4804,7 +4804,7 @@ WHERE
 					 AccessValuesGroups.AccessValue = #Parameter(31)
 					И AccessValuesGroups.AccessValuesGroup = &amp;AuthorizedUser
 				)
-			И Не
+			И НЕ
 		#Else
 			(
 		#EndIf
@@ -4869,15 +4869,15 @@ WHERE
 	истина
 #EndIf
 
-	#Parameter(32) // [)[)][)]...] [Или|И] [([(][(]...] operator И/Или with/without brackets.
+	#Parameter(32) // [)[)][)]...] [ИЛИ|И] [([(][(]...] operator И/ИЛИ with/without brackets.
 
 //// Value verification of parameters group field 10.
 #If "#Parameter(33)" = "" И "#Parameter(34)" = "" #Then
-	// Parameters group is Не used.
-#ElseIf "#Parameter(33)" = "Condition" Или "#Parameter(33)" = "" #Then
-	// When the Condition access kind name (Или ""), then instead of field name condition is specified.
+	// Parameters group is НЕ used.
+#ElseIf "#Parameter(33)" = "Condition" ИЛИ "#Parameter(33)" = "" #Then
+	// When the Condition access kind name (ИЛИ ""), then instead of field name condition is specified.
 	 ( #Parameter(34) )
-#ElseIf "#Parameter(33)" = "ReadRight" Или "#Parameter(33)" = "EditRight" #Then
+#ElseIf "#Parameter(33)" = "ReadRight" ИЛИ "#Parameter(33)" = "EditRight" #Then
 	 #Parameter(34) &lt;&gt; НЕОПРЕДЕЛЕНО
 	И истина In
 	 (	// Verification of user's right for the Values table set in the field.
@@ -4886,14 +4886,14 @@ WHERE
 		WHERE
 			 AccessGroupTablesRightCheck.AccessGroup = AccessGroups.Ref
 			И VALUETYPE(AccessGroupTablesRightCheck.TableType) = VALUETYPE(#Parameter(34))
-		#If Не "#Parameter(33)" = "ReadRight" #Then
+		#If НЕ "#Parameter(33)" = "ReadRight" #Then
 			И AccessGroupTablesRightCheck.Update
 		#EndIf
 	 )
 #ElseIf "#Parameter(33)" = "RightSettings" #Then
 	
 	 (
-		истина IN // Verifying that right is allowed for user Или a user group.
+		истина IN // Verifying that right is allowed for user ИЛИ a user group.
 			(
 			SELECT TOP 1 истина
 			FROM InformationRegister.ObjectRightsSettings AS RightSettings
@@ -4916,7 +4916,7 @@ WHERE
 					 UsersGroupsContents.User = &amp;AuthorizedUser
 					И UsersGroupsContents.UsersGroup = RightSettings.User
 			)
-		 И Не false IN // Verifying that right is Не allowed for user Или a user group.
+		 И НЕ false IN // Verifying that right is НЕ allowed for user ИЛИ a user group.
 			(
 			SELECT TOP 1 false
 			FROM InformationRegister.ObjectRightsSettings AS RightSettings
@@ -4940,24 +4940,24 @@ WHERE
 					И UsersGroupsContents.UsersGroup = RightSettings.User
 			)
 	 )
-#ElseIf Не StrContains(&amp;AllAccessKindsExceptSpecial, ",#Parameter(33),") #Then
+#ElseIf НЕ StrContains(&amp;AllAccessKindsExceptSpecial, ",#Parameter(33),") #Then
 	// When the parameter is set incorrectly, a row is inserted to create an error of access restriction build.
 	#If StrContains("#Parameter(33)", ",") #Then
-		InvalidAccessKind: "#Parameter(33)" - "The list of access type names is Не found"
+		InvalidAccessKind: "#Parameter(33)" - "The list of access type names is НЕ found"
 	#Else
-		InvalidAccessKind: "#Parameter(33)" - "Access type name is Не found"
+		InvalidAccessKind: "#Parameter(33)" - "Access type name is НЕ found"
 	#EndIf
 #ElseIf &amp;AccessKindsWithDisabledUse &lt;&gt; "All"
- И Не StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(33),") #Then
+ И НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(33),") #Then
 	
 	 (
 			ISNULL(#Parameter(34), НЕОПРЕДЕЛЕНО) &lt;&gt; НЕОПРЕДЕЛЕНО
 			И
-		#If (Не StrContains(&amp;AccessKindsWithDisabledUse, ",Users,") И StrContains(",#Parameter(33),", ",Users,"))
-		 Или (Не StrContains(&amp;AccessKindsWithDisabledUse, ",ExternalUsers,") И StrContains(",#Parameter(33),", ",ExternalUsers,")) #Then
-			Не
+		#If (НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",Users,") И StrContains(",#Parameter(33),", ",Users,"))
+		 ИЛИ (НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",ExternalUsers,") И StrContains(",#Parameter(33),", ",ExternalUsers,")) #Then
+			НЕ
 			(
-			Не истина In
+			НЕ истина In
 				(
 				SELECT TOP 1 истина
 				FROM InformationRegister.AccessValuesGroups AS AccessValuesGroups
@@ -4965,7 +4965,7 @@ WHERE
 					 AccessValuesGroups.AccessValue = #Parameter(34)
 					И AccessValuesGroups.AccessValuesGroup = &amp;AuthorizedUser
 				)
-			И Не
+			И НЕ
 		#Else
 			(
 		#EndIf
@@ -5030,15 +5030,15 @@ WHERE
 	истина
 #EndIf
 
-	#Parameter(35) // [)[)][)]...] [Или|И] [([(][(]...] operator И/Или with/without brackets.
+	#Parameter(35) // [)[)][)]...] [ИЛИ|И] [([(][(]...] operator И/ИЛИ with/without brackets.
 
 //// Value verification of parameters group field 11.
 #If "#Parameter(36)" = "" И "#Parameter(37)" = "" #Then
-	// Parameters group is Не used.
-#ElseIf "#Parameter(36)" = "Condition" Или "#Parameter(36)" = "" #Then
-	// When the Condition access kind name (Или ""), then instead of field name condition is specified.
+	// Parameters group is НЕ used.
+#ElseIf "#Parameter(36)" = "Condition" ИЛИ "#Parameter(36)" = "" #Then
+	// When the Condition access kind name (ИЛИ ""), then instead of field name condition is specified.
 	 ( #Parameter(37) )
-#ElseIf "#Parameter(36)" = "ReadRight" Или "#Parameter(36)" = "EditRight" #Then
+#ElseIf "#Parameter(36)" = "ReadRight" ИЛИ "#Parameter(36)" = "EditRight" #Then
 	 #Parameter(37) &lt;&gt; НЕОПРЕДЕЛЕНО
 	И истина In
 	 (	// Verification of user's right for the Values table set in the field.
@@ -5047,14 +5047,14 @@ WHERE
 		WHERE
 			 AccessGroupTablesRightCheck.AccessGroup = AccessGroups.Ref
 			И VALUETYPE(AccessGroupTablesRightCheck.TableType) = VALUETYPE(#Parameter(37))
-		#If Не "#Parameter(36)" = "ReadRight" #Then
+		#If НЕ "#Parameter(36)" = "ReadRight" #Then
 			И AccessGroupTablesRightCheck.Update
 		#EndIf
 	 )
 #ElseIf "#Parameter(36)" = "RightSettings" #Then
 	
 	 (
-		истина IN // Verifying that right is allowed for user Или a user group.
+		истина IN // Verifying that right is allowed for user ИЛИ a user group.
 			(
 			SELECT TOP 1 истина
 			FROM InformationRegister.ObjectRightsSettings AS RightSettings
@@ -5077,7 +5077,7 @@ WHERE
 					 UsersGroupsContents.User = &amp;AuthorizedUser
 					И UsersGroupsContents.UsersGroup = RightSettings.User
 			)
-		 И Не false IN // Verifying that right is Не allowed for user Или a user group.
+		 И НЕ false IN // Verifying that right is НЕ allowed for user ИЛИ a user group.
 			(
 			SELECT TOP 1 false
 			FROM InformationRegister.ObjectRightsSettings AS RightSettings
@@ -5101,24 +5101,24 @@ WHERE
 					И UsersGroupsContents.UsersGroup = RightSettings.User
 			)
 	 )
-#ElseIf Не StrContains(&amp;AllAccessKindsExceptSpecial, ",#Parameter(36),") #Then
+#ElseIf НЕ StrContains(&amp;AllAccessKindsExceptSpecial, ",#Parameter(36),") #Then
 	// When the parameter is set incorrectly, a row is inserted to create an error of access restriction build.
 	#If StrContains("#Parameter(36)", ",") #Then
-		InvalidAccessKind: "#Parameter(36)" - "The list of access type names is Не found"
+		InvalidAccessKind: "#Parameter(36)" - "The list of access type names is НЕ found"
 	#Else
-		InvalidAccessKind: "#Parameter(36)" - "Access type name is Не found"
+		InvalidAccessKind: "#Parameter(36)" - "Access type name is НЕ found"
 	#EndIf
 #ElseIf &amp;AccessKindsWithDisabledUse &lt;&gt; "All"
- И Не StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(36),") #Then
+ И НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(36),") #Then
 	
 	 (
 			ISNULL(#Parameter(37), НЕОПРЕДЕЛЕНО) &lt;&gt; НЕОПРЕДЕЛЕНО
 			И
-		#If (Не StrContains(&amp;AccessKindsWithDisabledUse, ",Users,") И StrContains(",#Parameter(36),", ",Users,"))
-		 Или (Не StrContains(&amp;AccessKindsWithDisabledUse, ",ExternalUsers,") И StrContains(",#Parameter(36),", ",ExternalUsers,")) #Then
-			Не
+		#If (НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",Users,") И StrContains(",#Parameter(36),", ",Users,"))
+		 ИЛИ (НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",ExternalUsers,") И StrContains(",#Parameter(36),", ",ExternalUsers,")) #Then
+			НЕ
 			(
-			Не истина In
+			НЕ истина In
 				(
 				SELECT TOP 1 истина
 				FROM InformationRegister.AccessValuesGroups AS AccessValuesGroups
@@ -5126,7 +5126,7 @@ WHERE
 					 AccessValuesGroups.AccessValue = #Parameter(37)
 					И AccessValuesGroups.AccessValuesGroup = &amp;AuthorizedUser
 				)
-			И Не
+			И НЕ
 		#Else
 			(
 		#EndIf
@@ -5191,15 +5191,15 @@ WHERE
 	истина
 #EndIf
 
-	#Parameter(38) // [)[)][)]...] [Или|И] [([(][(]...] operator И/Или with/without brackets.
+	#Parameter(38) // [)[)][)]...] [ИЛИ|И] [([(][(]...] operator И/ИЛИ with/without brackets.
 
 //// Value verification of parameters group field 12.
 #If "#Parameter(39)" = "" И "#Parameter(40)" = "" #Then
-	// Parameters group is Не used.
-#ElseIf "#Parameter(39)" = "Condition" Или "#Parameter(39)" = "" #Then
-	// When the Condition access kind name (Или ""), then instead of field name condition is specified.
+	// Parameters group is НЕ used.
+#ElseIf "#Parameter(39)" = "Condition" ИЛИ "#Parameter(39)" = "" #Then
+	// When the Condition access kind name (ИЛИ ""), then instead of field name condition is specified.
 	 ( #Parameter(40) )
-#ElseIf "#Parameter(39)" = "ReadRight" Или "#Parameter(39)" = "EditRight" #Then
+#ElseIf "#Parameter(39)" = "ReadRight" ИЛИ "#Parameter(39)" = "EditRight" #Then
 	 #Parameter(40) &lt;&gt; НЕОПРЕДЕЛЕНО
 	И истина In
 	 (	// Verification of user's right for the Values table set in the field.
@@ -5208,14 +5208,14 @@ WHERE
 		WHERE
 			 AccessGroupTablesRightCheck.AccessGroup = AccessGroups.Ref
 			И VALUETYPE(AccessGroupTablesRightCheck.TableType) = VALUETYPE(#Parameter(40))
-		#If Не "#Parameter(39)" = "ReadRight" #Then
+		#If НЕ "#Parameter(39)" = "ReadRight" #Then
 			И AccessGroupTablesRightCheck.Update
 		#EndIf
 	 )
 #ElseIf "#Parameter(39)" = "RightSettings" #Then
 	
 	 (
-		истина IN // Verifying that right is allowed for user Или a user group.
+		истина IN // Verifying that right is allowed for user ИЛИ a user group.
 			(
 			SELECT TOP 1 истина
 			FROM InformationRegister.ObjectRightsSettings AS RightSettings
@@ -5238,7 +5238,7 @@ WHERE
 					 UsersGroupsContents.User = &amp;AuthorizedUser
 					И UsersGroupsContents.UsersGroup = RightSettings.User
 			)
-		 И Не false IN // Verifying that right is Не allowed for user Или a user group.
+		 И НЕ false IN // Verifying that right is НЕ allowed for user ИЛИ a user group.
 			(
 			SELECT TOP 1 false
 			FROM InformationRegister.ObjectRightsSettings AS RightSettings
@@ -5262,24 +5262,24 @@ WHERE
 					И UsersGroupsContents.UsersGroup = RightSettings.User
 			)
 	 )
-#ElseIf Не StrContains(&amp;AllAccessKindsExceptSpecial, ",#Parameter(39),") #Then
+#ElseIf НЕ StrContains(&amp;AllAccessKindsExceptSpecial, ",#Parameter(39),") #Then
 	// When the parameter is set incorrectly, a row is inserted to create an error of access restriction build.
 	#If StrContains("#Parameter(39)", ",") #Then
-		InvalidAccessKind: "#Parameter(39)" - "The list of access type names is Не found"
+		InvalidAccessKind: "#Parameter(39)" - "The list of access type names is НЕ found"
 	#Else
-		InvalidAccessKind: "#Parameter(39)" - "Access type name is Не found"
+		InvalidAccessKind: "#Parameter(39)" - "Access type name is НЕ found"
 	#EndIf
 #ElseIf &amp;AccessKindsWithDisabledUse &lt;&gt; "All"
- И Не StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(39),") #Then
+ И НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(39),") #Then
 	
 	 (
 			ISNULL(#Parameter(40), НЕОПРЕДЕЛЕНО) &lt;&gt; НЕОПРЕДЕЛЕНО
 			И
-		#If (Не StrContains(&amp;AccessKindsWithDisabledUse, ",Users,") И StrContains(",#Parameter(39),", ",Users,"))
-		 Или (Не StrContains(&amp;AccessKindsWithDisabledUse, ",ExternalUsers,") И StrContains(",#Parameter(39),", ",ExternalUsers,")) #Then
-			Не
+		#If (НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",Users,") И StrContains(",#Parameter(39),", ",Users,"))
+		 ИЛИ (НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",ExternalUsers,") И StrContains(",#Parameter(39),", ",ExternalUsers,")) #Then
+			НЕ
 			(
-			Не истина In
+			НЕ истина In
 				(
 				SELECT TOP 1 истина
 				FROM InformationRegister.AccessValuesGroups AS AccessValuesGroups
@@ -5287,7 +5287,7 @@ WHERE
 					 AccessValuesGroups.AccessValue = #Parameter(40)
 					И AccessValuesGroups.AccessValuesGroup = &amp;AuthorizedUser
 				)
-			И Не
+			И НЕ
 		#Else
 			(
 		#EndIf
@@ -5352,15 +5352,15 @@ WHERE
 	истина
 #EndIf
 
-	#Parameter(41) // [)[)][)]...] [Или|И] [([(][(]...] operator И/Или with/without brackets.
+	#Parameter(41) // [)[)][)]...] [ИЛИ|И] [([(][(]...] operator И/ИЛИ with/without brackets.
 
 //// Value verification of parameters group field 13.
 #If "#Parameter(42)" = "" И "#Parameter(43)" = "" #Then
-	// Parameters group is Не used.
-#ElseIf "#Parameter(42)" = "Condition" Или "#Parameter(42)" = "" #Then
-	// When the Condition access kind name (Или ""), then instead of field name condition is specified.
+	// Parameters group is НЕ used.
+#ElseIf "#Parameter(42)" = "Condition" ИЛИ "#Parameter(42)" = "" #Then
+	// When the Condition access kind name (ИЛИ ""), then instead of field name condition is specified.
 	 ( #Parameter(43) )
-#ElseIf "#Parameter(42)" = "ReadRight" Или "#Parameter(42)" = "EditRight" #Then
+#ElseIf "#Parameter(42)" = "ReadRight" ИЛИ "#Parameter(42)" = "EditRight" #Then
 	 #Parameter(43) &lt;&gt; НЕОПРЕДЕЛЕНО
 	И истина In
 	 (	// Verification of user's right for the Values table set in the field.
@@ -5369,14 +5369,14 @@ WHERE
 		WHERE
 			 AccessGroupTablesRightCheck.AccessGroup = AccessGroups.Ref
 			И VALUETYPE(AccessGroupTablesRightCheck.TableType) = VALUETYPE(#Parameter(43))
-		#If Не "#Parameter(42)" = "ReadRight" #Then
+		#If НЕ "#Parameter(42)" = "ReadRight" #Then
 			И AccessGroupTablesRightCheck.Update
 		#EndIf
 	 )
 #ElseIf "#Parameter(42)" = "RightSettings" #Then
 	
 	 (
-		истина IN // Verifying that right is allowed for user Или a user group.
+		истина IN // Verifying that right is allowed for user ИЛИ a user group.
 			(
 			SELECT TOP 1 истина
 			FROM InformationRegister.ObjectRightsSettings AS RightSettings
@@ -5399,7 +5399,7 @@ WHERE
 					 UsersGroupsContents.User = &amp;AuthorizedUser
 					И UsersGroupsContents.UsersGroup = RightSettings.User
 			)
-		 И Не false IN // Verifying that right is Не allowed for user Или a user group.
+		 И НЕ false IN // Verifying that right is НЕ allowed for user ИЛИ a user group.
 			(
 			SELECT TOP 1 false
 			FROM InformationRegister.ObjectRightsSettings AS RightSettings
@@ -5423,24 +5423,24 @@ WHERE
 					И UsersGroupsContents.UsersGroup = RightSettings.User
 			)
 	 )
-#ElseIf Не StrContains(&amp;AllAccessKindsExceptSpecial, ",#Parameter(42),") #Then
+#ElseIf НЕ StrContains(&amp;AllAccessKindsExceptSpecial, ",#Parameter(42),") #Then
 	// When the parameter is set incorrectly, a row is inserted to create an error of access restriction build.
 	#If StrContains("#Parameter(42)", ",") #Then
-		InvalidAccessKind: "#Parameter(42)" - "The list of access type names is Не found"
+		InvalidAccessKind: "#Parameter(42)" - "The list of access type names is НЕ found"
 	#Else
-		InvalidAccessKind: "#Parameter(42)" - "Access type name is Не found"
+		InvalidAccessKind: "#Parameter(42)" - "Access type name is НЕ found"
 	#EndIf
 #ElseIf &amp;AccessKindsWithDisabledUse &lt;&gt; "All"
- И Не StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(42),") #Then
+ И НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(42),") #Then
 	
 	 (
 			ISNULL(#Parameter(43), НЕОПРЕДЕЛЕНО) &lt;&gt; НЕОПРЕДЕЛЕНО
 			И
-		#If (Не StrContains(&amp;AccessKindsWithDisabledUse, ",Users,") И StrContains(",#Parameter(42),", ",Users,"))
-		 Или (Не StrContains(&amp;AccessKindsWithDisabledUse, ",ExternalUsers,") И StrContains(",#Parameter(42),", ",ExternalUsers,")) #Then
-			Не
+		#If (НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",Users,") И StrContains(",#Parameter(42),", ",Users,"))
+		 ИЛИ (НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",ExternalUsers,") И StrContains(",#Parameter(42),", ",ExternalUsers,")) #Then
+			НЕ
 			(
-			Не истина In
+			НЕ истина In
 				(
 				SELECT TOP 1 истина
 				FROM InformationRegister.AccessValuesGroups AS AccessValuesGroups
@@ -5448,7 +5448,7 @@ WHERE
 					 AccessValuesGroups.AccessValue = #Parameter(43)
 					И AccessValuesGroups.AccessValuesGroup = &amp;AuthorizedUser
 				)
-			И Не
+			И НЕ
 		#Else
 			(
 		#EndIf
@@ -5513,15 +5513,15 @@ WHERE
 	истина
 #EndIf
 
-	#Parameter(44) // [)[)][)]...] [Или|И] [([(][(]...] operator И/Или with/without brackets.
+	#Parameter(44) // [)[)][)]...] [ИЛИ|И] [([(][(]...] operator И/ИЛИ with/without brackets.
 
 //// Value verification of parameters group field 14.
 #If "#Parameter(45)" = "" И "#Parameter(46)" = "" #Then
-	// Parameters group is Не used.
-#ElseIf "#Parameter(45)" = "Condition" Или "#Parameter(45)" = "" #Then
-	// When the Condition access kind name (Или ""), then instead of field name condition is specified.
+	// Parameters group is НЕ used.
+#ElseIf "#Parameter(45)" = "Condition" ИЛИ "#Parameter(45)" = "" #Then
+	// When the Condition access kind name (ИЛИ ""), then instead of field name condition is specified.
 	 ( #Parameter(46) )
-#ElseIf "#Parameter(45)" = "ReadRight" Или "#Parameter(45)" = "EditRight" #Then
+#ElseIf "#Parameter(45)" = "ReadRight" ИЛИ "#Parameter(45)" = "EditRight" #Then
 	 #Parameter(46) &lt;&gt; НЕОПРЕДЕЛЕНО
 	И истина In
 	 (	// Verification of user's right for the Values table set in the field.
@@ -5530,14 +5530,14 @@ WHERE
 		WHERE
 			 AccessGroupTablesRightCheck.AccessGroup = AccessGroups.Ref
 			И VALUETYPE(AccessGroupTablesRightCheck.TableType) = VALUETYPE(#Parameter(46))
-		#If Не "#Parameter(45)" = "ReadRight" #Then
+		#If НЕ "#Parameter(45)" = "ReadRight" #Then
 			И AccessGroupTablesRightCheck.Update
 		#EndIf
 	 )
 #ElseIf "#Parameter(45)" = "RightSettings" #Then
 	
 	 (
-		истина IN // Verifying that right is allowed for user Или a user group.
+		истина IN // Verifying that right is allowed for user ИЛИ a user group.
 			(
 			SELECT TOP 1 истина
 			FROM InformationRegister.ObjectRightsSettings AS RightSettings
@@ -5560,7 +5560,7 @@ WHERE
 					 UsersGroupsContents.User = &amp;AuthorizedUser
 					И UsersGroupsContents.UsersGroup = RightSettings.User
 			)
-		 И Не false IN // Verifying that right is Не allowed for user Или a user group.
+		 И НЕ false IN // Verifying that right is НЕ allowed for user ИЛИ a user group.
 			(
 			SELECT TOP 1 false
 			FROM InformationRegister.ObjectRightsSettings AS RightSettings
@@ -5584,24 +5584,24 @@ WHERE
 					И UsersGroupsContents.UsersGroup = RightSettings.User
 			)
 	 )
-#ElseIf Не StrContains(&amp;AllAccessKindsExceptSpecial, ",#Parameter(45),") #Then
+#ElseIf НЕ StrContains(&amp;AllAccessKindsExceptSpecial, ",#Parameter(45),") #Then
 	// When the parameter is set incorrectly, a row is inserted to create an error of access restriction build.
 	#If StrContains("#Parameter(45)", ",") #Then
-		InvalidAccessKind: "#Parameter(45)" - "The list of access type names is Не found"
+		InvalidAccessKind: "#Parameter(45)" - "The list of access type names is НЕ found"
 	#Else
-		InvalidAccessKind: "#Parameter(45)" - "Access type name is Не found"
+		InvalidAccessKind: "#Parameter(45)" - "Access type name is НЕ found"
 	#EndIf
 #ElseIf &amp;AccessKindsWithDisabledUse &lt;&gt; "All"
- И Не StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(45),") #Then
+ И НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(45),") #Then
 	
 	 (
 			ISNULL(#Parameter(46), НЕОПРЕДЕЛЕНО) &lt;&gt; НЕОПРЕДЕЛЕНО
 			И
-		#If (Не StrContains(&amp;AccessKindsWithDisabledUse, ",Users,") И StrContains(",#Parameter(45),", ",Users,"))
-		 Или (Не StrContains(&amp;AccessKindsWithDisabledUse, ",ExternalUsers,") И StrContains(",#Parameter(45),", ",ExternalUsers,")) #Then
-			Не
+		#If (НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",Users,") И StrContains(",#Parameter(45),", ",Users,"))
+		 ИЛИ (НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",ExternalUsers,") И StrContains(",#Parameter(45),", ",ExternalUsers,")) #Then
+			НЕ
 			(
-			Не истина In
+			НЕ истина In
 				(
 				SELECT TOP 1 истина
 				FROM InformationRegister.AccessValuesGroups AS AccessValuesGroups
@@ -5609,7 +5609,7 @@ WHERE
 					 AccessValuesGroups.AccessValue = #Parameter(46)
 					И AccessValuesGroups.AccessValuesGroup = &amp;AuthorizedUser
 				)
-			И Не
+			И НЕ
 		#Else
 			(
 		#EndIf
@@ -5674,15 +5674,15 @@ WHERE
 	истина
 #EndIf
 
-	#Parameter(47) // [)[)][)]...] [Или|И] [([(][(]...] operator И/Или with/without brackets.
+	#Parameter(47) // [)[)][)]...] [ИЛИ|И] [([(][(]...] operator И/ИЛИ with/without brackets.
 
 //// Value verification of parameters group field 15.
 #If "#Parameter(48)" = "" И "#Parameter(49)" = "" #Then
-	// Parameters group is Не used.
-#ElseIf "#Parameter(48)" = "Condition" Или "#Parameter(48)" = "" #Then
-	// When the Condition access kind name (Или ""), then instead of field name condition is specified.
+	// Parameters group is НЕ used.
+#ElseIf "#Parameter(48)" = "Condition" ИЛИ "#Parameter(48)" = "" #Then
+	// When the Condition access kind name (ИЛИ ""), then instead of field name condition is specified.
 	 ( #Parameter(49) )
-#ElseIf "#Parameter(48)" = "ReadRight" Или "#Parameter(48)" = "EditRight" #Then
+#ElseIf "#Parameter(48)" = "ReadRight" ИЛИ "#Parameter(48)" = "EditRight" #Then
 	 #Parameter(49) &lt;&gt; НЕОПРЕДЕЛЕНО
 	И истина In
 	 (	// Verification of user's right for the Values table set in the field.
@@ -5691,14 +5691,14 @@ WHERE
 		WHERE
 			 AccessGroupTablesRightCheck.AccessGroup = AccessGroups.Ref
 			И VALUETYPE(AccessGroupTablesRightCheck.TableType) = VALUETYPE(#Parameter(49))
-		#If Не "#Parameter(48)" = "ReadRight" #Then
+		#If НЕ "#Parameter(48)" = "ReadRight" #Then
 			И AccessGroupTablesRightCheck.Update
 		#EndIf
 	 )
 #ElseIf "#Parameter(48)" = "RightSettings" #Then
 	
 	 (
-		истина IN // Verifying that right is allowed for user Или a user group.
+		истина IN // Verifying that right is allowed for user ИЛИ a user group.
 			(
 			SELECT TOP 1 истина
 			FROM InformationRegister.ObjectRightsSettings AS RightSettings
@@ -5721,7 +5721,7 @@ WHERE
 					 UsersGroupsContents.User = &amp;AuthorizedUser
 					И UsersGroupsContents.UsersGroup = RightSettings.User
 			)
-		 И Не false IN // Verifying that right is Не allowed for user Или a user group.
+		 И НЕ false IN // Verifying that right is НЕ allowed for user ИЛИ a user group.
 			(
 			SELECT TOP 1 false
 			FROM InformationRegister.ObjectRightsSettings AS RightSettings
@@ -5745,24 +5745,24 @@ WHERE
 					И UsersGroupsContents.UsersGroup = RightSettings.User
 			)
 	 )
-#ElseIf Не StrContains(&amp;AllAccessKindsExceptSpecial, ",#Parameter(48),") #Then
+#ElseIf НЕ StrContains(&amp;AllAccessKindsExceptSpecial, ",#Parameter(48),") #Then
 	// When the parameter is set incorrectly, a row is inserted to create an error of access restriction build.
 	#If StrContains("#Parameter(48)", ",") #Then
-		InvalidAccessKind: "#Parameter(48)" - "The list of access type names is Не found"
+		InvalidAccessKind: "#Parameter(48)" - "The list of access type names is НЕ found"
 	#Else
-		InvalidAccessKind: "#Parameter(48)" - "Access type name is Не found"
+		InvalidAccessKind: "#Parameter(48)" - "Access type name is НЕ found"
 	#EndIf
 #ElseIf &amp;AccessKindsWithDisabledUse &lt;&gt; "All"
- И Не StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(48),") #Then
+ И НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(48),") #Then
 	
 	 (
 			ISNULL(#Parameter(49), НЕОПРЕДЕЛЕНО) &lt;&gt; НЕОПРЕДЕЛЕНО
 			И
-		#If (Не StrContains(&amp;AccessKindsWithDisabledUse, ",Users,") И StrContains(",#Parameter(48),", ",Users,"))
-		 Или (Не StrContains(&amp;AccessKindsWithDisabledUse, ",ExternalUsers,") И StrContains(",#Parameter(48),", ",ExternalUsers,")) #Then
-			Не
+		#If (НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",Users,") И StrContains(",#Parameter(48),", ",Users,"))
+		 ИЛИ (НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",ExternalUsers,") И StrContains(",#Parameter(48),", ",ExternalUsers,")) #Then
+			НЕ
 			(
-			Не истина In
+			НЕ истина In
 				(
 				SELECT TOP 1 истина
 				FROM InformationRegister.AccessValuesGroups AS AccessValuesGroups
@@ -5770,7 +5770,7 @@ WHERE
 					 AccessValuesGroups.AccessValue = #Parameter(49)
 					И AccessValuesGroups.AccessValuesGroup = &amp;AuthorizedUser
 				)
-			И Не
+			И НЕ
 		#Else
 			(
 		#EndIf
@@ -5835,15 +5835,15 @@ WHERE
 	истина
 #EndIf
 
-	#Parameter(50) // [)[)][)]...] [Или|И] [([(][(]...] operator И/Или with/without brackets.
+	#Parameter(50) // [)[)][)]...] [ИЛИ|И] [([(][(]...] operator И/ИЛИ with/without brackets.
 
 //// Value verification of parameters group field 16.
 #If "#Parameter(51)" = "" И "#Parameter(52)" = "" #Then
-	// Parameters group is Не used.
-#ElseIf "#Parameter(51)" = "Condition" Или "#Parameter(51)" = "" #Then
-	// When the Condition access kind name (Или ""), then instead of field name condition is specified.
+	// Parameters group is НЕ used.
+#ElseIf "#Parameter(51)" = "Condition" ИЛИ "#Parameter(51)" = "" #Then
+	// When the Condition access kind name (ИЛИ ""), then instead of field name condition is specified.
 	 ( #Parameter(52) )
-#ElseIf "#Parameter(51)" = "ReadRight" Или "#Parameter(51)" = "EditRight" #Then
+#ElseIf "#Parameter(51)" = "ReadRight" ИЛИ "#Parameter(51)" = "EditRight" #Then
 	 #Parameter(52) &lt;&gt; НЕОПРЕДЕЛЕНО
 	И истина In
 	 (	// Verification of user's right for the Values table set in the field.
@@ -5852,14 +5852,14 @@ WHERE
 		WHERE
 			 AccessGroupTablesRightCheck.AccessGroup = AccessGroups.Ref
 			И VALUETYPE(AccessGroupTablesRightCheck.TableType) = VALUETYPE(#Parameter(52))
-		#If Не "#Parameter(51)" = "ReadRight" #Then
+		#If НЕ "#Parameter(51)" = "ReadRight" #Then
 			И AccessGroupTablesRightCheck.Update
 		#EndIf
 	 )
 #ElseIf "#Parameter(51)" = "RightSettings" #Then
 	
 	 (
-		истина IN // Verifying that right is allowed for user Или a user group.
+		истина IN // Verifying that right is allowed for user ИЛИ a user group.
 			(
 			SELECT TOP 1 истина
 			FROM InformationRegister.ObjectRightsSettings AS RightSettings
@@ -5882,7 +5882,7 @@ WHERE
 					 UsersGroupsContents.User = &amp;AuthorizedUser
 					И UsersGroupsContents.UsersGroup = RightSettings.User
 			)
-		 И Не false IN // Verifying that right is Не allowed for user Или a user group.
+		 И НЕ false IN // Verifying that right is НЕ allowed for user ИЛИ a user group.
 			(
 			SELECT TOP 1 false
 			FROM InformationRegister.ObjectRightsSettings AS RightSettings
@@ -5906,24 +5906,24 @@ WHERE
 					И UsersGroupsContents.UsersGroup = RightSettings.User
 			)
 	 )
-#ElseIf Не StrContains(&amp;AllAccessKindsExceptSpecial, ",#Parameter(51),") #Then
+#ElseIf НЕ StrContains(&amp;AllAccessKindsExceptSpecial, ",#Parameter(51),") #Then
 	// When the parameter is set incorrectly, a row is inserted to create an error of access restriction build.
 	#If StrContains("#Parameter(51)", ",") #Then
-		InvalidAccessKind: "#Parameter(51)" - "The list of access type names is Не found"
+		InvalidAccessKind: "#Parameter(51)" - "The list of access type names is НЕ found"
 	#Else
-		InvalidAccessKind: "#Parameter(51)" - "Access type name is Не found"
+		InvalidAccessKind: "#Parameter(51)" - "Access type name is НЕ found"
 	#EndIf
 #ElseIf &amp;AccessKindsWithDisabledUse &lt;&gt; "All"
- И Не StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(51),") #Then
+ И НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",#Parameter(51),") #Then
 	
 	 (
 			ISNULL(#Parameter(52), НЕОПРЕДЕЛЕНО) &lt;&gt; НЕОПРЕДЕЛЕНО
 			И
-		#If (Не StrContains(&amp;AccessKindsWithDisabledUse, ",Users,") И StrContains(",#Parameter(51),", ",Users,"))
-		 Или (Не StrContains(&amp;AccessKindsWithDisabledUse, ",ExternalUsers,") И StrContains(",#Parameter(51),", ",ExternalUsers,")) #Then
-			Не
+		#If (НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",Users,") И StrContains(",#Parameter(51),", ",Users,"))
+		 ИЛИ (НЕ StrContains(&amp;AccessKindsWithDisabledUse, ",ExternalUsers,") И StrContains(",#Parameter(51),", ",ExternalUsers,")) #Then
+			НЕ
 			(
-			Не истина In
+			НЕ истина In
 				(
 				SELECT TOP 1 истина
 				FROM InformationRegister.AccessValuesGroups AS AccessValuesGroups
@@ -5931,7 +5931,7 @@ WHERE
 					 AccessValuesGroups.AccessValue = #Parameter(52)
 					И AccessValuesGroups.AccessValuesGroup = &amp;AuthorizedUser
 				)
-			И Не
+			И НЕ
 		#Else
 			(
 		#EndIf
@@ -5996,7 +5996,7 @@ WHERE
 	истина
 #EndIf
 
-	#Parameter(53) // [)[)][)]...] [Или|И] [([(][(]...] operator И/Или with/without brackets.
+	#Parameter(53) // [)[)][)]...] [ИЛИ|И] [([(][(]...] operator И/ИЛИ with/without brackets.
 
  )
 )

@@ -355,7 +355,7 @@ Procedure GenerateInvoicesCustomers(RefNew)
 		
 		If GeneratedNewInvoice Then
 			MessageText = NStr("en = 'Document %InvoicePresentation% is generated.'");
-			MessageText = StrReplace(MessageText, "%InvoicePresentation%", """Customer invoice note (issued) No " + DocInvoice.Number + " from " + DocInvoice.Date + """");
+			MessageText = StrReplace(MessageText, "%InvoicePresentation%", """Customer invoice note (issued) No " + DocInvoice.Number + " dated " + DocInvoice.Date + """");
 			CommonUseClientServer.MessageToUser(MessageText);
 		EndIf;
 		
@@ -482,7 +482,7 @@ Procedure GenerateInvoicesConsolidated(RefNew)
 		
 		If GeneratedNewInvoice Then
 			MessageText = NStr("en = 'Document %InvoicePresentation% is generated.'");
-			MessageText = StrReplace(MessageText, "%InvoicePresentation%", """Customer invoice note (issued) No " + DocInvoice.Number + " from " + DocInvoice.Date + """");
+			MessageText = StrReplace(MessageText, "%InvoicePresentation%", """Customer invoice note (issued) No " + DocInvoice.Number + " dated " + DocInvoice.Date + """");
 			CommonUseClientServer.MessageToUser(MessageText);
 		EndIf;
 			
@@ -513,8 +513,8 @@ Procedure ControlOfSubordinatedInvoiceReceived()
 		If CustomerInvoiceNote.Posted Then
 			
 			MessageText = NStr("en = 'Due to the absence of the turnovers by the %CurrentDocumentPresentation% document, undo the posting of %InvoicePresentation%.'");
-			MessageText = StrReplace(MessageText, "%CurrentDocumentPresentation%", """Agent report No. " + Number + " from " + Format(Date, "DF=dd.MM.yyyy") + """");
-			MessageText = StrReplace(MessageText, "%InvoicePresentation%", """Invoice Note (Supplier) No. " + InvoiceStructure.Number + " from " + InvoiceStructure.Date + """");
+			MessageText = StrReplace(MessageText, "%CurrentDocumentPresentation%", """Agent report # " + Number + " dated " + Format(Date, "DF=dd.MM.yyyy") + """");
+			MessageText = StrReplace(MessageText, "%InvoicePresentation%", """Invoice Note (Supplier) # " + InvoiceStructure.Number + " dated " + InvoiceStructure.Date + """");
 			
 			CommonUseClientServer.MessageToUser(MessageText);
 			
@@ -532,8 +532,8 @@ Procedure ControlOfSubordinatedInvoiceReceived()
 		If CustomerInvoiceNote.Posted Then
 			
 			MessageText = NStr("en = 'As there are no register records of the %CurrentDocumentPresentation% document, undo the posting of %InvoicePresentation%.'");
-			MessageText = StrReplace(MessageText, "%CurrentDocumentPresentation%", """Agent report No. " + Number + " from " + Format(Date, "DF=dd.MM.yyyy") + """");
-			MessageText = StrReplace(MessageText, "%InvoicePresentation%", """Customer invoice note (issued) No " + InvoiceStructure.Number + " from " + InvoiceStructure.Date + """");
+			MessageText = StrReplace(MessageText, "%CurrentDocumentPresentation%", """Agent report # " + Number + " dated " + Format(Date, "DF=dd.MM.yyyy") + """");
+			MessageText = StrReplace(MessageText, "%InvoicePresentation%", """Customer invoice note (issued) # " + InvoiceStructure.Number + " dated " + InvoiceStructure.Date + """");
 			
 			CommonUseClientServer.MessageToUser(MessageText);
 			
@@ -643,7 +643,7 @@ Procedure UpdateRefsOfInvoices() Export
 					CurrentInvoice.Write();
 					
 					MessageText = NStr("en = 'From the document %InvoicePresentation% the reference to the current document is deleted.'");
-					MessageText = StrReplace(MessageText, "%InvoicePresentation%", """Customer invoice note (issued) No " + CurrentInvoice.Number + " from " + CurrentInvoice.Date + """");
+					MessageText = StrReplace(MessageText, "%InvoicePresentation%", """Customer invoice note (issued) No " + CurrentInvoice.Number + " dated " + CurrentInvoice.Date + """");
 					
 					CommonUseClientServer.MessageToUser(MessageText);
 					
@@ -655,7 +655,7 @@ Procedure UpdateRefsOfInvoices() Export
 				CurrentInvoice.Write();
 				
 				MessageText = NStr("en = 'Document %InvoicePresentation% is marked for deletion.'");
-				MessageText = StrReplace(MessageText, "%InvoicePresentation%", """Customer invoice note (issued) No " + CurrentInvoice.Number + " from " + CurrentInvoice.Date + """");
+				MessageText = StrReplace(MessageText, "%InvoicePresentation%", """Customer invoice note (issued) No " + CurrentInvoice.Number + " dated " + CurrentInvoice.Date + """");
 				
 				CommonUseClientServer.MessageToUser(MessageText);
 				
@@ -729,14 +729,14 @@ Procedure SubordinatedInvoicesProcessing(Post = True)
 		If StatePosted AND Not Post Then
 			
 			MessageText = NStr("en = 'The invoice note %InvoicePresentation% is unposted.'");
-			MessageText = StrReplace(MessageText, "%InvoicePresentation%", """Customer invoice note (issued) No " + CurrentDocument.Number + " from " + CurrentDocument.Date + """");
+			MessageText = StrReplace(MessageText, "%InvoicePresentation%", """Customer invoice note (issued) No " + CurrentDocument.Number + " dated " + CurrentDocument.Date + """");
 			
 			CommonUseClientServer.MessageToUser(MessageText);
 			
 		ElsIf Not StatePosted AND Post Then
 			
 			MessageText = NStr("en = 'The invoice %InvoicePresentation% is posted.'");
-			MessageText = StrReplace(MessageText, "%InvoicePresentation%", """Customer invoice note (issued) No " + CurrentDocument.Number + " from " + CurrentDocument.Date + """");
+			MessageText = StrReplace(MessageText, "%InvoicePresentation%", """Customer invoice note (issued) No " + CurrentDocument.Number + " dated " + CurrentDocument.Date + """");
 			
 			CommonUseClientServer.MessageToUser(MessageText);
 			

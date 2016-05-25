@@ -311,12 +311,12 @@ Function ConfigurationUpdateSuccessful() Export
 		Return Undefined;
 	EndIf;
 	
-	If Not Status.RefreshCompleted OR 
+	If Not Status.UpdateExecuted OR 
 		(Status.UpdateAdministratorName <> UserName()) Then
 		Return Undefined;
 	EndIf;
 	
-	Return Status.UpdateResultConfiguration;
+	Return Status.ConfigurationUpdateResult;
 
 EndFunction
 
@@ -573,10 +573,10 @@ Procedure AfterInformationBaseUpdate() Export
 		Status = ValueStore.Get();
 	EndIf;
 	
-	If Status <> Undefined AND Status.RefreshCompleted AND Status.UpdateResultConfiguration <> Undefined
+	If Status <> Undefined AND Status.UpdateExecuted AND Status.ConfigurationUpdateResult <> Undefined
 		AND Not Status.UpdateResultConfiguration Then
 		
-		Status.UpdateResultConfiguration = True;
+		Status.ConfigurationUpdateResult = True;
 		Constants.ConfigurationUpdateStatus.Set(New ValueStorage(Status));
 		
 	EndIf;

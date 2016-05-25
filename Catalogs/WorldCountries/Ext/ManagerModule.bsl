@@ -47,7 +47,7 @@ Function WorldCountriesData(Val CountryCode = Undefined, Val Description = Undef
 		|WHERE
 		|	" + SearchCondition + "
 		|ORDER
-		|	BY Name
+		|	BY Description
 		|");
 		
 	Selection = Query.Execute().Select();
@@ -266,11 +266,11 @@ Function SearchFields() Export
 		EndIf;
 		
 		Result.Add(
-			New Structure("Name, PresentationTemplate", FieldName, PresentationPattern)
+			New Structure("Name, PresentationPattern", FieldName, PresentationPattern)
 		);
 	EndDo;
 	
-	Return New Structure("FieldsList, FieldNamesAsString", Result, Mid(AllNamesByString, 2));
+	Return New Structure("FieldList, FieldNamesAsString", Result, Mid(AllNamesByString, 2));
 EndFunction
 
 // Returns full data of OKSM classifier.
@@ -404,7 +404,7 @@ Procedure ChoiceDataGetProcessing(ChoiceData, Parameters, StandardProcessing)
 	NamesOfFields = SearchFields();
 	
 	// Code + Description - key fields of match catalog to classifier. Always process them.
-	FieldNamesByString = "," + StrReplace(NamesOfFields.FieldNamesByString, " ", "");
+	FieldNamesByString = "," + StrReplace(NamesOfFields.FieldNamesAsString, " ", "");
 	FieldNamesByString = StrReplace(FieldNamesByString, ",Code", "");
 	FieldNamesByString = StrReplace(FieldNamesByString, ",Description", "");
 	

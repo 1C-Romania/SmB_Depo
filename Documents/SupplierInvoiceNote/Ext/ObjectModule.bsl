@@ -789,7 +789,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		AND Not BasisDocument.Posted Then
 		
 		ErrorText = NStr("en = 'Basis document %BasisDocumentView% is not posted. Invoice posting is impossible.'");
-		ErrorText = StrReplace(ErrorText, "%BasisDocumentView%", """" + TypeOf(BasisDocument) + " No." + BasisDocument.Number + " from " + BasisDocument.Date + """");
+		ErrorText = StrReplace(ErrorText, "%BasisDocumentView%", """" + TypeOf(BasisDocument) + " #" + BasisDocument.Number + " dated " + BasisDocument.Date + """");
 		
 		SmallBusinessServer.ShowMessageAboutError(ThisObject, ErrorText, , , , Cancel);
 		

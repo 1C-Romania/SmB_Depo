@@ -13,8 +13,8 @@ Procedure SubordinatedInvoiceControl()
 		If CustomerInvoiceNote.Posted Then
 			
 			MessageText = NStr("en = 'As there are no register records of the %CurrentDocumentPresentation% document, undo the posting of %InvoicePresentation%.'");
-			MessageText = StrReplace(MessageText, "%CurrentDocumentPresentation%", """Account on payment No. " + Number + " from " + Format(Date, "DF=dd.MM.yyyy") + """");
-			MessageText = StrReplace(MessageText, "%InvoicePresentation%", """Customer invoice note (issued) No " + InvoiceStructure.Number + " from " + InvoiceStructure.Date + """");
+			MessageText = StrReplace(MessageText, "%CurrentDocumentPresentation%", """Account on payment # " + Number + " dated " + Format(Date, "DF=dd.MM.yyyy") + """");
+			MessageText = StrReplace(MessageText, "%InvoicePresentation%", """Customer invoice note (issued) # " + InvoiceStructure.Number + " dated " + InvoiceStructure.Date + """");
 			
 			CommonUseClientServer.MessageToUser(MessageText);
 			

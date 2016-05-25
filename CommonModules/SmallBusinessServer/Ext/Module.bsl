@@ -1669,20 +1669,20 @@ Function FindCounterparties(SearchString, CounterpartiesList)
 			Item = SearchList.Get(CountElements);
 			ItemRef = Item.Value.Ref;
 			Basis = Item.Metadata.ObjectPresentation + " """ +
-			Item.Presentation + """ - " + Item.Definition;
+			Item.Presentation + """ - " + Item.Description;
 			
 			// Counterparties
 			If Item.Metadata = Metadata.Catalogs.Counterparties Then
 				
 				Counterparty = Item.Value;
-				Basis = NStr("en = 'Found: Counterparty - '") + Item.Definition;
+				Basis = NStr("en = 'Found: Counterparty - '") + Item.Description;
 				
 			// Contact persons
 			ElsIf Item.Metadata = Metadata.Catalogs.ContactPersons Then
 				
 				Counterparty = Item.Value.Owner;
 				BasisTemplate = NStr("en = 'Found: Contact person ""%1"" - %2'");
-				Basis = StringFunctionsClientServer.PlaceParametersIntoString(BasisTemplate, Item.Value, Item.Definition);
+				Basis = StringFunctionsClientServer.PlaceParametersIntoString(BasisTemplate, Item.Value, Item.Description);
 				
 			// Individuals
 			ElsIf Item.Metadata = Metadata.Catalogs.Individuals Then
@@ -1692,7 +1692,7 @@ Function FindCounterparties(SearchString, CounterpartiesList)
 					
 					For Each TableRow IN FoundCounterpartiesTable Do
 						BasisTemplate = NStr("en = 'Find: Individual ""%1"" of the contact person ""%2"" - %3'");
-						Basis = StringFunctionsClientServer.PlaceParametersIntoString(BasisTemplate, Item.Value, TableRow.Presentation, Item.Definition);
+						Basis = StringFunctionsClientServer.PlaceParametersIntoString(BasisTemplate, Item.Value, TableRow.Presentation, Item.Description);
 						If Not AddCounterpartyToListOfFoundByFulltextSearch(CounterpartiesList, TableRow.Counterparty, Basis, ItemRef) Then
 							Return NStr("en = 'Too many results, refine query.'");
 						EndIf;
@@ -1705,14 +1705,14 @@ Function FindCounterparties(SearchString, CounterpartiesList)
 				
 				Counterparty = Item.Value.Owner;
 				BasisTemplate =  NStr("en = 'Found: Contract ""%1"" - %2'");
-				Basis = StringFunctionsClientServer.PlaceParametersIntoString(BasisTemplate, Item.Value, Item.Definition);
+				Basis = StringFunctionsClientServer.PlaceParametersIntoString(BasisTemplate, Item.Value, Item.Description);
 				
 			// Bank accounts
 			ElsIf Item.Metadata = Metadata.Catalogs.BankAccounts Then
 				
 				Counterparty = Item.Value.Owner;
 				BasisTemplate =  NStr("en = 'Found: Bank account ""%1"" - %2'");
-				Basis = StringFunctionsClientServer.PlaceParametersIntoString(BasisTemplate, Item.Value, Item.Definition);
+				Basis = StringFunctionsClientServer.PlaceParametersIntoString(BasisTemplate, Item.Value, Item.Description);
 				
 			ElsIf Not ValueIsFilled(Item.Value.Counterparty) Then
 				
@@ -6128,7 +6128,7 @@ Function InfoAboutLegalEntityIndividual(LegalEntityIndividual, PeriodDate, ForIn
 			
 		ElsIf CatalogName = "Companies" Then
 			
-			Information.Certificate = "certificate " + Data.CertificateSeriesNumber + " from " + Format(Data.CertificateIssueDate, "DF=dd.MM.yyyy");
+			Information.Certificate = "certificate " + Data.CertificateSeriesNumber + " dated " + Format(Data.CertificateIssueDate, "DF=dd.MM.yyyy");
 			
 		EndIf;
 
@@ -6693,7 +6693,7 @@ Procedure SetTextAboutInvoice(DocumentForm, Received = False) Export
 
 	InvoiceFound = SmallBusinessServer.GetSubordinateInvoice(DocumentForm.Object.Ref, Received);
 	If ValueIsFilled(InvoiceFound) Then
-		InvoiceText = NStr("en = 'No. %Number% from %Date% y.'");
+		InvoiceText = NStr("en = '# %Number% dated %Date% y.'");
 		InvoiceText = StrReplace(InvoiceText, "%Number%", InvoiceFound.Number);
 		InvoiceText = StrReplace(InvoiceText, "%Date%", Format(InvoiceFound.Date, "DF=dd.MM.yyyy"));
 		DocumentForm.InvoiceText = InvoiceText;	
@@ -7318,7 +7318,7 @@ Function GenerateDocumentTitle(DocumentRef)
 	Else
 		Return DocumentRef.Metadata().Synonym + " No "
 			+ ObjectPrefixationClientServer.GetNumberForPrinting(DocumentRef.Number, True, True)
-			+ " from " + Format(DocumentRef.Date, "DF=dd MMMM yyyy'") + " g.";
+			+ " dated " + Format(DocumentRef.Date, "DF=dd MMMM yyyy'") + " g.";
 	EndIf;
 
 EndFunction // GenerateDocumentTitle()

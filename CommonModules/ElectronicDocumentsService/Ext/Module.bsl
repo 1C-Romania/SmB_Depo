@@ -1599,7 +1599,7 @@ Function GetEDPresentation(LinkToED) Export
 	EndIf;
 	VersionText = ?(ValueIsFilled(Version), " (version " + Version + ")", "");
 	DateText = ?(ValueIsFilled(LinkToED.SenderDocumentDate),
-		" from " + Format(LinkToED.SenderDocumentDate, "DLF=D"), "");
+		" dated " + Format(LinkToED.SenderDocumentDate, "DLF=D"), "");
 	
 	If LinkToED.EDKind = Enums.EDKinds.ProductsDirectory OR LinkToED.EDKind = Enums.EDKinds.PriceList Then
 		
@@ -1616,7 +1616,7 @@ Function GetEDPresentation(LinkToED) Export
 		Presentation = "" + LinkToED.EDKind + " No " + LinkToED.SenderDocumentNumber + DateText;
 		
 	ElsIf LinkToED.EDKind = Enums.EDKinds.BankStatement Then
-		Presentation = "" + LinkToED.EDKind+" from " + Format(LinkToED.CreationDate,"DLF=D");
+		Presentation = "" + LinkToED.EDKind+" dated " + Format(LinkToED.CreationDate,"DLF=D");
 	ElsIf LinkToED.EDKind = Enums.EDKinds.QueryStatement
 		OR LinkToED.EDKind = Enums.EDKinds.EDStateQuery
 		OR LinkToED.EDKind = Enums.EDKinds.NotificationOnStatusOfED

@@ -37,9 +37,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 	
 	InformationCenterServer.OutputContextReferences(ThisForm, Items.InformationReferences, 1, 10, False);
-	
-	ServiceTechnologyIntegrationWithSSL.IntegrationWith1CBuhphoneOnCreateAtServer(Items.CommonCommandRun1CBuhphone);
-	
+		
 EndProcedure
 
 
@@ -228,7 +226,5 @@ EndProcedure
 
 &AtClient
 Procedure NotificationProcessing(EventName, Parameter, Source)
-	
-	ServiceTechnologyIntegrationWithSSLClient.IntegrationWith1CBuhphoneClientNotificationProcessing(EventName, Items.CommonCommandRun1CBuhphone);
 	
 EndProcedure

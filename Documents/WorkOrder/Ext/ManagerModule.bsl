@@ -167,7 +167,7 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName = "")
 		
 		AreaHeader.Parameters.Fill(Header);
 		
-		AreaHeader.Parameters.NumberDate = "No." + Header.Number + " from " + Format(Header.Date, "DLF=DD");
+		AreaHeader.Parameters.NumberDate = "#" + Header.Number + " dated " + Format(Header.Date, "DLF=DD");
 		
 		InfoAboutCompany = SmallBusinessServer.InfoAboutLegalEntityIndividual(Header.Company, Header.Date, ,);
 		AreaHeader.Parameters.CompanyPresentation = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "FullDescr,TIN,ActualAddress,PhoneNumbers,AccountNo,Bank,BIN,CorrAccount");

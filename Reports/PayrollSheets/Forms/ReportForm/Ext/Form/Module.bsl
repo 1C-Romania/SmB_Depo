@@ -345,8 +345,8 @@ Procedure MakeExecute()
 			While EmployeePaymentsSelection.FIndNext(StructureSearchBySelection) Do
 				
 				AreaPaymentDetails.Parameters.Fill(EmployeePaymentsSelection);
-				AreaPaymentDetails.Parameters.PaymentText = "" + EmployeePaymentsSelection.DocumentPresentation + ?(EmployeePaymentsSelection.AdvanceFlag, "(advance) No.", " No.") + 
-																TrimAll(EmployeePaymentsSelection.Number) + " from " + Format(EmployeePaymentsSelection.Date, "DF=dd.MM.yyyy");
+				AreaPaymentDetails.Parameters.PaymentText = "" + EmployeePaymentsSelection.DocumentPresentation + ?(EmployeePaymentsSelection.AdvanceFlag, "(advance) #", " #") + 
+																TrimAll(EmployeePaymentsSelection.Number) + " dated " + Format(EmployeePaymentsSelection.Date, "DF=dd.MM.yyyy");
 				AreaPaymentDetails.Parameters.PaymentsPeriod		= "" + Day(RegistrationPeriod) + "-" + Day(EndOfMonth(RegistrationPeriod)) + " " + Format(EndOfMonth(RegistrationPeriod) , "DF=""MMM gg""");
 				
 				SpreadsheetDocument.Put(AreaPaymentDetails);

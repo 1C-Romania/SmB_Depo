@@ -439,7 +439,7 @@ Procedure RecognizeDataInDocumentRow(DocumentRow)
 	AttributeAccounts = ?(Outgoing, "BankAccount", "CounterpartyAccount");
 	
 	// 3) We find previously imported (typed) document.
-	// Attributes for search: Document Type, Date, Number, Account No.
+	// Attributes for search: Document Type, Date, Number, Account #
 	
 	// We recognize document date.
 	DocDate = BlankDate;

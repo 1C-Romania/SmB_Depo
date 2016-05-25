@@ -861,7 +861,7 @@ Function DefaultPrintedFormFileName(PrintObject, PrintedFormName)
 		EndIf;
 		ParametersForInsert.Date = Format(ParametersForInsert.Date, "DLF=D");
 		ParametersForInsert.Insert("PrintedFormName", PrintedFormName);
-		Pattern = NStr("en = '[PrintingFormName] No. [Number] from [Date]'");
+		Pattern = NStr("en = '[PrintingFormName] # [Number] dated [Date]'");
 	Else
 		ParametersForInsert = New Structure;
 		ParametersForInsert.Insert("PrintedFormName",PrintedFormName);

@@ -409,8 +409,8 @@ EndFunction
 &AtServer
 Procedure SetLabelsText()
 	
-	Items.YearAgo.Title = "" + (CurYear - 1) + " <<";
-	Items.NextYear.Title = ">> " + (CurYear + 1);
+	Items.YearAgo.Title = "" + Format((CurYear - 1),"NG=0") + " <<";
+	Items.NextYear.Title = ">> " + Format((CurYear + 1),"NG=0");
 	Items.NextYear.Enabled = Not (CurYear + 1 > Year(CurrentDate()));
 	
 EndProcedure

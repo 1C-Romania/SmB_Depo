@@ -2506,7 +2506,7 @@ Procedure CertificateAboutRegistrationIPData(CO, Information) Export
 	If TypeOf(CO) = Type("CatalogRef.Companies") Then
 		
 		Information = "Certificate No " + CommonUse.ObjectAttributeValue(CO, "CertificateSeriesNumber") 
-								+ " from " + CommonUse.ObjectAttributeValue(CO, "CertificateIssueDate");
+								+ " dated " + CommonUse.ObjectAttributeValue(CO, "CertificateIssueDate");
 		
 	EndIf;
 	

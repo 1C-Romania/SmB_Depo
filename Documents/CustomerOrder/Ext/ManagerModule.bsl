@@ -435,11 +435,21 @@ Procedure GenerateTableIncomeAndExpenses(DocumentRefCustomerOrder, StructureAddi
 	|	TableIncomeAndExpenses.CustomerOrder AS CustomerOrder,
 	|	TableIncomeAndExpenses.AccountStatementSales AS GLAccount,
 	|	CAST(&IncomeReflection AS String(100)) AS ContentOfAccountingRecord,
+//{{MRG[ <-> ]
 	//( elmi #11
+//}}MRG[ <-> ]
+//{{MRG[ <-> ]
+//	|	SUM(TableIncomeAndExpenses.Amount) AS AmountIncome,
+//}}MRG[ <-> ]
 	//|	SUM(TableIncomeAndExpenses.Amount) AS AmountIncome,
 	|	SUM(TableIncomeAndExpenses.Amount - TableIncomeAndExpenses.VATAmount) AS AmountIncome,         
 	|	0 AS AmountExpense,
+//{{MRG[ <-> ]
 	//|	SUM(TableIncomeAndExpenses.Amount) AS Amount
+//}}MRG[ <-> ]
+//{{MRG[ <-> ]
+//	|	SUM(TableIncomeAndExpenses.Amount) AS Amount
+//}}MRG[ <-> ]
 	|	SUM(TableIncomeAndExpenses.Amount - TableIncomeAndExpenses.VATAmount) AS Amount              
 	//) elmi
 	|FROM
@@ -469,11 +479,21 @@ Procedure GenerateTableIncomeAndExpenses(DocumentRefCustomerOrder, StructureAddi
 	|	TableIncomeAndExpenses.CustomerOrder,
 	|	TableIncomeAndExpenses.AccountStatementSales,
 	|	CAST(&IncomeReflection AS String(100)),
+//{{MRG[ <-> ]
 	//( elmi #11
+//}}MRG[ <-> ]
+//{{MRG[ <-> ]
+//	|	SUM(TableIncomeAndExpenses.Amount),
+//}}MRG[ <-> ]
 	//|	SUM(TableIncomeAndExpenses.Amount),
 	|	SUM(TableIncomeAndExpenses.Amount  - TableIncomeAndExpenses.VATAmount),        
 	|	0,
+//{{MRG[ <-> ]
 	//|	SUM(TableIncomeAndExpenses.Amount)
+//}}MRG[ <-> ]
+//{{MRG[ <-> ]
+//	|	SUM(TableIncomeAndExpenses.Amount)
+//}}MRG[ <-> ]
 	|	SUM(TableIncomeAndExpenses.Amount  - TableIncomeAndExpenses.VATAmount)         
 	//) elmi
 	|FROM
@@ -595,7 +615,12 @@ Procedure GenerateTableIncomeAndExpensesRetained(DocumentRefCustomerOrder, Struc
 	|		ELSE UNDEFINED
 	|	END AS Document,
 	|	DocumentTable.BusinessActivitySales AS BusinessActivity,
+//{{MRG[ <-> ]
 	//( elmi #11
+//}}MRG[ <-> ]
+//{{MRG[ <-> ]
+//	|	DocumentTable.Amount AS AmountIncome
+//}}MRG[ <-> ]
 	//|	DocumentTable.Amount AS AmountIncome
 	|	DocumentTable.Amount - DocumentTable.VATAmount AS AmountIncome        
 	//) elmi
@@ -619,7 +644,12 @@ Procedure GenerateTableIncomeAndExpensesRetained(DocumentRefCustomerOrder, Struc
 	|		ELSE UNDEFINED
 	|	END,
 	|	DocumentTable.BusinessActivitySales,
+//{{MRG[ <-> ]
 	//( elmi #11
+//}}MRG[ <-> ]
+//{{MRG[ <-> ]
+//	|	DocumentTable.Amount
+//}}MRG[ <-> ]
 	//|	DocumentTable.Amount
 	|	DocumentTable.Amount - DocumentTable.VATAmount                   
 	//) elmi
@@ -3380,7 +3410,12 @@ Procedure GenerateTableManagerial(DocumentRefCustomerOrder, StructureAdditionalP
 	|	END AS CurrencyDr,
 	|	CASE
 	|		WHEN TableManagerial.GLAccountCustomerSettlements.Currency
+//{{MRG[ <-> ]
 	//( elmi #11
+//}}MRG[ <-> ]
+//{{MRG[ <-> ]
+//	|			THEN TableManagerial.AmountCur
+//}}MRG[ <-> ]
 	//|			THEN TableManagerial.AmountCur
 	|			THEN TableManagerial.AmountCur -TableManagerial.VATAmountCur          
 	//) elmi
@@ -3394,13 +3429,24 @@ Procedure GenerateTableManagerial(DocumentRefCustomerOrder, StructureAdditionalP
 	|	END AS CurrencyCr,
 	|	CASE
 	|		WHEN TableManagerial.AccountStatementSales.Currency
+//{{MRG[ <-> ]
 	//( elmi #11
+//}}MRG[ <-> ]
+//{{MRG[ <-> ]
+//	|			THEN TableManagerial.AmountCur
+//}}MRG[ <-> ]
 	//|			THEN TableManagerial.AmountCur
 	|			THEN TableManagerial.AmountCur -TableManagerial.VATAmountCur          
 	|		ELSE 0
 	|	END AS AmountCurCr,
+//{{MRG[ <-> ]
 	//|	TableManagerial.Amount AS Amount,
 	|	TableManagerial.Amount - TableManagerial.VATAmount  AS Amount,               
+//}}MRG[ <-> ]
+//{{MRG[ <-> ]
+//	|	TableManagerial.Amount AS Amount,
+//	|	&IncomeReflection AS Content
+//}}MRG[ <-> ]
 	//) elmi
     |	&IncomeReflection AS Content
 	|FROM
@@ -3425,7 +3471,12 @@ Procedure GenerateTableManagerial(DocumentRefCustomerOrder, StructureAdditionalP
 	|	END,
 	|	CASE
 	|		WHEN TableManagerial.GLAccountCustomerSettlements.Currency
+//{{MRG[ <-> ]
 	//( elmi #11
+//}}MRG[ <-> ]
+//{{MRG[ <-> ]
+//	|			THEN TableManagerial.AmountCur
+//}}MRG[ <-> ]
 	//|			THEN TableManagerial.AmountCur
 	|			THEN TableManagerial.AmountCur - TableManagerial.VATAmountCur          
 	//) elmi
@@ -3443,12 +3494,22 @@ Procedure GenerateTableManagerial(DocumentRefCustomerOrder, StructureAdditionalP
 	|	END,
 	|	CASE
 	|		WHEN TableManagerial.ProductsOnCommission
+//{{MRG[ <-> ]
 	//( elmi #11
+//}}MRG[ <-> ]
+//{{MRG[ <-> ]
+//	|			THEN TableManagerial.Amount
+//}}MRG[ <-> ]
 	//|			THEN TableManagerial.Amount
 	|	THEN TableManagerial.Amount -TableManagerial.VATAmount                       
 	|		ELSE 0
 	|	END,
+//{{MRG[ <-> ]
 	//|	TableManagerial.Amount,
+//}}MRG[ <-> ]
+//{{MRG[ <-> ]
+//	|	TableManagerial.Amount,
+//}}MRG[ <-> ]
 	|	TableManagerial.Amount -TableManagerial.VATAmount,                       
 	//) elmi
 	|	&IncomeReflection
@@ -3696,7 +3757,12 @@ Procedure GenerateTableManagerial(DocumentRefCustomerOrder, StructureAdditionalP
 	|
 	|ORDER BY
 	|	Ordering,
+//{{MRG[ <-> ]
 	|	LineNumber";                                                                          	
+//}}MRG[ <-> ]
+//{{MRG[ <-> ]
+//	|	LineNumber";
+//}}MRG[ <-> ]
 	
 	Query.SetParameter("SetOffAdvancePayment", NStr("en = 'Setoff of advance payment'"));
 	Query.SetParameter("IncomeReflection", NStr("en = 'Sales revenue'"));
@@ -7242,9 +7308,9 @@ Function PrintServicesAcceptanceCertificate(ObjectsArray, PrintObjects, Template
 		EndIf;		
 		
 		TemplateArea = Template.GetArea("Title");
-		TemplateArea.Parameters.HeaderText = "Act No. "
+		TemplateArea.Parameters.HeaderText = "Act # "
 		                                        + DocumentNumber
-		                                        + " from "
+		                                        + " dated "
 		                                        + Format(Header.DocumentDate, "DLF=DD");
 		
 		SpreadsheetDocument.Put(TemplateArea);

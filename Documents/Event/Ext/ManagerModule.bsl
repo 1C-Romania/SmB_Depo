@@ -15,7 +15,7 @@ Procedure PresentationReceiveDataProcessor(Data, Presentation, StandardProcessin
 	
 	StandardProcessing = False;
 	
-	Presentation = "Event: " + Data.EventType + " from " + Format(Data.Date, "DF=dd.MM.yyyy");
+	Presentation = "Event: " + Data.EventType + " dated " + Format(Data.Date, "DF=dd.MM.yyyy");
 	
 EndProcedure
 

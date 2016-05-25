@@ -200,7 +200,7 @@ Procedure GeneratePaymentDestination(UpdateAmount = False)
 			PaymentDestination = NStr("en='Payment against the invoice for payment No.%AccountNumber%'");
 			PaymentDestination = StrReplace(PaymentDestination, "%AccountNo%", TrimAll(String(IncomingDocumentNumber)));
 			If ValueIsFilled(IncomingDocumentDate) Then
-				PaymentDestination = PaymentDestination + " from " + TrimAll(String(Format(IncomingDocumentDate, "DF=dd MMMM yyyy'"))) + " g.";
+				PaymentDestination = PaymentDestination + " dated " + TrimAll(String(Format(IncomingDocumentDate, "DF=dd MMMM yyyy'"))) + " g.";
 			EndIf;
 		EndIf;
 		TextDestination = PaymentDestination;

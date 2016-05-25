@@ -1404,7 +1404,12 @@ Procedure SetVisibleAndEnabled(ChangedTypeOperations = False)
 		
 	Else
 		
+//{{MRG[ <-> ]
 		Items.Inventory.ChildItems.InventoryCostPrice.Visible = False;
+//}}MRG[ <-> ]
+//{{MRG[ <-> ]
+//		Items.Inventory.ChildItems.InventoryCostPrice.Visible = False; //!
+//}}MRG[ <-> ]
 		If Object.Inventory.Count() > 0 Then
 			For Each StringInventory IN Object.Inventory Do
 				StringInventory.Cost = 0;
@@ -1679,7 +1684,12 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		EndIf;
 	EndIf;
 	
+//{{MRG[ <-> ]
 	//( elmi #11
+//}}MRG[ <-> ]
+//{{MRG[ <-> ]
+//	Object.IncludeVATInPrice = True;
+//}}MRG[ <-> ]
 	//Object.IncludeVATInPrice = True;
 	//) elmi
 	
@@ -2378,7 +2388,7 @@ Procedure IncludeExpensesInCostPriceOnChange(Item)
 		Items.Expenses.ChildItems.ExpensesOrder.Visible = False;
 		Items.Expenses.ChildItems.ExpensesStructuralUnit.Visible = False;
 		Items.Expenses.ChildItems.ExpensesBusinessActivity.Visible = False;
-		Items.AllocateExpenses.Visible = True;
+		//Items.AllocateExpenses.Visible = True;
 		
 		Items.Inventory.ChildItems.InventoryAmountExpenses.Visible = True;
 		

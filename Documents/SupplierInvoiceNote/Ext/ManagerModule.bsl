@@ -242,12 +242,12 @@ Function PrintForm(ObjectsArray, PrintObjects) Export
 		TemplateArea = Template.GetArea("Header");
 		TemplateArea.Parameters.Fill(Header);
 		
-		TemplateArea.Parameters.Number = "Invoice No. " + Header.IncomingDocumentNumber
-				+ " from " + Format(Header.IncomingDocumentDate, "DF=dd MMMM yyyy'")+ " g.";
+		TemplateArea.Parameters.Number = "Invoice # " + Header.IncomingDocumentNumber
+				+ " dated " + Format(Header.IncomingDocumentDate, "DF=dd MMMM yyyy'")+ " g.";
 				
 		If Header.DocumentDate >= CustomerInvoiceNote1137UsageBegin Then
 			
-			TemplateArea.Parameters.CorrectionNumber = "Correction No -- from --";
+			TemplateArea.Parameters.CorrectionNumber = "Correction # -- dated --";
 			
 		EndIf;
 		
@@ -273,17 +273,17 @@ Function PrintForm(ObjectsArray, PrintObjects) Export
 			If Header.OperationKind = Enums.OperationKindsCustomerInvoiceNote.OnPrincipalAdvance
 				OR Header.OperationKind = Enums.OperationKindsCustomerInvoiceNote.Advance Then
 				
-				TemplateArea.Parameters.ByDocument = "To payment and settlement document # -- from --";
+				TemplateArea.Parameters.ByDocument = "To payment and settlement document # -- dated --";
 				
 			Else
 				
-				TemplateArea.Parameters.ByDocument = "To payment and settlement document # from";
+				TemplateArea.Parameters.ByDocument = "To payment and settlement document # dated";
 				
 			EndIf; 
 			
 		Else 
 			
-			TemplateArea.Parameters.ByDocument				= "To payment and settlement document # " + Header.NumberPRD + " from " + Format(Header.DatePRD, "DF=dd.MM.yyyy");
+			TemplateArea.Parameters.ByDocument				= "To payment and settlement document # " + Header.NumberPRD + " dated " + Format(Header.DatePRD, "DF=dd.MM.yyyy");
 			
 		EndIf; 
 		

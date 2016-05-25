@@ -1013,7 +1013,7 @@ Procedure Print(ObjectsArray, PrintParameters, PrintFormsCollection, PrintObject
 	ArrayOfRecipients.Add(ObjectsArray[0]);
 	
 	OutputParameters.SendingParameters.Recipient = Recipients;
-	OutputParameters.SendingParameters.Subject = "PRICE-SHEET """ + GetDefaultCompany(ObjectsArray[0]).Description + """ from " + CurrentSessionDate() + ". Generated " + UsersClientServer.AuthorizedUser() + ".";
+	OutputParameters.SendingParameters.Subject = "PRICE-SHEET """ + GetDefaultCompany(ObjectsArray[0]).Description + """ dated " + CurrentSessionDate() + ". Generated " + UsersClientServer.AuthorizedUser() + ".";
 	SmallBusinessServer.FillSendingParameters(OutputParameters.SendingParameters, ArrayOfRecipients, PrintFormsCollection);
 	
 EndProcedure // Print()

@@ -108,7 +108,12 @@ Procedure GenerateTableInventory(DocumentRefSalesInvoice, StructureAdditionalPro
 	|					OR TableInventory.OperationKind = VALUE(Enum.OperationKindsCustomerInvoice.ReturnFromSafeCustody)
 	|				THEN 0
 	|			WHEN TableInventory.OperationKind = VALUE(Enum.OperationKindsCustomerInvoice.ReturnToVendor)
+//{{MRG[ <-> ]
 	//( elmi #11
+//}}MRG[ <-> ]
+//{{MRG[ <-> ]
+//	|				THEN -1 * TableInventory.Amount
+//}}MRG[ <-> ]
 	//|				THEN -1 * TableInventory.Amount
 	|				THEN -1 * (TableInventory.Amount - TableInventory.VATAmount)
 	//) elmi
@@ -1265,15 +1270,26 @@ Procedure GenerateTableInventoryReceived(DocumentRefSalesInvoice, StructureAddit
 	|		ELSE VALUE(Enum.ProductsReceiptTransferTypes.SafeCustody)
 	|	END AS ReceptionTransmissionType,
 	|	-SUM(TableInventoryReceived.Quantity) AS Quantity,
+//{{MRG[ <-> ]
 	//( elmi #11
 	//|	-SUM(TableInventoryReceived.SettlementsAmountTakenPassed) AS SettlementsAmount,
+//}}MRG[ <-> ]
+//{{MRG[ <-> ]
+//	|	-SUM(TableInventoryReceived.SettlementsAmountTakenPassed) AS SettlementsAmount,
+//	|	-SUM(TableInventoryReceived.SettlementsAmountTakenPassed) AS Amount,
+//}}MRG[ <-> ]
 	//|	-SUM(TableInventoryReceived.SettlementsAmountTakenPassed) AS Amount,
 	|	-SUM(TableInventoryReceived.SettlementsAmountTakenPassed - TableInventoryReceived.VATAmount) AS SettlementsAmount,
 	|	-SUM(TableInventoryReceived.SettlementsAmountTakenPassed - TableInventoryReceived.VATAmount) AS Amount,
 	//) elmi
 	|	0 AS SalesAmount,
 	|	&AdmAccountingCurrency AS Currency,
+//{{MRG[ <-> ]
 	//( elmi #11
+//}}MRG[ <-> ]
+//{{MRG[ <-> ]
+//	|	-SUM(TableInventoryReceived.SettlementsAmountTakenPassed) AS AmountCur,
+//}}MRG[ <-> ]
 	//|	-SUM(TableInventoryReceived.SettlementsAmountTakenPassed) AS AmountCur, 
 	|	-SUM(TableInventoryReceived.SettlementsAmountTakenPassed - TableInventoryReceived.VATAmount) AS AmountCur, 
 	//) elmi
@@ -1322,13 +1338,24 @@ Procedure GenerateTableInventoryReceived(DocumentRefSalesInvoice, StructureAddit
 	|	VALUE(Enum.ProductsReceiptTransferTypes.ReportToPrincipal),
 	|	SUM(TableInventoryReceived.Quantity),
 	|	0,
+//{{MRG[ <-> ]
 	//( elmi #11
 	//|	SUM(TableInventoryReceived.Amount),
+//}}MRG[ <-> ]
+//{{MRG[ <-> ]
+//	|	SUM(TableInventoryReceived.Amount),
+//	|	SUM(TableInventoryReceived.Amount),
+//}}MRG[ <-> ]
 	|	SUM(TableInventoryReceived.Amount - TableInventoryReceived.VATAmount),  
 	//|	SUM(TableInventoryReceived.Amount ),
 	|	SUM(TableInventoryReceived.Amount - TableInventoryReceived.VATAmount),  
 	|	&AdmAccountingCurrency,
+//{{MRG[ <-> ]
 	//|	SUM(TableInventoryReceived.Amount),
+//}}MRG[ <-> ]
+//{{MRG[ <-> ]
+//	|	SUM(TableInventoryReceived.Amount),
+//}}MRG[ <-> ]
 	|	SUM(TableInventoryReceived.Amount - TableInventoryReceived.VATAmount),  
 	//) elmi
 	|	CAST(&InventoryReceiptProductsOnCommission AS String(100))
@@ -1387,7 +1414,12 @@ Procedure GenerateTableInventoryTransferred(DocumentRefSalesInvoice, StructureAd
 	|		ELSE VALUE(Enum.ProductsReceiptTransferTypes.SafeCustody)
 	|	END AS ReceptionTransmissionType,
 	|	SUM(TableInventoryTransferred.Quantity) AS Quantity,
+//{{MRG[ <-> ]
 	//( elmi #11
+//}}MRG[ <-> ]
+//{{MRG[ <-> ]
+//	|	SUM(TableInventoryTransferred.SettlementsAmountTakenPassed) AS SettlementsAmount
+//}}MRG[ <-> ]
 	//|	SUM(TableInventoryTransferred.SettlementsAmountTakenPassed) AS SettlementsAmount
 	|	SUM(TableInventoryTransferred.SettlementsAmountTakenPassed - TableInventoryTransferred.VATAmount) AS SettlementsAmount 
 	//) elmi
@@ -1517,11 +1549,21 @@ Procedure GenerateTableIncomeAndExpenses(DocumentRefSalesInvoice, StructureAddit
 	|	TableIncomeAndExpenses.Order AS CustomerOrder,
 	|	TableIncomeAndExpenses.AccountStatementSales AS GLAccount,
 	|	CAST(&Income AS String(100)) AS ContentOfAccountingRecord,
+//{{MRG[ <-> ]
 	//( elmi #11
+//}}MRG[ <-> ]
+//{{MRG[ <-> ]
+//	|	SUM(TableIncomeAndExpenses.Amount) AS AmountIncome,
+//}}MRG[ <-> ]
 	//|	SUM(TableIncomeAndExpenses.Amount) AS AmountIncome,
 	|	SUM(TableIncomeAndExpenses.Amount - TableIncomeAndExpenses.VATAmount) AS AmountIncome, 
 	|	0 AS AmountExpense,
+//{{MRG[ <-> ]
 	//|	SUM(TableIncomeAndExpenses.Amount) AS Amount
+//}}MRG[ <-> ]
+//{{MRG[ <-> ]
+//	|	SUM(TableIncomeAndExpenses.Amount) AS Amount
+//}}MRG[ <-> ]
 	|	SUM(TableIncomeAndExpenses.Amount - TableIncomeAndExpenses.VATAmount) AS Amount        
 	//) elmi
 	|FROM
@@ -2187,7 +2229,12 @@ Procedure GenerateTableIncomeAndExpensesRetained(DocumentRefSalesInvoice, Struct
 	|		ELSE UNDEFINED
 	|	END AS Document,
 	|	DocumentTable.BusinessActivitySales AS BusinessActivity,
+//{{MRG[ <-> ]
 	//( elmi #11
+//}}MRG[ <-> ]
+//{{MRG[ <-> ]
+//	|	DocumentTable.Amount AS AmountIncome
+//}}MRG[ <-> ]
 	//|	DocumentTable.Amount AS AmountIncome
 	|	DocumentTable.Amount - DocumentTable.VATAmount AS AmountIncome
 	//) elmi
@@ -2413,7 +2460,12 @@ Procedure GenerateTableManagerial(DocumentRefSalesInvoice, StructureAdditionalPr
 	|	END AS CurrencyDr,
 	|	CASE
 	|		WHEN TableManagerial.GLAccountCustomerSettlements.Currency
+//{{MRG[ <-> ]
 	//( elmi #11
+//}}MRG[ <-> ]
+//{{MRG[ <-> ]
+//	|			THEN TableManagerial.AmountCur
+//}}MRG[ <-> ]
 	//|			THEN TableManagerial.AmountCur
 	|			THEN TableManagerial.AmountCur -  TableManagerial.VATAmountCur 
 	//) elmi
@@ -2431,12 +2483,22 @@ Procedure GenerateTableManagerial(DocumentRefSalesInvoice, StructureAdditionalPr
 	|	END AS CurrencyCr,
 	|	CASE
 	|		WHEN TableManagerial.ProductsOnCommission
+//{{MRG[ <-> ]
 	//( elmi #11
+//}}MRG[ <-> ]
+//{{MRG[ <-> ]
+//	|			THEN TableManagerial.Amount
+//}}MRG[ <-> ]
 	//|			THEN TableManagerial.Amount
 	|			THEN TableManagerial.Amount - TableManagerial.VATAmount    
 	|		ELSE 0
 	|	END AS AmountCurCr,
+//{{MRG[ <-> ]
 	//|	TableManagerial.Amount AS Amount,
+//}}MRG[ <-> ]
+//{{MRG[ <-> ]
+//	|	TableManagerial.Amount AS Amount,
+//}}MRG[ <-> ]
 	|	TableManagerial.Amount - TableManagerial.VATAmount  AS Amount,    
 	//) elmi
 	|	&IncomeReflection AS Content
@@ -2462,7 +2524,12 @@ Procedure GenerateTableManagerial(DocumentRefSalesInvoice, StructureAdditionalPr
 	|	END,
 	|	CASE
 	|		WHEN TableManagerial.GLAccount.Currency
+//{{MRG[ <-> ]
 	//( elmi #11
+//}}MRG[ <-> ]
+//{{MRG[ <-> ]
+//	|			THEN -TableManagerial.AmountCur
+//}}MRG[ <-> ]
 	//|			THEN -TableManagerial.AmountCur
 	|			THEN -(TableManagerial.AmountCur - TableManagerial.VATAmountCur)
 	//) elmi
@@ -2476,12 +2543,22 @@ Procedure GenerateTableManagerial(DocumentRefSalesInvoice, StructureAdditionalPr
 	|	END,
 	|	CASE
 	|		WHEN TableManagerial.GLAccountVendorSettlements.Currency
+//{{MRG[ <-> ]
 	//( elmi #11
+//}}MRG[ <-> ]
+//{{MRG[ <-> ]
+//	|			THEN -TableManagerial.AmountCur
+//}}MRG[ <-> ]
 	//|			THEN -TableManagerial.AmountCur
 	|			THEN -(TableManagerial.AmountCur - TableManagerial.VATAmountCur) 
 	|		ELSE 0
 	|	END,
+//{{MRG[ <-> ]
 	//|	-TableManagerial.Amount,
+//}}MRG[ <-> ]
+//{{MRG[ <-> ]
+//	|	-TableManagerial.Amount,
+//}}MRG[ <-> ]
 	|	-(TableManagerial.Amount- TableManagerial.VATAmount) ,                     
 	//) elmi
 	|	&ReversingSupplies
@@ -2818,7 +2895,9 @@ Procedure GenerateTableManagerial(DocumentRefSalesInvoice, StructureAdditionalPr
 	Query.SetParameter("NegativeExchangeDifferenceAccountOfAccounting", ChartsOfAccounts.Managerial.OtherExpenses);
 	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference'"));
 	Query.SetParameter("OperationKind", DocumentRefSalesInvoice.OperationKind);
+//{{MRG[ <-> ]
 	//( elmi #11
+//}}MRG[ <-> ]
 	Query.SetParameter("VAT", NStr("en=' VAT '"));
 	Query.SetParameter("TextVAT",  ChartsOfAccounts.Managerial.Taxes);
 	Query.SetParameter("VATInventory", VATInventory);
@@ -4459,7 +4538,7 @@ Function GenerateServicesAcceptanceCertificate(SpreadsheetDocument, CurrentDocum
 	EndIf;
 	
 	TemplateArea = Template.GetArea("Title");
-	TemplateArea.Parameters.HeaderText = "Act No. " + DocumentNumber + " from " + Format(Header.DocumentDate, "DLF=DD");
+	TemplateArea.Parameters.HeaderText = "Act # " + DocumentNumber + " dated " + Format(Header.DocumentDate, "DLF=DD");
 	SpreadsheetDocument.Put(TemplateArea);
 	
 	TemplateArea = Template.GetArea("Vendor");
@@ -4878,7 +4957,7 @@ Procedure GenerateSalesReceipt(SpreadsheetDocument, CurrentDocument)
 	FillStructureSection.Clear();
 	
 	DocumentNumber = SmallBusinessServer.GetNumberForPrintingConsideringDocumentDate(Header.DocumentDate, Header.Number, Header.Prefix);
-	FillStructureSection.Insert("HeaderText", "Sales receipt No " + DocumentNumber + " from " + Format(Header.DocumentDate, "DLF=DD"));
+	FillStructureSection.Insert("HeaderText", "Sales receipt No " + DocumentNumber + " dated " + Format(Header.DocumentDate, "DLF=DD"));
 	
 	TemplateArea.Parameters.Fill(FillStructureSection);
 	SpreadsheetDocument.Put(TemplateArea);

@@ -24,9 +24,7 @@
 		<Autofill>false</Autofill>
 	</AutoCommandBar>
 	<Events>
-		<Event name="OnOpen">OnOpen</Event>
 		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
-		<Event name="OnClose">OnClose</Event>
 	</Events>
 	<ChildItems>
 		<CommandBar name="TopPanel" id="7">
@@ -44,82 +42,79 @@
 			</ToolTip>
 			<ExtendedTooltip name="TopPanelExtendedTooltip" id="9"/>
 			<ChildItems>
-				<Button name="FormBack" id="1">
-					<Type>CommandBarButton</Type>
-					<CommandName>Form.Command.Back</CommandName>
-					<ExtendedTooltip name="FormBackExtendedTooltip" id="10"/>
-				</Button>
-				<Button name="FormNext" id="2">
-					<Type>CommandBarButton</Type>
-					<CommandName>Form.Command.Forward</CommandName>
-					<ExtendedTooltip name="ForwardFormExtendedTooltip" id="11"/>
-				</Button>
-				<ButtonGroup name="WithoutPopup" id="8">
-					<Title>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>Without submenu</v8:content>
-						</v8:item>
-					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>Without submenu</v8:content>
-						</v8:item>
-					</ToolTip>
-					<ExtendedTooltip name="WithoutSubMenuExtendedTooltip" id="12"/>
-					<ChildItems>
-						<Button name="MainPage" id="17">
-							<Type>CommandBarButton</Type>
-							<CommandName>Form.Command.MainPage</CommandName>
-							<ExtendedTooltip name="MainPageExtendedTooltip" id="18"/>
-						</Button>
-					</ChildItems>
-				</ButtonGroup>
 				<Popup name="Popup1" id="19">
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Training</v8:content>
+							<v8:content>1C:Education</v8:content>
 						</v8:item>
 					</Title>
 					<ExtendedTooltip name="Popup1ExtendedTooltip" id="20"/>
-				</Popup>
-				<Popup name="Popup2" id="21">
-					<Title>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>Support</v8:content>
-						</v8:item>
-					</Title>
-					<ExtendedTooltip name="Popup2ExtendedTooltip" id="22"/>
+					<ChildItems>
+						<Button name="Learn1CEnterprise" id="31">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Command.Learn1CEnterprise</CommandName>
+							<ExtendedTooltip name="Learn1CEnterpriseExtendedTooltip" id="32"/>
+						</Button>
+					</ChildItems>
 				</Popup>
 				<Popup name="Popup3" id="23">
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Enterprise 8</v8:content>
+							<v8:content>1C:Enterprise 8</v8:content>
 						</v8:item>
 					</Title>
 					<ExtendedTooltip name="Popup3ExtendedTooltip" id="24"/>
+					<ChildItems>
+						<Button name="StandardSolutions" id="35">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Command.StandardSolutions</CommandName>
+							<ExtendedTooltip name="StandardSolutionsExtendedTooltip" id="36"/>
+						</Button>
+						<Button name="IndustrySolutions" id="37">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Command.IndustrySolutions</CommandName>
+							<ExtendedTooltip name="IndustrySolutionsExtendedTooltip" id="38"/>
+						</Button>
+						<Button name="Compatible1C" id="39">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Command.Compatible1C</CommandName>
+							<ExtendedTooltip name="Compatible1CExtendedTooltip" id="40"/>
+						</Button>
+					</ChildItems>
 				</Popup>
-				<Popup name="Popup4" id="25">
+				<Popup name="Popup2" id="21">
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Help information</v8:content>
+							<v8:content>1C:Support</v8:content>
 						</v8:item>
 					</Title>
-					<ExtendedTooltip name="Popup4ExtendedTooltip" id="26"/>
-				</Popup>
-				<Popup name="Popup5" id="27">
-					<Title>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>Single seminar</v8:content>
-						</v8:item>
-					</Title>
-					<ExtendedTooltip name="Popup5ExtendedTooltip" id="28"/>
+					<ExtendedTooltip name="Popup2ExtendedTooltip" id="22"/>
+					<ChildItems>
+						<Button name="Support" id="29">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Command.Support</CommandName>
+							<ExtendedTooltip name="SupportExtendedTooltip" id="30"/>
+						</Button>
+						<Button name="SupportForum" id="33">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Command.SupportForum</CommandName>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>1C:Small Business forum</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="SupportForumExtendedTooltip" id="34"/>
+						</Button>
+						<Button name="Manuals1CEnterprise" id="41">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Command.Manuals1CEnterprise</CommandName>
+							<ExtendedTooltip name="Manuals1CEnterpriseExtendedTooltip" id="42"/>
+						</Button>
+					</ChildItems>
 				</Popup>
 			</ChildItems>
 		</CommandBar>
@@ -666,6 +661,111 @@
 				</v8:item>
 			</ToolTip>
 			<Action>Attachable_GoToPage</Action>
+		</Command>
+		<Command name="Support" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Support</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Support</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Command_Support</Action>
+		</Command>
+		<Command name="Learn1CEnterprise" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Learn 1C:Enterprise 8 applications</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Learn1 c enterprise</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Command_Learn1CEnterprise</Action>
+		</Command>
+		<Command name="SupportForum" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Support forum</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Support forum</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Command_SupportForum</Action>
+		</Command>
+		<Command name="StandardSolutions" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Standard solutions</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Standard solutions</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Command_StandardSolutions</Action>
+		</Command>
+		<Command name="IndustrySolutions" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Industry solutions</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Industry solutions</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Command_IndustrySolutions</Action>
+		</Command>
+		<Command name="Compatible1C" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>1C Compatible</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Compatible1 C</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Command_Compatible1C</Action>
+		</Command>
+		<Command name="Manuals1CEnterprise" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>1C:Enterprise 8 manuals</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Manuals1 c enterprise</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Command_Manuals1CEnterprise</Action>
 		</Command>
 	</Commands>
 </Form>

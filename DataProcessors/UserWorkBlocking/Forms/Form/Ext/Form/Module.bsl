@@ -396,7 +396,7 @@ EndProcedure
 &AtClientAtServerNoContext
 Procedure UpdateLockState(Form)
 	
-	Form.Items.State.Title = StringFunctionsClientServer.PlaceParametersIntoString(
+	Form.Items.Status.Title = StringFunctionsClientServer.PlaceParametersIntoString(
 		NStr("en='Please wait...
 			|User operation is terminated. Active sessions left: %1'"),
 			Form.NumberOfSessions);

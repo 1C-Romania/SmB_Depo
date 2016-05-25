@@ -1040,11 +1040,11 @@ Function InstallOuterDatabaseJoin(Parameters) Export
 	ConnectionStringTemplate = "[BaseRow][AuthenticationString]";
 	
 	If FileModeWork Then
-		BaseRow = "File = &InfobaseDirectory";
+		BaseRow = "File = ""&InfobaseDirectory""";
 		BaseRow = StrReplace(BaseRow, "&InfobaseDirectory", Parameters.InfobaseDirectory);
 	Else
-		BaseRow = "Srvr = &1CEnterpriseServerName; Ref = &InfobaseNameOn1CEnterpriseServer";
-		BaseRow = StrReplace(BaseRow, "&Server1CEnterpriseName",                     Parameters.PlatformServerName);
+		BaseRow = "Srvr = ""&1CEnterpriseServerName""; Ref = ""&InfobaseNameOn1CEnterpriseServer""";
+		BaseRow = StrReplace(BaseRow, "&1CEnterpriseServerName",                     Parameters.PlatformServerName);
 		BaseRow = StrReplace(BaseRow, "&InfobaseNameOn1CEnterpriseServer", Parameters.InfobaseNameAtPlatformServer);
 	EndIf;
 	
@@ -1060,7 +1060,7 @@ Function InstallOuterDatabaseJoin(Parameters) Export
 			Parameters.UserPassword = StrReplace(Parameters.UserPassword, """", """""");
 		EndIf;
 		
-		AuthenticationString = "; Usr = &Username; Pwd = &UserPassword";
+		AuthenticationString = "; Usr = ""&UserName""; Pwd = ""&UserPassword""";
 		AuthenticationString = StrReplace(AuthenticationString, "&UserName",    Parameters.UserName);
 		AuthenticationString = StrReplace(AuthenticationString, "&UserPassword", Parameters.UserPassword);
 	EndIf;

@@ -1673,7 +1673,7 @@ T WHERE // T - alias of the current table (selected short to reduce the quantity
 		Catalog.MetadataObjectIDs AS PropertiesCurrentTable
 		INNER JOIN Catalog.AccessGroups AS AccessGroups
 		ON
-			 PropertiesCurrentTable.DescriptionFull = "#Parameter(1)"
+			 PropertiesCurrentTable.FullName = "#Parameter(1)"
 			И истина In
 			 (
 				SELECT TOP 1 истина
@@ -4374,7 +4374,7 @@ WHERE
 		Catalog.MetadataObjectIDs AS PropertiesCurrentTable
 		INNER JOIN Catalog.AccessGroups AS AccessGroups
 		ON
-			 PropertiesCurrentTable.DescriptionFull = "#Parameter(1)"
+			 PropertiesCurrentTable.FullName = "#Parameter(1)"
 			И истина In
 			 (
 				SELECT TOP 1 истина

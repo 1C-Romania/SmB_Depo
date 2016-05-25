@@ -3944,7 +3944,7 @@ Procedure FillReceiptAndRefContentOnDocumentsAtServer(ReceiptCR)
 		
 		While Selection.Next() Do
 			DocumentNumber = ObjectPrefixationClientServer.GetNumberForPrinting(Selection.Number, True, True);
-			Items.DecorationReceiptCRForReturn.Title = Items.DecorationReceiptCRForReturn.Title + "; "+" No."+DocumentNumber+" from "+Format(Selection.Date, "DF=dd.MM.yyyy");
+			Items.DecorationReceiptCRForReturn.Title = Items.DecorationReceiptCRForReturn.Title + "; "+" #"+DocumentNumber+" from "+Format(Selection.Date, "DF=dd.MM.yyyy");
 		EndDo;
 		
 		Items.CreateReceiptCRForReturn.Visible = True;
@@ -3966,7 +3966,7 @@ Procedure FillReceiptAndRefContentOnDocumentsAtServer(ReceiptCR)
 			
 			While Selection.Next() Do
 				DocumentNumber = ObjectPrefixationClientServer.GetNumberForPrinting(Selection.Number, True, True);
-				Items.DecorationReceiptCRForReturn.Title = Items.DecorationReceiptCRForReturn.Title + "; "+" No."+DocumentNumber+" from "+Format(Selection.Date, "DF=dd.MM.yyyy");
+				Items.DecorationReceiptCRForReturn.Title = Items.DecorationReceiptCRForReturn.Title + "; "+" #"+DocumentNumber+" from "+Format(Selection.Date, "DF=dd.MM.yyyy");
 			EndDo;
 			
 			Items.CreateReceiptCRForReturn.TextColor = WebColors.Gray;
@@ -3995,7 +3995,7 @@ Procedure FillReceiptAndRefContentOnDocumentsAtServer(ReceiptCR)
 				
 				While Selection.Next() Do
 					DocumentNumber = ObjectPrefixationClientServer.GetNumberForPrinting(Selection.Number, True, True);
-					Items.DecorationSupplierInvoice.Title = Items.DecorationSupplierInvoice.Title + "; "+" No."+DocumentNumber+" from "+Format(Selection.Date, "DF=dd.MM.yyyy");
+					Items.DecorationSupplierInvoice.Title = Items.DecorationSupplierInvoice.Title + "; "+" #"+DocumentNumber+" from "+Format(Selection.Date, "DF=dd.MM.yyyy");
 				EndDo;
 			Else
 				SupplierInvoiceForReturn = Documents.SupplierInvoice.EmptyRef();
@@ -4017,7 +4017,7 @@ Procedure FillReceiptAndRefContentOnDocumentsAtServer(ReceiptCR)
 				
 				While Selection.Next() Do
 					DocumentNumber = ObjectPrefixationClientServer.GetNumberForPrinting(Selection.Number, True, True);
-					Items.DecorationCPV.Title = Items.DecorationCPV.Title + "; "+" No."+DocumentNumber+" from "+Format(Selection.Date, "DF=dd.MM.yyyy");
+					Items.DecorationCPV.Title = Items.DecorationCPV.Title + "; "+" #"+DocumentNumber+" from "+Format(Selection.Date, "DF=dd.MM.yyyy");
 				EndDo;
 			Else
 				CPV = Documents.GoodsExpense.EmptyRef();

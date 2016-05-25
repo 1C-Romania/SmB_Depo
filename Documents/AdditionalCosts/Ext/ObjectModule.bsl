@@ -27,17 +27,18 @@ Procedure DistributeTabSectExpensesByQuantity( ) Export
 	For Each StringInventory IN Inventory Do
 		
 		StringInventory.Factor = StringInventory.Quantity / GCD * 1000;
-		StringInventory.AmountExpense = ?(DistributionBaseQuantity <> 0, Round((TotalExpenses - SrcAmount) * StringInventory.Quantity / DistributionBaseQuantity, 2, 1),0);
+		StringInventory.AmountExpenses = ?(DistributionBaseQuantity <> 0, Round((TotalExpenses - SrcAmount) * StringInventory.Quantity / DistributionBaseQuantity, 2, 1),0);
 		DistributionBaseQuantity = DistributionBaseQuantity - StringInventory.Quantity;
-		SrcAmount = SrcAmount + StringInventory.AmountExpense;
+		SrcAmount = SrcAmount + StringInventory.AmountExpenses;
 		
 	EndDo;
 	
 EndProcedure // DistributeTabSectionExpensesByCount()
 
 // Procedure distributes expenses by amount.
-//
+// 
 Procedure DistributeTabSectExpensesByAmount( ) Export 	
+
 	SrcAmount = 0;
 	ReserveAmount = Inventory.Total("Amount");
 	TotalExpenses = Expenses.Total("Total");
@@ -59,9 +60,9 @@ Procedure DistributeTabSectExpensesByAmount( ) Export
 	For Each StringInventory IN Inventory Do
 		
 		StringInventory.Factor = StringInventory.Amount / GCD * 100;
-		StringInventory.AmountExpense = ?(ReserveAmount <> 0, Round((TotalExpenses - SrcAmount) * StringInventory.Amount / ReserveAmount, 2, 1), 0);
+		StringInventory.AmountExpenses = ?(ReserveAmount <> 0, Round((TotalExpenses - SrcAmount) * StringInventory.Amount / ReserveAmount, 2, 1), 0);
 		ReserveAmount = ReserveAmount - StringInventory.Amount;
-		SrcAmount = SrcAmount + StringInventory.AmountExpense;
+		SrcAmount = SrcAmount + StringInventory.AmountExpenses;
 		
 	EndDo;
 	
@@ -342,8 +343,8 @@ Procedure SubordinatedInvoiceControl()
 		If CustomerInvoiceNote.Posted Then
 			
 			MessageText = NStr("en = 'Due to the absence of the turnovers by the %CurrentDocumentPresentation% document, undo the posting of %InvoicePresentation%.'");
-			MessageText = StrReplace(MessageText, "%CurrentDocumentPresentation%", """Acceptance of additional costs No. " + Number + " from " + Format(Date, "DF=dd.MM.yyyy") + """");
-			MessageText = StrReplace(MessageText, "%InvoicePresentation%", """Invoice Note (Supplier) No. " + InvoiceStructure.Number + " from " + InvoiceStructure.Date + """");
+			MessageText = StrReplace(MessageText, "%CurrentDocumentPresentation%", """Acceptance of additional costs # " + Number + " dated " + Format(Date, "DF=dd.MM.yyyy") + """");
+			MessageText = StrReplace(MessageText, "%InvoicePresentation%", """Invoice Note (Supplier) # " + InvoiceStructure.Number + " dated " + InvoiceStructure.Date + """");
 			
 			CommonUseClientServer.MessageToUser(MessageText);
 			
@@ -376,7 +377,6 @@ EndProcedure // FillingProcessor()
 // Procedure - event handler FillCheckProcessing object.
 //
 Procedure FillCheckProcessing(Cancel, CheckedAttributes)
-	
 	//( elmi #11
 	VATExpenses = 0;
 	If NOT ThisObject.IncludeVATInPrice Тогда	
@@ -404,6 +404,9 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	EndIf;
 	
 EndProcedure // FillCheckProcessing()
+//{{MRG[ <-> ]
+//	If Inventory.Total("AmountExpense") <> Expenses.Total("Total") Then
+//}}MRG[ <-> ]
 
 // Procedure - event handler BeforeWrite object.
 //

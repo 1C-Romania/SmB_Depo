@@ -297,7 +297,7 @@
 									<Title>
 										<v8:item>
 											<v8:lang>en</v8:lang>
-											<v8:content>from</v8:content>
+											<v8:content>dated</v8:content>
 										</v8:item>
 									</Title>
 									<Width>15</Width>
@@ -520,7 +520,7 @@
 										</ToolTip>
 										<ExtendedTooltip name="DistributeExpensesExtendedTooltip" id="204"/>
 										<ChildItems>
-											<Button name="ByAmount" id="121">
+											<Button name="ByQuantity" id="121">
 												<Type>CommandBarButton</Type>
 												<SkipOnInput>true</SkipOnInput>
 												<CommandName>Form.Command.DistributeExpensesByQuantity</CommandName>
@@ -715,12 +715,11 @@
 									<ContextMenu name="InventoryAmountTotalContextMenu" id="46"/>
 									<ExtendedTooltip name="InventoryAmountTotalExtendedTooltip" id="220"/>
 								</InputField>
-								<InputField name="InventoryCostPrice" id="118">
+								<InputField name="InventoryCostPrice" id="379">
 									<DataPath>Object.Inventory.Cost</DataPath>
 									<EditMode>EnterOnInput</EditMode>
-									<Wrap>false</Wrap>
-									<ContextMenu name="InventoryAmountExpensesContextMenu" id="119"/>
-									<ExtendedTooltip name="InventoryAmountExpensesExtendedTooltip" id="221"/>
+									<ContextMenu name="InventoryCostPriceContextMenu" id="380"/>
+									<ExtendedTooltip name="InventoryCostPriceExtendedTooltip" id="381"/>
 								</InputField>
 								<InputField name="InventoryOrder" id="43">
 									<DataPath>Object.Inventory.Order</DataPath>

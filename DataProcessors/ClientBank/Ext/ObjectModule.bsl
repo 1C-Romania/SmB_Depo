@@ -81,13 +81,13 @@ Function GetObjectPresentation(Object)
 	
 	If TypeOf(Object) = Type("DocumentObject.PaymentReceipt") Then
 		NameObject = NStr(
-			"en = 'The ""Payment receipt"" document No. %Number% from %Date%'"
+			"en = 'The ""Payment receipt"" document # %Number% dated %Date%'"
 		);
 		NameObject = StrReplace(NameObject, "%Number%", String(TrimAll(Object.Number)));
 		NameObject = StrReplace(NameObject, "%Date%", String(Object.Date));
 	ElsIf TypeOf(Object) = Type("DocumentObject.PaymentExpense") Then
 		NameObject = NStr(
-			"en = 'The ""Payment expense"" document No. %Number% from %Date%'"
+			"en = 'The ""Payment expense"" document # %Number% dated %Date%'"
 		);
 		NameObject = StrReplace(NameObject, "%Number%", String(TrimAll(Object.Number)));
 		NameObject = StrReplace(NameObject, "%Date%", String(Object.Date));

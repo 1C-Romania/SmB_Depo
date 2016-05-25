@@ -1968,7 +1968,7 @@ Function SpecificationOfErrorParametersWorkApplicationForDeveloper() Export
 		           |To update, you can: 
 		           |- use the external data processor ""Developer tools: Update subordinate data"",
 		           |- start the application with the command bar parameter 1C:Enterprise 8
-		           |  ""/C StartInfobaseUpdate"",
+		           |  ""/C RunInfobaseUpdate"",
 		           |- increase the number of configuration version
 		           |  to update infobase data during the next start.'");
 	

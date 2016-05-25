@@ -28,11 +28,11 @@ Procedure ShortDescriptionOnClick(Item, EventData, StandardProcessing)
 			
 			OpenForm("Catalog.ProductsAndServices.ListForm");
 			
-		ElsIf Find(CommandID, "ProductsAndServicesPrices") > 0 Then
+		ElsIf Find(CommandID, "Prices") > 0 Then
 			
 			OpenForm("DataProcessor.PriceList.Form");
 			
-		ElsIf Find(CommandID, "ShortDescription") > 0 Then
+		ElsIf Find(CommandID, "ShortAbbreviation") > 0 Then
 			
 			FillDetails("ShortDescription");
 			

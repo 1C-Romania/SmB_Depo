@@ -354,8 +354,8 @@ Function PrintForm(ObjectsArray, PrintObjects, ItIsUniversalTransferDocument) Ex
 			
 		Else
 			
-			TemplateArea.Parameters.Number = "Invoice No. " + DocumentNumber
-					+ " from " + Format(Header.DocumentDate, "DF=dd MMMM yyyy'")+ " g.";
+			TemplateArea.Parameters.Number = "Invoice # " + DocumentNumber
+					+ " dated " + Format(Header.DocumentDate, "DF=dd MMMM yyyy'")+ " g.";
 					
 		EndIf;
 		
@@ -403,11 +403,11 @@ Function PrintForm(ObjectsArray, PrintObjects, ItIsUniversalTransferDocument) Ex
 			If Header.OperationKind = Enums.OperationKindsCustomerInvoiceNote.OnPrincipalAdvance
 				OR Header.OperationKind = Enums.OperationKindsCustomerInvoiceNote.Advance Then
 				
-				TemplateArea.Parameters.ByDocument = TitleFields + "No. -- from --";
+				TemplateArea.Parameters.ByDocument = TitleFields + "# -- dated --";
 				
 			Else
 				
-				TemplateArea.Parameters.ByDocument = TitleFields + "No. from";
+				TemplateArea.Parameters.ByDocument = TitleFields + "# dated";
 				
 			EndIf;
 			

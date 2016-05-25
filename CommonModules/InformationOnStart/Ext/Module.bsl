@@ -40,15 +40,15 @@ EndProcedure
 //      See description of method InfobaseUpdate.UpdateHandlersNewTable().
 //
 Procedure OnAddUpdateHandlers(Handlers) Export
-	Handler = Handlers.Add();
-	Handler.ExecuteUnderMandatory = False;
-	Handler.SharedData            = True;
-	Handler.HandlersManagement    = False;
-	Handler.PerformModes = "Promptly";
-	Handler.Version      = "*";
-	Handler.Procedure    = "InformationOnStart.UpdateFirstShowCache";
-	Handler.Comment      = NStr("en = 'Updates the data first show.'");
-	Handler.Priority     = 100;
+	//Handler = Handlers.Add();
+	//Handler.ExecuteUnderMandatory = False;
+	//Handler.SharedData            = True;
+	//Handler.HandlersManagement    = False;
+	//Handler.PerformModes = "Promptly";
+	//Handler.Version      = "*";
+	//Handler.Procedure    = "InformationOnStart.UpdateFirstShowCache";
+	//Handler.Comment      = NStr("en = 'Updates the data first show.'");
+	//Handler.Priority     = 100;
 EndProcedure
 
 // Called after IB data exclusive update is complete.
@@ -104,26 +104,26 @@ EndProcedure
 // [*] Updates data of the first show.
 Procedure UpdateFirstShowCache() Export
 	
-	Cache = CacheForFirstShow();
-	
-	RecordSet = InformationRegisters.InformationPackagesOnLaunch.CreateRecordSet();
-	
-	PackageNumber = 0;
-	For Each KeyAndValue IN Cache.PreparedPackages Do
-		PackageNumber = PackageNumber + 1;
-		PackageName = "PreparedPackage" + Format(PackageNumber, "NZ=; NG=");
-		
-		Record = RecordSet.Add();
-		Record.Number  = PackageNumber;
-		Record.Content = New ValueStorage(KeyAndValue.Value);
-		Cache.PreparedPackages.Insert(KeyAndValue.Key, PackageNumber);
-	EndDo;
-	
-	Record = RecordSet.Add();
-	Record.Number  = 0;
-	Record.Content = New ValueStorage(Cache);
-	
-	InfobaseUpdate.WriteData(RecordSet, False, False);
+	//Cache = CacheForFirstShow();
+	//
+	//RecordSet = InformationRegisters.InformationPackagesOnLaunch.CreateRecordSet();
+	//
+	//PackageNumber = 0;
+	//For Each KeyAndValue IN Cache.PreparedPackages Do
+	//	PackageNumber = PackageNumber + 1;
+	//	PackageName = "PreparedPackage" + Format(PackageNumber, "NZ=; NG=");
+	//	
+	//	Record = RecordSet.Add();
+	//	Record.Number  = PackageNumber;
+	//	Record.Content = New ValueStorage(KeyAndValue.Value);
+	//	Cache.PreparedPackages.Insert(KeyAndValue.Key, PackageNumber);
+	//EndDo;
+	//
+	//Record = RecordSet.Add();
+	//Record.Number  = 0;
+	//Record.Content = New ValueStorage(Cache);
+	//
+	//InfobaseUpdate.WriteData(RecordSet, False, False);
 	
 EndProcedure
 
@@ -180,87 +180,87 @@ Function CacheForFirstShow() Export
 	Cache = New Structure;
 	
 	// Reading template "Descriptor" (fill out table "PagePackages").
-	SpreadsheetDocument = DataProcessors.InformationOnStart.GetTemplate("Descriptor");
-	
-	PagePackages = New ValueTable;
-	PagePackages.Columns.Add("ID",                 New TypeDescription("String"));
-	PagePackages.Columns.Add("TemplateName",                     New TypeDescription("String"));
-	PagePackages.Columns.Add("Section",                        New TypeDescription("String"));
-	PagePackages.Columns.Add("StartPageName", New TypeDescription("String"));
-	PagePackages.Columns.Add("StartPageFileName",     New TypeDescription("String"));
-	PagePackages.Columns.Add("ShowStartDate",              New TypeDescription("Date"));
-	PagePackages.Columns.Add("ShowEndDate",           New TypeDescription("Date"));
-	PagePackages.Columns.Add("Priority",                     New TypeDescription("Number"));
-	
-	MinimalPriority = 100;
-	PageTemplateNamesWithLowestPriority = New Array;
-	
-	BaseConfiguration       = StandardSubsystemsServer.ThisIsBasicConfigurationVersion();
-	ConfigurationSaaS = CommonUseReUse.DataSeparationEnabled();
-	
-	For LineNumber = 3 To SpreadsheetDocument.TableHeight Do
-		StringPrefix = "R"+ LineNumber +"C";
-		
-		// Reading data of the first column.
-		TemplateName = GivenCells(SpreadsheetDocument, StringPrefix, 1, , "EndTables");
-		If Upper(TemplateName) = Upper("EndTables") Then
-			Break;
-		EndIf;
-		
-		// Skip if the data is not right for the configuration.
-		If BaseConfiguration Then
-			DisplayBase = GivenCells(SpreadsheetDocument, StringPrefix, 9, "Boolean", True);
-			If Not DisplayBase Then
-				Continue;
-			EndIf;
-		ElsIf ConfigurationSaaS Then
-			ShowSaaS = GivenCells(SpreadsheetDocument, StringPrefix, 10, "Boolean", True);
-			If Not ShowSaaS Then
-				Continue;
-			EndIf;
-		Else
-			ShowTrac = GivenCells(SpreadsheetDocument, StringPrefix, 8, "Boolean", True);
-			If Not ShowTrac Then
-				Continue;
-			EndIf;
-		EndIf;
-		
-		// Registering information about the command.
-		PagesPackage = PagePackages.Add();
-		PagesPackage.TemplateName                     = TemplateName;
-		PagesPackage.ID                 = String(LineNumber - 2);
-		PagesPackage.Section                        = GivenCells(SpreadsheetDocument, StringPrefix, 2);
-		PagesPackage.StartPageName = GivenCells(SpreadsheetDocument, StringPrefix, 3);
-		PagesPackage.StartPageFileName     = GivenCells(SpreadsheetDocument, StringPrefix, 4);
-		PagesPackage.ShowStartDate              = GivenCells(SpreadsheetDocument, StringPrefix, 5, "Date", '00010101');
-		PagesPackage.ShowEndDate           = GivenCells(SpreadsheetDocument, StringPrefix, 6, "Date", '29990101');
-		
-		If Lower(PagesPackage.Section) = Lower(NStr("en = 'Advertisement'")) Then
-			PagesPackage.Priority = 0;
-		Else
-			PagesPackage.Priority = GivenCells(SpreadsheetDocument, StringPrefix, 7, "Number", 0);
-			If PagesPackage.Priority = 0 Then
-				PagesPackage.Priority = 99;
-			EndIf;
-		EndIf;
-		
-		If MinimalPriority > PagesPackage.Priority Then
-			MinimalPriority = PagesPackage.Priority;
-			PageTemplateNamesWithLowestPriority = New Array;
-			PageTemplateNamesWithLowestPriority.Add(PagesPackage.TemplateName);
-		ElsIf MinimalPriority = PagesPackage.Priority
-			AND PageTemplateNamesWithLowestPriority.Find(PagesPackage.TemplateName) = Undefined Then
-			PageTemplateNamesWithLowestPriority.Add(PagesPackage.TemplateName);
-		EndIf;
-	EndDo;
-	
-	PreparedPackages = New Map;
-	For Each TemplateName IN PageTemplateNamesWithLowestPriority Do
-		PreparedPackages.Insert(TemplateName, ExtractPackageFiles(TemplateName));
-	EndDo;
-	
-	Cache.Insert("PagePackages", PagePackages);
-	Cache.Insert("PreparedPackages", PreparedPackages);
+	//SpreadsheetDocument = DataProcessors.InformationOnStart.GetTemplate("Descriptor");
+	//
+	//PagePackages = New ValueTable;
+	//PagePackages.Columns.Add("ID",                 New TypeDescription("String"));
+	//PagePackages.Columns.Add("TemplateName",                     New TypeDescription("String"));
+	//PagePackages.Columns.Add("Section",                        New TypeDescription("String"));
+	//PagePackages.Columns.Add("StartPageName", New TypeDescription("String"));
+	//PagePackages.Columns.Add("StartPageFileName",     New TypeDescription("String"));
+	//PagePackages.Columns.Add("ShowStartDate",              New TypeDescription("Date"));
+	//PagePackages.Columns.Add("ShowEndDate",           New TypeDescription("Date"));
+	//PagePackages.Columns.Add("Priority",                     New TypeDescription("Number"));
+	//
+	//MinimalPriority = 100;
+	//PageTemplateNamesWithLowestPriority = New Array;
+	//
+	//BaseConfiguration       = StandardSubsystemsServer.ThisIsBasicConfigurationVersion();
+	//ConfigurationSaaS = CommonUseReUse.DataSeparationEnabled();
+	//
+	//For LineNumber = 3 To SpreadsheetDocument.TableHeight Do
+	//	StringPrefix = "R"+ LineNumber +"C";
+	//	
+	//	// Reading data of the first column.
+	//	TemplateName = GivenCells(SpreadsheetDocument, StringPrefix, 1, , "EndTables");
+	//	If Upper(TemplateName) = Upper("EndTables") Then
+	//		Break;
+	//	EndIf;
+	//	
+	//	// Skip if the data is not right for the configuration.
+	//	If BaseConfiguration Then
+	//		DisplayBase = GivenCells(SpreadsheetDocument, StringPrefix, 9, "Boolean", True);
+	//		If Not DisplayBase Then
+	//			Continue;
+	//		EndIf;
+	//	ElsIf ConfigurationSaaS Then
+	//		ShowSaaS = GivenCells(SpreadsheetDocument, StringPrefix, 10, "Boolean", True);
+	//		If Not ShowSaaS Then
+	//			Continue;
+	//		EndIf;
+	//	Else
+	//		ShowTrac = GivenCells(SpreadsheetDocument, StringPrefix, 8, "Boolean", True);
+	//		If Not ShowTrac Then
+	//			Continue;
+	//		EndIf;
+	//	EndIf;
+	//	
+	//	// Registering information about the command.
+	//	PagesPackage = PagePackages.Add();
+	//	PagesPackage.TemplateName                     = TemplateName;
+	//	PagesPackage.ID                 = String(LineNumber - 2);
+	//	PagesPackage.Section                        = GivenCells(SpreadsheetDocument, StringPrefix, 2);
+	//	PagesPackage.StartPageName = GivenCells(SpreadsheetDocument, StringPrefix, 3);
+	//	PagesPackage.StartPageFileName     = GivenCells(SpreadsheetDocument, StringPrefix, 4);
+	//	PagesPackage.ShowStartDate              = GivenCells(SpreadsheetDocument, StringPrefix, 5, "Date", '00010101');
+	//	PagesPackage.ShowEndDate           = GivenCells(SpreadsheetDocument, StringPrefix, 6, "Date", '29990101');
+	//	
+	//	If Lower(PagesPackage.Section) = Lower(NStr("en = 'Advertisement'")) Then
+	//		PagesPackage.Priority = 0;
+	//	Else
+	//		PagesPackage.Priority = GivenCells(SpreadsheetDocument, StringPrefix, 7, "Number", 0);
+	//		If PagesPackage.Priority = 0 Then
+	//			PagesPackage.Priority = 99;
+	//		EndIf;
+	//	EndIf;
+	//	
+	//	If MinimalPriority > PagesPackage.Priority Then
+	//		MinimalPriority = PagesPackage.Priority;
+	//		PageTemplateNamesWithLowestPriority = New Array;
+	//		PageTemplateNamesWithLowestPriority.Add(PagesPackage.TemplateName);
+	//	ElsIf MinimalPriority = PagesPackage.Priority
+	//		AND PageTemplateNamesWithLowestPriority.Find(PagesPackage.TemplateName) = Undefined Then
+	//		PageTemplateNamesWithLowestPriority.Add(PagesPackage.TemplateName);
+	//	EndIf;
+	//EndDo;
+	//
+	//PreparedPackages = New Map;
+	//For Each TemplateName IN PageTemplateNamesWithLowestPriority Do
+	//	PreparedPackages.Insert(TemplateName, ExtractPackageFiles(TemplateName));
+	//EndDo;
+	//
+	//Cache.Insert("PagePackages", PagePackages);
+	//Cache.Insert("PreparedPackages", PreparedPackages);
 	Return Cache;
 EndFunction
 
