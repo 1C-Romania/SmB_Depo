@@ -1,23 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <PredefinedData xmlns="http://v8.1c.ru/8.3/xcf/predef" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="PlanOfCharacteristicKindPredefinedItems" version="2.1">
-	<Item id="f6562d33-9307-4696-96cc-ca314d8ce70a">
-		<Name>DataImportFromExternalSources</Name>
-		<Code>00044</Code>
-		<Description>Import data from external sources</Description>
-		<Type/>
-		<IsFolder>true</IsFolder>
-		<ChildItems>
-			<Item id="a25ae826-a8f8-48a3-a5ee-12a6720f83ed">
-				<Name>DataImportMethodFromExternalSources</Name>
-				<Code>00043</Code>
-				<Description>Method of export data from external sources</Description>
-				<Type>
-					<v8:Type xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:EnumRef.DataImportMethodFromExternalSources</v8:Type>
-				</Type>
-				<IsFolder>false</IsFolder>
-			</Item>
-		</ChildItems>
-	</Item>
 	<Item id="df00f0fd-fa43-42b8-9355-5315cf4915dc">
 		<Name>MultiplePickSetting</Name>
 		<Code>00024</Code>
@@ -25,24 +7,6 @@
 		<Type/>
 		<IsFolder>true</IsFolder>
 		<ChildItems>
-			<Item id="1527b16f-7d5d-48cd-8ee8-722a885a2429">
-				<Name>OutputAdviceGoBackToProductsAndServices</Name>
-				<Code>00037</Code>
-				<Description>Output board go back to nomenclature</Description>
-				<Type>
-					<v8:Type>xs:boolean</v8:Type>
-				</Type>
-				<IsFolder>false</IsFolder>
-			</Item>
-			<Item id="3bc91aba-e6c0-45bc-9a81-01d4e6728196">
-				<Name>OutputBoardUsePreviousPick</Name>
-				<Code>00035</Code>
-				<Description>Output board use previous pick</Description>
-				<Type>
-					<v8:Type>xs:boolean</v8:Type>
-				</Type>
-				<IsFolder>false</IsFolder>
-			</Item>
 			<Item id="03375f6e-c9d9-4fc3-b3a1-92614141a6c2">
 				<Name>CouncilServicesOutputInReceiptDocuments</Name>
 				<Code>00038</Code>
@@ -70,6 +34,42 @@
 				</Type>
 				<IsFolder>false</IsFolder>
 			</Item>
+			<Item id="b96607ff-acfa-4f30-bdf4-de3eef0ba784">
+				<Name>OutputBalancesMethod</Name>
+				<Code>00030</Code>
+				<Description>Output balances method</Description>
+				<Type>
+					<v8:Type xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:EnumRef.BalancesOutputMethodInSelection</v8:Type>
+				</Type>
+				<IsFolder>false</IsFolder>
+			</Item>
+			<Item id="1527b16f-7d5d-48cd-8ee8-722a885a2429">
+				<Name>OutputAdviceGoBackToProductsAndServices</Name>
+				<Code>00037</Code>
+				<Description>Output board go back to nomenclature</Description>
+				<Type>
+					<v8:Type>xs:boolean</v8:Type>
+				</Type>
+				<IsFolder>false</IsFolder>
+			</Item>
+			<Item id="3bc91aba-e6c0-45bc-9a81-01d4e6728196">
+				<Name>OutputBoardUsePreviousPick</Name>
+				<Code>00035</Code>
+				<Description>Output board use previous pick</Description>
+				<Type>
+					<v8:Type>xs:boolean</v8:Type>
+				</Type>
+				<IsFolder>false</IsFolder>
+			</Item>
+			<Item id="ef2561be-fa4b-41a2-9a9c-568070675b24">
+				<Name>RequestPrice</Name>
+				<Code>00036</Code>
+				<Description>Request price</Description>
+				<Type>
+					<v8:Type>xs:boolean</v8:Type>
+				</Type>
+				<IsFolder>false</IsFolder>
+			</Item>
 			<Item id="b4931e25-bc9c-46af-b4db-8e34016205b4">
 				<Name>RequestQuantity</Name>
 				<Code>00039</Code>
@@ -88,37 +88,10 @@
 				</Type>
 				<IsFolder>false</IsFolder>
 			</Item>
-			<Item id="ef2561be-fa4b-41a2-9a9c-568070675b24">
-				<Name>RequestPrice</Name>
-				<Code>00036</Code>
-				<Description>Request price</Description>
-				<Type>
-					<v8:Type>xs:boolean</v8:Type>
-				</Type>
-				<IsFolder>false</IsFolder>
-			</Item>
-			<Item id="7c0d21e8-ff6a-4b3c-897b-83b6a2370729">
-				<Name>UseNewSelectionMechanism</Name>
-				<Code>00040</Code>
-				<Description>Use new selection mechanism</Description>
-				<Type>
-					<v8:Type>xs:boolean</v8:Type>
-				</Type>
-				<IsFolder>false</IsFolder>
-			</Item>
 			<Item id="340081cf-5813-49b7-82fa-3806c00a4728">
 				<Name>ShowBalance</Name>
 				<Code>00026</Code>
 				<Description>Show balance</Description>
-				<Type>
-					<v8:Type>xs:boolean</v8:Type>
-				</Type>
-				<IsFolder>false</IsFolder>
-			</Item>
-			<Item id="ff2c1bcb-e654-45c9-93e2-97a0888edb33">
-				<Name>ShowReserve</Name>
-				<Code>00027</Code>
-				<Description>Show reserve</Description>
 				<Type>
 					<v8:Type>xs:boolean</v8:Type>
 				</Type>
@@ -142,12 +115,21 @@
 				</Type>
 				<IsFolder>false</IsFolder>
 			</Item>
-			<Item id="b96607ff-acfa-4f30-bdf4-de3eef0ba784">
-				<Name>OutputBalancesMethod</Name>
-				<Code>00030</Code>
-				<Description>Output balances method</Description>
+			<Item id="ff2c1bcb-e654-45c9-93e2-97a0888edb33">
+				<Name>ShowReserve</Name>
+				<Code>00027</Code>
+				<Description>Show reserve</Description>
 				<Type>
-					<v8:Type xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:EnumRef.BalancesOutputMethodInSelection</v8:Type>
+					<v8:Type>xs:boolean</v8:Type>
+				</Type>
+				<IsFolder>false</IsFolder>
+			</Item>
+			<Item id="7c0d21e8-ff6a-4b3c-897b-83b6a2370729">
+				<Name>UseNewSelectionMechanism</Name>
+				<Code>00040</Code>
+				<Description>Use new selection mechanism</Description>
+				<Type>
+					<v8:Type>xs:boolean</v8:Type>
 				</Type>
 				<IsFolder>false</IsFolder>
 			</Item>
@@ -171,6 +153,24 @@
 			</Item>
 		</ChildItems>
 	</Item>
+	<Item id="f6562d33-9307-4696-96cc-ca314d8ce70a">
+		<Name>DataImportFromExternalSources</Name>
+		<Code>00044</Code>
+		<Description>Import data from external sources</Description>
+		<Type/>
+		<IsFolder>true</IsFolder>
+		<ChildItems>
+			<Item id="a25ae826-a8f8-48a3-a5ee-12a6720f83ed">
+				<Name>DataImportMethodFromExternalSources</Name>
+				<Code>00043</Code>
+				<Description>Method of export data from external sources</Description>
+				<Type>
+					<v8:Type xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:EnumRef.DataImportMethodFromExternalSources</v8:Type>
+				</Type>
+				<IsFolder>false</IsFolder>
+			</Item>
+		</ChildItems>
+	</Item>
 	<Item id="a5ed43a6-38e3-44a7-b9f3-2ec8c5720a51">
 		<Name>DefaultValuesToBeFilled</Name>
 		<Code>00001</Code>
@@ -178,48 +178,21 @@
 		<Type/>
 		<IsFolder>true</IsFolder>
 		<ChildItems>
-			<Item id="498115df-21af-4ff5-804f-662b98cc1abe">
-				<Name>OffsetAdvancesDebtsAutomatically</Name>
-				<Code>00032</Code>
-				<Description>Offset advance debts automatically</Description>
+			<Item id="3ac26a79-b0d3-41da-b238-122220554e71">
+				<Name>CustomerOrderPositionInInventoryTransfer</Name>
+				<Code>00015</Code>
+				<Description>Customer order position in inventory transfer</Description>
 				<Type>
-					<v8:Type xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:EnumRef.YesNo</v8:Type>
+					<v8:Type xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:EnumRef.AttributePositionOnForm</v8:Type>
 				</Type>
 				<IsFolder>false</IsFolder>
 			</Item>
-			<Item id="5087b2ed-f5de-4304-a74f-d589e30e23fc">
-				<Name>UsePerformerSalariesInJobOrder</Name>
-				<Code>00021</Code>
-				<Description>Use performer payroll in the job order</Description>
+			<Item id="42b518d7-2a13-44fb-94e6-c653ad3d2dbb">
+				<Name>CustomerOrderPositionInShipmentDocuments</Name>
+				<Code>00014</Code>
+				<Description>Customer order position in shipment documents</Description>
 				<Type>
-					<v8:Type>xs:boolean</v8:Type>
-				</Type>
-				<IsFolder>false</IsFolder>
-			</Item>
-			<Item id="a1a76b4a-1280-4509-8c9e-ac8a9b832e4a">
-				<Name>UseMaterialsInJobOrder</Name>
-				<Code>00020</Code>
-				<Description>Use materials in the job order</Description>
-				<Type>
-					<v8:Type>xs:boolean</v8:Type>
-				</Type>
-				<IsFolder>false</IsFolder>
-			</Item>
-			<Item id="26b4649b-d42d-4333-a3dc-7b45d0a66f50">
-				<Name>UseConsumerMaterialsInJobOrder</Name>
-				<Code>00019</Code>
-				<Description>Use the order materials in the job order</Description>
-				<Type>
-					<v8:Type>xs:boolean</v8:Type>
-				</Type>
-				<IsFolder>false</IsFolder>
-			</Item>
-			<Item id="6397a4fb-ca01-44e7-9383-b78b65e8e2a6">
-				<Name>UseProductsInJobOrder</Name>
-				<Code>00018</Code>
-				<Description>Use goods and services in the job order</Description>
-				<Type>
-					<v8:Type>xs:boolean</v8:Type>
+					<v8:Type xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:EnumRef.AttributePositionOnForm</v8:Type>
 				</Type>
 				<IsFolder>false</IsFolder>
 			</Item>
@@ -268,12 +241,129 @@
 				</Type>
 				<IsFolder>false</IsFolder>
 			</Item>
+			<Item id="c81090c9-7f4c-4049-8039-56c057976cd2">
+				<Name>StatusOfNewCustomerOrder</Name>
+				<Code>00007</Code>
+				<Description>New customer order status</Description>
+				<Type>
+					<v8:Type xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:CatalogRef.CustomerOrderStates</v8:Type>
+				</Type>
+				<IsFolder>false</IsFolder>
+			</Item>
+			<Item id="6f216468-28c4-4ef0-b71a-305b47501b2b">
+				<Name>StatusOfNewProductionOrder</Name>
+				<Code>00009</Code>
+				<Description>New order for production status</Description>
+				<Type>
+					<v8:Type xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:CatalogRef.ProductionOrderStates</v8:Type>
+				</Type>
+				<IsFolder>false</IsFolder>
+			</Item>
+			<Item id="146d4cfb-31f0-48ac-b0dd-3d855dd1c734">
+				<Name>StatusOfNewPurchaseOrder</Name>
+				<Code>00008</Code>
+				<Description>New purchase order status</Description>
+				<Type>
+					<v8:Type xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:CatalogRef.PurchaseOrderStates</v8:Type>
+				</Type>
+				<IsFolder>false</IsFolder>
+			</Item>
+			<Item id="498115df-21af-4ff5-804f-662b98cc1abe">
+				<Name>OffsetAdvancesDebtsAutomatically</Name>
+				<Code>00032</Code>
+				<Description>Offset advance debts automatically</Description>
+				<Type>
+					<v8:Type xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:EnumRef.YesNo</v8:Type>
+				</Type>
+				<IsFolder>false</IsFolder>
+			</Item>
+			<Item id="c2b3a176-fa3d-4bb2-939a-9a026ca8f138">
+				<Name>PositionAssignee</Name>
+				<Code>00023</Code>
+				<Description>Performer position in the retail sales report</Description>
+				<Type>
+					<v8:Type xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:EnumRef.AttributePositionOnForm</v8:Type>
+				</Type>
+				<IsFolder>false</IsFolder>
+			</Item>
 			<Item id="fd62bbf9-1738-4bf1-b10f-b9e5659ed214">
 				<Name>MobileApplicationExportingsPeriod</Name>
 				<Code>00034</Code>
 				<Description>Period of export to mobile application</Description>
 				<Type>
 					<v8:Type xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:EnumRef.ExportPeriodsInMobileApplication</v8:Type>
+				</Type>
+				<IsFolder>false</IsFolder>
+			</Item>
+			<Item id="eee41c30-2d0b-4110-89cf-11754aa00160">
+				<Name>PositionResponsible</Name>
+				<Code>00022</Code>
+				<Description>Position of the responsible in the retail sales report</Description>
+				<Type>
+					<v8:Type xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:EnumRef.AttributePositionOnForm</v8:Type>
+				</Type>
+				<IsFolder>false</IsFolder>
+			</Item>
+			<Item id="7b76fecf-c93c-4613-aaef-c18647c7659c">
+				<Name>PurchaseOrderPositionInReceiptDocuments</Name>
+				<Code>00016</Code>
+				<Description>Purchase order position in receipt documents</Description>
+				<Type>
+					<v8:Type xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:EnumRef.AttributePositionOnForm</v8:Type>
+				</Type>
+				<IsFolder>false</IsFolder>
+			</Item>
+			<Item id="aee93f41-eab1-4554-a9e9-aaa34aef479c">
+				<Name>ReceiptDatePositionInPurchaseOrder</Name>
+				<Code>00013</Code>
+				<Description>Receipt date position in purchase order</Description>
+				<Type>
+					<v8:Type xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:EnumRef.AttributePositionOnForm</v8:Type>
+				</Type>
+				<IsFolder>false</IsFolder>
+			</Item>
+			<Item id="77a0b280-fb61-4c78-a2a7-edcc086b8c0e">
+				<Name>ShipmentDatePositionInCustomerOrder</Name>
+				<Code>00011</Code>
+				<Description>Shipment date position in customer order</Description>
+				<Type>
+					<v8:Type xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:EnumRef.AttributePositionOnForm</v8:Type>
+				</Type>
+				<IsFolder>false</IsFolder>
+			</Item>
+			<Item id="6397a4fb-ca01-44e7-9383-b78b65e8e2a6">
+				<Name>UseProductsInJobOrder</Name>
+				<Code>00018</Code>
+				<Description>Use goods and services in the job order</Description>
+				<Type>
+					<v8:Type>xs:boolean</v8:Type>
+				</Type>
+				<IsFolder>false</IsFolder>
+			</Item>
+			<Item id="a1a76b4a-1280-4509-8c9e-ac8a9b832e4a">
+				<Name>UseMaterialsInJobOrder</Name>
+				<Code>00020</Code>
+				<Description>Use materials in the job order</Description>
+				<Type>
+					<v8:Type>xs:boolean</v8:Type>
+				</Type>
+				<IsFolder>false</IsFolder>
+			</Item>
+			<Item id="5087b2ed-f5de-4304-a74f-d589e30e23fc">
+				<Name>UsePerformerSalariesInJobOrder</Name>
+				<Code>00021</Code>
+				<Description>Use performer payroll in the job order</Description>
+				<Type>
+					<v8:Type>xs:boolean</v8:Type>
+				</Type>
+				<IsFolder>false</IsFolder>
+			</Item>
+			<Item id="26b4649b-d42d-4333-a3dc-7b45d0a66f50">
+				<Name>UseConsumerMaterialsInJobOrder</Name>
+				<Code>00019</Code>
+				<Description>Use the order materials in the job order</Description>
+				<Type>
+					<v8:Type>xs:boolean</v8:Type>
 				</Type>
 				<IsFolder>false</IsFolder>
 			</Item>
@@ -295,96 +385,15 @@
 				</Type>
 				<IsFolder>false</IsFolder>
 			</Item>
-			<Item id="77a0b280-fb61-4c78-a2a7-edcc086b8c0e">
-				<Name>ShipmentDatePositionInCustomerOrder</Name>
-				<Code>00011</Code>
-				<Description>Shipment date position in customer order</Description>
-				<Type>
-					<v8:Type xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:EnumRef.AttributePositionOnForm</v8:Type>
-				</Type>
-				<IsFolder>false</IsFolder>
-			</Item>
-			<Item id="aee93f41-eab1-4554-a9e9-aaa34aef479c">
-				<Name>ReceiptDatePositionInPurchaseOrder</Name>
-				<Code>00013</Code>
-				<Description>Receipt date position in purchase order</Description>
-				<Type>
-					<v8:Type xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:EnumRef.AttributePositionOnForm</v8:Type>
-				</Type>
-				<IsFolder>false</IsFolder>
-			</Item>
-			<Item id="42b518d7-2a13-44fb-94e6-c653ad3d2dbb">
-				<Name>CustomerOrderPositionInShipmentDocuments</Name>
-				<Code>00014</Code>
-				<Description>Customer order position in shipment documents</Description>
-				<Type>
-					<v8:Type xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:EnumRef.AttributePositionOnForm</v8:Type>
-				</Type>
-				<IsFolder>false</IsFolder>
-			</Item>
-			<Item id="3ac26a79-b0d3-41da-b238-122220554e71">
-				<Name>CustomerOrderPositionInInventoryTransfer</Name>
-				<Code>00015</Code>
-				<Description>Customer order position in inventory transfer</Description>
-				<Type>
-					<v8:Type xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:EnumRef.AttributePositionOnForm</v8:Type>
-				</Type>
-				<IsFolder>false</IsFolder>
-			</Item>
-			<Item id="7b76fecf-c93c-4613-aaef-c18647c7659c">
-				<Name>PurchaseOrderPositionInReceiptDocuments</Name>
-				<Code>00016</Code>
-				<Description>Purchase order position in receipt documents</Description>
-				<Type>
-					<v8:Type xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:EnumRef.AttributePositionOnForm</v8:Type>
-				</Type>
-				<IsFolder>false</IsFolder>
-			</Item>
-			<Item id="c2b3a176-fa3d-4bb2-939a-9a026ca8f138">
-				<Name>PositionAssignee</Name>
-				<Code>00023</Code>
-				<Description>Performer position in the retail sales report</Description>
-				<Type>
-					<v8:Type xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:EnumRef.AttributePositionOnForm</v8:Type>
-				</Type>
-				<IsFolder>false</IsFolder>
-			</Item>
-			<Item id="eee41c30-2d0b-4110-89cf-11754aa00160">
-				<Name>PositionResponsible</Name>
-				<Code>00022</Code>
-				<Description>Position of the responsible in the retail sales report</Description>
-				<Type>
-					<v8:Type xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:EnumRef.AttributePositionOnForm</v8:Type>
-				</Type>
-				<IsFolder>false</IsFolder>
-			</Item>
-			<Item id="6f216468-28c4-4ef0-b71a-305b47501b2b">
-				<Name>StatusOfNewProductionOrder</Name>
-				<Code>00009</Code>
-				<Description>New order for production status</Description>
-				<Type>
-					<v8:Type xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:CatalogRef.ProductionOrderStates</v8:Type>
-				</Type>
-				<IsFolder>false</IsFolder>
-			</Item>
-			<Item id="c81090c9-7f4c-4049-8039-56c057976cd2">
-				<Name>StatusOfNewCustomerOrder</Name>
-				<Code>00007</Code>
-				<Description>New customer order status</Description>
-				<Type>
-					<v8:Type xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:CatalogRef.CustomerOrderStates</v8:Type>
-				</Type>
-				<IsFolder>false</IsFolder>
-			</Item>
-			<Item id="146d4cfb-31f0-48ac-b0dd-3d855dd1c734">
-				<Name>StatusOfNewPurchaseOrder</Name>
-				<Code>00008</Code>
-				<Description>New purchase order status</Description>
-				<Type>
-					<v8:Type xmlns:d6p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d6p1:CatalogRef.PurchaseOrderStates</v8:Type>
-				</Type>
-				<IsFolder>false</IsFolder>
-			</Item>
 		</ChildItems>
+	</Item>
+	<Item id="d93db900-f6ef-449d-9aa8-516953bc9b2c">
+		<Name>SearchDuplicatesOfCounterpartyWithoutCheckingCorrectnessTINAndKPP</Name>
+		<Code>00045</Code>
+		<Description>Search Duplicates Of Counterparty Without Checking Correctness TIN And KPP</Description>
+		<Type>
+			<v8:Type>xs:boolean</v8:Type>
+		</Type>
+		<IsFolder>false</IsFolder>
 	</Item>
 </PredefinedData>
