@@ -903,8 +903,9 @@ Procedure CheckDuplicates(Form)
 		
 		Object = Form.Object;
 		DuplicateItemsNumber = 0;
-		
-		If TINAndKPPAreCorrect(Form) Then
+// Rise { Bernavski N 2016-05-26
+		If TINAndKPPAreCorrect(Form)  OR SmallBusinessReUse.GetValueByDefaultUser(UsersClientServer.CurrentUser(),"SearchDuplicatesOfCounterpartyWithoutCheckingCorrectnessTINAndKPP") Then
+// Rise } Bernavski N 2016-05-26			
 			DuplicateItemsNumber = SearchDuplicatesServer(Object.TIN, Object.KPP, Object.Ref);
 			Form.ThereAreDuplicates = Not DuplicateItemsNumber = 0;
 		Else
@@ -1366,7 +1367,6 @@ EndProcedure
 
 #EndRegion
 
-FillAttributesUsingTIN = True;
 
 
 
@@ -1381,3 +1381,6 @@ Function RiseGetFormInterface()
 	Return RiseTranslation.GetFormInterface(ThisForm);
 EndFunction
 // Rise } Popov N 2016-05-25
+
+FillAttributesUsingTIN = True;
+
