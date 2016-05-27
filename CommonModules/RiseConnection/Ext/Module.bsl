@@ -11,7 +11,7 @@ Function GetProxy() Export
 	stSettings = RiseConnection.GetConnectionSettings();
 	
 	Definitions = New WSDefinitions(stSettings.ConnectionString + "ws/translations.1cws?wsdl", stSettings.User, stSettings.Password);
-	Proxy = New WSProxy(Definitions, stSettings.ConnectionString, "Translations", "TranslationsSoap");
+	Proxy = New WSProxy(Definitions, "http://risecompany.ru/Translator/", "Translations", "TranslationsSoap");
 	Proxy.User = stSettings.User;
 	Proxy.Password = stSettings.Password;
 	
