@@ -4,22 +4,34 @@ Function InInterfaceFileLanguage(lang1, lang2)
 	Return ?(Constants.RiseInterfaceFileLanguage.Get() = "ru", lang1, lang2);
 EndFunction
 
-//Function RiseStrSplit(String, Separator, IncludeBlank)
-//	strTemp = StrReplace(String, Separator, Chars.LF);
-//	arResult = New Array;
-//	Для rowNumber = 1 По StrLineCount(strTemp) Do
-//		item = StrGetLine(strTemp, rowNumber);
-//		If Not IsBlankString(item) Or IncludeBlank Then
-//			arResult.Add(item);
-//		EndIf;
-//	EndDo;
-//	Return arResult;
-//EndFunction
-
 Procedure TreeTraversal(Form, Root, vtrRoot, vtFormItemsTranslation, vtToTranslation, Val fDynamicList = False, ElementType = "Item")
 	type = TypeOf(Root);
 	
 	If type = Type("ManagedForm") Then
+		
+		// Rise { Popov N 2016-05-26
+		arNStr = New Array;
+		For each itemTranslation in vtFormItemsTranslation Do
+			If StrFind(itemTranslation.Arrange, "Module(") Then
+				arNStr.Add(itemTranslation);
+			EndIf;
+		EndDo;
+		
+		If arNStr.Count() > 0 Then
+			vtrNStr = vtrRoot.Rows.Add();
+			vtrNStr.ElementType = "NStr";
+			vtrNStr.Name = InInterfaceFileLanguage("НСтр", "NStr");
+			
+			For each itemTranslation in arNStr Do
+				vtrBranch = vtrNStr.Rows.Add();
+				vtrBranch.ElementType = "NStr";
+				vtrBranch.Name = itemTranslation.Arrange;
+				vtrBranch.Arrange = itemTranslation.Arrange;
+				GetFormItemTranslation(vtrBranch, vtFormItemsTranslation);
+			EndDo;
+		EndIf;
+		// Rise } Popov N 2016-05-26
+		
 		arMDNameParts = StrSplit(Form.FormName, ".", True);
 		If arMDNameParts.Count() = 4 And arMDNameParts[2] = InInterfaceFileLanguage("Форма", "Form") Then
 			
