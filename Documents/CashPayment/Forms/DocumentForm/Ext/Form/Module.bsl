@@ -72,7 +72,10 @@ Procedure FillByDocument(BasisDocument)
 		StructureByCurrency.ExchangeRate
 	);
 	Multiplicity = ?(
-		StructureByCurrency.ExchangeRate = 0,
+	    //( elmi # 08.5
+	    //StructureByCurrency.ExchangeRate = 0,
+		  StructureByCurrency.Multiplicity = 0,
+		//) elmi
 		1,
 		StructureByCurrency.Multiplicity
 	);
@@ -1376,7 +1379,11 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		StructureByCurrency.ExchangeRate
 	);
 	Multiplicity = ?(
-		StructureByCurrency.ExchangeRate = 0,
+		 //( elmi # 08.5
+	    //StructureByCurrency.ExchangeRate = 0,
+		  StructureByCurrency.Multiplicity = 0,
+		//) elmi
+
 		1,
 		StructureByCurrency.Multiplicity
 	);
@@ -1566,6 +1573,10 @@ Procedure OnOpen(Cancel)
 	
 	SetChoiceParameterLinksAvailableTypes();
 	SetCurrentPage();
+	
+    //( elmi # 08.5 
+	SmallBusinessClient.RenameTitleExchangeRateMultiplicity( ThisForm, "PaymentDetails");
+   //) elmi
 	
 EndProcedure // OnOpen()
 
@@ -2451,11 +2462,30 @@ Procedure PaymentDetailsPaymentAmountOnChange(Item)
 		TabularSectionRow.Multiplicity
 	);
 	
-	TabularSectionRow.ExchangeRate = ?(
-		TabularSectionRow.SettlementsAmount = 0,
-		1,
-		TabularSectionRow.PaymentAmount / TabularSectionRow.SettlementsAmount * ExchangeRate
-	);
+	
+	//( elmi # 08.5
+	//TabularSectionRow.ExchangeRate = ?(
+	//	TabularSectionRow.SettlementsAmount = 0,
+	//	1,
+	//	TabularSectionRow.PaymentAmount / TabularSectionRow.SettlementsAmount * ExchangeRate
+	//);
+	If SmallBusinessServer.IndirectQuotationInUse() Then
+		TabularSectionRow.Multiplicity = ?(
+			TabularSectionRow.PaymentAmount = 0,
+			1,
+			TabularSectionRow.SettlementsAmount / TabularSectionRow.PaymentAmount * Multiplicity
+		);
+	Else
+		TabularSectionRow.ExchangeRate = ?(
+			TabularSectionRow.SettlementsAmount = 0,
+			1,
+			TabularSectionRow.PaymentAmount / TabularSectionRow.SettlementsAmount * ExchangeRate
+		);
+	EndIF;
+    //) elmi
+	
+
+	
 	
 	If Not ValueIsFilled(TabularSectionRow.VATRate) Then
 		TabularSectionRow.VATRate = DefaultVATRate;

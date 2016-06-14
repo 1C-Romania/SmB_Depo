@@ -2114,7 +2114,8 @@ Procedure PrepaymentRateOnChange(Item)
 EndProcedure
 
 &AtClient
-Procedure PrepaymentRepetitionOnChange(Item)
+Procedure PrepaymentMultiplicityOnChange(Item)
+	
 	
 	TabularSectionRow = Items.Prepayment.CurrentData;
 	
@@ -2151,16 +2152,39 @@ Procedure PrepaymentPaymentAmountOnChange(Item)
 		TabularSectionRow.ExchangeRate
 	);
 	
-	TabularSectionRow.Multiplicity = 1;
+	//( elmi # 08.5
+	//TabularSectionRow.Multiplicity = 1;
 	
-	TabularSectionRow.ExchangeRate =
-		?(TabularSectionRow.SettlementsAmount = 0,
-			1,
-			TabularSectionRow.PaymentAmount
-		  / TabularSectionRow.SettlementsAmount
-		  * Object.ExchangeRate
+	//TabularSectionRow.ExchangeRate =
+	//	?(TabularSectionRow.SettlementsAmount = 0,
+	//		1,
+	//		TabularSectionRow.PaymentAmount
+	//	  / TabularSectionRow.SettlementsAmount
+	//	  * Object.ExchangeRate
+	//);
+	 	TabularSectionRow.Multiplicity = ?(
+		TabularSectionRow.Multiplicity = 0,
+		1,
+		TabularSectionRow.Multiplicity
 	);
-	
+	If SmallBusinessServer.IndirectQuotationInUse() Then
+		TabularSectionRow.Multiplicity =
+			?(TabularSectionRow.SettlementsAmount = 0,
+				1,
+				TabularSectionRow.SettlementsAmount
+			  / TabularSectionRow.PaymentAmount
+			  * Object.Multiplicity
+		);
+	Else	
+		TabularSectionRow.ExchangeRate =
+			?(TabularSectionRow.SettlementsAmount = 0,
+				1,
+				TabularSectionRow.PaymentAmount
+			  / TabularSectionRow.SettlementsAmount
+			  * Object.ExchangeRate
+		);
+	EndIf;
+	//) elmi
 EndProcedure
 
 #Region LibrariesHandlers
@@ -2845,4 +2869,13 @@ EndFunction
 Function RiseGetFormInterface()
 	Return RiseTranslation.GetFormInterface(ThisForm);
 EndFunction
+// Rise } Popov N 2016-05-25
+
+&AtClient
+Procedure OnOpen(Cancel)
+	//( elmi # 08.5 
+	SmallBusinessClient.RenameTitleExchangeRateMultiplicity( ThisForm, "Prepayment");  
+    //) elmi
+
+EndProcedure
 // Rise } Popov N 2016-05-25

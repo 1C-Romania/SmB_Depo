@@ -1345,6 +1345,10 @@ Procedure OnOpen(Cancel)
 	EquipmentManagerClientOverridable.StartConnectingEquipmentOnFormOpen(ThisForm, "BarCodeScanner");
 	// End Peripherals
 	
+    //( elmi # 08.5 
+	SmallBusinessClient.RenameTitleExchangeRateMultiplicity( ThisForm, "Prepayment");
+   //) elmi
+
 EndProcedure // OnOpen()
 
 // Procedure - event handler OnClose.
@@ -2357,7 +2361,7 @@ Procedure PrepaymentRateOnChange(Item)
 EndProcedure
 
 &AtClient
-Procedure PrepaymentRepetitionOnChange(Item)
+Procedure PrepaymentMultiplicityOnChange(Item)
 	
 	TabularSectionRow = Items.Prepayment.CurrentData;
 	
@@ -2394,16 +2398,42 @@ Procedure PrepaymentPaymentAmountOnChange(Item)
 		TabularSectionRow.ExchangeRate
 	);
 	
-	TabularSectionRow.Multiplicity = 1;
-	
-	TabularSectionRow.ExchangeRate =
-		?(TabularSectionRow.SettlementsAmount = 0,
-			1,
-			TabularSectionRow.PaymentAmount
-		  / TabularSectionRow.SettlementsAmount
-		  * Object.ExchangeRate
+
+	//( elmi # 08.5
+	//TabularSectionRow.Multiplicity = 1;
+	//
+	//TabularSectionRow.ExchangeRate =
+	//	?(TabularSectionRow.SettlementsAmount = 0,
+	//		1,
+	//		TabularSectionRow.PaymentAmount
+	//	  / TabularSectionRow.SettlementsAmount
+	//	  * Object.ExchangeRate
+	//);
+   TabularSectionRow.Multiplicity = ?(
+		TabularSectionRow.Multiplicity = 0,
+		1,
+		TabularSectionRow.Multiplicity
 	);
+	If SmallBusinessServer.IndirectQuotationInUse() Then
+		TabularSectionRow.Multiplicity =
+			?(TabularSectionRow.PaymentAmount = 0,
+				1,
+				TabularSectionRow.SettlementsAmount
+			  / TabularSectionRow.PaymentAmount
+			  * Object.Multiplicity
+		);
+	Else
+		TabularSectionRow.ExchangeRate =
+			?(TabularSectionRow.SettlementsAmount = 0,
+				1,
+				TabularSectionRow.PaymentAmount
+			  / TabularSectionRow.SettlementsAmount
+			  * Object.ExchangeRate
+		);
+	EndIf;
+	//) elmi
 	
+
 EndProcedure
 
 // Procedure - OnChange event handler of the Comment input field.

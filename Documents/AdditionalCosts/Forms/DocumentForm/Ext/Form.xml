@@ -70,6 +70,7 @@
 		<Event name="ChoiceProcessing">ChoiceProcessing</Event>
 		<Event name="NotificationProcessing">NotificationProcessing</Event>
 		<Event name="OnReadAtServer">OnReadAtServer</Event>
+		<Event name="OnOpen">OnOpen</Event>
 		<Event name="BeforeWriteAtServer">BeforeWriteAtServer</Event>
 		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
 	</Events>
@@ -809,17 +810,17 @@
 										<Event name="OnChange">PrepaymentRateOnChange</Event>
 									</Events>
 								</InputField>
-								<InputField name="PrepaymentRepetition" id="291">
+								<InputField name="PrepaymentMultiplicity" id="291">
 									<DataPath>Object.Prepayment.Multiplicity</DataPath>
 									<UserVisible>
 										<xr:Common>false</xr:Common>
 									</UserVisible>
 									<EditMode>EnterOnInput</EditMode>
 									<Width>9</Width>
-									<ContextMenu name="PrepaymentUnitConversionFactorContextMenu" id="292"/>
-									<ExtendedTooltip name="PrepaymentUnitConversionFactorExtendedTooltip" id="293"/>
+									<ContextMenu name="PrepaymentMultiplicityContextMenu" id="292"/>
+									<ExtendedTooltip name="PrepaymentMultiplicityExtendedTooltip" id="293"/>
 									<Events>
-										<Event name="OnChange">PrepaymentRepetitionOnChange</Event>
+										<Event name="OnChange">PrepaymentMultiplicityOnChange</Event>
 									</Events>
 								</InputField>
 								<InputField name="PrepaymentPaymentAmount" id="294">
@@ -1204,12 +1205,7 @@
 				</v8:item>
 			</Title>
 			<Type>
-				<v8:Type>xs:decimal</v8:Type>
-				<v8:NumberQualifiers>
-					<v8:Digits>10</v8:Digits>
-					<v8:FractionDigits>0</v8:FractionDigits>
-					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
-				</v8:NumberQualifiers>
+				<v8:TypeSet>cfg:DefinedType.Multiplicity</v8:TypeSet>
 			</Type>
 		</Attribute>
 		<Attribute name="RateNationalCurrency" id="11">
@@ -1220,12 +1216,7 @@
 				</v8:item>
 			</Title>
 			<Type>
-				<v8:Type>xs:decimal</v8:Type>
-				<v8:NumberQualifiers>
-					<v8:Digits>10</v8:Digits>
-					<v8:FractionDigits>4</v8:FractionDigits>
-					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
-				</v8:NumberQualifiers>
+				<v8:TypeSet>cfg:DefinedType.ExchangeRate</v8:TypeSet>
 			</Type>
 		</Attribute>
 		<Attribute name="NationalCurrency" id="12">

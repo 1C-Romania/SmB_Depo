@@ -472,4 +472,15 @@ EndFunction
 Function RiseGetFormInterface()
 	Return RiseTranslation.GetFormInterface(ThisForm);
 EndFunction
+
 // Rise } Popov N 2016-05-25
+
+
+//( elmi # 08.5
+&AtClient
+Procedure CurrencyQuotationTypeOnChange(Item)
+	
+	Attachable_OnAttributeChange(Item);
+	
+EndProcedure
+//) elmi

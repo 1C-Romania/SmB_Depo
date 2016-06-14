@@ -38,7 +38,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndDo;
 	
 	FunctionalCurrencyTransactionsAccounting = Constants.FunctionalCurrencyTransactionsAccounting.Get();
-	Items.DebtsLictRate.Visible = FunctionalCurrencyTransactionsAccounting;
+	Items.DebtsListExchangeRate.Visible = FunctionalCurrencyTransactionsAccounting;
 	Items.DebtsListMultiplicity.Visible = FunctionalCurrencyTransactionsAccounting;
 	
 	Items.Totals.Visible = Not CurrencyTransactionsAccounting;
@@ -53,6 +53,12 @@ EndProcedure // OnCreateAtServer()
 Procedure OnOpen(Cancel)
 	
 	CalculateAmountTotal();
+	
+	//( elmi # 08.5 
+	SmallBusinessClient.RenameTitleExchangeRateMultiplicity( ThisForm, "DebtsList");
+	SmallBusinessClient.RenameTitleExchangeRateMultiplicity( ThisForm, "FilteredDebts");
+	//) elmi
+
 	
 EndProcedure // OnOpen()
 
@@ -408,7 +414,10 @@ Procedure FillPaymentDetails()
 		StructureByCurrency.ExchangeRate
 	);
 	Multiplicity = ?(
-		StructureByCurrency.ExchangeRate = 0,
+	    //( elmi # 08.5
+	    //StructureByCurrency.ExchangeRate = 0,
+	    StructureByCurrency.Multiplicity = 0,
+		//) elmi
 		1,
 		StructureByCurrency.Multiplicity
 	);

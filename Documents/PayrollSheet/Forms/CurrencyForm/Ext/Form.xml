@@ -260,12 +260,7 @@
 				</v8:item>
 			</Title>
 			<Type>
-				<v8:Type>xs:decimal</v8:Type>
-				<v8:NumberQualifiers>
-					<v8:Digits>10</v8:Digits>
-					<v8:FractionDigits>4</v8:FractionDigits>
-					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
-				</v8:NumberQualifiers>
+				<v8:TypeSet>cfg:DefinedType.ExchangeRate</v8:TypeSet>
 			</Type>
 		</Attribute>
 		<Attribute name="Multiplicity" id="20">
@@ -276,12 +271,7 @@
 				</v8:item>
 			</Title>
 			<Type>
-				<v8:Type>xs:decimal</v8:Type>
-				<v8:NumberQualifiers>
-					<v8:Digits>10</v8:Digits>
-					<v8:FractionDigits>0</v8:FractionDigits>
-					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
-				</v8:NumberQualifiers>
+				<v8:TypeSet>cfg:DefinedType.Multiplicity</v8:TypeSet>
 			</Type>
 		</Attribute>
 		<Attribute name="CurrencyRates" id="21">
@@ -314,12 +304,7 @@
 						</v8:item>
 					</Title>
 					<Type>
-						<v8:Type>xs:decimal</v8:Type>
-						<v8:NumberQualifiers>
-							<v8:Digits>10</v8:Digits>
-							<v8:FractionDigits>4</v8:FractionDigits>
-							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
-						</v8:NumberQualifiers>
+						<v8:TypeSet>cfg:DefinedType.ExchangeRate</v8:TypeSet>
 					</Type>
 				</Column>
 				<Column name="Multiplicity" id="3">
@@ -330,12 +315,7 @@
 						</v8:item>
 					</Title>
 					<Type>
-						<v8:Type>xs:decimal</v8:Type>
-						<v8:NumberQualifiers>
-							<v8:Digits>10</v8:Digits>
-							<v8:FractionDigits>0</v8:FractionDigits>
-							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
-						</v8:NumberQualifiers>
+						<v8:TypeSet>cfg:DefinedType.Multiplicity</v8:TypeSet>
 					</Type>
 				</Column>
 			</Columns>
@@ -348,12 +328,7 @@
 				</v8:item>
 			</Title>
 			<Type>
-				<v8:Type>xs:decimal</v8:Type>
-				<v8:NumberQualifiers>
-					<v8:Digits>10</v8:Digits>
-					<v8:FractionDigits>4</v8:FractionDigits>
-					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
-				</v8:NumberQualifiers>
+				<v8:TypeSet>cfg:DefinedType.ExchangeRate</v8:TypeSet>
 			</Type>
 		</Attribute>
 		<Attribute name="MultiplicityBeforeChange" id="25">
@@ -364,12 +339,7 @@
 				</v8:item>
 			</Title>
 			<Type>
-				<v8:Type>xs:decimal</v8:Type>
-				<v8:NumberQualifiers>
-					<v8:Digits>10</v8:Digits>
-					<v8:FractionDigits>0</v8:FractionDigits>
-					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
-				</v8:NumberQualifiers>
+				<v8:TypeSet>cfg:DefinedType.Multiplicity</v8:TypeSet>
 			</Type>
 		</Attribute>
 		<Attribute name="DocumentDate" id="1">
@@ -416,12 +386,7 @@
 				</v8:item>
 			</Title>
 			<Type>
-				<v8:Type>xs:decimal</v8:Type>
-				<v8:NumberQualifiers>
-					<v8:Digits>10</v8:Digits>
-					<v8:FractionDigits>4</v8:FractionDigits>
-					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
-				</v8:NumberQualifiers>
+				<v8:TypeSet>cfg:DefinedType.ExchangeRate</v8:TypeSet>
 			</Type>
 		</Attribute>
 		<Attribute name="ExchangeRateDocumentCurrencyBeforeChange" id="6">
@@ -432,12 +397,7 @@
 				</v8:item>
 			</Title>
 			<Type>
-				<v8:Type>xs:decimal</v8:Type>
-				<v8:NumberQualifiers>
-					<v8:Digits>10</v8:Digits>
-					<v8:FractionDigits>4</v8:FractionDigits>
-					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
-				</v8:NumberQualifiers>
+				<v8:TypeSet>cfg:DefinedType.ExchangeRate</v8:TypeSet>
 			</Type>
 		</Attribute>
 		<Attribute name="RepetitionDocumentCurrency" id="8">
@@ -448,12 +408,7 @@
 				</v8:item>
 			</Title>
 			<Type>
-				<v8:Type>xs:decimal</v8:Type>
-				<v8:NumberQualifiers>
-					<v8:Digits>10</v8:Digits>
-					<v8:FractionDigits>0</v8:FractionDigits>
-					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
-				</v8:NumberQualifiers>
+				<v8:TypeSet>cfg:DefinedType.Multiplicity</v8:TypeSet>
 			</Type>
 		</Attribute>
 		<Attribute name="MultiplicityDocumentCurrencyBeforeChange" id="9">
@@ -464,12 +419,7 @@
 				</v8:item>
 			</Title>
 			<Type>
-				<v8:Type>xs:decimal</v8:Type>
-				<v8:NumberQualifiers>
-					<v8:Digits>10</v8:Digits>
-					<v8:FractionDigits>0</v8:FractionDigits>
-					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
-				</v8:NumberQualifiers>
+				<v8:TypeSet>cfg:DefinedType.Multiplicity</v8:TypeSet>
 			</Type>
 		</Attribute>
 	</Attributes>

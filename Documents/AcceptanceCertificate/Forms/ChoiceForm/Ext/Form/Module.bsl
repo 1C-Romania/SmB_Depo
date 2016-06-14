@@ -23,3 +23,16 @@ Function RiseGetFormInterface()
 	Return RiseTranslation.GetFormInterface(ThisForm);
 EndFunction
 // Rise } Popov N 2016-05-25
+
+
+
+&AtClient
+Procedure OnOpen(Cancel)
+	
+	//( elmi # 08.5 
+	SmallBusinessClient.RenameTitleExchangeRateMultiplicity( ThisForm, "List");
+    //) elmi
+
+	
+	
+EndProcedure

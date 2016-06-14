@@ -207,6 +207,12 @@ Procedure OnOpen(Cancel)
 	
 	CalculateAmountsTotal();
 	
+    //( elmi # 08.5 
+	SmallBusinessClient.RenameTitleExchangeRateMultiplicity( ThisForm, "AdvancesList");
+	SmallBusinessClient.RenameTitleExchangeRateMultiplicity( ThisForm, "Prepayment");
+	//) elmi
+
+	
 EndProcedure // OnOpen()
 
 // Procedure - OK button click handler.

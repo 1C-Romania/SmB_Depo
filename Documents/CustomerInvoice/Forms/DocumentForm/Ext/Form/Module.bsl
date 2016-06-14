@@ -2049,6 +2049,13 @@ Procedure OnOpen(Cancel)
 	EquipmentManagerClientOverridable.StartConnectingEquipmentOnFormOpen(ThisForm, "BarCodeScanner");
 	// End Peripherals
 	
+		
+   //( elmi # 08.5 
+	SmallBusinessClient.RenameTitleExchangeRateMultiplicity( ThisForm, "Prepayment");
+   //) elmi
+
+
+	
 EndProcedure // OnOpen()
 
 // Procedure - event handler OnClose.

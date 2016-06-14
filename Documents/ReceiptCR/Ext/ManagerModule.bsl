@@ -178,7 +178,7 @@ Procedure GenerateTableIncomeAndExpenses(DocumentRefReceiptCR, StructureAddition
 	|	TableIncomeAndExpenses.CustomerOrder AS CustomerOrder,
 	|	TableIncomeAndExpenses.GLAccountRevenueFromSales AS GLAccount,
 	|	CAST(&IncomeReflection AS String(100)) AS ContentOfAccountingRecord,
-	//( elmi
+	//( elmi # 08.5
 	//|	SUM(TableIncomeAndExpenses.Amount) AS AmountIncome,
 	|	SUM(TableIncomeAndExpenses.Amount - TableIncomeAndExpenses.VATAmount) AS AmountIncome,         
 	|	0 AS AmountExpense,
@@ -310,7 +310,7 @@ EndProcedure // GenerateTableSales()
 //
 Procedure GenerateTableManagerial(DocumentRefReceiptCR, StructureAdditionalProperties)
 	
-	//( elmi
+	//( elmi # 08.5
     Query = New Query;
 	Query.TempTablesManager = StructureAdditionalProperties.ForPosting.StructureTemporaryTables.TempTablesManager;
 	Query.Text =
@@ -352,7 +352,7 @@ Procedure GenerateTableManagerial(DocumentRefReceiptCR, StructureAdditionalPrope
 	|	END AS CurrencyDr,
 	|	CASE
 	|		WHEN TableManagerial.CashCRGLAccount.Currency
-	//( elmi
+	//( elmi # 08.5
 	//|			THEN TableManagerial.AmountCur
 	|			THEN TableManagerial.AmountCur - TableManagerial.VATAmountCur                     
 	//) elmi
@@ -370,7 +370,7 @@ Procedure GenerateTableManagerial(DocumentRefReceiptCR, StructureAdditionalPrope
 	|	END AS CurrencyCr,
 	|	CASE
 	|		WHEN TableManagerial.ProductsOnCommission
-	//( elmi
+	//( elmi # 08.5
 	//|			THEN TableManagerial.Amount
 	|			THEN TableManagerial.Amount - TableManagerial.VATAmount                          
     |	    ELSE 0
@@ -467,7 +467,7 @@ Procedure GenerateTableManagerial(DocumentRefReceiptCR, StructureAdditionalPrope
 	|	&CheckIssued
 	|	AND (NOT &Archival)
 	|
-	//( elmi
+	//( elmi # 08.5
 	|UNION ALL
 	|
 	|SELECT TOP 1
@@ -512,7 +512,7 @@ Procedure GenerateTableManagerial(DocumentRefReceiptCR, StructureAdditionalPrope
 	Query.SetParameter("CheckIssued", StructureAdditionalProperties.ForPosting.CheckIssued);
 	Query.SetParameter("Archival", StructureAdditionalProperties.ForPosting.Archival);
 	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference'"));
-	//( elmi
+	//( elmi # 08.5
 	Query.SetParameter("VAT", NStr("en=' VAT '"));
 	Query.SetParameter("TextVAT",  ChartsOfAccounts.Managerial.Taxes);
 	Query.SetParameter("VATInventoryCur", VATInventoryCur);

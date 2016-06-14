@@ -423,7 +423,10 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	StructureByCurrency = InformationRegisters.CurrencyRates.GetLast(Object.Date, New Structure("Currency", Constants.AccountingCurrency.Get()));
 	ExchangeRate = ?(StructureByCurrency.ExchangeRate = 0, 1, StructureByCurrency.ExchangeRate);
-	Multiplicity = ?(StructureByCurrency.ExchangeRate = 0, 1, StructureByCurrency.Multiplicity);
+	//( elmi # 08.5
+	//Multiplicity = ?(StructureByCurrency.ExchangeRate = 0, 1, StructureByCurrency.Multiplicity);
+	Multiplicity = ?(StructureByCurrency.Multiplicity = 0, 1, StructureByCurrency.Multiplicity);
+	//) elmi
 	
 	DocumentDate = Object.Date;
 	If Not ValueIsFilled(DocumentDate) Then
@@ -462,6 +465,12 @@ EndProcedure // OnReadAtServer()
 Procedure OnOpen(Cancel)
 	
 	SetAvailableTypes();
+	
+    //( elmi # 08.5 
+	SmallBusinessClient.RenameTitleExchangeRateMultiplicity( ThisForm, "Creditor");    
+	SmallBusinessClient.RenameTitleExchangeRateMultiplicity( ThisForm, "Debitor");
+    //) elmi
+	
 	
 EndProcedure // OnOpen()
 
@@ -833,7 +842,7 @@ EndProcedure
 //  of the Rate input field of the Debitor tabular section.
 //
 &AtClient
-Procedure DebitorRateOnChange(Item)
+Procedure DebitorExchangeRateOnChange(Item)
 	
 	TabularSectionRow = Items.Debitor.CurrentData;
 	
@@ -845,7 +854,7 @@ EndProcedure // DebitorRateOnChange()
 // the Multiplicity input field of the Debitor tabular section.
 //
 &AtClient
-Procedure DebitorRepetitionOnChange(Item)
+Procedure DebitorMultiplicityOnChange(Item)
 	
 	TabularSectionRow = Items.Debitor.CurrentData;
 	
@@ -948,7 +957,7 @@ EndProcedure
 // the Rate input field of the Creditor tabular section.
 //
 &AtClient
-Procedure CreditorRateOnChange(Item)
+Procedure CreditorExchangeRateOnChange(Item)
 	
 	TabularSectionRow = Items.Creditor.CurrentData;
 	
@@ -960,7 +969,7 @@ EndProcedure // DebitorRateOnChange()
 // the Multiplicity input field of the Debitor tabular section.
 //
 &AtClient
-Procedure CreditorRepetitionOnChange(Item)
+Procedure CreditorMultiplicityOnChange(Item)
 	
 	TabularSectionRow = Items.Creditor.CurrentData;
 	
@@ -1039,7 +1048,10 @@ Procedure PickAccountsReceivable(Command)
 	AddressDebitorInStorage = PlaceDebitorToStorage();
 	
 	SelectionParameters = New Structure(
-		"AddressDebitorToStorage,
+	    //( elmi # 08.5
+	    //"AddressDebitorToStorage,
+		"AddressDebitorInStorage,
+		//) elmi
 		|SubsidiaryCompany,
 		|Date,
 		|Counterparty,
@@ -1121,7 +1133,10 @@ Procedure PickVendorSettlements(Command)
 	AddressCreditorInStorage = PlaceCreditorToStorage();
 	
 	SelectionParameters = New Structure(
+	    //( elmi # 08.5
+	    //"AddressDebitorInStorage,
 		"AddressDebitorToStorage,
+		//) elmi
 		|SubsidiaryCompany,
 		|Date,
 		|Counterparty,

@@ -404,9 +404,6 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	EndIf;
 	
 EndProcedure // FillCheckProcessing()
-//{{MRG[ <-> ]
-//	If Inventory.Total("AmountExpense") <> Expenses.Total("Total") Then
-//}}MRG[ <-> ]
 
 // Procedure - event handler BeforeWrite object.
 //

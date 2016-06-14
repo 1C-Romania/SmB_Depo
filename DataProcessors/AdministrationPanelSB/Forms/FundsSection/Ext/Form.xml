@@ -6,7 +6,7 @@
 			<v8:content>Funds</v8:content>
 		</v8:item>
 	</Title>
-	<Width>84</Width>
+	<Width>89</Width>
 	<AutoTitle>false</AutoTitle>
 	<Customizable>false</Customizable>
 	<VerticalScroll>useIfNecessary</VerticalScroll>
@@ -166,6 +166,29 @@
 								</Title>
 							</ExtendedTooltip>
 						</Button>
+						<InputField name="CurrencyQuotationType" id="260">
+							<DataPath>ConstantsSet.CurrencyQuotationType</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Currency quotation type</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>Right</TitleLocation>
+							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<ContextMenu name="CurrencyQuotationTypeContextMenu" id="261"/>
+							<ExtendedTooltip name="CurrencyQuotationTypeExtendedTooltip" id="262">
+								<Title formatted="true">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>The direct quotation shows the quantity of the domestic currency you can get in exchange for a unit of a foreign currency, i.e. it is the price of one unit of the foreign currency expressed in the domestic currency. The indirect quotation is the opposite of the direct quotation, and it shows the quantity of the foreign currency you can get in exchange for a unit of the domestic currency, i.e. it is the price of one unit of the domestic currency expressed in the foreign currency.</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+							<Events>
+								<Event name="OnChange">CurrencyQuotationTypeOnChange</Event>
+							</Events>
+						</InputField>
 					</ChildItems>
 				</UsualGroup>
 				<UsualGroup name="Group2" id="100">
@@ -568,6 +591,8 @@ This option allows keeping payment schedule, a tool for short term planning of c
 				<Field>ConstantsSet.DiscountsMarkupsSharedUsageOptions.Ref</Field>
 				<Field>ConstantsSet.DeleteCryptographyContext.Ref</Field>
 				<Field>ConstantsSet.DeleteContractControllingOnPosting.Ref</Field>
+				<Field>ConstantsSet.CurrencyQuotationType.Ref</Field>
+				<Field>ConstantsSet.CurrencyQuotationType</Field>
 				<Field>ConstantsSet.AuthorizationContext.Ref</Field>
 				<Field>ConstantsSet.ActivityKind.Ref</Field>
 				<Field>ConstantsSet.AccountingCurrency</Field>

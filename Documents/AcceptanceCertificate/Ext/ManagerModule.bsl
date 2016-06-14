@@ -453,21 +453,11 @@ Procedure GenerateTableIncomeAndExpenses(DocumentRefAcceptanceCertificate, Struc
 	|	TableIncomeAndExpenses.CustomerOrder AS CustomerOrder,
 	|	TableIncomeAndExpenses.AccountStatementSales AS GLAccount,
 	|	&IncomeReflection AS ContentOfAccountingRecord,
-//{{MRG[ <-> ]
-	//( elmi #11
-//}}MRG[ <-> ]
-//{{MRG[ <-> ]
-//	|	SUM(TableIncomeAndExpenses.Amount) AS AmountIncome,
-//}}MRG[ <-> ]
+   //( elmi #11
 	//|	SUM(TableIncomeAndExpenses.Amount) AS AmountIncome,
 	|	SUM(TableIncomeAndExpenses.Amount - TableIncomeAndExpenses.VATAmount) AS AmountIncome,      
 	|	0 AS AmountExpense,
-//{{MRG[ <-> ]
-	//|	SUM(TableIncomeAndExpenses.Amount) AS Amount
-//}}MRG[ <-> ]
-//{{MRG[ <-> ]
-//	|	SUM(TableIncomeAndExpenses.Amount) AS Amount
-//}}MRG[ <-> ]
+   //|	SUM(TableIncomeAndExpenses.Amount) AS Amount
 	|	SUM(TableIncomeAndExpenses.Amount - TableIncomeAndExpenses.VATAmount) AS Amount             
 	//) elmi
 	|FROM
@@ -799,12 +789,7 @@ Procedure GenerateTableIncomeAndExpensesRetained(DocumentRefAcceptanceCertificat
 	|		ELSE UNDEFINED
 	|	END AS Document,
 	|	DocumentTable.BusinessActivitySales AS BusinessActivity,
-//{{MRG[ <-> ]
 	//( elmi #11
-//}}MRG[ <-> ]
-//{{MRG[ <-> ]
-//	|	DocumentTable.Amount AS AmountIncome
-//}}MRG[ <-> ]
 	//|	DocumentTable.Amount AS AmountIncome
 	|	DocumentTable.Amount - DocumentTable.VATAmount AS AmountIncome     
 	//) elmi
@@ -1026,12 +1011,7 @@ Procedure GenerateTableManagerial(DocumentRefAcceptanceCertificate, StructureAdd
 	|	END AS CurrencyDr,
 	|	CASE
 	|		WHEN TableManagerial.GLAccountCustomerSettlements.Currency
-//{{MRG[ <-> ]
 	//( elmi #11
-//}}MRG[ <-> ]
-//{{MRG[ <-> ]
-//	|			THEN TableManagerial.AmountCur
-//}}MRG[ <-> ]
 	//|			THEN TableManagerial.AmountCur
 	|			THEN TableManagerial.AmountCur - TableManagerial.VATAmountCur 
 	//) elmi
@@ -1045,22 +1025,12 @@ Procedure GenerateTableManagerial(DocumentRefAcceptanceCertificate, StructureAdd
 	|	END AS CurrencyCr,
 	|	CASE
 	|		WHEN TableManagerial.AccountStatementSales.Currency
-//{{MRG[ <-> ]
 	//( elmi #11
-//}}MRG[ <-> ]
-//{{MRG[ <-> ]
-//	|			THEN TableManagerial.AmountCur
-//}}MRG[ <-> ]
 	//|			THEN TableManagerial.AmountCur
 	|			THEN TableManagerial.AmountCur - TableManagerial.VATAmountCur 
 	|		ELSE 0
 	|	END AS AmountCurCr,
-//{{MRG[ <-> ]
 	//|	TableManagerial.Amount AS Amount,
-//}}MRG[ <-> ]
-//{{MRG[ <-> ]
-//	|	TableManagerial.Amount AS Amount,
-//}}MRG[ <-> ]
 	|	TableManagerial.Amount - TableManagerial.VATAmount AS Amount ,          
 	//) elmi
 	|	&IncomeReflection AS Content

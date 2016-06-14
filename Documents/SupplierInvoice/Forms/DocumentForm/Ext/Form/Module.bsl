@@ -1684,13 +1684,8 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		EndIf;
 	EndIf;
 	
-//{{MRG[ <-> ]
 	//( elmi #11
-//}}MRG[ <-> ]
-//{{MRG[ <-> ]
-//	Object.IncludeVATInPrice = True;
-//}}MRG[ <-> ]
-	//Object.IncludeVATInPrice = True;
+    //Object.IncludeVATInPrice = True;
 	//) elmi
 	
 	GetOperationKindsStructure();
@@ -1877,6 +1872,11 @@ Procedure OnOpen(Cancel)
 	// Peripherals
 	EquipmentManagerClientOverridable.StartConnectingEquipmentOnFormOpen(ThisForm, "BarCodeScanner");
 	// End Peripherals
+	
+   //( elmi # 08.5 
+	SmallBusinessClient.RenameTitleExchangeRateMultiplicity( ThisForm, "Prepayment");
+   //) elmi
+
 	
 EndProcedure // OnOpen()
 
@@ -3237,7 +3237,7 @@ Procedure PrepaymentRateOnChange(Item)
 EndProcedure
 
 &AtClient
-Procedure PrepaymentRepetitionOnChange(Item)
+Procedure PrepaymentMultiplicityOnChange(Item)
 	
 	TabularSectionRow = Items.Prepayment.CurrentData;
 	
@@ -3274,15 +3274,46 @@ Procedure PrepaymentPaymentAmountOnChange(Item)
 		TabularSectionRow.ExchangeRate
 	);
 	
-	TabularSectionRow.Multiplicity = 1;
 	
-	TabularSectionRow.ExchangeRate =
-		?(TabularSectionRow.SettlementsAmount = 0,
-			1,
-			TabularSectionRow.PaymentAmount
-		  / TabularSectionRow.SettlementsAmount
-		  * Object.ExchangeRate
+	//( elmi # 08.5
+	//TabularSectionRow.Multiplicity = 1;
+	//
+	//TabularSectionRow.ExchangeRate =
+	//	?(TabularSectionRow.SettlementsAmount = 0,
+	//		1,
+	//		TabularSectionRow.PaymentAmount
+	//	  / TabularSectionRow.SettlementsAmount
+	//	  * Object.ExchangeRate
+	//);
+	 	TabularSectionRow.Multiplicity = ?(
+		TabularSectionRow.Multiplicity = 0,
+		1,
+		TabularSectionRow.Multiplicity
 	);
+	If SmallBusinessServer.IndirectQuotationInUse() Then
+		TabularSectionRow.Multiplicity =
+	    		?(TabularSectionRow.PaymentAmount = 0,
+				1,
+				TabularSectionRow.SettlementsAmount
+			  / TabularSectionRow.PaymentAmount
+			  * Object.Multiplicity
+		);
+	Else
+		TabularSectionRow.Курс =
+			?(TabularSectionRow.SettlementsAmount = 0,
+				1,
+				TabularSectionRow.PaymentAmount
+			  / TabularSectionRow.SettlementsAmount
+			  * Object.ExchangeRate
+		);
+	EndIf;
+
+
+
+
+
+
+
 	
 EndProcedure
 

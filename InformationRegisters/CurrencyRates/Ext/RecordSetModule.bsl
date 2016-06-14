@@ -75,14 +75,41 @@ Procedure UpdateDependentCurrencyRate(DependentCurrency, RecordMainCurrency)
 	WriteCoursesOfCurrency.Currency = DependentCurrency.Ref;
 	WriteCoursesOfCurrency.Period = RecordMainCurrency.Period;
 	If DependentCurrency.SetRateMethod = Enums.CurrencyRateSetMethods.MarkupOnExchangeRateOfOtherCurrencies Then
-		WriteCoursesOfCurrency.ExchangeRate = RecordMainCurrency.ExchangeRate + RecordMainCurrency.ExchangeRate * DependentCurrency.Markup / 100;
-		WriteCoursesOfCurrency.Multiplicity = RecordMainCurrency.Multiplicity;
+		//( elmi # 08.5
+		//WriteCoursesOfCurrency.ExchangeRate = RecordMainCurrency.ExchangeRate + RecordMainCurrency.ExchangeRate * DependentCurrency.Markup / 100;
+		//WriteCoursesOfCurrency.Multiplicity = RecordMainCurrency.Multiplicity;
+		If SmallBusinessServer.IndirectQuotationInUse() Then
+			WriteCoursesOfCurrency.Multiplicity = RecordMainCurrency.Multiplicity + RecordMainCurrency.Multiplicity * DependentCurrency.Markup / 100;
+			WriteCoursesOfCurrency.ExchangeRate = RecordMainCurrency.Multiplicity;
+		Else
+			WriteCoursesOfCurrency.ExchangeRate = RecordMainCurrency.ExchangeRate + RecordMainCurrency.ExchangeRate * DependentCurrency.Markup / 100;
+			WriteCoursesOfCurrency.Multiplicity = RecordMainCurrency.Multiplicity;
+		EndIf
+        //) elmi
+		
+		
 	Else // by formula
-		ExchangeRate = CurrencyRateAccordingToFormula(DependentCurrency.Ref, DependentCurrency.RateCalculationFormula, RecordMainCurrency.Period);
-		If ExchangeRate <> Undefined Then
-			WriteCoursesOfCurrency.ExchangeRate = ExchangeRate;
-			WriteCoursesOfCurrency.Multiplicity = 1;
+		//( elmi # 08.5
+		//ExchangeRate = CurrencyRateAccordingToFormula(DependentCurrency.Ref, DependentCurrency.RateCalculationFormula, RecordMainCurrency.Period);
+		//If ExchangeRate <> Undefined Then
+		//	WriteCoursesOfCurrency.ExchangeRate = ExchangeRate;
+		//	WriteCoursesOfCurrency.Multiplicity = 1;
+		//EndIf;
+		If SmallBusinessServer.IndirectQuotationInUse() Then
+			Multiplicity = CurrencyRateAccordingToFormula(DependentCurrency.Ref, DependentCurrency.RateCalculationFormula, RecordMainCurrency.Period);
+
+			If Multiplicity <> Undefined Then
+				WriteCoursesOfCurrency.ExchangeRate = 1;
+				WriteCoursesOfCurrency.Multiplicity = Multiplicity;
+			EndIf;
+		Else
+			ExchangeRate = CurrencyRateAccordingToFormula(DependentCurrency.Ref, DependentCurrency.RateCalculationFormula, RecordMainCurrency.Period);
+			Если ExchangeRate <> Undefined Then
+				WriteCoursesOfCurrency.ExchangeRate = ExchangeRate;
+				WriteCoursesOfCurrency.Multiplicity = 1;
+			EndIf;
 		EndIf;
+        //) elmi
 	EndIf;
 		
 	RecordSet.AdditionalProperties.Insert("DisableDependentCurrenciesControl", True);
@@ -124,7 +151,11 @@ Function CurrencyRateAccordingToFormula(Currency, Formula, Period)
 	QueryText =
 	"SELECT
 	|	Currencies.Description AS SymbolicCode,
+	//( elmi # 08.5
+	//|	CurrencyRatesSliceLast.ExchangeRate / CurrencyRatesSliceLast.Multiplicity AS ExchangeRate
 	|	CurrencyRatesSliceLast.ExchangeRate / CurrencyRatesSliceLast.Multiplicity AS ExchangeRate
+	|	CurrencyRatesSliceLast.Multiplicity / CurrencyRatesSliceLast.ExchangeRate AS Multiplicity
+	//) elmi
 	|FROM
 	|	Catalog.Currencies AS Currencies
 	|		LEFT JOIN InformationRegister.CurrencyRates.SliceLast(&Period, ) AS CurrencyRatesSliceLast
@@ -138,7 +169,15 @@ Function CurrencyRateAccordingToFormula(Currency, Formula, Period)
 	Expression = StrReplace(Formula, ",", ".");
 	Selection = Query.Execute().Select();
 	While Selection.Next() Do
-		Expression = StrReplace(Expression, Selection.SymbolicCode, Format(Selection.ExchangeRate, "NDS=.; NG=0"));
+		//( elmi # 08.5
+		//Expression = StrReplace(Expression, Selection.SymbolicCode, Format(Selection.ExchangeRate, "NDS=.; NG=0"));
+		If SmallBusinessServer.IndirectQuotationInUse() Then
+			Expression = StrReplace(Expression, Selection.SymbolicCode, Format(Selection.Multiplicity, "NDS=.; NG=0"));
+		Иначе
+			Expression = StrReplace(Expression, Selection.SymbolicCode, Format(Selection.ExchangeRate, "NDS=.; NG=0"));
+		КонецЕсли;
+        //) elmi   
+		
 	EndDo;
 	
 	Try

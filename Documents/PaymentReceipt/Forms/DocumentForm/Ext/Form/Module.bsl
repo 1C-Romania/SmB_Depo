@@ -1346,6 +1346,11 @@ Procedure OnOpen(Cancel)
 	SetChoiceParameterLinksAvailableTypes();
 	SetCurrentPage();
 	
+    //( elmi # 08.5 
+	SmallBusinessClient.RenameTitleExchangeRateMultiplicity( ThisForm, "PaymentDetails");
+   //) elmi
+
+	
 EndProcedure // OnOpen()
 
 //Procedure - event handler of the form BeforeWrite
@@ -1964,6 +1969,30 @@ Procedure PaymentDetailsPaymentAmountOnChange(Item)
 		TabularSectionRow.PaymentAmount / TabularSectionRow.SettlementsAmount * ExchangeRate
 	);
 	
+	//( elmi # 08.5
+	//TabularSectionRow.ExchangeRate = ?(
+	//	TabularSectionRow.SettlementsAmount = 0,
+	//	1,
+	//	TabularSectionRow.PaymentAmount / TabularSectionRow.SettlementsAmount * ExchangeRate
+	//);
+	If SmallBusinessServer.IndirectQuotationInUse() Then
+		TabularSectionRow.Multiplicity = ?(
+			TabularSectionRow.PaymentAmount = 0,
+			1,
+			TabularSectionRow.SettlementsAmount / TabularSectionRow.PaymentAmount * Multiplicity
+		);
+	Else
+		TabularSectionRow.ExchangeRate = ?(
+			TabularSectionRow.SettlementsAmount = 0,
+			1,
+			TabularSectionRow.PaymentAmount / TabularSectionRow.SettlementsAmount * ExchangeRate
+		);
+	EndIF;
+    //) elmi
+
+	
+	
+	
 	If Not ValueIsFilled(TabularSectionRow.VATRate) Then
 		TabularSectionRow.VATRate = DefaultVATRate;
 	EndIf;
@@ -2028,11 +2057,27 @@ Procedure CurrencyPurchaseAccountingAmountOnChange(Item)
 		Object.Multiplicity
 	);
 	
-	Object.ExchangeRate = ?(
-		Object.DocumentAmount = 0,
-		1,
-		Object.AccountingAmount / Object.DocumentAmount * AccountingCurrencyRate
-	);
+	//( elmi # 08.5
+	//Object.ExchangeRate = ?(
+	//	Object.DocumentAmount = 0,
+	//	1,
+	//	Object.AccountingAmount / Object.DocumentAmount * AccountingCurrencyRate
+	//);
+	If SmallBusinessServer.IndirectQuotationInUse() Then
+		Object.Multiplicity = ?(
+			Object.AccountingAmount = 0,
+			1,
+			Object.DocumentAmount / Object.AccountingAmount * AccountingCurrencyMultiplicity
+		);
+	Иначе
+		Object.ExchangeRate = ?(
+			Object.DocumentAmount = 0,
+			1,
+			Object.AccountingAmount / Object.DocumentAmount * AccountingCurrencyRate
+		);
+	КонецЕсли;
+    //) elmi
+
 	
 EndProcedure // CurrencyPurchaseAccountingAmountOnChange()
 

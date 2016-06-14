@@ -880,11 +880,11 @@
 									<ContextMenu name="PrepaymentRateContextMenu" id="275"/>
 									<ExtendedTooltip name="PrepaymentExchangeRateExtendedTooltip" id="276"/>
 								</InputField>
-								<InputField name="PrepaymentRepetition" id="277">
+								<InputField name="PrepaymentMultiplicity" id="277">
 									<DataPath>Object.Prepayment.Multiplicity</DataPath>
 									<EditMode>EnterOnInput</EditMode>
-									<ContextMenu name="PrepaymentUnitConversionFactorContextMenu" id="278"/>
-									<ExtendedTooltip name="PrepaymentUnitConversionFactorExtendedTooltip" id="279"/>
+									<ContextMenu name="PrepaymentMultiplicityContextMenu" id="278"/>
+									<ExtendedTooltip name="PrepaymentMultiplicityExtendedTooltip" id="279"/>
 								</InputField>
 								<InputField name="PrepaymentPaymentAmount" id="280">
 									<DataPath>Object.Prepayment.PaymentAmount</DataPath>
@@ -1450,12 +1450,7 @@
 				</v8:item>
 			</Title>
 			<Type>
-				<v8:Type>xs:decimal</v8:Type>
-				<v8:NumberQualifiers>
-					<v8:Digits>10</v8:Digits>
-					<v8:FractionDigits>0</v8:FractionDigits>
-					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
-				</v8:NumberQualifiers>
+				<v8:TypeSet>cfg:DefinedType.Multiplicity</v8:TypeSet>
 			</Type>
 		</Attribute>
 		<Attribute name="RateNationalCurrency" id="14">
@@ -1466,12 +1461,7 @@
 				</v8:item>
 			</Title>
 			<Type>
-				<v8:Type>xs:decimal</v8:Type>
-				<v8:NumberQualifiers>
-					<v8:Digits>10</v8:Digits>
-					<v8:FractionDigits>4</v8:FractionDigits>
-					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
-				</v8:NumberQualifiers>
+				<v8:TypeSet>cfg:DefinedType.ExchangeRate</v8:TypeSet>
 			</Type>
 		</Attribute>
 		<Attribute name="NationalCurrency" id="15">

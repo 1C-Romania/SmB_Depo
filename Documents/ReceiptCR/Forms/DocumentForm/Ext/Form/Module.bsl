@@ -958,7 +958,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	Counterparty = SmallBusinessServer.GetCompany(Object.Company);
 	
 	// Temporarily.
-	//( elmi
+	//( elmi # 08.5
 	//Object.IncludeVATInPrice = True; 
 	//) elmi
 	
@@ -984,7 +984,10 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		StructureByCurrency.ExchangeRate
 	);
 	Multiplicity = ?(
-		StructureByCurrency.ExchangeRate = 0,
+	     //( elmi # 08.5
+	    //StructureByCurrency.ExchangeRate = 0,
+		  StructureByCurrency.Multiplicity = 0,
+		//) elmi
 		1,
 		StructureByCurrency.Multiplicity
 	);

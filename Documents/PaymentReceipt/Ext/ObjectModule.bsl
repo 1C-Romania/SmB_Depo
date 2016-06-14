@@ -25,7 +25,10 @@ Procedure FillPaymentDetails() Export
 		StructureByCurrency.ExchangeRate
 	);
 	CurrencyUnitConversionFactor = ?(
-		StructureByCurrency.ExchangeRate = 0,
+	    //( elmi # 08.5
+	    //StructureByCurrency.ExchangeRate = 0,
+		  StructureByCurrency.Multiplicity = 0,
+		//) elmi
 		1,
 		StructureByCurrency.Multiplicity
 	);

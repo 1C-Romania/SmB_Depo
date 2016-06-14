@@ -1046,29 +1046,26 @@
 										<Event name="OnChange">SettlementsAccountsAmountOnChange</Event>
 									</Events>
 								</InputField>
-								<InputField name="PaymentRate" id="382">
+								<InputField name="PaymentExchangeRate" id="382">
 									<DataPath>Object.Payments.ExchangeRate</DataPath>
 									<EditMode>EnterOnInput</EditMode>
 									<Width>6</Width>
 									<HorizontalStretch>false</HorizontalStretch>
-									<ContextMenu name="PaymentsRateContextMenu" id="383"/>
-									<ExtendedTooltip name="PaymentsRateExtendedTooltip" id="525"/>
+									<ContextMenu name="PaymentExchangeRateContextMenu" id="383"/>
+									<ExtendedTooltip name="PaymentExchangeRateExtendedTooltip" id="525"/>
 									<Events>
-										<Event name="OnChange">PaymentsRateOnChange</Event>
+										<Event name="OnChange">PaymentsExchangeRateOnChange</Event>
 									</Events>
 								</InputField>
-								<InputField name="PaymentsRatio" id="384">
+								<InputField name="PaymentsMultiplicity" id="384">
 									<DataPath>Object.Payments.Multiplicity</DataPath>
-									<UserVisible>
-										<xr:Common>false</xr:Common>
-									</UserVisible>
 									<EditMode>EnterOnInput</EditMode>
 									<Width>9</Width>
 									<HorizontalStretch>false</HorizontalStretch>
-									<ContextMenu name="PaymentsRepetitionContextMenu" id="385"/>
-									<ExtendedTooltip name="PaymentsRepetitionExtendedTooltip" id="526"/>
+									<ContextMenu name="PaymentsMultiplicityContextMenu" id="385"/>
+									<ExtendedTooltip name="PaymentsMultiplicityExtendedTooltip" id="526"/>
 									<Events>
-										<Event name="OnChange">PaymentsRepetitionOnChange</Event>
+										<Event name="OnChange">PaymentsMultiplicityOnChange</Event>
 									</Events>
 								</InputField>
 								<InputField name="PaymentPaymentAmount" id="386">

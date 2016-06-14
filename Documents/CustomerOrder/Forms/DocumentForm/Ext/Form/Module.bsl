@@ -2013,6 +2013,14 @@ Procedure OnOpen(Cancel)
 		Items.GroupPaymentCalendarListString.CurrentPage = Items.GroupBillingCalendarString;
 	EndIf;
 	
+	
+    //( elmi # 08.5 
+		SmallBusinessClient.RenameTitleExchangeRateMultiplicity( ThisForm, "Prepayment");
+   //) elmi
+
+
+	
+	
 EndProcedure // OnOpen()
 
 // Procedure - event handler OnClose.

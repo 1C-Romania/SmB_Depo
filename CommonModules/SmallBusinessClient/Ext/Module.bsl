@@ -1670,7 +1670,27 @@ Procedure ImportDataFromFileStatementsFragment(AdditionalParameters)
 		AdditionalParameters.AddressInStorage, AdditionalParameters.PathToFile1, AdditionalParameters.Company, AdditionalParameters.BankAccount, AdditionalParameters.CFItemIncoming, AdditionalParameters.CFItemOutgoing, AdditionalParameters.PostImported, AdditionalParameters.FillDebtsAutomatically, AdditionalParameters.Application, AdditionalParameters.Encoding, AdditionalParameters.FormatVersion)
 	);
 	
+
+	
 EndProcedure
 
+//( elmi # 08.5
+Procedure RenameTitleExchangeRateMultiplicity(Form, NameOfTable="") Экспорт
+	
+	If SmallBusinessServer.IndirectQuotationInUse() Then
+		ElementExchangeRate = Form.Items.Find(NameOfTable + "ExchangeRate");	 
+		If ElementExchangeRate <> Undefined Then
+			 ElementExchangeRate.Title   = Nstr("lv='Кurss (koeficients)';en='Rate (multiplier)'");
+			 ElementExchangeRate.ToolTip = Nstr("lv='Valsts valūtas vienību daudzums ārvalstu valūtas vienībā';en='Quantity of national currency units in foreign currency'");
+		EndIf;
+		ElementMultiplicity = Form.Items.Find(NameOfTable + "Multiplicity");
+		If ElementMultiplicity <> Undefined Then
+			ElementMultiplicity.Title   = Nstr("lv='Kurss (dalītājs)';en='Rate (divisor)'");
+			ElementMultiplicity.ToolTip = Nstr("lv='Ārvalstu valūtas vienību daudzums valsts valūtas vienībā';en='Quantity of foreign currency units in national currency'");
+		EndIf;
+	EndIf;
+	
+EndProcedure
+//) elmi
 
 

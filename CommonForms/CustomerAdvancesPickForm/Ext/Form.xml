@@ -220,15 +220,12 @@
 							<ContextMenu name="AdvancesListRateContextMenu" id="178"/>
 							<ExtendedTooltip name="ListAdvancesRateExtendedTooltip" id="196"/>
 						</InputField>
-						<InputField name="AdvancesListRepetition" id="179">
+						<InputField name="AdvancesListMultiplicity" id="179">
 							<DataPath>AdvancesList.Multiplicity</DataPath>
-							<UserVisible>
-								<xr:Common>false</xr:Common>
-							</UserVisible>
 							<EditMode>EnterOnInput</EditMode>
 							<Width>9</Width>
-							<ContextMenu name="ListAdvancesRepetitionContextMenu" id="180"/>
-							<ExtendedTooltip name="AdvancesListRatioExtendedTooltip" id="197"/>
+							<ContextMenu name="AdvancesListMultiplicityContextMenu" id="180"/>
+							<ExtendedTooltip name="AdvancesListMultiplicityExtendedTooltip" id="197"/>
 						</InputField>
 					</ChildItems>
 				</Table>
@@ -400,16 +397,13 @@
 								<Event name="OnChange">PrepaymentRateOnChange</Event>
 							</Events>
 						</InputField>
-						<InputField name="PrepaymentRepetition" id="113">
+						<InputField name="PrepaymentMultiplicity" id="113">
 							<DataPath>Prepayment.Multiplicity</DataPath>
-							<UserVisible>
-								<xr:Common>false</xr:Common>
-							</UserVisible>
 							<Width>9</Width>
 							<Wrap>false</Wrap>
 							<AutoMarkIncomplete>true</AutoMarkIncomplete>
-							<ContextMenu name="PrepaymentUnitConversionFactorContextMenu" id="114"/>
-							<ExtendedTooltip name="PrepaymentUnitConversionFactorExtendedTooltip" id="212"/>
+							<ContextMenu name="PrepaymentMultiplicityContextMenu" id="114"/>
+							<ExtendedTooltip name="PrepaymentMultiplicityExtendedTooltip" id="212"/>
 							<Events>
 								<Event name="OnChange">PrepaymentRepetitionOnChange</Event>
 							</Events>
@@ -548,12 +542,7 @@
 						</v8:item>
 					</Title>
 					<Type>
-						<v8:Type>xs:decimal</v8:Type>
-						<v8:NumberQualifiers>
-							<v8:Digits>10</v8:Digits>
-							<v8:FractionDigits>4</v8:FractionDigits>
-							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
-						</v8:NumberQualifiers>
+						<v8:TypeSet>cfg:DefinedType.ExchangeRate</v8:TypeSet>
 					</Type>
 					<FunctionalOptions>
 						<Item>FunctionalOption.CurrencyTransactionsAccounting</Item>
@@ -567,12 +556,7 @@
 						</v8:item>
 					</Title>
 					<Type>
-						<v8:Type>xs:decimal</v8:Type>
-						<v8:NumberQualifiers>
-							<v8:Digits>10</v8:Digits>
-							<v8:FractionDigits>0</v8:FractionDigits>
-							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
-						</v8:NumberQualifiers>
+						<v8:TypeSet>cfg:DefinedType.Multiplicity</v8:TypeSet>
 					</Type>
 					<FunctionalOptions>
 						<Item>FunctionalOption.CurrencyTransactionsAccounting</Item>
@@ -634,12 +618,7 @@
 				</v8:item>
 			</Title>
 			<Type>
-				<v8:Type>xs:decimal</v8:Type>
-				<v8:NumberQualifiers>
-					<v8:Digits>10</v8:Digits>
-					<v8:FractionDigits>4</v8:FractionDigits>
-					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
-				</v8:NumberQualifiers>
+				<v8:TypeSet>cfg:DefinedType.ExchangeRate</v8:TypeSet>
 			</Type>
 		</Attribute>
 		<Attribute name="RepetitionNationalCurrency" id="13">
@@ -650,12 +629,7 @@
 				</v8:item>
 			</Title>
 			<Type>
-				<v8:Type>xs:decimal</v8:Type>
-				<v8:NumberQualifiers>
-					<v8:Digits>10</v8:Digits>
-					<v8:FractionDigits>0</v8:FractionDigits>
-					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
-				</v8:NumberQualifiers>
+				<v8:TypeSet>cfg:DefinedType.Multiplicity</v8:TypeSet>
 			</Type>
 		</Attribute>
 		<Attribute name="ExchangeRate" id="14">
@@ -666,12 +640,7 @@
 				</v8:item>
 			</Title>
 			<Type>
-				<v8:Type>xs:decimal</v8:Type>
-				<v8:NumberQualifiers>
-					<v8:Digits>10</v8:Digits>
-					<v8:FractionDigits>4</v8:FractionDigits>
-					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
-				</v8:NumberQualifiers>
+				<v8:TypeSet>cfg:DefinedType.ExchangeRate</v8:TypeSet>
 			</Type>
 		</Attribute>
 		<Attribute name="Multiplicity" id="15">
@@ -682,12 +651,7 @@
 				</v8:item>
 			</Title>
 			<Type>
-				<v8:Type>xs:decimal</v8:Type>
-				<v8:NumberQualifiers>
-					<v8:Digits>10</v8:Digits>
-					<v8:FractionDigits>0</v8:FractionDigits>
-					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
-				</v8:NumberQualifiers>
+				<v8:TypeSet>cfg:DefinedType.Multiplicity</v8:TypeSet>
 			</Type>
 		</Attribute>
 		<Attribute name="DocumentCurrency" id="16">
@@ -709,12 +673,7 @@
 				</v8:item>
 			</Title>
 			<Type>
-				<v8:Type>xs:decimal</v8:Type>
-				<v8:NumberQualifiers>
-					<v8:Digits>10</v8:Digits>
-					<v8:FractionDigits>4</v8:FractionDigits>
-					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
-				</v8:NumberQualifiers>
+				<v8:TypeSet>cfg:DefinedType.ExchangeRate</v8:TypeSet>
 			</Type>
 		</Attribute>
 		<Attribute name="AccountingCurrencyMultiplicity" id="19">
@@ -725,12 +684,7 @@
 				</v8:item>
 			</Title>
 			<Type>
-				<v8:Type>xs:decimal</v8:Type>
-				<v8:NumberQualifiers>
-					<v8:Digits>10</v8:Digits>
-					<v8:FractionDigits>0</v8:FractionDigits>
-					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
-				</v8:NumberQualifiers>
+				<v8:TypeSet>cfg:DefinedType.Multiplicity</v8:TypeSet>
 			</Type>
 		</Attribute>
 		<Attribute name="AccountingCurrency" id="20">
@@ -987,12 +941,7 @@
 						</v8:item>
 					</Title>
 					<Type>
-						<v8:Type>xs:decimal</v8:Type>
-						<v8:NumberQualifiers>
-							<v8:Digits>10</v8:Digits>
-							<v8:FractionDigits>4</v8:FractionDigits>
-							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
-						</v8:NumberQualifiers>
+						<v8:TypeSet>cfg:DefinedType.ExchangeRate</v8:TypeSet>
 					</Type>
 					<FunctionalOptions>
 						<Item>FunctionalOption.CurrencyTransactionsAccounting</Item>
@@ -1006,12 +955,7 @@
 						</v8:item>
 					</Title>
 					<Type>
-						<v8:Type>xs:decimal</v8:Type>
-						<v8:NumberQualifiers>
-							<v8:Digits>10</v8:Digits>
-							<v8:FractionDigits>0</v8:FractionDigits>
-							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
-						</v8:NumberQualifiers>
+						<v8:TypeSet>cfg:DefinedType.Multiplicity</v8:TypeSet>
 					</Type>
 					<FunctionalOptions>
 						<Item>FunctionalOption.CurrencyTransactionsAccounting</Item>

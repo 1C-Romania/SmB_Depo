@@ -10217,7 +10217,10 @@ Procedure FillPaymentDetailsExpense(CurrentObject, Counterparty = Undefined, Def
 			StructureByCurrency.ExchangeRate
 		);
 		Multiplicity = ?(
-			StructureByCurrency.ExchangeRate = 0,
+		    //( elmi # 08.5
+		    //StructureByCurrency.ExchangeRate = 0,
+			StructureByCurrency.Multiplicity = 0,
+			//) elmi 
 			1,
 			StructureByCurrency.Multiplicity
 		);
@@ -10463,7 +10466,10 @@ Procedure FillPaymentDetailsReceipt(CurrentObject, Counterparty = Undefined, Def
 			StructureByCurrency.ExchangeRate
 		);
 		Multiplicity = ?(
-			StructureByCurrency.ExchangeRate = 0,
+		    //( elmi # 08.5
+		    //StructureByCurrency.ExchangeRate = 0,
+			StructureByCurrency.Multiplicity = 0,
+			//) elmi 
 			1,
 			StructureByCurrency.Multiplicity
 		);
@@ -11213,3 +11219,22 @@ Function FindQuerySchemaSource(Sources, TablePseudonym, TableType = Undefined) E
 	Return Result;
 	
 EndFunction
+
+//( elmi # 08.5
+Function IndirectQuotationInUse() Экспорт
+	
+   QuotationType = SmallBusinessReUse.GetCurrencyQuotationType();
+   
+   If  ValueIsFilled(QuotationType) Then
+	   
+	   Return  QuotationType = Enums.CurrencyQuotationType.IndirectQuote ;
+	   
+   Else
+	   
+	   Return False;     //Direct quote
+	   
+   Endif
+   
+EndFunction
+//) elmi
+

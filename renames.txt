@@ -3473,6 +3473,7 @@ CommonModules\ElectronicDocumentsReUse.xml-->CommonModules\ElectronicDocumentsRe
 CommonModules\ElectronicDocumentsService.xml-->CommonModules\ElectronicDocumentsService.xml
 CommonModules\ElectronicDocumentsServiceCallServer.xml-->CommonModules\ElectronicDocumentsServiceCallServer.xml
 CommonModules\ElectronicDocumentsServiceClient.xml-->CommonModules\ElectronicDocumentsServiceClient.xml
+CommonModules\Elmi_SmallBusinessReUse.xml-->CommonModules\Elmi_SmallBusinessReUse.xml
 CommonModules\EmailOperations.xml-->CommonModules\EmailOperations.xml
 CommonModules\EmailOperationsClient.xml-->CommonModules\EmailOperationsClient.xml
 CommonModules\EmailOperationsServerCall.xml-->CommonModules\EmailOperationsServerCall.xml
@@ -4020,6 +4021,7 @@ CommonModules\ElectronicDocumentsReUse\Ext\Module.bsl-->CommonModules\Electronic
 CommonModules\ElectronicDocumentsService\Ext\Module.bsl-->CommonModules\ElectronicDocumentsService\Ext\Module.bsl
 CommonModules\ElectronicDocumentsServiceCallServer\Ext\Module.bsl-->CommonModules\ElectronicDocumentsServiceCallServer\Ext\Module.bsl
 CommonModules\ElectronicDocumentsServiceClient\Ext\Module.bsl-->CommonModules\ElectronicDocumentsServiceClient\Ext\Module.bsl
+CommonModules\Elmi_SmallBusinessReUse\Ext\Module.bsl-->CommonModules\Elmi_SmallBusinessReUse\Ext\Module.bsl
 CommonModules\EmailOperations\Ext\Module.bsl-->CommonModules\EmailOperations\Ext\Module.bsl
 CommonModules\EmailOperationsClient\Ext\Module.bsl-->CommonModules\EmailOperationsClient\Ext\Module.bsl
 CommonModules\EmailOperationsServerCall\Ext\Module.bsl-->CommonModules\EmailOperationsServerCall\Ext\Module.bsl
@@ -5766,6 +5768,7 @@ Constants\ControlBalancesDuringCreationCRReceipts.xml-->Constants\ControlBalance
 Constants\ControlBalancesOnPosting.xml-->Constants\ControlBalancesOnPosting.xml
 Constants\CopyDataAreasFromPrototype.xml-->Constants\CopyDataAreasFromPrototype.xml
 Constants\CreateDigitalSignaturesAtServer.xml-->Constants\CreateDigitalSignaturesAtServer.xml
+Constants\CurrencyQuotationType.xml-->Constants\CurrencyQuotationType.xml
 Constants\CustomerInvoiceNote1137UsageBegin.xml-->Constants\CustomerInvoiceNote1137UsageBegin.xml
 Constants\CustomerOrdersCompletedStatus.xml-->Constants\CustomerOrdersCompletedStatus.xml
 Constants\CustomerOrdersInProgressStatus.xml-->Constants\CustomerOrdersInProgressStatus.xml
@@ -7812,8 +7815,10 @@ DataProcessors\UserWorkBlocking\Forms\Form\Ext\Form.xml-->DataProcessors\UserWor
 DataProcessors\UserWorkBlocking\Forms\Form\Ext\Form\Module.bsl-->DataProcessors\UserWorkBlocking\Forms\Form\Ext\Form\Module.bsl
 DataProcessors\XDTOObjectsConversion\Ext\ObjectModule.bsl-->DataProcessors\XDTOObjectsConversion\Ext\ObjectModule.bsl
 DefinedTypes\AccessValue.xml-->DefinedTypes\AccessValue.xml
+DefinedTypes\ExchangeRate.xml-->DefinedTypes\ExchangeRate.xml
 DefinedTypes\ExternalUser.xml-->DefinedTypes\ExternalUser.xml
 DefinedTypes\FilesOwner.xml-->DefinedTypes\FilesOwner.xml
+DefinedTypes\Multiplicity.xml-->DefinedTypes\Multiplicity.xml
 DefinedTypes\RightSettingsOwner.xml-->DefinedTypes\RightSettingsOwner.xml
 DefinedTypes\SafeMode.xml-->DefinedTypes\SafeMode.xml
 DocumentJournals\BankDocuments.xml-->DocumentJournals\BankDocuments.xml
@@ -9242,6 +9247,7 @@ Enums\CostingBases.xml-->Enums\CostingBases.xml
 Enums\CounterpartiesCheckStates.xml-->Enums\CounterpartiesCheckStates.xml
 Enums\CounterpartiesIdentificationMethods.xml-->Enums\CounterpartiesIdentificationMethods.xml
 Enums\CounterpartyExistenceStates.xml-->Enums\CounterpartyExistenceStates.xml
+Enums\CurrencyQuotationType.xml-->Enums\CurrencyQuotationType.xml
 Enums\CurrencyRateSetMethods.xml-->Enums\CurrencyRateSetMethods.xml
 Enums\DataAreaStatuses.xml-->Enums\DataAreaStatuses.xml
 Enums\DataExchangeProblemTypes.xml-->Enums\DataExchangeProblemTypes.xml
@@ -10079,7 +10085,10 @@ InformationRegisters\CounterpartyProductsAndServicesPrices\Forms\RecordForm\Ext\
 InformationRegisters\CurrencyRates\Ext\Help.xml-->InformationRegisters\CurrencyRates\Ext\Help.xml
 InformationRegisters\CurrencyRates\Ext\RecordSetModule.bsl-->InformationRegisters\CurrencyRates\Ext\RecordSetModule.bsl
 InformationRegisters\CurrencyRates\Ext\Help\en.html-->InformationRegisters\CurrencyRates\Ext\Help\en.html
+InformationRegisters\CurrencyRates\Forms\ListForm.xml-->InformationRegisters\CurrencyRates\Forms\ListForm.xml
 InformationRegisters\CurrencyRates\Forms\RecordForm.xml-->InformationRegisters\CurrencyRates\Forms\RecordForm.xml
+InformationRegisters\CurrencyRates\Forms\ListForm\Ext\Form.xml-->InformationRegisters\CurrencyRates\Forms\ListForm\Ext\Form.xml
+InformationRegisters\CurrencyRates\Forms\ListForm\Ext\Form\Module.bsl-->InformationRegisters\CurrencyRates\Forms\ListForm\Ext\Form\Module.bsl
 InformationRegisters\CurrencyRates\Forms\RecordForm\Ext\Form.xml-->InformationRegisters\CurrencyRates\Forms\RecordForm\Ext\Form.xml
 InformationRegisters\CurrencyRates\Forms\RecordForm\Ext\Form\Module.bsl-->InformationRegisters\CurrencyRates\Forms\RecordForm\Ext\Form\Module.bsl
 InformationRegisters\DataAreaDataExchangeStatus\Ext\ManagerModule.bsl-->InformationRegisters\DataAreaDataExchangeStatus\Ext\ManagerModule.bsl

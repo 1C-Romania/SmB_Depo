@@ -419,25 +419,22 @@
 										<Event name="OnChange">DebitorAccountsAmountOnChange</Event>
 									</Events>
 								</InputField>
-								<InputField name="DebitorRate" id="30">
+								<InputField name="DebitorExchangeRate" id="30">
 									<DataPath>Object.Debitor.ExchangeRate</DataPath>
 									<Wrap>false</Wrap>
-									<ContextMenu name="DebitorCourseContextMenu" id="31"/>
-									<ExtendedTooltip name="DebitorCourseExtendedTooltip" id="228"/>
+									<ContextMenu name="DebitorExchangeRateContextMenu" id="31"/>
+									<ExtendedTooltip name="DebitorExchangeRateExtendedTooltip" id="228"/>
 									<Events>
-										<Event name="OnChange">DebitorRateOnChange</Event>
+										<Event name="OnChange">DebitorExchangeRateOnChange</Event>
 									</Events>
 								</InputField>
 								<InputField name="DebitorMultiplicity" id="32">
 									<DataPath>Object.Debitor.Multiplicity</DataPath>
-									<UserVisible>
-										<xr:Common>false</xr:Common>
-									</UserVisible>
 									<Wrap>false</Wrap>
 									<ContextMenu name="DebitorRepetitionContextMenu" id="33"/>
 									<ExtendedTooltip name="DebitorRepetitionExtendedTooltip" id="229"/>
 									<Events>
-										<Event name="OnChange">DebitorRepetitionOnChange</Event>
+										<Event name="OnChange">DebitorMultiplicityOnChange</Event>
 									</Events>
 								</InputField>
 								<InputField name="DebitorSumOfAccounting" id="34">
@@ -643,25 +640,22 @@
 										<Event name="OnChange">CreditorSettlementsAmountOnChange</Event>
 									</Events>
 								</InputField>
-								<InputField name="CreditorRate" id="138">
+								<InputField name="CreditorExchangeRate" id="138">
 									<DataPath>Object.Creditor.ExchangeRate</DataPath>
 									<Wrap>false</Wrap>
-									<ContextMenu name="CreditorRateContextMenu" id="139"/>
-									<ExtendedTooltip name="CreditorRateExtendedTooltip" id="242"/>
+									<ContextMenu name="CreditorExchangeRateContextMenu" id="139"/>
+									<ExtendedTooltip name="CreditorExchangeRateExtendedTooltip" id="242"/>
 									<Events>
-										<Event name="OnChange">CreditorRateOnChange</Event>
+										<Event name="OnChange">CreditorExchangeRateOnChange</Event>
 									</Events>
 								</InputField>
 								<InputField name="CreditorMultiplicity" id="140">
 									<DataPath>Object.Creditor.Multiplicity</DataPath>
-									<UserVisible>
-										<xr:Common>false</xr:Common>
-									</UserVisible>
 									<Wrap>false</Wrap>
 									<ContextMenu name="CreditorRepetitionContextMenu" id="141"/>
 									<ExtendedTooltip name="CreditorRepetitionExtendedTooltip" id="243"/>
 									<Events>
-										<Event name="OnChange">CreditorRepetitionOnChange</Event>
+										<Event name="OnChange">CreditorMultiplicityOnChange</Event>
 									</Events>
 								</InputField>
 								<InputField name="CreditorAccountingSum" id="142">
@@ -1202,12 +1196,7 @@
 				</v8:item>
 			</Title>
 			<Type>
-				<v8:Type>xs:decimal</v8:Type>
-				<v8:NumberQualifiers>
-					<v8:Digits>10</v8:Digits>
-					<v8:FractionDigits>4</v8:FractionDigits>
-					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
-				</v8:NumberQualifiers>
+				<v8:TypeSet>cfg:DefinedType.ExchangeRate</v8:TypeSet>
 			</Type>
 		</Attribute>
 		<Attribute name="Multiplicity" id="18">
@@ -1218,12 +1207,7 @@
 				</v8:item>
 			</Title>
 			<Type>
-				<v8:Type>xs:decimal</v8:Type>
-				<v8:NumberQualifiers>
-					<v8:Digits>10</v8:Digits>
-					<v8:FractionDigits>0</v8:FractionDigits>
-					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
-				</v8:NumberQualifiers>
+				<v8:TypeSet>cfg:DefinedType.Multiplicity</v8:TypeSet>
 			</Type>
 		</Attribute>
 		<Attribute name="Counterparty" id="19">

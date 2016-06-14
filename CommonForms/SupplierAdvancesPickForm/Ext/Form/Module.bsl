@@ -205,6 +205,12 @@ Procedure OnOpen(Cancel)
 	
 	CalculateAmountsTotal();
 	
+    //( elmi # 08.5 
+	SmallBusinessClient.RenameTitleExchangeRateMultiplicity( ThisForm, "AdvancesList");
+	SmallBusinessClient.RenameTitleExchangeRateMultiplicity( ThisForm, "Prepayment");
+    //) elmi
+
+	
 EndProcedure // OnOpen()
 
 // Procedure - OK button click handler.
@@ -430,7 +436,7 @@ EndProcedure
 // Prepayment input field Multiplicity. Calculates the amount of the payment.
 //
 &AtClient
-Procedure PrepaymentRepetitionOnChange(Item)
+Procedure PrepaymentMultiplicityOnChange(Item)
 	
 	TabularSectionRow = Items.Prepayment.CurrentData;
 	

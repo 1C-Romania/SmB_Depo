@@ -504,8 +504,21 @@ Function ImportCurrencyRateFromFile(Val Currency, Val PathToFile, Val ImportBegi
 		
 		WriteCoursesOfCurrency.Currency    = Currency;
 		WriteCoursesOfCurrency.Period    = ExchangeRateDate;
-		WriteCoursesOfCurrency.ExchangeRate      = ExchangeRate;
-		WriteCoursesOfCurrency.Multiplicity = Multiplicity;
+		
+		//( elmi # 08.5 
+		//WriteCoursesOfCurrency.ExchangeRate      = ExchangeRate;
+		//WriteCoursesOfCurrency.Multiplicity = Multiplicity;
+		If SmallBusinessServer.IndirectQuotationInUse() Тогда
+		     WriteCoursesOfCurrency.ExchangeRate   = Multiplicity;      
+		     WriteCoursesOfCurrency.Multiplicity   = ExchangeRate;           
+		Else
+		     WriteCoursesOfCurrency.ExchangeRate   = Multiplicity/ExchangeRate; 
+		     WriteCoursesOfCurrency.Multiplicity   = 1;
+		EndIf;
+		//) elmi
+	
+		
+		
 		WriteCoursesOfCurrency.Write();
 		
 		NumberOfImportedDays = NumberOfImportedDays + 1;

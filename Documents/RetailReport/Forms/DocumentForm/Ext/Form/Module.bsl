@@ -704,7 +704,11 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	StructureByCurrency = InformationRegisters.CurrencyRates.GetLast(Object.Date, New Structure("Currency", Object.DocumentCurrency));
 	ExchangeRate = ?(
-		StructureByCurrency.ExchangeRate = 0,
+	   //( elmi # 08.5
+       //StructureByCurrency.ExchangeRate = 0,
+	    StructureByCurrency.Multiplicity = 0,
+       //) elmi
+
 		1,
 		StructureByCurrency.ExchangeRate
 	);

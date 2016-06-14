@@ -396,3 +396,13 @@ Function GetStatusCompletedCustomerOrders() Export
 	
 EndFunction // GetStateCompletedCustomerOrders()
 // 
+
+//( elmi # 08.5
+// Function returns the type of currency quotation
+//
+Function GetCurrencyQuotationType() Export
+	
+	Return Constants.CurrencyQuotationType.Get();
+	
+EndFunction // GetNationalCurrency()
+//) elmi

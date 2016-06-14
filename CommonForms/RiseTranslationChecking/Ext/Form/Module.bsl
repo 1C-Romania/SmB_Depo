@@ -259,8 +259,8 @@ EndProcedure
 
 &AtClient
 Procedure ShowCommandBars(Command)
-	ShowCommandBars = Not ShowCommandBars;
-	Items.FormShowCommandBars.Check = ShowCommandBars;
+	CommandBars = Not CommandBars;
+	Items.FormShowCommandBars.Check = CommandBars;
 EndProcedure
 
 &AtClient
