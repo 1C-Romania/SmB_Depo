@@ -2097,7 +2097,7 @@ Procedure OpenOnExitMessageForm(Parameters)
 		FormParameters = New Structure;
 		FormParameters.Insert("Warnings", Warnings);
 		
-		FormName = "CommonForm.WarningOnWorkCompletion";
+		FormName = "CommonForm.ExitWarnings";
 		
 		If Warnings.Count() = 1 Then
 			If Not IsBlankString(Warnings[0].FlagText) Then 

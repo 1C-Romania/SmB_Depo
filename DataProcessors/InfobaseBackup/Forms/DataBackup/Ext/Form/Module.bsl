@@ -665,18 +665,18 @@ Function InsertScriptParameters(Val Text, Val ParametersStructure)
 	Result = StrReplace(Result, "[ExecutedApplicationFileName]"		, PrepareText(ApplicationExecutableFileName));
 	Result = StrReplace(Result, "[PathToInfobaseParameter]"		, PrepareText(ParameterOfPathToInformationBase));
 	Result = StrReplace(Result, "[RowPathToInfobaseFile]"	, PrepareText(CommonUseClientServer.AddFinalPathSeparator(StrReplace(InfobasePathString, """", ""))));
-	Result = StrReplace(Result, "[InfobaseConnectionRow]"	, PrepareText(InfobaseConnectionString));
+	Result = StrReplace(Result, "[InfobaseConnectionString]"	, PrepareText(InfobaseConnectionString));
 	Result = StrReplace(Result, "[UserAuthenticationParameters]"	, PrepareText(ParametersStructure.ScriptParameters.AuthenticationParameters));
 	Result = StrReplace(Result, "[EventLogMonitorEvent]"			, PrepareText(ParametersStructure.EventLogMonitorEvent));
 	Result = StrReplace(Result, "[EmailAddress]", "");
 	Result = StrReplace(Result, "[CreateBackup]"				,"true");
 	DirectoryRow = CheckDirectoryOnRootItemSpecifying(Object.BackupDirectory);
 	
-	Result = StrReplace(Result, "[BackupDirectory]"				,PrepareText(DirectoryRow+"\backup"+DirectoryRowFromDate()));
+	Result = StrReplace(Result, "[DirectoryBackupCopies]"				,PrepareText(DirectoryRow+"\backup"+DirectoryRowFromDate()));
 	Result = StrReplace(Result, "[RestoreInfobase]"	, "false");
 	Result = StrReplace(Result, "[COMConnectorName]"					, PrepareText(ParametersStructure.COMConnectorName));
 	Result = StrReplace(Result, "[UseCOMConnector]"			, ?(ParametersStructure.ThisIsBasicConfigurationVersion, "false", "true"));
-	Result = StrReplace(Result, "[ExecuteOnEndWork]"			, ?(Parameters.RunMode = "ExecuteOnExit", "true", "false"));
+	Result = StrReplace(Result, "[ExecuteOnExit]"			, ?(Parameters.RunMode = "ExecuteOnExit", "true", "false"));
 	
 	Return Result;
 	
@@ -724,17 +724,3 @@ Function InfobaseSessionCount()
 EndFunction
 
 #EndRegion
-
-
-
-// Rise { Popov N 2016-05-25
-&AtClient
-Function RiseGetFormInterfaceClient() Export
-	Return RiseGetFormInterface();
-EndFunction
-
-&AtServer
-Function RiseGetFormInterface()
-	Return RiseTranslation.GetFormInterface(ThisForm);
-EndFunction
-// Rise } Popov N 2016-05-25

@@ -1,4 +1,4 @@
-﻿#Region ParameterArea
+﻿#Area ParameterArea
 // Update procedure parameters
 var now = new Date();
 var outFileName = "log" + now.valueOf() + ".txt"; // Path to log-file
@@ -18,9 +18,9 @@ var comConnectorName = [COMConnectorName];  // COM class name for work with 1C:E
 var useComConnector = [UseCOMConnector];  // flag of using the COM connection for work with the 1C:Enterprise 8
 var tempLogFileName = "templog.txt";
 var retryCount = 0;
-#EndRegion
+#EndArea
 
-#Region BackupArea
+#Area BackupArea
 // Initialization
 var oFileSystemObject = new ActiveXObject("Scripting.FileSystemObject");
 
@@ -492,4 +492,4 @@ function runEnterprise()
 {
 	return runApp(v8exe, format('ENTERPRISE {0} {1}', infoBasePath, infoBaseAuthorization), SW_SHOW, false);
 }
-#EndRegion
+#EndArea

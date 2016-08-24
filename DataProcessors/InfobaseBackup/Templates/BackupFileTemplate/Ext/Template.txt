@@ -1,10 +1,10 @@
-﻿#Region ParameterArea
+﻿#Area ParameterArea
 // Update procedure parameters
 var now = new Date();
 var outFileName = "log" + now.valueOf() + ".txt"; // Path to log-file
-var v8exe = [ApplicationExecutableFileName]; // Path to the executable file 1C:Enterprise 8
-var infoBasePath = [ParameterOfPathToInformationBase]; 
-var BaseFileName = [PathStringToInfobaseFile];
+var v8exe = [ExecutedApplicationFileName]; // Path to the executable file 1C:Enterprise 8
+var infoBasePath = [PathToInfobaseParameter]; 
+var BaseFileName = [RowPathToInfobaseFile];
 var connectionString = [InfobaseConnectionString] +'UC=Backup'; 
 var infoBaseAuthorization = [UserAuthenticationParameters]; 
 var backupFileName = [DirectoryBackupCopies]+'.zip';  // Backup file
@@ -15,9 +15,9 @@ var comConnectorName = [COMConnectorName];  // COM class name for work with 1C:E
 var useComConnector = [UseCOMConnector];  // flag of using the COM connection for work with the 1C:Enterprise 8
 var OnExit = [ExecuteOnExit];  // "true" - when the end of the work, "false" - right now.
 var tempLogFileName = "templog.txt";
-#EndRegion
+#КонецОбласти
 
-#Region BackupArea
+#Area BackupArea
 var oFileSystemObject = new ActiveXObject("Scripting.FileSystemObject");
 
 var thisFileName;
@@ -440,13 +440,5 @@ function runEnterprise()
 		return runApp(v8exe, format('ENTERPRISE {0} {1}', infoBasePath, infoBaseAuthorization ), SW_SHOW, false);
 	}
 }
-#EndRegion
-
-function runEnterprise()
-{
-	if (OnExit == false) {
-		return runApp(v8exe, format('ENTERPRISE {0} {1}', infoBasePath, infoBaseAuthorization ), SW_SHOW, false);
-	}
-}
-#EndRegion
+#КонецОбласти
 
