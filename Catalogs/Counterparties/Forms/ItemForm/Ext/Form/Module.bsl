@@ -477,9 +477,9 @@ Procedure NotificationProcessing(EventName, Parameter, Source)
 	
 	If EventName = "SettlementAccountsAreChanged" Then
 		Object.GLAccountCustomerSettlements = Parameter.GLAccountCustomerSettlements;
-		Object.CustomerAdvancesGLAccount = Parameter.CustomerAdvancesGLAccount;
+		Object.CustomerAdvancesGLAccount = Parameter.CustomerAdvanceGLAccount;
 		Object.GLAccountVendorSettlements = Parameter.GLAccountVendorSettlements;
-		Object.VendorAdvancesGLAccount = Parameter.VendorAdvancesGLAccount;
+		Object.VendorAdvancesGLAccount = Parameter.AdvanceGLAccountToSupplier; 
 		Modified = True;
 	EndIf;
 	
