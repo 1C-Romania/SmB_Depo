@@ -29,6 +29,31 @@ Function UseDataLoadFromFile() Export
 	Return False;
 EndFunction
 
+// Rise { Sargsyan N 2016-08-17 
+Procedure PresentationFieldsGetProcessing(Fields, StandardProcessing)
+	
+	StandardProcessing = False;
+	
+	Fields.Add("Description");
+	Fields.Add("Ref");
+
+EndProcedure
+
+Procedure PresentationGetProcessing(Data, Presentation, StandardProcessing)  	
+
+	StandardProcessing  = False;
+	CurrentPresentation = RisePresentationsReUse.GetObjectPresentation(Data.Ref, RisePresentationsReUse.GetCurrentUserLanguageCode(),"Currencies");
+
+	Если CurrentPresentation <> Undefined Тогда
+		Presentation = CurrentPresentation;
+	Иначе
+		Presentation = Data.Description;
+	КонецЕсли;
+	
+EndProcedure
+// Rise } Sargsyan N 2016-08-17
+
+
 #EndRegion
 
 #EndIf
