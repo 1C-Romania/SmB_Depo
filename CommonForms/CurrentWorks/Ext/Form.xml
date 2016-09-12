@@ -105,6 +105,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Overdue</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Просроченные</v8:content>
+						</v8:item>
 					</Title>
 					<TitleLocation>None</TitleLocation>
 					<Hiperlink>true</Hiperlink>
@@ -189,10 +193,15 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Overdue</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Просроченные</v8:content>
+						</v8:item>
 					</Title>
 					<TitleLocation>None</TitleLocation>
 					<Hiperlink>true</Hiperlink>
 					<TextColor>web:FireBrick</TextColor>
+					<Font bold="true" kind="AutoFont"/>
 					<ContextMenu name="WorkOrdersExecuteOverdueContextMenu" id="82"/>
 					<ExtendedTooltip name="WorkOrdersExecuteOverdueExtendedTooltip" id="135"/>
 					<Events>
