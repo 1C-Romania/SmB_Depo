@@ -1441,7 +1441,7 @@ Procedure OperationWithResultsOfQuery(CommandOperations)
 "Customize now?';ru='В настройках не указана обработка для выполнения запросов."
 "Настроить сейчас?'");
 	
-	QuestionTitle = NStr("en = 'Settings'");
+	QuestionTitle = NStr("en='Settings';ru='Настройки'");
 
 	Notification = New NotifyDescription("OperationWithResultsOfQueryEnd", ThisObject);
 	ShowQueryBox(Notification, Text, QuestionDialogMode.YesNo, , , QuestionTitle);
